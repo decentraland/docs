@@ -31,3 +31,9 @@ Our testing approach emphasizes:
 * [What to test and when](writing-tests.md#what-to-test)
 * [When and how to mock](writing-tests.md#when-to-mock)
 
+## Related Standards
+
+* [Dependency Management](../dependency-management.md) - Managing npm dependencies and peerDependencies
+* [UI Standards](../ui-standards/README.md) - Redux and RTK Query patterns
+* [API Documentation](../api-documentation.md) - OpenAPI documentation standards
+

@@ -627,6 +627,12 @@ If you have existing API documentation:
 * See [Testing Standards](testing-standards/) for API testing guidelines
 * Check out existing API examples in the [API Reference](https://docs.decentraland.org) section
 
+## Related Standards
+
+* [Dependency Management](dependency-management.md) - Managing npm dependencies and peerDependencies
+* [Well-Known Components](well-known-components/README.md) - WKC architecture for services
+* [Testing Standards](testing-standards/README.md) - Testing patterns for services
+
 ## Resources
 
 * **OpenAPI Specification**: [spec.openapis.org](https://spec.openapis.org/oas/latest.html)

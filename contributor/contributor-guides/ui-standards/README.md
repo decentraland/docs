@@ -128,3 +128,9 @@ Our patterns account for blockchain-specific challenges:
 
 Start with [Store Setup](store-setup.md) to learn how to structure your project and configure Redux properly.
 
+## Related Standards
+
+* [Dependency Management](../dependency-management.md) - Managing npm dependencies and peerDependencies
+* [Testing Standards](../testing-standards/README.md) - Testing patterns for UIs and services
+* [Web UI Standards](../web-ui-standards/README.md) - Component library and design system
+

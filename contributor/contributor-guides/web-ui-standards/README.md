@@ -180,3 +180,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 * **Material UI Docs**: [mui.com](https://mui.com/material-ui/)
 * **Material Design**: [material.io](https://m2.material.io/)
 * **GitHub Repository**: [decentraland/ui2](https://github.com/decentraland/ui2)
+
+## Related Standards
+
+* [Dependency Management](../dependency-management.md) - Managing npm dependencies and peerDependencies
+* [UI Standards](../ui-standards/README.md) - Redux and RTK Query patterns
+* [Testing Standards](../testing-standards/README.md) - Testing patterns for UIs

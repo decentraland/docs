@@ -153,7 +153,7 @@ AvatarShape.create(myAvatar, {
 	wearables: [
     'urn:decentraland:matic:collections-v2:0x90e5cb2d673699be8f28d339c818a0b60144c494:0'
   ],
-	show_only_wearables: true,
+	showOnlyWearables: true,
 })
 
 Transform.create(myAvatar, {

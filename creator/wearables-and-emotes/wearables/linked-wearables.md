@@ -12,9 +12,9 @@ This document is mostly oriented for representatives of NFT communities that wan
 
 ### What are Linked Wearables?
 
-Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack. They are not [regular wearables](./README.md). They look the same, and follow the regular wearables [guidelines](./creating-wearables.md) but carry a completely different meaning.
+Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack. They are not [regular wearables](./). They look the same, and follow the regular wearables [guidelines](./creating-wearables.md) but carry a completely different meaning.
 
-Linked Wearables do not exist inside traditional wearable collections (they belong to a special type of collection), have no rarity, and can not be sold in [primary](https://market.decentraland.org/browse?assetType=item\&section=wearables) or [secondary](https://market.decentraland.org/browse?assetType=nft\&section=wearables\&vendor=decentraland\&page=1\&sortBy=recently_listed\&onlyOnSale=true\&viewAsGuest=false\&onlySmart=false) markets. They are only **in-world representations linked to external NFTs.**
+Linked Wearables do not exist inside traditional wearable collections (they belong to a special type of collection), have no rarity, and can not be sold in [primary](https://market.decentraland.org/browse?assetType=item&section=wearables) or [secondary](https://market.decentraland.org/browse?assetType=nft&section=wearables&vendor=decentraland&page=1&sortBy=recently_listed&onlyOnSale=true&viewAsGuest=false&onlySmart=false) markets. They are only **in-world representations linked to external NFTs.**
 
 > Imagine that you have an NFT project called ‘Cryptojackets’ where every NFT is a different kind of 2D jacket and you want your users to have a 3D representation of their jacket in their Decentraland backpack. Linked Wearables allows you to submit 3D representations of your NFTs as wearables in Decentraland. There is no need to mint a new token, and your current NFT project will have a new out-of-the-box feature to offer!
 
@@ -39,8 +39,8 @@ The following table shows the mentioned mechanisms:
 
 Usually there are two types of NFT collections:
 
-* **Hand crafted:** where each token asset is tailored made, or made by hand, without any automatization process.
-* **Programmatic:** where each token asset was not crafted individually by hand, but automatically generated with code, many times from traits that were previously designed and modeled. For example: [CryptoPunks](https://opensea.io/collection/cryptopunks) and [BAYC](https://opensea.io/collection/boredapeyachtclub) are examples of 2D pfp NFT Collections that were created programmatically.
+- **Hand crafted:** where each token asset is tailored made, or made by hand, without any automatization process.
+- **Programmatic:** where each token asset was not crafted individually by hand, but automatically generated with code, many times from traits that were previously designed and modeled. For example: [CryptoPunks](https://opensea.io/collection/cryptopunks) and [BAYC](https://opensea.io/collection/boredapeyachtclub) are examples of 2D pfp NFT Collections that were created programmatically.
 
 We follow the same principle in Decentraland with the Linked Wearables Collections as well, there can be Standard Linked Wearable Collections for the hand crafted collections and Programmatic Linked Wearable Collections for the automatically generated ones. Both collections differ in the costs of publishing publishing fees the wearable have. Check the [Costs section](linked-wearables.md#costs) for more information about the publishing fees.
 
@@ -57,13 +57,16 @@ To create a new Linked Wearable follow these steps:
 1.  In the Collection's section, click on the **Create Collection** button.
 
     ![](../../images/media/collections-page.png)
+
 2.  Select the Linked Wearable Collection option by click on the **Create Collection** button under the Linked Collections section.
 
     ![](../../images/media/collection-creation-selector-modal.png)
+
 3.  Choose a name for the collection and link the collection to your NFT collection by setting its contract address and the network it is in. **The contract will be validated to be sure it complies with the NFT contracts standards.**
 
     ![](../../images/media/linked-wearables/linkedw-collection-creation.png)
-4. Click on the **Create** button to create the collection.
+
+4.  Click on the **Create** button to create the collection.
 
 ### Adding Wearables to the Linked Wearables Collection - One by One
 
@@ -74,9 +77,11 @@ To do so, follow these steps:
 1.  Click on the **New items** button.
 
     ![](../../images/media/linked-wearables/linkedw-empty-collection.png)
+
 2.  Select the **Singe items** option.
 
     ![](../../images/media/linked-wearables/multiple-items-upload.png)
+
 3.  Follow the steps to upload and configure your wearable as it is described in the [creating wearables guidelines](./creating-wearables.md) and configure how it will be linked to your NFTs. Check the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" section for more information on how to configure it.
 
     ![](../../images/media/linked-wearables/linkedw-mapping.png)
@@ -89,9 +94,9 @@ As Linked Wearable collections can contain a big number of items, it is possible
 
 Each item will require a ZIP file to be built including the following assets:
 
-* The **required** 3D model files of the wearable (GLB, GLTFs, texture files, etc).
-* A **required** `wearable.json` file containing the information of the wearable.
-* An **optional** `thumbnail.png` file containing the thumbnail of the wearable that will be seen in the Builder and the world. If it is not provided, one will be generated using the 3D model.
+- The **required** 3D model files of the wearable (GLB, GLTFs, texture files, etc).
+- A **required** `wearable.json` file containing the information of the wearable.
+- An **optional** `thumbnail.png` file containing the thumbnail of the wearable that will be seen in the Builder and the world. If it is not provided, one will be generated using the 3D model.
 
 The 3D models and the optional `thumbnail.png` follow the [Custom Thumbnails section](../manage-collections/uploading-wearables.md#custom-thumbnails) in the Uploading Wearables article on how to create a custom thumbnail.
 
@@ -232,9 +237,9 @@ To add a custom thumbnail to the wearable, you can add a `thumbnail.png` file.
 
 Some things to consider about the `wearable.json` file:
 
-* All the information about the wearable categories and which to choose can be found in the [creating wearables guidelines](./creating-wearables.md).
-* The representations array will contain the information about how each body shape will look like. Each wearable MUST contain at least one representation (it can have one or the two of them), that is, taking into consideration the body shapes that we currently have, either `urn:decentraland:off-chain:base-avatars:BaseMale` or `urn:decentraland:off-chain:base-avatars:BaseFemale`. Each representation will describe which models will be used for each body shape.
-* The mapping object must be configured as one of the available mechanisms to link your NFT to your wearable, following the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" section.
+- All the information about the wearable categories and which to choose can be found in the [creating wearables guidelines](./creating-wearables.md).
+- The representations array will contain the information about how each body shape will look like. Each wearable MUST contain at least one representation (it can have one or the two of them), that is, taking into consideration the body shapes that we currently have, either `urn:decentraland:off-chain:base-avatars:BaseMale` or `urn:decentraland:off-chain:base-avatars:BaseFemale`. Each representation will describe which models will be used for each body shape.
+- The mapping object must be configured as one of the available mechanisms to link your NFT to your wearable, following the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" section.
 
 **Setting a custom ID or URN for the items**
 
@@ -244,9 +249,9 @@ In case the `id` field is used, it must contain the whole ID of the wearable. Th
 
 IDs or URNs follow a specific format, they accept:
 
-* Lowercased characters, from the `a` to the `z`.
-* All numbers.
-* They can't contain other type of characters or whitespaces. We suggest you replace whitespaces with the `-`
+- Lowercased characters, from the `a` to the `z`.
+- All numbers.
+- They can't contain other type of characters or whitespaces. We suggest you replace whitespaces with the `-`
 
 You can retrieve the ID (or URN) from the collection page by following the next steps:
 
@@ -267,40 +272,48 @@ Once all the files are ready, to upload the wearables in bulk, follow these step
 1.  Click on the **New items** button.
 
     ![](../../images/media/linked-wearables/linkedw-empty-collection.png)
+
 2.  Select the **Multiple items** option.
 
     ![](../../images/media/linked-wearables/multiple-items-upload.png)
+
 3.  Click on the **Browse yor computer** link to open your file manager and select all the zips containing your wearables.
 
     ![](../../images/media/linked-wearables/multiple-files-select-in-bulk.png)
+
 4.  Review if all the files are correct or if they need to be fixed. In this case, the model of the wearable isn't set or the `wearable.json` file has an incorrectly set representation.
 
     ![](../../images/media/linked-wearables/multiple-files-with-errors.png)
+
 5.  Fix any errors by clicking the **Add more** button and re-uploading the failed files with the same name or by dismissing the errors using the trash icon on the top right section of the modal.
 
     ![](../../images/media/linked-wearables/multiple-files-upload-correct-file.png)
+
 6.  Upload all wearables by clicking **Upload items**.
 
     ![](../../images/media/linked-wearables/multiple-files-without-errors.png)
+
 7.  Be patient, this might take a while!
 
     ![](../../images/media/linked-wearables/multiple-files-uploading.png)
+
 8.  Success! Your items are now available in your collection.
 
     ![](../../images/media/linked-wearables/multiple-files-upload-success.png)
+
 9.  Select if your collection is a programmatic or a standard one. Check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) section to correctly set which collection type you're building items for.
 
     ![](../../images/media/linked-wearables/collection-type-selector.png)
 
 #### Common errors when uploading batched items
 
-* The `id` field is set to a value that is already being used by another wearable.
-* The `id` field is set to a value that is not a valid ID. For example, the third party id or collection id belong to another third party or collection.
-* There's no `wearable.json` file in the zip.
-* The ZIP file doesn't have in its root directory the `wearable.json` file.
-* The `wearable.json` has an incorrect format or values.
-* The file is bigger than 3MBs. Linked Wearables have the same limitation as regular wearables in terms of size as the standard ones.
-* The custom optional thumbnail image is not a png file.
+- The `id` field is set to a value that is already being used by another wearable.
+- The `id` field is set to a value that is not a valid ID. For example, the third party id or collection id belong to another third party or collection.
+- There's no `wearable.json` file in the zip.
+- The ZIP file doesn't have in its root directory the `wearable.json` file.
+- The `wearable.json` has an incorrect format or values.
+- The file is bigger than 3MBs. Linked Wearables have the same limitation as regular wearables in terms of size as the standard ones.
+- The custom optional thumbnail image is not a png file.
 
 ### Seeing the wearables in Decentraland
 
@@ -311,6 +324,7 @@ To be able to see a wearable in world, follow these steps:
 1.  Click on the meatballs menu (three horizontal dots) on the right of the item that you want to see in world. A dropdown will appear. Select **See in Decentraland**.
 
     ![](../../images/media/linked-wearables/see-in-world-button.png)
+
 2.  The Decentraland World will open. Navigate to your backpack to see the wearable.
 
     ![](../../images/media/linked-wearables/see-in-world-item.png)
@@ -330,6 +344,7 @@ To edit the name of a Linked Wearable Collection follow these steps:
 1.  Click on the collection name.
 
     ![](../../images/media/linked-wearables/edit-collection-name.png)
+
 2.  Choose a new name for the collection and click on the save button.
 
     ![](../../images/media/linked-wearables/edit-collection-name-modal.png)
@@ -343,6 +358,7 @@ To delete Linked Wearable Collection follow these steps:
 1.  Click on the meatballs menu (three horizontal dots) on the far right of the set of buttons. A dropdown will appear. Select **Delete**.
 
     ![](../../images/media/linked-wearables/collection-options-menu.png)
+
 2.  A Confirmation modal will appear, if you wish to proceed, click **Ok**, otherwise click on **Cancel**.
 
     ![](../../images/media/linked-wearables/delete-collection-confirmation-modal.png)
@@ -356,7 +372,8 @@ To edit a single wearable, follow these steps:
 1.  Click on the meatballs menu (three horizontal dots) on the right of the item that you want to see in world. A dropdown will appear. Select **Open in editor**.
 
     ![](../../images/media/linked-wearables/edit-single-wearable.png)
-2. Edit the wearable as standard wearables are edited. Follow the **Editing items** section in [creating wearables guidelines](./creating-wearables.md) on how to create a custom thumbnail.
+
+2.  Edit the wearable as standard wearables are edited. Follow the **Editing items** section in [creating wearables guidelines](./creating-wearables.md) on how to create a custom thumbnail.
 
 #### Editing the wearable linking
 
@@ -417,24 +434,31 @@ Once the ZIP files are ready, follow these steps to edit the items in bulk:
 1.  Click on the meatballs menu (three horizontal dots) on the far right of the set of buttons. A dropdown will appear. Select **Edit in bulk**.
 
     ![](../../images/media/linked-wearables/edit-multiple-files-bulk-button.png)
+
 2.  A modal similar to de one in the **Uploading models in bulk** will appear. Click on the **Browse your computer** link to open your file manager.
 
     ![](../../images/media/linked-wearables/edit-multiple-files-modal.png)
+
 3.  Select all the ZIP files of the items that will be edited.
 
     ![](../../images/media/linked-wearables/multiple-files-select-in-bulk.png)
+
 4.  Review if all the files are correct or if they need to be fixed. In this case, the model of the wearable isn't set or the `wearable.json` file has an incorrectly set representation.
 
     ![](../../images/media/linked-wearables/edit-multiple-files-with-errors.png)
+
 5.  Fix any errors by clicking the **Add more** button and re-uploading the failed files with the same name or by dismissing the errors using the trash icon on the top right section of the modal.
 
     ![](../../images/media/linked-wearables/multiple-files-upload-correct-file.png)
+
 6.  Upload all wearables by clicking **Upload items**.
 
     ![](../../images/media/linked-wearables/edit-multiple-files-without-errors.png)
+
 7.  Be patient, this might take a while!
 
     ![](../../images/media/linked-wearables/edit-multiple-files-uploading.png)
+
 8.  Success! Your items are now available in your collection. Check the forum post for any updates from the curator.
 
     ![](../../images/media/linked-wearables/edit-multiple-files-success.png)
@@ -463,27 +487,35 @@ To publish your wearables, you need to:
 1.  Select the items to be published by clicking on the checkbox next to them. Click the **Publish** button when you're ready with your selection.
 
     ![](../../images/media/linked-wearables/selecting-to-publish.png)
+
 2.  Confirm your collection name. Once you published your items, changing the collection name is not possible, so be sure to check it thoroughly.
 
     ![](../../images/media/linked-wearables/selecting-to-publish.png)
+
 3.  Give it a check to the item's your publishing. Click the **Confirm items** button when you're ready.
 
     ![](../../images/media/linked-wearables/check-items-to-publish.png)
+
 4.  Sign the confirmation of publishing your items in your wallet.
 
     ![](../../images/media/linked-wearables/sign-items-confirmation.png)
+
 5.  Read and check the Terms and Conditions.
 
     ![](../../images/media/linked-wearables/terms-and-conditions.png)
+
 6.  Check your publishing fees. The fees required for published the wearables are described in the [Costs section](linked-wearables.md#costs).
 
     ![](../../images/media/linked-wearables/publishing-payment.png)
+
 7.  If it's your first time publishing Linked Wearables, you'll need to authorize the Linked Wearables smart contract to operate MANA on your behalf. This step is needed to deduct the MANA used to pay the publication fees from your wallet.
 
     ![](../../images/media/linked-wearables/first-time-publishing.png)
+
 8.  Pay the publication fee and complete the publishing by performing the transaction. Depending on the congestion of the network, this might take a while.
 
     ![](../../images/media/linked-wearables/complete-publishing.png)
+
 9.  Success! You have published your items. Your items will go through the curation process a regular collections do. You can communicate with the curator via the forum post.
 
     ![](../../images/media/linked-wearables/publication-success.png)
@@ -497,9 +529,11 @@ To push changes to get them curated, you need to:
 1.  Select the items with changes by clicking on the checkbox next to them. Click the **Push changes** button when you're ready with your selection.
 
     ![](../../images/media/linked-wearables/select-push-changes-items.png)
+
 2.  Proceed with the push changes process. As the modal says, these changes will need to go through the curation phase once again.
 
     ![](../../images/media/linked-wearables/confirm-push-changes.png)
+
 3.  Read and check the Terms and Conditions. Upon accepting them, the items will be ready to be curated again.
 
     ![](../../images/media/linked-wearables/accept-push-changes-terms-and-conditions.png)

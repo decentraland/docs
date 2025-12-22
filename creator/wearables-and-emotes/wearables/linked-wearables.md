@@ -12,7 +12,7 @@ This document is mostly oriented for representatives of NFT communities that wan
 
 ### What are Linked Wearables?
 
-Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack. They are not [regular wearables](./). They look the same, and follow the regular wearables [guidelines](./creating-wearables.md) but carry a completely different meaning.
+Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack. They are not [regular wearables](./README.md#what-are-wearables). They look the same, and follow the regular wearables [guidelines](./creating-wearables.md) but carry a completely different meaning.
 
 Linked Wearables do not exist inside traditional wearable collections (they belong to a special type of collection), have no rarity, and can not be sold in [primary](https://market.decentraland.org/browse?assetType=item&section=wearables) or [secondary](https://market.decentraland.org/browse?assetType=nft&section=wearables&vendor=decentraland&page=1&sortBy=recently_listed&onlyOnSale=true&viewAsGuest=false&onlySmart=false) markets. They are only **in-world representations linked to external NFTs.**
 

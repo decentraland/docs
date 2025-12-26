@@ -118,7 +118,9 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-
+{% hint style="warning" %}
+**📔 Note**: Additionally the result of the await can be stored to evaluate its `success` property to know if the movement was interrupted (e.g. by input movement) or completed successfully.
+{% endhint %}
 
 ## Play animations
 

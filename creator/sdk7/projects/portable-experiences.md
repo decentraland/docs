@@ -4,13 +4,15 @@ description: Portable experiences
 
 # Portable Experiences
 
-Portable experiences are essentially scenes that are not constrained to parcels of land. Players can carry these with them anywhere they go in Decentraland, adding a new layer of content over their experience. Portable Experiences can be tied to a NAME and can be loaded by another scene using the SDK.
 
 {% hint style="warning" %}
-**📔 Note**: Portable experiences can only be created using SDK 7. Also, only scenes built with SDK 7 are capable of loading a portable experience.
-
-The **Creator Hub** doesn't currently support creating Portable Experience projects.
+**📔 Note**: Portable experiences are not currently supported in the latest versions of Decentraland.
 {% endhint %}
+
+
+<!-- Portable experiences are essentially scenes that are not constrained to parcels of land. Players can carry these with them anywhere they go in Decentraland, adding a new layer of content over their experience. Portable Experiences can be tied to a NAME and can be loaded by another scene using the SDK.
+
+
 
 Smart Wearables are a kind of portable experience that is associated to a wearable, and activated based on if the player is using that wearable. This document doesn't cover those, see [smart wearables](smart-wearables.md) for more details.
 
@@ -123,7 +125,7 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 
 ### Limitations
 
-Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/trigger-emotes.md#custom-animations) uploaded as part of the portable experience's files.
+Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the portable experience's files.
 
 ### Tips
 
@@ -137,3 +139,4 @@ Portable experiences only run for the player that activates it. Other players do
   * You can use an intermediate server to send information between the portable experience and a scene.
   * If you do a raycast, you can detect hits against the colliders of entities from the surrounding scenes. This can tell you the exact hit location, normal direction, and even the entity name and mesh name of the 3D model. This only works when hitting entities on scenes written with SDK7.
 * Kill a portable experience: Run the `kill()` method to self-terminate a portable experience.
+ -->

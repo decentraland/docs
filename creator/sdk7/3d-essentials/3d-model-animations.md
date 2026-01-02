@@ -185,11 +185,6 @@ You can also use `Animator.stopAllAnimations()` at any time to explicitly set th
 **📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
 {% endhint %}
 
-```
-- apply an animation with a `weight` property of 0 and gradually increase the `weight`
-- create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
-```
-
 ### Handle multiple animations
 
 If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them.

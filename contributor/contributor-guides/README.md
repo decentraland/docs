@@ -1,2 +1,0 @@
-# contributor-guides
-

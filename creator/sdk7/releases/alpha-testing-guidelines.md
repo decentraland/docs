@@ -6,7 +6,7 @@ description: Guidelines on how to provide feedback about SDK7
 
 ### Documentation
 
-Find the full documentation for SDK7 in under the **SDK7** section of the documentation.
+Find the full documentation for SDK7 in the **SDK7** section of the documentation.
 
 ### Using the playground
 
@@ -24,7 +24,7 @@ Install the [Creator Hub](../../scene-editor/get-started/about-editor.md).
 
 ### In production
 
-You can deploy scenes with SDK7 via the **Publish** button on the Scene Editor.
+You can deploy scenes with SDK7 via the **Publish** button on the Scene Editor in Creator Hub.
 
 ### Example scenes
 

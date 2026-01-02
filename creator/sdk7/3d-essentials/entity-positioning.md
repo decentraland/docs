@@ -6,9 +6,9 @@ description: How to set the position, rotation and scale of an entity in a scene
 
 You can set the _position_, _rotation_ and _scale_ of any entity by using the `Transform` component. This can be used on any entity in the 3D space, affecting where the entitiy is rendered. This includes primitive shapes (cube, sphere, plane, etc), 3D text shapes, NFT shapes, and 3D models (`GltfContainer`).
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-When adding an item to your scene via the [Scene Editor](../scene-editor/get-started/about-editor.md), it implicitly includes a **Transform** component. You then change the values in the entity's Transform component implicitly by changing the position, rotation or scale of an entity. You can also use the Scene Editor's UI to provide values numerically for more precision.
+When adding an item to your scene via the Scene Editor, it implicitly includes a **Transform** component. You then change the values in the entity's Transform component implicitly by changing the position, rotation or scale of an entity. You can also use the Scene Editor's UI to provide values numerically for more precision.
 
 ### Code essentials
 

@@ -4,13 +4,13 @@ description: Learn how to set up a scene and configure its metadata.
 
 # Scene Metadata
 
-A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../worlds/about.md), players can visit it via URL.
+A scene is a Decentraland project that is spatially delimited and mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../worlds/about.md), players can visit it via URL.
 
 See [Files in a scene](../sdk7/projects/scene-files.md) for a list of what files are used in a scene project.
 
 ### Metadata
 
-To edit a scene's metadata on the [Scene Editor](../scene-editor/get-started/about-editor.md), open a scene and click the **pencil icon**.
+To edit a scene's metadata in the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), open a scene and click the **pencil icon**.
 
 ![](../../../.gitbook/assets/pencil-icon.png)
 
@@ -26,7 +26,7 @@ Alternatively, you can directly edit the `scene.json` file, where all of these v
 
 ### Scene title, description, and image
 
-It's very important to give your scene a title, a description and a thumbnail image to attract players to your scene and so they know what to expect.
+It's very important to give your scene a title, a description, and a thumbnail image to attract players and help them know what to expect.
 
 Players will see these displayed on a modal when they select the parcels of your scene on the map. They will also see these in a confirmation screen when being [teleported](../sdk7/interactivity/external-links.md) there by another scene. Setting up compelling data here can significantly help drive traffic to your scene.
 
@@ -34,7 +34,7 @@ When players navigate the world and enter your scene, they are able to read the 
 
 ![](../../../.gitbook/assets/scene-name.png)
 
-Add this data via the scene menu in the [Scene Editor](../scene-editor/get-started/about-editor.md).
+Add this data via the scene menu in the Scene Editor.
 
 The thumbnail should be a _.png_ image of a recommended size of _228x160_ pixels. The minimum supported size is _196x143_ pixels. The image may be stretched if the width-to-height proportions don't match _228x160_.
 
@@ -48,7 +48,7 @@ In case you want other developers to be able to reach out to you, you can also a
 
 ### Categories
 
-You can add categories to your scene to help players and users explore Decentraland better. These are used in the [Decentraland Places dApp](https://places.decentraland.org) to categorize each place and make it easier for users to find what they're interested in.
+You can add categories to your scene to help players explore Decentraland. These are used in the [Decentraland Places dApp](https://places.decentraland.org) to categorize each place and make it easier for players to find what they're interested in.
 
 **Categories** need to be chosen from a pre-defined list of options:
 
@@ -65,7 +65,7 @@ You can add categories to your scene to help players and users explore Decentral
 * 🏅 Sports
 * 🏃 Parkour
 
-A scene can belong to more than one category, it can have a maximum of 3 listed categories.
+A scene can belong to more than one category, with a maximum of 3 listed categories.
 
 In the `scene.json` categories are listed in the `tags` array.
 
@@ -84,7 +84,7 @@ These are the predefined categories:
 * `sports`
 * `parkour`
 
-For example, a Scene could be tagged as `game` and `casino` by adding the following to the `scene.json`
+For example, a scene could be tagged as `game` and `casino` by adding the following to the `scene.json`
 
 ```json
   "tags": [
@@ -135,7 +135,7 @@ There are certain features that can be disabled in specific scenes so that playe
 Currently, only the following feature is handled like this:
 
 * **Voice Chat**: Refers to players using their microphones to have conversations over voice chat with other nearby players.
-* **Disable Portable Experiences**: This setting will set the behavior for any portable experience of a player while standing inside the your scene. This includes not only [portable experiences](../sdk7/projects/portable-experiences.md) but also [smart wearables](../sdk7/projects/smart-wearables.md). With this setting, you can chose to either keep them all enabled (default), disable them, or hide their UI. This is useful for scenes where portable experiences might give an unfair advantage to some players, for example using a jetpack in a parkour challenge. It's also recommended to prevent these in scenes where blockchain transactions take place, and where a malicious portable experience could potentially impersonate the scene´s UI.
+* **Disable Portable Experiences**: This setting will set the behavior for any portable experience of a player while standing inside your scene. This includes not only [portable experiences](../sdk7/projects/portable-experiences.md) but also [smart wearables](../sdk7/projects/smart-wearables.md). With this setting, you can chose to either keep them all enabled (default), disable them, or hide their UI. This is useful for scenes where portable experiences might give an unfair advantage to some players, for example using a jetpack in a parkour challenge. It's also recommended to prevent these in scenes where blockchain transactions take place, and where a malicious portable experience could potentially impersonate the scene´s UI.
 
 On the `scene.json` file, these toggles are managed under `featureToggles`. The corresponding features are enabled by default, unless specified as _disabled_ in the `scene.json` file.
 
@@ -154,17 +154,17 @@ The **Spawn Settings** in the **Settings** tab define where players spawn when t
 
 ![](../../../.gitbook/assets/spawn-point-ui.png)
 
-Your scene might have objects that can block players from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for players if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
+Your scene might have objects that can block players from moving if they spawn on top of them, like trees or stairs. Your scene might also have elevated terrain. To prevent players from spawning in locations where they can't move, you can set multiple spawn positions in specific locations.
 
-The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity](../sdk7/3d-essentials/entity-positioning.md).
+The position consists of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity](../sdk7/3d-essentials/entity-positioning.md).
 
 {% hint style="warning" %}
 **📔 Note**: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
 {% endhint %}
 
-Check the **Random Offset** box to randomly offset the spawning players around the spawn point, with a maximum value. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The **Max Offset** value is the maximum possible distance from the original spawn point, in both the X or Z axis.
+Check the **Random Offset** box to randomly offset spawning players around the spawn point. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The **Max Offset** value is the maximum possible distance from the original spawn point, in both the X and Z axes.
 
-Set the **Camera Target** to set the direction in which players start looking when they jump into your scene. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction. By default this points at `{x: 8, y:1, z:8}`, which translates to the center of the scene for single-parcel scenes, or the center of the bottom-left parcel for larger scenes.
+Set the **Camera Target** to control the direction players face when they enter your scene. This gives you better control over their first impression and can help steer them towards a specific direction. By default this points at `{x: 8, y:1, z:8}`, which is the center of the scene for single-parcel scenes, or the center of the bottom-left parcel for larger scenes.
 
 Click **Add Spawn Point** to list as many spawn points as you want. Players will randomly appear in one of those.
 
@@ -208,9 +208,9 @@ A single scene can have multiple spawn points. This is especially useful in larg
   ],
 ```
 
-When there are multiple spawn points, the one that's closest to the coordinates indicated by the player is picked.
+When there are multiple spawn points, the one closest to the coordinates indicated by the player is selected.
 
-If a coordinate is marked as `default`, it will always be used, regardless of if it's the closest. If multiple spawn points are marked as `default`, the closest one of these is picked.
+If a spawn point is marked as `default`, it will always be used, regardless of whether it's the closest. If multiple spawn points are marked as `default`, the closest one is selected.
 
 ```json
   "spawnPoints": [
@@ -236,7 +236,7 @@ If a coordinate is marked as `default`, it will always be used, regardless of if
 
 **Spawn regions**
 
-You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers on any of the dimensions of the position, players will appear in a random location within this range of numbers. This helps prevent the overlapping of entering players.
+You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers for any dimension of the position, players will appear in a random location within that range. This helps prevent entering players from overlapping.
 
 ```json
   "spawnPoints": [
@@ -251,7 +251,7 @@ You can set a whole region in the scene to act as a spawn point. By specifying a
   ],
 ```
 
-In the example above, players may appear anywhere in the square who's corners are on _1,1,2_ and _5,1,4_.
+In the example above, players may appear anywhere in the square whose corners are on _1,1,2_ and _5,1,4_.
 
 A scene can also have multiple spawn regions, just like it can have multiple spawn points.
 
@@ -300,7 +300,7 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
   ],
 ```
 
-This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
+This example spawns a player at _5, 1, 4_ facing East toward _10, 1, 4_. If the spawn position is a range, the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
 ### Required Permissions
 
@@ -310,7 +310,7 @@ The `requiredPermissions` property manages various controlled features that coul
 **📔 Note**: Permissions are only relevant in [portable experiences](../sdk7/projects/portable-experiences.md) and [smart wearables](../sdk7/projects/smart-wearables.md). Normal scenes (both in parcels or in Worlds) are not affected by these permissions, and are free to use the corresponding functionality.
 {% endhint %}
 
-The corresponding features are blocked from being used by the scene, unless the permission is requested in the `scene.json` file.
+These features are blocked from use in the scene unless the permission is requested in the `scene.json` file.
 
 ```json
 "requiredPermissions": [
@@ -321,8 +321,8 @@ The corresponding features are blocked from being used by the scene, unless the 
 
 Currently, the following permissions are managed on smart wearables and portable experiences:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../sdk7/interactivity/move-player.md)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../sdk7/interactivity/trigger-emotes.md)
+* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../sdk7/interactivity/player-avatar.md#move-player)
+* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../sdk7/interactivity/player-avatar.md#play-animations)
 * `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
 * `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
 * `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
@@ -342,7 +342,7 @@ Use the dropdowns and click **Apply Layout** to change the dimensions of your sc
 
 ![](../../../.gitbook/assets/scene-parcels-toggled.png)
 
-The default scene has its coordinates set to _0,0_, this information is not necessary to change while developing a scene offline, unless you need to occupy multiple parcels. You will need to change this before deploying, to coordinates where you do have deploy permissions.
+The default scene has its coordinates set to _0,0_. You don't need to change this while developing a scene offline, unless you need to occupy multiple parcels. You will need to change this before deploying to coordinates where you have deploy permissions.
 
 You can also change the scene coordinates on the `scene.json` file:
 
@@ -355,9 +355,9 @@ You can also change the scene coordinates on the `scene.json` file:
   }
 ```
 
-The `base` field defines which parcel to consider the base parcel. If your scene has a single parcel, the base should be that parcel. If your scene has multiple parcels, the base should be the bottom-left (South-West) parcel. All entity positions will be measured in reference to the South-West corner of this parcel.
+The `base` field defines which parcel to consider the base parcel. If your scene has a single parcel, the base should be that parcel. If your scene has multiple parcels, the base should be the bottom-left (South-West) parcel. All entity positions are measured relative to the South-West corner of this parcel.
 
-To display multiple parcels in the scene preview, list as many parcels as you intend to use. They don't need to be the exact parcels you'll deploy to, but they should all be adjacent and arranged in the same way in relation to each other.
+To display multiple parcels in the scene preview, list as many parcels as you intend to use. They don't need to be the exact parcels you'll deploy to, but they should all be adjacent and arranged in the same relative positions.
 
 ```json
  "scene": {
@@ -434,7 +434,7 @@ You can also set the skybox time of day in your scene code. To do this, add the 
   }
 ```
 
-The number refers to the number of seconds since the start of the day, ranging from 0 (that refers to _00:00_) to 86400 (that refers to _24:00_). Any number higher than 86400 is interpreted also as midnight.
+The number refers to the number of seconds since the start of the day, ranging from 0 (representing _00:00_) to 86400 (representing _24:00_). Any number higher than 86400 is also interpreted as midnight.
 
 Here are some more examples of valid values:
 
@@ -444,11 +444,76 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
+### World configuration
+
+When publishing to a [Decentraland World](../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
+
+#### Basic World configuration
+
+To publish to a World, you must specify the NAME or ENS domain in your `scene.json`:
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth"
+	}
+}
+```
+
+The **name** specified can be either a Decentraland NAME or an ENS Domain and must be owned by the wallet signing the deployment (or by any wallet that has been given permission via Access Control Lists).
+
+
+#### Communication service configuration
+
+The `fixedAdapter` property indicates which Communication Service should be used by the scene. For the time being, only the `offline:offline` value is allowed. When set, the scene will have no Communication Service at all, and each user joining that world will always be alone. If not set, the Worlds content server will generate a proper value based on how it is configured.
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth",
+		"fixedAdapter": "offline:offline"
+	}
+}
+```
+
+#### Places listing configuration
+
+All Worlds are automatically listed on the Places page unless you opt out. If you wish to opt-out from your Worlds being indexed in Places, you can add the following:
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth",
+		"placesConfig": {
+			"optOut": true
+		}
+	}
+}
+```
+
+#### Complete example
+
+Here's a complete example with all World configuration options:
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth",
+		"fixedAdapter": "offline:offline",
+		"placesConfig": {
+			"optOut": true
+		}
+	}
+}
+```
+
+See [Publishing to Worlds](../sdk7/publishing/publishing.md#publishing-to-worlds) for more information on deploying to Worlds.
+
 ### Fetch metadata from scene code
 
 [Scene API Reference](https://js-sdk-toolchain.pages.dev/modules/js_runtime_apis.__system_Scene_)
 
-You may need a scene's code to access the fields from the scene metadata, like the parcels that the scene is deployed to, or the spawn point positions. This is especially useful for scenes that are meant to be replicated, or for code that is meant to be reused in other scenes. It's also very useful for libraries, where the library might for example need to know where the scene limits are.
+You may need your scene's code to access fields from the scene metadata, such as the parcels the scene is deployed to, or the spawn point positions. This is especially useful for scenes that are meant to be replicated, or for code that is meant to be reused in other scenes. It's also very useful for libraries that need to know where the scene limits are.
 
 To access this data, first import the `getSceneInformation` function:
 
@@ -456,7 +521,7 @@ To access this data, first import the `getSceneInformation` function:
 import { getSceneInformation } from '~system/Runtime'
 ```
 
-Then you can call the `getSceneInformation()` function, which returns a json object that includes much of the contents of the scene.json file. The example below shows the path to obtain several of the more common fields you might need from this function's response:
+Then you can call the `getSceneInformation()` function, which returns a JSON object that includes most of the contents of the scene.json file. The example below shows how to access several of the more common fields from this function's response:
 
 ```ts
 import { getSceneInformation } from '~system/Runtime'

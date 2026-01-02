@@ -6,9 +6,9 @@ description: Link to other scenes or external sites
 
 You can add links from your scene out to other content, either to other scenes or to external websites.
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-The easiest way to add an external link or a teleport is to use the [Scene Editor](../scene-editor/get-started/about-editor.md). Use the **Teleport** [Smart Item](../scene-editor/interactivity/smart-items.md) to add teleport to another scene in Genesis City, or use any of the **Social Links** smart items to add links to external sites.
+The easiest way to add an external link or a teleport is to use the Scene Editor. Use the **Teleport** [Smart Item](../scene-editor/interactivity/smart-items.md) to add teleport to another scene in Genesis City, or use any of the **Social Links** smart items to add links to external sites.
 
 ![](../../../.gitbook/assets/social-links.png)
 
@@ -26,7 +26,7 @@ teleportTo({ worldCoordinates: { x: -51, y: 1 } })
 
 Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata](../sdk7/projects/scene-metadata.md) for details on how to set this data.
 
-Bare in mind that teleports take you to a scene in the indicated coordinates, but not necessarily to that same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
+Bear in mind that teleports take you to a scene at the indicated coordinates, but not necessarily to those same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
 
 To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player](player-avatar.md#move-player).
 
@@ -44,7 +44,7 @@ changeRealm({realm: 'mannakia.dcl.eth'})
 
 Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata](../sdk7/projects/scene-metadata.md) for details on how to set this data.
 
-The player will spawn in on of the spawn points of the scene in that world, regardless of their current coordinates on the map.
+The player will spawn in one of the spawn points of the scene in that world, regardless of their current coordinates on the map.
 
 ### External links
 

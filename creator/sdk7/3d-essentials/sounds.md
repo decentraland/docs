@@ -16,7 +16,7 @@ _.wav_ files are also supported but not generally recommended as they are signif
 
 ### Play sounds
 
-The easiest way to play a sound is to add an **Audio Source** component visually on the [Scene Editor](../scene-editor/get-started/about-editor.md) and set it to **Start Playing** and **Loop**. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to play a sound is to add an **Audio Source** component visually on the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md) and set it to **Start Playing** and **Loop**. See [Add Components](../scene-editor/build/components.md#add-components).
 
 ![](../../../.gitbook/assets/AudioSource-component.png)
 

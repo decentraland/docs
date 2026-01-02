@@ -12,9 +12,9 @@ The rendered shape of an entity is determined by what component it uses.
 
 ![](../../../.gitbook/assets/ecs-simple-components-new.png)
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-The easiest way to give an entity a shape is to use the [Scene Editor](../scene-editor/get-started/about-editor.md). You can add a **Mesh Renderer** component to provide a primitive shape, or a **GLTF** component to reference a 3D model from a file. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to give an entity a shape is to use the Scene Editor. You can add a **Mesh Renderer** component to provide a primitive shape, or a **GLTF** component to reference a 3D model from a file. See [Add Components](../scene-editor/build/components.md#add-components).
 
 ### Primitive shapes
 

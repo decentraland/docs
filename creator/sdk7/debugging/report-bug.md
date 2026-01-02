@@ -4,7 +4,7 @@ description: How you can report a bug so that it gets reviewed and fixed
 
 # Report a Bug
 
-If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose).
+If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor in Creator Hub, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose).
 
 ### Before you report a bug
 

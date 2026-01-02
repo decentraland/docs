@@ -101,7 +101,7 @@ See [Custom Components](../architecture/custom-components.md) for more informati
 
 ### Fetch entities by name
 
-The entities added by dragging and dropping on the Scene Editor can also be accessed via code to further edit them and add behavior.
+The entities added by dragging and dropping on the Scene Editor in Creator Hub can also be accessed via code to further edit them and add behavior.
 
 Use `engine.getEntityOrNullByName()` to fetch an entity, passing the name assigned to the entity on the Scene Editor UI. Each should have a unique name.
 
@@ -191,7 +191,7 @@ engine.addSystem(rotationSystem)
 
 If you start writing loose lines of code directly into `index.ts`, your code may be lacking some important context. For example, you'll be missing information about the player entity, or about entities that were added via drag and drop in the Creator Hub. At the time when your lines of code are read, those things aren't loaded yet.
 
-To avoid that scenario, it's always recommended to write out your scene's initial loading code using the `main()` function (on the `index.ts` file) as an entrypoint. This function runs only after all of the scene's initial context is already loaded, this includes anything added via the Scene Editor's UI.
+To avoid that scenario, it's always recommended to write out your scene's initial loading code using the `main()` function (on the `index.ts` file) as an entrypoint. This function runs only after all of the scene's initial context is already loaded, this includes anything added via the Scene Editor UI.
 
 You can write your code outside the `main()` function when:
 

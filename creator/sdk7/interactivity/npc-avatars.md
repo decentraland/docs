@@ -6,6 +6,10 @@ description: Display and control NPC avatar
 
 Display an avatar as an entity in a scene.
 
+{% hint style="info" %}
+**💡 Tip**: Try the [NPC Toolkit library](https://github.com/decentraland-scenes/dcl-npc-toolkit) for an easier experience dealing with NPCs, especially if you need to interact via a conversation tree.
+{% endhint %}
+
 ### Create an avatar
 
 The following snippet creates an avatar with random wearables and body shape, and name "NPC".
@@ -26,7 +30,7 @@ When passing data to generate an `AvatarShape`, the following fields are require
 The following optional fields are also available:
 
 * `name`: Name to display over the Avatar's head. Default: "NPC".
-* `bodyShape`: String to define which body shape to use.
+* `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
 * `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
 * `eyeColor`: _Color3_ for the eye color (any color is valid)
@@ -67,7 +71,7 @@ Transform.create(myAvatar, {
 })
 ```
 
-The `expressionTriggerId` field supports all [default animations](trigger-emotes.md#default-animations), as well as custom animations [from a scene file](trigger-emotes.md#custom-animations), and even URNs from emotes that are published to the marketplace.
+The `expressionTriggerId` field supports all [default animations](player-avatar.md#default-animations), as well as custom animations [from a scene file](player-avatar.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
 #### Looping Animations
 

@@ -18,9 +18,9 @@ There are several different ways to handle input actions, depending on the use c
 * [**System-based**](system-based-events.md): Ideal for handling multiple entities with similar behavior. Use a system to iterate over similar entities and query for input actions on each, handling them all with the same logic. Hover feedback needs to be set up separately. This approach is also required for handling global input actions.
 * [**Advanced**](advanced-button-events.md): Read the raw response data on each entity, including time-stamps and an event history of input events. This can be useful for defining custom interaction patterns.
 
-## Use the Scene Editor
+## Use the Scene Editor in Creator Hub
 
-The easiest way to handle click events on an entity is to use the [Scene Editor](../../../scene-editor/get-started/about-editor.md). Use the no-code **On Click** or **On Input Action** Triggers on an item to call actions when clicking on it. Or use **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers to react to global button events. See [Make any item smart](../../../scene-editor/interactivity/make-any-item-smart.md).
+The easiest way to handle click events on an entity is to use the Scene Editor. Use the no-code **On Click** or **On Input Action** Triggers on an item to call actions when clicking on it. Or use **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers to react to global button events. See [Make any item smart](../../../scene-editor/interactivity/make-any-item-smart.md).
 
 ## Simple example
 

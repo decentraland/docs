@@ -9,7 +9,7 @@ description: >-
 To move, rotate or resize an entity in your scene over a period of time, use the `Tween` component. The engine carries out the desired transformation smoothly, showing updates on every frame until the specified duration is over. Also the `Transform` component values of the affected entity gets updated in real time in case it's needed to make proximity checks in the scene code.
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor](../scene-editor/get-started/about-editor.md), you can move entities in a no-code way via **Actions**, see [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can move entities in a no-code way via **Actions**, see [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md).
 {% endhint %}
 
 The Tween component has the following functions:

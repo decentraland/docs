@@ -229,66 +229,6 @@ const intervalId = utils.timers.setInterval(() => {
 utils.timers.clearInterval(intervalId)
 ```
 
-## Triggers
-
-### Trigger Areas
-```typescript
-// Predefined layers
-utils.LAYER_1, utils.LAYER_2, ... utils.LAYER_8
-utils.ALL_LAYERS   // All layers combined
-utils.NO_LAYERS    // No layers
-
-// Add trigger area to entity
-utils.triggers.addTrigger(
-  entity,               // Entity to add trigger to
-  utils.LAYER_2,        // Layers this entity belongs to
-  utils.LAYER_1,        // Layers that can trigger this entity
-  [                     // Array of shapes defining trigger area
-    {
-      type: 'box',      // Box trigger shape
-      position: { x: 0, y: 0, z: 0 },  // Optional, relative to entity
-      scale: { x: 1, y: 1, z: 1 }      // Optional, default: 1,1,1
-    },
-    {
-      type: 'sphere',   // Sphere trigger shape
-      position: { x: 0, y: 0, z: 0 },  // Optional
-      radius: 2                        // Optional, default: 1
-    }
-  ],
-  (otherEntity) => {    // On enter callback
-    console.log(`${otherEntity} entered trigger`)
-  },
-  (otherEntity) => {    // On exit callback (optional)
-    console.log(`${otherEntity} exited trigger`)
-  },
-  Color4.Red()          // Debug visualization color (optional)
-)
-
-// Enable debug visualization of all triggers
-utils.triggers.enableDebugDraw(true)
-
-// Enable/disable a trigger
-utils.triggers.enableTrigger(entity, false)  // Disable
-utils.triggers.enableTrigger(entity, true)   // Enable
-
-// Remove trigger
-utils.triggers.removeTrigger(entity)
-```
-
-### One-Time Trigger
-```typescript
-// Create trigger that only fires once
-utils.triggers.oneTimeTrigger(
-  entity,
-  utils.NO_LAYERS,
-  utils.LAYER_1,
-  [{ type: 'box', scale: { x: 5, y: 2, z: 5 } }],
-  (otherEntity) => {
-    console.log('Triggered once')
-  }
-)
-```
-
 ## Math Helpers
 
 ### Remap Value

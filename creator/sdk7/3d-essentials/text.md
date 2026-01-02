@@ -16,9 +16,9 @@ The `TextShape` component is mutually exclusive with other shape components like
 
 To add text as a label on an existing entity, you create a second entity that has the `TextShape` component and set it as a child of the other entity.
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-The easiest way to place text in-world is add a **Text** [Smart item](../scene-editor/interactivity/smart-items.md) visually on the [Scene Editor](../scene-editor/get-started/about-editor.md). You can then set all the available fields on the Scene Editor's
+The easiest way to place text in-world is add a **Text** [Smart item](../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
 
 ![](../../../.gitbook/assets/text-smart-item.png)
 

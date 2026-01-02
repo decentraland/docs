@@ -25,11 +25,23 @@ In order to publish to LAND in Genesis City, you can do the following:
 
 ### Decentraland Worlds
 
-If you own a Decentraland NAME you can also publish your scene to a Decentraland World. This option costs considerably less than buying land, a NAME costs 100 MANA.
+If you own a Decentraland NAME or an ENS domain, you can publish your scene to a Decentraland World. This option costs considerably less than buying land—a Decentraland NAME costs 100 MANA.
 
-Inside a World, you're allowed to use as many parcels as you want. The size limit of your scene in MegaBytes depends on how many NAMES, MANA, L1 Wearables and other tokens you own.
+#### Getting a Decentraland NAME
 
-See [Worlds](../../worlds/about.md) for more info.
+You can get your own Decentraland World by getting a [Decentraland NAME](https://builder.decentraland.org/names), which are NAME NFTs within the DCL ecosystem. Acquiring a Decentraland NAME requires 100 MANA and can be assigned to your avatar, LAND, or Estate. Alternatively, you can purchase an already-minted NAME from a previous owner in the [Marketplace](https://decentraland.org/marketplace/names).
+
+#### Using an ENS Domain
+
+You can also get a World by having an [ENS domain](https://ens.domains), a decentralized name that can be used across both Web2 & 3. Worlds granted from ENS domains have a fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
+
+#### Storage Capacity
+
+Inside a World, you're allowed to use as many parcels as you want. For Decentraland NAME holders, the size limit of your scene in MegaBytes depends on how many NAMES, MANA, and LAND parcels you own. See [Worlds size limits](../sdk7/projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.
+
+Worlds serve as a gateway for aspiring content creators, providing an accessible entry point to creating in Decentraland and the freedom to experiment with scene creation.
+
+See [Worlds](../../worlds/about.md) for an overview, or learn about [publishing to Worlds](publishing.md#publishing-to-worlds) for step-by-step instructions.
 
 ### Get DAO funding
 

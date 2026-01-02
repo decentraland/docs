@@ -43,11 +43,11 @@ This documentation is designed to help you understand and contribute to Decentra
 
 If you don't know where to begin, it's a good idea to look at the [Architecture](architecture/architecture.md) section to learn about the different components and their general purpose before diving into more detailed sections.
 
-For contributors, start by exploring the [Contributor Guides](../contributor-esp/contributor-guides/contributor-guides.md) section, which covers everything from testing standards to code quality guidelines.
+For contributors, start by exploring the [Contributor Guides](contributor-guides/contributor-guides.md) section, which covers everything from testing standards to code quality guidelines.
 
 ### Quick Links
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Architecture</strong></td><td>System architecture overview</td><td></td><td><a href="architecture/architecture.md">architecture.md</a></td></tr><tr><td><strong>Contributor Guides</strong></td><td>Guidelines and best practices</td><td></td><td><a href="../contributor-esp/contributor-guides/contributor-guides.md">contributor-guides.md</a></td></tr><tr><td><strong>API Reference</strong></td><td>API documentation for services</td><td></td><td><a href="apis/">apis</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Architecture</strong></td><td>System architecture overview</td><td></td><td><a href="architecture/architecture.md">architecture.md</a></td></tr><tr><td><strong>Contributor Guides</strong></td><td>Guidelines and best practices</td><td></td><td><a href="contributor-guides/contributor-guides.md">contributor-guides.md</a></td></tr><tr><td><strong>API Reference</strong></td><td>API documentation for services</td><td></td><td><a href="apis/">apis</a></td></tr></tbody></table>
 
 ## Additional Resources
 

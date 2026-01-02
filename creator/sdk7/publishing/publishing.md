@@ -22,7 +22,7 @@ After each publish, an internal process optimizes all 3D models before they can 
 
 ### Check scene data
 
-When deploying, the CLI reads information from the _scene.json_ to know where to deploy your scene to.
+When deploying, the CLI reads information from the _scene.json_ file to determine where to deploy your scene.
 
 Open your scene's _scene.json_ file and complete the following data:
 
@@ -31,8 +31,8 @@ Open your scene's _scene.json_ file and complete the following data:
 * **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
 * **Parcels**: The coordinates of the parcels that will be occupied by your scene
 * **Base**: The coordinates of the parcel that will be considered the \[0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
-* **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn into. By default players spawn onto the _0,0,0_ location of the scene (bottom-left corner). Use this to start out in a specific location, set a region to prevent players from overlapping with each other when they first appear.
-* **tags**: A set of tags that describe your scene. These are used to help players and users explore Decentraland in a better way since they are able to find the content that they may be interested in. [See the list of available tags](../sdk7/projects/scene-metadata.md#tags).
+* **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn. By default players spawn at the _0,0,0_ location of the scene (bottom-left corner). Use this to start players in a specific location, or set a region to prevent players from overlapping with each other when they first appear.
+* **tags**: A set of tags that describe your scene. These help players explore Decentraland by making it easier to find content they're interested in. [See the list of available tags](../sdk7/projects/scene-metadata.md#tags).
 * **rating**: This is used to classify the content of your scene based on its appropriateness for different age groups (`T` for Teens or `A` for Adults). It helps in filtering content for players.
 
 {% hint style="warning" %}
@@ -41,9 +41,9 @@ Open your scene's _scene.json_ file and complete the following data:
 
 ### To publish the scene
 
-#### Using the Scene Editor
+#### Using the Scene Editor in Creator Hub
 
-Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-installation.md).
+The Scene Editor in Creator Hub provides an easy way to publish your scenes. Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-installation.md).
 
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
@@ -78,9 +78,79 @@ Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-
 **💡 Tip**: `npm run deploy` runs a `npm run build`, which checks the scene for type errors more strictly than running `npm run start`. If these errors can't be avoided (eg: they happen in an external library) and they don't impact the scene, you can use `npm run deploy --skip-build` to skip the `npm run build` step and deploy the scene as it is.
 {% endhint %}
 
-When publishing to a [Decentraland World](../worlds/about.md) , use the following command instead:
+### Publishing to Worlds
 
-`npm run deploy -- --target-content https://worlds-content-server.decentraland.org`
+To publish your scene to a Decentraland World, you need to own a Decentraland NAME or ENS domain. See [Publishing Options](publishing-options.md#decentraland-worlds) for information on how to obtain one.
+
+#### Configure scene.json
+
+You need to specify under what **name** your deployment is to be made. Add the following section in your `scene.json`:
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth"
+	}
+}
+```
+
+The **name** specified in the `scene.json` can be either a Decentraland NAME or an ENS Domain. It must be owned by the wallet signing the deployment, or by any wallet that has been given permission via Access Control Lists (ACL).
+
+Keep the following in mind:
+
+* The wallet signing the deployment must own the NAME specified in the `scene.json` file
+* The scene has no parcel limitations (since January 2023)
+* All Worlds are automatically listed on the Places page unless you opt out as detailed below
+
+#### Opt-out from Places listing
+
+If you wish to opt-out from your Worlds being indexed in Places, you can add the following section in your `scene.json`:
+
+```json
+{
+	"worldConfiguration": {
+		"name": "my-name.dcl.eth",
+		"placesConfig": {
+			"optOut": true
+		}
+	}
+}
+```
+
+#### Using the Scene Editor in Creator Hub
+
+1. Open your scene project.
+2. Click the **Publish** button on the top-right corner.
+3. Select **PUBLISH TO WORLD**.
+4. Select which of your NAMEs or ENS Domains to publish to.
+
+#### Via the CLI
+
+Use the following command:
+
+```bash
+npm run deploy -- --target-content https://worlds-content-server.decentraland.org
+```
+
+Once you run the command, you will be prompted to sign the deployment with your wallet and a set of validations will be executed to allow or reject the scene.
+
+
+#### Accessing a World
+
+Once a scene is uploaded to the Worlds server, you can access it using the Decentraland Explorer with the following URL: `decentraland://?realm=NAME.dcl.eth`, where `NAME` should be replaced with the Decentraland NAME or ENS Domain you deployed to.
+
+With Decentraland already open, you can also jump to a world by typing the `/goto NAME.dcl.eth` command in the chatbox.
+
+See [Make discoverable](../sdk7/projects/make-discoverable.md) for more information on how to make your World discoverable.
+
+#### Migrating a World to Genesis City
+
+If you are a LAND owner and wish to deploy a World scene to Genesis City, you can do so by re-deploying your scene to the decentralized Catalyst network, which is the content server for Genesis City.
+
+Things to remember:
+
+* Remove the `worldConfiguration` section from `scene.json`
+* The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
 
 ### Publish from a hardware wallet
 
@@ -113,7 +183,7 @@ The information on each copy of the server is verifiable, as each scene is signe
 
 ### The test server
 
-You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
+You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers. The difference is that content deployed to this server isn't propagated to the others. However, content deployed to other servers does get propagated to this server, so surrounding scenes should look as they will in production.
 
 {% hint style="warning" %}
 **📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
@@ -135,12 +205,12 @@ _https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
 ### Custom servers
 
-You can deploy content to a custom server that doesn't belong to the official DAO-maintained network of catalyst servers. To do this, you don't need to own any LAND or NAME tokens, as you can configure the server to use any validation logic you prefer to control who can deploy where. Custom servers can chose to have content from the official servers, that you can overwrite, or start from a blank slate and publish entirely new content.
+You can deploy content to a custom server that doesn't belong to the official DAO-maintained network of catalyst servers. To do this, you don't need to own any LAND or NAME tokens, as you can configure the server to use any validation logic you prefer to control who can deploy where. Custom servers can choose to include content from the official servers (which you can overwrite), or start from a blank slate and publish entirely new content.
 
 See [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) for more info on what you can do with your own server and how to set it up.
 
 {% hint style="warning" %}
-**📔 Note**: Players will need to manually type in a URL to access your custom server. Certain validations from services like the [rewards server](../rewards/gatting-started.md) or the [quests server](../deprecated/quests/overview.md) might fail in these contexts, as often these services require that the request comes from an official server.
+**📔 Note**: Players will need to manually type in a URL to access your custom server. Certain validations from services like the [rewards server](../rewards/getting-started.md) or the [quests server](../deprecated/quests/overview.md) might fail in these contexts, as often these services require that the request comes from an official server.
 {% endhint %}
 
 Players are never directed to this server, the only way to access it is to explicitly type in the URL to connect to it.
@@ -155,11 +225,11 @@ The URL to enter your deployed scene on your custom server will depend on the do
 
 ### Verify deployment success
 
-Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, depending of what realm you enter.
+Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, depending on what realm you enter.
 
-After you sign to authorize the deployment of your scene, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network,
+After you sign to authorize the deployment of your scene, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network.
 
-You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each one of these servers refers to a different realm, you can reference how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
+You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each server refers to a different realm. You can see how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
 
 You can also obtain this information at any time by running the following command on the command line console:
 
@@ -203,4 +273,4 @@ jobs:
           npm run deploy:prod
 ```
 
-> Important: For this process to run, you must set a wallet's private key as an environment variable in GitHub, this is used to sign the deployment. As always, be very careful with keeping public keys secure. Do NOT use the public key of the account that actually owns the land tokens, as that would have very big risks. Instead, delegate operator rights to a disposable wallet that owns no valuable tokens. If this private key is ever leaked somehow, you can easily revoke those operator rights from the account and set up a new wallet.
+> Important: For this process to run, you must set a wallet's private key as an environment variable in GitHub, which is used to sign the deployment. As always, be very careful with keeping private keys secure. Do NOT use the private key of the account that actually owns the land tokens, as that would pose significant security risks. Instead, delegate operator rights to a disposable wallet that owns no valuable tokens. If this private key is ever leaked, you can easily revoke those operator rights from the account and set up a new wallet.

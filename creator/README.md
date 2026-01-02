@@ -1,9 +1,25 @@
 ---
-title: Let's build Decentraland together
+title: Welcome Creator
 icon: hand-wave
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
 ---
 
-# Let's build Decentraland together
+# Welcome Creator
+
+Let's build Decentraland together!
 
 All creators are welcome! In Decentraland you have a wide range of Creative possibilities, for people of different talents and skill levels!
 

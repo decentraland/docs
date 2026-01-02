@@ -17,9 +17,9 @@ There are different types of supported materials:
 * PBR (Physically Based Rendering): The most common kind of material in Decentraland. It supports plain colors or textures, and different properties like metallic, emissive, transparency, etc. Read more about [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
 * Basic materials: They don't respond to lights and shadows, which makes them ideal for displaying billboard images.
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-The easiest way to give an entity a Material is to use the [Scene Editor](../scene-editor/get-started/about-editor.md). You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to give an entity a Material is to use the Scene Editor. You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
 
 ### Add a material
 

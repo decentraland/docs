@@ -113,7 +113,7 @@ pointerEventsSystem.onPointerDown(
 		})
 
 		// enable all inputs
-		InputModifier.remove(engine.PlayerEntity)
+		InputModifier.deleteFrom(engine.PlayerEntity)
 	}
 )
 ```

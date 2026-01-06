@@ -4,6 +4,7 @@ This document defines the recommended practices for managing dependencies in Jav
 
 > **TL;DR**: 
 > - **Version strategy** → Use **exact/fixed versions** for `dependencies` (security) and `devDependencies` (consistent dev environment). Use **version ranges** only for `peerDependencies` (flexibility).
+> - **Exception** → Decentraland packages (`@dcl/*`, `decentraland-*`) can use version ranges (`^`) as they are trusted internal packages.
 > - **Libraries/shared packages** → Use `peerDependencies` with version ranges (^) for shared libraries (React, @dcl/schemas, etc.). Use `dependencies` with exact versions only for utilities safe to duplicate.
 > - **Apps/final services** → Use `dependencies` with exact versions for runtime packages (React, ethers, etc.).
 
@@ -166,6 +167,8 @@ For reusable packages that work with or without certain dependencies, use `peerD
 
 **For devDependencies (consistency):** Using exact versions ensures all team members work with the same development environment, avoiding "works on my machine" issues and ensuring consistent linting, formatting, and build outputs.
 
+**Exception - Decentraland packages:** Packages from the Decentraland ecosystem (`@dcl/*` and `decentraland-*`) can use version ranges (`^`) since they are internal trusted packages and not subject to the same supply chain attack risks as external dependencies.
+
 **For peerDependencies:**
 - Use version ranges (`^` or explicit ranges) to allow flexibility
 - Example: `"react": "^18.0.0"` or `"react": ">=18.0.0 <19.0.0"`
@@ -195,7 +198,7 @@ For reusable packages that work with or without certain dependencies, use `peerD
 }
 ```
 
-❌ Incorrect (dependencies with ranges):
+❌ Incorrect (external dependencies with ranges):
 ```json
 "dependencies": { "lodash-es": "^4.17.0" }
 ```
@@ -389,8 +392,23 @@ Create `.npmpackagejsonlintrc.json`:
 ```json
 {
   "rules": {
-    "prefer-absolute-version-dependencies": "warning",
-    "prefer-absolute-version-devDependencies": "warning",
+    "prefer-absolute-version-dependencies": ["warning", {
+      "exceptions": [
+        "@dcl/schemas",
+        "@dcl/ui-env",
+        "@dcl/crypto",
+        "@dcl/ecs",
+        "decentraland-ui",
+        "decentraland-ui2",
+        "decentraland-dapps",
+        "decentraland-connect"
+      ]
+    }],
+    "prefer-absolute-version-devDependencies": ["warning", {
+      "exceptions": [
+        "@dcl/sdk"
+      ]
+    }],
     "no-file-dependencies": "error",
     "no-git-dependencies": "error",
     "no-duplicate-properties": "error",
@@ -403,9 +421,11 @@ Create `.npmpackagejsonlintrc.json`:
 }
 ```
 
+> **Important**: The `exceptions` array requires listing each package manually (glob patterns like `@dcl/*` are not supported). Update this list when adding new Decentraland packages to your project. See [prefer-absolute-version-dependencies documentation](https://npmpackagejsonlint.org/docs/rules/dependencies/prefer-absolute-version-dependencies) for more details.
+
 **Rule explanations:**
-- `prefer-absolute-version-dependencies`: Encourages exact versions in dependencies (security against supply chain attacks)
-- `prefer-absolute-version-devDependencies`: Encourages exact versions in devDependencies (consistent development environment across team)
+- `prefer-absolute-version-dependencies`: Encourages exact versions in dependencies, with exceptions for trusted Decentraland packages
+- `prefer-absolute-version-devDependencies`: Encourages exact versions in devDependencies, with exceptions for trusted Decentraland packages
 - `no-file-dependencies`: Prevents local file path dependencies (not portable)
 - `no-git-dependencies`: Prevents git URL dependencies (not reproducible, security risk)
 
@@ -459,6 +479,7 @@ In the future, we may introduce a shared configuration package (e.g., `@dcl/pack
 
 **General:**
 - Use **exact/fixed versions** for `dependencies` (supply chain security) and `devDependencies` (consistent dev environment)
+- **Exception**: Decentraland packages (`@dcl/*`, `decentraland-*`) can use version ranges (`^`)
 - Use **version ranges** only for `peerDependencies` (consumer flexibility)
 - Use overrides/resolutions for transitive dependency CVEs
 - Configure linting per repository, not globally
@@ -466,7 +487,7 @@ In the future, we may introduce a shared configuration package (e.g., `@dcl/pack
 
 ### ❌ Incorrect:
 - Libraries using `dependencies` for shared singletons (React, ethers)
-- Using version ranges (`^`, `~`) in dependencies/devDependencies (supply chain risk)
+- Using version ranges (`^`, `~`) in external dependencies/devDependencies (supply chain risk)
 - Using file or git dependencies (not portable, security risk)
 - Applying strict allowlists globally across ecosystem
 - Assuming single physical copy (focus on runtime deduplication)

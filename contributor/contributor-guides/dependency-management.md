@@ -391,7 +391,6 @@ Create `.npmpackagejsonlintrc.json`:
   "rules": {
     "prefer-absolute-version-dependencies": "warning",
     "prefer-absolute-version-devDependencies": "warning",
-    "prefer-caret-version-peerDependencies": "error",
     "no-file-dependencies": "error",
     "no-git-dependencies": "error",
     "no-duplicate-properties": "error",
@@ -407,7 +406,6 @@ Create `.npmpackagejsonlintrc.json`:
 **Rule explanations:**
 - `prefer-absolute-version-dependencies`: Encourages exact versions in dependencies (security against supply chain attacks)
 - `prefer-absolute-version-devDependencies`: Encourages exact versions in devDependencies (consistent development environment across team)
-- `prefer-caret-version-peerDependencies`: Ensures peerDependencies use ranges for flexibility
 - `no-file-dependencies`: Prevents local file path dependencies (not portable)
 - `no-git-dependencies`: Prevents git URL dependencies (not reproducible, security risk)
 

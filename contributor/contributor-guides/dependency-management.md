@@ -451,16 +451,12 @@ For stricter enforcement within a repository, you can add allowlists. **These sh
 }
 ```
 
-{% hint style="warning" %}
-**Avoid global allowlists**: The strict allowlist rules shown above are **dangerous as ecosystem-wide standards**. They should only be used:
-- Within a single repository with known package types
-- With rules that adapt based on package type (library vs app)
-- As warnings, not errors, to allow flexibility
-{% endhint %}
+> **Warning - Avoid global allowlists**: The strict allowlist rules shown above are **dangerous as ecosystem-wide standards**. They should only be used:
+> - Within a single repository with known package types
+> - With rules that adapt based on package type (library vs app)
+> - As warnings, not errors, to allow flexibility
 
-{% hint style="info" %}
-In the future, we may introduce a shared configuration package (e.g., `@dcl/package-json-standard`) that repositories can extend for ecosystem-wide consistency, with rules that adapt to package type.
-{% endhint %}
+> **Note**: In the future, we may introduce a shared configuration package (e.g., `@dcl/package-json-standard`) that repositories can extend for ecosystem-wide consistency, with rules that adapt to package type.
 
 ## 12. Summary
 

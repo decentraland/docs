@@ -389,8 +389,8 @@ Create `.npmpackagejsonlintrc.json`:
 ```json
 {
   "rules": {
-    "prefer-absolute-version-dependencies": "warn",
-    "prefer-absolute-version-devDependencies": "warn",
+    "prefer-absolute-version-dependencies": "warning",
+    "prefer-absolute-version-devDependencies": "warning",
     "prefer-caret-version-peerDependencies": "error",
     "no-file-dependencies": "error",
     "no-git-dependencies": "error",

@@ -3,8 +3,9 @@
 This document defines the recommended practices for managing dependencies in JavaScript/TypeScript projects across Decentraland's ecosystem. It applies to front-end, back-end, SDKs, shared libraries, and any npm/yarn/pnpm-based package.
 
 > **TL;DR**: 
-> - **Libraries/shared packages** → Use `peerDependencies` for shared libraries (React, @dcl/schemas, etc.) with version ranges (^). Use `dependencies` only for utilities safe to duplicate.
-> - **Apps/final services** → Often use `dependencies` for runtime packages (React, ethers, etc.) as they are the final consumer.
+> - **Version strategy** → Use **exact/fixed versions** for `dependencies` (security) and `devDependencies` (consistent dev environment). Use **version ranges** only for `peerDependencies` (flexibility).
+> - **Libraries/shared packages** → Use `peerDependencies` with version ranges (^) for shared libraries (React, @dcl/schemas, etc.). Use `dependencies` with exact versions only for utilities safe to duplicate.
+> - **Apps/final services** → Use `dependencies` with exact versions for runtime packages (React, ethers, etc.).
 
 ## 1. Rationale
 
@@ -77,16 +78,6 @@ This is useful for packages that can work with or without certain dependencies (
 }
 ```
 
-✅ Also Correct (App):
-```json
-{
-  "dependencies": {
-    "react": "^18.0.0",
-    "@dcl/schemas": "^20.0.0"
-  }
-}
-```
-
 ❌ Incorrect (Library using dependencies for shared libs):
 ```json
 {
@@ -100,12 +91,14 @@ This is useful for packages that can work with or without certain dependencies (
 - Utilities safe to duplicate (lodash-es, date-fns)
 - **In apps**: Runtime packages like React, ethers (when app is final consumer)
 
+> **Important**: Always use **exact/fixed versions** in `dependencies` for security (see [Section 4](#4-versioning-rules)).
+
 ✅ Correct (Library):
 ```json
 {
   "dependencies": {
-    "lodash-es": "^4.17.0",
-    "date-fns": "^3.0.0"
+    "lodash-es": "4.17.21",
+    "date-fns": "3.6.0"
   }
 }
 ```
@@ -114,9 +107,9 @@ This is useful for packages that can work with or without certain dependencies (
 ```json
 {
   "dependencies": {
-    "react": "^18.0.0",
-    "ethers": "^6.0.0",
-    "lodash-es": "^4.17.0"
+    "react": "18.3.1",
+    "ethers": "6.13.0",
+    "lodash-es": "4.17.21"
   }
 }
 ```
@@ -152,34 +145,49 @@ For reusable packages that work with or without certain dependencies, use `peerD
 ### Use devDependencies for:
 - Tooling (TypeScript, ESLint, testers, bundlers)
 
+> **Important**: Always use **exact/fixed versions** in `devDependencies` to ensure a consistent development environment across the team (see [Section 4](#4-versioning-rules)).
+
 ✅ Correct:
 ```json
 {
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "eslint": "^8.0.0",
-    "vitest": "^1.0.0"
+    "typescript": "5.4.5",
+    "eslint": "8.57.0",
+    "vitest": "1.6.0"
   }
 }
 ```
 
 ## 4. Versioning Rules
 
-### Use version ranges appropriately
+### Use fixed versions for dependencies and devDependencies
 
-**For stable packages (1.x+):**
-- Use `^` for compatible updates (recommended)
-- Example: `^20.2.0` allows `>=20.2.0 <21.0.0`
+**For dependencies (security):** Using version ranges (`^` or `~`) exposes the project to supply chain attacks. Malicious code can be injected in minor or patch releases, affecting all consumers automatically. **Use exact/fixed versions** to ensure reproducible builds and security.
 
-**For pre-1.0 packages (0.x):**
-- `^` only allows patch updates (e.g., `^0.2.0` → `>=0.2.0 <0.3.0`)
-- Consider `>=0.2.0 <1.0.0` for more flexibility if needed
+**For devDependencies (consistency):** Using exact versions ensures all team members work with the same development environment, avoiding "works on my machine" issues and ensuring consistent linting, formatting, and build outputs.
 
-**For peerDependencies with strict compatibility:**
-- Use explicit ranges: `>=18.0.0 <20.0.0` for React 18.x
-- Prevents false compatibility promises
+**For peerDependencies:**
+- Use version ranges (`^` or explicit ranges) to allow flexibility
+- Example: `"react": "^18.0.0"` or `"react": ">=18.0.0 <19.0.0"`
+- This allows consumers to use any compatible version
 
-✅ Correct (stable):
+✅ Correct (dependencies - exact versions):
+```json
+"dependencies": { 
+  "lodash-es": "4.17.21",
+  "date-fns": "3.6.0"
+}
+```
+
+✅ Correct (devDependencies - exact versions):
+```json
+"devDependencies": { 
+  "typescript": "5.4.5",
+  "eslint": "8.57.0"
+}
+```
+
+✅ Correct (peerDependencies - version ranges):
 ```json
 "peerDependencies": { 
   "@dcl/schemas": "^20.2.0",
@@ -187,16 +195,9 @@ For reusable packages that work with or without certain dependencies, use `peerD
 }
 ```
 
-✅ Correct (pre-1.0):
+❌ Incorrect (dependencies with ranges):
 ```json
-"peerDependencies": { 
-  "experimental-lib": ">=0.2.0 <1.0.0"
-}
-```
-
-❌ Incorrect (exact version):
-```json
-"peerDependencies": { "@dcl/schemas": "20.2.0" }
+"dependencies": { "lodash-es": "^4.17.0" }
 ```
 
 ## 5. Package Manager Behavior
@@ -235,7 +236,7 @@ Duplicate versions may cause:
 - Failing instanceof checks
 - Schema mismatches
 
-✅ Correct:
+✅ Correct (Library):
 ```json
 "peerDependencies": {
   "@dcl/schemas": "^20.0.0",
@@ -245,16 +246,16 @@ Duplicate versions may cause:
 
 ## 8. Security & Vulnerabilities
 
-### Avoid pinning exact versions
+### Use exact versions to prevent supply chain attacks
 
-Avoid pinning exact versions solely for security patches.
-
-❌ Incorrect:
-```json
-"dependencies": { "minimatch": "3.0.8" }
-```
+Using exact/fixed versions in `dependencies` and `devDependencies` protects against malicious code injection in minor or patch releases.
 
 ✅ Correct:
+```json
+"dependencies": { "minimatch": "3.1.2" }
+```
+
+❌ Incorrect (vulnerable to supply chain attacks):
 ```json
 "dependencies": { "minimatch": "^3.1.0" }
 ```
@@ -346,11 +347,13 @@ These utilities can be safely duplicated without side effects:
 - `zod`, `ajv`
 - `ms`, `mitt`, `fp-future`
 
-**Principle**: Pure utility functions and stateless libraries can safely be in `dependencies` even in libraries, as they don't rely on singletons or shared state.
+**Principle**: Pure utility functions and stateless libraries can safely be in `dependencies` even in libraries, as they don't rely on singletons or shared state. **Always use exact versions** for security.
 
 ## 11. Tooling Support
 
 To automate and enforce this standard, projects are encouraged to use [npm-package-json-lint](https://npmpackagejsonlint.org/). This tool validates the structure and contents of `package.json` files.
+
+> **Reference**: See the full list of available rules at [npm-package-json-lint rules documentation](https://npmpackagejsonlint.org/docs/rules).
 
 ### Installation
 
@@ -371,10 +374,11 @@ npm install --save-dev npm-package-json-lint
 ### What the tool can validate
 
 - Duplicated dependencies across fields
-- Use of version ranges (caret `^`) instead of exact versions
+- Use of exact versions vs version ranges
 - Incorrect placement of dependencies
 - Presence or absence of specific libraries
 - Consistent field ordering
+- Disallowed dependency sources (file, git)
 
 ### Suggested configuration (per repository)
 
@@ -385,8 +389,11 @@ Create `.npmpackagejsonlintrc.json`:
 ```json
 {
   "rules": {
-    "prefer-caret-version-dependencies": "error",
-    "prefer-caret-version-devDependencies": "error",
+    "prefer-absolute-version-dependencies": "warn",
+    "prefer-absolute-version-devDependencies": "warn",
+    "prefer-caret-version-peerDependencies": "error",
+    "no-file-dependencies": "error",
+    "no-git-dependencies": "error",
     "no-duplicate-properties": "error",
     "prefer-property-order": ["error", [
       "name", "version", "description", "main", "module", "types",
@@ -396,6 +403,13 @@ Create `.npmpackagejsonlintrc.json`:
   }
 }
 ```
+
+**Rule explanations:**
+- `prefer-absolute-version-dependencies`: Encourages exact versions in dependencies (security against supply chain attacks)
+- `prefer-absolute-version-devDependencies`: Encourages exact versions in devDependencies (consistent development environment across team)
+- `prefer-caret-version-peerDependencies`: Ensures peerDependencies use ranges for flexibility
+- `no-file-dependencies`: Prevents local file path dependencies (not portable)
+- `no-git-dependencies`: Prevents git URL dependencies (not reproducible, security risk)
 
 ### Repository-specific allowlists (optional)
 
@@ -436,7 +450,7 @@ In the future, we may introduce a shared configuration package (e.g., `@dcl/pack
 
 **For Libraries:**
 - Use `peerDependencies` for shared libraries (React, ethers, @dcl/schemas)
-- Use version ranges (^ for stable, >=< for strict compatibility)
+- Use version ranges (^ or explicit ranges) **only for peerDependencies**
 - Use `peerDependenciesMeta` for optional peers
 - Use `dependencies` only for utilities safe to duplicate
 
@@ -446,13 +460,16 @@ In the future, we may introduce a shared configuration package (e.g., `@dcl/pack
 - Ensure packages resolve to a single effective version at runtime
 
 **General:**
-- Use version ranges appropriately (consider 0.x behavior)
+- Use **exact/fixed versions** for `dependencies` (supply chain security) and `devDependencies` (consistent dev environment)
+- Use **version ranges** only for `peerDependencies` (consumer flexibility)
 - Use overrides/resolutions for transitive dependency CVEs
 - Configure linting per repository, not globally
+- Avoid file and git dependencies
 
 ### ❌ Incorrect:
 - Libraries using `dependencies` for shared singletons (React, ethers)
-- Pinning exact versions for security (use overrides instead)
+- Using version ranges (`^`, `~`) in dependencies/devDependencies (supply chain risk)
+- Using file or git dependencies (not portable, security risk)
 - Applying strict allowlists globally across ecosystem
 - Assuming single physical copy (focus on runtime deduplication)
 

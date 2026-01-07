@@ -25,7 +25,7 @@ You can find a more detailed explanation of the animation specifications [**belo
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
-[Decentraland Blender Rig](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Avatar_File.blend)
+[Decentraland Blender Rig](https://raw.githubusercontent.com/decentraland/docs/main/creator/images/emotes/Avatar_File.blend)
 
 {% hint style="info" %}
 If you're using Maya you can download this [Maya Rig](https://github.com/decentraland/docs-creator/blob/main/images/emotes/DCL_Maya_Rig.ma) and [picker](https://github.com/decentraland/docs-creator/blob/main/images/emotes/emoteAvatar.pkr) provided by [SparkleStudios](https://www.sparkles.studio/) ❤️.
@@ -53,9 +53,9 @@ Changing to Pose Mode.
 
 In the rig file, other than the two windows for the viewport (front and side view), there are three more at the bottom: a _**Graph Editor**_, _**a Dope Sheet**_, and a _**Timeline**_.
 
-* _**Graph Editor**_: In this editor, it is possible to edit the animation curves of each transform property of the selected controls. Those curves show how the interpolation is being calculated and they can be edited to achieve the wanted effect in the animation. Both in here and in the dope sheet the _**Only Show Selected**_ tool is toggled, which means it’ll only include channels related to the selected control. This can be turned on and off by simply clicking on the arrow icon.
-* _**Dope Sheet**_: Here you can edit the keyframes. This is also where you can create new animations or go through the multiple ones created. Keep in mind that in order to have access to the animation, the _**Action Editor**_ must be selected. This option is right next to the _Dope Sheet_ icon, in a dropdown menu.
-* _**Timeline**_: This is where the timeline and playback controls are found. In here, the _**Auto Keying**_ is on, which means that every time a control is manipulated it automatically creates a keyframe. You can always disable that function by clicking on the dot next to the playback controls.
+- _**Graph Editor**_: In this editor, it is possible to edit the animation curves of each transform property of the selected controls. Those curves show how the interpolation is being calculated and they can be edited to achieve the wanted effect in the animation. Both in here and in the dope sheet the _**Only Show Selected**_ tool is toggled, which means it’ll only include channels related to the selected control. This can be turned on and off by simply clicking on the arrow icon.
+- _**Dope Sheet**_: Here you can edit the keyframes. This is also where you can create new animations or go through the multiple ones created. Keep in mind that in order to have access to the animation, the _**Action Editor**_ must be selected. This option is right next to the _Dope Sheet_ icon, in a dropdown menu.
+- _**Timeline**_: This is where the timeline and playback controls are found. In here, the _**Auto Keying**_ is on, which means that every time a control is manipulated it automatically creates a keyframe. You can always disable that function by clicking on the dot next to the playback controls.
 
 With this workspace, you have everything needed to start animating!
 
@@ -73,7 +73,7 @@ Since Blender is highly customizable, this is also a good time to set up the lay
 
 #### **Starting Pose**
 
-In the rig file provided, there’s already an action, the _**Starting\_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
+In the rig file provided, there’s already an action, the _**Starting_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
 
 {% hint style="info" %}
 **💡 Hint!**
@@ -89,7 +89,7 @@ In order to avoid ground penetration during animation, a plane has been added to
 
 Ground and animation area reference.
 
-The avatar center of gravity is the CTRL\_Avatar\_UpperBody. The limit to move it around is 1 meter (left, right, front, back), so try to keep it inside the smaller circle during animation. Arms and legs can exceed the small circle up to the larger one. As for the height, as long as the avatar body isn’t outside the box and the root is within the area provided on the file, it should be good to go.
+The avatar center of gravity is the CTRL_Avatar_UpperBody. The limit to move it around is 1 meter (left, right, front, back), so try to keep it inside the smaller circle during animation. Arms and legs can exceed the small circle up to the larger one. As for the height, as long as the avatar body isn’t outside the box and the root is within the area provided on the file, it should be good to go.
 
 ![Avatar centered.](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/animation_area_center.png)
 
@@ -125,11 +125,11 @@ Watch out for these boundaries because crossing them might cause gameplay issues
 
 ## **Creating an Animation**
 
-The blend file has an animation clip ready to be edited: _StartingPose\_Avatar_. You can duplicate and rename that animation clip as you see fit. There’s no need to create one from scratch!
+The blend file has an animation clip ready to be edited: _StartingPose_Avatar_. You can duplicate and rename that animation clip as you see fit. There’s no need to create one from scratch!
 
 On the _Browse Action_ section, simply click on _**Create A New Action**_ button to duplicate the current animation. To rename the clip, just click on the text and type something else.
 
-Belnder 4.4 introduced _Slotted Actions_, the icon to the right of the _Browse Action_ section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar\_Animation.
+Belnder 4.4 introduced _Slotted Actions_, the icon to the right of the _Browse Action_ section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar_Animation.
 
 ![](../../../.gitbook/assets/duplicating_animation.gif) Create a new animation by duplicating the existing one or by clicking on \_\*\*Unlink Action\*\*\_ and then \_\*\*New\*\*\_.
 
@@ -157,10 +157,10 @@ Do not always edit the same animation track. Before making major changes, just d
 
 **An animation’s name should start with a capital letter and if the name is more than one word long, the words should be separated by \_.** Do not use spaces or special characters. Here are some examples of naming:
 
-* Snowfall
-* Rainbow\_Dance
-* Throw\_Money
-* Talk\_To\_Hand
+- Snowfall
+- Rainbow_Dance
+- Throw_Money
+- Talk_To_Hand
 
 ### **Emote Overrides**
 
@@ -233,12 +233,12 @@ To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 
 | ![](../../../.gitbook/assets/export_settings.png) | ![](../../../.gitbook/assets/export_settings_GIF.gif) |
-| -------------------------------------------------- | ------------------------------------------------------ |
+| ------------------------------------------------- | ----------------------------------------------------- |
 
 If you need to sample the animation, expand the Animation tab, expand Sampling Animations and choose the number of samples wanted.
 
 | ![](../../../.gitbook/assets/sampling_rate.png) | ![](../../../.gitbook/assets/sampling_rate_GIF.gif) |
-| ------------------------------------------------ | ---------------------------------------------------- |
+| ----------------------------------------------- | --------------------------------------------------- |
 
 That’s it for exporting the animation!
 
@@ -254,9 +254,9 @@ If you’re still not sure where to start or need some reference or inspiration,
 
 [Run.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/run.glb)
 
-[Pose\_Jump.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_jump.glb)
+[Pose_Jump.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_jump.glb)
 
-[Pose\_Spin.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_spin.glb)
+[Pose_Spin.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_spin.glb)
 
 [Spotlight.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/spotlight.glb)
 
@@ -264,6 +264,6 @@ If you’re still not sure where to start or need some reference or inspiration,
 
 [Chic.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/chic.glb)
 
-[Flag\_Emote.glb](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote.glb)
+[Flag_Emote.glb](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote.glb)
 
-[Flag\_Emote.blend](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote_Final.blend)
+[Flag_Emote.blend](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote_Final.blend)

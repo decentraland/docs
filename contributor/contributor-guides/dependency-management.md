@@ -58,7 +58,7 @@ This is useful for packages that can work with or without certain dependencies (
 
 ## 3. When to Use Each Field
 
-> **Quick reference**: See [Section 5](#5-decentraland-ecosystem-reference) for a complete list of packages and their recommended placement.
+> **Quick reference**: See [Section 4](#4-decentraland-ecosystem-reference) for a complete list of packages and their recommended placement.
 
 ### Use peerDependencies for (Libraries only):
 
@@ -159,18 +159,7 @@ For reusable packages that work with or without certain dependencies, use `peerD
 }
 ```
 
-## 4. Common Scenarios
-
-### Compatible ranges
-`^20.2.0` and `^20.3.1` → one version installed (20.3.1+)
-
-### Incompatible majors
-`^19.x` and `^20.x` → npm warns and resolves if possible
-
-### Exact mismatched versions
-`20.2.0` vs `20.3.1` → resolution fails
-
-## 5. Decentraland Ecosystem Reference
+## 4. Decentraland Ecosystem Reference
 
 Based on analysis of [Decentraland's public repositories](https://github.com/decentraland), the following examples illustrate common patterns for package placement.
 
@@ -210,7 +199,7 @@ These utilities can be safely duplicated without side effects:
 
 **Principle**: Pure utility functions and stateless libraries can safely be in `dependencies` even in libraries, as they don't rely on singletons or shared state. **Always use exact versions** for security.
 
-## 6. Related Standards
+## 5. Related Standards
 
 - [Testing Standards](./testing-standards/README.md)
 - [UI Standards](./ui-standards/README.md)

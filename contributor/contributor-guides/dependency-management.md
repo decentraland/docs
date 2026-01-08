@@ -58,7 +58,7 @@ This is useful for packages that can work with or without certain dependencies (
 
 ## 3. When to Use Each Field
 
-> **Quick reference**: See [Section 10](#10-decentraland-ecosystem-reference) for a complete list of packages and their recommended placement.
+> **Quick reference**: See [Section 5](#5-decentraland-ecosystem-reference) for a complete list of packages and their recommended placement.
 
 ### Use peerDependencies for (Libraries only):
 
@@ -92,7 +92,7 @@ This is useful for packages that can work with or without certain dependencies (
 - Utilities safe to duplicate (lodash-es, date-fns)
 - **In apps**: Runtime packages like React, ethers (when app is final consumer)
 
-> **Important**: Always use **exact/fixed versions** in `dependencies` for security (see [Section 4](#4-versioning-rules)).
+> **Important**: Always use **exact/fixed versions** in `dependencies` for security.
 
 ✅ Correct (Library):
 ```json
@@ -146,7 +146,7 @@ For reusable packages that work with or without certain dependencies, use `peerD
 ### Use devDependencies for:
 - Tooling (TypeScript, ESLint, testers, bundlers)
 
-> **Important**: Always use **exact/fixed versions** in `devDependencies` to ensure a consistent development environment across the team (see [Section 4](#4-versioning-rules)).
+> **Important**: Always use **exact/fixed versions** in `devDependencies` to ensure a consistent development environment across the team.
 
 ✅ Correct:
 ```json
@@ -159,68 +159,7 @@ For reusable packages that work with or without certain dependencies, use `peerD
 }
 ```
 
-## 4. Versioning Rules
-
-### Use fixed versions for dependencies and devDependencies
-
-**For dependencies (security):** Using version ranges (`^` or `~`) exposes the project to supply chain attacks. Malicious code can be injected in minor or patch releases, affecting all consumers automatically. **Use exact/fixed versions** to ensure reproducible builds and security.
-
-**For devDependencies (consistency):** Using exact versions ensures all team members work with the same development environment, avoiding "works on my machine" issues and ensuring consistent linting, formatting, and build outputs.
-
-**Exception - Decentraland packages:** Packages from the Decentraland ecosystem (`@dcl/*` and `decentraland-*`) can use version ranges (`^`) since they are internal trusted packages and not subject to the same supply chain attack risks as external dependencies.
-
-**For peerDependencies:**
-- Use version ranges (`^` or explicit ranges) to allow flexibility
-- Example: `"react": "^18.0.0"` or `"react": ">=18.0.0 <19.0.0"`
-- This allows consumers to use any compatible version
-
-✅ Correct (dependencies - exact versions):
-```json
-"dependencies": { 
-  "lodash-es": "4.17.21",
-  "date-fns": "3.6.0"
-}
-```
-
-✅ Correct (devDependencies - exact versions):
-```json
-"devDependencies": { 
-  "typescript": "5.4.5",
-  "eslint": "8.57.0"
-}
-```
-
-✅ Correct (peerDependencies - version ranges):
-```json
-"peerDependencies": { 
-  "@dcl/schemas": "^20.2.0",
-  "react": ">=18.0.0 <19.0.0"
-}
-```
-
-❌ Incorrect (external dependencies with ranges):
-```json
-"dependencies": { "lodash-es": "^4.17.0" }
-```
-
-## 5. Package Manager Behavior
-
-### NPM v7+ / Yarn / pnpm
-
-**peerDependencies behavior:**
-- If the project already has the dependency → that version is used
-- If not → package manager installs it (npm v7+, yarn, pnpm)
-- **Must resolve to a single effective version at runtime/bundle**
-- Note: Package managers may keep multiple physical copies in node_modules, but only one version should be active in the bundle
-
-**Package manager differences:**
-- **npm**: Auto-installs peers since v7
-- **yarn**: Auto-installs peers by default
-- **pnpm**: Strict peer dependency resolution; may require explicit configuration
-
-**Important:** The goal is runtime/bundle deduplication, not necessarily a single physical copy in node_modules.
-
-## 6. Common Scenarios
+## 4. Common Scenarios
 
 ### Compatible ranges
 `^20.2.0` and `^20.3.1` → one version installed (20.3.1+)
@@ -231,88 +170,7 @@ For reusable packages that work with or without certain dependencies, use `peerD
 ### Exact mismatched versions
 `20.2.0` vs `20.3.1` → resolution fails
 
-## 7. Backend Considerations
-
-Duplicate versions may cause:
-- Extra DB pools
-- Cache desynchronization
-- Failing instanceof checks
-- Schema mismatches
-
-✅ Correct (Library):
-```json
-"peerDependencies": {
-  "@dcl/schemas": "^20.0.0",
-  "pg": "^8.0.0"
-}
-```
-
-## 8. Security & Vulnerabilities
-
-### Use exact versions to prevent supply chain attacks
-
-Using exact/fixed versions in `dependencies` and `devDependencies` protects against malicious code injection in minor or patch releases.
-
-✅ Correct:
-```json
-"dependencies": { "minimatch": "3.1.2" }
-```
-
-❌ Incorrect (vulnerable to supply chain attacks):
-```json
-"dependencies": { "minimatch": "^3.1.0" }
-```
-
-### Use overrides / resolutions for CVEs
-
-For security vulnerabilities in transitive dependencies, use package manager overrides:
-
-**npm (package.json):**
-```json
-{
-  "overrides": {
-    "minimatch": "^3.1.2"
-  }
-}
-```
-
-**yarn (package.json):**
-```json
-{
-  "resolutions": {
-    "minimatch": "^3.1.2"
-  }
-}
-```
-
-**pnpm (package.json):**
-```json
-{
-  "pnpm": {
-    "overrides": {
-      "minimatch": "^3.1.2"
-    }
-  }
-}
-```
-
-This is the recommended practice for addressing CVEs without pinning versions in dependencies.
-
-## 9. Package.json Structure
-
-Recommended field order:
-1. name
-2. version
-3. description
-4. main/module/types
-5. scripts
-6. dependencies
-7. peerDependencies
-8. devDependencies
-9. engines
-10. publishConfig
-
-## 10. Decentraland Ecosystem Reference
+## 5. Decentraland Ecosystem Reference
 
 Based on analysis of [Decentraland's public repositories](https://github.com/decentraland), the following examples illustrate common patterns for package placement.
 
@@ -352,143 +210,7 @@ These utilities can be safely duplicated without side effects:
 
 **Principle**: Pure utility functions and stateless libraries can safely be in `dependencies` even in libraries, as they don't rely on singletons or shared state. **Always use exact versions** for security.
 
-## 11. Tooling Support
-
-To automate and enforce this standard, projects are encouraged to use [npm-package-json-lint](https://npmpackagejsonlint.org/). This tool validates the structure and contents of `package.json` files.
-
-> **Reference**: See the full list of available rules at [npm-package-json-lint rules documentation](https://npmpackagejsonlint.org/docs/rules).
-
-### Installation
-
-```bash
-npm install --save-dev npm-package-json-lint
-```
-
-### Add script to package.json
-
-```json
-{
-  "scripts": {
-    "lint:pkg": "npmPkgJsonLint ."
-  }
-}
-```
-
-### What the tool can validate
-
-- Duplicated dependencies across fields
-- Use of exact versions vs version ranges
-- Incorrect placement of dependencies
-- Presence or absence of specific libraries
-- Consistent field ordering
-- Disallowed dependency sources (file, git)
-
-### Suggested configuration (per repository)
-
-> **Important**: The configuration below is designed for **repository-specific** enforcement. For ecosystem-wide standards, use allowlists or rules that adapt to package type (library vs app).
-
-Create `.npmpackagejsonlintrc.json`:
-
-```json
-{
-  "rules": {
-    "prefer-absolute-version-dependencies": ["warning", {
-      "exceptions": [
-        "@dcl/schemas",
-        "@dcl/ui-env",
-        "@dcl/crypto",
-        "@dcl/ecs",
-        "decentraland-ui",
-        "decentraland-ui2",
-        "decentraland-dapps",
-        "decentraland-connect"
-      ]
-    }],
-    "prefer-absolute-version-devDependencies": ["warning", {
-      "exceptions": [
-        "@dcl/sdk"
-      ]
-    }],
-    "no-file-dependencies": "error",
-    "no-git-dependencies": "error",
-    "no-duplicate-properties": "error",
-    "prefer-property-order": ["error", [
-      "name", "version", "description", "main", "module", "types",
-      "scripts", "dependencies", "peerDependencies", "devDependencies",
-      "engines", "publishConfig"
-    ]]
-  }
-}
-```
-
-> **Important**: The `exceptions` array requires listing each package manually (glob patterns like `@dcl/*` are not supported). Update this list when adding new Decentraland packages to your project. See [prefer-absolute-version-dependencies documentation](https://npmpackagejsonlint.org/docs/rules/dependencies/prefer-absolute-version-dependencies) for more details.
-
-**Rule explanations:**
-- `prefer-absolute-version-dependencies`: Encourages exact versions in dependencies, with exceptions for trusted Decentraland packages
-- `prefer-absolute-version-devDependencies`: Encourages exact versions in devDependencies, with exceptions for trusted Decentraland packages
-- `no-file-dependencies`: Prevents local file path dependencies (not portable)
-- `no-git-dependencies`: Prevents git URL dependencies (not reproducible, security risk)
-
-### Repository-specific allowlists (optional)
-
-For stricter enforcement within a repository, you can add allowlists. **These should be tailored per repository**, not applied globally:
-
-```json
-{
-  "rules": {
-    "valid-values-dependencies": ["warn", [
-      "lodash-es",
-      "date-fns",
-      "uuid",
-      "nanoid"
-    ]],
-    "valid-values-peerDependencies": ["warn", [
-      "react",
-      "react-dom",
-      "@dcl/schemas"
-    ]]
-  }
-}
-```
-
-> **Warning - Avoid global allowlists**: The strict allowlist rules shown above are **dangerous as ecosystem-wide standards**. They should only be used:
-> - Within a single repository with known package types
-> - With rules that adapt based on package type (library vs app)
-> - As warnings, not errors, to allow flexibility
-
-> **Note**: In the future, we may introduce a shared configuration package (e.g., `@dcl/package-json-standard`) that repositories can extend for ecosystem-wide consistency, with rules that adapt to package type.
-
-## 12. Summary
-
-### ✅ Correct:
-
-**For Libraries:**
-- Use `peerDependencies` for shared libraries (React, ethers, @dcl/schemas)
-- Use version ranges (^ or explicit ranges) **only for peerDependencies**
-- Use `peerDependenciesMeta` for optional peers
-- Use `dependencies` only for utilities safe to duplicate
-
-**For Apps:**
-- Often use `dependencies` for runtime packages (React, ethers, etc.)
-- Use `overrides`/`resolutions` for security patches (CVEs)
-- Ensure packages resolve to a single effective version at runtime
-
-**General:**
-- Use **exact/fixed versions** for `dependencies` (supply chain security) and `devDependencies` (consistent dev environment)
-- **Exception**: Decentraland packages (`@dcl/*`, `decentraland-*`) can use version ranges (`^`)
-- Use **version ranges** only for `peerDependencies` (consumer flexibility)
-- Use overrides/resolutions for transitive dependency CVEs
-- Configure linting per repository, not globally
-- Avoid file and git dependencies
-
-### ❌ Incorrect:
-- Libraries using `dependencies` for shared singletons (React, ethers)
-- Using version ranges (`^`, `~`) in external dependencies/devDependencies (supply chain risk)
-- Using file or git dependencies (not portable, security risk)
-- Applying strict allowlists globally across ecosystem
-- Assuming single physical copy (focus on runtime deduplication)
-
-## 13. Related Standards
+## 6. Related Standards
 
 - [Testing Standards](./testing-standards/README.md)
 - [UI Standards](./ui-standards/README.md)

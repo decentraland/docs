@@ -1,10 +1,12 @@
-Emotes are the [entities](../entities) that hold animations for player's avatars.
+# emotes
+
+Emotes are the [entities](../../entities/) that hold animations for player's avatars.
 
 They include files in GLB format for different body shapes.
 
-## Pointers {#pointers}
+### Pointers <a href="#pointers" id="pointers"></a>
 
-Emotes have exactly one associated [pointer](../pointers), which indicates the collection they belong to and their index inside of it. They are URNs of this form:
+Emotes have exactly one associated [pointer](../../pointers/), which indicates the collection they belong to and their index inside of it. They are URNs of this form:
 
 ```
 urn:decentraland:matic:collections-v2:<collection address>:<item index>
@@ -21,23 +23,22 @@ To illustrate, the `pointers` array for an emote looks like this:
 }
 ```
 
-## Metadata Fields
+### Metadata Fields
 
-Emotes share most of their basic fields with [wearables](wearables). The `emoteDataADR74` property is where the emote-specific information is located.
+Emotes share most of their basic fields with [wearables](../../entity-types/wearables/). The `emoteDataADR74` property is where the emote-specific information is located.
 
-| Field | Value |
-| ----- | --- |
-| `id` | The [pointer](../pointers) that resolves (or used to resolve) to this emote.
-| `name` | The display title for this emote in a [collection](../collections).
-| `description` | An extended description for this emote.
-| `image` | The [internal filename](../entities#files) with a picture for this emote.
-| `thumbnail` | The [internal filename](../entities#files) for a 256x256 version of the `image`.
-| `rarity` | One of `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` or `unique`.
-| `i18n` | An array of translations for the `name` field.
-| `collectionAddress` | The Ethereum address for the collection that contains this emote.
-| `metrics` | Some useful measurements about the animations (see below).
-| `emoteDataADR74` | The extended metadata for this emote, as defined in [ADR-74](https://adr.decentraland.org/adr/ADR-74) (see below).
-
+| Field               | Value                                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `id`                | The [pointer](../../pointers/) that resolves (or used to resolve) to this emote.                                   |
+| `name`              | The display title for this emote in a [collection](../../collections/).                                            |
+| `description`       | An extended description for this emote.                                                                            |
+| `image`             | The [internal filename](../../entities/#files) with a picture for this emote.                                      |
+| `thumbnail`         | The [internal filename](../../entities/#files) for a 256x256 version of the `image`.                               |
+| `rarity`            | One of `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` or `unique`.                          |
+| `i18n`              | An array of translations for the `name` field.                                                                     |
+| `collectionAddress` | The Ethereum address for the collection that contains this emote.                                                  |
+| `metrics`           | Some useful measurements about the animations (see below).                                                         |
+| `emoteDataADR74`    | The extended metadata for this emote, as defined in [ADR-74](https://adr.decentraland.org/adr/ADR-74) (see below). |
 
 This is how a typical JSON looks like:
 
@@ -62,7 +63,7 @@ This is how a typical JSON looks like:
 }
 ```
 
-## Metrics
+### Metrics
 
 In the `metadata.metrics` object, you'll find some simple measurements for the animation packaged with this emote. An example:
 
@@ -77,16 +78,16 @@ In the `metadata.metrics` object, you'll find some simple measurements for the a
 }
 ```
 
-## Emote Data ADR-74
+### Emote Data ADR-74
 
 This object contains the fields that World Explorers (or other graphical applications) need to animate models with this emote.
 
-| Field | Value |
-| ----- | --- |
-| `category` | One of `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror` or `miscellaneous`.
-| `representations` | An array of animation files associated to different body shapes.
-| `tags` | An array of string tags descriptive of this emote.
-| `loop` | `true` if the animation should repeat itself once it ends.
+| Field             | Value                                                                                           |
+| ----------------- | ----------------------------------------------------------------------------------------------- |
+| `category`        | One of `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror` or `miscellaneous`. |
+| `representations` | An array of animation files associated to different body shapes.                                |
+| `tags`            | An array of string tags descriptive of this emote.                                              |
+| `loop`            | `true` if the animation should repeat itself once it ends.                                      |
 
 Some JSON for clarity:
 
@@ -101,15 +102,15 @@ Some JSON for clarity:
 }
 ```
 
-### Representations
+#### Representations
 
 Each item in the `metadata.emoteDataADR74.representations` field defines the animation files appropriate for each body shape.
 
-| Field | Value |
-| ----- | --- |
-| `bodyShapes` | An array of applicable body shape [pointers](../pointers).
-| `mainFile` | The [internal filename](../entities#files) for the main GLB file.
-| `contents` | All files, including `mainFile` and any additional ones that it can reference.
+| Field        | Value                                                                          |
+| ------------ | ------------------------------------------------------------------------------ |
+| `bodyShapes` | An array of applicable body shape [pointers](../../pointers/).                 |
+| `mainFile`   | The [internal filename](../../entities/#files) for the main GLB file.          |
+| `contents`   | All files, including `mainFile` and any additional ones that it can reference. |
 
 For example, a `representation` item:
 

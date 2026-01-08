@@ -1,12 +1,16 @@
 ---
-description: Aprende los fundamentos sobre entidades y componentes en una escena de Decentraland
+description: >-
+  Aprende los fundamentos sobre entidades y componentes en una escena de
+  Decentraland
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/entities-components
 ---
 
 # Entidades & Componentes
 
 Las escenas de Decentraland están construidas alrededor de [_entidades_, _componentes_ y _sistemas_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). Este es un patrón común usado en la arquitectura de varios motores de juegos, que permite fácil composabilidad y escalabilidad.
-
-![](../images/media/ecs-big-picture.png)
 
 ### Descripción general
 
@@ -18,13 +22,9 @@ Si estás familiarizado con el desarrollo web, piensa en las entidades como el e
 
 En el [Editor de Escenas](../scene-editor/get-started/about-editor.md), puedes ver los componentes que pertenecen a una entidad seleccionándola.
 
-![](../images/editor/components-example.png)
-
 {% hint style="warning" %}
 **📔 Nota**: En versiones anteriores del SDK, las Entidades eran _objetos_ que se instanciaban, y podían extenderse para agregar funciones. A partir de la versión 7.0 del SDK, las entidades son solo un ID. Esta estructura se ajusta mejor a los principios de la [programación orientada a datos](../sdk7/architecture/data-oriented-programming.md) y puede ayudar en el rendimiento de la escena.
 {% endhint %}
-
-![](../images/media/ecs-components-new.png)
 
 Los componentes como `Transform`, `Material` o cualquiera de los componentes de _forma_ están estrechamente vinculados con el renderizado de la escena. Si los valores en estos componentes cambian, eso solo es suficiente para que el motor cambie cómo se renderiza la escena en el siguiente fotograma.
 
@@ -118,8 +118,6 @@ Una vez que los componentes de la entidad son eliminados, ese id de entidad est�
 
 Una entidad puede tener otras entidades como hijas. Gracias a esto, podemos organizar entidades en árboles, igual que el HTML de una página web.
 
-![](../images/media/ecs-nested-entities-new.png)
-
 Para establecer una entidad como padre de otra, la entidad hija debe tener un componente `Transform`. Luego puedes establecer el campo `parent` con una referencia a la entidad padre.
 
 ```ts
@@ -165,8 +163,6 @@ mutableChildTransform.parent = engine.RootEntity
 {% endhint %}
 
 En el [Editor de escenas](../scene-editor/get-started/about-editor.md), puedes ver toda la jerarquía de entidades anidadas en tu escena en el panel del lado izquierdo.
-
-![](../images/editor/entity-tree-example.png)
 
 ### Obtener una entidad por ID
 

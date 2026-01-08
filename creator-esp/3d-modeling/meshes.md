@@ -1,5 +1,11 @@
 ---
-description: Aprende qué propiedades de mesh son compatibles con modelos 3D importados a Decentraland.
+description: >-
+  Aprende qué propiedades de mesh son compatibles con modelos 3D importados a
+  Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/meshes
 ---
 
 # Meshes
@@ -54,7 +60,7 @@ Para más información verifica todas las limitaciones de escena [aquí.](https:
 {% hint style="warning" %}
 **🔥Tip de Optimización🔥: Agregar Polygon Count** Un tip valioso es siempre mantener un seguimiento del polycount de tus modelos. Para hacer eso en blender necesitas activar statistics en el panel viewport overlays.
 
-![](../images/3d-models-and-animations/3d-essentials/41-stats.gif)
+<img src="../images/3d-models-and-animations/3d-essentials/41-stats.gif" alt="" data-size="original">
 {% endhint %}
 
 ### Meshes en Escenas Grandes

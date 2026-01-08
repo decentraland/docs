@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo agregar sonidos a tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/sounds
 ---
 
 # Sonidos
@@ -18,7 +22,7 @@ Los archivos _.wav_ también son compatibles pero generalmente no se recomiendan
 
 La forma más fácil de reproducir un sonido es agregar un componente **Audio Source** visualmente en el [Scene Editor](../../scene-editor/about-editor.md) y configurarlo para **Start Playing** y **Loop**. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
 
-<img src="../../../images/editor/AudioSource-component.png" alt="Scene name" width="200"/>
+
 
 También puedes activar la reproducción de un sonido de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
 
@@ -44,12 +48,14 @@ Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber
 
 La función `AudioSource.playSound()` toma los siguientes argumentos:
 
-- `entity`: En qué entidad aplicar el sonido. El sonido se escuchará desde la posición de esta entidad, lo que significa que se vuelve más fuerte a medida que el jugador se acerca a ella.
-- `src`: La ubicación del archivo de sonido dentro de tu proyecto.
-  {% hint style="info" %}
-  **💡 Consejo**: Para mayor claridad, recomendamos mantener tus archivos de sonido separados en una carpeta `assets/sounds` dentro de tu escena.
-  {% endhint %}
-- `resetCursor`: _(opcional)_ Si es true, el sonido siempre comienza desde el principio. De lo contrario, continúa desde la posición actual del cursor. Útil para pausar y reanudar.
+* `entity`: En qué entidad aplicar el sonido. El sonido se escuchará desde la posición de esta entidad, lo que significa que se vuelve más fuerte a medida que el jugador se acerca a ella.
+* `src`: La ubicación del archivo de sonido dentro de tu proyecto.
+
+{% hint style="info" %}
+**💡 Consejo**: Para mayor claridad, recomendamos mantener tus archivos de sonido separados en una carpeta `assets/sounds` dentro de tu escena.
+{% endhint %}
+
+* `resetCursor`: _(opcional)_ Si es true, el sonido siempre comienza desde el principio. De lo contrario, continúa desde la posición actual del cursor. Útil para pausar y reanudar.
 
 Otra forma de reproducir sonidos es crear manualmente un componente `AudioSource` en una entidad. Usa este enfoque para tener más control sobre el sonido, por ejemplo para hacerlo loop o establecer el volumen.
 
@@ -67,14 +73,16 @@ AudioSource.create(sourceEntity, {
 
 Se pueden establecer las siguientes propiedades:
 
-- `audioClipUrl`: La ubicación del archivo de sonido dentro de tu proyecto.
-- `playing`: Si es true, el sonido comienza a reproducirse. Puedes crear un sonido con `playing` establecido en false, y luego establecerlo en true en un momento posterior.
-- `volume`: _(opcional)_ El volumen del archivo de sonido. 1 por defecto, que es el volumen completo.
-- `pitch`: _(opcional)_ Modificar el tono de un sonido. 1 es el predeterminado, hazlo más bajo para un sonido más grave y más alto para un tono más agudo.
-  {% hint style="info" %}
-  **💡 Consejo**: Para evitar que un efecto de sonido se vuelva demasiado repetitivo durante un juego, es útil aleatorizar algunas ligeras variaciones en el tono del sonido cada vez que se reproduce.
-  {% endhint %}
-- `currentTime`: _(opcional)_ 0 por defecto. Establece este valor para evitar comenzar desde el principio del archivo de sonido.
+* `audioClipUrl`: La ubicación del archivo de sonido dentro de tu proyecto.
+* `playing`: Si es true, el sonido comienza a reproducirse. Puedes crear un sonido con `playing` establecido en false, y luego establecerlo en true en un momento posterior.
+* `volume`: _(opcional)_ El volumen del archivo de sonido. 1 por defecto, que es el volumen completo.
+* `pitch`: _(opcional)_ Modificar el tono de un sonido. 1 es el predeterminado, hazlo más bajo para un sonido más grave y más alto para un tono más agudo.
+
+{% hint style="info" %}
+**💡 Consejo**: Para evitar que un efecto de sonido se vuelva demasiado repetitivo durante un juego, es útil aleatorizar algunas ligeras variaciones en el tono del sonido cada vez que se reproduce.
+{% endhint %}
+
+* `currentTime`: _(opcional)_ 0 por defecto. Establece este valor para evitar comenzar desde el principio del archivo de sonido.
 
 Cada entidad solo puede tener un solo componente `AudioSource`, que solo puede reproducir un clip a la vez. Esta limitación se puede superar fácilmente modificando el audio source en el momento de reproducir un nuevo sonido, o incluyendo múltiples entidades hijas invisibles, cada una con su propio sonido.
 

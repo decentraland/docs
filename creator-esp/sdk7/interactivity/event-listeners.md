@@ -1,12 +1,18 @@
 ---
-description: Eventos que la escena puede rastrear, relacionados con acciones del jugador y cambios en la escena
+description: >-
+  Eventos que la escena puede rastrear, relacionados con acciones del jugador y
+  cambios en la escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/event-listeners
 ---
 
 # Event listeners
 
 Hay varios eventos a los que la escena puede suscribirse, para conocer las acciones del jugador mientras está en o cerca de la escena.
 
-Para eventos de botones y clics realizados por el jugador, consulta [Eventos de botones](../interactivity/click-events.md).
+Para eventos de botones y clics realizados por el jugador, consulta [Eventos de botones](click-events.md).
 
 ## El jugador entra o sale de la escena
 
@@ -30,8 +36,7 @@ export function main() {
 }
 ```
 
-En el evento `onEnterScene`, la función puede acceder a todos los datos devueltos por [obtener datos del jugador](user-data.md#get-player-data) a través de la propiedad `player`.
-En el evento `onLeaveScene`, la función solo tiene acceso al ID del jugador.
+En el evento `onEnterScene`, la función puede acceder a todos los datos devueltos por [obtener datos del jugador](user-data.md#get-player-data) a través de la propiedad `player`. En el evento `onLeaveScene`, la función solo tiene acceso al ID del jugador.
 
 ### Solo jugador actual
 
@@ -118,9 +123,9 @@ export function main() {
 
 El evento incluye la siguiente información:
 
-- `emoteUrn`: Nombre del emote realizado (ej: _wave_, _clap_, _kiss_)
-- `loop`: Si el emote se está repitiendo o reproduciendo una vez
-- `timestamp`: Cuándo se activó el emote.
+* `emoteUrn`: Nombre del emote realizado (ej: _wave_, _clap_, _kiss_)
+* `loop`: Si el emote se está repitiendo o reproduciendo una vez
+* `timestamp`: Cuándo se activó el emote.
 
 También puedes detectar emotes de otros jugadores en la escena, simplemente pasa una referencia al otro jugador en lugar de `engine.PlayerEntity`.
 
@@ -150,16 +155,16 @@ export function main() {
 
 El evento en `AvatarEquippedData` incluye la siguiente información:
 
-- `wearableUrns`: La lista de wearables que el jugador tiene actualmente equipados.
-- `emoteUrns`: La lista de emotes que el jugador tiene actualmente equipados en la rueda de acceso rápido.
+* `wearableUrns`: La lista de wearables que el jugador tiene actualmente equipados.
+* `emoteUrns`: La lista de emotes que el jugador tiene actualmente equipados en la rueda de acceso rápido.
 
 El evento en `AvatarBase` incluye la siguiente información:
 
-- `name`: El nombre del jugador.
-- `bodyShapeUrn`: Los IDs correspondientes al tipo de cuerpo masculino o femenino.
-- `skinColor`: Color de piel del jugador como un `Color4`
-- `eyeColor`: Color de ojos del jugador como un `Color4`
-- `hairColor`: Color de cabello del jugador como un `Color4`
+* `name`: El nombre del jugador.
+* `bodyShapeUrn`: Los IDs correspondientes al tipo de cuerpo masculino o femenino.
+* `skinColor`: Color de piel del jugador como un `Color4`
+* `eyeColor`: Color de ojos del jugador como un `Color4`
+* `hairColor`: Color de cabello del jugador como un `Color4`
 
 También puedes detectar cambios en wearables o avatares de otros jugadores en la escena, simplemente pasa una referencia al otro jugador en lugar de `engine.PlayerEntity`.
 

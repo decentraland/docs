@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo configurar una escena y configurar sus metadatos.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/projects/scene-metadata
 ---
 
 # Metadatos de Escena

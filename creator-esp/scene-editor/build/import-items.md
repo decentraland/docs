@@ -1,12 +1,16 @@
 ---
-description: Importa tus propios modelos 3D, imágenes, sonido, etc para usar en tus escenas.
+description: >-
+  Importa tus propios modelos 3D, imágenes, sonido, etc para usar en tus
+  escenas.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/build/import-items
 ---
 
 # Importar Ítems
 
 Puedes importar tus propios modelos 3D al Scene Editor. Elige modelos de una amplia selección de fuentes gratuitas o de pago en internet, o crea tus propios modelos personalizados. También puedes importar otros assets como imágenes, archivos de sonido y videos.
-
-
 
 ### Importar un asset
 
@@ -28,7 +32,7 @@ Ahora puedes encontrar tu asset en la pestaña **Local Assets**, bajo la carpeta
 {% hint style="info" %}
 **💡 Tip**: También puedes pegar archivos directamente en la carpeta del proyecto. Después de hacer esto, presiona el botón **Refresh** junto al botón **Import Assets** para ver los nuevos archivos.
 
-![](../images/editor/refresh-assets.png)
+<img src="../images/editor/refresh-assets.png" alt="" data-size="original">
 {% endhint %}
 
 ### Formatos soportados

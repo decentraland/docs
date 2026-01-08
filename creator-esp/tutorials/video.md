@@ -2,7 +2,8 @@
 description: Tutoriales en video para el SDK de Decentraland y Scene Editor
 metaLinks:
   alternates:
-    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials/video
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials-and-examples/video
 ---
 
 # Tutorial en Video

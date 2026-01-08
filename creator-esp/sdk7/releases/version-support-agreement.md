@@ -1,5 +1,9 @@
 ---
 description: Acuerdo de soporte de versiones
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/releases/version-support-agreement
 ---
 
 # Acuerdo de Soporte de Versiones

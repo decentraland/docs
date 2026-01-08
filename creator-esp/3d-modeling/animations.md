@@ -1,7 +1,11 @@
 ---
 description: >-
-  Aprende cómo crear animaciones que pueden ser embebidas en modelos 3D importados a
-  Decentraland.
+  Aprende cómo crear animaciones que pueden ser embebidas en modelos 3D
+  importados a Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/animations
 ---
 
 # Animaciones

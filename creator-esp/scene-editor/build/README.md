@@ -1,5 +1,8 @@
 ---
 description: Construye y personaliza tu escena con herramientas visuales
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/build
 ---
 
 # Construyendo Tu Escena

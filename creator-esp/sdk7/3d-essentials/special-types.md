@@ -1,5 +1,9 @@
 ---
 description: Aprende qué tipos especiales existen, incluyendo Vector, Quaternions y más
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/special-types
 ---
 
 # Tipos de geometría
@@ -52,13 +56,13 @@ Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber
 
 Existen los siguientes atajos para definir vectores genéricos:
 
-- `Vector3.Zero()` devuelve _(0, 0, 0)_
-- `Vector3.Up()` devuelve _(0, 1, 0)_
-- `Vector3.Down()` devuelve _(0, -1, 0)_
-- `Vector3.Left()` devuelve _(-1, 0, 0)_
-- `Vector3.Right()` devuelve _(1, 0, 0)_
-- `Vector3.Forward()` devuelve _(0, 0, 1)_
-- `Vector3.Backward()` devuelve _(0, 0, -1)_
+* `Vector3.Zero()` devuelve _(0, 0, 0)_
+* `Vector3.Up()` devuelve _(0, 1, 0)_
+* `Vector3.Down()` devuelve _(0, -1, 0)_
+* `Vector3.Left()` devuelve _(-1, 0, 0)_
+* `Vector3.Right()` devuelve _(1, 0, 0)_
+* `Vector3.Forward()` devuelve _(0, 0, 1)_
+* `Vector3.Backward()` devuelve _(0, 0, -1)_
 
 ## Quaternions
 

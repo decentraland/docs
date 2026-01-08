@@ -38,14 +38,14 @@ let midPoint = Vector3.lerp(myVector, myOtherVector, 0.5)
 
 Vector3 objects are often required in the fields of several components. For example, the `Transform` component contains `Vector3` values for the _position_ and _scale_ of the entity.
 
-To create a [custom component](../sdk7/architecture/custom-components.md) with parameters that require Vector3 values, set the type of these parameters as `Schema.Vector3`.
+To create a [custom component](../architecture/custom-components.md) with parameters that require Vector3 values, set the type of these parameters as `Schema.Vector3`.
 
 {% hint style="warning" %}
 **📔 Note**: `Vector3` must be imported via
 
 > `import { Vector3 } from "@dcl/sdk/math"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 #### Shortcuts for writing direction vectors
@@ -107,14 +107,14 @@ let myEuler = Quaternion.toEulerAngles(myQuaternion)
 
 Quaternion objects are often required in the fields of components. For example, the `Transform` component contains `Quaternion` values for rotation of the entity.
 
-To create a [custom component](../sdk7/architecture/custom-components.md) with parameters that require Quaternion values, set the type of these parameters as `Schema.Quaternion`.
+To create a [custom component](../architecture/custom-components.md) with parameters that require Quaternion values, set the type of these parameters as `Schema.Quaternion`.
 
 {% hint style="warning" %}
 **📔 Note**: `Quaternion` must be imported via
 
 > `import { Quaternion } from "@dcl/sdk/math"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ### Scalars
@@ -135,5 +135,5 @@ let clampedValue = Scalar.clamp(myInput, 0, 100)
 
 > `import { Scalar } from "@dcl/sdk/math"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}

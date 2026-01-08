@@ -4,7 +4,7 @@ description: Guidelines to Create a Decentraland Collection
 
 # Creating a Collection
 
-![](../images/wearables-and-emotes/creating-a-collection/00_collections.png)
+![](../../../.gitbook/assets/00_collections.png)
 
 ## What is the Wearables Editor?
 
@@ -22,23 +22,23 @@ Click **Sign in**, and then **Connect** to log in with your Metamask or Fortmati
 
 Before you can upload a wearable or an emote, you must create a collection first. To do that, go to [https://builder.decentraland.org/](https://builder.decentraland.org/) and click on _**Collections**_. If you don’t have any collections yet, click on the _**New Collection**_ button, the one with an image of a folder. If you already have another collection, clikc on the _**+**_ button and select _**New Collection**_.
 
-![](../images/wearables-and-emotes/creating-a-collection/01_create_collection.png) ![](../images/wearables-and-emotes/creating-a-collection/02_add_collection.png)
+![](../../../.gitbook/assets/01_create_collection.png) ![](../../../.gitbook/assets/02_add_collection.png)
 
 After clicking on the button, you will be asked to rename your collection, as shown bellow. In case you change your mind, you can edit the name of your collection at any point **before publishing**.
 
-![](../images/wearables-and-emotes/creating-a-collection/03_rename_collection.png)
+![](../../../.gitbook/assets/03_rename_collection.png)
 
 Now, you’re ready to add items to it. For that, just click on the button Add Item and just drag and drop the file with your wearable/emote or browse your computer.
 
-![](../images/wearables-and-emotes/creating-a-collection/04_add_item.png)
+![](../../../.gitbook/assets/04_add_item.png)
 
 Once you click on _**Add Item**_, you will get a window like the one shown below. Just drag and drop the file with your wearable/emote or browse your computer.
 
-![](../images/wearables-and-emotes/creating-a-collection/05_new_item.png)
+![](../../../.gitbook/assets/05_new_item.png)
 
 If you already have a collection and want to add more items to it, just click on Add Item and upload your file. You can add as many files as you want before publishing the collection.
 
-![](../images/wearables-and-emotes/creating-a-collection/06_adding_more_items.png)
+![](../../../.gitbook/assets/06_adding_more_items.png)
 
 _Remember: you cannot add, remove, or change the rarity of items after the collection is pubilshed._
 

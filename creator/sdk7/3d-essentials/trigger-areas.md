@@ -193,7 +193,7 @@ Transform.create(movingEntity, {
 MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 ```
 
-Allowed values are the same as the ones for the `MeshCollider` component. See [Collision layers](../sdk7/3d-essentials/colliders.md#Collision-layers) for more details.
+Allowed values are the same as the ones for the `MeshCollider` component. See [Collision layers](colliders.md#Collision-layers) for more details.
 
 * `ColliderLayer.CL_PHYSICS`
 * `ColliderLayer.CL_POINTER`

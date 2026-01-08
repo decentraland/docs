@@ -1,5 +1,11 @@
 ---
-description: Tipos de entidad especiales para la UI, incluyendo dropdowns y cajas de entrada.
+description: >-
+  Tipos de entidad especiales para la UI, incluyendo dropdowns y cajas de
+  entrada.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/ui_special_types
 ---
 
 # Tipos Especiales UI
@@ -213,10 +219,10 @@ Las siguientes propiedades también están disponibles para personalizar el aspe
 **📔 Nota**: Asegúrate de usar un color diferente del `placeHolderColor`.
 {% endhint %}
 
-* `font`: La fuente a usar, tomando un valor del enum `Font`. Los valores soportados son: 
-  * `serif` 
-  * `sans-serif` _(predeterminado)_ 
-  * `monospace` 
+* `font`: La fuente a usar, tomando un valor del enum `Font`. Los valores soportados son:
+  * `serif`
+  * `sans-serif` _(predeterminado)_
+  * `monospace`
 * `textAlign`: Cómo se alineará el texto con su padre. Toma un valor del tipo `TextAlignType`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
 También puedes configurar otros componentes de la entidad `Input`, como un `uiTransform`, `OnMouseDown` como en otras entidades UI.

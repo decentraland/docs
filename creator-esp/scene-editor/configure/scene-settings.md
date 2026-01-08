@@ -1,5 +1,9 @@
 ---
 description: Edita los metadatos de tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/configure/scene-settings
 ---
 
 # Scene Settings
@@ -24,9 +28,7 @@ Los siguientes campos están disponibles:
 * **Description**
 *   **Thumbnail**
 
-    {% hint style="info" %}
-    **💡 Tip**: Si no se proporciona ninguna miniatura, usa la captura automática que ves en la tarjeta de la escena. Recomendamos subir una imagen más atractiva
-    {% endhint %}
+    \{% hint style="info" %\} **💡 Tip**: Si no se proporciona ninguna miniatura, usa la captura automática que ves en la tarjeta de la escena. Recomendamos subir una imagen más atractiva \{% endhint %\}
 * **Age rating**
 * **Categories**
 * **Author**
@@ -51,7 +53,7 @@ Para construir algo para desplegar en parcels de LAND que posees, asegúrate de 
 {% hint style="info" %}
 **💡 Tip**: Puedes alternar cada mosaico en la cuadrícula desactivándolo haciendo clic en él. Esto te permite dibujar formas no rectangulares para el layout de tu escena.
 
-![](../images/editor/non-rectangular.png)
+<img src="../images/editor/non-rectangular.png" alt="" data-size="original">
 {% endhint %}
 
 Si posees un NAME de Decentraland, también puedes desplegar tu escena en un [Decentraland World](../worlds/about.md). En ese caso, tendrás un número ilimitado de parcels, pero tendrás un límite de tamaño en MB.

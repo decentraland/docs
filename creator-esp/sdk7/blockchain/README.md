@@ -1,5 +1,8 @@
 ---
 description: Integra funcionalidad blockchain en tus scenes
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/blockchain
 ---
 
 # Blockchain Integration

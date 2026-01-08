@@ -1,5 +1,8 @@
 ---
 description: Optimiza tus scenes para rendimiento
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/optimizing
 ---
 
 # Optimization

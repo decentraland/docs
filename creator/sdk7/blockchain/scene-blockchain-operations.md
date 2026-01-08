@@ -10,7 +10,7 @@ A Decentraland scene can interface with the Ethereum blockchain. This can serve 
 
 Note that all transactions in the Ethereum mainnet that are triggered by a scene will require a player to approve and pay a gas fee.
 
-All blockchain operations also need to be carried out as [asynchronous functions](../sdk7/programming-patterns/async-functions.md), since the timing depends on external events.
+All blockchain operations also need to be carried out as [asynchronous functions](../programming-patterns/async-functions.md), since the timing depends on external events.
 
 ### Get a player's ethereum account
 
@@ -29,9 +29,9 @@ export function main() {
 }
 ```
 
-Note that if a player has entered Decentraland as a guest, they will not have a connected ethereum wallet. If they are connected as guests, the `isGuest` field in the response from `getPlayer()` will be true. If `hasConnectedWeb3` is true, then you can obtain the player's address from the field `publicKey`. Learn more about the data you can obtain from a player in [get player data](../sdk7/interactivity/user-data.md#get-player-data)
+Note that if a player has entered Decentraland as a guest, they will not have a connected ethereum wallet. If they are connected as guests, the `isGuest` field in the response from `getPlayer()` will be true. If `hasConnectedWeb3` is true, then you can obtain the player's address from the field `publicKey`. Learn more about the data you can obtain from a player in [get player data](../interactivity/user-data.md#get-player-data)
 
-You should wrap the function in an `async()` function, learn more about this in [async functions](../sdk7/programming-patterns/async-functions.md)
+You should wrap the function in an `async()` function, learn more about this in [async functions](../programming-patterns/async-functions.md)
 
 {% hint style="warning" %}
 **📔 Note**: Even though the eth address may contain upper case characters, some browsers convert the returned string to lower case automatically. If you wish compare address values and have it work on all browsers, use the `.toLowerCase()` method to convert the value into lower case.

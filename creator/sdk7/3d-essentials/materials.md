@@ -17,9 +17,9 @@ There are different types of supported materials:
 * PBR (Physically Based Rendering): The most common kind of material in Decentraland. It supports plain colors or textures, and different properties like metallic, emissive, transparency, etc. Read more about [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
 * Basic materials: They don't respond to lights and shadows, which makes them ideal for displaying billboard images.
 
-### Use the Scene Editor
+### Use the Scene Editor in Creator Hub
 
-The easiest way to give an entity a Material is to use the [Scene Editor](../scene-editor/get-started/about-editor.md). You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to give an entity a Material is to use the Scene Editor. You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
 
 ### Add a material
 
@@ -190,7 +190,7 @@ Material.setPbrMaterial(myEntity, {
 
 Use this feature to cover a large surface with a tiled pattern. For example, repeat the following image:
 
-![](../../images/editor/tiles.png)
+![](../../../.gitbook/assets/tiles.png)
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -202,7 +202,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../images/editor/tiles-in-scene.png)
+![](../../../.gitbook/assets/tiles-in-scene.png)
 
 In the example below, the texture uses a _mirror_ wrap mode, and each repetition of the texture takes only 1/4 of the surface. This means that we'll see 4 copies of the image, mirrored against each other on both axis.
 
@@ -356,7 +356,7 @@ Material.setPbrMaterial(myEntity, {
 
 The `bumpTexture` can simulate bumps and wrinkles on a surface, by modifying how the normals of the surface behave on each pixel.
 
-![](../../images/editor/wood-bump.png)
+![](../../../.gitbook/assets/wood-bump.png)
 
 The `emissiveTexture` can accentuate glow on certain parts of a material, to achieve very interesting effects.
 
@@ -502,7 +502,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../images/avatarTexture.png)
+![](../../../.gitbook/assets/avatarTexture.png)
 
 You can fetch the portrait of any Decentraland player, even if they're not currently connected, and even if they don't have a claimed Decentraland name.
 
@@ -526,7 +526,7 @@ Material.setPbrMaterial(meshEntity, {
 
 If a material uses a .png texture that includes transparency, it will be opaque by default, but you can activate its transparency by setting the `transparencyMode` to `MaterialTransparencyMode.MTM_ALPHA_BLEND`.
 
-![](../../images/editor/transparent-image.png)
+![](../../../.gitbook/assets/transparent-image.png)
 
 ```typescript
 Material.setPbrMaterial(floor, {
@@ -564,7 +564,7 @@ When using an [unlit material](materials.md#unlit-materials), you can add an `al
 **📔 Note**: This must be a single-channel image. In this image use the color red or black to determine what parts of the real texture should be transparent.
 {% endhint %}
 
-![](../../images/circular-video-screen.png)
+![](../../../.gitbook/assets/circular-video-screen.png)
 
 ```ts
 // Using alpha test

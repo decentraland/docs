@@ -4,27 +4,27 @@ description: Stream video into a scene
 
 # Video Playing
 
-There are tree different ways you can show a video in a scene:
+There are three different ways you can show a video in a scene:
 
 * Upload a video file as part of the scene contents
 * Stream the video from an external source
 * Stream live via Decentraland cast
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor](../scene-editor/get-started/about-editor.md), you can use an **Video Player** [Smart Item](../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
+**💡 Tip**: In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can use an **Video Player** [Smart Item](../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
 {% endhint %}
 
 In all cases, you'll need:
 
 * An entity with a [primitive shape](../sdk7/3d-essentials/shape-components.md) like a plane, cube, or even a cone.
-* A [material](../sdk7/3d-essentials/materials.md) with a A `VideoTexture` assigned to its texture
+* A [material](../sdk7/3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
 * A `VideoPlayer` component to control the state of the video.
 
 ### Performance considerations
 
 Keep in mind that streaming video demands a significant effort from the player's machine. It's recommended to avoid playing more than one video at a time.
 
-If too many videos are playing at the same time in your scene, some will be paused by the engine. The priority for pausing a screen is determined based on several factors that include proximity to the player, size, and if the screen is in field of fiew of the player. The maximum amount of simultaneous videos depends on the player's quality settings.
+If too many videos are playing at the same time in your scene, some will be paused by the engine. The priority for pausing a screen is determined based on several factors, including proximity to the player, size, and whether the screen is in the player's field of view. The maximum number of simultaneous videos depends on the player's quality settings.
 
 * Low: 1
 * Medium: 5
@@ -32,7 +32,7 @@ If too many videos are playing at the same time in your scene, some will be paus
 
 We also recommend starting to play the video when the player is near or performs an action to do that. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
-Also avoid streaming videos that are in very high resolution, don't use anything above _HD_.
+Also avoid streaming videos in very high resolution. Don't use anything above _HD_.
 
 It's also ideal to play videos on Basic (unlit) materials, to reduce the performance load, as is the case on all of the example snippets below.
 
@@ -41,7 +41,7 @@ It's also ideal to play videos on Basic (unlit) materials, to reduce the perform
 The following instructions apply to all three video showing options:
 
 1. Create an entity to serve as the video screen. Give this entity a `MeshRenderer` component so that it has a visible shape.
-2. Create a `VideoPlayer` component, either referencing a streaming URL or a path to a video file. Here you can also set the video's `playing` state, and its volume. This component can be assigned to the video screen entity, or to any other entity in the scene.
+2. Create a `VideoPlayer` component, either referencing a streaming URL or a path to a video file. Here you can also set the video's `playing` state and its volume. This component can be assigned to the video screen entity or to any other entity in the scene.
 3. Create a `VideoTexture` object, and in its `videoPlayerEntity` property assign the entity that owns the `VideoPlayer` component.
 4. Create a `Material`, assign it to the screen entity, and set its `texture` to the `VideoTexture` you created.
 
@@ -68,7 +68,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-To use a video from an external streaming URL, just change step 2 so that the `src` property in the `VideoPlayer` component references the path to the file.
+To use a video from an external streaming URL, change step 2 so that the `src` property in the `VideoPlayer` component references the streaming URL.
 
 ```ts
 // #2
@@ -82,9 +82,9 @@ See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentr
 
 ### About External Streaming
 
-The source of the streaming must be an _https_ URL (_http_ URLs aren't supported), and the source should have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit externally accessing it. If this is not the case, you might need to set up a server to act as a proxy and expose the stream in a valid way.
+The source of the streaming must be an _https_ URL (_http_ URLs aren't supported), and the source should have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit external access. If this is not the case, you might need to set up a server to act as a proxy and expose the stream in a valid way.
 
-There are a number of options for streaming video. The simplest option is to use a managed hosting provider like [Vimeo](https://vimeo.com/) ,  [Livepeer Studio](https://livepeer.studio/) or [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback) where you pay a fee to the provider to manage all the streaming infrastructure.
+There are a number of options for streaming video. The simplest option is to use a managed hosting provider like [Vimeo](https://vimeo.com/) , [Livepeer Studio](https://livepeer.studio/) or [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback) where you pay a fee to the provider to manage all the streaming infrastructure.
 
 The other recommended alternative is to set up your own server, using free software but paying for hosting on a platform like [Digital Ocean](https://try.digitalocean.com/developerbrand/?_campaign=emea_brand_kw_en_cpc&_adgroup=digitalocean_exact_exact&_keyword=digitalocean&_device=c&_adposition=&_content=conversion&_medium=cpc&_source=bing\&msclkid=160bfc160a2a1bab9bbf9933594bd9c5\&utm_source=bing\&utm_medium=cpc\&utm_campaign=emea_brand_kw_en_cpc\&utm_term=digitalocean\&utm_content=DigitalOcean%20Exact_Exact) or [Cloudflare](https://www.cloudflare.com/products/cloudflare-stream/). You can deploy something like a [Node Media Server](https://github.com/illuspas/Node-Media-Server), which provides most of what you need out of the box.
 
@@ -117,12 +117,12 @@ The following simple set-up is recommended:
 
 You can livestream from your camera or share your screen using the [Live streaming](../scene-editor/live-ops/live-streaming.md) feature of the [Admin tools](../scene-editor/live-ops/scene-admin.md) smart item.
 
-This streaming method uses the same comms architecture used for live communications between players, and is easy to set up and has a lot less delay than streaming from external sources.
+This streaming method uses the same comms architecture used for live communications between players. It's easy to set up and has much less delay than streaming from external sources.
 
 1. Add an [Admin tools](../scene-editor/live-ops/scene-admin.md) smart item to your scene, as well as a [Video player](../scene-editor/interactivity/video-screen.md) smart item.
 2. Publish your scene, either to a World or to Genesis City.
 3. Enter the scene as a player with the permission to use the Admin tools.
-4. Open the Amin console, select the **Video** tab, then select the **Live** functionality and click the **Get Stream Key** button.
+4. Open the Admin console, select the **Video** tab, then select the **Live** functionality and click the **Get Stream Key** button.
 5. Copy the **Server URL** and _Streaming key_\* to your streaming software (for example OBS).
 6. Press the **Activate** button to start streaming.
 
@@ -151,7 +151,7 @@ Material.setBasicMaterial(screen, {
 
 ### Video Materials
 
-Most of the times, you'll want to play videos on an unlit [Basic material](../sdk7/3d-essentials/materials.md#unlit-materials), rather than a PBR material. This results in a much brighter and crisper image, and is better for performance.
+Most of the time, you'll want to play videos on an unlit [Basic material](../sdk7/3d-essentials/materials.md#unlit-materials), rather than a PBR material. This results in a much brighter and crisper image and is better for performance.
 
 ```ts
 Material.setBasicMaterial(screen, {
@@ -159,7 +159,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-It's usually recommended to play videos on Basic unlit materials, as this is better for performance, but if you instead want to project a video onto a PBR material, keep in mind that the default properties make the video look rather opaque. You can enhance that by altering other properties of the material. Here are some recommended settings for the video to stand out more:
+It's usually recommended to play videos on Basic unlit materials, as this is better for performance. However, if you want to project a video onto a PBR material, keep in mind that the default properties make the video look rather opaque. You can enhance this by altering other properties of the material. Here are some recommended settings to make the video stand out more:
 
 ```ts
 Material.setPbrMaterial(screen, {
@@ -174,7 +174,7 @@ Material.setPbrMaterial(screen, {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: Since the video is a texture that's added to a material, you can also experiment with other properties of materials, like tinting it with a color, of adding other texture layers. for example to produce a dirty screen effect.
+**💡 Tip**: Since the video is a texture that's added to a material, you can also experiment with other properties of materials, like tinting it with a color, or adding other texture layers, for example to produce a dirty screen effect.
 
 See [materials](../sdk7/3d-essentials/materials.md) for more details.
 {% endhint %}
@@ -189,7 +189,7 @@ The following file formats are supported:
 
 Keep in mind that a video file adds to the total size of the scene, which makes the scene take longer to download for players walking into your scene. The video size might also make you go over the [scene limitations](../sdk7/optimizing/scene-limitations.md), as you have a maximum of 15 MB per parcel to use. We recommend compressing the video as much as possible, so that it's less of a problem.
 
-We also recommend starting to play the video when the player is near or performs an action to do that. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
+We also recommend starting to play the video when the player is nearby or performs an action to trigger it. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
 ### Start pause and stop a video
 
@@ -210,7 +210,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-To stop the video and send it back to the first frame, set the `position` property to 0. in the following example, clicking on the video stops it.
+To stop the video and send it back to the first frame, set the `position` property to 0. In the following example, clicking on the video stops it.
 
 ```ts
 pointerEventsSystem.onPointerDown(
@@ -240,11 +240,10 @@ The following optional properties are available to set on the `VideoPlayer` comp
 * `volume`: Lets you change the volume of the audio. _1_ by default.
 * `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _-1_ by default, which makes it start at the actual start of the video.
 * `loop`: Boolean that determines if the video is played continuously in a loop, or if it stops after playing once. _false_ by default.
-* `playbackRate`: The speed at which the video is played
 
 ### Play multiple videos
 
-To avoid running into performance problems, each scene is only allowed to play one single video texture at a time. However, a scene can play multiple copies of one same video texture in several different screens. That action is not restricted as it impacts performance considerably less than playing separate videos. To play a same video on multiple entities, simply assign the same instance of the video texture object to the `Material` components of each screen entity.
+To avoid running into performance problems, each scene is only allowed to play one video texture at a time. However, a scene can play multiple copies of the same video texture on several different screens. This is not restricted, as it impacts performance considerably less than playing separate videos. To play the same video on multiple entities, simply assign the same instance of the video texture object to the `Material` components of each screen entity.
 
 ```ts
 // #1
@@ -275,13 +274,13 @@ Material.setBasicMaterial(screen2, {
 })
 ```
 
-Note that in the example above, it's only necessary to create one `VideoPlayer` component, which controls the state of both video screens. In this case this component is assigned to belong to the `screen1` entity, but it could also be assigned to belong to any other entity on the scene, not necessarily one of the screens.
+Note that in the example above, it's only necessary to create one `VideoPlayer` component, which controls the state of both video screens. In this case, the component is assigned to the `screen1` entity, but it could also be assigned to any other entity in the scene, not necessarily one of the screens.
 
 ### Video events
 
 Easily handle state changes in a video, to respond to when a video starts playing, is paused, etc. This can be used for example to play animations in perfect sync with a video, ensuring they start at the same time as the video.
 
-Use ‘videoEventsSystem.registerVideoEventsEntity‘ to define a function that runs every time the state of the video assigned to an entity. Every time the state changes, your function can check the new state and respond accordingly.
+Use `videoEventsSystem.registerVideoEventsEntity` to define a function that runs every time the state of the video assigned to an entity changes. Every time the state changes, your function can check the new state and respond accordingly.
 
 ```ts
 import {
@@ -338,8 +337,8 @@ videoEventsSystem.registerVideoEventsEntity(
 
 The videoEvent object passed as an input for the function contains the following properties:
 
-* `currentOffset` (_number_): The current value of the `seek` property on the video. This value shows seconds after the video's original beginning. _-1_ by default, if the video hasn't started playing.
-* `state`: The value for the new video status of the video, expressed as a value from the `VideoState` enum. This enum can hold the following possible values:
+* `currentOffset` (_number_): The current value of the `position` property on the video. This value shows seconds after the video's original beginning. _-1_ by default, if the video hasn't started playing.
+* `state`: The new video status, expressed as a value from the `VideoState` enum. This enum can hold the following possible values:
   * `VideoState.VS_READY`
   * `VideoState.VS_NONE`
   * `VideoState.VS_ERROR`
@@ -373,7 +372,7 @@ A neat trick to have non-rectangular video screens is to apply an alpha texture 
 
 Use the following image to cut your video into a circular shape, with transparent corners.
 
-![](../../images/circle_mask.png)
+![](../../../.gitbook/assets/circle_mask.png)
 
 ```ts
 const videoTexture = Material.Texture.Video({
@@ -390,10 +389,10 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-![](../../images/circular-video-screen.png)
+![](../../../.gitbook/assets/circular-video-screen.png)
 
 {% hint style="warning" %}
-**📔 Note**: In previous versions, the `alphaTexture` property was only present in PRB materials, currently it only works in basic materials.
+**📔 Note**: In previous versions, the `alphaTexture` property was only present in PBR materials. Currently, it only works in basic materials.
 {% endhint %}
 
 ### Play a video on a glTF model
@@ -439,3 +438,50 @@ GltfNodeModifiers.create(
 The mapping of the video will follow the original UV mapping that the model uses. This means that if the model has a texture that is mapped to a specific part of the model, the video will be mapped to that same part.
 
 You can also use the `GltfNodeModifiers` component to play a video only on a specific mesh inside the model. For example, you can play it on a specific wall of a building, even though the model spans the entire building. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
+
+## Spatial audio
+
+By default, the video from a `VideoPlayer` component is global, meaning it will be heard at a consistent volume throughout your entire scene. If a player steps out of the scene, they will not hear the streaming at all.
+
+To make the audio spatial, set the `spatial` property to _true_.
+
+```ts
+VideoPlayer.create(entity, {
+	src: 'https://player.vimeo.com/progressive_redirect/playback/1145666916/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=db1cd6946851313cb8f7be60d1f6c30af0902bcc46fdae0ba2a06e5fdf44c329',
+	playing: true,
+	spatial: true,
+})
+```
+
+The video will now be heard from the position of the entity that owns the `VideoPlayer` component, and will be louder as the player approaches it.
+
+Control the spatial audio with the following properties:
+
+- `spatialMinDistance`: The minimum distance at which audio becomes spatial. If the player is closer, the audio will be heard at full volume. _0_ by default.
+- `spatialMaxDistance`: The maximum distance at which the audio is heard. If the player is further away, the audio will be heard at 0 volume. _60_ by default
+
+```ts
+const videoPlayerEntity = engine.addEntity();
+
+Transform.create(videoPlayerEntity, {
+    position: Vector3.create(8, 2, 8),
+});
+
+VideoPlayer.create(videoPlayerEntity, {
+	src: 'https://player.vimeo.com/progressive_redirect/playback/1145666916/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=db1cd6946851313cb8f7be60d1f6c30af0902bcc46fdae0ba2a06e5fdf44c329',
+	playing: true,
+	spatial: true,
+	spatialMinDistance: 5,
+	spatialMaxDistance: 10
+});
+
+MeshRenderer.setPlane(videoPlayerEntity)
+
+Material.setBasicMaterial(videoPlayerEntity, {
+texture: Material.Texture.Video({ videoPlayerEntity: videoPlayerEntity })
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: Some video formats don't support spatial audio. Make sure the stream is encoded in _mp4_, _m4a_, or _mov_.
+{% endhint %}

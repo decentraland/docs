@@ -22,14 +22,14 @@ The following fields can be configured, all of them are optional:
 
     * `src`: The path to the image file to use as a texture. (string)
     * `filterMode`: _(optional)_ Determines how pixels in the texture are stretched or compressed when rendered. . See [Texture Scaling](../sdk7/3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
-    * `wrapMode`: _(optional)_ Determines how a texture is tiled onto an entity. This takes a value from the `TextureWrapMode` enum. See \[Texture Wrapping]\(([See documentation](../README.md)). (WrapMode = 'repeat' | 'clamp' | 'mirror' | 'mirror-once')
+    * `wrapMode`: _(optional)_ Determines how a texture is tiled onto an entity. This takes a value from the `TextureWrapMode` enum. See \[Texture Wrapping]\(([See documentation](../)). (WrapMode = 'repeat' | 'clamp' | 'mirror' | 'mirror-once')
 
     > Tip: You can combine both `texture` and `color` properties on a single `uiBackground` component to produce a tinted texture.
 * `textureMode`: Selects how you want the texture to adapt to the size of the entity that it's applied to. (TextureMode = 'nine-slices' | 'center' | 'stretch')enum, which supports the following vales:
   * `center`: The texture is not stretched, it's positioned centered on the entity and parts of it may be cropped depending on the entity's size.
   * `stretch`: The texture is stretched to match the entire surface of the entity.
   * `nine-slices`: Parts of the texture are stetched to match the entire surface of the entity, leaving margins unstretched. See [nine-slice textures](ui_background.md#nine-slice-textures).
-* `avatarTexture`: Display an avatar profile thumbnail, based on an avatar ID. See \[Avatar Portraits]\(([See documentation](../README.md)).
+* `avatarTexture`: Display an avatar profile thumbnail, based on an avatar ID. See \[Avatar Portraits]\(([See documentation](../)).
 * `textureSlices`: Determine the margins to use when using the nine-slice texture mode, see [nine-slice textures](ui_background.md#nine-slice-textures). Set a number smaller than 1, as a fraction of the total width or height of the image.
 
 Simple color:
@@ -201,7 +201,7 @@ You can use [9-slice scaling](https://en.wikipedia.org/wiki/9-slice_scaling) wit
 
 With this popular technique, you slice an image into 9 segments, that will be stretched in different ways to preserve the proportions of the margins and corners. For example, use this to define rounded-corner backgrounds that easily adapt to any size. Consider the following image (borrowed from [Wikipedia](https://en.wikipedia.org/wiki/9-slice_scaling#/media/File:Traditional_scaling_vs_9-slice_scaling.svg)):
 
-![](../../images/media/9-slice.png)
+![](../../../.gitbook/assets/9-slice.png)
 
 In this image we see the orginal texture (top-left), and the result of scaling it in a traditional way (top-right); notice how the corners get deformed. Below that, we see the texture segmented into 9 slices (bottom-left), and then the result of stretching the image according to the 9-slice method (bottom-right).
 

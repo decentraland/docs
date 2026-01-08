@@ -1,5 +1,11 @@
 ---
-description: Aprende cómo hacer que las UIs sean dinámicas, respondiendo a cambios en los datos.
+description: >-
+  Aprende cómo hacer que las UIs sean dinámicas, respondiendo a cambios en los
+  datos.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/dynamic-ui
 ---
 
 # UI Dinámica

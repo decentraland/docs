@@ -1,7 +1,11 @@
 ---
 description: >-
-  La Programación Orientada a Datos es un enfoque poderoso de programación que obtiene el
-  máximo rendimiento.
+  La Programación Orientada a Datos es un enfoque poderoso de programación que
+  obtiene el máximo rendimiento.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/data-oriented-programming
 ---
 
 # Programación Orientada a Datos
@@ -21,8 +25,6 @@ La Programación Orientada a Datos es diferente de la Programación Orientada a 
 En la Programación Orientada a Datos, los datos no se estructuran alrededor de objetos, se estructuran para optimizar su facilidad de acceso. Las construcciones del mundo real que los datos representan no juegan ningún papel en los diferentes flujos que mutan esos datos.
 
 El modelo Entity Component System (ECS) sobre el que está construido el SDK de Decentraland es muy compatible con el enfoque de Programación Orientada a Datos. Cada componente es parte de una colección estructurada de datos. Los componentes pertenecen a una entidad por referencia, pero los datos no están estructurados alrededor de la entidad, los datos están estructurados como una colección de componentes similares. Por ejemplo, todos los componentes `Transform` en una escena son iguales. Uno de estos transforms podría pertenecer al modelo de tu edificio principal, otro a un vaso que es hijo de una mesa. Los sistemas en la escena luego procesan la lista de componentes `Transform` uno por uno, sin hacer distinciones. Todos los componentes `Transform` tienen los mismos campos y se someten a las mismas verificaciones.
-
-![](../images/media/component-stacks.png)
 
 Imagina una escena que tiene una docena de puertas que pueden estar abiertas o cerradas. Puedes representar el estado de todas estas puertas como un simple componente "isOpen" que contiene un valor booleano. Si "isOpen" es true la puerta debe estar abierta; si es false la puerta debe estar cerrada. Si un jugador hace clic en una puerta, debería cambiar de estado, y otros jugadores también deberían verla cambiar. Mientras tu escena está procesando un cambio en el estado de una puerta, y sincronizándolo con otros jugadores, la escena realmente no se preocupa por lo que "isOpen" representa. Todo el conjunto de componentes es solo una colección de booleanos que necesitan sincronizarse con otros jugadores. Un sistema separado en tu escena puede entonces encargarse de regularmente coincidir el estado de cada "isOpen" con la rotación de su puerta correspondiente.
 

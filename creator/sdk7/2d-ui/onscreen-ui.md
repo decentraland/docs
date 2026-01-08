@@ -20,7 +20,7 @@ A simple UI with static elements can look a lot like HTML, but when you add dyna
 
 The default Decentraland explorer UI includes a chat widget, a map, and other elements. These UI elements are always displayed on the top layer, above any scene-specific UI. So if your scene has UI elements that occupy the same screen space as these, they will be occluded.
 
-See [UX guidelines](../sdk7/design-experience/ux-ui-guide.md) for tips on how to design the look and feel of your UI.
+See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to design the look and feel of your UI.
 
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
 

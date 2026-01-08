@@ -8,7 +8,7 @@ description: Learn when and how to run asynchronous functions in your scene's co
 
 Most of the code in your scene runs synchronously using a single thread. That means that commands are executed sequentially line by line. Each command must first wait for the previous command to finish executing before it can start.
 
-Even the functions in your scene's systems are executed one by one, following a [priority order](../sdk7/architecture/systems.md#system-execution-order).
+Even the functions in your scene's systems are executed one by one, following a [priority order](../architecture/systems.md#system-execution-order).
 
 Running code synchronously ensures consistency, as you can always be sure you'll know the order in which the commands in your code run.
 
@@ -77,10 +77,10 @@ When your scene uses a `PointerEvent` or a `RayCast` component, the calculations
 You then need to create a system to process these results in the frame when they arrive.
 
 {% hint style="warning" %}
-**📔 Note**: If you handle clicks via the [**Register a callback**](../sdk7/interactivity/button-events/register-callback.md) approach, you don't need to explicitly create a system to handle this, but the same occurs in the background.
+**📔 Note**: If you handle clicks via the [**Register a callback**](../interactivity/button-events/register-callback.md) approach, you don't need to explicitly create a system to handle this, but the same occurs in the background.
 {% endhint %}
 
-See [click events](../sdk7/interactivity/button-events/click-events.md) and [raycasting](../sdk7/interactivity/raycasting.md).
+See [click events](../interactivity/button-events/click-events.md) and [raycasting](../interactivity/raycasting.md).
 
 {% hint style="info" %}
 **💡 Tip**: If the processing of the results of a raycast takes a lot of calculations (like running a path-finding algorithm) you might want to run that computation in an asynchronous function.

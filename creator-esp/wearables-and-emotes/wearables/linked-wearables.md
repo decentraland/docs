@@ -1,5 +1,9 @@
 ---
 description: Representaciones Wearables De Tokens De Terceros
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/wearables/linked-wearables
 ---
 
 # Linked Wearables
@@ -28,12 +32,12 @@ Soportamos 4 mecanismos para vincular tus wearables a NFTs. Todos estos mecanism
 
 La siguiente tabla muestra los mecanismos mencionados:
 
-| Match         | Descripción                                                                                                                                                                                                                                             |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All NFTs      | Un usuario que posea cualquiera de los NFTs de la colección poseerá el wearable                                                                                                                                                                       |
+| Match         | Descripción                                                                                                                                                                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All NFTs      | Un usuario que posea cualquiera de los NFTs de la colección poseerá el wearable                                                                                                                                                                |
 | Single NFT    | Un usuario que posea un NFT especificado por TOKEN ID poseerá el wearable. _ej. 123456. El usuario poseerá el wearable si posee el NFT con TOKEN ID: 123456_                                                                                   |
 | Multiple NFTs | Un usuario que posea uno de muchos NFTs especificados por TOKEN IDs, descritos separados por una coma poseerá el wearable. _ej. 123456, 123457, 123458. El usuario poseerá el wearable si posee el NFT con TOKEN ID: 123456 o 123457 o 123458_ |
-| Range of NFTs | Un usuario que posea uno de muchos NFTs especificados en el rango de TOKEN IDs poseerá el wearable. _ej. \[1, 1000]. El usuario poseerá el wearable si posee el NFT con TOKEN ID 1 o 2 o 3 o 4 o 5 ... o 100_                              |
+| Range of NFTs | Un usuario que posea uno de muchos NFTs especificados en el rango de TOKEN IDs poseerá el wearable. _ej. \[1, 1000]. El usuario poseerá el wearable si posee el NFT con TOKEN ID 1 o 2 o 3 o 4 o 5 ... o 100_                                  |
 
 ### Tipos de Linked Wearables Collections
 
@@ -54,15 +58,9 @@ Los Linked Wearables están agrupados en colecciones que pueden ser creadas, edi
 
 Para crear un nuevo Linked Wearable sigue estos pasos:
 
-1.  En la sección de Colecciones, haz clic en el botón **Create Collection**.
-
-    ![](../images/media/collections-page.png)
-2.  Selecciona la opción Linked Wearable Collection haciendo clic en el botón **Create Collection** bajo la sección Linked Collections.
-
-    ![](../images/media/collection-creation-selector-modal.png)
-3.  Elige un nombre para la colección y vincula la colección a tu colección NFT estableciendo su dirección de contrato y la red en la que está. **El contrato será validado para asegurarse de que cumple con los estándares de contratos NFT.**
-
-    ![](../images/media/linked-wearables/linkedw-collection-creation.png)
+1. En la sección de Colecciones, haz clic en el botón **Create Collection**.
+2. Selecciona la opción Linked Wearable Collection haciendo clic en el botón **Create Collection** bajo la sección Linked Collections.
+3. Elige un nombre para la colección y vincula la colección a tu colección NFT estableciendo su dirección de contrato y la red en la que está. **El contrato será validado para asegurarse de que cumple con los estándares de contratos NFT.**
 4. Haz clic en el botón **Create** para crear la colección.
 
 ### Agregando Wearables a la Linked Wearables Collection - Uno por Uno
@@ -71,15 +69,9 @@ Es posible, como ya sucede con los wearables estándar, subir tus modelos 3D de 
 
 Para hacer eso, sigue estos pasos:
 
-1.  Haz clic en el botón **New items**.
-
-    ![](../images/media/linked-wearables/linkedw-empty-collection.png)
-2.  Selecciona la opción **Singe items**.
-
-    ![](../images/media/linked-wearables/multiple-items-upload.png)
-3.  Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" para más información sobre cómo configurarlo.
-
-    ![](../images/media/linked-wearables/linkedw-mapping.png)
+1. Haz clic en el botón **New items**.
+2. Selecciona la opción **Singe items**.
+3. Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" para más información sobre cómo configurarlo.
 
 ### Agregando Wearables a la Linked Wearables Collection - En Lote
 
@@ -251,12 +243,7 @@ Los IDs o URNs siguen un formato específico, aceptan:
 Puedes recuperar el ID (o URN) desde la página de la colección siguiendo los siguientes pasos:
 
 1. Ir a la vista de la colección de la que quieres copiar el URN y hacer clic en la opción Edit URN en el menú de opciones:
-
-![](../images/media/linked-wearables/collection-options-menu.png)
-
 2. Copiar el identificador que está debajo del campo de texto:
-
-![](../images/media/linked-wearables/edit-collection-urn-modal.png)
 
 Por ejemplo, si el URN o ID recuperado de la UI para la colección es `urn:decentraland:matic:collections-thirdparty:my-third-party:my-collection` y estás identificando tus wearables numéricamente, el URN para el ejemplo sería `urn:decentraland:matic:collections-thirdparty:my-third-party:my-collection:1`, siendo `1` el número del wearable.
 
@@ -264,33 +251,15 @@ Por ejemplo, si el URN o ID recuperado de la UI para la colección es `urn:decen
 
 Una vez que todos los archivos estén listos, para subir los wearables en lote, sigue estos pasos:
 
-1.  Haz clic en el botón **New items**.
-
-    ![](../images/media/linked-wearables/linkedw-empty-collection.png)
-2.  Selecciona la opción **Multiple items**.
-
-    ![](../images/media/linked-wearables/multiple-items-upload.png)
-3.  Haz clic en el enlace **Browse yor computer** para abrir tu administrador de archivos y seleccionar todos los zips que contienen tus wearables.
-
-    ![](../images/media/linked-wearables/multiple-files-select-in-bulk.png)
-4.  Revisa si todos los archivos son correctos o si necesitan ser corregidos. En este caso, el modelo del wearable no está configurado o el archivo `wearable.json` tiene una representation configurada incorrectamente.
-
-    ![](../images/media/linked-wearables/multiple-files-with-errors.png)
-5.  Corrige cualquier error haciendo clic en el botón **Add more** y volviendo a subir los archivos fallidos con el mismo nombre o descartando los errores usando el ícono de papelera en la sección superior derecha del modal.
-
-    ![](../images/media/linked-wearables/multiple-files-upload-correct-file.png)
-6.  Sube todos los wearables haciendo clic en **Upload items**.
-
-    ![](../images/media/linked-wearables/multiple-files-without-errors.png)
-7.  ¡Ten paciencia, esto podría tomar un tiempo!
-
-    ![](../images/media/linked-wearables/multiple-files-uploading.png)
-8.  ¡Éxito! Tus ítems ahora están disponibles en tu colección.
-
-    ![](../images/media/linked-wearables/multiple-files-upload-success.png)
-9.  Selecciona si tu colección es programática o estándar. Consulta la sección [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) para establecer correctamente qué tipo de colección estás construyendo.
-
-    ![](../images/media/linked-wearables/collection-type-selector.png)
+1. Haz clic en el botón **New items**.
+2. Selecciona la opción **Multiple items**.
+3. Haz clic en el enlace **Browse yor computer** para abrir tu administrador de archivos y seleccionar todos los zips que contienen tus wearables.
+4. Revisa si todos los archivos son correctos o si necesitan ser corregidos. En este caso, el modelo del wearable no está configurado o el archivo `wearable.json` tiene una representation configurada incorrectamente.
+5. Corrige cualquier error haciendo clic en el botón **Add more** y volviendo a subir los archivos fallidos con el mismo nombre o descartando los errores usando el ícono de papelera en la sección superior derecha del modal.
+6. Sube todos los wearables haciendo clic en **Upload items**.
+7. ¡Ten paciencia, esto podría tomar un tiempo!
+8. ¡Éxito! Tus ítems ahora están disponibles en tu colección.
+9. Selecciona si tu colección es programática o estándar. Consulta la sección [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) para establecer correctamente qué tipo de colección estás construyendo.
 
 #### Errores comunes al subir ítems por lotes
 
@@ -308,12 +277,8 @@ Los Linked Wearables pueden verse en el mundo para revisar cómo funcionará el 
 
 Para poder ver un wearable en el mundo, sigue estos pasos:
 
-1.  Haz clic en el menú de tres puntos (tres puntos horizontales) a la derecha del ítem que quieres ver en el mundo. Aparecerá un desplegable. Selecciona **See in Decentraland**.
-
-    ![](../images/media/linked-wearables/see-in-world-button.png)
-2.  El Mundo de Decentraland se abrirá. Navega a tu backpack para ver el wearable.
-
-    ![](../images/media/linked-wearables/see-in-world-item.png)
+1. Haz clic en el menú de tres puntos (tres puntos horizontales) a la derecha del ítem que quieres ver en el mundo. Aparecerá un desplegable. Selecciona **See in Decentraland**.
+2. El Mundo de Decentraland se abrirá. Navega a tu backpack para ver el wearable.
 
 {% hint style="warning" %}
 **⚠️ Aviso**: La vista previa en el mundo funciona con la Versión Web Desactualizada del Cliente de Decentraland. No es posible probarlos aún en el Decentraland Desktop Client 2.0.
@@ -327,12 +292,8 @@ Una colección puede ser renombrada por su creador **solo si la colección no ti
 
 Para editar el nombre de una Linked Wearable Collection sigue estos pasos:
 
-1.  Haz clic en el nombre de la colección.
-
-    ![](../images/media/linked-wearables/edit-collection-name.png)
-2.  Elige un nuevo nombre para la colección y haz clic en el botón guardar.
-
-    ![](../images/media/linked-wearables/edit-collection-name-modal.png)
+1. Haz clic en el nombre de la colección.
+2. Elige un nuevo nombre para la colección y haz clic en el botón guardar.
 
 ### Eliminando la colección
 
@@ -340,12 +301,8 @@ Una colección puede ser eliminada por su propietario **solo si la colección no
 
 Para eliminar una Linked Wearable Collection sigue estos pasos:
 
-1.  Haz clic en el menú de tres puntos (tres puntos horizontales) en el extremo derecho del conjunto de botones. Aparecerá un desplegable. Selecciona **Delete**.
-
-    ![](../images/media/linked-wearables/collection-options-menu.png)
-2.  Aparecerá un modal de Confirmación, si deseas continuar, haz clic en **Ok**, de lo contrario haz clic en **Cancel**.
-
-    ![](../images/media/linked-wearables/delete-collection-confirmation-modal.png)
+1. Haz clic en el menú de tres puntos (tres puntos horizontales) en el extremo derecho del conjunto de botones. Aparecerá un desplegable. Selecciona **Delete**.
+2. Aparecerá un modal de Confirmación, si deseas continuar, haz clic en **Ok**, de lo contrario haz clic en **Cancel**.
 
 ### Editando un solo wearable
 
@@ -353,16 +310,12 @@ Para eliminar una Linked Wearable Collection sigue estos pasos:
 
 Para editar un solo wearable, sigue estos pasos:
 
-1.  Haz clic en el menú de tres puntos (tres puntos horizontales) a la derecha del ítem que quieres ver en el mundo. Aparecerá un desplegable. Selecciona **Open in editor**.
-
-    ![](../images/media/linked-wearables/edit-single-wearable.png)
+1. Haz clic en el menú de tres puntos (tres puntos horizontales) a la derecha del ítem que quieres ver en el mundo. Aparecerá un desplegable. Selecciona **Open in editor**.
 2. Edita el wearable como se editan los wearables estándar. Sigue la sección **Editing items** en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md) sobre cómo crear una miniatura personalizada.
 
 #### Editando el enlace del wearable
 
 El enlace de los wearables con la colección NFT es una de las propiedades más importantes de un Linked Wearable. Para editar cómo están vinculados a los NFTs, puedes cambiar rápidamente el valor del enlace desde la vista de la colección, sin necesidad de navegar a otra página.
-
-![](../images/media/linked-wearables/edit-wearable-mapping.png)
 
 Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" para más información sobre cómo vincular tus wearables.
 
@@ -414,30 +367,14 @@ Donde el campo `id` está establecido al `id` o URN del wearable que será cambi
 
 Una vez que los archivos ZIP estén listos, sigue estos pasos para editar los ítems en lote:
 
-1.  Haz clic en el menú de tres puntos (tres puntos horizontales) en el extremo derecho del conjunto de botones. Aparecerá un desplegable. Selecciona **Edit in bulk**.
-
-    ![](../images/media/linked-wearables/edit-multiple-files-bulk-button.png)
-2.  Aparecerá un modal similar al de **Uploading models in bulk**. Haz clic en el enlace **Browse your computer** para abrir tu administrador de archivos.
-
-    ![](../images/media/linked-wearables/edit-multiple-files-modal.png)
-3.  Selecciona todos los archivos ZIP de los ítems que serán editados.
-
-    ![](../images/media/linked-wearables/multiple-files-select-in-bulk.png)
-4.  Revisa si todos los archivos son correctos o si necesitan ser corregidos. En este caso, el modelo del wearable no está configurado o el archivo `wearable.json` tiene una representation configurada incorrectamente.
-
-    ![](../images/media/linked-wearables/edit-multiple-files-with-errors.png)
-5.  Corrige cualquier error haciendo clic en el botón **Add more** y volviendo a subir los archivos fallidos con el mismo nombre o descartando los errores usando el ícono de papelera en la sección superior derecha del modal.
-
-    ![](../images/media/linked-wearables/multiple-files-upload-correct-file.png)
-6.  Sube todos los wearables haciendo clic en **Upload items**.
-
-    ![](../images/media/linked-wearables/edit-multiple-files-without-errors.png)
-7.  ¡Ten paciencia, esto podría tomar un tiempo!
-
-    ![](../images/media/linked-wearables/edit-multiple-files-uploading.png)
-8.  ¡Éxito! Tus ítems ahora están disponibles en tu colección. Consulta el post del foro para cualquier actualización del curador.
-
-    ![](../images/media/linked-wearables/edit-multiple-files-success.png)
+1. Haz clic en el menú de tres puntos (tres puntos horizontales) en el extremo derecho del conjunto de botones. Aparecerá un desplegable. Selecciona **Edit in bulk**.
+2. Aparecerá un modal similar al de **Uploading models in bulk**. Haz clic en el enlace **Browse your computer** para abrir tu administrador de archivos.
+3. Selecciona todos los archivos ZIP de los ítems que serán editados.
+4. Revisa si todos los archivos son correctos o si necesitan ser corregidos. En este caso, el modelo del wearable no está configurado o el archivo `wearable.json` tiene una representation configurada incorrectamente.
+5. Corrige cualquier error haciendo clic en el botón **Add more** y volviendo a subir los archivos fallidos con el mismo nombre o descartando los errores usando el ícono de papelera en la sección superior derecha del modal.
+6. Sube todos los wearables haciendo clic en **Upload items**.
+7. ¡Ten paciencia, esto podría tomar un tiempo!
+8. ¡Éxito! Tus ítems ahora están disponibles en tu colección. Consulta el post del foro para cualquier actualización del curador.
 
 ## Publicando tus Linked Wearables
 
@@ -460,33 +397,15 @@ Una vez que tus wearables estén listos, deben publicarse para curación. Tus we
 
 Para publicar tus wearables, necesitas:
 
-1.  Selecciona los ítems a publicar haciendo clic en la casilla junto a ellos. Haz clic en el botón **Publish** cuando estés listo con tu selección.
-
-    ![](../images/media/linked-wearables/selecting-to-publish.png)
-2.  Confirma el nombre de tu colección. Una vez que publiques tus ítems, cambiar el nombre de la colección no es posible, así que asegúrate de verificarlo minuciosamente.
-
-    ![](../images/media/linked-wearables/selecting-to-publish.png)
-3.  Dale un vistazo a los ítems que estás publicando. Haz clic en el botón **Confirm items** cuando estés listo.
-
-    ![](../images/media/linked-wearables/check-items-to-publish.png)
-4.  Firma la confirmación de publicación de tus ítems en tu wallet.
-
-    ![](../images/media/linked-wearables/sign-items-confirmation.png)
-5.  Lee y verifica los Términos y Condiciones.
-
-    ![](../images/media/linked-wearables/terms-and-conditions.png)
-6.  Verifica tus tarifas de publicación. Las tarifas requeridas para publicar los wearables se describen en la [sección Costs](linked-wearables.md#costs).
-
-    ![](../images/media/linked-wearables/publishing-payment.png)
-7.  Si es tu primera vez publicando Linked Wearables, necesitarás autorizar al smart contract de Linked Wearables para operar MANA en tu nombre. Este paso es necesario para deducir el MANA usado para pagar las tarifas de publicación de tu wallet.
-
-    ![](../images/media/linked-wearables/first-time-publishing.png)
-8.  Paga la tarifa de publicación y completa la publicación realizando la transacción. Dependiendo de la congestión de la red, esto podría tomar un tiempo.
-
-    ![](../images/media/linked-wearables/complete-publishing.png)
-9.  ¡Éxito! Has publicado tus ítems. Tus ítems pasarán por el proceso de curación como lo hacen las colecciones regulares. Puedes comunicarte con el curador a través del post del foro.
-
-    ![](../images/media/linked-wearables/publication-success.png)
+1. Selecciona los ítems a publicar haciendo clic en la casilla junto a ellos. Haz clic en el botón **Publish** cuando estés listo con tu selección.
+2. Confirma el nombre de tu colección. Una vez que publiques tus ítems, cambiar el nombre de la colección no es posible, así que asegúrate de verificarlo minuciosamente.
+3. Dale un vistazo a los ítems que estás publicando. Haz clic en el botón **Confirm items** cuando estés listo.
+4. Firma la confirmación de publicación de tus ítems en tu wallet.
+5. Lee y verifica los Términos y Condiciones.
+6. Verifica tus tarifas de publicación. Las tarifas requeridas para publicar los wearables se describen en la [sección Costs](linked-wearables.md#costs).
+7. Si es tu primera vez publicando Linked Wearables, necesitarás autorizar al smart contract de Linked Wearables para operar MANA en tu nombre. Este paso es necesario para deducir el MANA usado para pagar las tarifas de publicación de tu wallet.
+8. Paga la tarifa de publicación y completa la publicación realizando la transacción. Dependiendo de la congestión de la red, esto podría tomar un tiempo.
+9. ¡Éxito! Has publicado tus ítems. Tus ítems pasarán por el proceso de curación como lo hacen las colecciones regulares. Puedes comunicarte con el curador a través del post del foro.
 
 ### Enviando cambios para revisión
 
@@ -494,15 +413,9 @@ Los wearables publicados y aprobados que son editados necesitan pasar por el pro
 
 Para enviar cambios para que sean curados, necesitas:
 
-1.  Selecciona los ítems con cambios haciendo clic en la casilla junto a ellos. Haz clic en el botón **Push changes** cuando estés listo con tu selección.
-
-    ![](../images/media/linked-wearables/select-push-changes-items.png)
-2.  Procede con el proceso de envío de cambios. Como dice el modal, estos cambios necesitarán pasar por la fase de curación una vez más.
-
-    ![](../images/media/linked-wearables/confirm-push-changes.png)
-3.  Lee y verifica los Términos y Condiciones. Al aceptarlos, los ítems estarán listos para ser curados nuevamente.
-
-    ![](../images/media/linked-wearables/accept-push-changes-terms-and-conditions.png)
+1. Selecciona los ítems con cambios haciendo clic en la casilla junto a ellos. Haz clic en el botón **Push changes** cuando estés listo con tu selección.
+2. Procede con el proceso de envío de cambios. Como dice el modal, estos cambios necesitarán pasar por la fase de curación una vez más.
+3. Lee y verifica los Términos y Condiciones. Al aceptarlos, los ítems estarán listos para ser curados nuevamente.
 
 ### Curación
 

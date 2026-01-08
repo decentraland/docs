@@ -1,5 +1,8 @@
 ---
 description: Características adicionales del SDK
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/other
 ---
 
 # Other Features

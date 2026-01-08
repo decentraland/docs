@@ -1,5 +1,11 @@
 ---
-description: Establece la posición, escala, padding y otras propiedades de las entidades UI.
+description: >-
+  Establece la posición, escala, padding y otras propiedades de las entidades
+  UI.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/ui-positioning
 ---
 
 # Posicionamiento UI
@@ -283,4 +289,4 @@ export const uiMenu = () => (
 Algunas otras mejores prácticas respecto a tamaños UI:
 
 * Si el ancho o alto de cualquier elemento UI es dinámico, es bueno también usar los parámetros `maxWidth`, `minWidth`, `maxHeight`, y `minHeight` para asegurarse de que permanezcan dentro de valores razonables.
-* El tamaño de fuente del texto es relativo a un número fijo de píxeles, debes hacerlo dinámico para que permanezca legible en pantallas retina. Consulta [Tamaño de texto responsivo](../sdk7/2d-ui/ui\_text.md#responsive-text-size)
+* El tamaño de fuente del texto es relativo a un número fijo de píxeles, debes hacerlo dinámico para que permanezca legible en pantallas retina. Consulta [Tamaño de texto responsivo](../sdk7/2d-ui/ui_text.md#responsive-text-size)

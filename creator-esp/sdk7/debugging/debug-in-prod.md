@@ -1,5 +1,9 @@
 ---
 description: Cómo puedes depurar tu scene que está ejecutándose dentro de Decentraland
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/debugging/debug-in-prod
 ---
 
 # Debug in Production
@@ -41,7 +45,7 @@ Para abrir Decentraland con el parámetro `scene-console`, ya sea:
   * **macOS**: `open Decentraland.app --args --position 0,0 --scene-console true`
   * **winOS**: `"C:\Users\[YOUR-USER]\Downloads\Decentraland_windows64\Decentraland.exe" --position 0,0 --scene-console true`
 
-{% hint style="info" %} **💡 Tip**: Cambia el parámetro **position** a las coordenadas de tu scene, para cargar directamente en tu scene. {% endhint %}
+\{% hint style="info" %\} **💡 Tip**: Cambia el parámetro **position** a las coordenadas de tu scene, para cargar directamente en tu scene. \{% endhint %\}
 
 Cuando ejecutes Decentraland con el `scene-console`, puedes abrir la consola de tres maneras:
 

@@ -1,5 +1,9 @@
 ---
 description: Características sobre el rig del avatar y archivo descargable.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/emotes/rig-features
 ---
 
 # Rig Features

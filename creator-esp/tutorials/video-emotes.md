@@ -2,7 +2,8 @@
 description: Tutoriales en video para crear emotes en Decentraland
 metaLinks:
   alternates:
-    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials/video-emotes
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials-and-examples/video-emotes
 ---
 
 # Video Emotes

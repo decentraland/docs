@@ -6,7 +6,7 @@ description: Guidelines on how to provide feedback about SDK7
 
 ### Documentation
 
-Find the full documentation for SDK7 in under the **SDK7** section of the documentation.
+Find the full documentation for SDK7 in the **SDK7** section of the documentation.
 
 ### Using the playground
 
@@ -16,7 +16,7 @@ If you run into any issues, please copy a URL to the current setup of your scene
 
 ### Using SDK 7
 
-Install the [Creator Hub](../scene-editor/get-started/about-editor.md).
+Install the [Creator Hub](../../scene-editor/get-started/about-editor.md).
 
 {% hint style="warning" %}
 **📔 Note**: Notice that scenes that use SDK7 don't have the `decentraland-ecs` package installed. Instead, they have the `@dcl/sdk` package.
@@ -24,7 +24,7 @@ Install the [Creator Hub](../scene-editor/get-started/about-editor.md).
 
 ### In production
 
-You can deploy scenes with SDK7 via the **Publish** button on the Scene Editor.
+You can deploy scenes with SDK7 via the **Publish** button on the Scene Editor in Creator Hub.
 
 ### Example scenes
 
@@ -34,4 +34,4 @@ You can find more example scenes written with SDK7 here:
 
 ### Reporting issues
 
-If you encounter a problem, please see [Report a bug](../sdk7/debugging/report-bug.md).
+If you encounter a problem, please see [Report a bug](../debugging/report-bug.md).

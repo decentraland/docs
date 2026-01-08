@@ -1,5 +1,9 @@
 ---
 description: Transmite video en vivo a tu escena usando el Video Screen y Admin Tools.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/live-ops/live-streaming
 ---
 
 # Live Streaming

@@ -1,7 +1,11 @@
 ---
 description: >-
-  Aprende sobre cómo obtener listas de entidades que tienen componentes en común, para
-  facilitar su verificación o actualización.
+  Aprende sobre cómo obtener listas de entidades que tienen componentes en
+  común, para facilitar su verificación o actualización.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/querying-components
 ---
 
 # Consultar Componentes

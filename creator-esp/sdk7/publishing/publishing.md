@@ -1,5 +1,9 @@
 ---
 description: ¿Cómo publicar mi proyecto?
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/publishing/publishing
 ---
 
 # Publicación
@@ -12,9 +16,7 @@ Asegúrate de lo siguiente:
 * Tienes una cuenta de [Metamask](https://metamask.io/), con tus parcelas de LAND asignadas a ella.
 *   Posees la cantidad necesaria de parcelas de LAND adyacentes o un NAME de Decentraland. De lo contrario, puedes comprar LAND en el [Market](https://market.decentraland.org) o un NAME en el [Builder](https://decentraland.org/builder/names).
 
-    {% hint style="warning" %}
-    **📔 Nota**: Las escenas multi-parcela solo pueden desplegarse en parcelas adyacentes.
-    {% endhint %}
+    \{% hint style="warning" %\} **📔 Nota**: Las escenas multi-parcela solo pueden desplegarse en parcelas adyacentes. \{% endhint %\}
 
 {% hint style="danger" %}
 **❗Advertencia**: Al planear eventos en vivo, asegúrate de no hacer cambios de último minuto a la escena justo antes del evento.
@@ -53,9 +55,6 @@ Asegúrate de haber [instalado el Creator Hub](../scene-editor/get-started/edito
    * Selecciona **PUBLISH TO WORLD** para hacer que tu escena esté disponible en uno de tus [WORLDs](../worlds/about.md). Luego selecciona cuál de tus NAMEs o Dominios ENS publicar.
    * Selecciona **PUBLISH TO LAND** si posees land, o te han dado permisos de despliegue por un propietario. Luego selecciona las parcelas donde quieres que se despliegue en el mapa. Las parcelas donde se te permite desplegar se muestran en rosa.
    * Selecciona **Alternative servers** para publicar en el [servidor de prueba](publishing.md#the-test-server) o un [servidor personalizado](publishing.md#custom-servers).
-
-![](../images/editor/publish-options.png)
-
 4. Esto abre una nueva pestaña en tu navegador, mostrando detalles sobre la carga. Aprueba la transacción.
    * Para LAND en una cuenta de navegador Metamask, confirma el despliegue. Luego aprueba la transacción en la extensión del navegador Metamask.
    * Para LAND vinculado a un wallet que puedes usar vía Wallet Connect, haz clic en **Connect wallet**, luego escanea el código QR con tu dispositivo móvil y sigue los pasos en Wallet Connect.
@@ -63,7 +62,12 @@ Asegúrate de haber [instalado el Creator Hub](../scene-editor/get-started/edito
 #### Vía el CLI
 
 1. Inicia sesión en tu cuenta de Metamask con la misma dirección pública asociada con tus parcelas en Decentraland.
-2. Ejecuta `npm run deploy` desde la carpeta de la escena. {% hint style="info" %} **💡 Tip**: Si hay archivos en tu carpeta de proyecto que no quieres desplegar, lístalos en el archivo _.dclignore_ antes de desplegar. {% endhint %}
+2. Ejecuta `npm run deploy` desde la carpeta de la escena.
+
+{% hint style="info" %}
+\*\*💡 Tip\*\*: Si hay archivos en tu carpeta de proyecto que no quieres desplegar, lístalos en el archivo \_.dclignore\_ antes de desplegar.
+{% endhint %}
+
 3. Se abrirá una pestaña del navegador, mostrando a qué parcelas estás desplegando. Haz clic en **Sign and Deploy**.
 4. Metamask se abre, notificándote que tu firma es solicitada. Haz clic en **Sign** para confirmar esta acción.
 

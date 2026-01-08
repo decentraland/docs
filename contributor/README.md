@@ -53,13 +53,10 @@ For contributors, start by exploring the [Contributor Guides](contributor-guides
 
 To get additional information and continue learning, you may want to check out:
 
-- The [Ask Me Anything sessions](https://www.notion.so/decentraland/Decentraland-Foundation-Technical-AMA-230fcf1ca1ec4d49922744fe91e6995d?d=8508f4ca20eb4623b578feb235f86cef#bff4e53f1c664d66802e4770f46b959c), where members of the community can present questions, comments or concerns to technical teams at the Decentraland Foundation. They are hosted monthly, and you can attend freely!
-
-- The [status page](https://status.decentraland.org/), to see the current platform status, incident history and some metrics.
-
-- The [Architecture Decision Records](https://adr.decentraland.org/), a collection of design documents describing the state and evolution of different aspects of Decentraland.
-
-- The [Decentraland organization in GitHub](https://github.com/decentraland), where all the open-source repositories are hosted.
+* The [Ask Me Anything sessions](https://www.notion.so/decentraland/Decentraland-Foundation-Technical-AMA-230fcf1ca1ec4d49922744fe91e6995d?d=8508f4ca20eb4623b578feb235f86cef#bff4e53f1c664d66802e4770f46b959c), where members of the community can present questions, comments or concerns to technical teams at the Decentraland Foundation. They are hosted monthly, and you can attend freely!
+* The [status page](https://status.decentraland.org/), to see the current platform status, incident history and some metrics.
+* The [Architecture Decision Records](https://adr.decentraland.org/), a collection of design documents describing the state and evolution of different aspects of Decentraland.
+* The [Decentraland organization in GitHub](https://github.com/decentraland), where all the open-source repositories are hosted.
 
 ## Contributing
 

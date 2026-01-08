@@ -1,5 +1,11 @@
 ---
-description: Usar un servidor para sincronizar cambios en la escena para todos los jugadores
+description: >-
+  Usar un servidor para sincronizar cambios en la escena para todos los
+  jugadores
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/networking/authoritative-servers
 ---
 
 # Servidores Autoritativos
@@ -47,8 +53,6 @@ Si lanzas una vista previa de escena y la abres en dos (o más) ventanas diferen
 Interactúa con la escena en una ventana, luego cambia a la otra para ver que los efectos de esa interacción también son visibles allí.
 
 Usando el Creator Hub, haz clic en el botón Preview una segunda vez, y eso abre una segunda ventana del explorador de Decentraland. Debes conectarte en ambas ventanas con direcciones diferentes. Las mismas sesiones permanecerán abiertas mientras la escena se recarga.
-
-![](../images/editor/preview-button.png)
 
 Como alternativa, puedes abrir una segunda ventana del explorador de Decentraland escribiendo lo siguiente en una URL del navegador:
 

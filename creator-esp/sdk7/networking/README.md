@@ -1,5 +1,8 @@
 ---
 description: Construye experiencias multijugador y en red
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/networking
 ---
 
 # Networking

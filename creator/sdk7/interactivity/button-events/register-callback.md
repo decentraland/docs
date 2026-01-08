@@ -6,13 +6,13 @@ description: Learn how to handle user clicks in your scene.
 
 The easiest way to handle button events is to register a callback function for a particular entity. Every time that entity is interacted with using a specific button, the callback function is called.
 
-If you need to add the same behavior to multiple similar entities, consider using the [System-based](./sdk7/interactivity/button-events/system-based-events.md) approach instead of adding callbacks to each entity. The system-based approach can result in more efficiency as you iterate over a list of similar entities.
+If you need to add the same behavior to multiple similar entities, consider using the [System-based](system-based-events.md) approach instead of adding callbacks to each entity. The system-based approach can result in more efficiency as you iterate over a list of similar entities.
 
 The Register callback approach is especially useful if you want to describe a behavior that affects a single entity, as it's more straight forward.
 
 {% hint style="warning" %}
 **📔 Note**:\
-For an entity to be interactive, it **must** have a [collider](./sdk7/3d-essentials/colliders.md). See [obstacles](./sdk7/interactivity/button-events/click-events.md#obstacles) for more details.
+For an entity to be interactive, it **must** have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
 {% endhint %}
 
 ### Pointer down
@@ -24,7 +24,7 @@ This statement requires two parameters:
 * `data`: An object that contains the following:
   * `entity`: The entity to handle
   * `opts`: An object with optional additional data:
-    * `button`: Which button to listen for. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
+    * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
     * `maxDistance`: How far away can the player be from the entity to be able to interact with this entity, in meters. If the player is too far, there will be no hover feedback and pointer events won't work.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
     * `hideFeedback`: If true, it hides both the hover hint and the edge highlight for this entity. _false_ by default.
@@ -43,7 +43,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-The above command leaves the callback function registered, and will be called as an [asynchronous functions](./sdk7/programming-patterns/async-functions.md) every time the related button event occurs.
+The above command leaves the callback function registered, and will be called as an [asynchronous functions](../../programming-patterns/async-functions.md) every time the related button event occurs.
 
 {% hint style="warning" %}
 **📔 Note**:\
@@ -119,7 +119,7 @@ pointerEventsSystem.onPointerDown(
 
 #### Change existing feedback
 
-When registering an input action with the `EventsSystem`, this is creating a `PointerEvents` component and adding it to the interactive entity behind the scenes. This component handles the behavior of the UI hover hint. To change the behavior of the hover feedback, modify this component. See [Show feedback](./sdk7/interactivity/button-events/system-based-events.md#show-feedback) for more about how to deal with this component.
+When registering an input action with the `EventsSystem`, this is creating a `PointerEvents` component and adding it to the interactive entity behind the scenes. This component handles the behavior of the UI hover hint. To change the behavior of the hover feedback, modify this component. See [Show feedback](system-based-events.md#show-feedback) for more about how to deal with this component.
 
 ```ts
 const hoverFeedback = PointerEvents.getMutable(myEntity)
@@ -148,7 +148,7 @@ This statement requires three parameters:
 * `data`: An object that contains the following:
   * `entity`: The entity to handle
   * `opts`: An object with optional additional data:
-    * `button`: Which button to listen for. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
+    * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
     * `hideFeedback`: If true, it hides the hover hint for this entity.
     * `maxDistance`: How far away can the player be from the entity to be able to interact with this entity, in meters. If the player is too far, there will be no hover feedback and pointer events won't work.
@@ -174,7 +174,7 @@ Once removed, the hover feedback on the entity should no longer be displayed, an
 
 ### Data from input action
 
-Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../README.md)) for a description of all of the data available.
+Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../../../../)) for a description of all of the data available.
 
 To fetch this data, pass a parameter to the callback function. This parameter contains the full data structure with data about the input event.
 
@@ -189,7 +189,7 @@ pointerEventsSystem.onPointerDown(
 
 #### Handle multiple buttons
 
-You can't register more than one `onPointerDown` on a single entity. Ideally you should use the [System-based](./sdk7/interactivity/button-events/system-based-events.md) approach, as this allows you to handle as many different inputs as you wish, and display a UI hover feedback hint for each button.
+You can't register more than one `onPointerDown` on a single entity. Ideally you should use the [System-based](system-based-events.md) approach, as this allows you to handle as many different inputs as you wish, and display a UI hover feedback hint for each button.
 
 As an alternative, you can use the Register callback approach and set the `button` field as `InputAction.IA_ANY`.
 

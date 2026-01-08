@@ -9,7 +9,7 @@ The following functions are all legacy and should be avoided. They still work, b
 ### Player enters or leaves scene
 
 {% hint style="warning" %}
-**📔 Note**: The `onEnterSceneObservable` and `onLeaveSceneObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](../sdk7/interactivity/event-listeners.md#player-enters-or-leaves-scene).
+**📔 Note**: The `onEnterSceneObservable` and `onLeaveSceneObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](event-listeners.md#player-enters-or-leaves-scene).
 {% endhint %}
 
 Whenever an avatar steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to. This event is triggered by all avatars, including the player's.
@@ -66,7 +66,7 @@ export function main() {
 ### Player connects or disconnects
 
 {% hint style="warning" %}
-**📔 Note**: The `getConnectedPlayers` function and the `onPlayerConnectedObservable` and `onPlayerDisconnectedObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](../sdk7/interactivity/event-listeners.md#player-enters-or-leaves-scene). Each scene is now a distinct comms island, making it the same to be connected or on the same scene.
+**📔 Note**: The `getConnectedPlayers` function and the `onPlayerConnectedObservable` and `onPlayerDisconnectedObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](event-listeners.md#player-enters-or-leaves-scene). Each scene is now a distinct comms island, making it the same to be connected or on the same scene.
 {% endhint %}
 
 Get the full list of currently connected players from `getConnectedPlayers`.
@@ -104,7 +104,7 @@ Keep in mind that if other players are already being rendered in the surrounding
 ### Query all players in scene
 
 {% hint style="warning" %}
-**📔 Note**: The `getPlayersInScene` function is deprecated on SDK 7.x. Instead, iterate over all players with a `PlayerIdentityData` component. See [Fetch all players](../sdk7/interactivity/user-data.md#fetch-all-players).
+**📔 Note**: The `getPlayersInScene` function is deprecated on SDK 7.x. Instead, iterate over all players with a `PlayerIdentityData` component. See [Fetch all players](user-data.md#fetch-all-players).
 {% endhint %}
 
 You can also get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
@@ -123,7 +123,7 @@ executeTask(async () => {
 ### Player plays animation
 
 {% hint style="warning" %}
-**📔 Note**: The `onPlayerExpressionObservable` event is deprecated on SDK 7.x. Use the `AvatarEmoteCommand` component instead, see [Player plays animation](../sdk7/interactivity/event-listeners.md#player-plays-animation).
+**📔 Note**: The `onPlayerExpressionObservable` event is deprecated on SDK 7.x. Use the `AvatarEmoteCommand` component instead, see [Player plays animation](event-listeners.md#player-plays-animation).
 {% endhint %}
 
 Whenever the player plays an emote (dance, clap, wave, etc), you can detect this event.
@@ -147,7 +147,7 @@ The event includes the following information:
 ### Player changes profile
 
 {% hint style="warning" %}
-**📔 Note**: The `onProfileChanged` event is deprecated on SDK 7.x. Use the `AvatarEquippedData` component instead, see [Player changes profile](../sdk7/interactivity/event-listeners.md#player-changes-profile).
+**📔 Note**: The `onProfileChanged` event is deprecated on SDK 7.x. Use the `AvatarEquippedData` component instead, see [Player changes profile](event-listeners.md#player-changes-profile).
 {% endhint %}
 
 Whenever the player makes a change to their profile, the `onProfileChanged` event is called. These changes may include putting on different wearables, changing name, description, activating portable experiences, etc.
@@ -162,7 +162,7 @@ onProfileChanged.add((profileData) => {
 
 Event data includes only the ID of the player and a version number for that avatar's profile, according to the catalyst server. Every time a change is propagated, the version number increases by 1.
 
-When this event is triggered, you can then use the [getUserData()](../sdk7/interactivity/user-data.md#get-player-data) function to fetch the latest version of this information, including the list of wearables that the player has on. You may need to add a slight delay before you call `getUserData()` to ensure that the version this function returns is up to date.
+When this event is triggered, you can then use the [getUserData()](user-data.md#get-player-data) function to fetch the latest version of this information, including the list of wearables that the player has on. You may need to add a slight delay before you call `getUserData()` to ensure that the version this function returns is up to date.
 
 {% hint style="info" %}
 **💡 Tip**: When testing in preview with the legacy web explorer, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
@@ -175,7 +175,7 @@ When this event is triggered, you can then use the [getUserData()](../sdk7/inter
 ### Scene finished loading
 
 {% hint style="warning" %}
-**📔 Note**: The `onSceneReadyObservable` event is deprecated from SDK v7.x. This function is no longer relevant. You can ensure that something is executed after the scene finished loading by running it inside the `Main()` function. See [Scene lifecycle](../sdk7/getting-started/coding-scenes.md#scene-lifecycle)
+**📔 Note**: The `onSceneReadyObservable` event is deprecated from SDK v7.x. This function is no longer relevant. You can ensure that something is executed after the scene finished loading by running it inside the `Main()` function. See [Scene lifecycle](../getting-started/coding-scenes.md#scene-lifecycle)
 {% endhint %}
 
 When the scene finishes loading, the `onSceneReadyObservable` gets called. This works both if the player loads straight into the scene, or if the player walks up to the scene from somewhere else. When all of the content in the scene has finished its initial load, including heavy models, etc, this event is called.
@@ -191,7 +191,7 @@ onSceneReadyObservable.add(() => {
 ### Deprecated player data methods
 
 {% hint style="warning" %}
-**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](../sdk7/interactivity/user-data.md#get-user-data).
+**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
 {% endhint %}
 
 To obtain information from the current player that's running the scene, use `getUserData()`.
@@ -218,7 +218,7 @@ executeTask(async () => {
 })
 ```
 
-Both `getUserData()` and `getPlayerData()` return the same data structure available via the content API. See [Data from any player](../sdk7/interactivity/user-data.md#data-from-any-player)
+Both `getUserData()` and `getPlayerData()` return the same data structure available via the content API. See [Data from any player](user-data.md#data-from-any-player)
 
 `getPlayerData()` can only fetch data from players who are currently nearby. They don't have to be necessarily standing in the same scene, but in visual range, that's because this information is being fetched from the local engine that's rendering these avatars. To try this out in preview, open a second tab and log in with a different account.
 
@@ -226,12 +226,12 @@ Both `getUserData()` and `getPlayerData()` return the same data structure availa
 **📔 Note**: User IDs must always be lowercase. If copying a wallet address, make sure all the characters are set to lowercase.
 {% endhint %}
 
-The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](../sdk7/interactivity/user-data.md#get-user-data).
+The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
 
 ### Get skybox time
 
 {% hint style="warning" %}
-**📔 Note**: The `getDecentralandTime()` function is deprecated from SDK v7.x.x. Use `getWorldTime()` instead. See [Get Decentraland Time](../sdk7/interactivity/runtime-data.md#get-decentraland-time).
+**📔 Note**: The `getDecentralandTime()` function is deprecated from SDK v7.x.x. Use `getWorldTime()` instead. See [Get Decentraland Time](runtime-data.md#get-decentraland-time).
 {% endhint %}
 
 ```ts
@@ -246,7 +246,7 @@ executeTask(async () => {
 ### Get realm
 
 {% hint style="warning" %}
-**📔 Note**: The `getCurrentRealm()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead. See [Get Realm Data](../sdk7/interactivity/runtime-data.md#get-realm-data).
+**📔 Note**: The `getCurrentRealm()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead. See [Get Realm Data](runtime-data.md#get-realm-data).
 {% endhint %}
 
 ```ts
@@ -264,7 +264,7 @@ fetchPlayerData()
 ### Is preview mode
 
 {% hint style="warning" %}
-**📔 Note**: The `isPreviewMode()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead, which contains a `preview` property. See [Get Realm Data](../sdk7/interactivity/runtime-data.md#get-realm-data).
+**📔 Note**: The `isPreviewMode()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead, which contains a `preview` property. See [Get Realm Data](runtime-data.md#get-realm-data).
 {% endhint %}
 
 ```ts
@@ -292,7 +292,7 @@ onPlayerClickedObservable.add((clickEvent) => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: The `onPlayerClickedObservable` event is deprecated from SDK v7.x. Future versions will allow for a more [data-oriented approach](../sdk7/architecture/data-oriented-programming.md), based on regularly querying data rather than events.
+**📔 Note**: The `onPlayerClickedObservable` event is deprecated from SDK v7.x. Future versions will allow for a more [data-oriented approach](../architecture/data-oriented-programming.md), based on regularly querying data rather than events.
 
 As an alternative, you can attach an invisible collider to the player and detect clicks against this.
 {% endhint %}
@@ -310,13 +310,13 @@ The event includes the following data:
   * `origin`: _Vector3_ The point of origin of the click, the position of the player who did the click, relative to the scene.
 
 {% hint style="info" %}
-**💡 Tip**: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area](../sdk7/interactivity/avatar-modifiers.md).
+**💡 Tip**: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area](player-avatar.md#avatar-modifier-areas).
 {% endhint %}
 
 ### Player locks/unlocks cursor
 
 {% hint style="warning" %}
-**📔 Note**: The `onPointerLockedStateChange` event is deprecated from SDK v7.x. See [Event listeners](../sdk7/interactivity/event-listeners.md#player-locks-or-unlocks-cursor) for a non-deprecated alternative.
+**📔 Note**: The `onPointerLockedStateChange` event is deprecated from SDK v7.x. See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) for a non-deprecated alternative.
 {% endhint %}
 
 Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
@@ -356,7 +356,7 @@ onRealmChangedObservable.add((realmChange) => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: The `onRealmChangedObservable` event is deprecated from SDK v7.x. Future versions will allow for a more [data-oriented approach](../sdk7/architecture/data-oriented-programming.md), based on regularly querying data rather than events.
+**📔 Note**: The `onRealmChangedObservable` event is deprecated from SDK v7.x. Future versions will allow for a more [data-oriented approach](../architecture/data-oriented-programming.md), based on regularly querying data rather than events.
 {% endhint %}
 
 This event includes the following fields:
@@ -368,18 +368,18 @@ This event includes the following fields:
 
 As players move through the map, they may switch islands to be grouped with those players who are now closest to them. Islands also shift their borders dynamically to fit a manageable group of people in each. So even if a player stands still they could be changed island as others enter and leave surrounding scenes.
 
-If your scene relies on an [3rd party server](../sdk7/networking/authoritative-servers.md) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
+If your scene relies on an [3rd party server](../networking/authoritative-servers.md) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
 
 ### Crypto functions
 
 {% hint style="warning" %}
-**📔 Note**: The functions `requirePayment()`, `signMessage()`, `convertMessageToObject()` are deprecated. Use the `sendAsync()` function instead. See [Scene blockchain operations](../sdk7/blockchain/scene-blockchain-operations.md#). There are also libraries that can help simplify some common use cases with these functions.
+**📔 Note**: The functions `requirePayment()`, `signMessage()`, `convertMessageToObject()` are deprecated. Use the `sendAsync()` function instead. See [Scene blockchain operations](deprecated-functions.md). There are also libraries that can help simplify some common use cases with these functions.
 {% endhint %}
 
 ### Video Events
 
 {% hint style="warning" %}
-**📔 Note**: The `onVideoEvent` event is deprecated from SDK v7.x. See [Event listeners](../sdk7/media/video-playing.md#video-events) for a non-deprecated alternative.
+**📔 Note**: The `onVideoEvent` event is deprecated from SDK v7.x. See [Event listeners](../media/video-playing.md#video-events) for a non-deprecated alternative.
 {% endhint %}
 
 When a video changes its playing status, the `onVideoEvent` observable receives an event.

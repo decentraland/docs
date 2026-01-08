@@ -20,14 +20,14 @@ Nuestra arquitectura de IU web está construida sobre tres pilares fundamentales
 
 ### UI1: Biblioteca Legada
 
-**UI1** (`decentraland-ui`) es nuestra biblioteca de componentes anterior, todavía mantenida pero siendo gradualmente migrada a UI2. Ver la [Guía de Migración](migration.md) para detalles sobre la transición de componentes.
+**UI1** (`decentraland-ui`) es nuestra biblioteca de componentes anterior, todavía mantenida pero siendo gradualmente migrada a UI2. Ver la [Guía de Migración](../../../contributor/contributor-guides/web-ui-standards/migration.md) para detalles sobre la transición de componentes.
 
 ## Secciones de Documentación
 
 * [**Resumen del Proceso**](process-overview.md) - Descubrimiento UX, diseño Figma y flujo de trabajo de implementación
-* [**Componentes Personalizados**](custom-components.md) - Guías para componentes específicos del proyecto y reutilizables
-* [**Estilos y Tematización**](styling-and-theming.md) - Estándares completos de estilo usando styled-components
-* [**Guía de Migración**](migration.md) - Migrando componentes de UI1 a UI2
+* [**Componentes Personalizados**](../../../contributor/contributor-guides/web-ui-standards/custom-components.md) - Guías para componentes específicos del proyecto y reutilizables
+* [**Estilos y Tematización**](../../../contributor/contributor-guides/web-ui-standards/styling-and-theming.md) - Estándares completos de estilo usando styled-components
+* [**Guía de Migración**](../../../contributor/contributor-guides/web-ui-standards/migration.md) - Migrando componentes de UI1 a UI2
 
 ## Principios Clave
 
@@ -169,9 +169,9 @@ Las palabras clave "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD
 ## Comenzando
 
 1. Revisar el [Resumen del Proceso](process-overview.md) para entender el flujo de trabajo
-2. Aprender sobre [Componentes Personalizados](custom-components.md) para cuándo crear nuevos componentes
-3. Estudiar [Estilos y Tematización](styling-and-theming.md) para detalles de implementación
-4. Si estás migrando desde UI1, ver la [Guía de Migración](migration.md)
+2. Aprender sobre [Componentes Personalizados](../../../contributor/contributor-guides/web-ui-standards/custom-components.md) para cuándo crear nuevos componentes
+3. Estudiar [Estilos y Tematización](../../../contributor/contributor-guides/web-ui-standards/styling-and-theming.md) para detalles de implementación
+4. Si estás migrando desde UI1, ver la [Guía de Migración](../../../contributor/contributor-guides/web-ui-standards/migration.md)
 
 ## Recursos
 

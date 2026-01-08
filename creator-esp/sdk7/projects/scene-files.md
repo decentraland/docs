@@ -1,5 +1,9 @@
 ---
 description: Archivos predeterminados creados en una nueva escena.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/projects/scene-files
 ---
 
 # Archivos de Escena
@@ -36,8 +40,6 @@ Al ejecutar la escena, el contenido de tus archivos `.ts` se compila en un solo 
 El archivo _scene.json_ es un manifiesto formateado en JSON para una escena en el mundo. Una escena puede abarcar una sola o múltiples parcelas de LAND. El manifiesto _scene.json_ describe qué objetos existen en la escena, una lista de cualquier asset necesario para renderizarla, información de contacto para el propietario de la parcela y configuraciones de seguridad.
 
 La mayoría de los campos del archivo _scene.json_ pueden editarse directamente en la UI del Scene Editor. Consulta [Configuración de Escena](../scene-editor/get-started/scene-editor-essentials.md#scene-settings).
-
-![](../images/thumbnail-image.png)
 
 Para más información consulta [metadatos de escena](../sdk7/projects/scene-metadata.md#metadata).
 
@@ -95,9 +97,9 @@ Todas las escenas incluyen un archivo _.dclignore_, este archivo especifica qué
 
 Por ejemplo, podrías querer mantener los archivos de Blender para los modelos 3D en tu escena dentro de la carpeta de la escena, pero quieres evitar que esos archivos se desplieguen a Decentraland. En ese caso, podrías agregar `*.blend` a _.dclignore_ para ignorar todos los archivos con esa extensión.
 
-| Qué ignorar | Ejemplo     | Descripción                                                                             |
-| -------------- | ----------- | --------------------------------------------------------------------------------------- |
-| Archivos específicos | `BACKUP.ts` | Ignora un archivo específico                                                                 |
-|| Carpetas        | `drafts/`   | Ignora todo el contenido de una carpeta y sus subcarpetas                                  |
-|| Extensiones     | `*.blend`   | Ignora todos los archivos con una extensión dada                                                |
-|| Secciones de nombre  | `test*`     | Ignora todos los archivos con nombres que coincidan con la consulta. En este caso, que comiencen con _test_ |
+| Qué ignorar          | Ejemplo             | Descripción                  |
+| -------------------- | ------------------- | ---------------------------- |
+| Archivos específicos | `BACKUP.ts`         | Ignora un archivo específico |
+|                      | Carpetas            | `drafts/`                    |
+|                      | Extensiones         | `*.blend`                    |
+|                      | Secciones de nombre | `test*`                      |

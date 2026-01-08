@@ -1,5 +1,9 @@
 ---
 description: Establece un fondo y borde de una entidad UI.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/ui_background
 ---
 
 # Fondo UI
@@ -200,8 +204,6 @@ export const uiMenu = () => (
 Puedes usar [escalado 9-slice](https://en.wikipedia.org/wiki/9-slice_scaling) con tus texturas, para asegurar que las esquinas y márgenes no se estiren de manera desigual.
 
 Con esta técnica popular, divides una imagen en 9 segmentos, que se estirarán de diferentes maneras para preservar las proporciones de los márgenes y esquinas. Por ejemplo, usa esto para definir fondos de esquinas redondeadas que se adapten fácilmente a cualquier tamaño. Considera la siguiente imagen (tomada de [Wikipedia](https://en.wikipedia.org/wiki/9-slice_scaling#/media/File:Traditional_scaling_vs_9-slice_scaling.svg)):
-
-![](../images/media/9-slice.png)
 
 En esta imagen vemos la textura original (arriba-izquierda), y el resultado de escalarla de manera tradicional (arriba-derecha); nota cómo las esquinas se deforman. Debajo de eso, vemos la textura segmentada en 9 rebanadas (abajo-izquierda), y luego el resultado de estirar la imagen según el método 9-slice (abajo-derecha).
 

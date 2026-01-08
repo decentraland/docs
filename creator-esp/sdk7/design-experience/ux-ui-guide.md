@@ -1,5 +1,11 @@
 ---
-description: ¡Consejos y prácticas para construir escenas donde los jugadores querrán quedarse y regresar!
+description: >-
+  ¡Consejos y prácticas para construir escenas donde los jugadores querrán
+  quedarse y regresar!
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/design-experience/ux-ui-guide
 ---
 
 # Guía de UX & UI

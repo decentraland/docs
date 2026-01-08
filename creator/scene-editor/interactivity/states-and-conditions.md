@@ -12,14 +12,14 @@ Add conditions on a trigger, so that the action only occurs if those conditions 
 
 To add a condition, click the three dots icon next to **Trigger event** and select **Add Trigger Condition**.
 
-![](../../images/editor/condition.png)
+![](../../../.gitbook/assets/condition.png)
 
 A single trigger can include multiple conditions. Click the **+** icon to add more conditions. When more than one condition exist, you can select one of these options:
 
 * **All Conditions should be met (AND)**: The trigger only happens if every one of the conditions is true.
 * **Any Condition can be met (OR)** The trigger happens if at least one of the conditions is true.
 
-![](../../images/editor/multiple-conditions.png)
+![](../../../.gitbook/assets/multiple-conditions.png)
 
 ### States
 
@@ -29,21 +29,21 @@ You can do the following things with states:
 
 1. Use a condition on a trigger to check the state of an entity. In that way the action is only carried out if a specific state is active.
 
-![](../../images/editor/condition.png)
+![](../../../.gitbook/assets/condition.png)
 
 2. Change a state via the **Set State** action.
 
-![](../../images/editor/set-state.png)
+![](../../../.gitbook/assets/set-state.png)
 
 3. React to changes in state via the **On State Change** trigger event.
 
 To toggle between two actions, define two triggers, each with a condition that checks a state. For example, doors have one trigger that activates the Open action, with a condition that first checks that the door's state is _Closed_, and another trigger that activates the Close action, with a condition that checks that the door's state is _Open_. Only one of the two is activated each time the player clicks on the door.
 
-![](../../images/editor/door_conditions.png)
+![](../../../.gitbook/assets/door_conditions.png)
 
 You can add as many states as you want to a smart item. Just click the **Add New State** button to add another one to the list.
 
-![](../../images/editor/new_state.png)
+![](../../../.gitbook/assets/new_state.png)
 
 One of the states is selected as the default, the item will always start in this state when the scene runs. You can assign a different state to be the default by clicking the three dots next to another one of the states and selecting **Set as Default**.
 
@@ -63,7 +63,7 @@ When an entity has a Counter component, you can run the following actions on it:
 
 Use the **On Counter Change** trigger to perform an action every time the counter's value changes. Add a condition to this trigger so that it only activates after passing a certain threshold.
 
-![](../../images/editor/on_counter_change.png)
+![](../../../.gitbook/assets/on_counter_change.png)
 
 On a condition, you can check if the value of the counter is
 

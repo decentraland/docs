@@ -1,5 +1,9 @@
 ---
 description: Cómo obtener LAND o permisos para publicar tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/publishing/publishing-options
 ---
 
 # Opciones de Publicación

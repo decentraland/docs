@@ -12,7 +12,7 @@ All image and gif formats that are supported in OpenSea are also supported by De
 
 Use the NFT smart item, that you can find in the **Smart Items** asset pack, or by simply searching _NFT_ in the search bar above. Once you drag a copy of the NFT item to your scene and select it, there are a few fields that your can configure.
 
-![](../../images/editor/nft-item.png)
+![](../../../.gitbook/assets/nft-item.png)
 
 The main fields to configure determine what NFT to display:
 
@@ -41,4 +41,4 @@ Other optional fields that can be configured in the NFT smart item are:
 **📔 Note**: You can only see these changes take effect when entering the scene in Preview mode. None of these changes modify the representation of the smart item that you drag around in edit mode.
 {% endhint %}
 
-See [Display an NFT](../sdk7/media/display-a-certified-nft.md#) for more details on how Decentraland handles NFT portraits.
+See [Display an NFT](nfts.md) for more details on how Decentraland handles NFT portraits.

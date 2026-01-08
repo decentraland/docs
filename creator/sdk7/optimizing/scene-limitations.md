@@ -8,11 +8,11 @@ In order to improve performance in the metaverse, we have established a set of l
 
 When working with the [Creator Hub](../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
 
-![](../../images/editor/triangle-limit1.png)
+![](../../../.gitbook/assets/triangle-limit1.png)
 
 You can expand this menu to view details.
 
-![](../../images/editor/triangle-limit2.png)
+![](../../../.gitbook/assets/triangle-limit2.png)
 
 {% hint style="info" %}
 **💡 Tip**: For a reference table of all specific numbers per parcel count, see:
@@ -99,9 +99,9 @@ Examples of other valid sizes:
 Decentraland [Worlds](../worlds/about.md) have different limitations, since they are loaded as single scenes.
 
 * Worlds published to Decentraland NAMEs have at least `100 MB`. That number can be increased by owning additional NAMEs, LAND, and MANA on that same account.
-* Worlds published to ENS domains have a limit of `25MB` that cannot be expanded.
+* Worlds published to ENS domains have a limit of `36 MB` that cannot be expanded.
 
-See [Worlds Size Limit](../worlds/about.md#worlds-size-limit) for more details.
+See [Worlds size limits](../sdk7/projects/kinds-of-project.md#size-limits) for more details.
 
 Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages. You can see the full list of files being published and their sizes before you confirm a deployment.
 

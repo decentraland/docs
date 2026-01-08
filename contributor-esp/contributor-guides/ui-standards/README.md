@@ -21,44 +21,44 @@ Nuestra arquitectura de IU está construida sobre tres tecnologías fundamentale
 
 ## Secciones de Documentación
 
-* **[Configuración de Store](store-setup.md)** - Configurar el store Redux, hooks tipados y estructura de carpetas
-* **[RTK Query](rtk-query.md)** - Obtención de datos, caché, tags e invalidación
-* **[Gestión de Estado](state-management.md)** - Crear slices y gestionar estado UI
-* **[Patrones de Componentes](component-patterns.md)** - Usar hooks efectivamente en componentes
-* **[Integración Web3](web3-integration.md)** - Patrones para integración blockchain
-* **[Pruebas y Rendimiento](testing-and-performance.md)** - Mejores prácticas, pruebas y optimización
+* [**Configuración de Store**](../../../contributor/contributor-guides/ui-standards/store-setup.md) - Configurar el store Redux, hooks tipados y estructura de carpetas
+* [**RTK Query**](../../../contributor/contributor-guides/ui-standards/rtk-query.md) - Obtención de datos, caché, tags e invalidación
+* [**Gestión de Estado**](../../../contributor/contributor-guides/ui-standards/state-management.md) - Crear slices y gestionar estado UI
+* [**Patrones de Componentes**](../../../contributor/contributor-guides/ui-standards/component-patterns.md) - Usar hooks efectivamente en componentes
+* [**Integración Web3**](../../../contributor/contributor-guides/ui-standards/web3-integration.md) - Patrones para integración blockchain
+* [**Pruebas y Rendimiento**](../../../contributor/contributor-guides/ui-standards/testing-and-performance.md) - Mejores prácticas, pruebas y optimización
 
 ## Referencia Rápida: Glosario
 
 ### Conceptos Fundamentales
 
-| Término | Descripción |
-|---------|-------------|
-| **Store** | El árbol de estado Redux único para la app |
-| **Slice** | Un módulo creado con `createSlice` (nombre + estado inicial + reducers) |
-| **Action** | Un objeto plano describiendo "qué pasó" (`type` + `payload` opcional) |
-| **Reducer** | Una función pura que actualiza estado basado en acciones |
-| **Selector** | Una función que lee/deriva datos del store (puede ser memoizada) |
+| Término      | Descripción                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| **Store**    | El árbol de estado Redux único para la app                              |
+| **Slice**    | Un módulo creado con `createSlice` (nombre + estado inicial + reducers) |
+| **Action**   | Un objeto plano describiendo "qué pasó" (`type` + `payload` opcional)   |
+| **Reducer**  | Una función pura que actualiza estado basado en acciones                |
+| **Selector** | Una función que lee/deriva datos del store (puede ser memoizada)        |
 
 ### RTK Query
 
-| Término | Descripción |
-|---------|-------------|
-| **RTK Query** | Capa de obtención de datos: endpoints, caché, refetch, invalidaciones |
-| **Base Query** | El fetcher de bajo nivel (ej. `fetchBaseQuery`) usado por endpoints |
-| **Endpoint** | Una operación RTK Query (`query` = lectura; `mutation` = escritura) |
-| **Tags** | Strings/objetos para `provides`/`invalidates` de caché para sincronizar vistas |
-| **`onQueryStarted`** | Hook de ciclo de vida para actualizaciones optimistas y rollback |
+| Término              | Descripción                                                                    |
+| -------------------- | ------------------------------------------------------------------------------ |
+| **RTK Query**        | Capa de obtención de datos: endpoints, caché, refetch, invalidaciones          |
+| **Base Query**       | El fetcher de bajo nivel (ej. `fetchBaseQuery`) usado por endpoints            |
+| **Endpoint**         | Una operación RTK Query (`query` = lectura; `mutation` = escritura)            |
+| **Tags**             | Strings/objetos para `provides`/`invalidates` de caché para sincronizar vistas |
+| **`onQueryStarted`** | Hook de ciclo de vida para actualizaciones optimistas y rollback               |
 
 ### Patrones
 
-| Término | Descripción |
-|---------|-------------|
+| Término                     | Descripción                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------- |
 | **Actualización optimista** | Actualizar temporalmente UI antes de que el servidor confirme; rollback si falla |
-| **Entity Adapter** | Helpers para gestionar colecciones normalizadas (ids/entities, ordenamiento) |
-| **Estado UI/local** | Estado propiedad del cliente (filtros, modales, inputs de formulario) |
-| **Datos remotos** | Datos en caché propiedad del servidor (catálogo, NFTs, órdenes) |
-| **Hooks tipados** | `useAppSelector`/`useAppDispatch` vinculados a `RootState`/`AppDispatch` |
+| **Entity Adapter**          | Helpers para gestionar colecciones normalizadas (ids/entities, ordenamiento)     |
+| **Estado UI/local**         | Estado propiedad del cliente (filtros, modales, inputs de formulario)            |
+| **Datos remotos**           | Datos en caché propiedad del servidor (catálogo, NFTs, órdenes)                  |
+| **Hooks tipados**           | `useAppSelector`/`useAppDispatch` vinculados a `RootState`/`AppDispatch`         |
 
 ## ¿Por Qué Hooks Tipados?
 
@@ -71,12 +71,12 @@ Usamos `useAppSelector` y `useAppDispatch` en lugar de los hooks estándar de Re
 
 ## Comenzando
 
-1. Revisar la [Configuración de Store](store-setup.md) para entender la estructura del proyecto
-2. Aprender [RTK Query](rtk-query.md) para gestionar datos remotos
-3. Entender [Gestión de Estado](state-management.md) para estado UI local
-4. Estudiar [Patrones de Componentes](component-patterns.md) para implementación
-5. Seguir [Integración Web3](web3-integration.md) para características blockchain
-6. Aplicar [Pruebas y Rendimiento](testing-and-performance.md) mejores prácticas
+1. Revisar la [Configuración de Store](../../../contributor/contributor-guides/ui-standards/store-setup.md) para entender la estructura del proyecto
+2. Aprender [RTK Query](../../../contributor/contributor-guides/ui-standards/rtk-query.md) para gestionar datos remotos
+3. Entender [Gestión de Estado](../../../contributor/contributor-guides/ui-standards/state-management.md) para estado UI local
+4. Estudiar [Patrones de Componentes](../../../contributor/contributor-guides/ui-standards/component-patterns.md) para implementación
+5. Seguir [Integración Web3](../../../contributor/contributor-guides/ui-standards/web3-integration.md) para características blockchain
+6. Aplicar [Pruebas y Rendimiento](../../../contributor/contributor-guides/ui-standards/testing-and-performance.md) mejores prácticas
 
 ## Cumplimiento de Estándares
 
@@ -126,4 +126,4 @@ Nuestros patrones toman en cuenta desafíos específicos de blockchain:
 
 ## Próximos Pasos
 
-Comienza con [Configuración de Store](store-setup.md) para aprender cómo estructurar tu proyecto y configurar Redux apropiadamente.
+Comienza con [Configuración de Store](../../../contributor/contributor-guides/ui-standards/store-setup.md) para aprender cómo estructurar tu proyecto y configurar Redux apropiadamente.

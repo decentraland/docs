@@ -1,5 +1,9 @@
 ---
 description: Cómo exportar partículas en tus Emotes usando Armature
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/emotes/particles-in-emotes
 ---
 
 # Particles in Emotes
@@ -8,7 +12,7 @@ Los Emotes 2.0 pueden tener sonidos y props, ¿pero sabías que también es posi
 
 Pero como la animación de objetos y los sistemas de partículas no están soportados en Emotes 2.0, necesitamos convertir estas partículas en una armature (que sí está soportada) para poder agregarlas a los emotes. Estaremos usando un add-on de Blender desarrollado por el Content Team de la Foundation para este proceso, que se puede descargar desde el enlace a continuación.
 
-¡Usa el [Particles to Bones Addon for Blender](https://github.com/decentraland/docs-creator/blob/main/images/emotes/particle_system_to_bone_animation.py) para comenzar!
+¡Usa el [Particles to Bones Addon for Blender](https://github.com/decentraland/docs/blob/main/creator/images/emotes/particle_system_to_bone_animation.py) para comenzar!
 
 ![](../images/wearables-and-emotes/particles-emotes/01_love_grenade.png) ![](../images/wearables-and-emotes/particles-emotes/02_guitar.png)
 

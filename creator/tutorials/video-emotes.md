@@ -2,7 +2,7 @@
 description: Video tutorials for creating emotes in Decentraland
 ---
 
-# Emote Video Tutorials
+# Emote Videos
 
 Step-by-step video tutorials for creating custom emotes in Decentraland. Learn how to animate, rig, and publish emotes for avatars.
 
@@ -25,7 +25,7 @@ The video series includes tutorials on:
 
 ## Additional Resources
 
-* [Emotes Overview](../wearables-and-emotes/emotes/emotes-overview.md)
+* [Emotes Overview](../wearables-and-emotes/emotes/)
 * [Creating Emotes](../wearables-and-emotes/emotes/creating-emotes.md)
 * [Avatar Rig](../wearables-and-emotes/emotes/avatar-rig.md)
 * [Uploading Emotes](../wearables-and-emotes/manage-collections/uploading-emotes.md)

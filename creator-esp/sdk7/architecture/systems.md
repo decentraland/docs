@@ -1,12 +1,14 @@
 ---
 description: Aprende cómo se usan los sistemas para actualizar el estado de la escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/systems
 ---
 
 # Sistemas
 
 Las escenas de Decentraland dependen de _sistemas_ para actualizar cualquier dato a lo largo del tiempo, incluyendo información almacenada en los [componentes](../sdk7/architecture/entities-components.md) de cada entidad.
-
-![](../images/media/ecs-big-picture.png)
 
 Los _sistemas_ son lo que hace que las escenas sean dinámicas, son funciones que se ejecutan periódicamente en cada tick del bucle del juego de la escena, cambiando lo que se renderizará.
 
@@ -40,8 +42,6 @@ engine.addSystem(moveSystem)
 ```
 
 En el ejemplo anterior, el sistema `MoveSystem` es una función que se ejecuta en cada tick del bucle del juego, cambiando la posición de cada entidad en la escena que tiene un Transform.
-
-![](../images/media/ecs-system-new.png)
 
 Puedes tener múltiples sistemas en tu escena para desacoplar diferentes comportamientos, haciendo que tu código sea más limpio y más fácil de escalar y reutilizar. Por ejemplo, un sistema podría manejar física, otro podría hacer que una entidad obstáculo se mueva de un lado a otro continuamente, otro podría manejar la IA de personajes.
 
@@ -129,11 +129,7 @@ Las escenas de Decentraland se actualizan por defecto a 30 ticks por segundo. Es
 
 Si el procesamiento de un fotograma toma menos tiempo que este intervalo, entonces el motor esperará el tiempo restante para mantener las actualizaciones regularmente espaciadas y `dt` permanecerá igual a _1/30_.
 
-![](../images/media/ecs-framerate.png)
-
 Si el procesamiento de un fotograma toma más de _1/30_ segundos, el dibujo de ese fotograma se retrasa. El motor luego intenta terminar ese fotograma y mostrarlo tan pronto como sea posible. Luego procede al siguiente fotograma e intenta mostrarlo _1/30_ segundos después del último fotograma. No compensa el retraso anterior.
-
-![](../images/media/ecs-framerate-heavy.png)
 
 Idealmente, debes evitar que tu escena pierda fotogramas, ya que impacta la calidad de la experiencia del jugador. Como esto depende del poder de procesamiento de la máquina del jugador, siempre es una posibilidad que tu escena debe estar lista para manejar con gracia.
 

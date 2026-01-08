@@ -2,6 +2,10 @@
 description: >-
   Aprende cómo crear una UI para jugadores en tu escena. Esto es útil, por
   ejemplo, para mostrar información relacionada con el juego.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/onscreen-ui
 ---
 
 # UI en Pantalla

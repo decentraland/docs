@@ -1,5 +1,9 @@
 ---
 description: Entiende cómo funcionan los componentes de un ítem
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/build/components
 ---
 
 # Components
@@ -39,9 +43,7 @@ Los siguientes Components se pueden agregar a cualquier Entity a través de la U
 * **Mesh Collider**: Le da a la Entity una geometría de collider invisible. Esto puede bloquear al jugador de caminar a través del ítem, y/o puede hacerlo clickeable. Consulta [collider](../sdk7/3d-essentials/colliders.md).
 *   **Material**: Define el color, textura y otras propiedades de una Entity que tiene un Component **Mesh Renderer**. Consulta [materials](../sdk7/3d-essentials/materials.md).
 
-    {% hint style="warning" %}
-    **📔 Nota**: El ítem DEBE tener un Component **Mesh Renderer**. No afecta ítems con una forma visible **GLTF**.
-    {% endhint %}
+    \{% hint style="warning" %\} **📔 Nota**: El ítem DEBE tener un Component **Mesh Renderer**. No afecta ítems con una forma visible **GLTF**. \{% endhint %\}
 * **Visibility**: Define si una Entity es invisible.
 * **Light Source**: Agrega una luz a la Entity.
 

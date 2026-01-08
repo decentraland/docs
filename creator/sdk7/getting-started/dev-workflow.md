@@ -10,7 +10,7 @@ This document outlines the steps recommended for developing a scene for Decentra
 
 Make sure you have the Decentraland Creator Hub installed.
 
-* [Installation Guide](../get-started/editor-installation.md)
+* [Installation Guide](../../scene-editor/get-started/editor-installation.md)
 
 If you intend to work with code, also make sure you install [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -28,14 +28,14 @@ In Decentraland, content is published to adjacent plots of land in a finite amou
 
 Permission to publish to each of these is controlled via tokens. You don't need land to develop a scene, but you will need access to land once you're ready to publish.
 
-Alternatively, you have the option to publish to Decentraland [Worlds](../worlds/about.md), which are self-contained and isolated scenes.
+Alternatively, you have the option to publish to Decentraland [Worlds](../../worlds/about.md), which are self-contained and isolated scenes.
 
 The following options are available:
 
 * Rent LAND
 * Purchase LAND
 * Obtain permissions from a land owner
-* Publish to a Decentraland World, see [worlds](../worlds/about.md) to learn more.
+* Publish to a Decentraland World, see [worlds](../../worlds/about.md) to learn more.
 
 See [Publishing options](../publishing/publishing-options.md) for more details.
 
@@ -48,7 +48,7 @@ When creating a new scene, choose amongst several base template scenes that incl
 
 ## Art assets
 
-If you're an experienced artist or you have access to someone who is, you can create custom `.gltf` or `.glb` models for your scene. See [3D model essentials](../3d-modeling/3d-models.md) for tips on how to create 3D models for Decentraland.
+If you're an experienced artist or you have access to someone who is, you can create custom `.gltf` or `.glb` models for your scene. See [3D model essentials](../../3d-modeling/3d-models.md) for tips on how to create 3D models for Decentraland.
 
 There are many sources to obtain free or paid art assets. For example:
 
@@ -91,7 +91,7 @@ Once you're happy with your scene and tested it on the test server, it's time to
 
 See [publishing](../publishing/publishing.md) for instructions on how to do that.
 
-Alternatively, you can publish to [Worlds](../worlds/about.md), a personal 3D space that doesn't require LAND.
+Alternatively, you can publish to [Worlds](../../worlds/about.md), a personal 3D space that doesn't require LAND.
 
 ## Promote
 

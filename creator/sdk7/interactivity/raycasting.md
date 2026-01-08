@@ -8,15 +8,15 @@ description: >-
 
 Raycasting is a fundamental tool in game development. With raycasting, you can trace an imaginary line in space, and query if any entities are intersected by that line. This is useful for calculating lines of sight, trajectories of bullets, pathfinding algorithms and many other applications.
 
-When a player pushes the pointer button, or the primary or secondary button, a ray is traced from the player's position in the direction they are looking, see [button events](../sdk7/interactivity/button-events/click-events.md) for more details about this. This document covers how to trace an invisible ray from any arbitrary position and direction, independent of player actions, which you can use in many other scenarios.
+When a player pushes the pointer button, or the primary or secondary button, a ray is traced from the player's position in the direction they are looking, see [button events](button-events/click-events.md) for more details about this. This document covers how to trace an invisible ray from any arbitrary position and direction, independent of player actions, which you can use in many other scenarios.
 
 Please note that raycasts only hit objects with colliders. So if you want to detect ray hits against a 3D model, either:
 
-* The model must contain [collider meshes](../3d-modeling/colliders.md).
-* The `GLTFContainer` must be configured to use the [visible geometry with collision masks](../sdk7/3d-essentials/colliders.md#colliders-on-3d-models).
-* Add a [MeshCollider component](../sdk7/3d-essentials/colliders.md).
+* The model must contain [collider meshes](../../3d-modeling/colliders.md).
+* The `GLTFContainer` must be configured to use the [visible geometry with collision masks](../3d-essentials/colliders.md#colliders-on-3d-models).
+* Add a [MeshCollider component](../3d-essentials/colliders.md).
 
-It's also a good practice to assign custom [collision layers](../sdk7/3d-essentials/colliders.md#collision-layers) to 3D models, so that rays only need to calculate collisions against the relevant entities, instead of against everything that has a collider.
+It's also a good practice to assign custom [collision layers](../3d-essentials/colliders.md#collision-layers) to 3D models, so that rays only need to calculate collisions against the relevant entities, instead of against everything that has a collider.
 
 ### Create a ray
 
@@ -60,7 +60,7 @@ The following optional fields are available when creating a ray with any of the 
   * `RaycastQueryType.RQT_HIT_FIRST`: _(default)_ only returns the first hit entity, starting from the origin point.
   * `RaycastQueryType.RQT_QUERY_ALL`: returns all hit entities, from the origin through to the max distance of the ray.
 * `originOffset`: Instead of starting the raycast from the entity's origin position, add an offset to start the query from a relative position. You can for example use a small offset to prevent the ray colliding against the entity's own collider. If not set, the default is `Vector3.Zero()`.
-* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../sdk7/3d-essentials/colliders.md#collision-layers). If not set, the default layer used is `ColliderLayer.CL_PHYSICS`.
+* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../3d-essentials/colliders.md#collision-layers). If not set, the default layer used is `ColliderLayer.CL_PHYSICS`.
 * `continuous`: If true, will keep running a raycast query on every frame. If false, the ray will only be used on the current frame. If not set, the default is false.
 * When setting the direction with a local or glocal direction, the `direction` field defaults to `Vector3.Forward()`.
 * When setting the direction with a global target, the `globalTarget` field defaults to `Vector3.Zero()`.
@@ -137,7 +137,7 @@ raycastSystem.registerTargetEntityRaycast(
 
 > `import { raycastSystem, RaycastQueryType, ColliderLayer } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ### Raycast result
@@ -195,7 +195,7 @@ raycastSystem.registerLocalDirectionRaycast(
 
 ### Handle hit entities
 
-When you get a raycast result that hit an entity, you can use the `entityId` to interact with the entity and its components. An entity is [nothing more than a number](../sdk7/architecture/entities-components.md#overview), so the `entityId` value itself can be interpreted as an `Entity` type.
+When you get a raycast result that hit an entity, you can use the `entityId` to interact with the entity and its components. An entity is [nothing more than a number](../architecture/entities-components.md#overview), so the `entityId` value itself can be interpreted as an `Entity` type.
 
 ```ts
 const hitEntity = result.entityId as Entity
@@ -205,7 +205,7 @@ console.log(transform.position)
 
 ### Collision layers
 
-It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows to to list only specific collision layers, which can include the physics layer (that blocks player movement), the pointer layer (which is used for pointer events), and 8 custom layers that you can assign freely to whatever your needs are. See [collision layers](../sdk7/3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
+It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows to to list only specific collision layers, which can include the physics layer (that blocks player movement), the pointer layer (which is used for pointer events), and 8 custom layers that you can assign freely to whatever your needs are. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
 
 By default, the `collisionMask` field is set to respond to both the layers `ColliderLayer.CL_POINTER` and `ColliderLayer.CL_PHYSICS`. You can change this value to list only one of those, or to include custom layers. Use the `|` separator to list multiple options.
 
@@ -353,14 +353,14 @@ engine.addSystem((deltaTime) => {
 
 ### Collide with the player
 
-You can't directly hit the player's avatar or those of other players with a ray, but what you can do as a workaround is position an invisible entity occupying the same space as a player using the [AvatarAttach component](../sdk7/3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), and check collisions with that cube.
+You can't directly hit the player's avatar or those of other players with a ray, but what you can do as a workaround is position an invisible entity occupying the same space as a player using the [AvatarAttach component](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), and check collisions with that cube.
 
 ### Raycasts from the player
 
-To trace a ray from the player's position in the direction faced by the camera, you can trace a ray using the camera or the avatar [Reserved entities](../sdk7/architecture/entities-components.md#reserved-entities).
+To trace a ray from the player's position in the direction faced by the camera, you can trace a ray using the camera or the avatar [Reserved entities](../architecture/entities-components.md#reserved-entities).
 
 {% hint style="info" %}
-**💡 Tip**: For most cases, you might be better off using [Pointer eveents](../sdk7/interactivity/button-events/click-events.md) instead of raycasts.
+**💡 Tip**: For most cases, you might be better off using [Pointer eveents](button-events/click-events.md) instead of raycasts.
 {% endhint %}
 
 The following example traces a ray from the player's camera position forward, using the `engine.CameraEntity` entity.
@@ -457,7 +457,7 @@ const rayCastSystem = (t: number) => {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: In this example we use the primary button (E) to trigger the raycast. We don't use the pointer button (left click) because clicking and dragging also shifts the camera angle by default. If you want to prevent rotating the camera while dragging, you can use a [Virtual Camera](../sdk7/3d-essentials/camera.md) to set the camera angle as fixed.
+**💡 Tip**: In this example we use the primary button (E) to trigger the raycast. We don't use the pointer button (left click) because clicking and dragging also shifts the camera angle by default. If you want to prevent rotating the camera while dragging, you can use a [Virtual Camera](../3d-essentials/camera.md) to set the camera angle as fixed.
 {% endhint %}
 
 ### Advanced syntax
@@ -477,7 +477,7 @@ Rays are defined using the following data:
 * `queryType`: _RaycastQueryType_ enum value, to define if the ray will return all hit entities or just the first. The following options are available:
   * `RaycastQueryType.RQT_QUERY_ALL`: only returns the first hit entity, starting from the origin point.
   * `RaycastQueryType.RQT_HIT_FIRST`: returns all hit entities, from the origin through to the max distance of the ray.
-* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../sdk7/3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
+* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
 * `originOffset`: Instead of starting the raycast from the entity's origin position, add an offset to start the query from a relative position. You can for example use a small offset to prevent the ray colliding against the entity's own 3D model.
 * `continuous`: If true, will keep running a raycast query on every frame. If false, the ray will only be used on the current frame. By default this value is false.
 
@@ -600,7 +600,7 @@ engine.addSystem(() => {
 })
 ```
 
-The next example shows how you can access `RaycastResult` components from all entities in the scene, using a [component query](../sdk7/architecture/querying-components.md).
+The next example shows how you can access `RaycastResult` components from all entities in the scene, using a [component query](../architecture/querying-components.md).
 
 ```typescript
 engine.addSystem(() => {
@@ -614,4 +614,4 @@ engine.addSystem(() => {
 **📔 Note**: The results of a raycast do not arrive on the same tick of the game loop that you created the raycast. The results may take one or multiple ticks to arrive.
 {% endhint %}
 
-In a scene where you use multiple kinds of rays for different purposes (like for path finding, line-of-sight checking, projectile tracing, etc), you might want to use different [collision layers](../sdk7/3d-essentials/colliders.md#collision-layers), to avoid calculating irrelevant collisions.
+In a scene where you use multiple kinds of rays for different purposes (like for path finding, line-of-sight checking, projectile tracing, etc), you might want to use different [collision layers](../3d-essentials/colliders.md#collision-layers), to avoid calculating irrelevant collisions.

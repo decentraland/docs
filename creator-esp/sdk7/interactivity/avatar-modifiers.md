@@ -1,5 +1,11 @@
 ---
-description: Especifica un área en tu escena donde los avatares de jugadores o la cámara se comportan de manera diferente
+description: >-
+  Especifica un área en tu escena donde los avatares de jugadores o la cámara se
+  comportan de manera diferente
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/avatar-modifiers
 ---
 
 # Áreas modificadoras
@@ -9,7 +15,7 @@ description: Especifica un área en tu escena donde los avatares de jugadores o 
 Los avatares se comportan y se ven de manera consistente en todo Decentraland mientras caminan a través de escenas. Sin embargo, puedes agregar un `AvatarModifierArea` a una región de tu escena para afectar cómo se comportan los avatares de jugadores cuando entran en esa área.
 
 {% hint style="danger" %}
-**❗Advertencia**  
+**❗Advertencia**\
 Por favor limita la cantidad de `AvatarModifierAreas` que usas en tu escena a solo un par. Si usas demasiadas, puede tener un impacto significativo en el rendimiento.
 {% endhint %}
 
@@ -33,20 +39,19 @@ Transform.create(entity, {
 
 Al crear un componente `AvatarModifierArea`, debes proporcionar lo siguiente:
 
-- `area`: Tamaño del área modificadora
-- `modifiers`: Un array listando los modificadores a implementar en el área. Esta propiedad usa valores del enum `AvatarModifierType`.
+* `area`: Tamaño del área modificadora
+* `modifiers`: Un array listando los modificadores a implementar en el área. Esta propiedad usa valores del enum `AvatarModifierType`.
 
 Los modificadores compatibles son:
 
-- `AvatarModifierType.AMT_HIDE_AVATARS`
-- `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+* `AvatarModifierType.AMT_HIDE_AVATARS`
+* `AvatarModifierType.AMT_DISABLE_PASSPORTS`
 
 Todos los efectos de un `AvatarModifierArea` solo tienen lugar dentro de la región de su área. Los jugadores vuelven a la normalidad cuando salen del área.
 
 Un `AvatarModifierArea` afecta solo a jugadores que están dentro del área, entrar en el área no afecta cómo se perciben otros jugadores que están fuera del área.
 
-Los efectos de un `AvatarModifierArea` se calculan localmente para cada jugador. Puedes tener un `AvatarModifierArea` que solo esté presente en la escena para algunos de los jugadores y no para otros. Por ejemplo, podrías hacer un juego de "marco polo", donde solo un jugador en la escena tiene un área modificadora que oculta a todos los demás jugadores. Todos los otros jugadores que no tienen esta área modificadora en su versión local de la escena pueden verse normalmente entre sí.
-Si el área oculta avatares, entonces los jugadores que no tienen el área en su versión local de la escena verán todos los avatares normalmente. Incluso aquellos que se experimentan a sí mismos como ocultos. Los jugadores que tienen el área experimentarán a sí mismos y a todos los demás avatares como afectados por el área cuando entren en ella.
+Los efectos de un `AvatarModifierArea` se calculan localmente para cada jugador. Puedes tener un `AvatarModifierArea` que solo esté presente en la escena para algunos de los jugadores y no para otros. Por ejemplo, podrías hacer un juego de "marco polo", donde solo un jugador en la escena tiene un área modificadora que oculta a todos los demás jugadores. Todos los otros jugadores que no tienen esta área modificadora en su versión local de la escena pueden verse normalmente entre sí. Si el área oculta avatares, entonces los jugadores que no tienen el área en su versión local de la escena verán todos los avatares normalmente. Incluso aquellos que se experimentan a sí mismos como ocultos. Los jugadores que tienen el área experimentarán a sí mismos y a todos los demás avatares como afectados por el área cuando entren en ella.
 
 {% hint style="warning" %}
 **📔 Nota**: Las áreas modificadoras de avatar son afectadas por la _posición_ y _rotación_ del componente Transform de su entidad anfitriona, pero no son afectadas por el _scale_.
@@ -127,13 +132,13 @@ Usa `CameraModeArea` en regiones donde los jugadores tendrían una experiencia s
 
 Al crear un componente `CameraModeArea`, debes proporcionar lo siguiente:
 
-- `area`: Tamaño del área modificadora
-- `cameraMode`: Qué modo de cámara forzar en esta área, del enum `CameraType`.
+* `area`: Tamaño del área modificadora
+* `cameraMode`: Qué modo de cámara forzar en esta área, del enum `CameraType`.
 
 Los modos de cámara compatibles son:
 
-- `CameraType.CT_FIRST_PERSON`
-- `CameraType.CT_THIRD_PERSON`
+* `CameraType.CT_FIRST_PERSON`
+* `CameraType.CT_THIRD_PERSON`
 
 ## Excluir avatares
 
@@ -183,7 +188,7 @@ export function main() {
 ```
 
 {% hint style="danger" %}
-**❗Advertencia**  
+**❗Advertencia**\
 Si la lista de IDs excluidos va a ser cambiada periódicamente (por ejemplo basándose en jugadores entrando o saliendo de un área), asegúrate de que la lista se mantenga en orden. Realiza un `.sort()` en el array, para que la lista permanezca en el mismo orden cada vez que se pasa. De esa manera, solo los cambios en la lista serán computados. Esto de lo contrario puede tener un impacto significativo en el rendimiento de la escena.
 
 ```ts
@@ -193,7 +198,6 @@ AvatarModifierArea.create(entity, {
 	excludeIds: [myAvatarList.sort()],
 })
 ```
-
 {% endhint %}
 
 ## Depurar áreas modificadoras

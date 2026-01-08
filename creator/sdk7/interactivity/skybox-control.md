@@ -16,7 +16,7 @@ You can set a fixed time of day for your scene. All players will see the scene w
 
 In the Creator Hub, open the scene settings and click on the **Settings** tab to find the **Skybox** section. Uncheck the **Auto** option and set the time of day you want.
 
-![](../../images/fixed-time-of-day.png)
+![](../../../.gitbook/assets/fixed-time-of-day.png)
 
 You can also set the skybox time of day in your scene code. To do this, add the following section to your `scene.json` at root level:
 

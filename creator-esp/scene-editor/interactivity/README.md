@@ -1,5 +1,8 @@
 ---
 description: Agrega interactividad a tu escena
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity
 ---
 
 # Agregando Interactividad

@@ -10,7 +10,7 @@ Entities that have colliders occupy space and block a player's path, entities wi
 
 Colliders are also needed to make an entity clickable. Button events are based on the collider shape of an entity, not on its visible shape.
 
-There are separate collision layers for interacting with either the player's physics, or with pointer events, colliders can be configured to only interact with one or the other. They can also be configured to interact with custom layers, that can be used with [raycasts](../sdk7/interactivity/raycasting.md#) to handle whatever makes sense to the scene.
+There are separate collision layers for interacting with either the player's physics, or with pointer events, colliders can be configured to only interact with one or the other. They can also be configured to interact with custom layers, that can be used with [raycasts](colliders.md) to handle whatever makes sense to the scene.
 
 {% hint style="warning" %}
 **📔 Note**: Colliders don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the player's avatar and button events. Decentraland doesn't have a native physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene, or import a library to handle that.
@@ -24,7 +24,7 @@ You can add a **Mesh Collider** component to your entity to assign a primitive s
 
 You can also configure the collision layers on a **GLTF** component to change the default [Collision layers](colliders.md#collision-layers) used on either the collider geometry or the visible geometry of the model. See [Add Components](../scene-editor/build/components.md#add-components).
 
-![](../../images/editor/gltf-component.png)
+![](../../../.gitbook/assets/gltf-component.png)
 
 ### Colliders on primitive shapes
 
@@ -78,8 +78,8 @@ See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handl
 
 3D models can be assigned colliders on two different geometry levels:
 
-- `visibleMeshesCollisionMask`: Refers to the visible geometry of the model. By default this geometry has no colliders.
-- `invisibleMeshesCollisionMask`: refers to the collider meshes, whose name end in `_collider`. By default, this geometry is treated as a collider for both physics and pointer events.
+* `visibleMeshesCollisionMask`: Refers to the visible geometry of the model. By default this geometry has no colliders.
+* `invisibleMeshesCollisionMask`: refers to the collider meshes, whose name end in `_collider`. By default, this geometry is treated as a collider for both physics and pointer events.
 
 Any mesh embedded as part of a 3D model who's name ends in `_collider` is treated as part of the `invisibleMeshesCollisionMask` layer, and interpreted as a collider by default.
 
@@ -87,22 +87,21 @@ Defining collider geometry as a separate invisible layer allows for much greater
 
 If a model doesn't have any collider geometry, and you want to make it affect the physics or the pointer events systems, you can either:
 
-- Assign collision layers directly to the visible geometry, via the `visibleMeshesCollisionMask`.
+* Assign collision layers directly to the visible geometry, via the `visibleMeshesCollisionMask`.
 
 {% hint style="warning" %}
 **📔 Note**: If the visible geometry of the object has many vertices, note that this may have more of a performance cost.
 {% endhint %}
 
-- Give the entity a `MeshCollider` component, to give it a primitive shape collider.
-- Overlay an invisible entity that has a `MeshCollider` component.
-- Edit the model in an external tool like Blender to include a _collider mesh_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
+* Give the entity a `MeshCollider` component, to give it a primitive shape collider.
+* Overlay an invisible entity that has a `MeshCollider` component.
+* Edit the model in an external tool like Blender to include a _collider mesh_. The collider must be named _x\_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house\_collider_.
 
 You might also want to assign the pointer events collision layer to the `visibleMeshesCollisionMask` in case you want the hover hints and pointer events to respond more accurately to the contour of the entity. Note that this is more demanding on performance.
 
 {% hint style="warning" %}
 **📔 Note**: Make sure you don't have the same layer (physics, pointer events or custom layers) assigned to both `visibleMeshesCollisionMask` and `invisibleMeshesCollisionMask`, as that would be a very inefficient use of resources. You can have different layers on each, such as physics on the invisible layer and pointer events on the visible layer.
 {% endhint %}
-
 
 ```ts
 // create entity
@@ -115,6 +114,7 @@ GltfContainer.create(myEntity, {
 	visibleMeshesCollisionMask: ColliderLayer.CL_POINTER,
 })
 ```
+
 See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more details on how to add collider invisible geometry to a 3D model.
 
 {% hint style="warning" %}
@@ -180,11 +180,11 @@ To avoid the camera from going through walls, you must assign both the `Collider
 
 For example, on the Creator Hub, the following combination of settings will prevent the camera from going through walls:
 
-![](../../images/colliders-camera.png)
+![](../../../.gitbook/assets/colliders-camera.png)
 
 Both the `ColliderLayer.CL_PHYSICS` and the `ColliderLayer.CL_POINTER` layers are assigned to the same invisible layer of the geometry of the entity. If they were both assigned to the visible layer, the result would be the same. This is the default behavior, both when adding an entity via the Creator Hub or via code.
 
-![](../../images/colliders-no-camera.png)
+![](../../../.gitbook/assets/colliders-no-camera.png)
 
 In this second example, the camera can go through the wall, because the `ColliderLayer.CL_PHYSICS` layer is assigned to the invisible layer of the entity, and the `ColliderLayer.CL_POINTER` layer is assigned to the visible layer of the entity, even if both geometries have the same overall shape.
 

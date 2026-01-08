@@ -1,5 +1,9 @@
 ---
 description: Aprende cuándo y cómo ejecutar funciones asíncronas en el código de tu escena.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/programming-patterns/async-functions
 ---
 
 # Funciones Async

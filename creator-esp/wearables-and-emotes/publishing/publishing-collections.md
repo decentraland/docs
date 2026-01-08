@@ -2,6 +2,10 @@
 description: >-
   Una descripción del proceso de publicación y aprobación para wearables de
   Decentraland
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/publishing/publishing-collections
 ---
 
 # Publishing Collections

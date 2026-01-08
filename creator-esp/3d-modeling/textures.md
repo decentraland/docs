@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo funcionan las texturas en Decentraland
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/textures
 ---
 
 # Textures
@@ -153,7 +157,7 @@ El proceso de optimización de texturas trae muchos beneficios al renderizar la 
 
 Una práctica sabia y común para optimizar tu escena es compartir texturas y materials entre modelos a través de la escena. Hacer esto reducirá los draw calls drásticamente y tu escena de Decentraland funcionará mucho más suave.
 
-La siguiente herramienta basada en [**glTF pipeline**](https://github.com/AnalyticalGraphicsInc/gltf-pipeline)**, ** ofrece algunas optimizaciones que harán que los modelos 3D sean más ligeros y más rápidos de descargar para los jugadores en tu escena.
+La siguiente herramienta basada en [**glTF pipeline**](https://github.com/AnalyticalGraphicsInc/gltf-pipeline)\*\*, \*\* ofrece algunas optimizaciones que harán que los modelos 3D sean más ligeros y más rápidos de descargar para los jugadores en tu escena.
 
 **Mac:** [MAC GLB Extractor](https://github.com/decentraland/docs-creator/blob/main/images/3d-models-and-animations/glb-extractor/texture_extractor.sh)
 

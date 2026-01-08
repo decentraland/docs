@@ -1,5 +1,11 @@
 ---
-description: Aprende sobre los diferentes componentes que dan a las entidades su forma 3D y colisión
+description: >-
+  Aprende sobre los diferentes componentes que dan a las entidades su forma 3D y
+  colisión
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/colliders
 ---
 
 # Colisionadores
@@ -8,7 +14,7 @@ Las entidades que tienen colisionadores ocupan espacio y bloquean el camino de u
 
 Los colisionadores también son necesarios para hacer una entidad clickeable. Los eventos de botón se basan en la forma del colisionador de una entidad, no en su forma visible.
 
-Hay capas de colisión separadas para interactuar con la física del jugador o con eventos de puntero, los colisionadores se pueden configurar para interactuar solo con uno o el otro. También se pueden configurar para interactuar con capas personalizadas, que se pueden usar con [raycasts](../interactivity/raycasting.md#) para manejar lo que tenga sentido para la escena.
+Hay capas de colisión separadas para interactuar con la física del jugador o con eventos de puntero, los colisionadores se pueden configurar para interactuar solo con uno o el otro. También se pueden configurar para interactuar con capas personalizadas, que se pueden usar con [raycasts](colliders.md) para manejar lo que tenga sentido para la escena.
 
 {% hint style="warning" %}
 **📔 Nota**: Los colisionadores no afectan cómo otras entidades interactúan entre sí, las entidades siempre pueden superponerse. La configuración de colisión solo afecta cómo la entidad interactúa con el avatar del jugador y eventos de botón. Decentraland no tiene un motor de física nativo, por lo que si deseas que las entidades caigan, choquen o reboten, debes codificar este comportamiento en la escena, o importar una biblioteca para manejar eso.
@@ -18,11 +24,11 @@ Hay capas de colisión separadas para interactuar con la física del jugador o c
 
 La forma más fácil de administrar los colisionadores de una entidad es usar el [Scene Editor](../../scene-editor/about-editor.md).
 
-Puedes agregar un componente **Mesh Collider** a tu entidad para asignar una forma primitiva (cubo, plano, esfera, cilindro o cono) a tu entidad. Luego puedes elegir [Capas de colisión](#collision-layers) de un menú desplegable.
+Puedes agregar un componente **Mesh Collider** a tu entidad para asignar una forma primitiva (cubo, plano, esfera, cilindro o cono) a tu entidad. Luego puedes elegir [Capas de colisión](colliders.md#collision-layers) de un menú desplegable.
 
-También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](#collision-layers) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
+También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](colliders.md#collision-layers) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
 
-<img src="../../../images/editor/gltf-component.png" alt="Scene name" width="200"/>
+
 
 ## Colisionadores en formas primitivas
 
@@ -32,25 +38,22 @@ Las entidades que tienen un componente `MeshRenderer` para darles una [forma pri
 
 Las siguientes formas de colisionador están disponibles en `MeshCollider`. Varias formas incluyen campos adicionales opcionales, específicos para esa forma.
 
-- **box**:
+*   **box**:
 
-  Usa `MeshCollider.setBox()`, pasando la entidad.
+    Usa `MeshCollider.setBox()`, pasando la entidad.
+*   **plane**:
 
-- **plane**:
+    Usa `MeshCollider.setPlane()`, pasando la entidad.
+*   **sphere**:
 
-  Usa `MeshCollider.setPlane()`, pasando la entidad.
+    Usa `MeshCollider.setSphere()`, pasando la entidad.
+*   **cylinder**:
 
-- **sphere**:
+    Usa `MeshCollider.setCylinder()`, pasando la entidad. Pasa `radiusTop` y `radiusBottom` como campos adicionales opcionales, para modificar el cilindro.
 
-  Usa `MeshCollider.setSphere()`, pasando la entidad.
-
-- **cylinder**:
-
-  Usa `MeshCollider.setCylinder()`, pasando la entidad. Pasa `radiusTop` y `radiusBottom` como campos adicionales opcionales, para modificar el cilindro.
-
-  {% hint style="info" %}
-  **💡 Consejo**: Establece `radiusTop` o `radiusBottom` en 0 para hacer un cono.
-  {% endhint %}
+{% hint style="info" %}
+**💡 Consejo**: Establece `radiusTop` o `radiusBottom` en 0 para hacer un cono.
+{% endhint %}
 
 Este ejemplo define una entidad de caja que no se puede atravesar.
 
@@ -79,8 +82,8 @@ Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber
 
 Los modelos 3D pueden tener colisionadores asignados en dos niveles de geometría diferentes:
 
-- `visibleMeshesCollisionMask`: Se refiere a la geometría visible del modelo. Por defecto, esta geometría no tiene colisionadores.
-- `invisibleMeshesCollisionMask`: se refiere a los meshes de colisionador, cuyo nombre termina en `_collider`. Por defecto, esta geometría se trata como un colisionador tanto para física como para eventos de puntero.
+* `visibleMeshesCollisionMask`: Se refiere a la geometría visible del modelo. Por defecto, esta geometría no tiene colisionadores.
+* `invisibleMeshesCollisionMask`: se refiere a los meshes de colisionador, cuyo nombre termina en `_collider`. Por defecto, esta geometría se trata como un colisionador tanto para física como para eventos de puntero.
 
 Cualquier mesh incrustado como parte de un modelo 3D cuyo nombre termina en `_collider` se trata como parte de la capa `invisibleMeshesCollisionMask`, y se interpreta como un colisionador por defecto.
 
@@ -88,13 +91,15 @@ Definir la geometría del colisionador como una capa invisible separada permite 
 
 Si un modelo no tiene ninguna geometría de colisionador, y deseas que afecte a la física o a los sistemas de eventos de puntero, puedes:
 
-- Asignar capas de colisión directamente a la geometría visible, a través del `visibleMeshesCollisionMask`.
-  {% hint style="warning" %}
-  **📔 Nota**: Si la geometría visible del objeto tiene muchos vértices, ten en cuenta que esto puede tener más costo de rendimiento.
-  {% endhint %}
-- Darle a la entidad un componente `MeshCollider`, para darle un colisionador de forma primitiva.
-- Superponer una entidad invisible que tenga un componente `MeshCollider`.
-- Editar el modelo en una herramienta externa como Blender para incluir un _mesh de colisionador_. El colisionador debe llamarse _x_collider_, donde _x_ es el nombre del modelo. Entonces, para un modelo llamado _house_, el colisionador debe llamarse _house_collider_.
+* Asignar capas de colisión directamente a la geometría visible, a través del `visibleMeshesCollisionMask`.
+
+{% hint style="warning" %}
+**📔 Nota**: Si la geometría visible del objeto tiene muchos vértices, ten en cuenta que esto puede tener más costo de rendimiento.
+{% endhint %}
+
+* Darle a la entidad un componente `MeshCollider`, para darle un colisionador de forma primitiva.
+* Superponer una entidad invisible que tenga un componente `MeshCollider`.
+* Editar el modelo en una herramienta externa como Blender para incluir un _mesh de colisionador_. El colisionador debe llamarse _x\_collider_, donde _x_ es el nombre del modelo. Entonces, para un modelo llamado _house_, el colisionador debe llamarse _house\_collider_.
 
 Es posible que también desees asignar la capa de colisión de eventos de puntero al `visibleMeshesCollisionMask` en caso de que desees que las hints de hover y eventos de puntero respondan con más precisión al contorno de la entidad. Ten en cuenta que esto es más exigente en términos de rendimiento.
 
@@ -114,7 +119,7 @@ GltfContainer.create(myEntity, {
 })
 ```
 
-Consulta [modelos 3D](/creator/3d-modeling/3d-models) para más detalles sobre cómo agregar geometría de colisionador invisible a un modelo 3D.
+Consulta [modelos 3D](../../../creator/3d-modeling/3d-models/) para más detalles sobre cómo agregar geometría de colisionador invisible a un modelo 3D.
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `GltfContainer` y `ColliderLayer` deben importarse mediante
@@ -136,10 +141,10 @@ La escena puede manejar capas de colisión separadas, que tienen diferentes comp
 
 Puedes configurar un componente `MeshCollider` o el componente `GltfContainer` para responder solo a un tipo de interacción, o a varias de ellas, o ninguna. Para hacer esto, en el `MeshCollider` establece la propiedad `collisionMask`, y en `GltfContainer` establece las propiedades `visibleMeshesCollisionMask` o `invisibleMeshesCollisionMask` a uno o varios de los siguientes valores:
 
-- `ColliderLayer.CL_PHYSICS`: Solo bloquea el movimiento del jugador (y no afecta eventos de puntero)
-- `ColliderLayer.CL_POINTER`: Responde solo a eventos de puntero (y no bloquea el movimiento del jugador)
-- `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`: Se pueden usar junto con raycasts, para que un rayo solo detecte colisiones con una capa específica.
-- `ColliderLayer.CL_NONE`: No responde a colisiones de ningún tipo.
+* `ColliderLayer.CL_PHYSICS`: Solo bloquea el movimiento del jugador (y no afecta eventos de puntero)
+* `ColliderLayer.CL_POINTER`: Responde solo a eventos de puntero (y no bloquea el movimiento del jugador)
+* `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`: Se pueden usar junto con raycasts, para que un rayo solo detecte colisiones con una capa específica.
+* `ColliderLayer.CL_NONE`: No responde a colisiones de ningún tipo.
 
 {% hint style="warning" %}
 **📔 Nota**: Para deshabilitar colisiones de un componente `MeshCollider`, elimina el componente. No establezcas la capa de colisión en `ColliderLayer.CL_NONE`. Hay un problema conocido con el componente `MeshCollider`. En lugar de deshabilitar todas las colisiones, hace que este valor sea equivalente al predeterminado (`ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER`).
@@ -179,11 +184,11 @@ Para evitar que la cámara atraviese paredes, debes asignar tanto la capa `Colli
 
 Por ejemplo, en el Creator Hub, la siguiente combinación de configuraciones evitará que la cámara atraviese paredes:
 
-<img src="../../../images/colliders-camera.png" width="300" />
+
 
 Tanto la capa `ColliderLayer.CL_PHYSICS` como la capa `ColliderLayer.CL_POINTER` están asignadas a la misma capa invisible de la geometría de la entidad. Si ambas estuvieran asignadas a la capa visible, el resultado sería el mismo. Este es el comportamiento predeterminado, tanto al agregar una entidad a través del Creator Hub como a través de código.
 
-<img src="../../../images/colliders-no-camera.png" width="300" />
+
 
 En este segundo ejemplo, la cámara puede atravesar la pared, porque la capa `ColliderLayer.CL_PHYSICS` está asignada a la capa invisible de la entidad, y la capa `ColliderLayer.CL_POINTER` está asignada a la capa visible de la entidad, incluso si ambas geometrías tienen la misma forma general.
 
@@ -317,9 +322,9 @@ El campo `$case` te permite especificar uno de los tipos permitidos. Cada tipo a
 
 Los valores compatibles para `$case` son los siguientes:
 
-- `box`
-- `plane`
-- `sphere`
-- `cylinder`
+* `box`
+* `plane`
+* `sphere`
+* `cylinder`
 
 Dependiendo del valor de `$case`, es válido definir el objeto para la forma correspondiente, pasando las propiedades relevantes.

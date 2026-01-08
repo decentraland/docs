@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo crear un Rig para personajes en Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/create-a-rig
 ---
 
 # Create a Rig

@@ -1,28 +1,30 @@
-Outfits are the saved outfits of a player. An outfit is composed of body shape, skin, hair, eyes and wearables configurations. 
+# outfits
 
-## Pointers {#pointers}
+Outfits are the saved outfits of a player. An outfit is composed of body shape, skin, hair, eyes and wearables configurations.
 
-Outfits [pointers](../pointers) are the Ethereum address of the owner with a "`:outfits`" suffix. For example:
+### Pointers <a href="#pointers" id="pointers"></a>
+
+Outfits [pointers](../../pointers/) are the Ethereum address of the owner with a "`:outfits`" suffix. For example:
 
 ```
 0x210c4415d6a71195af76beef9b85dd0eb43f35df:outfits
 ```
 
-## Metadata Fields
+### Metadata Fields
 
-| Field | Value |
-| ----- | --- |
-|`outfits`| An array of descriptions for each outfit (see below).
-|`namesForExtraSlots`| An array of owned names used for validating extra slots. For each owned name, it is granted an extra slot up to 5. 
+| Field                | Value                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `outfits`            | An array of descriptions for each outfit (see below).                                                              |
+| `namesForExtraSlots` | An array of owned names used for validating extra slots. For each owned name, it is granted an extra slot up to 5. |
 
-## Outfits
+### Outfits
 
 Each outfit in `metadata.outfits[]` represents an outfit of the user, and has a number of properties:
 
-| Field | Value |
-| ----- | --- |
-| `slot` | Slot number of the saved outfit.
-| `outfit` | The saved outfit (see below).
+| Field    | Value                            |
+| -------- | -------------------------------- |
+| `slot`   | Slot number of the saved outfit. |
+| `outfit` | The saved outfit (see below).    |
 
 An example:
 
@@ -35,17 +37,17 @@ An example:
 }
 ```
 
-### Outfit Field
+#### Outfit Field
 
 The `metadata.outfits[].outfit` field has all the information to save a player's outfit and render it.
 
-| Field | Value |
-| ----- | --- |
-| `bodyShape` | The [pointer](../pointers) to the avatar's body shape entity.
-| `eyes` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's eyes.
-| `hair` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's hair.
-| `skin` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's skin.
-| `wearables` | An array of [wearable pointers](wearables#pointers) in use by the avatar.
+| Field       | Value                                                                                         |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| `bodyShape` | The [pointer](../../pointers/) to the avatar's body shape entity.                             |
+| `eyes`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's eyes.        |
+| `hair`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's hair.        |
+| `skin`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's skin.        |
+| `wearables` | An array of [wearable pointers](../../entity-types/wearables/#pointers) in use by the avatar. |
 
 To illustrate:
 

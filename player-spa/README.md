@@ -1,9 +1,7 @@
 ---
 description: Bienvenido a la Documentación para Jugadores de Decentraland
 icon: hand-wave
-metaLinks:
-  alternates:
-    - https://app.gitbook.com/s/UWbeOuof0RchgfvQfPTf/
+metaLinks: {}
 ---
 
 # Bienvenido Jugador

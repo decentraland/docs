@@ -1,12 +1,14 @@
 ---
 description: Usando smart items en tu escena para agregar interactividad.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/smart-items-advanced
 ---
 
 # Smart Items Advanced
 
 La mayoría de los smart items tienen un módulo básico donde puedes configurar solo las configuraciones más comunes de una manera simple, pero puedes desplazarte hacia abajo más allá del marcador **Advanced** para personalizar casi cualquier cosa sobre cómo se comporta el ítem.
-
-
 
 El siguiente ítem tiene un componente Transform y un módulo básico que expone solo los campos básicos para configurar un botón. Pero si te desplazas hacia abajo más allá del marcador **Advanced**, encontrarás todas las configuraciones disponibles.
 
@@ -50,7 +52,7 @@ Por ejemplo, para hacer que un botón abra una puerta:
 {% hint style="info" %}
 **💡 Tip**: En su lugar, puedes crear un nuevo evento de Trigger que solo maneje la acción de la puerta. Ambos eventos de trigger se llaman cada vez que se hace clic en el botón.
 
-![](../images/editor/button-to-door2.png)
+<img src="../images/editor/button-to-door2.png" alt="" data-size="original">
 {% endhint %}
 
 Cualquier ítem puede activar cualquier acción de cualquier otro ítem, siempre que la acción esté definida. Consulta [Triggers](smart-items-advanced.md#triggers) para más formas en las que se puede activar una acción.

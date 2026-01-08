@@ -1,5 +1,9 @@
 ---
 description: Directrices para Subir Smart Wearables al Editor
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/manage-collections/uploading-smart-wearables
 ---
 
 # Uploading Smart Wearables
@@ -10,8 +14,6 @@ Después de generar tu Smart Wearable usando el [SDK7](https://github.com/decent
 
 Recuerda que necesitas crear una colección antes de subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/wearables-and-emotes/manage-collections/creator/wearables-and-emotes/manage-collections/creating-collection/README.md). Para subir tu Smart Wearable, arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo es un Smart Wearable. **Recuerda que el tamaño máximo de archivo de la colección es 3MB**.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/01_new_item.png)
-
 Cuando subas el archivo, se te pedirá que subas un video showcase.
 
 ### Subiendo Tu Video Showcase
@@ -20,15 +22,11 @@ Este video showcase se mostrará en el marketplace para que los compradores vean
 
 Para subir tu video showcase, arrastra y suelta un archivo de video **.mp4** en la ventana _**Upload a video for your Smart Wearable**_ o busca en tu computadora. **Recuerda que el tamaño máximo del video es 4MB y la duración máxima es 15 segundos**.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/01_new_video.png)
-
 Cuando subas el video showcase, se te pedirá que ingreses un nombre y definas la rarity y la categoría. También puedes agregar una miniatura para el Smart Wearable si gustas.
 
 #### Rarity
 
 Selecciona la Rarity de tu ítem.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/03_rarity.png)
 
 | Rarity    | Number of Items |
 | --------- | --------------- |
@@ -45,31 +43,21 @@ Selecciona la Rarity de tu ítem.
 
 Los wearables están organizados en diferentes categorías, dependiendo de qué parte de un avatar modifican. En este paso, debes seleccionar la categoría de ítem apropiada.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/04_category.png)
-
 #### Custom Thumbnails
 
 Puedes agregar tu miniatura haciendo clic en el ícono de cámara y seleccionando la imagen que deseas de tu computadora. **Por favor asegúrate de que la miniatura esté en un formato de archivo .png cuadrado de 256px, con fondo transparente.** Ten en cuenta que el Curation Committee no aprobará colecciones que tengan miniaturas sin fondos transparentes.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/06_thumbnail.png)
-
 {% hint style="warning" %}
 ⚠️ Tener un buen render de tu Wearable es crucial para hacerlo más atractivo para los usuarios potenciales del Marketplace. **Es importante evitar agregar gráficos que no sean el wearable en sí porque esto puede causar que el Curation Committee lo rechace.**
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/07_thumbnail.png)
 {% endhint %}
 
 #### Update Video Showcase
 
 Para actualizar tu video showcase, simplemente haz clic en el ícono de cámara y busca el video en tu computadora. **Ten en cuenta que el tamaño máximo de archivo permitido es 4MB y la duración no debe exceder 15 segundos**.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/06_video.png)
-
 #### Properties
 
 Junto a la miniatura, encontrarás las propiedades de tu wearable como el número de triángulos de tu modelo, el número de materiales y las texturas.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/08_properties.png)
 
 ### Subiendo Mouth, Eyes and Eyebrows
 
@@ -79,11 +67,7 @@ Las categorías mouth, eyes y eyebrows tienen un comportamiento diferente en el 
 Si quieres que el asset esté enmascarado, para que una parte del mouth o eyebrows no se vea afectada por el teñido, sube un archivo zip con tanto el png como los archivos de máscara. Recuerda que el archivo de máscara debe tener un sufijo "\\\_mask" para funcionar.
 {% endhint %}
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/02_mouth_wearable.png)
-
 Después de subir tus Wearables terminarás con una pantalla como esta, que muestra los ítems en tu colección.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/11_list_wearables.png)
 
 ### Estableciendo el Precio de Tu Smart Wearable
 
@@ -93,17 +77,11 @@ También podrías _**Make it Free**_, lo que significa que el precio será 0 MAN
 
 No olvides establecer la dirección de beneficiario, que es la que recibirá el MANA de tus ventas. Puedes usar cualquier dirección de Ethereum que desees. Para completar automáticamente la dirección con la que iniciaste sesión, haz clic en _**I'm the Beneficiary.**_
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/12_set_price.png)
-
 Guarda el precio, y volverás a la lista de Wearables en tu colección. Cuando hagas clic en el ítem, obtendrás su información general. Haz clic en el botón _**Preview in Editor**_ para verlo en el editor.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/13_click_item.png)
 
 ## El Editor
 
 Una vez que hagas clic en _**Preview in Editor**_, tendrás el editor abierto. Puedes editar la información de tu Smart Wearable, incluyendo la descripción, tags y overrides.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/14_editor.png)
 
 ### Description
 
@@ -128,33 +106,21 @@ Nota: Los overrides que selecciones serán la configuración predeterminada suge
 
 Para previsualizar tu Smart Wearable, pasa tu mouse sobre el elemento de wearable en la parte superior izquierda y haz clic en el símbolo de ojo.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/18_preview_smart_wearables_03.gif)
-
 Haciendo clic en el ícono en la parte inferior izquierda, puedes editar el avatar. Esto es útil si tienes una versión masculina y femenina de tu Wearable, así que verifica cómo se ven ambas versiones en el editor, probando diferentes emotes para identificar problemas de skinning y mezclando otros Wearables para ver cómo combina con otras ropas. Cuando hayas terminado de editar tu wearable, haz clic en _**Save**_.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/19_edit_avatar_wearable_03.gif)
 
 ### Probando en Decentraland
 
 Incluso después de probar el Smart Wearable en el editor, es importante verificar cómo se verá y comportará en Decentraland. Para probarlo allí, ve a la pestaña Collections. Selecciona la colección deseada y haz clic en el botón _**See in Decentraland**_.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/20_test_in_world_01.png)
-
 Después de hacer clic en el botón _**See in Decentraland**_, aparecerá el siguiente pop-up. Seleccionar _**Empty Parcels**_ te teletransportará a un lugar sin demasiado contenido, que cargará más rápido. Seleccionar _**Genesis Plaza**_ te llevará a la plaza principal.
 
-![](../images/wearables-and-emotes/uploading-smart-wearables/23_see_in_world.png)
-
 Una vez que selecciones la ubicación para teletransportarte, se abrirá una nueva pestaña en tu navegador y obtendrás este mensaje.
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/21_sepolia.png)
 
 Haz clic en _**Switch to Sepolia**_, y aparecerá un pop-up de tu wallet pidiéndote cambiar la red. Haz clic en Switch Network, y la nueva pestaña se actualizará automáticamente. Para probar tu Smart Wearable, puedes ir al backpack y seleccionarlo.
 
 {% hint style="warning" %}
 Si no has habilitado las redes testnet de Ethereum, puedes seguir este [Artículo de Metamask](https://support.metamask.io/hc/en-us/articles/13946422437147-How-to-view-testnets-in-MetaMask).
 {% endhint %}
-
-![](../images/wearables-and-emotes/uploading-smart-wearables/22_smart_wearable_world.gif)
 
 ### Antes de Publicar
 

@@ -6,14 +6,14 @@ description: What you can see in a scene's preview
 
 Once you have [built a new scene](preview-scene.md#create-your-first-scene) or downloaded a [scene example](https://studios.decentraland.org/resources?sdk_version=SDK7) you can preview it locally.
 
-## Using the Scene Editor
+## Using the Scene Editor in Creator Hub
 
 Make sure you've [installed the Creator Hub](../get-started/editor-installation.md).
 
 1. Open your scene project.
 2. Click the **Preview** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
 
-![](../../images/editor/preview-button.png)
+![](../../../.gitbook/assets/preview-button.png)
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
@@ -64,11 +64,11 @@ The scene size shown in the preview is based on the scene's configuration.
 
 Edit this on the second tab of the scene menu in the Scene Editor.
 
-![](../../images/editor/scene-parcels-3x3.png)
+![](../../../.gitbook/assets/scene-parcels-3x3.png)
 
 Use the dropdowns and click **Apply Layout** to change the dimensions of your scene. You can also click each individual parcel to toggle it off from your layout.
 
-![](../../images/editor/scene-parcels-toggled.png)
+![](../../../.gitbook/assets/scene-parcels-toggled.png)
 
 You can also edit the _scene.json_ file to list multiple parcels in the "parcels" field. See [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) for more details.
 
@@ -90,7 +90,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../images/editor/preview-button.png)
+![](../../../.gitbook/assets/preview-button.png)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

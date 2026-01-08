@@ -1,5 +1,11 @@
 ---
-description: Optimiza tu escena para que cargue rápido y funcione sin problemas para todos los jugadores.
+description: >-
+  Optimiza tu escena para que cargue rápido y funcione sin problemas para todos
+  los jugadores.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/optimizing/performance-optimization
 ---
 
 # Optimización de Rendimiento
@@ -74,10 +80,6 @@ Hay varias formas en las que tus modelos 3D pueden optimizarse para ser más lig
 
 Al trabajar con el [Creator Hub](../scene-editor/get-started/editor-installation.md), puedes ver estadísticas sobre los recursos usados por modelos 3D en tu escena, y si pasan alguna de las [limitaciones de escena](../sdk7/optimizing/scene-limitations.md).
 
-![](../images/editor/triangle-limit1.png)
-
 Puedes expandir este menú para ver detalles.
-
-![](../images/editor/triangle-limit2.png)
 
 Consulta [Optimización de modelos 3D](../3d-modeling/3d-models.md) para varios consejos sobre cómo mantener tus modelos ligeros.

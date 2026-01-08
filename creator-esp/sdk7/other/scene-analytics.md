@@ -1,5 +1,9 @@
 ---
 description: Rastrea analíticas de jugadores para tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/other/scene-analytics
 ---
 
 # Analíticas de Escena

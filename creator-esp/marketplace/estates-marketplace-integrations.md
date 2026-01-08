@@ -1,7 +1,7 @@
 ---
 description: >-
-  Cosas importantes a tener en cuenta si deseas integrar los Estates de Decentraland en tu
-  marketplace
+  Cosas importantes a tener en cuenta si deseas integrar los Estates de
+  Decentraland en tu marketplace
 metaLinks:
   alternates:
     - >-
@@ -20,7 +20,7 @@ Para los marketplaces, especialmente los que no tienen un sistema de custodia (e
 
 No se recomienda listar Estates vacíos. El smart contract del Estate tiene un método `getEstateSize` que devuelve el número de LANDs en el Estate. Si el resultado es `0`, recomendamos no listar ese Estate. Si quieres listarlos de todos modos, verás una imagen como esta:
 
-![](../.gitbook/assets/dissolved_estate.png)
+![](../../.gitbook/assets/dissolved_estate.png)
 
 ### Ejemplo
 

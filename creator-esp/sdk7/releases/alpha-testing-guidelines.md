@@ -1,5 +1,9 @@
 ---
 description: Pautas sobre cómo proporcionar retroalimentación sobre SDK7
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/releases/alpha-testing-guidelines
 ---
 
 # Pautas de Alpha Testing

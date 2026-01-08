@@ -1,5 +1,9 @@
 ---
 description: Reproduce Videos en tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/video-screen
 ---
 
 # Video Screen

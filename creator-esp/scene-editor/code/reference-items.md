@@ -1,5 +1,9 @@
 ---
 description: Referencia ítems en tu código por nombre o por tag.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/code/reference-items
 ---
 
 # Referenciar Ítems
@@ -101,7 +105,7 @@ Agrega Tags a una entidad a través de la sección **Tags** en la parte superior
 {% hint style="info" %}
 **💡 Tip**: Una sola entidad puede tener múltiples tags asignados a ella.
 
-![](../images/editor/tags-multiple.png)
+<img src="../images/editor/tags-multiple.png" alt="" data-size="original">
 {% endhint %}
 
 Luego puedes obtener todas las entidades que tienen un tag específico usando la función `engine.getEntitiesByTag()`. Esto es ideal para cuando quieres iterar sobre un grupo de entidades que tienen el mismo propósito o comportamiento.

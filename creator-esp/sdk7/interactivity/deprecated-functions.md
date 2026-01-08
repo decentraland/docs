@@ -1,5 +1,9 @@
 ---
 description: Funciones heredadas
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/deprecated-functions
 ---
 
 # Funciones obsoletas
@@ -138,7 +142,7 @@ onPlayerExpressionObservable.add(({ expressionId }) => {
 
 El evento incluye la siguiente información:
 
-- expressionId: Nombre del emote realizado (ej: _wave_, _clap_, _kiss_)
+* expressionId: Nombre del emote realizado (ej: _wave_, _clap_, _kiss_)
 
 {% hint style="warning" %}
 **📔 Nota**: Este evento se activa cada vez que el jugador hace un emote y la escena está cargada. El jugador podría estar parado en una escena cercana cuando esto sucede.
@@ -303,11 +307,11 @@ Como alternativa, puedes adjuntar un colisionador invisible al jugador y detecta
 
 El evento incluye los siguientes datos:
 
-- `userId`: El id del jugador al que se hizo clic
-- `ray`: Datos sobre el rayo trazado por el clic
-  - `direction`: _Vector3_ Un Vector3 normalizado que representa la dirección desde el punto de origen del clic hasta el punto de impacto del clic.
-  - `distance`: _number_ La distancia en metros desde el punto de origen hasta el punto de impacto.
-  - `origin`: _Vector3_ El punto de origen del clic, la posición del jugador que hizo el clic, relativa a la escena.
+* `userId`: El id del jugador al que se hizo clic
+* `ray`: Datos sobre el rayo trazado por el clic
+  * `direction`: _Vector3_ Un Vector3 normalizado que representa la dirección desde el punto de origen del clic hasta el punto de impacto del clic.
+  * `distance`: _number_ La distancia en metros desde el punto de origen hasta el punto de impacto.
+  * `origin`: _Vector3_ El punto de origen del clic, la posición del jugador que hizo el clic, relativa a la escena.
 
 {% hint style="info" %}
 **💡 Consejo**: El comportamiento predeterminado de hacer clic en otro jugador es abrir el pasaporte del jugador, donde puedes ver información adicional sobre ese jugador, agregarlo como amigo, etc. Puedes deshabilitar la apertura de esta UI para que no interfiera con la experiencia que deseas construir agregando un [Área modificadora de avatar](avatar-modifiers.md).
@@ -361,10 +365,10 @@ onRealmChangedObservable.add((realmChange) => {
 
 Este evento incluye los siguientes campos:
 
-- **serverName**: _string_; El nombre del servidor catalyst.
-- **room**: _string_; El nombre de la isla.
-- **displayName**: _string_; El nombre del servidor catalyst seguido de un _-_ y el nombre de la isla. Por ejemplo `unicorn-x011`.
-- **domain**: _string_; La url al servidor catalyst que se está usando.
+* **serverName**: _string_; El nombre del servidor catalyst.
+* **room**: _string_; El nombre de la isla.
+* **displayName**: _string_; El nombre del servidor catalyst seguido de un _-_ y el nombre de la isla. Por ejemplo `unicorn-x011`.
+* **domain**: _string_; La url al servidor catalyst que se está usando.
 
 A medida que los jugadores se mueven por el mapa, pueden cambiar de islas para agruparse con aquellos jugadores que ahora están más cerca de ellos. Las islas también cambian sus fronteras dinámicamente para ajustarse a un grupo manejable de personas en cada una. Entonces, incluso si un jugador se queda quieto, podría cambiar de isla a medida que otros entran y salen de las escenas circundantes.
 
@@ -373,7 +377,7 @@ Si tu escena depende de un [servidor de terceros](../networking/authoritative-se
 ## Funciones de criptografía
 
 {% hint style="warning" %}
-**📔 Nota**: Las funciones `requirePayment()`, `signMessage()`, `convertMessageToObject()` están obsoletas. Usa la función `sendAsync()` en su lugar. Consulta [Operaciones blockchain de la escena](../blockchain/scene-blockchain-operations.md#). También hay bibliotecas que pueden ayudar a simplificar algunos casos de uso comunes con estas funciones.
+**📔 Nota**: Las funciones `requirePayment()`, `signMessage()`, `convertMessageToObject()` están obsoletas. Usa la función `sendAsync()` en su lugar. Consulta [Operaciones blockchain de la escena](deprecated-functions.md). También hay bibliotecas que pueden ayudar a simplificar algunos casos de uso comunes con estas funciones.
 {% endhint %}
 
 ## Eventos de video
@@ -392,15 +396,14 @@ onVideoEvent.add((data) => {
 
 La entrada de un evento de video contiene las siguientes propiedades:
 
-- `videoClipId` ( _string_): El ID para la entidad que cambió de estado.
-- `componentId` (_string_): El ID de la entidad que cambió de estado.
-- `currentOffset` (_number_): El valor actual de la propiedad `seek` en el video. Este valor muestra segundos después del comienzo original del video. _-1_ por defecto.
-- `totalVideoLength` (_number_ ): La longitud en segundos del video completo. _-1_ si la longitud es desconocida.
-- `videoStatus`: El valor para el nuevo estado de video del `VideoTexture`, expresado como un valor del enum `VideoStatus`. Este enum puede contener los siguientes valores posibles:
-
-- `VideoStatus.NONE` = 0,
-- `VideoStatus.ERROR` = 1,
-- `VideoStatus.LOADING` = 2,
-- `VideoStatus.READY` = 3,
-- `VideoStatus.PLAYING` = 4,
-- `VideoStatus.BUFFERING` = 5
+* `videoClipId` ( _string_): El ID para la entidad que cambió de estado.
+* `componentId` (_string_): El ID de la entidad que cambió de estado.
+* `currentOffset` (_number_): El valor actual de la propiedad `seek` en el video. Este valor muestra segundos después del comienzo original del video. _-1_ por defecto.
+* `totalVideoLength` (_number_ ): La longitud en segundos del video completo. _-1_ si la longitud es desconocida.
+* `videoStatus`: El valor para el nuevo estado de video del `VideoTexture`, expresado como un valor del enum `VideoStatus`. Este enum puede contener los siguientes valores posibles:
+* `VideoStatus.NONE` = 0,
+* `VideoStatus.ERROR` = 1,
+* `VideoStatus.LOADING` = 2,
+* `VideoStatus.READY` = 3,
+* `VideoStatus.PLAYING` = 4,
+* `VideoStatus.BUFFERING` = 5

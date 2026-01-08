@@ -1,5 +1,8 @@
 ---
 description: Entendiendo la arquitectura de SDK7 y ECS
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture
 ---
 
 # SDK7 Architecture

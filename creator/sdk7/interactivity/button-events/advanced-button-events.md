@@ -4,7 +4,7 @@ description: Learn how to handle user clicks in your scene.
 
 # Advanced Button Events
 
-If you need the interaction in your scene to follow custom logic that is not compatible with the [Register callback](./sdk7/interactivity/button-events/register-callback.md) or the [System based](./sdk7/interactivity/button-events/system-based-events.md) approaches, you can deal with the raw input event data directly. This approach is the hardest, but the most flexible.
+If you need the interaction in your scene to follow custom logic that is not compatible with the [Register callback](register-callback.md) or the [System based](system-based-events.md) approaches, you can deal with the raw input event data directly. This approach is the hardest, but the most flexible.
 
 ### The PointerEventsResult component
 

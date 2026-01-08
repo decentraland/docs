@@ -10,8 +10,6 @@ This documentation explains the set up for Rig 1.0, its controls, and features.
 
 These are the armature’s transforms in Object Mode with the controls’ setup. **Do not edit this in any way**. The rig should only be manipulated in Pose Mode. To avoid unwanted editing, the transforms have been locked in Object Mode.
 
-![](../images/media/RigTransforms.png)
-
 _Rig 1.0 transforms._
 
 {% hint style="warning" %}
@@ -22,19 +20,13 @@ _Rig 1.0 transforms._
 
 This is the bone orientation for Rig 1.0. As it is right now, it’s not possible to mirror behavior on the shoulders, arms, hands, or fingers.
 
-![](../images/media/AxesBoneOrientation.png)
-
 _Axes for bone orientation._
-
-![](../images/media/MirrorPose.png)
 
 _Behavior when mirrorring poses._
 
 #### Bone Collections
 
 To avoid any accidents and to make it easier to identify the controls, this rig is organized in bone collections that can be accessed in the _Data Properties_ tab in Blender. These collections’ visibility can be toggled on and off by clicking on the _Eye Icon._ By default, they are all visible, except for the DON'T TOUCH ones.
-
-![](../images/media/BoneCollections.png)
 
 Armature Data Properties tab.
 
@@ -64,8 +56,6 @@ Controls are non-deforming bones that drive the base skeleton. They have differe
 * Red: IK controls
 * Pink: left side controls
 * Orange: right side controls
-
-![](../images/media/RigControls.png)
 
 _All the controls and their colors._
 
@@ -112,8 +102,6 @@ _How the IsoRot attribute for the head works._
 ![In previous versions of Blender, make sure to keyframe all the controls and custom attributes!](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/custom_attributes.gif)
 
 _In previous versions of Blender, make sure to keyframe all the controls and custom attributes!_
-
-![](../images/media/keyframes.gif)
 
 _In Blender 4.4, press I to automatically set a keyframe on Location, Rotation, Scale & Custom Properties.._
 

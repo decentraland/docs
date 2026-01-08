@@ -168,7 +168,7 @@ Esta ACL se almacena en el Servidor de Contenido de World donde se despliega el 
 
 Se ha agregado un nuevo comando al CLI de Decentraland que permite mostrar el ACL actual almacenado en el Servidor de Contenido de Worlds para un NAME dado, y también permite otorgar acceso a más billeteras o revocar acceso a billeteras que ya están en el ACL.
 
-![](../.gitbook/assets/world-acl-help.png)
+![](../../.gitbook/assets/world-acl-help.png)
 
 Para otorgar permiso para publicar una escena a otra billetera debes:
 

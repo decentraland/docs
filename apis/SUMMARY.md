@@ -246,6 +246,18 @@
     ```
 * [Worlds Content Server](apis/worlds-content-server/README.md)
   * ```yaml
+    props:
+      models: false
+      downloadLink: true
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: worlds-content-server
+    ```
+* [Builder Server](apis/builder-server/README.md)
+  * ```yaml
     type: builtin:openapi
     props:
       models: false
@@ -254,5 +266,5 @@
       spec:
         ref:
           kind: openapi
-          spec: worlds-content-server
+          spec: builder-server-api
     ```

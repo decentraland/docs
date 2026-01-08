@@ -1,10 +1,11 @@
 ---
 description: Combina contenido creado en el Scene Editor con el poder de escribir código.
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/code
 ---
 
 # Overview
-
-
 
 El Creator Hub más código personalizado es una combinación muy poderosa para crear contenido. Puedes usar el canvas para posicionar ítems visualmente de forma intuitiva, y luego escribir código que interactúa con estos ítems con completa libertad. Incluso puedes colocar un smart item, que tiene su propio comportamiento predeterminado, y escribir código que reacciona cuando el ítem se activa.
 

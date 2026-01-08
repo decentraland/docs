@@ -1,5 +1,9 @@
 ---
 description: Haz que el jugador realice un emote
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/trigger-emotes
 ---
 
 # Activar emotes
@@ -20,7 +24,7 @@ La forma más fácil de hacer que un jugador realice una animación es usar el [
 
 Usa la función `triggerEmote()` para ejecutar una de las animaciones predeterminadas que los jugadores pueden reproducir en cualquier lugar de Decentraland. Esta función toma un objeto con una sola propiedad como argumento:
 
-- `predefinedEmote`: Un nombre de cadena para un emote existente.
+* `predefinedEmote`: Un nombre de cadena para un emote existente.
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -42,41 +46,41 @@ pointerEventsSystem.onPointerDown(
 
 Los siguientes emotes muestran retroalimentación sobre acciones del jugador en tu escena, todos estos son valores válidos para el campo `predefinedEmote`:
 
-- `buttonDown`
-- `buttonFront`
-- `getHit`
-- `knockOut`
-- `lever`
-- `openChest`
-- `openDoor`
-- `punch`
-- `push`
-- `swingWeaponOneHand`
-- `swingWeaponTwoHands`
-- `throw`
-- `sittingChair1`
-- `sittingChair2`
-- `sittingGround1`
-- `sittingGround2`
+* `buttonDown`
+* `buttonFront`
+* `getHit`
+* `knockOut`
+* `lever`
+* `openChest`
+* `openDoor`
+* `punch`
+* `push`
+* `swingWeaponOneHand`
+* `swingWeaponTwoHands`
+* `throw`
+* `sittingChair1`
+* `sittingChair2`
+* `sittingGround1`
+* `sittingGround2`
 
 Estos emotes están disponibles para todos los jugadores en su rueda de emotes predeterminada, y también se pueden usar en cualquier escena.
 
-- `wave`
-- `fistpump`
-- `robot`
-- `raiseHand`
-- `clap`
-- `money`
-- `kiss`
-- `tik`
-- `hammer`
-- `tektonik`
-- `dontsee`
-- `handsair`
-- `shrug`
-- `disco`
-- `dab`
-- `headexplode`
+* `wave`
+* `fistpump`
+* `robot`
+* `raiseHand`
+* `clap`
+* `money`
+* `kiss`
+* `tik`
+* `hammer`
+* `tektonik`
+* `dontsee`
+* `handsair`
+* `shrug`
+* `disco`
+* `dab`
+* `headexplode`
 
 {% hint style="info" %}
 **💡 Consejo**: Si un jugador camina o salta mientras reproduce la animación, la interrumpirán. Si no quieres que eso sea posible, puedes congelar el avatar con [Modificadores de entrada](input-modifiers.md) durante la duración de la animación del avatar.
@@ -84,7 +88,7 @@ Estos emotes están disponibles para todos los jugadores en su rueda de emotes p
 
 ## Animaciones personalizadas
 
-Usa `triggerSceneEmote()` para hacer que el jugador realice una animación personalizada, almacenada como un archivo .glb como parte del asset de la escena. 
+Usa `triggerSceneEmote()` para hacer que el jugador realice una animación personalizada, almacenada como un archivo .glb como parte del asset de la escena.
 
 {% hint style="warning" %}
 **📔 Nota**: El nombre del archivo **debe** terminar en `_emote.glb` para funcionar como una animación de avatar.
@@ -92,8 +96,8 @@ Usa `triggerSceneEmote()` para hacer que el jugador realice una animación perso
 
 Esta función toma un objeto como argumento con los siguientes argumentos:
 
-- `src`: Una cadena con una ruta al archivo de emote.
-- `loop`: Si es true, la animación se repetirá continuamente hasta que el jugador se mueva o se detenga la animación. False por defecto.
+* `src`: Una cadena con una ruta al archivo de emote.
+* `loop`: Si es true, la animación se repetirá continuamente hasta que el jugador se mueva o se detenga la animación. False por defecto.
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'

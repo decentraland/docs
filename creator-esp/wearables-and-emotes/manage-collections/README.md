@@ -1,5 +1,9 @@
 ---
 description: Gestiona tus colecciones de wearables y emotes
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/manage-collections
 ---
 
 # Manage Collections

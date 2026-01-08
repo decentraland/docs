@@ -6,6 +6,10 @@ description: Display and control NPC avatar
 
 Display an avatar as an entity in a scene.
 
+{% hint style="info" %}
+**💡 Tip**: Try the [NPC Toolkit library](https://github.com/decentraland-scenes/dcl-npc-toolkit) for an easier experience dealing with NPCs, especially if you need to interact via a conversation tree.
+{% endhint %}
+
 ### Create an avatar
 
 The following snippet creates an avatar with random wearables and body shape, and name "NPC".
@@ -26,27 +30,25 @@ When passing data to generate an `AvatarShape`, the following fields are require
 The following optional fields are also available:
 
 * `name`: Name to display over the Avatar's head. Default: "NPC".
-* `bodyShape`: String to define which body shape to use.
+* `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
 * `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
 * `eyeColor`: _Color3_ for the eye color (any color is valid)
 * `skinColor`: _Color3_ for the skin color (any color is valid)
 * `hairColor`: _Color3_ for the hair color (any color is valid)
 * `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
-* {% hint style="info" %}
-  **💡 Tip**: See [color types](../sdk7/3d-essentials/color-types.md) for more details on how to set colors.
-  {% endhint %}
+* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
 
 {% hint style="warning" %}
 **📔 Note**: The `AvatarShape`component must be imported via
 
 > `import { AvatarShape } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../sdk7/media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
+**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
 {% endhint %}
 
 ### Animations
@@ -69,7 +71,7 @@ Transform.create(myAvatar, {
 })
 ```
 
-The `expressionTriggerId` field supports all [default animations](../sdk7/interactivity/trigger-emotes.md#default-animations), as well as custom animations [from a scene file](../sdk7/interactivity/trigger-emotes.md#custom-animations), and even URNs from emotes that are published to the marketplace.
+The `expressionTriggerId` field supports all [default animations](player-avatar.md#default-animations), as well as custom animations [from a scene file](player-avatar.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
 #### Looping Animations
 
@@ -199,4 +201,4 @@ AvatarAttach.create(attachedEntity, {
 })
 ```
 
-Learn more about the `AvatarAttach` component [here](../sdk7/3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+Learn more about the `AvatarAttach` component [here](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).

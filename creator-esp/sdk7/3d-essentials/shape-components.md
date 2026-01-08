@@ -1,5 +1,11 @@
 ---
-description: Aprende sobre los diferentes componentes que dan a las entidades su forma 3D y colisión
+description: >-
+  Aprende sobre los diferentes componentes que dan a las entidades su forma 3D y
+  colisión
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/shape-components
 ---
 
 # Componentes de forma
@@ -8,7 +14,7 @@ Las escenas tridimensionales en Decentraland se basan en el modelo [Entity-Compo
 
 La forma renderizada de una entidad está determinada por el componente que usa.
 
-<img src="../../../images/media/ecs-simple-components-new.png" alt="nested entities" width="400"/>
+
 
 ## Usar el Scene Editor
 
@@ -20,23 +26,20 @@ Varias formas básicas, a menudo llamadas _primitivas_, pueden agregarse a una e
 
 Las siguientes formas están disponibles. Varias formas incluyen campos adicionales opcionales, específicos para esa forma.
 
-- **box**:
+*   **box**:
 
-  Usa `MeshRenderer.setBox()`, pasando la entidad. Pasa `uvs` como un campo adicional opcional, para mapear la alineación de texturas. Consulta [materiales](materials.md) para más detalles.
+    Usa `MeshRenderer.setBox()`, pasando la entidad. Pasa `uvs` como un campo adicional opcional, para mapear la alineación de texturas. Consulta [materiales](materials.md) para más detalles.
+*   **plane**:
 
-- **plane**:
+    Usa `MeshRenderer.setPlane()`, pasando la entidad. Pasa `uvs` como un campo adicional opcional, para mapear la alineación de texturas. Consulta [materiales](materials.md) para más detalles.
+*   **sphere**:
 
-  Usa `MeshRenderer.setPlane()`, pasando la entidad. Pasa `uvs` como un campo adicional opcional, para mapear la alineación de texturas. Consulta [materiales](materials.md) para más detalles.
+    Usa `MeshRenderer.setSphere()`, pasando la entidad.
+*   **cylinder**:
 
-- **sphere**:
+    Usa `MeshRenderer.setCylinder()`, pasando la entidad. Pasa `radiusTop` y `radiusBottom` como campos adicionales opcionales, para modificar el cilindro.
 
-  Usa `MeshRenderer.setSphere()`, pasando la entidad.
-
-- **cylinder**:
-
-  Usa `MeshRenderer.setCylinder()`, pasando la entidad. Pasa `radiusTop` y `radiusBottom` como campos adicionales opcionales, para modificar el cilindro.
-
-  CONSEJO: Establece `radiusTop` o `radiusBottom` en 0 para hacer un cono.
+    CONSEJO: Establece `radiusTop` o `radiusBottom` en 0 para hacer un cono.
 
 El siguiente ejemplo crea un cubo:
 
@@ -109,7 +112,7 @@ El campo `src` es obligatorio, debes darle un valor al construir el componente. 
 **💡 Consejo**: Recomendamos mantener tus modelos separados en la carpeta `assets/scene/models` dentro de tu escena.
 {% endhint %}
 
-Los modelos glTF pueden incluir sus propias texturas, materiales, colisionadores y animaciones incrustadas. Consulta [modelos 3D](/creator/3d-modeling/3d-models) para más información al respecto. Para anular los materiales de un modelo, usa el componente [GltfNodeModifiers](materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
+Los modelos glTF pueden incluir sus propias texturas, materiales, colisionadores y animaciones incrustadas. Consulta [modelos 3D](../../../creator/3d-modeling/3d-models/) para más información al respecto. Para anular los materiales de un modelo, usa el componente [GltfNodeModifiers](materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
 
 Para evitar que los jugadores caminen a través de un modelo 3D, o para hacer un modelo clickeable, debes tener un [collider](colliders.md), que puede estar incrustado en el modelo o proporcionado a través de un componente `MeshCollider`.
 
@@ -129,16 +132,16 @@ En lugar de construir tus propios modelos 3D, también puedes descargarlos de va
 
 Para empezar, a continuación se muestra una lista de bibliotecas que tienen contenido gratuito o relativamente económico:
 
-- [IWB Catalog](https://dcl-iwb.co/)
-- [Asset Ovi](https://assetovi.com/)
-- [Assets from the Builder](https://github.com/decentraland/builder-assets/tree/master/assets)
-- [SketchFab](https://sketchfab.com/)
-- [Clara.io](https://clara.io/)
-- [Archive3D](https://archive3d.net/)
-- [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
-- [Thingiverse](https://www.thingiverse.com/) (modelos 3D hechos principalmente para impresión 3D, pero adaptables a Mundos Virtuales)
-- [ShareCG](https://www.sharecg.com/)
-- [CGTrader](https://www.cgtrader.com/)
+* [IWB Catalog](https://dcl-iwb.co/)
+* [Asset Ovi](https://assetovi.com/)
+* [Assets from the Builder](https://github.com/decentraland/builder-assets/tree/master/assets)
+* [SketchFab](https://sketchfab.com/)
+* [Clara.io](https://clara.io/)
+* [Archive3D](https://archive3d.net/)
+* [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
+* [Thingiverse](https://www.thingiverse.com/) (modelos 3D hechos principalmente para impresión 3D, pero adaptables a Mundos Virtuales)
+* [ShareCG](https://www.sharecg.com/)
+* [CGTrader](https://www.cgtrader.com/)
 
 {% hint style="warning" %}
 **📔 Nota**: Presta atención a las restricciones de licencia que tiene el contenido que descargas.
@@ -150,9 +153,9 @@ Ten en cuenta que en varios de estos sitios, puedes elegir en qué formato desca
 
 Para asegurarte de que los modelos 3D en tu escena se carguen más rápido y ocupen menos memoria, sigue estas mejores prácticas:
 
-- Guarda tus modelos en formato _.glb_, que es una versión más ligera de _.gltf_.
-- Si tienes múltiples modelos que comparten las mismas texturas, exporta tus modelos con texturas en un archivo separado. De esa manera, múltiples modelos pueden referirse a un único archivo de textura que solo necesita cargarse una vez.
-- Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso. Consulta [entidades y componentes](../architecture/entities-components.md#pooling-entities-and-components)
+* Guarda tus modelos en formato _.glb_, que es una versión más ligera de _.gltf_.
+* Si tienes múltiples modelos que comparten las mismas texturas, exporta tus modelos con texturas en un archivo separado. De esa manera, múltiples modelos pueden referirse a un único archivo de textura que solo necesita cargarse una vez.
+* Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso. Consulta [entidades y componentes](../architecture/entities-components.md#pooling-entities-and-components)
 
 ## Estirar una forma
 
@@ -263,10 +266,10 @@ El campo `$case` te permite especificar uno de los tipos permitidos. Cada tipo a
 
 Los valores compatibles para `$case` son los siguientes:
 
-- `box`
-- `plane`
-- `sphere`
-- `cylinder`
+* `box`
+* `plane`
+* `sphere`
+* `cylinder`
 
 Dependiendo del valor de `$case`, es válido definir el objeto para la forma correspondiente, pasando las propiedades relevantes.
 

@@ -1,5 +1,9 @@
 ---
 description: Cambia qué acciones pueden realizar los jugadores
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/input-modifiers
 ---
 
 # Modificadores de entrada
@@ -28,22 +32,22 @@ InputModifier.create(engine.PlayerEntity, {
 
 Ten en cuenta las siguientes consideraciones:
 
-- Mientras las interacciones del jugador están deshabilitadas, su avatar sigue siendo afectado por fuerzas externas, como la gravedad o plataformas en movimiento.
-- El componente `InputModifier` solo puede usarse con la entidad `engine.PlayerEntity`. Solo puede afectar al jugador actual, no puede afectar a otros jugadores.
-- Este componente solo afecta al jugador mientras el avatar está dentro de los límites de tu escena. Su locomoción deja de estar restringida tan pronto como salgan.
-- Mientras las interacciones del jugador están deshabilitadas, el jugador no puede realizar emotes libremente, pero la escena puede activar animaciones en el avatar.
-- Las entradas del jugador no afectan al avatar, pero los [eventos de entrada globales](../interactivity/system-based-events.md#global-input-events) aún pueden ser escuchados por la escena. Podrías usarlos para controlar un vehículo, o usar una [Cámara Virtual](../3d-essentials/camera.md) para seguir otra entidad mientras se mueve, tratándola como un avatar alternativo.
+* Mientras las interacciones del jugador están deshabilitadas, su avatar sigue siendo afectado por fuerzas externas, como la gravedad o plataformas en movimiento.
+* El componente `InputModifier` solo puede usarse con la entidad `engine.PlayerEntity`. Solo puede afectar al jugador actual, no puede afectar a otros jugadores.
+* Este componente solo afecta al jugador mientras el avatar está dentro de los límites de tu escena. Su locomoción deja de estar restringida tan pronto como salgan.
+* Mientras las interacciones del jugador están deshabilitadas, el jugador no puede realizar emotes libremente, pero la escena puede activar animaciones en el avatar.
+* Las entradas del jugador no afectan al avatar, pero los [eventos de entrada globales](system-based-events.md#global-input-events) aún pueden ser escuchados por la escena. Podrías usarlos para controlar un vehículo, o usar una [Cámara Virtual](../3d-essentials/camera.md) para seguir otra entidad mientras se mueve, tratándola como un avatar alternativo.
 
 ## Restringir la locomoción
 
 En lugar de congelar completamente al jugador, puedes restringir ciertas formas específicas de locomoción del jugador. El `InputModifier` incluye las siguientes opciones:
 
-- `disableWalk`: El jugador no puede caminar lentamente (presionando control). Si el jugador intenta caminar, trotará o correrá si está permitido.
-- `disableRun`: El jugador no puede correr (presionando shift). Si el jugador intenta correr, trotará o caminará si está permitido.
-- `disableJog`: El jugador no puede trotar (esta es la velocidad de movimiento predeterminada). Si el jugador intenta trotar, correrá o caminará si está permitido.
-- `disableJump`: El jugador no puede saltar.
-- `disableEmote`: El jugador no puede realizar emotes voluntariamente. La escena puede activar animaciones en el avatar del jugador.
-- `disableAll`: El jugador no puede realizar ninguna de las acciones anteriores.
+* `disableWalk`: El jugador no puede caminar lentamente (presionando control). Si el jugador intenta caminar, trotará o correrá si está permitido.
+* `disableRun`: El jugador no puede correr (presionando shift). Si el jugador intenta correr, trotará o caminará si está permitido.
+* `disableJog`: El jugador no puede trotar (esta es la velocidad de movimiento predeterminada). Si el jugador intenta trotar, correrá o caminará si está permitido.
+* `disableJump`: El jugador no puede saltar.
+* `disableEmote`: El jugador no puede realizar emotes voluntariamente. La escena puede activar animaciones en el avatar del jugador.
+* `disableAll`: El jugador no puede realizar ninguna de las acciones anteriores.
 
 ```ts
 import {InputModifier, engine} from '@dcl/sdk/ecs'

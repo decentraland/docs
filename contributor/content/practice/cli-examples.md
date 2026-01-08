@@ -1,3 +1,5 @@
+# cli-examples
+
 This practice demonstrates how to play with the content API in a terminal. We'll be using the Decentraland Foundation's instance at `peer.decentraland.org`, and all you need is the `curl` command-line tool.
 
 {% hint style="info" %}
@@ -7,7 +9,7 @@ You can use [`httpie`](https://github.com/httpie/httpie) or format responses wit
 This is what we'll do:
 
 1. Query the status of the content server.
-2. Locate and download a daily [snapshot](snapshots) with a list of entities.
+2. Locate and download a daily [snapshot](../../practice/snapshots/) with a list of entities.
 3. Obtain the manifest for an entity.
 4. Download one of the entity's files.
 
@@ -30,11 +32,12 @@ curl "https://peer.decentraland.org/about"
 
 Looks like the server is up and running normally (`"healthy": true`), and is giving us information about the version it implements for each feature set, plus some configuration options of the instance.
 
-We're interested in downloading some content, so let's explore the available [snapshots](snapshots) to get our hands on some identifiers via `/content/snapshots`.
+We're interested in downloading some content, so let's explore the available [snapshots](../../practice/snapshots/) to get our hands on some identifiers via `/content/snapshots`.
 
 ```bash
 curl "https://peer.decentraland.org/content/snapshots"
 ```
+
 ```js
 [
   {
@@ -51,7 +54,7 @@ curl "https://peer.decentraland.org/content/snapshots"
 ]
 ```
 
-Each item in the array describes a [snapshot](snapshots). Let's grab a `hash` and download the file from the `/content/contents` endpoint.
+Each item in the array describes a [snapshot](../../practice/snapshots/). Let's grab a `hash` and download the file from the `/content/contents` endpoint.
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafybeia6qoum64psaooiqo3f45i6hykfwx723uc236waub3gng2naof224" > snapshot
@@ -66,6 +69,7 @@ We can check that we downloaded the right file in a format we know, by looking a
 ```bash
 head -n1 snapshot
 ```
+
 ```
 ### Decentraland json snapshot
 ```
@@ -75,6 +79,7 @@ Great! Now we have a local summary of all entities that were captured in that sn
 ```bash
 tail -n+2 snapshot | head -n1 
 ```
+
 ```js
 {
   "entityId": "bafkreif7hjremkxlvixyxoxnoo7bdcnf7qqp245sjb2pag2nk3n6o6yc4c",
@@ -93,15 +98,16 @@ tail -n+2 snapshot | head -n1
 Since snapshots expire and entities are replaced, the identifiers in this article won't work. Follow along in your command line to get real, active file IDs.
 {% endhint %}
 
-This is information we could save. We'll use the `entityId` to download the entity's JSON manifest, but persisting the listed [pointer](pointers) is a good idea if we want to locate this entity and any updated versions in the future.
+This is information we could save. We'll use the `entityId` to download the entity's JSON manifest, but persisting the listed [pointer](../../practice/pointers/) is a good idea if we want to locate this entity and any updated versions in the future.
 
-We also have the [authentication chain](../entities#ownership) used to sign this entity, and we could validate the listed signatures to verify the authenticity of any related files we download.
+We also have the [authentication chain](../../entities/#ownership) used to sign this entity, and we could validate the listed signatures to verify the authenticity of any related files we download.
 
-Let's get our hands on the entity manifest. Remember, the `entityId` is the [file identifier]((filesystem#identifiers)) we need, and we can use the `/content/contents` endpoint again:
+Let's get our hands on the entity manifest. Remember, the `entityId` is the [file identifier](../../practice/\(filesystem/#identifiers\)) we need, and we can use the `/content/contents` endpoint again:
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafkreigcreq7rv6b2wf4zc4fsnif43ziwb4q46v4qhsewpf7gbsyxew3om"
 ```
+
 ```js
 {
   "version": "v3",

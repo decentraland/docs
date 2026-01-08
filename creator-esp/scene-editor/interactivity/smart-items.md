@@ -1,12 +1,14 @@
 ---
 description: Usando smart items en tu escena para agregar interactividad.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/smart-items
 ---
 
 # Smart Items
 
 Algunos de los ítems en el catálogo del Scene Editor son **Smart Items**. Los jugadores pueden interactuar con estos, tienen propiedades configurables y pueden activar acciones en otros smart items. Por ejemplo: puertas que pueden abrirse y cerrarse, plataformas que se mueven arriba y abajo, o botones y palancas que pueden activar otros ítems.
-
-
 
 Puedes reconocer estos ítems en el explorador de asset packs porque tienen un ícono de rayo y un fondo de color diferente.
 
@@ -115,7 +117,7 @@ Reproduce videos desde:
 
 * **Archivos locales**
 * **Stream desde una URL**
-* **Stream en vivo desde [Decentraland Cast](..//creator/worlds/cast.md)**
+* **Stream en vivo desde** [**Decentraland Cast**](../creator/worlds/cast.md)
 
 {% hint style="warning" %}
 **📔 Nota**: Evita reproducir más de un video en cualquier momento dado en tu escena, porque puede impactar severamente el rendimiento para los jugadores. Siempre detén otros videos antes de reproducir un segundo video.
@@ -176,7 +178,7 @@ También puedes configurar un color de fondo, esto es particularmente útil para
 
 También puedes elegir un **Frame style**, para enmarcar el NFT en una variedad de estilos diferentes, clásicos y modernos.
 
-Consulta [Display an NFT](../sdk7/media/display-a-certified-nft.md#) para más detalles.
+Consulta [Display an NFT](smart-items.md) para más detalles.
 
 #### Barras de salud
 

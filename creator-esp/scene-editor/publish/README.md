@@ -1,5 +1,8 @@
 ---
 description: Publica tu escena en Decentraland
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/publish
 ---
 
 # Publicando Tu Escena

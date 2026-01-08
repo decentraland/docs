@@ -15,7 +15,7 @@ flowchart LR
 
 Cada etapa se construye sobre la anterior, asegurando alineación desde el concepto hasta el código.
 
----
+***
 
 ## UX Discovery
 
@@ -33,6 +33,7 @@ La etapa UX establece la base para todo lo que sigue. Requisitos claros en esta 
 * **Restricciones** - Limitaciones técnicas, de línea de tiempo o recursos
 
 **Ejemplo**:
+
 ```
 Objetivo: Permitir a los usuarios navegar y filtrar sus parcelas de tierra eficientemente
 Objetivo: Propietarios de tierra con 10+ parcelas
@@ -50,6 +51,7 @@ Restricciones: Debe funcionar en móvil; no se permiten cambios en el backend
 * **Ayudas visuales** - Wireframes o diagramas de flujo cuando sea útil
 
 **Ejemplo**:
+
 ```
 Flujo Principal:
 1. Usuario hace clic en "My Land"
@@ -90,6 +92,7 @@ Casos Extremos:
 * **Objetivos de conversión** - Métricas clave de éxito
 
 **Ejemplo**:
+
 ```
 Eventos:
 - parcel_filter_applied { filter_type, filter_value }
@@ -114,6 +117,7 @@ Propiedades:
 * **Contenido alternativo** - Texto para imágenes, íconos, gráficos
 
 **Ejemplo**:
+
 ```
 Navegación por Teclado:
 - Tab: Navegar a través de filtros
@@ -154,7 +158,7 @@ Lector de Pantalla:
 * Mensajes de éxito/error
 * Retroalimentación háptica (móvil)
 
----
+***
 
 ## Diseño Figma
 
@@ -177,7 +181,7 @@ Colores, tamaños o estilos especiales NO DEBERÍAN usarse. Pueden existir excep
 **Si un elemento UI requerido no existe:**
 
 1. Verificar si puede componerse desde componentes existentes
-2. Si no, proponer un componente personalizado (ver [Componentes Personalizados](custom-components.md))
+2. Si no, proponer un componente personalizado (ver [Componentes Personalizados](../../../contributor/contributor-guides/web-ui-standards/custom-components.md))
 3. Documentar la razón en la especificación
 4. Obtener aprobación durante revisión de diseño
 
@@ -205,6 +209,7 @@ theme.palette.text.secondary
 **DEBE** usar variantes definidas:
 
 Variantes disponibles:
+
 * `h1`, `h2`, `h3`, `h4`, `h5`, `h6` - Encabezados
 * `subtitle1`, `subtitle2` - Subencabezados
 * `body1`, `body2` - Texto de cuerpo
@@ -213,11 +218,13 @@ Variantes disponibles:
 * `overline` - Texto overline
 
 **Referencias**:
+
 * [Fuente de tipografía](https://github.com/decentraland/ui2/blob/master/src/theme/typography.ts)
 * [MUI Typography](https://mui.com/material-ui/react-typography/)
 * [Sistema de Tipo Material Design](https://m2.material.io/design/typography/the-type-system.html#type-scale)
 
 **Ejemplo de mapeo**:
+
 ```
 Figma "H1" → <Typography variant="h1">
 Figma "Body 1" → <Typography variant="body1">
@@ -228,17 +235,18 @@ Figma "Caption" → <Typography variant="caption">
 
 **DEBE** diseñar para estos breakpoints:
 
-| Nombre | Ancho | Dispositivo Típico |
-|------|-------|----------------|
-| `xs` | 768px | Móvil |
-| `sm` | 991px | Tablet |
-| `md` | 1024px | Escritorio Pequeño |
-| `lg` | 1280px | Escritorio |
-| `xl` | 1500px | Escritorio Grande |
+| Nombre | Ancho  | Dispositivo Típico |
+| ------ | ------ | ------------------ |
+| `xs`   | 768px  | Móvil              |
+| `sm`   | 991px  | Tablet             |
+| `md`   | 1024px | Escritorio Pequeño |
+| `lg`   | 1280px | Escritorio         |
+| `xl`   | 1500px | Escritorio Grande  |
 
 **Fuente**: [index.ts](https://github.com/decentraland/ui2/blob/master/src/theme/index.ts)
 
 **Mejores prácticas**:
+
 * Diseñar mobile-first (empezar en `xs`)
 * Mostrar breakpoints clave en frames de Figma
 * Documentar comportamiento responsivo
@@ -253,6 +261,7 @@ Figma "Caption" → <Typography variant="caption">
 * Las excepciones requieren justificación en especificación y aprobación
 
 **Valores de tema**:
+
 ```tsx
 theme.shape.borderRadius // Radio por defecto
 theme.palette.primary    // Colores primarios
@@ -268,12 +277,14 @@ theme.palette.divider    // Colores de divisor
 **Si la pantalla soporta múltiples esquemas de color:**
 
 **DEBE** proporcionar:
+
 * Qué esquema aplica (ver [colorSchemes.ts](https://github.com/decentraland/ui2/blob/master/src/theme/colorSchemes.ts))
 * Vista previa del modo claro
 * Vista previa del modo oscuro
 * Documentación sobre cambio de esquemas en Storybook
 
 **Ejemplo**:
+
 ```
 Esquemas Soportados: Claro, Oscuro
 Por defecto: Preferencia del sistema
@@ -288,27 +299,27 @@ Storybook: Usar control "Theme" en la barra de herramientas
 1. **Verificar MUI primero** - ¿MUI tiene este componente?
 2. **Verificar UI2** - ¿Hay una variante de Decentraland?
 3. **Componer si es posible** - ¿Puedes combinar componentes existentes?
-4. **Personalizado como último recurso** - Seguir proceso de [Componentes Personalizados](custom-components.md)
+4. **Personalizado como último recurso** - Seguir proceso de [Componentes Personalizados](../../../contributor/contributor-guides/web-ui-standards/custom-components.md)
 
----
+***
 
 ## Implementación dApp
 
-Los desarrolladores implementan diseños usando componentes UI2 y siguiendo nuestros estándares de [Estilos y Tematización](styling-and-theming.md).
+Los desarrolladores implementan diseños usando componentes UI2 y siguiendo nuestros estándares de [Estilos y Tematización](../../../contributor/contributor-guides/web-ui-standards/styling-and-theming.md).
 
 ### Lista de Verificación de Implementación
 
-- [ ]  Empezar con componente UI2 si está disponible
-- [ ]  Usar componente MUI con tema Decentraland si no hay equivalente UI2
-- [ ]  Seguir estándares de [Estilos y Tematización](styling-and-theming.md)
-- [ ]  Implementar todos los estados de la especificación UX
-- [ ]  Agregar seguimiento de analytics como se especificó
-- [ ]  Probar en todos los breakpoints
-- [ ]  Verificar navegación por teclado
-- [ ]  Verificar contraste de color
-- [ ]  Probar con lector de pantalla
-- [ ]  Manejar estados de carga y error
-- [ ]  Agregar a Storybook si es un componente reutilizable
+* [ ] Empezar con componente UI2 si está disponible
+* [ ] Usar componente MUI con tema Decentraland si no hay equivalente UI2
+* [ ] Seguir estándares de [Estilos y Tematización](../../../contributor/contributor-guides/web-ui-standards/styling-and-theming.md)
+* [ ] Implementar todos los estados de la especificación UX
+* [ ] Agregar seguimiento de analytics como se especificó
+* [ ] Probar en todos los breakpoints
+* [ ] Verificar navegación por teclado
+* [ ] Verificar contraste de color
+* [ ] Probar con lector de pantalla
+* [ ] Manejar estados de carga y error
+* [ ] Agregar a Storybook si es un componente reutilizable
 
 ### Flujo de Implementación de Componentes
 
@@ -343,7 +354,7 @@ Antes de marcar la implementación como completa:
 9. **Storybook** - Historias agregadas (si es reutilizable)
 10. **Revisión de código** - Aprobado por maintainers
 
----
+***
 
 ## Mejores Prácticas de Handoff
 
@@ -370,10 +381,10 @@ Antes de marcar la implementación como completa:
 * Revisiones iterativas en hitos clave
 * Revisión final antes de fusionar
 
----
+***
 
 ## Próximos Pasos
 
-* Aprender sobre [Componentes Personalizados](custom-components.md) para crear nuevos componentes
-* Revisar [Estilos y Tematización](styling-and-theming.md) para detalles de implementación
-* Ver [Guía de Migración](migration.md) si trabajas con componentes UI1
+* Aprender sobre [Componentes Personalizados](../../../contributor/contributor-guides/web-ui-standards/custom-components.md) para crear nuevos componentes
+* Revisar [Estilos y Tematización](../../../contributor/contributor-guides/web-ui-standards/styling-and-theming.md) para detalles de implementación
+* Ver [Guía de Migración](../../../contributor/contributor-guides/web-ui-standards/migration.md) si trabajas con componentes UI1

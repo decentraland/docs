@@ -2,6 +2,10 @@
 description: >-
   Aprende qué ofrece el SDK para realizar operaciones con el blockchain de
   Ethereum
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/blockchain/scene-blockchain-operations
 ---
 
 # Operaciones Blockchain de la Escena

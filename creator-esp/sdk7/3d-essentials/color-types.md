@@ -1,5 +1,9 @@
 ---
 description: Cómo definir valores de color
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/color-types
 ---
 
 # Tipos de color
@@ -97,9 +101,9 @@ Usa la función `Color3.lerp()` o `Color4.lerp()` para definir un color que est�
 
 Tanto `Color3.lerp()` como `Color4.lerp()` toman los siguientes argumentos:
 
-- `left`: El primer color a usar como referencia
-- `right`: El segundo color a usar como referencia
-- `amount`: Un número de 0 a 1 para definir cuánto del color _left_ usar en la mezcla. Cuanto más cerca de 0, más cerca del color _left_.
+* `left`: El primer color a usar como referencia
+* `right`: El segundo color a usar como referencia
+* `amount`: Un número de 0 a 1 para definir cuánto del color _left_ usar en la mezcla. Cuanto más cerca de 0, más cerca del color _left_.
 
 ```ts
 const orange = Color3.lerp(Color3.Red(), Color3.Yellow(), 0.3)

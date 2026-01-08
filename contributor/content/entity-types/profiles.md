@@ -1,38 +1,40 @@
+# profiles
+
 Profiles are the basic description of a player, with information such as their in-world name and avatar.
 
-They are available in content servers as regular [entities](../entities), though World Explorers usually leverage the comms system to get up-to-date versions on the fly.
+They are available in content servers as regular [entities](../../entities/), though World Explorers usually leverage the comms system to get up-to-date versions on the fly.
 
 The system is prepared to allow for multiple identities with the same owner, all included as avatars in the entity manifest. In practice though, the vast majority of players have only one.
 
-## Pointers {#pointers}
+### Pointers <a href="#pointers" id="pointers"></a>
 
-Profile [pointers](../pointers) are the Ethereum address of the owner, without any prefix or suffix. For example:
+Profile [pointers](../../pointers/) are the Ethereum address of the owner, without any prefix or suffix. For example:
 
 ```
 0x210c4415d6a71195af76beef9b85dd0eb43f35df
 ```
 
-## Metadata Fields
+### Metadata Fields
 
-| Field | Value |
-| ----- | --- |
-|`avatars`| An array of descriptions for each of the owner's avatars (see below).
+| Field     | Value                                                                 |
+| --------- | --------------------------------------------------------------------- |
+| `avatars` | An array of descriptions for each of the owner's avatars (see below). |
 
-## Avatars
+### Avatars
 
 Each avatar in `metadata.avatars[]` represents an identity with the same owner, and has a number of properties that allow clients to display profiles, render avatars in-world and contact the owner.
 
-| Field | Value |
-| ----- | --- |
-| `userId` | The [pointer](../pointers) that resolves (or used to resolve) to this profile.
-| `name` | The display name of this player.
-| `email` | (Optional) An email address for this player.
-| `description` | (Optional) Text chosen by the player to describe themselves.
-| `ethAddress` | The ethereum address of this player (currently equal to their `userId`).
-| `hasClaimedName` | Whether the `name` field is a claimed ENS name.
-| `unclaimedName` | A temporary name for users without an ENS name (e.g. guests).
-| `tutorialStep` | The progress of the tutorial for this player.
-| `avatar` | Properties of the player's in-world avatar (see below).
+| Field            | Value                                                                              |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| `userId`         | The [pointer](../../pointers/) that resolves (or used to resolve) to this profile. |
+| `name`           | The display name of this player.                                                   |
+| `email`          | (Optional) An email address for this player.                                       |
+| `description`    | (Optional) Text chosen by the player to describe themselves.                       |
+| `ethAddress`     | The ethereum address of this player (currently equal to their `userId`).           |
+| `hasClaimedName` | Whether the `name` field is a claimed ENS name.                                    |
+| `unclaimedName`  | A temporary name for users without an ENS name (e.g. guests).                      |
+| `tutorialStep`   | The progress of the tutorial for this player.                                      |
+| `avatar`         | Properties of the player's in-world avatar (see below).                            |
 
 An example:
 
@@ -50,18 +52,18 @@ An example:
 }
 ```
 
-### Avatar Field
+#### Avatar Field
 
 The `metadata.avatars[].avatar` field has all the information a World Explorer (or other clients, such as a standalone avatar editor) require to render a player.
 
-| Field | Value |
-| ----- | --- |
-| `bodyShape` | The [pointer](../pointers) to the avatar's body shape entity.
-| `snapshots` | An object with images for this avatar (see below).
-| `eyes` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's eyes.
-| `hair` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's hair.
-| `skin` | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's skin.
-| `wearables` | An array of [wearable pointers](wearables#pointers) in use by the avatar.
+| Field       | Value                                                                                         |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| `bodyShape` | The [pointer](../../pointers/) to the avatar's body shape entity.                             |
+| `snapshots` | An object with images for this avatar (see below).                                            |
+| `eyes`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's eyes.        |
+| `hair`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's hair.        |
+| `skin`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's skin.        |
+| `wearables` | An array of [wearable pointers](../../entity-types/wearables/#pointers) in use by the avatar. |
 
 To illustrate:
 
@@ -94,9 +96,9 @@ To illustrate:
 }
 ```
 
-### Snapshots
+#### Snapshots
 
-The `metadata.avatars[].avatar.snapshots` field contains [file identifiers](../filesystem#identifiers) for images (included in the [`content` top-level field](../entities#properties)). Each property is an image kind, and there are currently two: `face256` (a thumbnail) and `body` (a full-sized version).
+The `metadata.avatars[].avatar.snapshots` field contains [file identifiers](../../filesystem/#identifiers) for images (included in the [`content` top-level field](../../entities/#properties)). Each property is an image kind, and there are currently two: `face256` (a thumbnail) and `body` (a full-sized version).
 
 For example:
 

@@ -1,5 +1,9 @@
 ---
 description: Lo que necesitas tener en cuenta al diseñar un juego para Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/design-experience/design-games
 ---
 
 # Diseño de Juegos
@@ -14,7 +18,7 @@ Estamos mejorando continuamente el SDK, por lo que algunas de las siguientes lim
 
 ### Límites de escena
 
-**Tu juego debe caber completamente en el **_**LAND**_** sobre el que se construye tu escena.** Para escenas pequeñas, piensa en juegos como fútbol donde las reglas del juego mantienen la interacción relevante dentro de un espacio confinado, aunque los jugadores puedan salir del campo de juego. Los jugadores pueden caminar fuera de los límites de una escena, pero cualquier asset o entidades que pertenezcan a la escena deben permanecer dentro de la escena.
+**Tu juego debe caber completamente en el \_LAND**\_\*\* sobre el que se construye tu escena.\*\* Para escenas pequeñas, piensa en juegos como fútbol donde las reglas del juego mantienen la interacción relevante dentro de un espacio confinado, aunque los jugadores puedan salir del campo de juego. Los jugadores pueden caminar fuera de los límites de una escena, pero cualquier asset o entidades que pertenezcan a la escena deben permanecer dentro de la escena.
 
 Los jugadores que salen de tu escena continúan renderizándola mientras esté en un rango visible. Si se alejan demasiado, dejarán de renderizarla por completo.
 

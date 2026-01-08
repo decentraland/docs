@@ -1,5 +1,9 @@
 ---
 description: Referencia para crear tu propia Aplicación Descentralizada
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/blockchain/create-a-dapp
 ---
 
 # Crear una dApp

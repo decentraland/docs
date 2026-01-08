@@ -1,5 +1,9 @@
 ---
 description: Enlaza a otras escenas o sitios externos
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/external-links
 ---
 
 # Enlaces salientes
@@ -10,7 +14,7 @@ Puedes agregar enlaces desde tu escena hacia otro contenido, ya sea a otras esce
 
 La forma más fácil de agregar un enlace externo o un teletransporte es usar el [Scene Editor](../../scene-editor/about-editor.md). Usa el [Smart Item](../../scene-editor/smart-items.md) **Teleport** para agregar un teletransporte a otra escena en Genesis City, o usa cualquiera de los smart items de **Social Links** para agregar enlaces a sitios externos.
 
-<img src="/images/editor/social-links.png" alt="Move entity" width="300"/>
+
 
 ## Teletransportes
 
@@ -56,7 +60,7 @@ import { openExternalUrl } from '~system/RestrictedActions'
 openExternalUrl({ url: 'google.com' })
 ```
 
-Para prevenir cualquier uso abusivo de esta característica para enviar spam a los jugadores, solo es posible llamar a `openExternalUrl` desde un evento de clic o botón explícito en una entidad. No es posible llamar a esta función como resultado de un temporizador, o un área de colisión, o un evento de clic global. Consulta [Eventos de botones](../interactivity/click-events.md) para detalles sobre cómo hacer esto.
+Para prevenir cualquier uso abusivo de esta característica para enviar spam a los jugadores, solo es posible llamar a `openExternalUrl` desde un evento de clic o botón explícito en una entidad. No es posible llamar a esta función como resultado de un temporizador, o un área de colisión, o un evento de clic global. Consulta [Eventos de botones](click-events.md) para detalles sobre cómo hacer esto.
 
 Cuando se llama a `openExternalUrl`, se le solicita a los jugadores una pantalla de confirmación, donde se les informa a dónde los llevará el enlace, y donde pueden aceptar o rechazar visitar el enlace.
 

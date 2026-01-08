@@ -1,5 +1,9 @@
 ---
 description: Conceptos básicos sobre el rig del avatar.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/emotes/avatar-rig
 ---
 
 # Avatar Rig

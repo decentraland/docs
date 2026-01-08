@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo mostrar un NFT certificado que posees en tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/media/display-a-certified-nft
 ---
 
 # Mostrar un NFT Certificado
@@ -89,8 +93,6 @@ const shapeComponent = new NftShape(
 )
 ```
 
-![](../images/media/nft-frames.png)
-
 Aquí está la lista completa de estilos de marco soportados:
 
 * `NFT_CLASSIC`
@@ -126,8 +128,6 @@ Algunos marcos usan más materiales que otros. Por ejemplo, el marco predetermin
 ### Abrir una UI de NFT
 
 Abre una UI preconstruida que muestra el nombre, propietario y descripción de un NFT. También incluye el precio actual del NFT y el precio de la última venta si aplica, y un botón que enlaza a la página del NFT en OpenSea, donde hay más información disponible y puede comprarse.
-
-![](../images/media/nft-ui.png)
 
 Abre esta UI llamando a la función `openNftDialog()`. Esta función requiere un objeto como argumento que contiene un solo campo `urn`. Este campo toma una cadena que debe seguir esta estructura:
 

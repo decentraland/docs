@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo agregar materiales y texturas a entidades con formas primitivas
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/materials
 ---
 
 # Materiales mediante código
@@ -8,14 +12,14 @@ description: Aprende cómo agregar materiales y texturas a entidades con formas 
 
 Los materiales pueden aplicarse a entidades que usan formas primitivas (cubo, esfera, plano, etc) agregando un componente `Material`. Este componente tiene varios campos que te permiten configurar las propiedades del material, agregar una textura, etc.
 
-Los modelos _glTF_ incluyen sus propios materiales que se importan implícitamente a una escena junto con el modelo. Para modificar o anular estos materiales, usa el componente `GltfNodeModifiers`. Consulta [Modificar materiales glTF](#modify-gltf-materials) para más detalles.
+Los modelos _glTF_ incluyen sus propios materiales que se importan implícitamente a una escena junto con el modelo. Para modificar o anular estos materiales, usa el componente `GltfNodeModifiers`. Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
 
-Al importar un modelo 3D con sus propios materiales, ten en cuenta que no todos los shaders son compatibles con el motor de Decentraland. Solo se admiten materiales estándar y materiales PBR (physically based rendering). Consulta [consideraciones de modelos 3D externos](/creator/3d-modeling/materials) para más detalles.
+Al importar un modelo 3D con sus propios materiales, ten en cuenta que no todos los shaders son compatibles con el motor de Decentraland. Solo se admiten materiales estándar y materiales PBR (physically based rendering). Consulta [consideraciones de modelos 3D externos](../../../creator/3d-modeling/materials/) para más detalles.
 
 Hay diferentes tipos de materiales compatibles:
 
-- PBR (Physically Based Rendering): El tipo más común de material en Decentraland. Admite colores planos o texturas, y diferentes propiedades como metálico, emisivo, transparencia, etc. Lee más sobre [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
-- Materiales básicos: No responden a luces y sombras, lo que los hace ideales para mostrar imágenes de billboard.
+* PBR (Physically Based Rendering): El tipo más común de material en Decentraland. Admite colores planos o texturas, y diferentes propiedades como metálico, emisivo, transparencia, etc. Lee más sobre [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
+* Materiales básicos: No responden a luces y sombras, lo que los hace ideales para mostrar imágenes de billboard.
 
 ## Usar el Scene Editor
 
@@ -84,8 +88,8 @@ Consulta [tipos de color](color-types.md) para más detalles sobre cómo estable
 
 También puedes editar los siguientes campos en un Material PBR para ajustar cómo se percibe su color:
 
-- _emissiveColor_: El color emitido desde el material.
-- _reflectivityColor_: AKA _Specular Color_ en otra nomenclatura.
+* _emissiveColor_: El color emitido desde el material.
+* _reflectivityColor_: AKA _Specular Color_ en otra nomenclatura.
 
 Para crear un material de color plano que no sea afectado por luz y sombras en el entorno, crea un material básico en lugar de un material PBR.
 
@@ -123,8 +127,8 @@ En el ejemplo anterior, la imagen para el material se encuentra en una carpeta `
 
 Al crear una textura, también puedes pasar parámetros adicionales:
 
-- `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](#texture-scaling).
-- `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](#texture-wrapping).
+* `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -166,13 +170,12 @@ Puedes establecer cómo se alinea una textura con una superficie. Por defecto, l
 
 Los siguientes campos están disponibles en todas las texturas:
 
-- `offset`: Desplaza la textura para cambiar su alineación. El valor es un Vector2, donde ambos ejes van de 0 a 1, donde 1 es el ancho o alto completo de la textura.
-- `tiling`: Escala la textura. El valor predeterminado es el Vector 2 `[1, 1]`, que hace que la imagen se repita una vez cubriendo toda la superficie.
-- `TextureWrapMode`: Determina qué sucede si el mosaico de la imagen no cubre toda la superficie. Esta propiedad toma sus valores del enum `TextureWrapMode`, que permite los siguientes valores:
-
-  - `TextureWrapMode.TWM_CLAMP`: La textura solo se muestra una vez en el tamaño especificado. El resto de la superficie del mesh se deja transparente. El valor de `tiling` se ignora.
-  - `TextureWrapMode.TWM_REPEAT`: La textura se repite tantas veces como quepa en el mesh, usando el tamaño especificado.
-  - `TextureWrapMode.TWM_MIRROR`: Como en wrap, la textura se repite tantas veces como quepa, pero la orientación de estas repeticiones está reflejada.
+* `offset`: Desplaza la textura para cambiar su alineación. El valor es un Vector2, donde ambos ejes van de 0 a 1, donde 1 es el ancho o alto completo de la textura.
+* `tiling`: Escala la textura. El valor predeterminado es el Vector 2 `[1, 1]`, que hace que la imagen se repita una vez cubriendo toda la superficie.
+* `TextureWrapMode`: Determina qué sucede si el mosaico de la imagen no cubre toda la superficie. Esta propiedad toma sus valores del enum `TextureWrapMode`, que permite los siguientes valores:
+  * `TextureWrapMode.TWM_CLAMP`: La textura solo se muestra una vez en el tamaño especificado. El resto de la superficie del mesh se deja transparente. El valor de `tiling` se ignora.
+  * `TextureWrapMode.TWM_REPEAT`: La textura se repite tantas veces como quepa en el mesh, usando el tamaño especificado.
+  * `TextureWrapMode.TWM_MIRROR`: Como en wrap, la textura se repite tantas veces como quepa, pero la orientación de estas repeticiones está reflejada.
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -191,7 +194,7 @@ Material.setPbrMaterial(myEntity, {
 
 Usa esta característica para cubrir una gran superficie con un patrón de mosaico. Por ejemplo, repite la siguiente imagen:
 
-<img src="../../../images/editor/tiles.png" width="200" />
+
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -203,7 +206,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-<img src="../../../images/editor/tiles-in-scene.png" width="500" />
+
 
 En el ejemplo a continuación, la textura usa un modo de envoltura _mirror_, y cada repetición de la textura toma solo 1/4 de la superficie. Esto significa que veremos 4 copias de la imagen, reflejadas entre sí en ambos ejes.
 
@@ -233,15 +236,15 @@ Tween.setTextureMove(myEntity, Vector2.create(0, 0), Vector2.create(1, 0), 2000)
 
 El tween de textura toma la siguiente información:
 
-- `entity`: La entidad para mover la textura
-- `start`: Un Vector2 para la posición inicial
-- `end`: Un Vector2 para la posición final
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `entity`: La entidad para mover la textura
+* `start`: Un Vector2 para la posición inicial
+* `end`: Un Vector2 para la posición final
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
 
 Este otro parámetro opcional también está disponible:
 
-- `movementType`: define si el movimiento será en el campo `offset` o `tiling`. Por defecto usa `offset`.
-- `easingFunction`: La curva para la tasa de cambio a lo largo del tiempo, el valor predeterminado es `EasingFunction.EF_LINEAR`. Otros valores hacen que el cambio acelere y/o desacelere a diferentes ritmos.
+* `movementType`: define si el movimiento será en el campo `offset` o `tiling`. Por defecto usa `offset`.
+* `easingFunction`: La curva para la tasa de cambio a lo largo del tiempo, el valor predeterminado es `EasingFunction.EF_LINEAR`. Otros valores hacen que el cambio acelere y/o desacelere a diferentes ritmos.
 
 ```ts
 const myEntity = engine.addEntity()
@@ -287,14 +290,14 @@ El ejemplo anterior usa `setTextureMoveContinuous`, con una dirección de `(0, 1
 
 El tween continuo de textura toma la siguiente información:
 
-- `entity`: La entidad para mover la textura
-- `direction`: Un Vector2 para el movimiento
-- `speed`: Cuántas unidades por segundo se moverá la entidad
+* `entity`: La entidad para mover la textura
+* `direction`: Un Vector2 para el movimiento
+* `speed`: Cuántas unidades por segundo se moverá la entidad
 
 Estos otros parámetros opcionales también están disponibles:
 
-- `movementType`: (opcional), define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
-- `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
+* `movementType`: (opcional), define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
+* `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
 
 #### Secuencias complejas de tweens
 
@@ -357,7 +360,7 @@ Material.setPbrMaterial(myEntity, {
 
 El `bumpTexture` puede simular protuberancias y arrugas en una superficie, modificando cómo se comportan las normales de la superficie en cada píxel.
 
-<img src="../../../images/editor/wood-bump.png" width="500" />
+
 
 El `emissiveTexture` puede acentuar el brillo en ciertas partes de un material, para lograr efectos muy interesantes.
 
@@ -460,9 +463,9 @@ Cuando las texturas se estiran o encogen a un tamaño diferente de la imagen de 
 
 El objeto `Material` usa el algoritmo _bilinear_ por defecto, pero te permite configurarlo para usar los algoritmos _nearest neighbor_ o _trilinear_ en su lugar estableciendo la propiedad `samplingMode` de la textura. Esto toma un valor del enum `TextureFilterMode`:
 
-- `TextureFilterMode.TFM_POINT`: Usa un algoritmo de "vecino más cercano". Esta configuración es ideal para gráficos de estilo pixel art, ya que los contornos permanecerán marcados de manera nítida a medida que la textura se vea más grande en pantalla en lugar de difuminarse.
-- `TextureFilterMode.TFM_BILINEAR`: Usa un algoritmo bilineal para estimar el color de cada píxel.
-- `TextureFilterMode.TFM_TRILINEAR`: Usa un algoritmo trilineal para estimar el color de cada píxel.
+* `TextureFilterMode.TFM_POINT`: Usa un algoritmo de "vecino más cercano". Esta configuración es ideal para gráficos de estilo pixel art, ya que los contornos permanecerán marcados de manera nítida a medida que la textura se vea más grande en pantalla en lugar de difuminarse.
+* `TextureFilterMode.TFM_BILINEAR`: Usa un algoritmo bilineal para estimar el color de cada píxel.
+* `TextureFilterMode.TFM_TRILINEAR`: Usa un algoritmo trilineal para estimar el color de cada píxel.
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -479,11 +482,11 @@ La mayoría de las veces querrás que los materiales en tu escena sean afectados
 
 Para crear un material sin iluminación, usa `Material.setBasicMaterial`. Los materiales básicos no tienen todas las mismas propiedades que los materiales PBR, solo tienen lo esencial:
 
-- `diffuseColor`: Color4 para el color
-- `texture`: Textura
-- `alphaTexture`: Textura separada para la capa de transparencia
-- `alphaTest`: Umbral para lograr transparencia basada en el color de la textura
-- `castShadows`: Si es false, no se proyectan sombras sobre otras entidades en la escena.
+* `diffuseColor`: Color4 para el color
+* `texture`: Textura
+* `alphaTexture`: Textura separada para la capa de transparencia
+* `alphaTest`: Umbral para lograr transparencia basada en el color de la textura
+* `castShadows`: Si es false, no se proyectan sombras sobre otras entidades en la escena.
 
 ```ts
 Material.setBasicMaterial(screen, {
@@ -503,15 +506,13 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](/images/avatarTexture.png)
-
 Puedes obtener el retrato de cualquier jugador de Decentraland, incluso si no están conectados actualmente, e incluso si no tienen un nombre de Decentraland reclamado.
 
 Las siguientes propiedades son compatibles dentro del objeto que pasas como argumento:
 
-- `userId`: ID del usuario cuyo perfil deseas mostrar
-- `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](#texture-scaling).
-- `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](#texture-wrapping).
+* `userId`: ID del usuario cuyo perfil deseas mostrar
+* `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
 
 ## Materiales transparentes
 
@@ -527,7 +528,7 @@ Material.setPbrMaterial(meshEntity, {
 
 Si un material usa una textura .png que incluye transparencia, será opaco por defecto, pero puedes activar su transparencia estableciendo el `transparencyMode` en `MaterialTransparencyMode.MTM_ALPHA_BLEND`.
 
-<img src="../../../images/editor/transparent-image.png" width="500" />
+
 
 ```typescript
 Material.setPbrMaterial(floor, {
@@ -540,11 +541,11 @@ Material.setPbrMaterial(floor, {
 
 El `transparencyMode` puede tener los siguientes valores:
 
-- `MaterialTransparencyMode.MTM_OPAQUE`: Sin transparencia en absoluto
-- `MaterialTransparencyMode.MTM_ALPHA_TEST`: Cada píxel es completamente opaco o completamente transparente, basado en un umbral.
-- `MaterialTransparencyMode.MTM_ALPHA_BLEND`: Valores intermedios son posibles basados en el valor de cada píxel.
-- `MaterialTransparencyMode.MTM_ALPHA_TEST_AND_ALPHA_BLEND`: Usa una combinación de ambos métodos.
-- `MaterialTransparencyMode.MTM_AUTO`: Determina el método basado en la textura proporcionada.
+* `MaterialTransparencyMode.MTM_OPAQUE`: Sin transparencia en absoluto
+* `MaterialTransparencyMode.MTM_ALPHA_TEST`: Cada píxel es completamente opaco o completamente transparente, basado en un umbral.
+* `MaterialTransparencyMode.MTM_ALPHA_BLEND`: Valores intermedios son posibles basados en el valor de cada píxel.
+* `MaterialTransparencyMode.MTM_ALPHA_TEST_AND_ALPHA_BLEND`: Usa una combinación de ambos métodos.
+* `MaterialTransparencyMode.MTM_AUTO`: Determina el método basado en la textura proporcionada.
 
 Si estableces el `transparencyMode` en `MaterialTransparencyMode.MTM_ALPHA_TEST`, puedes ajustar el umbral usado para determinar si cada píxel es transparente o no. Establece la propiedad `alphaTest` entre _0_ y _1_. Por defecto su valor es _0.5_.
 
@@ -559,13 +560,13 @@ Material.setPbrMaterial(meshEntity1, {
 })
 ```
 
-Al usar un [material sin iluminación](#unlit-materials), puedes agregar un `alphaTexture` para hacer solo ciertas regiones del material transparentes, basadas en una textura.
+Al usar un [material sin iluminación](materials.md#unlit-materials), puedes agregar un `alphaTexture` para hacer solo ciertas regiones del material transparentes, basadas en una textura.
 
 {% hint style="warning" %}
 **📔 Nota**: Esta debe ser una imagen de un solo canal. En esta imagen usa el color rojo o negro para determinar qué partes de la textura real deben ser transparentes.
 {% endhint %}
 
-<img src="../../../images/circular-video-screen.png" width="500" />
+
 
 ```ts
 // Usando alpha test
@@ -622,8 +623,8 @@ El campo `$case` te permite especificar uno de los tipos permitidos. Cada tipo a
 
 Los valores compatibles para `$case` son los siguientes:
 
-- `texture`
-- `avatarTexture`
+* `texture`
+* `avatarTexture`
 
 Dependiendo del valor de `$case`, es válido definir el objeto para la forma correspondiente, pasando las propiedades relevantes.
 
@@ -635,8 +636,8 @@ Usa el componente `GltfNodeModifiers` para modificar los materiales de un modelo
 
 Hay dos formas de usar el componente `GltfNodeModifiers`:
 
-- Modificar el material de todo el modelo dejando la propiedad `path` como una cadena vacía.
-- Modificar el material de un nodo específico en el modelo (o varios nodos) estableciendo la propiedad `path` a la ruta del nodo.
+* Modificar el material de todo el modelo dejando la propiedad `path` como una cadena vacía.
+* Modificar el material de un nodo específico en el modelo (o varios nodos) estableciendo la propiedad `path` a la ruta del nodo.
 
 ### Modificar el material de todo el modelo
 
@@ -674,9 +675,9 @@ GltfNodeModifiers.create(myEntity, {
 
 El componente `GltfNodeModifiers` tiene las siguientes propiedades:
 
-- `modifiers`: Un array de modificadores. Cada modificador tiene las siguientes propiedades:
-  - `path`: La ruta al nodo en el modelo a modificar.
-  - `material`: El material a usar.
+* `modifiers`: Un array de modificadores. Cada modificador tiene las siguientes propiedades:
+  * `path`: La ruta al nodo en el modelo a modificar.
+  * `material`: El material a usar.
 
 La propiedad `path` es una cadena que representa la ruta al nodo en el modelo _glTF_ a modificar. Si deseas modificar el material de todo el modelo, puedes usar una cadena vacía. Si deseas modificar el material de un nodo específico, puedes usar la ruta al nodo. La ruta debe apuntar a un nodo de mesh, no a un nodo de vértice.
 
@@ -686,7 +687,7 @@ La propiedad `path` es una cadena que representa la ruta al nodo en el modelo _g
 En algunos modelos, sin embargo, el sandbox de Babylon puede listar rutas que pertenecen a vértices en lugar de meshes, lo cual no funcionará. Si intentas usar una ruta que no es válida, la consola de la escena mostrará un mensaje de error que incluye la lista completa de rutas válidas en ese modelo.
 {% endhint %}
 
-La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](#advanced-syntax) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
+La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](materials.md#advanced-syntax) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
 
 ### Modificar el material de un nodo específico en el modelo
 

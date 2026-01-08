@@ -15,7 +15,7 @@ Scenes include the following files:
 * **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
 * **tsconfig.json**: Typescript configuration file.
 * **.dclignore**: Lists the files in your project that will not be uploaded when you publish your scene.
-* **main-composite**: Auto-generated file including everything you added and configured visually in the Scene Editor. It's not meant to be human-readable.
+* **main-composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable.
 
 #### index.ts
 
@@ -37,7 +37,7 @@ The _scene.json_ file is a JSON formatted manifest for a scene in the world. A s
 
 Most of the fields on the _scene.json_ file can be edited directly in the UI of the Scene Editor. See [Scene Settings](../scene-editor/get-started/scene-editor-essentials.md#scene-settings).
 
-![](../../images/thumbnail-image.png)
+![](../../../.gitbook/assets/thumbnail-image.png)
 
 For more information see [scene metadata](../sdk7/projects/scene-metadata.md#metadata).
 

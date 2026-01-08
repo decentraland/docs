@@ -18,9 +18,9 @@ There are several different ways to handle input actions, depending on the use c
 * [**System-based**](system-based-events.md): Ideal for handling multiple entities with similar behavior. Use a system to iterate over similar entities and query for input actions on each, handling them all with the same logic. Hover feedback needs to be set up separately. This approach is also required for handling global input actions.
 * [**Advanced**](advanced-button-events.md): Read the raw response data on each entity, including time-stamps and an event history of input events. This can be useful for defining custom interaction patterns.
 
-## Use the Scene Editor
+## Use the Scene Editor in Creator Hub
 
-The easiest way to handle click events on an entity is to use the [Scene Editor](../../../scene-editor/get-started/about-editor.md). Use the no-code **On Click** or **On Input Action** Triggers on an item to call actions when clicking on it. Or use **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers to react to global button events. See [Make any item smart](../../../scene-editor/interactivity/make-any-item-smart.md).
+The easiest way to handle click events on an entity is to use the Scene Editor. Use the no-code **On Click** or **On Input Action** Triggers on an item to call actions when clicking on it. Or use **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers to react to global button events. See [Make any item smart](../../../scene-editor/interactivity/make-any-item-smart.md).
 
 ## Simple example
 
@@ -123,6 +123,7 @@ The following inputs can be handled by any of the approaches to detect input eve
 * `InputAction.IA_RIGHT`: **D** key on a computer.
 * `InputAction.IA_BACKWARD`: **S** key on a computer.
 * `InputAction.IA_WALK`: **Control** key on a computer.
+* `InputAction.IA_MODIFIER`: **Shift** key on a computer.
 
 Each `InputAction` is abstracted away from the literal input in the keyboard so that it can be mapped to different inputs depending on the device. For this same reason, not all buttons on the keyboard can be tracked for button events, only the buttons that are used for movement and interaction. This intentional limitation is to ensure that all content is compatible in the future with VR controllers, other kinds of game controllers, and mobile devices.
 

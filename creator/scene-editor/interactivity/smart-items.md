@@ -10,11 +10,11 @@ Some of the items in the catalog of the Scene Editor are **Smart Items**. Player
 
 You can recognize these items in the asset pack explorer because they have a lightning icon and a different colored background.
 
-![](../../images/editor/smart-items.jpg)
+![ ](../../../.gitbook/assets/smart-items.jpg)
 
 You can recognize which items in your scene are smart because they have the lightning icon next to them in the entity tree.
 
-![](../../images/editor/smart-item-icon.png)
+![ ](../../../.gitbook/assets/smart-item-icon.png)
 
 ### Using items
 
@@ -55,7 +55,7 @@ Each item has its own specific settings, that may vary from one item to another.
 
 All items have an **Advanced Mode** that lets you configure almost anything about them. This includes things like what sounds are played, or in what direction a platform moves. You can also add custom actions that include all kinds of things, like teleporting the player, playing avatar animations, attaching an item to the player's hands, etc. You can also add conditional logic, to only activate something in certain scenarios. See [Smart Items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
 
-![](../../images/editor/advanced-mode.png)
+![ ](../../../.gitbook/assets/advanced-mode.png)
 
 ### Call an action on another item
 
@@ -63,11 +63,11 @@ Smart items can trigger actions on other smart items, so that they happen every 
 
 For example here's a button that opens or closes a door. Each time the button is pressed, the door will either open or close.
 
-![](../../images/editor/button-to-door.png)
+![ ](../../../.gitbook/assets/button-to-door.png)
 
 Here's a lever that opens a door when activated, and closes that door when deactivated.
 
-![](../../images/editor/lever-to-door.png)
+![ ](../../../.gitbook/assets/lever-to-door.png)
 
 You can add as many different actions from different items to be triggered together. Just click **+ Assign Action**.
 
@@ -85,19 +85,17 @@ Some smart items have unique characteristics that make them very handy for commo
 
 Use the Trigger Area smart item to trigger an action when the player walks into an area.
 
-![](../../images/editor/trigger.png)
+![ ](../../../.gitbook/assets/trigger.png)
 
 Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on the item's **Triggers** components. The actions on these trigger events are activated every time that the player enters or leaves the area.
 
-![](../../images/editor/on_player_enters.png)
+![ ](../../../.gitbook/assets/on_player_enters.png)
 
 See [Trigger area](../scene-editor/interactivity/trigger-area.md) for more info.
 
 #### Invisible walls
 
 A collection of invisible shapes that can block players from walking through or clicking through an area.
-
-![](../../images/editor/invisible-walls.png)
 
 These invisible walls can be useful when importing a 3D model that doesn't have a collider mesh, or when you want to create a wall that is not visible to the player.
 
@@ -107,7 +105,7 @@ See [Colliders](../sdk7/3d-essentials/colliders.md) for more info.
 
 An invisible cube that can be clicked by players to trigger actions on any other smart items. This item can be enabled or disabled by any other smart item, when disabled it won't be clickable. You can also set the text that players see when pointing their cursor at it.
 
-![](../../images/editor/click-area.png)
+![ ](../../../.gitbook/assets/click-area.png)
 
 #### Playing videos
 
@@ -115,7 +113,8 @@ Play videos from either:
 
 * **Local files**
 * **Stream from a URL**
-* **Stream live from [Decentraland Cast](..//creator/worlds/cast.md)**
+* **Stream live from [Decentraland Cast](../live-ops/live-streaming.md#dcl-cast)**
+* **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-method) (OBS, XSplit, StreamYard, etc.)**
 
 {% hint style="warning" %}
 **📔 Note**: Avoid playing more than one video at any given time in your scene, because it can severely impact performance for players. Always stop other videos before playing a second video.
@@ -131,8 +130,7 @@ Play an audio stream from a URL, using hte **Audio Stream** smart item.
 **📔 Note**: Not all streaming services allow you to play their audio outside their site. The following are some examples that work in Decentraland:
 
 ```ts
-GRAFFITI =
-	'https://n07.radiojar.com/2qm1fc5kb.m4a?1617129761=&rj-tok=AAABeIR7VqwAilDFeUM39SDjmw&rj-ttl=5'
+GRAFFITI = 'https://n07.radiojar.com/2qm1fc5kb.m4a?1617129761=&rj-tok=AAABeIR7VqwAilDFeUM39SDjmw&rj-ttl=5'
 SIGNS = 'https://edge.singsingmusic.net/MC2.mp3'
 DELTA = 'https://cdn.instream.audio/:9069/stream?_=171cd6c2b6e'
 JAZZ = 'https://live.vegascity.fm/radio/8010/the_flamingos.mp3'
@@ -154,11 +152,11 @@ To display an NFT on a picture frame, use the **NFT** smart item. You must provi
 * NFT Collection Contract: The smart contract for the NFT collection.
 * Token ID: The token ID of this particular NFT collectible.
 
-![](../../images/editor/nft-shape.png)
+<img src="../../../.gitbook/assets/nft-shape.png" alt="NFT shape" width="400"/>
 
 You can obtain this information from [OpenSea](https://opensea.io), by checking the **Details** tab under the NFT image.
 
-![](../../images/editor/opensea.png)
+<img src="../../../.gitbook/assets/opensea.png" alt="OpenSea details" width="400"/>
 
 {% hint style="info" %}
 **📔 Note**: You can also obtain this information from the opensea URL. For example, if the NFT's URL is the following:
@@ -176,32 +174,32 @@ You can also configure a background color, this is particularly useful for NFTs 
 
 You can also chose a **Frame style**, to frame the NFT in a variety of different styles, classic and modern.
 
-See [Display an NFT](../sdk7/media/display-a-certified-nft.md#) for more details.
+See [Display an NFT](smart-items.md) for more details.
 
 #### Health bars
 
-![](../../images/editor/health-bar.png)
+![ ](../../../.gitbook/assets/health-bar.png)
 
 The **Health Bar** smart item is a great building block for several game mechanics. It can be used in various ways:
 
 *   Nest it under the **Player** to display the player's health over the avatar
 
-    ![](../../images/editor/nested-under-player.png)
+    ![ ](../../../.gitbook/assets/nested-under-player.png)
 *   Nest it under the **Camera** to display it fixed on the UI
 
-    ![](../../images/editor/nested-under-camera.png)
+    ![ ](../../../.gitbook/assets/nested-under-camera.png)
 *   Nest it under literally any item in the scene to keep track of that item's health
 
-    ![](../../images/editor/nested-under-barrel.png)
+    ![ ](../../../.gitbook/assets/nested-under-barrel.png)
 
 Other items can interact with the health bar to add of subtract health from it.
 
 *   Items like the **Spikes** or **Robot Enemy** can lower health
 
-    ![](../../images/editor/reduce-health.png)
+    ![ ](../../../.gitbook/assets/reduce-health.png)
 *   items like **First Aid** or the **Healing Pad** can restore it.
 
-    ![](../../images/editor/restore-health.png)
+    ![ ](../../../.gitbook/assets/restore-health.png)
 
 You must configure the Health Bar to define what will happen when the health equals 0. You might respawn the player to the position of a **Respawn Pad** smart item, reset the counter for their score, respawn any enemies, display a UI text, or whatever makes sense in your game logic.
 
@@ -209,7 +207,7 @@ You can also trigger actions when the health is lower than a certain value, for 
 
 Health bars can be configured to affect anything! For example, add a health bar nested under the **Wooden Door** smart item. This bar can have its health lowered by the player using the **Sword** smart item, but also from an explosion from the **Barrel** or the attack of the **Robot Enemy**. For this to work, configure the health bar so that it performs an action on its parent item when its value is 0.
 
-![](../../images/editor/wall-with-health.png)
+![ ](../../../.gitbook/assets/wall-with-health.png)
 
 Weapons like the **Sword** can be picked up by the player, and then used to cause damage on any other item with a health bar that's near the player when performing the action.
 

@@ -1,5 +1,9 @@
 ---
 description: Proporciona a los usuarios transacciones sin costo
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/blockchain/deploying-your-own-transactions-server
 ---
 
 # Desplegando Tu Servidor de Transacciones

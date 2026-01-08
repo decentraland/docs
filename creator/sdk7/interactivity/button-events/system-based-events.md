@@ -4,19 +4,19 @@ description: Learn how to handle user clicks in your scene.
 
 # System Based Events
 
-If your scene has multiple similar entities that are all activated using the same logic, you can write a single system to iterates over all of them and describe that behavior only once. This is also the most performant and more [data oriented](./sdk7/architecture/data-oriented-programming.md) approach.
+If your scene has multiple similar entities that are all activated using the same logic, you can write a single system to iterates over all of them and describe that behavior only once. This is also the most performant and more [data oriented](../../architecture/data-oriented-programming.md) approach.
 
 You can also use a system to detect [global input events](system-based-events.md#global-input-events), so that the scene reacts whenever a key is pressed, without consideration for where the player's cursor is aiming.
 
-If all you want to do is click or push a button on a single entity to activate it, the easiest way is to use the [Register a callback](./sdk7/interactivity/button-events/register-callback.md) approach.
+If all you want to do is click or push a button on a single entity to activate it, the easiest way is to use the [Register a callback](register-callback.md) approach.
 
-To set more specific custom logic, you might want to deal with the raw data and use the [Advanced](./sdk7/interactivity/button-events/advanced-button-events.md) approach.
+To set more specific custom logic, you might want to deal with the raw data and use the [Advanced](advanced-button-events.md) approach.
 
-For an entity to be interactive, it must have a [collider](./sdk7/3d-essentials/colliders.md). See [obstacles](./sdk7/interactivity/button-events/click-events.md#obstacles) for more details.
+For an entity to be interactive, it must have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
 
 ### Using a system
 
-Check for button events by running one of the helper functions on the input `inputSystem` namespace on every tick within a [system](./sdk7/architecture/systems.md).
+Check for button events by running one of the helper functions on the input `inputSystem` namespace on every tick within a [system](../../architecture/systems.md).
 
 For example, the following system uses the `inputSystem.isTriggered()` function to check if the pointer was clicked. On every tick, it checks if the button was pressed. If `inputSystem.isTriggered()` returns _true_, the system runs some custom logic in response.
 
@@ -62,8 +62,8 @@ The example above checks if the button was pressed, regardless of where the poin
 
 The `inputSystem.isTriggered` function takes the following required arguments:
 
-* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options.
-* `PointerEventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](./sdk7/interactivity/button-events/click-events.md#types-of-pointer-events) for supported options.
+* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
+* `PointerEventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](click-events.md#types-of-pointer-events) for supported options.
 
 #### Activate an entity
 
@@ -101,14 +101,14 @@ The example above checks on every tick if a single hard-coded entity was pressed
 
 The `inputSystem.isTriggered` function takes the following arguments:
 
-* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options.
-* `PointerEventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](./sdk7/interactivity/button-events/click-events.md#types-of-pointer-events) for supported options.
+* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
+* `PointerEventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](click-events.md#types-of-pointer-events) for supported options.
 * `Entity` _(optional)_: What entity to check these events on. If no value is provided, it will check for global presses of the button, regardless of where the player's cursor was pointing at.
 
 Note that in this example we're also adding a `PointerEvents` component to the entity we want to interact with. This step is necessary, without this component the entity won't be detectable by any of the functions of `inputSystem`. see [Show Feedback](system-based-events.md#show-feedback) for more details on the `PointerEvents` component.
 
 {% hint style="warning" %}
-**📔 Note**: and a [collider](./sdk7/3d-essentials/colliders.md). See [obstacles](./sdk7/interactivity/button-events/click-events.md#obstacles) for more details.
+**📔 Note**: and a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
 {% endhint %}
 
 If there are multiple entities that the player can interact with in the same way, consider using `inputSystem.getInputCommand`. This command returns infor about a global click command, including the entity ID, you can use this to execute a single function that can handle them all.
@@ -128,7 +128,7 @@ engine.addSystem(() => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](./sdk7/3d-essentials/colliders.md).
+**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
 See [Data from input action](system-based-events.md#data-from-input-action) for more info. This method also grants you more detailed data about the hit of the pointer event.
@@ -154,7 +154,7 @@ engine.addSystem(() => {
 {% hint style="warning" %}
 **📔 Note**: When checking pointer up events against a specific entity, it doesn't take into consideration where the cursor was pointing at when the button was pushed down. It only considers where the cursor is pointing at when the button is raised.
 
-Also keep in mind that hte entity must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](./sdk7/3d-essentials/colliders.md).
+Also keep in mind that hte entity must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
 #### Check for pressed buttons
@@ -173,7 +173,7 @@ engine.addSystem(() => {
 
 The `inputSystem.isPressed` function takes a single argument:
 
-* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options.
+* `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
 
 #### Handle multiple entities
 
@@ -196,9 +196,9 @@ engine.addSystem(() => {
 })
 ```
 
-This example uses a [component query](./sdk7/architecture/querying-components.md) to iterate over all the entities with a `PointerEvents` component. It then checks each of these entities with `inputSystem.isTriggered`, iterating over them one by one. If an input action is detected on any of these entities, it carries out custom logic.
+This example uses a [component query](../../architecture/querying-components.md) to iterate over all the entities with a `PointerEvents` component. It then checks each of these entities with `inputSystem.isTriggered`, iterating over them one by one. If an input action is detected on any of these entities, it carries out custom logic.
 
-Instead of iterating over _all_ the entities with a `PointerEvents` component in a single system, you might want to write different systems to handle entities that should behave in different ways. The recommended approach is to mark different types of entities with specific [custom components](./sdk7/architecture/custom-components.md), and iterate over them in separate systems.
+Instead of iterating over _all_ the entities with a `PointerEvents` component in a single system, you might want to write different systems to handle entities that should behave in different ways. The recommended approach is to mark different types of entities with specific [custom components](../../architecture/custom-components.md), and iterate over them in separate systems.
 
 ```ts
 engine.addSystem(() => {
@@ -234,7 +234,7 @@ engine.addSystem(() => {
 
 This example has one system that iterates over all entities that have a custom component named `IsDoor` and another that iterates over all entities that have a custom component named `isGem`. In both systems, it checks every matching entity to see if they were activated with the pointer button.
 
-This way of organizing your scene's code is very [data oriented](./sdk7/architecture/data-oriented-programming.md) and should result in a very efficient use of memory resources.
+This way of organizing your scene's code is very [data oriented](../../architecture/data-oriented-programming.md) and should result in a very efficient use of memory resources.
 
 ### Show feedback
 
@@ -265,9 +265,9 @@ Whenever the player's cursor points at the colliders in this entity, the UI will
 
 The `PointerEvents` component requires at least one pointer event definition. Each pointer event definition can be configured with the following:
 
-* `eventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](./sdk7/interactivity/button-events/click-events.md#types-of-pointer-events) for supported options.
+* `eventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](click-events.md#types-of-pointer-events) for supported options.
 * `eventInfo`: An object that can contain the following fields:
-  * `button` (_required_): Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](./sdk7/interactivity/button-events/click-events.md#pointer-buttons) for supported options.
+  * `button` (_required_): Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
   * `hoverText` _(optional)_: What string to display in the hover feedback hint. "Interact" by default.
   * `hideFeedback` _(optional)_: If true, it hides both the hover hint and the edge highlight for this entity. _false_ by default.
   * `showHighlight` _(optional)_: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `hideFeedback` is _false_.
@@ -549,12 +549,12 @@ engine.addSystem(() => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](./sdk7/3d-essentials/colliders.md).
+**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
 ### Data from input action
 
-Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../README.md)) for a description of all of the data available.
+Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../../../../)) for a description of all of the data available.
 
 To fetch this data, use `inputSystem.getInputCommand`. This function returns the full data structure with data about the input event.
 
@@ -604,7 +604,7 @@ Often, _.glTF_ 3D models are made up of multiple meshes, that each have an indiv
 
 To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
 
-![](./images/media/mesh-names.png)
+![](<../../../../.gitbook/assets/mesh-names (1).png>)
 
 {% hint style="info" %}
 **💡 Tip**: You can also learn the name of the clicked mesh by logging it and reading it off console.
@@ -628,5 +628,5 @@ engine.addSystem(() => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](./sdk7/3d-essentials/colliders.md).
+**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}

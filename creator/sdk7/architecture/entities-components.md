@@ -6,7 +6,7 @@ description: Learn the essentials about entities and components in a Decentralan
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used in the architecture of several game engines, that allows for easy composability and scalability.
 
-![](../../images/media/ecs-big-picture.png)
+![](../../../.gitbook/assets/ecs-big-picture.png)
 
 ### Overview
 
@@ -16,15 +16,15 @@ _Components_ define the traits of an entity. For example, a `Transform` componen
 
 If you're familiar with web development, think of entities as the equivalent of _Elements_ in a _DOM_ tree, and of components as _attributes_ of those elements.
 
-In the [Scene editor](../scene-editor/get-started/about-editor.md), you can view the components that belong to an entity by selecting it.
+In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can view the components that belong to an entity by selecting it.
 
-![](../../images/editor/components-example.png)
+![](../../../.gitbook/assets/components-example.png)
 
 {% hint style="warning" %}
 **📔 Note**: In previous versions of the SDK, Entities were _objects_ that were instanced, and could be extended to add functions. As of version 7.0 of the SDK, entities are only an ID. This structure better fits the principles of [data oriented programming](../sdk7/architecture/data-oriented-programming.md) and can help in the scene's performance.
 {% endhint %}
 
-![](../../images/media/ecs-components-new.png)
+![](../../../.gitbook/assets/ecs-components-new.png)
 
 Components like `Transform`, `Material` or any of the _shape_ components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough for the engine to change how the scene is rendered in the next frame.
 
@@ -118,7 +118,7 @@ Once the entity's components are removed, that entity's id is free to be referen
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-![](../../images/media/ecs-nested-entities-new.png)
+![](../../../.gitbook/assets/ecs-nested-entities-new.png)
 
 To set an entity as the parent of another, the child entity must have a `Transform` component. You can then set the `parent` field with a reference to the parent entity.
 
@@ -164,9 +164,9 @@ mutableChildTransform.parent = engine.RootEntity
 **📔 Note**: When dealing with nested entities that are synced with other players, use the `parentEntity()` function instead of the `parent` entity in the Transform. See [Parented entities](../sdk7/networking/serverless-multiplayer.md#parented-entities)
 {% endhint %}
 
-In the [Scene editor](../scene-editor/get-started/about-editor.md), you can see the entire hierarchy of nested entities in your scene on the left-side panel.
+In the Scene Editor, you can see the entire hierarchy of nested entities in your scene on the left-side panel.
 
-![](../../images/editor/entity-tree-example.png)
+![](../../../.gitbook/assets/entity-tree-example.png)
 
 ### Get an entity by ID
 
@@ -185,7 +185,7 @@ For example, if a player's click or a [raycast](../sdk7/interactivity/raycasting
 
 ### Get an entity by name
 
-When adding entities via drag-and-drop in the [Scene Editor](../scene-editor/get-started/about-editor.md), each entity has a unique name. Use the `engine.getEntityOrNullByName()` function to reference one of these entities from your code. Pass the entity's name as a string, as written on the Scene Editor's UI, in the tree view on the left.
+When adding entities via drag-and-drop in the Scene Editor, each entity has a unique name. Use the `engine.getEntityOrNullByName()` function to reference one of these entities from your code. Pass the entity's name as a string, as written on the Scene Editor's UI, in the tree view on the left.
 
 ```ts
 function main() {
@@ -194,7 +194,7 @@ function main() {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Make sure you only use `engine.getEntityOrNullByName()` inside the `main()` function, in functions that run after `main()`, or in a system. If used outside one of those contexts, the entities created in the [Scene Editor](../scene-editor/get-started/about-editor.md) UI may not yet be instanced.
+**📔 Note**: Make sure you only use `engine.getEntityOrNullByName()` inside the `main()` function, in functions that run after `main()`, or in a system. If used outside one of those contexts, the entities created in the Scene Editor UI may not yet be instanced.
 {% endhint %}
 
 You're free to perform any action on an entity fetched via this method, like add or remove components, modify values of existing components, or remove the entity from the engine.
@@ -376,7 +376,7 @@ All entities in the scene are children of the `engine.RootEntity`, directly or i
 
 ### The player entity
 
-The `engine.PlayerEntity` entity represents the player's avatar. Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../sdk7/interactivity/user-data.md). You can also modify this Transform to move the player, see [move player](../sdk7/interactivity/move-player.md).
+The `engine.PlayerEntity` entity represents the player's avatar. Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../sdk7/interactivity/user-data.md). You can also modify this Transform to move the player, see [move player](../sdk7/interactivity/player-avatar.md#move-player).
 
 ### The camera entity
 

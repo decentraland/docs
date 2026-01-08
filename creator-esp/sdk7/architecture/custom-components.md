@@ -1,5 +1,11 @@
 ---
-description: Crea un componente personalizado para manejar datos específicos relacionados con una entidad
+description: >-
+  Crea un componente personalizado para manejar datos específicos relacionados
+  con una entidad
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/custom-components
 ---
 
 # Componentes Personalizados

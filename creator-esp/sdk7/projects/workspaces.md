@@ -1,5 +1,9 @@
 ---
 description: Ejecuta múltiples proyectos de DCL a la vez
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/projects/workspaces
 ---
 
 # Workspaces

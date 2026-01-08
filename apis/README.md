@@ -15,9 +15,7 @@ layout:
     visible: false
   metadata:
     visible: true
-metaLinks:
-  alternates:
-    - https://app.gitbook.com/s/M9ty6FYa3j98VSBHF9LN/
+metaLinks: {}
 ---
 
 # Developer Platform API

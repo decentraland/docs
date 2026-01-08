@@ -1,5 +1,9 @@
 ---
 description: Cómo instalar el scene editor.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started/editor-installation
 ---
 
 # Instalación del Editor

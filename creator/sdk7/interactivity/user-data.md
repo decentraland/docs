@@ -44,14 +44,14 @@ engine.addSystem(getPlayerPosition)
   * In 3rd person: May vary depending on camera movements.
 
 {% hint style="warning" %}
-**📔 Note**: Avoid referring to the `engine.PlayerEntity` or the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../sdk7/programming-patterns/async-functions.md#the-executetask-function).
+**📔 Note**: Avoid referring to the `engine.PlayerEntity` or the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../programming-patterns/async-functions.md#the-executetask-function).
 
 Another option is to refer to these entities inside a system. There they will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
 
 ### Fetch all players
 
-All players in the scene have a `Transform` component. This component is read only in avatars. To fetch the positions of all players, [iterate over all entities with](../sdk7/architecture/querying-components.md#) a `PlayerIdentityData` component.
+All players in the scene have a `Transform` component. This component is read only in avatars. To fetch the positions of all players, [iterate over all entities with](user-data.md) a `PlayerIdentityData` component.
 
 ```ts
 import { PlayerIdentityData } from '@dcl/sdk/ecs'
@@ -66,7 +66,7 @@ for (const [entity, data, transform] of engine.getEntitiesWith(
 
 The code above iterates over all entities with a `Transform` and a `PlayerIdentityData` component, and logs their data. You can use this same method to get any of the available data of all players.
 
-See [Event listeners](../sdk7/interactivity/event-listeners.md#player-locks-or-unlocks-cursor) to learn how to detect and react when new players join into the scene.
+See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to learn how to detect and react when new players join into the scene.
 
 ### Get player data
 
@@ -160,7 +160,7 @@ The snippet above iterates over all the entities with a `PlayerIdentityData` com
 
 ### Data from any player
 
-To obtain information from any player, make a [REST API call](../sdk7/networking/network-connections.md#call-a-rest-api) to the content servers.
+To obtain information from any player, make a [REST API call](../networking/network-connections.md#call-a-rest-api) to the content servers.
 
 This information is exposed in the following URL, appending the player's user id to the url parameter.
 
@@ -195,7 +195,7 @@ The `avatar` object has the following nested information:
   * `body`: _string_ The full resolution image of the player standing straight, with 512x1024 pixels.
 
 {% hint style="danger" %}
-**❗Warning** The snapshots of the avatar will be deprecated in the future and will no longer be returned as part of an avatar's data. The recommended approach is to use `AvatarTexture` instead, see [Avatar Portraits](../sdk7/3d-essentials/materials.md#avatar-portraits).
+**❗Warning** The snapshots of the avatar will be deprecated in the future and will no longer be returned as part of an avatar's data. The recommended approach is to use `AvatarTexture` instead, see [Avatar Portraits](../3d-essentials/materials.md#avatar-portraits).
 {% endhint %}
 
 Unlike `getPlayer()`, this option is not limited to just the players who are currently in the same scene, or even in the same server. With this approach you can fetch data from any player that has logged onto the servers in the past.
@@ -292,7 +292,7 @@ executeTask(async () => {
 
 The `getPlayer()` function returns only a list of wearable ids, without information about each wearable. Maybe you want to check for any wearable of a specific category (eg: hats), or any wearable of a specific rarity (eg: Mythic), for that you'll need to fetch more detailed information about the player's wearables.
 
-Make a [REST API call](../sdk7/networking/network-connections.md#call-a-rest-api) to the following URL, to obtain a full updated list of all wearables that are currently usable, with details about each.
+Make a [REST API call](../networking/network-connections.md#call-a-rest-api) to the following URL, to obtain a full updated list of all wearables that are currently usable, with details about each.
 
 `${playerRealm.realmInfo.baseUrl}/lambdas/collections/wearables-by-owner/${userData.userId}?includeDefinitions`
 
@@ -367,13 +367,13 @@ The camera mode uses a value from the `CameraType` enum. The following values ar
 The `CameraMode` component of the `engine.CameraEntity` is read-only, you can't force the player to change camera mode through this.
 
 {% hint style="info" %}
-**💡 Tip**: To change the player's camera mode, use a [Camera modifier area](../sdk7/interactivity/avatar-modifiers.md#camera-modifiers).
+**💡 Tip**: To change the player's camera mode, use a [Camera modifier area](../3d-essentials/camera.md#1st-and-3rd-person-camera-modes).
 {% endhint %}
 
 Knowing the camera mode can be very useful to fine-tune the mechanics of your scene to better adjust to what's more comfortable using this mode. For example, small targets are harder to click when in 3rd person.
 
 {% hint style="warning" %}
-**📔 Note**: Avoid referring to the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../sdk7/programming-patterns/async-functions.md#the-executetask-function).
+**📔 Note**: Avoid referring to the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../programming-patterns/async-functions.md#the-executetask-function).
 
 Another option is to refer to this entity inside a system. It will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
@@ -384,7 +384,7 @@ Players can switch between two cursor modes: _locked cursor_ mode to control the
 
 Players unlock the cursor by clicking the _Right mouse button_ or pressing the _Esc_ key, and lock the cursor back by clicking anywhere in the screen.
 
-Check the `PointerLock` component of the scene's [camera entity](../sdk7/architecture/entities-components.md#reserved-entities) to find out what the current cursor mode is.
+Check the `PointerLock` component of the scene's [camera entity](../architecture/entities-components.md#reserved-entities) to find out what the current cursor mode is.
 
 ```ts
 export function main() {
@@ -393,12 +393,12 @@ export function main() {
 }
 ```
 
-See [Event listeners](../sdk7/interactivity/event-listeners.md#player-locks-or-unlocks-cursor) to see how to easily react to changes in the cursor state.
+See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to see how to easily react to changes in the cursor state.
 
 The `PointerLock` component of the `engine.CameraEntity` is read-only, you can't force the player to lock or unlock the cursor.
 
 {% hint style="warning" %}
-**📔 Note**: Avoid referring to the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../sdk7/programming-patterns/async-functions.md#the-executetask-function).
+**📔 Note**: Avoid referring to the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../programming-patterns/async-functions.md#the-executetask-function).
 
 Another option is to refer to the entity inside a system. It will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
@@ -430,7 +430,7 @@ The `primaryPointerInfo` component returns an object with the following properti
 * `pointerType`: 0 for `none`, 1 for `mouse`
 
 {% hint style="info" %}
-**💡 Tip**: To react to simple hover events on UI elements, you may find it easier to use the `onMouseEnter` and `onMouseLeave` events, see [UI Button Events](../sdk7/2d-ui/ui\_button\_events.md#hover-feedback).
+**💡 Tip**: To react to simple hover events on UI elements, you may find it easier to use the `onMouseEnter` and `onMouseLeave` events, see [UI Button Events](../2d-ui/ui_button_events.md#hover-feedback).
 {% endhint %}
 
 The `primaryPointerInfo` component is read-only, you can't force the player to change the cursor position.
@@ -483,4 +483,4 @@ function CursorSystem() {
 engine.addSystem(CursorSystem)
 ```
 
-You can use the `worldRayDirection` to set the `direction` field of a raycast to know if an entity is in the cursor's line of sight. See [Raycasting](../sdk7/interactivity/raycasting.md) for more details.
+You can use the `worldRayDirection` to set the `direction` field of a raycast to know if an entity is in the cursor's line of sight. See [Raycasting](raycasting.md) for more details.

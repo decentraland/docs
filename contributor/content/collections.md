@@ -1,9 +1,10 @@
+# collections
 
-Collections are groups of [wearables](../entity-types/wearables.md) and [emotes](../entity-types/emotes.md) defined in the same off-chain namespace or on-chain contract.
+Collections are groups of [wearables](entity-types/wearables.md) and [emotes](entity-types/emotes.md) defined in the same off-chain namespace or on-chain contract.
 
 They are not [entities](../entities.md) in and of themselves, but their individual items can be obtained from content servers normally using [pointers](../pointers.md).
 
-## URNs and Pointers {#pointers}
+### URNs and Pointers <a href="#pointers" id="pointers"></a>
 
 Collections are identified using URNs, which are prefixes to their item URNs. There are 4 general types of URNs:
 
@@ -16,7 +17,7 @@ Collections are identified using URNs, which are prefixes to their item URNs. Th
 Despite the fact that `v1` collections are deprecated and will not be created or updated anymore, they are still valid and their items can be used.
 {% endhint %}
 
-### Version 1 and 2 Collections
+#### Version 1 and 2 Collections
 
 Both the old `v1` and the current `v2` collection namespaces have URNs of the same form:
 
@@ -34,9 +35,9 @@ urn:decentraland:mainnet:collections-v1:DCL Test Masks
 urn:decentraland:matic:collections-v2:0x25a1d66891d44cdf7b8c45802489c1dea7aadf8b
 ```
 
-If the `:<id>` segment is appended at the end, the URN becomes a [pointer](../pointers.md) to an item inside the collection. See [wearable pointers](../entity-types/wearables.md#pointers) and [emote pointers](../entity-types/emotes.md#pointers) for information on these.
+If the `:<id>` segment is appended at the end, the URN becomes a [pointer](../pointers.md) to an item inside the collection. See [wearable pointers](entity-types/wearables.md#pointers) and [emote pointers](entity-types/emotes.md#pointers) for information on these.
 
-### Third-party Collections
+#### Third-party Collections
 
 Third-party collections, also known as [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md), are different from regular wearables in that they are tied to existing NFTs outside Decentraland. They allow players to display NFTs from their personal set on their in-world avatars.
 
@@ -48,7 +49,7 @@ urn:decentraland:<blockchain>:collections-thirdparty:<third-party-id>:<collectio
 
 You can find ample information about these in the [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md) documentation for creators.
 
-## Discovering Collections
+### Discovering Collections
 
 Content servers can give you a list of all known collections, using the [`/lambdas/collections`](https://decentraland.github.io/catalyst-api-specs/#tag/Lambdas/operation/getCollections) endpoint.
 

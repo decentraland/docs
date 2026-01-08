@@ -57,14 +57,14 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 > * Wearables must preserve avatar UV mapping to ensure that user-selected skin tones can be rendered as expected.
 > * The dimensions of eyebrow, eye, and mouth textures should not exceed 256 by 256px, and the image must have transparent background.
 > * In the case of hands category, the wearable cannot be an item attached to the hand (a sword, shield, etc). The category is meant by hand accesories like bracelets, watches, rings,etc. and in the case of replacing the hand completely it should follow a proper armature skinning for the hand bones.
-> * Wearables with a disproportionate number of triangles, textures and materials may be rejected because can cause poor performance and a bad experience for players. Creators should not exceeding the limitation [guidelines](../wearables-and-emotes/wearables/creating-wearables.md) when creating wearables.
+> * Wearables with a disproportionate number of triangles, textures and materials may be rejected because can cause poor performance and a bad experience for players. Creators should not exceeding the limitation [guidelines](../wearables/creating-wearables.md) when creating wearables.
 > * Wearables may not contain duplicate items within a collection. (Each item within a collection must be unique.)
 > * Wearables may not mimic or copy other wearables that have already been published.
 > * For security reasons, any wearables that contain any kind of QR Code may be rejected.
 > * Wearables that exceed the space restrictions.
 > * Wearables with misleading categories may be rejected; for example, a hat that is categorized as a lower body item.
 > * Wearables must follow the armature humanoid structure to ensure a good quality gameplay. In this sense, currently vehicles or pets are not allowed because these are not wearables by definition.
-> * Emotes that exceed the time and space restrictions. For more info check the [emote guidelines](../wearables-and-emotes/emotes/creating-emotes.md)
+> * Emotes that exceed the time and space restrictions. For more info check the [emote guidelines](../emotes/creating-emotes.md)
 > * Curators from the curators committee can submit collections but not approve their own. In this case, another curator from the committee would needs to review in order and approve or reject.
 
 ### **Attributing Collaborators** [**#**](https://docs.decentraland.org/creator/wearables/wearables-editor-user-guide/#attributing-collaborators)
@@ -75,7 +75,7 @@ First, navigate to the [**Builder**](https://builder.decentraland.org/) and sele
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
-![](../images/wearables-and-emotes/publishing-collections/add-collaborators.png)
+![](../../../.gitbook/assets/add-collaborators.png)
 
 ### **Selling Items**
 
@@ -100,11 +100,11 @@ To sell your items via primary sales, begin by navigating to the [**Builder**](h
 
 To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Enable sales**_ button, after that click **Enable Sales** in the confirmation window that appears.
 
-![](../images/wearables-and-emotes/uploading-wearables/25_enable_sales.png)
+![](../../../.gitbook/assets/25_enable_sales.png)
 
 Now you need to set the price and put each of your items for sale by clicking their **Put up for sale** button and set the price you want it to have. **When this is done, your item will be available to purchase within the Decentraland** [**Marketplace**](https://market.decentraland.org/)**.**
 
-![](../images/wearables-and-emotes/publishing-collections/put_item_for_sale.png)
+![](../../../.gitbook/assets/put_item_for_sale.png)
 
 If the collection sales are enabled and the items price set, the Decentraland [Marketplace](https://market.decentraland.org/) will automatically mint one of your items whenever a user makes a primary purchase. This allows you to mint and sell all of your available items until the maximum supply is reached. If you want to save one or more of your items before listing them for sale, you need to manually mint an item to one of your own wallet addresses.
 
@@ -139,11 +139,11 @@ As with selling items in primary sales, you will not be able to mint any items w
 
 To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
-![](../images/wearables-and-emotes/publishing-collections/minting-items-1.png)
+![](../../../.gitbook/assets/minting-items-1.png)
 
 You will be shown a modal window containing a list of the items available along with the supply available for each. Remember, the supply is the total number of items you can mint. For example, if your supply reads 0/10, then you have used 0 out of your total supply of 10.
 
-![](../images/wearables-and-emotes/publishing-collections/minting-items-2.png)
+![](../../../.gitbook/assets/minting-items-2.png)
 
 When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint to that address. You cannot mint more items than are available in the supply available.
 
@@ -163,7 +163,7 @@ Are there any fees associated with minting items? No, items are minted on the Ma
 
 To add minters, simply enter their Ethereum address, and click **Add**. You can add as many minters as you want. To remove a minter, simply click **Remove** next to the minter’s address.
 
-![](../images/wearables-and-emotes/publishing-collections/add-minters.png)
+![](../../../.gitbook/assets/add-minters.png)
 
 #### **Collection Ownership Transfer**
 
@@ -177,6 +177,16 @@ In order to transfer the ownership of a Collection, you will need:
 ⚠️ Note: This applies only to Polygon Wearables.
 {% endhint %}
 
-Use this URL - `https://polygonscan.com/address/collection_address#writeContract` and replace `collection_address` with the your collection contract.
+Copy your collection address in the builder
 
-![](../images/wearables-and-emotes/publishing-collections/ownership_transfer.png)
+![](../../../.gitbook/assets/copy-collection-address.png)
+
+Use this URL - `https://polygonscan.com/address/collection_address#writeContract` and replace `collection_address` with the collection contract.
+
+1. Connect you wallet with the `connect to web3` button
+
+![](../../../.gitbook/assets/connect_wallet.png)
+
+2. Look for the contract method 23. `transferCreatorship`. Add in the input `_newCreator` the wallet for the new creator and click on `write` to send the transaction.
+
+![](../../../.gitbook/assets/ownership_transfer.png)

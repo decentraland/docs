@@ -1,5 +1,9 @@
 ---
 description: Directrices para subir Emotes al Editor
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/manage-collections/uploading-emotes
 ---
 
 # Uploading Emotes

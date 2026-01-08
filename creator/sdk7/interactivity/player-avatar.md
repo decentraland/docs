@@ -4,21 +4,21 @@ description: Learn how to control the player's avatar
 
 # The Player Avatar
 
-There are varios ways in which you can control the player's avatar and change the gameplay experience for your players.
+There are various ways you can control the player's avatar and change the gameplay experience for your players.
 
 For dealing with avatars that are not players, see [NPC Avatars](npc-avatars.md).
 
 ## Move player
 
 {% hint style="info" %}
-**💡 Tip**: The easiest way to move the player is to use the [Scene Editor](../../scene-editor/get-started/about-editor.md). Use the no-code **Move player** or the **Move player here** Actions, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: The easiest way to move the player is to use the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md). Use the no-code **Move player** or the **Move player here** Actions, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 {% endhint %}
 
 To change the player's position in the scene, use the `movePlayerTo()` function. This function takes an object with three properties:
 
 * `newRelativePosition`: Where to position the player, expressed as a Vector3.
-* `cameraTarget`: (optional) What direction to make the camera face, expressed as a Vector3 that represents the coordinates of a point in space to stare at. If no value is provided, the camera will maintain the same rotation as before moving.
-* `avatarTarget`: (optional) What direction to make the avatar face, expressed as a Vector3 that represents the coordinates of a point in space to stare at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
+* `cameraTarget`: (optional) The direction to make the camera face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the camera will maintain the same rotation as before moving.
+* `avatarTarget`: (optional) The direction to make the avatar face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
 
 ```ts
 import { movePlayerTo } from '~system/RestrictedActions'
@@ -59,21 +59,21 @@ The player's movement occurs instantly, without any confirmation screens or came
 
 You can make the player perform an animation as part of the scene's code. This can help provide more immersion, and it can also help communicate what other players are doing to each other. The avatar animations are seen both by the player (in 3rd person view) and any other players around.
 
-Animations done by the player are overridden by the default locomotion animations, like walking and jumping. So animations played by the scene only play while the player is standing still. If the player walks or jumps, any animations are interrupted.
+Player-controlled animations are overridden by the default locomotion animations, like walking and jumping. So animations played by the scene only play while the player is standing still. If the player walks or jumps, any animations are interrupted.
 
 {% hint style="warning" %}
 **📔 Note**: Players can only be animated if they already are standing inside the scene's bounds, not if they are on a neighboring scene. Smart wearables can play animations anywhere.
 
-While a player is performing an animation, they are not affected by collisions, their movements aren't constrained by the scene's physics. Also note that if an animation displaces the player from their original position, for example if the animation involves a jump, the player's Transform component will not be affected by this displacement.
+While a player is performing an animation, they are not affected by collisions, and their movements aren't constrained by the scene's physics. Also note that if an animation displaces the player from their original position (for example, if the animation involves a jump), the player's Transform component will not be affected by this displacement.
 {% endhint %}
 
 ### Use the Scene Editor
 
-The easiest way to make a player perform an animation is to use the [Scene Editor](../../scene-editor/get-started/about-editor.md). Use the no-code **Play Emote** action to play a default animation, or the **Play Custom Emote** action to play an animation form a file. See [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
+The easiest way to make a player perform an animation is to use the Scene Editor. Use the no-code **Play Emote** action to play a default animation, or the **Play Custom Emote** action to play an animation from a file. See [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 
 ### Default animations
 
-Use the `triggerEmote()` function ro run one of the default animations that players are able to play anywhere in Decentraland. This function takes a an object with a single property as an argument:
+Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with a single property as an argument:
 
 * `predefinedEmote`: A string name for an existing emote.
 
@@ -145,7 +145,7 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 **📔 Note**: The file's name **must** end in `_emote.glb` to work as an avatar animation.
 {% endhint %}
 
-This function takes an object as an argument with the following arguments:
+This function takes an object with the following properties:
 
 * `src`: A string with a path to the emote file.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
@@ -174,7 +174,7 @@ pointerEventsSystem.onPointerDown(
 
 ## Restrict locomotion
 
-You can restrict what actions the player can do in your scene. Use it to freeze the player, or to only restrict specific ways of locomotion, for example to prevent the player from jumping or running.
+You can restrict what actions the player can perform in your scene. Use this to freeze the player, or to restrict specific forms of locomotion, for example to prevent the player from jumping or running.
 
 ### Freeze the player
 
@@ -196,17 +196,17 @@ Keep the following considerations in mind:
 
 * While the player's interactions are disabled, their avatar is still affected by external forces, like gravity or moving platforms.
 * The `InputModifier` component can only be used with the `engine.PlayerEntity` entity. It can only affect the current player, it can't affect other players.
-* This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they're out.
+* This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they leave the scene.
 * While the player's interactions are disabled, the player can't perform emotes freely, but the scene can trigger animations on the avatar.
-* Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
+* Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened to by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
 
 ### Restricting specific kinds of locomotion
 
 Instead of entirely freezing the player, you can restrict certain specific forms of locomotion of the player. The `InputModifier` includes the following options:
 
-* `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run if allowed.
-* `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog or run if allowed.
-* `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk if allowed.
+* `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
+* `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
+* `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
 * `disableJump`: Player can't jump.
 * `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
 * `disableAll`: The player can't perform any of the above actions.
@@ -245,6 +245,63 @@ InputModifier.createOrReplace(engine.PlayerEntity, {
 			disableEmote: true,
 		},
 	},
+})
+```
+
+
+## Locomotion Settings
+
+You can affect the player's locomotion, like their running speed, jump height, and more. This can be altered dynamically, for example to allow a player to collect a temporary speed boost by interacting with an item, or to disable the player's ability to jump for a short period of time.
+
+To do this, add an `AvatarLocomotionSettings` component to the `engine.PlayerEntity`.
+
+```ts
+import {AvatarLocomotionSettings, engine} from '@dcl/sdk/ecs'
+
+AvatarLocomotionSettings.create(engine.PlayerEntity, {
+	runSpeed: 10,
+	jumpHeight: 2,
+})
+```
+
+The following properties are available:
+
+- `walkSpeed`: The speed at which the player walks, in meters per second. On the desktop client, players walk by pressing the control key.
+- `jogSpeed`: The speed at which the player jogs, in meters per second. This is the default way in which the player moves.
+- `runSpeed`: The speed at which the player runs, in meters per second. On the desktop client, players run by pressing the shift key.
+- `jumpHeight`: The height at which the player jumps, in meters.
+- `runJumpHeight`: The height at which the player jumps after running, in meters.
+- `hardLandingCooldown`: The cooldown after a hard landing, in seconds. This is the time that the player has to wait before they can move again after landing from a high fall.
+
+For reference, here are the default values for those properties:
+
+- `walkSpeed`: 1.5 m/s
+- `jogSpeed`: 8 m/s
+- `runSpeed`: 10 m/s
+- `jumpHeight`: 1 m
+- `runJumpHeight`: 1.5 m
+- `hardLandingCooldown`: 0.75 s
+
+{% hint style="info" %}
+**💡 Tip**: None of these properties can be lower than 0. If you set one of them to a negative value, it will be clamped to 0. Setting these values to zero will have the same effect as using the `InputModifier` to block the use of certain keys.
+
+You can only affect the player's locomotion if they are inside the scene's bounds. To affect other players' avatars, you must run the code that affects their locomotion on their own instance.
+{% endhint %}
+
+You can create a [smart wearable](../projects/smart-wearables.md) that makes the player always run faster or jump higher. If both the scene and a smart wearable define different values for these parameters, the scene values are always used.
+
+To ensure nobody has unfair advantages at a parkour scene, you can enforce the default parameters by explicitly adding their default values in your scene:
+
+```ts
+import {AvatarLocomotionSettings, engine} from '@dcl/sdk/ecs'
+
+AvatarLocomotionSettings.create(engine.PlayerEntity, {
+	runSpeed: 10,
+	walkSpeed: 1.5,
+	jogSpeed: 8 ,
+	jumpHeight: 1,
+	runJumpHeight: 1.5,
+	hardLandingCooldown: 0.75
 })
 ```
 
@@ -287,10 +344,11 @@ The supported modifiers are:
 
 All the effects of an `AvatarModifierArea` only take place within the region of their area. Players return to normal when they walk out of the area.
 
-An `AvatarModifierArea` affects only players that are inside the area, entering the area doesn't affect how other players that are outside the area are perceived.
+An `AvatarModifierArea` affects only players that are inside the area. Entering the area doesn't affect how other players outside the area are perceived.
 
-The effects of an `AvatarModifierArea` are calculated locally for each player. You can have an `AvatarModifierArea` that is only present in the scene for some of the players and not for others. For example, you could make a "marco polo" game, where only one player in the scene has a modifier area that hides all of the other players. All the other players that don't have this modifier area in their local version of the scene are able to see each other normally.
-If the area hides avatars, then the players that don't have the area in their local version of the scene will see all avatars normally. Even those that experience themselves as hidden. Players that do have the area will experience themselves and all other avatars as affected by the area when they enter it.
+The effects of an `AvatarModifierArea` are calculated locally for each player. You can have an `AvatarModifierArea` that is only present in the scene for some players and not for others. For example, you could make a "marco polo" game, where only one player in the scene has a modifier area that hides all of the other players. All the other players that don't have this modifier area in their local version of the scene are able to see each other normally.
+
+If the area hides avatars, then the players that don't have the area in their local version of the scene will see all avatars normally, even those that experience themselves as hidden. Players that do have the area will experience themselves and all other avatars as affected by the area when they enter it.
 
 {% hint style="warning" %}
 **📔 Note**: Avatar modifier areas are affected by the _position_ and _rotation_ of the Transform component of their host entity, but they're not affected by the _scale_.
@@ -368,7 +426,7 @@ Transform.create(entity, {
 **📔 Note**: Make sure the player IDs are all written with lower-case letters. Use `.toLowerCase()` if necessary.
 {% endhint %}
 
-Modifier areas run locally on each player's instance, the list of excluded IDs can be different for each player. In the example below, each player excludes their own ID from a modifier that hides avatars, so that they each view their own avatar and no others.
+Modifier areas run locally on each player's instance. The list of excluded IDs can be different for each player. In the example below, each player excludes their own ID from a modifier that hides avatars, so that they each view their own avatar and no others.
 
 ```ts
 import { getPlayer } from '@dcl/sdk/src/players'
@@ -393,7 +451,7 @@ export function main() {
 
 {% hint style="danger" %}
 **❗Warning**\
-If the list of excluded IDs is going to be periodically changed (for example based on players entering or leaving an area), make sure that the list is kept in order. Perform a `.sort()` on the array, so that the list remains in the same order each time it's passed. In that way, only the changes to the list are be computed. This can otherwise have a significant impact on the scene's performance.
+If the list of excluded IDs is going to be periodically changed (for example based on players entering or leaving an area), make sure that the list is kept in order. Perform a `.sort()` on the array, so that the list remains in the same order each time it's passed. This way, only the changes to the list are computed. Otherwise, this can have a significant impact on the scene's performance.
 
 ```ts
 AvatarModifierArea.create(entity, {
@@ -435,7 +493,7 @@ Material.setPbrMaterial(entity, {
 })
 ```
 
-To activate the effects of the modifier area, the player's head or torso should enter the area. It won't take effect if only the feet of the player are covered. Make sure the player can't easily evade the area by jumping.
+To activate the effects of the modifier area, the player's head or torso must enter the area. It won't take effect if only the player's feet are in the area. Make sure the player can't easily evade the area by jumping.
 
 {% hint style="warning" %}
 **📔 Note**: The full area should fit inside the limits of your scene.
@@ -450,6 +508,6 @@ See [NPC Avatars](npc-avatars.md) for more details.
 {% hint style="warning" %}
 **📔 Note**: To allow the player to have full control over that avatar, you should listen to button events to detect when they press a button, and then trigger the corresponding animation on the NPC avatar. See [Button Events](button-events/system-based-events.md) for more details.
 
-The fludity of control may not be perfect while doing this, you may want to use this only on very specific.
+The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
 {% endhint %}
 

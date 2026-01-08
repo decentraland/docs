@@ -1,7 +1,7 @@
 ---
 metaLinks:
   alternates:
-    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/rewards/gatting-started
+    - /broken/spaces/oPnXBby9S6MrsW83Y9qZ/pages/plBKCIK6oDBlWLw0Bm3U
 ---
 
 # Comenzando
@@ -21,7 +21,7 @@ Una campaña se refiere a una iniciativa de incentivo diseñada para impulsar la
 3. Haz clic en la pestaña **Campaigns**
 4. Haz clic en el botón **Create Campaign**. Serás redirigido al formulario de creación de campaña.
 
-![](../.gitbook/assets/create-campaign-page.png)
+![](../../.gitbook/assets/create-campaign-page.png)
 
 5. Completa los siguientes campos:
 
@@ -31,7 +31,7 @@ Una campaña se refiere a una iniciativa de incentivo diseñada para impulsar la
 
 6. Haz clic en el botón **Create Campaign**. Serás redirigido a la página de la campaña.
 
-![](../.gitbook/assets/new-campaign.png)
+![](../../.gitbook/assets/new-campaign.png)
 
 Después de crear tu campaña, hay algunos pasos más que completar antes de que puedas comenzar a entregar recompensas:
 
@@ -56,26 +56,26 @@ Para enviar MATIC desde un exchange solo necesitas retirar el token MATIC a la R
 
 Cuando creas una nueva campaña, comienza con un inventario vacío. Para comenzar a entregar recompensas, necesitarás agregar artículos a la campaña:
 
-![](../.gitbook/assets/without-supply.png)
+![](../../.gitbook/assets/without-supply.png)
 
 * **Otorgar Permisos de Acuñación**: Primero, autoriza a la campaña para acuñar artículos. Sigue \[esta guía]\([Ver documentación](../)#adding-minters-to-the-collection) y usa la dirección de la campaña (ubicada debajo del nombre de la campaña) como la dirección del acuñador. Después de enviar, espera a que la transacción se confirme.
 *   **Agregar Artículos al Inventario de la Campaña**: Una vez que se otorgan los permisos de acuñación, puedes comenzar a agregar artículos al inventario de la campaña.
 
     a) Haz clic en el botón **Add Supply** para ver todas las colecciones para las cuales la campaña tiene permisos de acuñación.
 
-![](../.gitbook/assets/collection-available.png)
+![](../../.gitbook/assets/collection-available.png)
 
 ```
 b) Selecciona el artículo de la colección que deseas agregar al inventario, luego haz clic en el botón **Add Supply**.
 ```
 
-![](../.gitbook/assets/add-supply.png)
+![](../../.gitbook/assets/add-supply.png)
 
 ```
 c) Selecciona la cantidad de artículos que deseas agregar al inventario de la campaña y haz clic en el botón **Add supply**.
 ```
 
-![](../.gitbook/assets/with-supply.png)
+![](../../.gitbook/assets/with-supply.png)
 
 {% hint style="info" %}
 Los campos Priority y Group son características avanzadas que se cubrirán en una sección dedicada.
@@ -87,7 +87,7 @@ Los dispensadores son las herramientas utilizadas para enviar o reclamar recompe
 
 Cuando creas una nueva campaña, se proporciona automáticamente un dispensador predeterminado con una clave maestra solo con fines de prueba. Para configurar un nuevo dispensador, haz clic en el botón **Add Dispenser**.
 
-![](../.gitbook/assets/create-dispenser.png)
+![](../../.gitbook/assets/create-dispenser.png)
 
 Selecciona el grupo de artículos del que deseas tomar artículos, y haz clic en el botón **Save**.
 
@@ -109,7 +109,7 @@ Por defecto tu campaña está inactiva. Esto evita que el servicio de recompensa
 
 Una vez que se completa la campaña, si quedan fondos de las tarifas de transacción, el propietario puede elegir reclamar los fondos o reasignarlos a otra campaña. Para reclamar fondos, simplemente haz clic en el botón Manage Funds en la página de detalles de la campaña.
 
-![](../.gitbook/assets/manage-funds.png)
+![](../../.gitbook/assets/manage-funds.png)
 
 {% hint style="warning" %}
 **📔 Nota**: Si se eliminan todos los fondos de una campaña, cualquier transacción pendiente o nueva relacionada con esa campaña se bloqueará hasta que se asignen más fondos.

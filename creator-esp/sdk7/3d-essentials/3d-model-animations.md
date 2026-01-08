@@ -1,5 +1,9 @@
 ---
 description: Cómo animar modelos 3D en tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/3d-model-animations
 ---
 
 # Animaciones
@@ -10,7 +14,7 @@ La mayoría de las animaciones de modelos 3D son [_animaciones esqueléticas_](h
 
 Como alternativa, las _animaciones de vértices_ animan un modelo sin la necesidad de un esqueleto. Estas animaciones especifican la posición de cada vértice en el modelo directamente. Decentraland también admite estas animaciones.
 
-Consulta [Animaciones](/creator/3d-modeling/animations) para detalles sobre cómo crear animaciones para un modelo 3D. Lee [Componentes de forma](shape-components.md) para instrucciones sobre cómo importar un modelo 3D a una escena.
+Consulta [Animaciones](../../../creator/3d-modeling/animations/) para detalles sobre cómo crear animaciones para un modelo 3D. Lee [Componentes de forma](shape-components.md) para instrucciones sobre cómo importar un modelo 3D a una escena.
 
 {% hint style="info" %}
 **💡 Consejo**: Las animaciones usualmente son mejores para mover algo en su lugar, no para cambiar la posición de una entidad. Por ejemplo, puedes establecer una animación para mover los pies de un personaje en su lugar, pero para cambiar la ubicación de la entidad es mejor usar el componente Transform. Consulta [Posicionar entidades](move-entities.md) para más detalles.
@@ -20,9 +24,9 @@ Consulta [Animaciones](/creator/3d-modeling/animations) para detalles sobre cóm
 
 No todos los archivos _glTF_ incluyen animaciones. Para ver si hay alguna disponible, puedes hacer lo siguiente:
 
-- Si usas [VS Code](https://code.visualstudio.com/)(recomendado), instala la extensión _GLTF Tools_ y visualiza el contenido de un archivo glTF allí.
-- Abre el sitio [Babylon Sandbox](https://sandbox.babylonjs.com/) y arrastra el archivo glTF (y cualquier dependencia _.jpg_ o _.bin_) al navegador.
-- Abre el archivo _.glTF_ con un editor de texto y desplázate hacia abajo hasta encontrar _"animations":_.
+* Si usas [VS Code](https://code.visualstudio.com/)(recomendado), instala la extensión _GLTF Tools_ y visualiza el contenido de un archivo glTF allí.
+* Abre el sitio [Babylon Sandbox](https://sandbox.babylonjs.com/) y arrastra el archivo glTF (y cualquier dependencia _.jpg_ o _.bin_) al navegador.
+* Abre el archivo _.glTF_ con un editor de texto y desplázate hacia abajo hasta encontrar _"animations":_.
 
 {% hint style="info" %}
 **💡 Consejo**: En animaciones _esqueléticas_, el nombre de una animación a menudo está compuesto por el nombre de su armature, un guión bajo y el nombre de su animación. Por ejemplo `myArmature_animation1`.
@@ -82,8 +86,8 @@ const swimAnim = Animator.getClip(sharkEntity, 'swim')
 
 `Animator.getClip` requiere los siguientes parámetros:
 
-- `entity`: La entidad del componente `Animator` que deseas consultar.
-- `clipName`: String para el nombre del clip que deseas obtener.
+* `entity`: La entidad del componente `Animator` que deseas consultar.
+* `clipName`: String para el nombre del clip que deseas obtener.
 
 `Animator.getClip` obtiene una versión mutable del estado de animación, por lo que puedes modificar valores libremente en lo que esta función devuelve.
 
@@ -110,9 +114,9 @@ Si la entidad estaba reproduciendo cualquier otra animación, `Animator.playSing
 
 `Animator.playSingleAnimation` requiere los siguientes parámetros:
 
-- `entity`: La entidad del componente `Animator` que deseas afectar.
-- `clipName`: String para el nombre del clip que deseas reproducir.
-- `resetCursor`: _(opcional)_ Si _true_, reproduce la animación desde el inicio, incluso si la animación fue previamente pausada. Si _false_, continuará reproduciendo la animación desde donde fue pausada. Por defecto: _true_.
+* `entity`: La entidad del componente `Animator` que deseas afectar.
+* `clipName`: String para el nombre del clip que deseas reproducir.
+* `resetCursor`: _(opcional)_ Si _true_, reproduce la animación desde el inicio, incluso si la animación fue previamente pausada. Si _false_, continuará reproduciendo la animación desde donde fue pausada. Por defecto: _true_.
 
 ```ts
 Animator.playSingleAnimation(sharkEntity, 'swim', false)
@@ -120,11 +124,11 @@ Animator.playSingleAnimation(sharkEntity, 'swim', false)
 
 La siguiente tabla resume cómo se comporta `Animator.playSingleAnimation()`, usando diferentes valores para la propiedad `resetCursor`:
 
-|                            | `reset` = _false_ (por defecto) | `reset` = _true_            |
-| -------------------------- | ------------------------------- | --------------------------- |
-| **Reproduciendo actualmente**      | No tiene efecto.                  | Reproduce desde el inicio. |
-| **Pausado**                 | Se reanuda desde el último fotograma reproducido. | Reproduce desde el inicio. |
-| **Terminado (sin loop)** | Reproduce desde el inicio.           | Reproduce desde el inicio. |
+|                               | `reset` = _false_ (por defecto)                   | `reset` = _true_           |
+| ----------------------------- | ------------------------------------------------- | -------------------------- |
+| **Reproduciendo actualmente** | No tiene efecto.                                  | Reproduce desde el inicio. |
+| **Pausado**                   | Se reanuda desde el último fotograma reproducido. | Reproduce desde el inicio. |
+| **Terminado (sin loop)**      | Reproduce desde el inicio.                        | Reproduce desde el inicio. |
 
 ## Animaciones en loop
 
@@ -156,8 +160,8 @@ Animator.stopAllAnimations(shark)
 
 `Animator.stopAllAnimations` requiere los siguientes parámetros:
 
-- `entity`: La entidad del componente `Animator` que deseas afectar.
-- `resetCursor`: _(opcional)_ Si _true_, vuelve a la postura en el primer fotograma de la animación. Si _false_, se queda pausada en su postura actual. Por defecto: _true_.
+* `entity`: La entidad del componente `Animator` que deseas afectar.
+* `resetCursor`: _(opcional)_ Si _true_, vuelve a la postura en el primer fotograma de la animación. Si _false_, se queda pausada en su postura actual. Por defecto: _true_.
 
 {% hint style="warning" %}
 **📔 Nota**: Al reproducir una animación con `Animator.playSingleAnimation`, esta función maneja detener todas las demás animaciones detrás de escena. No necesitas detener explícitamente otras animaciones en ese caso.
@@ -185,8 +189,10 @@ También puedes usar `Animator.stopAllAnimations()` en cualquier momento para es
 **📔 Nota**: Restablecer la postura es un cambio abrupto. Si deseas hacer que el modelo haga la transición suavemente a otra postura, puedes:
 {% endhint %}
 
-    - aplicar una animación con una propiedad `weight` de 0 y aumentar gradualmente el `weight`
-    - crear un clip de animación que describa un movimiento desde la postura desde la que deseas hacer la transición hasta la postura predeterminada que deseas.
+```
+- aplicar una animación con una propiedad `weight` de 0 y aumentar gradualmente el `weight`
+- crear un clip de animación que describa un movimiento desde la postura desde la que deseas hacer la transición hasta la postura predeterminada que deseas.
+```
 
 ## Manejar múltiples animaciones
 
@@ -224,7 +230,7 @@ Si una animación solo afecta las piernas de un personaje, y otra solo afecta la
 Si en el ejemplo anterior, la animación `bite` solo afecta la boca del tiburón, y la animación `swim` solo afecta los huesos de la columna vertebral del tiburón, entonces ambas pueden reproducirse al mismo tiempo si están en capas separadas.
 
 {% hint style="warning" %}
-**📔 Nota**: `Animator.playSingleAnim()` detiene todas las demás animaciones que la entidad está reproduciendo actualmente. Para reproducir múltiples animaciones al mismo tiempo, modifica la propiedad `playing` en los estados de animación manualmente.  
+**📔 Nota**: `Animator.playSingleAnim()` detiene todas las demás animaciones que la entidad está reproduciendo actualmente. Para reproducir múltiples animaciones al mismo tiempo, modifica la propiedad `playing` en los estados de animación manualmente.
 {% endhint %}
 
 ## Velocidad de animación

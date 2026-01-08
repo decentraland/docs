@@ -1,5 +1,9 @@
 ---
 description: Maneja eventos de botón en entidades UI.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui/ui_button_events
 ---
 
 # Eventos de Botón UI

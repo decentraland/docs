@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo usar áreas de activación en tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/trigger-areas
 ---
 
 # Áreas de activación
@@ -84,9 +88,9 @@ Transform.create(triggerEntity, {
 
 Puedes usar el `triggerAreaEventsSystem` para reaccionar a los diferentes eventos de un área de activación:
 
-- `onTriggerEnter`: Se activa cuando una entidad entra al área de activación.
-- `onTriggerExit`: Se activa cuando una entidad sale del área de activación.
-- `onTriggerStay`: Se activa mientras una entidad está en el área de activación, en cada fotograma.
+* `onTriggerEnter`: Se activa cuando una entidad entra al área de activación.
+* `onTriggerExit`: Se activa cuando una entidad sale del área de activación.
+* `onTriggerStay`: Se activa mientras una entidad está en el área de activación, en cada fotograma.
 
 ```ts
 import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
@@ -117,17 +121,17 @@ Cuando se activa un evento de área de activación, puedes usar el parámetro `r
 
 Las siguientes propiedades están disponibles en el parámetro `result`:
 
-- `triggeredEntity`: El ID de la entidad que fue activada (esta es la entidad que posee el área de activación)
-- `triggeredEntityPosition`: La posición de la entidad que fue activada
-- `triggeredEntityRotation`: La rotación de la entidad que fue activada
-- `eventType`: El tipo de evento de activación (ENTER, EXIT, STAY)
-- `timestamp`: La marca de tiempo del evento de activación
-- `trigger`: Un objeto con los siguientes campos:
-    - `entity`: El ID de la entidad que activó el trigger (la entidad que entró al área de activación)
-    - `layer`: La capa de colisión de la entidad que activó el trigger
-    - `position`: La posición de la entidad que activó el trigger
-    - `rotation`: La rotación de la entidad que activó el trigger
-    - `scale`: La escala de la entidad que activó el trigger
+* `triggeredEntity`: El ID de la entidad que fue activada (esta es la entidad que posee el área de activación)
+* `triggeredEntityPosition`: La posición de la entidad que fue activada
+* `triggeredEntityRotation`: La rotación de la entidad que fue activada
+* `eventType`: El tipo de evento de activación (ENTER, EXIT, STAY)
+* `timestamp`: La marca de tiempo del evento de activación
+* `trigger`: Un objeto con los siguientes campos:
+  * `entity`: El ID de la entidad que activó el trigger (la entidad que entró al área de activación)
+  * `layer`: La capa de colisión de la entidad que activó el trigger
+  * `position`: La posición de la entidad que activó el trigger
+  * `rotation`: La rotación de la entidad que activó el trigger
+  * `scale`: La escala de la entidad que activó el trigger
 
 ```ts
 import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
@@ -195,10 +199,10 @@ MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 
 Los valores permitidos son los mismos que los del componente `MeshCollider`. Consulta [Capas de colisión](colliders.md#Collision-layers) para más detalles.
 
-- `ColliderLayer.CL_PHYSICS`
-- `ColliderLayer.CL_POINTER`
-- `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`
-- `ColliderLayer.CL_NONE`
+* `ColliderLayer.CL_PHYSICS`
+* `ColliderLayer.CL_POINTER`
+* `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`
+* `ColliderLayer.CL_NONE`
 
 {% hint style="info" %}
 **💡 Consejo**: Las capas `CL_CUSTOM1` hasta `CL_CUSTOM8` no tienen ningún comportamiento especial por sí mismas, puedes usarlas para lo que mejor se adapte a tu escena.

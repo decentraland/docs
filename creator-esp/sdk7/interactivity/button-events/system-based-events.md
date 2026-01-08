@@ -3,7 +3,7 @@ description: Learn how to handle user clicks in your scene.
 metaLinks:
   alternates:
     - >-
-      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/sdk7/interactivity/button-events/system-based-events
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/button-events/system-based-events
 ---
 
 # System Based Events
@@ -608,7 +608,7 @@ Often, _.glTF_ 3D models are made up of multiple meshes, that each have an indiv
 
 To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
 
-![](../../../.gitbook/assets/mesh-names.png)
+![](../../../../.gitbook/assets/mesh-names.png)
 
 {% hint style="info" %}
 **💡 Tip**: You can also learn the name of the clicked mesh by logging it and reading it off console.

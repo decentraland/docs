@@ -1,14 +1,16 @@
-The `SignedFetch` module provides an implementation of the `fetch` interface that is transparently compliant with the [signed fetch](../../auth/signed_fetch) protocol, which defines how to attach signed [authentication chains](../../auth/authchain) to outgoing requests.
+# signed-fetch
 
-The procedures for signing and verifying this request are detailed in the [authentication chain](/contributor/auth/authchain) page.
+The `SignedFetch` module provides an implementation of the `fetch` interface that is transparently compliant with the [signed fetch](../../../auth/signed_fetch/) protocol, which defines how to attach signed [authentication chains](../../../auth/authchain/) to outgoing requests.
 
-Using `SignedFetch` from a scene requires the [`USE_FETCH`](/contributor/content/entity-types/scenes#permissions) permission.
+The procedures for signing and verifying this request are detailed in the [authentication chain](../../auth/authchain/) page.
 
-## Methods
+Using `SignedFetch` from a scene requires the [`USE_FETCH`](../../content/entity-types/scenes/#permissions) permission.
 
-##### `signedFetch` {#signedFetch}
+### Methods
 
-Make an HTTP request as you would with ([`fetch`](../globals#http)), automatically adding the verification headers.
+**`signedFetch`**
+
+Make an HTTP request as you would with ([`fetch`](../../globals/#http)), automatically adding the verification headers.
 
 ```ts
 interface Request {

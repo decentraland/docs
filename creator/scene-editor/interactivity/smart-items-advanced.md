@@ -10,7 +10,7 @@ Most smart items have a basic module where you can configure only the most commo
 
 The following item has a Transform component and a basic module that exposes only the basic fields for configuring a button. But if you scroll down past the **Advanced** marker, you'll find all the available settings.
 
-![](../../images/editor/advanced-settings-smart-item.png)
+![](../../../.gitbook/assets/advanced-settings-smart-item.png)
 
 {% hint style="info" %}
 **📔 Note**: Most of the settings in the basic module are also available in the components lower down. The changes done in the basic module are reflected in the components lower down and vice versa, except for some cases where the basic settings are an abstraction of multiple settings lower down. In those cases, changing the advanced settings to values that are not supported by the basic module will result in the field in the basic module being marked as undefined.
@@ -45,12 +45,12 @@ For example, to make a button open a door:
 3. Select the smart item for the door on the first dropdown.
 4. On the second dropdown, select the "Open" action.
 
-![](../../images/editor/button-to-door.png)
+![](../../../.gitbook/assets/button-to-door.png)
 
 {% hint style="info" %}
 **💡 Tip**: You can instead create a new Trigger event that only handles the door's action. Both trigger events are called every time the button is clicked.
 
-![](../../images/editor/button-to-door2.png)
+<img src="../../../.gitbook/assets/button-to-door2.png" alt="" data-size="original">
 {% endhint %}
 
 Any item can trigger any action from any other item, as long as the action is defined. See [Triggers](smart-items-advanced.md#triggers) for more ways in which an action can be triggered.
@@ -116,7 +116,7 @@ The **Actions** component defines possible actions, but these don't do anything 
 
 To add a new action to an item, click the **Add New Action** button at the bottom of the Action component. Then give the action a name, select a type, and complete any additional fields specific to the type of action.
 
-![](../../images/editor/new-action.png)
+![](../../../.gitbook/assets/new-action.png)
 
 #### Triggers
 
@@ -131,7 +131,7 @@ See [states and conditional logic](../scene-editor/interactivity/states-and-cond
 
 To add a new trigger, click the **Add New Trigger Event** at the bottom of the Trigger component. Then select the type of trigger, the entity you want to activate and an action from that entity.
 
-![](../../images/editor/new-trigger.png)
+![](../../../.gitbook/assets/new-trigger.png)
 
 {% hint style="info" %}
 **📔 Note**: An action needs to be defined in the [Actions](smart-items-advanced.md#actions) component of the entity before you can trigger it. Triggers can only affect entities that have an Actions component.
@@ -143,7 +143,7 @@ Use an action of type **Play Animation** to run an animation on the 3D model of 
 
 The **Play Mode** field lets you select if an animation should play just once, or if it should keep looping.
 
-![](../../images/editor/play-animation.png)
+![](../../../.gitbook/assets/play-animation.png)
 
 Once the action is created, you can activate it via the [Triggers](smart-items-advanced.md#triggers) component of that same item or of any other item.
 
@@ -165,7 +165,7 @@ Use an action of type **Play Sound** to play a sound file. You can play any soun
 
 Use the **Play Mode** field to chose if playing the sound once, or looping it continuously.
 
-![](../../images/editor/play-sound.png)
+![](../../../.gitbook/assets/play-sound.png)
 
 Once the action is created, you can activate it via the [Triggers](smart-items-advanced.md#triggers) component of that same item or of any other item.
 
@@ -173,7 +173,7 @@ Use the **Stop Sound** action to stop all sounds by the item, both looping and n
 
 To make an item play a looping sound always, for example for ambience or music, it's easier to use the **AudioSource** component, instead of using Actions and Triggers. This component only requires that you provide a path to a file, and check the boxes **Start Playing** and **Loop**.
 
-![](../../images/editor/audiosource.png)
+![](../../../.gitbook/assets/audiosource.png)
 
 {% hint style="info" %}
 **📔 Note**: A smart item can only play one sound at a time. Calling a second sound will interrupt any other sounds currently sounding. This also applies to sounds of the **AudioSource** component. If you need two sounds to sound together, consider adding an invisible entity in the same location to hold a **Play Sound** action.
@@ -191,13 +191,13 @@ Tweens in rotation can also be relative or absolute. A relative rotation is adde
 
 Use the **Duration** field to set how long the whole movement should take, in seconds. Note that the slider goes up to 100 seconds, but you can also write a larger number manually if you need to.
 
-![](../../images/editor/tweens.png)
+![](../../../.gitbook/assets/tweens.png)
 
 Once the action is created, you can activate it via the [Triggers](smart-items-advanced.md#triggers) component of that same item or of any other item.
 
 Tweens can follow different **Curve Types** that affect the rate of change over time. A **linear** curve (default), means that the speed of the change is constant from start to finish. There are plenty of options to chose, that draw differently shaped curves depending on if the beginning and/or end start slow, and how much. An **easeinexpo** curve starts slow and ends fast, increasing speed exponentially, on the contrary an **easeoutexpo** curve starts fast and ends slow.
 
-![](../../images/editor/easing-functions.jpeg)
+![](../../../.gitbook/assets/easing-functions.jpeg)
 
 {% hint style="info" %}
 **💡 Tip**: Experiment with different movement curves. The differences are often subtle, but we subconsciously interpret information from how things move, like weight, friction, or even personality.
@@ -215,7 +215,7 @@ When an item performs a tween, this affects everything about the item. For examp
 
 To trigger an action by clicking on an item, create an **On Click** trigger. The action will be activated every time that the player clicks on the entity.
 
-![](../../images/editor/on_click.png)
+![](../../../.gitbook/assets/on_click.png)
 
 See [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md#interactivity) for more details.
 
@@ -233,7 +233,7 @@ Triggers of type **On Spawn** activate an action when the scene is loaded. Inste
 
 For example, use this to make a platform move continually. Use an **On Spawn** trigger to activate a tween action. Then use **On State Change** triggers to keep it moving between two or more positions.
 
-![](../../images/editor/on_spawn.png)
+![](../../../.gitbook/assets/on_spawn.png)
 
 ### Multiplayer
 

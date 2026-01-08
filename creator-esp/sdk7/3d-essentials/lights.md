@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo usar luces en tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/lights
 ---
 
 # Luces
@@ -12,8 +16,8 @@ Puedes agregar hasta 1 luz por parcela en tu escena.
 
 Hay dos tipos de luces compatibles:
 
-- Luz puntual: Una luz que brilla en todas las direcciones desde un punto específico.
-- Luz de foco: Una luz que brilla en una dirección específica, y cubre solo un área en forma de cono.
+* Luz puntual: Una luz que brilla en todas las direcciones desde un punto específico.
+* Luz de foco: Una luz que brilla en una dirección específica, y cubre solo un área en forma de cono.
 
 ## Agregar una luz
 
@@ -84,15 +88,15 @@ LightSource.create(light, {
 
 El color es un objeto `Color3`, si no se especifica será blanco. Puedes establecer esto a cualquier color que desees, lo que puede tener un gran impacto en el estado de ánimo de la escena.
 
-La intensidad se expresa en candelas (lúmenes/m^2 a 1 m de distancia, o lúmenes divididos por 4*pi).
+La intensidad se expresa en candelas (lúmenes/m^2 a 1 m de distancia, o lúmenes divididos por 4\*pi).
 
 La intensidad predeterminada es 16000, este es el brillo de una bombilla promedio en el mundo real y se puede ver hasta alrededor de 10 metros de la fuente de luz. Si necesitas que la luz sea visible desde más lejos, o durante el día, puedes aumentar la intensidad.
 
 La distancia a la que la luz es visible es la raíz cuadrada del valor de intensidad.
 
-- A una intensidad de 100, la luz es visible hasta alrededor de 10 metros de distancia.
-- A una intensidad de 1000, la luz es visible hasta alrededor de 31 metros de distancia.
-- A una intensidad de 10000, la luz es visible hasta alrededor de 100 metros de distancia.
+* A una intensidad de 100, la luz es visible hasta alrededor de 10 metros de distancia.
+* A una intensidad de 1000, la luz es visible hasta alrededor de 31 metros de distancia.
+* A una intensidad de 10000, la luz es visible hasta alrededor de 100 metros de distancia.
 
 ## Sombras
 
@@ -118,7 +122,7 @@ LightSource.create(light, {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Las sombras solo son compatibles con luces de foco. Las luces puntuales no admiten sombras. Si hay múltiples luces en la escena, algunas de ellas pueden no estar proyectando sombras, consulta [Optimización de luz](#light-optimization) para más información.
+**📔 Nota**: Las sombras solo son compatibles con luces de foco. Las luces puntuales no admiten sombras. Si hay múltiples luces en la escena, algunas de ellas pueden no estar proyectando sombras, consulta [Optimización de luz](lights.md#light-optimization) para más información.
 {% endhint %}
 
 ## Encender y apagar una luz
@@ -173,9 +177,9 @@ Las fuentes de luz pueden tener un gran impacto en el rendimiento de tu escena. 
 
 El número permitido de luces activas en una escena está limitado a una por parcela, y más allá de eso depende de la configuración de calidad seleccionada por el usuario.
 
-- Calidad baja: Máximo 4 luces (en una escena con suficientes parcelas)
-- Calidad media: Máximo 6 luces (en una escena con suficientes parcelas)
-- Calidad alta: Máximo 10 luces (en una escena con suficientes parcelas)
+* Calidad baja: Máximo 4 luces (en una escena con suficientes parcelas)
+* Calidad media: Máximo 6 luces (en una escena con suficientes parcelas)
+* Calidad alta: Máximo 10 luces (en una escena con suficientes parcelas)
 
 Si hay más luces de las permitidas, el motor deshabilitará automáticamente luces basándose en la proximidad de la fuente de luz al jugador. A medida que el jugador se mueve, el motor volverá a habilitar luces que están lo suficientemente cerca del jugador.
 
@@ -183,10 +187,10 @@ En todos los casos, el motor solo renderizará sombras para hasta 3 fuentes de l
 
 Además del número máximo de luces permitidas, las sombras también dependen de la distancia del jugador.
 
-- Menos de 10 metros de distancia: Las sombras se renderizan como sombras suaves (alta calidad)
-- Entre 10 y 20 metros de distancia: Las sombras se renderizan como sombras duras (baja calidad)
-- Entre 20 y 40 metros de distancia: Las sombras no se renderizan
-- Más de 40 metros de distancia: Las fuentes de luz no se renderizan en absoluto
+* Menos de 10 metros de distancia: Las sombras se renderizan como sombras suaves (alta calidad)
+* Entre 10 y 20 metros de distancia: Las sombras se renderizan como sombras duras (baja calidad)
+* Entre 20 y 40 metros de distancia: Las sombras no se renderizan
+* Más de 40 metros de distancia: Las fuentes de luz no se renderizan en absoluto
 
 También es importante notar que las luces solo se renderizan si el jugador está parado dentro de la escena. Si el jugador está fuera de la escena, las luces no se renderizarán.
 
@@ -194,9 +198,9 @@ También es importante notar que las luces solo se renderizan si el jugador est�
 
 El componente lightSource tiene una propiedad `range` que se puede usar para establecer la distancia máxima a la que la luz es visible. Por defecto, el valor de la propiedad `range` es -1, lo que significa que el rango de luz depende de la intensidad de la luz.
 
-- A una intensidad de 16000, el rango es de 10 metros.
-- A una intensidad de 160000, el rango es de 31 metros.
-- A una intensidad de 1600000, el rango es de 100 metros.
+* A una intensidad de 16000, el rango es de 10 metros.
+* A una intensidad de 160000, el rango es de 31 metros.
+* A una intensidad de 1600000, el rango es de 100 metros.
 
 La configuración predeterminada asegura que la curva de caída sea suave y se vea natural. Pero en caso de que desees limitar el rango de la luz, puedes establecer la propiedad `range` a un número positivo.
 
@@ -217,8 +221,7 @@ LightSource.create(light, {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Establecer la propiedad `range` a un número positivo cortará abruptamente la luz a la distancia proporcionada. Esto es útil si deseas crear una luz que solo sea visible en un área específica, o para optimizar el rendimiento de tu escena.
-Establecer el `range` a un valor que sea mayor de lo que la luz realmente puede alcanzar con su intensidad actual no tendrá ningún efecto.
+**📔 Nota**: Establecer la propiedad `range` a un número positivo cortará abruptamente la luz a la distancia proporcionada. Esto es útil si deseas crear una luz que solo sea visible en un área específica, o para optimizar el rendimiento de tu escena. Establecer el `range` a un valor que sea mayor de lo que la luz realmente puede alcanzar con su intensidad actual no tendrá ningún efecto.
 {% endhint %}
 
 ## Máscaras de luz
@@ -248,7 +251,7 @@ LightSource.create(light, {
 
 Por ejemplo, puedes aplicar la imagen a continuación para producir un efecto divertido donde la luz solo es visible en las áreas donde la textura es blanca. Puedes usar esto con luces de cualquier color e intensidad.
 
-<img src="../../../images/lightmask1.png" width="500" />
+
 
 Con una imagen en blanco y negro, la luz está golpeando un área o no. También es posible pasar una imagen con colores, y estos colores teñirán tu luz en cada área, esto se puede usar para proyectar un logo o imagen colorida sobre una superficie.
 
@@ -275,4 +278,3 @@ LightSource.create(light, {
 
 Por ejemplo, la imagen a continuación muestra cada una de las letras en diferentes lados del cubo (Y arriba, -Y abajo, X derecha, -X izquierda, Z adelante, -Z atrás).
 
-<img src="../../../images/point-light-mask1.png" width="500" />

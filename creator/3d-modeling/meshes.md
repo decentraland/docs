@@ -10,11 +10,11 @@ description: Learn hat mesh properties are supported on 3D models imported to De
 
 All 3D models in your scene must fit within the limits of its parcels. If any part of your models extend beyond these limits when running a preview, these parts that extend will be cut off and not rendered.
 
-![](../images/editor/cut-train.png)
+![](../../.gitbook/assets/cut-train.png)
 
 In the Creator Hub editor, you will see the model tinted red and its bounding box marked in red.
 
-![](../images/editor/train-out-of-bounds.png)
+![](../../.gitbook/assets/train-out-of-bounds.png)
 
 {% hint style="info" %}
 **📔 Note**: In the older Web client of Decentraland, for performance reasons, if any part of a 3D model was out of bounds, even if just the bounding box, then the entire model was not rendered. As of the Decentraland 2.0 desktop client, only the parts of a model that are out of bounds are cut off. The parts of the model that are within the scene are rendered.
@@ -28,13 +28,13 @@ Every mesh has a bounding box, that surrounds the limits of the shape. To make a
 
 To avoid this problem, you can clean up your 3D models to reset positions and rotations of meshes so that bounding boxes don’t extend beyond the meshes they wrap.
 
-![](../images/3d-models-and-animations/3d-essentials/07-apply-rotations.gif)
+![](../../.gitbook/assets/07-apply-rotations.gif)
 
 _On Blender you can do that by selecting the objects, pressing Ctrl+A and then Apply “All transforms”._
 
 For example, be cautious when rotating a sub-mesh near the border of your model. Since bounding boxes are cubes, even if the mesh is round, the corners of its bounding box might end up sticking out after rotating it 45°.
 
-![](../images/3d-models-and-animations/3d-essentials/10-apply-rotation.png)
+![](../../.gitbook/assets/10-apply-rotation.png)
 
 We recommend that you bake the rotation and scale of every mesh in the model, to make sure that there are no unwanted bounding boxes extending beyond the size they need to have.
 
@@ -54,7 +54,7 @@ For more information check all the scene limitations [here.](https://docs.decent
 {% hint style="warning" %}
 **🔥Optimization Tip🔥: Add Polygon Count** A valuable tip is to always keep on track of the polycount of your models. To do that in blender you need to turn on statistics on the viewport overlays panel.
 
-![](../images/3d-models-and-animations/3d-essentials/41-stats.gif)
+<img src="../../.gitbook/assets/41-stats.gif" alt="" data-size="original">
 {% endhint %}
 
 ### Meshes On Large Scenes
@@ -64,17 +64,17 @@ When creating meshes, we should keep in mind these 2 best practices:
 * **Modularity:** Break down large meshes into smaller, modular parts. For example, instead of having a single mesh for an entire building, the building could be divided into separate meshes for each wall, floor, and section of the building. This allows Unity's frustum culling to work more effectively, as only the visible parts need to be considered for rendering. It will also improve memory foot-print, because one mesh can be re-used several time for same object in different locations (to achieve this you will need to reference same mesh in your SDK7 scene definition or use instances instead of duplicated objects when exporting the scene from Blender).
 * **Bounding Volume**: Ensure that the bounding volume of each object fits as tightly as possible. Extraneous space in the bounding volume can cause objects to be rendered when they're not visible.
 
-![](../images/3d-models-and-animations/3d-essentials/40-modularity.png)
+![](../../.gitbook/assets/40-modularity.png)
 
 #### What is Frustrum Culling?
 
 Frustum Culling is an optimization technique that disables the renderers (meshes) for objects that are outside the camera’s viewing area. See these 2 examples:
 
-![](../images/3d-models-and-animations/3d-essentials/18-frustum-culling.png)
+![](../../.gitbook/assets/18-frustum-culling.png)
 
 _A maze-like indoor level. This normal scene view shows all visible Game Objects._
 
-![](../images/3d-models-and-animations/3d-essentials/19-frustum-culling-2.gif)
+![](../../.gitbook/assets/19-frustum-culling-2.gif)
 
 _Regular frustum culling only renders objects within the camera’s view. This is automatic and always happens._
 
@@ -90,11 +90,11 @@ In terms of performance, instancing can be much more efficient than duplicating,
 
 Overall, instancing can be a powerful tool for improving performance and workflow efficiency in Blender and on your Decentraland Scene, especially when working with large, complex scenes.
 
-![](../images/3d-models-and-animations/3d-essentials/20-duplicate-objects.png)
+![](../../.gitbook/assets/20-duplicate-objects.png)
 
 In some cases, when duplicating objects like trees, plants, and light posts, instancing can significantly improve performance compared to duplicating them. For example, this scene has fourteen light posts, all of them are exactly the same. We know that each light post has two different textures, one for the post and another one for the light. So in this case we will have two draw calls, one per texture.
 
-![](../images/3d-models-and-animations/3d-essentials/21-duplicate-objects-2.png)
+![](../../.gitbook/assets/21-duplicate-objects-2.png)
 
 On Blender, when you are at the stage of cloning and positioning elements on the space, you have three options. Duplicate, Instance or Merge objects.
 
@@ -108,7 +108,7 @@ Let's analyze what are the pros and cons of each procedure.
 
 This will create a visually-identical copy of the selected object but they will be treated as different objects. So when you export it will have 2 draw calls per object, 2 \* 14 = 28 draw calls, and a total disk usage of 320kb.
 
-![](../images/3d-models-and-animations/3d-essentials/22-duplicate-objects-3.png)
+![](../../.gitbook/assets/22-duplicate-objects-3.png)
 
 #### Instancing Objects
 
@@ -119,11 +119,11 @@ This will create a visually-identical copy of the selected object but they will 
 
 This will create a new object with all of its data linked to the original object. If you modify one of the linked objects in Edit Mode, all linked copies are modified. Transform properties still remain copies, not links, so you still can rotate, scale, and move freely without affecting the other copies.
 
-![](../images/3d-models-and-animations/3d-essentials/23-instancing.png)
+![](../../.gitbook/assets/23-instancing.png)
 
 _When we export these models, we will still have the same number of draw calls (28). However, note that we now have only one mesh, which significantly reduces disk usage (41 kb)._
 
-![](../images/3d-models-and-animations/3d-essentials/24-instancing-2.png)
+![](../../.gitbook/assets/24-instancing-2.png)
 
 _To keep things organized you can simply instance collections in your scene, this way allows you to control all instances from one single folder and source._
 
@@ -146,7 +146,7 @@ There are lots of addons and externals tools that facilitate the work when creat
 
 This is a well known modifier that can be used to reduce the amount of tris of your mesh while keeping the surface structure of the model. While this is a very powerful tool to optimize models take into account that once the model is decimated the topology may be affected causing a bad topology (because it breaks the geometry into unpredictable pieces). In another hand, decimation will convert the quads of your mesh into triangles making it difficult to modify it after being used. In that regard **decimation can be useful for static models but is not preferred for animated models.**
 
-![](../images/3d-models-and-animations/3d-essentials/42-decimate-01.png) ![](../images/3d-models-and-animations/3d-essentials/43-decimate-02.png)
+![](../../.gitbook/assets/42-decimate-01.png) ![](../../.gitbook/assets/43-decimate-02.png)
 
 Another way to optimize your meshes using decimation is to decimate the model and then do a proper retopology. This way you can assure a more predictable result and clean topology.
 
@@ -160,17 +160,17 @@ Some retopology addons that can be useful are (some of them are paid):
 
 The Mirror Modifier in Blender is a tool used for creating symmetrical models by mirroring one half of an object to any direction (X,Y,Z). It's a great tool when you have symetrical models because it reduces the time of 3D modeling, doing UV Unwrapping (because you will need only to unwrapp one part of the model and the rest will share the same UV coordinates) and also optimize your textures avoiding wasting texture resolution on parts that are essentially mirrored.
 
-![](../images/3d-models-and-animations/3d-essentials/44-mirror-modifier.png)
+![](../../.gitbook/assets/44-mirror-modifier.png)
 
 #### Batch Rename
 
 A very handy tool to change name conventions in an easy way is using the Batch Rename that Blender has integrated in their toolkit. To access it go to _Edit_ and then _Batch Rename_.
 
-![](../images/3d-models-and-animations/3d-essentials/45-batch-rename.png)
+![](../../.gitbook/assets/45-batch-rename.png)
 
 Select the objects you want to change the name and just replace the default object name for the new one. This tool provides different methods and type of asset to rename so it's very flexible to change the names also for meshes, animations, bones, etc.
 
-![](../images/3d-models-and-animations/3d-essentials/47-batch-rename-methods.png) ![](../images/3d-models-and-animations/3d-essentials/46-batch-rename-types.png)
+![](../../.gitbook/assets/47-batch-rename-methods.png) ![](../../.gitbook/assets/46-batch-rename-types.png)
 
 ### Best practices for geometries [#](https://docs.decentraland.org/creator/3d-modeling/meshes/#best-practices-for-geometries)
 

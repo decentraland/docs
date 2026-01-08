@@ -6,7 +6,7 @@ The Catalyst network is Decentraland's decentralized content delivery infrastruc
 
 The Catalyst network operates as a fully-meshed distributed system where nodes communicate directly with each other to synchronize content and maintain network health.
 
-![Catalyst Network Topology](../images/catalyst.png)
+![Catalyst Network Topology](../../.gitbook/assets/catalyst.png)
 
 ## Catalyst Components
 
@@ -200,7 +200,6 @@ The **Indexer** indexes:
 * NFTs transfers
 
 ***
-
 
 ## Next Steps
 

@@ -1,5 +1,9 @@
 ---
 description: Migra tu escena desde el Web Editor al Creator Hub.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started/migrate-from-web
 ---
 
 # Migrar desde Web

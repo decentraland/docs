@@ -2,6 +2,10 @@
 description: >-
   Aprende qué propiedades de materials y texturas son compatibles con modelos 3D
   importados a Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/materials
 ---
 
 # Materials
@@ -89,7 +93,7 @@ Hay dos modos de transparencia principales diferentes: _Alpha Clip_ y _Alpha Ble
 ![](../images/3d-models-and-animations/3d-essentials/34-alpha-blend.png)
 
 {% hint style="warning" %}
-**🔥Tip de Optimización🔥** A menos que específicamente quieras poder tener un nivel intermedio de transparencia, **siempre es más performante para rendering usar **_**Alpha Clip**_** en lugar de **_**Alpha Blend**_**.**
+**🔥Tip de Optimización🔥** A menos que específicamente quieras poder tener un nivel intermedio de transparencia, **siempre es más performante para rendering usar \_Alpha Clip**_\*\* en lugar de \*\*_**Alpha Blend**\_**.**
 {% endhint %}
 
 {% hint style="warning" %}

@@ -1,5 +1,9 @@
 ---
 description: Gestionando tus proyectos de escenas
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started/manage-scenes
 ---
 
 # Gestionar Escenas

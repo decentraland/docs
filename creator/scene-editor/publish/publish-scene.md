@@ -31,7 +31,7 @@ To publish your scene:
 1. Open your scene in the Scene Editor and click **Publish**. This opens a browser tab, showing details.
 2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
-![](../../images/editor/publish-options.png)
+![](../../../.gitbook/assets/publish-options.png)
 
 3. If publishing to LAND, select the location on the map. You'll see your eligible parcels marked in red. If publishing to a WORLD, you'll see your eligible NAMEs in a dropdown.
 
@@ -40,9 +40,9 @@ To publish your scene:
 {% endhint %}
 
 4. The next screen shows all of the files you're currently uploading and their sizes, confirm the operation.
-5. The publication process will then start. Stages **1** and **2** are necessary for your scene to be playable, once done a **Jump In** button appears. You don't need to wait for **Stage 3** to try out your scene. ![](../../images/editor/deploy-steps.png)
+5. The publication process will then start. Stages **1** and **2** are necessary for your scene to be playable, once done a **Jump In** button appears. You don't need to wait for **Stage 3** to try out your scene. ![](../../../.gitbook/assets/deploy-steps.png)
 
-\*\*📔 Note\*\*: The three stages of the deployment involve: - \*\*1. Uploading\*\*: Uploading the files to the servers. - \*\*2. Converting\*\*: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes. - \*\*3, Optimizing\*\*: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene. {% endhint %}
+\*\*📔 Note\*\*: The three stages of the deployment involve: - \*\*1. Uploading\*\*: Uploading the files to the servers. - \*\*2. Converting\*\*: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes. - \*\*3, Optimizing\*\*: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
 
 ### Publish from a hardware wallet
 
@@ -78,13 +78,11 @@ If you're working in a confidential project that you don't want to unveil until 
 
 To publish to the test server, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Test Server** from the dropdown.
 
-![](../../images/editor/publish-to-test-server.png)
+![](../../../.gitbook/assets/publish-to-test-server.png)
 
 ### Publish to granted land
 
 If you're publishing to land owned by the Decentraland Foundation that was granted to you via a grant, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the following server address: `http://linker-server.decentraland.org`.
-
-![](../../images/editor/publish-to-granted-land.png)
 
 {% hint style="warning" %}
 **📔 Note**: You must first manually set the coordinates of your scene in the advanced tab of the Layout settings. See [Scene Settings](../scene-editor/configure/scene-settings.md#layout) for more info.

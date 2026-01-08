@@ -1,5 +1,9 @@
 ---
 description: Crea wearables con capacidades interactivas
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/projects/smart-wearables
 ---
 
 # Smart Wearables

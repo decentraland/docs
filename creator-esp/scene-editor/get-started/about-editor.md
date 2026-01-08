@@ -1,7 +1,11 @@
 ---
 description: >-
-  El Scene Editor es una herramienta visual simple que te permite crear y publicar
-  escenas de Decentraland.
+  El Scene Editor es una herramienta visual simple que te permite crear y
+  publicar escenas de Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started/about-editor
 ---
 
 # Acerca del Scene Editor
@@ -11,8 +15,6 @@ El Creator Hub incluye un poderoso Scene Editor que combina una interfaz simple 
 ![](../images/editor/icon-creator-hub.png)
 
 Consulta [Instalación del Creator Hub](../scene-editor/get-started/editor-installation.md) para comenzar.
-
-
 
 ### Crear una escena
 
@@ -36,9 +38,7 @@ Para encontrar tu camino alrededor del Scene Editor:
 * Usa el **Botón Izquierdo del Mouse** para hacer clic y seleccionar ítems y moverlos.
 *   Usa el **Botón Derecho del Mouse** y arrastra para rotar la cámara.
 
-    {% hint style="info" %}
-    **💡 Tip**: También puedes rotar la cámara presionando **Alt** en Windows, u **Option** en Mac mientras arrastras. Esto es especialmente útil cuando usas un trackpad en lugar de un mouse.
-    {% endhint %}
+    \{% hint style="info" %\} **💡 Tip**: También puedes rotar la cámara presionando **Alt** en Windows, u **Option** en Mac mientras arrastras. Esto es especialmente útil cuando usas un trackpad en lugar de un mouse. \{% endhint %\}
 * Presiona la **barra espaciadora** para restablecer la cámara a la posición predeterminada
 
 ### Agregar ítems

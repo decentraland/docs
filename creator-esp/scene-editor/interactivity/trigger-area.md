@@ -1,5 +1,9 @@
 ---
 description: Reacciona a la posición del jugador
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/trigger-area
 ---
 
 # Trigger Area
@@ -21,7 +25,7 @@ Puedes agregar tantas acciones diferentes en el mismo evento de trigger, esto la
 {% hint style="info" %}
 **💡 Tip**: Si las trigger areas en tu escena comienzan a interponerse en la edición de otro contenido, recuerda que siempre puedes bloquearlas y/o ocultarlas desde el [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree).
 
-![](../images/editor/hide-trigger.png)
+<img src="../images/editor/hide-trigger.png" alt="" data-size="original">
 {% endhint %}
 
 También puedes agregar **Trigger conditions**, para que las acciones solo se lleven a cabo si se cumplen ciertas condiciones en la escena. Por ejemplo, podrías tener un trigger area que abre una puerta deslizante cuando el jugador camina; podrías usar una condición allí para verificar el estado de una palanca que actúa como un interruptor de energía, y solo abrir la puerta si la energía está encendida. Consulta [States and conditions](../scene-editor/interactivity/states-and-conditions.md) para más detalles.

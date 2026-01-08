@@ -1,5 +1,9 @@
 ---
 description: Cómo puedes depurar tu scene mientras la ejecutas localmente en preview
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/debugging/debug-in-preview
 ---
 
 # Debug in Preview

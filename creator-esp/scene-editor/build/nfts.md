@@ -1,5 +1,8 @@
 ---
 description: Agregando Retratos de NFT a tus escenas
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/build/nfts
 ---
 
 # NFTs
@@ -41,4 +44,4 @@ Otros campos opcionales que se pueden configurar en el smart item NFT son:
 **📔 Nota**: Solo puedes ver estos cambios tomar efecto al entrar a la escena en modo Preview. Ninguno de estos cambios modifica la representación del smart item que arrastras en modo de edición.
 {% endhint %}
 
-Consulta [Display an NFT](../sdk7/media/display-a-certified-nft.md#) para más detalles sobre cómo Decentraland maneja retratos de NFT.
+Consulta [Display an NFT](nfts.md) para más detalles sobre cómo Decentraland maneja retratos de NFT.

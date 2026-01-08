@@ -25,7 +25,7 @@ You can find a more detailed explanation of the animation specifications [**belo
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
-[Decentraland Blender Rig](https://github.com/decentraland/docs-creator/blob/main/images/emotes/Avatar_File.blend)
+[Decentraland Blender Rig](https://raw.githubusercontent.com/decentraland/docs/main/creator/images/emotes/Avatar_File.blend)
 
 {% hint style="info" %}
 If you're using Maya you can download this [Maya Rig](https://github.com/decentraland/docs-creator/blob/main/images/emotes/DCL_Maya_Rig.ma) and [picker](https://github.com/decentraland/docs-creator/blob/main/images/emotes/emoteAvatar.pkr) provided by [SparkleStudios](https://www.sparkles.studio/) ❤️.
@@ -53,13 +53,13 @@ Changing to Pose Mode.
 
 In the rig file, other than the two windows for the viewport (front and side view), there are three more at the bottom: a _**Graph Editor**_, _**a Dope Sheet**_, and a _**Timeline**_.
 
-* _**Graph Editor**_: In this editor, it is possible to edit the animation curves of each transform property of the selected controls. Those curves show how the interpolation is being calculated and they can be edited to achieve the wanted effect in the animation. Both in here and in the dope sheet the _**Only Show Selected**_ tool is toggled, which means it’ll only include channels related to the selected control. This can be turned on and off by simply clicking on the arrow icon.
-* _**Dope Sheet**_: Here you can edit the keyframes. This is also where you can create new animations or go through the multiple ones created. Keep in mind that in order to have access to the animation, the _**Action Editor**_ must be selected. This option is right next to the _Dope Sheet_ icon, in a dropdown menu.
-* _**Timeline**_: This is where the timeline and playback controls are found. In here, the _**Auto Keying**_ is on, which means that every time a control is manipulated it automatically creates a keyframe. You can always disable that function by clicking on the dot next to the playback controls.
+- _**Graph Editor**_: In this editor, it is possible to edit the animation curves of each transform property of the selected controls. Those curves show how the interpolation is being calculated and they can be edited to achieve the wanted effect in the animation. Both in here and in the dope sheet the _**Only Show Selected**_ tool is toggled, which means it’ll only include channels related to the selected control. This can be turned on and off by simply clicking on the arrow icon.
+- _**Dope Sheet**_: Here you can edit the keyframes. This is also where you can create new animations or go through the multiple ones created. Keep in mind that in order to have access to the animation, the _**Action Editor**_ must be selected. This option is right next to the _Dope Sheet_ icon, in a dropdown menu.
+- _**Timeline**_: This is where the timeline and playback controls are found. In here, the _**Auto Keying**_ is on, which means that every time a control is manipulated it automatically creates a keyframe. You can always disable that function by clicking on the dot next to the playback controls.
 
 With this workspace, you have everything needed to start animating!
 
-![](../images/emotes/workspace.png)
+![](../../../.gitbook/assets/workspace.png)
 
 These are the bottom windows. The top one is in the _**Graph Editor,**_ the middle one in the _**Dope Sheet,**_ and the bottom one is the _**Timeline.**_ The top red arrow shows the _**Only Show Selected**_ tool and the bottom one shows the _**Auto Keying**_.
 
@@ -73,7 +73,7 @@ Since Blender is highly customizable, this is also a good time to set up the lay
 
 #### **Starting Pose**
 
-In the rig file provided, there’s already an action, the _**Starting\_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
+In the rig file provided, there’s already an action, the _**Starting_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
 
 {% hint style="info" %}
 **💡 Hint!**
@@ -89,7 +89,7 @@ In order to avoid ground penetration during animation, a plane has been added to
 
 Ground and animation area reference.
 
-The avatar center of gravity is the CTRL\_Avatar\_UpperBody. The limit to move it around is 1 meter (left, right, front, back), so try to keep it inside the smaller circle during animation. Arms and legs can exceed the small circle up to the larger one. As for the height, as long as the avatar body isn’t outside the box and the root is within the area provided on the file, it should be good to go.
+The avatar center of gravity is the CTRL_Avatar_UpperBody. The limit to move it around is 1 meter (left, right, front, back), so try to keep it inside the smaller circle during animation. Arms and legs can exceed the small circle up to the larger one. As for the height, as long as the avatar body isn’t outside the box and the root is within the area provided on the file, it should be good to go.
 
 ![Avatar centered.](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/animation_area_center.png)
 
@@ -125,23 +125,23 @@ Watch out for these boundaries because crossing them might cause gameplay issues
 
 ## **Creating an Animation**
 
-The blend file has an animation clip ready to be edited: _StartingPose\_Avatar_. You can duplicate and rename that animation clip as you see fit. There’s no need to create one from scratch!
+The blend file has an animation clip ready to be edited: _StartingPose_Avatar_. You can duplicate and rename that animation clip as you see fit. There’s no need to create one from scratch!
 
 On the _Browse Action_ section, simply click on _**Create A New Action**_ button to duplicate the current animation. To rename the clip, just click on the text and type something else.
 
-Belnder 4.4 introduced _Slotted Actions_, the icon to the right of the _Browse Action_ section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar\_Animation.
+Belnder 4.4 introduced _Slotted Actions_, the icon to the right of the _Browse Action_ section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar_Animation.
 
-![](../images/emotes/duplicating_animation.gif) Create a new animation by duplicating the existing one or by clicking on \_\*\*Unlink Action\*\*\_ and then \_\*\*New\*\*\_.
+![](../../../.gitbook/assets/duplicating_animation.gif) Create a new animation by duplicating the existing one or by clicking on \_\*\*Unlink Action\*\*\_ and then \_\*\*New\*\*\_.
 
 ### **Browsing and Deleting Animations**
 
 In Blender, you can have multiple animation tracks in the same file. It is possible to browse them by clicking on the Browse Action dropdown menu. All animation with and F (Fake User) will be saved. To delete an animation, press Shift on the keyboard and click on the X. After doing that, the animation will show a 0 next to it, which means that it will be deleted the next time you close Blender or re-open the file.
 
-![](../images/emotes/deleting_animation.gif) Browsing animations: The ones with an F will be saved, and the ones with 0 will be deleted.
+![](../../../.gitbook/assets/deleting_animation.gif) Browsing animations: The ones with an F will be saved, and the ones with 0 will be deleted.
 
 Another way of deleting animations without having to reload Blender is by changing the Display Mode from View Layer to Blender File. Expand Actions and delete any unwanted animation by right clicking on them and selecting Delete.
 
-![](../images/emotes/deleting_animation2.gif)
+![](../../../.gitbook/assets/deleting_animation2.gif)
 
 You can delete animations directly from Blender File under Display Mode in the outliner.
 
@@ -151,28 +151,28 @@ You can delete animations directly from Blender File under Display Mode in the o
 Do not always edit the same animation track. Before making major changes, just duplicate the animation. That way you have a back up version in case you regret deleting or changing something. This is also a nice way to keep track of the progress made so far!
 {% endhint %}
 
-![](../images/emotes/duplicating_animation2.gif) Duplicating animation clips.
+![](../../../.gitbook/assets/duplicating_animation2.gif) Duplicating animation clips.
 
 ### **Naming**
 
 **An animation’s name should start with a capital letter and if the name is more than one word long, the words should be separated by \_.** Do not use spaces or special characters. Here are some examples of naming:
 
-* Snowfall
-* Rainbow\_Dance
-* Throw\_Money
-* Talk\_To\_Hand
+- Snowfall
+- Rainbow_Dance
+- Throw_Money
+- Talk_To_Hand
 
 ### **Emote Overrides**
 
 Emote overrides happen when deform bones don’t have a keyframe set in one of the parameters. Without a keyframe, that bone won’t have the information of where it should be, how much it has been rotated and scaled, leaving that channel open. The consequence is that if you play an emote in world and then trigger yours while the previous one was still playing, the information of location, rotation and scale will be overridden by the previous emote, which will cause a combination of them both. Unless this is done in purpose, it will affect your animation, sometimes with a fun result, but others with completely messed up the emote. Below is an example of an emote override.
 
-![](../images/wearables-and-emotes/creating-emotes/01_emote_override.gif)
+![](../../../.gitbook/assets/01_emote_override.gif)
 
 To avoid that, select all layers with bones in them (which can be found in _**Object Data Properties**_ > _**Skeleton**_ > _**Layers**_). Then, in _**Pose Mode**_, leave the timeline cursor in the first frame of your animation and, with your mouse in _**Viewport Display**_, press _**A**_ to select everything. In the _**Graph Editor**_, click twice on the _**Eye**_ icon next to the armature channel to make all channels visible. With all bones selected, press _**I**_ to set a keyframe. Do the same for the last frame.
 
 **Make sure to select the deform bones, this is especially important!** The deform bones can be found in the last bottom layer and are shown as green bones in the _**Viewport**_.
 
-![](../images/emotes/keyframe_bones.gif) Setting keyframes on all bones in the first and last frames prevents emote overrides.
+![](../../../.gitbook/assets/keyframe_bones.gif) Setting keyframes on all bones in the first and last frames prevents emote overrides.
 
 ## **The Animation Specifications**
 
@@ -184,7 +184,7 @@ The max length of an animation is **10 seconds** or **300 frames**. Remember to 
 ⚠️ Channels with visibility turned off in the Graph Editor won’t be keyframed, deleted, or even shown in the Action Editor. Unless it was intentionally done that way, pay extra attention to the visibility.
 {% endhint %}
 
-![](../images/emotes/channel_visibility.gif)
+![](../../../.gitbook/assets/channel_visibility.gif)
 
 Make channels visible before keyframing!
 
@@ -222,23 +222,23 @@ If the emote contains any additional 3D models, the textures in these models can
 
 Since we only want the armature and the animation to be exported, turn off the mesh visibility and any object other than the armature before exporting, as shown below:
 
-![](../images/emotes/mesh_visibility.gif)
+![](../../../.gitbook/assets/mesh_visibility.gif)
 
 Turn off the mesh visibility before exporting!
 
 To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 
-![](../images/emotes/export_gltf.gif)
+![](../../../.gitbook/assets/export_gltf.gif)
 
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 
-| ![](../images/emotes/export_settings.png) | ![](../images/emotes/export_settings_GIF.gif) |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| ![](../../../.gitbook/assets/export_settings.png) | ![](../../../.gitbook/assets/export_settings_GIF.gif) |
+| ------------------------------------------------- | ----------------------------------------------------- |
 
 If you need to sample the animation, expand the Animation tab, expand Sampling Animations and choose the number of samples wanted.
 
-| ![](../images/emotes/sampling_rate.png) | ![](../images/emotes/sampling_rate_GIF.gif) |
-| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ![](../../../.gitbook/assets/sampling_rate.png) | ![](../../../.gitbook/assets/sampling_rate_GIF.gif) |
+| ----------------------------------------------- | --------------------------------------------------- |
 
 That’s it for exporting the animation!
 
@@ -254,9 +254,9 @@ If you’re still not sure where to start or need some reference or inspiration,
 
 [Run.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/run.glb)
 
-[Pose\_Jump.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_jump.glb)
+[Pose_Jump.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_jump.glb)
 
-[Pose\_Spin.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_spin.glb)
+[Pose_Spin.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/pose_spin.glb)
 
 [Spotlight.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/spotlight.glb)
 
@@ -264,6 +264,6 @@ If you’re still not sure where to start or need some reference or inspiration,
 
 [Chic.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/chic.glb)
 
-[Flag\_Emote.glb](https://github.com/decentraland/docs-creator/blob/main/images/emotes/Flag_Emote.glb)
+[Flag_Emote.glb](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote.glb)
 
-[Flag\_Emote.blend](https://github.com/decentraland/docs-creator/blob/main/images/emotes/Flag_Emote_Final.blend)
+[Flag_Emote.blend](https://github.com/decentraland/docs/blob/main/creator/images/emotes/Flag_Emote_Final.blend)

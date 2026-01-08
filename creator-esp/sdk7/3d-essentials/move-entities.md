@@ -1,5 +1,11 @@
 ---
-description: Cómo mover, rotar y escalar una entidad gradualmente a lo largo del tiempo, con cambios incrementales
+description: >-
+  Cómo mover, rotar y escalar una entidad gradualmente a lo largo del tiempo,
+  con cambios incrementales
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/move-entities
 ---
 
 # Mover entidades
@@ -7,18 +13,18 @@ description: Cómo mover, rotar y escalar una entidad gradualmente a lo largo de
 Para mover, rotar o cambiar el tamaño de una entidad en tu escena durante un período de tiempo, usa el componente `Tween`. El motor realiza la transformación deseada suavemente, mostrando actualizaciones en cada fotograma hasta que se complete la duración especificada. Además, los valores del componente `Transform` de la entidad afectada se actualizan en tiempo real en caso de que sea necesario realizar verificaciones de proximidad en el código de la escena.
 
 {% hint style="info" %}
-**💡 Consejo**:
-En el [Scene Editor](../../scene-editor/about-editor.md), puedes mover entidades de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
+**💡 Consejo**: En el [Scene Editor](../../scene-editor/about-editor.md), puedes mover entidades de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
 {% endhint %}
 
 El componente Tween tiene las siguientes funciones:
-- `setMove`: Mover entre dos puntos
-- `setRotate`: Rotar entre dos direcciones
-- `setScale`: Escalar entre dos tamaños
-- `setMoveContinuous`: Mover constantemente en la misma dirección
-- `setRotateContinuous`: Rotar constantemente en la misma dirección
-- `setTextureMove`: Desplazar la textura de un material entre dos posiciones
-- `setTextureMoveContinuous`: Desplazar la textura de un material constantemente en la misma dirección
+
+* `setMove`: Mover entre dos puntos
+* `setRotate`: Rotar entre dos direcciones
+* `setScale`: Escalar entre dos tamaños
+* `setMoveContinuous`: Mover constantemente en la misma dirección
+* `setRotateContinuous`: Rotar constantemente en la misma dirección
+* `setTextureMove`: Desplazar la textura de un material entre dos posiciones
+* `setTextureMoveContinuous`: Desplazar la textura de un material constantemente en la misma dirección
 
 ## Mover entre dos puntos
 
@@ -40,15 +46,15 @@ Tween.setMove(myEntity,
 
 El tween de movimiento toma la siguiente información:
 
-- `entity`: La entidad a mover
-- `start`: Un Vector3 para la posición inicial
-- `end`: Un Vector3 para la posición final
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `entity`: La entidad a mover
+* `start`: Un Vector3 para la posición inicial
+* `end`: Un Vector3 para la posición final
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
 
 Estos otros parámetros opcionales también están disponibles:
 
-- `faceDirection`: Si es true, la entidad se rota para mirar en la dirección del movimiento.
-- `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](#non-linear-tweens)
+* `faceDirection`: Si es true, la entidad se rota para mirar en la dirección del movimiento.
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
 
 ## Rotar entre dos direcciones
 
@@ -70,13 +76,13 @@ Tween.setRotate(myEntity,
 
 El tween de rotación toma la siguiente información:
 
-- `start`: Un Quaternion para la rotación inicial
-- `end`: Un Quaternion para la rotación final
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `start`: Un Quaternion para la rotación inicial
+* `end`: Un Quaternion para la rotación final
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
 
 Este otro parámetro opcional también está disponible:
 
-- `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](#non-linear-tweens)
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
 
 ### Rotar con un punto de pivote
 
@@ -127,19 +133,19 @@ Tween.setScale(myEntity,
 
 El tween de escala toma la siguiente información:
 
-- `start`: Un Vector3 para el tamaño inicial
-- `end`: Un Vector3 para el tamaño final
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `start`: Un Vector3 para el tamaño inicial
+* `end`: Un Vector3 para el tamaño final
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
 
 Este otro parámetro opcional también está disponible:
 
-- `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](#non-linear-tweens)
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
 
 ## Tweens no lineales
 
 Los tweens pueden seguir diferentes **Funciones de Easing** que afectan la tasa de cambio a lo largo del tiempo. Una función **lineal**, significa que la velocidad del cambio es constante de principio a fin. Hay muchas opciones para elegir, que dibujan curvas de diferentes formas dependiendo de si el comienzo y/o el final comienzan lento, y cuánto. Una curva **easeinexpo** comienza lenta y termina rápida, aumentando la velocidad exponencialmente, por el contrario, una curva **easeoutexpo** comienza rápida y termina lenta.
 
-<img src="../../../images/editor/easing-functions.png" width="600"/>
+
 
 {% hint style="info" %}
 **💡 Consejo**: Experimenta con diferentes curvas de movimiento. Las diferencias a menudo son sutiles, pero subconscientemente interpretamos información de cómo se mueven las cosas, como peso, fricción o incluso personalidad.
@@ -157,37 +163,37 @@ Tween.setScale(myEntity,
 
 El parámetro opcional `easingFunction` toma su valor del enum `EasingFunction`, que ofrece las siguientes opciones:
 
-- `EF_EASEBACK`
-- `EF_EASEBOUNCE`
-- `EF_EASECIRC`
-- `EF_EASECUBIC`
-- `EF_EASEELASTIC`
-- `EF_EASEEXPO`
-- `EF_EASEINBACK`
-- `EF_EASEINBOUNCE`
-- `EF_EASEINCIRC`
-- `EF_EASEINCUBIC`
-- `EF_EASEINELASTIC`
-- `EF_EASEINEXPO`
-- `EF_EASEINQUAD`
-- `EF_EASEINQUART`
-- `EF_EASEINQUINT`
-- `EF_EASEINSINE`
-- `EF_EASEOUTBACK`
-- `EF_EASEOUTBOUNCE`
-- `EF_EASEOUTCIRC`
-- `EF_EASEOUTCUBIC`
-- `EF_EASEOUTELASTIC`
-- `EF_EASEOUTEXPO`
-- `EF_EASEOUTQUAD`
-- `EF_EASEOUTQUART`
-- `EF_EASEOUTQUINT`
-- `EF_EASEOUTSINE`
-- `EF_EASEQUAD`
-- `EF_EASEQUART`
-- `EF_EASEQUINT`
-- `EF_EASESINE`
-- `EF_LINEAR`
+* `EF_EASEBACK`
+* `EF_EASEBOUNCE`
+* `EF_EASECIRC`
+* `EF_EASECUBIC`
+* `EF_EASEELASTIC`
+* `EF_EASEEXPO`
+* `EF_EASEINBACK`
+* `EF_EASEINBOUNCE`
+* `EF_EASEINCIRC`
+* `EF_EASEINCUBIC`
+* `EF_EASEINELASTIC`
+* `EF_EASEINEXPO`
+* `EF_EASEINQUAD`
+* `EF_EASEINQUART`
+* `EF_EASEINQUINT`
+* `EF_EASEINSINE`
+* `EF_EASEOUTBACK`
+* `EF_EASEOUTBOUNCE`
+* `EF_EASEOUTCIRC`
+* `EF_EASEOUTCUBIC`
+* `EF_EASEOUTELASTIC`
+* `EF_EASEOUTEXPO`
+* `EF_EASEOUTQUAD`
+* `EF_EASEOUTQUART`
+* `EF_EASEOUTQUINT`
+* `EF_EASEOUTSINE`
+* `EF_EASEQUAD`
+* `EF_EASEQUART`
+* `EF_EASEQUINT`
+* `EF_EASESINE`
+* `EF_LINEAR`
 
 ## Rotación constante
 
@@ -202,13 +208,13 @@ Tween.setRotateContinuous(myEntity,
 
 El tween de rotación continua toma la siguiente información:
 
-- `entity`: La entidad a rotar
-- `direction`: Un Quaternion para la rotación
-- `speed`: Cuántos grados por segundo rotará la entidad
+* `entity`: La entidad a rotar
+* `direction`: Un Quaternion para la rotación
+* `speed`: Cuántos grados por segundo rotará la entidad
 
 Este otro parámetro opcional también está disponible:
 
-- `duration`: Cuántos milisegundos sostener la rotación. Después de este tiempo, la rotación se detendrá.
+* `duration`: Cuántos milisegundos sostener la rotación. Después de este tiempo, la rotación se detendrá.
 
 ## Movimiento constante
 
@@ -223,13 +229,13 @@ Tween.setMoveContinuous(myEntity,
 
 El tween de movimiento continuo toma la siguiente información:
 
-- `entity`: La entidad a mover
-- `direction`: Un Vector3 para el movimiento
-- `speed`: Cuántos metros por segundo se moverá la entidad
+* `entity`: La entidad a mover
+* `direction`: Un Vector3 para el movimiento
+* `speed`: Cuántos metros por segundo se moverá la entidad
 
 Este otro parámetro opcional también está disponible:
 
-- `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
+* `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
 
 El tween de movimiento continuo toma la siguiente información:
 
@@ -237,10 +243,10 @@ El tween de movimiento continuo toma la siguiente información:
 
 Para hacer que una entidad reproduzca una serie de tweens en secuencia, usa el componente `TweenSequence`. Este componente requiere dos campos:
 
-- `sequence`: Un array con múltiples definiciones de tween, que se llevarán a cabo secuencialmente. El array puede estar vacío, en cuyo caso solo reproduce el tween actual.
-- `loop` _(opcional)_: Si no se proporciona, la secuencia solo se reproduce una vez. Si el campo está presente, el valor debe ser un valor del enum `TweenLoop`. Los valores aceptados son:
-  - `TL_RESTART`: Cuando la secuencia termina, se reinicia. Si el último estado no coincide con el primer estado, la entidad salta instantáneamente de uno a otro.
-  - `TL_YOYO`: Cuando la secuencia termina, va hacia atrás, haciendo todos los tweens en reversa hasta que alcanza el inicio nuevamente. Luego comienza una vez más.
+* `sequence`: Un array con múltiples definiciones de tween, que se llevarán a cabo secuencialmente. El array puede estar vacío, en cuyo caso solo reproduce el tween actual.
+* `loop` _(opcional)_: Si no se proporciona, la secuencia solo se reproduce una vez. Si el campo está presente, el valor debe ser un valor del enum `TweenLoop`. Los valores aceptados son:
+  * `TL_RESTART`: Cuando la secuencia termina, se reinicia. Si el último estado no coincide con el primer estado, la entidad salta instantáneamente de uno a otro.
+  * `TL_YOYO`: Cuando la secuencia termina, va hacia atrás, haciendo todos los tweens en reversa hasta que alcanza el inicio nuevamente. Luego comienza una vez más.
 
 ### Mover de ida y vuelta
 
@@ -314,15 +320,14 @@ TweenSequence.create(myEntity, {
 
 Ten en cuenta que al definir un tween dentro de un TweenSequence, necesitas usar el formato más verboso de `Tween.Mode.Move`, o `Tween.Mode.Rotate`, o `Tween.Mode.Scale` para definir el tween. En este formato más verboso, necesitas especificar:
 
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
-- `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](#non-linear-tweens). En este formato el valor es obligatorio.
-- `mode`: El modo del tween, que puede ser `Tween.Mode.Move`, `Tween.Mode.Rotate`, o `Tween.Mode.Scale`.
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens). En este formato el valor es obligatorio.
+* `mode`: El modo del tween, que puede ser `Tween.Mode.Move`, `Tween.Mode.Rotate`, o `Tween.Mode.Scale`.
 
 Y dentro del campo `mode`, necesitas especificar:
 
-- `start`: El valor inicial del tween
-- `end`: El valor final del tween
-
+* `start`: El valor inicial del tween
+* `end`: El valor final del tween
 
 ## Al finalizar un tween
 
@@ -436,7 +441,7 @@ En este ejemplo estamos moviendo una entidad 0.1 metros por tick del bucle del j
 
 `Vector3.Forward()` devuelve un vector que mira hacia adelante y mide 1 metro de longitud. En este ejemplo luego estamos escalando este vector a 1/10 de su longitud con `Vector3.scale()`. Si nuestra escena tiene 30 fotogramas por segundo, la entidad se está moviendo a 3 metros por segundo en velocidad.
 
- <img src="../../../images/media/gifs/move.gif" alt="Move entity" width="300"/>
+
 
 ### Rotar mediante sistema
 
@@ -468,7 +473,7 @@ En este ejemplo, estamos rotando la entidad 1 grado en dirección hacia arriba e
 **💡 Consejo**: Para hacer que una entidad siempre rote para mirar al jugador, puedes agregar un [componente `Billboard`](entity-positioning.md#face-the-user).
 {% endhint %}
 
- <img src="../../../images/media/gifs/rotate.gif" alt="Move entity" width="300"/>
+
 
 ### Rotar mediante sistema sobre un punto de pivote
 
@@ -502,7 +507,7 @@ MeshRenderer.setBox(myEntity)
 
 Ten en cuenta que en este ejemplo, el sistema está rotando la entidad `pivotEntity`, que es padre de la entidad `childEntity`.
 
- <img src="../../../images/media/gifs/pivot-rotate.gif" alt="Move entity" width="300"/>
+
 
 ### Ajustar movimiento al tiempo de retardo
 
@@ -538,9 +543,9 @@ Si deseas que una entidad se mueva suavemente entre dos puntos, usa el algoritmo
 
 La función `lerp()` toma tres parámetros:
 
-- El vector para la posición de origen
-- El vector para la posición objetivo
-- La cantidad, un valor de 0 a 1 que representa qué fracción de la traducción hacer.
+* El vector para la posición de origen
+* El vector para la posición objetivo
+* La cantidad, un valor de 0 a 1 que representa qué fracción de la traducción hacer.
 
 ```ts
 const originVector = Vector3.Zero()
@@ -553,9 +558,9 @@ El algoritmo de interpolación lineal encuentra un punto intermedio en el camino
 
 Por ejemplo, si el vector de origen es _(0, 0, 0)_ y el vector objetivo es _(10, 0, 10)_:
 
-- Usando una cantidad de 0 devolvería _(0, 0, 0)_
-- Usando una cantidad de 0.3 devolvería _(3, 0, 3)_
-- Usando una cantidad de 1 devolvería _(10, 0, 10)_
+* Usando una cantidad de 0 devolvería _(0, 0, 0)_
+* Usando una cantidad de 0.3 devolvería _(3, 0, 3)_
+* Usando una cantidad de 1 devolvería _(10, 0, 10)_
 
 Para implementar este `lerp()` en tu escena, recomendamos crear un [componente personalizado](../architecture/custom-components.md) para almacenar la información necesaria. También necesitas definir un sistema que implemente el movimiento gradual en cada fotograma.
 
@@ -602,7 +607,7 @@ LerpTransformComponent.create(myEntity, {
 })
 ```
 
-<img src="../../../images/media/gifs/lerp-move.gif" alt="Move entity" width="300"/>
+
 
 ### Rotar entre dos ángulos mediante sistema
 
@@ -610,9 +615,9 @@ Para rotar suavemente entre dos ángulos, usa el algoritmo _slerp_ (interpolaci�
 
 La función `slerp()` toma tres parámetros:
 
-- El ángulo [quaternion](https://en.wikipedia.org/wiki/Quaternion) para la rotación de origen
-- El ángulo [quaternion](https://en.wikipedia.org/wiki/Quaternion) para la rotación objetivo
-- La cantidad, un valor de 0 a 1 que representa qué fracción de la traducción hacer.
+* El ángulo [quaternion](https://en.wikipedia.org/wiki/Quaternion) para la rotación de origen
+* El ángulo [quaternion](https://en.wikipedia.org/wiki/Quaternion) para la rotación objetivo
+* La cantidad, un valor de 0 a 1 que representa qué fracción de la traducción hacer.
 
 {% hint style="info" %}
 **💡 Consejo**: Puedes pasar valores de rotación en grados [euler](https://en.wikipedia.org/wiki/Euler_angles) (de 0 a 360) usando `Quaternion.fromEulerDegrees()`.
@@ -675,7 +680,7 @@ SlerpData.create(myEntity, {
 **📔 Nota**: En su lugar, podrías representar la rotación con ángulos euler como valores `Vector3` y usar una función `Lerp()`, pero eso implicaría una conversión de `Vector3` a `Quaternion` en cada fotograma. Los valores de rotación se almacenan internamente como quaternions en el componente `Transform`, por lo que es más eficiente para la escena trabajar con quaternions.
 {% endhint %}
 
- <img src="../../../images/media/gifs/lerp-rotate.gif" alt="Move entity" width="300"/>
+
 
 Un enfoque más simple pero menos eficiente para esto aprovecha la función `Quaternion.rotateTowards`, y evita usar componentes personalizados.
 
@@ -716,9 +721,9 @@ De lo contrario, si deseas cambiar los ejes en diferentes proporciones, usa `Vec
 
 La función `lerp()` del objeto `Scalar` toma tres parámetros:
 
-- Un número para la escala de origen
-- Un número para la escala objetivo
-- La cantidad, un valor de 0 a 1 que representa qué fracción del escalado hacer.
+* Un número para la escala de origen
+* Un número para la escala objetivo
+* La cantidad, un valor de 0 a 1 que representa qué fracción del escalado hacer.
 
 ```ts
 const originScale = 1
@@ -775,7 +780,7 @@ ScaleTransformComponent.create(myEntity, {
 Vector3.create(1, 1, 1)
 ```
 
- <img src="../../../images/media/gifs/lerp-scale.gif" alt="Move entity" width="300"/>
+
 
 ### Mover a velocidades irregulares entre dos puntos mediante sistema
 
@@ -838,7 +843,7 @@ El ejemplo anterior es igual al ejemplo de lerp lineal que hemos mostrado antes,
 
 También puedes mapear una transición en rotación o en escala de la misma manera que se muestra arriba, mapeando una transición lineal a una curva.
 
- <img src="../../../images/media/gifs/lerp-speed-up.gif" alt="Move entity" width="300"/>
+
 
 ### Seguir un camino mediante sistema
 
@@ -910,7 +915,7 @@ El ejemplo anterior define un camino 3D que está compuesto por cuatro vectores 
 
 El sistema es muy similar al sistema en el ejemplo _lerp_, pero cuando se completa una acción lerp, establece los campos `target` y `origin` a nuevos valores. Si llegamos al final del camino, volvemos al primer valor en el camino.
 
- <img src="../../../images/media/gifs/lerp-path.gif" alt="Move entity" width="300"/>
+
 
 ## Tweens de textura
 
@@ -926,15 +931,15 @@ Tween.setTextureMove(myEntity,
 
 El tween de textura toma la siguiente información:
 
-- `entity`: La entidad para mover la textura
-- `start`: Un Vector2 para la posición inicial
-- `end`: Un Vector2 para la posición final
-- `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
+* `entity`: La entidad para mover la textura
+* `start`: Un Vector2 para la posición inicial
+* `end`: Un Vector2 para la posición final
+* `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
 
 Este otro parámetro opcional también está disponible:
 
-- `movementType`: (opcional), define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
-- `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](#non-linear-tweens). Nota: Este parámetro solo se usa si se proporciona una duración.
+* `movementType`: (opcional), define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens). Nota: Este parámetro solo se usa si se proporciona una duración.
 
 ## Movimiento constante de textura
 
@@ -949,13 +954,13 @@ Tween.setTextureMoveContinuous(myEntity,
 
 El tween continuo de textura toma la siguiente información:
 
-- `entity`: La entidad para mover la textura
-- `direction`: Un Vector2 para el movimiento
-- `speed`: Cuántas unidades por segundo se moverá la entidad
+* `entity`: La entidad para mover la textura
+* `direction`: Un Vector2 para el movimiento
+* `speed`: Cuántas unidades por segundo se moverá la entidad
 
 Este otro parámetro opcional también está disponible:
 
-- `movementType`: define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
-- `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
+* `movementType`: define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
+* `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
 
 Lee más sobre tweens de textura en la sección [Tweens de textura](materials.md#texture-tweens).

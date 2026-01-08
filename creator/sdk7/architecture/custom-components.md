@@ -4,9 +4,9 @@ description: Create a custom component to handle specific data related to an ent
 
 # Custom Components
 
-Data about an entity is stored in its [components](../sdk7/architecture/entities-components.md). The Decentraland SDK provides a series of base components that manage different aspects about an entity, like its position, shape, material, etc. The engine knows how to interpret the information in these, and will change how the entity is rendered accordingly as soon as they change their values.
+Data about an entity is stored in its [components](entities-components.md). The Decentraland SDK provides a series of base components that manage different aspects about an entity, like its position, shape, material, etc. The engine knows how to interpret the information in these, and will change how the entity is rendered accordingly as soon as they change their values.
 
-If your scene's logic requires storing information about an entity that isn't handled by the default components of the SDK, then you can create a custom type of component on your scene. You can then build [systems](../sdk7/architecture/systems.md) that check for changes on these components and respond accordingly.
+If your scene's logic requires storing information about an entity that isn't handled by the default components of the SDK, then you can create a custom type of component on your scene. You can then build [systems](systems.md) that check for changes on these components and respond accordingly.
 
 ### About defining components
 
@@ -72,7 +72,7 @@ When creating components that will be shared as part of a library, be mindful th
 
 You may want to add a component that simply flags an entity to differentiate it from others, without using it to store any data. To do this, leave the schema as an empty object.
 
-This is especially useful when using [querying components](../sdk7/architecture/querying-components.md). A simple flag component can be used tell entities apart from others, and avoid having the system iterate over more entities than needed.
+This is especially useful when using [querying components](querying-components.md). A simple flag component can be used tell entities apart from others, and avoid having the system iterate over more entities than needed.
 
 ```ts
 export const IsEnemyFlag = engine.defineComponent('isEnemyFlag', {})
@@ -156,10 +156,10 @@ The following complex types also exist. They each include a series of nested pro
 * `Schemas.Color4`
 
 {% hint style="info" %}
-**💡 Tip**: See [Geometry types](../sdk7/3d-essentials/special-types.md) and [Color types](../sdk7/3d-essentials/color-types.md) for more details on how these types of data are useful.
+**💡 Tip**: See [Geometry types](../3d-essentials/special-types.md) and [Color types](../3d-essentials/color-types.md) for more details on how these types of data are useful.
 {% endhint %}
 
-For example, you can use these schema types in a component like this to track the gradual movement of an entity. This component stores an initial and a final position as Vector3 values, as well as a speed and fraction of the completed path as float numbers. See [Move entities](../sdk7/3d-essentials/move-entities.md#move-between-two-points) for the full implementation of this example.
+For example, you can use these schema types in a component like this to track the gradual movement of an entity. This component stores an initial and a final position as Vector3 values, as well as a speed and fraction of the completed path as float numbers. See [Move entities](../3d-essentials/move-entities.md#move-between-two-points) for the full implementation of this example.
 
 ```ts
 const MoveTransportData = {
@@ -324,7 +324,7 @@ The above example creates a `WheelSpinComponent` component that includes both a 
 
 ### Subscribe to changes
 
-A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](../sdk7/architecture/subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.
+A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.
 
 ```ts
 export function main() {
@@ -340,7 +340,7 @@ export function main() {
 
 ### Building systems to use a component
 
-With your component defined and added to entities in your scene, you can create [Systems](../deprecated/scenes/architecture/systems.md) to perform logic, making use of this data stored on the component.
+With your component defined and added to entities in your scene, you can create [Systems](../../deprecated/scenes/architecture/systems.md) to perform logic, making use of this data stored on the component.
 
 ```ts
 // define component
@@ -391,4 +391,4 @@ export function spinSystem(dt: number) {
 engine.addSystem(spinSystem)
 ```
 
-The example above defines a system that iterates over all entities that include the custom `wheelSpinComponent`, and rotates them slightly on every tick of the game loop. The amount of this rotation is proportional to the `speed` value stored on each entity's instance of the component. The example makes use of [component queries](../sdk7/architecture/querying-components.md) to obtain only the relevant entities.
+The example above defines a system that iterates over all entities that include the custom `wheelSpinComponent`, and rotates them slightly on every tick of the game loop. The amount of this rotation is proportional to the `speed` value stored on each entity's instance of the component. The example makes use of [component queries](querying-components.md) to obtain only the relevant entities.

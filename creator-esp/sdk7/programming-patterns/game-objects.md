@@ -2,6 +2,10 @@
 description: >-
   Usa el patrón de game object para hacer tu código más legible y más fácil de
   escalar.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/programming-patterns/game-objects
 ---
 
 # Game Objects

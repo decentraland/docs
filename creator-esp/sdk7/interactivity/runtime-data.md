@@ -1,5 +1,11 @@
 ---
-description: Obtén datos del contexto donde tu escena está ejecutándose y de la escena misma
+description: >-
+  Obtén datos del contexto donde tu escena está ejecutándose y de la escena
+  misma
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/runtime-data
 ---
 
 # Datos del runtime
@@ -68,12 +74,12 @@ Decentraland maneja sus comunicaciones entre jugadores (incluyendo posiciones de
 
 La función `getRealm()` devuelve la siguiente información:
 
-- `baseUrl`: _(string)_ El dominio del servidor realm
-- `realmName`: _(string)_ El nombre del servidor realm
-- `networkId`: _(number)_ La red de Ethereum
-- `commsAdapter`: _(string)_ Adaptador de comunicaciones, eliminando todos los parámetros de consulta (credenciales)
-- `isPreview`: _(boolean)_ True si la escena se está ejecutando como una vista previa local, en lugar de publicada en Decentraland.
-- `isConnectedSceneRoom`: _(boolean)_ True si el usuario está conectado a la sala de la escena.
+* `baseUrl`: _(string)_ El dominio del servidor realm
+* `realmName`: _(string)_ El nombre del servidor realm
+* `networkId`: _(number)_ La red de Ethereum
+* `commsAdapter`: _(string)_ Adaptador de comunicaciones, eliminando todos los parámetros de consulta (credenciales)
+* `isPreview`: _(boolean)_ True si la escena se está ejecutando como una vista previa local, en lugar de publicada en Decentraland.
+* `isConnectedSceneRoom`: _(boolean)_ True si el usuario está conectado a la sala de la escena.
 
 {% hint style="warning" %}
 **📔 Nota**: La propiedad `layer` está obsoleta y debe evitarse.
@@ -139,9 +145,9 @@ engine.addSystem((deltaTime) => {
 
 El componente `EngineInfo` contiene los siguientes datos:
 
-- `frame_number`: Contador de frames del motor
-- `total_runtime`: Runtime total de esta escena en segundos
-- `tick_number`: Contador de ticks de la escena según [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+* `frame_number`: Contador de frames del motor
+* `total_runtime`: Runtime total de esta escena en segundos
+* `tick_number`: Contador de ticks de la escena según [ADR-148](https://adr.decentraland.org/adr/ADR-148)
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `EngineInfo` debe importarse mediante

@@ -6,9 +6,9 @@ description: >-
 
 # Querying Components
 
-You can [query components](../sdk7/architecture/querying-components.md) with the method `engine.getEntitiesWith(...components)` to keep track of all entities in the scene that have certain components.
+You can [query components](querying-components.md) with the method `engine.getEntitiesWith(...components)` to keep track of all entities in the scene that have certain components.
 
-[Systems](../sdk7/architecture/systems.md) typically iterate over the entities in these queries, performing the same operations on each. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every tick of the game loop. If on every tick your system would have to iterate over every single entity in the scene looking for the ones it needs, that would be very inefficient.
+[Systems](systems.md) typically iterate over the entities in these queries, performing the same operations on each. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every tick of the game loop. If on every tick your system would have to iterate over every single entity in the scene looking for the ones it needs, that would be very inefficient.
 
 You can access the entities in a query in the following way.
 
@@ -33,7 +33,7 @@ for (const [entity] of engine.getEntitiesWith(
 ```
 
 {% hint style="info" %}
-**💡 Tip**: If your query returns entities that you don't need to deal with, consider creating a custom component to act as a [flag](../sdk7/architecture/entities-components.md#components-as-flags). This component doesn't need to have any properties in it, but can be used to mark a specific subgroup of entities that you might want to treat differently.
+**💡 Tip**: If your query returns entities that you don't need to deal with, consider creating a custom component to act as a [flag](entities-components.md#components-as-flags). This component doesn't need to have any properties in it, but can be used to mark a specific subgroup of entities that you might want to treat differently.
 {% endhint %}
 
 ### Use queries in a system
@@ -120,4 +120,4 @@ for (const [entity, transformReadOnly] of engine.getEntitiesWith(Transform)) {
 
 ### Subscribe to changes
 
-A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](../sdk7/architecture/subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.
+A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.

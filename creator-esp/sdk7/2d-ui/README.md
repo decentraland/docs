@@ -1,5 +1,8 @@
 ---
 description: Crea interfaces de usuario 2D para tus scenes
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/2d-ui
 ---
 
 # 2D UI

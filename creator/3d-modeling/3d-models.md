@@ -6,7 +6,7 @@ description: >-
 
 # 3D Models
 
-![](../images/3d-models-and-animations/3d-essentials/01-3d-essentials-banner.png)
+![](<../../.gitbook/assets/01-3d-essentials-banner (1).png>)
 
 When importing 3D models into Decentraland, it's important to make sure they're in either glTF format. These models can include a variety of supported features. This section is all about how to make them compatible with Decentraland and following best practices.
 
@@ -48,7 +48,7 @@ Blender has a native gltf exporter.
 
 To export select the models you want to be contained on the .glb file then go to File - Export - glTF 2.0
 
-![](../images/3d-models-and-animations/3d-essentials/02-export-glt-from-blender.png) ![](../images/3d-models-and-animations/3d-essentials/03-exporting-options.png)
+![](<../../.gitbook/assets/02-export-glt-from-blender (1).png>) ![](<../../.gitbook/assets/03-exporting-options (1).png>)
 
 _On the side panel check “Selected Objects” in case you want to export only the selected objects in the scene. Also, on the Mesh Dropdown select Apply Modifiers (if they were), then Export._
 
@@ -104,19 +104,19 @@ A quick and easy way to preview the contents of a glTF model before importing it
 
 In the sandbox you can also preview the animations that are embedded in the model, select which to display by picking it out of a dropdown menu.
 
-![](../images/3d-models-and-animations/3d-essentials/04-preview-gltf.png)
+![](<../../.gitbook/assets/04-preview-gltf (1).png>)
 
 ### **Analyse glTF**
 
 One great tool to analyze your glTFs is using [**glTF Sample Viewer**](https://github.khronos.org/glTF-Sample-Viewer-Release/). This tool allows you to inspect channels, textures, reaction to different light environments, preview animations and so much more! Ideal for single models.
 
-![](../images/3d-models-and-animations/3d-essentials/05-gltf-sample-viewer.png)
+![](<../../.gitbook/assets/05-gltf-sample-viewer (1).png>)
 
 Another helpful tool is [**gltf.report/**](https://gltf.report/). Simply drag and drop your models onto the website to view the contents of the glTF package and assess which parts of the model can be optimized.
 
 This tool can be especially useful for large files containing multiple models, textures, and animations. For instance, by organizing textures by size, you can easily identify which textures are using up the most resources.
 
-![](../images/3d-models-and-animations/3d-essentials/05-gltf-report.png)
+![](<../../.gitbook/assets/05-gltf-report (1).png>)
 
 ### **Optimize a glTF**
 
@@ -134,8 +134,8 @@ Among other things, it converts _.gltf_ format into _.glb_, which is binary and 
 
 The following pages also cover topics related to 3D models for Decentraland:
 
-* [Meshes](../3d-modeling/meshes.md)
-* [Materials](../3d-modeling/materials.md)
-* [Textures](../3d-modeling/textures.md)
-* [Colliders](../3d-modeling/colliders.md)
-* [Animations](../3d-modeling/animations.md)
+* [Meshes](meshes.md)
+* [Materials](materials.md)
+* [Textures](textures.md)
+* [Colliders](colliders.md)
+* [Animations](animations.md)

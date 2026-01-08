@@ -1,12 +1,16 @@
 ---
-description: Crea tus propios ítems personalizados para reutilizar en cualquiera de tus escenas.
+description: >-
+  Crea tus propios ítems personalizados para reutilizar en cualquiera de tus
+  escenas.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/custom-items
 ---
 
 # Custom Items
 
 Define un Custom Item para reutilizarlo fácilmente en cualquiera de tus escenas, o compártelo con otros creadores de escenas. Los custom items pueden consistir en una sola entidad, o tantas entidades como desees. Los custom items pueden ser variaciones de Smart Items existentes, o completamente personalizados, con sus propios modelos y funcionalidad adaptados.
-
-
 
 ### Cómo Definir un Custom Item
 

@@ -1,5 +1,9 @@
 ---
 description: Notas de lanzamiento para el SDK
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/releases/releases
 ---
 
 # Lanzamientos

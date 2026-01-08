@@ -13,8 +13,8 @@ The Rewards system manages most of the complexities involved in minting items on
 * Monitoring transaction status
 * Informing users about the item they will receive before the transaction is confirmed
 * Emits Notifications when rewards are granted and received
-* ![](../images/rewards/overview.png)
+* ![](<../../.gitbook/assets/overview (1).png>)
 
 ### Limitations
 
-Although the service offers some automation protections to prevent one person from minting wearables massively, it is impossible to be 100% secure from exploits. **It is NOT recommended to use Rewards to mint Wearables/Emotes with a rarity level that is more scarce than \[EPIC]\([See documentation](../README.md)#rarity) (100 or less copies)**.
+Although the service offers some automation protections to prevent one person from minting wearables massively, it is impossible to be 100% secure from exploits. **It is NOT recommended to use Rewards to mint Wearables/Emotes with a rarity level that is more scarce than \[EPIC]\(**[**See documentation**](../)**#rarity) (100 or less copies)**.

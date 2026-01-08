@@ -1,10 +1,12 @@
 ---
 description: Directrices para Crear una Colección de Decentraland
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/manage-collections/creating-a-collection
 ---
 
 # Creating a Collection
-
-![](../images/wearables-and-emotes/creating-a-collection/00_collections.png)
 
 ## ¿Qué es el Wearables Editor?
 
@@ -22,23 +24,13 @@ Haz clic en **Sign in**, y luego **Connect** para iniciar sesión con tu wallet 
 
 Antes de que puedas subir un wearable o un emote, debes crear primero una colección. Para hacer eso, ve a [https://builder.decentraland.org/](https://builder.decentraland.org/) y haz clic en _**Collections**_. Si aún no tienes ninguna colección, haz clic en el botón _**New Collection**_, el que tiene una imagen de una carpeta. Si ya tienes otra colección, haz clic en el botón _**+**_ y selecciona _**New Collection**_.
 
-![](../images/wearables-and-emotes/creating-a-collection/01_create_collection.png) ![](../images/wearables-and-emotes/creating-a-collection/02_add_collection.png)
-
 Después de hacer clic en el botón, se te pedirá que renombres tu colección, como se muestra a continuación. En caso de que cambies de opinión, puedes editar el nombre de tu colección en cualquier momento **antes de publicar**.
-
-![](../images/wearables-and-emotes/creating-a-collection/03_rename_collection.png)
 
 Ahora, estás listo para agregar ítems a ella. Para eso, simplemente haz clic en el botón Add Item y arrastra y suelta el archivo con tu wearable/emote o busca en tu computadora.
 
-![](../images/wearables-and-emotes/creating-a-collection/04_add_item.png)
-
 Una vez que hagas clic en _**Add Item**_, obtendrás una ventana como la que se muestra a continuación. Simplemente arrastra y suelta el archivo con tu wearable/emote o busca en tu computadora.
 
-![](../images/wearables-and-emotes/creating-a-collection/05_new_item.png)
-
 Si ya tienes una colección y quieres agregar más ítems a ella, simplemente haz clic en Add Item y sube tu archivo. Puedes agregar tantos archivos como quieras antes de publicar la colección.
-
-![](../images/wearables-and-emotes/creating-a-collection/06_adding_more_items.png)
 
 _Recuerda: no puedes agregar, eliminar o cambiar la rarity de los ítems después de que la colección se publique._
 

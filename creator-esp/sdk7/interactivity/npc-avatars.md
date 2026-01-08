@@ -1,5 +1,9 @@
 ---
 description: Muestra y controla avatares NPC
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/npc-avatars
 ---
 
 # Avatares NPC
@@ -21,21 +25,19 @@ Transform.create(myAvatar, {
 
 Al pasar datos para generar un `AvatarShape`, se requiere el siguiente campo:
 
-- `id`: (requerido) Identificador interno para el Avatar
+* `id`: (requerido) Identificador interno para el Avatar
 
 Los siguientes campos opcionales también están disponibles:
 
-- `name`: Nombre a mostrar sobre la cabeza del Avatar. Por defecto: "NPC".
-- `bodyShape`: Cadena para definir qué forma de cuerpo usar.
-- `wearables`: Array con lista de URNs para wearables que el avatar tiene actualmente puestos. Si los wearables entran en conflicto (como dos de ellos son sombreros), el último en la lista reemplaza al otro.
-- `emotes`: Array con lista de URNs para emotes NFT que el avatar es capaz de reproducir
-- `eyeColor`: _Color3_ para el color de ojos (cualquier color es válido)
-- `skinColor`: _Color3_ para el color de piel (cualquier color es válido)
-- `hairColor`: _Color3_ para el color de cabello (cualquier color es válido)
-- `talking`: Si es _true_, muestra un conjunto verde de barras junto al nombre, como cuando los jugadores usan el chat de voz en el mundo.
-- {% hint style="info" %}
-  **💡 Consejo**: Consulta [tipos de color](../3d-essentials/color-types.md) para más detalles sobre cómo establecer colores.
-  {% endhint %}
+* `name`: Nombre a mostrar sobre la cabeza del Avatar. Por defecto: "NPC".
+* `bodyShape`: Cadena para definir qué forma de cuerpo usar.
+* `wearables`: Array con lista de URNs para wearables que el avatar tiene actualmente puestos. Si los wearables entran en conflicto (como dos de ellos son sombreros), el último en la lista reemplaza al otro.
+* `emotes`: Array con lista de URNs para emotes NFT que el avatar es capaz de reproducir
+* `eyeColor`: _Color3_ para el color de ojos (cualquier color es válido)
+* `skinColor`: _Color3_ para el color de piel (cualquier color es válido)
+* `hairColor`: _Color3_ para el color de cabello (cualquier color es válido)
+* `talking`: Si es _true_, muestra un conjunto verde de barras junto al nombre, como cuando los jugadores usan el chat de voz en el mundo.
+* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Consejo</strong>: Consulta <a href="../3d-essentials/color-types.md">tipos de color</a> para más detalles sobre cómo establecer colores.</p></div>
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `AvatarShape` debe importarse mediante

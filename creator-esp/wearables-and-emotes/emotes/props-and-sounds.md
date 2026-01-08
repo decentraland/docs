@@ -1,10 +1,12 @@
 ---
 description: Directrices para agregar props y sonidos a los emotes.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/wearables-and-emotes/emotes/props-and-sounds
 ---
 
 # Props and Sounds
-
-![](../images/wearables-and-emotes/props-and-sound/01-props-and-sound-banner.png)
 
 Para llevar tus Emotes de Decentraland al siguiente nivel puedes agregar props (geometría 3d) y/o sonidos a ellos, ¡haciendo los emotes mucho más divertidos y atractivos! En esta directriz encontrarás todo lo que necesitas saber para exportarlos correctamente.
 
@@ -12,7 +14,7 @@ Para llevar tus Emotes de Decentraland al siguiente nivel puedes agregar props (
 
 Para comenzar a agregar los props a tus emotes es importante usar el [Decentraland Template File](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/BaseMale_Rig_1.0.blend) que tendrá el rig para el avatar y también la Ground Reference para mantener tu trabajo dentro de los límites de espacio permitidos.
 
-**Actualmente, las animaciones de props solo funcionan con Animaciones de Armature/Huesos lo que significa que las **_**animaciones de transform**_** no están permitidas.**
+**Actualmente, las animaciones de props solo funcionan con Animaciones de Armature/Huesos lo que significa que las \_animaciones de transform**\_\*\* no están permitidas.\*\*
 
 El emote con sus props debe exportarse todo junto en un solo archivo _.glb_ (Avatar\_Armature + Props\_Armature con sus animaciones).
 
@@ -59,29 +61,19 @@ Antes de comenzar tu animación, tendrás que crear un rig para el prop. Si no e
 
 Asegúrate de que el objeto prop y la armature tengan sus orígenes ubicados en la posición 0,0 dentro de Blender. Además, aplica transformaciones al objeto prop y armature, asegurándote de que estén congelados en una escala de 1,1,1. Esto es crucial para prevenir cualquier problema potencial con el comportamiento del prop cuando se utilice dentro del mundo o durante las animaciones.
 
-![](../images/wearables-and-emotes/props-and-sound/18-freeze-transforms.png)
-
 #### Hacer que el Prop Siga el Rig del Avatar
 
 Algunos props pueden tener que estar adjuntos a ciertas partes del cuerpo, como una raqueta de tenis a la mano. Eso se puede hacer simplemente agregando una restricción. Para hacerlo, en _**Pose Mode**_, selecciona el hueso del prop (el de la raqueta de tenis, por ejemplo), presiona _**CTRL + Shift + C**_ en tu teclado y selecciona _**Child of**_ o simplemente haz clic en la pestaña _**Bone Constraint Properties**_ y, en el menú desplegable, selecciona _**Child of**_.
 
-![](../images/wearables-and-emotes/props-and-sound/14-add-constrain.png)
-
 _Agrega una restricción presionando `Ctrl + Shift + C` en tu teclado._
 
-![](../images/wearables-and-emotes/props-and-sound/15-add-constrain-02.png)
-
 Luego, en _**Target**_, selecciona la armature del avatar y en _**Bone**_ selecciona el hueso que deseas que el prop siga. Para mantener la posición original del prop, haz clic en _**Set Inverse**_ una vez que agregues la restricción. Si la influencia es 1, el prop seguirá completamente el hueso seleccionado, si es 0, la restricción estará deshabilitada. Puedes establecer keyframes en la influencia para activarla y desactivarla a lo largo de la animación. Para hacer eso, simplemente presiona I mientras el cursor está encima de _**Influence**_.
-
-![](../images/wearables-and-emotes/props-and-sound/16-target.png)
 
 _Menú de restricción **Child of**. Haz keyframe de la influencia para activarla y desactivarla._
 
 {% hint style="info" %}
 **💡Tip de Animación!** Si usas el deslizador para desactivar la Influence, el prop no mantendrá su posición anterior, haciendo difícil mantener la animación fluida. Para evitar tener que arreglar manualmente la posición, en lugar de usar el deslizador, haz clic en la X junto a Influence, establece un keyframe en él y otro en todos los atributos de transformación. ¡De esta manera el prop mantendrá la misma posición que cuando la Influence estaba activada!
 {% endhint %}
-
-![](../images/wearables-and-emotes/props-and-sound/17-influence.gif)
 
 {% hint style="info" %}
 **💡Tip de Animación**
@@ -93,8 +85,6 @@ _Menú de restricción **Child of**. Haz keyframe de la influencia para activarl
 
 Blender 4.4 introdujo una nueva función: animation slots. Según la documentación de Blender, "el propósito de los slots es permitir que una acción almacene datos de animación distintos para múltiples data-blocks". En pocas palabras, los slots hacen posible almacenar la animación de múltiples cosas en la misma Acción. ¿Cómo afecta esto a los emotes 2.0?
 
-![](../images/wearables-and-emotes/props-and-sound/animationslots.png)
-
 Nueva función de Blender 4.4: animation slots.
 
 Aunque es posible tener tanto el avatar como el prop compartiendo el mismo clip de acción, debido a la convención de nomenclatura y número de clips de animación involucrados en Emotes 2.0, no funcionará. Así que el proceso para esto sería:
@@ -104,8 +94,6 @@ Aunque es posible tener tanto el avatar como el prop compartiendo el mismo clip 
 3. Crea un clip de animación para el prop y renómbralo _**AnimationName\_Prop**_
 4. Haz clic en el botón _**New**_ para crear un animation slot para él (recibirá un nombre automático: _**Armature\_Prop**_)
 5. Anima como lo harías en versiones anteriores de Blender.
-
-![](../images/wearables-and-emotes/props-and-sound/animation-slot-prop.gif)
 
 Creando un clip de acción y un slot para la animación del prop.
 
@@ -117,15 +105,11 @@ En _**Object Mode**_, selecciona la armature del avatar, ve a _**Pose Mode**_, s
 
 Luego, cambia de vuelta a _**Object Mode**_, selecciona la armature del prop, ve a _**Pose mode**_, selecciona el clip de animación respectivo en el menú Browse Action, haz clic en _**Action**_ y luego la opción _**Push Down**_.
 
-![](../images/wearables-and-emotes/props-and-sound/nla-tracks.gif)
-
 Empujando acciones hacia abajo a los NLA tracks.
 
 {% hint style="warning" %}
 ⚠️ Ten cuidado al empujar acciones hacia abajo. Asegúrate de seleccionar la armature deseada con la animación respectiva. No solo cambies la animación y la empujes hacia abajo antes de seleccionar la otra armature o de lo contrario estarás asignando dos acciones a una armature y ninguna a la otra.
 {% endhint %}
-
-![](../images/wearables-and-emotes/props-and-sound/NLA-tracks.png)
 
 Los NLA tracks deberían verse así: una animación para cada armature.
 
@@ -140,28 +124,22 @@ Esto ayudaría a reducir los draw calls en el juego haciendo el emote más efici
 
 Ten en cuenta que esto no funcionará para partículas, sin embargo.
 
-![](../images/wearables-and-emotes/props-and-sound/03-merge-mesh.png)
-
 _Selecciona objetos y presiona `Ctrl+J` para fusionarlos._
-
-![](../images/wearables-and-emotes/props-and-sound/04-merge-mesh-02.png)
 {% endhint %}
 
 ## **Exporting**
 
 Los Emotes 2.0 se exportan de la misma manera que los emotes comunes. Asegúrate de que solo la armature del avatar, armature del prop y mallas del prop estén visibles y oculta todo lo demás.
 
-![](../images/wearables-and-emotes/props-and-sound/visibility.png)
-
 Ten solo la armature del avatar, armature del prop y malla del prop visibles para exportar.
 
-Para exportar, ve a File > Export > glTF2.0 (.glb, .gltf) ![](../images/wearables-and-emotes/props-and-sound/export.gif)
+Para exportar, ve a File > Export > glTF2.0 (.glb, .gltf)&#x20;
 
 Para la configuración de exportación, expande Include y en Limit to activa Visible Objects. Luego, expande la pestaña Data, expande Armature y habilita Export Deformation Bones Only.
 
 | Configuración de Exportación | Animación |
-| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| ![](../images/wearables-and-emotes/props-and-sound/export_settings.png) | ![](../images/wearables-and-emotes/props-and-sound/export_settings_GIF.gif) |
+| ---------------------------- | --------- |
+|                              |           |
 
 ¡Presiona Export y has terminado!
 
@@ -191,23 +169,15 @@ Una forma de agregar sonidos a tus emotes es usando el editor de secuenciador de
 
 Para comenzar a agregar sonidos ve a _Editor Type> Video Sequencer._
 
-![](../images/wearables-and-emotes/props-and-sound/07-video-sequencer.png)
-
 Arrastra y Suelta tus sonidos a la interfaz de canales.
 
-![](../images/wearables-and-emotes/props-and-sound/08-drag-sound.png)
-
 Presiona el atajo `N` para ver más opciones para manejar tus sonidos como mostrar forma de onda, hacer tus sonidos Mono o cambiar el volumen.
-
-![](../images/wearables-and-emotes/props-and-sound/09-sound-properties.png)
 
 {% hint style="info" %}
 Si quieres hacer fade in y out simplemente puedes hacerlo agregando keyframes de 0 a 1 y viceversa a la propiedad de volumen.
 {% endhint %}
 
 Una vez que termines de editar tus sonidos puedes exportarlo yendo a _Render> Render Audio_. En la opción de exportación necesitas seleccionar formato `.mp3` o `.ogg` en la sección _Container_ y luego _Mixdown_. **Solo se exportará el audio dentro del rango de frames.**
-
-![](../images/wearables-and-emotes/props-and-sound/10-export-sound.png)
 
 2. **Renderiza la animación y agrega sonido con un software de edición de sonido**
 
@@ -217,14 +187,10 @@ Hay varias opciones de software que puedes usar, como [Audacity](https://www.aud
 
 Para renderizar tu emote simplemente puedes agregar una cámara a tu escena de Blender y posicionarla de manera que puedas ver todos los elementos lo más claramente posible para luego tener una buena referencia para agregar sonidos.
 
-![](../images/wearables-and-emotes/props-and-sound/11-setting-render.png)
-
 Al renderizar un emote, es importante incluir solo el rango de frames de tu emote y no más. Elige una relación de aspecto que se adapte a tus necesidades y selecciona la carpeta de salida donde quieres que se guarde el video o secuencia de imágenes.
 
 {% hint style="info" %}
 **¡Hint!**
-
-![](../images/wearables-and-emotes/props-and-sound/12-sampling-render.png)
 
 _¡Antes de renderizar asegúrate de hacer un render de bajo sampling para ahorrar tiempo en tu render!_
 {% endhint %}

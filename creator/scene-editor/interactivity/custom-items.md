@@ -12,15 +12,15 @@ Define a Custom Item to reuse it easily on any of your scenes, or share it with 
 
 Right-click on an entity on the [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree), or select several entities and then right-click on them. Select **Create Custom Item**.
 
-![](../../images/editor/create-custom-item.png)
+![](../../../.gitbook/assets/create-custom-item.png)
 
 On the lower section of the screen you are then asked to give your new Custom Item a name.
 
-![](../../images/editor/name-custom-item.png)
+![](../../../.gitbook/assets/name-custom-item.png)
 
 The item is now listed on the **Custom Items** tab, at the bottom of your screen. This tab is only displayed if at least one Custom Item exists in your workspace.
 
-![](../../images/editor/custom-items.png)
+![](../../../.gitbook/assets/custom-items.png)
 
 When defining a custom item, you can select several entities at a same hierarchical level, but not entities from separate parents if they don't share a common ancestor. Any nested entities are automatically included as part of the custom item, they don't need to be selected.
 

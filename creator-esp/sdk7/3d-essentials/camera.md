@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo controlar la cámara del jugador
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/camera
 ---
 
 # Cámara
@@ -18,8 +22,8 @@ Para cambiar entre las cámaras predeterminadas de primera y tercera persona, co
 
 Para usar un comportamiento de cámara personalizado en tu escena, necesitas dos cosas:
 
-- Crear una Cámara Virtual: Crea una entidad en tu escena y dale un `VirtualCamera`.
-- Asignar esa cámara virtual: Agrega un componente `MainCamera` a la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`, con una referencia a la entidad con el componente `VirtualCamera`.
+* Crear una Cámara Virtual: Crea una entidad en tu escena y dale un `VirtualCamera`.
+* Asignar esa cámara virtual: Agrega un componente `MainCamera` a la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`, con una referencia a la entidad con el componente `VirtualCamera`.
 
 La cámara entonces estará adjunta a la entidad con el componente `VirtualCamera`. Si la entidad se mueve o rota, la cámara se mueve con ella.
 
@@ -126,8 +130,8 @@ VirtualCamera.create(myCustomCamera1, {
 
 Dependiendo de tu caso de uso, puedes preferir establecer la velocidad de la transición en lugar de la duración:
 
-- **Tiempo Fijo**: Estableces la duración de la transición, la cámara se moverá tan rápido como necesite para completar el camino en ese período de tiempo.
-- **Velocidad Fija**: Estableces qué tan rápido quieres que se mueva la cámara virtual durante la transición, la duración dependerá de la distancia. El valor usado para la velocidad se interpreta como **metros por segundo**.
+* **Tiempo Fijo**: Estableces la duración de la transición, la cámara se moverá tan rápido como necesite para completar el camino en ese período de tiempo.
+* **Velocidad Fija**: Estableces qué tan rápido quieres que se mueva la cámara virtual durante la transición, la duración dependerá de la distancia. El valor usado para la velocidad se interpreta como **metros por segundo**.
 
 A continuación se muestran ejemplos para ambos modos de transición:
 

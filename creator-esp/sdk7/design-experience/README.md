@@ -1,5 +1,9 @@
 ---
 description: Diseña experiencias y juegos atractivos
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/design-experience
 ---
 
 # Design Experience

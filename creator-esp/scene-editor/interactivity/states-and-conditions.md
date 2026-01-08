@@ -1,10 +1,12 @@
 ---
 description: Gestionando estados de ítems y lógica condicional
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/states-and-conditions
 ---
 
 # States and Conditions
-
-
 
 ### Lógica condicional
 

@@ -3,7 +3,7 @@ description: Learn how to handle user clicks in your scene.
 metaLinks:
   alternates:
     - >-
-      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/sdk7/interactivity/button-events/advanced-button-events
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/button-events/advanced-button-events
 ---
 
 # Advanced Button Events

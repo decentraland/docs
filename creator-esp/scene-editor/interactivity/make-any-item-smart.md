@@ -1,5 +1,9 @@
 ---
 description: Configura cualquier ítem para que se comporte como un smart item.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/interactivity/make-any-item-smart
 ---
 
 # Hacer Cualquier Ítem Smart

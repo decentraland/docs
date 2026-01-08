@@ -1,5 +1,9 @@
 ---
 description: ¿Cuántas cosas puedo poner en mi escena?
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/optimizing/scene-limitations
 ---
 
 # Limitaciones de Escena
@@ -8,11 +12,7 @@ Para mejorar el rendimiento en el metaverso, hemos establecido un conjunto de l�
 
 Al trabajar con el [Creator Hub](../scene-editor/get-started/editor-installation.md), puedes ver estadísticas sobre los recursos usados por modelos 3D en tu escena, junto con los límites para tu escena.
 
-![](../images/editor/triangle-limit1.png)
-
 Puedes expandir este menú para ver detalles.
-
-![](../images/editor/triangle-limit2.png)
 
 {% hint style="info" %}
 **💡 Tip**: Para una tabla de referencia de todos los números específicos por conteo de parcelas, consulta:

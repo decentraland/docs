@@ -1,5 +1,9 @@
 ---
 description: Reproduce transmisiones de audio en vivo en tu escena.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/media/audio-streaming
 ---
 
 # Transmisión de Audio

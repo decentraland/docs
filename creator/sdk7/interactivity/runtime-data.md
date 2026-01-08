@@ -20,7 +20,7 @@ executeTask(async () => {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: The `getWorldTime()` function is asynchronous. See [Asynchronous functions](../sdk7/programming-patterns/async-functions.md) if you're not familiar with those.
+**💡 Tip**: The `getWorldTime()` function is asynchronous. See [Asynchronous functions](../programming-patterns/async-functions.md) if you're not familiar with those.
 {% endhint %}
 
 `getWorldTime()` returns an object with a `seconds` property. This property indicates how many seconds have passed (in Decentraland time) since the start of the day, assuming the full cycle lasts 24 hours. Divide the seconds value by 60 to obtain minutes, and by 60 again to obtain the hours since the start of the day. For example, if the `seconds` value is _36000_, it corresponds to _10 AM_.
@@ -49,7 +49,7 @@ executeTask(async () => {
 
 Players in decentraland exist in several separate _realms_. Players in different realms can't see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited amount of players without running into any limitations. It also pairs players who are in close regions, to ensure that ping times between players that interact are acceptable.
 
-If your scene sends data to a [3rd party server](../sdk7/networking/authoritative-servers.md) to sync changes between players in real time, then it's often important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
+If your scene sends data to a [3rd party server](../networking/authoritative-servers.md) to sync changes between players in real time, then it's often important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
 
 ```ts
 import { getRealm } from '~system/Runtime'
@@ -61,7 +61,7 @@ executeTask(async () => {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: The `getRealm()` function is asynchronous. See [Asynchronous functions](../sdk7/programming-patterns/async-functions.md) if you're not familiar with those.
+**💡 Tip**: The `getRealm()` function is asynchronous. See [Asynchronous functions](../programming-patterns/async-functions.md) if you're not familiar with those.
 {% endhint %}
 
 Decentraland handles its communications between players (including player positions, chat, messageBus messages and smart item state changes) through a decentralized network of communication servers, each of these servers is called a **Realm**. Each one of these servers can support multiple separate **rooms** (also called **islands**), each grouping a different set of players that are near each other on the Decentraland map.
@@ -81,7 +81,7 @@ The `getRealm()` function returns the following information:
 
 As players move through the map, they may switch rooms to be grouped with those players who are now closest to them. Rooms also shift their borders dynamically to fit a manageable group of people, so even if a player stands still, as players enter and leave the world, the player could find themselves on another room. Players in a same `room` are communicated, and will share messages across the MessageBus even if they;re too far to see each other. Players in a same server but in different rooms are not currently communicating, but they might get communicated as they move around the map and change rooms.
 
-See [onRealmChangedObservable](../sdk7/interactivity/event-listeners.md#player-changes-realm-or-island) for how to detect changes regarding the player's realm or island.
+See [onRealmChangedObservable](event-listeners.md#player-changes-realm-or-island) for how to detect changes regarding the player's realm or island.
 
 {% hint style="warning" %}
 **📔 Note**: When the scene first loads, there might not yet be a room assigned for the player. The explorer will eventually assign a room to the player, but this can sometimes occur a couple of seconds after the scene is loaded.
@@ -148,5 +148,5 @@ The `EngineInfo`component holds the following data:
 
 > `import { Vector3, Quaternion } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}

@@ -1,5 +1,9 @@
 ---
 description: Patrones de programación comunes y mejores prácticas
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/programming-patterns
 ---
 
 # Programming Patterns

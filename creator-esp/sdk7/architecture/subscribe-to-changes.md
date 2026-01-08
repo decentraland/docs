@@ -1,5 +1,9 @@
 ---
 description: Detecta cambios en un componente y ejecuta funciones en cada cambio
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/architecture/subscribe-to-changes
 ---
 
 # Suscribirse a Cambios

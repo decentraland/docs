@@ -1,5 +1,9 @@
 ---
 description: Ayuda a los jugadores a descubrir tu escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/publishing/make-discoverable
 ---
 
 # Hacer Descubrible

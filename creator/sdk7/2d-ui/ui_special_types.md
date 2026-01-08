@@ -198,7 +198,7 @@ function handleSubmitText(value: string) {
 The following properties are also available to customize the look of the text field, most of them similar to those present in `Label` entities:
 
 * `placeHolder`: String to display before the player starts inputing anything. It's useful to make this text a hint about what they should write.
-* `placeHolderColor`: The color to use for the placeholder text, as a [Color4](../sdk7/3d-essentials/color-types.md).
+* `placeHolderColor`: The color to use for the placeholder text, as a [Color4](../3d-essentials/color-types.md).
 
 {% hint style="info" %}
 **💡 Tip**: Use a paler shade of the color of text that the player writes.
@@ -207,7 +207,7 @@ The following properties are also available to customize the look of the text fi
 *   `fontSize`: The size of the text, as a number.
 
     > NOTE: The `fontSize` is not affected by the size of its entity or parent entities.
-* `color`: The color of the text the player writes, as a [Color4](../sdk7/3d-essentials/color-types.md).
+* `color`: The color of the text the player writes, as a [Color4](../3d-essentials/color-types.md).
 
 {% hint style="warning" %}
 **📔 Note**: Make sure you use a different color from the `placeHolderColor`.

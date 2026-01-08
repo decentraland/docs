@@ -16,7 +16,7 @@ For marketplaces, especially the ones without an escrow system, it is 100% recom
 
 It is not recommended to list empty Estates. The Estate smart contract has a method `getEstateSize` that returns the number of LANDs in the Estate. If the result is `0`, we recommend not listing that Estate. If you want to list them anyways, you will see an image like this one:
 
-![](../images/media/estates-marketplace-integrations/dissolved_estate.png)
+![](<../../.gitbook/assets/dissolved_estate (2).png>)
 
 ### Example
 

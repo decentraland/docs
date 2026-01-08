@@ -1,5 +1,9 @@
 ---
 description: Qué puedes ver en el preview de una scene
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/getting-started/preview-scene
 ---
 
 # Preview Your Scene

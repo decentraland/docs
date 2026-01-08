@@ -1,7 +1,8 @@
 ---
 metaLinks:
   alternates:
-    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials/examples
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/tutorials-and-examples/examples
 ---
 
 # Ejemplos

@@ -1,5 +1,9 @@
 ---
 description: Cómo usar el CLI de Decentraland para ejecutar, desplegar, etc
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/getting-started/using-the-cli
 ---
 
 # Using the CLI

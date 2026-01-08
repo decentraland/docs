@@ -2,6 +2,10 @@
 description: >-
   Pautas recomendadas para producir tu primera escena o experiencia MVP usando
   el SDK
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/design-experience/mvp-guidelines
 ---
 
 # Pautas MVP

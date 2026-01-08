@@ -4,17 +4,17 @@ description: Version support agreement
 
 # Version Support Agreement
 
-This document describes the versioning policy applied to both the Scene Editor (in the Creator Hub) and the scripting framework (the `@dcl/sdk` package).
+This document describes the versioning policy applied to both the Scene Editor in Creator Hub and the scripting framework (the `@dcl/sdk` package).
 
 The goal of this versioning policy is to forge a contract between the Decentraland Foundation's SDK team and content creators, to establish clear expectations and allow content creators to plan their work accordingly.
 
 ### Definitions
 
-* _Version number_ -- a unique identifier for a publicly available version of software. This identifier consists of a _major version_ number and a _minor version_ number, separated dots (for example, 7.2).
-* _Version family_ -- all versions that have identical major version form a family. We call version A a _successor_ of version B if A and B belong to same family and A minor number is higher than B's (for example, 7.11 is a successor of 7.10).
+* _Version number_ -- a unique identifier for a publicly available version of software. This identifier consists of a _major version_ number and a _minor version_ number, separated by dots (for example, 7.2).
+* _Version family_ -- all versions that have identical major version form a family. We call version A a _successor_ of version B if A and B belong to the same family and A minor number is higher than B's (for example, 7.11 is a successor of 7.10).
 * _Breaking change_ -- a change that forces a user to change their code or assets to keep them in functioning state. For example, a property changes name, and forces the user to change that property name every time it's used throughout their code.
-* _Non-breaking change_ -- a change that does not require any action by a user, the behavior and properties of the user's code and assets are unchanged if they migrate their scene.
-* _Stable version_ -- a version that forbids breaking changes in all its successors (which are all considered as stable too). Any breaking change must be introduced only through creation of a new version family by incrementing the major version number, however see caveat in the [breaking changes](version-support-agreement.md#breaking-changes) section. Non-breaking changes are reflected through incrementing the minor version number.
+* _Non-breaking change_ -- a change that does not require any action by a user. The behavior and properties of the user's code and assets remain unchanged.
+* _Stable version_ -- a version that forbids breaking changes in all its successors (which are all considered as stable too). Any breaking change must be introduced only through creation of a new version family by incrementing the major version number, however, see the caveat in the [breaking changes](version-support-agreement.md#breaking-changes) section. Non-breaking changes are reflected through incrementing the minor version number.
 * _Unstable version_ -- a version that allows breaking changes in its successors. Breaking changes may be introduced by incrementing the minor version number.
 
 ### Support policy
@@ -23,19 +23,19 @@ In every stable version family, the Decentraland Foundation supports only the la
 
 For example, if the latest minor version of the 6.x family is 6.11, and the latest minor version of the 7.x family is 7.3, content creators are expected to develop their scenes on either 6.11 or 7.3. Scenes that were developed and published with version 6.10 or older will most likely keep working and players will be able to enjoy them. However, if these older scenes experience any issue, they must first be updated to a supported version, and the issue will only be investigated if it still occurs in a supported version.
 
-The Scene Editor offers to automatically update the scripting package of all scenes within a same version family, so that all developers are using the latest supported version when they develop their scenes.
+The Scene Editor automatically updates the scripting package of all scenes within the same version family, so that all developers use the latest supported version when developing their scenes.
 
 ### Feature development
 
-New features will only be released into the latest version in development. As soon as the development team starts work in a new version family, older version families that remain in support will only receive major bugs fixes, and no additional features will be implemented.
+New features will only be released into the latest version in development. As soon as the development team starts work on a new version family, older version families that remain in support will only receive major bug fixes, and no additional features will be implemented.
 
 ### Breaking changes
 
-Breaking changes should only occur in major releases. There should be no breaking changes within the stable minor releases of a same version family, except in case of an emergency and absence of any other means to address it. Breaking changes within a minor release are a drastic measure that the developers will avoid at all costs. New minor releases will extend the capabilities of the existing syntax, but should never change what the established syntax produces, except when fixing bugs.
+Breaking changes should only occur in major releases. There should be no breaking changes within the stable minor releases of the same version family, except in case of an emergency when there are no other means to address it. Breaking changes within a minor release are a drastic measure that the developers will avoid at all costs. New minor releases will extend the capabilities of the existing syntax, but should never change what the established syntax produces, except when fixing bugs.
 
 #### Isolated changes
 
-On very rare occasions, it could be preferable to make a small, isolated breaking change, if this will only cause inconvenience to a small subset of users. (Creating a new major version is an inconvenience to all users.) In this case, the SDK might deprecate a feature, but must continue to support the feature for a reasonable amount of time.
+On very rare occasions, it may be preferable to make a small, isolated breaking change if it will only inconvenience a small subset of users. (Creating a new major version inconveniences all users.) In this case, the SDK might deprecate a feature, but must continue to support it for a reasonable amount of time.
 
 #### Emergency changes
 
@@ -51,13 +51,13 @@ Developers are free to experiment with these alpha versions, but they're not enc
 
 #### Beta
 
-Once a version family reaches a certain level of maturity, a **beta** release is made available. A beta release is be considered complete and ready to be declared stable, subject to public testing.
+Once a version family reaches a certain level of maturity, a **beta** release is made available. A beta release is considered complete and ready to be declared stable, subject to public testing.
 
-Beta version families should be as stable as possible; however, they are permitted to change over time. These changes should be minimal but may include breaking changes. Breaking changes must be made only after a reasonable deprecation period to give content creators the opportunity to migrate their scenes. This deprecation period must be defined at the time of introducing a breaking change.
+Beta version families should be as stable as possible; however, they are permitted to change over time. These changes should be minimal but may include breaking changes. Breaking changes may only be introduced after a reasonable deprecation period to give content creators the opportunity to migrate their scenes. This deprecation period must be defined when the breaking change is introduced.
 
 Beta version families should only be in beta for a limited period of time, specified at the time of being marked beta. They should be promoted to stable if no issues are found in that period. The length of this time period may vary case by case, but a good rule of thumb is 90 days.
 
-Content written with the syntax of a beta version should be effortless to migrate to the next versions within that family tree. It's still not advisable to develop content for major events with a beta version, as testing is still in progress and bugs are still likely.
+Content written with the syntax of a beta version should be easy to migrate to later versions within that family. It's still not advisable to develop content for major events with a beta version, as testing is still in progress and bugs are likely.
 
 #### Stable
 
@@ -67,7 +67,7 @@ A stable version family must be fully-supported over its lifetime. There must be
 
 ### Unstable features in stable releases
 
-Specific features in an release may have different stability levels from the release as a whole. This can be either because the feature has recently been introduced, and requires more testing, or because it's destined to be replaced soon.
+Specific features in a release may have different stability levels from the release as a whole. This can be either because the feature has recently been introduced, and requires more testing, or because it's destined to be replaced soon.
 
 For example, a new type of component could be introduced as alpha in an already stable release of the SDK framework, as this particular component may still require its own testing cycle. It can then undergo the versioning flow described above, going from alpha, to beta, to stable.
 
@@ -75,10 +75,10 @@ Any feature from a stable release that is not considered stable should be clearl
 
 ### How long do we support a stable version family?
 
-Once a new version family becomes stable (7.x), the team commits to support (major bugfixes) on the previous version (6.x) for several months, to give creators plenty of time to migrate. The amount of months is determined in a case-by-case basis, depending on the migration effort required by creators to migrate.
+Once a new version family becomes stable (7.x), the team commits to support (major bugfixes) on the previous version (6.x) for several months, to give creators plenty of time to migrate. The duration is determined on a case-by-case basis, depending on the migration effort required.
 
 ### Pre-released versions
 
 It's always possible to access the most recent additions to the scripting framework by installing the `@next` version of the `@dcl/sdk` package into a scene.
 
-The features in this branch may be unstable or undocumented, as they're not pushed as part as an officially supported version of the SDK.
+The features in this branch may be unstable or undocumented, as they're not pushed as part of an officially supported version of the SDK.

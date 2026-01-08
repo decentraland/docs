@@ -1,6 +1,8 @@
 ---
 title: Coding essentials
-description: This set will help you understand how things work in the client and SDK of decentraland.
+description: >-
+  This set will help you understand how things work in the client and SDK of
+  decentraland.
 ---
 
 # Coding essentials
@@ -9,21 +11,21 @@ description: This set will help you understand how things work in the client and
 
 At a very high level, the Decentraland **Software Development Kit** (SDK) allows you to do the following:
 
-- Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
-- Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
-- Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
-- Upload the content of your scene to the content server.
-- Link your LAND tokens to the URL of the content you have uploaded.
+* Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
+* Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
+* Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
+* Upload the content of your scene to the content server.
+* Link your LAND tokens to the URL of the content you have uploaded.
 
 Our SDK includes the following:
 
-- **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md)
-- **The Decentraland ECS**: A TypeScript package containing the framework of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
-- **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://studios.decentraland.org/resources?sdk_version=SDK7).
+* **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md)
+* **The Decentraland ECS**: A TypeScript package containing the framework of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
+* **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://studios.decentraland.org/resources?sdk_version=SDK7).
 
 Other legacy tools:
 
-- **The Web Editor**: A web based too for creating simple scenes and publishing them.
+* **The Web Editor**: A web based too for creating simple scenes and publishing them.
 
 ## Requirements
 
@@ -31,14 +33,12 @@ To develop a scene locally, you don't need to own LAND tokens. Developing and te
 
 You must have:
 
-- **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md).
+* **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md).
 
 If you plan to edit the scene's code, you'll also need to install one of the following:
 
-- <img src="../../images/editor/vscode.png" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
-
-- <img src="../../images/editor/cursor-icon.png" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
-
+* <img src="../../../.gitbook/assets/vscode.png" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
+* <img src="../../../.gitbook/assets/cursor-icon.png" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
 
 ## Supported languages and syntax
 
@@ -66,7 +66,7 @@ You can also run a scene locally on your machine by running a preview from the C
 
 Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_. Entities have _components_, each component gives the entity it belongs to specific properties. A door entity is likely to have at least a Transform component (that sets position, rotation & scale) and another to provide it a shape. Components are just a place to store data, they don't carry out any actions by themselves.
 
-![](../../images/media/ecs-components-new.png)
+![](<../../../.gitbook/assets/ecs-components-new (1).png>)
 
 ```ts
 export function main() {
@@ -85,7 +85,7 @@ export function main() {
 
 Entities may be nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
 
-![](../../images/media/ecs-nested-entities-new.png)
+![](<../../../.gitbook/assets/ecs-nested-entities-new (1).png>)
 
 Entities are an abstract concept. An entity is just an id, that is used as a reference to group different components.
 
@@ -101,7 +101,7 @@ See [Custom Components](../architecture/custom-components.md) for more informati
 
 ### Fetch entities by name
 
-The entities added by dragging and dropping on the Scene Editor can also be accessed via code to further edit them and add behavior.
+The entities added by dragging and dropping on the Scene Editor in Creator Hub can also be accessed via code to further edit them and add behavior.
 
 Use `engine.getEntityOrNullByName()` to fetch an entity, passing the name assigned to the entity on the Scene Editor UI. Each should have a unique name.
 
@@ -149,9 +149,9 @@ See [Systems](../architecture/systems.md) for more details about how systems are
 
 The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through part of the code at a regular interval and does the following:
 
-- Listen for player input
-- Update the scene
-- Re-render the scene
+* Listen for player input
+* Update the scene
+* Re-render the scene
 
 In most traditional software programs, all events are triggered directly by player actions. Nothing in the program's state will change until the player clicks on a button, opens a menu, etc.
 
@@ -191,13 +191,13 @@ engine.addSystem(rotationSystem)
 
 If you start writing loose lines of code directly into `index.ts`, your code may be lacking some important context. For example, you'll be missing information about the player entity, or about entities that were added via drag and drop in the Creator Hub. At the time when your lines of code are read, those things aren't loaded yet.
 
-To avoid that scenario, it's always recommended to write out your scene's initial loading code using the `main()` function (on the `index.ts` file) as an entrypoint. This function runs only after all of the scene's initial context is already loaded, this includes anything added via the Scene Editor's UI.
+To avoid that scenario, it's always recommended to write out your scene's initial loading code using the `main()` function (on the `index.ts` file) as an entrypoint. This function runs only after all of the scene's initial context is already loaded, this includes anything added via the Scene Editor UI.
 
 You can write your code outside the `main()` function when:
 
-- The code is indirectly called by `main()`
-- The code defines a system, or adds a system to the engine
-- The code is inside an [async function](../programming-patterns/async-functions.md)
+* The code is indirectly called by `main()`
+* The code defines a system, or adds a system to the engine
+* The code is inside an [async function](../programming-patterns/async-functions.md)
 
 {% hint style="warning" %}
 **📔 Note**: By the time the code inside an async function or a system is first executed, everything in the scene is already properly initialized.
@@ -230,7 +230,7 @@ See [mutable data](../programming-patterns/mutable-data.md) for more details.
 
 The _engine_ is what sits in between _entities_, and _components_ on one hand and _systems_ on the other.
 
-![](../../images/media/ecs-big-picture.png)
+![](<../../../.gitbook/assets/ecs-big-picture (1).png>)
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every tick of the game loop, the engine runs the functions of each of the systems to update the values stored in the components.
 
@@ -272,9 +272,7 @@ Note that most of the code above is executed just once, when loading the scene. 
 
 ## Scene Decoupling
 
-Your scenes don't run in the same context as the engine
-(a.k.a. the main thread). We created the SDK in a way that is
-entirely decoupled from the rendering engine. We designed it to be like this for both safety and performance reasons.
+Your scenes don't run in the same context as the engine (a.k.a. the main thread). We created the SDK in a way that is entirely decoupled from the rendering engine. We designed it to be like this for both safety and performance reasons.
 
 Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the player's browser or geographical location.
 
@@ -344,7 +342,7 @@ The exception to this rule are the definitions of custom components. These must 
 
 ## Imports
 
-All functions, objects, components and other elements used by the scene must be imported into each file to use them. This is a consequence of [tree-shaking](#tree-shaking), as it avoids packaging the entire SDK and instead only includes the parts the scene uses.
+All functions, objects, components and other elements used by the scene must be imported into each file to use them. This is a consequence of [tree-shaking](coding-scenes.md#tree-shaking), as it avoids packaging the entire SDK and instead only includes the parts the scene uses.
 
 Snippets throughout the documentation omit the import lines at the start of every file to keep them clean, but for them to work you must add them to the scene.
 
@@ -352,12 +350,12 @@ When Using VS Studio Code to write your scenes, the smart auto-complete options 
 
 When you paste a snippet into your scene, however, you will likely see some elements marked in red, which are not imported into that file. To fix this:
 
-- Click on each underlined word
-- Click on the light-bulb icon on the left of the line
-- Select **Add Import From <path>**
-- An import line appears at the start of the file.
+* Click on each underlined word
+* Click on the light-bulb icon on the left of the line
+* Select **Add Import From**
+* An import line appears at the start of the file.
 
-![](../../images/media/imports.png)
+![](../../../.gitbook/assets/imports.png)
 
 If there are many different things to import, you can also select **Add all missing imports** from the same dropdown.
 
@@ -396,4 +394,3 @@ See [manage dependencies](../libraries/manage-dependencies.md) for more details.
 {% hint style="warning" %}
 **📔 Note**: Keep in mind that the @next version might suffer issues from time to time. The syntax and name of new features might change before it's released in a stable version.
 {% endhint %}
-

@@ -1,5 +1,9 @@
 ---
 description: Procedimiento recomendado para desarrollar y probar una scene
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/getting-started/dev-workflow
 ---
 
 # Development Workflow

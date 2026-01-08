@@ -4,8 +4,6 @@ description: Combine content created on the Scene Editor with the power of writi
 
 # Overview
 
-
-
 The Creator Hub plus custom code is a very powerful combination for creating content. You can use the canvas to visually position items intuitively, and then write code that interacts with these items with complete freedom. You can even place a smart item, that has its own default behavior, and write code that reacts to when the item is activated.
 
 For example, you can take advantage of an existing lever smart item, that already comes with its sounds and animations and states, and write code that detects when the lever is pulled to run your own custom logic.
@@ -16,8 +14,8 @@ See [Reference items in code](../scene-editor/code/reference-items.md) for how t
 
 You must install a code editor on your machine to edit the code of your scene. The recommended options are:
 
-* ![](../../images/editor/vscode.png) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* ![](../../images/editor/cursor-icon.png) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+* ![](../../../.gitbook/assets/vscode.png) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
+* ![](../../../.gitbook/assets/cursor-icon.png) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 {% hint style="warning" %}
 **📔 Note**: If you are on macOS, make sure the code editor app is in the Applications directory.
@@ -27,18 +25,18 @@ Once installed, you may need to select your Code Editor in the settings of the C
 
 1.  Open the wheel icon in the top-right of the screen
 
-    ![](../../images/editor/settings-icon.png)
+    ![](../../../.gitbook/assets/settings-icon.png)
 2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Chose from your device** to find it.
 
 ### Open a scene's code
 
 Once you installed a code editor on your machine, and selected it in the settings of the Creator Hub, you can click the **< > CODE** button to open it on your scene project.
 
-![](../../images/editor/code-button.png)
+![](../../../.gitbook/assets/code-button.png)
 
 This opens a separate window with the code editor. On the left margin you can navigate the files and folder structure of your project.
 
-![](../../images/editor/files-on-vs-studio.png)
+![](../../../.gitbook/assets/files-on-vs-studio.png)
 
 Add your custom code in the `index.ts` file under `/src`, inside the `main()` function. You can otherwise add custom code outside that function or create new `.ts` files inside the `/src` folder, but these must be somehow referenced inside the `main()` function of `index.ts`.
 
@@ -54,7 +52,7 @@ If you are using Cursor, you can use the AI assistant to help you write code. To
 
 1.  Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
 
-    ![](../../images/editor/cursor-icon.png)
+    ![](../../../.gitbook/assets/cursor-icon.png)
 2. There you can prompt the AI assistant to help you write code. You can also select a model to use from the dropdown.
 
 Decentraland provides a context folder for the AI assistant to help you write code, this context folder is located at `/dclcontext` in your scene project. The AI assistant will know to search this context whenever generating code, to get familiar with the Decentraland SDK.

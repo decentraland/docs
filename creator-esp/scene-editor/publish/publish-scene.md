@@ -1,5 +1,9 @@
 ---
 description: Cómo publicar tu escena en LAND o un NAME.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/publish/publish-scene
 ---
 
 # Publish Scene
@@ -42,7 +46,7 @@ Para publicar tu escena:
 4. La siguiente pantalla muestra todos los archivos que estás cargando actualmente y sus tamaños, confirma la operación.
 5. El proceso de publicación comenzará entonces. Las etapas **1** y **2** son necesarias para que tu escena sea jugable, una vez hecho aparece un botón **Jump In**. No necesitas esperar la **Etapa 3** para probar tu escena. ![](../images/editor/deploy-steps.png)
 
-\*\*📔 Nota\*\*: Las tres etapas del despliegue involucran: - \*\*1. Uploading\*\*: Subiendo los archivos a los servidores. - \*\*2. Converting\*\*: Los modelos 3D de la escena se comprimen en Asset Bundles para un rendering más rápido. Esto puede tomar 15 minutos o menos. Puede demorarse más para escenas muy grandes, o si los servidores están actualmente ocupados convirtiendo otras escenas. - \*\*3, Optimizing\*\*: Se generan versiones de Nivel de Detalle Bajo (LOD) de tus assets. Estos solo se usan para renderizar tu escena desde lejos, lo que significa que no necesitas esperar a que esto termine para saltar y probar tu escena. {% endhint %}
+\*\*📔 Nota\*\*: Las tres etapas del despliegue involucran: - \*\*1. Uploading\*\*: Subiendo los archivos a los servidores. - \*\*2. Converting\*\*: Los modelos 3D de la escena se comprimen en Asset Bundles para un rendering más rápido. Esto puede tomar 15 minutos o menos. Puede demorarse más para escenas muy grandes, o si los servidores están actualmente ocupados convirtiendo otras escenas. - \*\*3, Optimizing\*\*: Se generan versiones de Nivel de Detalle Bajo (LOD) de tus assets. Estos solo se usan para renderizar tu escena desde lejos, lo que significa que no necesitas esperar a que esto termine para saltar y probar tu escena.
 
 ### Publicar desde un hardware wallet
 

@@ -17,24 +17,24 @@ Para agregar un usuario a la campaña:
 3. Completa el formulario ingresando la dirección de billetera del usuario (o nombre ENS) y seleccionando su rol.
 4. Haz clic en el botón **Add User** para finalizar la adición.
 
-![](../.gitbook/assets/users.png)
+![](../../.gitbook/assets/users.png)
 
 ### Permisos para roles
 
 Estas son las acciones permitidas para cada rol:
 
-| Permiso                                      | viewer | developer | collaborator | owner |
-| -------------------------------------------- | :----: | :-------: | :----------: | :---: |
-| Ver nombre de campaña, red y gas máximo      |    ✅   |     ✅     |       ✅      |   ✅   |
-| Editar nombre de campaña y gas máximo        |    ❌   |     ❌     |       ✅      |   ✅   |
-| Activar y desactivar campaña                 |    ❌   |     ❌     |       ✅      |   ✅   |
-| Ver suministro                               |    ✅   |     ✅     |       ✅      |   ✅   |
-| Agregar/eliminar Suministro                  |    ❌   |     ✅     |       ✅      |   ✅   |
-| Ver dispensadores                            |    ✅   |     ✅     |       ✅      |   ✅   |
-| Ver clave de dispensador                     |    ❌   |     ✅     |       ✅      |   ✅   |
-| Agregar/eliminar dispensador                 |    ❌   |     ✅     |       ✅      |   ✅   |
-| Ver transacciones de campaña                 |    ✅   |     ✅     |       ✅      |   ✅   |
-| Ver usuarios                                 |    ✅   |     ✅     |       ✅      |   ✅   |
-| Agregar/Eliminar usuarios                    |    ❌   |     ❌     |       ✅      |   ✅   |
-| Eliminar usuarios propietarios               |    ❌   |     ❌     |       ❌      |   ✅   |
-| Gestionar fondos                             |    ❌   |     ❌     |       ❌      |   ✅   |
+| Permiso                                 | viewer | developer | collaborator | owner |
+| --------------------------------------- | :----: | :-------: | :----------: | :---: |
+| Ver nombre de campaña, red y gas máximo |    ✅   |     ✅     |       ✅      |   ✅   |
+| Editar nombre de campaña y gas máximo   |    ❌   |     ❌     |       ✅      |   ✅   |
+| Activar y desactivar campaña            |    ❌   |     ❌     |       ✅      |   ✅   |
+| Ver suministro                          |    ✅   |     ✅     |       ✅      |   ✅   |
+| Agregar/eliminar Suministro             |    ❌   |     ✅     |       ✅      |   ✅   |
+| Ver dispensadores                       |    ✅   |     ✅     |       ✅      |   ✅   |
+| Ver clave de dispensador                |    ❌   |     ✅     |       ✅      |   ✅   |
+| Agregar/eliminar dispensador            |    ❌   |     ✅     |       ✅      |   ✅   |
+| Ver transacciones de campaña            |    ✅   |     ✅     |       ✅      |   ✅   |
+| Ver usuarios                            |    ✅   |     ✅     |       ✅      |   ✅   |
+| Agregar/Eliminar usuarios               |    ❌   |     ❌     |       ✅      |   ✅   |
+| Eliminar usuarios propietarios          |    ❌   |     ❌     |       ❌      |   ✅   |
+| Gestionar fondos                        |    ❌   |     ❌     |       ❌      |   ✅   |

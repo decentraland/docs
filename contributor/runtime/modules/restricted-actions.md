@@ -1,4 +1,6 @@
-The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](/contributor/content/entity-types/scenes#permissions) system, which scenes use to request the use of individual methods.
+# restricted-actions
+
+The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](../../content/entity-types/scenes/#permissions) system, which scenes use to request the use of individual methods.
 
 ```ts
 const RestrictedActions = require("~system/RestrictedActions");
@@ -8,28 +10,28 @@ const RestrictedActions = require("~system/RestrictedActions");
 As a World Explorer implementer, your runtime could have no enforcement of permissions. We **strongly** advise against this, since it puts players in danger.
 {% endhint %}
 
-Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../globals).
+Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../../globals/).
 
 The module contains the following methods and types:
 
-- [`function movePlayerTo`](#movePlayerTo)
-- [`function teleportTo`](#teleportTo)
-- [`function triggerEmote`](#triggerEmote)
-- [`function changeRealm`](#changeRealm)
-- [`function openExternalUrl`](#openExternalUrl)
-- [`function openNftDialog`](#openNftDialog)
-- [`function setCommunicationsAdapter`](#setCommunicationsAdapter)
-- [`interface Vector3`](#Vector3)
+* [`function movePlayerTo`](restricted-actions.md#movePlayerTo)
+* [`function teleportTo`](restricted-actions.md#teleportTo)
+* [`function triggerEmote`](restricted-actions.md#triggerEmote)
+* [`function changeRealm`](restricted-actions.md#changeRealm)
+* [`function openExternalUrl`](restricted-actions.md#openExternalUrl)
+* [`function openNftDialog`](restricted-actions.md#openNftDialog)
+* [`function setCommunicationsAdapter`](restricted-actions.md#setCommunicationsAdapter)
+* [`interface Vector3`](restricted-actions.md#Vector3)
 
-## Methods
+### Methods
 
-Each of the methods below is associated with a specific [permission](/contributor/content/entity-types/scenes#permissions) that can be requested in the scene manifest.
+Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes/#permissions) that can be requested in the scene manifest.
 
-##### `movePlayerTo` {#movePlayerTo}
+**`movePlayerTo`**
 
-Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](#Vector3).
+Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#Vector3).
 
-Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](/contributor/content/entity-types/scenes#permissions) permission.
+Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes/#permissions) permission.
 
 ```ts
 interface Request {
@@ -42,9 +44,9 @@ interface Response {}
 function movePlayerTo(Request): Promise<Response>;
 ```
 
-##### `teleportTo` {#teleportTo}
+**`teleportTo`**
 
-Reposition the player to an absolute world location given a by [vectors](#Vector3).
+Reposition the player to an absolute world location given a by [vectors](restricted-actions.md#Vector3).
 
 Instead of requiring a pre-approved permission, each call to `teleportTo` must be approved by the player.
 
@@ -58,11 +60,11 @@ interface Response {}
 function teleportTo(Request): Promise<Response>;
 ```
 
-##### `triggerEmote` {#triggerEmote}
+**`triggerEmote`**
 
 Make the player's avatar display an emote animation, using one of the predefined names.
 
-Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](/contributor/content/entity-types/scenes#permissions) permission.
+Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](../../content/entity-types/scenes/#permissions) permission.
 
 ```ts
 interface Request {
@@ -74,11 +76,11 @@ interface Response {}
 function triggerEmote(Request): Promise<Response>;
 ```
 
-##### `openExternalUrl` {#openExternalUrl}
+**`openExternalUrl`**
 
 Offer to show a website to the player, using an appropriate UI (which may be another application).
 
-Requires the [`OPEN_EXTERNAL_LINK`](/contributor/content/entity-types/scenes#permissions) permission.
+Requires the [`OPEN_EXTERNAL_LINK`](../../content/entity-types/scenes/#permissions) permission.
 
 ```ts
 interface Request {
@@ -93,7 +95,7 @@ interface Response {
 function openExternalUrl(Request): Promise<Response>;
 ```
 
-##### `openNftDialog` {#openNftDialog}
+**`openNftDialog`**
 
 Show information about an NFT to the player, using an appropriate UI.
 
@@ -111,7 +113,7 @@ interface Response {
 function openNftDialog(Request): Promise<Response>;
 ```
 
-##### `changeRealm` {#changeRealm}
+**`changeRealm`**
 
 Switch the World Explorer to another content server, using its base URL.
 
@@ -132,11 +134,11 @@ interface Response {
 function changeRealm(Request): Promise<Response>;
 ```
 
-## Types
+### Types
 
 The only additional type used by methods in this module is the `Vector3`.
 
-##### `Vector3` {#Vector3}
+**`Vector3`**
 
 Holds a relative or absolute 3d position.
 
@@ -147,23 +149,3 @@ interface Vector3 {
   z: number;
 }
 ```
-
-<!--
-## Pending
-
-```ts
-export function changeRealm(body: ChangeRealmRequest): Promise<SuccessResponse>;
-export interface ChangeRealmRequest {
-  realm: string;
-  message?: string | undefined;
-}
-
-export function setCommunicationsAdapter(body: CommsAdapterRequest): Promise<SuccessResponse>;
-export interface CommsAdapterRequest {
-    connectionString: string;
-}
-
-export interface UnblockPointerRequest {
-    }
-```
--->

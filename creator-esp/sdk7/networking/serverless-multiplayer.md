@@ -1,5 +1,9 @@
 ---
 description: Sincroniza el estado de la escena entre jugadores.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/networking/serverless-multiplayer
 ---
 
 # Multijugador sin Servidor
@@ -19,8 +23,6 @@ Las primeras dos opciones están cubiertas en este documento. Son más simples, 
 ### Marcar una Entidad como Sincronizada
 
 En el [Creator Hub](../scene-editor/get-started/about-editor.md), marca una entidad como sincronizada agregando un componente **Multiplayer** a ella. Incluye una casilla de verificación para cada uno de los otros componentes en la entidad, permitiéndote seleccionar cuáles actualizar.
-
-![](../images/editor/multiplayer-component.png)
 
 Para marcar una entidad como sincronizada a través de código, usa la función `syncEntity`:
 

@@ -1,5 +1,9 @@
 ---
 description: Cómo usar el Scene Editor
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started/scene-editor-essentials
 ---
 
 # Scene Editor Essentials
@@ -67,8 +71,6 @@ Abre la pestaña **Local Assets** para eliminar cualquier modelo no utilizado.
 {% endhint %}
 
 ### Posicionar ítems
-
-
 
 Haz clic con el **Botón Izquierdo del Mouse** y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo.
 

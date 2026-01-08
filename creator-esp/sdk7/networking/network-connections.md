@@ -1,5 +1,9 @@
 ---
 description: Cómo comunicar tu escena con servidores externos y APIs.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/networking/network-connections
 ---
 
 # Conexiones de Red

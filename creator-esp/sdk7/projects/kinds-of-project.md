@@ -1,5 +1,9 @@
 ---
 description: Los tipos disponibles de proyectos que puedes crear en Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/projects/kinds-of-project
 ---
 
 # Tipos de Proyecto

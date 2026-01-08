@@ -62,7 +62,7 @@ In the [materials section](https://docs.decentraland.org/creator/3d-modeling/mat
 
 This is the base color of the object's surface. Having a balanced color palette between your models is key to achieve a cohesive look and feel for your experience.
 
-![](../images/3d-models-and-animations/3d-essentials/58-difusemap.png)
+![](../../.gitbook/assets/58-difusemap.png)
 
 Here it is a cool free palette generator in case you need it!
 
@@ -76,7 +76,7 @@ Or some palette inspiration provided by awesome films:
 
 In a Metallic map, the grayscale map represents the grade of metalness an object posess, being white full metallic and black non metallic. In the following example we see how the light affects the model and how interacts with the environment.
 
-![](../images/3d-models-and-animations/3d-essentials/64-metallic-map.png)
+![](../../.gitbook/assets/64-metallic-map.png)
 
 _In the image we can see how the dark parts of the texture affect the model. The dark stripes are opaque, while the white stripe is beahving under the metallic shader properties and gray being a mixture between both._
 
@@ -84,7 +84,7 @@ _In the image we can see how the dark parts of the texture affect the model. The
 
 In a roughness map, darker areas correspond to smoother surfaces, while brighter areas correspond to rough surfaces. This grayscale representation is used by rendering engines to determine how light should be scattered or reflected at different points on the surface.
 
-![](../images/3d-models-and-animations/3d-essentials/48-roughness.png) ![](../images/3d-models-and-animations/3d-essentials/49-roughness.gif)
+![](../../.gitbook/assets/48-roughness.png) ![](../../.gitbook/assets/49-roughness.gif)
 
 ### Transparent Maps
 
@@ -94,9 +94,9 @@ Alpha Clip in Blender, when used with a texture, involves using the alpha channe
 
 In the following example we used a material with alpha clip, using 2 textures, the diffuse color and the alpha texture in black and white connecting the color to the alpha channel.
 
-![](../images/3d-models-and-animations/3d-essentials/33-alpha-clip-leave.jpeg) ![](../images/3d-models-and-animations/3d-essentials/33-alpha-clip-mask.jpeg)
+![](../../.gitbook/assets/33-alpha-clip-leave.jpeg) ![](../../.gitbook/assets/33-alpha-clip-mask.jpeg)
 
-![](../images/3d-models-and-animations/3d-essentials/33-alpha-blender.png)
+![](../../.gitbook/assets/33-alpha-blender.png)
 
 _As a result we can see the areas painted in black are discarted while the white area are being rendered_
 
@@ -106,7 +106,7 @@ _Alpha Blend_ allows you to pick intermediate values per region.
 
 Alpha Blend in Blender, when used with a texture, involves blending the transparent and opaque areas of the texture based on its alpha channel. This allows the texture to smoothly combine both visible and see-through portions, interacting naturally with the background or other objects in the scene.
 
-![](../images/3d-models-and-animations/3d-essentials/33-alpha-blend.png)
+![](../../.gitbook/assets/33-alpha-blend.png)
 
 _While Alpha Clip render values being 0 or 1 (in a specific threshold) Alpha Blend interpolates the values between 0 and 1. In the example above the alpha blend material shows the complete gradient transition while the alpha clip excludes part of the texture set by the clip threshold_
 
@@ -121,7 +121,7 @@ _While Alpha Clip render values being 0 or 1 (in a specific threshold) Alpha Ble
 
 An emissive map is a type of texture map used to control the self-illumination or the emitted light of a surface in a 3D scene. It's a component of the shader that determines how much light (and color of light) a particular part of a 3D model emits, independently of external light sources. Emissive maps are commonly used to simulate materials or objects that appear to emit their own light.
 
-![](../images/3d-models-and-animations/3d-essentials/57-emissive-map.gif)
+![](../../.gitbook/assets/57-emissive-map.gif)
 
 _In this example we can see the use of an emissive map combined with emissive strenght in an environment that uses glow postprocessing to test approxivamtely how the emissive behavies in world._
 
@@ -129,11 +129,11 @@ _In this example we can see the use of an emissive map combined with emissive st
 
 A normal map is a type of texture used in 3D graphics to simulate fine surface details and create the illusion of complex geometry without actually altering the underlying geometry of a model. It's commonly used to enhance the realism of low-poly models by adding the appearance of bumps, crevices, and other surface irregularities. It also allows you to keep the object themselves lighter, as lots of details can be provided on the normal map layer instead of complex geometry.
 
-![](../images/3d-models-and-animations/3d-essentials/51-normal-map.png) ![](../images/3d-models-and-animations/3d-essentials/50-normal.gif)
+![](../../.gitbook/assets/51-normal-map.png) ![](../../.gitbook/assets/50-normal.gif)
 
 To add a normal map to your material using the _Shader Editor_, you will need to connect the _**Normal Map**_ node between the texture and the _Principled BSDF_ shader.
 
-![](../images/3d-models-and-animations/3d-essentials/56-normal-map.png)
+![](../../.gitbook/assets/56-normal-map.png)
 
 {% hint style="warning" %}
 **⚠️Important⚠️:** Never use a texture as albedo and normal at the same time because can create issues when rendering the scene.
@@ -167,15 +167,15 @@ It converts .gltf format into .glb, which is binary and so occupies a lot less. 
 
 In this example scene, we have a simple sci-fi scene in Blender.
 
-![](../images/3d-models-and-animations/glb-extractor/01-scene-base.png)
+![](../../.gitbook/assets/01-scene-base.png)
 
 This scene contains the base environment for the static models but there are also two other assets, a droid and a spaceship that we want to export separately in order to move them later by code, so they can interact with the players. In this case we used 4 textures (one for the floor, one atlas color map for most of the assets, one emissive and a UI sci-fi texture for the panels)
 
-![](../images/3d-models-and-animations/glb-extractor/02-model-01.png) ![](../images/3d-models-and-animations/glb-extractor/03-model-02.png)
+![](../../.gitbook/assets/02-model-01.png) ![](../../.gitbook/assets/03-model-02.png)
 
 Once we export all of these assets to the models folder we have 3 models, the environment static scene, the spaceship and the droid.
 
-![](../images/3d-models-and-animations/glb-extractor/04-models-folder.png)
+![](../../.gitbook/assets/04-models-folder.png)
 
 But we have a problem, the .glb files have the textures embedded in them, so if you are exporting different assets that reuse the textures, these would be duplicated each time there is a new asset in the folder. To avoid having duplicated textures we can use this helpful tool.
 
@@ -187,41 +187,41 @@ But we have a problem, the .glb files have the textures embedded in them, so if 
 
 Once you have exported all the assets to your models folder you can drag the script file to it.
 
-![](../images/3d-models-and-animations/glb-extractor/05-texture-extractor.png)
+![](../../.gitbook/assets/05-texture-extractor.png)
 
 1 - Open the folder in the terminal by dragging the folder to it.
 
-![](../images/3d-models-and-animations/glb-extractor/06-move-to-terminal.png)
+![](../../.gitbook/assets/06-move-to-terminal.png)
 
 2 - Drag the texture-extractor.sh to the terminal.
 
-![](../images/3d-models-and-animations/glb-extractor/06-terminal.png)
+![](../../.gitbook/assets/06-terminal.png)
 
 3 - Run the command. It may take some seconds to process all the assets. After that, you will see something like this:
 
-![](../images/3d-models-and-animations/glb-extractor/07-run-terminal.png)
+![](../../.gitbook/assets/07-run-terminal.png)
 
 4 - Go to your models folder and there will be one new folder called "out" in which you will see your new assets with the textures extracted.
 
-![](../images/3d-models-and-animations/glb-extractor/08-out-folder.png)
+![](../../.gitbook/assets/08-out-folder.png)
 
 5 - Replace all the assets for the new ones! Also once you finished erase the "texture-extractor.sh" and the empty folder "out".
 
-![](../images/3d-models-and-animations/glb-extractor/09-replace-assets.png)
+![](../../.gitbook/assets/09-replace-assets.png)
 
 **On Windows**
 
 Once you have exported all the assets to your models folder you can drag the script file into it.
 
-![](../images/3d-models-and-animations/glb-extractor/10-windows-01.png)
+![](../../.gitbook/assets/10-windows-01.png)
 
 1 - Double click on glb\_texture\_extract.bat to extract the files. If Windows warns you about unrecognized app, go to **More Info** and then **Run anyway**.
 
-![](../images/3d-models-and-animations/glb-extractor/11-windows-02.png) ![](../images/3d-models-and-animations/glb-extractor/12-windows-03.png)
+![](../../.gitbook/assets/11-windows-02.png) ![](../../.gitbook/assets/12-windows-03.png)
 
 2 - The script will generate a folder called out , there you will fid all new .glb files with its extracted textures.
 
-![](../images/3d-models-and-animations/glb-extractor/13-windows-03.png)
+![](../../.gitbook/assets/13-windows-03.png)
 
 5 - Replace all assets with the new ones. Once finished, delete the "texture-extractor.bat" script and the empty "out" folder.
 
@@ -241,11 +241,11 @@ Alternatively, you can create the texture atlas after the asset is finished by m
 
 Below is an image showing several 3D objects that use one texture set:
 
-![](../images/3d-models-and-animations/3d-essentials/37-atlas-texture.png) ![](../images/3d-models-and-animations/3d-essentials/38-uv-atlas.png)
+![](../../.gitbook/assets/37-atlas-texture.png) ![](../../.gitbook/assets/38-uv-atlas.png)
 
 Another way to do Atlases is the use of Trim Sheets, a common technique in 3D modeling and game development that big studios and game industry use to ensure visual consistency and efficent art pipeline. Trim Sheets is the usage of a single image or texture that contains multiple small details or elements that can be applied to different parts of a model. This technique is very useful when creating large scenes and it needs to be considered in the first stage of the art pipeline.
 
-![](../images/3d-models-and-animations/3d-essentials/39-trim-sheets.png)
+![](../../.gitbook/assets/39-trim-sheets.png)
 
 _A collage example of a Trim Sheet that uses a diffuse texture, normal and emissive._
 

@@ -48,7 +48,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../images/editor/preview-button.png)
+![](../../../.gitbook/assets/preview-button.png)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

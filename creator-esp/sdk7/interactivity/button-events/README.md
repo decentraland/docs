@@ -1,5 +1,9 @@
 ---
 description: Maneja clics de botones y eventos de puntero
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/button-events
 ---
 
 # Button Events

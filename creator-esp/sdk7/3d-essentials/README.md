@@ -1,5 +1,8 @@
 ---
 description: Conceptos 3D esenciales para el desarrollo de scenes
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials
 ---
 
 # 3D Essentials

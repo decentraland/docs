@@ -1,5 +1,9 @@
 ---
 description: Cómo puedes reportar un bug para que sea revisado y corregido
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/debugging/report-bug
 ---
 
 # Report a Bug

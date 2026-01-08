@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo manejar datos de solo lectura y mutables de los componentes
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/programming-patterns/mutable-data
 ---
 
 # Datos Mutables

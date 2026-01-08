@@ -27,7 +27,7 @@ Players interact through various clients:
 * **Unity Explorer** - Primary desktop client (Windows, Mac, Linux)
 * **Web Explorer** - Browser-based client
 * **CLI** - Developer tooling for scene creation and deployment
-* **Community Clients** (mobile, VR, etc) - Alternative implementations for the reference client using different rendering technologies. 
+* **Community Clients** (mobile, VR, etc) - Alternative implementations for the reference client using different rendering technologies.
 
 All clients authenticate via crypto wallets and follow the same protocols.
 
@@ -121,12 +121,12 @@ Smart contracts on Ethereum and Polygon manage:
 
 Dive deeper into specific architectural areas:
 
-* **[Backend Services](services.md)** - Detailed service specifications and integrations
-* **[Catalyst Network](catalyst.md)** - Content delivery and deployment
-* **[Infrastructure](infrastructure.md)** - Supporting systems and third-party services
+* [**Backend Services**](services.md) - Detailed service specifications and integrations
+* [**Catalyst Network**](catalyst.md) - Content delivery and deployment
+* [**Infrastructure**](infrastructure.md) - Supporting systems and third-party services
 
 ## Additional Resources
 
-* [API Reference](../../apis/README.md) - Complete API documentation
+* [API Reference](../../apis/) - Complete API documentation
 * [Contributor Guides](../contributor-guides/contributor-guides.md) - Development standards
 * [GitHub Organization](https://github.com/decentraland) - Source code repositories

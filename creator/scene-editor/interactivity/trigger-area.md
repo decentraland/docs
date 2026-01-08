@@ -6,7 +6,7 @@ description: React to the player's position
 
 To trigger an action when the player walks into or out of an area, use the Trigger Area [Smart Item](../scene-editor/interactivity/smart-items.md).
 
-![](../../images/editor/trigger.png)
+![](../../../.gitbook/assets/trigger.png)
 
 The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
@@ -14,19 +14,19 @@ If any part of the player's body overlaps with this orange cube, the assigned ev
 
 Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on the item's **Triggers** component. The actions on these trigger events are activated every time that the player enters or leaves the area.
 
-![](../../images/editor/on_player_enters.png)
+![](../../../.gitbook/assets/on_player_enters.png)
 
 You can add as many different actions on the same trigger event, this will activate them all simultaneously.
 
 {% hint style="info" %}
 **💡 Tip**: If the trigger areas in your scene start getting in the way of editing other content, remember you can always lock and/or hide them from the [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree).
 
-![](../../images/editor/hide-trigger.png)
+<img src="../../../.gitbook/assets/hide-trigger.png" alt="" data-size="original">
 {% endhint %}
 
 You can also add **Trigger conditions**, so that the actions are only carried out if certain conditions are met in the scene. For example, you could have a trigger area that opens a sliding door when the player walks in; you could use a condition there to check the state of a lever that acts as a power switch, and only open the door if the power is on. See [States and conditions](../scene-editor/interactivity/states-and-conditions.md) for more details.
 
-![](../../images/editor/trigger-conditions-trigger-area.png)
+![](../../../.gitbook/assets/trigger-conditions-trigger-area.png)
 
 Multiple trigger areas can overlap, and don't affect each other.
 

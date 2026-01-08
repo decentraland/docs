@@ -1,5 +1,9 @@
 ---
 description: Cambia la posición de un jugador dentro de la escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/interactivity/move-player
 ---
 
 # Mover un jugador
@@ -12,9 +16,9 @@ La forma más fácil de mover al jugador es usar el [Scene Editor](../../scene-e
 
 Para cambiar la posición del jugador en la escena, usa la función `movePlayerTo()`. Esta función toma un objeto con tres propiedades:
 
-- `newRelativePosition`: Dónde posicionar al jugador, expresado como un Vector3.
-- `cameraTarget`: (opcional) Qué dirección hacer que la cámara mire, expresado como un Vector3 que representa las coordenadas de un punto en el espacio al que mirar. Si no se proporciona ningún valor, la cámara mantendrá la misma rotación que antes de moverse.
-- `avatarTarget`: (opcional) Qué dirección hacer que el avatar mire, expresado como un Vector3 que representa las coordenadas de un punto en el espacio al que mirar. Si no se proporciona ningún valor, el avatar mantendrá la misma rotación que antes de moverse. Si el jugador está en modo de cámara en primera persona, la rotación de la cámara y el avatar es la misma.
+* `newRelativePosition`: Dónde posicionar al jugador, expresado como un Vector3.
+* `cameraTarget`: (opcional) Qué dirección hacer que la cámara mire, expresado como un Vector3 que representa las coordenadas de un punto en el espacio al que mirar. Si no se proporciona ningún valor, la cámara mantendrá la misma rotación que antes de moverse.
+* `avatarTarget`: (opcional) Qué dirección hacer que el avatar mire, expresado como un Vector3 que representa las coordenadas de un punto en el espacio al que mirar. Si no se proporciona ningún valor, el avatar mantendrá la misma rotación que antes de moverse. Si el jugador está en modo de cámara en primera persona, la rotación de la cámara y el avatar es la misma.
 
 ```ts
 import { movePlayerTo } from '~system/RestrictedActions'

@@ -1,5 +1,9 @@
 ---
 description: Transmite video a una escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/media/video-playing
 ---
 
 # Reproducción de Video
@@ -373,8 +377,6 @@ Un truco ingenioso para tener pantallas de video no rectangulares es aplicar una
 
 Usa la siguiente imagen para recortar tu video en una forma circular, con esquinas transparentes.
 
-![](../images/circle_mask.png)
-
 ```ts
 const videoTexture = Material.Texture.Video({
 	videoPlayerEntity: screen,
@@ -389,8 +391,6 @@ Material.setBasicMaterial(screen, {
 	alphaTexture: alphaMask,
 })
 ```
-
-![](../images/circular-video-screen.png)
 
 {% hint style="warning" %}
 **📔 Nota**: En versiones anteriores, la propiedad `alphaTexture` solo estaba presente en materiales PBR, actualmente solo funciona en materiales basic.

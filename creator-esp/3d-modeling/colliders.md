@@ -1,5 +1,9 @@
 ---
 description: Aprende cómo agregar colliders a modelos 3D importados a Decentraland.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/3d-modeling-and-animations/colliders
 ---
 
 # Colliders
@@ -16,7 +20,7 @@ Por ejemplo, para crear un collider para un poste de luz puedes crear un objeto 
 
 ![](../images/3d-models-and-animations/3d-essentials/25-collider.png)
 
-En este caso, podemos nombrar la caja "LampPos&#x74;_&#x63;ollider" y exportar tanto el árbol como la caja como un solo modelo _gltf_. La etiqueta *\_collider\_* alerta al motor del mundo de Decentraland que el objeto box pertenece a la colección de colliders, haciendo el collider mesh invisible.
+En este caso, podemos nombrar la caja "LampPost\_collider" y exportar tanto el árbol como la caja como un solo modelo _gltf_. La etiqueta _\_collider\__ alerta al motor del mundo de Decentraland que el objeto box pertenece a la colección de colliders, haciendo el collider mesh invisible.
 
 Siempre que un jugador vea el modelo del poste de luz en tu escena, verá el modelo complejo de tu lámpara. Sin embargo, cuando caminen hacia él, colisionarán con la caja, no con el árbol.
 
@@ -92,8 +96,8 @@ Ejemplos: 🟢 Teater\_MainWall\_North\_collider\_box, Fountain\_Statue\_collide
 * **Siempre usa el menor número posible de triángulos al crear colliders.** Evita hacer una copia de un objeto complejo para usar como collider. Los colliders simples garantizan una buena experiencia de usuario y mantienen tu escena dentro de las limitaciones de triángulos.
 * **Los objetos collider no deben tener ningún material**, ya que los jugadores de tu escena nunca lo verán. Los colliders son invisibles para los jugadores.
 * **Todos los nombres de objetos collider deben terminar con \_**_**collider**_**.** Por ejemplo, &#x54;_&#x72;ee\_collider_.
-* **Si usas un **_**plane**_** como collider, solo bloqueará en una dirección.** Si quieres que los colliders bloqueen desde ambos lados, por ejemplo para una pared, necesitas crear dos planes con sus normales mirando en direcciones opuestas.
+* **Si usas un \_plane**\_\*\* como collider, solo bloqueará en una dirección.\*\* Si quieres que los colliders bloqueen desde ambos lados, por ejemplo para una pared, necesitas crear dos planes con sus normales mirando en direcciones opuestas.
 * Al duplicar objetos collider, presta atención a sus nombres. Algunos programas agregan un \__1_ al final del nombre de archivo para evitar duplicados, por ejemplo _tree\_collider\_1_. Los objetos que se nombran así serán interpretados por el Motor del Mundo de Decentraland como objetos normales, no colliders.
 * Puedes evitar agregar un collider mesh si agregas un componente `MeshCollider` invisible a la entity, que aproxima la forma del modelo 3D.
 * También puedes evitar agregar un collider mesh si configuras el componente `GLTFContainer` para usar la geometría visible como collider. Ve [**Colliders on 3D models**](https://docs.decentraland.org/creator/development-guide/sdk7/colliders/#colliders-on-3D-models).
-* Si estás creando un modelo 3D con muchas mesh shapes que cada una necesita su collider, hay algunos add-ons útiles que pueden ayudar. Para Blender puedes usar la opción batch rename dentro de Blender para agregar automáticamente un sufijo `_collider` a todos los nombres de mesh en un grupo. Más sobre esta herramienta en la sección "**Using Blender to rename assets"
+* Si estás creando un modelo 3D con muchas mesh shapes que cada una necesita su collider, hay algunos add-ons útiles que pueden ayudar. Para Blender puedes usar la opción batch rename dentro de Blender para agregar automáticamente un sufijo `_collider` a todos los nombres de mesh en un grupo. Más sobre esta herramienta en la sección "\*\*Using Blender to rename assets"

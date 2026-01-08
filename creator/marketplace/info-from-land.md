@@ -15,9 +15,7 @@ The `dcl info` command returns the contents of a scene's _scene.json_ file, incl
 * `dcl info` from the scene's folder returns info about that specific scene.
 *   `dcl info x,y`, where _x_ and _y_ are parcel coordinates, returns info about the scene in that location.
 
-    {% hint style="warning" %}
-    **📔 Note**: Don't add a space between both coordinates.
-    {% endhint %}
+    \{% hint style="warning" %\} **📔 Note**: Don't add a space between both coordinates. \{% endhint %\}
 * `dcl info id`, where _id_ is an estate id, returns info about the scene with that estate id.
 
 The `dcl status` command returns a list with the files deployed to a scene. This only includes file names and sizes. You can't access the contents of the files via the CLI.

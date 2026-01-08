@@ -12,7 +12,7 @@ A `Label` entity has the following fields that can be configured:
 *   `fontSize`: The size of the text, as a number.
 
     > NOTE: The `fontSize` is not affected by the size of its entity or parent entities.
-* `color`: The color of the text, as a [Color4](../sdk7/3d-essentials/color-types.md).
+* `color`: The color of the text, as a [Color4](../3d-essentials/color-types.md).
 * `font`: The font to use, taking a value from the `Font` enum. Supported values are:
   * `serif`
   * `sans-serif` _(default)_
@@ -175,4 +175,4 @@ export const uiMenu = () => (
 **💡 Tip**: If you don't have different screen sizes to test, you can try using the Web Explorer and resizing the window where you run the preview. The text will adjust instantly every time you change the window.
 {% endhint %}
 
-As an alternative to using the `scaleFontSize()` function, you can also adjust font size to screen size using the methods described in [Responsive UI Size](../sdk7/2d-ui/ui-positioning.md#responsive-ui-size).
+As an alternative to using the `scaleFontSize()` function, you can also adjust font size to screen size using the methods described in [Responsive UI Size](ui-positioning.md#responsive-ui-size).

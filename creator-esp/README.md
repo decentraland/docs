@@ -1,9 +1,7 @@
 ---
 description: Bienvenido a la Documentación para Creadores de Decentraland
 icon: hand-wave
-metaLinks:
-  alternates:
-    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/
+metaLinks: {}
 ---
 
 # Bienvenido Creador

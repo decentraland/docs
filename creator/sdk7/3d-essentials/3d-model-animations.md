@@ -10,10 +10,10 @@ Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wi
 
 As an alternative, _vertex animations_ animate a model without the need of a skeleton. These animations specify the position of each vertex in the model directly. Decentraland supports these animations as well.
 
-See [Animations](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/animations/README.md) for details on how to create animations for a 3D model. Read [Shape components](../sdk7/3d-essentials/shape-components.md) for instructions on how to import a 3D model to a scene.
+See [Animations](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/animations/README.md) for details on how to create animations for a 3D model. Read [Shape components](shape-components.md) for instructions on how to import a 3D model to a scene.
 
 {% hint style="info" %}
-**💡 Tip**: Animations are usually better for moving something in place, not for changing the position of an entity. For example, you can set an animation to move a character's feet in place, but to change the location of the entity it's best to use the Transform component. See [Positioning entities](../sdk7/3d-essentials/move-entities.md) for more details.
+**💡 Tip**: Animations are usually better for moving something in place, not for changing the position of an entity. For example, you can set an animation to move a character's feet in place, but to change the location of the entity it's best to use the Transform component. See [Positioning entities](move-entities.md) for more details.
 {% endhint %}
 
 ### Check a 3D model for animations
@@ -35,7 +35,7 @@ If a 3D model includes any animations, the default behavior is that the first of
 To avoid this behavior, add an `Animator` component to the entity that has the model, and then handle the playing of animations explicitly. If an `Animator` component is present in the entity, all animations default to a `playing: false` state, and need to be manually played.
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor](../scene-editor/get-started/about-editor.md), you can add an **Animator** component visually. See [Add Components](../scene-editor/build/components.md#add-components). You can also control animations in a no-code way via **Actions**, see [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: In the [Scene Editor](../../scene-editor/get-started/about-editor.md), you can add an **Animator** component visually. See [Add Components](../../scene-editor/build/components.md#add-components). You can also control animations in a no-code way via **Actions**, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 {% endhint %}
 
 ### Handle animations explicitly
@@ -69,7 +69,7 @@ Each `state` object keeps track of if an animation is currently playing.
 
 > `import { Animator } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ### Fetch an animation
@@ -184,11 +184,6 @@ You can also use `Animator.stopAllAnimations()` at any time to explicitly set th
 {% hint style="warning" %}
 **📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
 {% endhint %}
-
-```
-- apply an animation with a `weight` property of 0 and gradually increase the `weight`
-- create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
-```
 
 ### Handle multiple animations
 

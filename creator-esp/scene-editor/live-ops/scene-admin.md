@@ -1,7 +1,11 @@
 ---
 description: >-
-  Los administradores de escenas tienen control especial sobre lo que sucede en la escena en
-  tiempo real.
+  Los administradores de escenas tienen control especial sobre lo que sucede en
+  la escena en tiempo real.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/live-ops/scene-admin
 ---
 
 # Scene Admin
@@ -9,8 +13,6 @@ description: >-
 Otorga a ciertos jugadores el rol especial de **admin** en tu escena.
 
 Durante un evento en vivo, un admin puede controlar espontáneamente lo que sucede en la escena desde dentro de Decentraland, sin necesidad de pre-programar acciones o depender de un servicio de terceros. Inicia la música cuando se haya reunido suficiente multitud, suelta confeti o haz aparecer una nave espacial cuando el momento se sienta correcto.
-
-
 
 Cuando un admin de escena visita tu escena, ve una UI especial en la esquina superior derecha que solo ellos pueden ver. A través de esta UI pueden reproducir videos o streams en vivo, enviar anuncios, banear jugadores o activar cualquier smart item que esté configurado para ser activado así. Estas acciones son vistas por todos los demás jugadores en la escena que están conectados a la misma isla de comms que el admin.
 
@@ -25,7 +27,7 @@ Para asignar admins, necesitas agregar el smart item **Scene Admin** a tu escena
 {% hint style="warning" %}
 **📔 Nota**: Actualiza tu escena para usar las últimas dependencias. El Smart item Scene Admin no funcionará si la escena está desactualizada.
 
-![](../images/editor/admin/update-dependencies.png)
+<img src="../images/editor/admin/update-dependencies.png" alt="" data-size="original">
 {% endhint %}
 
 Mientras estás desarrollando la escena y probándola localmente, siempre eres un admin. Una vez que la escena se publica, cualquier persona con permisos de publicación en la escena también es automáticamente un admin. Esto incluye:
@@ -64,9 +66,9 @@ Para habilitar esto, necesitas agregar un smart item **Video Player** a tu escen
 
     Consulta [Video Screen](../scene-editor/interactivity/video-screen.md) para más detalles sobre cómo puedes configurar la media source predeterminada, marcador de posición de imagen y otras configuraciones del smart item Video Player. La mayoría de estas configuraciones pueden ser sobrescritas por el admin una vez dentro de la escena.
 
-    {% hint style="warning" %} **📔 Nota**: Un admin solo puede gestionar videos que se reproducen en el smart item Video Screen, no en pantallas agregadas a través de código SDK.
+    \{% hint style="warning" %\} **📔 Nota**: Un admin solo puede gestionar videos que se reproducen en el smart item Video Screen, no en pantallas agregadas a través de código SDK.
 
-    Puedes incluir tantas video screens como desees. En general, evita tener más de un video diferente reproduciéndose al mismo tiempo, ya que eso perjudica mucho el rendimiento. {% endhint %}
+    Puedes incluir tantas video screens como desees. En general, evita tener más de un video diferente reproduciéndose al mismo tiempo, ya que eso perjudica mucho el rendimiento. \{% endhint %\}
 2.  Abre el Smart Item Scene Admin, asegúrate de que la casilla **Video Screens** esté habilitada para que esta sección se muestre. Luego selecciona la pantalla de una lista desplegable y dale un nombre amigable para mostrar en la UI de Admin. Puedes agregar tantas Video Screens como desees, cada pantalla se controla de forma independiente.
 
     ![](../images/editor/admin/multi-video-setup.png)
@@ -85,9 +87,7 @@ Hay dos tipos de media sources para reproducir videos:
 
     ![](../images/editor/admin/video-from-url.png)
 
-    {% hint style="warning" %}
-    **📔 Nota**: No cualquier URL de video funcionará. Los videos de sitios como Youtube, por ejemplo, tienen políticas estrictas sobre su contenido y bloquearán el acceso a ellos desde Decentraland. Consulta [Streaming from other sources](../scene-editor/interactivity/video-screen.md#streaming-from-other-sources) para más información sobre qué puedes y no puedes reproducir en Decentraland.
-    {% endhint %}
+    \{% hint style="warning" %\} **📔 Nota**: No cualquier URL de video funcionará. Los videos de sitios como Youtube, por ejemplo, tienen políticas estrictas sobre su contenido y bloquearán el acceso a ellos desde Decentraland. Consulta [Streaming from other sources](../scene-editor/interactivity/video-screen.md#streaming-from-other-sources) para más información sobre qué puedes y no puedes reproducir en Decentraland. \{% endhint %\}
 *   **Live stream**: Reproduce un stream en vivo usando la infraestructura de streaming gratuita de Decentraland y un software de streaming como OBS o StreamYard.
 
     ![](../images/editor/admin/live-stream.png)

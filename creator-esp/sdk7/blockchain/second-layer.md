@@ -1,7 +1,11 @@
 ---
 description: >-
-  Usa la sidechain de Polygon en tu escena para habilitar transacciones blockchain
-  mucho más rápidas y baratas.
+  Usa la sidechain de Polygon en tu escena para habilitar transacciones
+  blockchain mucho más rápidas y baratas.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/blockchain/second-layer
 ---
 
 # Second Layer

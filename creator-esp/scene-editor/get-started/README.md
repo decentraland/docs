@@ -1,5 +1,8 @@
 ---
 description: Comienza con el Decentraland Scene Editor
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scene-editor/get-started
 ---
 
 # Comenzando con Scene Editor

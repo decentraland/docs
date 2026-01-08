@@ -19,7 +19,7 @@ El sistema de Rewards gestiona la mayoría de las complejidades involucradas en 
 * Monitorear el estado de las transacciones
 * Informar a los usuarios sobre el artículo que recibirán antes de que se confirme la transacción
 * Emite Notificaciones cuando las recompensas son otorgadas y recibidas
-* ![](../.gitbook/assets/overview.png)
+* ![](../../.gitbook/assets/overview.png)
 
 ### Limitaciones
 

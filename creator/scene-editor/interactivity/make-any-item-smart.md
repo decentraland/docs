@@ -10,7 +10,7 @@ Smart items are just regular items with an **Action** and/or **Trigger** compone
 
 To add components to an item click the **Plus Icon** next to the item name, and select what component to add from the dropdown list.
 
-![](../../images/editor/add-component.png)
+![](../../../.gitbook/assets/add-component.png)
 
 This allows for a huge amount of creative possibilities. Turn a candle into a lever that opens up a secret passage behind a book shelf, play mysterious sounds from inside a well, make diamonds into collectable items that shrink to 0 when clicked. There are tons of imaginative ways to combine these mechanics!
 
@@ -43,7 +43,7 @@ Add a **Trigger** component with **On Click** or **On Input Action** Trigger eve
 * **On Click** reacts to every time the player clicks the left-mouse button while pointing at the item.
 * **On Input Action** reacts to every time the player the Primary Button (E) while pointing at the item.
 
-![](../../images/editor/on_click.png)
+![](../../../.gitbook/assets/on_click.png)
 
 **Colliders**
 

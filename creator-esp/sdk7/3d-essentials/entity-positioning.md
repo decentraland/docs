@@ -1,5 +1,9 @@
 ---
 description: Cómo establecer la posición, rotación y escala de una entidad en una escena
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/oPnXBby9S6MrsW83Y9qZ/scenes-sdk7/3d-essentials/entity-positioning
 ---
 
 # Establecer posiciones de entidades
@@ -12,7 +16,7 @@ Al agregar un elemento a tu escena a través del [Scene Editor](../../scene-edit
 
 ## Fundamentos de código
 
-<img src="../../../images/media/ecs-simple-components-new.png" alt="nested entities" width="400"/>
+
 
 ```ts
 // Crear una nueva entidad
@@ -69,29 +73,22 @@ mutableTransform.position.z = 3
 
 Al establecer una posición, ten en cuenta las siguientes consideraciones:
 
-- Los números en un vector de posición representan _metros_ (a menos que la entidad sea hija de una entidad escalada).
+* Los números en un vector de posición representan _metros_ (a menos que la entidad sea hija de una entidad escalada).
+* Una escena que está compuesta por una sola parcela mide 16m x 16m. El centro de la escena (a nivel del suelo) está en `x:8, y:0, z:8`. Si la escena está compuesta por múltiples parcelas, entonces el centro variará dependiendo de su disposición.
+*   `x:0, y:0, z:0` se refiere a la esquina _Suroeste_ de la parcela base de la escena, a nivel del suelo.
 
-- Una escena que está compuesta por una sola parcela mide 16m x 16m. El centro de la escena (a nivel del suelo) está en `x:8, y:0, z:8`. Si la escena está compuesta por múltiples parcelas, entonces el centro variará dependiendo de su disposición.
+    > Consejo: Al ver una vista previa de la escena, aparece una brújula en el punto (0,0,0) de la escena con etiquetas para cada eje como referencia.
 
-- `x:0, y:0, z:0` se refiere a la esquina _Suroeste_ de la parcela base de la escena, a nivel del suelo.
+    > Nota: Puedes cambiar la parcela base de una escena editando el atributo `base` de _scene.json_.
+* Para orientarte mejor, usa tu mano _izquierda_:
+  * tu dedo índice (apuntando hacia adelante) es el eje _z_
+  * tu dedo medio (apuntando hacia el lado) es el eje _x_
+  * tu pulgar (apuntando hacia arriba) es el eje _y_.
+* Si una entidad es hija de otra, entonces `x:0, y:0, z:0` se refiere al centro de su entidad padre, dondequiera que esté en la escena.
+*   Cada entidad en tu escena debe estar posicionada dentro de los límites de las parcelas que ocupa en todo momento. Si una entidad sale de estos límites, generará un error.
 
-  > Consejo: Al ver una vista previa de la escena, aparece una brújula en el punto (0,0,0) de la escena con etiquetas para cada eje como referencia.
-
-  > Nota: Puedes cambiar la parcela base de una escena editando el atributo `base` de _scene.json_.
-
-- Para orientarte mejor, usa tu mano _izquierda_:
-
-  - tu dedo índice (apuntando hacia adelante) es el eje _z_
-  - tu dedo medio (apuntando hacia el lado) es el eje _x_
-  - tu pulgar (apuntando hacia arriba) es el eje _y_.
-
-- Si una entidad es hija de otra, entonces `x:0, y:0, z:0` se refiere al centro de su entidad padre, dondequiera que esté en la escena.
-
-- Cada entidad en tu escena debe estar posicionada dentro de los límites de las parcelas que ocupa en todo momento. Si una entidad sale de estos límites, generará un error.
-
-  > Consejo: Al ver una escena en modo de vista previa, las entidades que están fuera de límites se resaltan en _rojo_.
-
-- Tu escena también está limitada en altura. Cuantas más parcelas componen la escena, más alto puedes construir. Consulta [limitaciones de escena](../optimizing/scene-limitations.md) para más detalles.
+    > Consejo: Al ver una escena en modo de vista previa, las entidades que están fuera de límites se resaltan en _rojo_.
+* Tu escena también está limitada en altura. Cuantas más parcelas componen la escena, más alto puedes construir. Consulta [limitaciones de escena](../optimizing/scene-limitations.md) para más detalles.
 
 ## Rotación
 
@@ -173,12 +170,12 @@ Billboard.create(cube, {})
 
 Puedes configurar cómo se comporta el billboard con los siguientes parámetros:
 
-- `billboardMode`: Usa un valor del `BillboardMode` para establecer su comportamiento:
-  - `BillboardMode.BM_ALL`: La entidad rota para mirar al jugador en todos sus ejes de rotación. Si el jugador está muy por encima de la entidad, la entidad mirará hacia arriba.
-  - `BillboardMode.BM_NONE`: La entidad no rotará en absoluto.
-  - `BillboardMode.BM_X`: La entidad tiene su eje de rotación _x_ fijo.
-  - `BillboardMode.BM_Y`: La entidad tiene su eje de rotación _y_ fijo. Solo rota hacia la izquierda y derecha, no arriba y abajo. Permanece perpendicular al suelo si el jugador está encima o debajo de la entidad.
-  - `BillboardMode.BM_Z`: La entidad tiene su eje de rotación _z_ fijo.
+* `billboardMode`: Usa un valor del `BillboardMode` para establecer su comportamiento:
+  * `BillboardMode.BM_ALL`: La entidad rota para mirar al jugador en todos sus ejes de rotación. Si el jugador está muy por encima de la entidad, la entidad mirará hacia arriba.
+  * `BillboardMode.BM_NONE`: La entidad no rotará en absoluto.
+  * `BillboardMode.BM_X`: La entidad tiene su eje de rotación _x_ fijo.
+  * `BillboardMode.BM_Y`: La entidad tiene su eje de rotación _y_ fijo. Solo rota hacia la izquierda y derecha, no arriba y abajo. Permanece perpendicular al suelo si el jugador está encima o debajo de la entidad.
+  * `BillboardMode.BM_Z`: La entidad tiene su eje de rotación _z_ fijo.
 
 ```ts
 // billboard plano
@@ -224,10 +221,12 @@ Si una entidad tiene tanto un componente `Billboard` como un componente `Transfo
 
 Para que la entidad A mire a la entidad B:
 
-    1) Resta la posición de la entidad A de la entidad B para obtener un vector que describa la distancia entre ellas.
-    2) Normaliza ese vector, para que tenga una longitud de 1, manteniendo su dirección.
-    3) Usa `Quaternion.lookRotation` para obtener una rotación Quaternion que describa rotar en esa dirección.
-    4) Establece ese Quaternion como la rotación de la entidad A
+```
+1) Resta la posición de la entidad A de la entidad B para obtener un vector que describa la distancia entre ellas.
+2) Normaliza ese vector, para que tenga una longitud de 1, manteniendo su dirección.
+3) Usa `Quaternion.lookRotation` para obtener una rotación Quaternion que describa rotar en esa dirección.
+4) Establece ese Quaternion como la rotación de la entidad A
+```
 
 ```ts
 export function turn(entity: Entity, target: ReadOnlyVector3) {
@@ -305,9 +304,9 @@ Puedes usar una entidad invisible sin componente de forma como padre, para envol
 
 Hay tres métodos para adjuntar una entidad al jugador:
 
-- Hacerla hija de la **Avatar Entity**
-- Hacerla hija de la **Camera Entity**
-- Usar el **componente AvatarAttach**
+* Hacerla hija de la **Avatar Entity**
+* Hacerla hija de la **Camera Entity**
+* Usar el **componente AvatarAttach**
 
 La forma más simple de adjuntar una entidad al avatar es establecer el padre como la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.PlayerEntity`. La entidad se moverá junto con la posición del jugador.
 
@@ -356,8 +355,8 @@ AvatarAttach.create(myEntity, {
 
 Al crear un componente `AvatarAttach`, pasa un objeto con los siguientes datos:
 
-- `avatarId`: _Opcional_ El ID del jugador al que adjuntar. Esto es lo mismo que la dirección Ethereum del jugador, para aquellos jugadores conectados con una wallet Ethereum. Si no se especifica, adjunta la entidad al avatar del jugador local.
-- `anchorPointId`: Qué punto de anclaje en el esqueleto del avatar adjuntar la entidad, usando un valor del enum `AvatarAnchorPointType`.
+* `avatarId`: _Opcional_ El ID del jugador al que adjuntar. Esto es lo mismo que la dirección Ethereum del jugador, para aquellos jugadores conectados con una wallet Ethereum. Si no se especifica, adjunta la entidad al avatar del jugador local.
+* `anchorPointId`: Qué punto de anclaje en el esqueleto del avatar adjuntar la entidad, usando un valor del enum `AvatarAnchorPointType`.
 
 {% hint style="warning" %}
 **📔 Nota**: Si quieres que todos los jugadores en la escena vean un objeto adjunto al mismo jugador, por ejemplo para que todos vean que el Jugador A recogió un objeto y lo sostiene en su mano izquierda, entonces debes proporcionar un valor a `avatarId`. Si no se especifica, todos los jugadores verán el objeto adjunto a sus propios avatares.
@@ -393,44 +392,46 @@ async function attachToPlayer(){
 
 Los siguientes puntos de anclaje están disponibles en el enum `AvatarAnchorPointType`:
 
-- `AAPT_RIGHT_HAND`: Fijo en la mano derecha del jugador
-- `AAPT_LEFT_HAND`: Fijo en la mano izquierda del jugador
-- `AAPT_HEAD`: Fijo en el centro de la cabeza del jugador.
-- `AAPT_NECK`: Fijo en la base del cuello del jugador.
-- `AAPT_SPINE`: Fijo en la sección superior de la columna vertebral.
-- `AAPT_SPINE1`: Fijo en la sección media de la columna vertebral.
-- `AAPT_SPINE2`: Fijo en la sección inferior de la columna vertebral.
-- `AAPT_HIP`: Fijo en el hueso de la cadera.
-- `AAPT_LEFT_SHOULDER`: Fijo en el hombro izquierdo.
-- `AAPT_LEFT_ARM`: Fijo en el primer hueso del brazo izquierdo, a la altura del hombro.
-- `AAPT_LEFT_FOREARM`: Fijo en el hueso del antebrazo izquierdo.
-- `AAPT_LEFT_HAND_INDEX`: Fijo en la punta del dedo índice izquierdo.
-- `AAPT_RIGHT_SHOULDER`: Fijo en el hombro derecho.
-- `AAPT_RIGHT_ARM`: Fijo en el primer hueso del brazo derecho, a la altura del hombro.
-- `AAPT_RIGHT_FOREARM`: Fijo en el hueso del antebrazo derecho.
-- `AAPT_RIGHT_HAND_INDEX`: Fijo en la punta del dedo índice derecho.
-- `AAPT_LEFT_UP_LEG`: Fijo en el hueso superior de la pierna izquierda.
-- `AAPT_LEFT_LEG`: Fijo en el hueso inferior de la pierna izquierda.
-- `AAPT_LEFT_FOOT`: Fijo en el tobillo de la pierna izquierda.
-- `AAPT_LEFT_TOE_BASE`: Fijo en la punta del dedo del pie de la pierna izquierda.
-- `AAPT_RIGHT_UP_LEG`: Fijo en el hueso superior de la pierna derecha.
-- `AAPT_RIGHT_LEG`: Fijo en el hueso inferior de la pierna derecha.
-- `AAPT_RIGHT_FOOT`: Fijo en el tobillo de la pierna derecha.
-- `AAPT_RIGHT_TOE_BASE`: Fijo en la punta del dedo del pie de la pierna derecha.
-- `.AAPT_NAME_TAG`: Flota justo encima del nombre del jugador, no se ve afectado por las animaciones del jugador.
+* `AAPT_RIGHT_HAND`: Fijo en la mano derecha del jugador
+* `AAPT_LEFT_HAND`: Fijo en la mano izquierda del jugador
+* `AAPT_HEAD`: Fijo en el centro de la cabeza del jugador.
+* `AAPT_NECK`: Fijo en la base del cuello del jugador.
+* `AAPT_SPINE`: Fijo en la sección superior de la columna vertebral.
+* `AAPT_SPINE1`: Fijo en la sección media de la columna vertebral.
+* `AAPT_SPINE2`: Fijo en la sección inferior de la columna vertebral.
+* `AAPT_HIP`: Fijo en el hueso de la cadera.
+* `AAPT_LEFT_SHOULDER`: Fijo en el hombro izquierdo.
+* `AAPT_LEFT_ARM`: Fijo en el primer hueso del brazo izquierdo, a la altura del hombro.
+* `AAPT_LEFT_FOREARM`: Fijo en el hueso del antebrazo izquierdo.
+* `AAPT_LEFT_HAND_INDEX`: Fijo en la punta del dedo índice izquierdo.
+* `AAPT_RIGHT_SHOULDER`: Fijo en el hombro derecho.
+* `AAPT_RIGHT_ARM`: Fijo en el primer hueso del brazo derecho, a la altura del hombro.
+* `AAPT_RIGHT_FOREARM`: Fijo en el hueso del antebrazo derecho.
+* `AAPT_RIGHT_HAND_INDEX`: Fijo en la punta del dedo índice derecho.
+* `AAPT_LEFT_UP_LEG`: Fijo en el hueso superior de la pierna izquierda.
+* `AAPT_LEFT_LEG`: Fijo en el hueso inferior de la pierna izquierda.
+* `AAPT_LEFT_FOOT`: Fijo en el tobillo de la pierna izquierda.
+* `AAPT_LEFT_TOE_BASE`: Fijo en la punta del dedo del pie de la pierna izquierda.
+* `AAPT_RIGHT_UP_LEG`: Fijo en el hueso superior de la pierna derecha.
+* `AAPT_RIGHT_LEG`: Fijo en el hueso inferior de la pierna derecha.
+* `AAPT_RIGHT_FOOT`: Fijo en el tobillo de la pierna derecha.
+* `AAPT_RIGHT_TOE_BASE`: Fijo en la punta del dedo del pie de la pierna derecha.
+*   `.AAPT_NAME_TAG`: Flota justo encima del nombre del jugador, no se ve afectado por las animaciones del jugador.
 
-  > Nota: La altura del nombre se ajusta dinámicamente según la altura de los wearables que lleva un jugador. Por lo tanto, un jugador que usa un sombrero alto tendrá su nombre un poco más alto que otros.
+    > Nota: La altura del nombre se ajusta dinámicamente según la altura de los wearables que lleva un jugador. Por lo tanto, un jugador que usa un sombrero alto tendrá su nombre un poco más alto que otros.
+*   `AAPT_POSITION` _OBSOLETO_: La posición general del jugador. Esto aparece a una altura de 0.8 por encima de los pies del jugador.
 
-- `AAPT_POSITION` _OBSOLETO_: La posición general del jugador. Esto aparece a una altura de 0.8 por encima de los pies del jugador.
+    >
 
-  > {% hint style="warning" %} > **📔 Nota**: El `AAPT_POSITION` está obsoleto. Para seguir la posición general del jugador, es mejor hacer que la entidad sea hija de la Avatar Entity. Consulta el inicio de esta sección para un ejemplo.
-  > {% endhint %}
+{% hint style="warning" %}
+\> \*\*📔 Nota\*\*: El \`AAPT\_POSITION\` está obsoleto. Para seguir la posición general del jugador, es mejor hacer que la entidad sea hija de la Avatar Entity. Consulta el inicio de esta sección para un ejemplo. >
+{% endhint %}
 
 {% hint style="info" %}
 **💡 Consejo**: Para usar estos valores, escribe `AvatarAnchorPointType.` y VS Code mostrará la lista completa de opciones en un menú desplegable.
 {% endhint %}
 
-<img src="../../../images/avatar-attach-points.png" width="300"/>
+
 
 La renderización de entidades se determina localmente en cada instancia de la escena. Adjuntar una entidad en un jugador no la hace visible para otros jugadores que están viendo a ese jugador. Si una entidad está adjunta al jugador local predeterminado, cada jugador experimentará la entidad como adjunta a su propio avatar.
 

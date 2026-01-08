@@ -119,3 +119,63 @@ Before editing the models, see the [3D Modeling section of our docs](/creator/3d
 
 </details>
 
+<details>
+<summary><strong>What's the difference between Worlds and LAND?</strong></summary>
+
+Worlds are personal 3D spaces located beyond the boundaries of Genesis City, while LAND refers to parcels within Genesis City's map. Here are the key differences:
+
+* **Access**: Worlds are accessed via link/URL, while LAND scenes are found at specific coordinates on the Genesis City map
+* **Size limits**: Worlds have dynamic storage capacity (based on your holdings for Decentraland NAMEs, or 36MB fixed for ENS domains), while LAND scenes have 15MB per parcel
+* **Parcel limitations**: Worlds have no parcel limitations, while LAND scenes are constrained to adjacent parcels
+* **Customization**: Worlds can have custom skybox settings (fixed time of day), while LAND scenes share the same sky as surrounding scenes
+* **Cost**: A Decentraland NAME costs 100 MANA, which is typically much less than buying LAND parcels
+
+See [Worlds overview](/creator/worlds/about.md) and [Publishing options](/creator/sdk7/publishing/publishing-options.md) for more information.
+
+</details>
+
+<details>
+<summary><strong>How do I access a World?</strong></summary>
+
+Once a scene is uploaded to the Worlds server, you can access it in several ways:
+
+* **Friendly URL**: Use `https://decentraland.org/jump/?realm=NAME.dcl.eth`, replacing `NAME` with the Decentraland NAME or ENS Domain
+* **Chat command**: Type `/goto NAME.dcl.eth` in the chatbox
+* **Explorer URL**: Use `decentraland://?realm=my-name.dcl.eth` (replace with your actual NAME)
+
+See [Publishing to Worlds](/creator/sdk7/publishing/publishing.md#accessing-a-world) for more details.
+
+</details>
+
+<details>
+<summary><strong>Can I migrate a World to Genesis City?</strong></summary>
+
+Yes, if you are a LAND owner, you can deploy a World scene to Genesis City. You just need to re-deploy your scene to the decentralized Catalyst network (the targeted content server for Genesis City).
+
+Things to remember:
+
+* Remove the `worldConfiguration` section from `scene.json`
+* The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
+
+See [Publishing to Worlds](/creator/sdk7/publishing/publishing.md#migrating-a-world-to-genesis-city) for more information.
+
+</details>
+
+<details>
+<summary><strong>How do size limits work for Worlds?</strong></summary>
+
+The maximum file size you can upload to your World depends on whether you're using a Decentraland NAME or an ENS domain:
+
+**Decentraland NAMEs**: Dynamic storage capacity based on your wallet holdings:
+* Each Decentraland NAME you own grants 100 MB of storage capacity
+* Each Decentraland LAND parcel you own grants an additional 100 MB
+* For every 2,000 MANA held in your wallet, an additional 100 MB is granted
+
+**ENS Domains**: Fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
+
+The space can be distributed across multiple Worlds as you wish. If you exceed your allocated storage space, you'll have a 24-hour grace period to address the situation before your Worlds become inaccessible.
+
+See [Worlds size limits](/creator/sdk7/projects/kinds-of-project.md#size-limits) for detailed information.
+
+</details>
+

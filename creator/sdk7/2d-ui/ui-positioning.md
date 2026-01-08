@@ -283,4 +283,4 @@ export const uiMenu = () => (
 Some other best practices regarding UI sizes:
 
 * If the width or height of any UI element is dynamic, it's good to also use the `maxWidth`, `minWidth`, `maxHeight`, and `minHeight` parameters to make sure they stay within reasonable values.
-* The font size of text is relative to a fixed number of pixels, you should make it dynamic so it remains readable on retina displays. See [Responsive text size](../sdk7/2d-ui/ui\_text.md#responsive-text-size)
+* The font size of text is relative to a fixed number of pixels, you should make it dynamic so it remains readable on retina displays. See [Responsive text size](ui_text.md#responsive-text-size)

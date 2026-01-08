@@ -78,7 +78,7 @@ To teleport to a specific **World**, you'll also use a chat command:
 
 • `/goto World'sName`
 
-![](../images/players/keyboard.png)
+![](<../../.gitbook/assets/keyboard (1).png>)
 
 </details>
 
@@ -118,7 +118,7 @@ Decentraland's [Event Page](https://decentraland.org/events?utm_org=dcl\&utm_sou
 
 If you'd like to get snapshots of your favorite moments in Decentraland, just press C on your keyboard to open the Camera. A helpful guide with camera controls can be found on the bottom right of your screen.
 
-![](../images/players/CameraHotKeys.png)
+![](<../../.gitbook/assets/CameraHotKeys (1).png>)
 
 Your Gallery has space for up to 500 photos, from there you can easily share your images with a link or download them onto your computer.
 
@@ -144,7 +144,7 @@ Decentraland's DAO is the heart of the community-driven world's governance. To g
 
 Wearables are the digital assets you can mix and match to customize your avatar's appearance. They range from articles of clothing, accessories, body parts, and whole skins.
 
-![](../images/players/wearables_banner.png)
+![](<../../.gitbook/assets/wearables_banner (1).png>)
 
 A variety of free base Wearables are always available in your Backpack (click on the backpack icon on the left when you're in-world to try them on!), and you can browse through thousands of community-made items in the [Marketplace](https://decentraland.org/marketplace/browse?section=wearables\&vendor=decentraland\&page=1\&sortBy=newest\&status=on_sale) to craft your unique look. Can't find what you're looking for? Consider making your own.
 
@@ -156,7 +156,7 @@ A variety of free base Wearables are always available in your Backpack (click on
 
 Emotes are animations that allow your avatar to express reactions, perform dance moves, or engage in activities such as yoga or painting. Just like Wearables, there are a set of free, base Emotes available to everyone, but you can also browse the [Marketplace](https://decentraland.org/marketplace/browse?assetType=item\&section=emotes\&vendor=decentraland\&page=1\&sortBy=recently_listed\&status=on_sale) to find an even larger variety. Or make your own!
 
-![](../images/players/emote_banner.png)
+![](<../../.gitbook/assets/emote_banner (1).png>)
 
 To use Emotes in Decentraland, you'll want to become familiar with the Emote Wheel pictured below. This shows a set of the 10 Emotes you are most likely to use (you can customize these Emote slots from your Backpack).
 
@@ -166,7 +166,7 @@ To trigger an Emote, you have 3 options:
 * **Intermediate:** Press **B** on your keyboard to open the Emote Wheel and click on the Emote you want to use
 * **Pro:** Use the shortcut **B** + the number of the Emote you want to use (e.g. **B1**) on your keyboard to trigger an Emote without opening the Emote Wheel
 
-![](../images/players/emote-wheel.png)
+![](<../../.gitbook/assets/emote-wheel (1).png>)
 
 </details>
 

@@ -58,7 +58,7 @@ This is useful for packages that can work with or without certain dependencies (
 
 ## 3. When to Use Each Field
 
-> **Quick reference**: See [Section 4](#4-decentraland-ecosystem-reference) for a complete list of packages and their recommended placement.
+> **Quick reference**: See [Section 4](#4-examples) for common packages and their recommended placement.
 
 ### Use peerDependencies for (Libraries only):
 
@@ -159,45 +159,23 @@ For reusable packages that work with or without certain dependencies, use `peerD
 }
 ```
 
-## 4. Decentraland Ecosystem Reference
+## 4. Examples
 
-Based on analysis of [Decentraland's public repositories](https://github.com/decentraland), the following examples illustrate common patterns for package placement.
+### Packages that MUST be peerDependencies (shared context / singletons)
 
-> **Note**: These are **examples**, not an exhaustive list. Apply the principles from [Section 2](#2-definitions) and [Section 3](#3-when-to-use-each-field) to determine the correct placement for your specific packages. These guidelines apply primarily to **libraries/shared packages**. In **apps/final services**, using `dependencies` for these packages is often acceptable and sometimes preferred.
-
-### Example packages that SHOULD be peerDependencies (in libraries)
-
-These examples rely on singletons, shared context, or should resolve to a single effective version at runtime:
-
-#### React Ecosystem
-- `react`, `react-dom`
-- `react-redux`, `react-router-dom`
-
-#### State Management
+- `react`, `react-dom`, `react-redux`, `react-router-dom`
 - `redux`, `@reduxjs/toolkit`
-
-#### Web3 / Blockchain
 - `ethers`, `viem`, `wagmi`
-
-#### Decentraland Packages
 - `@dcl/schemas`, `@dcl/ui-env`, `@dcl/crypto`
 - `decentraland-dapps`, `decentraland-ui`, `decentraland-ui2`, `decentraland-connect`
+- `pg`, `pg-pool`
 
-#### Backend / Database
-- `pg`, `pg-pool` (when sharing connection pools)
-
-**Principle**: If a package uses singletons, shared context, or requires a single effective version at runtime, it should be a `peerDependency` in libraries.
-
-### Example packages safe for dependencies
-
-These utilities can be safely duplicated without side effects:
+### Packages that SHOULD be dependencies (safe to duplicate)
 
 - `lodash-es`, `date-fns`
 - `uuid`, `nanoid`
 - `zod`, `ajv`
 - `ms`, `mitt`, `fp-future`
-
-**Principle**: Pure utility functions and stateless libraries can safely be in `dependencies` even in libraries, as they don't rely on singletons or shared state. **Always use exact versions** for security.
 
 ## 5. Related Standards
 

@@ -186,6 +186,37 @@ The `VisibilityComponent` works the same for entities with primitive shapes and 
 
 If an entity is invisible, its collider can block a player's path and/or prevent clicking entities that are behind it, depending on the collision layers assigned to the collider.
 
+#### Propagate visibility
+
+You can use the `propagateToChildren` field on the `VisibilityComponent` to apply a configuration to every child in the entity's children tree. If `propagateToChildren` is set to _true_, these settings affect all children on all levels going down. This can save you a lot of tedious work marking each child entity as invisible or visible too.
+
+```ts
+// Parent entity (explicitly invisible)
+const parentEntity = engine.addEntity()
+Transform.create(parentEntity, {
+	position: Vector3.create(4, 0, 4),
+})
+MeshRenderer.setBox(parentEntity)
+VisibilityComponent.create(parentEntity, { visible: false, propagateToChildren: true })
+
+// Child entity (implicitly invisible because of parent)
+const child = engine.addEntity()
+Transform.create(child, {
+	position: Vector3.create(0, 1, 0),
+	parent: parentEntity
+})
+MeshRenderer.setBox(child)
+```
+
+{% hint style="warning" %}
+**📔 Note**: If an entity has its own `VisibilityComponent`, this overrides any configuration from parents. 
+
+If an entity doesn't have its own `VisibilityComponent`, then its visibility is determned by its nearest parent with a `VisibilityComponent` and `propagateToChildren` set to _true_.
+{% endhint %}
+
+
+
+
 ### Loading state
 
 If a 3D model is fairly large, it might take some noticeable time to be rendered, this time may vary depending on the player's hardware and many other factors. Sometimes you need to make sure that a model finished loading before you perform another action. For example, if you want to teleport the player to a platform up in the sky, you need to first make sure the platform is fully rendered before moving the player there, or else the player might fall right through the platform.

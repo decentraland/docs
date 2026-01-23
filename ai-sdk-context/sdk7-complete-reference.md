@@ -19,7 +19,7 @@
 16. [Design & Experience](#design--experience)
 17. [Web Editor](#web-editor)
 18. [Advanced Topics](#advanced-topics)
-
+19. [Common Mistakes](#common-mistakes)
 ---
 
 ## Installation & Setup
@@ -3777,5 +3777,10 @@ function attemptAction(entity: Entity, action: () => void) {
   }
 }
 ```
+
+## Common mistakes
+
+- There is no `console.warn` or `console.info`, only `console.log` is supported
+- Entities are not objects, the entity itself is just a numerical ID
 
 This comprehensive reference covers all major aspects of Decentraland SDK7 development, from basic setup to advanced patterns and optimization techniques. Use this as a complete reference for building scenes, implementing interactivity, managing assets, and creating engaging experiences in Decentraland. 

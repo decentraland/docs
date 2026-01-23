@@ -159,6 +159,22 @@ function LoopSystem(dt: number) {
 engine.addSystem(LoopSystem)
 ```
 
+There is also a shortcut function `setInterval` and `clearInterval` that uses Systems on the back scenes. This allows an easier and shorter version when the intention is tu run a certain function every X amount of time.
+
+```ts
+const intervalId = timers.setInterval(() => {
+    console.log('Printing this every 10 seconds')
+}, 10000)
+```
+Where the first argument, `callback`, is the function to be eexecuted (in this case, the `console.log()`), and the second argument, `ms`(1000 in this case), is the miliseconds to wait between each function execution.
+
+To stop the `setInterval` function, `clearInterval` is used.
+
+```
+timers.clearInterval(intervalId)
+```
+Where `intervalId` is the reference to the `setInterval` return defined before.
+
 For more complex use cases, where there may be multiple delays and loops being created dynamically, it may be worth defining a custom component to store an individual timer value for each entity. See [Custom components](../sdk7/architecture/custom-components.md).
 
 ### System execution order

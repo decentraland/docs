@@ -24,7 +24,9 @@ The following fields are available:
 * **Description**
 *   **Thumbnail**
 
-    \{% hint style="info" %\} **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image \{% endhint %\}
+    {% hint style="info" %\} 
+    **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
+    {% endhint %\}
 * **Age rating**
 * **Categories**
 * **Author**

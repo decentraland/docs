@@ -144,9 +144,9 @@ const eulerAngle = Quaternion.toEuler(transform.rotation)
 
 ### Getting Global Position and Rotation of an Entity
 
-The `getWorldPosition` and `getWorldRotation` functions compute an entity's world-space position and rotation by traversing the parent hierarchy. Each call walks up the Transform chain, accumulating transformations. This allows to get a precise entity's Position and Rotation, keeping track of the Transforms of it's parents entities.
+The `getWorldPosition` and `getWorldRotation` functions return the global position and rotation of an entity. That means that it returns the percieved position or rotation that the player will see the item in, ignoring any parent hierarchies. 
 
-* `getWorldPosition(engine: Pick<IEngine, ‘getEntitiesWith’ | ‘defineComponentFromSchema’>, entity: Entity): Vector3Type`: This function returns the World position of an entity, having in consdieration all the positions of the parent entities, if the entity itself has any, returning `{x: 0, y: 0, z: 0}` if the entity has no Transform.
+* `getWorldPosition(engine, entity: Entity): Vector3Type`: This function returns the World position of an entity, having in consdieration all the positions of the parent entities, if the entity itself has any, returning `{x: 0, y: 0, z: 0}` if the entity has no Transform.
 
 ```ts
 const worldPos = getWorldPosition(engine, childEntity)
@@ -159,6 +159,10 @@ console.log(`World position: ${worldPos.x}, ${worldPos.y}, ${worldPos.z}`)
 const worldRot = getWorldRotation(engine, childEntity)
 console.log(`World rotation: ${worldRot.x}, ${worldRot.y}, ${worldRot.z}, ${worldRot.w}`)
 ```
+
+{% hint style="info" %}
+**Note:** Global position and global rotation are relative to the coordinates inside the scene and not to Genesis City. 
+{% endhint %}
 
 ### Face the player
 

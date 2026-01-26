@@ -793,7 +793,7 @@ const src = Material.getFlatMutable(entity).texture.src
 * `Material.getFlatMutableOrNull(entity: Entity): FlatMaterial | null`: It returns a **read & write or null** `FlatMaterial` object that allows modifying it's properties. In case the entity doesn't have a `Material component`, it will reutrn `null`.
 
 ```ts
-const src = Material.getFlatMutableOrNull(entity).texture.src
+Material.getFlatMutableOrNull(entity).texture.src = myNewTextureFile
 ```
 
 #### Remove shadows from a glTF model

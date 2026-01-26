@@ -113,7 +113,7 @@ The example above executes a function that includes a `fetch()` operation to ret
 
 ### Set a Timeout for a Function call
 
-Use setTimeout to wait some time before certain lines of code are run.
+Use setTimeout to wait some time before certain lines of code are run. The first argument is the function to be axecuted(`console.log()`), and the second one, the amount of miliseconds to wait until the function is executed(1000).
 
 ```ts
 const timeoutId = timers.setTimeout(() => {
@@ -121,10 +121,8 @@ const timeoutId = timers.setTimeout(() => {
 }, 1000)
 ```
 
-Where the first argument is the function to be axecuted(`console.log()`), and the second one, the amount of miliseconds to wait until the function is executed(1000). The `clearTimeout` can be used to cancel the `setTimeout`.
+The `clearTimeout` can be used to cancel the `setTimeout`. `intervalId` is the `setTimeout` reference defined before.
 
 ```ts
 timers.clearTimeout(intervalId)
   ```
-
-Where `intervalId` is the `setTimeout` reference defined before.

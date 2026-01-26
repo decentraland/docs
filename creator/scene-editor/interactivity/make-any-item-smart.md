@@ -28,10 +28,10 @@ Add a **Trigger** component, to detect to different actions from the player:
 * **Global button events** When the player presses a key, wherever they are in the scene.
 * **Player proximity**: When the player walks into the item's position.
 
-The **Trigger** component can be configured to be aware of any of these types of triggers. Every time a trigger happens, it can call Actions from their own **Actions** component, or from the **Actions** components of other items in the scene. See [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
+The **Trigger** component can be configured to be aware of any of these types of triggers. Every time a trigger happens, it can call Actions from their own **Actions** component, or from the **Actions** components of other items in the scene. See [Smart items - Advanced](smart-items-advanced.md).
 
 {% hint style="info" %}
-**💡 Tip**: You can also combine these triggers with [conditional logic](../scene-editor/interactivity/states-and-conditions.md), so that the actions don't get called every time the trigger happens, only if the conditions are true.
+**💡 Tip**: You can also combine these triggers with [conditional logic](states-and-conditions.md), so that the actions don't get called every time the trigger happens, only if the conditions are true.
 
 For example, you could add a **Pointer Events** trigger to a door, so that it opens when clicked, but include conditional logic so that it only opens if it's unlocked.
 {% endhint %}
@@ -51,7 +51,7 @@ It's important that for an item to be clickable, it must have a **Collider**. Ot
 
 If your model is lacking colliders, any of the following should fix it:
 
-* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, cube, sphere).
+* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, cube, sphere).
 * Change the properties of the **Collisions** section on the **GLTF** component. The **Visible layer** should be assigned to **Pointer**.
 * Edit the 3D model in Blender to include an invisible collider geometry (any mesh with a name that ends in `_collider`). See [colliders](../3d-modeling/colliders.md).
 
@@ -77,7 +77,7 @@ Add a **Trigger** component with **On Global Click**, **On Global Primary** or *
 * **On Global Secondary** reacts to every time the player the Secondary Button (F), anywhere in the scene.
 
 {% hint style="info" %}
-**💡 Tip**: It often makes sense to combine this with [States and conditions](../scene-editor/interactivity/states-and-conditions.md), so that the items only react to the button event if the player is in the room, or some other condition.
+**💡 Tip**: It often makes sense to combine this with [States and conditions](states-and-conditions.md), so that the items only react to the button event if the player is in the room, or some other condition.
 {% endhint %}
 
 #### Player position
@@ -87,12 +87,12 @@ Add a **Trigger** component with **Player Enters Area**, **Player Leaves Area** 
 This will react to when the player enters or leaves an area of a default size of 1x1x1, positioned at the center of the item.
 
 {% hint style="info" %}
-**💡 Tip**: It's often better to use the [**Trigger Area**](../scene-editor/interactivity/smart-items.md#trigger-areas) smart item instead, since this item's dimensions can be clearly visualized in the Scene Editor.
+**💡 Tip**: It's often better to use the [**Trigger Area**](smart-items.md#trigger-areas) smart item instead, since this item's dimensions can be clearly visualized in the Scene Editor.
 {% endhint %}
 
 ### See also
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Basics](smart-items.md)
+* [Smart items - Advanced](smart-items-advanced.md)
+* [States and conditions](states-and-conditions.md)
+* [Combine with code](../code/overview.md)

@@ -8,7 +8,7 @@ The Creator Hub plus custom code is a very powerful combination for creating con
 
 For example, you can take advantage of an existing lever smart item, that already comes with its sounds and animations and states, and write code that detects when the lever is pulled to run your own custom logic.
 
-See [Reference items in code](../scene-editor/code/reference-items.md) for how to fetch items by name or by tags from your code.
+See [Reference items in code](reference-items.md) for how to fetch items by name or by tags from your code.
 
 ### Editing code
 
@@ -79,10 +79,10 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 
 ### See also
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [SDK Quick start](../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
-* [Development workflow](../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
+* [Smart items - Basics](../interactivity/smart-items.md)
+* [Smart items - Advanced](../interactivity/smart-items-advanced.md)
+* [States and conditions](../interactivity/states-and-conditions.md)
+* [Making any item smart](../interactivity/make-any-item-smart.md)
+* [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
+* [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
 * [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.

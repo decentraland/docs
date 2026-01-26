@@ -10,7 +10,7 @@ Define a Custom Item to reuse it easily on any of your scenes, or share it with 
 
 ## How to Define a Custom Item
 
-Right-click on an entity on the [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree), or select several entities and then right-click on them. Select **Create Custom Item**.
+Right-click on an entity on the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), or select several entities and then right-click on them. Select **Create Custom Item**.
 
 ![](../../../.gitbook/assets/create-custom-item.png)
 

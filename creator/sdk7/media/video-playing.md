@@ -107,6 +107,10 @@ The following simple set-up is recommended:
 * Broadest Resolution: 720 (any greater causes issues in DCL)
 * Frame rate 30fps
 
+{% hint style="warning" %}
+**📔 Note**: Make sure you disable Multitrack streaming in OBS. You can find this in Settings > Stream.
+{% endhint %}
+
 #### Advice for new streamers
 
 * Early sound checks are essential to test your set up with the venue.

@@ -252,7 +252,7 @@ function main() {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: If you're not trying to do something very complicated, instead of writing code you can also create a custom smart item to handle the actions you want to perform. See [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: If you're not trying to do something very complicated, instead of writing code you can also create a custom smart item to handle the actions you want to perform. See [Making any item smart](../interactivity/make-any-item-smart.md).
 {% endhint %}
 
 ### Other smart item components

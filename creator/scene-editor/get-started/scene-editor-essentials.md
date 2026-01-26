@@ -58,7 +58,7 @@ To duplicate an item, select it and hit **Ctrl + C** and then **Ctrl + V**. You 
 
 To delete an item from the scene, select it press the _Delete_ key.
 
-See [Import items](../scene-editor/build/import-items.md) for adding your own custom 3D models from disk.
+See [Import items](../build/import-items.md) for adding your own custom 3D models from disk.
 
 {% hint style="warning" %}
 **📔 Note**: Once you dragged a 3D model into your scene, it's downloaded into your project folder and remains there even if you delete it. These unused models can increase the size of your scene.
@@ -98,7 +98,7 @@ To select multiple items at the same time, press and hold the _Control_ key whil
 
 ### Smart items
 
-Smart items are special items that come with built-in interactive behaviors. See [Smart items](../scene-editor/interactivity/smart-items.md) for more details.
+Smart items are special items that come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.
 
 ![](../../../.gitbook/assets/smart-items.jpg)
 
@@ -145,13 +145,13 @@ Most non-interactive items have the following components:
 * **Transform**: Sets position, rotation, and scale of the item.
 * **GLTF**: What 3D model to load.
 
-[Smart items](../scene-editor/interactivity/smart-items.md) can include other components.
+[Smart items](../interactivity/smart-items.md) can include other components.
 
-See [Components](../scene-editor/build/components.md) to learn more.
+See [Components](../build/components.md) to learn more.
 
 ### Scene limitations
 
-Decentraland scenes need to follow certain limitations, to be able to run them one next to another. There is a maximum number of materials, textures, triangles, etc, that is proportional to the number of parcels in the scene. See [scene limitations](../sdk7/optimizing/scene-limitations.md) for more details.
+Decentraland scenes need to follow certain limitations, to be able to run them one next to another. There is a maximum number of materials, textures, triangles, etc, that is proportional to the number of parcels in the scene. See [scene limitations](../../sdk7/optimizing/scene-limitations.md) for more details.
 
 If the content in your scene exceeds any of these limits, the Scene Editor will notify this on the bottom-left corner.
 
@@ -162,7 +162,7 @@ You can expand this menu to view details.
 ![](../../../.gitbook/assets/triangle-limit2.png)
 
 {% hint style="info" %}
-**💡 Tip**: If you're building a Decentraland World, you can always increase the [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) to increase your limits.
+**💡 Tip**: If you're building a Decentraland World, you can always increase the [scene size](scene-editor-essentials.md#scene-sizes) to increase your limits.
 {% endhint %}
 
 The content in a Decentraland scene must also avoid spilling onto neighbor parcels. If any part of the models in your scene extend beyond the limits, when you open the scene preview you will see these parts cut off. The Scene Editor will mark the entire model in red, but you should only really worry about the parts of the model that extend beyond the scene limits.
@@ -170,7 +170,7 @@ The content in a Decentraland scene must also avoid spilling onto neighbor parce
 ![](../../../.gitbook/assets/out-of-bounds.png)
 
 {% hint style="info" %}
-**💡 Tip**: If the models you want to display don't fit, you may want to increase the size of your scene. See [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) to enlarge your scene.
+**💡 Tip**: If the models you want to display don't fit, you may want to increase the size of your scene. See [scene size](scene-editor-essentials.md#scene-sizes) to enlarge your scene.
 {% endhint %}
 
 Even if the whole geometry of the 3D model fits in your scene, a model might be marked in red if the model's Bounding Box extends beyond the area. If this is the case, you can ignore the warnings, as the entire model will be displayed correctly. Learn more about [Bounding Boxes](../3d-modeling/meshes.md#bounding-boxes).
@@ -201,10 +201,10 @@ Click the \*Pencil icon\*\* on the top-right of the screen. This opens a series 
 
 Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
 
-See [Scene Settings](../scene-editor/configure/scene-settings.md).
+See [Scene Settings](../configure/scene-settings.md).
 
 ### See also
 
-* See [Smart items](../scene-editor/interactivity/smart-items.md) for how to add simple interactivity to your scene.
-* See [Combine with code](../scene-editor/code/overview.md) for how to edit the code of your scene.
-* See [Publish scene](../scene-editor/publish/publish-scene.md) for how to publish your scene to Decentraland.
+* See [Smart items](../interactivity/smart-items.md) for how to add simple interactivity to your scene.
+* See [Combine with code](../code/overview.md) for how to edit the code of your scene.
+* See [Publish scene](../publish/publish-scene.md) for how to publish your scene to Decentraland.

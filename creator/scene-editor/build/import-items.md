@@ -66,7 +66,7 @@ Both can include external texture image files, or external binary (_.bin_) files
 
 You can convert other formats into these formats with various different editors and tools. See [3D modeling](../3d-modeling/3d-models.md) for recommendations and tips.
 
-All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations](../sdk7/optimizing/scene-limitations.md) for details.
+All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations](../../sdk7/optimizing/scene-limitations.md) for details.
 
 All 3D model files must each occupy less than 50 MB to be usable in a scene. Larger files aren't supported.
 
@@ -113,4 +113,4 @@ Note that you don't have any control over when the animation starts or stops, or
 
 If there are multiple players in the scene, they may be seeing the animation out of sync from each other.
 
-To change this behavior, you can include an **Animator** component. See [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md) for no-code tools to make your item interactive.
+To change this behavior, you can include an **Animator** component. See [Make any item smart](../interactivity/make-any-item-smart.md) for no-code tools to make your item interactive.

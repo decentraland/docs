@@ -18,7 +18,7 @@ The following item has a Transform component and a basic module that exposes onl
 
 ### Advanced configuration
 
-Properties are grouped into [**components**](../sdk7/architecture/entities-components.md). Different smart items may have different components, depending on their functionality.
+Properties are grouped into [**components**](../../sdk7/architecture/entities-components.md). Different smart items may have different components, depending on their functionality.
 
 The behavior of most items is controlled by:
 
@@ -29,7 +29,7 @@ For example, in a door smart item, the **Actions** component includes "Open" and
 
 The triggers of a smart item can activate actions on any smart item in the scene, not just on that same smart item. For example, a button smart item can have a **Triggers** component that activates the "move up" action defined on the **Actions** component of a floating platform.
 
-Triggers can also happen conditionally. For example, door smart items include two **On Click** triggers in its Triggers component: one opens the door if that door was closed, the other closes the door if it was open. For more details see [States and conditional logic](../scene-editor/interactivity/states-and-conditions.md).
+Triggers can also happen conditionally. For example, door smart items include two **On Click** triggers in its Triggers component: one opens the door if that door was closed, the other closes the door if it was open. For more details see [States and conditional logic](states-and-conditions.md).
 
 ### Interactions between items
 
@@ -55,7 +55,7 @@ For example, to make a button open a door:
 
 Any item can trigger any action from any other item, as long as the action is defined. See [Triggers](smart-items-advanced.md#triggers) for more ways in which an action can be triggered.
 
-You can use [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) to only trigger an action if a condition is met. The condition can even check the state of a third smart item. For example, a button only opens the door if the a custom "power generator" smart item has its state set to "On".
+You can use [states and conditional logic](states-and-conditions.md) to only trigger an action if a condition is met. The condition can even check the state of a third smart item. For example, a button only opens the door if the a custom "power generator" smart item has its state set to "On".
 
 ### Actions
 
@@ -110,7 +110,7 @@ The **Actions** component lists actions that the item can carry out. Each smart 
 * **Batch Actions**: All of the actions listed here will be played simultaneously each time the batch action is called. You can list any of the actions that bleong to the item.
 * **Heal Player**: Restore health to the player's health bar.
 
-See [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) to learn about other actions related to logic conditions.
+See [states and conditional logic](states-and-conditions.md) to learn about other actions related to logic conditions.
 
 The **Actions** component defines possible actions, but these don't do anything in the scene unless they are triggered. Actions are activated by a [trigger](smart-items-advanced.md#triggers), either from the same smart item, or from a different one.
 
@@ -127,7 +127,7 @@ The **Triggers** component defines trigger events, these activate actions when a
 * **Player Leaves Area**: When the player leaves an area. See [About trigger areas](smart-items-advanced.md#about-trigger-areas)
 * **On Spawn**: When the scene starts, or the item is spawned in the scene. See [Trigger on spawn](smart-items-advanced.md#trigger-on-spawn)
 
-See [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) to learn about other triggers related to logic conditions.
+See [states and conditional logic](states-and-conditions.md) to learn about other triggers related to logic conditions.
 
 To add a new trigger, click the **Add New Trigger Event** at the bottom of the Trigger component. Then select the type of trigger, the entity you want to activate and an action from that entity.
 
@@ -179,7 +179,7 @@ To make an item play a looping sound always, for example for ambience or music, 
 **📔 Note**: A smart item can only play one sound at a time. Calling a second sound will interrupt any other sounds currently sounding. This also applies to sounds of the **AudioSource** component. If you need two sounds to sound together, consider adding an invisible entity in the same location to hold a **Play Sound** action.
 {% endhint %}
 
-See [sounds](../sdk7/3d-essentials/sounds.md) for more about playing sounds in Decentraland.
+See [sounds](../../sdk7/3d-essentials/sounds.md) for more about playing sounds in Decentraland.
 
 ### Moving, rotating, or scaling
 
@@ -203,7 +203,7 @@ Tweens can follow different **Curve Types** that affect the rate of change over 
 **💡 Tip**: Experiment with different movement curves. The differences are often subtle, but we subconsciously interpret information from how things move, like weight, friction, or even personality.
 {% endhint %}
 
-Use **On Tween End** trigger events in the **Triggers** component to activate an action after a tween has finished. Use [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) to describe a looping path for a floating platform, so that it constantly moves between two locations.
+Use **On Tween End** trigger events in the **Triggers** component to activate an action after a tween has finished. Use [states and conditional logic](states-and-conditions.md) to describe a looping path for a floating platform, so that it constantly moves between two locations.
 
 When an item performs a tween, this affects everything about the item. For example, if it changes scale, it changes the scale of its visible 3D model and also invisible collider geometry, the size of text, etc. If the item has any children (nested in the entity tree on the left), these child entities are also affected by the tween.
 
@@ -217,10 +217,10 @@ To trigger an action by clicking on an item, create an **On Click** trigger. The
 
 ![](../../../.gitbook/assets/on_click.png)
 
-See [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md#interactivity) for more details.
+See [Make any item smart](make-any-item-smart.md#interactivity) for more details.
 
 {% hint style="info" %}
-**📔 Note**: When using custom 3D models, the model must have an invisible collider geometry for it to be clickable. See [colliders](../sdk7/3d-essentials/colliders.md#pointer-blocking).
+**📔 Note**: When using custom 3D models, the model must have an invisible collider geometry for it to be clickable. See [colliders](../../sdk7/3d-essentials/colliders.md#pointer-blocking).
 
 As an alternative, you can configure the **GLTF** component of the item, so that its **Visible Layer** of collision is set to **Pointer**.
 
@@ -237,7 +237,7 @@ For example, use this to make a platform move continually. Use an **On Spawn** t
 
 ### Multiplayer
 
-All smart items are multiplayer by default. See [Smart Items - Basic](../scene-editor/interactivity/smart-items.md) for more details.
+All smart items are multiplayer by default. See [Smart Items - Basic](smart-items.md) for more details.
 
 You can change or fine-tune this multiplayer behavior to only sync certain components of the item.
 
@@ -253,7 +253,7 @@ In the advanced mode, these items have a **Visibility** component set to invisib
 
 ### See also
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Basics](smart-items.md)
+* [States and conditions](states-and-conditions.md)
+* [Making any item smart](make-any-item-smart.md)
+* [Combine with code](../code/overview.md)

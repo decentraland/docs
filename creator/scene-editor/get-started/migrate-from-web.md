@@ -15,7 +15,7 @@ To edit the code in a scene created with the Web Editor, you must export the sce
 {% hint style="warning" %}
 **📔 Note**: If you don't have the Creator Hub installed, follow the steps in the following page before your start.
 
-[Install Creator Hub](../scene-editor/get-started/editor-installation.md)
+[Install Creator Hub](editor-installation.md)
 {% endhint %}
 
 1. Click the **Download icon** on the top menu of the Web Editor while editing the scene.
@@ -30,7 +30,7 @@ To edit the code in a scene created with the Web Editor, you must export the sce
 
 Once you're done, you can keep working on your project inside the Creator Hub, with a visual interface that looks a lot like the Web Editor, but much more polished.
 
-You can also edit the files under the `/src` folder to add behavior with code to your scene. See [Combine with code](../scene-editor/code/overview.md) for how to edit the code of your scene.
+You can also edit the files under the `/src` folder to add behavior with code to your scene. See [Combine with code](../code/overview.md) for how to edit the code of your scene.
 
 ### Migrate a code-only project
 
@@ -63,4 +63,4 @@ This command runs your scene and takes a snapshot of the content that is created
 
 Note that this command only captures entities and the components that can be represented on the Creator Hub UI. It does not replicate custom components, or reproduce code that carries out logic, or UI elements that are created via code. To add back any behavior that was commented out, you will need to edit the code in the `.ts` files in the `src` folder and uncomment the lines you need.
 
-You may also want to rewrite part of the code so that instead of creating new entities, it references existing entities by name or by tags to give them behavior. See [Combine with code](../scene-editor/code/overview.md) for how to fetch these entities from your code.
+You may also want to rewrite part of the code so that instead of creating new entities, it references existing entities by name or by tags to give them behavior. See [Combine with code](../code/overview.md) for how to fetch these entities from your code.

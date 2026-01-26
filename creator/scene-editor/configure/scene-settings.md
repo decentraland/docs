@@ -10,7 +10,7 @@ Click the **Pencil icon** on the top-right of the screen. This opens a series of
 
 Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
 
-See [Scene Metadata](../sdk7/projects/scene-metadata.md).
+See [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
 ### Scene details
 
@@ -32,7 +32,7 @@ The following fields are available:
 
 The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
 
-See [scene metadata](../sdk7/projects/scene-metadata.md) for more details on these fields.
+See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
 
 ### Layout
 
@@ -54,7 +54,7 @@ To build something to deploy to LAND parcels you own, make sure the shape of the
 
 If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../worlds/about.md). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
 
-See [Kinds of project](../sdk7/projects/kinds-of-project.md) to better understand the different options.
+See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
 #### Advanced view
 
@@ -75,7 +75,7 @@ You can disable certain functionalities on your scene if you chose, in case they
 ![](../../../.gitbook/assets/scene-restrictions.png)
 
 * **Silence voice chat**: Prevent players on your scene from using voice chat.
-* **Disable portable experiences**: Prevent players from using [Smart Wearables](../sdk7/projects/smart-wearables.md) or [Portable Experiences](../sdk7/projects/portable-experiences.md).
+* **Disable portable experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
 ### Spawn points
 

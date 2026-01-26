@@ -153,7 +153,7 @@ const worldPos = getWorldPosition(engine, childEntity)
 console.log(`World position: ${worldPos.x}, ${worldPos.y}, ${worldPos.z}`)
 ```
 
-* `getWorldRotation(engine: Pick<IEngine, ‘getEntitiesWith’ | ‘defineComponentFromSchema’>, entity: Entity): QuaternionType`: This function returns the World rotation of an entity, having in consideration all the rotations of the parent entities, if the antity itself has any. It returns a `Quaternion` type, returning identity quaternion `{x: 0, y: 0, z: 0, w: 1}` if the entity has no Transform.
+* `getWorldRotation(engine, entity: Entity): QuaternionType`: This function returns the World rotation of an entity, having in consideration all the rotations of the parent entities, if the antity itself has any. It returns a `Quaternion` type, returning identity quaternion `{x: 0, y: 0, z: 0, w: 1}` if the entity has no Transform.
 
 ```ts
 const worldRot = getWorldRotation(engine, childEntity)

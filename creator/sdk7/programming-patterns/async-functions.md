@@ -113,7 +113,7 @@ The example above executes a function that includes a `fetch()` operation to ret
 
 ### Set a Timeout for a Function call
 
-If waiting some time before the execution of a function is the behaviour to be accomplish, `setTimeout` gives a clear and simple way to achieve this.
+Use setTimeout to wait some time before certain lines of code are run.
 
 ```ts
 const timeoutId = timers.setTimeout(() => {

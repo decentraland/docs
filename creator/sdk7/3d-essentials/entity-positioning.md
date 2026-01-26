@@ -142,6 +142,24 @@ const transform = Transform.getMutable(cube)
 const eulerAngle = Quaternion.toEuler(transform.rotation)
 ```
 
+### Getting Global Position and Rotation of an Entity
+
+The `getWorldPosition` and `getWorldRotation` functions compute an entity's world-space position and rotation by traversing the parent hierarchy. Each call walks up the Transform chain, accumulating transformations. This allows to get a precise entity's Position and Rotation, keeping track of the Transforms of it's parents entities.
+
+* `getWorldPosition(engine: Pick<IEngine, ‘getEntitiesWith’ | ‘defineComponentFromSchema’>, entity: Entity): Vector3Type`: This function returns the World position of an entity, having in consdieration all the positions of the parent entities, if the entity itself has any, returning `{x: 0, y: 0, z: 0}` if the entity has no Transform.
+
+```ts
+const worldPos = getWorldPosition(engine, childEntity)
+console.log(`World position: ${worldPos.x}, ${worldPos.y}, ${worldPos.z}`)
+```
+
+* `getWorldRotation(engine: Pick<IEngine, ‘getEntitiesWith’ | ‘defineComponentFromSchema’>, entity: Entity): QuaternionType`: This function returns the World rotation of an entity, having in consideration all the rotations of the parent entities, if the antity itself has any. It returns a `Quaternion` type, returning identity quaternion `{x: 0, y: 0, z: 0, w: 1}` if the entity has no Transform.
+
+```ts
+const worldRot = getWorldRotation(engine, childEntity)
+console.log(`World rotation: ${worldRot.x}, ${worldRot.y}, ${worldRot.z}, ${worldRot.w}`)
+```
+
 ### Face the player
 
 Add a _Billboard_ component to an entity so that it always rotates to face the player.
@@ -465,6 +483,10 @@ Transform.create(childEntity, {
 
 {% hint style="warning" %}
 **📔 Note**: If the attached entity has colliders, these colliders could block the player's movement or cause jittery effects. You may want to dissable the physics layer of the attached entity's colliders. See [Collision layers](../sdk7/3d-essentials/colliders.md#collision-layers)
+{% endhint %}
+
+{% hint style="warning" %}
+**📔 Note**: If you have a child entity and want to know the global Position and/or Rotation of it, you can use the `getWorldPosition` and `getWorldRotation` functions. You can check them in the [Getting Global Position and Rotation](#getting-global-position-and-rotation-of-an-entity) section.
 {% endhint %}
 
 #### Attach to other players

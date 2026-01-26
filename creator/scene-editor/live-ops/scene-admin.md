@@ -64,7 +64,7 @@ async function onPlayerSpawn() {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: For more information about async functions, see [Async Functions](../../creator/sdk7/programming-patterns/async-functions.md).
+**💡 Tip**: For more information about async functions, see [Async Functions](../../sdk7/programming-patterns/async-functions.md).
 {% endhint %}
 
 ### Video playing

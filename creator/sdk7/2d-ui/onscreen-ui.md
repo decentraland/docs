@@ -84,7 +84,6 @@ export function setupUI() {
 _**index.ts file:**_
 
 ```ts
-import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { setupUI } from './ui'
 
 export function main() {
@@ -171,7 +170,37 @@ If you set a virtual width to 1920, and a virtual height to 1080, the UI will be
 
 ## Multiple UI modules
 
-Your scene should have a single call to the `ReactEcsRenderer.setUiRenderer()` function. To define your UI via a series of separate modules in different files, you can pass an array to the renderer function listing each module. This is also useful when combining UI modules from a library (like the [DCL UI toolkit library](https://github.com/decentraland-scenes/dcl-ui-toolkit)) with custom UI.:
+If your scene contains multiple systems or modules that each define their own UI, you can render each UI module with `ReactEcsRenderer.addUiRenderer()`. This is especially useful when working on a complex scene with multiple UI components, or when defining UIs for a [smart item](../smart-items/smart-items.md), which should be usable independent of what's in the code of the rest of the scene.
+
+The `ReactEcsRenderer.addUiRenderer()` function requires that you provide an entity as the owner of the UI. This can be any entity, even a dummy entity created only to be used as the owner of the UI.
+
+```ts
+export function setupUi() {
+
+    // Create a dummy entity to be the owner of the UI
+    const dummyEntity = new Entity()
+
+    // Define the UI module as a function that returns an array of UI modules
+    const uiComponent = () => [
+      // Function returning a UI module,
+      // Function returning a UI module
+      // ...
+    ]
+
+    // Render the UI module with the dummy entity as the owner
+    ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent)
+}
+```
+
+This snippet can exist independently of any other UI code in the scene, without needing to call `ReactEcsRenderer.setUiRenderer()` again.
+
+If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
+
+
+### Sharing a single setUiRenderer statement
+
+
+Instead of calling `ReactEcsRenderer.addUiRenderer()` for each UI module, you can call `ReactEcsRenderer.setUiRenderer()` once with an array of UI modules, that can live in different files.
 
 ```ts
 const uiComponent = () => [

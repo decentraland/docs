@@ -24,7 +24,7 @@ See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to desi
 
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
 
-### Render a UI
+## Render a UI
 
 To display a UI in your scene, use the `ReactEcsRenderer.setUiRenderer()` function, passing it a valid structure of entities, described in a `.tsx` file.
 
@@ -55,7 +55,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu)
+    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 
@@ -77,7 +77,7 @@ export function setupUI() {
       }}
       uiBackground={{ color: Color4.Red() }}
     />
-  ))
+  ), { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 
@@ -96,7 +96,7 @@ export function main() {
 **📔 Note**: All of your UI elements need to be nested into the same structure, and have one single parent at the root of the structure. You can only call `ReactEcsRenderer.setUiRenderer()` once in the scene.
 {% endhint %}
 
-### UI Entities
+## UI Entities
 
 Each element in the UI must be defined as a separate `UiEntity`, wether it's an image, text, background, an invisible alignment box, etc. Just like in the scene's 3D space, each `UiEntity` has its own components to give it a position, color, etc.
 
@@ -150,13 +150,26 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu)
+    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 
 A definition of a UI module can only have one parent-level entity. You can define as many other entities as you want, but they must all fit inside a structure with one single parent at the top.
 
-### Multiple UI modules
+## Screen Virtual Scale
+
+Set a vitual width and height for the UI. This is encouraged to make sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
+
+```ts
+export function setupUi() {
+    ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+}
+```
+
+If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
+
+
+## Multiple UI modules
 
 Your scene should have a single call to the `ReactEcsRenderer.setUiRenderer()` function. To define your UI via a series of separate modules in different files, you can pass an array to the renderer function listing each module. This is also useful when combining UI modules from a library (like the [DCL UI toolkit library](https://github.com/decentraland-scenes/dcl-ui-toolkit)) with custom UI.:
 
@@ -167,7 +180,7 @@ const uiComponent = () => [
   // ...
 ]
 
-ReactEcsRenderer.setUiRenderer(uiComponent)
+ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
 ```
 
 Below is a more complete example:
@@ -226,6 +239,6 @@ export function main() {
       // The line below is to use the DCL UI Toolkit library
       // https://github.com/decentraland-scenes/dcl-ui-toolkit
       ui.render(),
-    ])
+    ], { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```

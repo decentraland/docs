@@ -167,6 +167,7 @@ export function setupUi() {
 
 If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
 
+The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`](https://github.com/decentraland/js-sdk-toolchain/blob/fbf4826ef686982ca1e60d368186e8e10c02a6e6/packages/%40dcl/react-ecs/src/system.ts#L124)
 
 ## Multiple UI modules
 
@@ -200,7 +201,7 @@ An `addUiRenderer()` call can also include a virtual width and height, just like
 ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
 ```
 
-If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
+That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
 
 
 ### Sharing a single setUiRenderer statement

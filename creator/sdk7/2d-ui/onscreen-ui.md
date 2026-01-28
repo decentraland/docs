@@ -192,7 +192,13 @@ export function setupUi() {
 }
 ```
 
-This snippet can exist independently of any other UI code in the scene, without needing to call `ReactEcsRenderer.setUiRenderer()` again.
+This snippet can exist independently of any other UI code in the scene. The rest of the scene might include a `ReactEcsRenderer.setUiRenderer()`, or none at all, and the UI will still be rendered.
+
+An `addUiRenderer()` call can also include a virtual width and height, just like `setUiRenderer()`. However, if the scene has a `setUiRenderer()` call that also defines a virtual width and height, the virtual width and height of the `addUiRenderer()` call will be ignored.
+
+```tsx
+ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+```
 
 If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
 

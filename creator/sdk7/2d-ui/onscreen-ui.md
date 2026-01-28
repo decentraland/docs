@@ -195,7 +195,7 @@ export function setupUi() {
 
 This snippet can exist independently of any other UI code in the scene, without needing to call `ReactEcsRenderer.setUiRenderer()` again.
 
-If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
+That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
 
 
 ### Sharing a single setUiRenderer statement

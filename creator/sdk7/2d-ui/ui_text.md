@@ -52,7 +52,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu)
+    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 

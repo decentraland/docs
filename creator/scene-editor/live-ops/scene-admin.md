@@ -52,6 +52,21 @@ Whenever an admin player is in the scene, they will see a special UI on the top-
 
 ![ ](../../../.gitbook/assets/admin-console.png)
 
+It is also possible to know if a Player is an Admin of a scene using code. This allows for other behaviours to be available (or not) for a Player, for example, allowing interactions with a specific Entity of the scene.
+
+```ts
+async function onPlayerSpawn() {
+  const isAdminUser = await isAdmin();
+  if (isAdminUser) {
+   // Show admin-only UI, teleport to stage, show entity, etc.
+   }
+ }
+```
+
+{% hint style="info" %}
+**💡 Tip**: For more information about async functions, see [Async Functions](../../sdk7/programming-patterns/async-functions.md).
+{% endhint %}
+
 ### Video playing
 
 One of the most common actions for admins to do is to play videos. The admin panel includes a video player section where they can control anything related to videos.

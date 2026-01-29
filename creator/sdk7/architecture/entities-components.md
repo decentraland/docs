@@ -413,6 +413,15 @@ for (const descendantEntity of getComponentEntityTree(
 }
 ```
 
+To retrieve the child entities of a given parent Entity, the `getEntitiesWithParent` is used. It takes as its arguments the `engine` and the `parent` entity. This returns a list of all the entities that have that particular Entiy as its parent.
+
+```ts
+const children = getEntitiesWithParent(engine, myEntity)
+for (const child of children) {
+   // process each child entity
+}
+```
+
 ### Reserved entities
 
 Certain entity ids are reserved for special entities that exist in every scene. They can be accessed via the following aliases:

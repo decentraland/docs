@@ -766,6 +766,36 @@ GltfNodeModifiers.create(myEntity, {
 })
 ```
 
+#### Modify fields from an existing material
+
+The Material component provides a simplified interface for accessing and modifying Material component properties. It eliminates the need to navigate deeply nested union structures (`PBR` vs `Unlit`, `texture` vs `avatarTexture` vs `videoTexture`), making material manipulation more intuitive and less error-prone.
+
+The following methods allow easy manipulation of the `Material` component:
+
+* `Material.getFlat(entity: Entity): ReadonlyFlatMaterial`: It returns a **read only** `FlatMaterial` accessor object that provides direct read access to material properties. It will return an error if the entity doesn't have a `Material` component. To avoid this, the next methods can be used as an alternative.
+
+```ts
+const src = Material.getFlat(entity).texture.src
+```
+
+* `Material.getFlatOrNull(entity: Entity): ReadonlyFlatMaterial | null`: It returns a **read only or null**, depending if the entity has or doesn't have a `Material` component.
+
+```ts
+const src = Material.getFlatOrNull(entity).texture.src
+```
+
+* `Material.getFlatMutable(entity: Entity): FlatMaterial`: It returns a **read & write** `FlatMaterial`object that allows modifying it's properties. It will throw an error if the entity being called doesn't have the `Material` component.
+
+```ts
+const src = Material.getFlatMutable(entity).texture.src
+```
+
+* `Material.getFlatMutableOrNull(entity: Entity): FlatMaterial | null`: It returns a **read & write or null** `FlatMaterial` object that allows modifying it's properties. In case the entity doesn't have a `Material component`, it will reutrn `null`.
+
+```ts
+Material.getFlatMutableOrNull(entity).texture.src = myNewTextureFile
+```
+
 #### Remove shadows from a glTF model
 
 To remove shadows from a _glTF_ model, you can set the `castShadows` property to `false` in the `GltfNodeModifiers` object. This retains the original material of the model, but prevents it from casting shadows. This is useful for models that are not meant to cast shadows, such as light beams.

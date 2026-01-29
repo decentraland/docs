@@ -109,3 +109,20 @@ myAsyncTask()
 ```
 
 The example above executes a function that includes a `fetch()` operation to retrieve data from an external API. The `fetch()` operation is asynchronous, as we can't predict how long the server will take to respond. However, the next line needs the output of this operation to be ready before we can parse it as a json. The `await` statement here ensures that the next line will only run once that operation has returned a value. Similarly, the `response.json()` function is also asynchronous, but the next line needs the json to be parsed before it can log it. The second `await` statement forces the next line to only be called once the parsing of the json is finished, however long it takes.
+
+
+### Set a Timeout for a Function call
+
+Use `setTimeout` to wait some time before certain lines of code are run. The first argument is the function to be executed(`console.log()`), and the second one, the amount of miliseconds to wait until the function is executed(1000).
+
+```ts
+const timeoutId = timers.setTimeout(() => {
+    console.log('Wait 1 second until executing this function')
+}, 1000)
+```
+
+The `clearTimeout` can be used to cancel the `setTimeout`. `intervalId` is the `setTimeout` reference defined before.
+
+```ts
+timers.clearTimeout(intervalId)
+  ```

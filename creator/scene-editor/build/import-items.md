@@ -115,19 +115,3 @@ If there are multiple players in the scene, they may be seeing the animation out
 
 To change this behavior, you can include an **Animator** component. See [Make any item smart](../interactivity/make-any-item-smart.md) for no-code tools to make your item interactive.
 
-### Pre-loading Assets
-
-In some cases, a custom asset is added to the scene but is not used immediately. For example, a custom sound file might be added but only played when the player presses a button in the scene. In this scenario, the first time the player presses the button, the audio won’t play because it hasn’t been downloaded yet.
-
-To solve this, use the `AssetLoad.create` method so that these assets are already available when the player interacts with them.
-
-```ts
-AssetLoad.create(engine.RootEntity, {
-	assets: [
-		"assets/scene/bundle1/explosionSound.mp3",
-		"assets/scene/bundle1/explosion.glb",
-	]
-})
-```
-
-The assets listed in `AssetLoad.create` will be automatically downloaded when the scene starts and will be readily available when the player interacts with them.

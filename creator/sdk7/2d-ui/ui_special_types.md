@@ -213,7 +213,9 @@ The following properties are also available to customize the look of the text fi
 **📔 Note**: Make sure you use a different color from the `placeHolderColor`.
 {% endhint %}
 
-\- \`font\`: The font to use, taking a value from the \`Font\` enum. Supported values are: - \`serif\` - \`sans-serif\` \_(default)\_ - \`monospace\` - \`textAlign\`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+* `font`: The font to use, taking a value from the `Font` enum. Supported values are: - `F_SANS_SERIF` - `F_SERIF` _(default)_ - `F_MONOSPACE`
+
+* `textAlign`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
 You can also configure other components of the `Input` entity, like a `uiTransform`, `OnMouseDown` as in other UI entities.
 

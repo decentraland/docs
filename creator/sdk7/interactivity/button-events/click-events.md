@@ -57,7 +57,7 @@ You could also implement [advanced custom hints](system-based-events.md#advanced
 
 ## Obstacles
 
-Button events cast rays that only interact with the first entity on their path that is subscribed to the pointer events collision layer, as long as the entity is closer than its distance limit.
+Button events cast rays that only interact with the first entity on their path that is subscribed to the pointer events collision layer. This is true as long as the entity is closer than its distance limits to both the avatar and the camera.
 
 For an entity to be intercepted by the ray of a pointer event, either:
 

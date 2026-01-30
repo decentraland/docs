@@ -10,9 +10,9 @@ Keep in mind that many players may be visiting Decentraland using hardware that 
 
 The Decentraland explorer enforces many optimizations at engine level. These optimizations make a big difference, but the challenge of rendering multiple user-generated experiences simultaneously in a browser is a big one. We need your help to make things run smoothly.
 
-### Timing
+## Timing
 
-#### Video playing
+### Video playing
 
 Playing videos is one of the most expensive things for the engine to handle. If your scene includes videos, make sure that only _ONE_ VideoTexture is in use at a time. You can have dozens of planes sharing the same VideoTexture without significant impact on performance, but as soon as you add a second VideoTexture, its effects on framerate become very noticeable.
 
@@ -26,7 +26,7 @@ You should also avoid having videos playing in regions where they can't be seen.
 **💡 Tip**: When players are standing outside your scene, VideoTextures are not updated on every frame. This helps reduce the impact for surrounding scenes. It's nevertheless ideal only turn on the playing of any videos when players [step inside your scene](../sdk7/interactivity/event-listeners.md#player-enters-or-leaves-scene) .
 {% endhint %}
 
-#### Lazy loading
+### Lazy loading
 
 If your scene is large, or has indoor areas that are not always visible, you can choose to not load the entire set of entities from the very start. Instead, load the content by region as the player visits different parts of the scene. This can significantly reduce the load time of the scene, and also the amount of textures and 3D content that the engine needs to handle on every frame.
 
@@ -48,7 +48,7 @@ You can also toggle animations on or off for entities that are far or occluded. 
 **💡 Tip**: When an entity is far away and small enough, it's culled by the engine. This culling helps at a drawcall level, removing entities from the engine is always better. This culling also doesn't take occlusion by other entities into account, so entities that are not so small but hidden by a wall are still rendered.
 {% endhint %}
 
-#### Async blocks
+### Async blocks
 
 Blocks of [async code](../sdk7/programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
 
@@ -56,7 +56,7 @@ Any processes that rely on responses from asynchronous services, such as `getPla
 
 Note that the scene will be considered fully loaded when everything that isn't async is done. Async processes might still be running when the player enters the scene. Avoid situations where an async process results in the loading of an entity that could potentially get the player stuck inside of its geometry.
 
-#### Rely on Events
+### Rely on Events
 
 Try to make the scene's logic rely on listening to [events](../sdk7/interactivity/event-listeners.md) as much as possible, instead of running checks every frame.
 
@@ -66,7 +66,7 @@ For example, instead of constantly checking the player's wearables, you can subs
 
 If you must use a system, avoid doing checks or adjustments on every single frame. You can include a timer as part of the update function and only run the check once per every full second, or whatever period makes sense.
 
-### Optimize 3D models
+## Optimize 3D models
 
 There are several ways in which your 3D models can be optimized to be lighter.
 
@@ -91,7 +91,7 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
-#### Asset Bundle conversion
+### Asset Bundle conversion
 
 About once a day, the Decentraland content servers run a process to compress every _.gltf_ and _.glb_ model in every newly deployed scene to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run on the browser.
 
@@ -103,7 +103,7 @@ About once a day, the Decentraland content servers run a process to compress eve
 **📔 Note**: If you make _any_ change to a 3D model file, even if just a name change, it will be considered a new file, and must be converted to asset bundle format again.
 {% endhint %}
 
-### Connectivity
+## Connectivity
 
 If your scene connects to any 3rd party servers or uses the [messagebus](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, there are also some things you might want to keep in mind.
 
@@ -111,7 +111,7 @@ If your scene connects to any 3rd party servers or uses the [messagebus](../sdk7
 * HTTP calls are funneled by the engine so that only one is handled at a time. Any additional requests are queued internally and must wait till other requests are completed. This queuing process is handled automatically, you don't need to do anything.
 * When using the [messagebus](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly results in sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
 
-### Scene UI
+## Scene UI
 
 Scene UIs can become costly to render when they are made up of many individual elements. Keep in mind that each UI element requires a separate drawcall on the engine.
 
@@ -123,7 +123,7 @@ Avoid making adjustments to the UI on every frame, those are especially costly a
 
 Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
 
-### Monitor Performance
+## Monitor Performance
 
 The best metric to know how well a scene is performing is the FPS (Frames Per Second). In preview, you can see the current scene FPS in the debug panel. You should aim to always have 30 FPS or more.
 

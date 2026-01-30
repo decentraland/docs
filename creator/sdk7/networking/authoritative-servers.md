@@ -12,7 +12,7 @@ Allowing all players to see a scene as having the same content in the same state
 * **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages)
 * **Use a Server**: This document deals with this option. This option is more work to set up, but is recommendable if there are incentives to exploit your scene.
 
-### Types of servers
+## Types of servers
 
 A server may have different levels of involvement with the scene:
 
@@ -24,7 +24,7 @@ A server may have different levels of involvement with the scene:
 
 * Websockets: This alternative is more robust, as it establishes a two-way communications channel between player and server. Updates can be sent from the server, you could even have game logic run on or validated on the server. This enables real time interaction and makes more fast paced games possible. It's also more secure, as each message between player and server is part of a session that is opened, no need to validate each message.
 
-### Example scenes with dedicated server
+## Example scenes with dedicated server
 
 API + DB:
 
@@ -32,7 +32,7 @@ API + DB:
 * [Guestbook](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api)
 * [Validate authenticity](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity)
 
-### Preview scenes with dedicated servers
+## Preview scenes with dedicated servers
 
 To preview a scene that uses a 3rd party server, you must run both the scene and the server it relies on. The server can be run locally in the same machine as the preview, as an easier way to test it. When running locally, the server can use unsafe `http` or `ws` connections, for easier setup.
 
@@ -40,7 +40,7 @@ To start the server, go to the `/server` folder and run `npm run start`.
 
 Once the server is running, either remotely or locally, you can run your scene as you normally do.
 
-#### Test a multiplayer scene locally
+### Test a multiplayer scene locally
 
 If you launch a scene preview and open it in two (or more) different explorer windows, each open window will be interpreted as a separate player, and a mock communications server will keep these players in sync.
 
@@ -54,7 +54,7 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 > `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
 
-### Separate realms
+## Separate realms
 
 Players in decentraland exist in many separate _realms_. Players in different realms cant see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited amount of players without running into any limitations. It also pairs players that are in close regions, to ensure that ping times between players that interact are acceptable.
 
@@ -62,13 +62,13 @@ If your scene sends data to a 3rd party server to sync changes between players i
 
 See how to obtain the realm for each player in [get player data](../sdk7/interactivity/user-data.md)
 
-### Multiplayer persistance
+## Multiplayer persistance
 
 Unlike local scenes that are newly mounted each time a player walks into them, scenes that use 3rd party servers have a life span that extends well beyond when the player enters and leaves the scene.
 
 You must therefore design the experience taking into account that player won't always find the scene in the same initial state. Any changes made to the scene will linger on for other players to find, you must make sure that these don't interfere with future player's experiences in an undesired way.
 
-#### Reset the state
+### Reset the state
 
 When loading the scene, make sure its built based on the shared information stored in the server, and not in a default state.
 

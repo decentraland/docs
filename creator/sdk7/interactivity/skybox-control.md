@@ -10,7 +10,7 @@ The sky in Decentraland follows a default day/night cycle where 1 minute passes 
 
 Whenever players enter a scene with a different time of day, or the scene changes the time of day dynamically, the skybox transitions smoothly over a few seconds to this new value.
 
-### Fixed time of day
+## Fixed time of day
 
 You can set a fixed time of day for your scene. All players will see the scene with this time of day, and the skybox will not follow the day/night cycle.
 
@@ -36,7 +36,7 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
-### Reading the time of day
+## Reading the time of day
 
 You can read the time of day from your scene code using the `getWorldTime()` function.
 
@@ -51,7 +51,7 @@ executeTask(async () => {
 
 The function returns a number between 0 and 86400, where 0 is midnight and 86400 is 24:00. This value is updated if the scene changes the time of day dynamically or if the player changes the time of day in the UI. Otherwise, it returns the value relative to the default day/night cycle.
 
-### Changing the time of day dynamically
+## Changing the time of day dynamically
 
 You can change the time of day dynamically using the `SkyboxTime` component. This component can only be added to the root entity of the scene `engine.rootEntity`.
 

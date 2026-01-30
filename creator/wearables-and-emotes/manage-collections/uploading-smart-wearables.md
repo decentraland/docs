@@ -6,7 +6,7 @@ description: Guidelines to Upload Smart Wearables to the Editor
 
 After generating your Smart Wearable using the [SDK7](https://github.com/decentraland/docs-creator/blob/main/creator/development-guide/sdk7/smart-wearables/README.md), the next step is to upload it to the builder. This document explains how to upload, publish, and put your Smart Wearables up for sale.
 
-### Uploading Your File
+## Uploading Your File
 
 Remember that you need to create a collection before uploading your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/wearables-and-emotes/manage-collections/creator/wearables-and-emotes/manage-collections/creating-collection/README.md). To upload your Smart Wearable, drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is a Smart Wearable. **Remember that the collection max file size is 3MB**.
 
@@ -14,7 +14,7 @@ Remember that you need to create a collection before uploading your file. If you
 
 When you upload the file, you will be asked to upload a video showcase.
 
-### Uploading Your Video Showcase
+## Uploading Your Video Showcase
 
 This video showcase will be displayed in the marketplace for buyers to see how the Smart Wearable works.
 
@@ -24,7 +24,7 @@ To upload your video showcase, drag and drop a **.mp4** video file on the _**Upl
 
 When you upload the video showcase, you will be asked to enter a name and define the rarity and the category. You can also add a thumbnail for the Smart Wearable if you like.
 
-#### Rarity
+### Rarity
 
 Select the Rarity of your item.
 
@@ -41,13 +41,13 @@ Select the Rarity of your item.
 | Uncommon  | 10,000          |
 | Common    | 100,000         |
 
-#### Category
+### Category
 
 Wearables are organized into different categories, depending on what part of an avatar they modify. In this step, you must select the appropriate item category.
 
 ![](../../../.gitbook/assets/04_category.png)
 
-#### Custom Thumbnails
+### Custom Thumbnails
 
 You can add your thumbnail by clicking on the camera icon and selecting the image you want from your computer. **Please ensure that the thumbnail is in a 256px square .png file format, with a transparent background.** Please note that the Curation Committee will not approve collections that have thumbnails without transparent backgrounds.
 
@@ -59,19 +59,19 @@ You can add your thumbnail by clicking on the camera icon and selecting the imag
 <img src="../../../.gitbook/assets/07_thumbnail.png" alt="" data-size="original">
 {% endhint %}
 
-#### Update Video Showcase
+### Update Video Showcase
 
 To update your video showcase, simply click on the camera icon and browse for the video on your computer. **Keep in mind that the maximum allowed file size is 4MB and the duration should not exceed 15 seconds**.
 
 ![](../../../.gitbook/assets/06_video.png)
 
-#### Properties
+### Properties
 
 Next to the thumbnail, you're going to find the properties of your wearable such as the number of triangles of your model, the number of materials, and the textures.
 
 ![](../../../.gitbook/assets/08_properties.png)
 
-### Uploading Mouth, Eyes and Eyebrows
+## Uploading Mouth, Eyes and Eyebrows
 
 The mouth, eyes and eyebrows category have a different behaviour in the editor because these are just .png files. To upload these just drag and drop the png file as a transparent image (256X256 pixels). Mouth is going to be automatically tinted by skin color, same for the eyebrows tinted by the hair color.
 
@@ -85,7 +85,7 @@ After that uploading your Wearables you will end up with a screen like this, tha
 
 ![](../../../.gitbook/assets/11_list_wearables.png)
 
-### Setting the Price of Your Smart Wearable
+## Setting the Price of Your Smart Wearable
 
 You can set the price of your Wearable by clicking on _**Set Price**_. This can all be edited anytime, so don’t worry if you want to change it later. Prices are set in MANA. Remember that when you mint Wearables, they are minted directly on Matic/Polygon. Indeed, when a user purchases your item, the transaction will be conducted in Matic/Polygon MANA.
 
@@ -105,11 +105,11 @@ Once you click on _**Preview in Editor**_, you will have the editor open. You ca
 
 ![](../../../.gitbook/assets/14_editor.png)
 
-### Description
+## Description
 
 This is a brief statement describing your item that will be displayed in the marketplace.
 
-### Overrides
+## Overrides
 
 Overrides determine which Wearable categories or avatar body parts your item will hide. For instance, a hat with attached hair might need to hide the _Hair_ category. A deep-sea diver helmet may require hiding head accessories like earrings, eyewear, tiaras, etc., which wouldn’t be visible. Multiple options can be selected for each override.
 
@@ -120,11 +120,11 @@ Overrides determine which Wearable categories or avatar body parts your item wil
 Note: The overrides you select will be the suggested default settings for your Wearable. However, users can customize which Wearables are hidden or showing from the Backpack.
 {% endhint %}
 
-### Tags
+## Tags
 
 Tags are descriptive words that users can utilize for competitions or events!
 
-### Preview
+## Preview
 
 To preview your Smart Wearable, hover your mouse over the wearable element on the top left and click on the eye symbol.
 
@@ -134,7 +134,7 @@ By clicking on the icon at the lower left, you can edit the avatar. This is usef
 
 ![](../../../.gitbook/assets/19_edit_avatar_wearable_03.gif)
 
-### Testing in Decentraland
+## Testing in Decentraland
 
 Even after testing the Smart Wearable in the editor, it’s important to check how it will look and behave in Decentraland. To try it there, go to the Collections tab. Select the desired collection and click the button _**See in Decentraland**_.
 
@@ -156,6 +156,6 @@ If you haven't enabled the Ethereum testnet networks, you can follow this [Metam
 
 ![](../../../.gitbook/assets/22_smart_wearable_world.gif)
 
-### Before Publishing
+## Before Publishing
 
 Make sure to set the price properly, add a nice description and double check if all the information and settings are right. If you’ve filled all the information necessary you will see _**Done**_ as the status of your item.

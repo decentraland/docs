@@ -6,7 +6,7 @@ description: >-
 
 # Second Layer
 
-### About second layer solutions
+## About second layer solutions
 
 Any transaction that affects the blockchain takes time to complete, and costs gas. Both these things are obstacles to making blockchain gaming popular, because players usually don't have the patience to wait that long for their actions to take effect, and aren't willing to spend money on many transactions as they play.
 
@@ -26,7 +26,7 @@ Also, when syncing with the main chain, several redundant transactions can be av
 
 Decentraland has a partnership with [Polygon](https://polygon.technology/), who provide their own side-chain on Ethereum. Their side-chain can be used by scenes to support fast and very cheap transactions.
 
-### Try the Polygon Testnet
+## Try the Polygon Testnet
 
 In order to use Polygon's Matic Testnet, you should first have:
 

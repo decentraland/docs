@@ -12,7 +12,7 @@ Here you can configure multiple properties including title and thumbnail, scene 
 
 See [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
-### Scene details
+## Scene details
 
 The **Details** tab lets you configure several fields about your scene. These fields are shown to players that might visit your scene, for example when expanding the location on the map, when being prompted to teleport, or when sharing a link to the scene on social media. Make sure you make the information here attractive and accurate to drive more traffic to your scene!
 
@@ -34,7 +34,7 @@ The thumbnail should be a .png image of a recommended size of 228x160 pixels. Th
 
 See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
 
-### Layout
+## Layout
 
 You can edit the size of your scene by clicking the _pencil icon_ and then changing the number or rows and columns.
 
@@ -56,7 +56,7 @@ If you own a Decentraland NAME, you can also deploy your scene to a [Decentralan
 
 See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
-#### Advanced view
+### Advanced view
 
 You can also click the **Set Coordinates (Advanced)** button to manually list the coordinates of your scene.
 
@@ -68,7 +68,7 @@ In **Custom Coordinates**, write the coordinates of each of the parcels where yo
 
 In the **Origin Point** field, define which of the coordinates in the scene should be treated as the point of origin. This has to be one of the coordinates you listed in the **Custom Coordinates** field. It's recommended to set the parcel on the bottom-left of the scene.
 
-### Scene restrictions
+## Scene restrictions
 
 You can disable certain functionalities on your scene if you chose, in case they might be abused or clash with the kind of experience you want to create.
 
@@ -77,7 +77,7 @@ You can disable certain functionalities on your scene if you chose, in case they
 * **Silence voice chat**: Prevent players on your scene from using voice chat.
 * **Disable portable experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
-### Spawn points
+## Spawn points
 
 The Spawn Settings in the Settings tab define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
 
@@ -97,7 +97,7 @@ Set the Camera Target to set the direction in which players start looking when t
 
 Click **Add Spawn Point** to include as many spawn points as you want. Players will randomly appear in one of those.
 
-### Skybox Control
+## Skybox Control
 
 You can control the skybox time of day in the **Settings** tab. You can set a fixed time of day for your scene. All players will see the scene with this time of day, and the skybox will not follow the day/night cycle.
 

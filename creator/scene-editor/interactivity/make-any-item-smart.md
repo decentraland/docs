@@ -14,7 +14,7 @@ To add components to an item click the **Plus Icon** next to the item name, and 
 
 This allows for a huge amount of creative possibilities. Turn a candle into a lever that opens up a secret passage behind a book shelf, play mysterious sounds from inside a well, make diamonds into collectable items that shrink to 0 when clicked. There are tons of imaginative ways to combine these mechanics!
 
-### Interactivity
+## Interactivity
 
 You can make an item react to different actions of the player.
 
@@ -36,7 +36,7 @@ The **Trigger** component can be configured to be aware of any of these types of
 For example, you could add a **Pointer Events** trigger to a door, so that it opens when clicked, but include conditional logic so that it only opens if it's unlocked.
 {% endhint %}
 
-#### Pointer events
+### Pointer events
 
 Add a **Trigger** component with **On Click** or **On Input Action** Trigger events.
 
@@ -68,7 +68,7 @@ You can override the default settings that are used when an item has an **On Cli
 * **Show feedback**: If unchecked, the item has no hover-hint when the player passes their cursor on it.
 * **Button**: If using the **On Input Action** Trigger Action, you can reassign the default **Primary (E)** to another key. The hover-hint will include an icon to clarify what key to use. You can use **Secondary (F)**, or **Actions 3 to 6** (number keys 1 to 4).
 
-#### Global button events
+### Global button events
 
 Add a **Trigger** component with **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers events.
 
@@ -80,7 +80,7 @@ Add a **Trigger** component with **On Global Click**, **On Global Primary** or *
 **💡 Tip**: It often makes sense to combine this with [States and conditions](states-and-conditions.md), so that the items only react to the button event if the player is in the room, or some other condition.
 {% endhint %}
 
-#### Player position
+### Player position
 
 Add a **Trigger** component with **Player Enters Area**, **Player Leaves Area** Triggers events.
 
@@ -90,7 +90,7 @@ This will react to when the player enters or leaves an area of a default size of
 **💡 Tip**: It's often better to use the [**Trigger Area**](smart-items.md#trigger-areas) smart item instead, since this item's dimensions can be clearly visualized in the Scene Editor.
 {% endhint %}
 
-### See also
+## See also
 
 * [Smart items - Basics](smart-items.md)
 * [Smart items - Advanced](smart-items-advanced.md)

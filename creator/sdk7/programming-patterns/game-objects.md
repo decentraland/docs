@@ -12,7 +12,7 @@ A Game Object holds all the properties and methods for a type of entity you migh
 
 We recommend keeping game object definitions each in a separate file.
 
-### The Type Object Pattern
+## The Type Object Pattern
 
 If your scene uses various types of game objects that have much in common, you might want to take this refactor even further, and define a _base_ game object type with all the things that these have in common. You can then create sub classes that inherit from this base class.
 

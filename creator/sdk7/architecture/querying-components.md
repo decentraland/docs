@@ -18,7 +18,7 @@ for (const [entity] of engine.getEntitiesWith(Transform)) {
 }
 ```
 
-### Required components
+## Required components
 
 When making a query, specify what components need to be present in every entity that's added to the group. You can list as many components as you want, the query will only return entities that have **all** of the listed components.
 
@@ -36,7 +36,7 @@ for (const [entity] of engine.getEntitiesWith(
 **💡 Tip**: If your query returns entities that you don't need to deal with, consider creating a custom component to act as a [flag](entities-components.md#components-as-flags). This component doesn't need to have any properties in it, but can be used to mark a specific subgroup of entities that you might want to treat differently.
 {% endhint %}
 
-### Use queries in a system
+## Use queries in a system
 
 ```ts
 // Define a System
@@ -63,7 +63,7 @@ In the example above, the `PhysicsSystem` function iterates over the entities in
 * If the scene has several _ball_ entities, each with a `Position` and a `Physics` component, then they will be handled, and their position will be updated on each tick.
 * If your scene also has other entities, for example a _hoop_ and a _scoreBoard_ that only have a `Transform` but not a `Physics` component, then they won't be affected by `PhysicsSystem`.
 
-### Dealing with the entities and components
+## Dealing with the entities and components
 
 The `getEntitiesWith` function returns a collection, that includes references to a set of entities and can also optionally include references to the listed components.
 
@@ -118,6 +118,6 @@ for (const [entity, transformReadOnly] of engine.getEntitiesWith(Transform)) {
 }
 ```
 
-### Subscribe to changes
+## Subscribe to changes
 
 A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.

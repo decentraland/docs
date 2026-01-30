@@ -16,7 +16,7 @@ When a scene admin visits your scene, they see a special UI on the top-right cor
 
 ![ ](../../../.gitbook/assets/admin-console.png)
 
-### Setting up admins
+## Setting up admins
 
 To assign admins, you need to add the **Scene Admin** smart item to your scene.
 
@@ -67,7 +67,7 @@ async function onPlayerSpawn() {
 **💡 Tip**: For more information about async functions, see [Async Functions](../../sdk7/programming-patterns/async-functions.md).
 {% endhint %}
 
-### Video playing
+## Video playing
 
 One of the most common actions for admins to do is to play videos. The admin panel includes a video player section where they can control anything related to videos.
 
@@ -99,7 +99,7 @@ If your scene has multiple independent video screens, the **Current Screen** dro
 **💡 Tip**: To show the same video on multiple screens that can be controlled as one, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens).
 {% endhint %}
 
-### Media Sources
+## Media Sources
 
 There are three media source options for playing videos:
 
@@ -128,7 +128,7 @@ Each screen in your scene will have one of the above media sources set as **Acti
 
 ![ ](../../../.gitbook/assets/activate.png)
 
-### Announcements
+## Announcements
 
 In the **Announcements** tab of the admin panel, admins can write messages that get seen by all players in the scene. Messages like this can only be sent by admins, so other players will perceive them as more legitimate than a message on the chat by someone claiming to be an admin.
 
@@ -136,7 +136,7 @@ Select the Message section of the admin UI. Write a message and click **Share**.
 
 ![ ](../../../.gitbook/assets/announcement.png)
 
-### Ban players
+## Ban players
 
 You can ban players from your scene by selecting the **Moderation** tab of the admin UI, writing the name or wallet address of the player you want to ban and clicking the **Ban** button.
 
@@ -154,7 +154,7 @@ Banned players will be unable to load your scene or interact with any of its con
 
 Click **View Ban List** to see the list of currently banned players. From this list you can also **Unban** players.
 
-### Trigger smart items
+## Trigger smart items
 
 To Trigger an action from any smart item in the scene:
 

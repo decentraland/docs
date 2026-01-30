@@ -14,7 +14,7 @@ To set more specific custom logic, you might want to deal with the raw data and 
 
 For an entity to be interactive, it must have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
 
-### Using a system
+## Using a system
 
 Check for button events by running one of the helper functions on the input `inputSystem` namespace on every tick within a [system](../../architecture/systems.md).
 
@@ -38,7 +38,7 @@ See the sections below for more details on each.
 
 When handling button events on an entity, always provide feedback to the player, so that the player is aware that an entity can be interacted with. If you add a `PointerEvents` component to an entity, players will see a hint while hovering their cursor on that entity. See [Show feedback](system-based-events.md#show-feedback) to learn how you can add hover hints on interactive entities.
 
-#### Global input events
+### Global input events
 
 Use `inputSystem.isTriggered` to detect button down and button up events on any of the inputs tracked by the SDK.
 
@@ -65,7 +65,7 @@ The `inputSystem.isTriggered` function takes the following required arguments:
 * `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
 * `PointerEventType`: What type of event to listen for, as a value from the `PointerEventType` enum. See [Types of pointer events](click-events.md#types-of-pointer-events) for supported options.
 
-#### Activate an entity
+### Activate an entity
 
 To detect button events while pointing at a particular entity, pass a third optional argument to `inputSystem.isTriggered` to specify what entity to check against.
 
@@ -133,7 +133,7 @@ engine.addSystem(() => {
 
 See [Data from input action](system-based-events.md#data-from-input-action) for more info. This method also grants you more detailed data about the hit of the pointer event.
 
-#### Input button up
+### Input button up
 
 You can also check for pointer up events in much the same way, by using `PointerEventType.PET_UP`.
 
@@ -157,7 +157,7 @@ engine.addSystem(() => {
 Also keep in mind that hte entity must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
-#### Check for pressed buttons
+### Check for pressed buttons
 
 Check if a button is currently being pressed down by using `inputSystem.isPressed()` within a system.
 
@@ -175,7 +175,7 @@ The `inputSystem.isPressed` function takes a single argument:
 
 * `InputAction`: Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
 
-#### Handle multiple entities
+### Handle multiple entities
 
 If your scene has multiple entities that are affected by pointer events in the same way, it makes sense to write a system that iterates over all of them.
 
@@ -236,7 +236,7 @@ This example has one system that iterates over all entities that have a custom c
 
 This way of organizing your scene's code is very [data oriented](../../architecture/data-oriented-programming.md) and should result in a very efficient use of memory resources.
 
-### Show feedback
+## Show feedback
 
 To display UI hints while pointing at an entity, use the properties in the entity's `PointerEvents` component.
 
@@ -339,7 +339,7 @@ engine.addSystem(() => {
 })
 ```
 
-#### Hover Feedback
+### Hover Feedback
 
 When a player hovers the cursor over an item with an `PointerEvents` component, they see:
 
@@ -468,7 +468,7 @@ PointerEvents.create(chest, {
 })
 ```
 
-#### Max distance
+### Max distance
 
 Some entities can be intentionally only interactive at a close range. If a player is too far away from an entity, the hover hint won't be displayed next to the cursor.
 
@@ -513,7 +513,7 @@ The example above sets the maximum distance for hover hints to _6 meters_. Make 
 **📔 Note**: The `maxDistance` is measured in meters from meters from the player's camera. Keep in mind that in 3rd person the camera is a bit further away, so make sure the distance you set works well in both modes.
 {% endhint %}
 
-### Advanced custom hints
+## Advanced custom hints
 
 The `PointerEvents` component easily adds UI hints when the player's cursor starts hovering over an entity. It's generally a good thing that hints behave consistently with what players are used to seeing in other Decentraland scenes. However, in some cases you might want to signal that something is interactive in a custom way. For example, you could play a subtle sound when the player starts hovering over the entity. You could also show a glowing highlight around the entity while hovering, and hide it when no longer hovering. It could also be used for specific gameplay mechanics.
 
@@ -552,7 +552,7 @@ engine.addSystem(() => {
 **📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
-### Data from input action
+## Data from input action
 
 Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../../../../)) for a description of all of the data available.
 
@@ -573,7 +573,7 @@ engine.addSystem(() => {
 
 If there was no input action that matches the query, then `inputSystem.getInputCommand` returns undefined. Make sure that you handle this scenario in your logic.
 
-#### Max click distance
+### Max click distance
 
 To enforce a maximum distance, so that an entity is only clickable at close range, fetch `hit.length` property of the event data.
 
@@ -598,7 +598,7 @@ engine.addSystem(() => {
 **📔 Note**: If you ignore any events that are far away, make sure you set the `maxDistance` parameter on the `PointerEvents` component to behave consistently.
 {% endhint %}
 
-#### Different meshes inside a model
+### Different meshes inside a model
 
 Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. All button events events include the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
 

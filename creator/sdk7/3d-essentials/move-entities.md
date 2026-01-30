@@ -22,7 +22,7 @@ The Tween component has the following functions:
 * `setTextureMove`: Offset the texture of a material between two positions
 * `setTextureMoveContinuous`: Offset the texture of a material constantly in the same direction
 
-### Move between two points
+## Move between two points
 
 To move an entity between two points, create a `Tween` component with the `setMove` function.
 
@@ -52,7 +52,7 @@ These other optonal parameters are also available:
 * `faceDirection`: If true, the entity is rotated to face in the direction of the movement.
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
-### Rotate between two directions
+## Rotate between two directions
 
 To rotate an entity between two points, create a `Tween` component with the `setRotate` function.
 
@@ -80,7 +80,7 @@ This other optional parameter is also available:
 
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
-#### Rotate with a pivot point
+### Rotate with a pivot point
 
 When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you want to rotate.
 
@@ -108,7 +108,7 @@ Tween.setRotate(pivotEntity,
 
 Note that in this example, the system is rotating the `pivotEntity` entity, that's a parent of the `childEntity` entity.
 
-### Scale between two sizes
+## Scale between two sizes
 
 To change the scale of an entity between two sizes, create a `Tween` component with its mode set to `Tween.Mode.Scale`.
 
@@ -137,7 +137,7 @@ This other optional parameter is also available:
 
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
-### Non-linear tweens
+## Non-linear tweens
 
 Tweens can follow different **Easing Functions** that affect the rate of change over time. A **linear** function, means that the speed of the change is constant from start to finish. There are plenty of options to chose, that draw differently shaped curves depending on if the beginning and/or end start slow, and how much. An **easeinexpo** curve starts slow and ends fast, increasing speed exponentially, on the contrary an **easeoutexpo** curve starts fast and ends slow.
 
@@ -189,7 +189,7 @@ The optional `easingFunction` parameter takes its value from the `EasingFunction
 * `EF_EASESINE`
 * `EF_LINEAR`
 
-### Constant rotation
+## Constant rotation
 
 To make an entity rotate constantly, use the `Tween` component with the `setRotateContinuous` function.
 
@@ -210,7 +210,7 @@ This other optional parameter is also available:
 
 * `duration`: How many milliseconds to sustain the rotation. After this time, the rotation will stop.
 
-### Constant movement
+## Constant movement
 
 To make an entity move constantly in the same direction, use the `Tween` component with the `setMoveContinuous` function.
 
@@ -233,7 +233,7 @@ This other optional parameter is also available:
 
 The move continuous tween takes the following information:
 
-### Tween sequences
+## Tween sequences
 
 To make an entity play a series of tweens in sequence, use the `TweenSequence` component. This component requires two fields:
 
@@ -242,7 +242,7 @@ To make an entity play a series of tweens in sequence, use the `TweenSequence` c
   * `TL_RESTART`: When the sequence ends, it restarts. If the last state doesn't match the first state, the entity instantly jumps from one to the other.
   * `TL_YOYO`: When the sequence ends, the it goes backwards, doing all tweens in reverse until it reaches the start again. Then it begins once more.
 
-#### Move back and forth
+### Move back and forth
 
 To make a platform move constantly back and forth between two positions, leave the `sequence` array empty, and set `loop` to `TweenLoop.TL_YOYO`
 
@@ -264,7 +264,7 @@ TweenSequence.create(myEntity, { sequence: [], loop: TweenLoop.TL_YOYO })
 
 The entity will move back and forth between the start point and the end point, with the same duration and the same easing function in both directions.
 
-#### Follow a path
+### Follow a path
 
 To make an entity follow a more complex path with multiple points, provide a list of tween definitions in the `sequence` of a `TweenSequence` component.
 
@@ -323,7 +323,7 @@ And within the `mode` field, you need to specify:
 * `start`: The starting value of the tween
 * `end`: The ending value of the tween
 
-### On tween finished
+## On tween finished
 
 Use `tweenSystem.tweenCompleted` to detect when a tween has finished. This can be useful to perform actions when a tween ends, for example to open an elevator door.
 
@@ -336,7 +336,7 @@ engine.addSystem(() => {
 })
 ```
 
-### Simultaneous tweens
+## Simultaneous tweens
 
 An entity can only have one `Tween` component, and each tween component can only perform one transformation at a time. For example, you can´t make an entity move sideways and also rotate at the same time. As a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
 
@@ -367,7 +367,7 @@ Tween.setScale(childEntity,
 )
 ```
 
-### Pause a tween
+## Pause a tween
 
 To pause a tween, change the `playing` property to false. To resume it, change it back to true.
 
@@ -403,13 +403,13 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-### Tweens based on a system
+## Tweens based on a system
 
 Instead of using the Tween component and letting the engine handle the transformation, you may prefer to do this transition incrementally, frame by frame, via a [system](../sdk7/architecture/systems.md) in your scene. By moving the entity a small amount each time the function runs.
 
 On one hand, this gives you more control for re-calculating movements on every frame. On the other hand, the code is more complicated, and players with less performant machines might experience the tween as laggy, noticing each increment.
 
-#### Move via system
+### Move via system
 
 The easiest way to move an entity is to gradually modify the _position_ value stored in the `Transform` component.
 
@@ -437,7 +437,7 @@ In this example we're moving an entity by 0.1 meters per tick of the game loop.
 
 ![](../../../.gitbook/assets/move.gif)
 
-#### Rotate via system
+### Rotate via system
 
 The easiest way to rotate an entity is to gradually change the values in the Transform component incrementally, and run this as part of a system's function of a system.
 
@@ -469,7 +469,7 @@ In this example, we're rotating the entity by 1 degree in an upwards direction i
 
 ![](../../../.gitbook/assets/rotate.gif)
 
-#### Rotate via system over a pivot point
+### Rotate via system over a pivot point
 
 When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you want to rotate.
 
@@ -503,7 +503,7 @@ Note that in this example, the system is rotating the `pivotEntity` entity, that
 
 ![](../../../.gitbook/assets/pivot-rotate.gif)
 
-#### Adjust movement to delay time
+### Adjust movement to delay time
 
 Suppose that the player visiting your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
 
@@ -531,7 +531,7 @@ The example above keeps movement at approximately the same speed as the movement
 
 You can also smoothen rotations in the same way by multiplying the rotation amount by `dt`.
 
-#### Move between two points via system
+### Move between two points via system
 
 If you want an entity to move smoothly between two points, use the _lerp_ (linear interpolation) algorithm. This algorithm is very well known in game development, as it's really useful.
 
@@ -603,7 +603,7 @@ LerpTransformComponent.create(myEntity, {
 
 ![](../../../.gitbook/assets/lerp-move.gif)
 
-#### Rotate between two angles via system
+### Rotate between two angles via system
 
 To rotate smoothly between two angles, use the _slerp_ (_spherical_ linear interpolation) algorithm. This algorithm is very similar to a _lerp_, but it handles quaternion rotations.
 
@@ -707,7 +707,7 @@ In the example above `Quaternion.rotateTowards` takes three arguments: the initi
 
 Note that the system also checks to see if the rotation is complete and if so it removes the system from the engine. Otherwise, the system would keep making calculations on every frame, even once the rotation is complete.
 
-#### Change scale between two sizes via system
+### Change scale between two sizes via system
 
 If you want an entity to change size smoothly and without changing its proportions, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object.
 
@@ -776,7 +776,7 @@ Vector3.create(1, 1, 1)
 
 ![](../../../.gitbook/assets/lerp-scale.gif)
 
-#### Move at irregular speeds between two points via system
+### Move at irregular speeds between two points via system
 
 While using the lerp method, you can make the movement speed non-linear. In the previous example we increment the lerp amount by a given amount each frame, but we could also use a mathematical function to increase the number exponentially or in other measures that give you a different movement pace.
 
@@ -839,7 +839,7 @@ You can also map a transition in rotation or in scale in the same way as shown a
 
 ![](../../../.gitbook/assets/lerp-speed-up.gif)
 
-#### Follow a path via system
+### Follow a path via system
 
 You can have an entity loop over an array of vectors, performing a lerp movement between each to follow a more complex path.
 
@@ -911,7 +911,7 @@ The system is very similar to the system in the _lerp_ example, but when a lerp 
 
 ![](../../../.gitbook/assets/lerp-path.gif)
 
-### Texture tweens
+## Texture tweens
 
 To make a texture slide smoothly, use the `Tween` component with the `setTextureMove` function.
 
@@ -935,7 +935,7 @@ This other optional parameter is also available:
 * `movementType`: (optional), defines if the movement will be on the offset or the tiling field. By default it uses offset.
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens). Note: This parameter is only used if a duration is provided.
 
-### Constant texture movement
+## Constant texture movement
 
 To make a texture slide constantly, use the `Tween` component with the `setTextureMoveContinuous` function.
 

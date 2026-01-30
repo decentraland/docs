@@ -12,7 +12,7 @@ Running multiple projects in a workspace provides a much more complete testing a
 **📔 Note**: The **Creator Hub** doesn't currently support handling Workspaces.
 {% endhint %}
 
-### Create a workspace
+## Create a workspace
 
 1. Download the [Goerli Plaza](https://github.com/decentraland/sdk7-goerli-plaza) repo.
 2. Create a separate top-level folder to hold the workspace.
@@ -29,13 +29,13 @@ Running multiple projects in a workspace provides a much more complete testing a
 
 You can confirm that the projects are part of the workspace by running `dcl workspace ls`.
 
-### Run a workspace
+## Run a workspace
 
 Run `npm run start` on the root folder of the workspace. This runs all of the projects at the same time, viewable in a single preview window. This preview behaves just like when previewing a single scene.
 
 Any smart wearables in the workspace are available to try on by looking for them in the backpack.
 
-### Add projects
+## Add projects
 
 Once a workspace is created, you can add additional projects `dcl workspace add`, including the relative address of the folder you want to add. For example `dcl workspace add my-other-example`.
 

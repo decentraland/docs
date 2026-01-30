@@ -6,7 +6,7 @@ description: Guidelines to Upload Wearables to the Editor
 
 Once you export your wearable, you’ll have to upload it to the builder. This document will cover the process of uploading wearables.
 
-### Uploading Your File
+## Uploading Your File
 
 Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your wearable, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is an emote or wearable. **Remember that the collection max file size is 3MB**.
 
@@ -14,13 +14,13 @@ Remember that you need to create a collection before you can upload your file. I
 
 When you upload the file, you will be asked to select a body shape, enter a name and define the rarity and the category. You can also add the thumbnail for the wearable.
 
-#### **Body Shape**
+### **Body Shape**
 
 To ensure that your wearables can be worn by the intended avatars, you need to upload separate GLB files for each body shape. If you have two separate versions of the wearable, one for male and one for female, you can add one of the representations during the upload process and then add the other later using the editor. If your wearable is meant to be unisex, make sure to upload a single GLB file that is designed to fit both male and female versions.
 
 ![](../../../.gitbook/assets/03_body_shape.png)
 
-#### **Rarity**
+### **Rarity**
 
 Select the Rarity of your item.
 
@@ -37,13 +37,13 @@ Select the Rarity of your item.
 | Uncommon  | 10,000          |
 | Common    | 100,000         |
 
-#### **Category**
+### **Category**
 
 Wearables are organized into different categories, depending on what part of an avatar they modify. Select the appropriate category for your item.
 
 ![](../../../.gitbook/assets/05_category.png)
 
-#### **Custom Thumbnails**
+### **Custom Thumbnails**
 
 You can add your own custom thumbnail by clicking on the camera icon and browsing your computer. **The thumbnail must be 256px square .png file with transparent background.** Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
 
@@ -55,13 +55,13 @@ You can add your own custom thumbnail by clicking on the camera icon and browsin
 <img src="../../../.gitbook/assets/07_thumbnail (1).png" alt="" data-size="original">
 {% endhint %}
 
-#### **Properties**
+### **Properties**
 
 Below the thumbnail you're going to find the properties of your wearable, number of triangles of your model, number of materials and textures.
 
 ![](<../../../.gitbook/assets/08_properties (1).png>)
 
-### **Uploading Mouth, Eyes and Eyebrows**
+## **Uploading Mouth, Eyes and Eyebrows**
 
 The mouth, eyes and eyebrows category have a different behaviour in the editor because these are just .png files. To upload these just drag and drop the png file as a transparent image (256X256 pixels). Mouth is going to be automatically tinted by skin color, same for the eyebrows tinted by the hair color.
 
@@ -75,7 +75,7 @@ After that uploading your wearables you will end up with a screen like this, tha
 
 ![](<../../../.gitbook/assets/11_list_wearables (1).png>)
 
-### **Setting the Price of Your Wearables**
+## **Setting the Price of Your Wearables**
 
 Once you publish your collection and it gets approved, you can then enable the sales on your collection.
 
@@ -99,11 +99,11 @@ Once you click on _**Preview**_, you will have the editor open. You can edit all
 
 ![](<../../../.gitbook/assets/14_editor (1).png>)
 
-### **Description**
+## **Description**
 
 This is a brief statement describing your item that will be displayed in the marketplace.
 
-### **Overrides**
+## **Overrides**
 
 Overrides determine which Wearable categories or avatar body parts your item will hide. For instance, a hat with attached hair might need to hide the _Hair_ category. A deep-sea diver helmet may require hiding head accessories like earrings, eyewear, tiaras, etc., which wouldn’t be visible. Multiple options can be selected for each override.
 
@@ -114,15 +114,15 @@ Overrides determine which Wearable categories or avatar body parts your item wil
 Note: The overrides you select will be the suggested default settings for your Wearable. However, users can customize which Wearables are hidden or showing from the Backpack.
 {% endhint %}
 
-### **Tags**
+## **Tags**
 
 Tags are simply descriptive words that users can use when searching or filtering for items. These are relevant to competitions or events!
 
-### **VRM Export Permission**
+## **VRM Export Permission**
 
 When this property is enabled, it will allow owners of your item to include it in VRM Avatar Exports so they can show it off outside of Decentraland.
 
-### **Outline**
+## **Outline**
 
 The Outline toggle controls whether your wearable is compatible with Decentraland's outline rendering system (used in Medium/High quality settings). By default, this is enabled for all new wearables.
 
@@ -136,7 +136,7 @@ Most wearables work fine with the default setting (enabled). Only disable this i
 
 ![](../../../.gitbook/assets/26_outline.png)
 
-### **Adding Another Representation**
+## **Adding Another Representation**
 
 If your wearable has a different representation for male and female you will need to upload another file. So far, you only have one uploaded. In the example, it was the female version of the Krampus Sweater. To add the other representation, click on the three dots (_…_) at the top right, next to _**Properties**_ and select _**Add male/female**_ representation. In the example below, we needed the male version.
 
@@ -146,7 +146,7 @@ Once you click on it, you will get the Add Male/Female representation window, dr
 
 ![](../../../.gitbook/assets/16_add_male_representation_01.png) ![](../../../.gitbook/assets/17_add_male_representation_02.png)
 
-### **Preview**
+## **Preview**
 
 To preview your wearable, hover your mouse over the wearable icon on the top left and click on the eye symbol.
 
@@ -156,7 +156,7 @@ By clicking on the icon at the lower left you will be able to edit the avatar. T
 
 ![](<../../../.gitbook/assets/19_edit_avatar_wearable_03 (1).gif>)
 
-### **Testing in World**
+## **Testing in World**
 
 Even after testing the wearable in the editor, it’s important to check how it’s actually going to look like and behave in Decentraland. To test it in world, go to the Collections tab. Select the desired collection and click the button _**See in World**_.
 
@@ -174,6 +174,6 @@ Click on _**TRUST PEER-TESTING.DECENTRALAND.ORG**_ and a pop-up will show up. Si
 
 ![](../../../.gitbook/assets/28_wearable_world.gif)
 
-### **Before Publishing**
+## **Before Publishing**
 
 Make sure to set the price properly, add a nice description and double check if all the information and settings are right. If you’ve filled all the information necessary you will see _**Done**_ as the status of your item.

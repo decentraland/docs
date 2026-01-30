@@ -8,7 +8,7 @@ If you have a scene created with other tools than the Creator Hub, you can easil
 
 The Creator Hub is the recommended tool for creating Decentraland scenes. It has a much more polished interface than the Web Editor and allows you to combine the easy drag-and-drop interface with the ability to customize further with code. It also allows you to run your scene preview using the latest desktop client.
 
-### Migrate from Web Editor
+## Migrate from Web Editor
 
 To edit the code in a scene created with the Web Editor, you must export the scene to your machine and open it with the Creator Hub.
 
@@ -32,7 +32,7 @@ Once you're done, you can keep working on your project inside the Creator Hub, w
 
 You can also edit the files under the `/src` folder to add behavior with code to your scene. See [Combine with code](../code/overview.md) for how to edit the code of your scene.
 
-### Migrate a code-only project
+## Migrate a code-only project
 
 You can import any code-only project into the Creator Hub. To do this,
 

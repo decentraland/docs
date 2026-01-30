@@ -18,7 +18,7 @@ Please note that raycasts only hit objects with colliders. So if you want to det
 
 It's also a good practice to assign custom [collision layers](../3d-essentials/colliders.md#collision-layers) to 3D models, so that rays only need to calculate collisions against the relevant entities, instead of against everything that has a collider.
 
-### Create a ray
+## Create a ray
 
 All rays have a point of origin and a direction. The point of origin is based on an entity's position, taking the values on the entity's Transform component. The direction of a ray can be defined in 4 different ways:
 
@@ -140,7 +140,7 @@ raycastSystem.registerTargetEntityRaycast(
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Raycast result
+## Raycast result
 
 The callback function that handles the raycast receives an object containing data about the ray itself, and any entities that were hit.
 
@@ -193,7 +193,7 @@ raycastSystem.registerLocalDirectionRaycast(
 **📔 Note**: You can get a raycast result from hitting an entity on a different scene.
 {% endhint %}
 
-### Handle hit entities
+## Handle hit entities
 
 When you get a raycast result that hit an entity, you can use the `entityId` to interact with the entity and its components. An entity is [nothing more than a number](../architecture/entities-components.md#overview), so the `entityId` value itself can be interpreted as an `Entity` type.
 
@@ -203,7 +203,7 @@ const transform = Transform.get(entity)
 console.log(transform.position)
 ```
 
-### Collision layers
+## Collision layers
 
 It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows to to list only specific collision layers, which can include the physics layer (that blocks player movement), the pointer layer (which is used for pointer events), and 8 custom layers that you can assign freely to whatever your needs are. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
 
@@ -229,7 +229,7 @@ raycastSystem.registerLocalDirectionRaycast(
 )
 ```
 
-### Recurrent raycasting
+## Recurrent raycasting
 
 When using the functions of the `raycastSystem`, the default behavior is to create a single ray, that will query for collisions once. As an alternative, you can set the `continuous` field to _true_ to run a query and the callback function on every tick of the game loop.
 
@@ -328,7 +328,7 @@ The example above runs a recurring raycast every 0.1 seconds. It uses a timer co
 **💡 Tip**: Use the `interval` function in the [SDK Utils library](https://github.com/decentraland/sdk7-utils) for a simpler way to run a function at a fixed interval.
 {% endhint %}
 
-### Raycasts via a system
+## Raycasts via a system
 
 Another way to perform recurrent raycasts is to execute them from within the recurring function of a system. This allows you to have a lot more control about when and how these work. Instead of registering a callback function, you can perform a raycast query with `raycastSystem.registerRaycast` and then check the data returned by this operation, all within the function of the system.
 
@@ -351,11 +351,11 @@ engine.addSystem((deltaTime) => {
 	})
 ```
 
-### Collide with the player
+## Collide with the player
 
 You can't directly hit the player's avatar or those of other players with a ray, but what you can do as a workaround is position an invisible entity occupying the same space as a player using the [AvatarAttach component](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), and check collisions with that cube.
 
-### Raycasts from the player
+## Raycasts from the player
 
 To trace a ray from the player's position in the direction faced by the camera, you can trace a ray using the camera or the avatar [Reserved entities](../architecture/entities-components.md#reserved-entities).
 
@@ -387,7 +387,7 @@ raycastSystem.registerGlobalDirectionRaycast(
 **📔 Note**: Keep in mind that in 3rd person the cursor could in the future not behave the same as in 1st person. It's recommended to only use this if the player is in 1st person.
 {% endhint %}
 
-### Raycast from the cursor position
+## Raycast from the cursor position
 
 You can also trace a ray from the player's cursor position into the 3D world. This can be used to drag objects around, shooters, etc.
 
@@ -460,9 +460,9 @@ const rayCastSystem = (t: number) => {
 **💡 Tip**: In this example we use the primary button (E) to trigger the raycast. We don't use the pointer button (left click) because clicking and dragging also shifts the camera angle by default. If you want to prevent rotating the camera while dragging, you can use a [Virtual Camera](../3d-essentials/camera.md) to set the camera angle as fixed.
 {% endhint %}
 
-### Advanced syntax
+## Advanced syntax
 
-#### Create a raycast component
+### Create a raycast component
 
 A Raycast component describes the invisible ray that is used to query for intersecting entities. The ray is traced starting at the entity's position, as defined by the Transform component and affected by that of any parent entities. The direction can be defined in various ways,
 
@@ -550,7 +550,7 @@ Raycast.createOrReplace(entity1, {
 })
 ```
 
-#### Raycast results component
+### Raycast results component
 
 {% hint style="warning" %}
 **📔 Note**: The easiest way to deal with raycast results is to use `raycastEventSystem`, and register a callback function as part of the same statement that creates the ray. The`RaycastResult` component is used internally by that that interface, but also exposed to enable more advanced custom logic.

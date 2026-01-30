@@ -8,7 +8,7 @@ You can define a UI that includes dynamic elements, that are updated on every ti
 
 This is very useful for including elements like a timer, a player's score, etc. But you can even take this a step forward and define entire UI structures based on state.
 
-### Reference variables
+## Reference variables
 
 You can simply reference a variable in any property of one of the components in a uiEntity. As the variable changes value, the UI will adapt accordingly.
 
@@ -67,7 +67,7 @@ uiText={{
 }}
 ```
 
-### Call functions from inside a UI
+## Call functions from inside a UI
 
 You can also call a function from inside a JSX definition, returning a value to use in a property of the UI. Functions that are called from inside this JSX definition are called recurrently, on every tick of the game loop.
 
@@ -114,7 +114,7 @@ export function main() {
 }
 ```
 
-### Toggle a UI on and off
+## Toggle a UI on and off
 
 The easiest way to toggle a UI on and off is to use a variable for the value of the `display` property in an entity's `uiTransform`. The `display` property makes a UI entity and all of its children invisible if set to `none`.
 
@@ -181,7 +181,7 @@ export function main() {
 }
 ```
 
-### Dynamic UI entities
+## Dynamic UI entities
 
 The examples in the sections above show how to dynamically change a single property in an entity, but you can also define entire structures of entities that can scale based on dynamically changing data. This kind of pattern is common in web development when using libraries like React, and is extremely powerful. With this you can define extremely flexible and scalable UI applications.
 

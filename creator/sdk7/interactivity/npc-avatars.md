@@ -10,7 +10,7 @@ Display an avatar as an entity in a scene.
 **💡 Tip**: Try the [NPC Toolkit library](https://github.com/decentraland-scenes/dcl-npc-toolkit) for an easier experience dealing with NPCs, especially if you need to interact via a conversation tree.
 {% endhint %}
 
-### Create an avatar
+## Create an avatar
 
 The following snippet creates an avatar with random wearables and body shape, and name "NPC".
 
@@ -51,7 +51,7 @@ See [Imports](../getting-started/coding-scenes.md#imports) for how to handle the
 **📔 Note**: The URN fields must follow the same format used for [NFTShapes](../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
 {% endhint %}
 
-### Animations
+## Animations
 
 Avatars play default idle animations while still.
 
@@ -73,7 +73,7 @@ Transform.create(myAvatar, {
 
 The `expressionTriggerId` field supports all [default animations](player-avatar.md#default-animations), as well as custom animations [from a scene file](player-avatar.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
-#### Looping Animations
+### Looping Animations
 
 Animations on an `AvatarShape` play once, if you want the avatar to keep looping an animation, you should create a system that tells it to play the animation again every couple of seconds.
 
@@ -117,7 +117,7 @@ engine.addSystem((dt: number) => {
 **💡 Tip**: You must know the duration of the emote, and make that the duration of the system. If you create an emote that fixes the avatar still in a same pose, it's recommendable to make the duration of the emote longer than the system. That way, you can make sure that there are no artifacts when finishing and resetting the animation.
 {% endhint %}
 
-### Copy wearables from player
+## Copy wearables from player
 
 The following snippet changes the wearables and other characteristics of an NPC avatar to match those that the player currently has on. This could be used in a scene as a manequin, to show off a particular wearable or emote combined with the player's current outfit.
 
@@ -143,7 +143,7 @@ export function swapAvatar(avatar: Entity) {
 }
 ```
 
-### Display only wearables
+## Display only wearables
 
 Use the `show_only_wearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
 
@@ -169,7 +169,7 @@ This is useful for displaying wearables, for example in a store.
 **💡 Tip**: If a wearable is rather small, try setting the `scale` of the `Transform` to a larger value.
 {% endhint %}
 
-### Attach an entity to an NPC
+## Attach an entity to an NPC
 
 You can use the `AvatarAttach` feature to fix an entity to one of the bones of an NPC avatar, for example so that the NPC is holding an object on their hand. The entity will move together with the avatar when it animates.
 

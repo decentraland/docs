@@ -4,7 +4,7 @@ description: Learn what special types exist, including Vector, Quaternions, and 
 
 # Special Types
 
-### Vector3
+## Vector3
 
 Decentraland uses _vector3_ data to represent paths, points in space, and directions. Vectors can also be used to define rotation orientations, as a friendlier alternative to _quaternions_. A Vector3 object contains numerical values for each of the _x_, _y_, and _z_ axis.
 
@@ -48,7 +48,7 @@ To create a [custom component](../architecture/custom-components.md) with parame
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-#### Shortcuts for writing direction vectors
+### Shortcuts for writing direction vectors
 
 The following shortcuts exist for defining generic vectors:
 
@@ -60,7 +60,7 @@ The following shortcuts exist for defining generic vectors:
 * `Vector3.Forward()` returns _(0, 0, 1)_
 * `Vector3.Backward()` returns _(0, 0, -1)_
 
-### Quaternions
+## Quaternions
 
 Quaternions are used to store rotation information for the Transform component. A Quaternion is composed of four numerical values between -1 and 1: _x_, _y_, _z_, _w_.
 
@@ -117,7 +117,7 @@ To create a [custom component](../architecture/custom-components.md) with parame
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Scalars
+## Scalars
 
 A scalar is nothing more than a number. For that reason, it doesn't make much sense to instantiate a `Scalar` object to store data, as you can do the same with a number. The functions in the `Scalar` namespace however expose several handy functions (similar to those in the _Vector3_ namespace), that can be used on numbers.
 

@@ -104,7 +104,7 @@ export const uiMenu = () => (
 )
 ```
 
-### Responsive text size
+## Responsive text size
 
 Use the `scaleFontSize()` function to provide font values that adjust to the player's screen size. When setting the `fontSize` property of a text UI entity, pass this function instead of a single number.
 

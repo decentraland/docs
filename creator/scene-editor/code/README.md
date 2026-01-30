@@ -10,7 +10,7 @@ For example, you can take advantage of an existing lever smart item, that alread
 
 See [Reference items in code](reference-items.md) for how to fetch items by name or by tags from your code.
 
-### Editing code
+## Editing code
 
 You must install a code editor on your machine to edit the code of your scene. The recommended options are:
 
@@ -28,7 +28,7 @@ Once installed, you may need to select your Code Editor in the settings of the C
     ![](../../../.gitbook/assets/settings-icon.png)
 2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Chose from your device** to find it.
 
-### Open a scene's code
+## Open a scene's code
 
 Once you installed a code editor on your machine, and selected it in the settings of the Creator Hub, you can click the **< > CODE** button to open it on your scene project.
 
@@ -46,7 +46,7 @@ Add your custom code in the `index.ts` file under `/src`, inside the `main()` fu
 
 If you have a preview window open running your scene, whenever you change the code in your files and save, the scene reloads automatically with your changes.
 
-### Using AI with Cursor
+## Using AI with Cursor
 
 If you are using Cursor, you can use the AI assistant to help you write code. To do this,
 
@@ -67,7 +67,7 @@ npx sdk-commands get-context-files
 **💡 Tip**: You can also add your own context files to this folder to help the AI assistant understand your scene and project. If you do, make sure to add them to a new file in that folder, as the default files are overwritten when SDK updates happen.
 {% endhint %}
 
-### Version control
+## Version control
 
 We recommend that you create a repo for your project on GitHub, and use it to keep track of your project's versions and to work collaboratively with others.
 
@@ -77,7 +77,7 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 **📔 Note**: Upload the entire project folder to a GitHub repo, but make sure the `/node-modules` or `/bin` folders and the `package-lock.json` file are all included in the `.gitignore` file, to avoid syncing them. This should be the case if you configure the repo to be of type `node`. These files are all auto-generated, and the content may differ for different machines.
 {% endhint %}
 
-### See also
+## See also
 
 * [Smart items - Basics](../interactivity/smart-items.md)
 * [Smart items - Advanced](../interactivity/smart-items-advanced.md)

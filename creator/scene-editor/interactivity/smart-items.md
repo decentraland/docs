@@ -16,7 +16,7 @@ You can recognize which items in your scene are smart because they have the ligh
 
 ![ ](../../../.gitbook/assets/smart-item-icon.png)
 
-### Using items
+## Using items
 
 To use a smart item, drag it into the scene like any other item. All items include a default behavior, run a scene preview try it out.
 
@@ -34,7 +34,7 @@ Here are some common items and their default behaviors:
 
 All smart items can be configured to behave in custom ways. For example how far a platform moves, or what a button activates.
 
-### Configure an item
+## Configure an item
 
 Select an item in the Scene Editor to view all of its properties on the right.
 
@@ -57,7 +57,7 @@ All items have an **Advanced Mode** that lets you configure almost anything abou
 
 ![ ](../../../.gitbook/assets/advanced-mode.png)
 
-### Call an action on another item
+## Call an action on another item
 
 Smart items can trigger actions on other smart items, so that they happen every time the item is activated. Just select the item you want to call, from a list of all items in the scene, then select an action. Different items expose different actions.
 
@@ -77,11 +77,11 @@ You can also chain actions. For example, if the door that is opened by the lever
 
 If you use the [Advanced mode](smart-items-advanced.md) you can also add conditional logic to these kinds of actions.
 
-### Special smart items
+## Special smart items
 
 Some smart items have unique characteristics that make them very handy for common scenarios:
 
-#### Trigger areas
+### Trigger areas
 
 Use the Trigger Area smart item to trigger an action when the player walks into an area.
 
@@ -93,7 +93,7 @@ Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on
 
 See [Trigger area](trigger-area.md) for more info.
 
-#### Invisible walls
+### Invisible walls
 
 A collection of invisible shapes that can block players from walking through or clicking through an area.
 
@@ -101,13 +101,13 @@ These invisible walls can be useful when importing a 3D model that doesn't have 
 
 See [Colliders](../../sdk7/3d-essentials/colliders.md) for more info.
 
-#### Click area
+### Click area
 
 An invisible cube that can be clicked by players to trigger actions on any other smart items. This item can be enabled or disabled by any other smart item, when disabled it won't be clickable. You can also set the text that players see when pointing their cursor at it.
 
 ![ ](../../../.gitbook/assets/click-area.png)
 
-#### Playing videos
+### Playing videos
 
 Play videos from either:
 
@@ -122,7 +122,7 @@ Play videos from either:
 
 See [Play Videos](video-screen.md) for more info.
 
-#### Playing audio streams
+### Playing audio streams
 
 Play an audio stream from a URL, using hte **Audio Stream** smart item.
 
@@ -139,7 +139,7 @@ JAZZ = 'https://live.vegascity.fm/radio/8010/the_flamingos.mp3'
 
 You can adjust the volume of your stream. Note that the audio from the stream is not positional, it is heard at an even volume through all your scene.
 
-#### Displaying NFTs
+### Displaying NFTs
 
 To display an NFT on a picture frame, use the **NFT** smart item. You must provide the following fields:
 
@@ -176,7 +176,7 @@ You can also chose a **Frame style**, to frame the NFT in a variety of different
 
 See [Display an NFT](smart-items.md) for more details.
 
-#### Health bars
+### Health bars
 
 ![ ](../../../.gitbook/assets/health-bar.png)
 
@@ -211,7 +211,7 @@ Health bars can be configured to affect anything! For example, add a health bar 
 
 Weapons like the **Sword** can be picked up by the player, and then used to cause damage on any other item with a health bar that's near the player when performing the action.
 
-### Multiplayer
+## Multiplayer
 
 Almost all smart items have multiplayer behavior, so that all players in the scene share the same experience as the items change state. If player A opens a door, player B also sees that door open. If player C then walks into the scene while the other players are still there, she will see the door as already open too.
 
@@ -221,13 +221,13 @@ Make sure you design your scene so that the actions of one player don't sabotage
 
 You can also disable the multiplayer behavior of an item, see [Smart Items - Advanced](smart-items-advanced.md).
 
-### Troubleshooting
+## Troubleshooting
 
 * _An item in my scene should be clickable, but can't be clicked_.
 
 Make sure that it's not being obstructed by something else. You can't click through other items. Some items have a _collider mesh_ that has a simplified geometry that may be obstructing your item, even though its visible shape doesn't seem to be doing it. Try moving the item to see what happens.
 
-### See also
+## See also
 
 * [Smart items - Advanced](smart-items-advanced.md)
 * [States and conditions](states-and-conditions.md)

@@ -6,7 +6,7 @@ description: Legacy functions
 
 The following functions are all legacy and should be avoided. They still work, but in the future they might stop being supported. All these examples include links to alternative ways to obtain the same information or achieve the same results.
 
-### Player enters or leaves scene
+## Player enters or leaves scene
 
 {% hint style="warning" %}
 **📔 Note**: The `onEnterSceneObservable` and `onLeaveSceneObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](event-listeners.md#player-enters-or-leaves-scene).
@@ -63,7 +63,7 @@ export function main() {
 }
 ```
 
-### Player connects or disconnects
+## Player connects or disconnects
 
 {% hint style="warning" %}
 **📔 Note**: The `getConnectedPlayers` function and the `onPlayerConnectedObservable` and `onPlayerDisconnectedObservable` events are deprecated on SDK 7.x. Use `onEnterScene` instead, see [Player enters or leaves scene](event-listeners.md#player-enters-or-leaves-scene). Each scene is now a distinct comms island, making it the same to be connected or on the same scene.
@@ -101,7 +101,7 @@ onPlayerDisconnectedObservable.add((player) => {
 
 Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all current players, you can query for existing players upon scene loading, and then listen to this event for updates.
 
-### Query all players in scene
+## Query all players in scene
 
 {% hint style="warning" %}
 **📔 Note**: The `getPlayersInScene` function is deprecated on SDK 7.x. Instead, iterate over all players with a `PlayerIdentityData` component. See [Fetch all players](user-data.md#fetch-all-players).
@@ -120,7 +120,7 @@ executeTask(async () => {
 })
 ```
 
-### Player plays animation
+## Player plays animation
 
 {% hint style="warning" %}
 **📔 Note**: The `onPlayerExpressionObservable` event is deprecated on SDK 7.x. Use the `AvatarEmoteCommand` component instead, see [Player plays animation](event-listeners.md#player-plays-animation).
@@ -144,7 +144,7 @@ The event includes the following information:
 **📔 Note**: This event is triggered any time the player makes an emote and the scene is loaded. The player could be standing in a nearby scene when this happens.
 {% endhint %}
 
-### Player changes profile
+## Player changes profile
 
 {% hint style="warning" %}
 **📔 Note**: The `onProfileChanged` event is deprecated on SDK 7.x. Use the `AvatarEquippedData` component instead, see [Player changes profile](event-listeners.md#player-changes-profile).
@@ -172,7 +172,7 @@ When this event is triggered, you can then use the [getUserData()](user-data.md#
 **📔 Note**: This event is only triggered by changes to the current player, not by changes on the profiles of other nearby players.
 {% endhint %}
 
-### Scene finished loading
+## Scene finished loading
 
 {% hint style="warning" %}
 **📔 Note**: The `onSceneReadyObservable` event is deprecated from SDK v7.x. This function is no longer relevant. You can ensure that something is executed after the scene finished loading by running it inside the `Main()` function. See [Scene lifecycle](../getting-started/coding-scenes.md#scene-lifecycle)
@@ -188,7 +188,7 @@ onSceneReadyObservable.add(() => {
 })
 ```
 
-### Deprecated player data methods
+## Deprecated player data methods
 
 {% hint style="warning" %}
 **📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
@@ -228,7 +228,7 @@ Both `getUserData()` and `getPlayerData()` return the same data structure availa
 
 The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
 
-### Get skybox time
+## Get skybox time
 
 {% hint style="warning" %}
 **📔 Note**: The `getDecentralandTime()` function is deprecated from SDK v7.x.x. Use `getWorldTime()` instead. See [Get Decentraland Time](runtime-data.md#get-decentraland-time).
@@ -243,7 +243,7 @@ executeTask(async () => {
 })
 ```
 
-### Get realm
+## Get realm
 
 {% hint style="warning" %}
 **📔 Note**: The `getCurrentRealm()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead. See [Get Realm Data](runtime-data.md#get-realm-data).
@@ -261,7 +261,7 @@ async function fetchPlayerData() {
 fetchPlayerData()
 ```
 
-### Is preview mode
+## Is preview mode
 
 {% hint style="warning" %}
 **📔 Note**: The `isPreviewMode()` function is deprecated from SDK v7.x.x. Use `getRealm()` instead, which contains a `preview` property. See [Get Realm Data](runtime-data.md#get-realm-data).
@@ -279,7 +279,7 @@ executeTask(async () => {
 })
 ```
 
-### Player clicks on another player
+## Player clicks on another player
 
 Whenever the player clicks on another player, you can detect an event.
 
@@ -313,7 +313,7 @@ The event includes the following data:
 **💡 Tip**: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area](player-avatar.md#avatar-modifier-areas).
 {% endhint %}
 
-### Player locks/unlocks cursor
+## Player locks/unlocks cursor
 
 {% hint style="warning" %}
 **📔 Note**: The `onPointerLockedStateChange` event is deprecated from SDK v7.x. See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) for a non-deprecated alternative.
@@ -341,7 +341,7 @@ onPointerLockedStateChange.add(({ locked }) => {
 **📔 Note**: This event is triggered even if the player is not standing directly inside the scene.
 {% endhint %}
 
-### Player changes realm or island
+## Player changes realm or island
 
 Players in decentraland exist in separate _realms_, and in separate _islands_ within each realm. Players in different realms or islands cant see each other, interact or chat with each other, even if they're standing on the same parcels.
 
@@ -370,13 +370,13 @@ As players move through the map, they may switch islands to be grouped with thos
 
 If your scene relies on an [3rd party server](../networking/authoritative-servers.md) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
 
-### Crypto functions
+## Crypto functions
 
 {% hint style="warning" %}
 **📔 Note**: The functions `requirePayment()`, `signMessage()`, `convertMessageToObject()` are deprecated. Use the `sendAsync()` function instead. See [Scene blockchain operations](deprecated-functions.md). There are also libraries that can help simplify some common use cases with these functions.
 {% endhint %}
 
-### Video Events
+## Video Events
 
 {% hint style="warning" %}
 **📔 Note**: The `onVideoEvent` event is deprecated from SDK v7.x. See [Event listeners](../media/video-playing.md#video-events) for a non-deprecated alternative.

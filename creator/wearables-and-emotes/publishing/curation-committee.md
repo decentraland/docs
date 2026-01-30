@@ -25,7 +25,7 @@ The current members of this committee are:
 * Fabeeo Breen, 3D Artist and Independent wearable creator
 * Yannakis, 3D Artist and Independent wearable creator
 
-### Why Does Decentraland Need a Curation Committee?
+## Why Does Decentraland Need a Curation Committee?
 
 Wearables, emotes and other assets are a critical aspect of the avatar creation and customization experience. With the addition of the Editor, any member of the community can create their own wearables and emotes to share with other users.
 

@@ -8,7 +8,7 @@ It’s of vital importance to us that Decentraland content creators are free to 
 
 In this document we share Decentraland’s Design Values, with the objective of promoting what we consider are the best practices for designing the interface and experience for players. We hope that these criteria can serve as a starting point to build and/or improve the scenes that make up the Metaverse.
 
-### Design values
+## Design values
 
 All scenes in Decentraland should be designed with these values in mind:
 
@@ -22,9 +22,9 @@ All scenes in Decentraland should be designed with these values in mind:
 * **Purposeful**: Players have a strong reason to come back.
 * **Enjoyable**: Players enjoy how things look, sound and feel
 
-### User experience
+## User experience
 
-#### Where to start?
+### Where to start?
 
 What is the objective of your scene? Is it to offer a beautiful landscape to contemplate and explore? Is it a museum? Is it a single player game? A competitive one? Or does it follow a linear storytelling flow?
 
@@ -50,25 +50,25 @@ A welcome message should communicate the following to the player:
 * Instructions/Next steps
 * _(Optional)_ Controls. Mostly useful if your scene uses global button events. Otherwise, items themselves indicate how to use them when hovering over them.
 
-#### Motivation
+### Motivation
 
 You’ll likely want your visitors to keep coming back to your scene, think of ways in which you can motivate them to do so! Ask yourself “What would make a player want to return to my scene, or want to recommend it to a friend?”
 
 For example, you can challenge them, giving them something to achieve that will be hard enough to take several attempts. You can also organize competitive multiplayer events, which are also an interesting opportunity to socialize. Make your scene a dynamic place where players feel that they enjoy spending time there!
 
-#### Feedback and Sound
+### Feedback and Sound
 
 Sound plays a double key role, don’t miss out on using it! On one hand it’s vital for generating immersion, many things that won’t feel real if they aren’t accompanied by sound. The other crucial thing sound is for is providing feedback to a player’s actions. If you rely only on visual cues, you can’t be certain that a player will be looking in the right direction to see the effects of their actions. Through using sound, you can ensure that they are aware that something happened. If you use visual and sound cues in combination, hearing the sound invites the player to look around for the visual cue, in case they didn’t see it.
 
 Keep in mind that some players might be playing with their sound turned off. If you’re using sound as a way to provide scene instructions or a key piece in the game mechanics, try to also provide something visual to hint in the same direction. For example, you could display text at the bottom of the UI to accompany these sounds, like subtitles in a movie.
 
-### User Interface
+## User Interface
 
 This section is aimed at helping you construct a narrative through the design of your scene that drives the player’s focus onto the elements that matter the most. Making good use of the tools described here can make their experience a lot more immersive and successful.
 
 We can’t understate how valuable color, icons, motion and scale are for sending the right message across: everything in the scene conveys a meaning, remember that.
 
-#### Layout
+### Layout
 
 Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. The default Decentraland UI, including minimap, chat, etc, is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
 
@@ -82,7 +82,7 @@ There are no restrictions for placing UI elements in the left 25% of the screen,
 
 Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 
-#### Color
+### Color
 
 It’s important to choose a color palette, as this gives your scene an identity and also signals relationships and hierarchy between elements.
 
@@ -114,7 +114,7 @@ Warning! When selecting colors that will be shown in superposition, take special
 
 <figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-icons.png" alt="Icon contrast" width="300"><figcaption><p>Both icons can be distinguished, but the first one has better contrast. It becomes easier to read and requires less effort to understand.</p></figcaption></figure>
 
-#### Typographic hierarchy
+### Typographic hierarchy
 
 Try to define at least a 3-type scale for Titles, Subtitles, and Body. Be careful with the use of color and font size. All font sizes should be 12 px or larger.
 
@@ -122,19 +122,19 @@ If you are going to place text that is displayed over imagery (or over the world
 
 <figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-text-over-images.png" alt="Text over images" width="300"><figcaption><p>Prioritize legibility</p></figcaption></figure>
 
-#### Icons
+### Icons
 
 Icons synthesise information, helping you identify actions through images. They are an amazingly powerful tool for providing input that can be interpreted fast, as opposed to using text to label things, which demands more of the player’s attention and time. It’s also useful to show icons in combination with text, as this helps disambiguate their meanings.
 
 <figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-icons2.png" alt="Icon examples" width="300"><figcaption><p>Use icons as a universal language</p></figcaption></figure>
 
-#### Motion
+### Motion
 
 Use motion to provide feedback and lead the way when needed. Motion helps players focus their attention and helps maintain continuity as the UI changes.
 
 <figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-glow.png" alt="Adding glow" width="300"><figcaption><p>Use particles, scale, or fading margins to make things stand out</p></figcaption></figure>
 
-#### Writing and content structure
+### Writing and content structure
 
 UI text can make interfaces more usable and gives players more confidence in their actions. Always make UI text as concise as possible. Players are there to play, not to read. Any text that seems too long won’t be read by most players.
 

@@ -12,11 +12,11 @@ The rendered shape of an entity is determined by what component it uses.
 
 ![](../../../.gitbook/assets/ecs-simple-components-new.png)
 
-### Use the Scene Editor in Creator Hub
+## Use the Scene Editor in Creator Hub
 
 The easiest way to give an entity a shape is to use the Scene Editor. You can add a **Mesh Renderer** component to provide a primitive shape, or a **GLTF** component to reference a 3D model from a file. See [Add Components](../scene-editor/build/components.md#add-components).
 
-### Primitive shapes
+## Primitive shapes
 
 Several basic shapes, often called _primitives_, can be added to an entity by giving the entity a `MeshRenderer` component.
 
@@ -88,7 +88,7 @@ MeshRenderer.setSphere(myCube)
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### 3D models
+## 3D models
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _.glTF_ or _.glb_ (binary _.glTF_). [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
@@ -122,7 +122,7 @@ Keep in mind that all models, their shaders and their textures must be within th
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-#### Free libraries for 3D models
+### Free libraries for 3D models
 
 Instead of building your own 3D models, you can also download them from several free or paid libraries.
 
@@ -145,7 +145,7 @@ To get you started, below is a list of libraries that have free or relatively in
 
 Note that in several of these sites, you can choose what format to download the model in. Always choose _.glTF_ format if available. If not available, you must convert them to _glTF_ before you can use them in a scene. For that, we recommend importing them into Blender and exporting as _.glTF_ from there.
 
-#### Optimize 3D models
+### Optimize 3D models
 
 To ensure that 3D models in your scene load faster and take up less memory, follow these best practices:
 
@@ -153,7 +153,7 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 * If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
 * If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them underground, or at a scale of 0. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See [entities and components](../sdk7/architecture/entities-components.md#pooling-entities-and-components)
 
-### Stretching a shape
+## Stretching a shape
 
 Primitive shapes and 3D models have default dimensions that you can alter by changing the scale in the entity's `Transform` component.
 
@@ -168,7 +168,7 @@ Transform.create(primitiveEntity, {
 })
 ```
 
-### Make invisible
+## Make invisible
 
 You can make an entity invisible by giving an entity a `VisibilityComponent`, with its `visible` property set to _false_.
 
@@ -186,7 +186,7 @@ The `VisibilityComponent` works the same for entities with primitive shapes and 
 
 If an entity is invisible, its collider can block a player's path and/or prevent clicking entities that are behind it, depending on the collision layers assigned to the collider.
 
-#### Propagate visibility
+### Propagate visibility
 
 You can use the `propagateToChildren` field on the `VisibilityComponent` to apply a configuration to every child in the entity's children tree. If `propagateToChildren` is set to _true_, these settings affect all children on all levels going down. This can save you a lot of tedious work marking each child entity as invisible or visible too.
 
@@ -217,7 +217,7 @@ If an entity doesn't have its own `VisibilityComponent`, then its visibility is 
 
 
 
-### Loading state
+## Loading state
 
 If a 3D model is fairly large, it might take some noticeable time to be rendered, this time may vary depending on the player's hardware and many other factors. Sometimes you need to make sure that a model finished loading before you perform another action. For example, if you want to teleport the player to a platform up in the sky, you need to first make sure the platform is fully rendered before moving the player there, or else the player might fall right through the platform.
 
@@ -253,7 +253,7 @@ export function main() {
 }
 ```
 
-### Advanced syntax
+## Advanced syntax
 
 The complete syntax for creating a `MeshRenderer` component, without any helpers to simplify it, looks like this:
 

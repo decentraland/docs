@@ -14,7 +14,7 @@ Supported sound formats vary depending on the browser, but it's recommended to u
 
 _.wav_ files are also supported but not generally recommended as they are significantly heavier.
 
-### Play sounds
+## Play sounds
 
 The easiest way to play a sound is to add an **Audio Source** component visually on the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md) and set it to **Start Playing** and **Loop**. See [Add Components](../scene-editor/build/components.md#add-components).
 
@@ -86,7 +86,7 @@ Each entity can only have a single `AudioSource` component, that can only play a
 **📔 Note**: Sounds are played on each player's local instance. Other nearby players won't hear the same sounds unless their local scene explicitly plays them too.
 {% endhint %}
 
-### Stopping sounds
+## Stopping sounds
 
 To stop an entity from playing its sound, use the `AudioSource.stopSound()` function. You only need to specify the entity, since each entity has a single `AudioSource` component, and each `AudioSource` component plays a single file at a time.
 
@@ -119,7 +119,7 @@ function stopSound(entity: Entity) {
 stopSound(sourceEntity)
 ```
 
-### Looping
+## Looping
 
 To keep a sound playing in a continuous loop, set the `loop` field of the `AudioSource` component to _true_ before you start playing it.
 
@@ -137,7 +137,7 @@ AudioSource.create(sourceEntity, {
 
 Looping sounds is especially useful for adding background music or other background sounds.
 
-### Set volume
+## Set volume
 
 You can set the `volume` property of the `AudioSource` component to change the volume of a sound.
 
@@ -159,7 +159,7 @@ AudioSource.create(sourceEntity, {
 **📔 Note**: Of course, the volume of a sound is also affected by the distance of the player from the audio source. As the player walks away, the volume will be lower.
 {% endhint %}
 
-### Global sounds
+## Global sounds
 
 By default, all sounds from an `AudioSource` are positional. This means they appear to generate from the position of the `Transform` component, and will sound louder as the player walks closer. But you can also configure a sound to be global, so that the volume is constant, no matter where the player is standing. This is ideal for using on background music, notification sounds, and other non-positional sound.
 
@@ -177,12 +177,12 @@ AudioSource.create(sourceEntity, {
 })
 ```
 
-### Play a segment of a sound
+## Play a segment of a sound
 
 To play a segment of a longer sound file, use the `playSoundSegment()` in the SDK Utils library. See [SDK7 Utils](https://github.com/decentraland/sdk7-utils).
 
 You can also achieve this by explicitly set the `currentTime` property on an `AudioSource` component, and then stopping it after waiting for a period of time.
 
-### Audio streaming
+## Audio streaming
 
 See [Audio streaming](../sdk7/media/audio-streaming.md) to learn how you can play a live audio stream from an external source.

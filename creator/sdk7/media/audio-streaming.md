@@ -46,7 +46,7 @@ ISLA NEGRA = "https://radioislanegra.org/listen/up/basic.aac"
 ```
 {% endhint %}
 
-### Stream state
+## Stream state
 
 Query the state of an audio stream using the function `AudioStream.getAudioState()`, passing the entity that owns the `AudioStream` component.
 

@@ -15,7 +15,7 @@ The Register callback approach is especially useful if you want to describe a be
 For an entity to be interactive, it **must** have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
 {% endhint %}
 
-### Pointer down
+## Pointer down
 
 Use `pointerEventsSystem.onPointerDown()` to detect presses of a specific button.
 
@@ -25,7 +25,8 @@ This statement requires two parameters:
   * `entity`: The entity to handle
   * `opts`: An object with optional additional data:
     * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
-    * `maxDistance`: How far away can the player be from the entity to be able to interact with this entity, in meters. If the player is too far, there will be no hover feedback and pointer events won't work.
+    * `maxDistance`: The maximum distance between the entity and the player's **camera**, in meters.
+	* `maxPlayerDistance`: The maximum distance between the entity and the player's **avatar**, in meters.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
     * `hideFeedback`: If true, it hides both the hover hint and the edge highlight for this entity. _false_ by default.
     * `showHighlight`: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `hideFeedback` is _false_.
@@ -50,7 +51,7 @@ The above command leaves the callback function registered, and will be called as
 Only one `pointerEventsSystem.onPointerDown` can be registered per entity. Once added, it will keep listening for events till the listener is removed. Do not run this recurrently within a system, as that would keep rewriting the pointer event behavior.
 {% endhint %}
 
-### Hover Feedback
+## Hover Feedback
 
 It's very important to give players some kind of indication that an entity can be interacted with.
 
@@ -117,7 +118,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-#### Change existing feedback
+### Change existing feedback
 
 When registering an input action with the `EventsSystem`, this is creating a `PointerEvents` component and adding it to the interactive entity behind the scenes. This component handles the behavior of the UI hover hint. To change the behavior of the hover feedback, modify this component. See [Show feedback](system-based-events.md#show-feedback) for more about how to deal with this component.
 
@@ -127,7 +128,26 @@ const hoverFeedback = PointerEvents.getMutable(myEntity)
 hoverFeedback.pointerEvents[0].eventInfo.hoverText = 'Close door'
 ```
 
-### Pointer up
+## Distance limits
+
+The `maxDistance` and `maxPlayerDistance` options set the maximum distance between the entity and the player's camera and avatar, respectively. If the player is too far away, the entity's hightlight effect will be red rather than green, and pointer events won't work.
+
+```ts
+pointerEventsSystem.onPointerDown(
+	{ entity: myEntity, opts: { maxDistance: 10, maxPlayerDistance: 5 } },
+	function () {
+		console.log('clicked entity')
+	}
+)
+```
+
+If the scene is using a [Virtual Camera](../../3d-essentials/camera.md#virtual-camera), the `maxDistance` is measured from the virtual camera that is currently active.
+
+- If both `maxDistance` and `maxPlayerDistance` are provided, the interaction is allowed if ANY of the checks passes (OR logic). For example, if `maxDistance` is 10 meters and `maxPlayerDistance` is 5 meters, the interaction is allowed if the player is within 10 meters of the camera OR within 5 meters of the avatar.
+- If only one of the two values is provided, the interaction is allowed if the player is within the provided distance, not considering the default value of the other distance.
+- If neither of the two values are provided, the default behaves as if the `maxDistance` (camera) is 10 meters.
+
+## Pointer up
 
 Use `pointerEventsSystem.onPointerUp` to register a callback function that gets called when the indicated player lets the button up while pointing at the entity.
 
@@ -160,7 +180,7 @@ A same entity can have two different callbacks registered, one for `pointerEvent
 **📔 Note**: The hover feedback for a button up event is only displayed when the button is currently pushed down. If the player points at the entity without holding the button down, they will see no feedback, or the feedback for the button down event, if any.
 {% endhint %}
 
-### Remove callbacks
+## Remove callbacks
 
 To remove a callback function, use `pointerEventsSystem.removeOnPointerDown` or `pointerEventsSystem.removeOnPointerUp`.
 
@@ -187,7 +207,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-#### Handle multiple buttons
+### Handle multiple buttons
 
 You can't register more than one `onPointerDown` on a single entity. Ideally you should use the [System-based](system-based-events.md) approach, as this allows you to handle as many different inputs as you wish, and display a UI hover feedback hint for each button.
 

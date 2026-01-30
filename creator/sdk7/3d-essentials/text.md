@@ -87,18 +87,18 @@ TextShape.create(sign, {
 
 Text shapes can use fonts from the enum `Font`. This enum currently includes the following fonts:
 
-* `Font.FSansSerif`
-* `Font.FSerif`
-* `Font.FMonospace`
+* `Font.F_SANS_SERIF`
+* `Font.F_SERIF`
+* `Font.F_MONOSPACE`
 
-By default uses it uses `Font.FSansSerif`.
+By default uses it uses `Font.F_SANS_SERIF`.
 
 ```ts
 TextShape.create(sign, {
 	text: 'Hello World',
 	textColor: { r: 1, g: 0, b: 0 },
 	fontSize: 5,
-	font: Font.FSansSerif,
+	font: Font.F_SANS_SERIF,
 })
 ```
 

@@ -82,13 +82,22 @@ The following properties can be set:
 
 Each entity can only have a single `AudioSource` component, that can only play a single clip at a time. This limitation can be easily overcome by modifying the audio source at the time of playing a new sound, or by including multiple invisible child entities, each with their own sound.
 
-{% hint style="info" %}
-**📔 Note**: If an entity uses a sound, but is not loaded immediately at scene runtime, you can have it readily available by using the `AssetLoad` component. For more information, check the [Pre Load Resources](../optimizing/pre-load-resources.md) documentation.
-{% endhint %}
-
 {% hint style="warning" %}
 **📔 Note**: Sounds are played on each player's local instance. Other nearby players won't hear the same sounds unless their local scene explicitly plays them too.
 {% endhint %}
+
+### Pre Loading a Sound
+
+If an entity uses a sound, but is not played immediately at scene runtime, it might take some time to download. It can be available at scene runtime by using the `AssetLoad` component. 
+
+```ts
+AssetLoad.create(engine.RootEntity, {
+  assets: [
+    "assets/scene/bundle1/explosionSound.mp3",
+  ],
+})
+```
+For more information, check the [Pre Load Resources](../optimizing/pre-load-resources.md) documentation.
 
 ### Stopping sounds
 

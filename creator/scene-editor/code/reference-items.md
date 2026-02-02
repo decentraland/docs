@@ -255,11 +255,39 @@ function main() {
 **💡 Tip**: If you're not trying to do something very complicated, instead of writing code you can also create a custom smart item to handle the actions you want to perform. See [Making any item smart](../interactivity/make-any-item-smart.md).
 {% endhint %}
 
+## Get the States comoponent
+
+Smart items can include a `States` component that keeps track of the current state of an entity. For example a door could be `Open` or `Closed`, if needed you could also make it `Locked` by adding that state to the component. This component is not part of the Decentraland SDK, but you can fetch it via the `getStatesComponent()` function from the library. You can then read or write values to it components from your scene's code, to have an even tighter integration between smart item behavior and code.
+
+The example below reads and logs the value of a State component of a chest smart item, whenever it changes.
+
+```ts
+
+import { engine } from '@dcl/sdk/ecs'
+import { getStatesComponent } from './assetPacksAdapter'
+import { EntityNames } from '../assets/scene/entity-names'
+
+
+export function main() {
+
+    const chest = engine.getEntityByName<EntityNames>(EntityNames.chest)
+ 
+    if (chest) {
+ 
+		const States = getStatesComponent()
+		States.onChange(chest, (states) => {
+			console.log("States changed:", states?.currentValue);
+		});
+
+    }
+}
+```
+
 ## Other smart item components
 
-Smart items can include special components that are part of the asset-packs library, like `States` or `Counter`. These components are not part of the Decentraland SDK, but they can be fetched via the `getComponents()` function from the library. You can then read or write values to these components from your scene's code, to have an even tighter integration between smart item behavior and code.
+Smart items can include special components that are part of the asset-packs library, like `Actions` or `Counter`. These components are not part of the Decentraland SDK, but they can be fetched via the `getComponents()` function from the library. You can then read or write values to these components from your scene's code, to have an even tighter integration between smart item behavior and code.
 
-The example below reads and logs the value of a State component of a chest smart item, whenever the chest's actions are triggered.
+The example below reads and logs the value of a Counter component of a button smart item, whenever the button's actions are triggered.
 
 ```ts
 
@@ -272,16 +300,16 @@ import { EntityNames } from '../assets/scene/entity-names'
 
 export function main() {
 
-    const chest = engine.getEntityByName<EntityNames>(EntityNames.chest)
+    const button = engine.getEntityByName<EntityNames>(EntityNames.button)
  
-    if (chest) {
+    if (button) {
 
-        const chestTriggers = getTriggerEvents(chest)
+        const buttonTriggers = getTriggerEvents(chest)
 
-        chestTriggers.on(TriggerType.ON_INPUT_ACTION, () => {
-            const { States } = getComponents(engine)
-            let state = States.getMutableOrNull(chest)?.currentValue
-            console.log( "chest new state ", state)
+        buttonTriggers.on(TriggerType.ON_INPUT_ACTION, () => {
+            const { Counter } = getComponents(engine)
+            let counter = Counter.getMutableOrNull(button)?.currentValue
+            console.log( "button new count ", counter)
         })
     }
 }

@@ -83,7 +83,7 @@ The following properties can be set:
 Each entity can only have a single `AudioSource` component, that can only play a single clip at a time. This limitation can be easily overcome by modifying the audio source at the time of playing a new sound, or by including multiple invisible child entities, each with their own sound.
 
 {% hint style="info" %}
-**📔 Note**: If an entity uses a sound, but is not loaded immediately at scene runtime, you can have it readily available by using the `AssetLoad` component. For more information, check the [Pre Load Resources](creator/sdk7/optimizing/pre-load-resources.md) documentation.
+**📔 Note**: If an entity uses a sound, but is not loaded immediately at scene runtime, you can have it readily available by using the `AssetLoad` component. For more information, check the [Pre Load Resources](../optimizing/pre-load-resources.md) documentation.
 {% endhint %}
 
 {% hint style="warning" %}

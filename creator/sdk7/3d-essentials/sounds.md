@@ -91,6 +91,8 @@ Each entity can only have a single `AudioSource` component, that can only play a
 If an entity uses a sound, but is not played immediately at scene runtime, it might take some time to download. It can be available at scene runtime by using the `AssetLoad` component. 
 
 ```ts
+import { AssetLoad } from "@dcl/sdk/ecs"
+
 AssetLoad.create(engine.RootEntity, {
   assets: [
     "assets/scene/bundle1/explosionSound.mp3",

@@ -5,8 +5,6 @@ description: Pre-loading Resources allows custom assets to be downloaded at scen
 
 # Pre-loading Resources
 
-When creating a scene, you can add custom assets to extend the default assets available in the Creator Hub.
-
 In some cases, a custom asset is added to the scene but is not used immediately. For example, a custom sound file may only be played when the player presses a button. In this scenario, the first time the player presses the button, the audio may not play because it has not finished downloading.
 
 To avoid this, use the `AssetLoad.create` method to ensure these assets are downloaded before they are needed.

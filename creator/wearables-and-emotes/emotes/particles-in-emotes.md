@@ -28,7 +28,7 @@ The process of adding particles to your emote will involve two steps, you can fo
 ⚠️ Creating a particles system won’t be covered in this documentation. The objective is to help implement it to your emote.
 {% endhint %}
 
-### Converting Particles Into Armature
+## Converting Particles Into Armature
 
 Like previously mentioned, Emotes 2.0 do not support object anmation or any form of particle system. This is why we need to convert the particles into an armature.
 
@@ -80,11 +80,11 @@ And that’s it for converting your particles into an armature! Remember to save
 ⚠️ Particles should be the last element added to your emote. When the emote is ready, you will have the exact length of the animation, which will make it easier to sync the particles to the action performed.
 {% endhint %}
 
-### Merging Particles Armature to Prop Armature
+## Merging Particles Armature to Prop Armature
 
 Emotes 2.0 can only have two armatures and two animation clips per file. If we just import the particles, we will end up with three armatures and three animation clips. The way to fix this is merging the particles armature into the prop armature. The reason to merge it to prop and not avatar armature is very simple: the avatar rig can’t be edited in any way by adding or deleting bones. This leaves prop armature as the only option.
 
-### Merging Particles Armature to Prop Armature
+## Merging Particles Armature to Prop Armature
 
 Emotes 2.0 can only have two armatures and two animation clips per file. If we just import the particles, we will end up with three armatures and three animation clips. The way to fix this is merging the particles armature into the prop armature. The reason to merge it to prop and not avatar armature is very simple: the avatar rig can’t be edited in any way by adding or deleting bones. This leaves prop armature as the only option.
 

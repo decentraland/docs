@@ -2,13 +2,13 @@
 
 After creating and configuring a campaign and ensuring it has sufficient stock to provide rewards, the next step is to connect the campaign to a rewards trigger. This trigger can be a Scene, a Quest, or an external server. This section explains how different integrations with Rewards can be done.
 
-### Grant rewards from a scene
+## Grant rewards from a scene
 
 Rewards can be integrated directly into Decentraland scenes, but this approach comes with some risks. Since the logic is embedded in scene code that users can access, it’s not recommended for minting items with a rarity lower than \[EPIC]\([See documentation](../README.md)#rarity).
 
 Keep in mind that determined users with enough technical knowledge could potentially bypass security measures like captchas, change their IP addresses, and mint all available items, which they could then sell on the marketplace. The primary safeguard against this is ensuring a sufficient supply of items, so everyone has a fair chance to receive a reward.
 
-#### Recommended dispenser flags
+### Recommended dispenser flags
 
 The following dispenser configurations are recommended to reduce the risk of exploits in this scenario:
 
@@ -18,7 +18,7 @@ The following dispenser configurations are recommended to reduce the risk of exp
 * \[Connected to Decentraland]\([See documentation](../README.md)#connected-to-decentraland)
 * \[Position inside Decentraland]\([See documentation](../README.md)#position-inside-decentraland) (if it applies to your use case)
 
-#### Example
+### Example
 
 ```tsx
 import { getPlayer } from '@dcl/sdk/src/players'
@@ -58,11 +58,11 @@ export function main() {
   const reward = await assignRequest.json()
 ```
 
-### Grant rewards from a Decentraland Quests
+## Grant rewards from a Decentraland Quests
 
 You can easily integrate Rewards with the [Decentraland Quests](../deprecated/quests/overview.md), this is ideal if you want to reward users for completing a quest.
 
-#### Recommended dispenser flags
+### Recommended dispenser flags
 
 The following dispenser configurations are recommended to reduce the risk of exploits in this scenario:
 
@@ -74,7 +74,7 @@ Any other of the other flags will make your integration fail, avoid using them.
 ⚠️ The dispenser key should be kept secret, so you should never expose it to the user at anytime.
 {% endhint %}
 
-#### Example
+### Example
 
 To integrate your Quest with the Rewards service, you just need a dispenser key and to [configure a webhook](../deprecated/quests/rewards.md) to grant rewards.
 
@@ -94,11 +94,11 @@ To integrate your Quest with the Rewards service, you just need a dispenser key 
 }
 ```
 
-### Grant rewards from a custom server
+## Grant rewards from a custom server
 
 You can integrate Rewards directly from your server, which is ideal for performing extra checks before minting items. An additional advantage is that, unlike scene code, your server code might not be public, making it more challenging for users to discover and exploit vulnerabilities.
 
-#### Recommended dispenser flags
+### Recommended dispenser flags
 
 The following dispenser configurations are recommended to reduce the risk of exploits in this scenario:
 
@@ -110,7 +110,7 @@ Enabling any of the other flags could complicate your integration or, depending 
 ⚠️ The dispenser key should be kept secret, so you should never expose it to the user at anytime.
 {% endhint %}
 
-#### Example
+### Example
 
 ```tsx
 const request = await fetch('https://rewards.decentraland.org/api/rewards', {

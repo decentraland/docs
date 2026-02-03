@@ -20,7 +20,7 @@ In this case, we can name the box “LampPos&#x74;_&#x63;ollider” and export b
 
 Whenever a player views the lamp post model in your scene, they will see the complex model for your lamp. However, when they walk into it, they will collide with the box, not the tree.
 
-### Player Spatial Constraints
+## Player Spatial Constraints
 
 When you design models that are meant for players to walk around in, you need to keep in mind the following reference measurements:
 
@@ -31,7 +31,7 @@ When you design models that are meant for players to walk around in, you need to
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-#### Add A Collider To a Staircase
+### Add A Collider To a Staircase
 
 Stairs are a very common use-case for collider objects. In order for players to climb stairs, there must be a corresponding \_collider object that the players are able to step on.
 
@@ -52,7 +52,7 @@ Using a ramp object also avoids creating unnecessary geometry, saving room for o
 
 Now when players view the stairs in your scene, they’ll see the more elaborate model of the stairs, but when they climb them, they’ll collide with the ramp.
 
-### Optimizing Colliders
+## Optimizing Colliders
 
 * Prefer using **Box**, **Sphere** and **Capsule** collision meshes, because it will be more performant on loading and at runtime.
 * Consider approximating complex collision mesh by several Primitive collision meshes (**Box**/**Sphere**/**Capsule**)
@@ -63,13 +63,13 @@ _Example: Collider for Ring can be composed as several Capsule or Box colliders_
 
 * Put collision mesh inside the Hierarchy of the object to which it is related. For example Spaceship\_collider can be a child inside Spaceship parent (from Hierarchy point of view)
 
-#### Convex vs Concave Colliders
+### Convex vs Concave Colliders
 
 If using arbitrary mesh collider is the only possibility, then make collision mesh Convex (not Concave). It will prevent strange physics situations, like stuttering, stuckings inside the collider or clipping through it. Note, that it is often possible to mimic concave mesh by several convex meshes.
 
 ![](../../.gitbook/assets/29-convex-collider.png)
 
-### Collision Naming
+## Collision Naming
 
 **Use meaningful names. Name should give context of where the asset is used or to which part of the object it relates.**
 
@@ -87,7 +87,7 @@ If a collider can be approximated by a Box, Sphere or Capsule shape then use add
 Examples: 🟢 Teater\_MainWall\_North\_collider\_box, Fountain\_Statue\_collider\_sphere
 {% endhint %}
 
-### Best Practices For Colliders
+## Best Practices For Colliders
 
 * **Always use the smallest number of triangles possible when creating colliders.** Avoid making a copy of a complex object to use as a collider. Simple colliders guarantee a good user-experience in and keep your scene within the triangle limitations.
 * **Collider objects shouldn’t have any material**, as players of your scene will never see it. Colliders are invisible to players.

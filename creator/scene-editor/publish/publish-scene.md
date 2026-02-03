@@ -4,11 +4,11 @@ description: How to publish your scene to LAND or a NAME.
 
 # Publish Scene
 
-### Before you begin
+## Before you begin
 
 Make sure of the following:
 
-* Your scene complies with all of the [scene limitations](../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
+* Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
 * You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
@@ -16,7 +16,7 @@ Make sure of the following:
 **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels.
 {% endhint %}
 
-Check your [scene's details](../scene-editor/get-started/scene-editor-essentials.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
+Check your [scene's details](../get-started/scene-editor-essentials.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
 
 {% hint style="danger" %}
 **❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
@@ -24,12 +24,12 @@ Check your [scene's details](../scene-editor/get-started/scene-editor-essentials
 After each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
 {% endhint %}
 
-### Publish your scene
+## Publish your scene
 
 To publish your scene:
 
 1. Open your scene in the Scene Editor and click **Publish**. This opens a browser tab, showing details.
-2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../sdk7/projects/kinds-of-project.md) to better understand the different options.
+2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
 ![](../../../.gitbook/assets/publish-options.png)
 
@@ -44,7 +44,7 @@ To publish your scene:
 
 \*\*📔 Note\*\*: The three stages of the deployment involve: - \*\*1. Uploading\*\*: Uploading the files to the servers. - \*\*2. Converting\*\*: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes. - \*\*3, Optimizing\*\*: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
 
-### Publish from a hardware wallet
+## Publish from a hardware wallet
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.
 
@@ -52,7 +52,7 @@ If you're using one of these devices, you can link the hardware wallet to Metama
 
 Once your hardware wallet can be used via Metamask, you can deploy following the same steps as if your tokens were on a Metamask account.
 
-### Scene overwriting
+## Scene overwriting
 
 When a new scene is deployed, it overwrites older content that existed on the parcels it occupies.
 
@@ -62,9 +62,9 @@ Suppose you deployed your scene _A_ over two parcels _\[100, 100]_ and _\[100, 1
 
 Your scene _A_ can't be partially rendered in just one parcel, so _\[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _\[100, 100]_.
 
-### Alternative servers
+## Alternative servers
 
-#### The test server
+### The test server
 
 You can deploy content to the test catalyst server to run full tests with multiple users, the sourrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
 
@@ -80,15 +80,15 @@ To publish to the test server, click the **Publish** button normally, then selec
 
 ![](../../../.gitbook/assets/publish-to-test-server.png)
 
-### Publish to granted land
+## Publish to granted land
 
 If you're publishing to land owned by the Decentraland Foundation that was granted to you via a grant, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the following server address: `http://linker-server.decentraland.org`.
 
 {% hint style="warning" %}
-**📔 Note**: You must first manually set the coordinates of your scene in the advanced tab of the Layout settings. See [Scene Settings](../scene-editor/configure/scene-settings.md#layout) for more info.
+**📔 Note**: You must first manually set the coordinates of your scene in the advanced tab of the Layout settings. See [Scene Settings](../configure/scene-settings.md#layout) for more info.
 {% endhint %}
 
-### Custom servers
+## Custom servers
 
 You can deploy content to a custom server that doesn't belong to the official DAO-maintained network of catalyst servers. To do this, you don't need to own any LAND or NAME tokens, as you can configure the server to use any validation logic you prefer to control who can deploy where. Custom servers can chose to have content from the official servers, that you can overwrite, or start from a blank slate and publish entirely new content.
 
@@ -102,7 +102,7 @@ See [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) f
 
 Players are never directed to this server, the only way to access it is to explicitly type in the URL to connect to it.
 
-### Verify deployment success
+## Verify deployment success
 
 Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, or that 3D models are missing entirely.
 

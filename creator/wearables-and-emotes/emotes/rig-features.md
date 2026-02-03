@@ -6,7 +6,7 @@ description: Features about the avatar rig and downloadable file.
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
-#### Armature Transforms
+### Armature Transforms
 
 These are the armature’s transforms in Object Mode with the controls’ setup. **Do not edit this in any way**. The rig should only be manipulated in Pose Mode. To avoid unwanted editing, the transforms have been locked in Object Mode.
 
@@ -16,7 +16,7 @@ _Rig 1.0 transforms._
 ⚠️ **Warning**: **Never edit the rig in Object Mode.**
 {% endhint %}
 
-### Bone Orientation
+## Bone Orientation
 
 This is the bone orientation for Rig 1.0. As it is right now, it’s not possible to mirror behavior on the shoulders, arms, hands, or fingers.
 
@@ -24,7 +24,7 @@ _Axes for bone orientation._
 
 _Behavior when mirrorring poses._
 
-#### Bone Collections
+### Bone Collections
 
 To avoid any accidents and to make it easier to identify the controls, this rig is organized in bone collections that can be accessed in the _Data Properties_ tab in Blender. These collections’ visibility can be toggled on and off by clicking on the _Eye Icon._ By default, they are all visible, except for the DON'T TOUCH ones.
 
@@ -46,7 +46,7 @@ This is how the bones were separated into the collections:
 The DON'T TOUCH collections hold the set ups for IK and other rig constraints and should remain hidden. Editing these bones could break the functionality of the rig.
 {% endhint %}
 
-### Controls and Grouping
+## Controls and Grouping
 
 Controls are non-deforming bones that drive the base skeleton. They have different colors depending on their category:
 
@@ -59,9 +59,9 @@ Controls are non-deforming bones that drive the base skeleton. They have differe
 
 _All the controls and their colors._
 
-### Custom Attributes and Setup
+## Custom Attributes and Setup
 
-#### FK/IK Blend
+### FK/IK Blend
 
 Even though arms are usually set as FK and legs as IK, there are certain situations that will require a different setup. If the hand has to maintain a certain position, like during push ups or while climbing, the IK will be the best choice. As for the legs, while in the air, swimming or rolling, FK works best. For more flexibility and freedom in animation, this rig has an FK/IK blend in the UpperBody control, being 0 completely FK and 1 completely IK. Any other value in-between will be a blend of the two.
 
@@ -73,7 +73,7 @@ _FK/IK blend for both arms and legs._
 
 _How the FK > IK Switch works._
 
-#### Isolate Rotation FK Blend
+### Isolate Rotation FK Blend
 
 Another custom attribute in the UpperBody control is the isolate rotation, that allows you to choose if the bone will inherit its parent’s rotation or not (while in FK). While at 0, the bone won’t inherit the rotation, while at 1 it will completely follow the parent’s behavior. Any other value in between will be a blend of the two. This is an interesting tool because it causes the FK bone to maintain its position, behaving a little like an IK.
 
@@ -111,7 +111,7 @@ Another solution for keyframing custom properties is selecting _**Keying**_ unde
 
 _Keyframing with the Keying option._
 
-#### Reverse IK Foot Setup
+### Reverse IK Foot Setup
 
 Animating an FK foot is pretty straightforward: just grab any of the controls and rotate it. Since there’s a control for the foot and another for the toes, the animator has full control over the movements. However, for the IK it’s not so simple. The foot has to stick to the ground, while also being able to rotate on the ball and heels and side to side.
 
@@ -141,7 +141,7 @@ _Toes can be rotated in any direction._
 
 _How the foot control works._
 
-#### Locked Transforms
+### Locked Transforms
 
 Some controls may have a lock symbol next to the transforms parameters, which means that those values can’t be changed. This was done to controls that should only behave in a certain way and to avoid any unwanted transformation. For example, elbows and knees are meant to rotate on just one axis, which in this case is X, and so the other axes have been locked. Other examples of controls with locked attributes are IK elbows and knees, fingers, foot roll, and toe tip.
 

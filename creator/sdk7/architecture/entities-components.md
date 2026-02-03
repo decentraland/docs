@@ -8,7 +8,7 @@ Decentraland scenes are built around [_entities_, _components_ and _systems_](ht
 
 ![](../../../.gitbook/assets/ecs-big-picture.png)
 
-### Overview
+## Overview
 
 _Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than an id, that can be referenced by components. The entity itself has no properties or methods of its own, it simply serves to group several components together.
 
@@ -32,7 +32,7 @@ The engine is the part of the scene that sits in the middle and manages all of t
 
 Components are meant to store data about their referenced entity. They can only store this data, they can't modify this data themselves. All changes to the values in the components are carried out by [Systems](../sdk7/architecture/systems.md). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
-### Syntax for entities and components
+## Syntax for entities and components
 
 The example below shows some basic operations for declaring, and configuring basic entities and components.
 
@@ -57,7 +57,7 @@ export function main() {
 
 When a component is created, it's always assigned to a parent entity. The component's values then affect the entity.
 
-### Remove entities
+## Remove entities
 
 To remove an entity from the engine, use `engine.removeEntity()`
 
@@ -108,13 +108,13 @@ export function main() {
 **💡 Tip**: Instead of removing an entity from the engine, in some cases it might be better to make it invisible, in case you want to be able to load it again without any delay. See [Make invisible](../sdk7/3d-essentials/shape-components.md#make-invisible)
 {% endhint %}
 
-#### Removing entities behind the scenes
+### Removing entities behind the scenes
 
 An entity is just an id that is referenced by its components. So when removing an entity you're really removing each of the components that reference this entity. This means that if you manually remove all of the components of an entity, it will have the same effect as doing `engine.removeEntity()`.
 
 Once the entity's components are removed, that entity's id is free to be referenced by new components as a fresh new entity.
 
-### Nested entities
+## Nested entities
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
@@ -168,7 +168,7 @@ In the Scene Editor, you can see the entire hierarchy of nested entities in your
 
 ![](../../../.gitbook/assets/entity-tree-example.png)
 
-### Get an entity by ID
+## Get an entity by ID
 
 Every entity in your scene has a unique number _id_. You can retrieve a component that refers to a specific entity from the engine based on this ID.
 
@@ -183,7 +183,7 @@ Transform.get(1000 as Entity)
 
 For example, if a player's click or a [raycast](../sdk7/interactivity/raycasting.md) hits an entity, this will return the id of the hit entity, and you can use the command above to fetch the Transform component of the entity that matches that id. You can also fetch any other component of that entity in the same way.
 
-### Get an entity by name
+## Get an entity by name
 
 When adding entities via drag-and-drop in the Scene Editor, each entity has a unique name. Use the `engine.getEntityOrNullByName()` function to reference one of these entities from your code. Pass the entity's name as a string, as written on the Scene Editor's UI, in the tree view on the left.
 
@@ -229,7 +229,7 @@ function main() {
 }
 ```
 
-### Add or replace a component
+## Add or replace a component
 
 Each entity can only have one component of a given kind. For example, if you attempt to assign a Transform to an entity that already has one, this will cause an error.
 
@@ -245,7 +245,7 @@ Transform.createOrReplace(door, {
 **📔 Note**: Since `.createOrReplace` runs an additional check before creating the component, it's always more performant to use `.create`. If you're sure that the entity doesn't already have a component like the one you're adding, use `.create`.
 {% endhint %}
 
-### Access a component from an entity
+## Access a component from an entity
 
 You can access components of an entity by using the entity's `.get()` or the `getMutable()` functions.
 
@@ -304,7 +304,7 @@ If the component you're trying to retrieve doesn't exist in the entity:
 * `get()` and `getMutable()` returns an error.
 * `getOrNull()` and `getMutableOrNull()` returns `Null`.
 
-### Remove a component from an entity
+## Remove a component from an entity
 
 To remove a component from an entity, use the entity's `deleteFrom()` method of the component type.
 
@@ -318,7 +318,7 @@ If you attempt to remove a component that doesn't exist in the entity, this acti
 **📔 Note**: To remove all the components of an entity at once, see [this section](entities-components.md#remove-entities)
 {% endhint %}
 
-### Check for a component
+## Check for a component
 
 You can check if an entity owns an instance of a certain component by using the `has()` function. This function returns _true_ if the component is present, and _false_ if it's not. This can be very handy for using in conditional logic in your scene.
 
@@ -330,7 +330,7 @@ const hasTransform = Transform.has(myEntity)
 **💡 Tip**: You can also [query components](../sdk7/architecture/querying-components.md) to fetch a full list of components that hold a specific component, or a specific set of components. Do not iterate over all entities in the scene manually to check each with a `has()`, that approach is a lot less efficient.
 {% endhint %}
 
-### Check for changes on a component
+## Check for changes on a component
 
 Use the `onChange` function to run a callback function any time that the values of the component change for a given entity. This works on any component, and is a great shortcut for helping keep your code readable.
 
@@ -358,7 +358,7 @@ If the component is removed from the entity, then the function is called with an
 **📔 Note**: The `.onChange()` function currently only works with native components of the SDK, it doesn't work with [custom comopnents](../sdk7/architecture/custom-components.md) defined by the creator.
 {% endhint %}
 
-### Get all descendant entities
+## Get all descendant entities
 
 When working with nested entity hierarchies, you may need to access all entities that are descendants of a parent entity, regardless of how deeply nested they are. The `getComponentEntityTree()` function provides an easy way to iterate over all descendants in a flat list.
 
@@ -413,7 +413,16 @@ for (const descendantEntity of getComponentEntityTree(
 }
 ```
 
-### Reserved entities
+To retrieve the child entities of a given parent Entity, the `getEntitiesWithParent` is used. It takes as its arguments the `engine` and the `parent` entity. This returns a list of all the entities that have that particular Entiy as its parent.
+
+```ts
+const children = getEntitiesWithParent(engine, myEntity)
+for (const child of children) {
+   // process each child entity
+}
+```
+
+## Reserved entities
 
 Certain entity ids are reserved for special entities that exist in every scene. They can be accessed via the following aliases:
 
@@ -425,13 +434,13 @@ Certain entity ids are reserved for special entities that exist in every scene. 
 **📔 Note**: Avoid referring to these entities before they are initialized. To avoid this problem, refer to these entities in the `main()` function, or in a system.
 {% endhint %}
 
-### The root entity
+## The root entity
 
 All entities in the scene are children of the `engine.RootEntity`, directly or indirectly.
 
 This entity lacks a Transform component, but it's used to handle several components that represent more global settings, like [skybox control](../sdk7/interactivity/skybox-control.md), [cursor position](..sdk7/interactivity/user-data.md#check-the-players-cursor-position), or [screen dimensions](...sdk7/2d-ui/ui-positioning.md#responsive-ui-size).
 
-### The player entity
+## The player entity
 
 The `engine.PlayerEntity` entity represents the player's avatar.
 
@@ -439,7 +448,7 @@ Fetch the player's `Transform` component to get the player's current position an
 
 You can also attach objects to the player by setting them as children of this entity, although the [Attach to Player](...sdk7/3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar) is often the better option for htat.
 
-### The camera entity
+## The camera entity
 
 The `engine.CameraEntity` entity represents the player's camera.
 

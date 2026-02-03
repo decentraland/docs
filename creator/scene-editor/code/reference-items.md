@@ -6,7 +6,7 @@ description: Reference items in your code by name or by tag.
 
 You can reference items that are added via the Creator Hub drag-and-drop interface in your code. This is useful to add sophisticated behavior to those items, or to reference them from other parts of your code.
 
-### Fetch by name
+## Fetch by name
 
 When using the Creator Hub and adding entities by dragging them into the canvas, each entity has a unique name. Use the `engine.getEntityOrNullByName()` function to reference one of these entities from your code.
 
@@ -90,7 +90,7 @@ function main() {
 }
 ```
 
-### Fetch by Tag
+## Fetch by Tag
 
 You can also fetch entities by their tags. Tags are a way to group entities together, and are useful to identify entities that have the same purpose or behavior.
 
@@ -127,7 +127,7 @@ Tags.remove(entity, tagName);
 Tags.add(entity, tagName);
 ```
 
-### Fetch all the children of an item
+## Fetch all the children of an item
 
 You can also write a script that lets you deal with all of the items that are grouped as children of a certain item on the entity tree on the left of the screen. The following script iterates over all entities that have a Transform and a parent, and checks if the name of the parent matches the name `some-parent` in this case. You can then apply any custom logic you want to those specific entities.
 
@@ -161,7 +161,7 @@ function getChildren(parent: Entity): Entity[] {
 }
 ```
 
-### Smart item triggers
+## Smart item triggers
 
 You can detect a smart item's **Trigger events**, and respond to these with custom code. For example, you could place a button smart item, and activate custom code when the button is clicked.
 
@@ -190,7 +190,7 @@ function main() {
 
 You can similarly subscribe to any other type of trigger events, like **ON\_PLAYER\_ENTERS\_AREA**, **ON\_SPAWN**, **ON\_TWEEN\_END**, etc.
 
-### Smart item actions
+## Smart item actions
 
 You can detect the activation of a smart item's **Actions**, and respond to these with custom code. For example, you could place a door smart item, and run custom code whenever the **Open** action gets called.
 
@@ -252,10 +252,10 @@ function main() {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: If you're not trying to do something very complicated, instead of writing code you can also create a custom smart item to handle the actions you want to perform. See [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: If you're not trying to do something very complicated, instead of writing code you can also create a custom smart item to handle the actions you want to perform. See [Making any item smart](../interactivity/make-any-item-smart.md).
 {% endhint %}
 
-### Other smart item components
+## Other smart item components
 
 Smart items can include special components that are part of the asset-packs library, like `States` or `Counter`. These components are not part of the Decentraland SDK, but they can be fetched via the `getComponents()` function from the library. You can then read or write values to these components from your scene's code, to have an even tighter integration between smart item behavior and code.
 

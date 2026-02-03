@@ -8,11 +8,11 @@ There are different types of content that you can make for Decentraland.
 
 ![](../../../.gitbook/assets/content-types.png)
 
-### Scenes
+## Scenes
 
 Decentraland scenes can either be hosted in Parcels in Genesis City or in WORLDs.
 
-#### Publish to LAND
+### Publish to LAND
 
 Scenes that are published to Parcels can be found at specific coordinates inside Decentraland's open world.
 
@@ -24,7 +24,7 @@ Scenes published to LAND are easier to discover, as players may run into them wh
 
 Scenes published to LAND can use up to 15 MB of space per each parcel in the scene. The more parcels, the more room available. This is to prevent overloading the player's CPU, since players may be experiencing many nearby scenes at the same time. See [size limitations](../sdk7/optimizing/scene-limitations.md).
 
-#### Publish to WORLDs
+### Publish to WORLDs
 
 Scenes published to a World must be accessed via a link.
 
@@ -32,7 +32,7 @@ These scenes are linked to NAME tokens. NAME tokens can be bought in the [Market
 
 Scenes published to a World have no parcel limitations and can have as many parcels of land as you wish. The same [size limitations](../sdk7/optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
 
-##### Size Limits
+#### Size Limits
 
 The maximum file size you can upload to your World depends on whether you're using a Decentraland NAME or an ENS domain.
 
@@ -56,7 +56,7 @@ In contrast, Worlds granted from ENS domains have a fixed maximum scene file siz
 
 However, Worlds granted by ENS domain ownership serve as the perfect first step into realizing the creative freedom offered by Decentraland.
 
-##### Differences from LAND Scenes
+#### Differences from LAND Scenes
 
 Worlds offer several advantages over LAND scenes:
 
@@ -67,7 +67,7 @@ Worlds offer several advantages over LAND scenes:
 
 See [Worlds](../worlds/about.md) for more info, or learn about [publishing to Worlds](../sdk7/publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../sdk7/projects/scene-metadata.md#world-configuration).
 
-### Global Scenes
+## Global Scenes
 
 Global scenes can transform the already existing landscape of Decentraland, adding layers of interactivity and gameplay. These are scenes that are not constrained to only run on certain parcels of LAND or certain Worlds. Players carry them with them wherever they go.
 
@@ -83,7 +83,7 @@ Portable experiences can be activated as part of the interactive code of a scene
 
 Players are prompted asking if they want to run this portable experience, and if they do they'll carry it with them wherever they go for the rest of their session. [Learn more](../sdk7/projects/portable-experiences.md). -->
 
-#### Smart Wearables
+### Smart Wearables
 
 Smart wearables are linked to Wearable tokens. These are sold as NFTs and purchased in the [Marketplace](https://decentraland.org/marketplace/browse?section=wearables\&vendor=decentraland\&page=1\&sortBy=newest\&status=on_sale).
 

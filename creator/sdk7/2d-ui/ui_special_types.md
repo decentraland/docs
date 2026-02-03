@@ -6,7 +6,7 @@ description: Special entitiy types for the UI, including dropdowns and input box
 
 There are certain special entity types that allow for some special kinds of interactions.
 
-### Dropdown
+## Dropdown
 
 Create a `Dropdown` entity to allow users to expand and select an item from a list.
 
@@ -78,7 +78,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu)
+    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 
@@ -86,7 +86,7 @@ export function main() {
 **📔 Note**: All the following snippets in this page assume that you have a `.ts` similar to the above, running the `ReactEcsRenderer.setUiRenderer()` function.
 {% endhint %}
 
-### Input text
+## Input text
 
 Create an `Input` entity to allow users to to type in text. Players must first click on this box before they can write into it.
 
@@ -213,7 +213,9 @@ The following properties are also available to customize the look of the text fi
 **📔 Note**: Make sure you use a different color from the `placeHolderColor`.
 {% endhint %}
 
-\- \`font\`: The font to use, taking a value from the \`Font\` enum. Supported values are: - \`serif\` - \`sans-serif\` \_(default)\_ - \`monospace\` - \`textAlign\`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+* `font`: The font to use, taking a value from the `Font` enum. Supported values are: - `F_SANS_SERIF` - `F_SERIF` _(default)_ - `F_MONOSPACE`
+
+* `textAlign`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
 You can also configure other components of the `Input` entity, like a `uiTransform`, `OnMouseDown` as in other UI entities.
 

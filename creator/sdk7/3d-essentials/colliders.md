@@ -16,7 +16,7 @@ There are separate collision layers for interacting with either the player's phy
 **📔 Note**: Colliders don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the player's avatar and button events. Decentraland doesn't have a native physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene, or import a library to handle that.
 {% endhint %}
 
-### Use the Scene Editor
+## Use the Scene Editor
 
 The easiest way to manage an entity's colliders is to use the [Scene Editor](../scene-editor/get-started/about-editor.md).
 
@@ -26,7 +26,7 @@ You can also configure the collision layers on a **GLTF** component to change th
 
 ![](../../../.gitbook/assets/gltf-component.png)
 
-### Colliders on primitive shapes
+## Colliders on primitive shapes
 
 The `MeshCollider` component gives an entity a simple collider based on a primitive shape (boxes, spheres, planes, cylinders, or cones).
 
@@ -125,13 +125,13 @@ See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-#### Animated models
+### Animated models
 
 When setting colliders to use the visible geometry on a model that includes [armature-based animations](../3d-modeling/animations.md), the animations aren't followed by colliders. The collider meshes keep their original shape. If an animation involves deforming a meshe's geometry, the collider meshes retain the un-animated shape while the animation plays.
 
 When playing animations that involve moving full meshes without changing their shape, these changes are accurately reflected by colliders. For example if a platform moves as part of an animation, the platform´s collider does move with the animation.
 
-### Collision layers
+## Collision layers
 
 The scene can handle separate collision layers, that have different behaviors.
 
@@ -172,7 +172,7 @@ You can use the 8 different custom layers for whatever suits your scene best, fo
 
 See [Raycasting](../sdk7/interactivity/raycasting.md) for more on how to use custom collision layers.
 
-#### Cameras and colliders
+### Cameras and colliders
 
 When a player's camera moves in 3rd person mode, the camera might be blocked by colliders or not, depending on the collision layers assigned to the entities. Be mindful of this when designing your scene, you may want to prevent the camera from going through walls or other entities.
 
@@ -226,7 +226,7 @@ GltfContainer.create(myEntity2, {
 })
 ```
 
-#### Pointer blocking
+### Pointer blocking
 
 Only shapes that have colliders can be activated with [pointer events](../sdk7/interactivity/button-events/click-events.md). An entity also needs to have a collider to block pointer events from going through it and prevent hitting entities behind it. So for example, a player can't pick something up that is locked inside a chest, if the chest has colliders around it. The player's pointer events are only affected by meshes that are active in the `ColliderLayer.CL_POINTER` layer.
 
@@ -278,7 +278,7 @@ GltfContainer.create(myEntity, {
 })
 ```
 
-### Advanced MeshCollider Syntax
+## Advanced MeshCollider Syntax
 
 The complete syntax for creating a `MeshCollider` component, without any helpers to simplify it, looks like this:
 

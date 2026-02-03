@@ -12,7 +12,7 @@ Note that all transactions in the Ethereum mainnet that are triggered by a scene
 
 All blockchain operations also need to be carried out as [asynchronous functions](../programming-patterns/async-functions.md), since the timing depends on external events.
 
-### Get a player's ethereum account
+## Get a player's ethereum account
 
 To get a player's Ethereum account, use the `getPlayer()` function.
 
@@ -37,7 +37,7 @@ You should wrap the function in an `async()` function, learn more about this in 
 **📔 Note**: Even though the eth address may contain upper case characters, some browsers convert the returned string to lower case automatically. If you wish compare address values and have it work on all browsers, use the `.toLowerCase()` method to convert the value into lower case.
 {% endhint %}
 
-### Check gas price
+## Check gas price
 
 After importing the `eth-connect` library, you must instance a web3 provider and a request manager, which will will allow you to connect via web3 to Metamask in the player's browser.
 
@@ -63,7 +63,7 @@ executeTask(async function () {
 **💡 Tip**: Note that the functions handled by the `requestManager` must be called using `await`, since they rely on fetching external data and can take some time to be completed.
 {% endhint %}
 
-### Import a contract ABI
+## Import a contract ABI
 
 An ABI (Application Binary Interface) describes how to interact with an Ethereum contract, determining what functions are available, what inputs they take and what they output. Each Ethereum contract has its own ABI, you should import the ABIs of all the contracts you wish to use in your project.
 
@@ -123,7 +123,7 @@ Configuring TypeScript to be able to import from a JSON file has its difficultie
 
 For example, if the ABI file's contents starts with `[{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`, modify it so that it starts with `export default [{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`.
 
-#### Instance a contract
+### Instance a contract
 
 After importing the `eth-connect` library and a contract's _abi_, you must instance several objects that will allow you to use the functions in the contract and connect to Metamask in the player's browser.
 
@@ -152,7 +152,7 @@ executeTask(async () => {
 **💡 Tip**: For contracts that follow a same standard, such as ERC20 or ERC721, you can import a single generic ABI for all. You then generate a single `ContractFactory` object with that ABI and use that same factory to instance interfaces for each contract.
 {% endhint %}
 
-#### Call the methods in a contract
+### Call the methods in a contract
 
 Once you've created a `contract` object, you can easily call the functions that are defined in its ABI, passing it the specified input parameters.
 
@@ -194,7 +194,7 @@ executeTask(async () => {
 
 The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
 
-#### Other functions
+### Other functions
 
 The eth-connect library includes a number of other helpers you can use. For example to:
 
@@ -204,7 +204,7 @@ The eth-connect library includes a number of other helpers you can use. For exam
 * Get the number of transactions sent from an address
 * Convert between various formats including hexadecimal, binary, utf8, etc.
 
-### Using the Ethereum test network
+## Using the Ethereum test network
 
 While testing your scene, to avoid transferring real MANA or other currencies, you can use the _Ethereum Sepolia test network_ and transfer fake testnet MANA instead.
 
@@ -230,7 +230,7 @@ If you need to test transactions in the Polygon Testnet and need to have MANA on
 
 When running a preview on the legacy web client, of a scene that uses one of the ethereum libraries, you must open the preview in a separate browser window, have Metamask open in your browser, and manually include the string `&ENABLE_WEB3`.
 
-### Send custom RPC messages
+## Send custom RPC messages
 
 Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
 
@@ -245,7 +245,7 @@ await sendAsync({
 })
 ```
 
-### Decentraland smart contracts
+## Decentraland smart contracts
 
 In the following link you can find a list of Etherum smart contracts relevant to the Decentraland ecosystem. The list includes the contracts in mainnet as well as in other Ethereum test networks.
 

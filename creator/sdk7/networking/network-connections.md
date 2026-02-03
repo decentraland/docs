@@ -8,7 +8,7 @@ Your scene can leverage external services that expose APIs, you can use this to 
 
 You can also set up your own external server to aid your scene and serve to synchronize data between your players. This can either be done with a server that exposes a REST API, or with a server that uses WebSockets.
 
-### Call a REST API
+## Call a REST API
 
 Your scene's code can send calls to a REST API to fetch data.
 
@@ -73,7 +73,7 @@ The fetch command returns a `response` object with the following data:
 **📔 Note**: Each Decentraland scene is only permitted to perform one `fetch` command at a time. This has no effect on how the scene code must be structured, as requests are queued internally. If your scene requires sending multiple requests to different endpoints, keep in mind that each request is only sent when the previous one has been responded.
 {% endhint %}
 
-### Signed requests
+## Signed requests
 
 You can employ an extra security measure to certify that a request is originating from a player session inside Decentraland. You can send your requests with an additional signature, that is signed using an ephemeral key that the Decentraland session generates for each player based on the player's address. The server receiving the request can then verify that the signed message indeed matches an address that is currently active in-world.
 
@@ -118,7 +118,7 @@ The `signedFetch()` differs from the `fetch()` function in that the response is 
 
 By default, **body** is considered a string, which you can parse like in the example above. If the response body is in json format, you can specify that in the `responseBodyType` and then access that from the `json` property in the response.
 
-#### Validating a signed request
+### Validating a signed request
 
 To make make use of signed requests, the server receiving these should to validate that the signatures match the rest of the request, and that the timestamp that's encoded within the signed message is current.
 
@@ -126,7 +126,7 @@ You can find a simple example of a server performing this task in the following 
 
 [Validate player authenticity](https://github.com/decentraland-scenes/validate-player-authenticity)
 
-### Request timeout
+## Request timeout
 
 If an HTTP request takes too long to be responded, it fails so that other requests can be sent. For both `fetch()` and `signedFetch()`, the default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property in any of the two functions. The value of `timeout` is expressed in milliseconds.
 
@@ -134,7 +134,7 @@ If an HTTP request takes too long to be responded, it fails so that other reques
 fetch('https://some-url.com', { timeout: 1000 })
 ```
 
-### Use WebSockets
+## Use WebSockets
 
 You can also send and obtain data from a WebSocket server, as long as this server uses a secured connection with _wss_.
 
@@ -158,7 +158,7 @@ It builds a layer of abstraction on top of the websocket connections that makes 
 * [AI NPC](https://github.com/decentraland-scenes/inworld-ai-sdk7)
 {% endhint %}
 
-### Debugging network requests
+## Debugging network requests
 
 You can debug network requests by opening Debug Panel.
 

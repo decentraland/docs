@@ -41,7 +41,7 @@ The sooner you can get a value proposition in front of your user or player, the 
 
 How do you fail quickly? You do the minimum needed to get your player to touch your product.
 
-### Factors for Minimum Viable Products
+## Factors for Minimum Viable Products
 
 Here is the list of factors to consider for your basic MVP. It is acceptable to state that you will use something as a placeholder and will then phase it out as you develop a more solid replacement.
 
@@ -70,7 +70,7 @@ Here is the list of factors to consider for your basic MVP. It is acceptable to 
    * Demonstrate deploy pipeline by re-deploying content: from art creation to in scene including scripting + QA]
    * Expose pipeline gaps: identify the unknowns in specific content deployment areas
 
-### Levels of prototypes
+## Levels of prototypes
 
 Failing quickly allows you to develop your experience by creating successive prototypes, with each iteration building upon the last.
 
@@ -97,7 +97,7 @@ For example, you could design a scene with the following successive experiences:
 * Other players can join and interact with the world and the other player.
 * Finally, you can add the ability to remember that each player entered the scene, and to track the players’ events and activities.
 
-### How to share your MVP
+## How to share your MVP
 
 Although the Decentraland world is not yet open to all, you can upload a scene preview to a server and easily share a link to it with people who can give you feedback.
 
@@ -105,7 +105,7 @@ Even once Decentraland is made available to all, we still recommend testing chan
 
 Read [this blogpost](https://decentraland.org/blog/announcements/decentraland-on-now/) for details on how to upload your scene preview to a free server.
 
-### Additional considerations
+## Additional considerations
 
 Once basic use cases are covered, you can start to get more sophisticated with your release management strategy by focusing on mechanics. **Mechanics** are a broad term covering all of the actions a player can take and the responses the system will provide based on those player actions.
 
@@ -129,7 +129,7 @@ Remember, while the end goal is a truly immersive 3D world, that is not where yo
 
 We strongly recommend that you stay mindful of the first impression your experience presents. An empty experience will leave players disappointed. On the other hand, a scene with some initial content and basic experiences shows players the potential for what is to come and encourages them to engage with your community and return to the next few releases.
 
-### Persistence factors to consider
+## Persistence factors to consider
 
 Ultimately, you want reach a level of persistence where you can demonstrate that the transactional layers of your architecture are operational. Transactional is not limited to the players actions, but also the system’s reactions to players.
 

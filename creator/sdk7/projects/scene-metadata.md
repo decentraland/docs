@@ -8,7 +8,7 @@ A scene is a Decentraland project that is spatially delimited and mapped to one 
 
 See [Files in a scene](../sdk7/projects/scene-files.md) for a list of what files are used in a scene project.
 
-### Metadata
+## Metadata
 
 To edit a scene's metadata in the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), open a scene and click the **pencil icon**.
 
@@ -24,7 +24,7 @@ Alternatively, you can directly edit the `scene.json` file, where all of these v
 **📔 Note**: Do not add custom fields to the `scene.json` file that are not mentioned in this page, as it could cause issues loading your scene.
 {% endhint %}
 
-### Scene title, description, and image
+## Scene title, description, and image
 
 It's very important to give your scene a title, a description, and a thumbnail image to attract players and help them know what to expect.
 
@@ -46,7 +46,7 @@ The image on `navmapThumbnail` should be a path to an image file in the project 
 
 In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
 
-### Categories
+## Categories
 
 You can add categories to your scene to help players explore Decentraland. These are used in the [Decentraland Places dApp](https://places.decentraland.org) to categorize each place and make it easier for players to find what they're interested in.
 
@@ -95,7 +95,7 @@ For example, a scene could be tagged as `game` and `casino` by adding the follow
 
 After that, the scene is listed on the Places dApp under the `game` and `casino` categories.
 
-### Age Rating
+## Age Rating
 
 The **Age Rating** field is used to classify the content of your scene based on its appropriateness for different age groups. It helps in filtering content for players. The following options are available:
 
@@ -112,7 +112,7 @@ When editing the Age Rating via the `scene.json`, rating is a **single-letter co
   }
 ```
 
-#### Restricted Content
+### Restricted Content
 
 There is a third category for scenes: 🔴 `R` for Restricted. This rating is manually applied by Content Moderators to scenes that violate Decentraland's [Content Policy](https://decentraland.org/content). Violations may include, but are not limited to:
 
@@ -126,7 +126,7 @@ There is a third category for scenes: 🔴 `R` for Restricted. This rating is ma
 
 Scenes with this rating won't load and no one will be able to interact with them. If your scene falls into this category, you should review and update it to comply with the [Content Policy](https://decentraland.org/content).
 
-### Feature Toggles
+## Feature Toggles
 
 There are certain features that can be disabled in specific scenes so that players can't use these abusively. Configure these on the **Settings** tab of the scene settings.
 
@@ -147,7 +147,6 @@ On the `scene.json` file, these toggles are managed under `featureToggles`. The 
 ```
 
 If a `featureToggles` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
-
 
 ### Tipping
 
@@ -173,9 +172,7 @@ The tip modal allows the player to select the amount of MANA they want to send. 
 
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
 
-
-
-### Spawn location
+## Spawn location
 
 The **Spawn Settings** in the **Settings** tab define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
 
@@ -195,7 +192,7 @@ Set the **Camera Target** to control the direction players face when they enter 
 
 Click **Add Spawn Point** to list as many spawn points as you want. Players will randomly appear in one of those.
 
-#### Spawn points in JSON
+### Spawn points in JSON
 
 Spawn points can also be configured via the `scene.json` file, on the `spawnPoints` field.
 
@@ -329,7 +326,7 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
 
 This example spawns a player at _5, 1, 4_ facing East toward _10, 1, 4_. If the spawn position is a range, the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
-### Required Permissions
+## Required Permissions
 
 The `requiredPermissions` property manages various controlled features that could be used in an abusive way and damage a player's experience.
 
@@ -357,7 +354,7 @@ Currently, the following permissions are managed on smart wearables and portable
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
-### Scene parcels
+## Scene parcels
 
 When [deploying](../sdk7/publishing/publishing.md) a scene, the content is uploaded to the coordinates assigned in the scene configuration. A scene can include a single parcel, or a list of up to dozens of them.
 
@@ -399,7 +396,7 @@ To display multiple parcels in the scene preview, list as many parcels as you in
 **📔 Note**: The largest scene size you can set is of 45 x 45 parcels.
 {% endhint %}
 
-#### Set parcels via the command line
+### Set parcels via the command line
 
 You can set the parcels in your scene by running the `npx update-parcels` command in your scene folder. This is especially useful for large scenes, as you don't need to list every parcel involved.
 
@@ -447,7 +444,7 @@ The above commands all generate rectangular-shaped scenes. Decentraland scenes c
 **📔 Note**: The base parcel must be one of the parcels in the scene.
 {% endhint %}
 
-### Skybox time of day
+## Skybox time of day
 
 You can set a fixed time of day for your scene. All players will see the scene with this time of day, and the skybox will not follow the day/night cycle.
 
@@ -471,11 +468,11 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
-### World configuration
+## World configuration
 
 When publishing to a [Decentraland World](../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
 
-#### Basic World configuration
+### Basic World configuration
 
 To publish to a World, you must specify the NAME or ENS domain in your `scene.json`:
 
@@ -490,7 +487,7 @@ To publish to a World, you must specify the NAME or ENS domain in your `scene.js
 The **name** specified can be either a Decentraland NAME or an ENS Domain and must be owned by the wallet signing the deployment (or by any wallet that has been given permission via Access Control Lists).
 
 
-#### Communication service configuration
+### Communication service configuration
 
 The `fixedAdapter` property indicates which Communication Service should be used by the scene. For the time being, only the `offline:offline` value is allowed. When set, the scene will have no Communication Service at all, and each user joining that world will always be alone. If not set, the Worlds content server will generate a proper value based on how it is configured.
 
@@ -503,7 +500,7 @@ The `fixedAdapter` property indicates which Communication Service should be used
 }
 ```
 
-#### Places listing configuration
+### Places listing configuration
 
 All Worlds are automatically listed on the Places page unless you opt out. If you wish to opt-out from your Worlds being indexed in Places, you can add the following:
 
@@ -518,7 +515,7 @@ All Worlds are automatically listed on the Places page unless you opt out. If yo
 }
 ```
 
-#### Complete example
+### Complete example
 
 Here's a complete example with all World configuration options:
 
@@ -536,7 +533,7 @@ Here's a complete example with all World configuration options:
 
 See [Publishing to Worlds](../sdk7/publishing/publishing.md#publishing-to-worlds) for more information on deploying to Worlds.
 
-### Fetch metadata from scene code
+## Fetch metadata from scene code
 
 [Scene API Reference](https://js-sdk-toolchain.pages.dev/modules/js_runtime_apis.__system_Scene_)
 

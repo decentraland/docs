@@ -16,7 +16,7 @@ If the scene can't be compiled, you'll just see the empty ground, with nothing r
 **💡 Tip**: Before you publish your scene to the production environment, publish it to the test environment to try it in a context that is a lot closer to production. See [Development Workflow](../sdk7/getting-started/dev-workflow.md#deploy-to-the-test-environment)
 {% endhint %}
 
-### Use the console
+## Use the console
 
 Open the console by clicking the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner.
 
@@ -26,7 +26,7 @@ Output messages to console (using `console.log()`). You can then view these mess
 
 The console also shows error messages, these are marked in red.
 
-### The debug panel
+## The debug panel
 
 Open the debug console by clicking the ![](../../../.gitbook/assets/debug-icon.png) icon on the top-right corner.
 
@@ -34,7 +34,7 @@ This opens a panel on the lower-right corner with information about the renderer
 
 ![](../../../.gitbook/assets/debug-panel.png)
 
-#### Current scene
+### Current scene
 
 The **CURRENT SCENE** tab includes information about the scene you're currently standing on. This includes:
 
@@ -43,11 +43,11 @@ The **CURRENT SCENE** tab includes information about the scene you're currently 
 
 You can also check the **Show Scene Bounds** option to see red walls around the scene, which mark the boundaries of the scene.
 
-#### Memory
+### Memory
 
 The **MEMORY** section displays the memory used by Decentraland. Always try to keep this value below the **Memory Budget Thresholds**. If this value grows too much, it risks crashing the app for players visiting your scene. Keep in mind that in production, the scene might be loaded together with other surrounding scenes and players, which can all contribute to raise the memory consumption higher than what you see in preview.
 
-#### Performance
+### Performance
 
 The **PERFORMANCE** tab includes several fields related to _FPS_ (Frames Per Second). This value will tend to be lower as the scene grows in complexity, make sure you always keep this value above 25 FPS, to ensure a good experience for your players. The FPS will vary depending on the machine you run this in.
 
@@ -61,7 +61,7 @@ The most important value here is the **Average FPS**, which rounds up the FPS fr
 
 Hiccups refer to momentary pauses in the frame rate, which might have little impact in the overall FPS number but can be very noticeable to the player. These can typically occur when heavy assets are loaded or similar.
 
-#### Web Requests
+### Web Requests
 
 The **WEB REQUESTS** section allows you to open the Chrome Devtools Network tab, which displays the number of web requests made by the scene and their contents. This is useful to know if the scene is making too many requests to servers, which can impact the performance of the scene.
 
@@ -75,7 +75,7 @@ You don't need to have the Creator Hub open or run your scene preview via the Cr
 
 As an alternative, there are several free tools you can run on your machine that report all the data coming in and out of the Decentraland application. For example [Charles](https://www.charlesproxy.com/) or [Wireshark](https://www.wireshark.org/).
 
-### Quick reload
+## Quick reload
 
 Whenever you make changes to the scene, the preview reloads and updates automatically, so there's no need to open and close the preview window.
 
@@ -87,11 +87,11 @@ You can also reload the scene by writing the following into the chat and pushing
 
 `/reload`
 
-### Report a bug
+## Report a bug
 
 If you encounter a problem that is not with your scene, but instead with the Decentraland SDK in general, please see [Report a bug](../sdk7/debugging/report-bug.md).
 
-### Dependency versions
+## Dependency versions
 
 Make sure you always use the latest versions of all dependencies in your scene, as any issues you're experiencing might already be fixed in newer versions. The Creator Hub will notify you when there are updates to install on your Decentraland scene.
 
@@ -112,7 +112,7 @@ npm i @dcl/asset-packs@latest
 
 If you're using any of the [utils libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library) make sure those are also up to date, as older versions of these libraries may not be compatible with newer versions of `@dcl/sdk`.
 
-### Lighting conditions
+## Lighting conditions
 
 The in-world time of day has a big impact on how 3d models look. The color of the light source changes subtly, having a bluish tint at night, and a reddish tint during sunrise and sunset. The direction of the light also moves across the sky, casting shadows in different directions.
 
@@ -124,7 +124,7 @@ Your 3d model's materials might not look the same as they did in the modeling to
 
 You can also set up your scene so that the time of day is fixed and lighting does not change. See [Skybox control](../sdk7/interactivity/skybox-control.md) for more details.
 
-### Multiplayer testing
+## Multiplayer testing
 
 If you launch a scene preview and open it in two (or more) different explorer windows, each open window will be interpreted as a separate player, and a mock communications server will keep these players in sync.
 
@@ -140,7 +140,7 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 > `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
 
-### Using the Ethereum test network
+## Using the Ethereum test network
 
 While testing your scene, to avoid transferring real MANA or other currencies, you can use the Ethereum Sepolia test network and transfer fake testnet MANA instead.
 

@@ -6,7 +6,7 @@ description: >-
 
 # Estates Marketplace Integrations
 
-### Integrating Decentraland's Estate in your Marketplace
+## Integrating Decentraland's Estate in your Marketplace
 
 The Decentraland's Estate is an ERC721 compliant NFT and runs in Ethereum Mainnet. Therefore a lot of third party marketplaces can trade them. In order to do so, this marketplace must follow certain rules in order to make keep trades secure for the users.
 
@@ -18,9 +18,9 @@ It is not recommended to list empty Estates. The Estate smart contract has a met
 
 ![](<../../.gitbook/assets/dissolved_estate (2).png>)
 
-### Example
+## Example
 
-#### Not using the Estate fingerprint
+### Not using the Estate fingerprint
 
 * Bob has the Estate1 with LAND (1,1) and (1,2). Estate1 fingerprint: hash1
 * Bob adds the LAND (1,3) to Estate1. The Estate1 has the LANDs: (1,1), (1,2), and (1,3). Estate1 fingerprint: hash2 (Fingerprint changed)
@@ -31,7 +31,7 @@ It is not recommended to list empty Estates. The Estate smart contract has a met
 * Bob's transactions is mined first. Estate1 has 0 LANDs. Estate1 fingerprint: hash4 (Fingerprint changed)
 * Alice's transaction is mined later. Alice bought the Estate1 with 0 LANDs on it. It means that Alice got front-runned (and stolen/scammed) by Bob.
 
-#### Using the Estate fingerprint
+### Using the Estate fingerprint
 
 * Bob has the Estate1 with LAND (1,1) and (1,2). Estate1 fingerprint: hash1
 * Bob adds the LAND (1,3) to Estate1. The Estate1 has the LANDs: (1,1), (1,2), and (1,3). Estate1 fingerprint: hash2 (Fingerprint changed)
@@ -42,6 +42,6 @@ It is not recommended to list empty Estates. The Estate smart contract has a met
 * Bob's transactions is mined first. Estate1 has 0 LANDs. Estate1 fingerprint: hash4 (Fingerprint changed)
 * Alice's transaction is reverted because the smart contract checked that the fingerprint in the param that Alice sent didn't match with the current Estate1 fingerprint (hash3 != hash4). This check prevented Alice to buy a non desired Estate.
 
-### Estate Smart Contract Fingerprint Interface
+## Estate Smart Contract Fingerprint Interface
 
 The Estate's smart contract is compliant with a [fingerprint interface](https://github.com/decentraland/land/blob/master/contracts/estate/EstateStorage.sol#L19). In order to check if an order/offer for an estate is still valid or not, you can call the _`verifyFingerprint(uint256 estateId, bytes fingerprint)`_ function implemented in the Estate smart contract. You can check a working production example [here](https://github.com/decentraland/marketplace-contracts/blob/master/contracts/marketplace/MarketplaceV2.sol#L382)

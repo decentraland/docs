@@ -4,7 +4,7 @@ description: Obtain data from the context where your scene is running and the sc
 
 # Runtime Data
 
-### Get Decentraland Time
+## Get Decentraland Time
 
 Decentraland follows a day/night cycle that takes 2 hours to be completed, so there are 12 full cycles every day. Players can also change the settings to experience a specific fixed time of day, for example to always see Decentraland with a 10pm night sky. For this reason, Decentraland time may vary from one player to another.
 
@@ -45,7 +45,7 @@ executeTask(async () => {
 })
 ```
 
-### Get realm data
+## Get realm data
 
 Players in decentraland exist in several separate _realms_. Players in different realms can't see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited amount of players without running into any limitations. It also pairs players who are in close regions, to ensure that ping times between players that interact are acceptable.
 
@@ -87,7 +87,7 @@ See [onRealmChangedObservable](event-listeners.md#player-changes-realm-or-island
 **📔 Note**: When the scene first loads, there might not yet be a room assigned for the player. The explorer will eventually assign a room to the player, but this can sometimes occur a couple of seconds after the scene is loaded.
 {% endhint %}
 
-### Get player platform
+## Get player platform
 
 Players can access Decentraland via various platforms, including the official desktop app, and deprecated web and desktop versions, as well as [alternative experimental clients](https://github.com/decentraland/protocol-squad) built for other engines.
 
@@ -113,7 +113,7 @@ When using the official Decentraland desktop app, this function should return th
 
 Players using the official Decentraland desktop app are likely to have a much smoother experience than those on the browser, since the browser imposes performance limitations on how much of the machine's processing power the browser tab can use. They will also be missing many features like camera control, dynamic lights, freezing player movement, UI enhancements, etc.
 
-### The EngineInfo Component
+## The EngineInfo Component
 
 The `EngineInfo`component keeps track of data about the scene's lifecycle, which can sometimes be useful to tell when an event is occurring, relative to the scene's initialization.
 

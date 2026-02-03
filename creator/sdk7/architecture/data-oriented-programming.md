@@ -14,7 +14,7 @@ Because of this remarkable improvement in performance, much of the game making i
 
 Decentraland's SDK executes scenes in JavaScript, and one drawback of this language is that it offers no control over memory allocation. The engine that runs Decentraland, however, uses C#, which does benefit a lot by following data oriented principles. The SDK and the engine are constantly sending messages between each other. To make this communication as efficient as possible, it makes sense to keep the data structures on both sides as similar as possible, to avoid having to constantly reorganize this data.
 
-### How it looks
+## How it looks
 
 Data Oriented Programming is different from Object Oriented Programming, an approach that many developers are currently familiar with. In Object Oriented Programming, the code is structured following abstractions that try to replicate real-world constructs: objects. Each of these objects can hold both data and functionality. Applications that use this approach are often easy to plan out conceptually, but also more inefficient to run.
 
@@ -28,7 +28,7 @@ Imagine a scene that has a dozen doors that can either be open or closed. You ca
 
 Data Oriented Programming is not necessarily harder, but it's a different approach that needs to be learnt and adopted. Developers that are not used to this approach might need some time to get familiar with it, we encourage that you explore and play with examples to get a better feel.
 
-### Why it works
+## Why it works
 
 To understand why data oriented programming makes such a big difference, we need to take a look at the hardware.
 

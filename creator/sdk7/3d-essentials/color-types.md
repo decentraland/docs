@@ -8,7 +8,7 @@ Color values can passed as properties of different components, like [Materials](
 
 `Color3` contains three properties, _red_, _green_, and _blue_. `Color4` has those same three plus `alpha`, for transparency values.
 
-### Set a color
+## Set a color
 
 You can make a color by using the `Color3.create()` or the `Color4.create()` functions.
 
@@ -74,7 +74,7 @@ TextShape.create(myEntity, {
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Transparency
+## Transparency
 
 Use the _alpha_ property of `Color4` to make a color translucid.
 
@@ -91,7 +91,7 @@ const half = Color4.create(1, 1, 1, 0.5)
 const half = Color4.create(1, 1, 1, 0.1)
 ```
 
-### Lerp
+## Lerp
 
 Use the `Color3.lerp()` or the `Color4.lerp()` function to define a color that's somewhere between two other colors. These functions work similar to the `Vector3.lerp()` function.
 

@@ -39,7 +39,10 @@ interface Request {
   cameraTarget?: Vector3;
 }
 
-interface Response {}
+interface Response {
+    // Once the player has moved to the new position, and if the player didn't interrupt the movement, this will be true.
+  success: boolean;
+}
 
 function movePlayerTo(Request): Promise<Response>;
 ```

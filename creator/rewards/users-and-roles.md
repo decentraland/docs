@@ -13,7 +13,7 @@ To add a user to the campaign.
 
 ![](<../../.gitbook/assets/users (1).png>)
 
-### Permissions for roles
+## Permissions for roles
 
 These are the actions allowed for each role:
 

@@ -20,7 +20,7 @@ In all cases, you'll need:
 * A [material](../sdk7/3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
 * A `VideoPlayer` component to control the state of the video.
 
-### Performance considerations
+## Performance considerations
 
 Keep in mind that streaming video demands a significant effort from the player's machine. It's recommended to avoid playing more than one video at a time.
 
@@ -36,7 +36,7 @@ Also avoid streaming videos in very high resolution. Don't use anything above _H
 
 It's also ideal to play videos on Basic (unlit) materials, to reduce the performance load, as is the case on all of the example snippets below.
 
-### Show a video
+## Show a video
 
 The following instructions apply to all three video showing options:
 
@@ -80,7 +80,7 @@ VideoPlayer.create(screen, {
 
 See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentraland-cast) for details on how to use this third alternative method.
 
-### About External Streaming
+## About External Streaming
 
 The source of the streaming must be an _https_ URL (_http_ URLs aren't supported), and the source should have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit external access. If this is not the case, you might need to set up a server to act as a proxy and expose the stream in a valid way.
 
@@ -90,13 +90,13 @@ The other recommended alternative is to set up your own server, using free softw
 
 All these options have pros and cons for different scenarios. You should evaluate what's best for you taking into account your needs, technical skills and budget.
 
-### Setting up OBS for successful streaming
+## Setting up OBS for successful streaming
 
 [OBS](https://obsproject.com/) is a popular and free tool for managing your streams.
 
 Whether you are using a venue’s stream key or your own RTMP server, your settings in OBS are important for the success of your stream. You should aim for a solid, consistent connection.
 
-#### Simple OBS set-up
+### Simple OBS set-up
 
 The following simple set-up is recommended:
 
@@ -107,13 +107,17 @@ The following simple set-up is recommended:
 * Broadest Resolution: 720 (any greater causes issues in DCL)
 * Frame rate 30fps
 
-#### Advice for new streamers
+{% hint style="warning" %}
+**📔 Note**: Make sure you disable Multitrack streaming in OBS. You can find this in Settings > Stream.
+{% endhint %}
+
+### Advice for new streamers
 
 * Early sound checks are essential to test your set up with the venue.
 * Small errors like a digit wrong in the stream key are the most likely to mess up the stream.
 * Do not go above 720 resolution or a bitrate of 2500 kbps.
 
-### Live streaming
+## Live streaming
 
 You can livestream from your camera or share your screen using the [Live streaming](../scene-editor/live-ops/live-streaming.md) feature of the [Admin tools](../scene-editor/live-ops/scene-admin.md) smart item.
 
@@ -149,7 +153,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-### Video Materials
+## Video Materials
 
 Most of the time, you'll want to play videos on an unlit [Basic material](../sdk7/3d-essentials/materials.md#unlit-materials), rather than a PBR material. This results in a much brighter and crisper image and is better for performance.
 
@@ -179,7 +183,7 @@ Material.setPbrMaterial(screen, {
 See [materials](../sdk7/3d-essentials/materials.md) for more details.
 {% endhint %}
 
-### About Video Files
+## About Video Files
 
 The following file formats are supported:
 
@@ -191,7 +195,7 @@ Keep in mind that a video file adds to the total size of the scene, which makes 
 
 We also recommend starting to play the video when the player is nearby or performs an action to trigger it. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
-### Start pause and stop a video
+## Start pause and stop a video
 
 To start playing the video or pause it, set the `playing` property to _true_ or _false_. If `playing` is set to false, the video is paused at the last frame shown.
 
@@ -226,7 +230,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-### Configure the video player
+## Configure the video player
 
 The following optional properties are available to set on the `VideoPlayer` component:
 
@@ -241,7 +245,7 @@ The following optional properties are available to set on the `VideoPlayer` comp
 * `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _-1_ by default, which makes it start at the actual start of the video.
 * `loop`: Boolean that determines if the video is played continuously in a loop, or if it stops after playing once. _false_ by default.
 
-### Play multiple videos
+## Play multiple videos
 
 To avoid running into performance problems, each scene is only allowed to play one video texture at a time. However, a scene can play multiple copies of the same video texture on several different screens. This is not restricted, as it impacts performance considerably less than playing separate videos. To play the same video on multiple entities, simply assign the same instance of the video texture object to the `Material` components of each screen entity.
 
@@ -276,7 +280,7 @@ Material.setBasicMaterial(screen2, {
 
 Note that in the example above, it's only necessary to create one `VideoPlayer` component, which controls the state of both video screens. In this case, the component is assigned to the `screen1` entity, but it could also be assigned to any other entity in the scene, not necessarily one of the screens.
 
-### Video events
+## Video events
 
 Easily handle state changes in a video, to respond to when a video starts playing, is paused, etc. This can be used for example to play animations in perfect sync with a video, ensuring they start at the same time as the video.
 
@@ -351,7 +355,7 @@ The videoEvent object passed as an input for the function contains the following
 * `timeStamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
 * `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
 
-#### Latest video event
+### Latest video event
 
 Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This function always returns the latest `VideoEvent` value for the video.
 
@@ -366,7 +370,7 @@ function mySystem() {
 }
 ```
 
-### Alpha masks on videos
+## Alpha masks on videos
 
 A neat trick to have non-rectangular video screens is to apply an alpha texture on top of a plane. You can cut away part of the plane into whatever shape you want.
 
@@ -395,7 +399,7 @@ Material.setBasicMaterial(screen, {
 **📔 Note**: In previous versions, the `alphaTexture` property was only present in PBR materials. Currently, it only works in basic materials.
 {% endhint %}
 
-### Play a video on a glTF model
+## Play a video on a glTF model
 
 You can play a video on a _glTF_ model by using the [GltfNodeModifiers](../sdk7/3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
 

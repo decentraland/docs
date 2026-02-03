@@ -6,7 +6,7 @@ description: Learn how to use trigger areas in your scene
 
 Trigger areas allow you to react to the event of a player entering or leaving an area, or of any other entity entering or leaving an area. This is a fundamental tool for creating interactive scenes. Use them for things like opening a door when the player approaches, or to score a point when a ball enters a goal.
 
-### Using trigger areas
+## Using trigger areas
 
 To use trigger areas you need to add a `TriggerArea` component to an entity, then use a `triggerAreaEventsSystem` to react to the events.
 
@@ -30,7 +30,7 @@ triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
 })
 ```
 
-### Trigger area shapes
+## Trigger area shapes
 
 Trigger areas can be either a box or a sphere.
 
@@ -62,7 +62,7 @@ Transform.create(triggerEntity, {
 })
 ```
 
-#### Debugging
+### Debugging
 
 To debug your scene and see the area covered by the trigger area, you can add a `MeshShape` component to the entity with the trigger area, and set the shape to the one you want to debug. The dimensions of the default mesh will match the dimensions of the trigger area.
 
@@ -80,7 +80,7 @@ Transform.create(triggerEntity, {
 })
 ```
 
-### Trigger area events
+## Trigger area events
 
 You can use the `triggerAreaEventsSystem` to react to the different events of a trigger area:
 
@@ -111,7 +111,7 @@ triggerAreaEventsSystem.onTriggerStay(triggerEntity, function(result) {
 })
 ```
 
-### Trigger event responses
+## Trigger event responses
 
 When a trigger area event is triggered, you can use the `result` parameter to get information about both the entity that was triggered and the entity that triggered the event.
 
@@ -165,7 +165,7 @@ triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
 })
 ```
 
-### Trigger area layers
+## Trigger area layers
 
 Use the optional second argument of the `TriggerArea` component to set the layers that will activate the trigger area.
 

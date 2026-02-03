@@ -4,7 +4,7 @@ description: How to publish my project?
 
 # Publishing
 
-### Before you begin
+## Before you begin
 
 Make sure of the following:
 
@@ -20,7 +20,7 @@ Make sure of the following:
 After each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
 {% endhint %}
 
-### Check scene data
+## Check scene data
 
 When deploying, the CLI reads information from the _scene.json_ file to determine where to deploy your scene.
 
@@ -39,9 +39,9 @@ Open your scene's _scene.json_ file and complete the following data:
 **📔 Note**: See [scene metadata](../sdk7/projects/scene-metadata.md) for more details on how to set these parameters.
 {% endhint %}
 
-### To publish the scene
+## To publish the scene
 
-#### Using the Scene Editor in Creator Hub
+### Using the Scene Editor in Creator Hub
 
 The Scene Editor in Creator Hub provides an easy way to publish your scenes. Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-installation.md).
 
@@ -58,7 +58,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
    * For LAND on a Metamask browser account, confirm the deployment. Then approve the transaction on the Metamask browser extension.
    * For LAND linked to a wallet you can use via Wallet Connect, click **Connect wallet**, then scan the QR code with your mobile device and follow the steps on Wallet Connect.
 
-#### Via the CLI
+### Via the CLI
 
 1. Log into your Metamask account with the same public address associated with your parcels in Decentraland.
 2. Run `npm run deploy` from the scene's folder.
@@ -78,11 +78,11 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
 **💡 Tip**: `npm run deploy` runs a `npm run build`, which checks the scene for type errors more strictly than running `npm run start`. If these errors can't be avoided (eg: they happen in an external library) and they don't impact the scene, you can use `npm run deploy --skip-build` to skip the `npm run build` step and deploy the scene as it is.
 {% endhint %}
 
-### Publishing to Worlds
+## Publishing to Worlds
 
 To publish your scene to a Decentraland World, you need to own a Decentraland NAME or ENS domain. See [Publishing Options](publishing-options.md#decentraland-worlds) for information on how to obtain one.
 
-#### Configure scene.json
+### Configure scene.json
 
 You need to specify under what **name** your deployment is to be made. Add the following section in your `scene.json`:
 
@@ -102,7 +102,7 @@ Keep the following in mind:
 * The scene has no parcel limitations (since January 2023)
 * All Worlds are automatically listed on the Places page unless you opt out as detailed below
 
-#### Opt-out from Places listing
+### Opt-out from Places listing
 
 If you wish to opt-out from your Worlds being indexed in Places, you can add the following section in your `scene.json`:
 
@@ -117,14 +117,14 @@ If you wish to opt-out from your Worlds being indexed in Places, you can add the
 }
 ```
 
-#### Using the Scene Editor in Creator Hub
+### Using the Scene Editor in Creator Hub
 
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
 3. Select **PUBLISH TO WORLD**.
 4. Select which of your NAMEs or ENS Domains to publish to.
 
-#### Via the CLI
+### Via the CLI
 
 Use the following command:
 
@@ -135,7 +135,7 @@ npm run deploy -- --target-content https://worlds-content-server.decentraland.or
 Once you run the command, you will be prompted to sign the deployment with your wallet and a set of validations will be executed to allow or reject the scene.
 
 
-#### Accessing a World
+### Accessing a World
 
 Once a scene is uploaded to the Worlds server, you can access it using the Decentraland Explorer with the following URL: `decentraland://?realm=NAME.dcl.eth`, where `NAME` should be replaced with the Decentraland NAME or ENS Domain you deployed to.
 
@@ -143,7 +143,7 @@ With Decentraland already open, you can also jump to a world by typing the `/got
 
 See [Make discoverable](../sdk7/projects/make-discoverable.md) for more information on how to make your World discoverable.
 
-#### Migrating a World to Genesis City
+### Migrating a World to Genesis City
 
 If you are a LAND owner and wish to deploy a World scene to Genesis City, you can do so by re-deploying your scene to the decentralized Catalyst network, which is the content server for Genesis City.
 
@@ -152,7 +152,7 @@ Things to remember:
 * Remove the `worldConfiguration` section from `scene.json`
 * The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
 
-### Publish from a hardware wallet
+## Publish from a hardware wallet
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.
 
@@ -160,7 +160,7 @@ If you're using one of these devices, you can link the hardware wallet to Metama
 
 Once your hardware wallet can be used via Metamask, you can deploy following the same steps as if your tokens were on a Metamask account.
 
-### Scene overwriting
+## Scene overwriting
 
 When a new scene is deployed, it overwrites older content that existed on the parcels it occupies.
 
@@ -170,7 +170,7 @@ Suppose you deployed your scene _A_ over two parcels _\[100, 100]_ and _\[100, 1
 
 Your scene _A_ can't be partially rendered in just one parcel, so _\[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _\[100, 100]_.
 
-### What are the content servers
+## What are the content servers
 
 The content servers are a network of community-owned servers with a filesystem that's content-addressed, meaning that each file is identified by its contents, not by an arbitrary file name.
 
@@ -181,7 +181,7 @@ We use the content servers to host and distribute all scene content in a similar
 
 The information on each copy of the server is verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate. The community can also vote to approve or remove any of these servers using the DAO.
 
-### The test server
+## The test server
 
 You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers. The difference is that content deployed to this server isn't propagated to the others. However, content deployed to other servers does get propagated to this server, so surrounding scenes should look as they will in production.
 
@@ -193,7 +193,7 @@ Players are never directed to this server, the only way to access it is to expli
 
 If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
 
-#### Via the CLI
+### Via the CLI
 
 To deploy to the test server, run:
 
@@ -203,7 +203,7 @@ To enter the content server, add `&CATALYST=peer-testing.decentraland.org` to th
 
 _https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
-### Custom servers
+## Custom servers
 
 You can deploy content to a custom server that doesn't belong to the official DAO-maintained network of catalyst servers. To do this, you don't need to own any LAND or NAME tokens, as you can configure the server to use any validation logic you prefer to control who can deploy where. Custom servers can choose to include content from the official servers (which you can overwrite), or start from a blank slate and publish entirely new content.
 
@@ -215,7 +215,7 @@ See [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) f
 
 Players are never directed to this server, the only way to access it is to explicitly type in the URL to connect to it.
 
-#### Via the CLI
+### Via the CLI
 
 To deploy to a custom server, run:
 
@@ -223,7 +223,7 @@ To deploy to a custom server, run:
 
 The URL to enter your deployed scene on your custom server will depend on the domain where it's being hosted.
 
-### Verify deployment success
+## Verify deployment success
 
 Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, depending on what realm you enter.
 
@@ -239,7 +239,7 @@ You can also obtain this information at any time by running the following comman
 **📔 Note**: Use the coordinates of your scene instead of `0,0`. If your scene has multiple parcels, any one of its parcels will produce the same output. If the coordinates start with a negative number, add a `\` at the start of the coordinates to prevent the `-` character from being misinterpreted by the command line.
 {% endhint %}
 
-### Automatic deployments
+## Automatic deployments
 
 If you regularly make changes to your scene's content and want to implement a streamlined publication pipeline, you can automate the deployment of your scene via a GitHub action.
 

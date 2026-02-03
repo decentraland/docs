@@ -129,6 +129,8 @@ In some cases, a custom 3D model is added to the scene but is not used immediate
 To avoid this, use the `AssetLoad.create` method to ensure the asset is downloaded before it is needed.
 
 ```ts
+import { AssetLoad } from "@dcl/sdk/ecs"
+
 AssetLoad.create(engine.RootEntity, {
   assets: [
     "assets/scene/bundle1/explosion.glb",

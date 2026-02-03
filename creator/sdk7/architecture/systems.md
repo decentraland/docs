@@ -47,7 +47,7 @@ You can have multiple systems in your scene to decouple different behaviors, mak
 
 Multiple systems can act on a single entity. For example a non-player character might move on its own based on an AI, but also be affected by gravity when accidentally walking from off a cliff. In that scenario, the physics and the AI systems don't even need to know about each other. They independently reassess their current state on each tick of the game loop and implement their own separate logic.
 
-### The system function
+## The system function
 
 A system's function is executed periodically, once per every tick of the game loop. This happens automatically, you don't need to explicitly call this function from anywhere in your code.
 
@@ -57,7 +57,7 @@ In a Decentraland scene, you can think of the game loop as the aggregation of al
 **📔 Note**: If you add multiple instances of a same system to the engine, the function will be executed multiple times per tick of the game loop. For example, adding a system twice could result in an entity moving at twice the speed as expected, as it advances two increments on each tick.
 {% endhint %}
 
-### Handle entities by reference
+## Handle entities by reference
 
 Some components and systems are meant for using only on one entity in the scene. For example, on an entity that stores a game's score or perhaps a main gate that is unique in the scene. To access one of those entities within a system, you can simply refer to the entity or its components by name in the system's functions.
 
@@ -84,7 +84,7 @@ engine.addSystem(UpdateScore)
 
 For larger projects, we recommend that you keep system definitions on separate files from the instancing of entities and components.
 
-### Loop over a component query
+## Loop over a component query
 
 A lot of times, your scene will have multiple entities of the same type that will have similar behaviors. For example many doors that can be opened, or many enemies that can attack the player. It makes sense to handle all of these similar entities in a single system, iterating over the list and performing the same checks on each.
 
@@ -109,7 +109,7 @@ export function PhysicsSystem() {
 engine.addSystem(PhysicsSystem)
 ```
 
-### Delta time between frames
+## Delta time between frames
 
 The function in a system can optionally include an argument called `dt`, of type `number` (representing _delta time_).
 
@@ -141,7 +141,7 @@ The `dt` variable is useful when frame processing exceeds the default time. Assu
 
 See [entity positioning](../sdk7/3d-essentials/entity-positioning.md) for examples of how to use `dt` to make movement smoother.
 
-### Loop at a timed interval
+## Loop at a timed interval
 
 If you want a system to execute something at a regular time interval, you can do this by combining the `dt` argument with a timer.
 
@@ -177,7 +177,7 @@ Where `intervalId` is the reference to the `setInterval` return defined before.
 
 For more complex use cases, where there may be multiple delays and loops being created dynamically, it may be worth defining a custom component to store an individual timer value for each entity. See [Custom components](../sdk7/architecture/custom-components.md).
 
-### System execution order
+## System execution order
 
 In some cases, when you have multiple systems running, you might care about what system is executed first by your scene.
 
@@ -196,7 +196,7 @@ Systems that aren't given an explicit priority have a default priority of _0_, s
 
 If two systems have the same priority number, there's no way to know for certain which of them will be executed first.
 
-### Remove a system
+## Remove a system
 
 An instance of a system can be added or removed from the engine to turn it on or off.
 

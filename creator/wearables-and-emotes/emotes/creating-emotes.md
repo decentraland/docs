@@ -6,7 +6,7 @@ description: Tips and guidelines for creating Decentraland Emotes.
 
 This documentation will cover the file specifications, the basics of animation in Blender, the proper way to export an Emote, and how to import one into the Builder.
 
-#### Animation Specs Chart
+### Animation Specs Chart
 
 | Frame Rate             | 30 fps                     |
 | ---------------------- | -------------------------- |
@@ -21,7 +21,7 @@ This documentation will cover the file specifications, the basics of animation i
 
 You can find a more detailed explanation of the animation specifications [**below**](creating-emotes.md#the-animation-specifications).
 
-### **Resources**
+## **Resources**
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
@@ -33,7 +33,7 @@ If you're using Maya you can download this [Maya Rig](https://github.com/decentr
 
 ## **Before Starting**
 
-### **Frame Rate**
+## **Frame Rate**
 
 Before getting started, it’s important to check the frame rate. Decentraland’s animations must have a frame rate of 30 fps. The rig file provided probably has that set up, but since Blender’s default value is 24 fps, it is best to double check before starting (a wrong frame rate will affect the speed of the animation). That option can be found in Output Properties (the printer icon) under Format, as shown below:
 
@@ -41,7 +41,7 @@ Before getting started, it’s important to check the frame rate. Decentraland�
 
 Make sure the framerate is set to 30 fps before starting.
 
-### **Pose Mode**
+## **Pose Mode**
 
 In Blender, a rig can be viewed in three different modes: Object Mode, Edit Mode, and Pose Mode. Animations can only be done in Pose Mode (in that mode, controls have colors). With the rig selected, you’ll find that option in a dropdown menu, at the top right.
 
@@ -49,7 +49,7 @@ In Blender, a rig can be viewed in three different modes: Object Mode, Edit Mode
 
 Changing to Pose Mode.
 
-### **Interface for Animations**
+## **Interface for Animations**
 
 In the rig file, other than the two windows for the viewport (front and side view), there are three more at the bottom: a _**Graph Editor**_, _**a Dope Sheet**_, and a _**Timeline**_.
 
@@ -71,7 +71,7 @@ Since Blender is highly customizable, this is also a good time to set up the lay
 
 ## Getting Started
 
-#### **Starting Pose**
+### **Starting Pose**
 
 In the rig file provided, there’s already an action, the _**Starting_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
 
@@ -81,7 +81,7 @@ In the rig file provided, there’s already an action, the _**Starting_Pose**_. 
 If you want to do a loop animation, you don’t have to start the animation from the Starting Pose. Feel free to use the pose that makes more sense in your animation!\*\*
 {% endhint %}
 
-### **Ground Reference and Animation Area**
+## **Ground Reference and Animation Area**
 
 In order to avoid ground penetration during animation, a plane has been added to the file as a ground reference. Along with the animation area reference, it also helps identify the area that can be used for the animation. For reference, the samller circle on the plane has a radius of 2 meters and the larger one, 4 meters.
 
@@ -133,7 +133,7 @@ Belnder 4.4 introduced _Slotted Actions_, the icon to the right of the _Browse A
 
 ![](../../../.gitbook/assets/duplicating_animation.gif) Create a new animation by duplicating the existing one or by clicking on \_\*\*Unlink Action\*\*\_ and then \_\*\*New\*\*\_.
 
-### **Browsing and Deleting Animations**
+## **Browsing and Deleting Animations**
 
 In Blender, you can have multiple animation tracks in the same file. It is possible to browse them by clicking on the Browse Action dropdown menu. All animation with and F (Fake User) will be saved. To delete an animation, press Shift on the keyboard and click on the X. After doing that, the animation will show a 0 next to it, which means that it will be deleted the next time you close Blender or re-open the file.
 
@@ -153,7 +153,7 @@ Do not always edit the same animation track. Before making major changes, just d
 
 ![](../../../.gitbook/assets/duplicating_animation2.gif) Duplicating animation clips.
 
-### **Naming**
+## **Naming**
 
 **An animation’s name should start with a capital letter and if the name is more than one word long, the words should be separated by \_.** Do not use spaces or special characters. Here are some examples of naming:
 
@@ -162,7 +162,7 @@ Do not always edit the same animation track. Before making major changes, just d
 - Throw_Money
 - Talk_To_Hand
 
-### **Emote Overrides**
+## **Emote Overrides**
 
 Emote overrides happen when deform bones don’t have a keyframe set in one of the parameters. Without a keyframe, that bone won’t have the information of where it should be, how much it has been rotated and scaled, leaving that channel open. The consequence is that if you play an emote in world and then trigger yours while the previous one was still playing, the information of location, rotation and scale will be overridden by the previous emote, which will cause a combination of them both. Unless this is done in purpose, it will affect your animation, sometimes with a fun result, but others with completely messed up the emote. Below is an example of an emote override.
 
@@ -176,7 +176,7 @@ To avoid that, select all layers with bones in them (which can be found in _**Ob
 
 ## **The Animation Specifications**
 
-### **The Animation Length**
+## **The Animation Length**
 
 The max length of an animation is **10 seconds** or **300 frames**. Remember to keyframe every control’s properties on the first and last frames.
 
@@ -188,15 +188,15 @@ The max length of an animation is **10 seconds** or **300 frames**. Remember to 
 
 Make channels visible before keyframing!
 
-### **Number of Animations**
+## **Number of Animations**
 
 If it is a standard emote (with no prop), the exported file can only have one animation. For emotes 2.0 you can have one clip for the avatar and one clip for the prop. If animations were duplicated during the process, make sure you delete all of them before exporting. Keep only the final version. Sequence emotes that need many animations to work (action start, action loop, and action end) are not supported right now.
 
-### **Format**
+## **Format**
 
 Animations should be exported as .**GLB**. The file can only contain the deforming skeleton and the animation. **Mesh, controls, and any other object should not be exported**. More details on how to export can be found [**below**](creating-emotes.md#exporting).
 
-### **Sampling**
+## **Sampling**
 
 Since constraints can’t be exported, the only way to export the animation clip is by baking it, which means that all the deforming bones’ positions, rotation, and scale will be keyframed in every single frame of the animation. If the clip is too long, like up to 300 frames, it’ll have 300 keyframes after exporting and the more keyframes it has, the heavier the file gets.
 
@@ -212,7 +212,7 @@ Usually, a **sampling rate of 2 or 3** will do the trick. Those numbers can opti
 If the number of frames of the animation can be divided by the sampling rate, that’s a good thing! It means that the final frame will be baked, preserving the transition from end to start of the animation.
 {% endhint %}
 
-### **File Size**
+## **File Size**
 
 The max file size is **3 MB**. If the file is over that after exporting, try checking if the mesh wasn’t exported by accident or if the animation isn’t over 10 seconds. If it is still over 3 MB, try experimenting with the Sampling Rate, as higher values will improve the optimization.
 

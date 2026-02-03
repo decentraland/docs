@@ -75,7 +75,7 @@ The following fields can be added to a `Button` UI element:
 * `variant`: Use this property to set the style of the button as one of the defaults. `primary` and `secondary` are available.
 * `disabled`: Boolean to set a button disabled. When disabled is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called. Also the `alpha` value of the color of both the text and the backgroun is halved, so the button is "grayed-out" and stands out less.
 
-### Button styling
+## Button styling
 
 Set the variant to `primary` or `secondary` to take advantage of the default styling options for buttons. `primary` makes your button red with white text, `secondary` makes your button white with red text.
 
@@ -135,7 +135,7 @@ export const uiMenu = () => (
 )
 ```
 
-### Togglable buttons
+## Togglable buttons
 
 A common use case is to make a button toggle between two states, like a switch. The example below switches between two colors each time the button is pressed:
 
@@ -168,7 +168,7 @@ export const uiMenu = () => (
 
 Note that in the example above, the color depends on a `buttonEnabled` variable. Whenever this variable's value changes, it inmediately affects the background color.
 
-### Hover Feedback
+## Hover Feedback
 
 Another common use case is to display some kind of visual hint when hovering over a button, to clarify that this is interactible, or even to display a hover hint explaining what this button does. Use the `onMouseEnter` and `onMouseLeave` callbacks to detect when the player's cursor is on the button, and react accordingly.
 
@@ -194,7 +194,7 @@ export const uiMenu = () => (
 )
 ```
 
-### Making other elements clickable
+## Making other elements clickable
 
 Any element in the UI can be made clickable by adding an `onMouseDown` property to it, it works identically to a button. The following example adds `onMouseDown` properties to background images and text.
 
@@ -225,7 +225,7 @@ export const uiMenu = () => (
 )
 ```
 
-### Pointer blocking
+## Pointer blocking
 
 All UI entities are non-pointer blocking by default, meaning that players's clicks will go through them and interact with objects in the 3D world space behind them. If an entity has an `onMouseDown` callback, then it becomes pointer blocking, so player's clicks don't affect what's behind that UI entity.
 

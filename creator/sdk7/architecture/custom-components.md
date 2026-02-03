@@ -8,7 +8,7 @@ Data about an entity is stored in its [components](entities-components.md). The 
 
 If your scene's logic requires storing information about an entity that isn't handled by the default components of the SDK, then you can create a custom type of component on your scene. You can then build [systems](systems.md) that check for changes on these components and respond accordingly.
 
-### About defining components
+## About defining components
 
 To define a new component, use `engine.defineComponent`. Each component needs the following:
 
@@ -62,13 +62,13 @@ const readOnlyInstance MyCustomComponent.deleteFrom(myEntity)
 
 ```
 
-### About the componentName
+## About the componentName
 
 Each component must have a unique component name or identifier, that differentiates it internally. You won't need to use this internal identifier anywhere else in your code. A good practice is to use the same name you assign to the component, but starting with a lower case letter, but all that really matters is that this identifier is unique within the project.
 
 When creating components that will be shared as part of a library, be mindful that the component names in your library must not overlap with any component names in the project where it's being used, or on other libraries that are also used by that project. To avoid the risk of any overlap, the recommended best practice is to include the name of the library as part of the `componentName` string. You can follow this formula: `${packageName}::${componentName}`. For example if you build a`MyUtilities` library that includes a `MoveEntity` component, set the `componentName` of that component to `MyUtilities::moveEntity`.
 
-### Components as flags
+## Components as flags
 
 You may want to add a component that simply flags an entity to differentiate it from others, without using it to store any data. To do this, leave the schema as an empty object.
 
@@ -90,7 +90,7 @@ export function handleEnemies() {
 engine.addSystem(handleEnemies)
 ```
 
-### Component Schemas
+## Component Schemas
 
 A schema describes the structure of the data inside a component. A component can store as many fields as you want, each one must be included in the schema's structure. The schema can include as many levels of nested items as you need.
 
@@ -133,7 +133,7 @@ export const WheelSpinComponent = engine.defineComponent(
 **💡 Tip**: When creating an instance of a component, the VS Studio autocomplete options will suggest what fields you can add to the component by pressing _Ctrl + Space_.
 {% endhint %}
 
-#### Default Schema types
+### Default Schema types
 
 The following basic types are available for using within the fields of a schema:
 
@@ -175,7 +175,7 @@ export const LerpTransformComponent = engine.defineComponent(
 )
 ```
 
-#### Array types
+### Array types
 
 To set the type of a field as an array, use `Schemas.Array()`. Pass the type of the elements in the array as a property.
 
@@ -185,7 +185,7 @@ const MySchema = {
 }
 ```
 
-#### Nested schema types
+### Nested schema types
 
 To set the type of a field to be an object, use `Schemas.Map()`. Pass the contents of this object as a property. This nested object is essentially a schema itself, nested within the parent schema.
 
@@ -213,7 +213,7 @@ const MySchema = {
 }
 ```
 
-#### Enums types
+### Enums types
 
 You can set the type of a field in a schema to be an enum. Enums make it easy to select between a finite number of options, providing human-readable values for each.
 
@@ -255,7 +255,7 @@ const CurveComponent = engine.defineComponent('curveComponent', {
 CurveComponent.create(engine.addEntity(), { curve: CurveType.EASEIN })
 ```
 
-#### Interchangeable types
+### Interchangeable types
 
 You can set the type of a field in a schema to follow a `oneOf` pattern, where different types can be accepted.
 
@@ -278,7 +278,7 @@ MyComponent.create(myEntity, {
 })
 ```
 
-### Default values
+## Default values
 
 It's often good to have default values in your components, so that it's not necessary to explicitly set each value every time you create a new copy.
 
@@ -322,7 +322,7 @@ export function main() {
 
 The above example creates a `WheelSpinComponent` component that includes both a schema and a set of default values to use. If you then initialize a copy of this component without specifying any values, it will use those set in the default.
 
-### Subscribe to changes
+## Subscribe to changes
 
 A common use case is to only run a function in case the data in a certain component changes. Use the [OnChange](subscribe-to-changes.md) function to avoid having to define a system and having to explicitly compare old values with new values.
 
@@ -338,7 +338,7 @@ export function main() {
 }
 ```
 
-### Building systems to use a component
+## Building systems to use a component
 
 With your component defined and added to entities in your scene, you can create [Systems](../../deprecated/scenes/architecture/systems.md) to perform logic, making use of this data stored on the component.
 

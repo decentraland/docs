@@ -10,7 +10,7 @@ Decentraland is made up of _parcels_ of LAND, each 16 meters by 16 meters. A _sc
 
 This document gives an overview on the different ways to obtain permissions. See [publishing](publishing.md) for instructions on how to publish once you've obtained these.
 
-### LAND permission options
+## LAND permission options
 
 In order to publish to LAND in Genesis City, you can do the following:
 
@@ -23,19 +23,19 @@ In order to publish to LAND in Genesis City, you can do the following:
 **📔 Note**: You can also deploy scenes to a test server where players are not around. The same permissions per parcel apply when deploying to the test server, see [publishing](publishing.md#the-test-server) for more details.
 {% endhint %}
 
-### Decentraland Worlds
+## Decentraland Worlds
 
 If you own a Decentraland NAME or an ENS domain, you can publish your scene to a Decentraland World. This option costs considerably less than buying land—a Decentraland NAME costs 100 MANA.
 
-#### Getting a Decentraland NAME
+### Getting a Decentraland NAME
 
 You can get your own Decentraland World by getting a [Decentraland NAME](https://builder.decentraland.org/names), which are NAME NFTs within the DCL ecosystem. Acquiring a Decentraland NAME requires 100 MANA and can be assigned to your avatar, LAND, or Estate. Alternatively, you can purchase an already-minted NAME from a previous owner in the [Marketplace](https://decentraland.org/marketplace/names).
 
-#### Using an ENS Domain
+### Using an ENS Domain
 
 You can also get a World by having an [ENS domain](https://ens.domains), a decentralized name that can be used across both Web2 & 3. Worlds granted from ENS domains have a fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
 
-#### Storage Capacity
+### Storage Capacity
 
 Inside a World, you're allowed to use as many parcels as you want. For Decentraland NAME holders, the size limit of your scene in MegaBytes depends on how many NAMES, MANA, and LAND parcels you own. See [Worlds size limits](../sdk7/projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.
 
@@ -43,13 +43,13 @@ Worlds serve as a gateway for aspiring content creators, providing an accessible
 
 See [Worlds](../../worlds/about.md) for an overview, or learn about [publishing to Worlds](publishing.md#publishing-to-worlds) for step-by-step instructions.
 
-### Get DAO funding
+## Get DAO funding
 
 If you have a great idea and the means to achieve it, but need financing, you can request for a grant in the DAO. If the proposal convinces enough people from the community to vote on it, you can get a sum of money to achieve your vision, including funds for buying or renting LAND.
 
 See [Community grants](../../archive/grants/community-grants.md).
 
-### How land permissions work
+## How land permissions work
 
 LAND tokens can manage permissions that allow the following different kinds of roles to deploy to a particular parcel or estate.
 

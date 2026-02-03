@@ -4,7 +4,7 @@ description: Learn how to add materials and textures to entities with primitive 
 
 # Materials
 
-### Materials
+## Materials
 
 Materials can be applied to entities that use primitive shapes (cube, sphere, plane, etc) by adding a `Material` component. This component has several fields that allow you to configure the properties of the material, add a texture, etc.
 
@@ -17,11 +17,11 @@ There are different types of supported materials:
 * PBR (Physically Based Rendering): The most common kind of material in Decentraland. It supports plain colors or textures, and different properties like metallic, emissive, transparency, etc. Read more about [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
 * Basic materials: They don't respond to lights and shadows, which makes them ideal for displaying billboard images.
 
-### Use the Scene Editor in Creator Hub
+## Use the Scene Editor in Creator Hub
 
 The easiest way to give an entity a Material is to use the Scene Editor. You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
 
-### Add a material
+## Add a material
 
 The following example creates a PBR material and sets some of its fields to give it a red color and metallic properties. This material is added to an entity that also has a box shape, so it will color the box with this material.
 
@@ -70,7 +70,7 @@ Material.setPbrMaterial(meshEntity, {
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Material colors
+## Material colors
 
 Give a material a plain color. In a PBR Material, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.
 
@@ -95,7 +95,7 @@ Material.setBasicMaterial(myEntity, {
 })
 ```
 
-### Using textures
+## Using textures
 
 Set an image file as a texture on a material by setting the `texture` parameter.
 
@@ -146,7 +146,7 @@ Material.setBasicMaterial(myEntity, {
 })
 ```
 
-#### Textures from an external URL
+### Textures from an external URL
 
 You can point the texture of your material to an external URL instead of an internal path in the scene project.
 
@@ -160,7 +160,7 @@ Material.setBasicMaterial(myEntity, {
 
 The URL must start with `https`, `http` URLs aren't supported. The site where the image is hosted should also have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit externally accessing it.
 
-#### Texture wrapping
+### Texture wrapping
 
 You can set how a texture aligns with a surface. By default, the texture is stretched to occupy the surface once, but you can scale it, and offset it.
 
@@ -216,7 +216,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-#### Texture tweens
+### Texture tweens
 
 Make a texture slide smoothly by using a `Tween` component, set up with the `TextureMove` mode. The tween gradually changes the value of the `offset` or the `tiling` properties of a texture over a period of time, in a smooth and optimized way.
 
@@ -336,7 +336,7 @@ TweenSequence.create(myEntity, {
 
 Note that when defining a tween within a TweenSequence, you need to use the more verbose format of `Tween.Mode.TextureMove` to define the tween.
 
-#### Multi-layered textures
+### Multi-layered textures
 
 You can use several image files as layers to compose more realistic textures, for example including a `bumpTexture` and a `emissiveTexture`.
 
@@ -453,7 +453,7 @@ For setting the UVs for a `box` mesh shape, the same structure applies. Each of 
 **📔 Note**: Uv properties are currently only available on `plane` and on `box` shapes. Also, _uv_ values affect all the texture layers equally, since they are set on the _shape_.
 {% endhint %}
 
-#### Texture scaling
+### Texture scaling
 
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways.
 
@@ -472,7 +472,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-### Unlit Materials
+## Unlit Materials
 
 Most of the times you'll want the materials in your scene to be affected by the lighting conditions, including shadows and being tinted by the hue changes of different times of day. But in other cases you might want to show the colors in their pure state. This is useful when playing videos, or also for abstract markers that need to stand out, that are meant for signalling hints to the player.
 
@@ -490,7 +490,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-### Avatar Portraits
+## Avatar Portraits
 
 To display a thumbnail image of any player, use `Material.Texture.Avatar` when setting the texture of your material, passing the address of an existing player. This creates a texture from a 256x256 image of the player, showing head and shoulders. The player is displayed wearing the set of wearables that the current server last recorded.
 
@@ -512,7 +512,7 @@ The following properties are supported within the object you pass as an argument
 * `filterMode`: Determines how pixels in the texture are stretched or compressed when rendered. This takes a value from the `TextureFilterMode` enum. See [Texture Scaling](materials.md#texture-scaling).
 * `wrapMode`: Determines how a texture is tiled onto an object. This takes a value from the `TextureWrapMode` enum. See [Texture Wrapping](materials.md#texture-wrapping).
 
-### Transparent materials
+## Transparent materials
 
 To make a material with a plain color transparent, simply define the color as a `Color4`, and set the 4th value to something between _0_ and _1_. The closer to _1_, the more opaque it will be.
 
@@ -581,13 +581,13 @@ Material.setPbrMaterial(meshEntity1, {
 
 This can be used in very interesting ways together with videos. See [video playing](../sdk7/media/video-playing.md).
 
-### Video playing
+## Video playing
 
 To stream video from a URL into a material, or play a video from a file stored in the scene, see [video playing](../sdk7/media/video-playing.md).
 
 The video is used as a texture on a material, you can set any of the other properties of materials to alter how the video screen looks.
 
-### Advanced syntax
+## Advanced syntax
 
 The complete syntax for creating a `Materials` component, without any helpers to simplify it, looks like this:
 
@@ -628,7 +628,7 @@ Depending on the value of `$case`, it's valid to define the object for the corre
 
 To add a `Material` component to an entity that potentially already has an instance of this component, use `Material.createOrReplace()`. The helper functions like `MeshRenderer.setPbrMaterial()` handle overwriting existing instances of the component, but running `Material.create()` on an entity that already has this component returns an error.
 
-### Modify glTF materials
+## Modify glTF materials
 
 Use the `GltfNodeModifiers` component to modify the materials of a _glTF_ model. This component allows you to override the materials of a _glTF_ model with your own materials. You can use any of the properties of the `Material` component, including texture, video texture, unlit materials, etc.
 
@@ -637,7 +637,7 @@ There are two ways to use the `GltfNodeModifiers` component:
 * Modify the material of the entire model by leaving the `path` property as an empty string.
 * Modify the material of a specific node in the model (or several nodes) by setting the `path` property to the path to the node.
 
-#### Modify the material of the entire model
+### Modify the material of the entire model
 
 The following example shows how to modify the material of a _glTF_ model. In this case, the material of the entire model is modified to be red.
 
@@ -687,7 +687,7 @@ In some models, however, the Babylon sandbox may list paths that belong to verte
 
 The `material` property is an object that represents the material to use. It needs to be written using the [advanced syntax](materials.md#advanced-syntax) for materials, as shown in the example above. Helper functions like `Material.setPbrMaterial()` can't be used here.
 
-#### Modify the material of a specific node in the model
+### Modify the material of a specific node in the model
 
 The following example shows how to modify the material of a specific node in the _glTF_ model. In this case, the material of the head is modified to use an alternative texture.
 
@@ -766,7 +766,7 @@ GltfNodeModifiers.create(myEntity, {
 })
 ```
 
-#### Modify fields from an existing material
+### Modify fields from an existing material
 
 The Material component provides a simplified interface for accessing and modifying Material component properties. It eliminates the need to navigate deeply nested union structures (`PBR` vs `Unlit`, `texture` vs `avatarTexture` vs `videoTexture`), making material manipulation more intuitive and less error-prone.
 
@@ -796,7 +796,7 @@ const src = Material.getFlatMutable(entity).texture.src
 Material.getFlatMutableOrNull(entity).texture.src = myNewTextureFile
 ```
 
-#### Remove shadows from a glTF model
+### Remove shadows from a glTF model
 
 To remove shadows from a _glTF_ model, you can set the `castShadows` property to `false` in the `GltfNodeModifiers` object. This retains the original material of the model, but prevents it from casting shadows. This is useful for models that are not meant to cast shadows, such as light beams.
 

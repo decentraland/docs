@@ -15,7 +15,7 @@ Most non-interactive items have the following components:
 
 The items in your scene are all **Entities**. Everything in a scene is an Entity, they are the basic building blocks of scenes. Items are Entities that have at least a position and a visible shape.
 
-### Add components
+## Add components
 
 To add Components to any Entity, click the **+** sign at the top of the properties tab and select the Component from the list. See [Make any item smart](../interactivity/make-any-item-smart.md)
 
@@ -23,7 +23,7 @@ To add Components to any Entity, click the **+** sign at the top of the properti
 
 You can delete any Component from an Entity by clicking the three dots icon on its right, and selecting **Delete Component**.
 
-### Create an entity from scratch
+## Create an entity from scratch
 
 To create a fresh new Entity, right click on the root **Scene** Entity in the Entity tree, or on any other Entity, and select **Add Child**
 
@@ -31,7 +31,7 @@ To create a fresh new Entity, right click on the root **Scene** Entity in the En
 
 This creates an empty Entity with just a **Transform** Component. The new entity is a child of the parent entity you clicked on. You can then add any other Components you want to it to shape it into anything you desire.
 
-### Available components
+## Available components
 
 The following Components can be added to any Entity via the Scene Editor UI:
 
@@ -64,7 +64,7 @@ See [Combine with code](../code/overview.md) for how to edit the code of your sc
 Also note that an Entity can only hold **one** of each Component. It's not possible to assign a second instance of a Component that already exists in the entity. For example, you can't two **Actions** components to a same Entity.
 {% endhint %}
 
-### Smart items
+## Smart items
 
 [Smart items](../interactivity/smart-items.md) can also include special components that Control the Entity's interactivity. These are typically:
 
@@ -75,7 +75,7 @@ Also note that an Entity can only hold **one** of each Component. It's not possi
 
 See [Smart items advanced](../interactivity/smart-items-advanced.md) for more details.
 
-### About entities and components
+## About entities and components
 
 Everything in a scene is an Entity. All the items and smart items in the scene are Entities.
 

@@ -16,7 +16,7 @@ The following item has a Transform component and a basic module that exposes onl
 **📔 Note**: Most of the settings in the basic module are also available in the components lower down. The changes done in the basic module are reflected in the components lower down and vice versa, except for some cases where the basic settings are an abstraction of multiple settings lower down. In those cases, changing the advanced settings to values that are not supported by the basic module will result in the field in the basic module being marked as undefined.
 {% endhint %}
 
-### Advanced configuration
+## Advanced configuration
 
 Properties are grouped into [**components**](../../sdk7/architecture/entities-components.md). Different smart items may have different components, depending on their functionality.
 
@@ -31,7 +31,7 @@ The triggers of a smart item can activate actions on any smart item in the scene
 
 Triggers can also happen conditionally. For example, door smart items include two **On Click** triggers in its Triggers component: one opens the door if that door was closed, the other closes the door if it was open. For more details see [States and conditional logic](states-and-conditions.md).
 
-### Interactions between items
+## Interactions between items
 
 To make items interact with each other:
 
@@ -57,7 +57,7 @@ Any item can trigger any action from any other item, as long as the action is de
 
 You can use [states and conditional logic](states-and-conditions.md) to only trigger an action if a condition is met. The condition can even check the state of a third smart item. For example, a button only opens the door if the a custom "power generator" smart item has its state set to "On".
 
-### Actions
+## Actions
 
 The **Actions** component lists actions that the item can carry out. Each smart item includes a set of pre-defined actions. You can customize existing actions or add new ones. The following types of actions are available:
 
@@ -118,7 +118,7 @@ To add a new action to an item, click the **Add New Action** button at the botto
 
 ![](../../../.gitbook/assets/new-action.png)
 
-#### Triggers
+### Triggers
 
 The **Triggers** component defines trigger events, these activate actions when a certain event happens. The following types of trigger events exist:
 
@@ -137,7 +137,7 @@ To add a new trigger, click the **Add New Trigger Event** at the bottom of the T
 **📔 Note**: An action needs to be defined in the [Actions](smart-items-advanced.md#actions) component of the entity before you can trigger it. Triggers can only affect entities that have an Actions component.
 {% endhint %}
 
-### About Playing Animations
+## About Playing Animations
 
 Use an action of type **Play Animation** to run an animation on the 3D model of the smart item. The animation needs to already exist as part of the 3D model file. The **Select Animation** dropdown displays a list of all of the available animations in the 3D mode.
 
@@ -155,7 +155,7 @@ Use the **Stop Animation** action to stop all animations by the item, both loopi
 
 To learn more about animations and how you can create your own as part of a 3D model, see [Animations](../3d-modeling/animations.md).
 
-### About Playing sounds
+## About Playing sounds
 
 Use an action of type **Play Sound** to play a sound file. You can play any sound file as long as it's imported into the scene project. The sound is heard positionally, from the location of the item, meaning they sound louder if the player is closer.
 
@@ -181,7 +181,7 @@ To make an item play a looping sound always, for example for ambience or music, 
 
 See [sounds](../../sdk7/3d-essentials/sounds.md) for more about playing sounds in Decentraland.
 
-### Moving, rotating, or scaling
+## Moving, rotating, or scaling
 
 Use a **Start Tween** action to change the **position**, **scale**, or **rotation**, of the item over a period of time. All **Start Tween** actions start from the original state of the item, and change to an ending state over a period of time.
 
@@ -211,7 +211,7 @@ When an item performs a tween, this affects everything about the item. For examp
 **📔 Note**: Each entity can only perform one tween at a time. For example, you can´t make an item move sideways and also rotate at the same time. As a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
 {% endhint %}
 
-### About click triggers
+## About click triggers
 
 To trigger an action by clicking on an item, create an **On Click** trigger. The action will be activated every time that the player clicks on the entity.
 
@@ -227,7 +227,7 @@ As an alternative, you can configure the **GLTF** component of the item, so that
 Another alternative is to add a **Click Area** smart item, to draw a cube that overlaps the item you want to click. The Click Area smart item is an [invisible item](smart-items-advanced.md#invisible-items).
 {% endhint %}
 
-### Trigger on spawn
+## Trigger on spawn
 
 Triggers of type **On Spawn** activate an action when the scene is loaded. Instead of waiting for the player to interact with an item, the action runs right away.
 
@@ -235,7 +235,7 @@ For example, use this to make a platform move continually. Use an **On Spawn** t
 
 ![](../../../.gitbook/assets/on_spawn.png)
 
-### Multiplayer
+## Multiplayer
 
 All smart items are multiplayer by default. See [Smart Items - Basic](smart-items.md) for more details.
 
@@ -245,13 +245,13 @@ In the item's **Multiplayer** component, check the boxes for the components you 
 
 For example, a door shares its `Animator` so all see the opening animations, its `AudioSource` so all hear its sound, and its `State` so all keep track of if it's currently open or closed. The door doesn't share its `Visibility` component, because the door is usually always visible. If you include actions to trigger its visibility on and off, you might want to have this component ticked too, so that changes are synced between all players.
 
-### Invisible items
+## Invisible items
 
 Some items are not meant to be seen by the player, but are visible while editing your scene to make them easier to manage. This is the case for items like **Ambience**, **Trigger Area**, **Click Area**, etc.
 
 In the advanced mode, these items have a **Visibility** component set to invisible. This component doesn't affect the visibility of the items on the Scene Editor, but any item set to invisible isn't seen by players when running a preview.
 
-### See also
+## See also
 
 * [Smart items - Basics](smart-items.md)
 * [States and conditions](states-and-conditions.md)

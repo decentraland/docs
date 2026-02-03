@@ -4,13 +4,13 @@ description: Wearable Representations Of 3rd Party Tokens
 
 # Linked Wearables
 
-### About
+## About
 
 In accordance with the [initial DAO proposal for Linked Wearables](https://governance.decentraland.org/proposal/?id=14e76cc0-2bc7-11ec-ac84-77607720a240) (previously called: Third Party Wearables), the [Draft Proposal with final definitions](https://governance.decentraland.org/proposal/?id=f69c4d40-aaaf-11ec-87a7-6d2a41508231) and the [Linked Wearables Redesign proposal](https://decentraland.org/governance/proposal/?id=65caf8d1-8601-49a5-ae11-b0b99d7fdd3c), this document will serve as documentation to cover all the relevant details around the Linked Wearables feature.
 
 This document is mostly oriented for representatives of NFT communities that want to give their users the ability to represent their NFTs as wearables when strolling through Decentraland.
 
-### What are Linked Wearables?
+## What are Linked Wearables?
 
 Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack. They are not [regular wearables](./README.md#what-are-wearables). They look the same, and follow the regular wearables [guidelines](./creating-wearables.md) but carry a completely different meaning.
 
@@ -20,7 +20,7 @@ Linked Wearables do not exist inside traditional wearable collections (they belo
 
 All Linked Wearables are defined inside of a **Linked Wearable Collection**. We'll see how to create one further down into the article.
 
-### How do Linked Wearables represent NFTs?
+## How do Linked Wearables represent NFTs?
 
 Wearables are linked to your NFTs by creating a Linked Wearable Collection in the [Builder site](https://decentraland.org/builder) and setting how your NFTs will be represented at the time of creating the wearables.
 
@@ -35,7 +35,7 @@ The following table shows the mentioned mechanisms:
 | Multiple NFTs | A user owning one of many NFTs specified by TOKEN IDs, described as separated by a comma will own the wearable. _e.g. 123456, 123457, 123458. The user will own the wearable if they own the NFT with TOKEN ID: 123456 or 123457 or 123458_ |
 | Range of NFTs | A user owning one of many NFTs specified in the range of TOKEN IDs will own the wearable. _e.g. \[1, 1000]. The user will own the wearable if they own the NFT with TOKEN ID 1 or 2 or 3 or 4 or 5 ... or 100_                              |
 
-### Types of Linked Wearables Collections
+## Types of Linked Wearables Collections
 
 Usually there are two types of NFT collections:
 
@@ -46,7 +46,7 @@ We follow the same principle in Decentraland with the Linked Wearables Collectio
 
 ## Creating Linked Wearables
 
-### Creating a Linked Wearable Collection
+## Creating a Linked Wearable Collection
 
 Creating a Linked Wearable collection is the first step into creating our Linked Wearables.
 
@@ -68,7 +68,7 @@ To create a new Linked Wearable follow these steps:
 
 4.  Click on the **Create** button to create the collection.
 
-### Adding Wearables to the Linked Wearables Collection - One by One
+## Adding Wearables to the Linked Wearables Collection - One by One
 
 It's possible to, as it already happens with standard wearables, upload your wearables' 3D models one by one.
 
@@ -86,11 +86,11 @@ To do so, follow these steps:
 
     ![](../../images/media/linked-wearables/linkedw-mapping.png)
 
-### Adding Wearables to the Linked Wearables Collection - In Bulk
+## Adding Wearables to the Linked Wearables Collection - In Bulk
 
 As Linked Wearable collections can contain a big number of items, it is possible to upload the 3D models and the information of the wearables in bulk. This process involves creating a zip file with all the assets an item needs for each of the items. **Uploading wearables in bulk is recommended only for programmatic collections**.
 
-#### Building the Wearable ZIP
+### Building the Wearable ZIP
 
 Each item will require a ZIP file to be built including the following assets:
 
@@ -265,7 +265,7 @@ You can retrieve the ID (or URN) from the collection page by following the next 
 
 For example, if the URN or ID retrieved from the UI for the collection is `urn:decentraland:matic:collections-thirdparty:my-third-party:my-collection` and you're identifying your wearables numerically, the URN for the example would be `urn:decentraland:matic:collections-thirdparty:my-third-party:my-collection:1`, being `1` the number of the wearable.
 
-#### The upload process
+### The upload process
 
 Once all the files are ready, to upload the wearables in bulk, follow these steps:
 
@@ -305,7 +305,7 @@ Once all the files are ready, to upload the wearables in bulk, follow these step
 
     ![](../../images/media/linked-wearables/collection-type-selector.png)
 
-#### Common errors when uploading batched items
+### Common errors when uploading batched items
 
 - The `id` field is set to a value that is already being used by another wearable.
 - The `id` field is set to a value that is not a valid ID. For example, the third party id or collection id belong to another third party or collection.
@@ -315,7 +315,7 @@ Once all the files are ready, to upload the wearables in bulk, follow these step
 - The file is bigger than 3MBs. Linked Wearables have the same limitation as regular wearables in terms of size as the standard ones.
 - The custom optional thumbnail image is not a png file.
 
-### Seeing the wearables in Decentraland
+## Seeing the wearables in Decentraland
 
 Linked Wearables can be seen in world to review how the model will work once published and approved.
 
@@ -335,7 +335,7 @@ To be able to see a wearable in world, follow these steps:
 
 ## Editing Linked Wearables
 
-### Editing the collection name
+## Editing the collection name
 
 A collection can be renamed by its creator **only if the collection has no published wearables**.
 
@@ -349,7 +349,7 @@ To edit the name of a Linked Wearable Collection follow these steps:
 
     ![](../../images/media/linked-wearables/edit-collection-name-modal.png)
 
-### Deleting the collection
+## Deleting the collection
 
 A collection can be delete by its owner **only if the collection has no published wearables**.
 
@@ -363,9 +363,9 @@ To delete Linked Wearable Collection follow these steps:
 
     ![](../../images/media/linked-wearables/delete-collection-confirmation-modal.png)
 
-### Editing a single wearable
+## Editing a single wearable
 
-#### Editing wearable properties
+### Editing wearable properties
 
 To edit a single wearable, follow these steps:
 
@@ -375,7 +375,7 @@ To edit a single wearable, follow these steps:
 
 2.  Edit the wearable as standard wearables are edited. Follow the **Editing items** section in [creating wearables guidelines](./creating-wearables.md) on how to create a custom thumbnail.
 
-#### Editing the wearable linking
+### Editing the wearable linking
 
 The linking of the wearables with the NFT collection is on of the most important properties of a Linked Wearable. To edit how they're linked to the NFTs, you can quickly change the linking value from the collection view, without the need to navigate to other page.
 
@@ -383,7 +383,7 @@ The linking of the wearables with the NFT collection is on of the most important
 
 Check the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" section for more information on how to link your wearables.
 
-### Editing wearables in bulk
+## Editing wearables in bulk
 
 Following the same idea previously seen in the [Creating wearables in bulk](linked-wearables.md#creating-linked-wearables-in-bulk) section, third party managers can make changes to the wearables in bulk.
 
@@ -469,7 +469,7 @@ Your Linked Wearables need to go through a publishing and curation process as th
 
 The following sections will show you how to publish your Linked Wearables to be curated.
 
-### Costs
+## Costs
 
 Creating Linked Wearables has a cost depending on the type of Linked Wearable Collection you chose to build:
 
@@ -478,7 +478,7 @@ Creating Linked Wearables has a cost depending on the type of Linked Wearable Co
 
 For more information about the type of collection you're creating, check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) section.
 
-### Publishing wearables for review
+## Publishing wearables for review
 
 Once your wearables are ready, they must be published for curation. Your wearables are published in groups of items, you can choose which items are ready to be curated by selecting them and clicking the `Publish` button. After publishing items, publishing will be blocked until the ones that are already published are curated.
 
@@ -520,7 +520,7 @@ To publish your wearables, you need to:
 
     ![](../../images/media/linked-wearables/publication-success.png)
 
-### Pushing changes for review
+## Pushing changes for review
 
 Published and approved wearables that are edited need to go through the curation process again. Don't worry, there won't be any fees applied to already published wearables.
 
@@ -538,16 +538,16 @@ To push changes to get them curated, you need to:
 
     ![](../../images/media/linked-wearables/accept-push-changes-terms-and-conditions.png)
 
-### Curation
+## Curation
 
 As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and gameplay still needs to be safe guarded.
 
 The curation process will differ according to the process used to generate the wearables. Linked Wearables collections admit handcrafted and programmatically generated wearables.
 
-#### Handcrafted wearables
+### Handcrafted wearables
 
 For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines](./creating-wearables.md).
 
-#### Programmatic collections
+### Programmatic collections
 
 For programmatic collections, not all items have to be curated individually. The number of items to be curated in each collection depends on the collection’s size, this was defined by the DAO in [this proposal](https://governance.decentraland.org/proposal/?id=f69c4d40-aaaf-11ec-87a7-6d2a41508231).

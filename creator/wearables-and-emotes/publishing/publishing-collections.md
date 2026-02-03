@@ -8,7 +8,7 @@ description: >-
 
 For detailed instructions on how to submit your collections for approval before publication, see [how to create a collection](../wearables-and-emotes/manage-collections/creating-a-collection.md). This document explains how the approval process works when publishing wearables and emotes, and what criteria is used by the Curation Committee when reviewing wearables. For detailed information on the Curation Committee, [start here](../wearables-and-emotes/publishing/curation-committee.md).
 
-### **The Publication Process**
+## **The Publication Process**
 
 1. After clicking "Publish" on your completed proposal and pay the fees of the items, the collection will be submitted to the Curation Committee for approval. Collections pending approval will be flagged as "Under Review".
 2. Any collections pending approval from the Curation Committee may not be minted until the approval process is completed.
@@ -18,7 +18,7 @@ For detailed instructions on how to submit your collections for approval before 
 6. Once your collection has final approval, you will be notified in the Forum. You will also see a green visual indicator in the Wearable Editor next to the approved collection.
 7. With a successful approval, you can begin minting items in your collection!
 
-### **Publication Fees**
+## **Publication Fees**
 
 There is a required fee for publishing items. This fee was originally [voted in place by the Decentraland DAO](https://governance.decentraland.org/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) to deter users from publishing an excessive number of wearables in an attempt to "spam" the wearables market.
 
@@ -36,7 +36,7 @@ These fees are transferred to the curators committee and the Decentraland DAO, w
 **📔 Note**: Currently, due to the time and resources required to review each collection submitted, **the publication fee is non-refundable**. If your collection is rejected, you will not receive your MANA back. If your collection is not immediately approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
 {% endhint %}
 
-### **Acceptance Criteria**
+## **Acceptance Criteria**
 
 Following is an overview of the criteria used by the Curation Committee when determining a collection’s eligibility. Much of this criteria is based on Section 2 of Decentraland’s [Content Policy](https://decentraland.org/content/).
 
@@ -67,7 +67,7 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 > * Emotes that exceed the time and space restrictions. For more info check the [emote guidelines](../emotes/creating-emotes.md)
 > * Curators from the curators committee can submit collections but not approve their own. In this case, another curator from the committee would needs to review in order and approve or reject.
 
-### **Attributing Collaborators** [**#**](https://docs.decentraland.org/creator/wearables/wearables-editor-user-guide/#attributing-collaborators)
+## **Attributing Collaborators** [**#**](https://docs.decentraland.org/creator/wearables/wearables-editor-user-guide/#attributing-collaborators)
 
 If you collaborated with other artists when creating your items, you can add attributions within the Wearables Editor. This can only be done after publishing a collection.
 
@@ -77,7 +77,7 @@ To add collaborators, simply enter their Ethereum address, and click **Add**. Yo
 
 ![](../../../.gitbook/assets/add-collaborators.png)
 
-### **Selling Items**
+## **Selling Items**
 
 After your items are published in a collection and approved by the Curation Committee, they can be sold to other users in the metaverse.
 
@@ -88,7 +88,7 @@ Items can be sold in **primary sales** and **secondary sales**.
 
 To view items available to purchase in a primary and secondary sales, head to the [**Decentraland Marketplace!**](https://market.decentraland.org/)
 
-### **Primary Sales**
+## **Primary Sales**
 
 Primary sales occur when one of your items is purchased for the first time. These sales are only performed by the Decentraland Store’s smart contract.
 
@@ -114,11 +114,11 @@ Any purchaser of one of your items is able to resell it at any time and at any p
 
 If you sell an item through a primary sale, you will receive your MANA on Polygon. The proceeds of any items sold on Polygon will reside on the sidechain. If you want to transfer your MANA from the Polygon sidechain to the main Ethereum chain, you will have to pay a transaction fee. You can do so from the [Accounts](https://account.decentraland.org/) page. For more information on the Polygon sidechain, see [this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
 
-#### **Disabling Primary Sales**
+### **Disabling Primary Sales**
 
 To unlist your items, click the **Remove from sale** button from the items you want to remove. This will only apply to primary sales for your items.
 
-### **Secondary Sales**
+## **Secondary Sales**
 
 Items can be sold in secondary sales at any time, and for any price, in the Decentraland Marketplace only after:
 
@@ -127,7 +127,7 @@ Items can be sold in secondary sales at any time, and for any price, in the Dece
 
 In other words, anybody who owns an NFT for a wearable can sell it in the Decentraland Marketplace. There are royalties for wearables sold in secondary sales in Decentraland. Royalties goes to the item beneficiary.
 
-### **Minting Wearables**
+## **Minting Wearables**
 
 Minting is the process of creating the actual non-fungible tokens (NFTs) based on the items you’ve uploaded to the Wearables Editor.
 
@@ -135,7 +135,7 @@ All wearables in Decentraland are minted on the Polygon sidechain. This allows u
 
 As with selling items in primary sales, you will not be able to mint any items within a collection until the review process is complete. If your collection is still under review, you will see the tag **"Under Review"** appended to your collection. After it has been reviewed and approved, the tag will change to **"Published"**, and you can begin minting your items manually.
 
-#### **How To Manually Mint Items**
+### **How To Manually Mint Items**
 
 To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
@@ -159,13 +159,13 @@ Remember, these items are minted and transferred to the address entered for free
 
 Are there any fees associated with minting items? No, items are minted on the Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
 
-#### **Adding Minters to the Collection**
+### **Adding Minters to the Collection**
 
 To add minters, simply enter their Ethereum address, and click **Add**. You can add as many minters as you want. To remove a minter, simply click **Remove** next to the minter’s address.
 
 ![](../../../.gitbook/assets/add-minters.png)
 
-#### **Collection Ownership Transfer**
+### **Collection Ownership Transfer**
 
 In order to transfer the ownership of a Collection, you will need:
 

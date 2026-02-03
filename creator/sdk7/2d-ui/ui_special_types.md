@@ -6,7 +6,7 @@ description: Special entitiy types for the UI, including dropdowns and input box
 
 There are certain special entity types that allow for some special kinds of interactions.
 
-### Dropdown
+## Dropdown
 
 Create a `Dropdown` entity to allow users to expand and select an item from a list.
 
@@ -86,7 +86,7 @@ export function main() {
 **📔 Note**: All the following snippets in this page assume that you have a `.ts` similar to the above, running the `ReactEcsRenderer.setUiRenderer()` function.
 {% endhint %}
 
-### Input text
+## Input text
 
 Create an `Input` entity to allow users to to type in text. Players must first click on this box before they can write into it.
 

@@ -4,7 +4,7 @@ description: Obtain data from players as they interact with your scene.
 
 # User Data
 
-### Player position and rotation
+## Player position and rotation
 
 Use the `PlayerEntity` and the `CameraEntity` to know the player's position and rotation, by checking their `Transform` components.
 
@@ -49,7 +49,7 @@ engine.addSystem(getPlayerPosition)
 Another option is to refer to these entities inside a system. There they will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
 
-### Fetch all players
+## Fetch all players
 
 All players in the scene have a `Transform` component. This component is read only in avatars. To fetch the positions of all players, [iterate over all entities with](user-data.md) a `PlayerIdentityData` component.
 
@@ -68,7 +68,7 @@ The code above iterates over all entities with a `Transform` and a `PlayerIdenti
 
 See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to learn how to detect and react when new players join into the scene.
 
-### Get player data
+## Get player data
 
 Use `getPlayer()` to fetch data about the current player, or any other player in the scene.
 
@@ -158,7 +158,7 @@ The snippet above iterates over all the entities with a `PlayerIdentityData` com
 **📔 Note**: User IDs must always be lowercase. If copying a wallet address, make sure all the characters are set to lowercase.
 {% endhint %}
 
-### Data from any player
+## Data from any player
 
 To obtain information from any player, make a [REST API call](../networking/network-connections.md#call-a-rest-api) to the content servers.
 
@@ -237,7 +237,7 @@ async function fetchPlayerData() {
 fetchPlayerData()
 ```
 
-### Player data components
+## Player data components
 
 Instead of using `getPlayer()`, you can read data directly from a series of components that store the data on each player entity. The following components exist:
 
@@ -271,7 +271,7 @@ for (const [entity, data, base, attach, transform] of engine.getEntitiesWith(
 **📔 Note**: All of these components are read-only. You cannot change their values from the scene.
 {% endhint %}
 
-### Get Portable Experiences
+## Get Portable Experiences
 
 Portable experiences are essentially scenes that are not constrained to parcels of land. Players can carry these with them anywhere they go in Decentraland, adding a new layer of content over the world. Smart Wearables are examples of portable experiences. You may want to know if a player is wearing one of these, since a smart wearable may enable players to have abilities that could be considered cheating in a competitive game. For example, in a platform game, a player that wears a jetpack has a very unfair advantage over others.
 
@@ -288,7 +288,7 @@ executeTask(async () => {
 
 `getPortableExperiencesLoaded()` returns an array of objects, each of these objects includes an `id` attribute. In the case of wearables, the id is the wearable's URN.
 
-### Get detailed info about a player's wearables
+## Get detailed info about a player's wearables
 
 The `getPlayer()` function returns only a list of wearable ids, without information about each wearable. Maybe you want to check for any wearable of a specific category (eg: hats), or any wearable of a specific rarity (eg: Mythic), for that you'll need to fetch more detailed information about the player's wearables.
 
@@ -335,7 +335,7 @@ executeTask(fetchWearablesData)
 **💡 Tip**: You can fetch even more info about specific wearables from the [following API](https://decentraland.github.io/catalyst-api-specs/#tag/Lambdas/operation/searchWearables).
 {% endhint %}
 
-### Check the player's camera mode
+## Check the player's camera mode
 
 Players can either be using a 1st or 3rd person camera when exploring Decentraland. Check which of these the player is using by checking the value `CameraMode` component of the `engine.CameraEntity` entity.
 
@@ -378,7 +378,7 @@ Knowing the camera mode can be very useful to fine-tune the mechanics of your sc
 Another option is to refer to this entity inside a system. It will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
 
-### Check if the player has the cursor locked
+## Check if the player has the cursor locked
 
 Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
 
@@ -403,7 +403,7 @@ The `PointerLock` component of the `engine.CameraEntity` is read-only, you can't
 Another option is to refer to the entity inside a system. It will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
 
-### Check the player's cursor position
+## Check the player's cursor position
 
 Use the `primaryPointerInfo` component on the `engine.RootEntity` to get the player's cursor position. This can be used for mechanics like drag and drop interactions, swipe gestures, etc.
 

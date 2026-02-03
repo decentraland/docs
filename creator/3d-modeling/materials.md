@@ -14,7 +14,7 @@ This document refers to materials that are imported in a 3D model. For materials
 **📔 Note**: You can't currently dynamically change the materials of a 3D model from your scene's code, unless this is a primitive shape.
 {% endhint %}
 
-### Shader Support
+## Shader Support
 
 Not all shaders can be used in models that are imported into Decentraland. Make sure you use one of the following:
 
@@ -25,7 +25,7 @@ The image below shows two identical models, created with the same colors and tex
 
 ![](../../.gitbook/assets/30-materials.png)
 
-#### PBR Properties that currently works with Decentraland Engine
+### PBR Properties that currently works with Decentraland Engine
 
 > * Base Color
 > * Metallic
@@ -42,17 +42,17 @@ In order to visualize how these properties behavies in world you can go to this 
 
 ![](../../.gitbook/assets/55-testing-environment.png)
 
-#### Base/Diffuse Color
+### Base/Diffuse Color
 
 Defines the the base color of the object surface. By itself it doesn't have any affectance by the lightning, that's why it is combined to other nodes such as roughness, metallic, specular, etc.
 
-#### Metallic
+### Metallic
 
 A metallic shader refers to a type of rendering technique used to simulate the appearance of metallic surfaces. A metallic shader takes into account the physical properties of metals and how they interact with light to produce the characteristic shiny and reflective qualities of metal.
 
 ![](../../.gitbook/assets/61-metallic-material.png)
 
-#### Roughness
+### Roughness
 
 Roughness materials are related to realistic simulation of how light interacts with the material's surface. Normally the roughness maps are used to give to the models a range of "smoothness" or "roughness" in their surfaces. A grayscale value texture map is normally used to provide information of this type.
 
@@ -60,13 +60,13 @@ Roughness materials are related to realistic simulation of how light interacts w
 
 This property blends between a non-metallic and metallic material model. A value of 1.0 gives a fully specular reflection tinted with the base color, without diffuse reflection or transmission. At 0.0 the material consists of a diffuse or transmissive base layer, with a specular reflection layer on top.
 
-#### Specular
+### Specular
 
 In a Physically-Based Rendering (PBR) shader, the specular properties refer to how light interacts with a surface in terms of its reflectivity and shininess. Specular reflection is the mirror-like reflection of light off a surface. In PBR, this property is used to control how much light a surface reflects in a mirror-like manner. Materials like metals typically have high specular reflection, creating sharp, bright highlights, while non-metallic materials like plastics have lower specular reflection, resulting in broader and softer highlights.
 
 ![](../../.gitbook/assets/62-specular.png)
 
-#### Alpha
+### Alpha
 
 You can set a material to be _transparent_. Transparent materials can be seen through to varying degrees, depending on their _alpha_. To do this, activate the transparency property of the material and then set its _alpha_ to the desired amount. An alpha of 1 will make the material completely opaque, an alpha of 0 will make it invisible.
 
@@ -100,7 +100,7 @@ When you use transparent blend modes in your game, it's crucial to consider the 
 To avoid issues related to sorting, it's best to avoid using objects with both alpha clip and alpha blend on the same mesh. This can help prevent unexpected blending artifacts and ensure that your game looks its best.
 {% endhint %}
 
-#### Emissive
+### Emissive
 
 You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don’t actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
 
@@ -110,7 +110,7 @@ The image below shows two identical models created with standard materials. The 
 
 _To make a material emissive in Blender, simply add an `emission` shader to the material._
 
-#### Emissive Strenght
+### Emissive Strenght
 
 Strength of the emitted light. A value of 1.0 will ensure that the object in the image has the exact same color as the Emission Color, i.e. make it ‘shadeless’.
 
@@ -118,17 +118,17 @@ Strength of the emitted light. A value of 1.0 will ensure that the object in the
 
 _You can check in the_ [_testing world_](decentraland://?realm=TestEnvironment.dcl.eth) _how the emission strenght behavies in world_
 
-#### Normal
+### Normal
 
 The "normal" node in a PBR shader is a fundamental component used to control the surface normals of a material. Normals are vectors that define the direction perpendicular to a surface at a specific point, and they play a crucial role in determining how light interacts with the surface.
 
 ![](../../.gitbook/assets/50-normal.gif)
 
-### Vertex Painting
+## Vertex Painting
 
 Vertex painting of 3D models isn’t currently supported by Decentraland’s engine.
 
-### Material Limitations
+## Material Limitations
 
 Take into account that material limits per parcel are:
 
@@ -136,7 +136,7 @@ Take into account that material limits per parcel are:
 
 It's important to take into account that each material represent one draw call per objetc so it's crucial to keep the materials as minimun as possible and try to reutilize materials as much as possible doing techniques like Texture Atlases, this also is going to benefit the scene having a cohesive style between the assets of your scene.
 
-### Material Naming
+## Material Naming
 
 In order to have an organized and healthy art pipeline we recommend to name your materials properly. One way to do it is using this convention method.
 
@@ -151,11 +151,11 @@ In conclusion,
 * 🟢 **Prefer** using names starting with the object and clasification: _"Wood\_Oak\_MAT"_, _"SciFiFence\_Metallic\_MAT"_, etc.
 * 🔴 **Avoid** using names like _"Material009"_, _"material1"_, which makes the scene and models really difficult to track and analize.
 
-### Override glTF materials
+## Override glTF materials
 
 You can override the materials of a _glTF_ model by using the [GltfNodeModifiers](../sdk7/3d-essentials/materials.md#modify-gltf-materials) component in your scene's code. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
 
-### Best Practices For Materials
+## Best Practices For Materials
 
 * If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model.
 

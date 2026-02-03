@@ -42,7 +42,7 @@ export function main() {
 **📔 Note**: All the following snippets in this page assume that you have a `.ts` similar to the above, running the `ReactEcsRenderer.setUiRenderer()` function.
 {% endhint %}
 
-### Positioning properties
+## Positioning properties
 
 The alignment of UI entities is based on the Flexbox alignment model. This is a very powerful model for dynamically organizing nested entities inside modals that may vary in size.
 
@@ -50,7 +50,7 @@ The alignment of UI entities is based on the Flexbox alignment model. This is a 
 **💡 Tip**: Decentraland's UI implementation is based on that of [Yoga](https://yogalayout.com/docs/). Read [this article](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/) for a very approachable and in-depth coverage of the properties available in Flexbox.
 {% endhint %}
 
-#### Entity size
+### Entity size
 
 Use `width` and `height` to set the size of the entity. The following kinds of values are supported:
 
@@ -101,7 +101,7 @@ export const uiMenu = () => (
 )
 ```
 
-#### Arranging child entities
+### Arranging child entities
 
 By default, child entities are positioned in relation to the top-left corner of its parent. You can use properties like `justifyContent` and `alignItems` to change this behavior.
 
@@ -144,12 +144,12 @@ By default, child entities are positioned in relation to the top-left corner of 
   * `no-wrap`
   * `wrap-reverse`
 
-#### Margins and padding
+### Margins and padding
 
 * `margin`: This property affects the spacing around the outside of a node. A node with margin will offset itself from the bounds of its parent but also offset the location of any siblings. The margin of a node contributes to the total size of its parent if the parent is auto sized. Set space between the entity and its parent's margins. The expected value is an object that contains the properties `top`, `left`, `bottom`, and `right`.
 * `padding`: This property affects the size of the node it is applied to. Padding in Yoga acts as if box-sizing: border-box; was set. That is padding will not add to the total size of an entity if it has an explicit size set. For auto sized nodes padding will increase the size of the node as well as offset the location of any children. The expected value is an object that contains the properties `top`, `left`, `bottom`, and `right`.
 
-#### Fine-tune position
+### Fine-tune position
 
 In Flexbox, entity positions are mostly determined by how they are parented, and what arrangement properties are set on the parent and child. You often don't have to set the `position` property at all. But if you do want to tweak that, or completely override the normal flow of Flexbox and set an absolute position, here are the relevant properties:
 
@@ -162,11 +162,11 @@ In Flexbox, entity positions are mostly determined by how they are parented, and
 **📔 Note** : When measuring from the top, the numbers for `position` should be negative. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `position` to 20, -20.
 {% endhint %}
 
-#### Visibility
+### Visibility
 
 * `display`: Determines is an entity is visible or not. To make an entity invisible, set `display` to `none`.
 
-#### Z Index
+### Z Index
 
 The `zIndex` property of a `UiEntity` determines the order in which entities are rendered. Entities with a higher `zIndex` are rendered on top of entities with a lower `zIndex`. The default `zIndex` is 0.
 
@@ -190,7 +190,7 @@ export const uiMenu = () => (
 The default Decentraland UI, including the map, chat, etc is always rendered on top of all other UI elements.
 {% endhint %}
 
-### Responsive UI size
+## Responsive UI size
 
 Players with different screen sizes may see your UI layout differently. If you set the size of any UI element to a fixed number of pixels, this UI may look too small to read on retina displays, that have a much higher pixel density.
 

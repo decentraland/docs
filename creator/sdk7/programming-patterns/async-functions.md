@@ -113,16 +113,33 @@ The example above executes a function that includes a `fetch()` operation to ret
 
 ## Set a Timeout for a Function call
 
-Use `setTimeout` to wait some time before certain lines of code are run. The first argument is the function to be executed(`console.log()`), and the second one, the amount of miliseconds to wait until the function is executed(1000).
+Use `setTimeout` to wait some time before certain lines of code are run. This takes two arguments:
+
+- The function to execute
+- The amount of miliseconds to wait before executing that function
+
+ 
+The example below waits 1000 milliseconds (equal to 1 second) before executing a simple function that logs a message to console.
 
 ```ts
-const timeoutId = timers.setTimeout(() => {
-    console.log('Wait 1 second until executing this function')
+import { timers } from '@dcl/sdk/ecs'
+
+console.log('This gets printed right away')
+
+timers.setTimeout(() => {
+	// function to run after delay
+    console.log('This gets printed after 1 second')
 }, 1000)
 ```
 
-The `clearTimeout` can be used to cancel the `setTimeout`. `intervalId` is the `setTimeout` reference defined before.
+The `clearTimeout` can be used to cancel the execution of a `setTimeout` function that is still waiting to be executed. When creating the `setTimeout` function, grab a reference to the function, that you can then pass to `clearTimeout`. In this case, the variable `intervalId` is obtained when doing the `setTimeout`, and then passed to `clearTimeout` to cancel it.
 
 ```ts
+import { timers } from '@dcl/sdk/ecs'
+
+const timeoutId = timers.setTimeout(() => {
+    console.log('Wait 1 second until executing this function')
+}, 1000)
+
 timers.clearTimeout(intervalId)
   ```

@@ -18,14 +18,14 @@ AssetLoad.create(engine.RootEntity, {
 })
 ```
 
-The assets listed in `AssetLoad.create` are automatically downloaded when the scene starts, ensuring they are available the first time the player interacts with them.
+The assets listed in `AssetLoad.create` are automatically downloaded when the scene starts, ensuring they are instantly available when the scene needs to load them.
 
 The `AssetLoad` component is used to add assets to memory, not to remove them. Removing an asset from the list in `AssetLoad.create` will not free memory.
 
 {% hint style="info" %}
-**Note:** You can place the AssetLoad component on any entity (not only the RootEntity), and you can use it on as many entities as needed.
+**Note:** You can place the `AssetLoad` component on any entity (not only the RootEntity), and you can use it on as many entities as needed.
 {% endhint %}
 
 {% hint style="warning" %}
-If your custom asset is used immediately when the scene loads (for example, a GLB model placed in the scene, or a background sound that plays continuously), it will already be downloaded and used automatically. Be mindful when adding assets to `AssetLoad.create`, and only pre-load assets that are not required at scene startup to avoid unnecessary performance costs.
+If your asset is used immediately when the scene loads (for example, a GLB model placed in the scene, or a background sound that plays continuously), it will already be downloaded and used automatically. Be mindful when adding assets to `AssetLoad.create`, and only pre-load assets that are not required at scene startup to avoid unnecessary performance costs.
 {% endhint %}

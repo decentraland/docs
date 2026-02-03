@@ -10,6 +10,8 @@ In some cases, an asset is added to the scene but is not used immediately. For e
 To avoid this, use the `AssetLoad.create` method to ensure these assets are downloaded before they are needed.
 
 ```ts
+import { AssetLoad } from "@dcl/sdk/ecs"
+
 AssetLoad.create(engine.RootEntity, {
   assets: [
     "assets/scene/bundle1/explosionSound.mp3",

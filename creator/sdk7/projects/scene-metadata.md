@@ -148,6 +148,30 @@ On the `scene.json` file, these toggles are managed under `featureToggles`. The 
 
 If a `featureToggles` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
+### Tipping
+
+You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
+
+![](../../../.gitbook/assets/creator-wallet-address.png)
+
+
+You can also provide your scene's tipping address on the `scene.json` file, under the `creator` field.
+
+```json
+  "creator": "0x1234567890123456789012345678901234567890"
+```
+
+When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
+
+![](../../../.gitbook/assets/Tipicon.png)
+
+The tip modal allows the player to select the amount of MANA they want to send. The player must own MANA in their wallet to send a tip. If the address you provided is linked to a Decentraland NAME, this modal will show the name of the wallet owner besides the Ethereum address.
+
+![](../../../.gitbook/assets/tipping-modal.png)
+
+
+You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
+
 ## Spawn location
 
 The **Spawn Settings** in the **Settings** tab define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.

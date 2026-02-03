@@ -24,7 +24,9 @@ The following fields are available:
 * **Description**
 *   **Thumbnail**
 
-    \{% hint style="info" %\} **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image \{% endhint %\}
+    {% hint style="info" %\} 
+    **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
+    {% endhint %\}
 * **Age rating**
 * **Categories**
 * **Author**
@@ -33,6 +35,25 @@ The following fields are available:
 The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
 
 See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
+
+
+### Tipping
+
+You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
+
+![](../../../.gitbook/assets/creator-wallet-address.png)
+
+
+When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
+
+![](../../../.gitbook/assets/Tipicon.png)
+
+The tip modal allows the player to select the amount of MANA they want to send. The player must own MANA in their wallet to send a tip. If the address you provided is linked to a Decentraland NAME, this modal will show the name of the wallet owner besides the Ethereum address.
+
+![](../../../.gitbook/assets/tipping-modal.png)
+
+
+You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
 
 ## Layout
 

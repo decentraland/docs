@@ -360,9 +360,21 @@ If the component is removed from the entity, then the function is called with an
 
 ## Get all descendant entities
 
-When working with nested entity hierarchies, you may need to access all entities that are descendants of a parent entity, regardless of how deeply nested they are. The `getComponentEntityTree()` function provides an easy way to iterate over all descendants in a flat list.
+When working with nested entity hierarchies, you may need to access all entities that are descendants of a parent entity, regardless of how deeply nested they are. For that you can use `getEntitiesWithParent`. It takes as its arguments the `engine` and the `parent` entity and returns a list of all the entities that have that particular Entiy as its parent.
 
-This is especially useful when you need to find entities that may be nested under various levels beneath a parent entity. Instead of manually traversing the hierarchy level by level, `getComponentEntityTree()` returns a flat list of all descendants that is easy to iterate over.
+This is especially useful when you need to find entities that may be nested under various levels beneath a parent entity. Instead of manually traversing the hierarchy level by level, `getEntitiesWithParent()` returns a flat list of all descendants that is easy to iterate over.
+
+```ts
+import { getEntitiesWithParent } from '@dcl/sdk/ecs'
+
+const children = getEntitiesWithParent(engine, myEntity)
+for (const child of children) {
+   // process each child entity
+}
+```
+
+You might otherwise want to use the function `getComponentEntityTree()`, that also filters to only entities that have a given component or list of components.
+
 
 ```ts
 import { getComponentEntityTree } from '@dcl/sdk/ecs'
@@ -389,7 +401,7 @@ export function main() {
 }
 ```
 
-The function takes three parameters:
+The `getComponentEntityTree` function takes three parameters:
 
 * `engine`: The engine instance running the entities
 * `entity`: The root entity to start from
@@ -413,14 +425,6 @@ for (const descendantEntity of getComponentEntityTree(
 }
 ```
 
-To retrieve the child entities of a given parent Entity, the `getEntitiesWithParent` is used. It takes as its arguments the `engine` and the `parent` entity. This returns a list of all the entities that have that particular Entiy as its parent.
-
-```ts
-const children = getEntitiesWithParent(engine, myEntity)
-for (const child of children) {
-   // process each child entity
-}
-```
 
 ## Reserved entities
 

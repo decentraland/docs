@@ -5,13 +5,76 @@ alwaysApply: true
 ---
 # @dcl-sdk/utils Context7 Reference
 
+> **Important (2026-01-21+)**: Most functionality shown below is now **redundant with native SDK7 helpers**.
+>
+> **Do not add `@dcl-sdk/utils` by default.** Prefer the native APIs in `@dcl/sdk/ecs`, `@dcl/sdk/math`, and the global timer functions.
+>
+> Keep `@dcl-sdk/utils` only for **non-native convenience helpers** (for example: quick debug primitives like `addTestCube()` / `addLabel()`, or higher-level utilities that SDK7 still doesn’t expose natively).
+
 ## Installation & Import
+<!--
+Avoid installing `@dcl-sdk/utils` unless you truly need it.
+
 ```typescript
 // Install via npm
 npm install @dcl-sdk/utils
 
 // Import in your code
 import * as utils from '@dcl-sdk/utils'
+```
+-->
+
+## Native equivalents (preferred)
+
+### Timers (native)
+Use standard global timers (no extra dependency):
+
+```typescript
+// Run once after delay (ms)
+const timeoutId = setTimeout(() => {
+  console.log('delayed')
+}, 1000)
+clearTimeout(timeoutId)
+
+// Run repeatedly (ms)
+const intervalId = setInterval(() => {
+  console.log('tick')
+}, 1000)
+clearInterval(intervalId)
+```
+
+### Tweens (native)
+Prefer the SDK tween helpers:
+
+```typescript
+import { Tween, EasingFunction } from '@dcl/sdk/ecs'
+import { Vector3, Quaternion } from '@dcl/sdk/math'
+
+Tween.setMove(entity, Vector3.create(1, 1, 1), Vector3.create(5, 1, 5), 2000, {
+  easingFunction: EasingFunction.EF_LINEAR
+})
+
+Tween.setRotate(entity, Quaternion.fromEulerDegrees(0, 0, 0), Quaternion.fromEulerDegrees(0, 90, 0), 2000)
+Tween.setScale(entity, Vector3.create(1, 1, 1), Vector3.create(2, 2, 2), 2000)
+```
+
+### World position/rotation (native)
+Prefer the SDK transform helpers that account for parent hierarchies:
+
+```typescript
+import { engine, getWorldPosition, getWorldRotation } from '@dcl/sdk/ecs'
+
+const worldPos = getWorldPosition(engine, entity)
+const worldRot = getWorldRotation(engine, entity)
+```
+
+### Parent/children queries (native)
+Prefer `getEntitiesWithParent()`:
+
+```typescript
+import { engine, getEntitiesWithParent } from '@dcl/sdk/ecs'
+
+const children = getEntitiesWithParent(engine, parentEntity)
 ```
 
 ## Debug Helpers
@@ -45,7 +108,11 @@ const cube = utils.addTestCube(
 
 ## Tweens
 
+> **Redundant**: Prefer native `Tween.*` helpers (see “Tweens (native)” above).
+
 ### Translation
+<!-- Redundant (native `Tween.*` covers this).
+
 ```typescript
 // Move entity from one position to another over time
 utils.tweens.startTranslation(
@@ -60,8 +127,11 @@ utils.tweens.startTranslation(
 // Stop translation
 utils.tweens.stopTranslation(entity)
 ```
+-->
 
 ### Rotation
+<!-- Redundant (native `Tween.*` covers this).
+
 ```typescript
 // Rotate entity over time
 utils.tweens.startRotation(
@@ -76,8 +146,11 @@ utils.tweens.startRotation(
 // Stop rotation
 utils.tweens.stopRotation(entity)
 ```
+-->
 
 ### Scaling
+<!-- Redundant (native `Tween.*` covers this).
+
 ```typescript
 // Scale entity over time
 utils.tweens.startScaling(
@@ -92,27 +165,10 @@ utils.tweens.startScaling(
 // Stop scaling
 utils.tweens.stopScaling(entity)
 ```
+-->
 
 ### Interpolation Types
-```typescript
-// Available interpolation types:
-utils.InterpolationType.LINEAR
-utils.InterpolationType.EASEINQUAD
-utils.InterpolationType.EASEOUTQUAD
-utils.InterpolationType.EASEQUAD
-utils.InterpolationType.EASEINSINE
-utils.InterpolationType.EASEOUTSINE
-utils.InterpolationType.EASESINE
-utils.InterpolationType.EASEINEXPO
-utils.InterpolationType.EASEOUTEXPO
-utils.InterpolationType.EASEEXPO
-utils.InterpolationType.EASEINELASTIC
-utils.InterpolationType.EASEOUTELASTIC
-utils.InterpolationType.EASEELASTIC
-utils.InterpolationType.EASEINBOUNCE
-utils.InterpolationType.EASEOUTBOUNCE
-utils.InterpolationType.EASEBOUNCE
-```
+<!-- Redundant: prefer native `EasingFunction` from `@dcl/sdk/ecs`. -->
 
 ## Perpetual Motions
 
@@ -210,7 +266,11 @@ utils.toggles.removeToggle(entity)
 
 ## Timers
 
+> **Redundant**: Prefer global `setTimeout` / `setInterval` (see “Timers (native)” above).
+
 ### Timeouts & Intervals
+<!-- Redundant (native global timers cover this).
+
 ```typescript
 // Run function after delay
 const timeoutId = utils.timers.setTimeout(() => {
@@ -228,6 +288,7 @@ const intervalId = utils.timers.setInterval(() => {
 // Cancel interval
 utils.timers.clearInterval(intervalId)
 ```
+-->
 
 ## Math Helpers
 
@@ -242,6 +303,11 @@ const result = utils.remap(
 ```
 
 ### World Position & Rotation
+
+> **Redundant**: Prefer native `getWorldPosition(engine, entity)` / `getWorldRotation(engine, entity)`.
+
+<!-- Redundant (native SDK has `getWorldPosition(engine, entity)` / `getWorldRotation(engine, entity)`).
+
 ```typescript
 // Get world position considering parent entities
 const worldPos = utils.getWorldPosition(entity)
@@ -249,25 +315,28 @@ const worldPos = utils.getWorldPosition(entity)
 // Get world rotation considering parent entities
 const worldRot = utils.getWorldRotation(entity)
 ```
+-->
 
 ## Entity Helpers
 
+> **Partly redundant**: SDK7 includes native helpers like `getEntitiesWithParent(engine, parent)`. For player position, use `Transform.get(engine.PlayerEntity).position`.
+
+Native equivalents:
+
 ```typescript
-// Get entity's parent
-const parent = utils.getEntityParent(entity)
+import { AudioSource, Transform, engine, getEntitiesWithParent } from '@dcl/sdk/ecs'
 
-// Get all children of entity
-const children = utils.getEntitiesWithParent(parentEntity)
+// Parent (read from Transform)
+const parent = Transform.getOrNull(entity)?.parent
 
-// Get player position
-const playerPos = utils.getPlayerPosition()
+// Children (direct)
+const children = getEntitiesWithParent(engine, parentEntity)
 
-// Play sound
-utils.playSound(
-  'sounds/mySound.mp3',       // Sound file path
-  false,                      // Loop (optional, default: false)
-  Vector3.create(10, 1, 10)   // Position (optional, default: camera position)
-)
+// Player position
+const playerPos = Transform.get(engine.PlayerEntity).position
+
+// Sound
+AudioSource.create(entity, { audioClipUrl: 'sounds/mySound.mp3', playing: true, loop: false })
 ```
 
 ## Action Sequences

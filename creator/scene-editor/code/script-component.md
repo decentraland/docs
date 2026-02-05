@@ -171,6 +171,13 @@ To call a Script method from another Script or from `main.ts`, the following ste
 As an example, the `public` method on the Script will be:
 
 ```ts
+export class BuildingScript {
+  constructor(
+    public src: string,
+    public entity: Entity,
+    ...,
+  ) {}
+
   public publicMethod(boolParameter: boolean, someNumberParameter: number) {
     if (boolParameter) {
       console.log("Public method called with parameter true!: ", someNumberParameter);
@@ -178,6 +185,8 @@ As an example, the `public` method on the Script will be:
       console.log("Public method called with parameter: false!", someNumberParameter);
     }
   }
+...
+}
 ```
 
 To call it from `main.ts`, use:

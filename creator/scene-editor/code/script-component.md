@@ -133,6 +133,32 @@ update(dt: number) {
 
 The first log belongs to the start() method, indicating that we set numericVariable. The second one belongs to the update() method, when the player is higher than that value.
 
+### Exposing Actions to the Creator Hub
+
+It is possible to define an `Action` inside a Script Component script and have it accesible on the Creator Hub's UI. This enables the possibility to trigger this `Action` with another Entity. 
+
+```ts
+  /**
+   * Expose this action to be triggered
+   * @action
+   */
+  exposedAction(creatorHubParameter: number) {
+    console.log("Triggered from another entity using parameter: ", this.numericActionVariable);
+  }
+  ```
+
+`creatorHubParameter` will be exposed as an `Action` parameter to give it a custom value. After refreshing the Script Component, the new action will be available as an option for the Actions dropdown.
+
+![](../../../.gitbook/assets/script-component-action.png)
+
+After adding the Action, any Entity in the Creator Hub can trigger it using `Triggers`
+
+![](../../../.gitbook/assets/script-component-action-trigger.png)
+
+{% hint style="info" %}
+**📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accesible independently from the `Action` dropdown.
+{% endhint %}
+
 ## See also
 
 * [Smart items - Basics](../interactivity/smart-items.md)

@@ -231,7 +231,7 @@ With the parameters' values given, the output is:
 
 ### Triggering other Entities' Actions from a Script
 
-It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows calling from the Script's methods an `Entity`'s `Action` defined through the Creator Hub UI.
+It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows triggering another `Entity`'s `Action` defined through the Creator Hub UI from the Script's methods.
 
 In this example, `anotherEntityAction` is added as a `public` parameter.
 
@@ -247,7 +247,7 @@ export class BuildingScript {
 }
 ```
 
-A selectable `Entity` and `Action` are now available when the Script Component is refreshed in the Creator Hub UI. `Sphere` is an already existing Entity in the scene that has an action called `Scale`, used as an example.
+A selectable `Entity` and `Action` are now available when the Script Component is refreshed in the Creator Hub UI. `Sphere` is an already existing Entity in the scene that has an action called `Scale`.
 
 ![](../../../.gitbook/assets/script-component-action-callback.png)
 

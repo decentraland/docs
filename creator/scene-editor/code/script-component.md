@@ -90,6 +90,7 @@ The allowed types for the constructor parameters are:
 * `string`
 * `number`
 * `boolean`
+* `ActionCallback`
 
 {% hint style="info" %}
 **📔 Note**: Both `public` and `private` constructor parameters are exposed to Creator Hub. The `private` keyword only restricts access within the `BuildingScript` class. For more details, see the official TypeScript documentation on  
@@ -226,6 +227,50 @@ With the parameters' values given, the output is:
 
 {% hint style="info" %}
 **📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
+{% endhint %}
+
+### Triggering other Entities' Actions from the Script
+
+It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows calling from the Script's methods an `Entity`'s `Action` defined through the Creator Hub UI.
+
+In this example, `anotherEntityAction` is added as a `public` parameter.
+
+```ts
+export class BuildingScript {
+  constructor(
+    public src: string,
+    public entity: Entity,
+    public anotherEntityAction: ActionCallback,
+    ...,
+  ) {}
+  ...
+}
+```
+
+A selectable `Entity` and `Action` are now available when the Script Component is refreshed in the Creator Hub UI. `Sphere` is an already existing Entity in the scene that has an action called `Scale`, used as an example.
+
+![](../../../.gitbook/assets/script-component-action-callback.png)
+
+The action from the other Entity is now accesible on the Script class. It could be used in many different ways. In the following example, pressing E will trigger `this.anotherEntityAction` by defining a `pointerEventsSystem` in the `start` method.
+
+```ts
+  start() {
+    pointerEventsSystem.onPointerDown(
+      {
+        entity: this.entity,
+        opts: {
+          button: InputAction.IA_PRIMARY,
+          hoverText: "Press E to trigger an Action from another Entity.",
+        },
+      },
+      () => {
+        this.anotherEntityAction();
+      }
+    );
+  }
+```
+{% hint style="info" %}
+**📔 Note**: Combining exposing and triggering `Actions` is a very powerful tool. You can define a Script Component on one Entity, expose an action using a `public` method, and then triggering it from another Entity's Script Component using an `ActionCallback` parameter.
 {% endhint %}
 
 ## See also

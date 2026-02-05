@@ -159,6 +159,15 @@ After adding the Action, any Entity in the Creator Hub can trigger it using `Tri
 **📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accesible independently from the `Action` dropdown.
 {% endhint %}
 
+### Calling Script methods from Outside
+
+To call a Script method from another Script or from `main.ts`, the following steps should be followed:
+
+1. Create a `public` method inside the Script class.
+2. Run `npm run build` from the scene's root directory.
+3. From the file the the public method will be used, add `import { callScriptMethod } from '~sdk/script-utils'`.
+4. Call `callScriptMethod` with the parameters needed (in this case, `someParamter`).
+
 ## See also
 
 * [Smart items - Basics](../interactivity/smart-items.md)

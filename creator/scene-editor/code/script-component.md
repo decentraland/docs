@@ -90,6 +90,7 @@ The allowed types for the constructor parameters are:
 * `string`
 * `number`
 * `boolean`
+* `ActionCallback`
 
 {% hint style="info" %}
 **📔 Note**: Both `public` and `private` constructor parameters are exposed to Creator Hub. The `private` keyword only restricts access within the `BuildingScript` class. For more details, see the official TypeScript documentation on  
@@ -132,6 +133,145 @@ update(dt: number) {
 <img src="../../../.gitbook/assets/update-script-logs.png" alt="Update Method" data-size="line"> 
 
 The first log belongs to the start() method, indicating that we set numericVariable. The second one belongs to the update() method, when the player is higher than that value.
+
+### Exposing Actions to the Creator Hub
+
+It is possible to define an `Action` inside a Script Component script and have it accesible on the Creator Hub's UI. This enables the possibility to trigger this `Action` with another Entity. 
+
+```ts
+  /**
+   * Expose this action to be triggered
+   * @action
+   */
+  exposedAction(creatorHubParameter: number) {
+    console.log("Triggered from another entity using parameter: ", this.numericActionVariable);
+  }
+  ```
+
+`creatorHubParameter` will be exposed as an `Action` parameter to give it a custom value. After refreshing the Script Component, the new action will be available as an option for the Actions dropdown.
+
+![](../../../.gitbook/assets/script-component-action.png)
+
+After adding the Action, any Entity in the Creator Hub can trigger it using `Triggers`
+
+![](../../../.gitbook/assets/script-component-action-trigger.png)
+
+{% hint style="info" %}
+**📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accesible independently from the `Action` dropdown.
+{% endhint %}
+
+### Calling Script methods from Outside
+
+To call a Script method from another Script or from `main.ts`, the following steps should be followed:
+
+1. Create a `public` method inside the Script class.
+2. Run `npm run build` from the scene's root directory.
+3. From the file where you want to use the public method, add `import { callScriptMethod } from '~sdk/script-utils'`.
+4. Call `callScriptMethod` with the parameters needed (in this case, `someParamter`).
+
+Here's an example with a `public` method exposed
+
+```ts
+export class BuildingScript {
+  constructor(
+    public src: string,
+    public entity: Entity,
+    ...,
+  ) {}
+
+  public publicMethod(boolParameter: boolean, someNumberParameter: number) {
+    if (boolParameter) {
+      console.log("Public method called with parameter true!: ", someNumberParameter);
+    } else {
+      console.log("Public method called with parameter: false!", someNumberParameter);
+    }
+  }
+...
+}
+```
+
+To call it from `main.ts`, use:
+
+```ts
+import { callScriptMethod } from '~sdk/script-utils'
+
+
+export function main() {
+    const buildingEntity = engine.getEntityOrNullByName("building")
+    if (buildingEntity) {
+        const scriptMethod = callScriptMethod(
+            buildingEntity,
+            "assets/scene/Scripts/BuildingScript.tsx",
+            "publicMethod",
+            false,
+            3,
+        )
+
+        scriptMethod
+    }
+}
+```
+
+First, the `main` function looks for the `Entity` that has the Script component.
+Second, if the `Entity` exists, `callScriptMethod` is called with the following parametrs:
+1. `entity`: `Entity` that has the `public` method.
+2. `scriptPath`: `path` where the `Script` class lives.
+3. `methodName`: name of the `public` method to be called.
+4. `...args`: Arguuments of the method. In this case, there are two. They should be added in order, one after the other.
+
+Third, we call the defined `callScriptMethod`, in this case, `scriptMethod`.
+
+With the parameters' values given, the output is:
+
+![](../../../.gitbook/assets/script-component-public-method.png)
+
+{% hint style="info" %}
+**📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
+{% endhint %}
+
+### Triggering other Entities' Actions from a Script
+
+It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows triggering another `Entity`'s `Action` defined through the Creator Hub UI from the Script's methods.
+
+In this example, `anotherEntityAction` is added as a `public` parameter.
+
+```ts
+export class BuildingScript {
+  constructor(
+    public src: string,
+    public entity: Entity,
+    public anotherEntityAction: ActionCallback,
+    ...,
+  ) {}
+  ...
+}
+```
+
+A selectable `Entity` and `Action` are now available when the Script Component is refreshed in the Creator Hub UI. `Sphere` is an already existing Entity in the scene that has an action called `Scale`.
+
+![](../../../.gitbook/assets/script-component-action-callback.png)
+
+The action from the other Entity is now accesible on the Script class. It could be used in many different ways. In the following example, pressing E will trigger `this.anotherEntityAction` by defining a `pointerEventsSystem` in the `start` method.
+
+```ts
+  start() {
+    pointerEventsSystem.onPointerDown(
+      {
+        entity: this.entity,
+        opts: {
+          button: InputAction.IA_PRIMARY,
+          hoverText: "Press E to trigger an Action from another Entity.",
+        },
+      },
+      () => {
+        this.anotherEntityAction();
+      }
+    );
+  }
+```
+{% hint style="info" %}
+**📔 Note**: Combining exposing and triggering `Actions` is a very powerful tool. You can define a Script Component on one Entity, expose an action using a `public` method, and then triggering it from another Entity's Script Component using an `ActionCallback` parameter.
+{% endhint %}
 
 ## See also
 

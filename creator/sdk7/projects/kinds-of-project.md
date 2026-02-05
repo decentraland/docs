@@ -32,9 +32,9 @@ These scenes are linked to NAME tokens. NAME tokens can be bought in the [Market
 
 Scenes published to a World can use up to 100 MB, and have as many parcels of land as you wish. The same [size limitations](../sdk7/optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
 
-See [Worlds](../worlds/about.md) for more info.
+See [Worlds](../../worlds/about.md) for more info.
 
-Worlds offer a few options to customize the scene sky box, which aren't available in Genesis City (where a same sky is shared by all surrounding scenes). See [World defaults](../worlds/about.md#world-defaults)
+Worlds offer a few options to customize the scene sky box, which aren't available in Genesis City (where a same sky is shared by all surrounding scenes). See [World defaults](../../worlds/about.md#world-defaults)
 
 ### Global Scenes
 

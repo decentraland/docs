@@ -32,7 +32,7 @@ To move a player to another set of coordinates inside the current scene, use the
 
 ### Teleport to a WORLD
 
-To send a player to a scene that is not published in the open world Genesis City map, but instead to an isolated [Decentraland WORLD](../worlds/about.md), use the function `changeRealm()`.
+To send a player to a scene that is not published in the open world Genesis City map, but instead to an isolated [Decentraland WORLD](../../worlds/about.md), use the function `changeRealm()`.
 
 ```ts
 import { changeRealm } from "~system/RestrictedActions"

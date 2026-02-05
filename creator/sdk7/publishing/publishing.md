@@ -48,7 +48,7 @@ Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
 3. A prompt will ask if you want to publish to a **WORLD** or to **LAND**.
-   * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](../worlds/about.md). Then select which of your NAMEs or ENS Domains to publish to.
+   * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](../../worlds/about.md). Then select which of your NAMEs or ENS Domains to publish to.
    * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
    * Select **Alternative servers** to publish to the [test server](publishing.md#the-test-server) or a [custom server](publishing.md#custom-servers).
 
@@ -78,7 +78,7 @@ Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-
 **💡 Tip**: `npm run deploy` runs a `npm run build`, which checks the scene for type errors more strictly than running `npm run start`. If these errors can't be avoided (eg: they happen in an external library) and they don't impact the scene, you can use `npm run deploy --skip-build` to skip the `npm run build` step and deploy the scene as it is.
 {% endhint %}
 
-When publishing to a [Decentraland World](../worlds/about.md) , use the following command instead:
+When publishing to a [Decentraland World](../../worlds/about.md) , use the following command instead:
 
 `npm run deploy -- --target-content https://worlds-content-server.decentraland.org`
 

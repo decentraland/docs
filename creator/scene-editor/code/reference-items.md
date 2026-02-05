@@ -129,35 +129,20 @@ Tags.add(entity, tagName);
 
 ## Fetch all the children of an item
 
-You can also write a script that lets you deal with all of the items that are grouped as children of a certain item on the entity tree on the left of the screen. The following script iterates over all entities that have a Transform and a parent, and checks if the name of the parent matches the name `some-parent` in this case. You can then apply any custom logic you want to those specific entities.
+Once you have a reference to a particular item, you can fetch all of the items that are grouped as its children on the entity tree on the left of the screen. The following script fetches the parent entity and then iterates over each of its children that have a Transform component. You can then apply any custom logic you want as you iterate over each.
 
 ```ts
-import { engine, Entity, Transform, Name } from '@dcl/sdk/ecs'
-import { EntityNames } from '../assets/scene/entity-names'
+import { engine, Entity, Transform, Name, getEntitiesWithParent } from '@dcl/sdk/ecs'
 
 function main() {
 	// get parent entity
 	const parent = engine.getEntityByName<EntityNames>(EntityNames.ParentEntity)
-	
-	// obtain all children entities of that parent
-	const childEntities = getChildren(parent)
-	
-	// loop over each child
-	for(const entity of childEntities){
-		// handle entity
-	}
 
-}
-
-// reusable function to obtain all the child entities of a parent
-function getChildren(parent: Entity): Entity[] {
-	const childEntities: Entity[] = []
-	for (const [entity, transform] of engine.getEntitiesWith(Transform)) {
-		if (transform.parent === parent) {
-			childEntities.push(entity)
-		}
+	// fetch full list of children
+	const children = getEntitiesWithParent(engine, myEntity)
+	for (const child of children) {
+   		// process each child entity
 	}
-	return childEntities
 }
 ```
 

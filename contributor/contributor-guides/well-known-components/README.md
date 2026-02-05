@@ -63,3 +63,9 @@ To build a WKC-compliant service:
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this documentation are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
+## Related Standards
+
+* [Dependency Management](../dependency-management.md) - Managing npm dependencies and peerDependencies
+* [Testing Standards](../testing-standards/README.md) - Testing patterns for WKC services
+* [API Documentation](../api-documentation.md) - OpenAPI documentation standards
+

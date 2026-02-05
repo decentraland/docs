@@ -16,7 +16,7 @@ When a scene admin visits your scene, they see a special UI on the top-right cor
 
 ![ ](../../../.gitbook/assets/admin-console.png)
 
-### Setting up admins
+## Setting up admins
 
 To assign admins, you need to add the **Scene Admin** smart item to your scene.
 
@@ -52,7 +52,25 @@ Whenever an admin player is in the scene, they will see a special UI on the top-
 
 ![ ](../../../.gitbook/assets/admin-console.png)
 
-### Video playing
+It is also possible to know if a Player is an Admin of a scene using code. This allows for other behaviours to be available (or not) for a Player, for example, allowing interactions with a specific Entity of the scene.
+
+```ts
+import { isAdmin } from '@dcl/asset-packs/dist/admin'
+
+
+async function onPlayerSpawn() {
+  const isAdminUser = await isAdmin();
+  if (isAdminUser) {
+   // Show admin-only UI, teleport to stage, show entity, etc.
+   }
+ }
+```
+
+{% hint style="info" %}
+**💡 Tip**: For more information about async functions, see [Async Functions](../../sdk7/programming-patterns/async-functions.md).
+{% endhint %}
+
+## Video playing
 
 One of the most common actions for admins to do is to play videos. The admin panel includes a video player section where they can control anything related to videos.
 
@@ -72,11 +90,11 @@ To enable this, you need to add a **Video Player** smart item to your scene and 
 
 2.  Open the Scene Admin Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
 
-    <img src="/images/editor/admin/multi-video-setup.png" alt="Scene name" width="300"/>
+    <img src="../../../.gitbook/assets/multi-video-setup.png" alt="Scene name" width="300"/>
 
 Once the above is configured, admin users in your scene can open the admin panel and select the video section to control these video screens.
 
-<img src="/images/editor/admin/video-sources.png" alt="Scene name" width="300"/>
+<img src="../../../.gitbook/assets/video-sources.png" alt="Scene name" width="300"/>
 
 If your scene has multiple independent video screens, the **Current Screen** dropdown lets you pick which video screen to control. The list displays the names you gave to each video screen on the Admin Tools smart item configuration.
 
@@ -84,13 +102,13 @@ If your scene has multiple independent video screens, the **Current Screen** dro
 **💡 Tip**: To show the same video on multiple screens that can be controlled as one, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens).
 {% endhint %}
 
-### Media Sources
+## Media Sources
 
 There are three media source options for playing videos:
 
 *   **Video URL**: Play a video file from your local filesystem or from an URL. Paste a video URL into the **Video URL** field and click the green **Activate** button. The video will start playing on the selected screen for all players. You can also stop, pause, restart, mute, or change the volume of the video.
 
-    <img src="/images/editor/admin/video-from-url.png" alt="Scene name" width="300"/>
+    <img src="../../../.gitbook/assets/video-from-url.png" alt="Scene name" width="300"/>
 
     {% hint style="warning" %}
     **📔 Note**: Not any video URL will work. Videos from sites like Youtube for example have strict policies about their content and will block access to them from Decentraland. See [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) for more information on what you can and can't play in Decentraland.
@@ -98,14 +116,14 @@ There are three media source options for playing videos:
 
 *   **DCL Cast**: Use Decentraland's free streaming web app to easily share your camera or screen with other players in the scene, no need to set up a streaming software.
 
-    <img src="/images/editor/admin/dcl-cast.png" alt="DCL Cast" width="300"/>
+    <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
 
 
 *   **Live stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
 
-    <img src="/images/editor/admin/live-stream.png" alt="Scene name" width="300"/>
+    <img src="../../../.gitbook/assets/live-stream.png" alt="Scene name" width="300"/>
 
-    <img src="/images/editor/admin/activate.png" alt="Scene name" width="200"/>
+    <img src="../../../.gitbook/assets/activate.png" alt="Scene name" width="200"/>
 
     See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
 
@@ -113,7 +131,7 @@ Each screen in your scene will have one of the above media sources set as **Acti
 
 ![ ](../../../.gitbook/assets/activate.png)
 
-### Announcements
+## Announcements
 
 In the **Announcements** tab of the admin panel, admins can write messages that get seen by all players in the scene. Messages like this can only be sent by admins, so other players will perceive them as more legitimate than a message on the chat by someone claiming to be an admin.
 
@@ -121,7 +139,7 @@ Select the Message section of the admin UI. Write a message and click **Share**.
 
 ![ ](../../../.gitbook/assets/announcement.png)
 
-### Ban players
+## Ban players
 
 You can ban players from your scene by selecting the **Moderation** tab of the admin UI, writing the name or wallet address of the player you want to ban and clicking the **Ban** button.
 
@@ -139,7 +157,7 @@ Banned players will be unable to load your scene or interact with any of its con
 
 Click **View Ban List** to see the list of currently banned players. From this list you can also **Unban** players.
 
-### Trigger smart items
+## Trigger smart items
 
 To Trigger an action from any smart item in the scene:
 

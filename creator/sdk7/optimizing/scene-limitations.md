@@ -20,7 +20,7 @@ You can expand this menu to view details.
 [Reference table](https://docs.google.com/spreadsheets/d/1BTm0C20PqdQDAN7vOQ6FpnkVncPecJt-EwTSNHzrsmg/edit#gid=0)
 {% endhint %}
 
-### Scene limitation rules
+## Scene limitation rules
 
 Below are the maximum number of elements that a scene is allowed to render at the same time:
 
@@ -44,11 +44,11 @@ Below are the maximum number of elements that a scene is allowed to render at th
 You can list any other files or folders you want to exclude from being uploaded in the `.dclignore` file in your project.
 {% endhint %}
 
-### Optimizing
+## Optimizing
 
 See [Performance Optimization](../sdk7/optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
-### Scene boundaries
+## Scene boundaries
 
 When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, that part of your content won't be rendered when players visit your scene.
 
@@ -58,15 +58,15 @@ A single parcel scene measures 16 meters x 16 meters. If the scene has multiple 
 
 It's possible to position entities underground, to either hide them or to have only a portion of them emerge. A scene can't have tunnels that go below the default ground height, players can't travel below the `y = 0` height.
 
-### Shader limitations
+## Shader limitations
 
 3D models used in decentraland must use supported shaders and materials. See [3D model materials](../3d-modeling/materials.md) for a list of supported shaders.
 
-### Lighting
+## Lighting
 
 The scene's lighting conditions can't be changed for all players from the default setting, although each individual player is free to change their own skybox settings from the Explorer UI.
 
-### Texture size constraints
+## Texture size constraints
 
 Texture sizes must use width and height numbers (in pixels) that match the following numbers:
 
@@ -94,12 +94,12 @@ Examples of other valid sizes:
 **📔 Note**: Although textures of arbitrary sizes sometimes work, they are also often rendered with bugs and are more unstable. We strongly advise that all your textures match these sizes.
 {% endhint %}
 
-### World Size
+## World Size
 
 Decentraland [Worlds](../../worlds/about.md) have different limitations, since they are loaded as single scenes.
 
 * Worlds published to Decentraland NAMEs have at least `100 MB`. That number can be increased by owning additional NAMEs, LAND, and MANA on that same account.
-* Worlds published to ENS domains have a limit of `25MB` that cannot be expanded.
+* Worlds published to ENS domains have a limit of `36 MB` that cannot be expanded.
 
 See [Worlds Size Limit](../../worlds/about.md#worlds-size-limit) for more details.
 

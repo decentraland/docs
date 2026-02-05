@@ -6,7 +6,7 @@ description: Learn how to handle user clicks in your scene.
 
 If you need the interaction in your scene to follow custom logic that is not compatible with the [Register callback](register-callback.md) or the [System based](system-based-events.md) approaches, you can deal with the raw input event data directly. This approach is the hardest, but the most flexible.
 
-### The PointerEventsResult component
+## The PointerEventsResult component
 
 When a pointer event is detected by the engine, the entity that was clicked is assigned a `PointerEventsResult` component. This component contains all the raw data about the hit event, and stores historic data about previous events.
 
@@ -45,7 +45,7 @@ function PointerReadingSystem() {
 engine.addSystem(PointerReadingSystem)
 ```
 
-### Track player movements
+## Track player movements
 
 In real-time multiplayer games where the timing of player movements is critical, you may want to keep track of each player's position using a 3rd party server as the source of truth. You can improve response time by listening to the button in advance and predict their effects in your server before the avatar has shifted position.
 

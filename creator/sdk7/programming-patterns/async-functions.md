@@ -4,7 +4,7 @@ description: Learn when and how to run asynchronous functions in your scene's co
 
 # Async Functions
 
-### Overview
+## Overview
 
 Most of the code in your scene runs synchronously using a single thread. That means that commands are executed sequentially line by line. Each command must first wait for the previous command to finish executing before it can start.
 
@@ -27,7 +27,7 @@ For example:
 **📔 Note**: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
 {% endhint %}
 
-### Run an async function
+## Run an async function
 
 Mark any function as `async` so that it runs on a separate thread from the scene's main thread every time that it's called.
 
@@ -43,7 +43,7 @@ myAsyncTask()
 // rest of the code keeps being executed
 ```
 
-### The executeTask function
+## The executeTask function
 
 The `executeTask()` function executes a lambda function asynchronously, in a separate thread from the scene's main thread. `executeTask()` allows us to declare and execute the function all in one same statement.
 
@@ -56,7 +56,7 @@ executeTask(async () => {
 // rest of the code keeps being executed
 ```
 
-### The then function
+## The then function
 
 The `then` function takes in a lambda function as an argument, that only gets executed once the prior statement is finished. This lambda function can optionally have inputs that are mapped from whatever the prior statement returns.
 
@@ -70,7 +70,7 @@ myAsyncTask().then((data) => {
 **📔 Note**: It's generally better to use the `executeTask` approach rather than the `then` function. In this example, the scene won't be considered fully loaded by the explorer till the `myAsyncTask()` function is completed, which may affect load times. Also, if relying too much on the `then` function at multiple nested levels, you can end up with what's known as "callback hell", where the code can become very hard to read and maintain.
 {% endhint %}
 
-### PointerEvents and RayCast functions
+## PointerEvents and RayCast functions
 
 When your scene uses a `PointerEvent` or a `RayCast` component, the calculations of collisions are carried out async in the engine. The engine then returns a results event to the scene, which can arrive one or several ticks of the game loop later than when the event was invoked.
 
@@ -86,7 +86,7 @@ See [click events](../interactivity/button-events/click-events.md) and [raycasti
 **💡 Tip**: If the processing of the results of a raycast takes a lot of calculations (like running a path-finding algorithm) you might want to run that computation in an asynchronous function.
 {% endhint %}
 
-### The await statement
+## The await statement
 
 An `await` statement forces the execution to wait for a response before moving over to the next line of code. `await` statements can only be used inside an async block of code.
 
@@ -109,3 +109,37 @@ myAsyncTask()
 ```
 
 The example above executes a function that includes a `fetch()` operation to retrieve data from an external API. The `fetch()` operation is asynchronous, as we can't predict how long the server will take to respond. However, the next line needs the output of this operation to be ready before we can parse it as a json. The `await` statement here ensures that the next line will only run once that operation has returned a value. Similarly, the `response.json()` function is also asynchronous, but the next line needs the json to be parsed before it can log it. The second `await` statement forces the next line to only be called once the parsing of the json is finished, however long it takes.
+
+
+## Set a Timeout for a Function call
+
+Use `setTimeout` to wait some time before certain lines of code are run. This takes two arguments:
+
+- The function to execute
+- The amount of miliseconds to wait before executing that function
+
+ 
+The example below waits 1000 milliseconds (equal to 1 second) before executing a simple function that logs a message to console.
+
+```ts
+import { timers } from '@dcl/sdk/ecs'
+
+console.log('This gets printed right away')
+
+timers.setTimeout(() => {
+	// function to run after delay
+    console.log('This gets printed after 1 second')
+}, 1000)
+```
+
+The `clearTimeout` can be used to cancel the execution of a `setTimeout` function that is still waiting to be executed. When creating the `setTimeout` function, grab a reference to the function, that you can then pass to `clearTimeout`. In this case, the variable `intervalId` is obtained when doing the `setTimeout`, and then passed to `clearTimeout` to cancel it.
+
+```ts
+import { timers } from '@dcl/sdk/ecs'
+
+const timeoutId = timers.setTimeout(() => {
+    console.log('Wait 1 second until executing this function')
+}, 1000)
+
+timers.clearTimeout(intervalId)
+  ```

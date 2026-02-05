@@ -181,9 +181,6 @@ Add a `PointerLock` component to the `engine.CameraEntity` entity in your scene,
 import {PointerLock} from '@dcl/sdk/ecs'
 
 export function main() {
-
-    PointerLock.create(engine.CameraEntity);
-
     PointerLock.onChange(engine.CameraEntity, (pointerLock) => {
 		    if (!pointerLock) return
 		    if(pointerLock.isPointerLocked){
@@ -199,9 +196,7 @@ You can use this information to nudge the player subtly, like showing a UI popup
 import {PointerLock} from '@dcl/sdk/ecs'
 
 export function main() {
-
-    PointerLock.create(engine.CameraEntity, {isPointerLocked: false});
-
+    PointerLock.createOrReplace(engine.CameraEntity, {isPointerLocked: false});
     PointerLock.onChange(engine.CameraEntity, (pointerLock) => {
 		    if (!pointerLock) return
 		    if(pointerLock.isPointerLocked){

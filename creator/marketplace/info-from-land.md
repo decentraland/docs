@@ -8,7 +8,7 @@ You can use the Decentraland CLI to query info directly from LAND tokens in the 
 
 To run these commands, you must first [Install the CLI](../sdk7/getting-started/using-the-cli.md).
 
-### Get info about a scene
+## Get info about a scene
 
 The `dcl info` command returns the contents of a scene's _scene.json_ file, including owner, contact info, and parcels in the scene.
 
@@ -33,7 +33,7 @@ The `dcl status` command returns a list with the files deployed to a scene. This
 **📔 Note**: Everything that's uploaded to our content server is public and reachable through that network. When you deploy a scene, by default you're not uploading the original source code for the scene, instead you upload a version that's compiled to minified JavaScript, which is a lot less readable.
 {% endhint %}
 
-### Get info from a wallet address
+## Get info from a wallet address
 
 The `dcl info` command also lets you see info about an Ethereum wallet and the LAND tokens that it owns.
 

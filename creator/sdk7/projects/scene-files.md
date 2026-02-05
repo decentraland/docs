@@ -6,7 +6,7 @@ description: Default files created in a new scene.
 
 After [creating a new scene](../sdk7/getting-started/sdk-101.md), the scene folder will have a series of files with default content.
 
-### Default files in a scene
+## Default files in a scene
 
 Scenes include the following files:
 
@@ -15,9 +15,9 @@ Scenes include the following files:
 * **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
 * **tsconfig.json**: Typescript configuration file.
 * **.dclignore**: Lists the files in your project that will not be uploaded when you publish your scene.
-* **main-composite**: Auto-generated file including everything you added and configured visually in the Scene Editor. It's not meant to be human-readable.
+* **main-composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable.
 
-#### index.ts
+### index.ts
 
 This is the entry point to your scene's custom code. You could fit your entire scene's logic into this file, although for clarity in most cases we recommend spreading out your code over several other _.ts_ files.
 
@@ -31,7 +31,7 @@ When running the scene, the contents of your `.ts` files are compiled to a singl
 **📔 Note**: You can use another tool or language instead of TypeScript, as long as your scripts are contained within a single Javascript file (bin/scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 {% endhint %}
 
-#### scene.json
+### scene.json
 
 The _scene.json_ file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The _scene.json_ manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings.
 
@@ -43,7 +43,7 @@ For more information see [scene metadata](../sdk7/projects/scene-metadata.md#met
 
 All of this metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
 
-#### package.json
+### package.json
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes require one main package:
 
@@ -52,19 +52,19 @@ This file provides information to NPM that allows it to identify the project, as
 
 Your scene may include any number of other packages, for example to include [libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library) that can help make the writing of code easier, or enable special functionalities.
 
-#### package-lock.json
+### package-lock.json
 
 This file lists the versions of all the other dependencies of the project. These versions are locked, meaning that the compiler will use literally the same minor release listed here.
 
 You can change any package version manually by editing this file.
 
-#### tsconfig.json
+### tsconfig.json
 
 Directories containing a _tsconfig.json_ file are root directories for TypeScript Projects. The _tsconfig.json_ file specifies the root files and options required to compile your project from TypeScript into JavaScript.
 
 When installing any additional libraries to your scene, an entry should be added automatically to this file. For installing Decentraland utils libraries, it shouldn't be necessary to manually do any changes to this file.
 
-### Recommended file locations
+## Recommended file locations
 
 Keep in mind that when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
 
@@ -89,7 +89,7 @@ We suggest using these folder names consistently for storing the different types
 
 When importing any assets via the Scene Editor, they are added automatically inside the `assets/scene` folder. When using any of the default assets in the Asset Packs of the Scene Editor, their files are added to the `assets/builder` folder.
 
-### The dclignore file
+## The dclignore file
 
 All scenes include a _.dclignore_ file, this file specifies what files in the scene folder to ignore when deploying a scene to Decentraland.
 

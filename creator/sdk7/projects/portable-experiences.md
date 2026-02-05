@@ -4,31 +4,33 @@ description: Portable experiences
 
 # Portable Experiences
 
-Portable experiences are essentially scenes that are not constrained to parcels of land. Players can carry these with them anywhere they go in Decentraland, adding a new layer of content over their experience. Portable Experiences can be tied to a NAME and can be loaded by another scene using the SDK.
 
 {% hint style="warning" %}
-**📔 Note**: Portable experiences can only be created using SDK 7. Also, only scenes built with SDK 7 are capable of loading a portable experience.
-
-The **Creator Hub** doesn't currently support creating Portable Experience projects.
+**📔 Note**: Portable experiences are not currently supported in the latest versions of Decentraland.
 {% endhint %}
+
+
+<!-- Portable experiences are essentially scenes that are not constrained to parcels of land. Players can carry these with them anywhere they go in Decentraland, adding a new layer of content over their experience. Portable Experiences can be tied to a NAME and can be loaded by another scene using the SDK.
+
+
 
 Smart Wearables are a kind of portable experience that is associated to a wearable, and activated based on if the player is using that wearable. This document doesn't cover those, see [smart wearables](smart-wearables.md) for more details.
 
-### Getting started
+## Getting started
 
-#### Using the CLI
+### Using the CLI
 
 1. Open a command line in a new folder and run
 
 `npx sdk-commands init --project px-template`
 
-### Preview
+## Preview
 
 Running a preview of a portable experience is just like running that of a scene, simply click the **Run Scene** button on the Decentraland tab, or run `npm run start` in the command line.
 
 You’ll notice that rather than seeing an empty grid, you are surrounded by the default empty parcels content. In a portable experience, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world. Since the portable experience is meant to be experienced anywhere in Decentraland, you're most likely going to focus on entities attached to the player or UI, but you can also place entities freely in the world.
 
-### Publish
+## Publish
 
 To publish your portable experience, you need to own a [Decentraland NAME](https://builder.decentraland.org/names).
 
@@ -48,7 +50,7 @@ To specify under what **name** to make your deployment, add the following sectio
 
 Make sure you're either using the Ethereum account that owns this name, or an account that has been given permissions to deploy to this name.
 
-#### Using the CLI
+### Using the CLI
 
 Run:
 
@@ -56,7 +58,7 @@ Run:
 npm run deploy --target-content https://worlds-content-server.decentraland.org
 ```
 
-### Lifecycle of a portable experience in a scene
+## Lifecycle of a portable experience in a scene
 
 Portable expereinces need to be activated by a scene, either in Genesis City or a world.
 
@@ -80,7 +82,7 @@ executeTask(async () => {
 })
 ```
 
-### Restricting portable experiences
+## Restricting portable experiences
 
 You might be worried about preventing the use of portable experiences in your scene, since these could give players abilities that could be considered cheating in a competitive game. For example, in a platform game, a player that wears a jetpack has a very unfair advantage over others.
 
@@ -111,7 +113,7 @@ In the example above, the scene is using `kill()` to terminate portable experien
 
 An alternative to terminating portable experiences is to change the behavior of your scene when they are present. For example, the player might be able to keep their portable experience, but not be allowed to start a match, or to claim any rewards as long as they have any enabled.
 
-### Restricted actions in portable experiences
+## Restricted actions in portable experiences
 
 To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
 
@@ -121,11 +123,11 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 **📔 Note**: Players are notified about the required flags by the portable experience. Avoid adding permissions you don't need, since it can make players distrust your portable experience and reject it.
 {% endhint %}
 
-### Limitations
+## Limitations
 
-Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/trigger-emotes.md#custom-animations) uploaded as part of the portable experience's files.
+Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the portable experience's files.
 
-### Tips
+## Tips
 
 * When positioning an entity, note that positions are global, relative to the 0,0 coordinates of Genesis Plaza.
 * To react to nearby players:
@@ -137,3 +139,4 @@ Portable experiences only run for the player that activates it. Other players do
   * You can use an intermediate server to send information between the portable experience and a scene.
   * If you do a raycast, you can detect hits against the colliders of entities from the surrounding scenes. This can tell you the exact hit location, normal direction, and even the entity name and mesh name of the 3D model. This only works when hitting entities on scenes written with SDK7.
 * Kill a portable experience: Run the `kill()` method to self-terminate a portable experience.
+ -->

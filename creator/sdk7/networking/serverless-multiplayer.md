@@ -16,7 +16,7 @@ There are three ways to sync the scene state, so that all players see the same:
 
 The first two options are covered in this document. They are simpler, as they require no server. The downside is that you rely more on player's connection speeds, and the scene state is not persisted when all players leave the scene.
 
-### Mark an Entity as Synced
+## Mark an Entity as Synced
 
 In the [Creator Hub](../scene-editor/get-started/about-editor.md), mark an entity as synced by adding a **Multiplayer component** to it. It includes a checkbox for each of the other components on the entity, allowing you to select which ones to update.
 
@@ -44,7 +44,7 @@ Not all entities or components need to be synced. Static elements like a tree th
 **💡 Tip**: If the data you want to share doesn't exist as a component, define a [custom component](../sdk7/architecture/custom-components.md) that holds that data.
 {% endhint %}
 
-#### About the enum id
+### About the enum id
 
 The **entityEnumId** of an entity must be unique. It's not related to the local entityId assigned on `engine.addEntity()`, that is automatically generated and may vary between players running the same scene. The entityEnumId of an entity must be explicitly defined in the code and be unique.
 
@@ -154,7 +154,7 @@ const getChildrenResult = Array.from(getChildren(parent))
 removeParent(child)
 ```
 
-### Check the sync state
+## Check the sync state
 
 When a player just loads into a scene, they may not yet be synchronized with other players surrounding them. If the player starts altering the state of the game before they are synced, this could cause problems in your game. We recommend always checking for a player to be synchronized before they are allowed to edit anything about the scene.
 
@@ -186,7 +186,7 @@ engine.addSystem(() => {
 })
 ```
 
-### Send Explicit MessageBus Messages
+## Send Explicit MessageBus Messages
 
 **Initiate a message bus**
 
@@ -314,7 +314,7 @@ sceneMessageBus.on('spawn', (info: NewBoxPosition) => {
 })
 ```
 
-### Test a multiplayer scene locally
+## Test a multiplayer scene locally
 
 If you launch a scene preview and open it in two (or more) different explorer windows, each open window will be interpreted as a separate player, and a mock communications server will keep these players in sync.
 
@@ -328,7 +328,7 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 > `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&open-deeplink-in-new-instance=true`
 
-### Single player scenes
+## Single player scenes
 
 If your scene is deployed to a [Decentraland World](../../worlds/about.md), you can make it a single player scene. Players won't see each other, won't be able to chat or see the effects of each other's actions.
 

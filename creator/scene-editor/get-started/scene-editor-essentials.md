@@ -13,7 +13,7 @@ The Scene Editor's UI is divided into a few different sections, with different p
 * **Properties**: Displays details about the currently selected item.
 * **Resources**: Shows resources that are available to use.
 
-### Moving around
+## Moving around
 
 To find your way around the Scene Editor:
 
@@ -24,7 +24,7 @@ To find your way around the Scene Editor:
 * Press **Space bar** to reset the camera back to the default position
 * Use **Left Mouse Button** to click and select items and to move them around.
 
-### Set the Ground
+## Set the Ground
 
 The scene's ground can use various different textures. You can find these in the different themed asset packs in the item menu.
 
@@ -38,7 +38,7 @@ You can also add a single copy of the item by holding **Shift** while you drag t
 
 The collection of ground items appear in the [entity tree](scene-editor-essentials.md#the-entity-tree) inside a folder. Each one of them is locked, to prevent accidentally selecting. [Untoggle](scene-editor-essentials.md#lock-or-hide-items) the items to move or edit them.
 
-### Add items
+## Add items
 
 Navigate the themed asset pack categories on the menu on the bottom to find different items that you can place on your scene.
 
@@ -58,7 +58,7 @@ To duplicate an item, select it and hit **Ctrl + C** and then **Ctrl + V**. You 
 
 To delete an item from the scene, select it press the _Delete_ key.
 
-See [Import items](../scene-editor/build/import-items.md) for adding your own custom 3D models from disk.
+See [Import items](../build/import-items.md) for adding your own custom 3D models from disk.
 
 {% hint style="warning" %}
 **📔 Note**: Once you dragged a 3D model into your scene, it's downloaded into your project folder and remains there even if you delete it. These unused models can increase the size of your scene.
@@ -96,13 +96,13 @@ To change the movement granularity and other settings, click the downward arrow 
 
 To select multiple items at the same time, press and hold the _Control_ key while selecting them. You can then move, rotate, scale, duplicate or delete all of them in a single action.
 
-### Smart items
+## Smart items
 
-Smart items are special items that come with built-in interactive behaviors. See [Smart items](../scene-editor/interactivity/smart-items.md) for more details.
+Smart items are special items that come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.
 
 ![](../../../.gitbook/assets/smart-items.jpg)
 
-### The entity tree
+## The entity tree
 
 On the left margin, you'll see a tree structure with all of the entities in the scene. This includes all of the items you add, as well as a few default entities.
 
@@ -118,7 +118,7 @@ Entities follow a hierarchy that can have as many levels as you want. Establish 
 
 You can also minimize or expand the children of an entity to keep the view simple, this action has no effect on the scene.
 
-#### Special entities
+### Special entities
 
 The scene includes a couple of special entities that you can see in the entity tree.
 
@@ -126,7 +126,7 @@ The scene includes a couple of special entities that you can see in the entity t
 * **Player**: The player's avatar. You can add special components to this entity that can change gameplay mechanics. You can also drag other entities to be children of the avatar. If an entity is a child of the avatar, its position will be fixed to the player. Use this for example to add a floating marker over the player's head, that follows the player around.
 * **Camera**: The player's camera. You can drag other entities to be children of the camera. If an entity is a child of the camera, its position will be fixed on screen. Use this for example to display a gun in a shooter game, that is always in view even if the player points up or down.
 
-#### Lock or hide items
+### Lock or hide items
 
 You might find it handy to sometimes lock an item, to prevent accidentally selecting and moving it. This is especially useful for background items, like the ground, or a building. To lock an item, look for it on the entity tree on the left, hover over it, and select the lock icon. You can toggle this behavior on and off via that same icon.
 
@@ -134,7 +134,7 @@ You might also want to hide an item that could obstruct your view while placing 
 
 ![](../../../.gitbook/assets/hide-lock-item.png)
 
-### Properties panel
+## Properties panel
 
 Select an item by clicking on it on the canvas or the entity tree. You'll then see its components displayed on the properties panel, on the right of the screen. Different items have different components that each display specific settings.
 
@@ -145,13 +145,13 @@ Most non-interactive items have the following components:
 * **Transform**: Sets position, rotation, and scale of the item.
 * **GLTF**: What 3D model to load.
 
-[Smart items](../scene-editor/interactivity/smart-items.md) can include other components.
+[Smart items](../interactivity/smart-items.md) can include other components.
 
-See [Components](../scene-editor/build/components.md) to learn more.
+See [Components](../build/components.md) to learn more.
 
-### Scene limitations
+## Scene limitations
 
-Decentraland scenes need to follow certain limitations, to be able to run them one next to another. There is a maximum number of materials, textures, triangles, etc, that is proportional to the number of parcels in the scene. See [scene limitations](../sdk7/optimizing/scene-limitations.md) for more details.
+Decentraland scenes need to follow certain limitations, to be able to run them one next to another. There is a maximum number of materials, textures, triangles, etc, that is proportional to the number of parcels in the scene. See [scene limitations](../../sdk7/optimizing/scene-limitations.md) for more details.
 
 If the content in your scene exceeds any of these limits, the Scene Editor will notify this on the bottom-left corner.
 
@@ -162,7 +162,7 @@ You can expand this menu to view details.
 ![](../../../.gitbook/assets/triangle-limit2.png)
 
 {% hint style="info" %}
-**💡 Tip**: If you're building a Decentraland World, you can always increase the [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) to increase your limits.
+**💡 Tip**: If you're building a Decentraland World, you can always increase the [scene size](scene-editor-essentials.md#scene-sizes) to increase your limits.
 {% endhint %}
 
 The content in a Decentraland scene must also avoid spilling onto neighbor parcels. If any part of the models in your scene extend beyond the limits, when you open the scene preview you will see these parts cut off. The Scene Editor will mark the entire model in red, but you should only really worry about the parts of the model that extend beyond the scene limits.
@@ -170,7 +170,7 @@ The content in a Decentraland scene must also avoid spilling onto neighbor parce
 ![](../../../.gitbook/assets/out-of-bounds.png)
 
 {% hint style="info" %}
-**💡 Tip**: If the models you want to display don't fit, you may want to increase the size of your scene. See [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) to enlarge your scene.
+**💡 Tip**: If the models you want to display don't fit, you may want to increase the size of your scene. See [scene size](scene-editor-essentials.md#scene-sizes) to enlarge your scene.
 {% endhint %}
 
 Even if the whole geometry of the 3D model fits in your scene, a model might be marked in red if the model's Bounding Box extends beyond the area. If this is the case, you can ignore the warnings, as the entire model will be displayed correctly. Learn more about [Bounding Boxes](../3d-modeling/meshes.md#bounding-boxes).
@@ -193,7 +193,7 @@ Deleting an item from the scene does not remove its files. Imported models, text
 **Important:** If your scene contains code that references assets, some in-use assets may appear as unused. This dialog only detects assets referenced by components in the Creator Hub UI. Deleting assets is irreversible—once you click **Remove Selected**, the files are permanently deleted.
 {% endhint %}
 
-### Scene settings
+## Scene settings
 
 Click the \*Pencil icon\*\* on the top-right of the screen. This opens a series of scene-level properties to edit.
 
@@ -201,10 +201,10 @@ Click the \*Pencil icon\*\* on the top-right of the screen. This opens a series 
 
 Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
 
-See [Scene Settings](../scene-editor/configure/scene-settings.md).
+See [Scene Settings](../configure/scene-settings.md).
 
-### See also
+## See also
 
-* See [Smart items](../scene-editor/interactivity/smart-items.md) for how to add simple interactivity to your scene.
-* See [Combine with code](../scene-editor/code/overview.md) for how to edit the code of your scene.
-* See [Publish scene](../scene-editor/publish/publish-scene.md) for how to publish your scene to Decentraland.
+* See [Smart items](../interactivity/smart-items.md) for how to add simple interactivity to your scene.
+* See [Combine with code](../code/overview.md) for how to edit the code of your scene.
+* See [Publish scene](../publish/publish-scene.md) for how to publish your scene to Decentraland.

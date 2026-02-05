@@ -12,16 +12,16 @@ To start adding the props to your emotes it's important to use the [Decentraland
 
 **Currently, the props animations only work with Armature/Bones Animations meaning that \_transform animations**\_\*\* are not allowed.\*\*
 
-The emote with their props must be exported all together in one single _.glb_ file (Avatar\_Armature + Props\_Armature with its animations).
+The emote with their props must be exported all together in one single _.glb_ file (Avatar_Armature + Props_Armature with its animations).
 
-* No more than 3 MB in total.
-* No more than 3k tris for props in total.
-* No more than 2 materials and 2 textures for props.
-* No more than 62 bones for the prop armature.
-* The emote must have one animation for the avatar and one animation for the prop. _Currently multiple animations are not allowed._
-* Both animations (Avatar and Prop) must have the same keyframe length.
-* Animations cannot exceed 300 frames or 10 seconds.
-* Space boundaries are 4 square meters. Props and particles should stay within the reference cube provided in the Avatar File. For avatar movement, check [Ground Reference and Animation Area](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/emotes/creating-emotes.md#ground-reference-and-animation-area). section.
+- No more than 3 MB in total.
+- No more than 3k tris for props in total.
+- No more than 2 materials and 2 textures for props.
+- No more than 62 bones for the prop armature.
+- The emote must have one animation for the avatar and one animation for the prop. _Currently multiple animations are not allowed._
+- Both animations (Avatar and Prop) must have the same keyframe length.
+- Animations cannot exceed 300 frames or 10 seconds.
+- Space boundaries are 4 square meters. Props and particles should stay within the reference cube provided in the Avatar File. For avatar movement, check [Ground Reference and Animation Area](./creating-emotes.md#ground-reference-and-animation-area). section.
 
 ## **Naming Conventions:**
 
@@ -43,17 +43,17 @@ Naming conventions must be strictly followed for the emotes to work! Otherwise t
 
 `AnimationName_Avatar`
 
-* Example: `TennisServe_Avatar`, `GunShoot_Avatar`
+- Example: `TennisServe_Avatar`, `GunShoot_Avatar`
 
 **For Props:**
 
 `AnimationName_Prop`
 
-* Example: `TennisServe_Prop`, `GunShoot_Prop`
+- Example: `TennisServe_Prop`, `GunShoot_Prop`
 
 ## **Getting Started**
 
-Before starting you animation, you will have to create a rig for the prop. If you’re not familiar with the process, check [Create a Rig](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/create-a-rig/README.md) for more information on how to do it.
+Before starting you animation, you will have to create a rig for the prop. If you’re not familiar with the process, check [Create a Rig](../../3d-modeling/create-a-rig.md) for more information on how to do it.
 
 Ensure that the prop object and armature have their origins located at the 0,0 location within Blender. Additionally, apply transformations to the prop object and armature, ensuring they are frozen at a scale of 1,1,1. This is crucial to prevent any potential issues with the prop's behavior when being utilized within the world or during animations.
 
@@ -85,10 +85,10 @@ Blender 4.4 new feature: animation slots.
 
 Even though it’s possible to have both the avatar and prop sharing the same action clip, because of the naming convention and number of animation clips involved in Emotes 2.0, it won’t work. So the pipeline for this would be:
 
-1. Create an animation clip for the avatar, or rename the one provided (_**Starting\_Pose**_). It already has an animation slot, but feel free to use it (_**Avatar\_Animation**_) or create a new one.
-2. Rename the animation clip _**AnimationName\_Avatar**_
-3. Create an animation clip for the prop and rename it _**AnimationName\_Prop**_
-4. Click on _**New**_ button to create an animation slot for it (it will receive an automatic name: _**Armature\_Prop**_)
+1. Create an animation clip for the avatar, or rename the one provided (_**Starting_Pose**_). It already has an animation slot, but feel free to use it (_**Avatar_Animation**_) or create a new one.
+2. Rename the animation clip _**AnimationName_Avatar**_
+3. Create an animation clip for the prop and rename it _**AnimationName_Prop**_
+4. Click on _**New**_ button to create an animation slot for it (it will receive an automatic name: _**Armature_Prop**_)
 5. Animate as you would do in previous Blender versions.
 
 Creating and action clip and a slot for the prop animation.
@@ -133,8 +133,8 @@ To export, go to File > Export > glTF2.0 (.glb, .gltf)&#x20;
 
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 
-|   |   |
-| - | - |
+|     |     |
+| --- | --- |
 
 Hit Export and you are done!
 
@@ -142,12 +142,12 @@ Hit Export and you are done!
 
 ### Format and Limitations for Audio Clips
 
-* The correct format to export sounds for your emotes are `.mp3` and `.ogg`.
-* The audio clip must have the same duration as the emote.
-* While there is no limitation for size in the audio, the emote with props and sounds cannot be bigger than 3mb.
+- The correct format to export sounds for your emotes are `.mp3` and `.ogg`.
+- The audio clip must have the same duration as the emote.
+- While there is no limitation for size in the audio, the emote with props and sounds cannot be bigger than 3mb.
 
 {% hint style="info" %}
-**📔 Note**: If the emote has sound (mp3 or ogg), it must be zipped with the .glb. After that, just drag and drop the .zip to the builder. More details can be found here: [Uploading emote with sound](https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/uploading-emotes/#uploading-emotes-using-a-zip-file)
+**📔 Note**: If the emote has sound (mp3 or ogg), it must be zipped with the .glb. After that, just drag and drop the .zip to the builder. More details can be found here: [Uploading emote with sound](../manage-collections/uploading-emotes.md#uploading-emotes-using-a-zip-file)
 {% endhint %}
 
 {% hint style="info" %}

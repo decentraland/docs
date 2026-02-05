@@ -227,6 +227,129 @@ AudioSource.create(entity, {
 AudioSource.getMutable(entity).playing = true
 ```
 
+### Audio Streaming
+```typescript
+import { AudioStream, MediaState } from '@dcl/sdk/ecs'
+
+// Create audio stream
+const streamEntity = engine.addEntity()
+AudioStream.create(streamEntity, {
+  url: 'https://example.com/stream.mp3',
+  playing: true,
+  volume: 0.8
+})
+
+// Control stream
+const stream = AudioStream.getMutable(streamEntity)
+stream.playing = false
+stream.volume = 0.3
+
+// Query stream state
+const state = AudioStream.getAudioState(streamEntity)
+if (state === MediaState.MS_PLAYING) {
+  console.log('Stream is playing')
+} else if (state === MediaState.MS_ERROR) {
+  console.log('Stream error occurred')
+}
+
+// Monitor state changes
+let lastState: MediaState | undefined = undefined
+engine.addSystem(() => {
+  const currentState = AudioStream.getAudioState(streamEntity)
+  if (lastState !== currentState) {
+    console.log('Stream state changed:', currentState)
+    lastState = currentState
+  }
+})
+
+// Spatial audio for audio stream
+Transform.create(streamEntity, {
+  position: Vector3.create(8, 0, 8)
+})
+
+AudioStream.create(streamEntity, {
+  url: 'https://example.com/stream.mp3',
+  playing: true,
+  volume: 1.0,
+  spatial: true,
+  spatialMinDistance: 5,  // Full volume within 5m
+  spatialMaxDistance: 20   // No audio beyond 20m
+})
+```
+
+### Video Playing
+```typescript
+import { VideoPlayer, videoEventsSystem, VideoState } from '@dcl/sdk/ecs'
+import { Material } from '@dcl/sdk/ecs'
+
+// Create video screen
+const screen = engine.addEntity()
+MeshRenderer.setPlane(screen)
+Transform.create(screen, { position: Vector3.create(4, 1, 4) })
+
+// Create video player
+VideoPlayer.create(screen, {
+  src: 'videos/myVideo.mp4',
+  playing: true,
+  loop: false,
+  volume: 1.0,
+  playbackRate: 1.0,
+  position: 0
+})
+
+// Create video texture
+const videoTexture = Material.Texture.Video({ videoPlayerEntity: screen })
+
+// Apply to material
+Material.setBasicMaterial(screen, {
+  texture: videoTexture
+})
+
+// Control video
+const video = VideoPlayer.getMutable(screen)
+video.playing = !video.playing  // Toggle play/pause
+video.position = 0  // Rewind to start
+
+// Video events
+videoEventsSystem.registerVideoEventsEntity(screen, (videoEvent) => {
+  console.log('Video state:', videoEvent.state)
+  console.log('Current time:', videoEvent.currentOffset)
+  console.log('Video length:', videoEvent.videoLength)
+  console.log('Timestamp:', videoEvent.timeStamp)
+  console.log('Tick number:', videoEvent.tickNumber)
+  
+  switch (videoEvent.state) {
+    case VideoState.VS_READY:
+      console.log('Video ready')
+      break
+    case VideoState.VS_PLAYING:
+      console.log('Video playing')
+      break
+    case VideoState.VS_PAUSED:
+      console.log('Video paused')
+      break
+    case VideoState.VS_ERROR:
+      console.log('Video error')
+      break
+  }
+})
+
+// Get latest video state
+const latestEvent = videoEventsSystem.getVideoState(screen)
+if (latestEvent) {
+  console.log('Latest state:', latestEvent.state)
+}
+
+// Spatial audio for video
+VideoPlayer.create(screen, {
+  src: 'videos/myVideo.mp4',
+  playing: true,
+  spatial: true,
+  spatialMinDistance: 5,  // Full volume within 5m
+  spatialMaxDistance: 20   // No audio beyond 20m
+})
+```
+
 ## UI System
 
 ### Setting Up React UI

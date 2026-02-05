@@ -16,13 +16,13 @@ The `TextShape` component is mutually exclusive with other shape components like
 
 To add text as a label on an existing entity, you create a second entity that has the `TextShape` component and set it as a child of the other entity.
 
-### Use the Scene Editor
+## Use the Scene Editor in Creator Hub
 
-The easiest way to place text in-world is add a **Text** [Smart item](../scene-editor/interactivity/smart-items.md) visually on the [Scene Editor](../scene-editor/get-started/about-editor.md). You can then set all the available fields on the Scene Editor's
+The easiest way to place text in-world is add a **Text** [Smart item](../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
 
 ![](../../../.gitbook/assets/text-smart-item.png)
 
-### Create a text component
+## Create a text component
 
 The following example shows how to create a `TextShape` component and add it to an entity via code.
 
@@ -54,7 +54,7 @@ TextShape.create(sign, {
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Change the text value
+## Change the text value
 
 When creating a new text component, you assign it a string to display. This string is stored in the `text` field.
 
@@ -66,7 +66,7 @@ const mutableText = TextShape.getMutable(myEntity)
 mutableText.text = 'new string'
 ```
 
-### Basic text properties
+## Basic text properties
 
 The `TextShape` component has several properties that can be set to style the text. Below are some of the most common:
 
@@ -83,22 +83,22 @@ TextShape.create(sign, {
 })
 ```
 
-### Fonts
+## Fonts
 
 Text shapes can use fonts from the enum `Font`. This enum currently includes the following fonts:
 
-* `Font.FSansSerif`
-* `Font.FSerif`
-* `Font.FMonospace`
+* `Font.F_SANS_SERIF`
+* `Font.F_SERIF`
+* `Font.F_MONOSPACE`
 
-By default uses it uses `Font.FSansSerif`.
+By default uses it uses `Font.F_SANS_SERIF`.
 
 ```ts
 TextShape.create(sign, {
 	text: 'Hello World',
 	textColor: { r: 1, g: 0, b: 0 },
 	fontSize: 5,
-	font: Font.FSansSerif,
+	font: Font.F_SANS_SERIF,
 })
 ```
 
@@ -110,7 +110,7 @@ TextShape.create(sign, {
 **💡 Tip**: If using VS studio or some other IDE, type `Font.` and you should see a list of suggestions with all of the available fonts.
 {% endhint %}
 
-### Text alignment and padding properties
+## Text alignment and padding properties
 
 The `TextShape` component creates a text box that has a size, padding, etc.
 
@@ -127,7 +127,7 @@ The `TextShape` component creates a text box that has a size, padding, etc.
 **💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../sdk7/3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
 {% endhint %}
 
-### Text shadow and outline properties
+## Text shadow and outline properties
 
 The text has no shadow by default, but you can set the following values to give it a shadow-like effect.
 
@@ -150,7 +150,7 @@ The letters in the text can also have an outline in a different color surroundin
 * `outlineWidth`: _number_. How wide the text outline will be, in all directions, as a number from 0 to 1. By default _0_, which makes it invisible.
 * `outlineColor`: _Color3_ object. _Color3_ objects store an _RBG_ color as three numbers from 0 to 1.
 
-### Multiple lines
+## Multiple lines
 
 If you want your text to span multiple lines, use `\n` as part of the string. The following example has two separate lines of text:
 

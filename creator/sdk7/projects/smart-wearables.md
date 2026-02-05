@@ -14,9 +14,9 @@ Smart wearables are portable experiences that are turned on when the player puts
 The **Creator Hub** doesn't currently support creating Smart Wearables projects.
 {% endhint %}
 
-### Getting started
+## Getting started
 
-#### Using the CLI
+### Using the CLI
 
 1. Open a command line in a new folder and run
 
@@ -24,7 +24,7 @@ The **Creator Hub** doesn't currently support creating Smart Wearables projects.
 
 This command creates the basic files and structure for a new smart wearable.
 
-### The files in the template
+## The files in the template
 
 The folder of a brand new Smart Wearable project is very similar to that of a [Decentraland scene](scene-files.md), but you will notice the following differences:
 
@@ -32,7 +32,7 @@ The folder of a brand new Smart Wearable project is very similar to that of a [D
 * There’s a placeholder 3D model (glasses.glb) and thumbnail (glasses.png) for a pair of dark glasses. You should replace these with the actual wearable you are creating
 * `scene.json` is a lot shorter, it doesn’t include properties that are irrelevant to a wearable, like parcels or spawn points
 
-### About wearable.json
+## About wearable.json
 
 The default `wearable.json` file looks like this:
 
@@ -118,19 +118,19 @@ The following fields can also optionally be included. These settings can also be
   * both
 * `collectionAddress`: The ethereum address of the published collection of wearables. This address is assigned once publishing, it can be left blank.
 
-### The thumbnail
+## The thumbnail
 
 You must include an image named `thumbnail.png` at root level in your folder. This image will be shown both in the backpack and the marketplace, to represent your wearable in 2d. The recommended required image size is 256x256.
 
 Chose an image that sets player expectations and properly represents your creation.
 
-### The Preview
+## The Preview
 
 Running a preview of a portable experience is just like running that of a scene, simply click **Run Scene** on the Decentraland tab, or run `npm run start` on the command line. If the `wearable.json` file is properly configured and the project is recognized as a smart wearable, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world.
 
 To test how the smart wearable behaves in the context of a scene, you can also run a preview of your wearable at the same time as you run a preview of one or several scenes by using a [Workspace](workspaces.md). For example, you can run your smart wearable together with the [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) scene to test how it behaves on a busy scene, while on an elevator, etc.
 
-### Tips
+## Tips
 
 * When positioning an entity, note that positions are global, relative to the 0,0 coordinates of Genesis Plaza.
 * To react to nearby players:
@@ -143,7 +143,7 @@ To test how the smart wearable behaves in the context of a scene, you can also r
   * If you do a raycast, you can detect hits against the colliders of entities from the surrounding scenes. This can tell you the exact hit location, normal direction, and even the entity name and mesh name of the 3D model. This only works when hitting entities on scenes written with SDK7.
 * Kill a portable experience: Run the `kill()` method to self-terminate a portable experience.
 
-### Publish
+## Publish
 
 To publish your smart wearable:
 
@@ -185,22 +185,22 @@ To publish your smart wearable:
 7. Hit the 3 dots icon next to “Mint Items” and select “See in world”. This will open a tab with the explorer on Sepolia, where you can try out all the wearables of your collection in Decentraland, and see how they behave in a more real scenario, for example running around Genesis Plaza.
 8. At this point, your wearable is ready to be published.
 
-### Restricted actions
+## Restricted actions
 
 To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
 
 See [Required permissions](scene-metadata.md#required-permissions) for more details.
 
-### Limitations
+## Limitations
 
 > IMPORTANT: The entire smart wearable needs to fit within 3MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size of your portable experience, run `npm run pack`, the project size is specified in the output text of the command. You can also verify this by uncompressing the generated `smart-wearable.zip` file and checking the size of the folder.
 
-Smart wearables only run the portable experience for the player wearing the wearable. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the wearable's scene, even [custom avatar animations](../interactivity/trigger-emotes.md#custom-animations) uploaded as part of the smart wearable's files.
+Smart wearables only run the portable experience for the player wearing the wearable. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the wearable's scene, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the smart wearable's files.
 
 Smart wearables only work when players have them on. For this reason, players can only have a limited number of activated smart wearables, and depending on what part of the body they take up, some will be incompatible with others. For example, you can’t have two hats at the same time, or a helmet and hair at the same time.
 
 If a wearable is “hidden” but not “removed” by other wearables being worn, then the smart wearable can still be on, even if the corresponding wearable is not visible.
 
-### Examples
+## Examples
 
 [Smart wearable sample](https://github.com/decentraland/smart-wearable-sample))

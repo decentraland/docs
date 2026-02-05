@@ -12,7 +12,7 @@ The closest thing in mainstream games right now is Roblox, where content that’
 
 We're continually improving the SDK, so some of the following limitations will be removed with future updates before Decentraland is opened to end users.
 
-### Scene boundaries
+## Scene boundaries
 
 **Your game must fit entirely in the **_**LAND**_** that your scene is built upon.** For small scenes, think of games like soccer where the rules of the game keep the relevant interaction within a confined space, even though players are able to step outside of the playing field. Players can walk outside of a scene’s boundaries, but any asset or entities that belong to the scene must stay within the scene.
 
@@ -20,7 +20,7 @@ Players that step outside your scene keep rendering it as long as it’s at a vi
 
 You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay. A game like that would be made up of multiple separate _scenes_, that could share data with each other via a server.
 
-#### User inventory
+### User inventory
 
 **There currently isn’t an inventory where players can store game items as they walk between scenes.** The following alternatives are available today:
 
@@ -36,7 +36,7 @@ The downside of using the blockchain to store inventory items is that all transa
 
 In future releases, players will have an inventory they carry everywhere which will include both on-chain and off-chain assets.
 
-#### Portable experiences
+### Portable experiences
 
 {% hint style="warning" %}
 **📔 Note**: Portable experiences and smart wearables are still in an exploratory stage and not yet available for community creators to make.
@@ -48,13 +48,13 @@ Smart wearables are a kind of portable experience that is tied to a wearable tok
 
 Keep in mind that players might be using someone else’s portable experience while on your scene. See [User Data](../sdk7/interactivity/user-data.md#get-portable-experiences) to learn how to check what portable experiences a player currently has activated.
 
-### Game Persistence
+## Game Persistence
 
 **Decentraland is a persistent world, your scene can be visited by players at any time.** Your scene has no startup phase and no ending, so you should design the game mechanics in a way that allows players that walk in or out at any time to also participate.
 
 Your scene could have a reset mechanism that sets it to an initial state, but you should be careful not to disrupt the game for players who are already playing.
 
-#### Sync scene state
+### Sync scene state
 
 **Currently, scene states aren't shared between players unless manually implemented.** This is the simplest way to build a scene, but it’s not ideal for social experiences.
 
@@ -68,13 +68,13 @@ Hosting your own server is also a recommended safety measure for games that invo
 **📔 Note**: In future releases, we will provide out-of-the-box solutions and code examples for how to implement your own server.
 {% endhint %}
 
-#### Game timing
+### Game timing
 
 **Games that use default communications architecture should take into account that there could be lag between players** and shouldn’t rely on fast reactions between the actions of different players. We recommend games that are turn based, or that are mostly based on player versus environment interactions.
 
 For games where the timing of actions between players is critical, like a first person shooter, you should implement your own server as a real-time authoritative source of truth between all players in your scene.
 
-### Players in the scene
+## Players in the scene
 
 **Players are identified in Decentraland using their Ethereum wallet address.** This wallet is used as a persistent ID that’s already associated with all of the tokens that the player owns.
 
@@ -86,7 +86,7 @@ You need to keep in mind that there may be several players walking around your s
 
 As the owner of a scene, you can’t forcefully push or teleport an offending player out of your scene. However, you will be able to blacklist players in the signaling server. You can also implement a blacklist in your scene’s code and deny certain services to blacklisted players.
 
-### Scene content limitations
+## Scene content limitations
 
 **Please build your scene being extra careful with the efficiency of your code.** Decentraland needs to run on web browsers and mobile devices, and players will be rendering multiple scenes at the same time as they walk through the metaverse.
 
@@ -94,7 +94,7 @@ As the owner of a scene, you can’t forcefully push or teleport an offending pl
 
 Because of this, we’ve imposed some limits to prevent excessive use of computational resources. See [scene limitations](../sdk7/optimizing/scene-limitations.md) for details on what these limits are.
 
-### Access to scenes
+## Access to scenes
 
 **The map of Decentraland is designed so that there are roads and public plazas,** these guarantee easy access to various parts of the map, regardless of what other people build. Plots of land that are not adjacent to any road or plaza run the risk of being walled out by neighbouring scenes, although we expect most scenes to be walkable and not block others out.
 
@@ -106,55 +106,55 @@ Keep in mind that if a player starts at a location that is walled out or below t
 
 In future releases, players will also be able to navigate the world rapidly using maps with spawn points, lists of popular locations, and friend locations. The SDK will also make it possible to add teleports in your scene that can transport to other parts of the world.
 
-### User UI
+## User UI
 
 **The default overlaid UI that players see when entering Decentraland has only the essentials.** You can add extra elements to that UI while a player is on your scene. Keep in mind that the Decentraland default UI is displayed above anything from your scene, so design your UI so that it doesn't overlap with this.
 
 When a player steps outside the scene, all UI elements are removed to not intervene with other scenes. Players also have a button available in their screen to toggle all UI elements in the scene off, this is mainly useful to prevent abusive behavior by scenes that may want to cover all of the player's field of view.
 
-### Physics
+## Physics
 
 Keep in mind that the SDK doesn't provide its own physics engine. If you want to use physics in your scene, you can import a library or code the behavior yourself.
 
-### Controller Inputs
+## Controller Inputs
 
 **Your game controls should be limited to basic movements, jumping, point and click, as well as a primary and secondary button.** We will support mobile and Virtual Reality controllers, so we can't assume that everyone has a keyboard.
 
 We have support for global _button up_ and _button down_ events for all three buttons. All three buttons also have hit events that let you identify if an entity was in the player's aim.
 
-### Avatars
+## Avatars
 
 **Players can build their avatars based on a set of default wearable items.** We will expand the list of available wearables and options, and in the future we'll also make it possible for third parties to create and sell wearables.
 
-### Communication between players
+## Communication between players
 
 **Users are able to chat with each other. Avatars currently have no way to convey body language beyond the use of basic movement controls.**
 
 In future releases they will also be able to do voice chat and to perform gestures like dancing or frowning with their avatars. They will also be able to display a temporary emoji above their avatar to express themselves. Players will also be able to display tokens they own so that other players can see them.
 
-### Game notifications
+## Game notifications
 
 **There currently is no cross-scene notification system.** Any game requiring notifications displayed outside of the current scene is going to have to implement them using an external service.
 
-### Using the blockchain
+## Using the blockchain
 
 **In Decentraland, the blockchain is used to store information about ownership.** Today this mostly refers to LAND ownership, but it can also be used ownership of game items, wearables, special avatars, emotes, and tokens that can ensure certain game privileges or access to games.
 
 The blockchain isn’t used to store the game state, player position or anything that needs to change in real time.
 
-#### LAND and MANA
+### LAND and MANA
 
 **Players don’t need to own any parcels of land to participate in the metaverse.** In fact, the vast majority of players won’t. Player avatars and the LAND tokens that they own aren’t connected in any direct way.
 
 **Players don’t need to previously own an Ethereum wallet or MANA tokens to enter Decentraland.** If your gameplay relies heavily on owning tokens, you would be excluding most players. A freemium game model could be an ideal way to tailor to both user bases.
 
-#### Other NFTs
+### Other NFTs
 
 **You can use special non-fungible tokens (NFTs) to represent game items, custom avatars or wearables.** If a player owns one of these tokens, your scene could respond to it in different ways.
 
 Read about what NFTs are in [this blogpost](https://decentraland.org/blog/technology/what-are-nfts/).
 
-#### In-game transactions
+### In-game transactions
 
 **Your scene can support blockchain transactions for players to buy or earn tokens.**
 

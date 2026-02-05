@@ -4,9 +4,9 @@ description: How you can report a bug so that it gets reviewed and fixed
 
 # Report a Bug
 
-If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose).
+If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor in Creator Hub, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose).
 
-### Before you report a bug
+## Before you report a bug
 
 Before submitting a bug report, please ensure the following:
 
@@ -15,7 +15,7 @@ Before submitting a bug report, please ensure the following:
 * Rule out that the problem could be caused by how your scene is built. See [Debug in Preview](../sdk7/debugging/debug-in-preview.md) and [Debug in Prod](../sdk7/debugging/debug-in-prod.md) for tips.
 * Avoid duplicates. Check the [list of known bugs](https://github.com/orgs/decentraland/projects/20/views/13) to avoid making a duplicate. If you have more information to add to an existing issue, please add a comment to the issue rather than creating a new issue.
 
-### Reporting a bug
+## Reporting a bug
 
 To report a bug with the SDK, you'll need a GitHub account. Follow these steps:
 
@@ -40,7 +40,7 @@ You can also contact the DAO support team on the [DAO Discord](https://discord.g
 * Avoid lengthy explanations. Only include relevant command-line or console output or scene code when necessary.
 * Attach images or videos if possible. You can easily drag and drop them into the issue text area, and GitHub will handle the upload and linking.
 
-### Using the Decentraland Playground
+## Using the Decentraland Playground
 
 Providing code snippets that demonstrate the problem is extremely useful. Reproducibility is crucial. If a bug can't be reproduced, it's challenging to diagnose and fix.
 
@@ -59,16 +59,16 @@ Keep your example as concise as possible, while still reproducing the issue. A s
 **📔 Note**: It's not possible to import assets to your scene on the Playground. So if reproducing the issue requires importing a 3D model or a sound file, it won't be possible to display there.
 {% endhint %}
 
-### Getting logs
+## Getting logs
 
 It's often useful to get the logs of the Decentraland explorer when reporting a bug.
 
 To get your logs, simply open the chat and write `/logs`. This will open a new window with the logs of the Decentraland explorer. Attach the `Player.log` file to your issue report.
 
-### Editing Documentation
+## Editing Documentation
 
 If you discover issues in the content of the Documentation website, you can submit change requests. Simply scroll down to the bottom of the page and click the **Edit this page** button. GitHub will guide you through creating a pull request with your changes. The foundation team will review your changes and publish them if they're deemed useful.
 
-### Feature Requests and Suggestions
+## Feature Requests and Suggestions
 
 If you have suggestions for adding new functionality or features rather than reporting a problem, please join the [Decentraland Discord Server](https://dcl.gg/discord) and post a message in the [Creator Hub Channel](https://discord.com/channels/417796904760639509/1288888172318560326) instead of creating a GitHub Issue.

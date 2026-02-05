@@ -18,7 +18,7 @@ Although the Scene Editor in the Creator Hub is easier to use, the CLI allows yo
 {% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: See [Installation guide](../../scene-editor/get-started/editor-installation.md) for instructions on how to install the Scene Editor.
+**💡 Tip**: See [Installation guide](../../scene-editor/get-started/editor-installation.md) for instructions on how to install the Creator Hub.
 {% endhint %}
 
 ## Before you Begin

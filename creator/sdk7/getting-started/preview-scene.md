@@ -6,7 +6,7 @@ description: What you can see in a scene's preview
 
 Once you have [built a new scene](preview-scene.md#create-your-first-scene) or downloaded a [scene example](https://studios.decentraland.org/resources?sdk_version=SDK7) you can preview it locally.
 
-## Using the Scene Editor
+## Using the Scene Editor in Creator Hub
 
 Make sure you've [installed the Creator Hub](../get-started/editor-installation.md).
 

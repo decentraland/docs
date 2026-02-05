@@ -89,7 +89,8 @@
 
 * [Overview](contributor-guides/contributor-guides.md)
 * [API Documentation](contributor-guides/api-documentation.md)
-* [Testing Standards](contributor-guides/testing-standards/)
+* [Dependency Management](contributor-guides/dependency-management.md)
+* [Testing Standards](contributor-guides/testing-standards/README.md)
   * [Writing Tests](contributor-guides/testing-standards/writing-tests.md)
   * [Testing UIs](contributor-guides/testing-standards/testing-uis.md)
   * [Testing Services (WKC)](contributor-guides/testing-standards/testing-services-wkc.md)

@@ -7,7 +7,7 @@ description: Play live audio streams in your scene.
 You can stream audio from a URL. This is useful to play music directly from an internet radio, or stream a conference into your scene.
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor](../../scene-editor/get-started/about-editor.md), you can use an **Audio Stream** [Smart Item](../../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
+**💡 Tip**: In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can use an **Audio Stream** [Smart Item](../../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
 {% endhint %}
 
 The audio in the source must be in one of the following formats: `.mp3`, `ogg`, or `aac`. The source must also be an _https_ URL (_http_ URLs aren't supported), and the source should have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit externally accessing it. If this is not the case, you might need to set up a server to act as a proxy and expose the stream in a valid way.
@@ -46,7 +46,7 @@ ISLA NEGRA = "https://radioislanegra.org/listen/up/basic.aac"
 ```
 {% endhint %}
 
-### Stream state
+## Stream state
 
 Query the state of an audio stream using the function `AudioStream.getAudioState()`, passing the entity that owns the `AudioStream` component.
 

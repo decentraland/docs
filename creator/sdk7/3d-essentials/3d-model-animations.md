@@ -16,7 +16,7 @@ See [Animations](https://github.com/decentraland/docs-creator/blob/main/creator/
 **💡 Tip**: Animations are usually better for moving something in place, not for changing the position of an entity. For example, you can set an animation to move a character's feet in place, but to change the location of the entity it's best to use the Transform component. See [Positioning entities](move-entities.md) for more details.
 {% endhint %}
 
-### Check a 3D model for animations
+## Check a 3D model for animations
 
 Not all _glTF_ files include animations. To see if there are any available, you can do the following:
 
@@ -28,7 +28,7 @@ Not all _glTF_ files include animations. To see if there are any available, you 
 **💡 Tip**: In _skeletal_ animations, an animation name is often comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 {% endhint %}
 
-### Automatic playing
+## Automatic playing
 
 If a 3D model includes any animations, the default behavior is that the first of these is always played on a loop.
 
@@ -38,7 +38,7 @@ To avoid this behavior, add an `Animator` component to the entity that has the m
 **💡 Tip**: In the [Scene Editor](../../scene-editor/get-started/about-editor.md), you can add an **Animator** component visually. See [Add Components](../../scene-editor/build/components.md#add-components). You can also control animations in a no-code way via **Actions**, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 {% endhint %}
 
-### Handle animations explicitly
+## Handle animations explicitly
 
 An `Animator` component is used to access all the animations of the entity and can be used to explicitly tell the entity to play or stop an animation. The `Animator` component includes an array of `states`, this list must include one object for each one of the animations that the 3D model can perform. A single `Animator` can include as many states as needed.
 
@@ -72,7 +72,7 @@ Each `state` object keeps track of if an animation is currently playing.
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Fetch an animation
+## Fetch an animation
 
 Fetch a clip from the `Animator` by name using the `.Animator.getClip()` function. This function returns a mutable version of the animation state object.
 
@@ -96,7 +96,7 @@ swimAnim.looping = false
 **📔 Note**: If you attempt to use `Animator.getClip()` to fetch a clip that exists in the 3D model, but is not listed in the `Animator` component, it returns `null`.
 {% endhint %}
 
-### Play an animation
+## Play an animation
 
 The `.playing` field in an animation state determines if the animation is currently playing. Note that multiple animations may be playing in a single 3D model at the same time.
 
@@ -126,7 +126,7 @@ The following table summarizes how `Animator.playSingleAnimation()` behaves, usi
 | **Paused**                 | Resumes from last frame played. | Plays from the start. |
 | **Finished (Non-looping)** | Plays from the start.           | Plays from the start. |
 
-### Looping animations
+## Looping animations
 
 By default, animations are played in a loop that keeps repeating the animation forever.
 
@@ -146,7 +146,7 @@ Animator.create(shark, {
 
 If `looping` is set to _false_, the animation plays just once and then stops, staying on the posture of the last frame.
 
-### Stop an animation
+## Stop an animation
 
 To stop all animations that an entity is playing, use `Animator.stopAllAnimations()`.
 
@@ -185,12 +185,7 @@ You can also use `Animator.stopAllAnimations()` at any time to explicitly set th
 **📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
 {% endhint %}
 
-```
-- apply an animation with a `weight` property of 0 and gradually increase the `weight`
-- create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
-```
-
-### Handle multiple animations
+## Handle multiple animations
 
 If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them.
 
@@ -229,7 +224,7 @@ If in the above example, the `bite` animation only affects the shark's mouth, an
 **📔 Note**: `Animator.playSingleAnim()` stops all other animations that the entity is currently playing. To play multiple animations at the same time, modify the `playing` property in the animation states manually.
 {% endhint %}
 
-### Animation speed
+## Animation speed
 
 Change the speed at which an animation is played by changing the `speed` property. The value of the speed is 1 by default.
 
@@ -254,7 +249,7 @@ const swimAnim = Animator.getClip(sharkEntity, 'swim')
 swimAnim.speed = 0.5
 ```
 
-### Animation weight
+## Animation weight
 
 The `weight` property allows a single model to carry out multiple animations on different layers at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
 

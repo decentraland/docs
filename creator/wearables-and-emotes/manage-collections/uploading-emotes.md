@@ -6,7 +6,7 @@ description: Guidelines to upload Emotes to the Editor
 
 Once you export your emote, you’ll have to upload it to the builder. This document will cover the process of uploading emotes.
 
-### **Uploading Your File**
+## **Uploading Your File**
 
 Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your emote, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file has any animation, identifying it as an emote.
 
@@ -18,7 +18,7 @@ You will be asked to enter a name for your emote, define its rarity, the categor
 
 ![](../../../.gitbook/assets/upload_emote.png)
 
-### **Uploading Emotes Using a .zip File**
+## **Uploading Emotes Using a .zip File**
 
 If the emote has sound (_mp3_ or _ogg_) it must be zipped with the `.glb`. After that, just drag and drop the `.zip` to the builder. Also, it is possible to add a `.json` file along with the other assets in the same `.zip` to add name, description, rarity, category, play mode and/or tags. These are the definitions for each:
 
@@ -50,7 +50,7 @@ This way the builder is going to take all the .json information and it automatic
 
 Check the rarity chart in [here](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md#rarity).
 
-### **Category**
+## **Category**
 
 Choose the category that best describe your emote.
 
@@ -63,14 +63,14 @@ Choose the category that best describe your emote.
 * Horror
 * Miscellaneous
 
-### **Play Mode**
+## **Play Mode**
 
 There are currently two play modes:
 
 * _**Play Once**_: means that your emote will only play once. After that the avatar will return to _Idle_ position.
 * _**Loop**_: the emote will keep playing in loop until the user input another action.
 
-### **Custom Thumbnails**
+## **Custom Thumbnails**
 
 For emotes, you don’t have to upload any images since the editor already has a built in tool to create a thumbnail. Just select the frame that best represents the action.
 
@@ -80,7 +80,7 @@ People should be able to identify what the animation is about through the thumbn
 
 Rotate, zoom in or out, pan up and down. Use the tools to get the best shot of your animation!
 
-### The Editor
+## The Editor
 
 Once you set the thumbnail, you will have the editor open. This is where you can check if the animation is playing well since a 3D avatar will be performing it.
 
@@ -164,7 +164,7 @@ Once in world, press I to open the backpack and, in the emotes tab, select the e
 \
 \\
 
-### **Before Publishing**
+## **Before Publishing**
 
 Make sure to add a nice description and verify if all the information and settings are right. Double check the thumbnail too. If you’ve filled all the information necessary you will see Ready to Submit as the status of your item. Now your emote is ready to be published!
 

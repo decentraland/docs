@@ -6,11 +6,11 @@ description: How to set the position, rotation and scale of an entity in a scene
 
 You can set the _position_, _rotation_ and _scale_ of any entity by using the `Transform` component. This can be used on any entity in the 3D space, affecting where the entitiy is rendered. This includes primitive shapes (cube, sphere, plane, etc), 3D text shapes, NFT shapes, and 3D models (`GltfContainer`).
 
-### Use the Scene Editor
+## Use the Scene Editor in Creator Hub
 
-When adding an item to your scene via the [Scene Editor](../scene-editor/get-started/about-editor.md), it implicitly includes a **Transform** component. You then change the values in the entity's Transform component implicitly by changing the position, rotation or scale of an entity. You can also use the Scene Editor's UI to provide values numerically for more precision.
+When adding an item to your scene via the Scene Editor, it implicitly includes a **Transform** component. You then change the values in the entity's Transform component implicitly by changing the position, rotation or scale of an entity. You can also use the Scene Editor's UI to provide values numerically for more precision.
 
-### Code essentials
+## Code essentials
 
 ![](../../../.gitbook/assets/ecs-simple-components-new.png)
 
@@ -39,7 +39,7 @@ To move, rotate or resize an entity in your scene over a period of time, change 
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
-### Position
+## Position
 
 `position` is a _3D vector_, it sets the position of the entity's center on all three axes, _x_, _y_, and _z_. See [Geometry types](../sdk7/3d-essentials/special-types.md) for more details.
 
@@ -86,7 +86,7 @@ When setting a position, keep the following considerations in mind:
     > Tip: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
 * Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations](../sdk7/optimizing/scene-limitations.md) for more details.
 
-### Rotation
+## Rotation
 
 `rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_. Each of these numbers goes from 0 to 1. See [Geometry types](../sdk7/3d-essentials/special-types.md) for more details.
 
@@ -142,7 +142,29 @@ const transform = Transform.getMutable(cube)
 const eulerAngle = Quaternion.toEuler(transform.rotation)
 ```
 
-### Face the player
+## Getting Global Position and Rotation of an Entity
+
+The `getWorldPosition` and `getWorldRotation` functions return the global position and rotation of an entity. That means that it returns the percieved position or rotation that the player will see the item in, ignoring any parent hierarchies. 
+
+* `getWorldPosition(engine, entity: Entity): Vector3Type`: This function returns the World position of an entity, having in consdieration all the positions of the parent entities, if the entity itself has any, returning `{x: 0, y: 0, z: 0}` if the entity has no Transform.
+
+```ts
+const worldPos = getWorldPosition(engine, childEntity)
+console.log(`World position: ${worldPos.x}, ${worldPos.y}, ${worldPos.z}`)
+```
+
+* `getWorldRotation(engine, entity: Entity): QuaternionType`: This function returns the World rotation of an entity, having in consideration all the rotations of the parent entities, if the antity itself has any. It returns a `Quaternion` type, returning identity quaternion `{x: 0, y: 0, z: 0, w: 1}` if the entity has no Transform.
+
+```ts
+const worldRot = getWorldRotation(engine, childEntity)
+console.log(`World rotation: ${worldRot.x}, ${worldRot.y}, ${worldRot.z}, ${worldRot.w}`)
+```
+
+{% hint style="info" %}
+**Note:** Global position and global rotation are relative to the coordinates inside the scene and not to Genesis City. 
+{% endhint %}
+
+## Face the player
 
 Add a _Billboard_ component to an entity so that it always rotates to face the player.
 
@@ -213,7 +235,7 @@ If an entity has both a `Billboard` component and `Transform` component with `ro
 **📔 Note**: If there are multiple players present at the same time, each will see the entities with billboard mode facing them. Billboard rotations are calculated locally for each player, and don't affect what others see.
 {% endhint %}
 
-### Face a set of coordinates
+## Face a set of coordinates
 
 For entity A to look at entity B:
 
@@ -233,7 +255,7 @@ export function turn(entity: Entity, target: ReadOnlyVector3) {
 }
 ```
 
-### Scale
+## Scale
 
 `scale` is also a _3D vector_, stored as a `Vector3` object, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
 
@@ -264,7 +286,7 @@ mutableTransform.scale.y = 3
 mutableTransform.scale.z = 2
 ```
 
-### Inherit transformations from parent
+## Inherit transformations from parent
 
 When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
 
@@ -296,7 +318,7 @@ If a child entity has no `position` on its Transform, the default is `0,0,0`, wh
 
 You can use an invisible entity with no shape component as a parent, to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
-### Attach an entity to an avatar
+## Attach an entity to an avatar
 
 There are three methods to attach an entity to the player:
 
@@ -435,9 +457,12 @@ Entity rendering is locally determined on each instance of the scene. Attaching 
 **📔 Note**: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
 {% endhint %}
 
-The `AvatarAttach` component overwrites the `Transform` component. A single entity can have both an `AvatarAttach` and a `Transform` component at the same time but the values on the `Transform` component are ignored.
+The `AvatarAttach` component overwrites the values in the `Transform` component. Any values you put in the `Transform` component are replaced by the relative position of the entity to that of the player's Transform, these values are updated frame by frame as the player moves and animates.
 
-If you need to position an entity with an offset from the anchor point on the avatar, or a different rotation or scale, attach a parent entity to the anchor point. You can then set the visible model on a child entity to that parent, and give this child its own Transform component to describe its shifts from the anchor point.
+If you need to position an entity with an offset from the anchor point on the avatar, or a different rotation or scale, do this via a parent entity.
+
+1. Create an invisible entity with just a `Transform` and an `AvatarAttach` component. Its `Transform` values will be overwritten as the player moves
+2. Set the entity you want to attach as a child of this parent. Its `Transform` values can describe the offset from the anchor point.
 
 ```ts
 // Create parent entity
@@ -461,10 +486,14 @@ Transform.create(childEntity, {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: If the attached entity has colliders, these colliders could block the player's movement. Consider dissabling the physics layer of the entity's colliders. See [Collision layers](../sdk7/3d-essentials/colliders.md#collision-layers)
+**📔 Note**: If the attached entity has colliders, these colliders could block the player's movement or cause jittery effects. You may want to dissable the physics layer of the attached entity's colliders. See [Collision layers](../sdk7/3d-essentials/colliders.md#collision-layers)
 {% endhint %}
 
-#### Attach to other players
+{% hint style="warning" %}
+**📔 Note**: If you have a child entity and want to know the global Position and/or Rotation of it, you can use the `getWorldPosition` and `getWorldRotation` functions. You can check them in the [Getting Global Position and Rotation](#getting-global-position-and-rotation-of-an-entity) section.
+{% endhint %}
+
+### Attach to other players
 
 You can use the `AvatarAttach` component to attach an entity to another player. To do this, you must know the player's id.
 
@@ -501,7 +530,7 @@ executeTask(async () => {
 
 See other ways to fetch other user's IDs in [Get Player Data](../sdk7/interactivity/user-data.md#get-player-data).
 
-### Scene boundaries
+## Scene boundaries
 
 All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other players.
 

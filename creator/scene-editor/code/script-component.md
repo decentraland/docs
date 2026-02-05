@@ -229,7 +229,7 @@ With the parameters' values given, the output is:
 **📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
 {% endhint %}
 
-### Triggering other Entities' Actions from the Script
+### Triggering other Entities' Actions from a Script
 
 It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows calling from the Script's methods an `Entity`'s `Action` defined through the Creator Hub UI.
 

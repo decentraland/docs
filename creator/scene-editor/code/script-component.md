@@ -168,6 +168,54 @@ To call a Script method from another Script or from `main.ts`, the following ste
 3. From the file the the public method will be used, add `import { callScriptMethod } from '~sdk/script-utils'`.
 4. Call `callScriptMethod` with the parameters needed (in this case, `someParamter`).
 
+As an example, the `public` method on the Script will be:
+
+```ts
+  public publicMethod(boolParameter: boolean, someNumberParameter: number) {
+    if (boolParameter) {
+      console.log("Public method called with parameter true!: ", someNumberParameter);
+    } else {
+      console.log("Public method called with parameter: false!", someNumberParameter);
+    }
+  }
+```
+
+To call it from `main.ts`, use:
+
+```ts
+import { callScriptMethod } from '~sdk/script-utils'
+
+
+export function main() {
+    const buildingEntity = engine.getEntityOrNullByName("building")
+    if (buildingEntity) {
+        const scriptMethod = callScriptMethod(
+            buildingEntity,
+            "assets/scene/Scripts/BuildingScript.ts",
+            "publicMethod",
+            false,
+            3,
+        )
+
+        scriptMethod
+    }
+}
+```
+
+First, the `main` function looks for the `Entity` that has the Script component.
+Second, if the `Entity` exists, `callScriptMethod` is called with the following parametrs:
+1. `entity`: `Entity` that has the `public` method.
+2. `scriptPath`: `path` where the `Script` class lives.
+3. `methodName`: name of the `public` method to be called.
+4. `...args`: Arguuments of the method. In this case, there are two. They should be added in order, one after the other.
+
+Third, we call the defined `callScriptMethod`, in this case, `scriptMethod`.
+
+With the parameters' values given, the output is:
+
+![](../../../.gitbook/assets/script-component-public-method.png)
+
+
 ## See also
 
 * [Smart items - Basics](../interactivity/smart-items.md)

@@ -330,7 +330,7 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 ## Single player scenes
 
-If your scene is deployed to a [Decentraland World](../worlds/about.md), you can make it a single player scene. Players won't see each other, won't be able to chat or see the effects of each other's actions.
+If your scene is deployed to a [Decentraland World](../../worlds/about.md), you can make it a single player scene. Players won't see each other, won't be able to chat or see the effects of each other's actions.
 
 To do this, configure the scene's `scene.json` file to set the **fixedAdapter** to `offline:offline`. The scene will have no Communication Service at all and each user joining that world will always be alone.
 

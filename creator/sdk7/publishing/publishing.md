@@ -48,7 +48,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
 3. A prompt will ask if you want to publish to a **WORLD** or to **LAND**.
-   * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](../worlds/about.md). Then select which of your NAMEs or ENS Domains to publish to.
+   * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](../../worlds/about.md). Then select which of your NAMEs or ENS Domains to publish to.
    * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
    * Select **Alternative servers** to publish to the [test server](publishing.md#the-test-server) or a [custom server](publishing.md#custom-servers).
 

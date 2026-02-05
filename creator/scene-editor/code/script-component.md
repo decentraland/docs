@@ -215,6 +215,9 @@ With the parameters' values given, the output is:
 
 ![](../../../.gitbook/assets/script-component-public-method.png)
 
+{% hint style="info" %}
+**📔 Note**: You can follow the same logic to call a `public` Script method from another script or file.
+{% endhint %}
 
 ## See also
 

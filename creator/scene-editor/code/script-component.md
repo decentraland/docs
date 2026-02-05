@@ -165,10 +165,10 @@ To call a Script method from another Script or from `main.ts`, the following ste
 
 1. Create a `public` method inside the Script class.
 2. Run `npm run build` from the scene's root directory.
-3. From the file the the public method will be used, add `import { callScriptMethod } from '~sdk/script-utils'`.
+3. From the file where you want to use the public method, add `import { callScriptMethod } from '~sdk/script-utils'`.
 4. Call `callScriptMethod` with the parameters needed (in this case, `someParamter`).
 
-As an example, the `public` method on the Script will be:
+Here's an example with a `public` method exposed
 
 ```ts
 export class BuildingScript {
@@ -200,7 +200,7 @@ export function main() {
     if (buildingEntity) {
         const scriptMethod = callScriptMethod(
             buildingEntity,
-            "assets/scene/Scripts/BuildingScript.ts",
+            "assets/scene/Scripts/BuildingScript.tsx",
             "publicMethod",
             false,
             3,
@@ -225,7 +225,7 @@ With the parameters' values given, the output is:
 ![](../../../.gitbook/assets/script-component-public-method.png)
 
 {% hint style="info" %}
-**📔 Note**: You can follow the same logic to call a `public` Script method from another script or file.
+**📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
 {% endhint %}
 
 ## See also

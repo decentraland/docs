@@ -101,7 +101,7 @@ Decentraland [Worlds](../../worlds/about.md) have different limitations, since t
 * Worlds published to Decentraland NAMEs have at least `100 MB`. That number can be increased by owning additional NAMEs, LAND, and MANA on that same account.
 * Worlds published to ENS domains have a limit of `36 MB` that cannot be expanded.
 
-See [Worlds Size Limit](../../worlds/about.md#worlds-size-limit) for more details.
+See [Worlds Size Limit](../projects/kinds-of-project.md#size-limits) for more details.
 
 Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages. You can see the full list of files being published and their sizes before you confirm a deployment.
 

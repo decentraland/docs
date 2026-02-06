@@ -15,7 +15,8 @@ The series are divided into 6 different Parts, that will be added to this Series
 
 * [Part 1: Making your first Hat](#part-1)
 
-## Part 1: Making your first Hat {#part-1}
+<a id="part-1"></a>
+## Part 1: Making your first Hat
 
 {% embed url="https://www.youtube.com/watch?v=6Q8FNyjFTxc" %}
 
@@ -33,7 +34,7 @@ Key concepts featured in this video:
 * [Download Blender and GLB files (Wearable Hat ZIP)](/resources/BlenderForBginnersPart1.zip)
 
 <img src="/.gitbook/assets/wereable-tutorial-01-blend.png" width="240" />
-<img src="/.gitbook/assets/wereable-tutorial-01-blend.png" width="240" />
+<img src="/.gitbook/assets/wereable-tutorial-01-glb.png" width="240" />
 
 
 

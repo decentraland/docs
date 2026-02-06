@@ -179,7 +179,7 @@ The `ReactEcsRenderer.addUiRenderer()` function requires that you provide an ent
 export function setupUi() {
 
     // Create a dummy entity to be the owner of the UI
-    const dummyEntity = new Entity()
+    const dummyEntity = engine.addEntity()
 
     // Define the UI module as a function that returns an array of UI modules
     const uiComponent = () => [

@@ -1,15 +1,15 @@
 ---
-title: Blender for Beginners
-description: This series of tutorials takes you through the process of creating and publishing a Wereable from start to finish while you learn Blender in the process.
+title: Blender for Beginners: Making your first Decentraland Wearable
+description: This 6 part tutorial series will teach you how to create and publish a Wearable from start to finish without any prior knowledge of Blender or Decentraland with professional artist KJ Walker as your guide.
 ---
 
-# Blender for Beginners
+# Blender for Beginners: Making your first Decentraland Wereable
 
 This series of tutorials will guide you through the complete process of creating and publishing a wereable, from start to finish. The tool you will be using is Blender, and no prior experience is required.
 
 KJ Walker will take you on this adventure, going from Blender Essentials to advanced concepts in an interactive yer profound way. You can find more information about her and Low Poly Models [here](https://www.lowpolymodelsworld.com/)
 
-The series are divided into 6 different Parts, that will be added to this Series as they are published. 
+The series are divided into 6 different Parts. This page will continue to be updated as each part of the series is uploaded.
 
 ## Index
 

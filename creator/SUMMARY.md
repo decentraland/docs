@@ -7,6 +7,7 @@
 * [Example Scenes](tutorials/examples.md)
 * [SDK & Editor Videos](tutorials/video.md)
 * [Emote Videos](tutorials/video-emotes.md)
+* [Blender for Beginners: Making your first Decentraland Wearable](tutorials/creating-a-wereable-series.md)
 
 ## Wearables & Emotes
 

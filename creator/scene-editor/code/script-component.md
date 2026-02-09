@@ -54,7 +54,7 @@ The class is composed of three main parts:
 * the **start()** method 
 * the **update()** method. 
 
-### Constructor
+## Constructor
 
 The constructor contains the parameters you want to expose and modify dynamically from your scene in Creator Hub. 
 
@@ -77,7 +77,7 @@ Once refreshed, the Script Component now shows the `numericVariable` added in th
 
 ![](../../../.gitbook/assets/parameter-script-component.png)
 
-#### Parameters
+## Parameters
 
 If different Entities use the same file in the Script component, each still have independent parameters: if the scene has two buildings, `building1` and `building2`, both with a Script Component pointing at `BuildingScript.ts` file, each building has it's own `numericVariable` parameter that can be modified independently.
 
@@ -97,7 +97,7 @@ The allowed types for the constructor parameters are:
 [Parameter Properties](https://www.typescriptlang.org/docs/handbook/2/classes.html#parameter-properties).
 {% endhint %}
 
-#### Accessing Parameters inside the Script
+### Accessing Parameters inside the Script
 
 To access a parameter's value from your code, use the notation `this.definedParameter`. For example, `this.numericVariable` or `this.entity`.
 
@@ -111,7 +111,32 @@ Change it like this to log the value of a value that you defined in the construc
 
 Note that when you change the parameter's value in the Creator Hub UI, you should also see this logged value reflect that.
 
-### start() & update() Method
+### Default parameters
+
+The constructor by default contains an `src` and an `entity` parameter, these are very useful for the code in your script:
+
+- `this.entity` always refers to the entity that holds the `Script` component, use this to access info about the entity or add components to it.
+- `this.src` is the path where the script is stored. This is particularly useful when creating Smart Items that are meant to be used by others. Use this field to construct the path to files that are packaged with your smart item, even if the smart item's path changes or is renamed.
+
+```ts
+export class BuildingScript {
+  constructor(
+    public src: string,
+    public entity: Entity,
+  ) {}
+
+  start() {
+    Material.setPbrMaterial(this.entity, {
+      texture: Material.Texture.Common({
+        src: this.src + '/images/myImage.png',
+      })
+    });
+  }
+}
+```
+The script above fetches the entity that owns the script and applies a texture to it. It obtains the texture from a `.png` file that is packaged in the smart item folder, in a subfolder named `/images`. By using `this.src`, we ensure that the file path is always known, no matter if the smart item is imported to the scene under `/assets/custom/itemName` or `/assets/asset-packs/itemName`
+
+## start() & update() Method
 
 The **start()** method contains code that is executed only once, when the Entity is created (in this case, when the scene first loads). 
 
@@ -134,7 +159,7 @@ update(dt: number) {
 
 The first log belongs to the start() method, indicating that we set numericVariable. The second one belongs to the update() method, when the player is higher than that value.
 
-### Exposing Actions to the Creator Hub
+## Exposing Actions to the Creator Hub
 
 It is possible to define an `Action` inside a Script Component script and have it accesible on the Creator Hub's UI. This enables the possibility to trigger this `Action` with another Entity. 
 
@@ -160,7 +185,7 @@ After adding the Action, any Entity in the Creator Hub can trigger it using `Tri
 **📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accesible independently from the `Action` dropdown.
 {% endhint %}
 
-### Calling Script methods from Outside
+## Calling Script methods from Outside
 
 To call a Script method from another Script or from `main.ts`, the following steps should be followed:
 
@@ -229,7 +254,7 @@ With the parameters' values given, the output is:
 **📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
 {% endhint %}
 
-### Triggering other Entities' Actions from a Script
+## Triggering other Entities' Actions from a Script
 
 It is possible to use a parameter of type `ActionCallback` in the Script class constructor. This allows triggering another `Entity`'s `Action` defined through the Creator Hub UI from the Script's methods.
 

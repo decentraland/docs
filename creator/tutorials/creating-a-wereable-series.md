@@ -7,7 +7,7 @@ description: This 6 part tutorial series will teach you how to create and publis
 
 This series of tutorials will guide you through the complete process of creating and publishing a wereable, from start to finish. The tool you will be using is Blender, and no prior experience is required.
 
-KJ Walker will take you on this adventure, going from Blender Essentials to advanced concepts in an interactive yer profound way. You can find more information about her and Low Poly Models [here](https://www.lowpolymodelsworld.com/)
+KJ Walker will take you on this adventure, going from Blender Essentials to advanced concepts in an interactive yet profound way. You can find more information about her and Low Poly Models [here](https://www.lowpolymodelsworld.com/)
 
 The series are divided into 6 different Parts. This page will continue to be updated as each part of the series is uploaded.
 
@@ -31,10 +31,10 @@ Key concepts featured in this video:
 
 ### Blender files you'll Need
 
-* [Download Blender and GLB files (Wearable Hat ZIP)](/resources/BlenderForBginnersPart1.zip)
+* [Download Blender and GLB files (Wearable Hat ZIP)](../../resources/BlenderForBeginnersPart1.zip)
 
-<img src="/.gitbook/assets/wereable-tutorial-01-blend.png" width="240" />
-<img src="/.gitbook/assets/wereable-tutorial-01-glb.png" width="240" />
+<img src="../../.gitbook/assets/wereable-tutorial-01-blend.png" width="240" />
+<img src="../../.gitbook/assets/wereable-tutorial-01-glb.png" width="240" />
 
 
 

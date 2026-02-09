@@ -86,6 +86,21 @@ Each entity can only have a single `AudioSource` component, that can only play a
 **📔 Note**: Sounds are played on each player's local instance. Other nearby players won't hear the same sounds unless their local scene explicitly plays them too.
 {% endhint %}
 
+### Pre Loading a Sound
+
+If an entity uses a sound, but is not played immediately at scene runtime, it might take some time to download. It can be available at scene runtime by using the `AssetLoad` component. 
+
+```ts
+import { AssetLoad } from "@dcl/sdk/ecs"
+
+AssetLoad.create(engine.RootEntity, {
+  assets: [
+    "assets/scene/bundle1/explosionSound.mp3",
+  ],
+})
+```
+For more information, check the [Pre Load Resources](../optimizing/pre-load-resources.md) documentation.
+
 ## Stopping sounds
 
 To stop an entity from playing its sound, use the `AudioSource.stopSound()` function. You only need to specify the entity, since each entity has a single `AudioSource` component, and each `AudioSource` component plays a single file at a time.

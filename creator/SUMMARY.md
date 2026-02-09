@@ -112,6 +112,7 @@
   * [Troubleshooting](sdk7/debugging/troubleshooting.md)
 * [Optimizing](sdk7/optimizing/)
   * [Performance Optimization](sdk7/optimizing/performance-optimization.md)
+  * [Pre-load Resources](sdk7/optimizing/pre-load-resources.md)
   * [Scene Limitations](sdk7/optimizing/scene-limitations.md)
 * [Publishing](sdk7/publishing/)
   * [Make Discoverable](sdk7/publishing/make-discoverable.md)

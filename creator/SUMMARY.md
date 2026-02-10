@@ -7,7 +7,7 @@
 * [Example Scenes](tutorials/examples.md)
 * [SDK & Editor Videos](tutorials/video.md)
 * [Emote Videos](tutorials/video-emotes.md)
-* [Blender for Beginners: Making your first Decentraland Wearable](tutorials/creating-a-wereable-series.md)
+* [Example Wearable](tutorials/creating-a-wearable-series.md)
 
 ## Wearables & Emotes
 
@@ -113,6 +113,7 @@
   * [Troubleshooting](sdk7/debugging/troubleshooting.md)
 * [Optimizing](sdk7/optimizing/)
   * [Performance Optimization](sdk7/optimizing/performance-optimization.md)
+  * [Pre-load Resources](sdk7/optimizing/pre-load-resources.md)
   * [Scene Limitations](sdk7/optimizing/scene-limitations.md)
 * [Publishing](sdk7/publishing/)
   * [Make Discoverable](sdk7/publishing/make-discoverable.md)

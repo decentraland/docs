@@ -122,6 +122,24 @@ Keep in mind that all models, their shaders and their textures must be within th
 See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
+### Pre Loading a 3D Model
+
+In some cases, a custom 3D model is added to the scene but is not used immediately. For example, a custom chair model may only be loaded when the player interacts with another object. In this scenario, the first interaction might take some time until it finishes downloading and loading the model.
+
+To avoid this, use the `AssetLoad.create` method to ensure the asset is downloaded before it is needed.
+
+```ts
+import { AssetLoad } from "@dcl/sdk/ecs"
+
+AssetLoad.create(engine.RootEntity, {
+  assets: [
+    "assets/scene/bundle1/explosion.glb",
+  ],
+})
+```
+
+For more information, check the [Pre Load Resources](../optimizing/pre-load-resources.md) documentation.
+
 ### Free libraries for 3D models
 
 Instead of building your own 3D models, you can also download them from several free or paid libraries.

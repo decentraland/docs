@@ -7,7 +7,7 @@
 * [Example Scenes](tutorials/examples.md)
 * [SDK & Editor Videos](tutorials/video.md)
 * [Emote Videos](tutorials/video-emotes.md)
-* [Example Wearable](tutorials/creating-a-wearable-series.md)
+* [Wearable Tutorial Series](tutorials/creating-a-wearable-series.md)
 
 ## Wearables & Emotes
 

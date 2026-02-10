@@ -30,7 +30,8 @@ Key concepts featured in this video:
 
 ### Blender files you'll Need
 
-* [Download Blender and GLB files (Wearable Hat ZIP)](../../resources/BlenderForBeginnersPart1.zip)
+* [Download Blender and GLB files (Wearable Hat ZIP)](https://github.com/decentraland/docs/raw/refs/heads/main/resources/BlenderForBeginnersPart1.zip
+)
 
 <img src="../../.gitbook/assets/wereable-tutorial-01-blend.png" width="240" />
 <img src="../../.gitbook/assets/wereable-tutorial-01-glb.png" width="240" />

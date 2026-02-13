@@ -101,7 +101,8 @@ For example, if a plane is imported into a scene, but is only a single sided pla
 
 To help creators troubleshoot these scenarios, a visual aid can be enabled by following these steps:
 
-1. Open up the `debug` panel in the scene. You can use `/debug` command in the chat if the scene is live, or use the Bug icon on the top right of the scene if you are on Preview mode in the scene.
+1. Open up the `debug` panel in the scene. You can use `/debug` command in the chat if the scene is live, or use the Bug icon (<img src="../../../.gitbook/assets/debug-icon.png" alt="debug icon" width="16" style="vertical-align: middle;" />) on the top right of the scene if you are on Preview mode in the scene.
+
 
 2. The debug panel will open in the bottom right side of the screen.
 

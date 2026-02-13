@@ -110,7 +110,7 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
 
 ![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
 
-4. The models will now show a red coloured side in models that are just one-side.
+4. After activating `Backface debugger`, the models show a red coloured side if the model is not two-sided.
 
 
 <p align="center">

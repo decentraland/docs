@@ -108,6 +108,8 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
 
 3. Under `CURRRENT SCENE`, press the `Backface debugger` button.
 
+(../../../.gitbook/assets/debug-panel-backface-debugging.png)
+
 4. The models will now show a red coloured side in models that are just one-side.
 
 5. You can then make them two-sided using your software of choice. 

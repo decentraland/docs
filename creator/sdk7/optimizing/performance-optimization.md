@@ -114,11 +114,14 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
 
 
 <p align="center">
-  <img src="../../../.gitbook/assets/backface-wrong.png" width="100" />
-  <img src="../../../.gitbook/assets/backface-right.png" width="100" />
+  <img src="../../../.gitbook/assets/backface-wrong.png" 
+       style="width:120px; height:120px; object-fit:contain;" />
+  <img src="../../../.gitbook/assets/backface-right.png" 
+       style="width:120px; height:120px; object-fit:contain;" />
   <br/>
   <em>Not rendered side (left) vs. Rendered side (right)</em>
 </p>
+
 5. You can then make them two-sided using your software of choice. 
 
 ### Asset Bundle conversion

@@ -112,13 +112,10 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
 
 4. The models will now show a red coloured side in models that are just one-side.
 
+
 <p align="center">
-  <img src="../../../.gitbook/assets/imagen1.png" width="45%" />
-  <img src="../../../.gitbook/assets/imagen2.png" width="45%" />
-</p>
-<p align="center">
-  <img src="../../../.gitbook/assets/backface-wrong.png" width="45%" />
-  <img src="../../../.gitbook/assets/backface-right.png" width="45%" />
+  <img src="../../../.gitbook/assets/backface-wrong.png" width="100" />
+  <img src="../../../.gitbook/assets/backface-right.png" width="100" />
   <br/>
   <em>Not rendered side (left) vs. Rendered side (right)</em>
 </p>

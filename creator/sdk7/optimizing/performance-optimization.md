@@ -91,6 +91,26 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
+### Back Face Culling
+
+If a model is created in an external software like Blender, two-sided rendering should be considered for the correct rendering of the model in a Decentraland scene. 
+
+For example, if a plane is imported into a scene, but is only a single sided plane, the plane will only be seen from the side that was set on the modeling software.
+
+#### Troubleshooting
+
+To help creators troubleshoot these scenarios, a visual aid can be enabled by following these steps:
+
+1. Open up the `debug` panel in the scene. You can use `/debug` command in the chat if the scene is live, or use the Bug icon on the top right of the scene if you are on Preview mode in the scene.
+
+2. The debug panel will open in the bottom right side of the screen.
+
+3. Under `CURRRENT SCENE`, press the `Backface debugger` button.
+
+4. The models will now show a red coloured side in models that are just one-side.
+
+5. You can then make them two-sided using your software of choice. 
+
 ### Asset Bundle conversion
 
 About once a day, the Decentraland content servers run a process to compress every _.gltf_ and _.glb_ model in every newly deployed scene to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run on the browser.

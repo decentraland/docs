@@ -91,26 +91,27 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
-### Back Face Culling
+### Backface Culling
 
-If a model is created in an external software like Blender, two-sided rendering should be considered for the correct rendering of the model in a Decentraland scene. 
+When a model is created in external software such as Blender, two-sided rendering must be considered to ensure correct rendering in a Decentraland scene.
 
-For example, if a plane is imported into a scene, but is only a single sided plane, the plane will only be seen from the side that was set on the modeling software.
+For example, if a plane is imported into a scene and it is single-sided, the plane will only be visible from the side defined in the modeling software.
 
 #### Troubleshooting
 
 To help creators troubleshoot these scenarios, a visual aid can be enabled by following these steps:
 
-1. Open up the `debug` panel in the scene. You can use `/debug` command in the chat if the scene is live, or use the Bug icon (<img src="../../../.gitbook/assets/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) on the top right of the scene if you are on Preview mode in the scene.
+1. Open up the `debug` panel in the scene. 
+* If the scene is published, type `/debug` command in the chat.
+* If you are on Preview mode in the scene., click the Bug icon (<img src="../../../.gitbook/assets/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
 
+2. The debug panel will appear in the bottom-right corner of the screen.
 
-2. The debug panel will open in the bottom right side of the screen.
-
-3. Under `CURRRENT SCENE`, press the `Backface debugger` button.
+3. Under `CURRRENT SCENE`, click the `Backface debugger` button.
 
 ![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
 
-4. After activating `Backface debugger`, the models show a red coloured side if the model is not two-sided.
+4. After activating the `Backface debugger`, models with single-sided materials will display a red-colored side indicating the non-rendered face.
 
 
 <p align="center">
@@ -122,7 +123,7 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
   <em>Not rendered side (left) vs. Rendered side (right)</em>
 </p>
 
-5. You can then make them two-sided using your software of choice. 
+5. You can then modify the model in your 3D software to enable two-sided rendering.
 
 ### Asset Bundle conversion
 

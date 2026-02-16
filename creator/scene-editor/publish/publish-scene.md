@@ -44,6 +44,76 @@ To publish your scene:
 
 \*\*📔 Note\*\*: The three stages of the deployment involve: - \*\*1. Uploading\*\*: Uploading the files to the servers. - \*\*2. Converting\*\*: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes. - \*\*3, Optimizing\*\*: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
 
+## Managing Worlds
+
+The Creator Hub enables World management via the `MANAGE` tab in its main panel. The `MANAGE` tab allows World tracking and editing. From here, you can edit World Settings, Permissions, and Scenes.
+
+### World Settings
+
+A World Owner can edit its settings by going into the desired World `SETTINGS` under the `MANAGE` panel, or by accessing it during the publishing process by clicking on `SETTINGS` if `Multi-Scene World (advanced)` is enabled.
+
+![ ](../../../.gitbook/assets/world-manage-settings.png)
+
+* `DETAILS`: World's general information:
+  * World Title
+  * Description
+  * Age Rating
+  * Categories
+
+The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
+
+* `LAYOUT`: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
+  * Remove individual scenes by clicking the three dots and selecting `Remove from World`.
+  * `World Map` shows the World layout and identifies parcels with content and the remaining free parcels.
+
+![ ](../../../.gitbook/assets/world-layout.png)
+
+* `MISC`: Other useful World configurations:
+  * World Spawn Position
+  * Skybox settings
+
+{% hint style="info" %}
+**📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, [check this](https://decentraland.org/marketplace/names/claim).
+{% endhint %}
+
+### Multi-Scene Worlds
+
+A World can have multiple scenes, published by the World Owner or by other creators. This enables a collaborative environment where each parcel can be managed by different Collaborators.
+
+#### Making a World Multi-Scene
+
+A World Owner can choose to make the World Multi-Scene by toggling `Multi-Scene World (advanced)` when publishing to a single-scene World.
+
+![ ](../../../.gitbook/assets/multi-scene-owner-first-deploy.png)
+
+Once the Multi-Scene World is published, the World Owner can publish additional scenes or add Collaborators to publish within the World.
+
+{% hint style="info" %}
+**📔 Note**: Once the initial Multi-Scene World scene is published, the size of the World will be the one set in the published scene's layout. Consider the final size of the World, including all the experiences it will contain, and set its layout accordingly beforehand.
+{% endhint %}
+
+#### Adding Collaborators to a Multi-Scene World
+
+In the `MANAGE` panel, a World Owner can access the World's `Permissions` by clicking on the three dots. The World Owner can manage collaborators under the `Collaborators` tab.
+
+![ ](../../../.gitbook/assets/world-settings-collaborators.png)
+
+A Collaborator can have deploy rights to All Parcels or to specific Custom Coordinates. Custom Coordinates can be selected and confirmed through an interactive World map, similar to the one in the World Settings.
+
+![ ](../../../.gitbook/assets/multi-scene-custom-coordinates.png)
+
+#### Deploying to a Multi-Scene World as a Collaborator
+
+World Collaborators cannot edit its Settings or Permissions. In the `MANAGE` tab, a creator can see the World they are a Collaborator in but cannot access `Settings` or `Permissions`.
+
+![ ](../../../.gitbook/assets/world-manage-collaborator.png)
+
+When going through the publishing process, the creator can select to publish only to the parcels they are a Collaborator in (as set by the World Owner).
+
+In the `Collaborators` section, if the World Owner set `Custom Coordinates` for the creator, only the assigned parcels will be available for publishing. If access was set to `All Parcels`, the creator will be able to select any parcel in the World to publish their scene.
+
+![ ](../../../.gitbook/assets/multi-scene-publish-collaborator.png)
+
 ## Publish from a hardware wallet
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.

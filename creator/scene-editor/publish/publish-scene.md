@@ -52,7 +52,7 @@ The Creator Hub enables World management via the `MANAGE` tab in its main panel.
 
 A World Owner can edit its settings by going into the desired World `SETTINGS` under the `MANAGE` panel, or by accessing it during the publishing process by clicking on `SETTINGS` if `Multi-Scene World (advanced)` is enabled.
 
-![ ](../../../.gitbook/assets/world-manage-settings.png)
+<img src="../../../.gitbook/assets/world-manage-settings.png" width="600" />
 
 * `DETAILS`: World's general information:
   * World Title
@@ -66,7 +66,7 @@ The information added in **Details** will be shown in Decentraland Places and in
   * Remove individual scenes by clicking the three dots and selecting `Remove from World`.
   * `World Map` shows the World layout and identifies parcels with content and the remaining free parcels.
 
-![ ](../../../.gitbook/assets/world-layout.png)
+<img src="../../../.gitbook/assets/world-layout.png" width="600" />
 
 * `MISC`: Other useful World configurations:
   * World Spawn Position
@@ -84,7 +84,7 @@ A World can have multiple scenes, published by the World Owner or by other creat
 
 A World Owner can choose to make the World Multi-Scene by toggling `Multi-Scene World (advanced)` when publishing to a single-scene World.
 
-![ ](../../../.gitbook/assets/multi-scene-owner-first-deploy.png)
+<img src="../../../.gitbook/assets/multi-scene-owner-first-deploy.png" width="600" />
 
 Once the Multi-Scene World is published, the World Owner can publish additional scenes or add Collaborators to publish within the World.
 
@@ -96,23 +96,23 @@ Once the Multi-Scene World is published, the World Owner can publish additional 
 
 In the `MANAGE` panel, a World Owner can access the World's `Permissions` by clicking on the three dots. The World Owner can manage collaborators under the `Collaborators` tab.
 
-![ ](../../../.gitbook/assets/world-settings-collaborators.png)
+<img src="../../../.gitbook/assets/world-settings-collaborators.png" width="600" />
 
 A Collaborator can have deploy rights to All Parcels or to specific Custom Coordinates. Custom Coordinates can be selected and confirmed through an interactive World map, similar to the one in the World Settings.
 
-![ ](../../../.gitbook/assets/multi-scene-custom-coordinates.png)
+<img src="../../../.gitbook/assets/multi-scene-custom-coordinates.png" width="600" />
 
 #### Deploying to a Multi-Scene World as a Collaborator
 
 World Collaborators cannot edit its Settings or Permissions. In the `MANAGE` tab, a creator can see the World they are a Collaborator in but cannot access `Settings` or `Permissions`.
 
-![ ](../../../.gitbook/assets/world-manage-collaborator.png)
+<img src="../../../.gitbook/assets/world-manage-collaborator.png" width="600" />
 
 When going through the publishing process, the creator can select to publish only to the parcels they are a Collaborator in (as set by the World Owner).
 
 In the `Collaborators` section, if the World Owner set `Custom Coordinates` for the creator, only the assigned parcels will be available for publishing. If access was set to `All Parcels`, the creator will be able to select any parcel in the World to publish their scene.
 
-![ ](../../../.gitbook/assets/multi-scene-publish-collaborator.png)
+<img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
 
 ## Publish from a hardware wallet
 

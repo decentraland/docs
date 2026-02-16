@@ -73,7 +73,7 @@ The information added in **Details** will be shown in Decentraland Places and in
   * Skybox settings
 
 {% hint style="info" %}
-**📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, [check this](https://decentraland.org/marketplace/names/claim).
+**📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, check the [Marketplace NAMEs section](https://decentraland.org/marketplace/names/claim).
 {% endhint %}
 
 ### Multi-Scene Worlds

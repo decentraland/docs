@@ -46,15 +46,15 @@ To publish your scene:
 
 ## Managing Worlds
 
-The Creator Hub enables World management via the `MANAGE` tab in its main panel. The `MANAGE` tab allows World tracking and editing. From here, you can edit World Settings, Permissions, and Scenes.
+The Creator Hub enables World management via the **Manage** tab in its main panel. The **Manage** tab allows World tracking and editing. From here, you can edit World Settings, Permissions, and Scenes.
 
 ### World Settings
 
-A World Owner can edit its settings by going into the desired World `SETTINGS` under the `MANAGE` panel, or by accessing it during the publishing process by clicking on `SETTINGS` if `Multi-Scene World (advanced)` is enabled.
+A World Owner can edit its settings by going into the desired World **Settings** under the **Manage** panel, or by accessing it during the publishing process by clicking on *Settings** if **Multi-Scene World (advanced)** is enabled.
 
 <img src="../../../.gitbook/assets/world-manage-settings.png" width="600" />
 
-* `DETAILS`: World's general information:
+* **Details**: World's general information:
   * World Title
   * Description
   * Age Rating
@@ -62,14 +62,14 @@ A World Owner can edit its settings by going into the desired World `SETTINGS` u
 
 The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
 
-* `LAYOUT`: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
-  * Remove individual scenes by clicking the three dots and selecting `Remove from World`.
-  * `World Map` shows the World layout and identifies parcels with content and the remaining free parcels.
+* **Layout**: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
+  * Remove individual scenes by clicking the three dots and selecting **Remove from World**.
+  * **World Map** shows the World layout and identifies parcels with content and the remaining free parcels.
 
 <img src="../../../.gitbook/assets/world-layout.png" width="600" />
 
-* `MISC`: Other useful World configurations:
-  * World Spawn Position
+* **Misc**: Other useful World configurations:
+  * World Spawn Position: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**.
   * Skybox settings
 
 {% hint style="info" %}
@@ -82,7 +82,7 @@ A World can have multiple scenes, published by the World Owner or by other creat
 
 #### Making a World Multi-Scene
 
-A World Owner can choose to make the World Multi-Scene by toggling `Multi-Scene World (advanced)` when publishing to a single-scene World.
+A World Owner can choose to make the World Multi-Scene by toggling **Multi-Scene World (advanced)** when publishing to a single-scene World.
 
 <img src="../../../.gitbook/assets/multi-scene-owner-first-deploy.png" width="600" />
 
@@ -94,7 +94,7 @@ Once the Multi-Scene World is published, the World Owner can publish additional 
 
 #### Adding Collaborators to a Multi-Scene World
 
-In the `MANAGE` panel, a World Owner can access the World's `Permissions` by clicking on the three dots. The World Owner can manage collaborators under the `Collaborators` tab.
+In the **Manage** panel, a World Owner can access the World's **Permissions** by clicking on the three dots. The World Owner can manage collaborators under the **Collaborators** tab.
 
 <img src="../../../.gitbook/assets/world-settings-collaborators.png" width="600" />
 
@@ -104,13 +104,13 @@ A Collaborator can have deploy rights to All Parcels or to specific Custom Coord
 
 #### Deploying to a Multi-Scene World as a Collaborator
 
-World Collaborators cannot edit its Settings or Permissions. In the `MANAGE` tab, a creator can see the World they are a Collaborator in but cannot access `Settings` or `Permissions`.
+World Collaborators cannot edit its Settings or Permissions. In the **Manage** tab, a creator can see the World they are a Collaborator in but cannot access **Settings** or **Permissions**.
 
 <img src="../../../.gitbook/assets/world-manage-collaborator.png" width="600" />
 
 When going through the publishing process, the creator can select to publish only to the parcels they are a Collaborator in (as set by the World Owner).
 
-In the `Collaborators` section, if the World Owner set `Custom Coordinates` for the creator, only the assigned parcels will be available for publishing. If access was set to `All Parcels`, the creator will be able to select any parcel in the World to publish their scene.
+In the **Collaborators** section, if the World Owner set **Custom Coordinates** for the creator, only the assigned parcels will be available for publishing. If access was set to **All Parcels**, the creator will be able to select any parcel in the World to publish their scene.
 
 <img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
 

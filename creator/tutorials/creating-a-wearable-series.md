@@ -59,5 +59,5 @@ Key concepts covered in this video:
 * [Download Blender and GLB files (Wearable Hat Number 2 ZIP)](https://github.com/decentraland/docs/raw/refs/heads/main/resources/BlenderForBeginnersPart2.zip
 )
 
-<img src="../../.gitbook/assets/wereable-tutorial-02-blend.png" width="240" />
-<img src="../../.gitbook/assets/wereable-tutorial-02-glb.png" width="240" />
+<img src="../../.gitbook/assets/wearable-tutorial-02-blend.png" width="240" />
+<img src="../../.gitbook/assets/wearable-tutorial-02-glb.png" width="240" />

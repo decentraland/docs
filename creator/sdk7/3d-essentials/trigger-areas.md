@@ -26,9 +26,13 @@ TriggerArea.setBox(triggerEntity)
 
 // Event when trigger area activated
 triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
+  if (result.trigger?.entity !== engine.PlayerEntity) return;
   console.log('Player entered trigger area!')
 })
 ```
+
+By default, the `TriggerArea` component reacts to the event of _any_ player walking into the area. The above code adds `if (result.trigger?.entity !== engine.PlayerEntity) return` to check that the entity that caused the event is the current player, and not someone else's avatar
+
 
 ## Trigger area shapes
 
@@ -169,7 +173,30 @@ triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
 
 Use the optional second argument of the `TriggerArea` component to set the layers that will activate the trigger area.
 
-By deault, the trigger area is activated only by the player, via the layer `ColliderLayer.CL_PLAYER`. You can change this to any other collision layer by passing it as the second argument of the `TriggerArea` component.
+By deault, the trigger area is activated only by the layer `ColliderLayer.CL_PLAYER`. This layer includes all players, not just the current player but also any other avatar that is being rendered in the scene. If you want to detect only the current player and not others, add the following check to the trigger function `if (result.trigger?.entity !== engine.PlayerEntity) return`.
+
+```ts
+import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
+
+// create entity
+const triggerEntity = engine.addEntity()
+
+// set Transform
+Transform.create(triggerEntity, {
+  position: Vector3.create(8, 0, 8)
+  })
+
+// Trigger area
+TriggerArea.setBox(triggerEntity)
+
+// Event when trigger area activated
+triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
+  if (result.trigger?.entity !== engine.PlayerEntity) return;
+  console.log('Player entered trigger area!')
+})
+```
+
+You can also change the collision layer to detect any other entity by passing it as the second argument of the `TriggerArea` component.
 
 ```ts
 import { engine, Transform, TriggerArea, MeshCollider, triggerAreaEventsSystem } from '@dcl/sdk/ecs'

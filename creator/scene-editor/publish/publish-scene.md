@@ -69,7 +69,7 @@ The information added in **Details** will be shown in Decentraland Places and in
 <img src="../../../.gitbook/assets/world-layout.png" width="600" />
 
 * **Misc**: Other useful World configurations:
-  * World Spawn Position: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**.
+  * World Spawn Position: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
   * Skybox settings
 
 {% hint style="info" %}

@@ -93,7 +93,7 @@ Here are some tips for improving on these metrics:
 
 ### Backface Culling
 
-For performance optimization, Backface Culling will be set to **On** on a**ll** model's materials once rendered in the engine, independently of their settings.
+For performance optimization, Backface Culling will be set to **On** on **all** model's materials once rendered in the engine, independently of their settings.
 
 If you expect to see the backface or insides of your models, duplicate the faces and invert the normals.
 

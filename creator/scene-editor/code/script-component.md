@@ -136,6 +136,31 @@ export class BuildingScript {
 ```
 The script above fetches the entity that owns the script and applies a texture to it. It obtains the texture from a `.png` file that is packaged in the smart item folder, in a subfolder named `/images`. By using `this.src`, we ensure that the file path is always known, no matter if the smart item is imported to the scene under `/assets/custom/itemName` or `/assets/asset-packs/itemName`
 
+### Tooltips on parameters
+
+Add tooltips to your input parameters, so that users know what these fields are used for, or what values are accepted. Users will see a tooltip icon next to each field in the Script component UI, and are able to read custom text when hovering over the icon.
+
+To add tooltips to your constructor, add a commented out block right before the constructor, and write a line with `@param` plus the name of the field, followed by a description, for each tooltip.
+
+```ts
+  /**
+   * @param startDate - The start date of the event in YYYY-MM-DD format
+   * @param yOffset - How many meters above the ground to display the item
+   */
+  constructor(
+    public src: string,
+    public entity: Entity,
+    public startDate?: string,
+    public yOffset: number = 0.5,
+  ) {
+  }
+```
+
+You may need to click the refresh icon on the Script component UI to see changes in your tooltips.
+
+<img src="../../../.gitbook/assets/script-refresh-button.png" alt="Refresh button" data-size="line" width="360">
+
+
 ## start() & update() Method
 
 The **start()** method contains code that is executed only once, when the Entity is created (in this case, when the scene first loads). 

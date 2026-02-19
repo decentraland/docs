@@ -91,6 +91,41 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
+### Backface Culling
+
+For performance optimization, Backface Culling will be set to **On** on **all** model's materials once rendered in the engine, independently of their settings.
+
+If you expect to see the backface or insides of your models, duplicate the faces and invert the normals.
+
+#### Troubleshooting
+
+To verify if a scene has potential material Backface Culling issues, follow these steps:
+
+1. Open up the `debug` panel in the scene. 
+* If the scene is published, type `/debug` command in the chat.
+* If you are on Preview mode in the scene., click the Bug icon (<img src="../../../.gitbook/assets/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
+
+2. The debug panel will appear in the bottom-right corner of the screen.
+
+3. Under **Current Scene**, click the **Backface debugger** button.
+
+![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
+
+4. Toggle the  **Backface debugger**. It highlights:
+  * **Red**: Materials that don't have Backface Culling set to **On**.
+  * **Green**: Materials with Backface Culling **On**.
+
+<p align="center">
+  <img src="../../../.gitbook/assets/backface-culling-off.png" 
+       style="width:120px; height:120px; object-fit:contain;" />
+  <img src="../../../.gitbook/assets/backface-culling-on.png" 
+       style="width:120px; height:120px; object-fit:contain;" />
+  <br/>
+  <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>
+</p>
+
+To see your published scene with the Backface Culling Optimization enabled, use this deeplink `decentraland://?force-backface-culling=true` and go to the scene. This will render the materials with the optimization on, and help you spot issues.
+
 ### Asset Bundle conversion
 
 About once a day, the Decentraland content servers run a process to compress every _.gltf_ and _.glb_ model in every newly deployed scene to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run on the browser.

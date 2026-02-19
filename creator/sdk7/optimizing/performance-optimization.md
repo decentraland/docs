@@ -124,6 +124,8 @@ To verify if a scene has potential material Backface Culling issues, follow thes
   <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>
 </p>
 
+To see your published scene with the Backface Culling Optimization enabled, use this deeplink `decentraland://?force-backface-culling=true` and go to the scene. This will render the materials with the optimization on, and help you spot issues.
+
 ### Asset Bundle conversion
 
 About once a day, the Decentraland content servers run a process to compress every _.gltf_ and _.glb_ model in every newly deployed scene to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run on the browser.

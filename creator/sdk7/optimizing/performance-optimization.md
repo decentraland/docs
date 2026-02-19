@@ -93,13 +93,13 @@ Here are some tips for improving on these metrics:
 
 ### Backface Culling
 
-When a model is created in external software such as Blender, two-sided rendering must be considered to ensure correct rendering in a Decentraland scene.
+For performance optimization, Backface Culling will be set to **On** on a**ll** model's materials once rendered in the engine, independently of their settings.
 
-For example, if a plane is imported into a scene and it is single-sided, the plane will only be visible from the side defined in the modeling software.
+If you expect to see the backface or insides of your models, duplicate the faces and invert the normals.
 
 #### Troubleshooting
 
-To help creators troubleshoot these scenarios, a visual aid can be enabled by following these steps:
+To verify if a scene has potential material Backface Culling issues, follow these steps:
 
 1. Open up the `debug` panel in the scene. 
 * If the scene is published, type `/debug` command in the chat.
@@ -107,23 +107,22 @@ To help creators troubleshoot these scenarios, a visual aid can be enabled by fo
 
 2. The debug panel will appear in the bottom-right corner of the screen.
 
-3. Under `CURRRENT SCENE`, click the `Backface debugger` button.
+3. Under **Current Scene**, click the **Backface debugger** button.
 
 ![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
 
-4. After activating the `Backface debugger`, models with single-sided materials will display a red-colored side indicating the non-rendered face.
-
+4. Toggle the  **Backface debugger**. It highlights:
+  * **Red**: Materials that don't have Backface Culling set to **On**.
+  * **Green**: Materials with Backface Culling **On**.
 
 <p align="center">
-  <img src="../../../.gitbook/assets/backface-wrong.png" 
+  <img src="../../../.gitbook/assets/backface-culling-off.png" 
        style="width:120px; height:120px; object-fit:contain;" />
-  <img src="../../../.gitbook/assets/backface-right.png" 
+  <img src="../../../.gitbook/assets/backface-culling-on.png" 
        style="width:120px; height:120px; object-fit:contain;" />
   <br/>
-  <em>Not rendered side (left) vs. Rendered side (right)</em>
+  <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>
 </p>
-
-5. You can then modify the model in your 3D software to enable two-sided rendering.
 
 ### Asset Bundle conversion
 

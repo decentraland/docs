@@ -89,7 +89,7 @@ A World Owner can choose to make the World Multi-Scene by toggling **Multi-Scene
 Once the Multi-Scene World is published, the World Owner can publish additional scenes or add Collaborators to publish within the World.
 
 {% hint style="info" %}
-**📔 Note**: Once the initial Multi-Scene World scene is published, the size of the World will be the one set in the published scene's layout. Consider the final size of the World, including all the experiences it will contain, and set its layout accordingly beforehand.
+**📔 Note**: A Multi-Scene world size adapts automatically to contain all the published scenes, growing and shrinking dynamically on each publish. The space left between different scenes in the Multi-World is filled with environment.
 {% endhint %}
 
 #### Adding Collaborators to a Multi-Scene World
@@ -111,6 +111,10 @@ World Collaborators cannot edit its Settings or Permissions. In the **Manage** t
 When going through the publishing process, the creator can select to publish only to the parcels they are a Collaborator in (as set by the World Owner).
 
 In the **Collaborators** section, if the World Owner set **Custom Coordinates** for the creator, only the assigned parcels will be available for publishing. If access was set to **All Parcels**, the creator will be able to select any parcel in the World to publish their scene.
+
+{% hint style="warning" %}
+**📔 Note**: Collaborators with **All Parcels** publishing access can overwrite any scene from the world, even if it was published by the owner or other collaborators.
+{% endhint %}
 
 <img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
 

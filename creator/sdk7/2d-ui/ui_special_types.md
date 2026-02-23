@@ -134,66 +134,71 @@ export const uiMenu = () => (
 )
 ```
 
-It's a good practice to provide both a button for submitting and handling the "onSubmit" event when the player presses the Enter/Return key. The following example shows how you can do this. Note that for consistency, the function carried out by the button is manually clearing the text in the input field.
+It's a good practice to provide both a button for submitting and handling the `onSubmit` event when the player presses the Enter/Return key. The following example shows how you can do this.
+
+{% hint style="warning" %}
+**📔 Note**: Do **not** bind the `value` property of the `Input` directly to what the player types via `onChange`. This creates a round-trip between the scene and the Explorer that causes characters to be dropped when typing fast. Instead, keep `value` as an empty string and only change it when you want to clear the input field.
+{% endhint %}
+
+To clear the input field, set `value` to `' '` (a single space). The Explorer treats this as empty and re-activates the placeholder text. Since the UI function runs every frame, use a flag to apply the clear for just one frame.
 
 ```tsx
 import { UiEntity, Input, Button, ReactEcs } from '@dcl/sdk/react-ecs'
 import { Color4 } from '@dcl/sdk/math'
 
+let inputText = ''
+let clearInput = false
 
-let currentValue: string = ''
+export const uiMenu = () => {
+  const inputValue = clearInput ? ' ' : ''
+  if (clearInput) clearInput = false
 
-export const uiMenu = () => (
-  <UiEntity
-    uiTransform={{
-      width: 400,
-      height: 300,
-      positionType: 'absolute',
-      position: {
-        left: '35%',
-        top: '40%',
-      },
-      flexDirection: 'column',
-    }}
-    uiBackground={{
-      color: Color4.Gray(),
-    }}
-  >
-    <Input
-      onSubmit={(value) => {
-        handleSubmitText(value)
-      }}
-      fontSize={35}
-      placeholder={'type something'}
-      placeholderColor={Color4.Black()}
-      value={currentValue}
-      onChange={($) => (currentValue = $)}
+  return (
+    <UiEntity
       uiTransform={{
-        height: '80px',
-        margin: '15px',
+        width: 400,
+        height: 300,
+        positionType: 'absolute',
+        position: {
+          left: '35%',
+          top: '40%',
+        },
+        flexDirection: 'column',
       }}
-    ></Input>
-    <Button
-      value="Submit text"
-      variant="primary"
-      uiTransform={{ alignSelf: 'center', padding: '25px' }}
-      onMouseDown={() => {
-        handleSubmitText(currentValue)
-        currentValue = ''
+      uiBackground={{
+        color: Color4.Gray(),
       }}
-    />
-  </UiEntity>
-)
-
-function handleSubmitText(value: string) {
-  console.log('submitted value: ' + value)
-  // do something with text
+    >
+      <Input
+        onSubmit={() => {
+          console.log('submitted value: ' + inputText)
+          inputText = ''
+          clearInput = true
+        }}
+        fontSize={35}
+        placeholder={'type something'}
+        placeholderColor={Color4.Black()}
+        value={inputValue}
+        onChange={(value) => { inputText = value }}
+        uiTransform={{
+          height: '80px',
+          margin: '15px',
+        }}
+      />
+      <Button
+        value="Submit text"
+        variant="primary"
+        uiTransform={{ alignSelf: 'center', padding: '25px' }}
+        onMouseDown={() => {
+          console.log('submitted value: ' + inputText)
+          inputText = ''
+          clearInput = true
+        }}
+      />
+    </UiEntity>
+  )
 }
 ```
-
-{% hint style="info" %}
-**💡 Tip**: The example above sets the `value` property of the input text to a variable. With this, you can change the displayed text by simply changing the variable. This allows you to do things like clearing the text, changing placeholder values, or even implementing autocorrect functionalities.
-{% endhint %}
 
 The following properties are also available to customize the look of the text field, most of them similar to those present in `Label` entities:
 

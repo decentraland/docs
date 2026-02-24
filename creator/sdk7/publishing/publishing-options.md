@@ -25,7 +25,7 @@ In order to publish to LAND in Genesis City, you can do the following:
 
 ## Decentraland Worlds
 
-If you own a Decentraland NAME or an ENS domain, you can publish your scene and let others publish on to your Decentraland World. Check the [Managing Worlds documentation](../../scene-editor/publish/publish-scene.md#managing-worlds) to learn more about Multi Scene Worlds.
+If you own a Decentraland NAME or an ENS domain, you can publish your scene and let others publish on to your Decentraland World. Check the [Managing Worlds documentation](../../scene-editor/publish/publish-scene.md#managing-worlds) to learn more about Multi Scene Worlds and other topics like Private Worlds.
 
 {% hint style="info" %}
 **📔 Note**: This option costs considerably less than buying land—a Decentraland NAME costs 100 MANA.

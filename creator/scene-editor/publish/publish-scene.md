@@ -118,6 +118,80 @@ In the **Collaborators** section, if the World Owner set **Custom Coordinates** 
 
 <img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
 
+### Private Worlds 
+
+A WORLD can have different **Access** settings. It can be accessible to anyone, or be restricted in different ways.
+
+#### Setting the Access of a WORLD
+
+In the **Manage** panel, a World Owner can access the World's **Permissions** by clicking on the three dots. The World Owner can manage access restrictions under the **Access** tab.
+
+##### Access Types
+
+A World Owner can choose between three types of **World Access**:
+
+###### Public
+
+Anyone can access the World. This is the default setting of a World.
+
+###### Password Protected
+
+Only users with the password can enter the World.
+
+Passwords must be at least 8 characters long. Once created, the password won't be accesible, so make sure to keep a copy.
+
+###### Invitation Only
+
+Only addresses and Communtiies added in the **Approved Addresses** can access the World.
+
+To add new addresses or communities to the **Apporved Addresses**, follow these steps:
+
+1. Click on the **+ New Invite** button.
+
+2. You can add addresses in three different ways:
+
+  * **Wallet Address**: Add individual wallets, one at a time. 
+
+  * **Community**: Search and add any Public Community. This adds **all Community addresses** to the **Addresses Approved**.
+
+  <img src="../../../.gitbook/assets/world-access-community.png" width="600" />
+
+  * **Import CSV**: Use an existing CSV with a list of addresses to add to **Approved Addresses**. The structure is one wallet per line, for example:
+
+  ```
+  0x3bA7fD92eC4a1F6B8d2E9c5A7b1D3f6C8e4A2d9F
+  0xA1c9E4b7D2f6C8a3B5e9F1d4A7c2E6b8D3f9C5a1
+  ```
+
+  Once imported, it tracks each Address individually, as sown in the image.
+  
+  <img src="../../../.gitbook/assets/world-access-csv.png" width="600" />
+
+3. After confirming, the address/es are in the **Approved Addresses**. 
+
+4. With a new **+ New Invite**, addresses are added to the existing list, helping the World Owner  manage and extend the list if needed.
+
+<img src="../../../.gitbook/assets/world-access-all.png" width="600" />
+
+5. Individual Addresses or set of Addresses (in case of a Community) can be removed by selecting **Delete** on the three dots in the **Approved Addresses** section.
+
+{% hint style="warning" %}
+**📔 Note**: If you change the **Access** type from **Invitation Only**, your **Approved Addresses** list will be removed. Make sure to have a copy in case you need it in the future.
+{% endhint %}
+
+#### Jumping into Private Worlds
+
+There are different scenearios if a user jumps into a World that doesn't bave **Public** access:
+
+* Their address in the **Approved Addresses**: Will be able to join normally. If not, they will get information that the World is **Invitation Only**.
+
+<img src="../../../.gitbook/assets/world-invitation-only-modal.png" width="300" />
+
+* The World is **Password Protected**: Users will be able to write the password. The maximum limit is ten (10) attempts.
+
+<img src="../../../.gitbook/assets/world-password-modal.png" width="300" />
+
+
 ## Publish from a hardware wallet
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.

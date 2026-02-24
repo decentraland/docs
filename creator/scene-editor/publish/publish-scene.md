@@ -138,7 +138,7 @@ Anyone can access the World. This is the default setting of a World.
 
 Only users with the password can enter the World.
 
-Passwords must be at least 8 characters long. Once created, the password won't be accesible, so make sure to keep a copy.
+Passwords must be at least 8 characters long and contain at least 2 numbers. Once created, the password won't be accesible, so make sure to keep a copy.
 
 ###### Invitation Only
 
@@ -156,7 +156,7 @@ To add new addresses or communities to the **Apporved Addresses**, follow these 
 
   <img src="../../../.gitbook/assets/world-access-community.png" width="600" />
 
-  * **Import CSV**: Use an existing CSV with a list of addresses to add to **Approved Addresses**. The structure is one wallet per line, for example:
+  * **Import CSV**: Use an existing CSV with a list of addresses or community IDs to add to **Approved Addresses**. The structure is one wallet per line, for example:
 
   ```
   0x3bA7fD92eC4a1F6B8d2E9c5A7b1D3f6C8e4A2d9F

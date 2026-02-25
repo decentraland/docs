@@ -30,7 +30,9 @@ Scenes published to a World must be accessed via a link.
 
 These scenes are linked to NAME tokens. NAME tokens can be bought in the [Marketplace](https://decentraland.org/marketplace/names/claim). You can claim any name you want as long as it's not claimed yet. Alternatively, you can use an [ENS domain](https://ens.domains) to create a World.
 
-Scenes published to a World have no parcel limitations and can have as many parcels of land as you wish. The same [size limitations](../sdk7/optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
+Scenes published to a World have a parcel limitation of 300x300. The same [size limitations](../sdk7/optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
+
+If it's a Multi-Scene WORLD, different Collaborators (addresses) can have publishing rights to specific parcels of the WORLD, defined by the World Owner (the address that claimed the World NAME). More information about [Managing Worlds](../../scene-editor/publish/publish-scene.md#managing-worlds)
 
 #### Size Limits
 

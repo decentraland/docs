@@ -99,7 +99,7 @@ If you expect to see the backface or insides of your models, duplicate the faces
 
 #### Troubleshooting
 
-To verify if a scene has potential material Backface Culling issues, follow these steps:
+To verify if a scene has material Backface Culling issues, follow these steps:
 
 1. Open up the `debug` panel in the scene. 
 * If the scene is published, type `/debug` command in the chat.
@@ -111,7 +111,9 @@ To verify if a scene has potential material Backface Culling issues, follow thes
 
 ![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
 
-4. Toggle the  **Backface debugger**. It highlights:
+4. Toggle **Force Backface Culling**: It shows the materials rendered with Backface Culling On. This is the actual rendering once the Optimization is in production. Toggle On & Off to spot materials that need fixing.
+
+4. Toggle the  **Backface debugger** to easily spot materials that have Backface Culling Off. It highlights:
   * **Red**: Materials that don't have Backface Culling set to **On**.
   * **Green**: Materials with Backface Culling **On**.
 
@@ -123,8 +125,6 @@ To verify if a scene has potential material Backface Culling issues, follow thes
   <br/>
   <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>
 </p>
-
-To see your published scene with the Backface Culling Optimization enabled, use this deeplink `decentraland://?force-backface-culling=true` and go to the scene. This will render the materials with the optimization on, and help you spot issues.
 
 ### Asset Bundle conversion
 

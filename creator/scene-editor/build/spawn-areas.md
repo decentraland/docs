@@ -46,7 +46,7 @@ The creator can have multiple **Spawn Areas** defined and test different ones if
 
 <img src="../../../.gitbook/assets/spawn-area-multiple-components.png" width="600" />
 
-3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="150" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area.
+3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="100" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area.
 4. Preview the scene.
 
 

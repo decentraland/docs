@@ -35,18 +35,18 @@ When a Spawn Area is selected, the creator is able to see and set the following 
 
 <img src="../../../.gitbook/assets/spawn-point-randomized.png" width="600" />
 
-## Testing Multiple Spawn Areas
+## Multiple Spawn Areas
 
 <img src="../../../.gitbook/assets/spawn-area-multiple-scene-editor.png" width="600" />
 
-The creator can have multiple **Spawn Areas** defined and test different ones if desired. To create and test new Spawn Areas, follow these steps:
+The creator can have multiple **Spawn Areas** defined. To create a new Spawn Area, follow these steps:
 
 1. Select any Spawn Area, **spawn1** being the default.
 2. All the Spawn Areas show on the right Panel. You can add new ones by clicking on **+ Add New Spawn Area** <img src="../../../.gitbook/assets/spawn-area-add-new.png" width="200" style="vertical-align: middle;" alt="icon">.
 
 <img src="../../../.gitbook/assets/spawn-area-multiple-components.png" width="600" />
 
-3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="100" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area.
+3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="100" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area. If there are many Spawn areas toggled as **Main Spawn**, the player will randonmly appear in one of them.
 4. Preview the scene.
 
 

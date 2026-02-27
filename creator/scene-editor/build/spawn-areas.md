@@ -42,11 +42,11 @@ When a Spawn Area is selected, the creator is able to see and set the following 
 The creator can have multiple **Spawn Areas** defined and test different ones if desired. To create and test new Spawn Areas, follow these steps:
 
 1. Select any Spawn Area, **spawn1** being the default.
-2. All the Spawn Areas show on the right Panel. You can add new ones by clicking on **+ Add New Spawn Area** <img src="../../../.gitbook/assets/spawn-area-add-new.png" width="50" style="vertical-align: middle;" alt="icon">.
+2. All the Spawn Areas show on the right Panel. You can add new ones by clicking on **+ Add New Spawn Area** <img src="../../../.gitbook/assets/spawn-area-add-new.png" width="200" style="vertical-align: middle;" alt="icon">.
 
 <img src="../../../.gitbook/assets/spawn-area-multiple-components.png" width="600" />
 
-3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="18" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area.
+3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="150" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area.
 4. Preview the scene.
 
 

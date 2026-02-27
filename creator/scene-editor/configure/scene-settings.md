@@ -100,9 +100,9 @@ You can disable certain functionalities on your scene if you chose, in case they
 
 ## Spawn points
 
-The Spawn Settings in the Settings tab define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
+The **Spawn Area** Entities in the scene define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
 
-![](../../../.gitbook/assets/spawn-settings.png)
+![](../../../.gitbook/assets/default-spawn-point-component.png)
 
 Your scene might have objects that can block players from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for players if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
 
@@ -112,11 +112,15 @@ The position is comprised of coordinates inside the scene. These numbers refer t
 📔 Note: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
 {% endhint %}
 
-Check the Random Offset box to randomly offset the spawning players around the spawn point, with a maximum value. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The Max Offset value is the maximum possible distance from the original spawn point, in both the X or Z axis.
+Uncheck the **Don't Randomize** box to randomly offset the spawning players around the spawn point, with a maximum value in meters. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The Max Offset value is the maximum possible distance from the original spawn point, in both the X or Z axis.
 
 Set the Camera Target to set the direction in which players start looking when they jump into your scene. This allows you to have better control over their first impression.
 
-Click **Add Spawn Point** to include as many spawn points as you want. Players will randomly appear in one of those.
+Click **+ Add Spawn Area** to include as many spawn points as you want. Players will randomly appear in one of those.
+
+{% hint style="info" %}
+**📔 Note**: For more information about Spawn Areas, go to the [Spawn Area](../../../creator/scene-editor/build/spawn-areas.md) docs.
+{% endhint %}
 
 ## Skybox Control
 

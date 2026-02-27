@@ -135,6 +135,10 @@ For example:
 ]
 ```
 
+{% hint style="info" %}
+**📔 Note**: The Spawn Area and Camera Target can be set using the Creator Hub. For more information, go to the [Spawn Area](../../../creator/scene-editor/build/spawn-areas.md) docs.
+{% endhint %}
+
 #### Required Permissions <a href="#permissions" id="permissions"></a>
 
 In `metadata.requiredPermissions` you'll find an array of well-known strings declaring which permissions should be asked from the player before the World Explorer allows certain actions. This is incumbent on the Explorer, on other clients built for different purposes may choose to ignore this.

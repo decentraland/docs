@@ -36,18 +36,16 @@ When using Decentraland normally, it's not possible to open the console to check
 
 To open Decentraland with the `scene-console` parameter, either:
 
-* Write the following deep link into a browser window: `decentraland://?position=0,0&scene-console`. This will open the Decentraland desktop application if you have it installed.
+* Write the following deep link into a browser window: `decentraland://?position=0,0&scene-console=true`. This will open the Decentraland desktop application if you have it installed.
 * Write the following on the command line:
   * **macOS**: `open Decentraland.app --args --position 0,0 --scene-console true`
   * **winOS**: `"C:\Users\[YOUR-USER]\Downloads\Decentraland_windows64\Decentraland.exe" --position 0,0 --scene-console true`
 
 {% hint style="info" %}
-\*\*💡 Tip\*\*: Change the \*\*position\*\* parameter to the coordinates of your scene, to load directly into your scene.
+**💡 Tip**: Change the **position** parameter to the coordinates of your scene, to load directly into your scene.
 {% endhint %}
 
-When running Decentraland with the \`
-
-scene-console\`, you can open the console in three ways:
+When running Decentraland with the `scene-console`, you can open the console in three ways:
 
 * Click the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner
 * Press the **\`** key for a short console

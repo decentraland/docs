@@ -41,6 +41,7 @@
   * [Import custom assets](scene-editor/build/import-items.md)
   * [Entities and Components](scene-editor/build/components.md)
   * [NFTs](scene-editor/build/nfts.md)
+  * [Spawn Areas](scene-editor/build/spawn-areas.md)
 * [Interactivity](scene-editor/interactivity/)
   * [Smart Items - Basic](scene-editor/interactivity/smart-items.md)
   * [Trigger Area](scene-editor/interactivity/trigger-area.md)

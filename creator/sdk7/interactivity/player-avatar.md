@@ -268,14 +268,15 @@ Keep the following considerations in mind:
 
 ### Restricting specific kinds of locomotion
 
-Instead of entirely freezing the player, you can restrict certain specific forms of locomotion of the player. The `InputModifier` includes the following options:
+Instead of entirely freezing the player, you can restrict certain specific forms of locomotion of the player. This could be used for gameplay reasons, for example to preserve the difficulty of a platformer by preventing double-jump and glide. These abilities could even be toggled dynamically as a game mechanic, for example giving the player a stamina bar and preventing them from running when it's depleted. It could also be used to set the tone of a scene, for example preventing running or jumping in a location that is meant to be serene. The `InputModifier` includes the following options:
 
 * `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
 * `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
 * `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
 * `disableJump`: Player can't jump.
 * `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
-* `disableAll`: The player can't perform any of the above actions.
+* `disableDoubleJump`: The player can't perform a double-jump.
+* `disableGliding`: The player can't glide.
 
 ```ts
 import {InputModifier, engine} from '@dcl/sdk/ecs'
@@ -288,6 +289,8 @@ InputModifier.create(engine.playerEntity, {
 		disableJog: true,
 		disableJump: true,
 		disableEmote: true,
+		disableDoubleJump: true,
+		disableGliding: true
 	}),
 })
 ```

@@ -17,6 +17,7 @@ The Tween component has the following functions:
 * `setMove`: Move between two points
 * `setRotate`: Rotate between two directions
 * `setScale`: Scale between two sizes
+* `setMoveRotateScale`: Transition simultaneously on all three parameters
 * `setMoveContinuous`: Move constantly in the same direction
 * `setRotateContinuous`: Rotate constantly in the same direction
 * `setTextureMove`: Offset the texture of a material between two positions
@@ -136,6 +137,7 @@ The scale tween takes the following information:
 This other optional parameter is also available:
 
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
+
 
 ## Non-linear tweens
 
@@ -338,7 +340,35 @@ engine.addSystem(() => {
 
 ## Simultaneous tweens
 
-An entity can only have one `Tween` component, and each tween component can only perform one transformation at a time. For example, you can´t make an entity move sideways and also rotate at the same time. As a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
+To move, rotate, and scale an entity between an initial and an end state, create a `Tween` component with the `setMoveRotateScale` function. This function can also be used on any combination of these three parameters.
+
+```ts
+const myEntity = engine.addEntity()
+Transform.create(myEntity, {
+	position: Vector3.create(14, 1, 2),
+})
+MeshRenderer.setBox(myEntity)
+
+Tween.setMoveRotateScale(mrsEntity, {
+	position: { start: Vector3.create(14, 1, 2), end: Vector3.create(14, 3, 2) },
+	rotation: { start: Quaternion.fromEulerDegrees(0, 0, 0), end: Quaternion.fromEulerDegrees(0, 180, 90) },
+	scale: { start: Vector3.One(), end: Vector3.create(2, 0.5, 2) },
+	duration: 2000
+})
+```
+
+The movement tween takes the following information:
+
+* `entity`: The entity to move
+* `params`: An object with several optional parameters
+	* `position`: An object with a `start` and `end` value, both as `Vector3`.
+ 	* `rotation`: An object with a `start` and `end` value, both as `Quaternion`.
+  	* `scale`: An object with a `start` and `end` value, both as `Vector3`.	
+	* `duration`: How many milliseconds it takes to transition between the two sets of values
+ 	* `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens) 
+
+
+An entity can only have one `Tween` component, and each tween component can only perform one transformation at a time. Through the `setMoveRotateScale` tween type, you can make an entity move sideways and also rotate at the same time, but both these motions will follow the same timeline. If you need transitions to be independent from each other, as a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
 
 In the following snippet, a parent entity rotates while a child scales up.
 
@@ -363,7 +393,7 @@ MeshRenderer.setBox(childEntity)
 Tween.setScale(childEntity, 
 	Vector3.create(1, 1, 1), 
 	Vector3.create(4, 4, 4), 
-	5000
+	2000
 )
 ```
 

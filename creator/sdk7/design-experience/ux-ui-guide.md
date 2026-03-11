@@ -32,11 +32,11 @@ It’s important to be well aware of this objective through every step of the de
 
 For scenes that follow a linear flow, where each step depends on the previous, we recommend walling the scene and establishing one or multiple fixed entry points, to avoid players stumbling onto things in the wrong order. By the way, entry points are an excellent place to display a message to welcome the player and explain what their objective in the scene should be.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-instructions.png" alt="In-world banner" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
+<figure><img src="../../images/media/ux-instructions.png" alt="In-world banner" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
 
 If the player’s experience in your scene isn’t meant to be linear, but you still need to provide some basic instructions to ensure they enjoy it fully, you can show instructions on a pop-up. It’s possible to display a popup on the player’s screen as soon as they enter, regardless of what direction they come from, and in that way make sure that players will always know the essentials.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-banner.png" alt="Pop-up banner" width="300"><figcaption><p>Pop-up instructions</p></figcaption></figure>
+<figure><img src="../../images/media/ux-banner.png" alt="Pop-up banner" width="300"><figcaption><p>Pop-up instructions</p></figcaption></figure>
 
 {% hint style="warning" %}
 **📔 Note**: Make sure the popup isn't too intrusive and that it's easy to close by clicking anywhere.
@@ -72,7 +72,7 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. The default Decentraland UI, including minimap, chat, etc, is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/UI-Zones.png" alt="Screen regions used by UI" width="300"><figcaption></figcaption></figure>
+<figure><img src="../../images/media/UI-Zones.png" alt="Screen regions used by UI" width="300"><figcaption></figcaption></figure>
 
 There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
 
@@ -88,9 +88,9 @@ It’s important to choose a color palette, as this gives your scene an identity
 
 When putting together a color palette, start out by selecting a main color, and optionally a secondary one. Then you should decide if you want the palette to be analogous, complementary, or triadic, etc, in relation to that main color.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-color-wheel2.png" alt="Chromatic color palette" width="300"><figcaption><p>Chromatic color palette</p></figcaption></figure>
+<figure><img src="../../images/media/ux-color-wheel2.png" alt="Chromatic color palette" width="300"><figcaption><p>Chromatic color palette</p></figcaption></figure>
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-color-wheel.png" alt="Strategies for combining colors properly" width="300"><figcaption><p>Strategies for combining colors properly</p></figcaption></figure>
+<figure><img src="../../images/media/ux-color-wheel.png" alt="Strategies for combining colors properly" width="300"><figcaption><p>Strategies for combining colors properly</p></figcaption></figure>
 
 {% hint style="info" %}
 **💡 Tip**: Free color palette generators we recommend: [Coolors](https://coolors.co), [Adobe Color CC](https://color.adobe.com/), [Colour Lovers](http://www.colourlovers.com), [Color Hunt](http://www.colorhunt.co), [Color by Hailpixel](http://color.hailpixel.com), [Colour Code](http://colourco.de), [Sip](https://sipapp.io/), [Color Scheme Designer by Paletton](http://paletton.com), [Cohesive Colors](http://javierbyte.github.io/cohesive-colors), [Colr](http://www.colr.org)
@@ -100,7 +100,7 @@ The main color should be the most frequently used across your UI components. If 
 
 Remember that each color has its own unique expressive qualities, take advantage of that to communicate messages through them. For example, red is often associated with negative connotations whilst green is associated with positive connotations.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-switches.png" alt="Colored switches" width="300"><figcaption><p>Using color the wrong way can be confusing</p></figcaption></figure>
+<figure><img src="../../images/media/ux-switches.png" alt="Colored switches" width="300"><figcaption><p>Using color the wrong way can be confusing</p></figcaption></figure>
 
 You can also use colors strategically to indicate state changes, for example changing the color of an element to indicate if it’s active or inactive.
 
@@ -108,11 +108,11 @@ You can also use colors strategically to indicate state changes, for example cha
 **📔 Note**: States communicate the status of UI elements. The states of an element should maintain a certain continuity, but they must have clear affordances and be easily distinguishable from other states and the surrounding layout.
 {% endhint %}
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-active-button.png" alt="Active inactive button" width="300"><figcaption><p>Using color for button states</p></figcaption></figure>
+<figure><img src="../../images/media/ux-active-button.png" alt="Active inactive button" width="300"><figcaption><p>Using color for button states</p></figcaption></figure>
 
 Warning! When selecting colors that will be shown in superposition, take special care of making sure that they are legible when used together. Here’s a fundamental rule: the colors of elements that are shown together should always have plenty of contrast between them. Be mindful that some players might be looking at their screens under suboptimal lighting conditions, which makes reading harder.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-icons.png" alt="Icon contrast" width="300"><figcaption><p>Both icons can be distinguished, but the first one has better contrast. It becomes easier to read and requires less effort to understand.</p></figcaption></figure>
+<figure><img src="../../images/media/ux-icons.png" alt="Icon contrast" width="300"><figcaption><p>Both icons can be distinguished, but the first one has better contrast. It becomes easier to read and requires less effort to understand.</p></figcaption></figure>
 
 ### Typographic hierarchy
 
@@ -120,19 +120,19 @@ Try to define at least a 3-type scale for Titles, Subtitles, and Body. Be carefu
 
 If you are going to place text that is displayed over imagery (or over the world), you will surely need to experiment with its legibility. In those cases, we suggest that you add a colored solid region, in a layer between the text and images, that way you can ensure that the text remains legible.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-text-over-images.png" alt="Text over images" width="300"><figcaption><p>Prioritize legibility</p></figcaption></figure>
+<figure><img src="../../images/media/ux-text-over-images.png" alt="Text over images" width="300"><figcaption><p>Prioritize legibility</p></figcaption></figure>
 
 ### Icons
 
 Icons synthesise information, helping you identify actions through images. They are an amazingly powerful tool for providing input that can be interpreted fast, as opposed to using text to label things, which demands more of the player’s attention and time. It’s also useful to show icons in combination with text, as this helps disambiguate their meanings.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-icons2.png" alt="Icon examples" width="300"><figcaption><p>Use icons as a universal language</p></figcaption></figure>
+<figure><img src="../../images/media/ux-icons2.png" alt="Icon examples" width="300"><figcaption><p>Use icons as a universal language</p></figcaption></figure>
 
 ### Motion
 
 Use motion to provide feedback and lead the way when needed. Motion helps players focus their attention and helps maintain continuity as the UI changes.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/ux-glow.png" alt="Adding glow" width="300"><figcaption><p>Use particles, scale, or fading margins to make things stand out</p></figcaption></figure>
+<figure><img src="../../images/media/ux-glow.png" alt="Adding glow" width="300"><figcaption><p>Use particles, scale, or fading margins to make things stand out</p></figcaption></figure>
 
 ### Writing and content structure
 

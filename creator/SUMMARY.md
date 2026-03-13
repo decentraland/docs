@@ -191,7 +191,7 @@
 ## Rewards
 
 * [Overview](rewards/overview.md)
-* [Getting Started](/broken/pages/lW2tQnUoBWEhx5mCNiV8)
+* [Getting Started](rewards/getting-started.md)
 * [Users and Roles](rewards/users-and-roles.md)
 * [Transactions](rewards/transactions.md)
 * [Integrations](rewards/integrations.md)

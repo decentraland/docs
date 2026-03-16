@@ -10,6 +10,10 @@ Traditional pointer events use ray-casting: the player must aim their cursor at 
 
 The interactive area considered for proximity interactions is a wide triangular slice of a sphere, projecting forward from the player's position. Unlike with pointer events, the direction that the avatar is facing is important, independently of the direction that the camera is facing.
 
+To set more specific custom logic, you might want to deal with the raw data and use the [Advanced](advanced-button-events.md) approach.
+
+For an entity to be interactive, it must have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
+
 
 ## Register proximity callbacks
 

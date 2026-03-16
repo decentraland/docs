@@ -12,7 +12,7 @@ If all you want to do is click or push a button on a single entity to activate i
 
 To set more specific custom logic, you might want to deal with the raw data and use the [Advanced](advanced-button-events.md) approach.
 
-For an entity to be interactive, it must have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details.
+For an entity to be interactive, it must have a [collider](../../3d-essentials/colliders.md). See [obstacles](click-events.md#obstacles) for more details. This also applies to proximity click events.
 
 ## Using a system
 
@@ -58,6 +58,8 @@ The example above checks if the button was pressed, regardless of where the poin
 
 {% hint style="warning" %}
 **📔 Note**: The player needs to be standing inside the scene's boundaries for the pointer event to be detected. The player's cursor also needs to be locked, buttons pressed while having the free cursor aren't detected.
+
+Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
 The `inputSystem.isTriggered` function takes the following required arguments:
@@ -552,6 +554,107 @@ engine.addSystem(() => {
 **📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
 {% endhint %}
 
+## Proximity events
+
+Check for proximity button presses regardless of where their cursor is aiming by using `PET_DOWN` on an entity that uses `InteractionType.IT_PROXIMITY`. Set the `interactionType` field in the `eventInfo` to mark the event as proximity-based.
+
+See [**Proximity Events**](proximity-events.md) for more details, including the available helper functions.
+
+```ts
+PointerEvents.create(myEntity, {
+	pointerEvents: [
+		{
+			eventType: PointerEventType.PET_DOWN,
+			eventInfo: {
+				button: InputAction.IA_PRIMARY,
+				hoverText: 'Press E',
+				maxPlayerDistance: 5,
+				interactionType: InteractionType.IT_PROXIMITY,
+			},
+		},
+	],
+})
+
+engine.addSystem(() => {
+	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
+		console.log('Player pressed button near entity')
+	}
+})
+```
+
+Using helpers like `pointerEventsSystem.onProximityDown`, each entity is limited to have a single type of event. You can't register two different button events, or even a combination of proximity and pointer events using the same button. You don't have that limitation when using sytem based events. For example here's an entity that can be interacted with both by pointing a cursor and pressing E, or by walking near it and pressing E without pointing at it with the cursor.
+
+```ts
+PointerEvents.create(myEntity, {
+	pointerEvents: [
+		{
+			eventType: PointerEventType.PET_DOWN,
+			eventInfo: {
+				button: InputAction.IA_PRIMARY,
+				hoverText: 'Press E',
+				maxPlayerDistance: 5,
+				interactionType: InteractionType.IT_PROXIMITY,
+			},
+		},
+		{
+			eventType: PointerEventType.PET_DOWN,
+			eventInfo: {
+				button: InputAction.IA_PRIMARY,
+				hoverText: 'Press E',
+				maxPlayerDistance: 5,
+				interactionType: InteractionType.IT_PROXIMITY,
+			},
+		},
+	],
+})
+
+engine.addSystem(() => {
+	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
+		console.log('Player pressed button near entity')
+	}
+	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
+		console.log('Player pressed button near entity')
+	}
+})
+```
+
+
+You can also use `inputSystem.isTriggered()` with the `PET_PROXIMITY_ENTER` and `PET_PROXIMITY_LEAVE` event types to react when a player enters or leaves the proximity range of an entity. This is useful to display extra feedback for proximity-activated entities, for example playing a sound or an animation.
+
+For this to work, the entity must have a `PointerEvents` component with the corresponding proximity event type defined.
+
+```ts
+PointerEvents.create(myEntity, {
+	pointerEvents: [
+		{
+			eventType: PointerEventType.PET_PROXIMITY_ENTER,
+			eventInfo: {
+				button: InputAction.IA_POINTER,
+				maxPlayerDistance: 5,
+			},
+		},
+		{
+			eventType: PointerEventType.PET_PROXIMITY_LEAVE,
+			eventInfo: {
+				button: InputAction.IA_POINTER,
+				maxPlayerDistance: 5,
+				showFeedback: false,
+			},
+		},
+	],
+})
+
+engine.addSystem(() => {
+	if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_PROXIMITY_ENTER, myEntity)) {
+		console.log('Player entered proximity')
+	}
+	if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_PROXIMITY_LEAVE, myEntity)) {
+		console.log('Player left proximity')
+	}
+})
+```
+
+
 ## Data from input action
 
 Fetch data from an input action, such as the button that was pressed, the entity that was hit, the direction and length of the ray, etc. See ([See documentation](../../../../)) for a description of all of the data available.
@@ -628,5 +731,5 @@ engine.addSystem(() => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Every entity you want to inteact with must have both a [`PointerEvents` component](system-based-events.md#show-feedback) and a [collider](../../3d-essentials/colliders.md).
+**📔 Note**: This only applies to pointer-based events, not to proximity-based events, since in that case all of the meshes of the model could be in proximity of the player at once.
 {% endhint %}

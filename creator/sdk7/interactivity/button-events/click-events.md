@@ -135,6 +135,10 @@ Each input can produce the following types of pointer events. Each of the follow
 * `UP`: Player releases a specific button while having the cursor pointing at the entity's collider.
 * `HOVER_ENTER`: Player's cursor starts pointing at the entity's collider.
 * `HOVER_LEAVE`: Player's cursor stops pointing at the entity's collider.
+* `PROXIMITY_ENTER`: Player walks within the entity's proximity range, regardless of where they're looking.
+* `PROXIMITY_LEAVE`: Player moves out of the entity's proximity range.
+
+See [**Proximity Events**](proximity-events.md) for how to use proximity-based interactions.
 
 ## Data from an input action
 

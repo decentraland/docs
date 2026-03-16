@@ -180,17 +180,50 @@ A same entity can have two different callbacks registered, one for `pointerEvent
 **📔 Note**: The hover feedback for a button up event is only displayed when the button is currently pushed down. If the player points at the entity without holding the button down, they will see no feedback, or the feedback for the button down event, if any.
 {% endhint %}
 
+## Hover enter and leave
+
+Use `pointerEventsSystem.onPointerHoverEnter` to run a callback when the player's cursor starts pointing at an entity, and `pointerEventsSystem.onPointerHoverLeave` when the cursor stops pointing at it.
+
+```ts
+pointerEventsSystem.onPointerHoverEnter(
+    {
+        entity: myEntity,
+        opts: { button: InputAction.IA_POINTER },
+    },
+    function () {
+        console.log('Cursor started hovering over entity')
+    }
+)
+
+pointerEventsSystem.onPointerHoverLeave(
+    {
+        entity: myEntity,
+        opts: { button: InputAction.IA_POINTER },
+    },
+    function () {
+        console.log('Cursor stopped hovering over entity')
+    }
+)
+```
+
+These callbacks are useful for custom hover effects, such as playing a sound or animating the entity when the player aims at it.
+
 ## Remove callbacks
 
-To remove a callback function, use `pointerEventsSystem.removeOnPointerDown` or `pointerEventsSystem.removeOnPointerUp`.
+To remove a callback function, use the corresponding remove function:
 
 ```ts
 pointerEventsSystem.removeOnPointerDown(myEntity)
-
 pointerEventsSystem.removeOnPointerUp(myEntity)
+pointerEventsSystem.removeOnPointerHoverEnter(myEntity)
+pointerEventsSystem.removeOnPointerHoverLeave(myEntity)
 ```
 
 Once removed, the hover feedback on the entity should no longer be displayed, and the entity should no longer be interactive.
+
+## Proximity interactions
+
+For interactions that trigger based on player proximity rather than cursor aim, see [**Proximity Events**](proximity-events.md). The `pointerEventsSystem` includes equivalent helpers — `onProximityDown`, `onProximityUp`, `onProximityEnter`, and `onProximityLeave` — that follow the same pattern as the functions described on this page.
 
 ### Data from input action
 

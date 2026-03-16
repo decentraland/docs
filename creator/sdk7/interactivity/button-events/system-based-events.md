@@ -238,6 +238,23 @@ This example has one system that iterates over all entities that have a custom c
 
 This way of organizing your scene's code is very [data oriented](../../architecture/data-oriented-programming.md) and should result in a very efficient use of memory resources.
 
+## Multiple buttons on an entity
+
+Using helpers like `pointerEventsSystem.onPointerDown`, each entity is limited to have a single type of event. You can't register two different button events. You don't have that limitation when using sytem based events. For example here's an entity that players can interact with both by pressing E and F, each triggering different functionalities.
+
+
+```ts
+    engine.addSystem(() => {
+        if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
+            // react to E
+        }
+        if (inputSystem.isTriggered(InputAction.IA_SECONDARY, PointerEventType.PET_DOWN, myEntity)) {
+            // react to F
+        }
+    })
+```
+
+
 ## Show feedback
 
 To display UI hints while pointing at an entity, use the properties in the entity's `PointerEvents` component.
@@ -593,7 +610,7 @@ PointerEvents.create(myEntity, {
 				button: InputAction.IA_PRIMARY,
 				hoverText: 'Press E',
 				maxPlayerDistance: 5,
-				interactionType: InteractionType.IT_PROXIMITY,
+				interactionType: InteractionType.IT_POINTER,
 			},
 		},
 		{
@@ -610,10 +627,7 @@ PointerEvents.create(myEntity, {
 
 engine.addSystem(() => {
 	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
-		console.log('Player pressed button near entity')
-	}
-	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
-		console.log('Player pressed button near entity')
+		console.log('Player pressed button near entity or pointing at entity')
 	}
 })
 ```

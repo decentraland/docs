@@ -573,7 +573,7 @@ engine.addSystem(() => {
 
 ## Proximity events
 
-Check for proximity button presses regardless of where their cursor is aiming by using `PET_DOWN` on an entity that uses `InteractionType.IT_PROXIMITY`. Set the `interactionType` field in the `eventInfo` to mark the event as proximity-based.
+Check for proximity button presses regardless of where their cursor is aiming by using `PET_DOWN` on an entity that uses `InteractionType.PROXIMITY`. Set the `interactionType` field in the `eventInfo` to mark the event as proximity-based.
 
 See [**Proximity Events**](proximity-events.md) for more details, including the available helper functions.
 
@@ -585,9 +585,9 @@ PointerEvents.create(myEntity, {
 			eventInfo: {
 				button: InputAction.IA_PRIMARY,
 				hoverText: 'Press E',
-				maxPlayerDistance: 5,
-				interactionType: InteractionType.IT_PROXIMITY,
+				maxPlayerDistance: 5
 			},
+			interactionType: InteractionType.PROXIMITY,
 		},
 	],
 })
@@ -602,34 +602,37 @@ engine.addSystem(() => {
 Using helpers like `pointerEventsSystem.onProximityDown`, each entity is limited to have a single type of event. You can't register two different button events, or even a combination of proximity and pointer events using the same button. You don't have that limitation when using sytem based events. For example here's an entity that can be interacted with both by pointing a cursor and pressing E, or by walking near it and pressing E without pointing at it with the cursor.
 
 ```ts
-PointerEvents.create(myEntity, {
-	pointerEvents: [
-		{
-			eventType: PointerEventType.PET_DOWN,
-			eventInfo: {
-				button: InputAction.IA_PRIMARY,
-				hoverText: 'Press E',
-				maxPlayerDistance: 5,
-				interactionType: InteractionType.IT_POINTER,
-			},
-		},
-		{
-			eventType: PointerEventType.PET_DOWN,
-			eventInfo: {
-				button: InputAction.IA_PRIMARY,
-				hoverText: 'Press E',
-				maxPlayerDistance: 5,
-				interactionType: InteractionType.IT_PROXIMITY,
-			},
-		},
-	],
-})
-
-engine.addSystem(() => {
-	if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
-		console.log('Player pressed button near entity or pointing at entity')
-	}
-})
+	PointerEvents.create(myEntity, {
+        pointerEvents: [
+            {
+                eventType: PointerEventType.PET_DOWN,
+                eventInfo: {
+                    button: InputAction.IA_POINTER,
+                    hoverText: 'Click',
+                    maxPlayerDistance: 15,
+                },
+                interactionType: InteractionType.CURSOR,
+            },
+            {
+                eventType: PointerEventType.PET_DOWN,
+                eventInfo: {
+                    button: InputAction.IA_PRIMARY,
+                    hoverText: 'Press E',
+                    maxPlayerDistance: 15,
+                },
+                interactionType: InteractionType.PROXIMITY,
+            },
+        ],
+    })
+    
+    engine.addSystem(() => {
+        if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, myEntity)) {
+            console.log('Player clicked at entity')
+        }
+        if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, myEntity)) {
+            console.log('Player pressed button near entity')
+        }
+    })
 ```
 
 

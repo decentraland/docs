@@ -47,12 +47,12 @@ Add your custom code in the `index.ts` file under `/src`, inside the `main()` fu
 
 If you have a preview window open running your scene, whenever you change the code in your files and save, the scene reloads automatically with your changes.
 
-## Using AI with Cursor
+## Using AI
 
-If you are using Cursor, you can use the AI assistant to help you write code. To do this,
+You can leverage AI assistants like Cursor or Claude Code to help you write scene code. For example to use Cursor, do this:
 
 1. Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
-2. There you can prompt the AI assistant to help you write code. You can also select a model to use from the dropdown.
+2. There you can prompt the AI assistant to help you write code. Your prompts can include links to docs pages, paths to specific files in your project, or even images. You can also select a specific model to use from the dropdown.
 
 Decentraland provides a context folder for the AI assistant to help you write code, this context folder is located at `/dclcontext` in your scene project. The AI assistant will know to search this context whenever generating code, to get familiar with the Decentraland SDK.
 

@@ -147,6 +147,7 @@ Physics.applyRepulsionForceToPlayer(
 )
 ```
 
+<!-- 
 ## Local vs world space
 
 By default, forces and impulses are applied in **world space** — the x, y, and z axes are fixed relative to the scene. You can instead apply them in **local space**, which is relative to the player's current facing direction. This is useful for mechanics like a "forward boost" that pushes the player in the direction they're looking.
@@ -182,3 +183,4 @@ The `PhysicsForceSpace` enum has two values:
 
 * `PhysicsForceSpace.PFS_WORLD`: Default. Force is applied in world-space coordinates.
 * `PhysicsForceSpace.PFS_LOCAL`: Force is rotated to match the player's current rotation before being applied.
+ -->

@@ -132,7 +132,7 @@ triggerAreaEventsSystem.onTriggerExit(windTunnel, () => {
 Use `Physics.applyRepulsionForceToPlayer()` to push the player away from a point in space, like an explosion or a force field. The force is stronger when the player is closer to the source, and weakens with distance based on the radius and falloff.
 
 ```ts
-import { Physics } from '@dcl/sdk/ecs'
+import { Physics, timers } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const explosionSource = engine.addEntity()
@@ -145,7 +145,13 @@ Physics.applyRepulsionForceToPlayer(
 	50,                         // magnitude
 	10,                         // radius of effect in meters
 )
+
+// Remove force after half a second
+timers.setTimeout(()=>{
+    Physics.removeForceFromPlayer(this.entity)
+}, 500)
 ```
+
 
 <!-- 
 ## Local vs world space

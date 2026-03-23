@@ -21,6 +21,10 @@ Both are applied through the `Physics` helper, imported from `@dcl/sdk/ecs`.
 
 Use `Physics.applyImpulseToPlayer()` to give the player a one-shot push in a given direction.
 
+| Parameter | Description |
+|---|---|
+| `vector` | Direction and strength combined — the length of the vector encodes the impulse magnitude |
+
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
@@ -29,9 +33,12 @@ import { Vector3 } from '@dcl/sdk/math'
 Physics.applyImpulseToPlayer(Vector3.create(0, 20, 0))
 ```
 
-The vector you pass sets both the direction and the magnitude of the impulse. A larger vector produces a stronger push.
-
 You can also pass a direction and a magnitude separately. In this case, the direction vector is normalized automatically:
+
+| Parameter | Description |
+|---|---|
+| `direction` | Direction to push — normalized automatically before scaling |
+| `magnitude` | Impulse strength |
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -78,6 +85,13 @@ Physics.applyKnockbackToPlayer(explosionPosition, 40)
 
 You can limit the area of effect with a `radius`, and control how magnitude decreases with distance using the `KnockbackFalloff` option:
 
+| Parameter | Description |
+|---|---|
+| `fromPosition` | World-space origin of the knockback (explosion center, enemy position, etc.) |
+| `magnitude` | Base impulse strength |
+| `radius` | Max distance of effect (default: `Infinity`) |
+| `falloff` | How magnitude decreases with distance (default: `CONSTANT`) |
+
 ```ts
 import { Physics, KnockbackFalloff } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
@@ -86,7 +100,7 @@ Physics.applyKnockbackToPlayer(
 	Vector3.create(8, 1, 8),
 	40,                          // magnitude
 	10,                          // radius: no effect beyond 10 meters
-	KnockbackFalloff.LINEAR      // force fades to 0 at the radius edge
+	KnockbackFalloff.LINEAR      // magnitude fades to 0 at the radius edge
 )
 ```
 
@@ -104,6 +118,11 @@ The same `KnockbackFalloff` values are available for `applyRepulsionForceToPlaye
 
 Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unlike an impulse, this force is applied every tick as long as it remains active.
 
+| Parameter | Description |
+|---|---|
+| `source` | Entity key identifying this force source — use it to update or remove the force later |
+| `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
+
 You must pass a **source entity** as the first argument. The source entity serves to have a way to refer back to this force, so you can update or remove it later. The position of the source entity is not relevant to the direction of the force. The force vector is always in **world space** — if you need a direction relative to a rotated entity, use `Transform.localToWorldDirection()` to convert it first (see [Convert a local direction to world space](#convert-a-local-direction-to-world-space)).
 
 ```ts
@@ -116,11 +135,21 @@ const windZoneEntity = engine.addEntity()
 Physics.applyForceToPlayer(windZoneEntity, Vector3.create(10, 0, 0))
 ```
 
+As with `applyImpulseToPlayer()`, you can also pass a `direction` and `magnitude` separately — see [Apply an impulse](#apply-an-impulse):
+
+```ts
+Physics.applyForceToPlayer(windZoneEntity, Vector3.create(0, 1, 0), 10)
+```
+
 If you call `applyForceToPlayer()` again with the same source entity, it replaces the previous force from that source. If multiple force sources are accumulated their vectors are summed each tick.
 
 ### Remove a continuous force
 
-To stop applying a force, call `Physics.removeForceFromPlayer()` with a reference to the source entity that was used to create the force:
+To stop applying a force, call `Physics.removeForceFromPlayer()` with a reference to the source entity that was used to create the force. This is a no-op if that source is not currently registered.
+
+| Parameter | Description |
+|---|---|
+| `source` | Entity key identifying the force source to remove |
 
 ```ts
 Physics.removeForceFromPlayer(windZoneEntity)
@@ -129,7 +158,19 @@ Physics.removeForceFromPlayer(windZoneEntity)
 
 ### Apply a force for a limited duration
 
-Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific amount of time. The duration is in seconds. The force is automatically removed when the time elapses.
+Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific amount of time. The duration is in seconds. The force is automatically removed when the time elapses. Calling this again with the same source entity resets the timer.
+
+| Parameter | Description |
+|---|---|
+| `source` | Entity key identifying this force source |
+| `duration` | How long the force lasts, in seconds |
+| `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
+
+The `direction` + `magnitude` overload is also available — see [Apply an impulse](#apply-an-impulse):
+
+```ts
+Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 15)
+```
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -171,6 +212,14 @@ triggerAreaEventsSystem.onTriggerExit(windTunnel, (result) => {
 ## Apply a repulsion force
 
 Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away from a fixed point in space. This is suited for effects like a magnetic repulsion field, a force barrier, or a hovering object that keeps players at a distance. Unlike `applyKnockbackToPlayer()`, this force is recalculated every tick as the player moves. The magnitude weakens with distance based on the radius and falloff — see [Apply a knockback impulse](#apply-a-knockback-impulse) for the `KnockbackFalloff` options. A negative magnitude reverses the effect, continuously pulling the player toward the point like a vortex or gravity well.
+
+| Parameter | Description |
+|---|---|
+| `source` | Entity key identifying this force source — use it to update or remove the force later |
+| `fromPosition` | World-space origin of the repulsion |
+| `magnitude` | Base force strength. Negative values attract instead of repel |
+| `radius` | Max distance of effect (default: `Infinity`) |
+| `falloff` | How magnitude decreases with distance (default: `CONSTANT`) |
 
 ```ts
 import { Physics, timers } from '@dcl/sdk/ecs'

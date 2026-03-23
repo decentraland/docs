@@ -62,11 +62,49 @@ triggerAreaEventsSystem.onTriggerEnter(launchPad, (result) => {
 })
 ```
 
+## Apply a knockback impulse
+
+Use `Physics.applyKnockbackToPlayer()` to push the player away from a point with a single impulse. This is ideal for explosions, impact effects, and other one-shot directional blasts. The direction is computed automatically from the source point to the player's current position.
+
+```ts
+import { Physics } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+const explosionPosition = Vector3.create(8, 1, 8)
+
+// Knock the player away from the explosion center
+Physics.applyKnockbackToPlayer(explosionPosition, 40)
+```
+
+You can limit the area of effect with a `radius`, and control how force decreases with distance using the `KnockbackFalloff` option:
+
+```ts
+import { Physics, KnockbackFalloff } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+Physics.applyKnockbackToPlayer(
+	Vector3.create(8, 1, 8),
+	40,                          // magnitude
+	10,                          // radius: no effect beyond 10 meters
+	KnockbackFalloff.LINEAR      // force fades to 0 at the radius edge
+)
+```
+
+The `KnockbackFalloff` enum controls how the force decreases with distance:
+
+* `KnockbackFalloff.CONSTANT` — same force at any distance within the radius (default)
+* `KnockbackFalloff.LINEAR` — smooth linear decrease to 0 at the radius edge
+* `KnockbackFalloff.INVERSE_SQUARE` — sharp physically-realistic drop-off
+
+If the player is exactly at the source position, the player is pushed straight up.
+
+The same `KnockbackFalloff` values are available for `applyRepulsionForceToPlayer()`.
+
 ## Apply a continuous force
 
 Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unlike an impulse, this force is applied every tick as long as it remains active.
 
-You must pass a **source entity** as the first argument. The source entity serves to have a way to refer back to this force, so you can update or remove it later. The position of the source entity is not relevant to the direction of the force.
+You must pass a **source entity** as the first argument. The source entity serves to have a way to refer back to this force, so you can update or remove it later. The position of the source entity is not relevant to the direction of the force. The force vector is always in **world space** — if you need a direction relative to a rotated entity, use `Transform.localToWorldDirection()` to convert it first (see [Convert a local direction to world space](#convert-a-local-direction-to-world-space)).
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -156,7 +194,22 @@ timers.setTimeout(() => {
 ```
 
 
-<!-- 
+## Convert a local direction to world space
+
+Use `Transform.localToWorldDirection()` to convert a direction vector from an entity's local space into world space. This is useful when applying forces relative to a rotated entity — for example, pushing the player away from a specific face of a rotating obstacle.
+
+```ts
+import { Physics, Transform } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+// Push the player in the direction the entity's local +Z axis points in world space
+const worldDir = Transform.localToWorldDirection(myEntity, Vector3.create(0, 0, 1))
+Physics.applyImpulseToPlayer(worldDir, 20)
+```
+
+This applies rotation only — it does not account for translation or scale — making it suitable for direction vectors passed to force and impulse functions.
+
+<!--
 ## Local vs world space
 
 By default, forces and impulses are applied in **world space** — the x, y, and z axes are fixed relative to the scene. You can instead apply them in **local space**, which is relative to the player's current facing direction. This is useful for mechanics like a "forward boost" that pushes the player in the direction they're looking.

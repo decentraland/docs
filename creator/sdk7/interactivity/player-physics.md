@@ -76,7 +76,7 @@ const explosionPosition = Vector3.create(8, 1, 8)
 Physics.applyKnockbackToPlayer(explosionPosition, 40)
 ```
 
-You can limit the area of effect with a `radius`, and control how force decreases with distance using the `KnockbackFalloff` option:
+You can limit the area of effect with a `radius`, and control how magnitude decreases with distance using the `KnockbackFalloff` option:
 
 ```ts
 import { Physics, KnockbackFalloff } from '@dcl/sdk/ecs'
@@ -96,7 +96,7 @@ The `KnockbackFalloff` enum controls how the force decreases with distance:
 * `KnockbackFalloff.LINEAR` — smooth linear decrease to 0 at the radius edge
 * `KnockbackFalloff.INVERSE_SQUARE` — sharp physically-realistic drop-off
 
-If the player is exactly at the source position, the player is pushed straight up.
+If the player is exactly at the source position, the player is pushed straight up. A negative magnitude pulls the player toward the point instead of pushing them away.
 
 The same `KnockbackFalloff` values are available for `applyRepulsionForceToPlayer()`.
 
@@ -170,7 +170,7 @@ triggerAreaEventsSystem.onTriggerExit(windTunnel, (result) => {
 
 ## Apply a repulsion force
 
-Use `Physics.applyRepulsionForceToPlayer()` to push the player away from a point in space, like an explosion or a force field. The force is stronger when the player is closer to the source, and weakens with distance based on the radius and falloff.
+Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away from a fixed point in space. This is suited for effects like a magnetic repulsion field, a force barrier, or a hovering object that keeps players at a distance. Unlike `applyKnockbackToPlayer()`, this force is recalculated every tick as the player moves. The magnitude weakens with distance based on the radius and falloff — see [Apply a knockback impulse](#apply-a-knockback-impulse) for the `KnockbackFalloff` options. A negative magnitude reverses the effect, continuously pulling the player toward the point like a vortex or gravity well.
 
 ```ts
 import { Physics, timers } from '@dcl/sdk/ecs'
@@ -196,7 +196,16 @@ timers.setTimeout(() => {
 
 ## Convert a local direction to world space
 
-Use `Transform.localToWorldDirection()` to convert a direction vector from an entity's local space into world space. This is useful when applying forces relative to a rotated entity — for example, pushing the player away from a specific face of a rotating obstacle.
+Use `Transform.localToWorldDirection()` to transform a direction vector from an entity's local coordinate space to world space, accounting for the full parent hierarchy. This is useful when applying forces relative to a rotated entity — for example, pushing the player away from a specific face of a rotating obstacle.
+
+| Parameter | Description |
+|---|---|
+| `entity` | The source entity whose local space defines the direction |
+| `localDirection` | Direction vector in the entity's local coordinates |
+
+Returns the direction vector in world coordinates.
+
+This applies **rotation only** — it does not account for translation or scale — making it directly suitable for direction vectors passed to force and impulse functions.
 
 ```ts
 import { Physics, Transform } from '@dcl/sdk/ecs'
@@ -206,8 +215,6 @@ import { Vector3 } from '@dcl/sdk/math'
 const worldDir = Transform.localToWorldDirection(myEntity, Vector3.create(0, 0, 1))
 Physics.applyImpulseToPlayer(worldDir, 20)
 ```
-
-This applies rotation only — it does not account for translation or scale — making it suitable for direction vectors passed to force and impulse functions.
 
 <!--
 ## Local vs world space

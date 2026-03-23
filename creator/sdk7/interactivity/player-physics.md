@@ -123,7 +123,7 @@ Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unl
 | `source` | An entity that identifies this force source — use it to update or remove the force later |
 | `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
 
-You must pass a **source entity** as the first argument. The source entity serves to have a way to refer back to this force, so you can update or remove it later. The position of the source entity is not relevant to the direction of the force. The force vector is always in **world space** — if you need a direction relative to a rotated entity, use `Transform.localToWorldDirection()` to convert it first (see [Convert a local direction to world space](#convert-a-local-direction-to-world-space)).
+The source entity's position is not relevant — it's only used as an identifier.
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -134,6 +134,8 @@ const windZoneEntity = engine.addEntity()
 // Push the player to the right continuously
 Physics.applyForceToPlayer(windZoneEntity, Vector3.create(10, 0, 0))
 ```
+
+The force vector is always in **world space**. If you need a direction relative to a rotated entity, use `Transform.localToWorldDirection()` to convert it first — see [Convert a local direction to world space](#convert-a-local-direction-to-world-space).
 
 As with `applyImpulseToPlayer()`, you can also pass a `direction` and `magnitude` separately — see [Apply an impulse](#apply-an-impulse):
 
@@ -213,10 +215,14 @@ triggerAreaEventsSystem.onTriggerExit(windTunnel, (result) => {
 
 Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away from a fixed point in space. This is suited for effects like a magnetic repulsion field, a force barrier, or a hovering object that keeps players at a distance. Unlike `applyKnockbackToPlayer()`, this force is recalculated every tick as the player moves. The magnitude weakens with distance based on the radius and falloff — see [Apply a knockback impulse](#apply-a-knockback-impulse) for the `KnockbackFalloff` options. A negative magnitude reverses the effect, continuously pulling the player toward the point like a vortex or gravity well.
 
+{% hint style="warning" %}
+**📔 Note**: The repulsion origin is the `fromPosition` vector you pass — **not** the position of the `source` entity. The `source` entity is only used as an identifier so you can update or remove the force later. Its position, rotation, and scale are completely ignored.
+{% endhint %}
+
 | Parameter | Description |
 |---|---|
-| `source` | An entity that identifies this force source — use it to update or remove the force later |
-| `fromPosition` | World-space origin of the repulsion |
+| `source` | An entity used as an identifier for this force — its position is not used |
+| `fromPosition` | The world-space point the player is pushed away from |
 | `magnitude` | Base force strength. Negative values attract instead of repel |
 | `radius` | Max distance of effect (default: `Infinity`) |
 | `falloff` | How magnitude decreases with distance (default: `CONSTANT`) |
@@ -228,12 +234,12 @@ import { Vector3 } from '@dcl/sdk/math'
 const repulsionSource = engine.addEntity()
 Transform.create(repulsionSource, { position: Vector3.create(8, 1, 8) })
 
-// Push the player away from position (8, 1, 8), up to 10 meters away
+// Pass the entity's position explicitly as the repulsion origin
 Physics.applyRepulsionForceToPlayer(
 	repulsionSource,
-	Vector3.create(8, 1, 8),  // origin of the repulsion
-	50,                         // magnitude
-	10,                         // radius of effect in meters
+	Transform.get(repulsionSource).position,  // repulsion origin — passed explicitly, not read automatically
+	50,                                         // magnitude
+	10,                                         // radius of effect in meters
 )
 
 // Remove force after half a second

@@ -14,7 +14,7 @@ There are two kinds of force you can apply:
 Both are applied through the `Physics` helper, imported from `@dcl/sdk/ecs`.
 
 {% hint style="warning" %}
-**📔 Note**: These forces only affect the local player's avatar. Other players see the changes on other player's positions, but the forces themselves aren not synced to other players in multiplayer. Each player's physics run locally on their own instance.
+**📔 Note**: These forces only affect the local player's avatar. Other players see the changes on other player's positions, but the forces themselves aren't synced to other players in multiplayer. Each player's physics run locally on their own instance.
 {% endhint %}
 
 ## Apply an impulse
@@ -106,7 +106,7 @@ Physics.applyKnockbackToPlayer(
 
 The `KnockbackFalloff` enum controls how the force decreases with distance:
 
-* `KnockbackFalloff.CONSTANT` — same force at any distance within the radius (default)
+* `KnockbackFalloff.CONSTANT` — same magnitude at any distance within the radius (default)
 * `KnockbackFalloff.LINEAR` — smooth linear decrease to 0 at the radius edge
 * `KnockbackFalloff.INVERSE_SQUARE` — sharp physically-realistic drop-off
 
@@ -120,7 +120,7 @@ Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unl
 
 | Parameter | Description |
 |---|---|
-| `source` | Entity key identifying this force source — use it to update or remove the force later |
+| `source` | An entity that identifies this force source — use it to update or remove the force later |
 | `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
 
 You must pass a **source entity** as the first argument. The source entity serves to have a way to refer back to this force, so you can update or remove it later. The position of the source entity is not relevant to the direction of the force. The force vector is always in **world space** — if you need a direction relative to a rotated entity, use `Transform.localToWorldDirection()` to convert it first (see [Convert a local direction to world space](#convert-a-local-direction-to-world-space)).
@@ -145,11 +145,11 @@ If you call `applyForceToPlayer()` again with the same source entity, it replace
 
 ### Remove a continuous force
 
-To stop applying a force, call `Physics.removeForceFromPlayer()` with a reference to the source entity that was used to create the force. This is a no-op if that source is not currently registered.
+To stop applying a force, call `Physics.removeForceFromPlayer()` with a reference to the source entity that was used to create the force. If the entity isn't currently applying a force, this call is safely ignored.
 
 | Parameter | Description |
 |---|---|
-| `source` | Entity key identifying the force source to remove |
+| `source` | The entity used when the force was applied |
 
 ```ts
 Physics.removeForceFromPlayer(windZoneEntity)
@@ -162,15 +162,9 @@ Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific am
 
 | Parameter | Description |
 |---|---|
-| `source` | Entity key identifying this force source |
+| `source` | An entity that identifies this force source |
 | `duration` | How long the force lasts, in seconds |
 | `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
-
-The `direction` + `magnitude` overload is also available — see [Apply an impulse](#apply-an-impulse):
-
-```ts
-Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 15)
-```
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -180,6 +174,12 @@ const gustEntity = engine.addEntity()
 
 // Apply a strong upward force for 1.5 seconds
 Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 15, 0))
+```
+
+The `direction` + `magnitude` overload is also available — see [Apply an impulse](#apply-an-impulse):
+
+```ts
+Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 15)
 ```
 
 ### Wind zone example
@@ -215,7 +215,7 @@ Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away
 
 | Parameter | Description |
 |---|---|
-| `source` | Entity key identifying this force source — use it to update or remove the force later |
+| `source` | An entity that identifies this force source — use it to update or remove the force later |
 | `fromPosition` | World-space origin of the repulsion |
 | `magnitude` | Base force strength. Negative values attract instead of repel |
 | `radius` | Max distance of effect (default: `Infinity`) |
@@ -225,12 +225,12 @@ Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away
 import { Physics, timers } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
-const explosionSource = engine.addEntity()
-Transform.create(explosionSource, { position: Vector3.create(8, 1, 8) })
+const repulsionSource = engine.addEntity()
+Transform.create(repulsionSource, { position: Vector3.create(8, 1, 8) })
 
 // Push the player away from position (8, 1, 8), up to 10 meters away
 Physics.applyRepulsionForceToPlayer(
-	explosionSource,
+	repulsionSource,
 	Vector3.create(8, 1, 8),  // origin of the repulsion
 	50,                         // magnitude
 	10,                         // radius of effect in meters
@@ -238,7 +238,7 @@ Physics.applyRepulsionForceToPlayer(
 
 // Remove force after half a second
 timers.setTimeout(() => {
-    Physics.removeForceFromPlayer(explosionSource)
+    Physics.removeForceFromPlayer(repulsionSource)
 }, 500)
 ```
 

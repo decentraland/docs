@@ -28,7 +28,7 @@ import { Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 // Launch the player straight up
-Physics.applyImpulseToPlayer(Vector3.create(0, 20, 0))
+Physics.applyImpulseToPlayer(Vector3.create(0, 50, 0))
 ```
 
 You can also pass a direction and a magnitude separately. In this case, the direction vector is normalized automatically:
@@ -40,8 +40,8 @@ You can also pass a direction and a magnitude separately. In this case, the dire
 import { Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
-// Launch the player upward with a magnitude of 20
-Physics.applyImpulseToPlayer(Vector3.create(0, 1, 0), 20)
+// Launch the player upward with a magnitude of 50
+Physics.applyImpulseToPlayer(Vector3.create(0, 1, 0), 50)
 ```
 
 If you call `applyImpulseToPlayer()` multiple times within the same frame, the impulses are accumulated — they are added together and applied as a single combined impulse.
@@ -61,7 +61,7 @@ TriggerArea.setBox(launchPad, ColliderLayer.CL_PLAYER)
 
 triggerAreaEventsSystem.onTriggerEnter(launchPad, (result) => {
 	if (result.trigger?.entity !== engine.PlayerEntity) return
-	Physics.applyImpulseToPlayer(Vector3.create(0, 25, 0))
+	Physics.applyImpulseToPlayer(Vector3.create(0, 50, 0))
 })
 ```
 
@@ -132,7 +132,7 @@ The force vector is always in **world space**. If you need a direction relative 
 As with `applyImpulseToPlayer()`, you can also pass a `direction` and `magnitude` separately — see [Apply an impulse](#apply-an-impulse):
 
 ```ts
-Physics.applyForceToPlayer(windZoneEntity, Vector3.create(0, 1, 0), 10)
+Physics.applyForceToPlayer(windZoneEntity, Vector3.create(0, 1, 0), 50)
 ```
 
 If you call `applyForceToPlayer()` again with the same source entity, it replaces the previous force from that source. If multiple force sources are accumulated their vectors are summed each tick.
@@ -163,13 +163,13 @@ import { Vector3 } from '@dcl/sdk/math'
 const gustEntity = engine.addEntity()
 
 // Apply a strong upward force for 1.5 seconds
-Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 15, 0))
+Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 50, 0))
 ```
 
 The `direction` + `magnitude` overload is also available — see [Apply an impulse](#apply-an-impulse):
 
 ```ts
-Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 15)
+Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 50)
 ```
 
 ### Wind zone example
@@ -190,7 +190,7 @@ TriggerArea.setBox(windTunnel, ColliderLayer.CL_PLAYER)
 
 triggerAreaEventsSystem.onTriggerEnter(windTunnel, (result) => {
 	if (result.trigger?.entity !== engine.PlayerEntity) return
-	Physics.applyForceToPlayer(windTunnel, Vector3.create(0, 8, 0))
+	Physics.applyForceToPlayer(windTunnel, Vector3.create(15, 0, 0))  // push sideways along X axis
 })
 
 triggerAreaEventsSystem.onTriggerExit(windTunnel, (result) => {

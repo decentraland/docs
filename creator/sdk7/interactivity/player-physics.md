@@ -21,9 +21,7 @@ Both are applied through the `Physics` helper, imported from `@dcl/sdk/ecs`.
 
 Use `Physics.applyImpulseToPlayer()` to give the player a one-shot push in a given direction.
 
-| Parameter | Description |
-|---|---|
-| `vector` | Direction and strength combined — the length of the vector encodes the impulse magnitude |
+* `vector`: Direction and strength combined — the length of the vector encodes the impulse magnitude.
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -35,10 +33,8 @@ Physics.applyImpulseToPlayer(Vector3.create(0, 20, 0))
 
 You can also pass a direction and a magnitude separately. In this case, the direction vector is normalized automatically:
 
-| Parameter | Description |
-|---|---|
-| `direction` | Direction to push — normalized automatically before scaling |
-| `magnitude` | Impulse strength |
+* `direction`: Direction to push — normalized automatically before scaling.
+* `magnitude`: Impulse strength.
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -85,12 +81,10 @@ Physics.applyKnockbackToPlayer(explosionPosition, 40)
 
 You can limit the area of effect with a `radius`, and control how magnitude decreases with distance using the `KnockbackFalloff` option:
 
-| Parameter | Description |
-|---|---|
-| `fromPosition` | World-space origin of the knockback (explosion center, enemy position, etc.) |
-| `magnitude` | Base impulse strength |
-| `radius` | Max distance of effect (default: `Infinity`) |
-| `falloff` | How magnitude decreases with distance (default: `CONSTANT`) |
+* `fromPosition`: World-space origin of the knockback (explosion center, enemy position, etc.).
+* `magnitude`: Base impulse strength.
+* `radius`: Max distance of effect (default: `Infinity`).
+* `falloff`: How magnitude decreases with distance (default: `CONSTANT`).
 
 ```ts
 import { Physics, KnockbackFalloff } from '@dcl/sdk/ecs'
@@ -118,10 +112,8 @@ The same `KnockbackFalloff` values are available for `applyRepulsionForceToPlaye
 
 Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unlike an impulse, this force is applied every tick as long as it remains active.
 
-| Parameter | Description |
-|---|---|
-| `source` | An entity that identifies this force source — use it to update or remove the force later |
-| `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
+* `source`: An entity that identifies this force source — use it to update or remove the force later.
+* `vector`: Direction and strength combined — the length of the vector encodes the force magnitude.
 
 The source entity's position is not relevant — it's only used as an identifier.
 
@@ -149,9 +141,7 @@ If you call `applyForceToPlayer()` again with the same source entity, it replace
 
 To stop applying a force, call `Physics.removeForceFromPlayer()` with a reference to the source entity that was used to create the force. If the entity isn't currently applying a force, this call is safely ignored.
 
-| Parameter | Description |
-|---|---|
-| `source` | The entity used when the force was applied |
+* `source`: The entity used when the force was applied.
 
 ```ts
 Physics.removeForceFromPlayer(windZoneEntity)
@@ -162,11 +152,9 @@ Physics.removeForceFromPlayer(windZoneEntity)
 
 Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific amount of time. The duration is in seconds. The force is automatically removed when the time elapses. Calling this again with the same source entity resets the timer.
 
-| Parameter | Description |
-|---|---|
-| `source` | An entity that identifies this force source |
-| `duration` | How long the force lasts, in seconds |
-| `vector` | Direction and strength combined — the length of the vector encodes the force magnitude |
+* `source`: An entity that identifies this force source.
+* `duration`: How long the force lasts, in seconds.
+* `vector`: Direction and strength combined — the length of the vector encodes the force magnitude.
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -219,13 +207,11 @@ Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away
 **📔 Note**: The repulsion origin is the `fromPosition` vector you pass — **not** the position of the `source` entity. The `source` entity is only used as an identifier so you can update or remove the force later. Its position, rotation, and scale are completely ignored.
 {% endhint %}
 
-| Parameter | Description |
-|---|---|
-| `source` | An entity used as an identifier for this force — its position is not used |
-| `fromPosition` | The world-space point the player is pushed away from |
-| `magnitude` | Base force strength. Negative values attract instead of repel |
-| `radius` | Max distance of effect (default: `Infinity`) |
-| `falloff` | How magnitude decreases with distance (default: `CONSTANT`) |
+* `source`: An entity used as an identifier for this force — its position is not used.
+* `fromPosition`: The world-space point the player is pushed away from.
+* `magnitude`: Base force strength. Negative values attract instead of repel.
+* `radius`: Max distance of effect (default: `Infinity`).
+* `falloff`: How magnitude decreases with distance (default: `CONSTANT`).
 
 ```ts
 import { Physics, timers } from '@dcl/sdk/ecs'
@@ -253,10 +239,8 @@ timers.setTimeout(() => {
 
 Use `Transform.localToWorldDirection()` to transform a direction vector from an entity's local coordinate space to world space, accounting for the full parent hierarchy. This is useful when applying forces relative to a rotated entity — for example, pushing the player away from a specific face of a rotating obstacle.
 
-| Parameter | Description |
-|---|---|
-| `entity` | The source entity whose local space defines the direction |
-| `localDirection` | Direction vector in the entity's local coordinates |
+* `entity`: The source entity whose local space defines the direction.
+* `localDirection`: Direction vector in the entity's local coordinates.
 
 Returns the direction vector in world coordinates.
 

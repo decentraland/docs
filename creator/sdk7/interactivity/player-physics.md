@@ -56,7 +56,8 @@ Transform.create(launchPad, { position: Vector3.create(8, 0, 8) })
 MeshRenderer.setBox(launchPad)
 TriggerArea.setBox(launchPad, ColliderLayer.CL_PLAYER)
 
-triggerAreaEventsSystem.onTriggerEnter(launchPad, () => {
+triggerAreaEventsSystem.onTriggerEnter(launchPad, (result) => {
+	if (result.trigger?.entity !== engine.PlayerEntity) return
 	Physics.applyImpulseToPlayer(Vector3.create(0, 25, 0))
 })
 ```
@@ -90,7 +91,7 @@ Physics.removeForceFromPlayer(windZoneEntity)
 
 ### Apply a force for a limited duration
 
-Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific amount of time. The duration is in milliseconds. The force is automatically removed when the time elapses.
+Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific amount of time. The duration is in seconds. The force is automatically removed when the time elapses.
 
 ```ts
 import { Physics } from '@dcl/sdk/ecs'
@@ -99,7 +100,7 @@ import { Vector3 } from '@dcl/sdk/math'
 const gustEntity = engine.addEntity()
 
 // Apply a strong upward force for 1.5 seconds
-Physics.applyForceToPlayerForDuration(gustEntity, Vector3.create(0, 15, 0), 1500)
+Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 15, 0))
 ```
 
 ### Wind zone example
@@ -118,11 +119,13 @@ Transform.create(windTunnel, {
 MeshRenderer.setBox(windTunnel)
 TriggerArea.setBox(windTunnel, ColliderLayer.CL_PLAYER)
 
-triggerAreaEventsSystem.onTriggerEnter(windTunnel, () => {
+triggerAreaEventsSystem.onTriggerEnter(windTunnel, (result) => {
+	if (result.trigger?.entity !== engine.PlayerEntity) return
 	Physics.applyForceToPlayer(windTunnel, Vector3.create(0, 8, 0))
 })
 
-triggerAreaEventsSystem.onTriggerExit(windTunnel, () => {
+triggerAreaEventsSystem.onTriggerExit(windTunnel, (result) => {
+	if (result.trigger?.entity !== engine.PlayerEntity) return
 	Physics.removeForceFromPlayer(windTunnel)
 })
 ```
@@ -147,8 +150,8 @@ Physics.applyRepulsionForceToPlayer(
 )
 
 // Remove force after half a second
-timers.setTimeout(()=>{
-    Physics.removeForceFromPlayer(this.entity)
+timers.setTimeout(() => {
+    Physics.removeForceFromPlayer(explosionSource)
 }, 500)
 ```
 

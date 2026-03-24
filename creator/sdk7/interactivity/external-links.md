@@ -46,6 +46,9 @@ Players are presented a confirmation screen before they are teleported, this scr
 
 The player will spawn in one of the spawn points of the scene in that world, regardless of their current coordinates on the map.
 
+To send a player back to Genesis City from a world, use `changeRealm` setting the `realm` field to _'https://realm-provider-ea.decentraland.org/main'_.
+
+
 ## External links
 
 To add a link to an external website, use the `openExternalUrl()` command.

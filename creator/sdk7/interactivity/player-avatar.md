@@ -347,8 +347,10 @@ For reference, here are the default values for those properties:
 - `walkSpeed`: 1.5 m/s
 - `jogSpeed`: 8 m/s
 - `runSpeed`: 10 m/s
+- `glideSpeed`: 6 m/s
 - `jumpHeight`: 1 m
 - `runJumpHeight`: 1.5 m
+- `doubleJump`: 2 m
 - `hardLandingCooldown`: 0.75 s
 
 {% hint style="info" %}

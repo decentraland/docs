@@ -34,10 +34,10 @@ Everything you need to know to show up, hang out, and be part of Decentraland.
 
 ### 🎨 Create
 
-* [Creating content and monetizing your work](../creator/README.md)
- * [Creating Wearables](../creator/wearables-and-emotes/wearables/creating-wearables.md)
- * [Creating Emotes](../creator/wearables-and-emotes/emotes/creating-emotes.md)
- * [Creating Scenes](../creator/scene-editor/get-started/scene-editor-essentials.md)
+* [Creating content and monetizing your work](https://docs.decentraland.org/creator)
+ * [Creating Wearables](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/creating-wearables)
+ * [Creating Emotes](https://docs.decentraland.org/creator/wearables-and-emotes/emotes/creating-emotes)
+ * [Creating Scenes](https://docs.decentraland.org/creator/scene-editor/get-started/scene-editor-essentials)
 
 
 ### 🏛️ The Community & Governance

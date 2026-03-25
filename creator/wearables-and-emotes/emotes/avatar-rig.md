@@ -84,7 +84,7 @@ In inverse kinematics, or IK, the child in the hierarchy can influence the movem
 
 ![](../../images/emotes/IK.png)
 
-_Direction of movement in hierarchy._
+_Direction of movement in hierarchy._ 
 
 ![](../../images/emotes/IK_last.gif)
 

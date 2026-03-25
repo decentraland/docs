@@ -12,7 +12,7 @@ Make sure of the following:
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 *   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
-    \{% hint style="warning" %\} **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels. \{% endhint %\}
+{% hint style="warning" %} **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels. {% endhint %}
 
 {% hint style="danger" %}
 **❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
@@ -101,6 +101,21 @@ Keep the following in mind:
 * The wallet signing the deployment must own the NAME specified in the `scene.json` file
 * The scene has no parcel limitations (since January 2023)
 * All Worlds are automatically listed on the Places page unless you opt out as detailed below
+
+### Multi-scene worlds
+
+By default, when deploying to a world via the CLI your scene will be treated as a single-scene world. If your world already contains a scene, deploying a new scene will overwrite that older scene, even if the coordinates are different.
+
+To deploy as a multi-scene world, add the paramter `--multi-scene` to the deploy command:
+
+`npm run deploy -multi-scene`
+
+When using this paramter, if the scene you're publishing has different coordinates from existing scenes in that world, these scenes will all exist together.
+
+{% hint style="warning" %} **📔 Note**: If you have operator rights to a world you don't own, and are given rights only on specific parcels of that world, then you will only be able to publish to those parcels and won't be able to affect content on other parcels of the world.
+{% endhint %}
+
+
 
 ### Opt-out from Places listing
 

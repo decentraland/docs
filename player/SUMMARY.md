@@ -20,12 +20,12 @@
 ## In-World
 
 * [Overview](decentraland-in-world/overview.md)
-* [Exploring](decentraland-in-world/exploring.md)
-* [Customizing Your Avatar](decentraland-in-world/customizing-your-avatar.md)
 * [Finding Events](decentraland-in-world/finding-events.md)
-* [Earning Rewards](decentraland-in-world/earning-rewards.md)
 * [Friends & Chatting](decentraland-in-world/friends-and-chatting.md)
+* [Customizing Your Avatar](decentraland-in-world/customizing-your-avatar.md)
 * [Your Profile](decentraland-in-world/your-profile.md)
+* [Earning Rewards](decentraland-in-world/earning-rewards.md)
+* [Exploring](decentraland-in-world/exploring.md)
 * [Settings & Performance](decentraland-in-world/settings-and-performance.md)
 * [Shortcuts & Chat Commands](decentraland-in-world/shortcuts-and-chat-commands.md)
 

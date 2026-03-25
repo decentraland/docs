@@ -31,11 +31,11 @@ You can find a more detailed explanation of the animation specifications [**belo
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
-[Decentraland Blender Rig](/images/emotes/Avatar_File.blend)
+[Decentraland Blender Rig](../images/emotes/Avatar_File.blend)
 
-{{< hint info >}}
+{% hint style="info" %}
 If you're using Maya you can download this [Maya Rig](/images/emotes/DCL_Maya_Rig.ma) and [picker](/images/emotes/emoteAvatar.pkr) provided by [SparkleStudios](https://www.sparkles.studio/) ❤️.
-{{< /hint >}}
+{% endhint %}
 
 # **Before Starting**
 
@@ -66,15 +66,15 @@ In the rig file, other than the two windows for the viewport (front and side vie
 With this workspace, you have everything needed to start animating!
 
 
-<img src="/images/emotes/workspace.png" width="100%" style="margin:30px 0;" />
+![](../images/emotes/workspace.png)
 
 These are the bottom windows. The top one is in the _**Graph Editor,**_ the middle one in the _**Dope Sheet,**_ and the bottom one is the _**Timeline.**_ The top red arrow shows the _**Only Show Selected**_ tool and the bottom one shows the _**Auto Keying**_.
 
-{{< hint info >}}
+{% hint style="info" %}
 **💡 Hint!**
 
 Since Blender is highly customizable, this is also a good time to set up the layout that best suits you, adding, adjusting, or removing windows. Each animator has their own preferences, so feel free to edit the layout however you want!
-{{< /hint >}}
+{% endhint %}
 
 # Getting Started
 
@@ -82,12 +82,12 @@ Since Blender is highly customizable, this is also a good time to set up the lay
 
 In the rig file provided, there’s already an action, the _**Starting_Pose**_. Considering that all avatar actions start from the idle pose, **we really encourage starting your animation from that pose and also using it again in the last frame**. This will make for a better transition from Idle to Emote and a more fluid animation.
 
-{{< hint info >}}
+{% hint style="info" %}
 **💡 Hint!**
 
 If you want to do a loop animation, you don’t have to start the animation from the Starting Pose. Feel free to use the pose that makes more sense in your animation!\*\*
 
-{{< /hint >}}
+{% endhint %}
 
 **Animation Area** 
 
@@ -98,34 +98,33 @@ In the provided avatar file, you will find a collection called ***Animation_Area
 - Root_Animation_Area is a cylinder that defines the area where you can move the avatar root/center of gravity (CTRL_Avatar_UpperBody or Avatar_Hips). The cylinder is 4 meters high, which means the root can go all the way up as long as no mesh is outside of the bounding box. Avatar legs, arms and other body parts can be outside of the cylinder, as long as they are never outside of the Animation_Area_Reference.
 
 
-![Animation area reference.](/images/emotes/Animation_area.png)
+![Animation area reference.](../images/emotes/Animation_area.png)
 
 To summarize, avatar can move right, left, front amd back and long as the root stays within the cylinder, which means 1 meter in any of the four directions.
 
-
-![Avatar movement.](/images/emotes/avatar_movement.gif)
+![Avatar movement.](../images/emotes/avatar_movement.gif)
 
 As for the height, it can go all the way up (max 4 meters) as long as the avatar stays within the bounding box.  Below are some cases on avatar height done right (whole body within bounding box) and some  done wrong (mesh outside of bounding box).
 
-| ![](/images/emotes/height_right_1.png) | ![](/images/emotes/height_right_2.png) |
+| ![](../images/emotes/height_right_1.png) | ![](../images/emotes/height_right_2.png) |
 |-----------------------------------------|---------------------------------------------|
 
-| ![](/images/emotes/height_right_3.png)   | ![](/images/emotes/height_wrong_1.png)   |
+| ![](../images/emotes/height_right_3.png)   | ![](../images/emotes/height_wrong_1.png)   |
 |-----------------------------------------|---------------------------------------------|
 
 
-![](/images/emotes/height_wrong_2.png)
+![](../images/emotes/height_wrong_2.png)
 
 Here are some examples of emotes that are within the animation area boundaries.
 
-| ![](/images/emotes/whack-a-frog.gif) | ![](/images/emotes/love-grenade.gif) |
+| ![](../images/emotes/whack-a-frog.gif) | ![](../images/emotes/love-grenade.gif) |
 |-----------------------------------------|---------------------------------------------|
 
-{{< hint info >}}
+{% hint style="info" %}
 **💡 Attention!**
 
 Watch out for these boundaries because crossing them might cause gameplay issues.
-{{< /hint >}}
+{% endhint %}
 
 # **Creating an Animation**
 
@@ -135,29 +134,32 @@ On the *Browse Action* section, simply click on ***Create A New Action*** button
 
 Belnder 4.4 introduced *Slotted Actions*, the icon to the right of the *Browse Action* section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar_Animation.
 
-<img src="/images/emotes/duplicating_animation.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/duplicating_animation.gif)
+
 Create a new animation by duplicating the existing one or by clicking on _**Unlink Action**_ and then _**New**_.
 
 ## **Browsing and Deleting Animations**
 
 In Blender, you can have multiple animation tracks in the same file. It is possible to browse them by clicking on the Browse Action dropdown menu. All animation with and F (Fake User) will be saved. To delete an animation, press Shift on the keyboard and click on the X. After doing that, the animation will show a 0 next to it, which means that it will be deleted the next time you close Blender or re-open the file.
 
-<img src="/images/emotes/deleting_animation.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/deleting_animation.gif)
+
 Browsing animations: The ones with an F will be saved, and the ones with 0 will be deleted.
 
 Another way of deleting animations without having to reload Blender is by changing the Display Mode  from View Layer to Blender File. Expand Actions and delete any unwanted animation by right clicking on them and selecting Delete.
 
-<img src="/images/emotes/deleting_animation2.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/deleting_animation2.gif)
 
 You can delete animations directly from Blender File under Display Mode in the outliner.
 
-{{< hint info >}}
+{% hint style="info" %}
 **💡 Hint!**
 
 Do not always edit the same animation track. Before making major changes, just duplicate the animation. That way you have a back up version in case you regret deleting or changing something. This is also a nice way to keep track of the progress made so far!
-{{< /hint >}}
+{% endhint %}
 
-<img src="/images/emotes/duplicating_animation2.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/duplicating_animation2.gif)
+
 Duplicating animation clips.
 
 ## **Naming**
@@ -173,13 +175,13 @@ Duplicating animation clips.
 
 Emote overrides happen when deform bones don’t have a keyframe set in one of the parameters. Without a keyframe, that bone won’t have the information of where it should be, how much it has been rotated and scaled, leaving that channel open. The consequence is that if you play an emote in world and then trigger yours while the previous one was still playing, the information of location, rotation and scale will be overridden by the previous emote, which will cause a combination of them both. Unless this is done in purpose, it will affect your animation, sometimes with a fun result, but others with completely messed up the emote. Below is an example of an emote override.
 
-<img src="/images/wearables-and-emotes/creating-emotes/01_emote_override.gif" width="400" />
+![](../images//wearables-and-emotes/creating-emotes/01_emote_override.gif)
 
 To avoid that, select all layers with bones in them (which can be found in **_Object Data Properties_** > **_Skeleton_** > **_Layers_**). Then, in **_Pose Mode_**, leave the timeline cursor in the first frame of your animation and, with your mouse in **_Viewport Display_**, press **_A_** to select everything. In the **_Graph Editor_**, click twice on the **_Eye_** icon next to the armature channel to make all channels visible. With all bones selected, press **_I_** to set a keyframe. Do the same for the last frame.
 
 **Make sure to select the deform bones, this is especially important!** The deform bones can be found in the last bottom layer and are shown as green bones in the **_Viewport_**.
 
-<img src="/images/emotes/keyframe_bones.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/keyframe_bones.gif)
 Setting keyframes on all bones in the first and last frames prevents emote overrides.
 
 # **The Animation Specifications**
@@ -188,11 +190,11 @@ Setting keyframes on all bones in the first and last frames prevents emote overr
 
 The max length of an animation is **10 seconds** or **300 frames**. Remember to keyframe every control’s properties on the first and last frames.
 
-{{< hint warning >}}
+{% hint style="warning" %}
 ⚠️ Channels with visibility turned off in the Graph Editor won’t be keyframed, deleted, or even shown in the Action Editor. Unless it was intentionally done that way, pay extra attention to the visibility.
-{{< /hint >}}
+{% endhint %}
 
-<img src="/images/emotes/channel_visibility.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/channel_visibility.gif)
 
 Make channels visible before keyframing!
 
@@ -214,11 +216,11 @@ The drawback, however, is that the animation will start getting less and less fl
 
 Usually, a **sampling rate of 2 or 3** will do the trick. Those numbers can optimize the animation without compromising the quality.
 
-{{< hint info >}}
+{% hint style="info" %}
 **💡 Hint!**
 
 If the number of frames of the animation can be divided by the sampling rate, that’s a good thing! It means that the final frame will be baked, preserving the transition from end to start of the animation.
-{{< /hint >}}
+{% endhint %}
 
 ## **File Size**
 
@@ -230,22 +232,22 @@ If the emote contains any additional 3D models, the textures in these models can
 
 Since we only want the armature and the animation to be exported, turn off the mesh visibility and any object other than the armature before exporting, as shown below:
 
-<img src="/images/emotes/mesh_visibility.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/mesh_visibility.gif)
 
 Turn off the mesh visibility before exporting!
 
 To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 
-<img src="/images/emotes/export_gltf.gif" width="100%" style="margin:30px 0;" />
+![](../images/emotes/export_gltf.gif)
 
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 
-| ![](/images/emotes/export_settings.png) | ![](/images/emotes/export_settings_GIF.gif) |
+| ![](../images/emotes/export_settings.png) | ![](../images/emotes/export_settings_GIF.gif) |
 |-----------------------------------------|---------------------------------------------|
 
 If you need to sample the animation, expand the Animation tab, expand Sampling Animations and choose the number of samples wanted. 
 
-| ![](/images/emotes/sampling_rate.png)   | ![](/images/emotes/sampling_rate_GIF.gif)   |
+| ![](../images/emotes/sampling_rate.png)   | ![](../images/emotes/sampling_rate_GIF.gif)   |
 |-----------------------------------------|---------------------------------------------|
 
 That’s it for exporting the animation!

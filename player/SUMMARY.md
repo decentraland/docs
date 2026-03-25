@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome Player](README.md)
+* [Welcome](README.md)
 
 ## Introduction
 

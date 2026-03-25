@@ -20,7 +20,11 @@ Even though a rig is not an exact replica of the human skeleton, it is good prac
 
 The orientation of bones will define in which direction they’ll rotate, like positive X, negative Z, etc. They can be set up in many different ways as long as it’s consistent through the whole rig. For example, if the X axis is chosen for the bending forward motion of the spine, it makes sense that the same set up is used for the legs. The orientation is also important because it’ll affect mirroring behavior. That means that, usually, the right side orientation is the mirrored version of the left side’s and vice versa.
 
+![](../../images/emotes/boneAxis.gif)
+
 _Turn on the axes to show bone orientation._
+
+![](../../images/emotes/boneorientation.gif)
 
 _The axes are the directions in which the bone will rotate._
 
@@ -30,13 +34,19 @@ Deforming bones are the ones that will deform the mesh, they are responsible for
 
 Non-deforming bones are the ones that won’t deform the mesh, but they are still necessary in a robust rig and are used for the setup for [IKs, FKs](avatar-rig.md#what’s-FK-and-IK-in-a-rig) and other custom properties. Examples for non-deforming bones are controls, IK and FK bones, foot setup bones. These shouldn’t be exported, they are only used for animation purposes.
 
+![](../../images/emotes/DeformationBones.png)
+
 _Deforming bones._
+
+![](../../images/emotes/NonDeformationBones.png)
 
 _Non-deforming bones._
 
 {% hint style="warning" %}
 ⚠️ **Attention!** **Do not edit the base skeleton at all!**
 {% endhint %}
+
+![](../../images/emotes/BaseSkeleton.png)
 
 _The base skeleton._
 
@@ -48,7 +58,7 @@ Controls are basically non-deforming bones, which means they will not affect the
 
 It’s also important to notice that it’s not possible to use the controls setup in a software different from the one it was originally done in. Each software has its own logic and it’s not possible to export constraints.
 
-&#x20;\_Controls and their different shapes and colors.\_
+![](../../images/emotes/RigControls.png) \_Controls and their different shapes and colors.\_
 
 {% hint style="warning" %}
 ⚠️ **Warning**: The rig has to be animated in the same software it was created in. It's not possible to use a Blender setup in, for example, Maya and vice versa.
@@ -64,12 +74,18 @@ In the forward kinematics, or FK, the parent in the hierarchy moves all the chil
 
 _Direction of movement in the hierarchy._
 
+![](../../images/emotes/FK_GIF.gif)
+
 _In FK, each bone has to be rotated individually._
 
 #### IK - Inverse Kinematics
 
 In inverse kinematics, or IK, the child in the hierarchy can influence the movement of its parents. In this case, taking the arm as an example again, when the hand is moved around, the rest of the arm will follow the motion. It also means that no matter how the shoulder moves, the hand will maintain its position. In this setup, a pole vector/pole target will control in which direction the bones will bend. Legs are usually in IK and that’s essential for the feet to stick to ground level while animating.
 
+![](../../images/emotes/IK.png)
+
 _Direction of movement in hierarchy._
+
+![](../../images/emotes/IK_last.gif)
 
 _In IK, the hand will move all the arm and also maintain it’s position. The pole target drives the direction in which the elbow bends._

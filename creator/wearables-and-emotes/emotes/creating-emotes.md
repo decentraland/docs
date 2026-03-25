@@ -97,13 +97,11 @@ In the provided avatar file, you will find a collection called ***Animation_Area
 - Ground_Reference is a plane provided to help checking if there’s ground penetration during the animation. It also contains important info: the smaller circle, which has a diameter of 2 meters, defines the area where the avatar root can be moved. That means that, while on the ground, the avatar can only move 1 meter in each direction: front, back, left and right.
 - Root_Animation_Area is a cylinder that defines the area where you can move the avatar root/center of gravity (CTRL_Avatar_UpperBody or Avatar_Hips). The cylinder is 4 meters high, which means the root can go all the way up as long as no mesh is outside of the bounding box. Avatar legs, arms and other body parts can be outside of the cylinder, as long as they are never outside of the Animation_Area_Reference.
 
-<img src="/images/emotes/Animation_area.png" width="100%" style="margin:30px 0;" />
 
 ![Animation area reference.](/images/emotes/Animation_area.png)
 
 To summarize, avatar can move right, left, front amd back and long as the root stays within the cylinder, which means 1 meter in any of the four directions.
 
-<img src="/images/emotes/avatar_movement.gif" width="100%" style="margin:30px 0;" />
 
 ![Avatar movement.](/images/emotes/avatar_movement.gif)
 
@@ -115,7 +113,8 @@ As for the height, it can go all the way up (max 4 meters) as long as the avatar
 | ![](/images/emotes/height_right_3.png)   | ![](/images/emotes/height_wrong_1.png)   |
 |-----------------------------------------|---------------------------------------------|
 
-<img src="/images/emotes/height_wrong_2.png" width="100%" style="margin:30px 0;" />
+
+![](/images/emotes/height_wrong_2.png)
 
 Here are some examples of emotes that are within the animation area boundaries.
 

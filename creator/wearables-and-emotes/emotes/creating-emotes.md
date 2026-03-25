@@ -118,7 +118,7 @@ As for the height, it can go all the way up (max 4 meters) as long as the avatar
 
 Here are some examples of emotes that are within the animation area boundaries.
 
-| ![](/images/emotes/whack-a-frog.gif) | ![](/images/emotes/;ove-grenade.gif) |
+| ![](/images/emotes/whack-a-frog.gif) | ![](/images/emotes/love-grenade.gif) |
 |-----------------------------------------|---------------------------------------------|
 
 {{< hint info >}}

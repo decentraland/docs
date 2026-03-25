@@ -131,6 +131,7 @@
   * [External Links](sdk7/interactivity/external-links.md)
   * [NPC Avatars](sdk7/interactivity/npc-avatars.md)
   * [Player Avatar](sdk7/interactivity/player-avatar.md)
+  * [Player Physics](sdk7/interactivity/player-physics.md)
   * [Raycasting](sdk7/interactivity/raycasting.md)
   * [Runtime Data](sdk7/interactivity/runtime-data.md)
   * [Skybox Control](sdk7/interactivity/skybox-control.md)

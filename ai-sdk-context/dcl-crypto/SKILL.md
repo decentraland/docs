@@ -651,7 +651,7 @@ function setupDoor() {
 		position: Vector3.create(8, 1, 8),
 		rotation: Quaternion.fromEulerDegrees(0, 0, 0),
 	})
-	GltfContainer.create(doorEntity, { src: 'models/door.glb' })
+	GltfContainer.create(doorEntity, { src: 'assets/scene/Models/door.glb' })
 }
 
 function checkAccess() {

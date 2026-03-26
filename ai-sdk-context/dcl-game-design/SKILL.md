@@ -1,6 +1,6 @@
 ---
 name: dcl-game-design
-description: "Assists with Decentraland game design and scene optimization when the user mentions game design, scene optimization, performance, scene limits, parcel limits, triangle counts, entity limits, draw calls, pre-loading, asset loading, UX design, MVP planning, game loop design, or continuous world design."
+description: 'Assists with Decentraland game design and scene optimization when the user mentions game design, scene optimization, performance, scene limits, parcel limits, triangle counts, entity limits, draw calls, pre-loading, asset loading, UX design, MVP planning, game loop design, or continuous world design.'
 ---
 
 # Decentraland Game Design & Scene Optimization
@@ -11,7 +11,7 @@ Decentraland is a **continuous, shared 3D world**. Design around these constrain
 
 - **No startup screen**: The scene is always live. Players walk in from adjacent parcels — there is no splash screen, no "press start." Your scene must be meaningful the instant a player arrives.
 - **No forced endings**: You cannot force a "game over" state. Players can leave at any time by walking away or teleporting. Design loops that accommodate drop-in / drop-out naturally.
-- **Cannot remove players**: There is no API to eject a player from a scene. You can teleport a player, but only with their consent (they must accept the prompt). Design around misbehaving players with game mechanics, not eviction.
+- **Cannot remove players**: There is no API to eject a player from a scene. You can teleport a player, but only within the existing scene. If you're teleporting outside the scene, you can only do it with their consent (they must accept the prompt). Design around misbehaving players with game mechanics, not eviction. If the scene has admin players, admins are able to ban other players from the scene manually.
 - **Boundary awareness**: Players standing outside your parcel can see into it. Your scene is always on display. Neighboring scenes are visible too — consider visual harmony.
 - **Shared space**: Multiple players are always potentially present. Even a "single-player" puzzle is witnessed by others. Embrace or account for this.
 
@@ -19,26 +19,28 @@ Decentraland is a **continuous, shared 3D world**. Design around these constrain
 
 All limits scale with parcel count `n`. Know these formulas and design within them.
 
-| Resource | Formula | 1 parcel | 2 parcels | 4 parcels | 9 parcels | 16 parcels |
-|---|---|---|---|---|---|---|
-| **Triangles** | n x 10,000 | 10,000 | 20,000 | 40,000 | 90,000 | 160,000 |
-| **Entities** | n x 200 | 200 | 400 | 800 | 1,800 | 3,200 |
-| **Physics bodies** | n x 300 | 300 | 600 | 1,200 | 2,700 | 4,800 |
-| **Materials** | log2(n+1) x 20 | 20 | 31 | 46 | 66 | 81 |
-| **Textures** | log2(n+1) x 10 | 10 | 15 | 23 | 33 | 40 |
-| **Height limit** | log2(n+1) x 20m | 20m | 31m | 46m | 66m | 81m |
-| **Draw calls** | n x 300 (target) | 300 | 600 | 1,200 | 2,700 | 4,800 |
+| Resource           | Formula          | 1 parcel | 2 parcels | 4 parcels | 9 parcels | 16 parcels |
+| ------------------ | ---------------- | -------- | --------- | --------- | --------- | ---------- |
+| **Triangles**      | n x 10,000       | 10,000   | 20,000    | 40,000    | 90,000    | 160,000    |
+| **Entities**       | n x 200          | 200      | 400       | 800       | 1,800     | 3,200      |
+| **Physics bodies** | n x 300          | 300      | 600       | 1,200     | 2,700     | 4,800      |
+| **Materials**      | log2(n+1) x 20   | 20       | 31        | 46        | 66        | 81         |
+| **Textures**       | log2(n+1) x 10   | 10       | 15        | 23        | 33        | 40         |
+| **Height limit**   | log2(n+1) x 20m  | 20m      | 31m       | 46m       | 66m       | 81m        |
+| **Draw calls**     | n x 300 (target) | 300      | 600       | 1,200     | 2,700     | 4,800      |
 
 **File limits:**
+
 - 15 MB per parcel, 300 MB max total
 - 200 files per parcel
 - 50 MB max per individual file
+
+Important: Except for the MB size limits, all other limits can be exceeded. It's generally not recommended to go over them because of performance impact, but if a user tests their scene and determines that it's good enough, it should be ok to publish.
 
 ## 3. Texture Requirements
 
 - **Dimensions must be power-of-two**: 256, 512, 1024, 2048.
 - **Recommended sizes**: 1024x1024 for scene objects, 512x512 for wearables.
-- **Avoid textures over 2048x2048** — they consume excessive memory and often exceed limits.
 - **Use texture atlases** to combine multiple small textures into one, reducing draw calls and material count.
 - Prefer compressed formats (WebP) over raw PNG where possible.
 - Share texture references across materials — do not duplicate texture files.
@@ -58,26 +60,29 @@ AssetLoad.create(preloadEntity, { src: 'assets/scene/Models/large-model.glb' })
 
 // System to track loading progress
 function assetLoadingSystem(dt: number) {
-  for (const [entity] of engine.getEntitiesWith(AssetLoad)) {
-    const state = AssetLoad.get(entity)
-    if (state.loadingState === LoadingState.FINISHED) {
-      // Asset is cached — now safe to create the visible entity
-      GltfContainer.create(entity, { src: 'assets/scene/Models/large-model.glb' })
-      Transform.create(entity, {
-        position: Vector3.create(8, 0, 8)
-      })
-      AssetLoad.deleteFrom(entity) // Remove preload component
-    }
-  }
+	for (const [entity] of engine.getEntitiesWith(AssetLoad)) {
+		const state = AssetLoad.get(entity)
+		if (state.loadingState === LoadingState.FINISHED) {
+			// Asset is cached — now safe to create the visible entity
+			GltfContainer.create(entity, {
+				src: 'assets/scene/Models/large-model.glb',
+			})
+			Transform.create(entity, {
+				position: Vector3.create(8, 0, 8),
+			})
+			AssetLoad.deleteFrom(entity) // Remove preload component
+		}
+	}
 }
 engine.addSystem(assetLoadingSystem)
 ```
 
-Use this pattern for any model over ~1 MB or for assets that should be ready before a game phase begins.
+Use this pattern for any model over ~1 MB or for assets that should be ready before a game phase begins. Also use for any sound that plays in response to a player interaction, as soon as the player is able to trigger it.
 
 ## 5. Performance Patterns
 
 ### Entity Pooling
+
 Reuse entities instead of creating and destroying them. Move unused entities off-screen or toggle visibility:
 
 ```typescript
@@ -88,58 +93,67 @@ Transform.getMutable(entity).position = targetPosition
 ```
 
 ### LOD (Level of Detail)
+
 Swap models or hide entities based on distance from the player:
 
 ```typescript
 function lodSystem() {
-  const playerPos = Transform.get(engine.PlayerEntity).position
-  for (const [entity, transform] of engine.getEntitiesWith(Transform, GltfContainer)) {
-    const distance = Vector3.distance(playerPos, transform.position)
-    if (distance > 30) {
-      VisibilityComponent.createOrReplace(entity, { visible: false })
-    } else {
-      VisibilityComponent.createOrReplace(entity, { visible: true })
-    }
-  }
+	const playerPos = Transform.get(engine.PlayerEntity).position
+	for (const [entity, transform] of engine.getEntitiesWith(
+		Transform,
+		GltfContainer
+	)) {
+		const distance = Vector3.distance(playerPos, transform.position)
+		if (distance > 30) {
+			VisibilityComponent.createOrReplace(entity, { visible: false })
+		} else {
+			VisibilityComponent.createOrReplace(entity, { visible: true })
+		}
+	}
 }
 engine.addSystem(lodSystem)
 ```
 
 ### Draw Call Reduction
+
 - Merge meshes in Blender before export.
 - Use texture atlases (one material for many objects).
 - Limit unique materials — reuse them across entities.
 - Avoid transparency when possible (transparent objects cost extra draw calls).
 
 ### System Optimization
+
 - Do NOT run heavy logic every frame. Use timers:
   ```typescript
   let timer = 0
   function heavySystem(dt: number) {
-    timer += dt
-    if (timer < 0.5) return // Run every 500ms, not every frame
-    timer = 0
-    // ... expensive work here
+  	timer += dt
+  	if (timer < 0.5) return // Run every 500ms, not every frame
+  	timer = 0
+  	// ... expensive work here
   }
   ```
 - Minimize `engine.getEntitiesWith()` queries — cache results when entity sets are stable.
 - Avoid allocating new objects (Vector3.create, arrays) inside systems that run every frame.
 
 ### Disable Unused Colliders
+
 Remove collision meshes from decorative objects that players never interact with. This reduces physics body count significantly.
 
 ## 6. Input System Design
 
 ### Available Inputs
-| Input | Action | Notes |
-|---|---|---|
-| **E key** | Primary action (`IA_PRIMARY`) | Main interaction |
-| **F key** | Secondary action (`IA_SECONDARY`) | Alternate interaction |
-| **Pointer click** | `IA_POINTER` | Left mouse click / tap |
-| **Pointer down/up** | `IA_POINTER` | For drag-like behavior |
-| **Keys 1-4** | `IA_ACTION_3` through `IA_ACTION_6` | Action bar slots |
+
+| Input               | Action                              | Notes                  |
+| ------------------- | ----------------------------------- | ---------------------- |
+| **E key**           | Primary action (`IA_PRIMARY`)       | Main interaction       |
+| **F key**           | Secondary action (`IA_SECONDARY`)   | Alternate interaction  |
+| **Pointer click**   | `IA_POINTER`                        | Left mouse click / tap |
+| **Pointer down/up** | `IA_POINTER`                        | For drag-like behavior |
+| **Keys 1-4**        | `IA_ACTION_3` through `IA_ACTION_6` | Action bar slots       |
 
 ### Design Considerations
+
 - Mouse wheel is **not available** as an input.
 - Always design for both **desktop and mobile**. Mobile has no keyboard — rely on pointer and on-screen buttons.
 - Set `maxDistance` on pointer events (8-10 meters typical) to prevent interactions from across the scene.
@@ -148,42 +162,58 @@ Remove collision meshes from decorative objects that players never interact with
 ## 7. State Management Patterns
 
 ### Module-Level State (Simple Games)
+
 ```typescript
 // game-state.ts
 export let score = 0
 export let gamePhase: 'waiting' | 'playing' | 'ended' = 'waiting'
-export function addScore(points: number) { score += points }
+export function addScore(points: number) {
+	score += points
+}
 ```
 
 ### Component-Based State (Complex Games)
+
 Use custom components as structured data containers:
+
 ```typescript
 import { engine, Schemas } from '@dcl/sdk/ecs'
 
 const EnemyState = engine.defineComponent('EnemyState', {
-  health: Schemas.Number,
-  speed: Schemas.Number,
-  target: Schemas.Entity
+	health: Schemas.Number,
+	speed: Schemas.Number,
+	target: Schemas.Entity,
 })
 ```
 
 ### State Machines
+
 Model game phases as explicit states with clear transitions:
+
 ```typescript
 type GameState = 'lobby' | 'countdown' | 'active' | 'cooldown'
 let currentState: GameState = 'lobby'
 
 function gameStateSystem(dt: number) {
-  switch (currentState) {
-    case 'lobby': handleLobby(dt); break
-    case 'countdown': handleCountdown(dt); break
-    case 'active': handleActive(dt); break
-    case 'cooldown': handleCooldown(dt); break
-  }
+	switch (currentState) {
+		case 'lobby':
+			handleLobby(dt)
+			break
+		case 'countdown':
+			handleCountdown(dt)
+			break
+		case 'active':
+			handleActive(dt)
+			break
+		case 'cooldown':
+			handleCooldown(dt)
+			break
+	}
 }
 ```
 
 ### Multiplayer State Sync
+
 For networked state, see the **dcl-multiplayer** skill. Use server-authoritative state for competitive games and optimistic sync for cooperative experiences.
 
 ## 8. UX/UI Guidelines
@@ -199,27 +229,33 @@ For networked state, see the **dcl-multiplayer** skill. Use server-authoritative
 ## 9. MVP Planning
 
 ### Start with the Core Loop
+
 Ask: **What does the player DO?** The answer should be a single sentence:
+
 - "The player explores rooms and finds hidden objects."
 - "The player races other players through an obstacle course."
 - "The player collects resources and builds structures."
 
 ### Prototype Fast
+
 - Build in **1-2 parcels** first, even if the final scene will be larger.
 - Use primitive shapes (boxes, spheres) as placeholders — do not wait for final art.
 - Get the core loop working before adding any secondary features.
 
 ### Test Early
+
 - Deploy to a test world and walk through it yourself.
 - Invite 2-3 real players and watch them (do not explain the game — see if it is self-explanatory).
 - Measure: Do players understand what to do within 30 seconds?
 
 ### Iterate on Fun
+
 - Polish comes last. If the core loop is not fun with placeholder art, better art will not fix it.
 - Cut features aggressively. A tight, small experience beats a sprawling, unfinished one.
 - Replay value matters more than content volume in DCL (players return to scenes they enjoy).
 
 ### MVP Checklist
+
 - [ ] Core loop is playable in under 60 seconds
 - [ ] Works with 1 player and with 5+ players simultaneously
 - [ ] Fits within scene limits for target parcel count
@@ -228,10 +264,10 @@ Ask: **What does the player DO?** The answer should be a single sentence:
 
 ## 10. Cross-References
 
-| Topic | Skill | When to Use |
-|---|---|---|
-| ECS architecture, components, systems | **dcl-scene** | Implementing game mechanics in code |
+| Topic                                  | Skill               | When to Use                          |
+| -------------------------------------- | ------------------- | ------------------------------------ |
+| ECS architecture, components, systems  | **dcl-scene**       | Implementing game mechanics in code  |
 | Multiplayer sync, server communication | **dcl-multiplayer** | Networked game state, real-time sync |
-| Screen UI, React-ECS, HUD elements | **dcl-ui** | Building menus, scoreboards, dialogs |
+| Screen UI, React-ECS, HUD elements     | **dcl-ui**          | Building menus, scoreboards, dialogs |
 
 When the user needs implementation details for a game mechanic, point them to **dcl-scene**. When they need networking, point to **dcl-multiplayer**. When they need UI layout, point to **dcl-ui**. This skill focuses on the **design decisions and optimization constraints** that shape those implementations.

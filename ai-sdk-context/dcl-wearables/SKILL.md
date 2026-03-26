@@ -253,7 +253,7 @@ import { engine, Transform, GltfContainer } from '@dcl/sdk/ecs'
 // Create an entity attached near the player.
 const effectEntity = engine.addEntity()
 Transform.create(effectEntity, { position: { x: 0, y: 1, z: 0 } })
-GltfContainer.create(effectEntity, { src: 'models/particle_effect.glb' })
+GltfContainer.create(effectEntity, { src: 'assets/scene/Models/particle_effect.glb' })
 ```
 
 ### Companion Pet
@@ -263,7 +263,7 @@ import { engine, Transform, GltfContainer } from '@dcl/sdk/ecs'
 import { getPlayer } from '@dcl/sdk/src/players'
 
 const pet = engine.addEntity()
-GltfContainer.create(pet, { src: 'models/pet.glb' })
+GltfContainer.create(pet, { src: 'assets/scene/Models/pet.glb' })
 Transform.create(pet, { position: { x: 0, y: 0, z: -1.5 } })
 
 // System to make pet follow (positions are relative to player)

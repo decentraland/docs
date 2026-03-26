@@ -174,6 +174,8 @@ For `n` parcels:
 | Files | 200 per parcel | 200 | 800 |
 | Max file | 50 MB per file | - | - |
 
+Important: Except for the MB size limits, all other limits (triangles, entities, materials, etc.) can be exceeded. It's generally not recommended because of performance impact, but if testing confirms acceptable performance, it's ok to publish.
+
 ## Optimization Techniques
 
 ### Object Pooling

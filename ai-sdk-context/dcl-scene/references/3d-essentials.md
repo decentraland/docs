@@ -101,7 +101,7 @@ GltfNodeModifiers.create(model, {
 })
 ```
 
-Set `path` to a specific mesh node name to target only that part. Use `Material.Texture.Common({ src: '...' })` inside `pbr` to swap textures.
+Set `path` to a specific mesh node name to target only that part, or `''` to override the entire model. Use `Material.Texture.Common({ src: '...' })` inside `pbr` to swap textures.
 
 ## Materials
 
@@ -138,9 +138,9 @@ Material.setPbrMaterial(entity, {
 
 // Multi-layer textures
 Material.setPbrMaterial(entity, {
-  texture: Material.Texture.Common({ src: 'assets/diffuse.png' }),
-  bumpTexture: Material.Texture.Common({ src: 'assets/normal.png' }),
-  emissiveTexture: Material.Texture.Common({ src: 'assets/emissive.png' })
+  texture: Material.Texture.Common({ src: 'assets/scene/Images/diffuse.png' }),
+  bumpTexture: Material.Texture.Common({ src: 'assets/scene/Images/normal.png' }),
+  emissiveTexture: Material.Texture.Common({ src: 'assets/scene/Images/emissive.png' })
 })
 
 // Avatar portraits
@@ -160,7 +160,7 @@ Material.setPbrMaterial(entity, {
 
 // Alpha test (cutout)
 Material.setPbrMaterial(entity, {
-  texture: Material.Texture.Common({ src: 'assets/cutout.png' }),
+  texture: Material.Texture.Common({ src: 'assets/scene/Images/cutout.png' }),
   transparencyMode: MaterialTransparencyMode.MTM_ALPHA_TEST,
   alphaTest: 0.5
 })

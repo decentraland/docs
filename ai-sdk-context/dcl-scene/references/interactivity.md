@@ -50,7 +50,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-**Important**: Entity must have a collider for pointer events to work. Use `MeshCollider.setBox(entity, ColliderLayer.CL_POINTER)` or set `visibleMeshesCollisionMask` on `GltfContainer`.
+**Important**: Entity must have a collider on the `ColliderLayer.CL_POINTER` layer for pointer events to work. Use `MeshCollider.setBox(entity, ColliderLayer.CL_POINTER)` or set `visibleMeshesCollisionMask` on `GltfContainer`.
 
 ### Available Input Actions
 
@@ -90,7 +90,7 @@ function myInputSystem(dt: number) {
     // W key is being held
   }
 
-  // Check for single press this frame
+  // Check for single press this frame (global — regardless of what the cursor points at)
   if (inputSystem.isTriggered(InputAction.IA_JUMP, PointerEventType.PET_DOWN)) {
     // Space bar just pressed
   }
@@ -108,6 +108,29 @@ function myInputSystem(dt: number) {
   )
   if (clickData) {
     console.log('Entity clicked via system:', clickData.hit.entityId)
+  }
+}
+
+engine.addSystem(myInputSystem)
+```
+
+Best practice: use the `Tags` component to mark all entities that share the same interaction, then iterate over them in a system:
+
+```typescript
+import { engine, inputSystem, InputAction, PointerEventType, Tags } from '@dcl/sdk/ecs'
+
+function myInputSystem() {
+  const taggedEntities = engine.getEntitiesByTag('myTag')
+
+  for (const entity of taggedEntities) {
+    const clickData = inputSystem.getInputCommand(
+      InputAction.IA_POINTER,
+      PointerEventType.PET_DOWN,
+      entity
+    )
+    if (clickData) {
+      console.log('Entity clicked via system:', clickData.hit.entityId)
+    }
   }
 }
 
@@ -298,7 +321,7 @@ AvatarModifierArea.create(entity, {
   excludeIds: ['0x123...abc']  // Optional
 })
 
-// Modifiers: AMT_HIDE_AVATARS, AMT_DISABLE_PASSPORTS, AMT_DISABLE_JUMPING
+// Modifiers: AMT_HIDE_AVATARS, AMT_DISABLE_PASSPORTS
 ```
 
 ## Cursor State

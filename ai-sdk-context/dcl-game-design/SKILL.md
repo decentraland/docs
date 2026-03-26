@@ -54,7 +54,7 @@ import { Vector3 } from '@dcl/sdk/math'
 
 // Create a preload entity at scene startup
 const preloadEntity = engine.addEntity()
-AssetLoad.create(preloadEntity, { src: 'models/large-model.glb' })
+AssetLoad.create(preloadEntity, { src: 'assets/scene/Models/large-model.glb' })
 
 // System to track loading progress
 function assetLoadingSystem(dt: number) {
@@ -62,7 +62,7 @@ function assetLoadingSystem(dt: number) {
     const state = AssetLoad.get(entity)
     if (state.loadingState === LoadingState.FINISHED) {
       // Asset is cached — now safe to create the visible entity
-      GltfContainer.create(entity, { src: 'models/large-model.glb' })
+      GltfContainer.create(entity, { src: 'assets/scene/Models/large-model.glb' })
       Transform.create(entity, {
         position: Vector3.create(8, 0, 8)
       })

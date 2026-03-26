@@ -6,7 +6,7 @@
 import { AudioSource } from '@dcl/sdk/ecs'
 
 AudioSource.create(entity, {
-  audioClipUrl: 'sounds/effect.mp3',
+  audioClipUrl: 'assets/scene/Audio/effect.mp3',
   playing: true,
   loop: false,
   volume: 0.8,
@@ -17,6 +17,38 @@ AudioSource.create(entity, {
 const audio = AudioSource.getMutable(entity)
 audio.playing = true
 audio.volume = 0.5
+```
+
+### Spatial Audio
+
+`AudioSource` is **spatial by default** — volume drops with distance. Set `global: true` to play at the same volume everywhere:
+
+```typescript
+AudioSource.create(entity, {
+  audioClipUrl: 'assets/scene/Audio/music.mp3',
+  playing: true,
+  global: true
+})
+```
+
+`VideoPlayer` and `AudioStream` are **global by default**. Set `spatial: true` to make them positional:
+
+```typescript
+VideoPlayer.create(screen, {
+  src: 'https://...',
+  playing: true,
+  spatial: true,
+  spatialMinDistance: 5,   // Full volume within this distance
+  spatialMaxDistance: 10   // Silent beyond this distance
+})
+
+AudioStream.create(entity, {
+  url: 'https://...',
+  playing: true,
+  spatial: true,
+  spatialMinDistance: 5,
+  spatialMaxDistance: 10
+})
 ```
 
 ## AudioStream
@@ -175,10 +207,7 @@ Material.setBasicMaterial(screen, {
 
 ### Performance Considerations
 
-Video limits by quality setting:
-- Low: 1 simultaneous video
-- Medium: 5 simultaneous videos
-- High: 10 simultaneous videos
+Video limits: Maximum 5 simultaneous videos — always avoid playing multiple videos at once.
 
 Distance-based video management:
 

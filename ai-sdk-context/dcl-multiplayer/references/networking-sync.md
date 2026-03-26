@@ -22,6 +22,8 @@ syncEntity(entity: Entity, componentIds: number[], syncId?: number): void
 - `componentIds` — array of component IDs to sync (e.g., `[Transform.componentId, MeshRenderer.componentId]`)
 - `syncId` — unique numeric ID for predefined entities; omit for player-spawned entities (auto-assigned)
 
+Synced state persists as long as at least one player remains in the scene. **The state resets as soon as the scene is empty.** For persistence across sessions, use `fetch`/`signedFetch` with an external server.
+
 ### Predefined Entity Sync (Explicit IDs)
 
 Use an enum to manage unique sync IDs and avoid collisions:

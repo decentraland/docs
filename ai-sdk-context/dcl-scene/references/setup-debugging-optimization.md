@@ -152,7 +152,7 @@ engine.addSystem(performanceSystem)
 Pre-download assets at scene startup to avoid loading hitches:
 
 ```typescript
-AssetLoad.create(preloadEntity, { src: 'models/heavy.glb' })
+AssetLoad.create(preloadEntity, { src: 'assets/scene/Models/heavy.glb' })
 
 // Track loading progress with assetLoadLoadingStateSystem and LoadingState
 ```

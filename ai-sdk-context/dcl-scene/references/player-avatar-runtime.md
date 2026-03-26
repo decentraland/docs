@@ -117,9 +117,26 @@ PointerLock.onChange(engine.CameraEntity, (pointerLock) => {
 ```typescript
 import { movePlayerTo } from '~system/RestrictedActions'
 
-movePlayerTo({
+// Basic teleport
+void movePlayerTo({
   newRelativePosition: { x: 8, y: 0, z: 8 },
-  cameraTarget: { x: 10, y: 1, z: 8 }  // Optional: where to look
+  cameraTarget: { x: 10, y: 1, z: 8 },   // Optional: where camera looks
+  avatarTarget: { x: 8, y: 1, z: 12 }    // Optional: where avatar faces
+})
+
+// Smooth transition with duration (awaitable; resolves with { success: boolean })
+import { InputModifier } from '@dcl/sdk/ecs'
+
+executeTask(async () => {
+  InputModifier.create(engine.PlayerEntity, {
+    mode: InputModifier.Mode.Standard({ disableAll: true })
+  })
+  const result = await movePlayerTo({
+    newRelativePosition: { x: 8, y: 0, z: 8 },
+    cameraTarget: { x: 10, y: 1, z: 8 },
+    duration: 2  // seconds
+  })
+  InputModifier.deleteFrom(engine.PlayerEntity)
 })
 ```
 
@@ -135,7 +152,7 @@ triggerEmote({ predefinedEmote: 'robot' })  // 'wave', 'dance', etc.
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
 ```
 
-Emotes play only while the player is still; walking/jumping interrupts.
+Emotes play only while the player is still; walking/jumping interrupts. To prevent interruption, use `InputModifier` with `disableAll: true` for the emote duration.
 
 ### Emote Events
 
@@ -186,7 +203,9 @@ InputModifier.createOrReplace(engine.PlayerEntity, {
     disableRun: true,
     disableJump: true,
     disableEmote: true,
-    disableWalk: false
+    disableWalk: false,
+    disableDoubleJump: true,
+    disableGliding: true
   })
 })
 
@@ -234,6 +253,16 @@ AvatarShape.create(entity, {
   wearables: ['urn:decentraland:matic:collections-v2:0x...:0'],
   show_only_wearables: true
 })
+```
+
+NPC avatar notes:
+- Changing an NPC's `Transform` position makes it **walk or run** to the new position (not instant teleport).
+- To replay the same emote on an NPC, increment `expressionTriggerTimestamp` (Lamport timestamp — raise by 1 each replay):
+
+```typescript
+const shape = AvatarShape.getMutable(npc)
+shape.expressionTriggerId = 'wave'
+shape.expressionTriggerTimestamp = (shape.expressionTriggerTimestamp ?? 0) + 1
 ```
 
 ## Runtime Data

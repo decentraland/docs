@@ -50,6 +50,14 @@ Tween.setRotateContinuous(entity, Quaternion.fromEulerDegrees(0, -1, 0), 700)
 
 // Continuous texture scroll
 Tween.setTextureMoveContinuous(entity, Vector2.create(0, 1), 2000)
+
+// Simultaneous position + rotation + scale (entity can only have one Tween at a time)
+Tween.setMoveRotateScale(entity, {
+  position: { start: Vector3.create(14, 1, 2), end: Vector3.create(14, 3, 2) },
+  rotation: { start: Quaternion.fromEulerDegrees(0, 0, 0), end: Quaternion.fromEulerDegrees(0, 180, 90) },
+  scale: { start: Vector3.One(), end: Vector3.create(2, 0.5, 2) },
+  duration: 2000
+})
 ```
 
 ### Verbose Tween.create Approach
@@ -224,7 +232,7 @@ Transform.create(point, { position: Vector3.create(10, 3, 10) })
 LightSource.create(point, {
   type: LightSource.Type.Point({}),
   color: Color3.White(),
-  intensity: 300  // candela
+  intensity: 16000  // candela
 })
 
 // Spot light with shadows
@@ -241,7 +249,7 @@ LightSource.create(spot, {
     shadowMaskTexture: Material.Texture.Common({ src: 'assets/lightmask.png' })
   }),
   shadow: true,
-  intensity: 800
+  intensity: 16000
 })
 
 // Toggle light
@@ -255,6 +263,8 @@ LightSource.getMutable(point).range = 20
 Notes:
 - One active light per parcel maximum; lights/shadows are auto-culled based on quality and proximity (up to ~3 shadowed lights visible at once).
 - Intensity is in candela; visible distance roughly grows with sqrt(intensity).
+- Shadows are only available on spot lights, not on point lights.
+- Emissive materials don't illuminate surrounding entities — they just glow visually. Combine with a LightSource for actual illumination.
 
 ## Manual Movement via Systems
 

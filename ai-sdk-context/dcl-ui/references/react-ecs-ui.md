@@ -34,7 +34,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-  ReactEcsRenderer.setUiRenderer(uiMenu)
+  ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 ```
 
@@ -45,7 +45,7 @@ import ReactEcs, { ReactEcsRenderer, UiEntity, Label, Button } from '@dcl/sdk/re
 import { Color4 } from '@dcl/sdk/math'
 
 export function setupUi() {
-  ReactEcsRenderer.setUiRenderer(uiComponent)
+  ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
 }
 
 const uiComponent = () => (
@@ -625,6 +625,28 @@ const CenteredOverlay = () => (
 ```
 
 ---
+
+## Virtual Screen Size
+
+Always pass `virtualWidth` and `virtualHeight` to `setUiRenderer`. This sets a reference resolution so UI elements scale proportionally across all screen sizes (`Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`). Use `1920 × 1080` as the standard:
+
+```typescript
+ReactEcsRenderer.setUiRenderer(MyUI, { virtualWidth: 1920, virtualHeight: 1080 })
+```
+
+## Independent UI Renderers (addUiRenderer)
+
+Use `addUiRenderer` to add a UI module without replacing the main UI. Each renderer requires an owner entity:
+
+```typescript
+const owner = engine.addEntity()
+ReactEcsRenderer.addUiRenderer(owner, MyWidget, { virtualWidth: 1920, virtualHeight: 1080 })
+
+// Remove it later
+ReactEcsRenderer.removeUiRenderer(owner)
+```
+
+If the owner entity is destroyed, the UI is removed automatically. Useful for smart items or modular scene components managing their own UI.
 
 ## Canvas Information
 

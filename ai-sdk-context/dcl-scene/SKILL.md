@@ -64,7 +64,7 @@ Reserved entities: `engine.PlayerEntity`, `engine.CameraEntity`, `engine.RootEnt
 | Component | Import | Usage |
 |-----------|--------|-------|
 | Transform | `@dcl/sdk/ecs` | `Transform.create(e, { position, rotation, scale, parent })` |
-| GltfContainer | `@dcl/sdk/ecs` | `GltfContainer.create(e, { src: 'models/x.glb' })` |
+| GltfContainer | `@dcl/sdk/ecs` | `GltfContainer.create(e, { src: 'assets/scene/Models/x.glb' })` |
 | MeshRenderer | `@dcl/sdk/ecs` | `MeshRenderer.setBox(e)` / `.setSphere` / `.setCylinder` / `.setPlane` |
 | Material | `@dcl/sdk/ecs` | `Material.setPbrMaterial(e, { albedoColor, metallic, roughness })` |
 | Animator | `@dcl/sdk/ecs` | `Animator.create(e, { states: [{ clip, playing, loop }] })` |
@@ -415,7 +415,7 @@ AvatarModifierArea.create(entity, {
 - Scene coordinates: (0,0,0) is south-west corner, single parcel = 16x16m, center = (8,0,8)
 - Use object pooling for frequently created/destroyed entities
 - Use `VisibilityComponent` to hide distant entities
-- Use `AssetLoad.create(e, { src: 'models/heavy.glb' })` to pre-download assets at scene startup; track progress with `assetLoadLoadingStateSystem` and `LoadingState`
+- Use `AssetLoad.create(e, { src: 'assets/scene/Models/heavy.glb' })` to pre-download assets at scene startup; track progress with `assetLoadLoadingStateSystem` and `LoadingState`
 - Scene limits per parcel (n parcels): Triangles n*10000, Entities n*200, Bodies n*300, Materials log2(n+1)*20, Textures log2(n+1)*10, Height log2(n+1)*20m, File size 15MB/parcel (300MB max), Files 200/parcel (50MB/file max)
 - Supported 3D formats: `.glb`, `.gltf` only. Max recommended texture: 512x512, limit 1024x1024
 - Performance target: 30 FPS minimum, system execution under 100ms per frame

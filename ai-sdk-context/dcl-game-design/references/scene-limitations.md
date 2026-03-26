@@ -122,7 +122,7 @@ import { AssetLoad, LoadingState } from '@dcl/sdk/ecs'
 ```typescript
 const preloadEntity = engine.addEntity()
 AssetLoad.create(preloadEntity, {
-  src: 'models/my-model.glb'
+  src: 'assets/scene/Models/my-model.glb'
 })
 ```
 

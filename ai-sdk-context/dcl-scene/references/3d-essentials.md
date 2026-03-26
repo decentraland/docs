@@ -56,12 +56,12 @@ MeshRenderer.setPlane(entity, [
 
 ```typescript
 GltfContainer.create(entity, {
-  src: 'models/house.glb'
+  src: 'assets/scene/Models/house.glb'
 })
 
 // With collision masks
 GltfContainer.create(entity, {
-  src: 'models/house.glb',
+  src: 'assets/scene/Models/house.glb',
   visibleMeshesCollisionMask: ColliderLayer.CL_POINTER,
   invisibleMeshesCollisionMask: ColliderLayer.CL_NONE
 })
@@ -81,7 +81,7 @@ if (loadingState?.currentState === LoadingState.FINISHED) {
 import { GltfNodeModifiers, GltfContainer } from '@dcl/sdk/ecs'
 
 const model = engine.addEntity()
-GltfContainer.create(model, { src: 'models/myModel.glb' })
+GltfContainer.create(model, { src: 'assets/scene/Models/myModel.glb' })
 Transform.create(model, { position: Vector3.create(4, 0, 4) })
 
 GltfNodeModifiers.create(model, {

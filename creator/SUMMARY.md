@@ -126,6 +126,7 @@
     * [Register Callback](sdk7/interactivity/button-events/register-callback.md)
     * [System Based Events](sdk7/interactivity/button-events/system-based-events.md)
     * [Advanced Button Events](sdk7/interactivity/button-events/advanced-button-events.md)
+    * [Proximity Events](sdk7/interactivity/button-events/proximity-events.md)
   * [Deprecated Functions](sdk7/interactivity/deprecated-functions.md)
   * [Event Listeners](sdk7/interactivity/event-listeners.md)
   * [External Links](sdk7/interactivity/external-links.md)

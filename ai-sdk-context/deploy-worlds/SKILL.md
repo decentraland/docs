@@ -97,6 +97,22 @@ From inside Decentraland, use the chatbox command:
 }
 ```
 
+## Multi-Scene Worlds
+
+A World can host multiple independent scenes, each at different coordinates. The World grows and shrinks dynamically as scenes are added or removed, and gaps between scenes are filled with environment.
+
+**Enable via Creator Hub:** When publishing, toggle **Multi-Scene World (advanced)** on the first publish.
+
+After enabling, the World Owner can:
+- Publish additional scenes to different parcels of the same World
+- Add **Collaborators** with deploy rights (all parcels or specific coordinates)
+- Manage layout via the **Layout** tab in World Settings (remove scenes, view the World map)
+- Set a **World Spawn Position** (which parcel players enter on)
+
+**Collaborator note:** Collaborators with "All Parcels" access can overwrite any scene in the World, including those published by the owner.
+
+To deploy as a collaborator, use the normal `deploy` process — the publishing flow will let you select only the parcels you have access to.
+
 ## Troubleshooting
 
 | Error | Cause | Solution |

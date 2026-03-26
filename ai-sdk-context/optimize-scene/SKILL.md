@@ -133,14 +133,20 @@ Material.setPbrMaterial(entity2, {
 
 ### Texture Size Guide by Use Case
 
-| Use Case | Recommended | Maximum |
-|---|---|---|
-| Scene objects (walls, floors) | 1024x1024 | 2048x2048 |
-| Props and furniture | 512x512 | 1024x1024 |
-| UI elements / icons | 256x256 | 512x512 |
-| Skybox / environment maps | 1024x1024 | 2048x2048 |
+| Use Case                      | Recommended | Maximum   |
+| ----------------------------- | ----------- | --------- |
+| Scene objects (walls, floors) | 1024x1024   | 2048x2048 |
+| Props and furniture           | 512x512     | 1024x1024 |
+| UI elements / icons           | 256x256     | 512x512   |
+| Skybox / environment maps     | 1024x1024   | 2048x2048 |
 
 Textures do not need to be square — 512x1024 is valid as long as both dimensions are powers of two.
+
+## Back-Face Culling
+
+Back-face culling skips rendering the inside face of any polygon the player will never see from behind. It's set in your 3D modeling tool (Blender, Maya, etc.) — **not** in SDK code.
+
+**Rule of thumb:** Enable back-face culling on all materials by default. Only disable it when a surface must be visible from both sides (e.g., a leaf plane on a tree, a thin wall).
 
 ## System Optimization
 
@@ -228,28 +234,31 @@ Use this pattern for any asset that should be ready before a game phase begins, 
 
 ## Common Performance Pitfalls
 
-| Pitfall | Symptom | Fix |
-|---|---|---|
-| Too many unique materials | High draw calls, low FPS | Merge into texture atlases, reuse materials |
-| Non-power-of-two textures | Memory bloat, visual artifacts | Resize all textures to 256/512/1024/2048 |
-| Creating/destroying entities rapidly | Frame stutters | Use entity pooling |
-| Heavy computation every frame | Consistent low FPS | Add timer guards, reduce frequency |
-| Unused colliders on decorations | Physics body limit exceeded | Remove MeshCollider from non-interactive objects |
-| Large uncompressed textures | Slow loading, file size exceeded | Use WebP, reduce resolution, use atlases |
-| Too many transparent materials | Extra draw calls, sorting issues | Minimize transparency, use alpha cutoff instead of blend |
-| Unbounded entity queries | CPU spike | Filter with specific components, cache results |
-| All detail loaded at all distances | Triangle budget blown | Implement LOD system |
-| No asset preloading | Pop-in during gameplay | Use AssetLoad for large models and audio |
+| Pitfall                              | Symptom                          | Fix                                                      |
+| ------------------------------------ | -------------------------------- | -------------------------------------------------------- |
+| Too many unique materials            | High draw calls, low FPS         | Merge into texture atlases, reuse materials              |
+| Non-power-of-two textures            | Memory bloat, visual artifacts   | Resize all textures to 256/512/1024/2048                 |
+| Creating/destroying entities rapidly | Frame stutters                   | Use entity pooling                                       |
+| Heavy computation every frame        | Consistent low FPS               | Add timer guards, reduce frequency                       |
+| Unused colliders on decorations      | Physics body limit exceeded      | Remove MeshCollider from non-interactive objects         |
+| Large uncompressed textures          | Slow loading, file size exceeded | Use WebP, reduce resolution, use atlases                 |
+| Too many transparent materials       | Extra draw calls, sorting issues | Minimize transparency, use alpha cutoff instead of blend |
+| Unbounded entity queries             | CPU spike                        | Filter with specific components, cache results           |
+| All detail loaded at all distances   | Triangle budget blown            | Implement LOD system                                     |
+| No asset preloading                  | Pop-in during gameplay           | Use AssetLoad for large models and audio                 |
 
 ## Scene Statistics Monitoring
 
 ### In Preview Mode
+
 When running the scene locally with `npm run start`:
+
 - Press **P** to toggle the performance panel.
 - Monitor: FPS, draw calls, triangles, entities, materials, textures, memory.
 - Scene limits are shown alongside current usage with green/yellow/red indicators.
 
 ### What to Watch
+
 - **FPS below 30**: Something is too expensive. Check draw calls and system execution time.
 - **Triangle count approaching limit**: Enable LOD, reduce model detail, remove hidden faces.
 - **Entity count climbing**: Likely a leak — entities being created but never destroyed. Implement pooling.
@@ -257,16 +266,16 @@ When running the scene locally with `npm run start`:
 
 ## Recommended Optimization Tools
 
-| Tool | Purpose |
-|---|---|
-| Blender Decimate modifier | Reduce triangle count on imported models |
-| Blender Limited Dissolve | Remove unnecessary vertices from flat surfaces |
-| Squoosh (squoosh.app) | Convert images to WebP, resize to power-of-two |
-| TexturePacker | Create texture atlases from multiple images |
-| gltf-transform CLI | Compress GLB files with Draco, strip unused data |
-| glTF Validator | Check for export errors before importing into DCL |
+| Tool                        | Purpose                                                   |
+| --------------------------- | --------------------------------------------------------- |
+| Blender Decimate modifier   | Reduce triangle count on imported models                  |
+| Blender Limited Dissolve    | Remove unnecessary vertices from flat surfaces            |
+| Squoosh (squoosh.app)       | Convert images to WebP, resize to power-of-two            |
+| TexturePacker               | Create texture atlases from multiple images               |
+| gltf-transform CLI          | Compress GLB files with Draco, strip unused data          |
+| glTF Validator              | Check for export errors before importing into DCL         |
 | Creator Hub Scene Inspector | Visual tool for entity counts, triangle counts, placement |
-| Preview Debug Panel (P key) | Live performance metrics during `npm run start` |
+| Preview Debug Panel (P key) | Live performance metrics during `npm run start`           |
 
 ```bash
 # Optimize a GLB with Draco compression

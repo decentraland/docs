@@ -102,6 +102,22 @@ Transform.create(child, {
 GltfContainer.create(child, { src: 'assets/scene/Models/hat.glb' })
 ```
 
+### Get Global (World-Space) Position and Rotation
+
+When an entity is parented, `Transform.get(entity).position` returns the **local** position relative to the parent. Use `getWorldPosition` and `getWorldRotation` to get the actual world-space values:
+
+```typescript
+import { getWorldPosition, getWorldRotation } from '@dcl/sdk/ecs'
+
+const worldPos = getWorldPosition(engine, childEntity)
+console.log(worldPos.x, worldPos.y, worldPos.z)
+
+const worldRot = getWorldRotation(engine, childEntity)
+console.log(worldRot.x, worldRot.y, worldRot.z, worldRot.w)
+```
+
+Both functions traverse the parent hierarchy to compute the final result. They return a zero vector / identity quaternion if the entity has no `Transform`.
+
 ## Free 3D Models
 
 Always check the scene's local asset folder first.

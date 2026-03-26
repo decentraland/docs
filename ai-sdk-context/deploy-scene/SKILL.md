@@ -119,6 +119,20 @@ Position ranges (e.g., `[1, 5]`) spawn players randomly within the range. Use `c
 
 > **Deploying to a World instead?** See the **deploy-worlds** skill.
 
+## Scene Tipping
+
+Let visitors send MANA tips to the scene creator. Add a `creator` field to `scene.json`:
+
+```json
+{
+  "creator": "0x1234567890123456789012345678901234567890"
+}
+```
+
+When set, a **piggy bank icon** appears in the top-left for visitors. Clicking it opens a MANA tip modal. If the address is linked to a Decentraland NAME, the name is shown in the modal. Creators receive an in-app notification for each tip.
+
+Can also be configured via Creator Hub → scene Settings → Details → **Creator wallet address**.
+
 ## Best Practices
 
 - Always preview locally before deploying

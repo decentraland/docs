@@ -228,6 +228,18 @@ function lodSystem() {
 engine.addSystem(lodSystem)
 ```
 
+### propagateToChildren
+
+Set `propagateToChildren: true` on a `VisibilityComponent` to apply visibility to all children in the hierarchy at once. This avoids having to mark every child entity individually:
+
+```typescript
+VisibilityComponent.create(parentEntity, { visible: false, propagateToChildren: true })
+```
+
+Rules:
+- If a child has its **own** `VisibilityComponent`, that overrides what the parent propagates.
+- If a child has **no** `VisibilityComponent`, it inherits from the nearest ancestor with `propagateToChildren: true`.
+
 ### Per-Node Modifiers (GltfNodeModifiers)
 
 Override material or shadow casting on specific nodes within a GLTF model:
@@ -323,6 +335,25 @@ You can also make a texture move once, lasting a specific duration
 Tween.setTextureMove(myEntity, Vector2.create(0, 0), Vector2.create(0, 1), 1000)
 ```
 
+
+## FlatMaterial Accessors
+
+The `Material` component provides shortcut methods that skip the nested union structure, making material access more ergonomic:
+
+| Method | Returns | Throws if no material? |
+|---|---|---|
+| `Material.getFlat(entity)` | Read-only `FlatMaterial` | Yes |
+| `Material.getFlatOrNull(entity)` | Read-only `FlatMaterial \| null` | No |
+| `Material.getFlatMutable(entity)` | Read/write `FlatMaterial` | Yes |
+| `Material.getFlatMutableOrNull(entity)` | Read/write `FlatMaterial \| null` | No |
+
+```typescript
+// Read a property safely
+const src = Material.getFlatOrNull(entity)?.texture?.src
+
+// Mutate a texture in-place without knowing PBR vs Basic
+Material.getFlatMutableOrNull(entity)!.texture = Material.Texture.Common({ src: 'assets/scene/Images/new.png' })
+```
 
 ## Best Practices
 

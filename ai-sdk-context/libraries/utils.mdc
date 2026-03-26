@@ -9,7 +9,7 @@ alwaysApply: true
 >
 > **Do not add `@dcl-sdk/utils` by default.** Prefer the native APIs in `@dcl/sdk/ecs`, `@dcl/sdk/math`, and the global timer functions.
 >
-> Keep `@dcl-sdk/utils` only for **non-native convenience helpers** (for example: quick debug primitives like `addTestCube()` / `addLabel()`, or higher-level utilities that SDK7 still doesn’t expose natively).
+> Only this context on `@dcl-sdk/utils` to enhance scenes that are already using this library, to avoid disruptive changes.
 
 ## Installation & Import
 <!--

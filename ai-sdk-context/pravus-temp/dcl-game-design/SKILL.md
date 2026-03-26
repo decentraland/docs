@@ -77,7 +77,7 @@ function assetLoadingSystem(dt: number) {
 engine.addSystem(assetLoadingSystem)
 ```
 
-Use this pattern for any model over ~1 MB or for assets that should be ready before a game phase begins. Also use for any sound that plays in response to a player interaction, as soon as the player is able to trigger it.
+Use this pattern for any asset that should be ready before a game phase begins. Also use for any sound that plays in response to a player interaction, as soon as the player is able to trigger it.
 
 ## 5. Performance Patterns
 
@@ -138,7 +138,7 @@ engine.addSystem(lodSystem)
 
 ### Disable Unused Colliders
 
-Remove collision meshes from decorative objects that players never interact with. This reduces physics body count significantly.
+Remove collision meshes from decorative objects that players never interact with and that are never in the player's path. This reduces physics body count significantly.
 
 ## 6. Input System Design
 
@@ -270,4 +270,4 @@ Ask: **What does the player DO?** The answer should be a single sentence:
 | Multiplayer sync, server communication | **dcl-multiplayer** | Networked game state, real-time sync |
 | Screen UI, React-ECS, HUD elements     | **dcl-ui**          | Building menus, scoreboards, dialogs |
 
-When the user needs implementation details for a game mechanic, point them to **dcl-scene**. When they need networking, point to **dcl-multiplayer**. When they need UI layout, point to **dcl-ui**. This skill focuses on the **design decisions and optimization constraints** that shape those implementations.
+When the user needs implementation details for a game mechanic, point them to **add-interactivity**. When they need networking, point to **multiplayer-sync**. When they need UI layout, point to **build-ui**. This skill focuses on the **design decisions and optimization constraints** that shape those implementations.

@@ -190,7 +190,7 @@ executeTask(async () => {
 })
 ```
 
-## Portable Experiences
+<!-- ## Portable Experiences
 
 Scenes that persist across world navigation:
 
@@ -213,7 +213,7 @@ await kill({ urn: 'urn:decentraland:entity:bafk...' })
 
 // Exit self (if this IS a portable experience)
 await exit({})
-```
+``` -->
 
 ## CommsAdapter
 

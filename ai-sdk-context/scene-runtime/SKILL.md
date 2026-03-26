@@ -1,6 +1,6 @@
 ---
 name: scene-runtime
-description: Cross-cutting runtime APIs for Decentraland SDK7 scenes. Use when the user needs async operations (executeTask), HTTP requests (fetch, signedFetch), WebSocket connections, timers, realm/scene detection, restricted actions (movePlayerTo, teleportTo, triggerEmote, openExternalUrl), portable experiences, or the testing framework. Do NOT use for UI (see build-ui), multiplayer sync (see multiplayer-sync), or avatar/player data (see player-avatar).
+description: Cross-cutting runtime APIs for Decentraland SDK7 scenes. Use when the user needs async operations (executeTask), HTTP requests (fetch, signedFetch), WebSocket connections, timers, realm/scene detection, restricted actions (movePlayerTo, teleportTo, triggerEmote, openExternalUrl), or the testing framework. Do NOT use for UI (see build-ui), multiplayer sync (see multiplayer-sync), or avatar/player data (see player-avatar).
 ---
 
 # Scene Runtime APIs

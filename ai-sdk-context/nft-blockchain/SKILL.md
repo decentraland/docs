@@ -240,6 +240,189 @@ openNftDialog({
 })
 ```
 
+## dcl-crypto-toolkit (Higher-Level API)
+
+For common operations (MANA, ERC20 tokens, NFT ownership, marketplace), use the `dcl-crypto-toolkit` instead of raw `eth-connect`. It provides a cleaner API for the most frequent blockchain tasks.
+
+```bash
+npm install dcl-crypto-toolkit
+```
+
+```typescript
+import * as crypto from 'dcl-crypto-toolkit'
+```
+
+### MANA Operations
+
+```typescript
+executeTask(async () => {
+  // Check own MANA balance
+  const myBalance = await crypto.mana.getBalance()
+
+  // Check another address's MANA balance
+  const theirBalance = await crypto.mana.getBalance('0xSomeAddress')
+
+  // Send MANA
+  await crypto.mana.send('0xRecipientAddress', 10, true) // true = wait for confirmation
+
+  // Check allowance
+  const isApproved = await crypto.mana.isApproved('0xSpenderAddress', 100)
+
+  // Set allowance
+  await crypto.currency.setApproval(
+    crypto.contract.mainnet.MANAToken,
+    '0xSpenderContract',
+    true,
+    '1000000000000000000000' // amount in wei (optional, defaults to max)
+  )
+})
+```
+
+### ERC20 Token Operations
+
+```typescript
+executeTask(async () => {
+  const tokenAddress = '0xTokenContractAddress'
+
+  // Send tokens
+  await crypto.currency.send(tokenAddress, '0xRecipient', 1000000000000000000, true)
+
+  // Check balance
+  const balance = await crypto.currency.getBalance(tokenAddress) // own balance
+  const theirBalance = await crypto.currency.getBalance(tokenAddress, '0xOtherAddress')
+
+  // Check and set allowance
+  const allowance = await crypto.currency.allowance(tokenAddress, '0xOwner', '0xSpender')
+  await crypto.currency.setApproval(tokenAddress, '0xSpender', true)
+  const approved = await crypto.currency.isApproved(tokenAddress, '0xOwner', '0xSpender')
+})
+```
+
+### NFT/ERC721 Operations
+
+```typescript
+executeTask(async () => {
+  const contractAddress = '0xNFTContractAddress'
+  const tokenId = 123
+
+  // Check ownership
+  const balance = await crypto.nft.getBalance(contractAddress, tokenId)
+  const ownsNFT = balance > 0
+
+  // Transfer NFT
+  await crypto.nft.transfer(contractAddress, '0xRecipient', tokenId, true)
+
+  // Approval for all
+  const isApproved = await crypto.nft.isApprovedForAll(contractAddress, '0xHolder', '0xOperator')
+  await crypto.nft.setApprovalForAll(contractAddress, '0xOperator', true, true)
+})
+```
+
+### Marketplace Integration
+
+```typescript
+executeTask(async () => {
+  // Buy from marketplace
+  await crypto.marketplace.buyOrder('0xNFTAddress', 123, '1000000000000000000')
+
+  // Sell on marketplace
+  const isAuthorized = await crypto.marketplace.isAuthorized()
+  if (!isAuthorized) {
+    await crypto.nft.setApprovalForAll(
+      '0xNFTContractAddress',
+      crypto.contract.mainnet.Marketplace,
+      true, true
+    )
+  }
+  const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000 // 7 days
+  await crypto.marketplace.sellOrder('0xNFTAddress', 123, '1000000000000000000', expiresAt.toString())
+
+  // Cancel a listing
+  await crypto.marketplace.cancelOrder('0xNFTAddress', 123)
+
+  // Check authorization status
+  const authorized = await crypto.marketplace.isAuthorized()
+})
+```
+
+### Sign a Message
+
+```typescript
+executeTask(async () => {
+  const signature = await crypto.signMessage('Hello Decentraland!')
+  console.log('Signature:', signature)
+  // Send signature to your backend to verify the player's identity
+})
+```
+
+### Token Gating (by NFT)
+
+```typescript
+executeTask(async () => {
+  const player = getPlayer()
+  if (!player || player.isGuest) return
+
+  const balance = await crypto.nft.getBalance('0xYourNFTContract', 1)
+  if (balance > 0) {
+    openGatedArea()
+  } else {
+    showAccessDenied()
+  }
+})
+```
+
+### Token Gating (by ERC20 Balance)
+
+```typescript
+executeTask(async () => {
+  const manaBalance = await crypto.mana.getBalance()
+  if (manaBalance >= 100) {
+    grantVIPAccess()
+  }
+})
+```
+
+### Tip Jar Recipe
+
+```typescript
+import * as crypto from 'dcl-crypto-toolkit'
+
+const CREATOR_WALLET = '0xYourWalletAddress'
+
+function sendTip(amount: number) {
+  executeTask(async () => {
+    try {
+      const player = getPlayer()
+      if (!player || player.isGuest) return
+
+      const balance = await crypto.mana.getBalance()
+      if (balance < amount) { console.log('Insufficient MANA'); return }
+
+      await crypto.mana.send(CREATOR_WALLET, amount, true)
+      console.log(`Sent ${amount} MANA tip!`)
+    } catch (error) {
+      console.error('Tip failed:', error)
+    }
+  })
+}
+```
+
+### Quick Decision Guide
+
+| Task | Use |
+|---|---|
+| Send MANA | `crypto.mana.send()` |
+| Check MANA balance | `crypto.mana.getBalance()` |
+| Send any ERC20 token | `crypto.currency.send()` |
+| Check ERC20 balance | `crypto.currency.getBalance()` |
+| Transfer an NFT | `crypto.nft.transfer()` |
+| Check NFT ownership | `crypto.nft.getBalance()` |
+| Buy from marketplace | `crypto.marketplace.buyOrder()` |
+| List NFT for sale | `crypto.marketplace.sellOrder()` |
+| Sign a message | `crypto.signMessage()` |
+| Custom smart contract | `eth-connect` (see above) |
+| Authenticated API call | `signedFetch` (see above) |
+
 ## Best Practices
 
 - **Always check `isGuest`** before any blockchain interaction — guest players can't sign transactions

@@ -345,6 +345,115 @@ The `Dropdown` component supports additional props:
 />
 ```
 
+## dcl-ui-toolkit (Pre-Built Widgets)
+
+For common UI elements (prompts, counters, progress bars, announcements), use `dcl-ui-toolkit` instead of building everything from scratch with React-ECS.
+
+```bash
+npm install dcl-ui-toolkit
+```
+
+### Setup
+
+```typescript
+import * as ui from 'dcl-ui-toolkit'
+import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
+
+// Register in main() — use ui.render as the renderer, or combine with custom UI:
+ReactEcsRenderer.setUiRenderer(ui.render)
+
+// To combine with your own React-ECS UI:
+// ReactEcsRenderer.setUiRenderer(() => [ui.render(), MyCustomUI()])
+```
+
+**When to use dcl-ui-toolkit vs React-ECS:**
+- Prompt/dialog? → `displayOkPrompt`, `displayOptionPrompt`, `CustomPrompt`
+- Health bar, score counter? → `createBar`, `createCounter`
+- Flash announcement? → `displayAnnouncement`
+- Custom panel, inventory, complex layout? → React-ECS directly
+
+### Simple Prompts
+
+```typescript
+// Single-button confirmation
+ui.displayOkPrompt({ title: 'Notice', text: 'Quest complete!', onAccept: () => {} })
+
+// Two-button choice
+ui.displayOptionPrompt({
+  title: 'Confirm',
+  text: 'Buy this item for 10 MANA?',
+  onAccept: () => { buyItem() },
+  onReject: () => {}
+})
+
+// Text input prompt
+ui.displayFillInPrompt({
+  title: 'Enter name',
+  placeholder: 'Type here...',
+  onAccept: (value) => { console.log('Name:', value) },
+  onReject: () => {}
+})
+```
+
+### CustomPrompt (Fully Configurable Dialog)
+
+```typescript
+const prompt = ui.createComponent(ui.CustomPrompt, { style: ui.PromptStyles.DARKSLANTED })
+// Styles: DARKSLANTED, LIGHTROUND, DARKROUND, LIGHTSLANTED
+
+prompt.addText({ value: 'Welcome!', color: Color4.Yellow(), size: 24 })
+prompt.addButton({ style: ui.ButtonStyles.E, text: 'Accept', onMouseDown: () => { prompt.hide() } })
+prompt.addButton({ style: ui.ButtonStyles.F, text: 'Decline', onMouseDown: () => { prompt.hide() } })
+// ButtonStyles: E, F, CLOSE, ROUNDGREEN, ROUNDWHITE, ROUNDRED, SQUAREGREEN, SQUAREWHITE, SQUARERED
+prompt.addCheckbox({ text: 'Don\'t show again', onCheck: () => {}, onUncheck: () => {} })
+prompt.addSwitch({ text: 'Enable notifications', onCheck: () => {}, onUncheck: () => {}, style: ui.PromptSwitchStyles.ROUNDGREEN })
+prompt.addTextBox({ placeholder: 'Enter text...', onChange: (value) => {} })
+prompt.addIcon({ image: 'images/icon.png', width: 64, height: 64 })
+
+prompt.show()   // show the prompt
+prompt.hide()   // hide the prompt
+```
+
+### HUD Elements
+
+```typescript
+// Flash announcement (center screen)
+ui.displayAnnouncement('Round starts in 3...', 3, { color: Color4.Red(), fontSize: 24 })
+
+// Numeric counter (top-left area)
+const counter = ui.createCounter({ value: 0, xOffset: 10, yOffset: 10 })
+counter.setValue(5)
+counter.increment()     // +1
+counter.decrement()     // -1
+counter.hide()
+counter.show()
+
+// Corner text label
+const label = ui.createCornerLabel({ value: 'Score: 0', xOffset: 10, yOffset: 50 })
+label.setValue('Score: 150')
+
+// Progress bar
+const bar = ui.createBar({
+  value: 50,            // 0-100
+  xOffset: 10, yOffset: 120,
+  width: 200, height: 20,
+  color: Color4.Green(),
+  backgroundColor: Color4.Gray()
+})
+bar.setValue(75)
+
+// Corner icon
+const icon = ui.createCornerIcon({ image: 'images/heart.png', xOffset: 10, yOffset: 200, width: 48, height: 48 })
+
+// Loading spinner
+const loading = ui.createLoadingIcon({ xOffset: 0, yOffset: 0 })
+loading.start()
+loading.stop()
+
+// Full-screen image flash
+const splashImg = ui.createLargeImage({ image: 'images/splash.jpg', xOffset: 0, yOffset: 0, width: 800, height: 600 })
+```
+
 ## Troubleshooting
 
 | Problem | Cause | Solution |

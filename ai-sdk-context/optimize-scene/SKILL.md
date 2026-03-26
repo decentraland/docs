@@ -9,14 +9,14 @@ description: Optimize Decentraland scene performance. Scene limit formulas (tria
 
 All limits scale with parcel count `n`. Triangles, entities, and bodies scale linearly. Materials, textures, and height scale logarithmically.
 
-| Resource           | Formula         | 1 parcel | 2 parcels | 4 parcels | 9 parcels | 16 parcels |
-| ------------------ | --------------- | -------- | --------- | --------- | --------- | ---------- |
-| **Triangles**      | n x 10,000      | 10,000   | 20,000    | 40,000    | 90,000    | 160,000    |
-| **Entities**       | n x 200         | 200      | 400       | 800       | 1,800     | 3,200      |
-| **Physics bodies** | n x 300         | 300      | 600       | 1,200     | 2,700     | 4,800      |
-| **Materials**      | log2(n+1) x 20  | 20       | 31        | 46        | 66        | 81         |
-| **Textures**       | log2(n+1) x 10  | 10       | 15        | 23        | 33        | 40         |
-| **Height limit**   | log2(n+1) x 20m | 20m      | 31m       | 46m       | 66m       | 81m        |
+| Resource           | Formula         | 1 parcel | 2 parcels | 3 parcels | 4 parcels | 6 parcels | 9 parcels | 16 parcels | 20 parcels |
+| ------------------ | --------------- | -------- | --------- | --------- | --------- | --------- | --------- | ---------- | ---------- |
+| **Triangles**      | n x 10,000      | 10,000   | 20,000    | 30,000    | 40,000    | 60,000    | 90,000    | 160,000    | 200,000    |
+| **Entities**       | n x 200         | 200      | 400       | 600       | 800       | 1,200     | 1,800     | 3,200      | 4,000      |
+| **Physics bodies** | n x 300         | 300      | 600       | 900       | 1,200     | 1,800     | 2,700     | 4,800      | 6,000      |
+| **Materials**      | log2(n+1) x 20  | 20       | 31        | 40        | 46        | 56        | 66        | 81         | 87         |
+| **Textures**       | log2(n+1) x 10  | 10       | 15        | 20        | 23        | 28        | 33        | 40         | 43         |
+| **Height limit**   | log2(n+1) x 20m | 20m      | 31m       | 40m       | 46m       | 56m       | 66m       | 81m        | 87m        |
 
 **File limits:** 15 MB per parcel, 300 MB max total, 200 files per parcel, 50 MB max per individual file.
 
@@ -131,6 +131,17 @@ Material.setPbrMaterial(entity2, {
 // Same texture URL = shared in memory
 ```
 
+### Texture Size Guide by Use Case
+
+| Use Case | Recommended | Maximum |
+|---|---|---|
+| Scene objects (walls, floors) | 1024x1024 | 2048x2048 |
+| Props and furniture | 512x512 | 1024x1024 |
+| UI elements / icons | 256x256 | 512x512 |
+| Skybox / environment maps | 1024x1024 | 2048x2048 |
+
+Textures do not need to be square — 512x1024 is valid as long as both dimensions are powers of two.
+
 ## System Optimization
 
 ### Avoid Per-Frame Allocations
@@ -217,11 +228,50 @@ Use this pattern for any asset that should be ready before a game phase begins, 
 
 ## Common Performance Pitfalls
 
-1. **Too many systems**: Each system runs every frame. Combine related logic.
-2. **Unnecessary component queries**: Cache `engine.getEntitiesWith()` results when the set doesn't change.
-3. **Large GLTF files**: Optimize in Blender before export (decimate, remove hidden faces).
-4. **Uncompressed audio**: Use .mp3 instead of .wav for music (10x smaller).
-5. **Continuous raycasting**: Set `continuous: false` unless you need per-frame raycasting.
+| Pitfall | Symptom | Fix |
+|---|---|---|
+| Too many unique materials | High draw calls, low FPS | Merge into texture atlases, reuse materials |
+| Non-power-of-two textures | Memory bloat, visual artifacts | Resize all textures to 256/512/1024/2048 |
+| Creating/destroying entities rapidly | Frame stutters | Use entity pooling |
+| Heavy computation every frame | Consistent low FPS | Add timer guards, reduce frequency |
+| Unused colliders on decorations | Physics body limit exceeded | Remove MeshCollider from non-interactive objects |
+| Large uncompressed textures | Slow loading, file size exceeded | Use WebP, reduce resolution, use atlases |
+| Too many transparent materials | Extra draw calls, sorting issues | Minimize transparency, use alpha cutoff instead of blend |
+| Unbounded entity queries | CPU spike | Filter with specific components, cache results |
+| All detail loaded at all distances | Triangle budget blown | Implement LOD system |
+| No asset preloading | Pop-in during gameplay | Use AssetLoad for large models and audio |
+
+## Scene Statistics Monitoring
+
+### In Preview Mode
+When running the scene locally with `npm run start`:
+- Press **P** to toggle the performance panel.
+- Monitor: FPS, draw calls, triangles, entities, materials, textures, memory.
+- Scene limits are shown alongside current usage with green/yellow/red indicators.
+
+### What to Watch
+- **FPS below 30**: Something is too expensive. Check draw calls and system execution time.
+- **Triangle count approaching limit**: Enable LOD, reduce model detail, remove hidden faces.
+- **Entity count climbing**: Likely a leak — entities being created but never destroyed. Implement pooling.
+- **Draw calls above 300 (1 parcel)**: Too many materials. Merge, atlas, and reduce transparency.
+
+## Recommended Optimization Tools
+
+| Tool | Purpose |
+|---|---|
+| Blender Decimate modifier | Reduce triangle count on imported models |
+| Blender Limited Dissolve | Remove unnecessary vertices from flat surfaces |
+| Squoosh (squoosh.app) | Convert images to WebP, resize to power-of-two |
+| TexturePacker | Create texture atlases from multiple images |
+| gltf-transform CLI | Compress GLB files with Draco, strip unused data |
+| glTF Validator | Check for export errors before importing into DCL |
+| Creator Hub Scene Inspector | Visual tool for entity counts, triangle counts, placement |
+| Preview Debug Panel (P key) | Live performance metrics during `npm run start` |
+
+```bash
+# Optimize a GLB with Draco compression
+npx @gltf-transform/cli optimize input.glb output.glb --compress draco
+```
 
 ## Cross-References
 

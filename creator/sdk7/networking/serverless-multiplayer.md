@@ -4,7 +4,7 @@ description: Sync scene state between players.
 
 # Serverless Multiplayer
 
-Decentraland runs scenes locally in a player's browser. By default, players are able to see each other and interact directly, but each player interacts with the environment independently. Changes in the environment aren't shared between players by default.
+Decentraland runs scenes locally in a player's instance of the explorer. By default, players are able to see each other and interact directly, but each player interacts with the environment independently. Changes in the environment aren't shared between players by default.
 
 Seeing the same content in the same state is extremely important for players to interact in more meaningful ways.
 

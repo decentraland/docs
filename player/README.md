@@ -1,22 +1,20 @@
 ---
-description: Welcome to Decentraland Player Documentation
+description: Everything you need to know to show up, hang out, and be part of Decentraland.
 icon: hand-wave
 ---
 
 # Welcome 
 
-Everything you need to know to show up, hang out, and be part of Decentraland.
-
 ### 🌟 Getting Started
 
 * [Getting started with Decentraland](decentraland-in-world/overview.md)
-* [Finding and attending evets](decentraland-in-world/finding-events.md)
+* [Finding and attending events](decentraland-in-world/finding-events.md)
 * [Making friends and chatting](decentraland-in-world/friends-and-chatting.md)
 * [Customizing your avatar](decentraland-in-world/customizing-your-avatar.md)
 * [Earning rewards](decentraland-in-world/earning-rewards.md)
 * [Exploring Genesis City and Worlds](decentraland-in-world/exploring.md)
 * [Settings and performance optimization](decentraland-in-world/settings-and-performance.md)
-* [Account management and security](faqs/security.md)
+* [Account management](https://docs.decentraland.org/faqs/my-account) and [security](faqs/security.md)
 
 ### ❓ Learn About Decentraland
 
@@ -63,10 +61,10 @@ Everything you need to know to show up, hang out, and be part of Decentraland.
 
 ## Community
 
-* [Discord](https://dcl.gg/discord) - Join the conversation
-* [Forum](https://forum.decentraland.org/) - Discuss proposals and ideas
-* [X](https://X.com/decentraland) - Stay updated with news
-* [Newsletter](https://decentraland.beehiiv.com/subscribe) - Weekly updates
+* <a href="https://dcl.gg/discord" target="_blank">Discord</a> - Join the conversation
+* <a href="https://forum.decentraland.org/" target="_blank">Forum</a> - Discuss proposals and ideas
+* <a href="https://X.com/decentraland" target="_blank">X</a> - Stay updated with news
+* <a href="https://decentraland.beehiiv.com/subscribe" target="_blank">Newsletter</a> - Weekly updates
 
 --- 
 

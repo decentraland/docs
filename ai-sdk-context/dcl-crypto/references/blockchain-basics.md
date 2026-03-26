@@ -9,21 +9,21 @@ import { executeTask } from '@dcl/sdk/ecs'
 
 // Basic pattern
 executeTask(async () => {
-  // All async blockchain operations go here
+	// All async blockchain operations go here
 })
 
 // With error handling (recommended)
 executeTask(async () => {
-  try {
-    // Blockchain operations
-  } catch (error) {
-    console.error('Operation failed:', error)
-  }
+	try {
+		// Blockchain operations
+	} catch (error) {
+		console.error('Operation failed:', error)
+	}
 })
 
 // Named function variant
 executeTask(async function checkBlockchain() {
-  // Operations here
+	// Operations here
 })
 ```
 
@@ -39,16 +39,17 @@ Decentraland scenes run in a synchronous game loop. `executeTask` creates an asy
 import { getPlayer } from '@dcl/sdk/src/players'
 
 function checkWallet() {
-  const player = getPlayer()
-  if (player && !player.isGuest) {
-    console.log('Player wallet address:', player.userId)
-  } else {
-    console.log('Player is guest (no wallet)')
-  }
+	const player = getPlayer()
+	if (player && !player.isGuest) {
+		console.log('Player wallet address:', player.userId)
+	} else {
+		console.log('Player is guest (no wallet)')
+	}
 }
 ```
 
 Key fields:
+
 - `player.userId` — the player's Ethereum wallet address (when connected)
 - `player.isGuest` — `true` if the player has no wallet connected
 
@@ -65,11 +66,11 @@ import { RequestManager, ContractFactory } from 'eth-connect'
 import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
 
 executeTask(async () => {
-  // Create the web3 provider interface
-  const provider = createEthereumProvider()
+	// Create the web3 provider interface
+	const provider = createEthereumProvider()
 
-  // Create request manager for sending/receiving RPC messages
-  const requestManager = new RequestManager(provider)
+	// Create request manager for sending/receiving RPC messages
+	const requestManager = new RequestManager(provider)
 })
 ```
 
@@ -80,12 +81,12 @@ import { RequestManager } from 'eth-connect'
 import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
 
 executeTask(async function () {
-  const provider = createEthereumProvider()
-  const requestManager = new RequestManager(provider)
+	const provider = createEthereumProvider()
+	const requestManager = new RequestManager(provider)
 
-  // Check current gas price on the Ethereum network
-  const gasPrice = await requestManager.eth_gasPrice()
-  console.log({ gasPrice })
+	// Check current gas price on the Ethereum network
+	const gasPrice = await requestManager.eth_gasPrice()
+	console.log({ gasPrice })
 })
 ```
 
@@ -93,11 +94,11 @@ executeTask(async function () {
 
 ```typescript
 executeTask(async () => {
-  const provider = createEthereumProvider()
-  const requestManager = new RequestManager(provider)
+	const provider = createEthereumProvider()
+	const requestManager = new RequestManager(provider)
 
-  const balance = await requestManager.eth_getBalance('0x123...abc', 'latest')
-  console.log('Account balance:', balance)
+	const balance = await requestManager.eth_getBalance('0x123...abc', 'latest')
+	console.log('Account balance:', balance)
 })
 ```
 
@@ -110,24 +111,24 @@ Store contract ABIs in separate files (e.g., `src/contracts/mana.ts`):
 ```typescript
 // Example of one function in the MANA ABI
 export const abi = [
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'burner',
-        type: 'address'
-      },
-      {
-        indexed: false,
-        name: 'value',
-        type: 'uint256'
-      }
-    ],
-    name: 'Burn',
-    type: 'event'
-  }
-  // ... rest of ABI
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				name: 'burner',
+				type: 'address',
+			},
+			{
+				indexed: false,
+				name: 'value',
+				type: 'uint256',
+			},
+		],
+		name: 'Burn',
+		type: 'event',
+	},
+	// ... rest of ABI
 ]
 ```
 
@@ -139,16 +140,16 @@ import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
 import { abi } from '../contracts/mana'
 
 executeTask(async () => {
-  const provider = createEthereumProvider()
-  const requestManager = new RequestManager(provider)
+	const provider = createEthereumProvider()
+	const requestManager = new RequestManager(provider)
 
-  // Create a factory based on the ABI
-  const factory = new ContractFactory(requestManager, abi)
+	// Create a factory based on the ABI
+	const factory = new ContractFactory(requestManager, abi)
 
-  // Instance the contract at a specific address
-  const contract = (await factory.at(
-    '0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
-  )) as any
+	// Instance the contract at a specific address
+	const contract = (await factory.at(
+		'0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
+	)) as any
 })
 ```
 
@@ -161,31 +162,31 @@ import { RequestManager, ContractFactory } from 'eth-connect'
 import { abi } from '../contracts/mana'
 
 executeTask(async () => {
-  try {
-    const provider = createEthereumProvider()
-    const requestManager = new RequestManager(provider)
-    const factory = new ContractFactory(requestManager, abi)
-    const contract = (await factory.at(
-      '0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
-    )) as any
+	try {
+		const provider = createEthereumProvider()
+		const requestManager = new RequestManager(provider)
+		const factory = new ContractFactory(requestManager, abi)
+		const contract = (await factory.at(
+			'0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
+		)) as any
 
-    let userData = getPlayer()
-    if (userData.isGuest) {
-      return
-    }
+		let userData = getPlayer()
+		if (userData.isGuest) {
+			return
+		}
 
-    // Write operation (costs gas, prompts wallet)
-    const res = await contract.setBalance(
-      '0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb',
-      100,
-      {
-        from: userData.userId,
-      }
-    )
-    console.log(res)
-  } catch (error: any) {
-    console.log(error.toString())
-  }
+		// Write operation (costs gas, prompts wallet)
+		const res = await contract.setBalance(
+			'0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb',
+			100,
+			{
+				from: userData.userId,
+			}
+		)
+		console.log(res)
+	} catch (error: any) {
+		console.log(error.toString())
+	}
 })
 ```
 
@@ -193,28 +194,24 @@ executeTask(async () => {
 
 ```typescript
 executeTask(async () => {
-  try {
-    const userData = getPlayer()
-    if (userData.isGuest) return
+	try {
+		const userData = getPlayer()
+		if (userData.isGuest) return
 
-    // Read operation — free, no gas, no wallet prompt
-    const balance = await contract.balanceOf(userData.userId)
-    console.log('Current balance:', balance)
+		// Read operation — free, no gas, no wallet prompt
+		const balance = await contract.balanceOf(userData.userId)
+		console.log('Current balance:', balance)
 
-    // Write operation — costs gas, prompts wallet confirmation
-    const writeResult = await contract.transfer(
-      '0xRecipientAddress',
-      100,
-      {
-        from: userData.userId,
-        gas: 100000,
-        gasPrice: await requestManager.eth_gasPrice()
-      }
-    )
-    console.log('Transaction hash:', writeResult)
-  } catch (error) {
-    console.log('Transaction failed:', error)
-  }
+		// Write operation — costs gas, prompts wallet confirmation
+		const writeResult = await contract.transfer('0xRecipientAddress', 100, {
+			from: userData.userId,
+			gas: 100000,
+			gasPrice: await requestManager.eth_gasPrice(),
+		})
+		console.log('Transaction hash:', writeResult)
+	} catch (error) {
+		console.log('Transaction failed:', error)
+	}
 })
 ```
 
@@ -224,9 +221,9 @@ executeTask(async () => {
 import { sendAsync } from '~system/EthereumController'
 
 await sendAsync({
-  id: 1,
-  method: 'myMethod',
-  jsonParams: '{ myParam: myValue }',
+	id: 1,
+	method: 'myMethod',
+	jsonParams: '{ myParam: myValue }',
 })
 ```
 
@@ -241,13 +238,13 @@ import { executeTask } from '@dcl/sdk/ecs'
 import { signedFetch } from '@dcl/sdk/network'
 
 executeTask(async () => {
-  try {
-    const response = await signedFetch('https://api.example.com/data')
-    const json = await response.json()
-    console.log('Response:', json)
-  } catch (error) {
-    console.error('Failed to fetch:', error)
-  }
+	try {
+		const response = await signedFetch('https://api.example.com/data')
+		const json = await response.json()
+		console.log('Response:', json)
+	} catch (error) {
+		console.error('Failed to fetch:', error)
+	}
 })
 ```
 
@@ -255,21 +252,21 @@ executeTask(async () => {
 
 ```typescript
 executeTask(async () => {
-  try {
-    const response = await signedFetch('https://api.example.com/data', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        key: 'value'
-      })
-    })
-    const json = await response.json()
-    console.log('Response:', json)
-  } catch (error) {
-    console.error('Failed to fetch:', error)
-  }
+	try {
+		const response = await signedFetch('https://api.example.com/data', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				key: 'value',
+			}),
+		})
+		const json = await response.json()
+		console.log('Response:', json)
+	} catch (error) {
+		console.error('Failed to fetch:', error)
+	}
 })
 ```
 
@@ -279,21 +276,21 @@ executeTask(async () => {
 import { signedFetch } from '@dcl/sdk/signed-fetch'
 
 executeTask(async () => {
-  try {
-    const response = await signedFetch('https://example.com/api/action', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'claimReward',
-        amount: 100
-      })
-    })
+	try {
+		const response = await signedFetch('https://example.com/api/action', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				action: 'claimReward',
+				amount: 100,
+			}),
+		})
 
-    const result = await response.json()
-    console.log('Transaction result:', result)
-  } catch (error) {
-    console.log('Transaction failed:', error)
-  }
+		const result = await response.json()
+		console.log('Transaction result:', result)
+	} catch (error) {
+		console.log('Transaction failed:', error)
+	}
 })
 ```
 
@@ -307,8 +304,8 @@ executeTask(async () => {
 
 // Contract addresses differ between networks
 const CONTRACT_ADDRESSES = {
-  mainnet: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
-  sepolia: '0x...' // Test contract address
+	mainnet: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
+	sepolia: '0x...', // Test contract address
 }
 
 const currentNetwork = 'sepolia' // or determine dynamically
@@ -323,9 +320,9 @@ Display certified NFTs as framed pictures in your scene:
 import { NftShape, NftFrameType } from '@dcl/sdk/ecs'
 
 NftShape.create(entity, {
-  urn: 'urn:decentraland:ethereum:erc721:0x06012c8cf97bead5deae237070f9587f8e7a266d:558536',
-  color: Color4.White(),
-  style: NftFrameType.NFT_CLASSIC
+	urn: 'urn:decentraland:ethereum:erc721:0x06012c8cf97bead5deae237070f9587f8e7a266d:558536',
+	color: Color4.White(),
+	style: NftFrameType.NFT_CLASSIC,
 })
 
 // Available frame styles:
@@ -346,16 +343,16 @@ The SDK also provides a native MANA interface without the crypto toolkit:
 import { manaUser } from '@dcl/sdk/ethereum'
 
 executeTask(async () => {
-  try {
-    // Check MANA balance
-    const balance = await manaUser.balance()
-    console.log('MANA balance:', balance)
+	try {
+		// Check MANA balance
+		const balance = await manaUser.balance()
+		console.log('MANA balance:', balance)
 
-    // Send MANA
-    const result = await manaUser.send('0x123...abc', 100) // 100 MANA
-    console.log('MANA sent:', result)
-  } catch (error) {
-    console.log('MANA transaction failed:', error)
-  }
+		// Send MANA
+		const result = await manaUser.send('0x123...abc', 100) // 100 MANA
+		console.log('MANA sent:', result)
+	} catch (error) {
+		console.log('MANA transaction failed:', error)
+	}
 })
 ```

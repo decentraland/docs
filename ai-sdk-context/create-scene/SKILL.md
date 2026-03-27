@@ -96,6 +96,44 @@ All valid `scene.json` fields:
 | `worldConfiguration`       | Optional    | For Worlds deployment (see **deploy-worlds** skill)                   |
 | `authoritativeMultiplayer` | Optional    | Enable authoritative server mode (see **authoritative-server** skill) |
 
+### Tags
+
+Valid values for the `tags` array:
+
+`"art"`, `"game"`, `"casino"`, `"social"`, `"music"`, `"fashion"`, `"crypto"`, `"education"`, `"shop"`, `"business"`, `"sports"`
+
+### Required Permissions
+
+Add to `requiredPermissions` when your scene uses these features:
+
+| Permission                          | When needed                                  |
+|------------------------------------|----------------------------------------------|
+| `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE` | Teleporting the player within the scene      |
+| `ALLOW_TO_TRIGGER_AVATAR_EMOTE`     | Playing avatar emotes                        |
+| `ALLOW_MEDIA_HOSTNAMES`             | Loading external video/audio streams         |
+| `USE_WEB3_API`                      | Blockchain interactions                      |
+| `USE_FETCH`                         | HTTP requests to external servers            |
+| `USE_WEBSOCKET`                     | WebSocket connections                        |
+| `OPEN_EXTERNAL_LINK`                | Opening URLs in the user's browser           |
+
+When using `ALLOW_MEDIA_HOSTNAMES`, also whitelist the domains:
+
+```json
+"requiredPermissions": ["ALLOW_MEDIA_HOSTNAMES"],
+"allowedMediaHostnames": ["youtube.com", "www.youtube.com", "player.vimeo.com", "twitch.tv"]
+```
+
+### Feature Toggles
+
+```json
+"featureToggles": {
+  "voiceChat": "enabled",
+  "portableExperiences": "enabled"
+}
+```
+
+Valid values: `"enabled"`, `"disabled"`. For `portableExperiences` also: `"hideUi"`.
+
 ### Spawn Points
 
 Configure where and how players enter the scene:

@@ -6,7 +6,7 @@ alwaysApply: true
 
 # Writing Script Components for Creator Hub (AI context)
 
-This document explains how to write `.ts` files that are used inside a **Script component** on an entity in a Creator Hub scene. These scripts run as self-contained classes attached to individual entities.
+This document explains how to write `.tsx` files that are used inside a **Script component** on an entity in a Creator Hub scene. These scripts run as self-contained classes attached to individual entities.
 
 ## Script structure
 

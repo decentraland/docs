@@ -97,6 +97,40 @@ From inside Decentraland, use the chatbox command:
 }
 ```
 
+## World Configuration Options
+
+Beyond `name` and `placesConfig`, `worldConfiguration` supports skybox and minimap customization:
+
+```json
+"worldConfiguration": {
+  "name": "my-name.dcl.eth",
+  "skyboxConfig": {
+    "fixedTime": 36000,
+    "textures": ["textures/skybox.png"]
+  },
+  "miniMapConfig": {
+    "visible": true,
+    "dataImage": "images/minimap.png",
+    "estateImage": "images/estate.png"
+  },
+  "placesConfig": {
+    "optOut": false
+  }
+}
+```
+
+**`skyboxConfig.fixedTime` values:**
+
+| Value | Time of day |
+|-------|------------|
+| `0` | Midnight |
+| `18000` | 6 AM (sunrise) |
+| `36000` | Noon |
+| `45000` | 6 PM (sunset) |
+| `50400` | Maximum |
+
+Omit `fixedTime` for a dynamic day/night cycle.
+
 ## Multi-Scene Worlds
 
 A World can host multiple independent scenes, each at different coordinates. The World grows and shrinks dynamically as scenes are added or removed, and gaps between scenes are filled with environment.

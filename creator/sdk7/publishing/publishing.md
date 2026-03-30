@@ -108,7 +108,7 @@ By default, when deploying to a world via the CLI your scene will be treated as 
 
 To deploy as a multi-scene world, add the paramter `--multi-scene` to the deploy command:
 
-`npm run deploy -multi-scene --target-content https://worlds-content-server.decentraland.org`
+`npm run deploy -- --multi-scene --target-content https://worlds-content-server.decentraland.org`
 
 When using this paramter, if the scene you're publishing has different coordinates from existing scenes in that world, these scenes will all exist together.
 

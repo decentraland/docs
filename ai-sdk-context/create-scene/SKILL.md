@@ -29,9 +29,9 @@ IMPORTANT: Only fetch models from the free catalogs below if the prompt explicit
 
 Before writing scene code, check both asset catalogs for free models that match the user's theme:
 
-1. Read `{baseDir}/../../context/asset-packs-catalog.md` (2,700+ Creator Hub models — furniture, structures, decorations, nature, etc.)
-2. Read `{baseDir}/../../context/open-source-3d-assets.md` (991 CC0 models — cyberpunk, medieval, nature, sci-fi, etc.)
-3. Read `{baseDir}/../../context/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
+1. Read `{baseDir}/../context/asset-packs-catalog.md` (2,700+ Creator Hub models — furniture, structures, decorations, nature, etc.)
+2. Read `{baseDir}/../context/open-source-3d-assets.md` (991 CC0 models — cyberpunk, medieval, nature, sci-fi, etc.)
+3. Read `{baseDir}/../context/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
 4. Suggest matching models and sounds to the user
 5. Download selected models into the scene's `models/` directory:
    ```bash
@@ -106,15 +106,15 @@ Valid values for the `tags` array:
 
 Add to `requiredPermissions` when your scene uses these features:
 
-| Permission                          | When needed                                  |
-|------------------------------------|----------------------------------------------|
-| `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE` | Teleporting the player within the scene      |
-| `ALLOW_TO_TRIGGER_AVATAR_EMOTE`     | Playing avatar emotes                        |
-| `ALLOW_MEDIA_HOSTNAMES`             | Loading external video/audio streams         |
-| `USE_WEB3_API`                      | Blockchain interactions                      |
-| `USE_FETCH`                         | HTTP requests to external servers            |
-| `USE_WEBSOCKET`                     | WebSocket connections                        |
-| `OPEN_EXTERNAL_LINK`                | Opening URLs in the user's browser           |
+| Permission                          | When needed                             |
+| ----------------------------------- | --------------------------------------- |
+| `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE` | Teleporting the player within the scene |
+| `ALLOW_TO_TRIGGER_AVATAR_EMOTE`     | Playing avatar emotes                   |
+| `ALLOW_MEDIA_HOSTNAMES`             | Loading external video/audio streams    |
+| `USE_WEB3_API`                      | Blockchain interactions                 |
+| `USE_FETCH`                         | HTTP requests to external servers       |
+| `USE_WEBSOCKET`                     | WebSocket connections                   |
+| `OPEN_EXTERNAL_LINK`                | Opening URLs in the user's browser      |
 
 When using `ALLOW_MEDIA_HOSTNAMES`, also whitelist the domains:
 

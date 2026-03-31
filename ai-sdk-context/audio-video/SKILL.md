@@ -7,13 +7,14 @@ description: Add sound effects, music, audio streaming, and video players to Dec
 
 ## When to Use Which Media Component
 
-| Need | Component | Key Difference |
-|------|-----------|---------------|
-| Sound effect from a file (click, explosion, footstep) | `AudioSource` | Local file, spatial, one-shot or looping |
-| Background music or radio stream | `AudioStream` | External URL, non-spatial, continuous |
-| Video on a surface (screen, billboard) | `VideoPlayer` + `Material.Texture.Video` | Requires a mesh to display on |
+| Need                                                  | Component                                | Key Difference                           |
+| ----------------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Sound effect from a file (click, explosion, footstep) | `AudioSource`                            | Local file, spatial, one-shot or looping |
+| Background music or radio stream                      | `AudioStream`                            | External URL, non-spatial, continuous    |
+| Video on a surface (screen, billboard)                | `VideoPlayer` + `Material.Texture.Video` | Requires a mesh to display on            |
 
 **Decision flow:**
+
 1. Is it a local audio file? → `AudioSource`
 2. Is it a streaming URL (radio, live audio)? → `AudioStream`
 3. Is it video content? → `VideoPlayer` on a plane/mesh
@@ -30,20 +31,22 @@ const speaker = engine.addEntity()
 Transform.create(speaker, { position: Vector3.create(8, 1, 8) })
 
 AudioSource.create(speaker, {
-  audioClipUrl: 'assets/scene/Audio/music.mp3',
-  playing: true,
-  loop: true,
-  volume: 0.5,   // 0 to 1
-  pitch: 1.0     // Playback speed (0.5 = half speed, 2.0 = double)
+	audioClipUrl: 'assets/scene/Audio/music.mp3',
+	playing: true,
+	loop: true,
+	volume: 0.5, // 0 to 1
+	pitch: 1.0, // Playback speed (0.5 = half speed, 2.0 = double)
 })
 ```
 
 ### Supported Formats
+
 - `.mp3` (recommended)
 - `.ogg`
 - `.wav`
 
 ### File Organization
+
 ```
 project/
 ├── assets/
@@ -58,6 +61,7 @@ project/
 ```
 
 ### Play/Stop/Toggle
+
 ```typescript
 // Play
 AudioSource.getMutable(speaker).playing = true
@@ -71,6 +75,7 @@ audio.playing = !audio.playing
 ```
 
 ### Play on Click
+
 ```typescript
 import { pointerEventsSystem, InputAction } from '@dcl/sdk/ecs'
 
@@ -80,20 +85,23 @@ const button = engine.addEntity()
 const audioEntity = engine.addEntity()
 Transform.create(audioEntity, { position: Vector3.create(8, 1, 8) })
 AudioSource.create(audioEntity, {
-  audioClipUrl: 'assets/scene/Audio/click.mp3',
-  playing: false,
-  loop: false,
-  volume: 0.8
+	audioClipUrl: 'assets/scene/Audio/click.mp3',
+	playing: false,
+	loop: false,
+	volume: 0.8,
 })
 
 pointerEventsSystem.onPointerDown(
-  { entity: button, opts: { button: InputAction.IA_POINTER, hoverText: 'Play sound' } },
-  () => {
-    // Reset and play
-    const audio = AudioSource.getMutable(audioEntity)
-    audio.playing = false
-    audio.playing = true
-  }
+	{
+		entity: button,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Play sound' },
+	},
+	() => {
+		// Reset and play
+		const audio = AudioSource.getMutable(audioEntity)
+		audio.playing = false
+		audio.playing = true
+	}
 )
 ```
 
@@ -109,9 +117,9 @@ const radio = engine.addEntity()
 Transform.create(radio, { position: Vector3.create(8, 1, 8) })
 
 AudioStream.create(radio, {
-  url: 'https://example.com/stream.mp3',
-  playing: true,
-  volume: 0.3
+	url: 'https://example.com/stream.mp3',
+	playing: true,
+	volume: 0.3,
 })
 ```
 
@@ -120,25 +128,31 @@ AudioStream.create(radio, {
 Play video on a surface:
 
 ```typescript
-import { engine, Transform, VideoPlayer, Material, MeshRenderer } from '@dcl/sdk/ecs'
+import {
+	engine,
+	Transform,
+	VideoPlayer,
+	Material,
+	MeshRenderer,
+} from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 // Create a screen
 const screen = engine.addEntity()
 Transform.create(screen, {
-  position: Vector3.create(8, 3, 15.9),
-  scale: Vector3.create(8, 4.5, 1)  // 16:9 ratio
+	position: Vector3.create(8, 3, 15.9),
+	scale: Vector3.create(8, 4.5, 1), // 16:9 ratio
 })
 MeshRenderer.setPlane(screen)
 
 // Add video player
 VideoPlayer.create(screen, {
-  src: 'https://example.com/video.mp4',
-  playing: true,
-  loop: true,
-  volume: 0.5,
-  playbackRate: 1.0,
-  position: 0  // Start time in seconds
+	src: 'https://example.com/video.mp4',
+	playing: true,
+	loop: true,
+	volume: 0.5,
+	playbackRate: 1.0,
+	position: 0, // Start time in seconds
 })
 
 // Create video texture
@@ -146,11 +160,12 @@ const videoTexture = Material.Texture.Video({ videoPlayerEntity: screen })
 
 // Basic material (recommended — better performance)
 Material.setBasicMaterial(screen, {
-  texture: videoTexture
+	texture: videoTexture,
 })
 ```
 
 ### Video Controls
+
 ```typescript
 // Play
 VideoPlayer.getMutable(screen).playing = true
@@ -179,19 +194,18 @@ Material.setBasicMaterial(screen, {
 
 For a brighter, emissive video screen:
 
-
 ```typescript
 import { Color3 } from '@dcl/sdk/math'
 
 const videoTexture = Material.Texture.Video({ videoPlayerEntity: screen })
 Material.setPbrMaterial(screen, {
-  texture: videoTexture,
-  roughness: 1.0,
-  specularIntensity: 0,
-  metallic: 0,
-  emissiveTexture: videoTexture,
-  emissiveIntensity: 0.6,
-  emissiveColor: Color3.White()
+	texture: videoTexture,
+	roughness: 1.0,
+	specularIntensity: 0,
+	metallic: 0,
+	emissiveTexture: videoTexture,
+	emissiveIntensity: 0.6,
+	emissiveColor: Color3.White(),
 })
 ```
 
@@ -203,20 +217,20 @@ Monitor video playback state:
 import { videoEventsSystem, VideoState } from '@dcl/sdk/ecs'
 
 videoEventsSystem.registerVideoEventsEntity(screen, (videoEvent) => {
-  switch (videoEvent.state) {
-    case VideoState.VS_PLAYING:
-      console.log('Video started playing')
-      break
-    case VideoState.VS_PAUSED:
-      console.log('Video paused')
-      break
-    case VideoState.VS_READY:
-      console.log('Video ready to play')
-      break
-    case VideoState.VS_ERROR:
-      console.log('Video error occurred')
-      break
-  }
+	switch (videoEvent.state) {
+		case VideoState.VS_PLAYING:
+			console.log('Video started playing')
+			break
+		case VideoState.VS_PAUSED:
+			console.log('Video paused')
+			break
+		case VideoState.VS_READY:
+			console.log('Video ready to play')
+			break
+		case VideoState.VS_ERROR:
+			console.log('Video error occurred')
+			break
+	}
 })
 ```
 
@@ -244,36 +258,40 @@ VideoPlayer.create(videoPlayerEntity, {
 	playing: true,
 	spatial: true,
 	spatialMinDistance: 5,
-	spatialMaxDistance: 10
-});
+	spatialMaxDistance: 10,
+})
 
 AudioStream.create(audioStreamEntity, {
-    url: 'https://radioislanegra.org/listen/up/stream',
-    playing: true,
-    volume: 1.0,
-    spatial: true,
-    spatialMinDistance: 5,
-    spatialMaxDistance: 10
-});
+	url: 'https://radioislanegra.org/listen/up/stream',
+	playing: true,
+	volume: 1.0,
+	spatial: true,
+	spatialMinDistance: 5,
+	spatialMaxDistance: 10,
+})
 ```
-
-
 
 ## Free Audio Files
 
 Always check the audio catalog before creating placeholder sound file references. It contains 50 free sounds from the Creator Hub asset packs.
 
-Read `{baseDir}/../../context/audio-catalog.md` for music tracks (ambient, dance, medieval, sci-fi, etc.), ambient sounds (birds, city, factory, etc.), interaction sounds (buttons, doors, levers, chests), sound effects (explosions, sirens, bells), and game mechanic sounds (win/lose, heal, respawn, damage).
+Read `{baseDir}/../context/audio-catalog.md` for music tracks (ambient, dance, medieval, sci-fi, etc.), ambient sounds (birds, city, factory, etc.), interaction sounds (buttons, doors, levers, chests), sound effects (explosions, sirens, bells), and game mechanic sounds (win/lose, heal, respawn, damage).
 
 To use a catalog sound:
+
 ```bash
 # Download from catalog
 mkdir -p assets/scene/Audio
 curl -o assets/scene/Audio/ambient_1.mp3 "https://builder-items.decentraland.org/contents/bafybeic4faewxkdqx67dloyw57ikgaeibc2e2dbx34hwjubl3gfvs2r4su"
 ```
+
 ```typescript
 // Reference in code — must be a local file path
-AudioSource.create(entity, { audioClipUrl: 'assets/scene/Audio/ambient_1.mp3', playing: true, loop: true })
+AudioSource.create(entity, {
+	audioClipUrl: 'assets/scene/Audio/ambient_1.mp3',
+	playing: true,
+	loop: true,
+})
 ```
 
 ### How to suggest audio
@@ -294,11 +312,11 @@ Check video playback state programmatically:
 import { videoEventsSystem, VideoState } from '@dcl/sdk/ecs'
 
 engine.addSystem(() => {
-  const state = videoEventsSystem.getVideoState(videoEntity)
-  if (state) {
-    console.log('Video state:', state.state) // VideoState.VS_PLAYING, VS_PAUSED, etc.
-    console.log('Current time:', state.currentOffset)
-  }
+	const state = videoEventsSystem.getVideoState(videoEntity)
+	if (state) {
+		console.log('Video state:', state.state) // VideoState.VS_PLAYING, VS_PAUSED, etc.
+		console.log('Current time:', state.currentOffset)
+	}
 })
 ```
 
@@ -310,10 +328,10 @@ Use the `AudioEvent` component to detect audio state changes:
 import { AudioEvent } from '@dcl/sdk/ecs'
 
 engine.addSystem(() => {
-  const event = AudioEvent.getOrNull(audioEntity)
-  if (event) {
-    console.log('Audio state:', event.state) // playing, paused, finished
-  }
+	const event = AudioEvent.getOrNull(audioEntity)
+	if (event) {
+		console.log('Audio state:', event.state) // playing, paused, finished
+	}
 })
 ```
 
@@ -323,8 +341,8 @@ External audio/video URLs require the `ALLOW_MEDIA_HOSTNAMES` permission in scen
 
 ```json
 {
-  "requiredPermissions": ["ALLOW_MEDIA_HOSTNAMES"],
-  "allowedMediaHostnames": ["stream.example.com", "cdn.example.com"]
+	"requiredPermissions": ["ALLOW_MEDIA_HOSTNAMES"],
+	"allowedMediaHostnames": ["stream.example.com", "cdn.example.com"]
 }
 ```
 
@@ -334,12 +352,13 @@ Share one VideoPlayer across multiple screens by referencing the same `videoPlay
 
 ```typescript
 Material.setPbrMaterial(screen1, {
-  texture: Material.Texture.Video({ videoPlayerEntity: videoEntity })
+	texture: Material.Texture.Video({ videoPlayerEntity: videoEntity }),
 })
 Material.setPbrMaterial(screen2, {
-  texture: Material.Texture.Video({ videoPlayerEntity: videoEntity })
+	texture: Material.Texture.Video({ videoPlayerEntity: videoEntity }),
 })
 ```
+
 ### Play a video on a glTF model
 
 You may want to play a video on a shape that is not a primitive, to have curved screens or exotic shapes. Use `GltfNodeModifiers` to swap the material of a GLTF model.
@@ -350,28 +369,26 @@ VideoPlayer.create(myEntity, {
 	playing: true,
 })
 
-GltfNodeModifiers.create(
-	myEntity,
-	{
-		modifiers: [{
+GltfNodeModifiers.create(myEntity, {
+	modifiers: [
+		{
 			path: '',
 			material: {
 				material: {
-					$case: 'pbr', pbr: {
+					$case: 'pbr',
+					pbr: {
 						texture: Material.Texture.Video({
 							videoPlayerEntity: myEntity,
 						}),
 					},
 				},
 			},
-		}],
-	})
+		},
+	],
+})
 ```
 
-
 ### Video Limits & Tips
-
-
 
 - **Simultaneous videos**: Always avoid playing multiple videos at once. Only play more than 1 simultaneous video if explicitly requested. Maximum 5 simultaneous videos.
 - **Distance-based control**: Pause video when player is far away to save bandwidth

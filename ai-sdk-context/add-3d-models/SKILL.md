@@ -126,7 +126,7 @@ IMPORTANT: Only fetch models from the free catalogs below if the prompt explicit
 
 ### Creator Hub Asset Packs (2,700+ models)
 
-Read `{baseDir}/../../context/asset-packs-catalog.md` for official Decentraland models across 12 themed packs (Cyberpunk, Fantasy, Gallery, Sci-fi, Western, Pirates, etc.) with furniture, structures, decorations, nature, and more.
+Read `{baseDir}/../context/asset-packs-catalog.md` for official Decentraland models across 12 themed packs (Cyberpunk, Fantasy, Gallery, Sci-fi, Western, Pirates, etc.) with furniture, structures, decorations, nature, and more.
 
 To use a Creator Hub model:
 
@@ -143,7 +143,7 @@ GltfContainer.create(entity, { src: 'assets/scene/Models/arcade_machine.glb' })
 
 ### Open Source CC0 Models (991 models)
 
-Read `{baseDir}/../../context/open-source-3d-assets.md` for free CC0-licensed models from Polygonal Mind, organized by 18 themed collections (MomusPark, Medieval Fair, Cyberpunk, Sci-fi, etc.) with direct GitHub download URLs.
+Read `{baseDir}/../context/open-source-3d-assets.md` for free CC0-licensed models from Polygonal Mind, organized by 18 themed collections (MomusPark, Medieval Fair, Cyberpunk, Sci-fi, etc.) with direct GitHub download URLs.
 
 ```bash
 curl -o assets/scene/Models/tree.glb "https://raw.githubusercontent.com/ToxSam/cc0-models-Polygonal-Mind/main/projects/MomusPark/Tree_01_Art.glb"

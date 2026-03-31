@@ -395,6 +395,41 @@ Light types: `point`, `spot`.
 
 Modes: `move`, `rotate`, `scale`.
 
+### core-schema::Tags
+
+Assigns one or more tags to an entity. Tags are used to group entities for batch operations in code.
+
+**Entity `0` (RootEntity) holds a global registry** of all tag names used in the scene. Every tag that appears on any entity must also be listed on entity `0`.
+
+```json
+{
+  "name": "core-schema::Tags",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "tags": {
+        "type": "array",
+        "items": { "type": "string", "serializationType": "utf8-string" },
+        "serializationType": "array"
+      }
+    },
+    "serializationType": "map"
+  },
+  "data": {
+    "0": {
+      "json": {
+        "tags": ["Crystal", "Tree", "Alien"]
+      }
+    },
+    "523": { "json": { "tags": ["Crystal"] } },
+    "536": { "json": { "tags": ["Tree"] } },
+    "539": { "json": { "tags": ["Tree", "Alien"] } }
+  }
+}
+```
+
+An entity can have multiple tags. The entity `0` `tags` array must be the union of all tags used across all entities.
+
 ### core::NftShape
 
 ```json
@@ -497,6 +532,60 @@ The `inspector::SceneMetadata` component in the composite must match `scene.json
 ```
 
 **Note:** In scene.json parcels use string format `"0,0"`, in SceneMetadata they use object format `{ "x": 0, "y": 0 }`.
+
+## Referencing Composite Entities from Code
+
+Entities defined in the composite can be fetched in TypeScript code by name or by tag. These lookups must happen inside `main()`, in functions called after `main()`, or in systems — entities from the composite are not yet instantiated before that point.
+
+### By Name
+
+The Creator Hub auto-generates `assets/scene/entity-names.ts` with an `EntityNames` enum that lists every named entity. Import it to get type-safe access:
+
+```ts
+import { EntityNames } from '../assets/scene/entity-names'
+
+export function main() {
+  // Returns the entity or null — always check before use
+  const door = engine.getEntityOrNullByName(EntityNames.Door_1)
+  if (door) {
+    pointerEventsSystem.onPointerDown(
+      { entity: door, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Open' } },
+      function () { /* open door */ }
+    )
+  }
+
+  // Strict variant — throws at compile time if name changes, no null check needed
+  const box = engine.getEntityByName<EntityNames>(EntityNames.MyBox)
+  console.log(Transform.get(box).position.x)
+}
+```
+
+You can also pass a plain string instead of the enum value, but the enum is preferred because it catches renames at compile time.
+
+### By Tag
+
+Use `engine.getEntitiesByTag()` to retrieve all entities that share a tag. Tags must be defined in the composite's `core-schema::Tags` component (see above).
+
+```ts
+import { engine } from '@dcl/sdk/ecs'
+
+export function main() {
+  const trees = engine.getEntitiesByTag('Tree')
+
+  for (const entity of trees) {
+    // apply logic to every entity tagged "Tree"
+  }
+}
+```
+
+Tags can also be added or removed at runtime:
+
+```ts
+import { Tags } from '@dcl/sdk/ecs'
+
+Tags.add(entity, 'Crystal')
+Tags.remove(entity, 'Crystal')
+```
 
 ## Validation Checklist
 

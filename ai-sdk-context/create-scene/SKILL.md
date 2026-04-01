@@ -247,7 +247,7 @@ After customizing the files:
 
 ## Important Notes
 
-- Always place objects within the scene boundaries (0 to 16*parcelsX for X, 0 to 16*parcelsZ for Z)
+- **Always validate entity positions against parcel bounds.** Each parcel is 16×16m. With the default base parcel at the lower-left corner, valid range is `0 ≤ x ≤ 16*parcelsWide` and `0 ≤ z ≤ 16*parcelsDeep`. **Any negative X or Z coordinate is outside the scene — entities there are not rendered and no error is shown.**
 - Center of a single-parcel scene is (8, 0, 8) at ground level
 - Y axis is up, minimum Y=0 (ground)
 - The `main` field in scene.json MUST be `"bin/index.js"` — this is the compiled output path

@@ -403,28 +403,28 @@ Assigns one or more tags to an entity. Tags are used to group entities for batch
 
 ```json
 {
-  "name": "core-schema::Tags",
-  "jsonSchema": {
-    "type": "object",
-    "properties": {
-      "tags": {
-        "type": "array",
-        "items": { "type": "string", "serializationType": "utf8-string" },
-        "serializationType": "array"
-      }
-    },
-    "serializationType": "map"
-  },
-  "data": {
-    "0": {
-      "json": {
-        "tags": ["Crystal", "Tree", "Alien"]
-      }
-    },
-    "523": { "json": { "tags": ["Crystal"] } },
-    "536": { "json": { "tags": ["Tree"] } },
-    "539": { "json": { "tags": ["Tree", "Alien"] } }
-  }
+	"name": "core-schema::Tags",
+	"jsonSchema": {
+		"type": "object",
+		"properties": {
+			"tags": {
+				"type": "array",
+				"items": { "type": "string", "serializationType": "utf8-string" },
+				"serializationType": "array"
+			}
+		},
+		"serializationType": "map"
+	},
+	"data": {
+		"0": {
+			"json": {
+				"tags": ["Crystal", "Tree", "Alien"]
+			}
+		},
+		"523": { "json": { "tags": ["Crystal"] } },
+		"536": { "json": { "tags": ["Tree"] } },
+		"539": { "json": { "tags": ["Tree", "Alien"] } }
+	}
 }
 ```
 
@@ -545,18 +545,23 @@ The Creator Hub auto-generates `assets/scene/entity-names.ts` with an `EntityNam
 import { EntityNames } from '../assets/scene/entity-names'
 
 export function main() {
-  // Returns the entity or null — always check before use
-  const door = engine.getEntityOrNullByName(EntityNames.Door_1)
-  if (door) {
-    pointerEventsSystem.onPointerDown(
-      { entity: door, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Open' } },
-      function () { /* open door */ }
-    )
-  }
+	// Returns the entity or null — always check before use
+	const door = engine.getEntityOrNullByName(EntityNames.Door_1)
+	if (door) {
+		pointerEventsSystem.onPointerDown(
+			{
+				entity: door,
+				opts: { button: InputAction.IA_PRIMARY, hoverText: 'Open' },
+			},
+			function () {
+				/* open door */
+			}
+		)
+	}
 
-  // Strict variant — throws at compile time if name changes, no null check needed
-  const box = engine.getEntityByName<EntityNames>(EntityNames.MyBox)
-  console.log(Transform.get(box).position.x)
+	// Strict variant — throws at compile time if name changes, no null check needed
+	const box = engine.getEntityByName<EntityNames>(EntityNames.MyBox)
+	console.log(Transform.get(box).position.x)
 }
 ```
 
@@ -570,11 +575,11 @@ Use `engine.getEntitiesByTag()` to retrieve all entities that share a tag. Tags 
 import { engine } from '@dcl/sdk/ecs'
 
 export function main() {
-  const trees = engine.getEntitiesByTag('Tree')
+	const trees = engine.getEntitiesByTag('Tree')
 
-  for (const entity of trees) {
-    // apply logic to every entity tagged "Tree"
-  }
+	for (const entity of trees) {
+		// apply logic to every entity tagged "Tree"
+	}
 }
 ```
 
@@ -602,7 +607,9 @@ Before writing a composite, verify:
 - [ ] All `GltfContainer.src` paths use slugified name format: `assets/asset-packs/<slug>/<filename>`
 - [ ] All referenced asset files were downloaded to disk (GLB, audio, images)
 - [ ] Default collision masks set on GltfContainer (`visibleMeshesCollisionMask: 0`, `invisibleMeshesCollisionMask: 3`)
-- [ ] All positions within parcel bounds (16m per parcel)
+- [ ] All positions within parcel bounds — each parcel is 16×16m; with the default base parcel at the lower-left corner, **any negative X or Z coordinate is outside the scene and will not render**. Valid range: `0` to `16 * parcelsWide` on X, `0` to `16 * parcelsDeep` on Z.
+- [ ] For every `GltfContainer` entity: checked whether the GLB contains animations (clip names embedded in the file). If it does, an `core::Animator` component is present on that entity. A model with animations but no Animator will silently loop its first clip with no way to control it.
+- [ ] For every `GltfContainer` entity: checked whether the GLB contains collision meshes (any mesh whose name includes the string `_collider`). If yes, `invisibleMeshesCollisionMask` is set to `3` (CL_POINTER + CL_PHYSICS) to activate them. If no built-in colliders, evaluated whether a `core::MeshCollider` box/sphere is needed to cover the model's rough shape (for walkable surfaces, walls, or clickable objects).
 - [ ] `asset-packs::Counter` must exist on entity 0, and have `value` = highest allocated component ID
 - [ ] No `{self}`, `{assetPath}`, or placeholder strings — all resolved to concrete values
 - [ ] Component names use base names (e.g., `asset-packs::Actions`, not `asset-packs::Actions-v1`)

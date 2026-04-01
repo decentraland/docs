@@ -15,16 +15,16 @@ For initial/static models, define them in the composite using `core::GltfContain
 
 ```json
 {
-  "name": "core::GltfContainer",
-  "data": {
-    "512": {
-      "json": {
-        "src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb",
-        "visibleMeshesCollisionMask": 0,
-        "invisibleMeshesCollisionMask": 3
-      }
-    }
-  }
+	"name": "core::GltfContainer",
+	"data": {
+		"512": {
+			"json": {
+				"src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb",
+				"visibleMeshesCollisionMask": 0,
+				"invisibleMeshesCollisionMask": 3
+			}
+		}
+	}
 }
 ```
 
@@ -70,29 +70,78 @@ project/
 └── scene.json
 ```
 
-## Colliders
+## RULE: Always check for animations
 
-### Using Model's Built-in Colliders
+Before finalizing any entity with a `GltfContainer`, check whether the GLB file contains animations (look for embedded clip names in the file metadata or catalog entry).
 
-Models exported with collision meshes work automatically. Set the collision mask:
+- **If the model has animations:** always add an `Animator` component. Without it the engine silently loops the first clip forever with no way to control playback.
+- **If the model has no animations:** omit `Animator`.
+
+In TypeScript:
+
+```typescript
+import { Animator } from '@dcl/sdk/ecs'
+
+Animator.create(model, {
+	states: [
+		{ clip: 'idle', playing: true, loop: true },
+		{ clip: 'walk', playing: false, loop: true },
+	],
+})
+```
+
+In composite (`core::Animator`):
+
+```json
+{
+	"name": "core::Animator",
+	"data": {
+		"512": {
+			"json": { "states": [{ "clip": "idle", "playing": true, "loop": true }] }
+		}
+	}
+}
+```
+
+## RULE: Always check for built-in colliders
+
+Before finalizing any entity with a `GltfContainer`, check whether the GLB contains collision meshes — any mesh whose name includes the substring `_collider`.
+
+- **If the model has `_collider` meshes:** set `invisibleMeshesCollisionMask: 3` (CL_POINTER + CL_PHYSICS) to activate them. These invisible meshes define the exact collision shape the author intended.
+- **If the model has no `_collider` meshes:** evaluate whether a `MeshCollider` is needed. Add one for any model that is a walkable surface, a wall, or needs to be clickable.
+
+### Using built-in colliders
 
 ```typescript
 GltfContainer.create(model, {
 	src: 'assets/scene/Models/building.glb',
-	visibleMeshesCollisionMask:
-		ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER,
-	invisibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS,
+	visibleMeshesCollisionMask: 0, // visible meshes: no collision (default)
+	invisibleMeshesCollisionMask: 3, // _collider meshes: physics + pointer
 })
 ```
 
-### Adding Simple Colliders
-
-For basic shapes, add `MeshCollider`:
+### Adding a MeshCollider when the model has no built-in colliders
 
 ```typescript
 import { MeshCollider } from '@dcl/sdk/ecs'
-MeshCollider.setBox(model) // Box collider
-MeshCollider.setSphere(model) // Sphere collider
+MeshCollider.setBox(model) // rough box coverage
+MeshCollider.setSphere(model) // rough sphere coverage
+```
+
+## RULE: Always validate entity positions against parcel bounds
+
+**Entities positioned outside the scene parcels are not rendered at all** — no error is shown; they simply disappear.
+
+- Each parcel is **16×16 meters**.
+- With the default base parcel at the lower-left corner: valid X and Z range is `0` to `16 * parcelCount` on each axis. **Any negative X or Z value is outside the scene.**
+- Y axis minimum is `0` (ground level). There is no hard upper limit but practical rendering stops around 20m per parcel height.
+
+Before placing any entity, confirm its position satisfies:
+
+```
+0 ≤ x ≤ 16 * parcelsWide
+0 ≤ z ≤ 16 * parcelsDeep
+y ≥ 0
 ```
 
 ## Common Model Operations

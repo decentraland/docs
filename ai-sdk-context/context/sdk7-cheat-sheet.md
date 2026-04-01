@@ -2,6 +2,28 @@
 
 Quick reference for Decentraland SDK7 fundamentals. For detailed API usage, see the relevant skill.
 
+## FUNDAMENTAL RULE: Composite-first scene authoring
+
+> **Always create the scene's initial entities in `assets/scene/main.composite`, not in TypeScript.**
+
+- **`.composite`** → everything present when the scene loads: 3D models, lights, primitives, text, audio, etc.
+- **`index.ts`** → behavior, interactivity, systems, and entities spawned *dynamically at runtime*.
+
+To attach interactivity or logic to a composite entity, look it up in `main()` by name or tag — never re-create it in code:
+
+```typescript
+// ✅ Correct — fetch from composite, then add behavior
+const door = engine.getEntityOrNullByName(EntityNames.Door_1)    // by name
+const trees = engine.getEntitiesByTag('Tree')                     // by tag
+
+// ❌ Wrong — creating a duplicate of a composite entity in code
+const door = engine.addEntity()
+Transform.create(door, { ... })
+GltfContainer.create(door, { ... })
+```
+
+Only use `engine.addEntity()` in TypeScript for entities that are **truly dynamic** (spawned/destroyed in response to gameplay events, or instanced in variable quantities at runtime).
+
 ## Imports
 
 ```typescript

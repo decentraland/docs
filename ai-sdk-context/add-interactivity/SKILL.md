@@ -5,6 +5,39 @@ description: Add click handlers, hover effects, pointer events, trigger areas, r
 
 # Adding Interactivity to Decentraland Scenes
 
+## RULE: Fetch composite entities — never re-create them
+
+If the entity to make interactive was defined in `assets/scene/main.composite`, **look it up by name or tag in `index.ts`**. Do NOT call `engine.addEntity()` + component create — that would create a duplicate.
+
+```typescript
+import { engine, pointerEventsSystem, InputAction } from '@dcl/sdk/ecs'
+import { EntityNames } from '../assets/scene/entity-names'
+
+export function main() {
+  // By name (type-safe via auto-generated EntityNames enum)
+  const door = engine.getEntityOrNullByName(EntityNames.Door_1)
+  if (door) {
+    pointerEventsSystem.onPointerDown(
+      { entity: door, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Open' } },
+      () => { /* open door */ }
+    )
+  }
+
+  // By tag (batch operations on groups of composite entities)
+  const crystals = engine.getEntitiesByTag('Crystal')
+  for (const crystal of crystals) {
+    pointerEventsSystem.onPointerDown(
+      { entity: crystal, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Collect' } },
+      () => { /* collect crystal */ }
+    )
+  }
+}
+```
+
+These lookups must happen inside `main()` or functions called after `main()` — composite entities are not instantiated before that point.
+
+---
+
 ## Decision Tree
 
 | Need | Approach | API |

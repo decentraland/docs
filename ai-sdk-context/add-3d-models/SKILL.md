@@ -5,9 +5,36 @@ description: Add 3D models (.glb/.gltf) to a Decentraland scene using GltfContai
 
 # Adding 3D Models to Decentraland Scenes
 
-## Loading a 3D Model
+## RULE: Use composite for initial models
 
-Use `GltfContainer` to load `.glb` or `.gltf` files:
+**Always add models that exist at scene load to `assets/scene/main.composite`, not in TypeScript.**
+
+Only use TypeScript (`engine.addEntity()` + `GltfContainer.create()`) for models spawned dynamically at runtime (e.g., a bullet instantiated on fire, an NPC summoned by an event).
+
+For initial/static models, define them in the composite using `core::GltfContainer` and `core::Transform`. See `{baseDir}/../composites/composite-reference.md` for the full format.
+
+```json
+{
+  "name": "core::GltfContainer",
+  "data": {
+    "512": {
+      "json": {
+        "src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb",
+        "visibleMeshesCollisionMask": 0,
+        "invisibleMeshesCollisionMask": 3
+      }
+    }
+  }
+}
+```
+
+To add behavior to a model placed in the composite, fetch it in `index.ts` by name or tag — do NOT re-create it in code. See the **composites/composite-reference** for `getEntityOrNullByName` and `getEntitiesByTag` patterns.
+
+---
+
+## Loading a 3D Model in TypeScript (dynamic entities only)
+
+Use `GltfContainer` to load `.glb` or `.gltf` files for entities spawned at runtime:
 
 ```typescript
 import { engine, Transform, GltfContainer } from '@dcl/sdk/ecs'

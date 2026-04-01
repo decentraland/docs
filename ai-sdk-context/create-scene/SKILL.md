@@ -54,26 +54,89 @@ Update the `display` fields and parcels:
 - `scene.parcels` — for multi-parcel scenes, list all parcels (e.g., `["0,0", "0,1", "1,0", "1,1"]` for 2x2)
 - `scene.base` — set to the southwest corner parcel
 
-### src/index.ts
+### RULE: Composite-first entity creation
 
-Replace the generated code with the user's scene. Example:
+**Default: create initial entities in `assets/scene/main.composite`, not in TypeScript.**
 
-```typescript
-import { engine, Transform, MeshRenderer, Material } from '@dcl/sdk/ecs'
-import { Vector3, Color4 } from '@dcl/sdk/math'
+| Use `.composite` for | Use `.ts` (index.ts) for |
+|---|---|
+| All entities present at scene load (models, lights, primitives, text, audio) | Entities spawned dynamically at runtime (e.g., projectiles, clones, NPCs that appear on demand) |
+| Static and decorative objects | Entities whose count or existence depends on runtime state |
+| Entities that need behavior added later (fetch by name/tag in code) | Entities whose identity/structure cannot be known at author time |
+| Anything the Creator Hub should be able to display and edit visually | — |
 
-export function main() {
-	// Create a cube at the center of the scene
-	const cube = engine.addEntity()
-	Transform.create(cube, {
-		position: Vector3.create(8, 1, 8),
-	})
-	MeshRenderer.setBox(cube)
-	Material.setPbrMaterial(cube, {
-		albedoColor: Color4.create(0.2, 0.5, 1, 1),
-	})
+**Rationale:** Composite assets load faster, are visually editable in the Creator Hub, and keep TypeScript code focused on logic rather than scene construction.
+
+### assets/scene/main.composite
+
+Create `assets/scene/main.composite` with the initial scene entities. See `{baseDir}/../composites/composite-reference.md` for the full format. Example — a box and a 3D model:
+
+```json
+{
+  "version": 1,
+  "components": [
+    {
+      "name": "core::Transform",
+      "data": {
+        "512": { "json": { "position": { "x": 8, "y": 1, "z": 8 }, "scale": { "x": 1, "y": 1, "z": 1 }, "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }, "parent": 0 } },
+        "513": { "json": { "position": { "x": 4, "y": 0, "z": 4 }, "scale": { "x": 1, "y": 1, "z": 1 }, "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }, "parent": 0 } }
+      }
+    },
+    {
+      "name": "core::MeshRenderer",
+      "data": {
+        "512": { "json": { "mesh": { "$case": "box", "box": {} } } }
+      }
+    },
+    {
+      "name": "core::GltfContainer",
+      "data": {
+        "513": { "json": { "src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb", "visibleMeshesCollisionMask": 0, "invisibleMeshesCollisionMask": 3 } }
+      }
+    },
+    {
+      "name": "core-schema::Name",
+      "data": {
+        "512": { "json": { "value": "BlueCube" } },
+        "513": { "json": { "value": "Tree_1" } }
+      }
+    }
+  ]
 }
 ```
+
+### src/index.ts
+
+Use `index.ts` **only** for:
+- Behavior and interactivity on composite entities (fetch them by name or tag)
+- Dynamically spawned entities (e.g., enemies, projectiles, clones)
+- Systems, game logic, UI
+
+To add interactivity to a composite entity, look it up by name or tag — do NOT re-create it in code:
+
+```typescript
+import { engine, pointerEventsSystem, InputAction } from '@dcl/sdk/ecs'
+import { EntityNames } from '../assets/scene/entity-names'
+
+export function main() {
+  // Fetch entity defined in the composite — never re-create it here
+  const cube = engine.getEntityOrNullByName(EntityNames.BlueCube)
+  if (cube) {
+    pointerEventsSystem.onPointerDown(
+      { entity: cube, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Click me' } },
+      () => { console.log('Cube clicked!') }
+    )
+  }
+
+  // Fetch all entities tagged "Tree" from the composite
+  const trees = engine.getEntitiesByTag('Tree')
+  for (const tree of trees) {
+    // apply behavior to every tree
+  }
+}
+```
+
+> **When to create entities in TypeScript instead:** Only if the entity is truly dynamic — spawned in response to gameplay events, instanced multiple times at runtime, or its count/identity is not known at scene-authoring time.
 
 ### scene.json Reference
 

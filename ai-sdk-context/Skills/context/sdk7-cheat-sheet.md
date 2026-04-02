@@ -50,6 +50,8 @@ import { getPlayer } from '@dcl/sdk/src/players'
 
 ```typescript
 // Entities
+// ⚠ engine.addEntity() is for DYNAMIC runtime entities only.
+// Initial scene entities MUST go in assets/scene/main.composite, not here.
 const entity = engine.addEntity()
 engine.removeEntity(entity)
 removeEntityWithChildren(engine, entity)

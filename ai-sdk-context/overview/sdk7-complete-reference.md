@@ -62,23 +62,72 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 
 ## Getting Started
 
+> ### ⚠ CRITICAL: How to create scene entities
+>
+> **NEVER create entities that are part of the initial scene layout in TypeScript.**
+> Use `assets/scene/main.composite` for ALL entities that exist when the scene loads.
+> Only use `engine.addEntity()` in TypeScript for entities spawned **dynamically at runtime** (e.g. projectiles, enemies, clones triggered by gameplay).
+>
+> Violating this rule produces scenes that work but are not editable in the Creator Hub and miss the performance benefits of composite preloading.
+>
+> **Initial scene entity → composite. Runtime-spawned entity → TypeScript.**
+
 ### SDK Quick Start
 
 #### Basic Scene Structure
 
+The correct two-file pattern for a Decentraland scene:
+
+**`assets/scene/main.composite`** — all initial entities declared here:
+
+```json
+{
+  "version": 1,
+  "components": [
+    { "name": "core::Transform", "data": {
+        "512": { "json": { "position": { "x": 8, "y": 1, "z": 8 }, "scale": { "x": 1, "y": 1, "z": 1 }, "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }, "parent": 0 } }
+    }},
+    { "name": "core::MeshRenderer", "data": {
+        "512": { "json": { "mesh": { "$case": "box", "box": {} } } }
+    }},
+    { "name": "core-schema::Name", "data": {
+        "512": { "json": { "value": "Cube" } }
+    }}
+  ]
+}
+```
+
+**`src/index.ts`** — behavior only, entities fetched from composite:
+
+```typescript
+import { engine, pointerEventsSystem, InputAction } from '@dcl/sdk/ecs'
+import { EntityNames } from '../assets/scene/entity-names'
+
+export function main() {
+  // ✅ Fetch from composite — never re-create it here
+  const cube = engine.getEntityOrNullByName(EntityNames.Cube)
+  if (cube) {
+    pointerEventsSystem.onPointerDown(
+      { entity: cube, opts: { button: InputAction.IA_POINTER, hoverText: 'Click me!' } },
+      () => { console.log('Cube clicked!') }
+    )
+  }
+}
+```
+
+#### TypeScript entity creation (dynamic entities ONLY)
+
+Only use this pattern for entities that must be spawned at runtime:
+
 ```typescript
 export function main() {
-	// Create entity
+	// ⚠ Only for dynamic entities — NOT for initial scene layout
 	const cube = engine.addEntity()
-
-	// Add transform component
 	Transform.create(cube, {
 		position: Vector3.create(8, 1, 8),
 		rotation: Quaternion.Zero(),
 		scale: Vector3.create(1, 1, 1),
 	})
-
-	// Add shape component
 	MeshRenderer.setBox(cube)
 }
 ```

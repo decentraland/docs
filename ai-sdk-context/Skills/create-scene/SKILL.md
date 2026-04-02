@@ -7,6 +7,19 @@ description: Scaffold a new Decentraland SDK7 scene project. Creates scene.json,
 
 > **Runtime constraint:** Decentraland runs in a QuickJS sandbox. No Node.js APIs (`fs`, `http`, `path`, `process`). Use the SDK's `executeTask()` + `fetch()` for async work. See the **scene-runtime** skill for details.
 
+## ⚠ CRITICAL RULE — Read before generating any code
+
+**NEVER put initial scene entities in `src/index.ts`.**
+
+Every entity that exists when the scene loads — models, primitives, lights, text, audio — MUST be declared in `assets/scene/main.composite`.
+
+`src/index.ts` is ONLY for:
+- Adding behavior/interactivity to entities fetched from the composite
+- Entities spawned dynamically at runtime (projectiles, enemies, clones, etc.)
+- Systems and game logic
+
+If you find yourself writing `engine.addEntity()` for a piece of scenery or a static prop, stop — put it in the composite instead.
+
 When the user wants to create a new scene, follow these steps:
 
 ## 1. Ask What They Want to Build
@@ -54,9 +67,9 @@ Update the `display` fields and parcels:
 - `scene.parcels` — for multi-parcel scenes, list all parcels (e.g., `["0,0", "0,1", "1,0", "1,1"]` for 2x2)
 - `scene.base` — set to the southwest corner parcel
 
-### RULE: Composite-first entity creation
+### Composite vs TypeScript — where entities go
 
-**Default: create initial entities in `assets/scene/main.composite`, not in TypeScript.**
+**NEVER create initial scene entities in TypeScript. They MUST go in `assets/scene/main.composite`.**
 
 | Use `.composite` for | Use `.ts` (index.ts) for |
 |---|---|

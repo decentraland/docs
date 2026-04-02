@@ -50,6 +50,40 @@ These components are auto-generated and must NOT be in the composite:
 
 **How to get the jsonSchema:** When you read an asset's composite from the catalog (`node_modules/@dcl/asset-packs/catalog.json`), each non-core component already has its `jsonSchema`. Copy it as-is into the scene composite.
 
+## Step 0 — Read scene.json and Compute Bounds (MANDATORY)
+
+**Before writing a single entity position, read `scene.json` and calculate the scene bounds.** This must happen first — all entity positions must fit within these bounds or they will not render.
+
+### How to calculate bounds
+
+1. Open `scene.json` and locate `scene.parcels` (array of `"x,y"` strings) and `scene.base`.
+2. Parse every parcel as integers. Find the min and max X and Y across all parcels.
+3. Compute:
+
+```
+parcelsWide = max(parcel_x) - min(parcel_x) + 1
+parcelsDeep = max(parcel_y) - min(parcel_y) + 1
+
+maxX = parcelsWide * 16
+maxZ = parcelsDeep * 16
+```
+
+4. Valid entity positions: **X in [0, maxX], Z in [0, maxZ]**. Negative values and values above maxX/maxZ are outside the scene and will not render.
+
+### Examples
+
+| scene.json parcels          | parcelsWide | parcelsDeep | Valid X | Valid Z |
+| --------------------------- | ----------- | ----------- | ------- | ------- |
+| `["0,0"]`                   | 1           | 1           | 0 – 16  | 0 – 16  |
+| `["0,0","1,0"]`             | 2           | 1           | 0 – 32  | 0 – 16  |
+| `["0,0","1,0","0,1","1,1"]` | 2           | 2           | 0 – 32  | 0 – 32  |
+
+### Never change scene.json parcel count without explicit user instruction
+
+Adding parcels to `scene.json` is not always an option, it depends where the scene will be published to. If publishing to Genesis City, parcels must be **owned or rented** by the deploying wallet; if publishing to a World, it might be an option. If the scene is currently too small for what the user is asking for, ask the user for confirmation to change the scene layout and include more parcels. If they disagree then **work within the existing parcel bounds and make the scene as rich as possible within 16×16m**. Do not silently expand the parcel list. If more space is truly needed, ask the user first.
+
+---
+
 ## Entity ID Allocation
 
 | ID   | Purpose                                                                                   |
@@ -87,7 +121,7 @@ These components are auto-generated and must NOT be in the composite:
 
 - `rotation` is a quaternion (x, y, z, w). Default = `{x:0, y:0, z:0, w:1}` (no rotation)
 - `parent: 0` means child of RootEntity (top-level)
-- Each parcel is 16m x 16m. A 1x1 scene center is at x=8, z=8
+- Each parcel is 16m x 16m. Scene bounds are computed in **Step 0** from `scene.json`. A 1×1 scene has maxX=16, maxZ=16; a 2×2 scene has maxX=32, maxZ=32. Always use the computed bounds, not assumed ones.
 
 ### 4. core-schema::Name (on every user entity)
 
@@ -607,7 +641,7 @@ Before writing a composite, verify:
 - [ ] All `GltfContainer.src` paths use slugified name format: `assets/asset-packs/<slug>/<filename>`
 - [ ] All referenced asset files were downloaded to disk (GLB, audio, images)
 - [ ] Default collision masks set on GltfContainer (`visibleMeshesCollisionMask: 0`, `invisibleMeshesCollisionMask: 3`)
-- [ ] All positions within parcel bounds — each parcel is 16×16m; with the default base parcel at the lower-left corner, **any negative X or Z coordinate is outside the scene and will not render**. Valid range: `0` to `16 * parcelsWide` on X, `0` to `16 * parcelsDeep` on Z.
+- [ ] All positions within parcel bounds — bounds were calculated in **Step 0** from the actual `scene.json` parcel list. Every entity's X is in `[0, maxX]` and Z is in `[0, maxZ]`. Negative values and values above maxX/maxZ do not render. If the user requested a "large" scene but parcel count was not changed, all entities fit within the original bounds.
 - [ ] For every `GltfContainer` entity: checked whether the GLB contains animations (clip names embedded in the file). If it does, an `core::Animator` component is present on that entity. A model with animations but no Animator will silently loop its first clip with no way to control it.
 - [ ] For every `GltfContainer` entity: checked whether the GLB contains collision meshes (any mesh whose name includes the string `_collider`). If yes, `invisibleMeshesCollisionMask` is set to `3` (CL_POINTER + CL_PHYSICS) to activate them. If no built-in colliders, evaluated whether a `core::MeshCollider` box/sphere is needed to cover the model's rough shape (for walkable surfaces, walls, or clickable objects).
 - [ ] `asset-packs::Counter` must exist on entity 0, and have `value` = highest allocated component ID

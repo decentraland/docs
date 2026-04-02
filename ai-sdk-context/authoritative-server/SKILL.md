@@ -19,6 +19,7 @@ You **must** use the `auth-server` tag — the standard `@dcl/sdk` does NOT incl
 
 ```bash
 npm install @dcl/sdk@auth-server
+npm install @dcl/js-runtime@auth-server
 ```
 
 ### 2. Configure scene.json

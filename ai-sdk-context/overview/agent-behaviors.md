@@ -9,15 +9,20 @@ description: Behavioral guidelines for AI agents working on Decentraland scenes.
 
 Three categories of change are significant enough that you should describe what you're planning and get the user's explicit go-ahead before doing them — even when the user's request implies them. A quick confirmation prevents misalignments that are hard to undo.
 
+**How to ask:** Always phrase the confirmation question in plain, non-technical language that describes *what will happen to the scene*, not the underlying command. The user may not be able to read a bash command or a file path. Lead with the human-readable question; only add the technical detail (command, path, URL) as secondary clarification if helpful.
+
+Good: *"Should I download this tree model into your scene assets?"*
+Bad: *"Run `curl https://… -o assets/scene/Models/tree.glb`?"*
+
 ### 1. Changing parcel count or layout
 
 **When it applies:** Any modification to `scene.parcels` in scene.json — adding parcels, removing them, or reshaping the grid (e.g., `["0,0"]` → `["0,0", "1,0"]`).
 
 **Why it matters:** Parcel layout defines the scene's coordinate space. Changing it shifts the valid position range for every entity. Entities near the current boundary may end up outside (invisible) or inside the wrong parcel. The user may also have a deployment slot in mind and parcel count needs to match it.
 
-**What to say:** Describe the change and its effect before acting:
+**What to say:** Describe the change and its effect in plain language before acting:
 
-> "To do this I'd need to go from 1 parcel (16×16m, X: 0–16) to a 2-parcel layout (32×16m, X: 0–32). That changes the coordinate bounds for the whole scene. Should I go ahead?"
+> "To fit the scene you described, I'd need to expand from 1 parcel (16×16 m) to a 2×1 layout (32×16 m). This changes the coordinate bounds for every entity in the scene. Should I go ahead?"
 
 ### 2. Fetching assets from external sources
 
@@ -25,13 +30,15 @@ Three categories of change are significant enough that you should describe what 
 
 **Why it matters:** The user may have their own assets in mind, may not want new files added, or may be targeting a specific visual style. Downloading without asking can bloat the project and introduce unexpected dependencies.
 
-**What to say:** Name the asset and source before fetching:
+**What to say:** Describe what is being added and why, in plain language:
 
-> "I'd download [model name] from [source] into `assets/scene/Models/`. Want me to fetch it?"
+> "I'd like to download a [description] model from [source] and add it to your scene. Should I go ahead?"
+
+Avoid leading with the file path or download command — mention those only as secondary detail if the user asks.
 
 For streaming references (AudioStream, VideoPlayer): these don't download files but do add an external URL dependency. Confirm if the URL wasn't provided by the user:
 
-> "I'd reference the stream at [URL]. Is that the source you want to use?"
+> "I'd set up a video stream from [source]. Is that the one you want to use?"
 
 ### 3. Adding an authoritative server
 
@@ -39,9 +46,9 @@ For streaming references (AudioStream, VideoPlayer): these don't download files 
 
 **Why it matters:** The authoritative server is **BETA**. It requires a different SDK branch (`@dcl/sdk@auth-server`), changes how the scene builds and deploys, and is a fundamentally different architecture from CRDT multiplayer. Many users who want "multiplayer" only need the simpler `multiplayer-sync` skill (no server). Adding a server when the user just wanted basic sync is a significant overstep.
 
-**What to say:** Clarify the scope before proceeding:
+**What to say:** Clarify the scope in plain language before proceeding:
 
-> "Adding an authoritative server means switching to the BETA `@dcl/sdk@auth-server` branch and restructuring the project to run server-side logic. That's a larger change than basic peer-to-peer multiplayer. Is this what you're after, or would CRDT sync (no server) work for your use case?"
+> "To handle multiplayer this way I'd need to add a Beta Authoritative Server — that's a bigger change than basic sync and requires switching to a different SDK version. Is that what you're after, or would simpler peer-to-peer sync work for your use case?"
 
 ---
 

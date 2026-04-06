@@ -18,6 +18,25 @@ Premium 3D models from the official Decentraland Creator Hub. All models are fre
 
 **IMPORTANT**: When placing a floor entity, always set the y position to 0.01 or higher so that it doesn't z-fight with the default ground.
 
+## Pack Summary
+
+Scan this table to identify which section to read before looking at individual model entries.
+
+| Pack | Count | Theme & typical contents |
+|---|---|---|
+| **Cyberpunk** | 338 | Neon urban future — arcade machines, neon signs, barriers, barrels, graffiti walls, tech furniture |
+| **Fantasy** | 309 | Medieval / magical — castles, taverns, trees, mushrooms, potions, treasure chests, torches |
+| **Gallery** | 516 | Art gallery & modern interior — pedestals, frames, spotlights, benches, display cases, clean walls |
+| **Genesis City** | 233 | Urban city blocks — road tiles, buildings, vehicles, street furniture, fences, construction |
+| **Halloween** | 156 | Spooky seasonal — pumpkins, gravestones, ghosts, haunted props, bats |
+| **Pirates** | 197 | Nautical / pirate — ships, barrels, cannons, treasure, ropes, docks, tavern props |
+| **Sci-fi** | 225 | Space / futuristic — consoles, doors, crates, tubes, robots, energy cores, lab equipment |
+| **Smart Items** | 213 | Interactive objects — doors, buttons, levers, chests (designed to pair with scripts) |
+| **Steampunk** | 71 | Victorian industrial — gears, pipes, boilers, clocks, brass machinery |
+| **Voxels Pack** | 112 | Voxel / pixel-art style — low-poly characters, animals, props, terrain blocks |
+| **Western** | 350 | Wild West — saloons, fences, wagons, barrels, cacti, wanted signs, horses |
+| **Year of the Pig** | 26 | Chinese New Year / festive — lanterns, pigs, firecrackers, decorative arches |
+
 ---
 
 ## Cyberpunk (338 assets)

@@ -16,6 +16,16 @@ Free audio files from the official Decentraland Creator Hub asset packs. All sou
 
 **IMPORTANT**: Only fetch assets from the free catalogs if the prompt explicitly asks to add new assets. Confirm with the user always if they wish to download add new assets to their scene.
 
+## Category Summary
+
+| Category | Count | Contents |
+|---|---|---|
+| **Music** | 16 | Ambient, dance/club, lo-fi, medieval, puzzle, sci-fi adventure, upbeat |
+| **Ambient Sounds** | 6 | Nature and environmental background loops |
+| **Interaction Sounds** | 15 | Button clicks, door opens, item pickups, UI feedback |
+| **Sound Effects** | 7 | Explosions, impacts, mechanical sounds |
+| **Game Mechanics** | 6 | Win/lose jingles, level-up, collectible pickup, countdown |
+
 ---
 
 ## Music (16 sounds)

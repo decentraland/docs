@@ -1,6 +1,6 @@
 ---
 name: add-interactivity
-description: Add click handlers, hover effects, pointer events, trigger areas, raycasting, and global input to Decentraland scene entities. Use when the user wants to make objects clickable, add hover effects, detect player proximity, handle E/F key actions, or cast rays. Do NOT use for advanced input patterns like movement restriction, cursor lock, or WASD control (see advanced-input). Do NOT use for screen-space UI buttons (see build-ui).
+description: Event-driven interactivity for Decentraland entities. Covers pointerEventsSystem (onPointerDown/Up/hover on entities), trigger areas (enter/exit zones), raycasting, and one-shot key presses on entities. Use when the user wants clickable objects, hover highlights, detecting when a player enters a zone, E/F key actions on an entity, or ray-hit detection. For system-level polling (held keys, WASD movement, cursor lock, InputModifier, action bar) see advanced-input. For screen-space UI buttons see build-ui.
 ---
 
 # Adding Interactivity to Decentraland Scenes

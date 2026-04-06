@@ -17,21 +17,9 @@ Decentraland is a **continuous, shared 3D world**. Design around these constrain
 
 ## 2. Scene Limitation Formulas
 
-All limits scale with parcel count `n`. Know these formulas and design within them.
+Most limits scale with parcel count `n` (triangles, entities, bodies linear; materials, textures, height logarithmic). Key rule of thumb: **10,000 triangles and 200 entities per parcel**.
 
-| Resource | Formula | 1 parcel | 2 parcels | 4 parcels | 9 parcels | 16 parcels |
-|---|---|---|---|---|---|---|
-| **Triangles** | n x 10,000 | 10,000 | 20,000 | 40,000 | 90,000 | 160,000 |
-| **Entities** | n x 200 | 200 | 400 | 800 | 1,800 | 3,200 |
-| **Physics bodies** | n x 300 | 300 | 600 | 1,200 | 2,700 | 4,800 |
-| **Materials** | log2(n+1) x 20 | 20 | 31 | 46 | 66 | 81 |
-| **Textures** | log2(n+1) x 10 | 10 | 15 | 23 | 33 | 40 |
-| **Height limit** | log2(n+1) x 20m | 20m | 31m | 46m | 66m | 81m |
-| **Draw calls** | n x 300 (target) | 300 | 600 | 1,200 | 2,700 | 4,800 |
-
-**File limits:** 15 MB per parcel, 300 MB max total, 200 files per parcel, 50 MB max per individual file.
-
-Important: Except for the MB size limits, all other limits can be exceeded. It's generally not recommended to go over them because of performance impact, but if a user tests their scene and determines that it's good enough, it should be ok to publish. 
+For the full limits table across all parcel counts, see the **optimize-scene** skill.
 
 ## 3. Texture Requirements
 
@@ -41,31 +29,11 @@ Important: Except for the MB size limits, all other limits can be exceeded. It's
 - Prefer compressed formats (WebP) over raw PNG where possible
 - Share texture references across materials — do not duplicate texture files
 
-## 4. Asset Preloading (AssetLoad Component)
+## 4. Asset Preloading
 
-For large assets that would cause visible pop-in, use `AssetLoad` to pre-download before rendering:
+Use the `AssetLoad` component to pre-download large assets before rendering to avoid visible pop-in. Apply to any model over ~1 MB, any asset needed before a game phase starts, and any sound that plays in response to player interaction.
 
-```typescript
-import { engine, AssetLoad, LoadingState, GltfContainer, Transform } from '@dcl/sdk/ecs'
-import { Vector3 } from '@dcl/sdk/math'
-
-const preloadEntity = engine.addEntity()
-AssetLoad.create(preloadEntity, { src: 'models/large-model.glb' })
-
-function assetLoadingSystem(dt: number) {
-  for (const [entity] of engine.getEntitiesWith(AssetLoad)) {
-    const state = AssetLoad.get(entity)
-    if (state.loadingState === LoadingState.FINISHED) {
-      GltfContainer.create(entity, { src: 'models/large-model.glb' })
-      Transform.create(entity, { position: Vector3.create(8, 0, 8) })
-      AssetLoad.deleteFrom(entity)
-    }
-  }
-}
-engine.addSystem(assetLoadingSystem)
-```
-
-Use this pattern for any model over ~1 MB or for assets that should be ready before a game phase begins. Also use for any sound that plays in response to a player interaction, as soon as the player is able to call it.
+For the implementation pattern, see the **optimize-scene** skill.
 
 ## 5. Performance Patterns
 

@@ -216,56 +216,11 @@ bus.emit('hit', { damage: 10 })
 
 ---
 
-## REST API Calls (fetch)
+## REST API and Signed Fetch
 
-All network calls must run inside `executeTask` because the SDK runtime does not support top-level await.
+For communicating with your own backend (leaderboards, game state persistence, player auth), use `fetch` or `signedFetch`. All network calls must run inside `executeTask`. `signedFetch` attaches a cryptographic proof of the player's wallet identity — use it when your server needs to verify who is making the request.
 
-```typescript
-import { executeTask } from '@dcl/sdk/ecs'
-
-executeTask(async () => {
-	try {
-		const response = await fetch('https://api.example.com/data')
-		if (!response.ok) {
-			console.error('HTTP error:', response.status)
-			return
-		}
-		const data = await response.json()
-		console.log('Response:', data)
-	} catch (error) {
-		console.error('Network error:', error)
-	}
-})
-```
-
-## Signed Fetch (Authenticated Requests)
-
-`signedFetch` attaches a cryptographic signature proving the player's identity:
-
-```typescript
-import { signedFetch } from '~system/SignedFetch'
-
-executeTask(async () => {
-	try {
-		const response = await signedFetch({
-			url: 'https://example.com/api/action',
-			init: {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ action: 'claimReward', amount: 100 }),
-			},
-		})
-		if (!response.ok) {
-			console.error('HTTP error:', response.status)
-			return
-		}
-		const result = JSON.parse(response.body)
-		console.log('Result:', result)
-	} catch (error) {
-		console.log('Request failed:', error)
-	}
-})
-```
+See the **scene-runtime** skill for full `fetch` and `signedFetch` patterns.
 
 ---
 

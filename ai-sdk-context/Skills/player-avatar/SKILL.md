@@ -262,64 +262,25 @@ AvatarLocomotionSettings.createOrReplace(engine.PlayerEntity, {
 
 ## Restrict Locomotion (InputModifier)
 
-Use `InputModifier` on `engine.PlayerEntity` to freeze the player or selectively disable movement types. This is useful for cutscenes, locked interactions, or game mechanics where movement should be controlled.
-
-### Freeze All Movement
+Use `InputModifier` on `engine.PlayerEntity` to freeze or selectively restrict the player's movement — useful for cutscenes, locked interactions, or controlled game mechanics.
 
 ```typescript
 import { InputModifier, engine } from '@dcl/sdk/ecs'
 
+// Freeze all movement
 InputModifier.create(engine.PlayerEntity, {
-	mode: InputModifier.Mode.Standard({
-		disableAll: true,
-	}),
+	mode: InputModifier.Mode.Standard({ disableAll: true }),
 })
-```
 
-**Behavior when frozen:**
-
-- Gravity and external forces (moving platforms) still apply
-- Camera rotation remains available
-- Global input events are still detectable by the scene
-- Players cannot voluntarily trigger emotes, but scenes can still trigger animations
-- Restrictions are automatically lifted when the player leaves the scene bounds
-
-### Disable Specific Movement Types
-
-```typescript
-import { InputModifier, engine } from '@dcl/sdk/ecs'
-
-InputModifier.create(engine.PlayerEntity, {
-	mode: InputModifier.Mode.Standard({
-		disableAll: false,
-		disableWalk: false,
-		disableRun: true,
-		disableJog: true,
-		disableJump: true,
-		disableEmote: true,
-		disableDoubleJump: true,
-		disableGliding: true,
-	}),
-})
-```
-
-Available flags: `disableAll`, `disableWalk`, `disableRun`, `disableJog`, `disableJump`, `disableEmote`, `disableDoubleJump`, `disableGliding`.
-
-### Remove Restrictions
-
-```typescript
+// Remove restrictions
 InputModifier.deleteFrom(engine.PlayerEntity)
 ```
 
-Or update with all flags set to `false`:
+**Behavior when frozen:** gravity and external forces still apply, camera rotation stays available, global input events are still detectable, restrictions lift automatically when the player leaves scene bounds.
 
-```typescript
-InputModifier.createOrReplace(engine.PlayerEntity, {
-	mode: InputModifier.Mode.Standard({ disableAll: false }),
-})
-```
+**Tip:** Combine with `triggerSceneEmote` — freeze the player during an animation, then remove InputModifier when it ends.
 
-> **Tip:** Combine with `triggerSceneEmote` to play an animation while the player is frozen — use `InputModifier` with `disableAll: true` for the emote duration, then remove it when the emote ends.
+For all available flags (`disableWalk`, `disableRun`, `disableJump`, etc.) and the cutscene pattern, see the **advanced-input** skill.
 
 ## Teleporting the Player
 

@@ -1,6 +1,6 @@
 ---
 name: advanced-input
-description: Advanced input handling in Decentraland. PointerLock (cursor capture state), InputModifier (freeze/restrict player movement), PrimaryPointerInfo (cursor position and world ray), WASD keyboard patterns, and action bar slots. Use when the user wants movement restriction, cursor control, FPS controls, input polling, or cutscene freezing. Do NOT use for basic click/hover events on entities (see add-interactivity).
+description: System-level input polling and player movement control in Decentraland. Covers inputSystem (isTriggered/isPressed for held keys, WASD polling), InputModifier (freeze/restrict player movement), PointerLock (cursor capture detection), PrimaryPointerInfo (cursor screen coords and world ray), and number-key action bar patterns. Use when the user wants continuous key polling, WASD-controlled entities, to freeze the player during a cutscene, FPS-style cursor lock, or multi-key combo patterns. For event-driven clicks and hover on entities see add-interactivity.
 ---
 
 # Advanced Input Handling in Decentraland

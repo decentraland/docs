@@ -1,6 +1,6 @@
 ---
 name: player-avatar
-description: Player and avatar system in Decentraland. Read player position/profile, customize appearance (AvatarBase), trigger emotes (triggerEmote/triggerSceneEmote), read equipped wearables (AvatarEquippedData), attach objects to players (AvatarAttach), create NPC avatars (AvatarShape), avatar modifier areas, locomotion settings, and restrict player movement (InputModifier). Use when the user wants player data, emotes, wearables, NPC avatars, avatar attachments, movement speed changes, or freezing/disabling player controls. Do NOT use for wallet/blockchain interactions (see nft-blockchain).
+description: The live player in a Decentraland scene. Read player position/profile, trigger emotes (triggerEmote/triggerSceneEmote), read equipped wearables (AvatarEquippedData), attach objects to the player avatar (AvatarAttach), hide avatars or disable passports in zones (AvatarModifierArea), and adjust locomotion speed (AvatarLocomotionSettings). Use when the user wants player position, player profile, emotes, wearables, attaching things to a player, or avatar zones. For NPC characters see the npcs skill. For wallet/blockchain interactions see nft-blockchain. For freezing player movement see advanced-input.
 ---
 
 # Player and Avatar System in Decentraland
@@ -158,60 +158,7 @@ triggerSceneEmote({
 
 ## NPC Avatars
 
-### GLTF NPC
-
-For NPCs that only need to display dialog in the UI and play animations, use the NPC Toolkit library. See **libraries/npc.mdc**.
-
-### Decentraland Avatar NPC
-
-Create avatar-shaped NPCs using `AvatarShape`:
-
-```typescript
-import { engine, Transform, AvatarShape } from '@dcl/sdk/ecs'
-import { Vector3 } from '@dcl/sdk/math'
-
-const npc = engine.addEntity()
-Transform.create(npc, { position: Vector3.create(8, 0, 8) })
-
-AvatarShape.create(npc, {
-	id: 'npc-1',
-	name: 'Guard',
-	bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale', // or BaseFemale
-	wearables: [
-		'urn:decentraland:off-chain:base-avatars:eyebrows_00',
-		'urn:decentraland:off-chain:base-avatars:mouth_00',
-		'urn:decentraland:off-chain:base-avatars:eyes_00',
-		'urn:decentraland:off-chain:base-avatars:blue_tshirt',
-		'urn:decentraland:off-chain:base-avatars:brown_pants',
-		'urn:decentraland:off-chain:base-avatars:classic_shoes',
-		'urn:decentraland:off-chain:base-avatars:short_hair',
-	],
-	hairColor: { r: 0.92, g: 0.76, b: 0.62 }, // RGB values 0-1
-	skinColor: { r: 0.94, g: 0.85, b: 0.6 }, // RGB values 0-1
-	emotes: [],
-})
-```
-
-Use the expressionTriggerTimestamp to replay a same emote on an NPC. The value of this field is a lamport timestamp, meaning that it's not a time value, but rather an index that is raised by 1 for each repetition of the emote.
-
-So the first time you play an emote, you set expressionTriggerTimestamp to 0. To play the emote again, you must update this value to 1. That's how the engine knows that this is a new instruction, and not an instruction it already acted upon.
-
-If you change the Transform position of an entity with an `AvatarShape` component, it will walk or run to this new position depending on the distance, it won't instantly teleport in one frame.
-
-### Mannequin (Show Only Wearables)
-
-Display just the wearables without a full avatar body:
-
-```typescript
-AvatarShape.create(mannequin, {
-	id: 'mannequin-1',
-	name: 'Display',
-	wearables: [
-		'urn:decentraland:matic:collections-v2:0x90e5cb2d673699be8f28d339c818a0b60144c494:0',
-	],
-	show_only_wearables: true,
-})
-```
+For creating NPCs (characters, shopkeepers, guards, etc.), see the **npcs** skill. It covers both the NPC Toolkit library (GLB-based, with dialogue and movement) and `AvatarShape`-based avatar NPCs.
 
 ## Avatar Modifier Areas
 
@@ -404,4 +351,4 @@ Beyond the commonly used anchor points, the full list includes:
 - `Transform.get(engine.PlayerEntity)` is valid for **reading** position only
 
 For component field details, see `{baseDir}/../../context/components-reference.md`.
-For full AvatarShape fields, wearable URNs, anchor points, emote names, and event callbacks, see `{baseDir}/references/avatar-apis.md`.
+For anchor points, emote names, and event callbacks, see `{baseDir}/references/avatar-apis.md`.

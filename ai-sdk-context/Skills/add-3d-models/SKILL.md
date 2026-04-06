@@ -198,7 +198,7 @@ Both functions traverse the parent hierarchy to compute the final result. They r
 
 Always check the scene's local asset folder first.
 
-IMPORTANT: Only fetch models from the free catalogs below if the prompt explicitly asks to add new models. Confirm with the user always if they wish to add new models to their scene.
+Before fetching any model, confirm with the user — name the asset and where it would come from. The user may have their own assets in mind or may not want new files added to the project. See `agent-behaviors.md` in `overview/` for the full confirmation pattern.
 
 ### Creator Hub Asset Packs (2,700+ models)
 

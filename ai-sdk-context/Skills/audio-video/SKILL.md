@@ -107,7 +107,9 @@ pointerEventsSystem.onPointerDown(
 
 ## Audio Streaming
 
-Stream audio from a URL (radio, live streams):
+Stream audio from a URL (radio, live streams).
+
+> **Before adding a streaming URL:** If the URL wasn't provided by the user, confirm the source before adding it — e.g., "I'd reference the stream at [URL]. Is that the source you want?" See `agent-behaviors.md` in `overview/` for the full confirmation pattern.
 
 ```typescript
 import { engine, Transform, AudioStream } from '@dcl/sdk/ecs'
@@ -125,7 +127,7 @@ AudioStream.create(radio, {
 
 ## Video Player
 
-Play video on a surface:
+Play video on a surface. If the video URL wasn't provided by the user, confirm before referencing it (same pattern as audio streams above).
 
 ```typescript
 import {

@@ -245,6 +245,8 @@ Configure where and how players enter the scene:
 
 **Boundaries per parcel:** 16m x 16m x 20m height. A 2x2 scene spans 32m x 32m.
 
+**Changing parcels in an existing scene:** Modifying `scene.parcels` shifts the coordinate bounds for the entire scene — entities near the current boundary may end up outside (invisible) after the change. Before editing this field, describe the proposed change and confirm with the user first. See `agent-behaviors.md` in `overview/`.
+
 ## 5. Post-Creation Steps
 
 After customizing the files:

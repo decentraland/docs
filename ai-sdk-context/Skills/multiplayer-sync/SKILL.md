@@ -294,13 +294,14 @@ For Decentraland Worlds that do not need multiplayer:
 
 ## Troubleshooting
 
-| Problem                           | Cause                                       | Solution                                                                                  |
-| --------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| State not syncing between players | Missing `syncEntity()` call                 | Every entity you want shared must call `syncEntity(entity, [ComponentId1, ComponentId2])` |
-| Sync ID collision                 | Two entities share the same numeric sync ID | Use an enum to assign unique IDs to every predefined synced entity                        |
-| `Date.now()` values corrupted     | Using `Schemas.Number` for timestamps       | Use `Schemas.Int64` for any number over 13 digits (like `Date.now()`)                     |
-| State not ready on join           | Reading synced state before sync completes  | Guard with `if (!isStateSyncronized()) return` in your system                             |
-| MessageBus messages lost          | Late joiner expecting past messages         | MessageBus is fire-and-forget. Use `syncEntity` for persistent state                      |
+| Problem                                                  | Cause                                                                  | Solution                                                                                                                                                                                        |
+| -------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Profile not initialized. Call syncEntity inside main()` | `syncEntity` called at module top-level (e.g. in a module initialiser) | Move all `syncEntity` calls (and entity creation that depends on them) into a function called from `main()`. Never call `syncEntity` at module load time. Same applies to `engine.addSystem()`. |
+| State not syncing between players                        | Missing `syncEntity()` call                                            | Every entity you want shared must call `syncEntity(entity, [ComponentId1, ComponentId2])`                                                                                                       |
+| Sync ID collision                                        | Two entities share the same numeric sync ID                            | Use an enum to assign unique IDs to every predefined synced entity                                                                                                                              |
+| `Date.now()` values corrupted                            | Using `Schemas.Number` for timestamps                                  | Use `Schemas.Int64` for any number over 13 digits (like `Date.now()`)                                                                                                                           |
+| State not ready on join                                  | Reading synced state before sync completes                             | Guard with `if (!isStateSyncronized()) return` in your system                                                                                                                                   |
+| MessageBus messages lost                                 | Late joiner expecting past messages                                    | MessageBus is fire-and-forget. Use `syncEntity` for persistent state                                                                                                                            |
 
 > **Need server-side validation or anti-cheat?** See the **authoritative-server** skill for the headless server pattern.
 

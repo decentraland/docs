@@ -69,9 +69,7 @@ Many GLB models use back-face culling: only one face of each polygon is visible.
 
 ## RULE: Text labels must be in open air — no occlusion by geometry
 
-`TextShape` labels that have a Billboard component are rendered in world space and can be occluded by any solid geometry between the label and the camera.
-
-The exception to these rules is if the label is mounted on a wall, without a Billboard component.
+`TextShape` labels (including Billboard ones) are rendered in world space and can be occluded by any solid geometry between the label and the camera.
 
 **Placement checklist before committing a text position:**
 
@@ -105,6 +103,8 @@ For initial/static models, define them in the composite using `core::GltfContain
 	}
 }
 ```
+
+> Use `visibleMeshesCollisionMask: 3, invisibleMeshesCollisionMask: 0` when the model has **no `_collider` meshes** (the common case for Creator Hub asset packs). Use `visibleMeshesCollisionMask: 0, invisibleMeshesCollisionMask: 3` only when the model has `_collider` meshes. Never set both to non-zero values simultaneously.
 
 To add behavior to a model placed in the composite, fetch it in `index.ts` by name or tag — do NOT re-create it in code. See the **composites/composite-reference** for `getEntityOrNullByName` and `getEntitiesByTag` patterns.
 
@@ -183,28 +183,62 @@ In composite (`core::Animator`):
 
 ## RULE: Always check for built-in colliders
 
-Before finalizing any entity with a `GltfContainer`, check whether the GLB contains collision meshes — any mesh whose name includes the substring `_collider`.
+Before finalizing any entity with a `GltfContainer`, check whether the GLB contains collision meshes — any mesh whose name includes the substring `_collider`:
 
-- **If the model has `_collider` meshes:** set `invisibleMeshesCollisionMask: 3` (CL_POINTER + CL_PHYSICS) to activate them. These invisible meshes define the exact collision shape the author intended.
-- **If the model has no `_collider` meshes:** evaluate whether a `MeshCollider` is needed. Add one for any model that is a walkable surface, a wall, or needs to be clickable.
+```js
+node -e "
+const buf = require('fs').readFileSync('assets/scene/Models/myModel.glb');
+const jsonLen = buf.readUInt32LE(12);
+const json = JSON.parse(buf.slice(20, 20+jsonLen));
+const hasCollider = json.meshes?.some(m => m.name && m.name.includes('_collider'));
+console.log(hasCollider ? 'HAS _collider meshes' : 'NO _collider meshes');
+"
+```
 
-### Using built-in colliders
+### Two correct patterns — pick one, never mix
+
+**Model HAS `_collider` meshes** — use the invisible meshes for collision; disable visible mesh collision to avoid doubling:
+
+```json
+"visibleMeshesCollisionMask": 0,
+"invisibleMeshesCollisionMask": 3
+```
 
 ```typescript
 GltfContainer.create(model, {
 	src: 'assets/scene/Models/building.glb',
-	visibleMeshesCollisionMask: 0, // visible meshes: no collision (default)
-	invisibleMeshesCollisionMask: 3, // _collider meshes: physics + pointer
+	visibleMeshesCollisionMask: 0, // visual mesh: no collision
+	invisibleMeshesCollisionMask: 3, // _collider meshes: physics (2) + pointer (1)
 })
 ```
 
-### Adding a MeshCollider when the model has no built-in colliders
+**Model has NO `_collider` meshes** — put all collision on the visible mesh; invisible layer does nothing:
+
+```json
+"visibleMeshesCollisionMask": 3,
+"invisibleMeshesCollisionMask": 0
+```
 
 ```typescript
-import { MeshCollider } from '@dcl/sdk/ecs'
-MeshCollider.setBox(model) // rough box coverage
-MeshCollider.setSphere(model) // rough sphere coverage
+GltfContainer.create(model, {
+	src: 'assets/scene/Models/building.glb',
+	visibleMeshesCollisionMask: 3, // visual mesh: physics (2) + pointer (1)
+	invisibleMeshesCollisionMask: 0,
+})
 ```
+
+If the model needs only physics (not clickable), use `visibleMeshesCollisionMask: 2`. If only clickable (no physics), use `1`.
+
+### Anti-pattern — DO NOT USE
+
+```json
+"visibleMeshesCollisionMask": 2,
+"invisibleMeshesCollisionMask": 3
+```
+
+This mixes both patterns. When the model has no `_collider` meshes (the common case), `invisibleMeshesCollisionMask: 3` does nothing, and `visibleMeshesCollisionMask: 2` gives physics but **misses CL_POINTER** — the model cannot be clicked. When the model does have `_collider` meshes, `visibleMeshesCollisionMask: 2` adds redundant physics on the visual mesh.
+
+Always verify `_collider` mesh presence before setting either mask.
 
 ## RULE: Always validate entity positions against parcel bounds
 
@@ -336,15 +370,16 @@ engine.addSystem(() => {
 
 ## Troubleshooting
 
-| Problem                          | Cause                             | Solution                                                                                                    |
-| -------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Model not visible                | Wrong file path                   | Verify the file exists at the exact path relative to project root (e.g., `assets/scene/Models/myModel.glb`) |
-| Model not visible                | Position outside scene boundaries | Check Transform position is within 0-16 per parcel. Center of 1-parcel scene is (8, 0, 8)                   |
-| Model not visible                | Scale is 0 or very small          | Check `Transform.scale` — default is (1,1,1). Try larger values if model was exported very small            |
-| Model not visible                | Behind the camera                 | Move the avatar or rotate to look in the model's direction                                                  |
-| Model loads but looks wrong      | Y-up vs Z-up mismatch             | Decentraland uses Y-up. Re-export from Blender with "Y Up" checked                                          |
-| "FINISHED_WITH_ERROR" load state | Corrupted or unsupported .glb     | Re-export the model. Use `.glb` (binary GLTF) format. Ensure no unsupported extensions                      |
-| Clicking model does nothing      | Missing collider                  | Add `visibleMeshesCollisionMask: ColliderLayer.CL_POINTER` to `GltfContainer` or add `MeshCollider`         |
+| Problem                           | Cause                              | Solution                                                                                                                                                                      |
+| --------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model not visible                 | Wrong file path                    | Verify the file exists at the exact path relative to project root (e.g., `assets/scene/Models/myModel.glb`)                                                                   |
+| Model not visible                 | Position outside scene boundaries  | Check Transform position is within 0-16 per parcel. Center of 1-parcel scene is (8, 0, 8)                                                                                     |
+| Model not visible                 | Scale is 0 or very small           | Check `Transform.scale` — default is (1,1,1). Try larger values if model was exported very small                                                                              |
+| Model not visible                 | Behind the camera                  | Move the avatar or rotate to look in the model's direction                                                                                                                    |
+| Model loads but looks wrong       | Y-up vs Z-up mismatch              | Decentraland uses Y-up. Re-export from Blender with "Y Up" checked                                                                                                            |
+| "FINISHED_WITH_ERROR" load state  | Corrupted or unsupported .glb      | Re-export the model. Use `.glb` (binary GLTF) format. Ensure no unsupported extensions                                                                                        |
+| Clicking model does nothing       | CL_POINTER not set on visible mesh | If the model has no `_collider` meshes, set `visibleMeshesCollisionMask: 3`. Setting `invisibleMeshesCollisionMask: 3` alone does nothing when there are no invisible meshes. |
+| Can click through a model's walls | CL_POINTER not on visible mesh     | If the model has no `_collider` meshes, set `visibleMeshesCollisionMask: 3` (or at minimum `1`) so the visible geometry blocks pointer rays.                                  |
 
 > **Need to optimize models for scene limits?** See the **optimize-scene** skill for triangle budgets and LOD patterns.
 > **Need animations from your model?** See the **animations-tweens** skill for playing GLTF animation clips with Animator.

@@ -275,3 +275,7 @@ LightSource.create(light, {
 For example, the image below displays each of the letters on different sides of the cube (Y on top, -Y on the bottom, X on the right, -X on the left, Z on the front, -Z on the back).
 
 ![](../../../.gitbook/assets/point-light-mask1.png)
+
+{% hint style="info" %}
+**💡 Tip**: Combine lights with a [Particle System](particle-system.md) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.
+{% endhint %}

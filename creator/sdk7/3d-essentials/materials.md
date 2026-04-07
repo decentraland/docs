@@ -811,4 +811,8 @@ GltfNodeModifiers.create(myEntity, {
 		},
 	],
 })
+
+{% hint style="info" %}
+**💡 Tip**: Textures used in materials can also be applied to particle effects. See [Particle System](particle-system.md) for details on using custom textures and sprite sheets with particles.
+{% endhint %}
 ```

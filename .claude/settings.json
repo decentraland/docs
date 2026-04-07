@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/Nico/Documents/github/docs -maxdepth 2 -type f \\\\\\(-name *.json -o -name gitbook* \\\\\\))",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(xxd)",
+      "Bash(printf '\\\\n{% hint style=\"\"info\"\" %}\\\\n**💡 Tip**: Combine lights with a [Particle System]\\(particle-system.md\\) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.\\\\n{% endhint %}\\\\n')",
+      "Bash(python3 -c \":*)",
+      "Bash(git checkout:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}

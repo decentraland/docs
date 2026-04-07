@@ -70,6 +70,45 @@ maxZ = parcelsDeep * 16
 
 4. Valid entity positions: **X in [0, maxX], Z in [0, maxZ]**. Negative values and values above maxX/maxZ are outside the scene and will not render.
 
+### Step 0b — Account for 3D Model Bounding Boxes (MANDATORY for GLB models)
+
+**A model's `Transform.position` is its local origin, NOT its visual extent.** Tree and vegetation models commonly extend 6–12 m _beyond_ their origin in one or more directions. Placing a tree at x=2 can cause it to render at x=–10, which is outside the scene bounds.
+
+**How to find a model's bounding box** — parse the GLB binary to read GLTF accessor `min`/`max` fields:
+
+```js
+// Quick Node.js one-liner per model:
+node -e "
+const buf = require('fs').readFileSync('assets/scene/Models/Tree_01_Art.glb');
+const jsonLen = buf.readUInt32LE(12);
+const json = JSON.parse(buf.slice(20, 20+jsonLen));
+json.accessors.filter(a=>a.type==='VEC3').forEach(a=>
+  console.log('min', a.min, 'max', a.max));
+"
+```
+
+**Known measured bounding boxes** (half-extents from origin):
+
+| Model           | –X   | +X   | –Z    | +Z   | Safe minimum origin    |
+| --------------- | ---- | ---- | ----- | ---- | ---------------------- |
+| Tree_01_Art.glb | 8.16 | 7.78 | 11.34 | 0.76 | x≥9, z≥12              |
+| Tree_02_Art.glb | 6.56 | 6.23 | 11.41 | 0.36 | x≥7, z≥12              |
+| Column_Art.glb  | 0.82 | 0.82 | 0.82  | 0.82 | any x/z with 1m margin |
+| Wall01_Art.glb  | 2.18 | 2.16 | 0.05  | 0.05 | x≥3, z≥1               |
+
+**Rule:** For every GLB model, compute:
+
+```
+minSafeX = max(0, -bbox.minX) + margin      (≥1 m)
+minSafeZ = max(0, -bbox.minZ) + margin      (≥1 m)
+maxSafeX = maxX - (bbox.maxX + margin)
+maxSafeZ = maxZ - (bbox.maxZ + margin)
+```
+
+Only place the model if its Transform position satisfies all four bounds.
+
+For tree/vegetation models where the bounding box is unknown, assume a **12 m safe buffer** from all edges — i.e., place origins in `[12, maxX-12]` × `[12, maxZ-12]`.
+
 ### Examples
 
 | scene.json parcels          | parcelsWide | parcelsDeep | Valid X | Valid Z |

@@ -5,6 +5,37 @@ description: Add 3D models (.glb/.gltf) to a Decentraland scene using GltfContai
 
 # Adding 3D Models to Decentraland Scenes
 
+## RULE: Check bounding boxes before placing models
+
+**A model's `Transform.position` is its local origin, not its visual extent.** Vegetation and large structural models often extend 6–12 m beyond their origin. A tree placed at x=2 can render at x=–10 — outside scene bounds and invisible to players.
+
+**Before placing any GLB model, determine its actual bounding box** by reading GLTF accessor `min`/`max` fields from the binary:
+
+```js
+node -e "
+const buf = require('fs').readFileSync('assets/scene/Models/Tree_01_Art.glb');
+const jsonLen = buf.readUInt32LE(12);
+const json = JSON.parse(buf.slice(20, 20+jsonLen));
+json.accessors.filter(a=>a.type==='VEC3').forEach(a=>
+  console.log('min', a.min, 'max', a.max));
+"
+```
+
+Then compute the safe placement zone:
+
+```
+safeMinX = -bbox.minX + edgeMargin (≥1 m)
+safeMinZ = -bbox.minZ + edgeMargin (≥1 m)
+safeMaxX = sceneMaxX - bbox.maxX - edgeMargin
+safeMaxZ = sceneMaxZ - bbox.maxZ - edgeMargin
+```
+
+Place the origin only within `[safeMinX, safeMaxX]` × `[safeMinZ, safeMaxZ]`.
+
+**When the bounding box is unknown**, use a conservative **12 m buffer from all edges** for trees and large foliage, or **3 m** for small props (rocks, torches, etc.).
+
+---
+
 ## RULE: Use composite for initial models
 
 **Always add models that exist at scene load to `assets/scene/main.composite`, not in TypeScript.**

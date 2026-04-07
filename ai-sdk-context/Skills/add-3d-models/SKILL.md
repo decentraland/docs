@@ -36,6 +36,53 @@ Place the origin only within `[safeMinX, safeMaxX]` × `[safeMinZ, safeMaxZ]`.
 
 ---
 
+## RULE: Account for model depth before neighboring entities
+
+Two models don't overlap just because their origins are different. Always verify that `origin ± extent` of every model does not intersect any neighboring model's bounding box. Pay special attention to:
+
+- **Deep arch / gateway models** — their bounding box often extends far in ±Z (e.g. an arch that is 18 m tall may also extend 14 m in front and behind the face). Check the Z extent before placing anything near the arch.
+- **Rotated models** — rotating 90° around Y swaps the X and Z extents. A 4 m wide wall rotated 90° becomes 4 m deep in Z, not in X. Recompute extents after applying rotation.
+
+---
+
+## RULE: Single-sided models — orient the rendered face toward players
+
+Many GLB models use back-face culling: only one face of each polygon is visible. A flat wall, floor panel, or thin structural element will be **invisible** when viewed from the wrong side.
+
+**How to determine facing:**
+
+- The rendered face is the one whose polygon normals point outward (toward the viewer).
+- For flat panels (Z depth ≈ 0) the rendered face is typically toward local **−Z** in the GLB coordinate system.
+- Y rotation transforms the facing direction:
+  - rot= 0°: rendered face → global −Z (faces south / toward lower Z)
+  - rot= 90°: rendered face → global +X (faces east / toward higher X)
+  - rot=180°: rendered face → global +Z (faces north / toward higher Z)
+  - rot=270°: rendered face → global −X (faces west / toward lower X)
+
+**Rules:**
+
+1. Always orient single-sided models so their rendered face points toward where players will stand.
+2. When players approach from both sides (e.g. a temple wall visible from inside and outside), add a second copy of the model at the same position rotated 180° around its face axis.
+3. Prefer models with double-sided geometry (built-in by the artist) for elements that need to be visible from all angles — columns, obelisks, tree trunks, etc.
+
+---
+
+## RULE: Text labels must be in open air — no occlusion by geometry
+
+`TextShape` labels that have a Billboard component are rendered in world space and can be occluded by any solid geometry between the label and the camera.
+
+The exception to these rules is if the label is mounted on a wall, without a Billboard component.
+
+**Placement checklist before committing a text position:**
+
+1. **No solid model within 2 m in any horizontal direction.** Measure from the label origin to the nearest wall, column, arch face, pedestal, or door.
+2. **Height clearance:** Place at `y ≥ 0.3 m above any geometry directly below` and `y < height of surrounding walls` if you want the label inside a room, or `y > wall height` if you want it visible from anywhere.
+3. **Billboard mode for interactive labels:** Always add `core::Billboard` with `billboardMode: 2` (Y-axis billboard) so the label faces the player from any angle. Without Billboard the label is only legible when the player faces a specific direction.
+4. **Prefer open-area placement:** Put approach hints on the path before the building, in-room hints at the room center rather than near walls.
+5. **Verify with bounding box math:** For a label near an arch or complex structure, compute whether the structure's bounding box intersects the label position — if `struct.origin ± struct.extent` includes the label's X/Z, the structure may partially occlude it.
+
+---
+
 ## RULE: Use composite for initial models
 
 **Always add models that exist at scene load to `assets/scene/main.composite`, not in TypeScript.**

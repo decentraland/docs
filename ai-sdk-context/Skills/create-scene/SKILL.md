@@ -14,6 +14,7 @@ description: Scaffold a new Decentraland SDK7 scene project. Creates scene.json,
 Every entity that exists when the scene loads — models, primitives, lights, text, audio — MUST be declared in `assets/scene/main.composite`.
 
 `src/index.ts` is ONLY for:
+
 - Adding behavior/interactivity to entities fetched from the composite
 - Entities spawned dynamically at runtime (projectiles, enemies, clones, etc.)
 - Systems and game logic
@@ -40,19 +41,20 @@ Never manually create scene.json, package.json, or tsconfig.json — the SDK tem
 
 IMPORTANT: Only fetch models from the free catalogs below if the prompt explicitly asks to add new models. Confirm with the user always if they wish to add new models to their scene.
 
-Before writing scene code, check both asset catalogs for free models that match the user's theme:
+Before writing scene code, check the asset catalog for free models that match the user's theme:
 
-1. Read `{baseDir}/../context/asset-packs-catalog.md` (2,700+ Creator Hub models — furniture, structures, decorations, nature, etc.)
-2. Read `{baseDir}/../context/open-source-3d-assets.md` (991 CC0 models — cyberpunk, medieval, nature, sci-fi, etc.)
-3. Read `{baseDir}/../context/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
-4. Suggest matching models and sounds to the user
-5. Download selected models into the scene's `models/` directory:
+1. Search `{baseDir}/../add-3d-models/references/model-catalog.md` (8,800+ models with descriptions, dimensions, animations, and download URLs)
+2. Read `{baseDir}/../context/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
+3. Suggest matching models and sounds to the user
+4. Download selected models into the scene's `assets/scene/Models/` directory:
    ```bash
-   mkdir -p models
-   curl -o models/arcade_machine.glb "https://builder-items.decentraland.org/contents/bafybei..."
+   mkdir -p assets/scene/Models
+   curl -o assets/scene/Models/arcade_machine.glb "https://models.dclregenesislabs.xyz/blobs/bafybei..."
    ```
 
 > **Important**: `GltfContainer` only works with local files. Never use external URLs for the model `src` field.
+
+> **Important**: Always download into `assets/scene/Models/`. Never write to the scene root.
 
 ## 4. Customize the Generated Files
 
@@ -71,12 +73,12 @@ Update the `display` fields and parcels:
 
 **NEVER create initial scene entities in TypeScript. They MUST go in `assets/scene/main.composite`.**
 
-| Use `.composite` for | Use `.ts` (index.ts) for |
-|---|---|
+| Use `.composite` for                                                         | Use `.ts` (index.ts) for                                                                        |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | All entities present at scene load (models, lights, primitives, text, audio) | Entities spawned dynamically at runtime (e.g., projectiles, clones, NPCs that appear on demand) |
-| Static and decorative objects | Entities whose count or existence depends on runtime state |
-| Entities that need behavior added later (fetch by name/tag in code) | Entities whose identity/structure cannot be known at author time |
-| Anything the Creator Hub should be able to display and edit visually | — |
+| Static and decorative objects                                                | Entities whose count or existence depends on runtime state                                      |
+| Entities that need behavior added later (fetch by name/tag in code)          | Entities whose identity/structure cannot be known at author time                                |
+| Anything the Creator Hub should be able to display and edit visually         | —                                                                                               |
 
 **Rationale:** Composite assets load faster, are visually editable in the Creator Hub, and keep TypeScript code focused on logic rather than scene construction.
 
@@ -86,41 +88,64 @@ Create `assets/scene/main.composite` with the initial scene entities. See `{base
 
 ```json
 {
-  "version": 1,
-  "components": [
-    {
-      "name": "core::Transform",
-      "data": {
-        "512": { "json": { "position": { "x": 8, "y": 1, "z": 8 }, "scale": { "x": 1, "y": 1, "z": 1 }, "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }, "parent": 0 } },
-        "513": { "json": { "position": { "x": 4, "y": 0, "z": 4 }, "scale": { "x": 1, "y": 1, "z": 1 }, "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }, "parent": 0 } }
-      }
-    },
-    {
-      "name": "core::MeshRenderer",
-      "data": {
-        "512": { "json": { "mesh": { "$case": "box", "box": {} } } }
-      }
-    },
-    {
-      "name": "core::GltfContainer",
-      "data": {
-        "513": { "json": { "src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb", "visibleMeshesCollisionMask": 0, "invisibleMeshesCollisionMask": 3 } }
-      }
-    },
-    {
-      "name": "core-schema::Name",
-      "data": {
-        "512": { "json": { "value": "BlueCube" } },
-        "513": { "json": { "value": "Tree_1" } }
-      }
-    }
-  ]
+	"version": 1,
+	"components": [
+		{
+			"name": "core::Transform",
+			"data": {
+				"512": {
+					"json": {
+						"position": { "x": 8, "y": 1, "z": 8 },
+						"scale": { "x": 1, "y": 1, "z": 1 },
+						"rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+						"parent": 0
+					}
+				},
+				"513": {
+					"json": {
+						"position": { "x": 4, "y": 0, "z": 4 },
+						"scale": { "x": 1, "y": 1, "z": 1 },
+						"rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+						"parent": 0
+					}
+				}
+			}
+		},
+		{
+			"name": "core::MeshRenderer",
+			"data": {
+				"512": { "json": { "mesh": { "$case": "box", "box": {} } } }
+			}
+		},
+		{
+			"name": "core::GltfContainer",
+			"data": {
+				"513": {
+					"json": {
+						"src": "assets/asset-packs/tree_forest_01/Tree_Forest_01.glb",
+						"visibleMeshesCollisionMask": 0,
+						"invisibleMeshesCollisionMask": 3
+					}
+				}
+			}
+		},
+		{
+			"name": "core-schema::Name",
+			"data": {
+				"512": { "json": { "value": "BlueCube" } },
+				"513": { "json": { "value": "Tree_1" } }
+			}
+		}
+	]
 }
 ```
+
+> **IMPORTANT**: When placing a floor entity, always set the y position to 0.01 or higher so that it doesn't z-fight with the default ground.
 
 ### src/index.ts
 
 Use `index.ts` **only** for:
+
 - Behavior and interactivity on composite entities (fetch them by name or tag)
 - Dynamically spawned entities (e.g., enemies, projectiles, clones)
 - Systems, game logic, UI
@@ -132,20 +157,25 @@ import { engine, pointerEventsSystem, InputAction } from '@dcl/sdk/ecs'
 import { EntityNames } from '../assets/scene/entity-names'
 
 export function main() {
-  // Fetch entity defined in the composite — never re-create it here
-  const cube = engine.getEntityOrNullByName(EntityNames.BlueCube)
-  if (cube) {
-    pointerEventsSystem.onPointerDown(
-      { entity: cube, opts: { button: InputAction.IA_PRIMARY, hoverText: 'Click me' } },
-      () => { console.log('Cube clicked!') }
-    )
-  }
+	// Fetch entity defined in the composite — never re-create it here
+	const cube = engine.getEntityOrNullByName(EntityNames.BlueCube)
+	if (cube) {
+		pointerEventsSystem.onPointerDown(
+			{
+				entity: cube,
+				opts: { button: InputAction.IA_PRIMARY, hoverText: 'Click me' },
+			},
+			() => {
+				console.log('Cube clicked!')
+			}
+		)
+	}
 
-  // Fetch all entities tagged "Tree" from the composite
-  const trees = engine.getEntitiesByTag('Tree')
-  for (const tree of trees) {
-    // apply behavior to every tree
-  }
+	// Fetch all entities tagged "Tree" from the composite
+	const trees = engine.getEntitiesByTag('Tree')
+	for (const tree of trees) {
+		// apply behavior to every tree
+	}
 }
 ```
 

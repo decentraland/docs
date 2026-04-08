@@ -9,17 +9,37 @@ description: Add 3D models (.glb/.gltf) to a Decentraland scene using GltfContai
 
 **A model's `Transform.position` is its local origin, not its visual extent.** Vegetation and large structural models often extend 6–12 m beyond their origin. A tree placed at x=2 can render at x=–10 — outside scene bounds and invisible to players.
 
-**Before placing any GLB model, determine its actual bounding box** by reading GLTF accessor `min`/`max` fields from the binary:
+**Before placing any GLB model, determine its actual world-space bounding box.** Raw accessor `min`/`max` values are NOT sufficient — many catalog models have large node-level scales or translations baked into the GLTF scene graph (e.g. a head model whose accessors say 0.6 m but whose node scale is 23× giving an actual size of 14 m). You **must** account for node transforms.
+
+Use this script to compute the true rendered size:
 
 ```js
 node -e "
-const buf = require('fs').readFileSync('assets/scene/Models/Tree_01_Art.glb');
+const buf = require('fs').readFileSync('assets/scene/Models/MyModel.glb');
 const jsonLen = buf.readUInt32LE(12);
 const json = JSON.parse(buf.slice(20, 20+jsonLen));
-json.accessors.filter(a=>a.type==='VEC3').forEach(a=>
-  console.log('min', a.min, 'max', a.max));
+let minW=[Infinity,Infinity,Infinity], maxW=[-Infinity,-Infinity,-Infinity];
+json.nodes?.forEach(n => {
+  if (n.mesh === undefined) return;
+  const s = n.scale || [1,1,1];
+  const t = n.translation || [0,0,0];
+  for (const prim of json.meshes[n.mesh].primitives) {
+    const acc = json.accessors[prim.attributes.POSITION];
+    if (!acc.min || !acc.max) continue;
+    for (let i = 0; i < 3; i++) {
+      const lo = acc.min[i]*s[i]+t[i], hi = acc.max[i]*s[i]+t[i];
+      minW[i] = Math.min(minW[i], lo, hi);
+      maxW[i] = Math.max(maxW[i], lo, hi);
+    }
+  }
+});
+const w=maxW[0]-minW[0], h=maxW[1]-minW[1], d=maxW[2]-minW[2];
+console.log('Rendered size:', w.toFixed(2)+'m x', h.toFixed(2)+'m x', d.toFixed(2)+'m');
+console.log('World min:', minW.map(v=>v.toFixed(2)), 'max:', maxW.map(v=>v.toFixed(2)));
 "
 ```
+
+**Why raw accessors are not enough:** GLTF nodes can carry their own `scale` and `translation` properties that multiply the mesh vertex positions. A model with accessor bounds of ±0.3 m but a node scale of 24× actually renders at ±7 m. The script above applies the node TRS to get the true world-space bounds that the engine will render.
 
 Then compute the safe placement zone:
 
@@ -185,14 +205,16 @@ In composite (`core::Animator`):
 
 ## RULE: Always check for built-in colliders
 
-Before finalizing any entity with a `GltfContainer`, check whether the GLB contains collision meshes — any mesh whose name includes the substring `_collider`:
+Before finalizing any entity with a `GltfContainer`, check whether the GLB contains collision meshes. Decentraland treats a mesh as a collider if either the **mesh name** or the **node name** that references it includes the substring `_collider`:
 
 ```js
 node -e "
 const buf = require('fs').readFileSync('assets/scene/Models/myModel.glb');
 const jsonLen = buf.readUInt32LE(12);
 const json = JSON.parse(buf.slice(20, 20+jsonLen));
-const hasCollider = json.meshes?.some(m => m.name && m.name.includes('_collider'));
+const meshHas = json.meshes?.some(m => m.name && m.name.includes('_collider'));
+const nodeHas = json.nodes?.some(n => n.name && n.name.includes('_collider') && n.mesh !== undefined);
+const hasCollider = meshHas || nodeHas;
 console.log(hasCollider ? 'HAS _collider meshes' : 'NO _collider meshes');
 "
 ```

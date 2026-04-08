@@ -74,16 +74,31 @@ maxZ = parcelsDeep * 16
 
 **A model's `Transform.position` is its local origin, NOT its visual extent.** Tree and vegetation models commonly extend 6–12 m _beyond_ their origin in one or more directions. Placing a tree at x=2 can cause it to render at x=–10, which is outside the scene bounds.
 
-**How to find a model's bounding box** — parse the GLB binary to read GLTF accessor `min`/`max` fields:
+**How to find a model's bounding box** — parse the GLB binary and apply node-level transforms. Raw accessor `min`/`max` values alone are **not reliable** because many GLB models have large scale factors or translations baked into the GLTF node hierarchy (e.g. a model whose accessors say 0.6 m but whose node scale is 24× giving an actual rendered size of 14 m).
 
 ```js
-// Quick Node.js one-liner per model:
 node -e "
-const buf = require('fs').readFileSync('assets/scene/Models/Tree_01_Art.glb');
+const buf = require('fs').readFileSync('assets/scene/Models/MyModel.glb');
 const jsonLen = buf.readUInt32LE(12);
 const json = JSON.parse(buf.slice(20, 20+jsonLen));
-json.accessors.filter(a=>a.type==='VEC3').forEach(a=>
-  console.log('min', a.min, 'max', a.max));
+let minW=[Infinity,Infinity,Infinity], maxW=[-Infinity,-Infinity,-Infinity];
+json.nodes?.forEach(n => {
+  if (n.mesh === undefined) return;
+  const s = n.scale || [1,1,1];
+  const t = n.translation || [0,0,0];
+  for (const prim of json.meshes[n.mesh].primitives) {
+    const acc = json.accessors[prim.attributes.POSITION];
+    if (!acc.min || !acc.max) continue;
+    for (let i = 0; i < 3; i++) {
+      const lo = acc.min[i]*s[i]+t[i], hi = acc.max[i]*s[i]+t[i];
+      minW[i] = Math.min(minW[i], lo, hi);
+      maxW[i] = Math.max(maxW[i], lo, hi);
+    }
+  }
+});
+const w=maxW[0]-minW[0], h=maxW[1]-minW[1], d=maxW[2]-minW[2];
+console.log('Rendered size:', w.toFixed(2)+'m x', h.toFixed(2)+'m x', d.toFixed(2)+'m');
+console.log('World min:', minW.map(v=>v.toFixed(2)), 'max:', maxW.map(v=>v.toFixed(2)));
 "
 ```
 

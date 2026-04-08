@@ -7,6 +7,13 @@
 * [About Decentraland](introduction/about-decentraland.md)
 * [Whitepapers](introduction/whitepaper.md)
 
+## Mobile App
+
+* [Decentraland on Mobile](mobile-app/README.md)
+* [Getting started](mobile-app/getting-started.md)
+* [Controls](mobile-app/controls.md)
+* [Troubleshooting](mobile-app/troubleshooting.md)
+
 ## FAQs
 
 * [Decentraland 101](faqs/decentraland-101.md)

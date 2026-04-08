@@ -47,6 +47,8 @@ You can confirm that it worked by checking the `package.json` file for the scene
 
 Run `npm run start` on the root level of a scene, workspace, or smart wearable project to open a preview in a browser window.
 
+To preview your scene on the [Decentraland mobile app](../building-for-mobile/) instead, run `npm run start -- --mobile` (alias `-- -m`). The CLI prints a QR code that opens the scene on a phone connected to the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for the full guide.
+
 See [preview scenes](preview-scene.md) for details and special options when running a preview.
 
 ## Build

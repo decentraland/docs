@@ -24,6 +24,10 @@ To find your way around the Scene Editor:
 * Press **Space bar** to reset the camera back to the default position
 * Use **Left Mouse Button** to click and select items and to move them around.
 
+## Preview on mobile
+
+The dropdown next to the **Preview** button has a **Show QR Code for Mobile** option. Scan the QR code with a phone on the same Wi-Fi network to open your scene in the [Decentraland mobile app](../../sdk7/building-for-mobile/). This is the recommended way to validate UI, controls, and performance for mobile players. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md) for the full guide.
+
 ## Set the Ground
 
 The scene's ground can use various different textures. You can find these in the different themed asset packs in the item menu.

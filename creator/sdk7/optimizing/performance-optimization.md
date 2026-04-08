@@ -6,7 +6,11 @@ description: Optimize your scene to load fast and run smoothly for all players.
 
 There are several aspects you can optimize in your scenes to ensure the best possible experience for players who visit them. This document covers some best practices that can make a big difference in how fast your scene loads and how smoothly it runs for players that are on it or on neighboring scenes.
 
-Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, and via the browser, which limits how much of the hardware's processing power is available to use. The experience of visiting your scene should be smooth for everyone.
+Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, via the browser, or from the [mobile app](../building-for-mobile/) on a phone — all of which limit how much processing power is available to your scene. The experience of visiting your scene should be smooth for everyone.
+
+{% hint style="info" %}
+**📱 Mobile**: Mobile devices are usually the most resource-constrained client. If your scene targets mobile players, also see [Building for Mobile](../building-for-mobile/) for mobile-specific guidance.
+{% endhint %}
 
 The Decentraland explorer enforces many optimizations at engine level. These optimizations make a big difference, but the challenge of rendering multiple user-generated experiences simultaneously in a browser is a big one. We need your help to make things run smoothly.
 

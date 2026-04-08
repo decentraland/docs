@@ -20,6 +20,7 @@ Configure different preview options from the dropdown menu next to the **Preview
 * **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
 * **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 * **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+* **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
 
 ## Using the CLI
 
@@ -44,6 +45,7 @@ You can add the following flags to the `npm run start` command to change its beh
 * `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
 * `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
 * `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
+* `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
 * `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
 * `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
 * `-- --no-browser` to prevent the preview from opening a new browser tab.

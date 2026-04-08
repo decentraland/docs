@@ -10,11 +10,21 @@ description: General Overview about Decentraland
 
 <summary>How do I enter Decentraland?</summary>
 
+**On desktop:**
+
 1. The first step is downloading the Decentraland app onto your computer. Go to the download page [here](https://decentraland.org/download?utm_org=dcl\&utm_source=decentraland\&utm_medium=organic\&utm_campaign=evergreen\&utm_term=generaldocs\&utm_content=faq).
 2. Once you've successfully installed and loaded Decentraland on your computer, you'll be asked to log into your Decentraland account, a process that happens online, so you can expect a browser window to open.
 3. Create and sign into your Decentraland account by connecting your Google or Discord account or another social profile or a digital wallet such as MetaMask or Coinbase. Check out a tutorial for [making an account with a social profile](https://www.youtube.com/watch?v=ylZrPisyPl4) or [with an external wallet like MetaMask](https://www.youtube.com/watch?v=w3CCVrVe1M4).
 4. Once online verification is complete, open the Decentraland app window on your computer and click 'Jump Into Decentraland'.
 5. You're in! From here you can click on the backpack icon to customize your avatar, run around exploring Decentraland's community-built world, or attend an [event](https://decentraland.org/events?utm_org=dcl\&utm_source=generaldocs\&utm_medium=organic\&utm_content=faq) and make some friends. Have fun!
+
+**On mobile:**
+
+1. Download the Decentraland app from the [App Store (iOS)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs\&utm_medium=internal\&utm_content=ios) or [Google Play (Android)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer\&pcampaignid=web_share\&utm_source=docs\&utm_medium=internal\&utm_content=android).
+2. Open the app and sign into your Decentraland account. You can use the same account you use on desktop — your avatar, inventory, friends, and progress all come with you. The sign-in options available depend on your platform:
+   * **Android** currently supports signing in with a social profile (Google, Discord, etc.) or with **MetaMask**.
+   * **iOS** currently supports signing in with a social profile (Google, Discord, etc.), with **Sign in with Apple**, or with any wallet via **WalletConnect**.
+3. You're in! See [Getting started on mobile](../mobile-app/getting-started.md) for a walkthrough of your first session.
 
 </details>
 
@@ -34,7 +44,7 @@ In Decentraland users truly own their digital assets, such as Wearables or NAMEs
 
 <summary>What hardware do I need to run Decentraland?</summary>
 
-Currently, Decentraland is available for PC on Windows and Mac. The minimum hardware specs for Decentraland to run smoothly are listed below:
+Decentraland is available on PC (Windows and Mac) and on mobile devices (iOS and Android). The minimum hardware specs for Decentraland to run smoothly are listed below:
 
 **Windows**
 
@@ -58,9 +68,21 @@ Currently, Decentraland is available for PC on Windows and Mac. The minimum hard
 | RAM     | 16GB                                             | 32 GB                              |
 | Storage | 8GB HDD                                          | 20GB SDD                           |
 
-{% hint style="warning" %}
-**📔 Note**: Decentraland currently does not run on any mobile devices.
-{% endhint %}
+**Android**
+
+|         | Minimum Required                   | Recommended Settings                  |
+| ------- | ---------------------------------- | ------------------------------------- |
+| OS      | Android 12                         | Android 13 or newer                   |
+| CPU     | Octa-core                          | Octa-core                             |
+| RAM     | 6 GB                               | 8 GB or more                          |
+
+**iOS**
+
+|        | Minimum Required | Recommended Settings |
+| ------ | ---------------- | -------------------- |
+| Device | iPhone 13        | iPhone 14 or newer   |
+
+Get the mobile app from the [App Store (iOS)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs\&utm_medium=internal\&utm_content=ios) or [Google Play (Android)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer\&pcampaignid=web_share\&utm_source=docs\&utm_medium=internal\&utm_content=android). See [Decentraland on Mobile](../mobile-app/) for more details.
 
 </details>
 

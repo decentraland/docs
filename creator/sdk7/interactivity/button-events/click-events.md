@@ -4,7 +4,7 @@ description: Learn how to handle user clicks in your scene.
 
 # About input actions
 
-A Decentraland scene can detect input actions from all of the buttons that are used to control the player's avatar. These include pointer clicks, several action buttons, and the keys that are used to move the avatar around. Button events can come from a mouse, a touch screen, a VR controller or some other device, these are all interpreted the same by the SDK.
+A Decentraland scene can detect input actions from all of the buttons that are used to control the player's avatar. These include pointer clicks, several action buttons, and the keys that are used to move the avatar around. Button events can come from a mouse and keyboard on the desktop client, from the on-screen controls on the [mobile app](../../building-for-mobile/), from a VR controller, or from other input devices — these are all interpreted the same by the SDK.
 
 You can detect input actions against an entity. This involves pressing a button while the player's cursor is pointing at that entity's collider. You can also detect _global_ input event, that involve pressing activating the input at any time, without consideration for where the pointer is aiming.
 
@@ -110,14 +110,14 @@ Transform.create(blocker, { position: Vector3.create(8, 1, 10) })
 
 The following inputs can be handled by any of the approaches to detect input events.
 
-* `InputAction.IA_POINTER`: **left-mouse button** on a computer.
-* `InputAction.IA_PRIMARY`: **E** key on a computer.
-* `InputAction.IA_SECONDARY`: **F** key on a computer.
-* `InputAction.IA_ACTION_3`: **1** key on a computer.
-* `InputAction.IA_ACTION_4`: **2** key on a computer.
-* `InputAction.IA_ACTION_5`: **3** key on a computer.
-* `InputAction.IA_ACTION_6`: **4** key on a computer.
-* `InputAction.IA_JUMP`: **Space** key on a computer.
+* `InputAction.IA_POINTER`: **left-mouse button** on a computer, **interaction button** on mobile.
+* `InputAction.IA_PRIMARY`: **E** key on a computer, **E button** on mobile.
+* `InputAction.IA_SECONDARY`: **F** key on a computer, **F button** on mobile.
+* `InputAction.IA_ACTION_3`: **1** key on a computer, **1 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
+* `InputAction.IA_ACTION_4`: **2** key on a computer, **2 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
+* `InputAction.IA_ACTION_5`: **3** key on a computer, **3 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
+* `InputAction.IA_ACTION_6`: **4** key on a computer, **4 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
+* `InputAction.IA_JUMP`: **Space** key on a computer, **jump button** on mobile.
 * `InputAction.IA_FORWARD`: **W** key on a computer.
 * `InputAction.IA_LEFT`: **A** key on a computer.
 * `InputAction.IA_RIGHT`: **D** key on a computer.
@@ -125,7 +125,11 @@ The following inputs can be handled by any of the approaches to detect input eve
 * `InputAction.IA_WALK`: **Control** key on a computer.
 * `InputAction.IA_MODIFIER`: **Shift** key on a computer.
 
-Each `InputAction` is abstracted away from the literal input in the keyboard so that it can be mapped to different inputs depending on the device. For this same reason, not all buttons on the keyboard can be tracked for button events, only the buttons that are used for movement and interaction. This intentional limitation is to ensure that all content is compatible in the future with VR controllers, other kinds of game controllers, and mobile devices.
+Each `InputAction` is abstracted away from the literal input in the keyboard so that it can be mapped to different inputs depending on the device. For this same reason, not all buttons on the keyboard can be tracked for button events, only the buttons that are used for movement and interaction. This intentional limitation ensures that content is compatible across desktop, the [mobile client](../../building-for-mobile/), and future devices like VR controllers and other game controllers.
+
+{% hint style="warning" %}
+**📱 Mobile**: On the [mobile client](../../building-for-mobile/), all input actions are available, but `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are tucked away behind a secondary menu and are not easily reachable during gameplay. When designing for mobile, prefer `IA_POINTER` (interaction button), `IA_PRIMARY` (E button), and `IA_SECONDARY` (F button) for your key actions. See [Input on mobile](../../building-for-mobile/input-on-mobile.md).
+{% endhint %}
 
 ## Types of pointer events
 
@@ -209,7 +213,11 @@ engine.addSystem(() => {
 
 ## Lock or unlock the cursor
 
-Players in Decentraland's desktop client can toggle between two distinct interaction modes with their cursor: 
+{% hint style="info" %}
+**💡 Note**: `PointerLock` is a desktop-client concept (locked vs. unlocked mouse cursor). It has no effect on the [mobile app](../../building-for-mobile/), where input is touch-based.
+{% endhint %}
+
+Players in Decentraland's desktop client can toggle between two distinct interaction modes with their cursor:
 
 * Locked cursor: moving the mouse shifts the camera and click events occur in the corssair at the center of the screen  moving the mouse or pointer directly 
 * Unlocked cursor: the cursor is free to move independently of the camera, and players can click anywhere on the screen to interact with either the 3D space or the UI

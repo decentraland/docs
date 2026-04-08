@@ -69,7 +69,9 @@ Many GLB models use back-face culling: only one face of each polygon is visible.
 
 ## RULE: Text labels must be in open air — no occlusion by geometry
 
-`TextShape` labels (including Billboard ones) are rendered in world space and can be occluded by any solid geometry between the label and the camera.
+`TextShape` labels that have a Billboard component are rendered in world space and can be occluded by any solid geometry between the label and the camera.
+
+The exception to these rules is if the label is mounted on a wall, without a Billboard component.
 
 **Placement checklist before committing a text position:**
 
@@ -212,7 +214,8 @@ GltfContainer.create(model, {
 })
 ```
 
-**Model has NO `_collider` meshes** — put all collision on the visible mesh; invisible layer does nothing:
+**Model has NO `_collider` meshes** —
+evaluate whether a `MeshCollider` is needed. Add one for any model that is a walkable surface, a wall, or needs to be clickable. If colliders are needed, put all collision on the visible mesh; invisible layer does nothing:
 
 ```json
 "visibleMeshesCollisionMask": 3,
@@ -227,7 +230,14 @@ GltfContainer.create(model, {
 })
 ```
 
-If the model needs only physics (not clickable), use `visibleMeshesCollisionMask: 2`. If only clickable (no physics), use `1`.
+Choose the mask based on the model's role:
+
+| Role                                   | visibleMeshesCollisionMask | Why                                                      |
+| -------------------------------------- | -------------------------- | -------------------------------------------------------- |
+| Interactive (player clicks it)         | `3`                        | Needs physics (block walking) + pointer (detect clicks)  |
+| Structural / decorative wall or prop   | `3`                        | Block walking, also block clicks (avoid click confusion) |
+| Clickable-only with no physical bulk   | `1`                        | Detects clicks without blocking player movement          |
+| Purely decorative, no collision needed | `0`                        | No interaction at all                                    |
 
 ### Anti-pattern — DO NOT USE
 

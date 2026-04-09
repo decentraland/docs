@@ -6,7 +6,7 @@ description: How to move, interact, chat, and use the camera with touch.
 
 The Decentraland mobile app replaces the keyboard and mouse with on-screen touch controls. Everything you can do on desktop is also possible on mobile, with a different layout designed for one-handed touch use.
 
-<!-- TODO: add screenshot of the mobile in-world HUD with each control labeled (player/images/mobile-app/controls-overview.png) -->
+<figure><img src="../../.gitbook/assets/mobile-controls.png" alt="Mobile in-world HUD with controls labeled"><figcaption><p>The Decentraland mobile app in-world HUD, with each touch control labeled.</p></figcaption></figure>
 
 ## Movement
 

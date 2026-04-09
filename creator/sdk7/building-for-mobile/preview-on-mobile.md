@@ -17,7 +17,7 @@ You can preview your scene directly on the Decentraland mobile app from the Crea
 2. Click the dropdown next to the **Preview** button and choose **Show QR Code for Mobile**.
 3. Scan the displayed QR code with your phone's camera. The link opens the Decentraland mobile app and loads your scene preview.
 
-<!-- TODO: add screenshot of the "Show QR Code for Mobile" dropdown menu (creator/images/building-for-mobile/preview-qr-creator-hub.png) -->
+<figure><img src="../../../.gitbook/assets/mobile-preview-creator-hub.png" alt="Creator Hub preview dropdown with the Show QR Code for Mobile option"><figcaption><p>The "Show QR Code for Mobile" option in the Creator Hub preview dropdown.</p></figcaption></figure>
 
 ## Option B — From the command line
 
@@ -29,7 +29,7 @@ npm run start -- --mobile
 
 The CLI prints a QR code in the terminal that points to your scene's LAN URL. Scan it with your phone to load the scene in the Decentraland mobile app.
 
-<!-- TODO: add screenshot of the QR code printed in the terminal (creator/images/building-for-mobile/preview-qr-cli.png) -->
+<figure><img src="../../../.gitbook/assets/mobile-preview-cli-qr.png" alt="QR code printed by the Decentraland CLI for mobile preview"><figcaption><p>A QR code printed by <code>npm run start -- --mobile</code>. Scan it with your phone to open the scene in the Decentraland mobile app.</p></figcaption></figure>
 
 {% hint style="info" %}
 **💡 Tip**: When you pass `--mobile`, the desktop explorer is not also launched. If you want to test on both at once, run `npm run start` in one terminal for desktop and `npm run start -- --mobile` (on a different port if needed) for mobile.

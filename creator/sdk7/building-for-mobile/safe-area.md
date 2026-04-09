@@ -20,7 +20,9 @@ Do not place scene UI inside any of these zones:
 
 The remaining area — broadly the center and the top-center of the screen — is yours to use for scene UI.
 
-<!-- TODO: add mobile-safe-area.png diagram (creator/images/building-for-mobile/safe-area.png) showing the three reserved regions in red overlay on a mobile screenshot -->
+<figure><img src="../../../.gitbook/assets/mobile-safe-area-unsafe.png" alt="Mobile screen with the reserved regions highlighted"><figcaption><p>Reserved regions on the mobile client: the left side, top right, and bottom right are owned by the system controls.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/mobile-safe-area.png" alt="Mobile screen with the safe area highlighted"><figcaption><p>The safe area for scene UI on mobile — broadly the center and top-center of the screen.</p></figcaption></figure>
 
 ## Where to put scene UI
 

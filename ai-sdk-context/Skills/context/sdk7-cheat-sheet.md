@@ -65,7 +65,8 @@ Transform.has(entity)                      // boolean
 Transform.deleteFrom(entity)               // remove component
 Transform.createOrReplace(entity, { ... }) // upsert
 
-// Systems
+// Systems — run every frame. Never add entities or components inside a system
+// unless you guard against duplicates; otherwise you'll spawn one per frame.
 engine.addSystem((dt: number) => { /* runs every frame */ })
 engine.addSystem(mySystem, priority)       // higher priority = runs first
 engine.removeSystem(mySystem)
@@ -178,7 +179,8 @@ ColliderLayer.CL_CUSTOM1 … CL_CUSTOM8  // user-defined layers
 ## Runtime Restrictions
 
 - **Sandboxed QuickJS** — no Node.js APIs (`fs`, `http`, `path`, `process`)
-- **setTimeout/setInterval** — supported (runtime polyfill)
+- **Native `setTimeout` / `setInterval`** — **not available**. Use `timers.setTimeout()` and `timers.setInterval()` from `@dcl/sdk/ecs`
+- **`console.warn()` / `console.error()`** — **not supported**. Only `console.log()` is available
 - **fetch** — supported (plain and signed)
 - **WebSocket** — supported
 - **Entry point** — `export function main() {}` in `src/index.ts`

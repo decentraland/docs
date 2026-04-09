@@ -160,7 +160,7 @@ changeRealm({ realm: 'other-realm.dcl.eth', message: 'Join this realm?' })
 
 ## Timers
 
-**setTimeout / setInterval** are supported via the QuickJS runtime polyfill:
+The native `setTimeout()` and `setInterval()` functions are **not available**. Use the `timers` module from `@dcl/sdk/ecs` instead:
 
 ```typescript
 import { timers } from '@dcl/sdk/ecs'
@@ -239,5 +239,6 @@ await exit({})
 - Check `realm.realmInfo?.isPreview` to detect preview mode and enable debug features
 - Use `readFile()` for data files (JSON configs, level data) deployed alongside the scene
 - `removeEntityWithChildren()` is essential when cleaning up complex entity hierarchies
+- Only `console.log()` is available for logging — `console.warn()` and `console.error()` are not supported
 
 For complete executeTask patterns, all RestrictedActions, realm detection, and portable experiences, see `{baseDir}/references/runtime-apis.md`.

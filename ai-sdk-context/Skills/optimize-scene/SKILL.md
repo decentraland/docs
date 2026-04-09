@@ -232,6 +232,29 @@ Use this pattern for any asset that should be ready before a game phase begins, 
 - Use CDN URLs for large shared assets when possible
 - Preload critical assets with `AssetLoad`, defer non-essential ones
 
+### Loading Areas for Large Scenes
+
+For scenes with many 3D models (e.g. a furnished multi-room building), avoid rendering everything at once. Use trigger areas to load and unload content as the player moves through the scene:
+
+```typescript
+import { engine, Transform, GltfContainer, TriggerArea, TriggerAction } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+// Keep furniture hidden initially
+let furnitureLoaded = false
+
+// When player enters the building, spawn interior furniture
+const trigger = engine.addEntity()
+Transform.create(trigger, { position: Vector3.create(8, 1, 8) })
+TriggerArea.create(trigger, {
+  area: { box: Vector3.create(3, 3, 3) },
+  onEnter: [{ type: TriggerAction.TA_CUSTOM, customId: 'load-interior' }],
+  onExit: [{ type: TriggerAction.TA_CUSTOM, customId: 'unload-interior' }],
+})
+```
+
+This pattern keeps the initial triangle and entity counts low and loads detail only when needed.
+
 ## Common Performance Pitfalls
 
 | Pitfall                              | Symptom                          | Fix                                                      |
@@ -243,6 +266,7 @@ Use this pattern for any asset that should be ready before a game phase begins, 
 | Unused colliders on decorations      | Physics body limit exceeded      | Remove MeshCollider from non-interactive objects         |
 | Large uncompressed textures          | Slow loading, file size exceeded | Use WebP, reduce resolution, use atlases                 |
 | Too many transparent materials       | Extra draw calls, sorting issues | Minimize transparency, use alpha cutoff instead of blend |
+| Adding entities/components in a system without guards | Entity count explodes | Systems run every frame — always check before creating  |
 | Unbounded entity queries             | CPU spike                        | Filter with specific components, cache results           |
 | All detail loaded at all distances   | Triangle budget blown            | Implement LOD system                                     |
 | No asset preloading                  | Pop-in during gameplay           | Use AssetLoad for large models and audio                 |

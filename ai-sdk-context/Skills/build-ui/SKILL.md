@@ -476,5 +476,7 @@ const splashImg = ui.createLargeImage({ image: 'images/splash.jpg', xOffset: 0, 
 - File extension must be `.tsx` for JSX support
 - Only one `ReactEcsRenderer.setUiRenderer()` call per scene — combine all UI into one root component, or use `addUiRenderer()` with separate owner entities for independent modules
 - Always set `virtualWidth` and `virtualHeight` in `setUiRenderer`/`addUiRenderer` so the UI scales correctly across screen sizes
+- **Desktop:** Avoid placing UI elements on the leftmost ~25% of the screen, as that area is reserved for the chat, map, and other platform UI
+- **Mobile:** Avoid placing UI elements in the device's non-safe zones (notch, status bar, home indicator areas)
 
 For full component props (UiEntity, Label, Button, Input, Dropdown), layout patterns, and responsive design, see `{baseDir}/references/ui-components.md`.

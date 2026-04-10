@@ -14,8 +14,6 @@ Decentraland offers different ways to stream live video into your scene:
 
 <img src="../../../.gitbook/assets/streaming-modes.png" alt="Stream methods" width="400"/>
 
-
-
 Streaming works in Worlds and Genesis City, with no audience limits on the scene side.
 
 ## Configure the scene
@@ -25,21 +23,20 @@ The following steps are common to both DCL Cast and Stream methods:
 1.  Add a **Video Screen** smart item to your scene.
 
     ![ ](../../../.gitbook/assets/video-player-item.png)
+
 2.  Add a **Scene Admin** smart item and enable the **Video Screens** section. Select each screen from the dropdown and give it a friendly name for the admin UI.
 
     ![ ](../../../.gitbook/assets/multi-video-setup.png)
+
 3.  Publish your scene (World or Genesis City) and enter as a user with admin permissions.
 
     ![ ](../../../.gitbook/assets/publish-button.png)
 
 Once your scene is published, you can enter as a user with admin permissions and configure the streaming settings.
 
-
 {% hint style="info" %}
 **💡 Tip**: If you add multiple Video Screens, configure all but one's source to point to the same video player, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens) for more details.
 {% endhint %}
-
-
 
 ## DCL Cast
 
@@ -53,11 +50,11 @@ You'll see two links that you can copy and share with others.
 
 - **Cast Speakers**: This link is for the speakers to use to cast their video to the scene.
 
-   {% hint style="danger" %}
-   **❗Warning**: Treat the steaming link as a secret, only share it with people you trust. Reset the link between presenters if needed.
+  {% hint style="danger" %}
+  **❗Warning**: Treat the steaming link as a secret, only share it with people you trust. Reset the link between presenters if needed.
 
-   Only one person can stream to a scene at a time. When finished streaming, close the DCL Cast browser tab to free the channel.
-   {% endhint %}
+  Only one person can stream to a scene at a time. When finished streaming, close the DCL Cast browser tab to free the channel.
+  {% endhint %}
 
 - **Viewers**: This link is for the audience to use to watch the video from a browser. This is useful for players who are currently not inside Decentraland, or even on a mobile device.
 
@@ -67,11 +64,9 @@ When ready to stream, click the **Activate** button to make the stream visible t
 
    <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="150"/>
 
-
 If for any reason you need to reset the room, click the **Reset Room** button to generate a new one. Anyone who's currently streaming will be disconnected.
 
  <img src="../../../.gitbook/assets/reset-room.png" alt="Reset room" width="150"/>
-
 
 ### Using the DCL Cast app
 
@@ -84,7 +79,6 @@ The browser will ask for permission to share your camera and microphone. You can
 {% hint style="info" %}
 **📔 Tip**: Use Google Chrome or a browser built on the Chrome engine. These browsers offer the functionality to easily share both video and audio directly from a browser tab.
 {% endhint %}
-
 
 Users can input a name (doesn't need to match their Decentraland username) and click the **Join Now** button to start streaming.
 
@@ -102,7 +96,6 @@ On the **Participants** tab you can see three lists:
 
  <img src="../../../.gitbook/assets/participants.png" alt="Participants tab" width="200"/>
 
-
 ## Stream method
 
 To use the Live Streaming feature on your scene you'll need to install a streaming software that can output to an RTMP endpoint (e.g. [OBS](https://obsproject.com/), [XSplit](https://www.xsplit.com/), [StreamYard](https://streamyard.com/)).
@@ -112,9 +105,11 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 1.  Open the Admin UI in the scene (top‑right icon).
 
     ![ ](../../../.gitbook/assets/admin-icon.png)
+
 2.  In the **Video** tab, switch to **Live** and click **Get Stream Key**.
 
     ![ ](../../../.gitbook/assets/get-key.png)
+
 3.  Copy the **RTMP Server** and **Stream Key** into your streaming software.
 
     <img src="../../../.gitbook/assets/OBS-configuration.png" alt="OBS configuration" width="700"/>
@@ -136,9 +131,9 @@ Stream keys are generated per scene and are valid for 4 days (96 hours). A singl
 
 ![ ](../../../.gitbook/assets/live-stream-settings.png)
 
-* Click **Reset Stream Key** to revoke the current key and issue a new one. Ongoing streams will stop.
-* Each scene has its own streaming address and key. Admins can share the key with external streamers.
-* Only one stream can be active per scene at a time; starting a new one will overwrite the current stream.
+- Click **Reset Stream Key** to revoke the current key and issue a new one. Ongoing streams will stop.
+- Each scene has its own streaming address and key. Admins can share the key with external streamers.
+- Only one stream can be active per scene at a time; starting a new one will overwrite the current stream.
 
 {% hint style="danger" %}
 **❗Warning**: Treat stream keys as secrets. Reset the key between presenters if needed.
@@ -148,6 +143,6 @@ Stream keys are generated per scene and are valid for 4 days (96 hours). A singl
 
 You can also stream using third‑party infrastructure by configuring the Video Screen to **Video URL** and pasting a stream URL.
 
-* The URL must be `https` and CORS‑enabled by the provider (YouTube and similar sites won’t allow direct playback). See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
-* Managed providers include [Vimeo](https://vimeo.com/), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
-* Tips for encoder setup: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).
+- The URL must be `https` and CORS‑enabled by the provider (YouTube and similar sites won’t allow direct playback). See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
+- Managed providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
+- Tips for encoder setup: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).

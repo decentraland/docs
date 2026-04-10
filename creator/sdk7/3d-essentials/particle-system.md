@@ -169,6 +169,10 @@ ParticleSystem.create(emitter, {
 })
 ```
 
+{% hint style="warning" %}
+**📔 Note**: The `scale` of the entity's `Transform` doesn't affect the scale of the particles.
+{% endhint %}
+
 ### Texture
 
 By default particles render as white squares. Supply a texture to use a custom image.

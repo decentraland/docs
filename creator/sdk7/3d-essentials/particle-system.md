@@ -17,7 +17,7 @@ import { Vector3 } from '@dcl/sdk/math'
 const emitter = engine.addEntity()
 
 Transform.create(emitter, {
-  position: Vector3.create(8, 1, 8),
+	position: Vector3.create(8, 1, 8),
 })
 
 ParticleSystem.create(emitter, {})
@@ -35,7 +35,7 @@ Particles spawn from a single point (the entity's position). This is the default
 
 ```ts
 ParticleSystem.create(emitter, {
-  shape: ParticleSystem.Shape.Point(),
+	shape: ParticleSystem.Shape.Point(),
 })
 ```
 
@@ -45,17 +45,17 @@ Particles spawn from the surface or interior of a sphere.
 
 ```ts
 ParticleSystem.create(emitter, {
-  shape: ParticleSystem.Shape.Sphere({ radius: 2 }),
+	shape: ParticleSystem.Shape.Sphere({ radius: 2 }),
 })
 ```
 
 ### Cone
 
-Particles spawn from the base of a cone and travel outward in the cone's direction. `angle` is the half-angle in degrees; `radius` is the base radius in meters.
+Particles spawn from the base of a cone and travel outward in the cone's direction. `angle` is the half-angle in degrees; `radius` is the base radius in meters. To orient the direction of the cone, set the rotation of the entity's `Transform`.
 
 ```ts
 ParticleSystem.create(emitter, {
-  shape: ParticleSystem.Shape.Cone({ angle: 25, radius: 1 }),
+	shape: ParticleSystem.Shape.Cone({ angle: 25, radius: 1 }),
 })
 ```
 
@@ -65,7 +65,7 @@ Particles spawn from anywhere inside a box volume.
 
 ```ts
 ParticleSystem.create(emitter, {
-  shape: ParticleSystem.Shape.Box({ size: Vector3.create(3, 1, 3) }),
+	shape: ParticleSystem.Shape.Box({ size: Vector3.create(3, 1, 3) }),
 })
 ```
 
@@ -73,18 +73,18 @@ ParticleSystem.create(emitter, {
 
 Control how many particles are created and how long they live.
 
-| Property | Default | Description |
-|---|---|---|
-| `rate` | `10` | Particles emitted per second (continuous). |
-| `maxParticles` | `1000` | Hard cap on simultaneous live particles. |
-| `lifetime` | `5` | Each particle's lifespan in seconds. |
-| `active` | `true` | Whether the system is actively emitting. |
+| Property       | Default | Description                                            |
+| -------------- | ------- | ------------------------------------------------------ |
+| `rate`         | `10`    | Particles emitted per second (continuous).             |
+| `maxParticles` | `1000`  | Hard cap on simultaneous live particles.               |
+| `lifetime`     | `5`     | Each particle's lifespan in seconds.                   |
+| `active`       | `true`  | Whether the system is actively emitting new particles. |
 
 ```ts
 ParticleSystem.create(emitter, {
-  rate: 50,
-  maxParticles: 500,
-  lifetime: 3,
+	rate: 50,
+	maxParticles: 500,
+	lifetime: 3,
 })
 ```
 
@@ -96,19 +96,19 @@ The `gravity` property is a multiplier applied to the scene's gravity (-9.81 m/s
 
 ```ts
 ParticleSystem.create(emitter, {
-  gravity: -0.5,  // particles float slowly upward
+	gravity: -0.5, // particles float slowly upward
 })
 ```
 
 ### Initial velocity
 
-`initialVelocitySpeed` is a `FloatRange` that sets the random speed range that each particle launches at (in m/s). Both values default to `1`.
+`initialVelocitySpeed` is a `FloatRange` that sets a min and max for the random speed range that each particle launches at (in m/s). Both values default to `1`.
 
 ```ts
 import { Vector2 } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
-  initialVelocitySpeed: { min: 2, max: 8 },
+	initialVelocitySpeed: { min: 2, max: 8 },
 })
 ```
 
@@ -118,7 +118,7 @@ A constant force vector applied to all particles every frame, in addition to gra
 
 ```ts
 ParticleSystem.create(emitter, {
-  additionalForce: Vector3.create(0.5, 0, 0),  // constant sideways push
+	additionalForce: Vector3.create(0.5, 0, 0), // constant sideways push
 })
 ```
 
@@ -128,10 +128,10 @@ Use `limitVelocity` to cap the maximum speed of particles and optionally dampen 
 
 ```ts
 ParticleSystem.create(emitter, {
-  limitVelocity: {
-    speed: 5,       // maximum allowed speed in m/s
-    dampen: 0.8,    // fraction of excess velocity removed per frame
-  },
+	limitVelocity: {
+		speed: 5, // maximum allowed speed in m/s
+		dampen: 0.8, // fraction of excess velocity removed per frame
+	},
 })
 ```
 
@@ -145,16 +145,18 @@ ParticleSystem.create(emitter, {
 import { Color4 } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
-  initialColor: {
-    from: Color4.create(1, 0.5, 0, 1),   // orange
-    to:   Color4.create(1, 1,   0, 1),   // yellow
-  },
-  colorOverTime: {
-    from: Color4.create(0.5, 0, 0, 0.5), // dim red, half transparent
-    to:   Color4.create(0,   0, 0, 0),   // fully transparent (fade out)
-  },
+	initialColor: {
+		from: Color4.create(1, 0.5, 0, 1), // orange
+		to: Color4.create(1, 1, 0, 1), // yellow
+	},
+	colorOverTime: {
+		from: Color4.create(0.5, 0, 0, 0.5), // dim red, half transparent
+		to: Color4.create(0, 0, 0, 0), // fully transparent (fade out)
+	},
 })
 ```
+
+Note that the 4th value in a `Color4` is the _alpha_. If you set the final color to one with an alpha of 0, the particles will gradually fade out and become invisible, which is often a good effect.
 
 ### Size
 
@@ -162,8 +164,8 @@ ParticleSystem.create(emitter, {
 
 ```ts
 ParticleSystem.create(emitter, {
-  initialSize:  { min: 0.1, max: 0.3 },
-  sizeOverTime: { min: 0.5, max: 1.0 },  // grow over lifetime
+	initialSize: { min: 0.1, max: 0.3 },
+	sizeOverTime: { min: 0.5, max: 1.0 }, // grow over lifetime
 })
 ```
 
@@ -173,7 +175,7 @@ By default particles render as white squares. Supply a texture to use a custom i
 
 ```ts
 ParticleSystem.create(emitter, {
-  texture: { src: 'assets/scene/textures/spark.png' },
+	texture: { src: 'assets/scene/textures/spark.png' },
 })
 ```
 
@@ -181,18 +183,18 @@ ParticleSystem.create(emitter, {
 
 Controls how the particle color is composited with the scene behind it.
 
-| Value | Description |
-|---|---|
-| `ParticleSystemBlendMode.PSB_ALPHA` | Standard transparency (default). |
-| `ParticleSystemBlendMode.PSB_ADD` | Additive blending — particles brighten the scene. Good for fire and glows. |
-| `ParticleSystemBlendMode.PSB_MULTIPLY` | Multiplies particle color with the scene behind it. |
+| Value                                  | Description                                                                |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| `ParticleSystemBlendMode.PSB_ALPHA`    | Standard transparency (default).                                           |
+| `ParticleSystemBlendMode.PSB_ADD`      | Additive blending — particles brighten the scene. Good for fire and glows. |
+| `ParticleSystemBlendMode.PSB_MULTIPLY` | Multiplies particle color with the scene behind it.                        |
 
 ```ts
 import { ParticleSystemBlendMode } from '@dcl/sdk/ecs'
 
 ParticleSystem.create(emitter, {
-  texture:   { src: 'assets/scene/textures/ember.png' },
-  blendMode: ParticleSystemBlendMode.PSB_ADD,
+	texture: { src: 'assets/scene/textures/ember.png' },
+	blendMode: ParticleSystemBlendMode.PSB_ADD,
 })
 ```
 
@@ -202,7 +204,7 @@ When `billboard` is `true` (the default), each particle always faces the camera 
 
 ```ts
 ParticleSystem.create(emitter, {
-  billboard: false,
+	billboard: false,
 })
 ```
 
@@ -216,13 +218,13 @@ ParticleSystem.create(emitter, {
 import { Quaternion } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
-  initialRotation:  Quaternion.fromEulerDegrees(0, 0, 45),
-  rotationOverTime: Quaternion.fromEulerDegrees(0, 0, 90), // spin 90°/s on Z
+	initialRotation: Quaternion.fromEulerDegrees(0, 0, 45),
+	rotationOverTime: Quaternion.fromEulerDegrees(0, 0, 90), // spin 90°/s on Z
 })
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Rotation properties only have a visible effect when `billboard` is set to `false`.
+**📔 Note**: If `billboard` is set to `true`, then particles will only rotate in one axis, always maintaining their camera-facing orientation.
 {% endhint %}
 
 ### Face travel direction
@@ -231,10 +233,14 @@ When `faceTravelDirection` is `true`, each particle automatically rotates to poi
 
 ```ts
 ParticleSystem.create(emitter, {
-  faceTravelDirection: true,
-  billboard: false,
+	faceTravelDirection: true,
+	billboard: false,
 })
 ```
+
+{% hint style="warning" %}
+**📔 Note**: If `faceTravelDirection` is true, the value of `billboard` is ignored.
+{% endhint %}
 
 ## Sprite sheet animation
 
@@ -242,12 +248,12 @@ You can animate particles by treating a texture as a grid of animation frames. S
 
 ```ts
 ParticleSystem.create(emitter, {
-  texture: { src: 'assets/scene/textures/flame-sheet.png' },
-  spriteSheet: {
-    tilesX: 4,            // 4 columns
-    tilesY: 3,            // 3 rows  (12 frames total)
-    framesPerSecond: 12,
-  },
+	texture: { src: 'assets/scene/textures/flame-sheet.png' },
+	spriteSheet: {
+		tilesX: 4, // 4 columns
+		tilesY: 3, // 3 rows  (12 frames total)
+		framesPerSecond: 12,
+	},
 })
 ```
 
@@ -255,20 +261,22 @@ ParticleSystem.create(emitter, {
 
 The particle system can be in one of three states controlled by `playbackState`.
 
-| Value | Description |
-|---|---|
-| `ParticleSystemPlaybackState.PS_PLAYING` | Actively emitting (default). |
-| `ParticleSystemPlaybackState.PS_PAUSED` | Freezes all current particles in place and stops emitting. |
-| `ParticleSystemPlaybackState.PS_STOPPED` | Stops emitting and removes all existing particles. |
+| Value                                    | Description                                                |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| `ParticleSystemPlaybackState.PS_PLAYING` | Actively emitting (default).                               |
+| `ParticleSystemPlaybackState.PS_PAUSED`  | Freezes all current particles in place and stops emitting. |
+| `ParticleSystemPlaybackState.PS_STOPPED` | Stops emitting and removes all existing particles.         |
 
 ```ts
 import { ParticleSystemPlaybackState } from '@dcl/sdk/ecs'
 
 // Pause when player walks away
-ParticleSystem.getMutable(emitter).playbackState = ParticleSystemPlaybackState.PS_PAUSED
+ParticleSystem.getMutable(emitter).playbackState =
+	ParticleSystemPlaybackState.PS_PAUSED
 
 // Resume
-ParticleSystem.getMutable(emitter).playbackState = ParticleSystemPlaybackState.PS_PLAYING
+ParticleSystem.getMutable(emitter).playbackState =
+	ParticleSystemPlaybackState.PS_PLAYING
 ```
 
 ### Loop and prewarm
@@ -279,8 +287,8 @@ Set `prewarm` to `true` (requires `loop: true`) to simulate the system as if it 
 
 ```ts
 ParticleSystem.create(emitter, {
-  loop:     false,  // play once then stop
-  prewarm:  false,
+	loop: false, // play once then stop
+	prewarm: false,
 })
 ```
 
@@ -288,18 +296,20 @@ ParticleSystem.create(emitter, {
 
 Bursts let you emit a large number of particles at specific moments rather than at a constant rate. They are useful for explosions, fireworks, or other one-shot events.
 
+A single particle system can go through a cycle with several bursts, even with varying intervals or probabilities so as to feel more natural.
+
 ```ts
 ParticleSystem.create(emitter, {
-  rate: 0,   // disable continuous emission
-  bursts: [
-    {
-      time:        0,    // time in seconds after playback starts
-      count:       200,  // particles to emit per burst
-      cycles:      1,    // how many times to repeat (0 = infinite)
-      interval:    0.2,  // seconds between repeated cycles
-      probability: 1,    // 0–1 chance the burst fires each cycle
-    },
-  ],
+	rate: 0, // disable continuous emission
+	bursts: [
+		{
+			time: 0, // time in seconds after playback starts
+			count: 200, // particles to emit per burst
+			cycles: 1, // how many times to repeat (0 = infinite)
+			interval: 0.2, // seconds between repeated cycles
+			probability: 1, // 0–1 chance the burst fires each cycle
+		},
+	],
 })
 ```
 
@@ -307,14 +317,14 @@ For a looping fireworks effect with staggered bursts:
 
 ```ts
 ParticleSystem.create(emitter, {
-  loop: true,
-  rate: 0,
-  lifetime: 2,
-  bursts: [
-    { time: 0.0, count: 80,  cycles: 0, interval: 3 },
-    { time: 0.7, count: 100, cycles: 0, interval: 3 },
-    { time: 1.4, count: 60,  cycles: 0, interval: 3 },
-  ],
+	loop: true,
+	rate: 0,
+	lifetime: 2,
+	bursts: [
+		{ time: 0.0, count: 80, cycles: 0, interval: 3 },
+		{ time: 0.7, count: 100, cycles: 0, interval: 3 },
+		{ time: 1.4, count: 60, cycles: 0, interval: 3 },
+	],
 })
 ```
 
@@ -328,7 +338,7 @@ Use `PSS_WORLD` for a moving emitter that should leave a trail behind it (e.g., 
 import { ParticleSystemSimulationSpace } from '@dcl/sdk/ecs'
 
 ParticleSystem.create(emitter, {
-  simulationSpace: ParticleSystemSimulationSpace.PSS_WORLD,
+	simulationSpace: ParticleSystemSimulationSpace.PSS_WORLD,
 })
 ```
 
@@ -340,3 +350,7 @@ The engine enforces a per-scene particle budget and will automatically scale dow
 - Use `maxParticles` to cap individual systems.
 - Use `active` or `playbackState` to disable systems that are off-screen or out of range.
 - Short `lifetime` values keep the live-particle count lower than a high emission `rate` alone suggests.
+
+The engine caps the number of maximum particles that are rendered at any given time to 1000. If you're emitting more particles than that, you may not be seeing all of them.
+
+Also keep in mind that particles can only be seen by a player while they're standing inside your scene. Players who are looking at the scene from the outside will not see any particles until they step in.

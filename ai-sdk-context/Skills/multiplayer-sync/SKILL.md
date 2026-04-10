@@ -214,6 +214,38 @@ bus.emit('hit', { damage: 10 })
 - `syncEntity`: late joiners get current state, automatic conflict resolution. The state persists as long as at least one player remains in the scene
 - `MessageBus`: fire-and-forget, late joiners miss past messages, good for transient effects
 
+### Binary MessageBus (Performance Optimization)
+
+The regular `MessageBus` JSON-encodes every payload before sending. For high-frequency messages or large payloads, there's a lower-level binary alternative that sends raw `Uint8Array` data directly — faster to process because it skips JSON serialization on both ends. This is the same transport `syncEntity` uses internally.
+
+Use it when:
+
+- You are emitting many messages per second (e.g., continuous movement streams, particle triggers in tight loops)
+- Payload size matters (binary encoding is more compact than JSON)
+- You already have binary data (e.g., pre-encoded buffers, CRDT deltas)
+
+Stick with the regular `MessageBus` for low-frequency events where ergonomics beat performance.
+
+```typescript
+import { sendBinary } from '~system/CommunicationsController'
+import { executeTask } from '@dcl/sdk/ecs'
+
+// Send a binary message to all peers (or a specific subset via peerData)
+executeTask(async () => {
+	const payload = new Uint8Array([1, 2, 3, 4]) // your encoded data
+	const response = await sendBinary({
+		data: [payload],
+		peerData: undefined, // optional: target specific peers
+	})
+	// response.data is a Uint8Array[] of messages received from other peers
+	for (const incoming of response.data) {
+		handleBinaryMessage(incoming)
+	}
+})
+```
+
+You are responsible for encoding/decoding the `Uint8Array` payloads yourself (e.g., with `DataView`, `TextEncoder`/`TextDecoder`, or protobuf). There's no on/emit/topic layer — `sendBinary` is a single call that both sends pending outgoing messages and returns incoming ones, so you typically drive it from a system on each tick.
+
 ---
 
 ## REST API and Signed Fetch

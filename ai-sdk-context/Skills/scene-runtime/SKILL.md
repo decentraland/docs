@@ -1,6 +1,6 @@
 ---
 name: scene-runtime
-description: Cross-cutting runtime APIs for Decentraland SDK7 scenes. Use when the user needs async operations (executeTask), HTTP requests (fetch, signedFetch), WebSocket connections, timers, realm/scene detection, restricted actions (movePlayerTo, teleportTo, triggerEmote, openExternalUrl), or the testing framework. Do NOT use for UI (see build-ui), multiplayer sync (see multiplayer-sync), or avatar/player data (see player-avatar).
+description: Cross-cutting runtime APIs for Decentraland SDK7 scenes. Covers async work (executeTask), HTTP (fetch, signedFetch, getHeaders), WebSocket, timers (timers.setTimeout/setInterval — native setTimeout is unavailable), realm/scene info (getRealm, getSceneInformation, getExplorerInformation), world time (getWorldTime), reading deployed files (readFile), EngineInfo frame timing, Component.onChange listeners, removeEntityWithChildren, restricted actions (movePlayerTo, teleportTo, triggerEmote, openExternalUrl, openNftDialog, copyToClipboard, changeRealm, triggerSceneEmote), and the @dcl/sdk/testing framework (test, assertEquals, assertComponentValue, assertEntitiesCount). Use when the user needs async, HTTP, WebSocket, timers, realm/scene metadata, restricted actions, or to write scene tests. Do NOT use for UI (see build-ui), multiplayer sync (see multiplayer-sync), avatar/player data (see player-avatar), or polling-based input (see advanced-input).
 ---
 
 # Scene Runtime APIs
@@ -231,6 +231,46 @@ await kill({ urn: 'urn:decentraland:entity:bafk...' })
 // Exit self (if this scene IS a portable experience)
 await exit({})
 ``` -->
+
+## Testing Framework
+
+Scenes can ship unit tests using `@dcl/sdk/testing`. Tests are generators — yielding pauses until the next frame so you can observe engine state across ticks.
+
+```typescript
+import { test } from '@dcl/sdk/testing'
+import { assertComponentValue, assertEquals, assertEntitiesCount } from '@dcl/sdk/testing/assert'
+import { engine, Transform, MeshRenderer } from '@dcl/sdk/ecs'
+import { Vector3, Quaternion } from '@dcl/sdk/math'
+
+test('transform is applied after one frame', function* () {
+	const entity = engine.addEntity()
+	Transform.create(entity, { position: Vector3.One() })
+
+	// Let the engine run for a frame before asserting
+	yield
+
+	assertComponentValue(entity, Transform, {
+		position: Vector3.One(),
+		scale: Vector3.One(),
+		rotation: Quaternion.Identity(),
+		parent: 0 as any,
+	})
+})
+
+test('five meshes are present', function* () {
+	yield
+	assertEquals(1 + 1, 2, 'basic math')
+	assertEntitiesCount(engine.getEntitiesWith(MeshRenderer), 5, 'should have 5 meshes')
+})
+```
+
+**Available assertions** (`@dcl/sdk/testing/assert`):
+
+- `assertEquals(actual, expected, message?)` — deep-equals check
+- `assertComponentValue(entity, Component, expected)` — full component value comparison
+- `assertEntitiesCount(iterable, count, message?)` — verifies `engine.getEntitiesWith(...)` returns the expected number of entities
+
+**Running tests**: use `npx @dcl/sdk-commands test` (or the test runner from the Creator Hub). Tests run inside the same QuickJS runtime as the scene, so the same restrictions apply (no Node.js APIs, use SDK timers, etc.).
 
 ## Best Practices
 

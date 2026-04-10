@@ -100,10 +100,6 @@ MANA operations, currency/NFT transactions, marketplace integration, contract in
 **Reference: `libraries/utils.mdc`**
 Legacy utility library. Most functions now have native SDK equivalents (timers → `setInterval`, tweens → `Tween`, world transforms → `getWorldPosition`/`getWorldRotation`). Check native alternatives before using.
 
-## SDK7 Cheat Sheet
-**Reference: `Skills/context/sdk7-cheat-sheet.md`**
-Quick lookup: common imports, component names, frequently used patterns.
-
 ## Components Reference
 **Reference: `Skills/context/components-reference.md`**
 Full ECS component API: all fields, types, and defaults.

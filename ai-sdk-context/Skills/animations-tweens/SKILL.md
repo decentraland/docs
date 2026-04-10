@@ -1,6 +1,6 @@
 ---
 name: animations-tweens
-description: Animate objects in Decentraland scenes. Play GLTF model animations with Animator, create procedural motion with Tween (move/rotate/scale), and chain sequences with TweenSequence. Use when the user wants to animate, move, rotate, spin, slide, bob, or create motion effects. Do NOT use for audio/video playback (see audio-video).
+description: Animate objects in Decentraland scenes. Play GLTF model animations with Animator (clip blending, weights, playSingleAnimation), create procedural motion with Tween (move/rotate/scale, continuous variants, texture UV scrolling), chain sequences with TweenSequence (loop, yoyo), and detect completion with tweenSystem.tweenCompleted. Use when the user wants to animate, move, rotate, spin, slide, bob, scroll a texture, or create motion effects. Do NOT use for audio/video playback (see audio-video), player emotes (see player-avatar), or physics-driven motion (see player-physics).
 ---
 
 # Animations and Tweens in Decentraland
@@ -230,6 +230,43 @@ Tween.setScale(entity,
   Vector3.One(), Vector3.create(2, 2, 2),
   1000, EasingFunction.EF_LINEAR
 )
+```
+
+### Continuous Tweens
+
+`Tween.setMoveContinuous` and `Tween.setRotateContinuous` keep moving/rotating by a relative delta every cycle — no explicit start/end needed. Use for conveyor belts, idle spinning objects, or looping motion:
+
+```typescript
+// Move by (0, 0, 1) every 2 seconds, forever
+Tween.setMoveContinuous(entity, Vector3.create(0, 0, 1), 2000)
+
+// Rotate 90° around Y every 2 seconds, forever
+Tween.setRotateContinuous(entity, Quaternion.fromEulerDegrees(0, 90, 0), 2000)
+```
+
+### Texture Scrolling
+
+Animate a material's texture UV offset — useful for waterfalls, conveyor belts, scrolling signs:
+
+```typescript
+import { Vector2 } from '@dcl/sdk/math'
+
+// From UV (0,0) to (1,0) over 2 seconds
+Tween.setTextureMove(entity, Vector2.create(0, 0), Vector2.create(1, 0), 2000)
+
+// Continuous scroll — shift UV by (0, 1) every 2 seconds, forever
+Tween.setTextureMoveContinuous(entity, Vector2.create(0, 1), 2000)
+```
+
+### Pause / Reset a Tween
+
+Mutate the `Tween` component to pause playback or scrub to a specific time:
+
+```typescript
+const tween = Tween.getMutable(entity)
+tween.playing = false   // pause
+tween.currentTime = 0   // reset to beginning
+tween.playing = true    // resume
 ```
 
 ### Yoyo Loop Mode

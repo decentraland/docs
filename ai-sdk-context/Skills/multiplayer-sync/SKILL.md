@@ -1,6 +1,6 @@
 ---
 name: multiplayer-sync
-description: Synchronize state between players in Decentraland using CRDT networking (syncEntity), MessageBus, fetch, signedFetch, and WebSocket. Use when the user wants multiplayer, synced entities, shared world state, real-time networking, or player-to-player communication. Do NOT use for server-authoritative multiplayer (see authoritative-server). Do NOT use for screen UI (see build-ui).
+description: Peer-to-peer multiplayer in Decentraland using CRDT networking. syncEntity (auto-synced components), parentEntity for synced hierarchies, MessageBus and binary MessageBus (fire-and-forget events), custom component definition with Schemas (Int64, Enum, EnumNumber, OneOf, Optional), and connection state. Use when the user wants multiplayer, synced entities, shared world state, broadcast events, or player-to-player communication without a server. Do NOT use for server-authoritative multiplayer, anti-cheat, or persistent storage (see authoritative-server). Do NOT use for screen UI (see build-ui).
 ---
 
 # Multiplayer Synchronization in Decentraland
@@ -145,7 +145,24 @@ Available schema types for custom components:
 | `Schemas.Array(innerType)`    | Array of values             |
 | `Schemas.Map(valueType)`      | Key-value maps              |
 | `Schemas.Optional(innerType)` | Nullable values             |
-| `Schemas.Enum(enumType)`      | Enum values                 |
+| `Schemas.Enum(enumType)`      | Enum values (string enums)  |
+| `Schemas.EnumNumber(enumType, default)` | Numeric enum with default value |
+| `Schemas.OneOf({ ... })`      | Discriminated union (`$case` + payload) |
+
+Example with the less common schema types:
+
+```typescript
+enum Rarity { Common = 0, Rare = 1, Legendary = 2 }
+
+const Loot = engine.defineComponent('game::Loot', {
+	rarity: Schemas.EnumNumber<Rarity>(Rarity, Rarity.Common),
+	payload: Schemas.OneOf({
+		coins: Schemas.Int,
+		item: Schemas.String,
+	}),
+	label: Schemas.Optional(Schemas.String),
+})
+```
 
 ## Parent-Child Sync Relationships
 

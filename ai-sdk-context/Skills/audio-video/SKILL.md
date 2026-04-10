@@ -1,6 +1,6 @@
 ---
 name: audio-video
-description: Add sound effects, music, audio streaming, and video players to Decentraland scenes. Covers AudioSource (local files), AudioStream (streaming URLs), VideoPlayer (video surfaces), video events, and media permissions. Use when the user wants sound, music, audio, video screens, radio, or media playback.
+description: Add sound effects, music, audio streaming, and video players to Decentraland scenes. Covers AudioSource (local files, spatial audio, pitch), AudioStream (streaming URLs, MediaState polling), VideoPlayer (video on meshes or GLBs), VideoState events, spatial min/max distances, and ALLOW_MEDIA_HOSTNAMES permissions. Use when the user wants sound, music, audio, video screens, radio, live streams, or media playback. Do NOT use for player emotes (see player-avatar) or screen-space UI sounds (sounds attach to entities, not UI).
 ---
 
 # Audio and Video in Decentraland
@@ -122,6 +122,31 @@ AudioStream.create(radio, {
 	url: 'https://example.com/stream.mp3',
 	playing: true,
 	volume: 0.3,
+})
+```
+
+### AudioStream State
+
+Query the current state of an audio stream with `AudioStream.getAudioState` and the `MediaState` enum — useful for reacting to buffering, errors, or end-of-stream:
+
+```typescript
+import { AudioStream, MediaState } from '@dcl/sdk/ecs'
+
+const state = AudioStream.getAudioState(radio)
+if (state === MediaState.MS_PLAYING) {
+	console.log('Stream is playing')
+} else if (state === MediaState.MS_ERROR) {
+	console.log('Stream error occurred')
+}
+
+// Monitor state changes in a system
+let lastState: MediaState | undefined = undefined
+engine.addSystem(() => {
+	const current = AudioStream.getAudioState(radio)
+	if (lastState !== current) {
+		console.log('Stream state changed:', current)
+		lastState = current
+	}
 })
 ```
 

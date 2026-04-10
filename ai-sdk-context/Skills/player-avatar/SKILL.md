@@ -1,6 +1,6 @@
 ---
 name: player-avatar
-description: The live player in a Decentraland scene. Read player position/profile, trigger emotes (triggerEmote/triggerSceneEmote), read equipped wearables (AvatarEquippedData), attach objects to the player avatar (AvatarAttach), hide avatars or disable passports in zones (AvatarModifierArea), and adjust locomotion speed (AvatarLocomotionSettings). Use when the user wants player position, player profile, emotes, wearables, attaching things to a player, or avatar zones. For NPC characters see the npcs skill. For wallet/blockchain interactions see nft-blockchain. For freezing player movement see advanced-input.
+description: The live player in a Decentraland scene. Read player position (Transform on engine.PlayerEntity), player profile (getPlayer, isGuest), trigger emotes (triggerEmote, triggerSceneEmote), read equipped wearables (AvatarEquippedData.onChange), attach objects to avatars (AvatarAttach with anchor points), hide avatars or disable passports in zones (AvatarModifierArea), adjust locomotion speed (AvatarLocomotionSettings), teleport the player (movePlayerTo), and listen for scene entry/exit (onEnterScene/onLeaveScene). Use when the user wants player position, player profile, emotes, wearables, attaching items to players, or avatar zones. Do NOT use for NPC characters (see npcs), wallet/blockchain checks (see nft-blockchain), freezing player movement (see advanced-input for InputModifier), or camera mode (see camera-control).
 ---
 
 # Player and Avatar System in Decentraland

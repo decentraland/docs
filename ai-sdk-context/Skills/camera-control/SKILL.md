@@ -1,6 +1,6 @@
 ---
 name: camera-control
-description: Control camera behavior in Decentraland scenes. CameraMode detection, CameraModeArea (force first/third person in regions), VirtualCamera (cinematic scripted cameras), MainCamera (read position/rotation), and camera-triggered events. Use when the user wants camera control, cutscenes, cinematic views, forced camera modes, or camera tracking. Do NOT use for input restriction during cutscenes (see advanced-input for InputModifier).
+description: Control camera behavior in Decentraland scenes. CameraMode detection (first/third person, onChange listener), CameraModeArea (force a mode inside a box), VirtualCamera (cinematic scripted cameras with Speed/Time transitions and lookAtEntity), MainCamera (activate/deactivate virtual cameras), and camera vs collider interactions (CL_PHYSICS + CL_POINTER). Use when the user wants camera control, cutscenes, cinematic views, forced camera modes, or camera tracking. Do NOT use for input restriction during cutscenes (see advanced-input for InputModifier) or cursor lock detection (see advanced-input for PointerLock).
 ---
 
 # Camera Control in Decentraland
@@ -49,6 +49,20 @@ engine.addSystem(checkCameraMode)
 ```typescript
 CameraType.CT_FIRST_PERSON // First-person view
 CameraType.CT_THIRD_PERSON // Third-person view (default)
+```
+
+### React to Camera Mode Changes
+
+Use `CameraMode.onChange` to get notified only when the player toggles between first and third person — cheaper than polling every frame:
+
+```typescript
+import { CameraMode, engine } from '@dcl/sdk/ecs'
+
+CameraMode.onChange(engine.CameraEntity, (camera) => {
+	if (!camera) return
+	// camera.mode is 0 for first person, 1 for third person
+	console.log('Camera mode changed:', camera.mode)
+})
 ```
 
 ## CameraModeArea (Force Camera in a Region)

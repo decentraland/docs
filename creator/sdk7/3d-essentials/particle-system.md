@@ -20,10 +20,16 @@ Transform.create(emitter, {
 	position: Vector3.create(8, 1, 8),
 })
 
-ParticleSystem.create(emitter, {})
+ParticleSystem.create(emitter, {
+	bursts: [],
+})
 ```
 
 With no properties set, the component uses all defaults: a point emitter shooting 10 particles per second upward, with a 5-second particle lifetime.
+
+{% hint style="warning" %}
+**📔 Note**: The `bursts` property is the only required field, which you can leave as an empty array to keep the flow of particles continuous.
+{% endhint %}
 
 ## Emitter shapes
 
@@ -36,6 +42,7 @@ Particles spawn from a single point (the entity's position). This is the default
 ```ts
 ParticleSystem.create(emitter, {
 	shape: ParticleSystem.Shape.Point(),
+	bursts: [],
 })
 ```
 
@@ -46,6 +53,7 @@ Particles spawn from the surface or interior of a sphere.
 ```ts
 ParticleSystem.create(emitter, {
 	shape: ParticleSystem.Shape.Sphere({ radius: 2 }),
+	bursts: [],
 })
 ```
 
@@ -56,6 +64,7 @@ Particles spawn from the base of a cone and travel outward in the cone's directi
 ```ts
 ParticleSystem.create(emitter, {
 	shape: ParticleSystem.Shape.Cone({ angle: 25, radius: 1 }),
+	bursts: [],
 })
 ```
 
@@ -66,6 +75,7 @@ Particles spawn from anywhere inside a box volume.
 ```ts
 ParticleSystem.create(emitter, {
 	shape: ParticleSystem.Shape.Box({ size: Vector3.create(3, 1, 3) }),
+	bursts: [],
 })
 ```
 
@@ -85,6 +95,7 @@ ParticleSystem.create(emitter, {
 	rate: 50,
 	maxParticles: 500,
 	lifetime: 3,
+	bursts: [],
 })
 ```
 
@@ -97,6 +108,7 @@ The `gravity` property is a multiplier applied to the scene's gravity (-9.81 m/s
 ```ts
 ParticleSystem.create(emitter, {
 	gravity: -0.5, // particles float slowly upward
+	bursts: [],
 })
 ```
 
@@ -109,6 +121,7 @@ import { Vector2 } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
 	initialVelocitySpeed: { min: 2, max: 8 },
+	bursts: [],
 })
 ```
 
@@ -119,6 +132,7 @@ A constant force vector applied to all particles every frame, in addition to gra
 ```ts
 ParticleSystem.create(emitter, {
 	additionalForce: Vector3.create(0.5, 0, 0), // constant sideways push
+	bursts: [],
 })
 ```
 
@@ -132,6 +146,7 @@ ParticleSystem.create(emitter, {
 		speed: 5, // maximum allowed speed in m/s
 		dampen: 0.8, // fraction of excess velocity removed per frame
 	},
+	bursts: [],
 })
 ```
 
@@ -153,6 +168,7 @@ ParticleSystem.create(emitter, {
 		from: Color4.create(0.5, 0, 0, 0.5), // dim red, half transparent
 		to: Color4.create(0, 0, 0, 0), // fully transparent (fade out)
 	},
+	bursts: [],
 })
 ```
 
@@ -166,6 +182,7 @@ Note that the 4th value in a `Color4` is the _alpha_. If you set the final color
 ParticleSystem.create(emitter, {
 	initialSize: { min: 0.1, max: 0.3 },
 	sizeOverTime: { min: 0.5, max: 1.0 }, // grow over lifetime
+	bursts: [],
 })
 ```
 
@@ -180,6 +197,7 @@ By default particles render as white squares. Supply a texture to use a custom i
 ```ts
 ParticleSystem.create(emitter, {
 	texture: { src: 'assets/scene/textures/spark.png' },
+	bursts: [],
 })
 ```
 
@@ -199,6 +217,7 @@ import { ParticleSystemBlendMode } from '@dcl/sdk/ecs'
 ParticleSystem.create(emitter, {
 	texture: { src: 'assets/scene/textures/ember.png' },
 	blendMode: ParticleSystemBlendMode.PSB_ADD,
+	bursts: [],
 })
 ```
 
@@ -209,6 +228,7 @@ When `billboard` is `true` (the default), each particle always faces the camera 
 ```ts
 ParticleSystem.create(emitter, {
 	billboard: false,
+	bursts: [],
 })
 ```
 
@@ -224,6 +244,7 @@ import { Quaternion } from '@dcl/sdk/math'
 ParticleSystem.create(emitter, {
 	initialRotation: Quaternion.fromEulerDegrees(0, 0, 45),
 	rotationOverTime: Quaternion.fromEulerDegrees(0, 0, 90), // spin 90°/s on Z
+	bursts: [],
 })
 ```
 
@@ -239,6 +260,7 @@ When `faceTravelDirection` is `true`, each particle automatically rotates to poi
 ParticleSystem.create(emitter, {
 	faceTravelDirection: true,
 	billboard: false,
+	bursts: [],
 })
 ```
 
@@ -258,6 +280,7 @@ ParticleSystem.create(emitter, {
 		tilesY: 3, // 3 rows  (12 frames total)
 		framesPerSecond: 12,
 	},
+	bursts: [],
 })
 ```
 
@@ -293,6 +316,7 @@ Set `prewarm` to `true` (requires `loop: true`) to simulate the system as if it 
 ParticleSystem.create(emitter, {
 	loop: false, // play once then stop
 	prewarm: false,
+	bursts: [],
 })
 ```
 
@@ -343,6 +367,7 @@ import { ParticleSystemSimulationSpace } from '@dcl/sdk/ecs'
 
 ParticleSystem.create(emitter, {
 	simulationSpace: ParticleSystemSimulationSpace.PSS_WORLD,
+	bursts: [],
 })
 ```
 

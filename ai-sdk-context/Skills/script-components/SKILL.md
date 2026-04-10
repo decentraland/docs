@@ -1,10 +1,9 @@
 ---
-description: How to write .ts scripts for the Script component in Decentraland Creator Hub scenes.
-globs:
-alwaysApply: true
+name: script-components
+description: Writing .ts script files for the Creator Hub Script component — self-contained classes attached to individual entities. Covers constructor parameters exposed in the Creator Hub UI (string/number/boolean/Entity, defaults, optional, @param JSDoc tooltips), the required `public src: string` and `public entity: Entity` parameters, start()/update(dt) lifecycle, @action() decorators to expose methods as triggerable actions, ActionCallback params for user-wired callbacks, referencing bundled assets via `this.src`, finding child entities by name at runtime (instead of passing them as Entity params), and calling other scripts via `~sdk/script-utils` (callScriptMethod, getScriptInstance). Use when the user wants to create a custom smart item, a reusable scripted entity, or write code that runs on a Creator Hub Script component. Do NOT use for regular scene index.ts code or global systems (see scene-runtime, add-interactivity).
 ---
 
-# Writing Script Components for Creator Hub (AI context)
+# Writing Script Components for Creator Hub
 
 This document explains how to write `.tsx` files that are used inside a **Script component** on an entity in a Creator Hub scene. These scripts run as self-contained classes attached to individual entities.
 

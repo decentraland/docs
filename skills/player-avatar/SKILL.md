@@ -350,5 +350,5 @@ Beyond the commonly used anchor points, the full list includes:
 - **Never use `Transform.getMutable(engine.PlayerEntity)` to move the player** — it does not work. Always use `movePlayerTo` from `~system/RestrictedActions`
 - `Transform.get(engine.PlayerEntity)` is valid for **reading** position only
 
-For component field details, see `{baseDir}/../../context/components-reference.md`.
+For component field details, see `{baseDir}/../sdk-scenes/references/components-reference.md`.
 For anchor points, emote names, and event callbacks, see `{baseDir}/references/avatar-apis.md`.

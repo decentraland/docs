@@ -44,7 +44,7 @@ IMPORTANT: Only fetch models from the free catalogs below if the prompt explicit
 Before writing scene code, check the asset catalog for free models that match the user's theme:
 
 1. Search `{baseDir}/../add-3d-models/references/model-catalog.md` (8,800+ models with descriptions, dimensions, animations, and download URLs)
-2. Read `{baseDir}/../context/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
+2. Read `{baseDir}/../audio-video/references/audio-catalog.md` (50 free sounds — music, ambient, SFX, game mechanics, etc.)
 3. Suggest matching models and sounds to the user
 4. Download selected models into the scene's `assets/scene/Models/` directory:
    ```bash
@@ -289,6 +289,7 @@ After customizing the files:
 - Ready to deploy? See the **deploy-scene** skill (Genesis City) or **deploy-worlds** skill (personal Worlds)
 - Need to optimize for parcel limits? See the **optimize-scene** skill
 - Planning a game? See the **game-design** skill for design patterns and performance budgets
+- Validate entity component combinations: see `{baseDir}/references/entity-validation-rules.md` for rules on which components require each other, mutual exclusions, and common misconfigurations
 
 ## Important Notes
 

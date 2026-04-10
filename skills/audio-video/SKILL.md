@@ -302,7 +302,7 @@ AudioStream.create(audioStreamEntity, {
 
 Always check the audio catalog before creating placeholder sound file references. It contains 50 free sounds from the Creator Hub asset packs.
 
-Read `{baseDir}/../context/audio-catalog.md` for music tracks (ambient, dance, medieval, sci-fi, etc.), ambient sounds (birds, city, factory, etc.), interaction sounds (buttons, doors, levers, chests), sound effects (explosions, sirens, bells), and game mechanic sounds (win/lose, heal, respawn, damage).
+Read `{baseDir}/references/audio-catalog.md` for music tracks (ambient, dance, medieval, sci-fi, etc.), ambient sounds (birds, city, factory, etc.), interaction sounds (buttons, doors, levers, chests), sound effects (explosions, sirens, bells), and game mechanic sounds (win/lose, heal, respawn, damage).
 
 To use a catalog sound:
 

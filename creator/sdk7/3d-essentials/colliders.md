@@ -34,18 +34,21 @@ Entities that have a `MeshRenderer` component to give them a [primitive shape](.
 
 The following collider shapes are available on `MeshCollider`. Several shapes include optional additional fields, specific to that shape.
 
-*   **box**:
+- **box**:
 
-    Use `MeshCollider.setBox()`, passing the entity.
-*   **plane**:
+  Use `MeshCollider.setBox()`, passing the entity.
 
-    Use `MeshCollider.setPlane()`, passing the entity.
-*   **sphere**:
+- **plane**:
 
-    Use `MeshCollider.setSphere()`, passing the entity.
-*   **cylinder**:
+  Use `MeshCollider.setPlane()`, passing the entity.
 
-    Use `MeshCollider.setCylinder()`, passing the entity. Pass `radiusTop` and `radiusBottom` as additional optional fields, to modify the cylinder.
+- **sphere**:
+
+  Use `MeshCollider.setSphere()`, passing the entity.
+
+- **cylinder**:
+
+  Use `MeshCollider.setCylinder()`, passing the entity. Pass `radiusTop` and `radiusBottom` as additional optional fields, to modify the cylinder.
 
 {% hint style="info" %}
 **💡 Tip**: Set either `radiusTop` or `radiusBottom` to 0 to make a cone.
@@ -78,8 +81,8 @@ See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handl
 
 3D models can be assigned colliders on two different geometry levels:
 
-* `visibleMeshesCollisionMask`: Refers to the visible geometry of the model. By default this geometry has no colliders.
-* `invisibleMeshesCollisionMask`: refers to the collider meshes, whose name end in `_collider`. By default, this geometry is treated as a collider for both physics and pointer events.
+- `visibleMeshesCollisionMask`: Refers to the visible geometry of the model. By default this geometry has no colliders.
+- `invisibleMeshesCollisionMask`: refers to the collider meshes, whose name end in `_collider`. By default, this geometry is treated as a collider for both physics and pointer events.
 
 Any mesh embedded as part of a 3D model who's name ends in `_collider` is treated as part of the `invisibleMeshesCollisionMask` layer, and interpreted as a collider by default.
 
@@ -87,15 +90,15 @@ Defining collider geometry as a separate invisible layer allows for much greater
 
 If a model doesn't have any collider geometry, and you want to make it affect the physics or the pointer events systems, you can either:
 
-* Assign collision layers directly to the visible geometry, via the `visibleMeshesCollisionMask`.
+- Assign collision layers directly to the visible geometry, via the `visibleMeshesCollisionMask`.
 
 {% hint style="warning" %}
 **📔 Note**: If the visible geometry of the object has many vertices, note that this may have more of a performance cost.
 {% endhint %}
 
-* Give the entity a `MeshCollider` component, to give it a primitive shape collider.
-* Overlay an invisible entity that has a `MeshCollider` component.
-* Edit the model in an external tool like Blender to include a _collider mesh_. The collider must be named _x\_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house\_collider_.
+- Give the entity a `MeshCollider` component, to give it a primitive shape collider.
+- Overlay an invisible entity that has a `MeshCollider` component.
+- Edit the model in an external tool like Blender to include a _collider mesh_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
 
 You might also want to assign the pointer events collision layer to the `visibleMeshesCollisionMask` in case you want the hover hints and pointer events to respond more accurately to the contour of the entity. Note that this is more demanding on performance.
 
@@ -137,10 +140,10 @@ The scene can handle separate collision layers, that have different behaviors.
 
 You can configure a `MeshCollider` component or the `GltfContainer` component to only respond to one kind of interaction, or to several of them, or none. To do this, on the `MeshCollider` set the `collisionMask` property, and on `GltfContainer` set the `visibleMeshesCollisionMask` or `invisibleMeshesCollisionMask` properties to one or several of the following values:
 
-* `ColliderLayer.CL_PHYSICS`: Only blocks player movement (and doesn't affect pointer events)
-* `ColliderLayer.CL_POINTER`: Responds only to pointer events (and doesn't block the player movement)
-* `ColliderLayer.CL_CUSTOM1` through to `CL_CUSTOM8`: Can be used together with raycasts, so that a ray only detects collisions with one specific layer.
-* `ColliderLayer.CL_NONE`: Doesn't respond to collisions of any kind.
+- `ColliderLayer.CL_PHYSICS`: Only blocks player movement (and doesn't affect pointer events)
+- `ColliderLayer.CL_POINTER`: Responds only to pointer events (and doesn't block the player movement)
+- `ColliderLayer.CL_CUSTOM1` through to `CL_CUSTOM8`: Can be used together with raycasts, so that a ray only detects collisions with one specific layer.
+- `ColliderLayer.CL_NONE`: Doesn't respond to collisions of any kind.
 
 {% hint style="warning" %}
 **📔 Note**: To disable collisions form a `MeshCollider` component, delete the component. Do not set the collision layer to `ColliderLayer.CL_NONE`. There's a known issue with the `MeshCollider` component. Instead of disabling all collisions, it makes this value equivalent to the default (`ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER`).
@@ -199,30 +202,32 @@ GLTFContainer.create(myEntity, {
 // Both use the same invisible geometry
 GltfContainer.create(myEntity2, {
 	src: '/models/myModel.gltf',
-	invisibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER,
+	invisibleMeshesCollisionMask:
+		ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER,
 })
 
 // NO CAMERA GOING THROUGH THE WALL
 // Both use the same visible geometry
 GltfContainer.create(myEntity2, {
 	src: '/models/myModel.gltf',
-	visibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER,
+	visibleMeshesCollisionMask:
+		ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER,
 })
 
 // YES CAMERA GOES THROUGH THE WALL
-// physics and pointer are on diferent layers
+// physics and pointer are on different layers
 GltfContainer.create(myEntity2, {
 	src: '/models/myModel.gltf',
 	invisibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS,
-	visibleMeshesCollisionMask: ColliderLayer.CL_POINTER
+	visibleMeshesCollisionMask: ColliderLayer.CL_POINTER,
 })
 
 // YES CAMERA GOES THROUGH THE WALL
-// physics and pointer are on diferent layers
+// physics and pointer are on different layers
 GltfContainer.create(myEntity2, {
 	src: '/models/myModel.gltf',
 	invisibleMeshesCollisionMask: ColliderLayer.CL_POINTER,
-	visibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS
+	visibleMeshesCollisionMask: ColliderLayer.CL_PHYSICS,
 })
 ```
 
@@ -318,9 +323,9 @@ The `$case` field allows you to specify one of the allowed types. Each type supp
 
 The supported values for `$case` are the following:
 
-* `box`
-* `plane`
-* `sphere`
-* `cylinder`
+- `box`
+- `plane`
+- `sphere`
+- `cylinder`
 
 Depending on the value of `$case`, it's valid to define the object for the corresponding shape, passing any relevant properties.

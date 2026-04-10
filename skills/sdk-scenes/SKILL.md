@@ -18,21 +18,29 @@ Before taking any significant action, check whether it falls into one of the thr
 
 ### 1. Changing parcel count or layout
 
-Any modification to `scene.parcels` in scene.json changes the scene's coordinate space. Describe the change and its effect before acting:
+Any modification to `scene.parcels` in scene.json changes the scene's coordinate space. Entities near the current boundary may end up outside (invisible) or inside the wrong parcel. The user may also have a deployment slot in mind and parcel count needs to match it. Describe the change and its effect before acting:
 
 > "To fit the scene you described, I'd need to expand from 1 parcel (16×16 m) to a 2×1 layout (32×16 m). This changes the coordinate bounds for every entity. Should I go ahead?"
 
 ### 2. Fetching assets from external sources
 
-Downloading any file not already in the project — 3D models (.glb), images, audio, video. Confirm before downloading:
+Downloading any file not already in the project — 3D models (.glb), images, audio, video. The user may have their own assets in mind, may not want new files added, or may be targeting a specific visual style. Confirm before downloading:
 
 > "I'd like to download a [description] model from [source] and add it to your scene. Should I go ahead?"
 
+For streaming references (`AudioStream`, `VideoPlayer`): these don't download files but do add an external URL dependency. Confirm if the URL wasn't provided by the user:
+
+> "I'd set up a video stream from [source]. Is that the one you want to use?"
+
 ### 3. Adding an authoritative server
 
-Introduces `isServer()`, `registerMessages()`, `Storage`, `EnvVar`, or switches to `@dcl/sdk@auth-server`. This is a **BETA** feature that changes the build and deploy architecture. Confirm before implementing:
+Introduces `isServer()`, `registerMessages()`, `Storage`, `EnvVar`, or switches to `@dcl/sdk@auth-server`. This is a **BETA** feature that changes the build and deploy architecture. Many users who want "multiplayer" only need the simpler `multiplayer-sync` skill (no server). Confirm before implementing:
 
-> "To handle multiplayer this way I'd need to add a Beta Authoritative Server — that's a bigger change than basic sync and requires switching to a different SDK version. Is that what you're after?"
+> "To handle multiplayer this way I'd need to add a Beta Authoritative Server — that's a bigger change than basic sync and requires switching to a different SDK version. Is that what you're after, or would simpler peer-to-peer sync work for your use case?"
+
+### General principle
+
+These aren't things the agent should refuse to do — they're things it should communicate about before doing them. If the user confirms, proceed confidently. The goal is transparency, not gatekeeping.
 
 ---
 
@@ -114,6 +122,32 @@ This skill is the entry point. The detailed implementation guidance lives in ind
 ### Deployment
 - **Skill: `deploy-scene`** — Genesis City deployment, `dcl deploy`, troubleshooting.
 - **Skill: `deploy-worlds`** — Personal Worlds, `worldConfiguration`, ENS/DCL NAME requirements.
+
+---
+
+## Shared References
+
+These reference files are used across multiple skills. Load them when you need detailed component APIs, validation rules, or asset catalogs.
+
+### Components Reference
+**Reference: `{baseDir}/references/components-reference.md`**
+Full ECS component API: all fields, types, and defaults for every SDK7 component.
+
+### Entity Validation Rules
+**Reference: `{baseDir}/../create-scene/references/entity-validation-rules.md`**
+Rules for validating entity component combinations — which components require each other, mutual exclusions, and common misconfigurations. Apply to both composite and TypeScript entities.
+
+### Free Asset Catalogs
+- **3D Models (8,800+ models):** `{baseDir}/../add-3d-models/references/model-catalog.md` — optimized 3D models with descriptions, dimensions, animations, and download URLs
+- **Audio (50 sounds):** `{baseDir}/../audio-video/references/audio-catalog.md` — Music, Ambient, SFX, Game Mechanics, UI sounds
+
+### Composites
+**Reference: `{baseDir}/../composites/composite-reference.md`**
+The `.composite` JSON format for declaring initial scene entities. Includes `getEntityOrNullByName` and `getEntitiesByTag` patterns for fetching composite entities in TypeScript.
+
+### Library References
+- **NPC Toolkit:** `{baseDir}/../npcs/references/npc-library.mdc` — GLB-based NPCs with dialogue, movement, state machines
+- **Crypto/MANA:** `{baseDir}/../nft-blockchain/references/crypto-library.mdc` — MANA operations, currency/NFT transactions, marketplace integration
 
 ---
 

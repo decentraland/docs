@@ -56,7 +56,7 @@ You'll see two links that you can copy and share with others.
   Only one person can stream to a scene at a time. When finished streaming, close the DCL Cast browser tab to free the channel.
   {% endhint %}
 
-- **Viewers**: This link is for the audience to use to watch the video from a browser. This is useful for players who are currently not inside Decentraland, or even on a mobile device.
+- **Viewers**: This link is for the audience to use to watch the video from a browser or mobile. This is useful for players who are currently not inside Decentraland.
 
 Click the **Copy link** button to copy the links to the clipboard.
 
@@ -95,6 +95,47 @@ On the **Participants** tab you can see three lists:
 - **In-world participants**: The players who are currently inside the scene, watching the stream in-world.
 
  <img src="../../../.gitbook/assets/participants.png" alt="Participants tab" width="200"/>
+
+If multiple speakers are present in a DCL Cast session, players in-world will hear the voices of all speakers, and the see the video will automatically switch to show whoever is currently emitting sound, to always show who's speaking.
+
+To override this default behavior:
+
+- Click the **Speakers** button on the scene admin panel
+
+ <img src="../../../.gitbook/assets/speakers-button.png" alt="Participants tab" width="200"/>
+
+- Pick one of the speakers and select a source to showcase (either that speaker's camera or screen)
+
+ <img src="../../../.gitbook/assets/select-speaker-source.png" alt="Participants tab" width="200"/>
+
+This will force this source to be always shown on screen, regardless of if other speakers are talking.
+
+{% hint style="info" %}
+**📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app an in the Decentraland scene.
+You can easily mute all audio from the DCL Cast app, but toggling the speaker icon on the bottom-left of the screen
+
+ <img src="../../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
+
+Otherwise you can mute audio in the Decentraland settings.
+{% endhint %}
+
+### Share presentations
+
+You can also share the contents of a slide presentation as an alternative source of images.
+
+- Click the **Share presentation** button, either in the DCL Cast app or in-world in the Scene Admin UI.
+
+ <img src="../../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
+
+- Upload a .pdf file or URL
+
+The presentation will now be a source that can be selected to show on screen, while the voices of all speakers are still heard.
+
+{% hint style="warning" %}
+**📔 Note**: Presentation files must be under 100 MB. There can only be one active presentation at a time in a DCL Cast session.
+{% endhint %}
+
+You can then switch slides, or even play and pause any videos that are embedded in these slides by pressing buttons that exist both in the DCL Cast app and in-world in the Scene Admin UI.
 
 ## Stream method
 

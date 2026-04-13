@@ -14,7 +14,7 @@ Spring bones are **not** part of the base avatar armature. They are additional b
 
 This implementation follows the [VRM Spring Bone standard](https://vrm.dev/en/vrm1/springbone/), a widely adopted convention for avatar physics in formats like VRM and MMD.
 
-<-- [IMAGE PLACEHOLDER]: spring bones workflow diagram — Blender (add spring bones) → Upload .glb → Builder (adjust params & preview, iterative) → Publish → In-World -->
+![](../../images/spring-bones/01_spring_bones_workflow.png)
 
 ## How Spring Bones Work
 

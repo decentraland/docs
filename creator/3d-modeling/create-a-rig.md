@@ -222,4 +222,18 @@ _Edit the shape in Edit Mode._
 
 Create different shapes for different controls according to their function to make your rig more intuitive.
 
+### Spring Bones
+
+In addition to the standard deforming skeleton, wearables can include **spring bones** — extra bones whose transforms are driven by physics simulation rather than animation. Spring bones make hair, earrings, capes, and other accessories move dynamically in response to avatar movement and gravity.
+
+To add spring bones to a rig:
+
+1. In **Edit Mode**, extrude new bones from the appropriate parent bone (e.g., `Avatar_Head` for hair).
+2. Name each bone including `springbone` in the name (case-insensitive), for example: `SpringBone_hair_left`, `springbone_hair_left_01`, `Hair_SpringBone_left_tip` are all valid names, as long as they include `springbone`.
+3. Build **linear chains** of at least **2 bones** (a root and a tip). A single spring bone on its own won't produce any movement — the simulation needs a chain with a root bone that drives the physics and a tip bone that defines the endpoint. Each bone in the chain should have at most one spring bone child.
+4. Skin weight the mesh to the spring bones as usual.
+5. Export as `.glb` — the spring bones will be included in the armature.
+
+Physics parameters (stiffness, gravity, drag) are configured in the Builder after uploading, not in Blender. For the full guide, see [Spring Bones](../wearables-and-emotes/wearables/spring-bones.md).
+
 And that’s it! With all this information you’re ready to do a basic rig!

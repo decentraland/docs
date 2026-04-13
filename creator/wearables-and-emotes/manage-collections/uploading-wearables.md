@@ -55,6 +55,10 @@ You can add your own custom thumbnail by clicking on the camera icon and browsin
 <img src="../../../.gitbook/assets/07_thumbnail (1).png" alt="" data-size="original">
 {% endhint %}
 
+### **Spring Bones**
+
+If your wearable contains bones with `springbone` in their name, the Builder will automatically detect them and display a **Spring Bones** configuration panel. From this panel you can adjust physics parameters like stiffness, gravity, and drag for each spring bone chain. See [Spring Bones](../../wearables-and-emotes/wearables/spring-bones.md) for details on how to set up spring bones in your model.
+
 ### **Properties**
 
 Below the thumbnail you're going to find the properties of your wearable, number of triangles of your model, number of materials and textures.

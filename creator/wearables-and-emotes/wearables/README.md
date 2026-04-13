@@ -14,6 +14,10 @@ There’s a growing range of available wearables including cyberpunk themed snea
 
 By default, Decentraland Wearables are minted on the Polygon/Matic side-chain so users can mint, buy, sell, or transfer items without having to pay gas fees.
 
+## Spring Bones
+
+Wearables can include **spring bones** — extra bones that move dynamically in response to avatar movement and gravity. This allows hair, earrings, capes, belts, and other accessories to sway, bounce, and settle naturally instead of remaining static. See [Spring Bones](spring-bones.md) for a complete guide on setting up and configuring spring bones for your wearables.
+
 ## What Are Smart Wearables?
 
 Smart wearables are portable experiences that are turned on when the player puts on a certain item of clothing. Smart wearables can grant players new abilities, like a jetpack that lets them fly, or add a new layer of content on top of the rest of the world, like randomly placing coins to be collected throughout the whole of genesis city.

@@ -150,6 +150,10 @@ Be sure that the armature imported has no any _end_ or _neutral_ bones, otherwis
 
 ![](../../../.gitbook/assets/53_ignore_leaf_bones.png)
 
+{% hint style="info" %}
+**Spring Bones:** Wearables can include extra bones beyond the base armature for dynamic physics (e.g., swaying hair, dangling earrings). These bones must contain `springbone` in their name. See [Spring Bones](spring-bones.md) for full details.
+{% endhint %}
+
 #### **Eyebrows, Eyes and Mouth**
 
 These meshes work with a transparent shader so you don’t have to do anything aside from creating your own png texture for the new eyebrow, eye, or mouth style you want and placing it correctly into the UV map. These textures should be 256x256px and need to have an alpha channel for transparency.
@@ -199,6 +203,10 @@ Note: The **handwear** category is specifically for hand accessories or replacin
 {% endhint %}
 
 #### **Hair and Facial Hair**
+
+{% hint style="success" %}
+**Tip:** Hair and other hanging accessories can now use **spring bones** to move dynamically in response to avatar movement and gravity. Instead of static hair, you can add spring bone chains to make ponytails, braids, and long hair sway naturally. See [Spring Bones](spring-bones.md) for a complete guide.
+{% endhint %}
 
 There are two important things to remember when creating custom hair wearables.
 
@@ -295,7 +303,7 @@ The "key" bones to use when skin weighting are:
 
 #### **Exporting Wearables**
 
-When exporting wearables, make sure there are no other bones outside of the given Armature. A common problem when importing armatures between different software is the appearance of _"\_end"_ or _"\_neutral"_ bones. Be sure to remove those before exporting. Otherwise, it is very likely that the wearables will not work on the client afterwards.
+When exporting wearables, make sure there are no other bones outside of the given Armature, **except for spring bones** (bones with `springbone` in their name, used for dynamic physics). A common problem when importing armatures between different software is the appearance of _"\_end"_ or _"\_neutral"_ bones. Be sure to remove those before exporting. Otherwise, it is very likely that the wearables will not work on the client afterwards.
 
 ![](../../../.gitbook/assets/51_export_wearables.png)
 

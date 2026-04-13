@@ -4,9 +4,11 @@ description: Build multiplayer Decentraland scenes with a headless authoritative
 
 # Authoritative Servers
 
-An **authoritative server** is the gold standard for multiplayer fairness and anti-cheat. Rather than trusting each client to report its own actions, a headless server process runs your scene code, validates every state change, and broadcasts the single source of truth to all connected players.
+An **authoritative server** is the recommended approach for syncing state changes in your scene across players.
 
-Beyond anti-cheat, an authoritative server is also the right tool whenever you need **server-side logic** to have the final word on scene state. In a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes, setting the platform's position at different heights at each time, and no client has the authority to decide which is the "right" height. A server eliminates these race conditions and sync problems by resolving every change in one place, so all clients converge on the same result.
+This approach is the gold standard for multiplayer fairness and anti-cheat. Rather than trusting each client to report its own actions, a headless server process runs your scene code, validates every state change, and broadcasts the single source of truth to all connected players.
+
+An authoritative server is also the right tool whenever you need **server-side logic** to have the final word on scene state. In a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes, setting the platform's position at different heights at each time, and no client has the authority to decide which is the "right" height. A server eliminates these race conditions and sync problems by resolving every change in one place, so all clients converge on the same result.
 
 An authoritative server also gives you a place to **store persisted data that lasts across sessions**. You can keep things like global leaderboards, player progression, unlocked achievements, or environment changes (a door a player opened, a tree they chopped down, items they placed in the world) so that when players come back, the world reflects what happened before.
 
@@ -580,6 +582,12 @@ engine.addSystem(() => {
 })
 ```
 
+### Wait for the server to start up
+
+There has to be at least one player present in your scene for the server to run. If nobody's there after a few minutes, the server shuts down.
+
+When a first player comes into the scene after a while of inactivity, the server takes a few seconds to start up. That's why your scene's code should be prepared to have to have to wait for the server to be online. Initial requests to the server should be have catch and retry mechanisms to provide resilience.
+
 ## Complete Example
 
 A minimal multiplayer counter — click a button, the server increments a synced score:
@@ -672,6 +680,23 @@ To test multiplayer interactions locally, open the preview in two separate windo
   	console.log('[CLIENT] Synced entities:', entities.length)
   })
   ```
+
+## Version Control
+
+Every published version of your scene gets its own unique hash ID, and each hash is paired with its own server instance. This means that the client code and the server code always move together, there is no window where a client running old logic talks to a server running new logic (or vice versa).
+
+When you publish an update:
+
+- _Players already in the scene_ keep seeing the old version until they leave and come back. Their clients stay connected to the server instance that matches the old hash.
+- _New players arriving_ after the update load the new scene version and connect to the new server instance.
+
+This guarantees that client and server state never fall out of sync because of a schema change or a renamed component. An update can never break the session of a player who is already in your scene.
+
+The trade-off is that, for a short window right after a deploy, players can end up split across two different server instances. A player who was already there and a player who just arrived may not see each other or be able to interact via the scene, even though they are in the same scene, until the older players leave and rejoin.
+
+{% hint style="info" %}
+**💡 Tip**: Data stored via the [Storage](#data-storage) service (like leaderboards, player progress, or persistent environment changes) is _not_ wiped between versions. Storage is persisted at the location level and shared across all server instances that point to the same scene, so new versions pick up right where the previous one left off.
+{% endhint %}
 
 ## Migrating from Colyseus
 

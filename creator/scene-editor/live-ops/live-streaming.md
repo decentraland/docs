@@ -127,12 +127,14 @@ You can also share the contents of a slide presentation as an alternative source
 
  <img src="../../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
 
-- Upload a .pdf file or URL
+- Paste a Google slides link, a link to a .pdf hosted in Drive or a similar source, or upload a .pdf file.
 
 The presentation will now be a source that can be selected to show on screen, while the voices of all speakers are still heard.
 
 {% hint style="warning" %}
-**📔 Note**: Presentation files must be under 100 MB. There can only be one active presentation at a time in a DCL Cast session.
+**📔 Note**: Presentation files must be under 100 MB. Google slides presentations must be set to _public_.
+
+There can only be one active presentation at a time in a DCL Cast session.
 {% endhint %}
 
 You can then switch slides, or even play and pause any videos that are embedded in these slides by pressing buttons that exist both in the DCL Cast app and in-world in the Scene Admin UI.

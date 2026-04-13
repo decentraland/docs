@@ -366,7 +366,7 @@ engine.addSystem(() => {
 
 ## Data Storage
 
-Persist data across server restarts. Storage is **server-only**, always guard calls with `isServer()`.
+Persist data across server restarts. Storage is **server-only**, always guard calls with `isServer()`. The server can both write and read this data.
 
 ```typescript
 import { Storage } from '@dcl/sdk/server'
@@ -424,11 +424,17 @@ await Storage.player.delete(playerAddress, 'progress')
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
 
+### Access stored data
+
+TODO: OPEN STORAGE UI
+
+Read values, edit values
+
 ## Environment Variables
 
-Configure your scene without hardcoding values. These are useful for sensitive data, and also for feature flags that can be easily changed without republishing your scene.
+Configure your scene without hardcoding values into the code. These are useful for sensitive data, and also for feature flags that can be easily changed without republishing your scene.
 
-`EnvVar` is **server-only** — guard with `isServer()`.
+`EnvVar` is **server-only** — guard with `isServer()`. The server can read environment variables, but not change their values.
 
 ```typescript
 import { EnvVar } from '@dcl/sdk/server'
@@ -446,7 +452,7 @@ You can store private keys in the server's storage, and have only the server rea
 
 ### Local Development
 
-Create a `.env` file in your project root:
+To use environment variables while running your project locally, create a `.env` file in your project root:
 
 ```
 MAX_PLAYERS=8
@@ -454,9 +460,15 @@ GAME_DURATION=300
 DEBUG=true
 ```
 
-Add `.env` to your `.gitignore`.
+Important: Add `.env` to your `.gitignore`, so that these potentially sensitive values are never uploaded to the public content servers.
 
-### Deploy to Production
+### Change environment variables
+
+The easiest way to change the values of your environment variables is via the storage UI.
+
+TODO: OPENING THE STORAGE UI
+
+You can also upload and alter the values of environment variables via the command line:
 
 ```bash
 # Set a variable
@@ -652,8 +664,6 @@ export function main() {
 }
 ```
 
----
-
 ## Testing Locally
 
 The standard preview handles everything. When `authoritativeMultiplayer: true` is set in `scene.json`, the local server starts automatically in the background alongside the client preview.
@@ -680,6 +690,14 @@ To test multiplayer interactions locally, open the preview in two separate windo
   	console.log('[CLIENT] Synced entities:', entities.length)
   })
   ```
+
+## Debug in production
+
+TODO
+
+view logs
+
+view storage UI
 
 ## Version Control
 

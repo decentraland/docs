@@ -22,6 +22,10 @@ Configure different preview options from the dropdown menu next to the **Preview
 * **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
 * **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
 
+{% hint style="info" %}
+**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../building-for-mobile/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../building-for-mobile/) for the full guide.
+{% endhint %}
+
 ## Using the CLI
 
 To preview a scene run the following command on the scene's main folder:

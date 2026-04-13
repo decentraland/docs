@@ -46,7 +46,7 @@ You can list any other files or folders you want to exclude from being uploaded 
 
 ## Optimizing
 
-See [Performance Optimization](../sdk7/optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
+See [Performance Optimization](performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
 {% hint style="info" %}
 **📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../building-for-mobile/), and prefer fewer triangles, fewer materials, and smaller textures.

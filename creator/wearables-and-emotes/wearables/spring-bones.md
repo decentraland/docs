@@ -121,27 +121,27 @@ From this panel you can configure the physics parameters for each spring root bo
 
 |             |        |
 | ----------- | ------ |
-| **Range**   | 0 to 5 |
+| **Range**   | 0 to 4 |
 | **Default** | `2.0`  |
 
 Controls how strongly the bone tries to return to its rest pose. This is the restoring force — think of it as the "firmness" of the spring.
 
 - **0**: The bone won't return to rest at all — it will just hang limply under gravity.
 - **Low values** (e.g., 0–1): The bone is loose and saggy, swinging freely. Good for long flowing hair or lightweight hanging accessories.
-- **High values** (e.g., 3–5): The bone is stiff, staying close to its original position and snapping back quickly. Good for short hair or rigid accessories.
+- **High values** (e.g., 3–4): The bone is stiff, staying close to its original position and snapping back quickly. Good for short hair or rigid accessories.
 
 #### Gravity Power
 
 |             |         |
 | ----------- | ------- |
-| **Range**   | 0 to 10 |
-| **Default** | `0`     |
+| **Range**   | 0 to 2 |
+| **Default** | `0`    |
 
 Controls the magnitude of the gravity force pulling on the bone each frame.
 
 - **0**: No gravity effect — the bone is only affected by movement inertia and stiffness.
-- **Low values** (e.g., 0.3–1.0): Subtle gravity pull, good for most accessories.
-- **High values** (e.g., 2.0+): Strong gravity pull, causing the bone to droop heavily.
+- **Low values** (e.g., 0.3–0.8): Subtle gravity pull, good for most accessories.
+- **High values** (e.g., 1.5–2.0): Strong gravity pull, causing the bone to droop heavily.
 
 #### Gravity Direction
 
@@ -206,7 +206,7 @@ These are suggested starting points. Adjust to taste using the Builder's real-ti
 | Use case | Stiffness | Gravity Power | Gravity Dir | Drag | Center | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | Long hair / ponytail | 1.0 – 2.0 | 0.3 – 0.8 | 0, -1, 0 | 0.3 – 0.5 | `Avatar_Head` | More bones in the chain = smoother movement |
-| Short hair | 3.0 – 5.0 | 0 – 0.3 | 0, -1, 0 | 0.4 – 0.6 | `Avatar_Head` | Higher stiffness keeps hair close to the head |
+| Short hair | 3.0 – 4.0 | 0 – 0.3 | 0, -1, 0 | 0.4 – 0.6 | `Avatar_Head` | Higher stiffness keeps hair close to the head |
 | Earrings | 0.5 – 1.5 | 0.5 – 1.0 | 0, -1, 0 | 0.4 – 0.6 | `Avatar_Head` | Short chain (2–3 bones), lower stiffness for dangling |
 | Cape / cloak | 1.0 – 2.0 | 0.5 – 1.0 | 0, -1, 0 | 0.3 – 0.5 | `Avatar_Spine` | Multiple parallel chains for width |
 | Belt / hanging ornament | 1.5 – 2.5 | 0.3 – 0.8 | 0, -1, 0 | 0.5 – 0.7 | `Avatar_Hips` | Higher drag for heavier items |

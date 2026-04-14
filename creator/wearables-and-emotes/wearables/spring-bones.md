@@ -126,9 +126,9 @@ From this panel you can configure the physics parameters for each spring root bo
 
 Controls how strongly the bone tries to return to its rest pose. This is the restoring force — think of it as the "firmness" of the spring.
 
+- **0**: The bone won't return to rest at all — it will just hang limply under gravity.
 - **Low values** (e.g., 0–1): The bone is loose and saggy, swinging freely. Good for long flowing hair or lightweight hanging accessories.
 - **High values** (e.g., 3–5): The bone is stiff, staying close to its original position and snapping back quickly. Good for short hair or rigid accessories.
-- **0**: The bone won't return to rest at all — it will just hang limply under gravity.
 
 #### Gravity Power
 
@@ -220,7 +220,7 @@ Keep the following limitations in mind when working with spring bones:
 - **No cross-wearable interactions**: Each wearable's spring chains are independent. Chains from different wearables don't affect each other.
 - **No global wind**: There is no scene-level wind force. You can approximate a wind effect per-wearable by adjusting the `gravityDir` to a diagonal direction.
 - **Performance on remote avatars**: Spring bone simulation is disabled for avatars that are far from the local player to save performance. Nearby avatars will display spring bone physics normally.
-- **Older client compatibility**: Wearables with spring bones are backward-compatible with older Explorer versions, but the spring bone elements will remain static. In some cases, there may be minor visual issues.
+- **Alternative clients compatibility**: Wearables with spring bones are backward-compatible with alternative clients and older Explorer versions, but the spring bone elements will remain static. In some cases, there may be minor visual issues.
 
 ## Technical Reference
 

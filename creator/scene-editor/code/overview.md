@@ -17,8 +17,8 @@ See [Reference items in code](reference-items.md) for how to fetch items by name
 
 You must install a code editor on your machine to edit the code of your scene. The recommended options are:
 
-* <img src="../../../.gitbook/assets/vscode.png" alt="VS Code" data-size="line"> [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* <img src="../../../.gitbook/assets/cursor-icon.png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+- <img src="../../../.gitbook/assets/vscode.png" alt="VS Code" data-size="line"> [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
+- <img src="../../../.gitbook/assets/cursor-icon.png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 {% hint style="warning" %}
 **📔 Note**: If you are on macOS, make sure the code editor app is in the Applications directory.
@@ -66,6 +66,10 @@ npx sdk-commands get-context-files
 **💡 Tip**: You can also add your own context files to this folder to help the AI assistant understand your scene and project. If you do, make sure to add them to a new file in that folder, as the default files are overwritten when SDK updates happen.
 {% endhint %}
 
+{% hint style="info" %}
+**💡 Tip**: Want to go further with AI? You can install Decentraland skills into your preferred AI coding agent to scaffold entire scenes, add multiplayer, deploy, and more — all from plain language prompts. See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide.
+{% endhint %}
+
 ## Version control
 
 We recommend that you create a repo for your project on GitHub, and use it to keep track of your project's versions and to work collaboratively with others.
@@ -76,17 +80,13 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 **📔 Note**: Upload the entire project folder to a GitHub repo, but make sure the `/node-modules` or `/bin` folders and the `package-lock.json` file are all included in the `.gitignore` file, to avoid syncing them. This should be the case if you configure the repo to be of type `node`. These files are all auto-generated, and the content may differ for different machines.
 {% endhint %}
 
-{% hint style="info" %}
-**💡 Tip**: Want to go further with AI? You can use dedicated AI agents like [OpenDCL](https://github.com/dcl-regenesislabs/opendcl) or install Decentraland skills into your preferred AI coding agent to scaffold entire scenes, add multiplayer, deploy, and more — all from plain language prompts. See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide.
-{% endhint %}
-
 ## See also
 
-* [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md): build scenes by describing what you want to an AI assistant.
-* [Smart items - Basics](../interactivity/smart-items.md)
-* [Smart items - Advanced](../interactivity/smart-items-advanced.md)
-* [States and conditions](../interactivity/states-and-conditions.md)
-* [Making any item smart](../interactivity/make-any-item-smart.md)
-* [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
-* [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
-* [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+- [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md): build scenes by describing what you want to an AI assistant.
+- [Smart items - Basics](../interactivity/smart-items.md)
+- [Smart items - Advanced](../interactivity/smart-items-advanced.md)
+- [States and conditions](../interactivity/states-and-conditions.md)
+- [Making any item smart](../interactivity/make-any-item-smart.md)
+- [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
+- [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
+- [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.

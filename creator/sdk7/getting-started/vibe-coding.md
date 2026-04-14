@@ -5,7 +5,7 @@ description: Use AI assistants to build Decentraland scenes by describing what y
 
 # Vibe Coding with AI
 
-Build Decentraland scenes by describing what you want — an AI assistant handles the SDK7 code, ECS architecture, and project structure for you.
+Build Decentraland scenes by describing what you want. An AI assistant handles the SDK7 code, ECS architecture, and project structure for you.
 
 Whether you're a first-time creator or a seasoned developer, AI-assisted "vibe coding" lets you go from an idea to a running scene in minutes instead of hours.
 
@@ -23,76 +23,27 @@ This approach works at any skill level:
 - **Experienced developers** — Skip the boilerplate. Let the AI handle multiplayer sync, UI scaffolding, and deployment config while you focus on creative decisions.
 - **Teams & studios** — Prototype scene concepts quickly before committing full development resources.
 
-## Choosing an AI Tool
+## Combine a code editor with AI
 
-There are two main ways to use AI when building Decentraland scenes:
-
-### Option A: OpenDCL (Terminal Agent)
-
-[OpenDCL](https://github.com/dcl-regenesislabs/opendcl) is a purpose-built terminal agent that knows Decentraland inside out. It can scaffold projects, write code, preview scenes, and deploy — all from a single conversation.
-
-```bash
-# Install
-npm install -g @dcl-regenesislabs/opendcl
-
-# Run in any directory
-opendcl
-```
-
-On first run, type `/setup` to configure your AI provider (Anthropic, OpenAI, Google, Ollama, and more).
-
-**In an empty folder:**
-
-```
-$ opendcl
-> Create a medieval tavern scene with a bar, tables, and a fireplace
-```
-
-OpenDCL scaffolds `scene.json`, `package.json`, `tsconfig.json`, and `src/index.ts` with your scene.
-
-**In an existing scene:**
-
-```
-$ cd my-scene/
-$ opendcl
-> Add a click handler to the door that opens it with an animation
-```
-
-OpenDCL reads your scene context and modifies existing code without overwriting unrelated parts.
-
-**Built-in commands:**
-
-| Command | Description |
-|---------|-------------|
-| `/init` | Scaffold a new Decentraland scene |
-| `/preview` | Start the dev server and open the scene in browser |
-| `/deploy` | Deploy to Genesis City or a World |
-| `/review` | Audit your code for quality and SDK7 best practices |
-| `/explain <concept>` | Explain a Decentraland concept (e.g., `/explain tweens`) |
-
-OpenDCL includes 20 built-in skills covering scaffolding, 3D models, interactivity, UI, animations, multiplayer, authoritative servers, audio/video, deployment, optimization, and more. Skills load automatically based on what you ask.
-
-### Option B: Code Editor with AI (Cursor, VS Code + Copilot, etc.)
-
-Use a general-purpose AI code editor like [Cursor](https://www.cursor.com/) or VS Code with GitHub Copilot. Decentraland provides a context folder so these tools understand the SDK.
+Use a general-purpose AI code editor like [Cursor](https://www.cursor.com/) or VS Code with GitHub Copilot or Claude AI. Decentraland provides a context folder so these tools understand the SDK.
 
 1. Open the Creator Hub and create or open a scene.
 2. Click the **< > CODE** button to open your code editor.
 3. Use the editor's built-in AI assistant (Cursor's chat, Copilot, etc.) to generate or modify code.
 
-### Option C: Install Skills into Any AI Agent
+## Install Skills for Any AI Agent
 
-If you already use another AI coding agent (Claude Code, Windsurf, Codex, or others), you can install just the Decentraland skills without installing OpenDCL:
+Skills are ready-made instruction sets that teach your AI agent how to work with the Decentraland SDK. Each skill covers a specific topic, like creating scenes, adding 3D models, or setting up multiplayer, so the AI already knows the right patterns, APIs, and constraints without you having to explain them. Installing skills means fewer mistakes and better results from the very first prompt.
 
 ```bash
 # Install all Decentraland skills
-npx skills add dcl-regenesislabs/opendcl
+npx skills add decentraland/sdk-skills
 
 # Or pick specific skills
-npx skills add dcl-regenesislabs/opendcl --skill create-scene --skill multiplayer-sync
+npx skills add decentraland/sdk-skills --skill create-scene
 
 # Install globally (available in all projects)
-npx skills add dcl-regenesislabs/opendcl -g
+npx skills add decentraland/sdk-skills -g
 ```
 
 This copies skill files into your agent's configuration so it knows Decentraland patterns and constraints.
@@ -107,36 +58,36 @@ The context folder is updated automatically when your scene's dependencies are u
 npx sdk-commands get-context-files
 ```
 
-{% hint style="info" %}
-**💡 Tip**: You can add your own context files to this folder to teach the AI about your specific project. Place custom files in a separate file, since the default files are overwritten on SDK updates.
-{% endhint %}
-
 ## Available AI Skills
 
-When you use OpenDCL or install skills into your agent, the following capabilities are available:
+When you install skills into your agent, the following capabilities are available:
 
-| Skill | What it does |
-|-------|-------------|
-| `create-scene` | Scaffold a new project from scratch |
-| `add-3d-models` | Load `.glb` models, browse 2,700+ free Creator Hub assets |
-| `add-interactivity` | Add click handlers, hover effects, triggers |
-| `build-ui` | Create HUDs, menus, and buttons with React-ECS |
-| `animations-tweens` | Animate objects, play GLTF animations, tweens |
-| `multiplayer-sync` | Sync state between players (CRDT-based) |
-| `authoritative-server` | Server-authoritative multiplayer with anti-cheat and persistence |
-| `audio-video` | Add sounds, music, and video screens |
-| `deploy-scene` | Publish to Genesis City (LAND-based) |
-| `deploy-worlds` | Publish to a Decentraland World |
-| `optimize-scene` | Fix performance issues, stay within limits |
-| `camera-control` | Switch camera modes, cinematic cameras |
-| `lighting-environment` | Lights, shadows, day/night cycle, glow |
-| `player-avatar` | Player data, emotes, attachments, NPC avatars |
-| `nft-blockchain` | Display NFTs, wallet checks, smart contracts |
-| `advanced-rendering` | Billboards, 3D text, materials, transparency |
-| `advanced-input` | Cursor state, movement restriction, input patterns |
-| `scene-runtime` | Async tasks, fetch, timers, realm info |
-| `visual-feedback` | Screenshot tool for seeing and iterating visually |
-| `game-design` | Plan game architecture, scene limits, MVP planning |
+| Skill                  | What it does                                                        |
+| ---------------------- | ------------------------------------------------------------------- |
+| `sdk-scenes`           | Entry point with agent guidelines and index of all topic skills     |
+| `create-scene`         | Scaffold a new SDK7 scene project from scratch                      |
+| `add-3d-models`        | Add 3D models (`.glb`/`.gltf`) with positioning, scaling, colliders |
+| `add-interactivity`    | Pointer events, triggers, raycasts                                  |
+| `build-ui`             | 2D screen-space UI with React-ECS — HUDs, menus, dialogs            |
+| `animations-tweens`    | GLTF model animations with Animator, SDK tweens                     |
+| `multiplayer-sync`     | Peer-to-peer multiplayer using CRDT networking                      |
+| `authoritative-server` | Headless authoritative server for multiplayer (BETA)                |
+| `audio-video`          | Sound effects, music, audio streaming, and video players            |
+| `deploy-scene`         | Deploy scenes to Genesis City (LAND-based)                          |
+| `deploy-worlds`        | Deploy scenes to Worlds (personal 3D spaces)                        |
+| `optimize-scene`       | Performance optimization, scene limits, best practices              |
+| `camera-control`       | Camera mode detection, cinematic camera, virtual cameras            |
+| `composites`           | Composite file format reference for static scene content            |
+| `lighting-environment` | Dynamic lighting, shadows, skybox, fog, environment settings        |
+| `npcs`                 | Non-player characters — NPC Toolkit library and manual approaches   |
+| `player-avatar`        | Player position, profile, avatar customization, attachments         |
+| `player-physics`       | Physics forces — impulses, knockback, continuous forces             |
+| `nft-blockchain`       | NFT display and blockchain/crypto interactions                      |
+| `advanced-rendering`   | Billboard, TextShape, PBR materials, video materials                |
+| `advanced-input`       | System-level input polling and player movement control              |
+| `scene-runtime`        | Cross-cutting runtime APIs — async work, HTTP, messaging            |
+| `script-components`    | Script component classes for the Creator Hub                        |
+| `game-design`          | Game design patterns, scene limits, performance budgets             |
 
 ## Tips for Effective Prompting
 
@@ -145,9 +96,11 @@ Getting the best results from AI is about giving clear, specific prompts. Here a
 ### Be specific about what you want
 
 Instead of:
+
 > "Make my scene better"
 
 Try:
+
 > "Add a door at position (8, 0, 8) that opens with a rotation animation when clicked, and plays a creak sound effect"
 
 ### Reference existing items
@@ -170,7 +123,7 @@ Break complex requests into steps:
 
 After each change:
 
-1. Preview the scene (click **Preview** in Creator Hub, or `/preview` in OpenDCL)
+1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
 2. Check what works and what doesn't
 3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
 

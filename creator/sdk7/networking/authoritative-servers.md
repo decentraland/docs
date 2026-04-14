@@ -4,29 +4,30 @@ description: Build multiplayer Decentraland scenes with a headless authoritative
 
 # Authoritative Servers
 
-An **authoritative server** is the recommended approach for syncing state changes in your scene across players.
+An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
-This approach is the gold standard for multiplayer fairness and anti-cheat. Rather than trusting each client to report its own actions, a headless server process runs your scene code, validates every state change, and broadcasts the single source of truth to all connected players.
+An authoritative server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
 
-An authoritative server is also the right tool whenever you need **server-side logic** to have the final word on scene state. In a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes, setting the platform's position at different heights at each time, and no client has the authority to decide which is the "right" height. A server eliminates these race conditions and sync problems by resolving every change in one place, so all clients converge on the same result.
+Having an authoritative server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. An authoritative server resolves every change in one place, so all clients converge on the same state.
 
-An authoritative server also gives you a place to **store persisted data that lasts across sessions**. You can keep things like global leaderboards, player progression, unlocked achievements, or environment changes (a door a player opened, a tree they chopped down, items they placed in the world) so that when players come back, the world reflects what happened before.
+It also gives you a place to **persist data across sessions**: leaderboards, player progression, unlocked achievements, or environment changes like doors opened or items placed. When players come back, the world reflects what happened before.
 
-Decentraland provides all of these features effortlessly, without needing to pay for hosting or configure anything extra. The same action of publishing your scene also takes care of publishing the server.
+Decentraland hosts and deploys the server for you. Publishing your scene via the normal process also seamlessly publishes the server, with no extra steps or needing to pay for any hosting.
 
 ## Setup
 
 ### 1. Install the auth-server SDK version
 
-The native authoritative server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a dedicated SDK tag. Install it instead of the standard `@dcl/sdk`:
+The native authoritative server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch. Run the following commands to install it in your project instead of the standard SDK branch:
 
 ```bash
 npm install @dcl/sdk@auth-server
+npm install @dcl/js-runtime@auth-server
 ```
 
 ### 2. Configure scene.json
 
-Add the following fields to your `scene.json`:
+Add the following fields to your `scene.json` at root level:
 
 ```json
 {
@@ -42,25 +43,27 @@ Add the following fields to your `scene.json`:
 
 ### 3. Run the preview
 
-Use the standard preview command, no extra steps needed. When `authoritativeMultiplayer: true` is set, the preview automatically starts the authoritative server in the background.
+Use the standard preview command, no extra steps needed. When `authoritativeMultiplayer: true` is set, the preview automatically starts a local version of the authoritative server in the background.
+
+The local session of the server is not connected to the one in production, so you're free to test things without affecting players who are in your published scene.
 
 ## Server / Client Branching
 
-The same codebase runs on both server and client. Use `isServer()` at the entry point to split execution paths:
+The scene code in your project's `src` folder runs on both server and client. Use the `isServer()` function to split execution paths.:
 
 ```typescript
 import { isServer } from '@dcl/sdk/network'
+import { initServer } from './server/server'
+import { initClient } from './client/setup'
+import { setupUi } from './client/ui'
 
-export async function main() {
+function main() {
 	if (isServer()) {
 		// Server-only: game logic, validation, state management
-		const { initServer } = await import('./server/server')
 		initServer()
 		return
 	} else {
 		// Client-only: UI, input handling, message sending
-		const { initClient } = await import('./client/setup')
-		const { setupUi } = await import('./client/ui')
 		initClient()
 		setupUi()
 	}
@@ -71,11 +74,9 @@ The server runs your scene headlessly with no rendering. It has verified access 
 
 ## Synced Components and Validation
 
-Define components that sync from the server to all clients, then lock them so clients cannot tamper with them.
-
 ### Syncing Entities to All Clients
 
-After creating an entity on the server, use `syncEntity` to broadcast any changes in the indicated components of that entity:
+Use `syncEntity` to broadcast any changes in the indicated components of that entity:
 
 ```typescript
 import { syncEntity } from '@dcl/sdk/network'
@@ -87,17 +88,17 @@ syncEntity(
 )
 ```
 
-The syntax is identical to the one used for [Serverless multiplayer](../sdk7/networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to using the authoritative server. When the scene uses the authoritative server, messages are no longer sent between all players, instead all communications are now routed and potentially validated via the server.
+The syntax is identical to what's used by the [Serverless multiplayer](../sdk7/networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the authoritative server. When a scene uses the authoritative server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
 
 ### Validating changes
 
-Use `validateBeforeChange()` to restrict any updates to the state of a certain component of an entity, so that changes are only successful when a certain condition is met.
+Use `validateBeforeChange()` to restrict any state updates in a specific component of an entity. It allows you to run a custom validation function, and changes are only successful when the validation test is met.
 
-If the condition returns the value _true_, then the change is accepted and propagated to all players. If the condition returns the value _false_, then the change is rejected. A rejected change won't be passed to other players and is reverted for the player who attempted to make it.
+If the validation returns the value _true_, then the change is accepted and propagated to all players. If the validation returns the value _false_, then the change is rejected. A rejected change won't be passed to other players and is reverted for the player who attempted to make it.
 
 #### Validate values
 
-The simplest case is to validate the _value_ being written. For example, only accept changes to a `Transform` when the new Y position is above 1:
+The simplest case is to validate that the new _value_ being written is within certain parameters. For example, only accept changes to a `Transform` when the new Y position is above 0:
 
 ```typescript
 import { engine, Transform } from '@dcl/sdk/ecs'
@@ -116,9 +117,56 @@ if (isServer()) {
 
 Because `validateBeforeChange()` only has meaning on the server, always guard it with `isServer()`. On the client the call does nothing useful.
 
+You can use this to prevent changes that are against your game logic, as anti cheat mechanisms.
+
+#### Validate proximity to the player
+
+You can combine `validateBeforeChange()` with server-verified player positions to check that a player is close enough to an object before allowing them to interact with it. For example, when a player tries to pick up an object by changing its `Transform`, you can reject the change if the object is more than 5 meters away from the player:
+
+```typescript
+import { engine, Transform, PlayerIdentityData } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+import { isServer } from '@dcl/sdk/network'
+
+const pickableEntity = engine.addEntity()
+Transform.create(pickableEntity, { position: Vector3.create(8, 1, 8) })
+
+if (isServer()) {
+	Transform.validateBeforeChange(pickableEntity, (value) => {
+		// Find the player who sent this change
+		for (const [playerEntity, identity] of engine.getEntitiesWith(
+			PlayerIdentityData
+		)) {
+			if (identity.address.toLowerCase() !== value.senderAddress.toLowerCase())
+				continue
+
+			const playerTransform = Transform.getOrNull(playerEntity)
+			if (!playerTransform) return false
+
+			// Get the current position of the object, before the change
+			const objectTransform = Transform.getOrNull(pickableEntity)
+			if (!objectTransform) return false
+
+			const distance = Vector3.distance(
+				playerTransform.position,
+				objectTransform.position
+			)
+
+			// Only allow the change if the player is within 5 meters
+			return distance <= 5
+		}
+
+		// Sender not found among connected players — reject
+		return false
+	})
+}
+```
+
+This pattern is useful as an anti-cheat mechanism: it prevents players from reaching across the scene to grab objects they shouldn't be able to interact with.
+
 #### Only allow changes by admins
 
-You can also validate based on _who_ is sending the change. Every incoming value includes a `senderAddress` field with the wallet address of the sender, which lets you allow changes only from certain players. For example, to only allow scene admins to modify a `VideoPlayer` component:
+You can also validate based on _who_ is sending the change. Every incoming value includes a `senderAddress` field with the wallet address of the sender. Use this to only allow changes from certain players. For example, to only allow scene admins to modify a `VideoPlayer` component:
 
 ```typescript
 import { engine, VideoPlayer } from '@dcl/sdk/ecs'
@@ -178,11 +226,11 @@ See [Scene Admin](../../scene-editor/live-ops/scene-admin.md) for more context a
 
 #### Only allow changes by the server
 
-The strictest case is to only accept writes that originate from the server itself, rejecting any change coming from a client, no matter which player sent it. This is the go-to pattern for state that should be fully authoritative: scores, game phase, spawned entities, etc.
+The strictest case is to only accept writes that originate from the server itself, rejecting any change coming from a client. This is the go-to pattern for state that should be fully authoritative: scores, game phase, spawned entities, etc.
 
-Every incoming value includes a `senderAddress` field. When the sender is the server, this field matches the constant `AUTH_SERVER_PEER_ID`, exported from `@dcl/sdk/network/message-bus-sync`. Comparing against it is all you need to lock a component down.
+Every incoming value includes a `senderAddress` field. When the sender is the server, this field matches the constant `AUTH_SERVER_PEER_ID`, exported from `@dcl/sdk/network/message-bus-sync`.
 
-The example below defines a small `protectServerEntity()` helper that applies this check to one or more components on a given entity. It's a convenient way to protect multiple built-in components (like `Transform` and `GltfContainer`) in a single call:
+The example below defines a small `protectServerEntity()` helper that applies this check to one or more components on a given entity. It's a convenient way to protect multiple components (like `Transform` and `GltfContainer`) in a single call:
 
 ```typescript
 import { Entity, Transform, GltfContainer } from '@dcl/sdk/ecs'
@@ -213,10 +261,6 @@ GltfContainer.create(entity, { src: 'assets/model.glb' })
 protectServerEntity(entity, [Transform, GltfContainer])
 ```
 
-{% hint style="warning" %}
-**📔 Note**: Because `validateBeforeChange` blocks client writes, clients can only read synced state and send messages. The server is the single source of truth. If the server and client state diverge, the server always wins.
-{% endhint %}
-
 #### Custom Components
 
 You can also apply `validateBeforeChange()` on custom components defined by the scene.
@@ -239,11 +283,13 @@ GameState.validateBeforeChange((value) => {
 
 ## Messages
 
-Use `registerMessages()` for typed, schema-validated communication between clients and the server.
+Synced components are great for state that all players should see continuously: things like positions, scores, or game phase. But not everything fits that model. Sometimes a player just needs to tell the server "I clicked this button" or "I want to join the game", and the server needs to reply with a one-time response like "round started" or "here are your stats". These are events, not ongoing state.
+
+That's what messages are for. Use `registerMessages()` for typed, schema-validated communication between clients and the server. Messages are fire-and-forget: a client sends one to the server, the server processes it and optionally sends one back. They don't directly create any persistent state on their own.
 
 ### Define Messages
 
-Define all messages in a shared file. Each message is a `Schemas.Map` describing its payload:
+Define all messages in a shared file that both server and client import. This way both sides always agree on what messages exist and what data they carry. Each message is a `Schemas.Map` describing its payload:
 
 ```typescript
 import { Schemas } from '@dcl/sdk/ecs'
@@ -264,6 +310,8 @@ export const room = registerMessages(Messages)
 
 ### Send Messages
 
+Clients can only send messages to the server. There is no direct client-to-client messaging. The server can broadcast to all clients or target specific players by address.
+
 ```typescript
 // Client → Server (broadcast, server receives it)
 room.send('playerReady', { displayName: 'Alice' })
@@ -278,18 +326,20 @@ room.send('gameEnded', { winnerId: 'Alice' }, { to: [playerAddress] })
 ### Receive Messages
 
 ```typescript
+// Client receives from server
+room.onMessage('gameStarted', (data) => {
+	console.log(`Round ${data.roundNumber} started!`)
+})
+
 // Server receives from client
 room.onMessage('playerReady', (data, context) => {
 	if (!context) return
 	const senderAddress = context.from // verified wallet address
 	console.log(`[Server] ${data.displayName} is ready (${senderAddress})`)
 })
-
-// Client receives from server
-room.onMessage('gameStarted', (data) => {
-	console.log(`Round ${data.roundNumber} started!`)
-})
 ```
+
+On the server, every received message includes a `context` object with the sender's verified wallet address. Use this to know which player sent the message (never rely on self-reported identity in the payload).
 
 ### Wait for State Sync Before Sending
 
@@ -338,7 +388,7 @@ Schemas.Map({
 ```
 
 {% hint style="warning" %}
-**📔 Note**: Messages _must_ be defined using `Schemas.Map(...)`. You cannot send plain JavaScript objects — they will fail binary serialization.
+**📔 Note**: Messages _must_ be defined using `Schemas.Map(...)`. You cannot send plain JavaScript objects, they will fail binary serialization.
 {% endhint %}
 
 ## Server Reading Player Positions
@@ -376,6 +426,12 @@ Data can be stored at two levels:
 
 - **World**: Use this for data that is relevant to all players, like leaderboards or persistent environment changes.
 - **Player**: Use this for player-specific data, like saving progress or preferences for that player.
+
+{% hint style="info" %}
+**💡 Tip**: Storage only accepts strings. Use `JSON.stringify()` / `JSON.parse()` for objects and `String()` / `parseInt()` for numbers.
+
+During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
+{% endhint %}
 
 ### World Storage — Shared Across All Players
 
@@ -418,12 +474,6 @@ const progress = saved ? JSON.parse(saved) : { level: 1, coins: 0 }
 await Storage.player.delete(playerAddress, 'progress')
 ```
 
-{% hint style="info" %}
-**💡 Tip**: Storage only accepts strings. Use `JSON.stringify()` / `JSON.parse()` for objects and `String()` / `parseInt()` for numbers.
-
-During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
-{% endhint %}
-
 ### Access stored data
 
 TODO: OPEN STORAGE UI
@@ -432,9 +482,9 @@ Read values, edit values
 
 ## Environment Variables
 
-Configure your scene without hardcoding values into the code. These are useful for sensitive data, and also for feature flags that can be easily changed without republishing your scene.
+Configure your scene without hardcoding values into the code. Environment variables are useful for sensitive data, and also for feature flags or parameters that can be easily changed without republishing your scene.
 
-`EnvVar` is **server-only** — guard with `isServer()`. The server can read environment variables, but not change their values.
+Environment variables are **server-only**. Guard them with `isServer()`. The server can read environment variables, but not change their values.
 
 ```typescript
 import { EnvVar } from '@dcl/sdk/server'
@@ -467,6 +517,10 @@ Important: Add `.env` to your `.gitignore`, so that these potentially sensitive 
 The easiest way to change the values of your environment variables is via the storage UI.
 
 TODO: OPENING THE STORAGE UI
+
+Visit URL
+
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
 
 You can also upload and alter the values of environment variables via the command line:
 
@@ -504,7 +558,7 @@ src/
 
 ## Performance Best Practices
 
-Every component change sends the _entire_ component data over the network — unlike Colyseus, which sends only diffs. When designing custom components, keep this in mind. The optimal solution may be to store data like game state in separate components, based on change cadency.
+Every component change sends the _entire_ component data over the network. This is different from what Colyseus does, which sends only diffs. When designing custom components, keep this in mind. The optimal solution may be to store data in separate components, based on change frequency.
 
 ### ❌ Avoid monolithic components
 
@@ -550,6 +604,8 @@ engine.addSystem((dt) => {
 })
 ```
 
+For example if the server controls a countdown timer, it's not necessary to send updates to all players every second. It's best to have each client calculate passage of time on their own, and have the server broadcast its current state every 30 seconds or so, to ensure consistency.
+
 ## Common Pitfalls
 
 ### Forgetting validation on server-only state
@@ -566,7 +622,7 @@ Score.validateBeforeChange((v) => v.senderAddress === AUTH_SERVER_PEER_ID)
 
 ### Trusting client-supplied values
 
-Never let a client dictate its own health, score, or position:
+Never let a client dictate its own values for important data like health, score, or position:
 
 ```typescript
 // ❌ BAD
@@ -583,7 +639,7 @@ room.onMessage('takeDamage', (data) => {
 
 ### Sending messages before state sync
 
-Clients must wait until state is synchronised before interacting:
+Clients must wait until state is synchronized before interacting:
 
 ```typescript
 import { isStateSyncronized } from '@dcl/sdk/network'
@@ -596,19 +652,20 @@ engine.addSystem(() => {
 
 ### Wait for the server to start up
 
-There has to be at least one player present in your scene for the server to run. If nobody's there after a few minutes, the server shuts down.
+The server is only active if there's at least one player present in the scene. If nobody's currently there, the server shuts down after a few minutes.
 
-When a first player comes into the scene after a while of inactivity, the server takes a few seconds to start up. That's why your scene's code should be prepared to have to have to wait for the server to be online. Initial requests to the server should be have catch and retry mechanisms to provide resilience.
+When a first player comes into the scene after a while of inactivity, the server takes a few seconds to start up. Your scene's code should be prepared to have to have to wait for the server to be online. Initial requests to the server should have catch and retry mechanisms to provide resilience.
 
 ## Complete Example
 
-A minimal multiplayer counter — click a button, the server increments a synced score:
+A minimal multiplayer counter: click a button, the server increments a synced score. The server persists the counter to `Storage.world` so the value survives server restarts. Remember that the server shuts down when no players are in the scene, so without storage the count would reset to zero every time the scene is left empty of players.
 
 ```typescript
 import { engine, Schemas } from '@dcl/sdk/ecs'
 import { registerMessages, isServer, syncEntity } from '@dcl/sdk/network'
 import { AUTH_SERVER_PEER_ID } from '@dcl/sdk/network/message-bus-sync'
 import { pointerEventsSystem } from '@dcl/sdk/ecs'
+import { Storage } from '@dcl/sdk/server'
 
 // 1. Define messages (shared)
 const Messages = {
@@ -630,18 +687,32 @@ Counter.validateBeforeChange((v) => v.senderAddress === AUTH_SERVER_PEER_ID)
 // 3. Create the room
 const room = registerMessages(Messages)
 
-export function main() {
+export async function main() {
 	if (isServer()) {
 		// === SERVER ===
+
+		// Restore the counter from storage in case the server restarted
+		const savedCount = await Storage.world.get<string>('counter')
+		const savedPlayer = await Storage.world.get<string>('lastPlayer')
+		const initialCount = savedCount ? parseInt(savedCount) : 0
+		const initialPlayer = savedPlayer ?? 'none'
+
 		const counterEntity = engine.addEntity()
 		syncEntity(counterEntity, [Counter.componentId], 1)
-		Counter.create(counterEntity, { value: 0, lastPlayer: 'none' })
+		Counter.create(counterEntity, {
+			value: initialCount,
+			lastPlayer: initialPlayer,
+		})
 
-		room.onMessage('increment', (_data, context) => {
+		room.onMessage('increment', async (_data, context) => {
 			if (!context) return
 			const counter = Counter.getMutable(counterEntity)
 			counter.value += 1
 			counter.lastPlayer = context.from
+
+			// Persist to storage so the value survives server restarts
+			await Storage.world.set('counter', String(counter.value))
+			await Storage.world.set('lastPlayer', counter.lastPlayer)
 
 			room.send('stateUpdate', {
 				count: counter.value,
@@ -668,7 +739,7 @@ export function main() {
 
 The standard preview handles everything. When `authoritativeMultiplayer: true` is set in `scene.json`, the local server starts automatically in the background alongside the client preview.
 
-To test multiplayer interactions locally, open the preview in two separate windows, each window is treated as a separate player. Connect each window with a different wallet address. Both clients will connect to the same local server instance.
+To test multiplayer interactions locally, open the preview in two separate windows, each window is treated as a separate player. Connect each window with a different address. Both clients will connect to the same local server instance.
 
 ### Debugging tips
 
@@ -691,13 +762,29 @@ To test multiplayer interactions locally, open the preview in two separate windo
   })
   ```
 
-## Debug in production
+## Debug in Production
 
-TODO
+To see `console.log()` output from your published server, your wallet address must be listed in the `logsPermissions` array in `scene.json`:
 
-view logs
+```json
+{
+	"logsPermissions": ["0xYourWalletAddress"]
+}
+```
 
-view storage UI
+Without this, server logs are hidden in production, even from the scene owner.
+
+Stream live server logs from the command line with:
+
+```bash
+npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth
+```
+
+You'll be prompted to sign a message with one of the wallets listed in `logsPermissions` to authenticate. Once connected, you'll see server-side `console.log()` output in real time, which is useful for diagnosing issues without needing to redeploy.
+
+### View storage data
+
+TODO: OPEN STORAGE UI
 
 ## Version Control
 
@@ -705,7 +792,7 @@ Every published version of your scene gets its own unique hash ID, and each hash
 
 When you publish an update:
 
-- _Players already in the scene_ keep seeing the old version until they leave and come back. Their clients stay connected to the server instance that matches the old hash.
+- _Players already in the scene_ keep seeing the old version of the scene until they leave and come back. Their clients stay connected to the server instance that matches the old hash.
 - _New players arriving_ after the update load the new scene version and connect to the new server instance.
 
 This guarantees that client and server state never fall out of sync because of a schema change or a renamed component. An update can never break the session of a player who is already in your scene.

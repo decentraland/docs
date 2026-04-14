@@ -4,7 +4,7 @@ description: Add dynamic physics to wearables with Spring Bones
 
 # Spring Bones
 
-<-- [VIDEO PLACEHOLDER]: short clip showing spring bones in action on hair, earrings, and cape wearables -->
+<video src="../../images/spring-bones/00_spring-bones-demo.mp4" autoplay muted loop></video>
 
 ## What Are Spring Bones?
 
@@ -28,7 +28,7 @@ A spring chain must have **at least 2 bones** (a root and a tip). A single sprin
 
 All descendants of a spring root bone automatically become part of its chain. Each chain should be **linear** (each bone has at most one child in the chain). Branching chains may produce unexpected behavior.
 
-<-- [IMAGE PLACEHOLDER]: diagram showing a spring chain hierarchy: root → member → member → tip -->
+![](../../images/spring-bones/02_spring_bones_structure.png)
 
 ### Example Hierarchy
 
@@ -109,7 +109,7 @@ Export your wearable as a `.glb` file as usual. Spring bones are exported as par
 
 After uploading a wearable that contains `springbone`-named bones, the Builder automatically detects them and shows the **Spring Bones** configuration panel.
 
-<-- [IMAGE PLACEHOLDER]: screenshot of the Spring Bones panel in the Builder showing a spring root bone with all parameter sliders -->
+![](../../images/spring-bones/03_spring_bones_panel.png)
 
 From this panel you can configure the physics parameters for each spring root bone. The avatar preview in the Builder will immediately reflect your changes, so you can fine-tune the behavior in real time.
 
@@ -132,8 +132,8 @@ Controls how strongly the bone tries to return to its rest pose. This is the res
 
 #### Gravity Power
 
-|             |         |
-| ----------- | ------- |
+|             |        |
+| ----------- | ------ |
 | **Range**   | 0 to 2 |
 | **Default** | `0`    |
 

@@ -6,6 +6,12 @@ description: Build multiplayer Decentraland scenes with a headless authoritative
 
 An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
+{% hint style="warning" %}
+**📔 Note**: The Authoritative server currently only works on scenes that are published to **Worlds**, not to LAND parcels in Genesis City. If a world has multiple scenes in it, only one of its scenes can have support for its own Authoritative Server.
+
+Both these scenarios - Authoritative server support for scenes on LAND parcels and on multi-scene worlds - will soon be supported.
+{% endhint %}
+
 An authoritative server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
 
 Having an authoritative server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. An authoritative server resolves every change in one place, so all clients converge on the same state.
@@ -476,9 +482,21 @@ await Storage.player.delete(playerAddress, 'progress')
 
 ### Access stored data
 
-TODO: OPEN STORAGE UI
+You can see and edit the live stored data on your server via the storage UI, by entering this link:
 
-Read values, edit values
+[decentraland.org/storage](https://decentraland.org/storage)
+
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+
+There you can see a list of all the worlds and land where you can publish scenes.
+
+Open your scene and then the **Scene** or **Player** tab.
+
+In the **Scene** tab you'll see a list of all the stored variables. From here you can edit or remove any of these variables by clicking the pencil or trash icon.
+
+<img src="../../../.gitbook/assets/scene-data.png" alt="Activate stream" width="250"/>
+
+In the **Player** tab you'll see a list of all the players who have any data stored on your server. You can search them by address or name, and then see all their associated data. You can also edit or remove this data by clicking the pencil or trash icon.
 
 ## Environment Variables
 
@@ -516,11 +534,19 @@ Important: Add `.env` to your `.gitignore`, so that these potentially sensitive 
 
 The easiest way to change the values of your environment variables is via the storage UI.
 
-TODO: OPENING THE STORAGE UI
+You can access the data that is stored by the scene's storage by entering this link:
 
-Visit URL
+[decentraland.org/storage](https://decentraland.org/storage)
 
 You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+
+There you can see a list of all the worlds and land where you can publish scenes.
+
+Open your scene and then the **Environment** tab. You should see all of the environment variables in the project.
+
+ <img src="../../../.gitbook/assets/environment-variables.png" alt="Activate stream" width="250"/>
+
+Note that you cannot read the values of any of these environment variables (that's to protect sensitive data) but you can delete or overwrite any of them. Simply click the pencil or trash-can icon.
 
 You can also upload and alter the values of environment variables via the command line:
 
@@ -784,7 +810,17 @@ You'll be prompted to sign a message with one of the wallets listed in `logsPerm
 
 ### View storage data
 
-TODO: OPEN STORAGE UI
+You can access the data that is stored by the scene's storage by entering this link:
+
+[decentraland.org/storage](https://decentraland.org/storage)
+
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+
+There you can see a list of all the worlds and land where you can publish scenes.
+
+Open the world or the player data to see the info that's stored for each.
+
+For example if a particular player has an issue when playing your scene, you could look up this player via address, and see what data is stored for them to understand their situation. Maybe they stumbled upon a corner case where they ended up with contradicting data. You can even clear or edit that player's data from this page, to restore them into a stable state.
 
 ## Version Control
 

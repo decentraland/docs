@@ -48,16 +48,6 @@ npx skills add decentraland/sdk-skills -g
 
 This copies skill files into your agent's configuration so it knows Decentraland patterns and constraints.
 
-## The AI Context Folder
-
-Every Decentraland scene project includes a `/dclcontext` folder with reference files that help AI assistants write correct SDK7 code. This folder contains information about components, APIs, patterns, and constraints.
-
-The context folder is updated automatically when your scene's dependencies are updated. To force an update:
-
-```bash
-npx sdk-commands get-context-files
-```
-
 ## Available AI Skills
 
 When you install skills into your agent, the following capabilities are available:
@@ -88,6 +78,8 @@ When you install skills into your agent, the following capabilities are availabl
 | `scene-runtime`        | Cross-cutting runtime APIs — async work, HTTP, messaging            |
 | `script-components`    | Script component classes for the Creator Hub                        |
 | `game-design`          | Game design patterns, scene limits, performance budgets             |
+
+Note: Some of these skills involve fetching 3D models or other assets from free asset catalogs. The AI agent should always get confirmation from the user before downloading any new assets to a scene project.
 
 ## Tips for Effective Prompting
 

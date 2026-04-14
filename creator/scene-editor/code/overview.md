@@ -76,8 +76,13 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 **📔 Note**: Upload the entire project folder to a GitHub repo, but make sure the `/node-modules` or `/bin` folders and the `package-lock.json` file are all included in the `.gitignore` file, to avoid syncing them. This should be the case if you configure the repo to be of type `node`. These files are all auto-generated, and the content may differ for different machines.
 {% endhint %}
 
+{% hint style="info" %}
+**💡 Tip**: Want to go further with AI? You can use dedicated AI agents like [OpenDCL](https://github.com/dcl-regenesislabs/opendcl) or install Decentraland skills into your preferred AI coding agent to scaffold entire scenes, add multiplayer, deploy, and more — all from plain language prompts. See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide.
+{% endhint %}
+
 ## See also
 
+* [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md): build scenes by describing what you want to an AI assistant.
 * [Smart items - Basics](../interactivity/smart-items.md)
 * [Smart items - Advanced](../interactivity/smart-items-advanced.md)
 * [States and conditions](../interactivity/states-and-conditions.md)

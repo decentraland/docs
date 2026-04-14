@@ -20,6 +20,7 @@ Decentraland is now available on mobile. You can hang out, attend events, explor
 * [Getting started](getting-started.md) — first-time setup, sign-in, and finding your first place to hang out.
 * [Controls](controls.md) — how to move, interact, chat, and use the camera with touch.
 * [Troubleshooting](troubleshooting.md) — common issues and where to get help.
+* [iOS Curation](ios-curation.md) — how iOS content review works and how to submit your scene or world.
 
 ## What you can do on mobile
 

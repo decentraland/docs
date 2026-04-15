@@ -4,6 +4,12 @@ description: Build multiplayer Decentraland scenes with a headless authoritative
 
 # Authoritative Servers
 
+## Overview
+
+Decentraland runs scenes locally in a player's machine. By default, players are able to see each other and interact directly, but each one interacts with the environment independently. Changes in the environment aren't shared between players by default.
+
+Allowing all players to see a scene as having the same content in the same state is extremely important to for players to interact in more meaningful ways. Without this, if a player opens a door and walks into a house, other players will see that door as still closed, and the first player will appear to walk directly through the closed door to other players.
+
 An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
 {% hint style="warning" %}

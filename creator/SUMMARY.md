@@ -149,6 +149,7 @@
   * [Authoritative Servers](sdk7/networking/authoritative-servers.md)
   * [Network Connections](sdk7/networking/network-connections.md)
   * [Serverless Multiplayer](sdk7/networking/serverless-multiplayer.md)
+  * [Third Party Servers](sdk7/networking/third-party-servers.md)
 * [Blockchain](sdk7/blockchain/)
   * [Create a dApp](sdk7/blockchain/create-a-dapp.md)
   * [Deploying Your Transactions Server](sdk7/blockchain/deploying-your-own-transactions-server.md)

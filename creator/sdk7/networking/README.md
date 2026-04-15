@@ -13,6 +13,7 @@ Create multiplayer experiences by implementing networking and synchronization be
 | [Serverless Multiplayer](serverless-multiplayer.md) | Simple shared scenes, no incentive to cheat | Low |
 | [Authoritative Server](authoritative-servers.md) | Competitive games, anti-cheat, server-validated state | Medium |
 | [Network Connections](network-connections.md) | Fetching external data, REST APIs, WebSockets | Low–Medium |
+| [Third Party Servers](third-party-servers.md) | REST APIs, WebSockets, Colyseus, hybrid approaches | Medium |
 
 ## Authoritative Server
 

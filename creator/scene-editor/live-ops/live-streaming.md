@@ -184,8 +184,12 @@ Stream keys are generated per scene and are valid for 4 days (96 hours). A singl
 
 ## Streaming from URL method
 
-You can also stream using third‑party infrastructure by configuring the Video Screen to **Video URL** and pasting a stream URL.
+You can also stream by configuring the Video Screen to use the option **Video URL** and pasting a stream URL.
 
-- The URL must be `https` and CORS‑enabled by the provider (YouTube and similar sites won’t allow direct playback). See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
-- Managed providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
+You should be able to paste a URL pointing to a video from most popular video streaming sites. Be mindful of the terms of service with these platforms.
+
+To stream from a video file you have on your local machine, the easiest path is to upload this video to a public Google Drive and paste the link.
+
+- The URL must be `https`. See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
+- Recommended providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
 - Tips for encoder setup: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).

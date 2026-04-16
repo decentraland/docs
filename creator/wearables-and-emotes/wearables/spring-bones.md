@@ -14,96 +14,105 @@ Spring bones are **not** part of the base avatar armature. They are additional b
 
 This implementation follows the [VRM Spring Bone standard](https://vrm.dev/en/vrm1/springbone/), a widely adopted convention for avatar physics in formats like VRM and MMD.
 
-![](../../images/spring-bones/01_spring_bones_workflow.png)
+A **spring chain** is a sequence of bones linked together in a linear hierarchy. Each chain must be linear — bones with 2 or more children will have unexpected behavior.
 
-## How Spring Bones Work
+| ![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.png) | ![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.png) |
+| :-: | :-: |
+| _A nice and linear spring chain._ | _Bones with 2 or more children will have unexpected behaviour._ |
 
-A **spring chain** is a sequence of bones that simulates physics together:
+### The Hierarchy
 
-1. **Spring root bone** — The first bone in the chain. It owns the physics configuration (stiffness, gravity, drag, etc.). Identified by having `springbone` anywhere in the bone name (case-insensitive).
-2. **Chain members** — Descendant bones of the root. They inherit the root's physics parameters and form the chain.
-3. **Chain tip** — The deepest (last) bone in the chain. It defines the geometric endpoint of the chain but is not simulated itself.
+For spring bones to work nicely, they have to be parented to one of the avatar's original bones. For hairs and earrings, for example, the bone on top of the hierarchy should be parented to **_Avatar_Head_**. For scarves, parenting the chain to the **_Avatar_Neck_** is a nice idea. For skirts, maybe **_Avatar_Hips_** or **_Avatar_LeftUpLeg/Avatar_RightUpLeg_** could do the trick.
 
-A spring chain must have **at least 2 bones** (a root and a tip). A single spring bone on its own won't produce any movement — the simulation needs the root to drive the physics and the tip to define the geometric endpoint. Longer chains (3+ bones) produce smoother, more natural movement for elements like long hair or capes.
+It's important to notice how the structure of this hierarchy works.
 
-All descendants of a spring root bone automatically become part of its chain. Each chain should be **linear** (each bone has at most one child in the chain). Branching chains may produce unexpected behavior.
-
-![](../../images/spring-bones/02_spring_bones_structure.png)
-
-### Example Hierarchy
-
-```
-Avatar_Head
-├── SpringBone_hair_left        ← spring root (has physics config)
-│   ├── SpringBone_hair_left_01 ← chain member (inherits config)
-│   │   └── SpringBone_hair_left_tip  ← chain tip (endpoint only)
-├── SpringBone_earring_r        ← spring root
-│   └── SpringBone_earring_r_tip      ← chain tip
-```
+- **Hair_springBone_1** (spring bone parent): this is the bone on top of the chain, it has physics configuration
+- **Hair_springBone_2** (child spring bone): this is the child of the previous bone in the hierarchy and inherits the configuration.
+- **Hair_springBone_end** (spring bone end): it's the last bone of the chain and serves as endpoint only.
 
 ### Naming Convention
 
-All spring bone nodes **must** contain the substring `springbone` (case-insensitive) in their name. The substring can appear at any position:
+All spring bones **must** contain the substring `springbone` (case-insensitive) in their name. The substring can appear at any position:
 
-| Node name              | Valid?                   |
-| ---------------------- | ------------------------ |
-| `SpringBone_hair_left` | ✓                        |
-| `hair_springbone_l`    | ✓                        |
-| `springbone_earring_r` | ✓                        |
-| `ponytail_SPRINGBONE`  | ✓                        |
-| `skirt_1`              | ✗ (missing "springbone") |
+- `SpringBone_hair_left`
+- `hair_springbone_l`
+- `springbone_earring.R`
 
-{% hint style="warning" %} Bones that don't contain `springbone` in their name will not be recognized as spring bones, even if they are children of a spring root bone in the hierarchy. {% endhint %}
+To keep your workflow organized, it's suggested to use this format: **BodyPart/WearableName_springBone**
 
-### Limits
+Examples: Hair_springBone_1, Earring_springBone.L etc… Feel free to use the format that best suits you, as long as it's following Blender's (or your preferred software) naming convention for left and right.
 
-<-- TODO: replace N and M with final values when defined -->
+{% hint style="warning" %} **Attention!**
 
-Each wearable has the following spring bone limits:
+Spring bones won't work without `springbone` in the bone's name. It has to be used, even for the end bone. {% endhint %}
 
-- Maximum **N** spring chains per wearable
-- Maximum **M** total spring bones (sum of all bones across all chains)
-- Maximum chain depth of **N** bones
+### Creating Spring Bones in Blender
 
-## Setting Up Spring Bones in Blender
+Spring bones are additional bones that you create in Blender for the base avatar armature. The physics parameters are configured later in the Builder — you only need to set up the bone hierarchy now.
 
-Spring bones are additional bones that you create in Blender beyond the base avatar armature. The physics parameters are configured later in the Builder — you only need to set up the bone hierarchy in Blender.
+To create a new bone, select the avatar Armature and, in **Edit Mode**, make sure you have the cursor where you want the bone to be created and press **Shift+A**. Another way to do it would be by duplicating an existing bone by pressing **Shift+D**. Once you have the first bone of the chain, press **E** to extrude it and create the rest of the chain.
 
-### Step 1: Add Extra Bones to the Armature
+![Press Shift+A to create a bone where the cursor is.](../../images/spring-bones/Create_Bones.gif)
 
-In **Edit Mode**, select the bone from which you want your spring chain to hang (e.g., `Avatar_Head` for hair, or a bone near the ear for earrings). Extrude new bones (`E`) to create your spring chain.
+It's important to notice that a spring chain doesn't have to be connected to the skeleton parent, so you can just place it anywhere on the mesh. However, the spring chain **has** to be connected, you can't offset any of the spring bones.
 
-<-- [IMAGE PLACEHOLDER]: Blender screenshot showing extrusion of spring bones from Avatar_Head -->
+Once you create the bones, rename them following the naming convention mentioned above and make sure to parent the chain to the proper bone. Dotted lines will show the parent of the chain. If there's none, it means that the chain has no parent. In **Edit Mode**, select the child first, then select the parent and press **Ctrl+P** > **Keep Offset**.
 
-### Step 2: Name Your Bones
+![Parent bones by selecting the child first, then the parent and press Ctrl+P.](../../images/spring-bones/Parenting_Bones.gif)
 
-Rename each bone in the chain to include `springbone` in the name. Use a clear, descriptive naming pattern:
+To rename a bone, select it in Edit Mode or Pose Mode, go to the Bone Properties tab and rename it according to the naming convention. Do this for all the bones in the chain.
 
-- `SpringBone_hair_left` — root
-- `SpringBone_hair_left_01` — chain member
-- `SpringBone_hair_left_tip` — tip (last bone)
+![Rename bones in the Bone Properties tab.](../../images/spring-bones/Rename_Bones.png)
 
-You can follow Blender's left/right naming convention (e.g., `_L` / `_R` or `_left` / `_right`) to use the **Symmetrize** feature for mirroring chains to both sides.
+{% hint style="info" %} **Tip!**
 
-<-- [IMAGE PLACEHOLDER]: Blender screenshot showing properly named spring bone chain in the outliner -->
+To make sure the bone is properly placed, select the mesh in **Object Mode** and, in **Edit Mode**, select the vertices in the area that you want to place the bone (it can be a loop or a group of vertices) > press **Shift+S** > **Cursor to Selected.**
 
-### Step 3: Position the Bones
+Go back to **Object Mode**, select the armature > go to **Edit Mode** > select the desired bone > **Shift+S** > **Selection to cursor**. {% endhint %}
 
-Place bones along the path you want the mesh to swing. For hair, follow the strands from root to tip. For earrings, a short chain of 2–3 bones hanging from the ear is usually enough.
+![Use Shift+S to position the bone in the right place in the mesh.](../../images/spring-bones/Create_Bones2.gif)
 
-The **rest pose** of the bones defines the position the chain tries to return to. Make sure the bones are positioned where you want the mesh to naturally sit when at rest.
+### Skinning the Mesh
 
-### Step 4: Skin Weight the Mesh
+Skinning is the process of binding the mesh to the armature, so that they move together. For this, we define how much influence (weight) each bone will have on the vertices. The more weight, the more the bone will deform the mesh. To do that, go to **Object Mode**, select the mesh first, press **Shift** and select the armature, press **Ctrl+P**. There are two ways of doing this, either select **With Empty Groups** or **With Automatic Weights**.
 
-Paint the mesh vertices to be influenced by the spring bones, just as you would with any other bone. Vertices near the root should have more influence from the root, and vertices near the tip should follow the tip bone.
+![Parenting the mesh to the armature.](../../images/spring-bones/Parenting_Mesh.gif)
 
-<-- [IMAGE PLACEHOLDER]: Blender weight painting example on a hair mesh with spring bones -->
+#### With Automatic Weights
 
-### Step 5: Export
+As the name says, with this method, Blender will try to set the skin weights automatically by creating vertex groups for each bone in the armature and giving each of them automatic weights. It might work in some cases, but it might also require some adjustments. You can check the groups created by clicking on the **Data** tab.
 
-Export your wearable as a `.glb` file as usual. Spring bones are exported as part of the armature.
+If you know for sure that you won't need certain bones to affect the mesh, you can just click on the **lock icon** to lock the groups you want, click on the dropdown menu and **Delete All Unlocked Groups** to remove them from the object. For example, if you're working on a hair, having groups for feet and hands makes no sense. In that case, delete everything that's not the head or the spring bones, like in the example below. Also make sure to delete the group for the end bone of the spring chain.
 
-{% hint style="info" %} Spring bones named with `springbone` are an exception to the general rule that wearables should not have bones outside the base armature. These extra bones are expected and will be detected by the Builder. {% endhint %}
+![Deleting vertex groups.](../../images/spring-bones/Deleting_Groups.gif)
+
+#### With Empty Groups
+
+In this method, Blender will create all vertex groups for each bone in the armature, but they will have a weight of zero by default. You will have to manually assign the weights in Edit Mode or paint them in Weight Paint mode. This gives you more control over what's being affected by each group and can be extra helpful for hard surfaces or objects that need to be completely assigned to a certain group. In any case, once you've assigned the weights, they will need to be tested in Pose Mode and then tweaked in Weight Paint.
+
+![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.gif)
+
+#### Painting Weights
+
+To test the skinned mesh, select the armature and go to **Pose Mode**, set a key frame, then rotate the bones to create another pose and set another keyframe. That way you can check how the mesh is deforming with movement. Once you have the poses set, go back to **Object Mode**, select the mesh and go to **Weight Paint**.
+
+![Setting poses to test skin weights.](../../images/spring-bones/Setting_Poses_Compressed.gif)
+
+In **Weight Paint**, in the Tools tab you will find different brushes to tweak the skin weights. Select the Vertex Group you want to edit (if they are locked, just unlock them so you can edit the influence) and use the brush to add or remove influence. Black means zero influence, while red means that that group completely influences the mesh. Enabling the wireframe on **Overlays** will make it easier to see what you are painting.
+
+![Weight painting the mesh.](../../images/spring-bones/Weight_Paint_Compressed.gif)
+
+Use the add, subtract or smooth brushes to get the desired result. Test different extreme poses too to see how the mesh is deforming and if there are no vertices left without weights. If you're happy with the result, it's time to export it!
+
+### Exporting
+
+Before exporting, make sure to delete any animation clip created when testing the poses. Go to Pose Mode, select all the bones by pressing **A** and press **Ctrl+R**, then **Ctrl+S** and finally **Ctrl+G** to delete any transforms on your armature. Then go back to object mode, change the Display Mode from View Layer to Blender File, expand Actions and right click and delete the animation file.
+
+![Deleting animation actions before export.](../../images/spring-bones/Delete_Action.gif)
+
+If you have any other objects in your scene, like avatar mesh, turn the visibility off by clicking on the eye icon in the Outliner. Then, go to **File** > **Export** > **gltf 2.0 (.glb, .gltf)**. For the export settings, expand Include and in **Limit to** toggle **Visible Objects**. Click on Export and you're ready to upload your file to the Builder!
+
+![Export settings for glTF.](../../images/spring-bones/Export_Settings.png)
 
 ## Configuring Spring Bones in the Builder
 

@@ -102,11 +102,11 @@ To override this default behavior:
 
 - Click the **Speakers** button on the scene admin panel
 
- <img src="../../../.gitbook/assets/speakers-button.png" alt="Participants tab" width="200"/>
+ <img src=".../../images/speakers-button.png" alt="Participants tab" width="200"/>
 
 - Pick one of the speakers and select a source to showcase (either that speaker's camera or screen)
 
- <img src="../../../.gitbook/assets/select-speaker-source.png" alt="Participants tab" width="200"/>
+ <img src="../../images/select-speaker-source.png" alt="Participants tab" width="200"/>
 
 This will force this source to be always shown on screen, regardless of if other speakers are talking.
 
@@ -114,7 +114,7 @@ This will force this source to be always shown on screen, regardless of if other
 **📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app an in the Decentraland scene.
 You can easily mute all audio from the DCL Cast app, but toggling the speaker icon on the bottom-left of the screen
 
- <img src="../../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
+ <img src="../../images/mute-dcl-cast.png" alt="Participants tab" width="50"/>
 
 Otherwise you can mute audio in the Decentraland settings.
 {% endhint %}
@@ -125,7 +125,7 @@ You can also share the contents of a slide presentation as an alternative source
 
 - Click the **Share presentation** button, either in the DCL Cast app or in-world in the Scene Admin UI.
 
- <img src="../../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
+ <img src="../../images/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
 
 - Paste a Google slides link, a link to a .pdf hosted in Drive or a similar source, or upload a .pdf file.
 

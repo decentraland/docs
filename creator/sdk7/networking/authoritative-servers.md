@@ -47,7 +47,9 @@ Optionally add the following to your `scene.json` at root level:
 }
 ```
 
-Add `logsPermissions` to list wallet addresses that can see `console.log()` from the server. Without this, server output is hidden.
+Add `logsPermissions` to list wallet addresses that can see `console.log()` from the server. The listed users can then view server logs in production by running the following command:
+
+`npx sdk-commands sdk-server-logs`
 
 ### 3. Run the preview
 
@@ -496,7 +498,7 @@ Open your scene and then the **Scene** or **Player** tab.
 
 In the **Scene** tab you'll see a list of all the stored variables. From here you can edit or remove any of these variables by clicking the pencil or trash icon.
 
-<img src="../../../.gitbook/assets/scene-data.png" alt="Activate stream" width="250"/>
+<img src="../../images/scene-data.png" alt="Activate stream" width="250"/>
 
 In the **Player** tab you'll see a list of all the players who have any data stored on your server. You can search them by address or name, and then see all their associated data. You can also edit or remove this data by clicking the pencil or trash icon.
 
@@ -546,7 +548,7 @@ There you can see a list of all the worlds and land where you can publish scenes
 
 Open your scene and then the **Environment** tab. You should see all of the environment variables in the project.
 
- <img src="../../../.gitbook/assets/environment-variables.png" alt="Activate stream" width="250"/>
+ <img src="../../images/environment-variables.png" alt="Activate stream" width="250"/>
 
 Note that you cannot read the values of any of these environment variables (that's to protect sensitive data) but you can delete or overwrite any of them. Simply click the pencil or trash-can icon.
 
@@ -808,7 +810,13 @@ To see `console.log()` output from your published server, your wallet address mu
 
 Without this, server logs are hidden in production, even from the scene owner.
 
-Stream live server logs from the command line with:
+Stream live server logs from the command line by running this in your project folder
+
+```bash
+npx sdk-commands sdk-server-logs
+```
+
+You can also manually specify the world name the logs with:
 
 ```bash
 npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth

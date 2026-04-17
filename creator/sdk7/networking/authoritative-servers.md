@@ -39,23 +39,19 @@ npm install @dcl/js-runtime@auth-server
 
 ### 2. Configure scene.json
 
-Add the following fields to your `scene.json` at root level:
+Optionally add the following to your `scene.json` at root level:
 
 ```json
 {
-	"authoritativeMultiplayer": true,
 	"logsPermissions": ["0xYourWalletAddress"]
 }
 ```
 
-| Field                      | Required    | Description                                                                                           |
-| -------------------------- | ----------- | ----------------------------------------------------------------------------------------------------- |
-| `authoritativeMultiplayer` | ✅          | Enables the headless server runtime                                                                   |
-| `logsPermissions`          | Recommended | Wallet addresses that can see `console.log()` from the server. Without this, server output is hidden. |
+Add `logsPermissions` to list wallet addresses that can see `console.log()` from the server. Without this, server output is hidden.
 
 ### 3. Run the preview
 
-Use the standard preview command, no extra steps needed. When `authoritativeMultiplayer: true` is set, the preview automatically starts a local version of the authoritative server in the background.
+Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the authoritative server in the background.
 
 The local session of the server is not connected to the one in production, so you're free to test things without affecting players who are in your published scene.
 
@@ -769,9 +765,15 @@ export async function main() {
 
 ## Testing Locally
 
-The standard preview handles everything. When `authoritativeMultiplayer: true` is set in `scene.json`, the local server starts automatically in the background alongside the client preview.
+The standard preview handles everything. When using the auth-server branch of the SDK, the local server starts automatically in the background alongside the client preview.
 
 To test multiplayer interactions locally, open the preview in two separate windows, each window is treated as a separate player. Connect each window with a different address. Both clients will connect to the same local server instance.
+
+Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
+
+As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
+
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
 
 ### Debugging tips
 
@@ -863,14 +865,3 @@ Key differences to keep in mind:
 - _Serialization_: Colyseus sends JSON diffs; the SDK sends the full component on every change. Keep components small (see [Performance Best Practices](#performance-best-practices)).
 - _State model_: Colyseus uses a mutable state tree with automatic diffing. The SDK uses ECS components synced via `syncEntity` and protected with `validateBeforeChange`.
 - _Hosting_: No separate server deployment. The authoritative server is deployed automatically together with the scene.
-
-## Alternative: Third-Party Servers
-
-The native SDK server is the recommended approach for new scenes. If you have an existing server infrastructure, you can still connect your scene via:
-
-- **REST API + DB**: Good for data that changes infrequently (leaderboards, guestbooks). Players poll the API for updates; state persists between sessions. See [Network Connections](network-connections.md) for how to make `fetch` requests from a scene.
-- **WebSocket server**: Allows real-time two-way communication. See [Network Connections](network-connections.md) for WebSocket usage. Libraries like [Colyseus](https://colyseus.io/) work well with the Decentraland SDK.
-
-{% hint style="warning" %}
-**📔 Note**: Third-party servers don't integrate with `syncEntity`, `validateBeforeChange`, or `Storage` — you'll need to implement your own state management and sync logic.
-{% endhint %}

@@ -12,7 +12,7 @@ There are three ways to sync the scene state, so that all players see the same:
 
 * **Mark an entity as synced**: The easiest option. See [Marked an entity as synced](serverless-multiplayer.md#mark-an-entity-as-synced)
 * **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](serverless-multiplayer.md#send-explicit-messagebus-messages)
-* **Use a Server**: See [3rd party servers](../sdk7/networking/authoritative-servers.md). This option is more complicated to set up, but is recommendable if players have incentives to exploit your scene.
+* **Use an Authoritative Server**: See [Authoritative Servers](../sdk7/networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
 
 The first two options are covered in this document. They are simpler, as they require no server. The downside is that you rely more on player's connection speeds, and the scene state is not persisted when all players leave the scene.
 

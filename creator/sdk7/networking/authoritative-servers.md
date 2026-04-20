@@ -463,6 +463,22 @@ const leaderboard = raw ? JSON.parse(raw) : []
 await Storage.world.delete('leaderboard')
 ```
 
+You can also manage scene storage via the command line, using `npx sdk-commands storage scene`:
+
+```bash
+# Set a value
+npx sdk-commands storage scene set high_score --value 100
+
+# Get a value
+npx sdk-commands storage scene get high_score
+
+# Delete a value
+npx sdk-commands storage scene delete high_score
+
+# Delete all scene storage data
+npx sdk-commands storage scene clear --confirm
+```
+
 ### Player Storage — Per Wallet Address
 
 ```typescript
@@ -482,6 +498,25 @@ const progress = saved ? JSON.parse(saved) : { level: 1, coins: 0 }
 
 // Delete
 await Storage.player.delete(playerAddress, 'progress')
+```
+
+You can also manage player storage via the command line, using `npx sdk-commands storage player`:
+
+```bash
+# Set a value for a specific player
+npx sdk-commands storage player set level --value 10 --address 0x1234...
+
+# Get a value for a specific player
+npx sdk-commands storage player get level --address 0x1234...
+
+# Delete a value for a specific player
+npx sdk-commands storage player delete level --address 0x1234...
+
+# Delete all data for a specific player
+npx sdk-commands storage player clear --address 0x1234... --confirm
+
+# Delete all player data (all players)
+npx sdk-commands storage player clear --confirm
 ```
 
 ### Access stored data
@@ -552,14 +587,27 @@ Open your scene and then the **Environment** tab. You should see all of the envi
 
 Note that you cannot read the values of any of these environment variables (that's to protect sensitive data) but you can delete or overwrite any of them. Simply click the pencil or trash-can icon.
 
-You can also upload and alter the values of environment variables via the command line:
+You can also manage environment variables via the command line, using `npx sdk-commands storage env`:
 
 ```bash
 # Set a variable
-npx sdk-commands deploy-env MAX_PLAYERS --value 8
+npx sdk-commands storage env set MAX_PLAYERS --value 8
 
-# Remove a variable
-npx sdk-commands deploy-env OLD_VAR --delete
+# Delete a variable
+npx sdk-commands storage env delete OLD_VAR
+
+# Delete all environment variables
+npx sdk-commands storage env clear --confirm
+```
+
+You can also target a specific environment with the `--target` flag:
+
+```bash
+# Deploy to staging
+npx sdk-commands storage env set MY_KEY --value my_value --target https://storage.decentraland.zone
+
+# Deploy to a local development server
+npx sdk-commands storage env set MY_KEY --value my_value --target http://localhost:8000
 ```
 
 Deployed environment variables take precedence over `.env` values.

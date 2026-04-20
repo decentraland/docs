@@ -305,7 +305,7 @@ A single particle system can go through a cycle with several bursts, even with v
 ```ts
 ParticleSystem.create(emitter, {
 	rate: 0, // disable continuous emission
-	bursts: [
+	bursts: { values: [
 		{
 			time: 0, // time in seconds after playback starts
 			count: 200, // particles to emit per burst
@@ -313,7 +313,7 @@ ParticleSystem.create(emitter, {
 			interval: 0.2, // seconds between repeated cycles
 			probability: 1, // 0–1 chance the burst fires each cycle
 		},
-	],
+	] },
 })
 ```
 
@@ -324,11 +324,11 @@ ParticleSystem.create(emitter, {
 	loop: true,
 	rate: 0,
 	lifetime: 2,
-	bursts: [
+	bursts: { values: [
 		{ time: 0.0, count: 80, cycles: 0, interval: 3 },
 		{ time: 0.7, count: 100, cycles: 0, interval: 3 },
 		{ time: 1.4, count: 60, cycles: 0, interval: 3 },
-	],
+	] },
 })
 ```
 

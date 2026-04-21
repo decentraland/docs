@@ -6,7 +6,7 @@ description: >-
 
 # Publishing Collections
 
-For detailed instructions on how to submit your collections for approval before publication, see [how to create a collection](../wearables-and-emotes/manage-collections/creating-a-collection.md). This document explains how the approval process works when publishing wearables and emotes, and what criteria is used by the Curation Committee when reviewing wearables. For detailed information on the Curation Committee, [start here](../wearables-and-emotes/publishing/curation-committee.md).
+For detailed instructions on how to submit your collections for approval before publication, see [how to create a collection](../manage-collections/creating-a-collection.md). This document explains how the approval process works when publishing wearables and emotes, and what criteria is used by the Curation Committee when reviewing wearables. For detailed information on the Curation Committee, [start here](curation-committee.md).
 
 ## **The Publication Process**
 

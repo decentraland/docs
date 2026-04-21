@@ -12,7 +12,7 @@ You can also set up your own external server to aid your scene and serve to sync
 
 Your scene's code can send calls to a REST API to fetch data.
 
-Since the server might take time to send its response, you must execute this command as an [asynchronous function](../sdk7/programming-patterns/async-functions.md), using `executeTask()`.
+Since the server might take time to send its response, you must execute this command as an [asynchronous function](../programming-patterns/async-functions.md), using `executeTask()`.
 
 ```ts
 executeTask(async () => {
@@ -166,4 +166,4 @@ To open the Debug Panel, you can click the ![](../../../.gitbook/assets/debug-i
 
 This will open a new Chrome window with the Network tab open.
 
-See [Debug in preview](../sdk7/debugging/debug-in-preview.md#web-requests) for more details.
+See [Debug in preview](../debugging/debug-in-preview.md#web-requests) for more details.

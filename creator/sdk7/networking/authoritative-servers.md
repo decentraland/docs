@@ -98,7 +98,7 @@ syncEntity(
 )
 ```
 
-The syntax is identical to what's used by the [Serverless multiplayer](../sdk7/networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the authoritative server. When a scene uses the authoritative server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
+The syntax is identical to what's used by the [Serverless multiplayer](../networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the authoritative server. When a scene uses the authoritative server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
 
 ### Validating changes
 

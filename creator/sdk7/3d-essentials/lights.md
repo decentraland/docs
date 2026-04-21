@@ -6,7 +6,7 @@ description: Learn how to use lights in your scene
 
 Lights are a fundamental part of 3D graphics. They are used to illuminate the scene and create a sense of depth and realism, and can be used to create different moods and atmospheres.
 
-By default, the scene is lit with a single directional light. This is a light that shines in a specific direction, and is used to simulate the sun or the moon. See [Skybox Control](../sdk7/interactivity/skybox-control.md) for more information.
+By default, the scene is lit with a single directional light. This is a light that shines in a specific direction, and is used to simulate the sun or the moon. See [Skybox Control](../interactivity/skybox-control.md) for more information.
 
 You can add up to 1 light per parcel in your scene.
 
@@ -34,7 +34,7 @@ LightSource.create(light, {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: A light with the default brightness will be hardly visible with the midday sun, like in the real world. You can use the [Skybox Control](../sdk7/interactivity/skybox-control.md) to force the skybox to night time, or increase the brightness by setting the `intensity` property of the `LightSource` component to a higher value.
+**📔 Note**: A light with the default brightness will be hardly visible with the midday sun, like in the real world. You can use the [Skybox Control](../interactivity/skybox-control.md) to force the skybox to night time, or increase the brightness by setting the `intensity` property of the `LightSource` component to a higher value.
 {% endhint %}
 
 ## Spot lights

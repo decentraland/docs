@@ -19,7 +19,7 @@ There are different types of supported materials:
 
 ## Use the Scene Editor in Creator Hub
 
-The easiest way to give an entity a Material is to use the Scene Editor. You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to give an entity a Material is to use the Scene Editor. You can add a **Material** component to your entity and then configure all of the available fields on the Scene Editor UI. See [Add Components](../../scene-editor/build/components.md#add-components).
 
 ## Add a material
 
@@ -67,7 +67,7 @@ Material.setPbrMaterial(meshEntity, {
 
 > `import { Material } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ## Material colors
@@ -80,7 +80,7 @@ Color values are of type `Color4`, composed of _r_, _g_ and _b_ values (red, gre
 **📔 Note**: If you set any color in `albedoColor` to a value higher than _1_, it will appear as _emissive_, with more intensity the higher the value. So for example, `{r: 15, g: 0, b: 0}` produces a very bright red glow.
 {% endhint %}
 
-See [color types](../sdk7/3d-essentials/color-types.md) for more details on how to set colors.
+See [color types](../3d-essentials/color-types.md) for more details on how to set colors.
 
 You can also edit the following fields in a PBR Material to fine-tune how its color is perceived:
 
@@ -362,7 +362,7 @@ The `emissiveTexture` can accentuate glow on certain parts of a material, to ach
 
 **Set UVs**
 
-Another alternative for changing a texture's scale or alignment is to configure _uv_ properties on the [MeshRenderer component](../sdk7/3d-essentials/shape-components.md).
+Another alternative for changing a texture's scale or alignment is to configure _uv_ properties on the [MeshRenderer component](../3d-essentials/shape-components.md).
 
 You set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
@@ -579,11 +579,11 @@ Material.setPbrMaterial(meshEntity1, {
 })
 ```
 
-This can be used in very interesting ways together with videos. See [video playing](../sdk7/media/video-playing.md).
+This can be used in very interesting ways together with videos. See [video playing](../media/video-playing.md).
 
 ## Video playing
 
-To stream video from a URL into a material, or play a video from a file stored in the scene, see [video playing](../sdk7/media/video-playing.md).
+To stream video from a URL into a material, or play a video from a file stored in the scene, see [video playing](../media/video-playing.md).
 
 The video is used as a texture on a material, you can set any of the other properties of materials to alter how the video screen looks.
 

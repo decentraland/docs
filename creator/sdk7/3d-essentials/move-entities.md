@@ -9,7 +9,7 @@ description: >-
 To move, rotate or resize an entity in your scene over a period of time, use the `Tween` component. The engine carries out the desired transformation smoothly, showing updates on every frame until the specified duration is over. Also the `Transform` component values of the affected entity gets updated in real time in case it's needed to make proximity checks in the scene code.
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can move entities in a no-code way via **Actions**, see [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md).
+**💡 Tip**: In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can move entities in a no-code way via **Actions**, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 {% endhint %}
 
 The Tween component has the following functions:
@@ -435,7 +435,7 @@ pointerEventsSystem.onPointerDown(
 
 ## Tweens based on a system
 
-Instead of using the Tween component and letting the engine handle the transformation, you may prefer to do this transition incrementally, frame by frame, via a [system](../sdk7/architecture/systems.md) in your scene. By moving the entity a small amount each time the function runs.
+Instead of using the Tween component and letting the engine handle the transformation, you may prefer to do this transition incrementally, frame by frame, via a [system](../architecture/systems.md) in your scene. By moving the entity a small amount each time the function runs.
 
 On one hand, this gives you more control for re-calculating movements on every frame. On the other hand, the code is more complicated, and players with less performant machines might experience the tween as laggy, noticing each increment.
 
@@ -494,7 +494,7 @@ Note that in order to combine the current rotation with each increment, we're us
 In this example, we're rotating the entity by 1 degree in an upwards direction in each tick of the game loop.
 
 {% hint style="info" %}
-**💡 Tip**: To make an entity always rotate to face the player, you can add a [`Billboard` component](../sdk7/3d-essentials/entity-positioning.md#face-the-user).
+**💡 Tip**: To make an entity always rotate to face the player, you can add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user).
 {% endhint %}
 
 ![](../../../.gitbook/assets/rotate.gif)
@@ -586,7 +586,7 @@ For example, if the origin vector is _(0, 0, 0)_ and the target vector is _(10, 
 * Using an amount of 0.3 would return _(3, 0, 3)_
 * Using an amount of 1 would return _(10, 0, 10)_
 
-To implement this `lerp()` in your scene, we recommend creating a [custom component](../sdk7/architecture/custom-components.md) to store the necessary information. You also need to define a system that implements the gradual movement in each frame.
+To implement this `lerp()` in your scene, we recommend creating a [custom component](../architecture/custom-components.md) to store the necessary information. You also need to define a system that implements the gradual movement in each frame.
 
 ```ts
 // define custom component
@@ -654,7 +654,7 @@ const targetRotation = Quaternion.fromEulerDegrees(0, 0, 0)
 let newRotation = Quaternion.slerp(originRotation, targetRotation, 0.6)
 ```
 
-To implement this in your scene, we recommend storing the data that goes into the `Slerp()` function in a [custom component](../sdk7/architecture/custom-components.md). You also need to define a system that implements the gradual rotation in each frame.
+To implement this in your scene, we recommend storing the data that goes into the `Slerp()` function in a [custom component](../architecture/custom-components.md). You also need to define a system that implements the gradual rotation in each frame.
 
 ```ts
 // define custom component
@@ -987,4 +987,4 @@ This other optional parameter is also available:
 * `movementType`: defines if the movement will be on the offset or the tiling field. By default it uses offset.
 * `duration`: How many milliseconds to sustain the movement. After this time, the movement will stop.
 
-Read more about texture tweens in the [Texture Tweens](../sdk7/3d-essentials/materials.md#texture-tweens) section.
+Read more about texture tweens in the [Texture Tweens](../3d-essentials/materials.md#texture-tweens) section.

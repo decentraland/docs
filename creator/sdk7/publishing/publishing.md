@@ -8,7 +8,7 @@ description: How to publish my project?
 
 Make sure of the following:
 
-* Your scene complies with all of the [scene limitations](../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
+* Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 *   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
@@ -32,18 +32,18 @@ Open your scene's _scene.json_ file and complete the following data:
 * **Parcels**: The coordinates of the parcels that will be occupied by your scene
 * **Base**: The coordinates of the parcel that will be considered the \[0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
 * **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn. By default players spawn at the _0,0,0_ location of the scene (bottom-left corner). Use this to start players in a specific location, or set a region to prevent players from overlapping with each other when they first appear.
-* **tags**: A set of tags that describe your scene. These help players explore Decentraland by making it easier to find content they're interested in. [See the list of available tags](../sdk7/projects/scene-metadata.md#tags).
+* **tags**: A set of tags that describe your scene. These help players explore Decentraland by making it easier to find content they're interested in. [See the list of available tags](../projects/scene-metadata.md#tags).
 * **rating**: This is used to classify the content of your scene based on its appropriateness for different age groups (`T` for Teens or `A` for Adults). It helps in filtering content for players.
 
 {% hint style="warning" %}
-**📔 Note**: See [scene metadata](../sdk7/projects/scene-metadata.md) for more details on how to set these parameters.
+**📔 Note**: See [scene metadata](../projects/scene-metadata.md) for more details on how to set these parameters.
 {% endhint %}
 
 ## To publish the scene
 
 ### Using the Scene Editor in Creator Hub
 
-The Scene Editor in Creator Hub provides an easy way to publish your scenes. Make sure you've [installed the Creator Hub](../scene-editor/get-started/editor-installation.md).
+The Scene Editor in Creator Hub provides an easy way to publish your scenes. Make sure you've [installed the Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
@@ -108,7 +108,7 @@ By default, when deploying to a world via the CLI your scene will be treated as 
 
 To deploy as a multi-scene world, add the paramter `--multi-scene` to the deploy command:
 
-`npm run deploy -multi-scene --target-content https://worlds-content-server.decentraland.org`
+`npm run deploy -- --multi-scene --target-content https://worlds-content-server.decentraland.org`
 
 When using this paramter, if the scene you're publishing has different coordinates from existing scenes in that world, these scenes will all exist together.
 
@@ -156,7 +156,7 @@ Once a scene is uploaded to the Worlds server, you can access it using the Decen
 
 With Decentraland already open, you can also jump to a world by typing the `/goto NAME.dcl.eth` command in the chatbox.
 
-See [Make discoverable](../sdk7/projects/make-discoverable.md) for more information on how to make your World discoverable.
+See [Make discoverable](../projects/make-discoverable.md) for more information on how to make your World discoverable.
 
 ### Migrating a World to Genesis City
 
@@ -222,7 +222,7 @@ _https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
 You can deploy content to a custom server that doesn't belong to the official DAO-maintained network of catalyst servers. To do this, you don't need to own any LAND or NAME tokens, as you can configure the server to use any validation logic you prefer to control who can deploy where. Custom servers can choose to include content from the official servers (which you can overwrite), or start from a blank slate and publish entirely new content.
 
-See [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) for more info on what you can do with your own server and how to set it up.
+See [How to run your own Catalyst Node](../../tutorials/how-to-run-a-catalyst.md) for more info on what you can do with your own server and how to set it up.
 
 {% hint style="warning" %}
 **📔 Note**: Players will need to manually type in a URL to access your custom server. Certain validations from services like the [rewards server](../rewards/getting-started.md) or the [quests server](../deprecated/quests/overview.md) might fail in these contexts, as often these services require that the request comes from an official server.

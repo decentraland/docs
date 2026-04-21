@@ -11,14 +11,14 @@ There are three different ways you can show a video in a scene:
 - Stream live via Decentraland cast
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can use an **Video Player** [Smart Item](../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
+**💡 Tip**: In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can use an **Video Player** [Smart Item](../../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
 {% endhint %}
 
 In all cases, you'll need:
 
-- An entity with a [primitive shape](../sdk7/3d-essentials/shape-components.md) like a plane, cube, or even a cone.
-- A [material](../sdk7/3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
-- A `VideoPlayer` component to control the state of the video.
+* An entity with a [primitive shape](../3d-essentials/shape-components.md) like a plane, cube, or even a cone.
+* A [material](../3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
+* A `VideoPlayer` component to control the state of the video.
 
 ## Performance considerations
 
@@ -123,11 +123,11 @@ The following simple set-up is recommended:
 
 ## Live streaming
 
-You can livestream from your camera or share your screen using the [Live streaming](../scene-editor/live-ops/live-streaming.md) feature of the [Admin tools](../scene-editor/live-ops/scene-admin.md) smart item.
+You can livestream from your camera or share your screen using the [Live streaming](../../scene-editor/live-ops/live-streaming.md) feature of the [Admin tools](../../scene-editor/live-ops/scene-admin.md) smart item.
 
 This streaming method uses the same comms architecture used for live communications between players. It's easy to set up and has much less delay than streaming from external sources.
 
-1. Add an [Admin tools](../scene-editor/live-ops/scene-admin.md) smart item to your scene, as well as a [Video player](../scene-editor/interactivity/video-screen.md) smart item.
+1. Add an [Admin tools](../../scene-editor/live-ops/scene-admin.md) smart item to your scene, as well as a [Video player](../../scene-editor/interactivity/video-screen.md) smart item.
 2. Publish your scene, either to a World or to Genesis City.
 3. Enter the scene as a player with the permission to use the Admin tools.
 4. Open the Admin console, select the **Video** tab, then select the **Live** functionality and click the **Get Stream Key** button.
@@ -159,7 +159,7 @@ Material.setBasicMaterial(screen, {
 
 ## Video Materials
 
-Most of the time, you'll want to play videos on an unlit [Basic material](../sdk7/3d-essentials/materials.md#unlit-materials), rather than a PBR material. This results in a much brighter and crisper image and is better for performance.
+Most of the time, you'll want to play videos on an unlit [Basic material](../3d-essentials/materials.md#unlit-materials), rather than a PBR material. This results in a much brighter and crisper image and is better for performance.
 
 ```ts
 Material.setBasicMaterial(screen, {
@@ -184,7 +184,7 @@ Material.setPbrMaterial(screen, {
 {% hint style="info" %}
 **💡 Tip**: Since the video is a texture that's added to a material, you can also experiment with other properties of materials, like tinting it with a color, or adding other texture layers, for example to produce a dirty screen effect.
 
-See [materials](../sdk7/3d-essentials/materials.md) for more details.
+See [materials](../3d-essentials/materials.md) for more details.
 {% endhint %}
 
 ## About Video Files
@@ -195,7 +195,7 @@ The following file formats are supported:
 - _.ogg_
 - _.webm_
 
-Keep in mind that a video file adds to the total size of the scene, which makes the scene take longer to download for players walking into your scene. The video size might also make you go over the [scene limitations](../sdk7/optimizing/scene-limitations.md), as you have a maximum of 15 MB per parcel to use. We recommend compressing the video as much as possible, so that it's less of a problem.
+Keep in mind that a video file adds to the total size of the scene, which makes the scene take longer to download for players walking into your scene. The video size might also make you go over the [scene limitations](../optimizing/scene-limitations.md), as you have a maximum of 15 MB per parcel to use. We recommend compressing the video as much as possible, so that it's less of a problem.
 
 We also recommend starting to play the video when the player is nearby or performs an action to trigger it. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
@@ -405,7 +405,7 @@ Material.setBasicMaterial(screen, {
 
 ## Play a video on a glTF model
 
-You can play a video on a _glTF_ model by using the [GltfNodeModifiers](../sdk7/3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
+You can play a video on a _glTF_ model by using the [GltfNodeModifiers](../3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../3d-essentials/materials.md#modify-gltf-materials) for more details.
 
 This allows you to play your videos on any shape, not just planes. For example, you can play videos on a curved screen, or even the entire body of an NPC.
 
@@ -446,7 +446,7 @@ GltfNodeModifiers.create(myEntity, {
 
 The mapping of the video will follow the original UV mapping that the model uses. This means that if the model has a texture that is mapped to a specific part of the model, the video will be mapped to that same part.
 
-You can also use the `GltfNodeModifiers` component to play a video only on a specific mesh inside the model. For example, you can play it on a specific wall of a building, even though the model spans the entire building. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
+You can also use the `GltfNodeModifiers` component to play a video only on a specific mesh inside the model. For example, you can play it on a specific wall of a building, even though the model spans the entire building. See [Modify glTF materials](../3d-essentials/materials.md#modify-gltf-materials) for more details.
 
 ## Spatial audio
 

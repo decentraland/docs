@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(curl -sL https://github.com/dcl-regenesislabs/opendcl/commit/f9114f88bb58b047b4b03ad0d51c3b5d53bf8434.diff)",
+      "Bash(python3 -c \"import sys,json,base64; d=json.load\\(sys.stdin\\); print\\(base64.b64decode\\(d[''''content'''']\\).decode\\(\\)[:5000]\\)\")",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/references/model-catalog.md\")",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/SKILL.md\")",
+      "Bash(mkdir -p /Users/Nico/Documents/github/docs/ai-sdk-context/Skills/add-3d-models/references)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/references/model-catalog.md\" -o /Users/Nico/Documents/github/docs/ai-sdk-context/Skills/add-3d-models/references/model-catalog.md)"
+    ]
+  }
+}

@@ -6,7 +6,7 @@ description: How many things can I put on my scene?
 
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. These limits are per-parcel. So the larger the scene, the higher these limits are set.
 
-When working with the [Creator Hub](../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
+When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
 
 ![](../../../.gitbook/assets/triangle-limit1.png)
 
@@ -46,7 +46,7 @@ You can list any other files or folders you want to exclude from being uploaded 
 
 ## Optimizing
 
-See [Performance Optimization](../sdk7/optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
+See [Performance Optimization](../optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
 ## Scene boundaries
 
@@ -60,7 +60,7 @@ It's possible to position entities underground, to either hide them or to have o
 
 ## Shader limitations
 
-3D models used in decentraland must use supported shaders and materials. See [3D model materials](../3d-modeling/materials.md) for a list of supported shaders.
+3D models used in decentraland must use supported shaders and materials. See [3D model materials](../../3d-modeling/materials.md) for a list of supported shaders.
 
 ## Lighting
 

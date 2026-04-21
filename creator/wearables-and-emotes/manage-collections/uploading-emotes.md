@@ -8,7 +8,7 @@ Once you export your emote, you’ll have to upload it to the builder. This docu
 
 ## **Uploading Your File**
 
-Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your emote, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file has any animation, identifying it as an emote.
+Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/creating-a-collection). To upload your emote, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file has any animation, identifying it as an emote.
 
 ![](<../../../.gitbook/assets/01_new_item (1).png>)
 
@@ -48,7 +48,7 @@ This way the builder is going to take all the .json information and it automatic
 
 **Rarity**
 
-Check the rarity chart in [here](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md#rarity).
+Check the rarity chart in [here](https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/creating-a-collection#rarity).
 
 ## **Category**
 

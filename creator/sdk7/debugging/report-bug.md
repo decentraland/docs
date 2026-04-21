@@ -12,7 +12,7 @@ Before submitting a bug report, please ensure the following:
 
 * Ensure you're using the latest version of the SDK, in case the issue has already been fixed in newer releases.
 * Check the documentation for the feature you're trying to use, to confirm that it's supposed to behave as you're expecting, and that this is not just a misunderstanding.
-* Rule out that the problem could be caused by how your scene is built. See [Debug in Preview](../sdk7/debugging/debug-in-preview.md) and [Debug in Prod](../sdk7/debugging/debug-in-prod.md) for tips.
+* Rule out that the problem could be caused by how your scene is built. See [Debug in Preview](../debugging/debug-in-preview.md) and [Debug in Prod](../debugging/debug-in-prod.md) for tips.
 * Avoid duplicates. Check the [list of known bugs](https://github.com/orgs/decentraland/projects/20/views/13) to avoid making a duplicate. If you have more information to add to an existing issue, please add a comment to the issue rather than creating a new issue.
 
 ## Reporting a bug

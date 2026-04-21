@@ -19,7 +19,7 @@
 16. [Design & Experience](#design--experience)
 17. [Web Editor](#web-editor)
 18. [Advanced Topics](#advanced-topics)
-19. [Common Mistakes](#common-mistakes)
+
 ---
 
 ## Installation & Setup
@@ -2163,33 +2163,19 @@ videoEventsSystem.registerVideoEventsEntity(screen, (videoEvent) => {
   console.log('Video state:', videoEvent.state)
   console.log('Current time:', videoEvent.currentOffset)
   console.log('Video length:', videoEvent.videoLength)
-  console.log('Timestamp:', videoEvent.timeStamp)
-  console.log('Tick number:', videoEvent.tickNumber)
   
   switch (videoEvent.state) {
-    case VideoState.VS_READY:
-      console.log('Video ready to play')
-      break
-    case VideoState.VS_NONE:
-      console.log('Video in no state')
-      break
-    case VideoState.VS_ERROR:
-      console.log('Video error occurred')
-      break
-    case VideoState.VS_SEEKING:
-      console.log('Video seeking')
-      break
-    case VideoState.VS_LOADING:
-      console.log('Video loading')
-      break
-    case VideoState.VS_BUFFERING:
-      console.log('Video buffering')
-      break
     case VideoState.VS_PLAYING:
       console.log('Video started playing')
       break
     case VideoState.VS_PAUSED:
       console.log('Video paused')
+      break
+    case VideoState.VS_READY:
+      console.log('Video ready to play')
+      break
+    case VideoState.VS_ERROR:
+      console.log('Video error occurred')
       break
   }
 })
@@ -2198,8 +2184,6 @@ videoEventsSystem.registerVideoEventsEntity(screen, (videoEvent) => {
 const latestEvent = videoEventsSystem.getVideoState(screen)
 if (latestEvent) {
   console.log('Latest state:', latestEvent.state)
-  console.log('Current offset:', latestEvent.currentOffset)
-  console.log('Video length:', latestEvent.videoLength)
 }
 ```
 
@@ -2260,26 +2244,6 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-#### Spatial Audio for Videos
-```typescript
-// Enable spatial audio for video
-VideoPlayer.create(screen, {
-  src: 'videos/myVideo.mp4',
-  playing: true,
-  spatial: true,  // Enable spatial audio
-  spatialMinDistance: 5,  // Full volume within 5m
-  spatialMaxDistance: 20  // No audio beyond 20m
-})
-
-// Spatial audio properties:
-// - spatial: boolean - Enable/disable spatial audio (default: false)
-// - spatialMinDistance: number - Min distance for full volume (default: 0)
-// - spatialMaxDistance: number - Max distance audio is heard (default: 60)
-
-// Note: Some video formats don't support spatial audio
-// Supported formats: mp4, m4a, mov
-```
-
 #### Performance Considerations
 ```typescript
 // Video performance limits:
@@ -2323,67 +2287,6 @@ AudioStream.create(entity, {
 const stream = AudioStream.getMutable(entity)
 stream.playing = false
 stream.volume = 0.3
-```
-
-#### Audio Stream State Querying
-```typescript
-import { AudioStream, MediaState } from '@dcl/sdk/ecs'
-
-// Query the current state of an audio stream
-const state = AudioStream.getAudioState(entity)
-
-// Available states:
-// MediaState.MS_BUFFERING
-// MediaState.MS_ERROR
-// MediaState.MS_LOADING
-// MediaState.MS_NONE
-// MediaState.MS_PAUSED
-// MediaState.MS_PLAYING
-// MediaState.MS_READY
-// MediaState.MS_SEEKING
-
-// Monitor state changes
-let lastState: MediaState | undefined = undefined
-
-engine.addSystem(() => {
-  const currentState = AudioStream.getAudioState(entity)
-  
-  if (lastState !== currentState) {
-    console.log('Stream state changed:', currentState)
-    
-    if (currentState === MediaState.MS_ERROR) {
-      // Handle error - attempt reconnection
-      console.log('Stream error, attempting reconnection...')
-    }
-    
-    lastState = currentState
-  }
-})
-```
-
-#### Spatial Audio for Audio Streams
-```typescript
-// Enable spatial audio for audio stream
-AudioStream.create(entity, {
-  url: 'https://example.com/stream.mp3',
-  playing: true,
-  volume: 1.0,
-  spatial: true,  // Enable spatial audio
-  spatialMinDistance: 5,  // Full volume within 5m
-  spatialMaxDistance: 20   // No audio beyond 20m
-})
-
-Transform.create(entity, {
-  position: Vector3.create(8, 0, 8)  // Audio source position
-})
-
-// Spatial audio properties:
-// - spatial: boolean - Enable/disable spatial audio (default: false)
-// - spatialMinDistance: number - Min distance for full volume (default: 0)
-// - spatialMaxDistance: number - Max distance audio is heard (default: 60)
-
-// Note: Some audio formats don't support spatial audio
-// Supported formats: mp3, AAC-LC, FLAC
 ```
 
 ---
@@ -3777,10 +3680,5 @@ function attemptAction(entity: Entity, action: () => void) {
   }
 }
 ```
-
-## Common mistakes
-
-- There is no `console.warn` or `console.info`, only `console.log` is supported
-- Entities are not objects, the entity itself is just a numerical ID
 
 This comprehensive reference covers all major aspects of Decentraland SDK7 development, from basic setup to advanced patterns and optimization techniques. Use this as a complete reference for building scenes, implementing interactivity, managing assets, and creating engaging experiences in Decentraland. 

@@ -12,7 +12,11 @@ Make sure you have the Decentraland Creator Hub installed.
 
 * [Installation Guide](../../scene-editor/get-started/editor-installation.md)
 
-If you intend to work with code, also make sure you install [Visual Studio Code](https://code.visualstudio.com/).
+If you intend to work with code, also make sure you install [Visual Studio Code](https://code.visualstudio.com/) or [Cursor AI](https://www.cursor.com/).
+
+{% hint style="info" %}
+**💡 Tip**: You can also use AI assistants to generate scene code from plain language descriptions. See [Vibe Coding with AI](vibe-coding.md) for how to get started with AI-assisted development.
+{% endhint %}
 
 ## Design your experience
 

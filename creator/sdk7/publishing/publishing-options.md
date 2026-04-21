@@ -41,7 +41,7 @@ You can also get a World by having an [ENS domain](https://ens.domains), a decen
 
 ### Storage Capacity
 
-Inside a World, you're allowed to use as many parcels as you want. For Decentraland NAME holders, the size limit of your scene in MegaBytes depends on how many NAMES, MANA, and LAND parcels you own. See [Worlds size limits](../sdk7/projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.
+Inside a World, you're allowed to use as many parcels as you want. For Decentraland NAME holders, the size limit of your scene in MegaBytes depends on how many NAMES, MANA, and LAND parcels you own. See [Worlds size limits](../projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.
 
 Worlds serve as a gateway for aspiring content creators, providing an accessible entry point to creating in Decentraland and the freedom to experiment with scene creation.
 

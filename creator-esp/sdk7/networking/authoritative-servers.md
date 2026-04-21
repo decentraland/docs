@@ -10,6 +10,10 @@ metaLinks:
 
 # Servidores Autoritativos
 
+{% hint style="info" %}
+**💡 Nota**: La documentación completa y actualizada del **servidor autoritativo nativo del SDK** (con `isServer()`, `registerMessages()`, `Storage`, `EnvVar` y más) está disponible en inglés: [Authoritative Servers](../../sdk7/networking/authoritative-servers.md).
+{% endhint %}
+
 Decentraland ejecuta escenas localmente en el navegador de un jugador. Por defecto, los jugadores pueden verse e interactuar directamente entre sí, pero cada uno interactúa con el entorno de manera independiente. Los cambios en el entorno no se comparten entre jugadores por defecto. Debes implementar esto manualmente.
 
 Permitir que todos los jugadores vean una escena teniendo el mismo contenido en el mismo estado es extremadamente importante para que los jugadores interactúen de maneras más significativas. Sin esto, si un jugador abre una puerta y entra a una casa, otros jugadores verán esa puerta como aún cerrada, y el primer jugador parecerá caminar directamente a través de la puerta cerrada para otros jugadores.

@@ -13,7 +13,7 @@ If the scene can't be compiled, you'll just see the empty ground, with nothing r
 3. If you ran the scene using the Creator Hub, check the window with the console output of the scene. If you ran the scene using the CLI, check the output of the command line where you ran `npm run start`
 
 {% hint style="info" %}
-**💡 Tip**: Before you publish your scene to the production environment, publish it to the test environment to try it in a context that is a lot closer to production. See [Development Workflow](../sdk7/getting-started/dev-workflow.md#deploy-to-the-test-environment)
+**💡 Tip**: Before you publish your scene to the production environment, publish it to the test environment to try it in a context that is a lot closer to production. See [Development Workflow](../getting-started/dev-workflow.md#deploy-to-the-test-environment)
 {% endhint %}
 
 ## Use the console
@@ -68,7 +68,7 @@ The **WEB REQUESTS** section allows you to open the Chrome Devtools Network tab,
 If your scene interacts with a third party server, it's often useful to see what data goes in and out. Click **Open Chrome Devtools** to open a new Chrome window with the Network tab open.
 
 {% hint style="warning" %}
-**📔 Note**: To use this feature, you must first install the [Creator Hub](../scene-editor/get-started/editor-installation.md), as the necessary dependencies are bundled with that installation.
+**📔 Note**: To use this feature, you must first install the [Creator Hub](../../scene-editor/get-started/editor-installation.md), as the necessary dependencies are bundled with that installation.
 
 You don't need to have the Creator Hub open or run your scene preview via the Creator Hub to use this feature, it can also be used if you're using the CLI to run your scene preview.
 {% endhint %}
@@ -89,7 +89,7 @@ You can also reload the scene by writing the following into the chat and pushing
 
 ## Report a bug
 
-If you encounter a problem that is not with your scene, but instead with the Decentraland SDK in general, please see [Report a bug](../sdk7/debugging/report-bug.md).
+If you encounter a problem that is not with your scene, but instead with the Decentraland SDK in general, please see [Report a bug](../debugging/report-bug.md).
 
 ## Dependency versions
 
@@ -122,7 +122,7 @@ Check that your scene looks good at all times of day by switching the game clock
 
 Your 3d model's materials might not look the same as they did in the modeling tool you created it with. This is to be expected, as all 3d rendering engines have subtle differences in how they deal with light and materials.
 
-You can also set up your scene so that the time of day is fixed and lighting does not change. See [Skybox control](../sdk7/interactivity/skybox-control.md) for more details.
+You can also set up your scene so that the time of day is fixed and lighting does not change. See [Skybox control](../interactivity/skybox-control.md) for more details.
 
 ## Multiplayer testing
 

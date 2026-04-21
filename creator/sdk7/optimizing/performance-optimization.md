@@ -19,11 +19,11 @@ Playing videos is one of the most expensive things for the engine to handle. If 
 You should also avoid having videos playing in regions where they can't be seen. For example, if you have a screen indoors, toggle the video using a trigger area based on when the player walks in and out.
 
 {% hint style="info" %}
-**💡 Tip**: A trick several scenes have used is to stream a single video with multiple regions that are mapped differently to different planes. Each video screen uses [UV mapping](../sdk7/3d-essentials/materials.md#using-textures) to only show a distinct part of the VideoTexture. Thanks to this, it can appear that there are separate videos playing without the cost of multiple VideoTextures.
+**💡 Tip**: A trick several scenes have used is to stream a single video with multiple regions that are mapped differently to different planes. Each video screen uses [UV mapping](../3d-essentials/materials.md#using-textures) to only show a distinct part of the VideoTexture. Thanks to this, it can appear that there are separate videos playing without the cost of multiple VideoTextures.
 {% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: When players are standing outside your scene, VideoTextures are not updated on every frame. This helps reduce the impact for surrounding scenes. It's nevertheless ideal only turn on the playing of any videos when players [step inside your scene](../sdk7/interactivity/event-listeners.md#player-enters-or-leaves-scene) .
+**💡 Tip**: When players are standing outside your scene, VideoTextures are not updated on every frame. This helps reduce the impact for surrounding scenes. It's nevertheless ideal only turn on the playing of any videos when players [step inside your scene](../interactivity/event-listeners.md#player-enters-or-leaves-scene) .
 {% endhint %}
 
 ### Lazy loading
@@ -36,7 +36,7 @@ See [this example scene](https://github.com/decentraland-scenes/lazy-loading) fo
 
 For the best result in terms of avoiding hiccups, hide entities by switching their shape's `visible` property to false. With this approach, you add them to the engine when creating them, but you simply don't make their models visible.
 
-An alternative is to not add the entities to the engine until needed. This may result in some hiccups when the entities appear for the first time, and they might also take a couple of seconds to become visible. The advantage of this approach is that it's a valid way to get around the [scene limitations](../sdk7/optimizing/scene-limitations.md). Keep in mind that the scene limitations count is for the content that is being rendered in the scene at any given time, not for the total content that could be rendered. Loading and unloading parts of the scene should allow you to work around those limitations.
+An alternative is to not add the entities to the engine until needed. This may result in some hiccups when the entities appear for the first time, and they might also take a couple of seconds to become visible. The advantage of this approach is that it's a valid way to get around the [scene limitations](../optimizing/scene-limitations.md). Keep in mind that the scene limitations count is for the content that is being rendered in the scene at any given time, not for the total content that could be rendered. Loading and unloading parts of the scene should allow you to work around those limitations.
 
 {% hint style="warning" %}
 **📔 Note**: Entities that are not visible but are added to the engine do count towards the scene limitations.
@@ -50,7 +50,7 @@ You can also toggle animations on or off for entities that are far or occluded. 
 
 ### Async blocks
 
-Blocks of [async code](../sdk7/programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
+Blocks of [async code](../programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
 
 Any processes that rely on responses from asynchronous services, such as `getPlayerData()` or `getRealm()` should always run in async blocks, as they otherwise block the rest of the scene's loading while waiting for a response. The same applies to any calls to third party servers.
 
@@ -58,9 +58,9 @@ Note that the scene will be considered fully loaded when everything that isn't a
 
 ### Rely on Events
 
-Try to make the scene's logic rely on listening to [events](../sdk7/interactivity/event-listeners.md) as much as possible, instead of running checks every frame.
+Try to make the scene's logic rely on listening to [events](../interactivity/event-listeners.md) as much as possible, instead of running checks every frame.
 
-The `update()` function in a [system](../sdk7/architecture/systems.md) runs on every frame, 30 times per second (ideally). Avoid doing recurring checks if you can instead subscribe to an event.
+The `update()` function in a [system](../architecture/systems.md) runs on every frame, 30 times per second (ideally). Avoid doing recurring checks if you can instead subscribe to an event.
 
 For example, instead of constantly checking the player's wearables, you can subscribe to the `onProfileChanged` event, and check the player's wearables only when they've changed.
 
@@ -70,7 +70,7 @@ If you must use a system, avoid doing checks or adjustments on every single fram
 
 There are several ways in which your 3D models can be optimized to be lighter.
 
-When working with the [Creator Hub](../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, and if they pass any of the [scene limitations](../sdk7/optimizing/scene-limitations.md).
+When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, and if they pass any of the [scene limitations](../optimizing/scene-limitations.md).
 
 ![](../../../.gitbook/assets/triangle-limit1.png)
 
@@ -140,11 +140,11 @@ About once a day, the Decentraland content servers run a process to compress eve
 
 ## Connectivity
 
-If your scene connects to any 3rd party servers or uses the [messagebus](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, there are also some things you might want to keep in mind.
+If your scene connects to any 3rd party servers or uses the [messagebus](../networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, there are also some things you might want to keep in mind.
 
 * Your scene should only have one active WebSockets connection at a time.
 * HTTP calls are funneled by the engine so that only one is handled at a time. Any additional requests are queued internally and must wait till other requests are completed. This queuing process is handled automatically, you don't need to do anything.
-* When using the [messagebus](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly results in sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
+* When using the [messagebus](../networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly results in sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
 
 ## Scene UI
 
@@ -180,6 +180,6 @@ Keep in mind that the performance you experience in preview may differ from that
 * The compression of the scenes' 3D models into asset bundles can have a positive impact
 * Some players visiting your scene may be running on less powerful hardware
 
-It's always a good practice to try deploying your scene first to the [test environment](../sdk7/publishing/publishing.md#the-test-server) to do some more thorough testing.
+It's always a good practice to try deploying your scene first to the [test environment](../publishing/publishing.md#the-test-server) to do some more thorough testing.
 
 Always ask players for feedback. Never take for granted that how you experience the scene is the same for everyone else.

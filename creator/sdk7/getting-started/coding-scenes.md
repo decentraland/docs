@@ -11,21 +11,21 @@ description: >-
 
 At a very high level, the Decentraland **Software Development Kit** (SDK) allows you to do the following:
 
-* Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
-* Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
-* Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
-* Upload the content of your scene to the content server.
-* Link your LAND tokens to the URL of the content you have uploaded.
+- Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
+- Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
+- Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
+- Upload the content of your scene to the content server.
+- Link your LAND tokens to the URL of the content you have uploaded.
 
 Our SDK includes the following:
 
-* **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md)
-* **The Decentraland ECS**: A TypeScript package containing the framework of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
-* **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://studios.decentraland.org/resources?sdk_version=SDK7).
+- **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md)
+- **The Decentraland ECS**: A TypeScript package containing the framework of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
+- **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://studios.decentraland.org/resources?sdk_version=SDK7).
 
 Other legacy tools:
 
-* **The Web Editor**: A web based too for creating simple scenes and publishing them.
+- **The Web Editor**: A web based too for creating simple scenes and publishing them.
 
 ## Requirements
 
@@ -33,12 +33,16 @@ To develop a scene locally, you don't need to own LAND tokens. Developing and te
 
 You must have:
 
-* **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md).
+- **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md).
 
 If you plan to edit the scene's code, you'll also need to install one of the following:
 
-* <img src="../../../.gitbook/assets/vscode.png" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
-* <img src="../../../.gitbook/assets/cursor-icon.png" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
+- <img src="../../../.gitbook/assets/vscode.png" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
+- <img src="../../../.gitbook/assets/cursor-icon.png" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
+
+{% hint style="info" %}
+**💡 Tip**: You can use AI assistants like Cursor, OpenDCL, or Claude Code to build entire scenes from plain language descriptions — no TypeScript experience required. See [Vibe Coding with AI](vibe-coding.md) to get started.
+{% endhint %}
 
 ## Supported languages and syntax
 
@@ -149,9 +153,9 @@ See [Systems](../architecture/systems.md) for more details about how systems are
 
 The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through part of the code at a regular interval and does the following:
 
-* Listen for player input
-* Update the scene
-* Re-render the scene
+- Listen for player input
+- Update the scene
+- Re-render the scene
 
 In most traditional software programs, all events are triggered directly by player actions. Nothing in the program's state will change until the player clicks on a button, opens a menu, etc.
 
@@ -195,9 +199,9 @@ To avoid that scenario, it's always recommended to write out your scene's initia
 
 You can write your code outside the `main()` function when:
 
-* The code is indirectly called by `main()`
-* The code defines a system, or adds a system to the engine
-* The code is inside an [async function](../programming-patterns/async-functions.md)
+- The code is indirectly called by `main()`
+- The code defines a system, or adds a system to the engine
+- The code is inside an [async function](../programming-patterns/async-functions.md)
 
 {% hint style="warning" %}
 **📔 Note**: By the time the code inside an async function or a system is first executed, everything in the scene is already properly initialized.
@@ -350,10 +354,10 @@ When Using VS Studio Code to write your scenes, the smart auto-complete options 
 
 When you paste a snippet into your scene, however, you will likely see some elements marked in red, which are not imported into that file. To fix this:
 
-* Click on each underlined word
-* Click on the light-bulb icon on the left of the line
-* Select **Add Import From**
-* An import line appears at the start of the file.
+- Click on each underlined word
+- Click on the light-bulb icon on the left of the line
+- Select **Add Import From**
+- An import line appears at the start of the file.
 
 ![](../../../.gitbook/assets/imports.png)
 

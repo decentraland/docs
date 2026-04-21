@@ -4,7 +4,7 @@ description: Basics about the avatar rig.
 
 # Avatar Rig
 
-A rig is a virtual skeleton that allows a model to move. It consists of a hierarchy of individual bones, much like a real life skeleton, and it works under a parent/child relationship. This document will cover some basic rigging concepts, such as bone position, bone orientation, deforming and non-deforming bones, the difference between IK and FK and their purposes. The structure of an avatar’s rig, custom attributes, and setup for animating can be found in [rig features](../wearables-and-emotes/emotes/rig-features.md).
+A rig is a virtual skeleton that allows a model to move. It consists of a hierarchy of individual bones, much like a real life skeleton, and it works under a parent/child relationship. This document will cover some basic rigging concepts, such as bone position, bone orientation, deforming and non-deforming bones, the difference between IK and FK and their purposes. The structure of an avatar’s rig, custom attributes, and setup for animating can be found in [rig features](rig-features.md).
 
 ## **The Basics**
 

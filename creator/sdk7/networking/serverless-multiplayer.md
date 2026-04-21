@@ -12,13 +12,13 @@ There are three ways to sync the scene state, so that all players see the same:
 
 * **Mark an entity as synced**: The easiest option. See [Marked an entity as synced](serverless-multiplayer.md#mark-an-entity-as-synced)
 * **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](serverless-multiplayer.md#send-explicit-messagebus-messages)
-* **Use a Server**: See [3rd party servers](../sdk7/networking/authoritative-servers.md). This option is more complicated to set up, but is recommendable if players have incentives to exploit your scene.
+* **Use an Authoritative Server**: See [Authoritative Servers](../networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
 
 The first two options are covered in this document. They are simpler, as they require no server. The downside is that you rely more on player's connection speeds, and the scene state is not persisted when all players leave the scene.
 
 ## Mark an Entity as Synced
 
-In the [Creator Hub](../scene-editor/get-started/about-editor.md), mark an entity as synced by adding a **Multiplayer component** to it. It includes a checkbox for each of the other components on the entity, allowing you to select which ones to update.
+In the [Creator Hub](../../scene-editor/get-started/about-editor.md), mark an entity as synced by adding a **Multiplayer component** to it. It includes a checkbox for each of the other components on the entity, allowing you to select which ones to update.
 
 ![](../../../.gitbook/assets/multiplayer-component.png)
 
@@ -41,7 +41,7 @@ The `syncEntity` function takes the following inputs:
 Not all entities or components need to be synced. Static elements like a tree that remains in the same spot don't require syncing. On entities you do sync, only the components that change over time should be synchronized. For example, if a cube changes color when clicked, you should only sync the Material component, not the MeshRenderer or the Transform, as those will never change.
 
 {% hint style="info" %}
-**💡 Tip**: If the data you want to share doesn't exist as a component, define a [custom component](../sdk7/architecture/custom-components.md) that holds that data.
+**💡 Tip**: If the data you want to share doesn't exist as a component, define a [custom component](../architecture/custom-components.md) that holds that data.
 {% endhint %}
 
 ### About the enum id
@@ -73,7 +73,7 @@ Here the EntityEnumId enum is used to tag entities with a unique identifier, ens
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: Avoid using numbers that are higher than **8001** if your scene also includes Smart Items. Items that are created by the [Creator Hub](../scene-editor/get-started/about-editor.md) with a Multiplayer component will use automatically assigned IDs from 8001 up. Any ID lower than 8001 is safe to assign to your synced entities.
+**📔 Note**: Avoid using numbers that are higher than **8001** if your scene also includes Smart Items. Items that are created by the [Creator Hub](../../scene-editor/get-started/about-editor.md) with a Multiplayer component will use automatically assigned IDs from 8001 up. Any ID lower than 8001 is safe to assign to your synced entities.
 {% endhint %}
 
 **Entities created by a player**

@@ -70,17 +70,17 @@ Decentraland is available on PC (Windows and Mac) and on mobile devices (iOS and
 
 **Android**
 
-|         | Minimum Required                   | Recommended Settings                  |
-| ------- | ---------------------------------- | ------------------------------------- |
-| OS      | Android 12                         | Android 13 or newer                   |
-| CPU     | Octa-core                          | Octa-core                             |
-| RAM     | 6 GB                               | 8 GB or more                          |
+|        | Minimum Required                 | Recommended Settings         |
+| ------ | -------------------------------- | ---------------------------- |
+| OS     | Android 12                       | Android 13 or newer          |
+| Device | Samsung Galaxy A53 or equivalent | Samsung Galaxy A54 or better |
+| RAM    | 4 GB                             | 6 GB or more                 |
 
 **iOS**
 
-|        | Minimum Required | Recommended Settings |
-| ------ | ---------------- | -------------------- |
-| Device | iPhone 13        | iPhone 14 or newer   |
+|        | Minimum Required         | Recommended Settings |
+| ------ | ------------------------ | -------------------- |
+| Device | iPhone 13 / SE (3rd Gen) | iPhone 14 or newer   |
 
 Get the mobile app from the [App Store (iOS)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs\&utm_medium=internal\&utm_content=ios) or [Google Play (Android)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer\&pcampaignid=web_share\&utm_source=docs\&utm_medium=internal\&utm_content=android). See [Decentraland on Mobile](../mobile-app/) for more details.
 

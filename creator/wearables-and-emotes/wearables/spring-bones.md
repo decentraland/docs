@@ -38,21 +38,21 @@ For spring bones to work nicely, they have to be parented to one of the avatar's
 
 It's important to notice how the structure of this hierarchy works.
 
-- Hair_springBone_1 (spring bone parent): this is the bone on top of the chain, it has physics configuration
-- Hair_springBone_2 (child spring bone): this is the child of the previous bone in the hierarchy and inherits the configuration.
-- Hair_springBone_end (spring bone end): it's the last bone of the chain and serves and endpoint only.
+- _Hair_springBone_1_ (spring bone parent): this is the bone on top of the chain, it has physics configuration
+- _Hair_springBone_2_ (child spring bone): this is the child of the previous bone in the hierarchy and inherits the configuration.
+- _Hair_springBone_end_ (spring bone end): it's the last bone of the chain and serves and endpoint only.
 
 ### Naming Convention
 
 All spring bones **must** contain the substring `springbone` (case-insensitive) in their name. The substring can appear at any position:
 
-- SpringBone_hair_left
-- hair_springbone_l
-- springbone_earring.R
+- _SpringBone_hair_left_
+- _hair_springbone_l_
+- _springbone_earring.R_
 
 To keep your workflow organized, it's suggested to use this format: **BodyPart/WearableName_springBone**
 
-Examples: Hair_springBone_1, Earring_springBone.L etc… Feel free to use to format that best suits you, as long as it's following Blender's (or your prefered software) naming convention for left and right.
+Examples: _Hair_springBone_1_, _Earring_springBone.L_ etc… Feel free to use to format that best suits you, as long as it's following Blender's (or your prefered software) naming convention for left and right.
 
 {% hint style="warning" %} Attention!
 
@@ -144,7 +144,9 @@ After uploading a wearable that contains `springbone`-named bones, the Builder a
 
 From this panel you can configure the physics parameters for each spring root bone. The avatar preview in the Builder will immediately reflect your changes, so you can fine-tune the behavior in real time.
 
-{% hint style="info" %} You cannot add new spring bones from the Builder. The bones must already exist in the uploaded `.glb` file with the correct naming convention. The Builder only lets you configure the physics parameters for detected spring bones. {% endhint %}
+{% hint style="info" %}
+
+You cannot add new spring bones from the Builder. The bones must already exist in the uploaded `.glb` file with the correct naming convention. The Builder only lets you configure the physics parameters for detected spring bones. {% endhint %}
 
 ### Parameter Reference
 

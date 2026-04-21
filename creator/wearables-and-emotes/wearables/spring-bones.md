@@ -4,8 +4,6 @@ description: Add dynamic physics to wearables with Spring Bones
 
 # Spring Bones
 
-<video src="../../images/spring-bones/00_spring-bones-demo.mp4" autoplay muted loop></video>
-
 ### What are Spring Bones?
 
 Spring bones (also known as jiggle bones or physics bones) are extra bones added to a wearable that move dynamically in response to avatar movement and gravity, rather than being driven by animation clips. They bring life to elements like hair, earrings, capes, belts, ponytails, and other hanging accessories by making them sway, bounce, and settle naturally as the avatar walks, runs, or turns.

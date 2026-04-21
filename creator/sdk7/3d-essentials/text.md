@@ -12,13 +12,13 @@ Text in Decentraland supports all _utf8_ characters, this includes oriental and 
 **📔 Note**: This component is useful for in-world labels and UIs that exist in the 3D space of the scene, not for the player's 2D HUD UI.
 {% endhint %}
 
-The `TextShape` component is mutually exclusive with other shape components like primitive shapes and glTF 3D models, see [Shape components](../sdk7/3d-essentials/shape-components.md) for more details.
+The `TextShape` component is mutually exclusive with other shape components like primitive shapes and glTF 3D models, see [Shape components](../3d-essentials/shape-components.md) for more details.
 
 To add text as a label on an existing entity, you create a second entity that has the `TextShape` component and set it as a child of the other entity.
 
 ## Use the Scene Editor in Creator Hub
 
-The easiest way to place text in-world is add a **Text** [Smart item](../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
+The easiest way to place text in-world is add a **Text** [Smart item](../../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
 
 ![](../../../.gitbook/assets/text-smart-item.png)
 
@@ -51,14 +51,14 @@ TextShape.create(sign, {
 
 > `import { TextShape } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ## Change the text value
 
 When creating a new text component, you assign it a string to display. This string is stored in the `text` field.
 
-If you want to change the string displayed by the component, you can do so at any time by changing the `text` field on a [mutable version](../sdk7/programming-patterns/mutable-data.md) of the component.
+If you want to change the string displayed by the component, you can do so at any time by changing the `text` field on a [mutable version](../programming-patterns/mutable-data.md) of the component.
 
 ```ts
 const mutableText = TextShape.getMutable(myEntity)
@@ -72,7 +72,7 @@ The `TextShape` component has several properties that can be set to style the te
 
 * `font`: Value from the enum `Font`.
 * `fontSize`: _number_. An entiy with font 10 is 1 meter tall.
-* `textColor`: _Color4_ object. _Color4_ objects store an _RBG_ color as three numbers from 0 to 1, plus _alpha_ for transparency. See [color types](../sdk7/3d-essentials/color-types.md) for more details.
+* `textColor`: _Color4_ object. _Color4_ objects store an _RBG_ color as three numbers from 0 to 1, plus _alpha_ for transparency. See [color types](../3d-essentials/color-types.md) for more details.
 
 ```ts
 TextShape.create(sign, {
@@ -124,7 +124,7 @@ The `TextShape` component creates a text box that has a size, padding, etc.
 * `zIndex`: _number_. Useful for when multiple flat entities occupy the same space, it determines which one to show in front.
 
 {% hint style="info" %}
-**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../sdk7/3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
+**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
 {% endhint %}
 
 ## Text shadow and outline properties

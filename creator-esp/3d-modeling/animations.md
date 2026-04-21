@@ -12,9 +12,11 @@ metaLinks:
 
 La animación es el arte de dar vida a las cosas. Y no hay mejor manera de hacer tu escena más viva que agregando algunas animaciones a tus modelos 3D.
 
-Sin embargo, hay un par de formas de hacerlo: a través de **object animation** o a través de un **rig (skeletal animation)**.
+Sin embargo, hay varias formas de hacerlo: a través de **object animation**, a través de un **rig (skeletal animation)**, o usando **shape keys (morph target animation)**.
 
-**Object animation** es mejor para modelos simples, como una pelota rebotando, un globo girando o una silla flotante y no necesita un armature. Es importante mencionar que object animation es diferente de **vertex animation**. En object animation, el modelo se animará como un todo, mientras que en vertex animation, como su nombre lo dice, cada vértice del objeto puede ser animado por separado (lo cual es súper útil para crear shape keys, por ejemplo). Aunque object animation está perfectamente bien para usar, **vertex animation actualmente no es soportado por el motor de Decentraland**.
+**Object animation** es mejor para modelos simples, como una pelota rebotando, un globo girando o una silla flotante y no necesita un armature. Es importante mencionar que object animation es diferente de **vertex animation**. En object animation, el modelo se animará como un todo, mientras que en vertex animation cada vértice del objeto puede ser animado por separado.
+
+**Los shape keys (también conocidos como morph targets o blend shapes)** son una forma de vertex animation que **son compatibles con el motor de Decentraland**. Son especialmente útiles para expresiones faciales, sincronización labial o cualquier deformación que sea difícil de lograr solo con huesos. Las animaciones de shape keys incrustadas en un archivo glTF/GLB se reproducirán en el mundo al igual que las animaciones esqueléticas o de objeto.
 
 Si tienes un modelo más complejo, como una persona, criatura o maquinaria, entonces necesitarás un **rig**. Un rig no es más que un esqueleto digital que moverá y deformará el mesh. El proceso de vincular el mesh al skeleton se llama Skinning, donde defines qué bone afectará a cada vertex group y qué tan fuerte será esa influencia, asegurándote de que el modelo se deforme de la mejor manera posible.
 

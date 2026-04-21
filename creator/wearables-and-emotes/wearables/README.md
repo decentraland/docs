@@ -24,9 +24,7 @@ Smart wearables are portable experiences that are turned on when the player puts
 
 To know how to create **Smart Wearables** you can follow these [guidelines.](https://docs.decentraland.org/creator/development-guide/sdk7/smart-wearables/)
 
-{% hint style="warning" %}
-Smart wearables, as a subset of wearables, possess the capability to integrate advanced interactions and functionalities. Consequently, proficient skills in coding are necessary to unlock their full potential and enhance their features.
-{% endhint %}
+{% hint style="warning" %} Smart wearables, as a subset of wearables, possess the capability to integrate advanced interactions and functionalities. Consequently, proficient skills in coding are necessary to unlock their full potential and enhance their features. {% endhint %}
 
 ## Wearable Categories
 
@@ -36,31 +34,31 @@ The different categories are:
 
 ![](../images/wearables-and-emotes/creating-wearables/47_base_categories.png)
 
-* **Skin:** Replaces the entire avatar (head, upper body, lower body and feet except accessories)
-* **Head:**
-  * **Mouth**
-  * **Eyes**
-  * **Eyebrows**
-  * **Facial Hair**
-  * **Hair**
-* **Upper Body**
-* **Lower Body**
-* **Handwear**
-* **Feet**
+- **Skin:** Replaces the entire avatar (head, upper body, lower body and feet except accessories)
+- **Head:**
+  - **Mouth**
+  - **Eyes**
+  - **Eyebrows**
+  - **Facial Hair**
+  - **Hair**
+- **Upper Body**
+- **Lower Body**
+- **Handwear**
+- **Feet**
 
 There are also accessories that can be applied to different areas of an avatar. Some of these accessories can impact other wearables. The accessories are:
 
 ![](../images/wearables-and-emotes/creating-wearables/48_accessories_categories.png)
 
-* **Mask**
-* **Eyewear**
-* **Earring**
-* **Tiara**
-* **Top Head**
-* **Hat**
-* **Helmet**
+- **Mask**
+- **Eyewear**
+- **Earring**
+- **Tiara**
+- **Top Head**
+- **Hat**
+- **Helmet**
 
-For a detailed description of each category, and how items within each category interact or hide one another, see **[Creating Wearables](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/creating-wearables)**.
+For a detailed description of each category, and how items within each category interact or hide one another, see **[Creating Wearables](creating-wearables.md)**.
 
 You can preview basic wearables using the [Wearable Preview Tool](https://wearable-preview.decentraland.org/?profile=default1&transparentBackground&loop=true).
 
@@ -68,4 +66,4 @@ You can preview basic wearables using the [Wearable Preview Tool](https://wearab
 
 The following shared folder contains example wearables, base models, textures and other resources you can use:
 
-* [**Wearables Reference Models**](https://drive.google.com/drive/u/1/folders/12hOVgZsLriBuutoqGkIYEByJF8bA-rAU)
+- [**Wearables Reference Models**](https://drive.google.com/drive/u/1/folders/12hOVgZsLriBuutoqGkIYEByJF8bA-rAU)

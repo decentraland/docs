@@ -1,0 +1,150 @@
+---
+title: Vibe Coding with AI
+description: Use AI assistants to build Decentraland scenes by describing what you want in plain language.
+---
+
+# Vibe Coding with AI
+
+Build Decentraland scenes by describing what you want. An AI assistant handles the SDK7 code, ECS architecture, and project structure for you.
+
+Whether you're a first-time creator or a seasoned developer, AI-assisted "vibe coding" lets you go from an idea to a running scene in minutes instead of hours.
+
+{% hint style="info" %}
+**💡 Tip**: You don't need to know TypeScript to get started. AI assistants can generate working scene code from plain language descriptions.
+{% endhint %}
+
+## What is Vibe Coding?
+
+Vibe coding means building scenes by having a conversation with an AI assistant rather than writing every line of code by hand. You describe what you want — "a medieval tavern with clickable doors and background music" — and the AI writes correct, deployable SDK7 code.
+
+This approach works at any skill level:
+
+- **Beginners & non-developers** — Go from zero to a working scene without writing code manually.
+- **Experienced developers** — Skip the boilerplate. Let the AI handle multiplayer sync, UI scaffolding, and deployment config while you focus on creative decisions.
+- **Teams & studios** — Prototype scene concepts quickly before committing full development resources.
+
+## Combine a code editor with AI
+
+Use a general-purpose AI code editor like [Cursor](https://www.cursor.com/) or VS Code with GitHub Copilot or Claude AI. Decentraland provides a context folder so these tools understand the SDK.
+
+1. Open the Creator Hub and create or open a scene.
+2. Click the **< > CODE** button to open your code editor.
+3. Use the editor's built-in AI assistant (Cursor's chat, Copilot, etc.) to generate or modify code.
+
+## Install Skills for Any AI Agent
+
+Skills are ready-made instruction sets that teach your AI agent how to work with the Decentraland SDK. Each skill covers a specific topic, like creating scenes, adding 3D models, or setting up multiplayer, so the AI already knows the right patterns, APIs, and constraints without you having to explain them. Installing skills means fewer mistakes and better results from the very first prompt.
+
+```bash
+# Install all Decentraland skills
+npx skills add decentraland/sdk-skills
+
+# Or pick specific skills
+npx skills add decentraland/sdk-skills --skill create-scene
+
+# Install globally (available in all projects)
+npx skills add decentraland/sdk-skills -g
+```
+
+This copies skill files into your agent's configuration so it knows Decentraland patterns and constraints.
+
+## Available AI Skills
+
+When you install skills into your agent, the following capabilities are available:
+
+| Skill                  | What it does                                                        |
+| ---------------------- | ------------------------------------------------------------------- |
+| `sdk-scenes`           | Entry point with agent guidelines and index of all topic skills     |
+| `create-scene`         | Scaffold a new SDK7 scene project from scratch                      |
+| `add-3d-models`        | Add 3D models (`.glb`/`.gltf`) with positioning, scaling, colliders |
+| `add-interactivity`    | Pointer events, triggers, raycasts                                  |
+| `build-ui`             | 2D screen-space UI with React-ECS — HUDs, menus, dialogs            |
+| `animations-tweens`    | GLTF model animations with Animator, SDK tweens                     |
+| `multiplayer-sync`     | Peer-to-peer multiplayer using CRDT networking                      |
+| `authoritative-server` | Headless authoritative server for multiplayer (BETA)                |
+| `audio-video`          | Sound effects, music, audio streaming, and video players            |
+| `deploy-scene`         | Deploy scenes to Genesis City (LAND-based)                          |
+| `deploy-worlds`        | Deploy scenes to Worlds (personal 3D spaces)                        |
+| `optimize-scene`       | Performance optimization, scene limits, best practices              |
+| `camera-control`       | Camera mode detection, cinematic camera, virtual cameras            |
+| `composites`           | Composite file format reference for static scene content            |
+| `lighting-environment` | Dynamic lighting, shadows, skybox, fog, environment settings        |
+| `npcs`                 | Non-player characters — NPC Toolkit library and manual approaches   |
+| `player-avatar`        | Player position, profile, avatar customization, attachments         |
+| `player-physics`       | Physics forces — impulses, knockback, continuous forces             |
+| `nft-blockchain`       | NFT display and blockchain/crypto interactions                      |
+| `advanced-rendering`   | Billboard, TextShape, PBR materials, video materials                |
+| `advanced-input`       | System-level input polling and player movement control              |
+| `scene-runtime`        | Cross-cutting runtime APIs — async work, HTTP, messaging            |
+| `script-components`    | Script component classes for the Creator Hub                        |
+| `game-design`          | Game design patterns, scene limits, performance budgets             |
+
+Note: Some of these skills involve fetching 3D models or other assets from free asset catalogs. The AI agent should always get confirmation from the user before downloading any new assets to a scene project.
+
+## Tips for Effective Prompting
+
+Getting the best results from AI is about giving clear, specific prompts. Here are some tips:
+
+### Be specific about what you want
+
+Instead of:
+
+> "Make my scene better"
+
+Try:
+
+> "Add a door at position (8, 0, 8) that opens with a rotation animation when clicked, and plays a creak sound effect"
+
+### Reference existing items
+
+> "Make the red button on the table trigger the elevator to go up"
+
+### Ask for one thing at a time
+
+Break complex requests into steps:
+
+1. "Add a scoreboard UI in the top-right corner"
+2. "Add a counter that increases when the player clicks the target"
+3. "Display the counter value on the scoreboard"
+
+### Include constraints
+
+> "Add background music that loops, but keep the file size under 1 MB"
+
+### Iterate and refine
+
+After each change:
+
+1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
+2. Check what works and what doesn't
+3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
+
+## What AI Can Help With
+
+- Scaffolding new scenes from a description
+- Adding and positioning 3D models
+- Writing click handlers and interactivity
+- Building UI (HUDs, menus, dialogs)
+- Setting up multiplayer sync
+- Configuring authoritative servers for anti-cheat
+- Adding audio, video, and streaming
+- Creating animations and tweens
+- Optimizing scene performance
+- Preparing scenes for deployment
+- Debugging issues in existing code
+
+## Limitations
+
+While AI tools are powerful, keep these in mind:
+
+- **Always preview** — AI-generated code may not look exactly how you expect. Run a preview to verify.
+- **Scene limits still apply** — AI cannot bypass Decentraland's [scene limitations](../optimizing/scene-limitations.md) (triangle counts, file sizes, parcel boundaries).
+- **Complex game logic** — For intricate game mechanics, you may need to guide the AI step by step or refine its output manually.
+- **Custom 3D models** — AI can reference existing free assets or load models you provide, but it cannot create 3D models from scratch.
+
+## Next Steps
+
+- [SDK Quick Start](sdk-101.md) — Learn SDK7 fundamentals
+- [Combine with Code](../../scene-editor/code/overview.md) — Mix visual editing with code
+- [Authoritative Servers](../networking/authoritative-servers.md) — Server-authoritative multiplayer
+- [Scene Examples](https://studios.decentraland.org/resources?sdk_version=SDK7) — Browse example scenes for inspiration

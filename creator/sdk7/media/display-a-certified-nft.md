@@ -9,7 +9,7 @@ You can display a 2D NFT (Non-Fungible Token) that you own in your Decentraland 
 The NFT's image and other data is taken from an API, based on the token's contract and id. Any NFTs that are supported on [OpenSea](https://opensea.io/) can also be displayed in an NFT picture frame in Decentraland.
 
 {% hint style="info" %}
-**💡 Tip**: In the [Scene Editor in Creator Hub](../scene-editor/get-started/about-editor.md), you can use an **NFT** [Smart Item](../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
+**💡 Tip**: In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can use an **NFT** [Smart Item](../../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
 {% endhint %}
 
 The picture frame is displayed adjusting to the dimensions of the NFT image. If the image's dimensions are 512 X 512 pixels, the frame keeps its original size. If the image has different dimensions, the frame will be resized and stretched to match these dimensions.
@@ -117,7 +117,7 @@ Here's the full list of supported frame styles:
 * `NFT_CANVAS`
 * `NFT_NONE`
 
-Some frames use more materials than others. For example, the default frame adds 1 material for the NFT itself, 1 material for a background colored plane, and 2 materials for the frame (shared with other picture frames of the same style). If you need to reduce materials to [stay within scene limitations](../sdk7/optimizing/scene-limitations.md), pick a style that is simpler. For example "none" only uses only 1 material for the NFT itself.
+Some frames use more materials than others. For example, the default frame adds 1 material for the NFT itself, 1 material for a background colored plane, and 2 materials for the frame (shared with other picture frames of the same style). If you need to reduce materials to [stay within scene limitations](../optimizing/scene-limitations.md), pick a style that is simpler. For example "none" only uses only 1 material for the NFT itself.
 
 {% hint style="info" %}
 **💡 Tip**: Using Visual Studio Code (or another IDE), see the whole list by typing `NftFrameType.` and waiting for the smart suggestions display the list of options. Use `NftFrameType.NFT_NONE`to display the plain NFT as is, with no frame or background color.

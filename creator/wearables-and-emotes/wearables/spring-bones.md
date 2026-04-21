@@ -14,6 +14,8 @@ Spring bones are **not** part of the base avatar armature. They are additional b
 
 This implementation follows the [VRM Spring Bone standard](https://vrm.dev/en/vrm1/springbone/), a widely adopted convention for avatar physics in formats like VRM and MMD.
 
+![](../../images/spring-bones/01_spring_bones_workflow.png)
+
 ### How Spring Bones Work
 
 A **spring chain** is a sequence of bones that simulates physics together and it must have at least two bones: the actual spring bone and an end bone. A single spring bone on its own won't produce any movement — the simulation needs the spring bone head to drive the physics and the head of the end bone will define the geometric endpoint. Longer chains (3+ bones) will have smoother, more natural movement, ideal for longers hairs hair or capes.
@@ -68,7 +70,17 @@ Examples: Hair_springBone_1, Earring_springBone.L etc… Feel free to use to for
 
 Spring bones won't work without `springbone` in the bone's name. It has to be used, even for the end bone. {% endhint %}
 
-### Creating Spring Bones in Blender
+### Limits
+
+<-- TODO: replace N and M with final values when defined -->
+
+Each wearable has the following spring bone limits:
+
+- Maximum **N** spring chains per wearable
+- Maximum **M** total spring bones (sum of all bones across all chains)
+- Maximum chain depth of **N** bones
+
+## Creating Spring Bones in Blender
 
 Spring bones are additional bones that you create in Blender for the base avatar armature. The physics parameters are configured later in the Builder — you only need to set up the bone hierarchy in now.
 

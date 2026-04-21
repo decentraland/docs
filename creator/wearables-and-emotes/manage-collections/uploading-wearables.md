@@ -57,7 +57,7 @@ You can add your own custom thumbnail by clicking on the camera icon and browsin
 
 ### **Spring Bones**
 
-If your wearable contains bones with `springbone` in their name, the Builder will automatically detect them and display a **Spring Bones** configuration panel. From this panel you can adjust physics parameters like stiffness, gravity, and drag for each spring bone chain. See [Spring Bones](../../wearables-and-emotes/wearables/spring-bones.md) for details on how to set up spring bones in your model.
+If your wearable contains bones with `springbone` in their name, the Builder will automatically detect them and display a **Spring Bones** configuration panel. From this panel you can adjust physics parameters like stiffness, gravity, and drag for each spring bone chain. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for details on how to set up spring bones in your model.
 
 ### **Properties**
 

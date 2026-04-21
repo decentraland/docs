@@ -234,6 +234,6 @@ To add spring bones to a rig:
 4. Skin weight the mesh to the spring bones as usual.
 5. Export as `.glb` — the spring bones will be included in the armature.
 
-Physics parameters (stiffness, gravity, drag) are configured in the Builder after uploading, not in Blender. For the full guide, see [Spring Bones](../wearables-and-emotes/wearables/spring-bones.md).
+Physics parameters (stiffness, gravity, drag) are configured in the Builder after uploading, not in Blender. For the full guide, see [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones).
 
 And that’s it! With all this information you’re ready to do a basic rig!

@@ -16,7 +16,7 @@ By default, Decentraland Wearables are minted on the Polygon/Matic side-chain so
 
 ## Spring Bones
 
-Wearables can include **spring bones** — extra bones that move dynamically in response to avatar movement and gravity. This allows hair, earrings, capes, belts, and other accessories to sway, bounce, and settle naturally instead of remaining static. See [Spring Bones](spring-bones.md) for a complete guide on setting up and configuring spring bones for your wearables.
+Wearables can include **spring bones** — extra bones that move dynamically in response to avatar movement and gravity. This allows hair, earrings, capes, belts, and other accessories to sway, bounce, and settle naturally instead of remaining static. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for a complete guide on setting up and configuring spring bones for your wearables.
 
 ## What Are Smart Wearables?
 
@@ -60,7 +60,7 @@ There are also accessories that can be applied to different areas of an avatar. 
 * **Hat**
 * **Helmet**
 
-For a detailed description of each category, and how items within each category interact or hide one another, see **[Creating Wearables](../wearables-and-emotes/wearables/creating-wearables.md)**.
+For a detailed description of each category, and how items within each category interact or hide one another, see **[Creating Wearables](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/creating-wearables)**.
 
 You can preview basic wearables using the [Wearable Preview Tool](https://wearable-preview.decentraland.org/?profile=default1&transparentBackground&loop=true).
 

@@ -151,7 +151,7 @@ Be sure that the armature imported has no any _end_ or _neutral_ bones, otherwis
 ![](../../../.gitbook/assets/53_ignore_leaf_bones.png)
 
 {% hint style="info" %}
-**Spring Bones:** Wearables can include extra bones beyond the base armature for dynamic physics (e.g., swaying hair, dangling earrings). These bones must contain `springbone` in their name. See [Spring Bones](spring-bones.md) for full details.
+**Spring Bones:** Wearables can include extra bones beyond the base armature for dynamic physics (e.g., swaying hair, dangling earrings). These bones must contain `springbone` in their name. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for full details.
 {% endhint %}
 
 #### **Eyebrows, Eyes and Mouth**
@@ -205,7 +205,7 @@ Note: The **handwear** category is specifically for hand accessories or replacin
 #### **Hair and Facial Hair**
 
 {% hint style="success" %}
-**Tip:** Hair and other hanging accessories can now use **spring bones** to move dynamically in response to avatar movement and gravity. Instead of static hair, you can add spring bone chains to make ponytails, braids, and long hair sway naturally. See [Spring Bones](spring-bones.md) for a complete guide.
+**Tip:** Hair and other hanging accessories can now use **spring bones** to move dynamically in response to avatar movement and gravity. Instead of static hair, you can add spring bone chains to make ponytails, braids, and long hair sway naturally. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for a complete guide.
 {% endhint %}
 
 There are two important things to remember when creating custom hair wearables.

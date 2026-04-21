@@ -22,27 +22,15 @@ A **spring chain** is a sequence of bones that simulates physics together and it
 
 1. **Spring bone parent** — The first bone in the chain. It owns the physics configuration (stiffness, gravity, drag, etc.). Identified by having `springbone` anywhere in the bone name (case-insensitive).
 
----
-
 2. **Child spring bone** — It is the child of the previous bone on the hierarchy. It inherits its parent's physics parameters and form the chain.
-
----
 
 3. **Spring bone end** — The last bone in the chain. It defines the geometric endpoint of the chain but is not affected by simulation and it doesn't deform any meshes.
 
----
-
 The chain, or hierarchy, for spring bones should be **linear**, which means that each bone can only have one child. Bones with two or more children may have an unexpected behaviour.
-
----
 
 ![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.png)
 
-_A nice and linear spring chain._
-
 ![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.png)
-
-_Bones with 2 or more children will have unexpected behaviour._
 
 ### The Hierarchy
 
@@ -66,7 +54,7 @@ To keep your workflow organized, it's suggested to use this format: **BodyPart/W
 
 Examples: Hair_springBone_1, Earring_springBone.L etc… Feel free to use to format that best suits you, as long as it's following Blender's (or your prefered software) naming convention for left and right.
 
-{% hint style="warning" %} **Attention!**
+{% hint style="warning" %} Attention!
 
 Spring bones won't work without `springbone` in the bone's name. It has to be used, even for the end bone. {% endhint %}
 
@@ -88,21 +76,17 @@ To create a new bone, select the avatar Armature and, in **Edit Mode**, make sur
 
 ![Press Shift+A to create a bone where the cursor is.](../../images/spring-bones/Create_Bones.gif)
 
-_Press Shift+A to create a bone where the cursor is._
-
 It's important to notice that a spring chain doesn't have to be connected to the skeleton parent, so you can just place it anywhere on the mesh. However, the spring chain **has** to be connected, you can't offset any of the spring bones.
 
 Once you create the bones, rename them following the naming convention mentioned above and make sure to parent the chain to the proper bone. Dotted lines will show the parent of the chain. If there's none, it means that the chain has no parent. In **Edit Mode**, select the child first, then select the parent and press **Ctrl+P** > **Keep Offset**.
 
 ![Parent bones by selecting the child first, then the parent and press Ctrl+P.](../../images/spring-bones/Parenting_Bones.gif)
 
-_Parent bones by selecting the child first, then the parent and press Ctrl+P._
-
 To rename a bone, select it in Edit Mode or Pose Mode, got to the Bone Properties tab and rename it according to the naming convention. Do this for all the bones in the chain.
 
-![Rename_Bones.png](../../images/spring-bones/Rename_Bones.png)
+![](../../images/spring-bones/Rename_Bones.png)
 
-{% hint style="info" %} **Tip!**
+{% hint style="info" %} Tip!
 
 To make sure the bone is properly placed, select the mesh in **Object Mode** and, in **Edit Mode**, select the vertices in the area that you want to place the bone (it can be a loop or a group of vertices) > press **Shift+S** > **Cursor to Selected.**
 
@@ -110,13 +94,11 @@ Go back to **Object Mode**, select the armature > go to **Edit Mode** > select t
 
 ![Use Shift+S to position the bone in the right place in the mesh.](../../images/spring-bones/Create_Bones2.gif)
 
-_Use Shift+S to position the bone in the right place in the mesh._
-
 ### Skinning the Mesh
 
 Skinning is the process of binding the mesh to the armature, so that they move together. For this, we define how much influence (weight) each bone will have on the vertices. The more weight, the more the bone will deform the mesh. To do that, go to **Object Mode**, select the mesh first, press **Shift** and select the armature, press **Ctrl+P**. There are two ways of doing this, either select **With Empty Groups** or **With Automatic Weights**.
 
-![Parenting_Mesh.gif](../../images/spring-bones/Parenting_Mesh.gif)
+![](../../images/spring-bones/Parenting_Mesh.gif)
 
 #### With Automatic Weights
 
@@ -126,25 +108,21 @@ If you know for sure that you won't need certain bones to affect the mesh, you c
 
 ![Deleting vertex groups.](../../images/spring-bones/Deleting_Groups.gif)
 
-_Deleting vertex groups._
-
 #### With Empty Groups
 
 In this method, Blender will create all vertex groups for each bone in the armature, but they will have a weight of zero by default. You will have to manually assign the weights in Edit Mode or paint them in Weight Paint mode. This gives you more control over what's being affected by each group and can be extra helpful for hard surfaces or object that need to be completely assigned to a certain group. In any case, once you've assigned the weights, they will need to be tested in Pose Mode and then tweaked in Weight Paint.
 
 ![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.gif)
 
-_Parenting with empty groups._
-
 #### Painting Weights
 
 To test the skinned mesh, select the armature and go to **Pose Mode**, set a key frame, then rotate the bones to create another pose and set another keyframe. That way you can check how the mesh is deforming with movement. Once you have the poses set, go back to **Object Mode**, select the mesh and go to **Weight Paint**.
 
-![Setting_Poses_Compressed.gif](../../images/spring-bones/Setting_Poses_Compressed.gif)
+![](../../images/spring-bones/Setting_Poses_Compressed.gif)
 
 In **Weight Paint**, in the Tools tab you will find different brushes to tweak the skin weights. Select the Vertex Group you want to edit (if they are locked, just unlock them so you can edit edit the influence) and use the brush to add or remove influence. Black means zero influence, while red means that that group completely influences the mesh. Enabling the wireframe on **Overlays** will make it easier to see what you are painting.
 
-![Weight_Paint_Compressed.gif](../../images/spring-bones/Weight_Paint_Compressed.gif)
+![](../../images/spring-bones/Weight_Paint_Compressed.gif)
 
 Use the add, subtract or smooth brushes to get the desired result. Test different extreme poses too to see how the mesh is deforming and if there are no vertex left without weights. If you're happy with the result, it's time to export it!
 
@@ -152,11 +130,11 @@ Use the add, subtract or smooth brushes to get the desired result. Test differen
 
 Before exporting, make sure to delete any animation clip created when testing the poses. Go to Pose Mode, select all the bones by pressing **A** and press **Ctrl+R**, then **Ctrl+S** and finally **Ctrl+G** to delete any transforms on your armature. Then go back to object mode, change the Display Mode from View Layer to Blender File, expand Actions and right click and delete the animation file.
 
-![Delete_Action.gif](../../images/spring-bones/Delete_Action.gif)
+![](../../images/spring-bones/Delete_Action.gif)
 
 If you have any other objects in your scene, like avatar mesh, turn the visibility off by clicking on the eye icon in the Outliner. Then, go to **File** > **Export** > **gltf 2.0 (.glb, .gltf)**. For the export settings, expand Include and in **Limit to** toggle **Visible Objects**. Click on Export and you're ready to upload your file to the Builder!
 
-![Export_Settings.png](../../images/spring-bones/Export_Settings.png)
+![](../../images/spring-bones/Export_Settings.png)
 
 ## Configuring Spring Bones in the Builder
 
@@ -250,7 +228,9 @@ Choose the center bone based on where the wearable is located on the body:
 | Upper body (capes, necklaces)         | `Avatar_Spine`          |
 | Lower body (belts, skirt accessories) | `Avatar_Hips`           |
 
-{% hint style="warning" %} The center bone **must not** be part of any spring chain. It should be a bone from the base avatar armature. {% endhint %}
+{% hint style="warning" %}
+
+The center bone **must not** be part of any spring chain. It should be a bone from the base avatar armature. {% endhint %}
 
 ## Common Use Cases & Recommended Values
 
@@ -330,11 +310,9 @@ You don't need to interact with this format directly — the Builder handles rea
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `version` | integer | required (`1`) | Schema version for forward compatibility. |
-| `stiffness` | float | `1.0` | Restoring force toward rest pose. |
-| `gravityPower` | float | `1.0` | Magnitude of gravity force. |
+| `stiffness` | float | `2.0` | Restoring force toward rest pose. |
+| `gravityPower` | float | `0.0` | Magnitude of gravity force. |
 | `gravityDir` | vec3 | `[0, -1, 0]` | Direction of gravity in world space. |
 | `drag` | float | `0.5` | Damping / deceleration factor. |
 | `isRoot` | boolean | `true` | Whether this node is the root of a spring chain. |
 | `center` | string | none | Name of a reference bone for relative inertia calculation. |
-
-{% hint style="info" %} The extension defaults listed above are the glTF schema defaults. The Builder uses different practical defaults (stiffness: 2.0, gravityPower: 0, drag: 0.5) which are better suited for most wearables. {% endhint %}

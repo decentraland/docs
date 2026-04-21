@@ -12,16 +12,16 @@ A `uiBackground` component gives color or a texture an entity's area. It uses th
 
 The following fields can be configured, all of them are optional:
 
-* `color`: The color to use on the entity, as a [Color4](../sdk7/3d-essentials/color-types.md) value.
+* `color`: The color to use on the entity, as a [Color4](../3d-essentials/color-types.md) value.
 
 {% hint style="info" %}
 **💡 Tip**: Make an entity semi-transparent by setting the 4th value of the `Color4` to less than 1.
 {% endhint %}
 
-*   `texture`: The texture to display on the entity, this takes an object with various parameters about the texture. The same properties are available as in textures in [materials on 3D entities](../sdk7/3d-essentials/materials.md#using-textures).
+*   `texture`: The texture to display on the entity, this takes an object with various parameters about the texture. The same properties are available as in textures in [materials on 3D entities](../3d-essentials/materials.md#using-textures).
 
     * `src`: The path to the image file to use as a texture. (string)
-    * `filterMode`: _(optional)_ Determines how pixels in the texture are stretched or compressed when rendered. . See [Texture Scaling](../sdk7/3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
+    * `filterMode`: _(optional)_ Determines how pixels in the texture are stretched or compressed when rendered. . See [Texture Scaling](../3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
     * `wrapMode`: _(optional)_ Determines how a texture is tiled onto an entity. This takes a value from the `TextureWrapMode` enum. See \[Texture Wrapping]\(([See documentation](../)). (WrapMode = 'repeat' | 'clamp' | 'mirror' | 'mirror-once')
 
     > Tip: You can combine both `texture` and `color` properties on a single `uiBackground` component to produce a tinted texture.
@@ -94,7 +94,7 @@ export const uiMenu = () => (
 
 A few properties are used to set a border around a UI entity. These properties exist on the `uiTransform` component. They each allow you to set either a single value for all sides of the border, or different values for each side.
 
-* `borderColor`: The color to use on the entity, as a [Color4](../sdk7/3d-essentials/color-types.md) value.
+* `borderColor`: The color to use on the entity, as a [Color4](../3d-essentials/color-types.md) value.
 * `borderWidth`: The width of the border, as a number in pixels. It also supports values in percentages, for example `borderWidth: '2%'` will set the border width to 2% of the entity's width.
 * `borderRadius`: Use this property to give the corners of the entity a rounded border. It sets the radius of the corners in pixels.
 

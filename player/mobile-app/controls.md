@@ -15,7 +15,7 @@ The Decentraland mobile app replaces the keyboard and mouse with on-screen touch
 
 ## Interaction
 
-* **Interaction button** (bottom right) — tap to interact with whatever you're aiming at. This is the equivalent of pressing `E` on desktop.
+* **Interaction button** (bottom right) — tap to interact with whatever you're aiming at. This is the equivalent of a pointer click on desktop.
 * **Tap on objects** — many things in the world can be tapped directly. If a creator has set up an entity to respond to taps, you'll trigger it the same way you would click on desktop.
 
 ## Chat

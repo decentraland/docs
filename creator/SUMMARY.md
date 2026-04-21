@@ -129,6 +129,7 @@
   * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
   * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
   * [Get featured](sdk7/building-for-mobile/get-featured.md)
+  * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 * [Interactivity](sdk7/interactivity/)
   * [Button Events](sdk7/interactivity/button-events/)
     * [Click Events](sdk7/interactivity/button-events/click-events.md)

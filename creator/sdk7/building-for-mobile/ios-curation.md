@@ -16,7 +16,6 @@ This review process applies to iOS only. The Android Discover section and search
 * Scenes and Worlds that are not approved will be hidden from the iOS Discover section.
 * Events tied to non-approved Scenes or Worlds will also be hidden in the iOS Discover section.
 * **All scenes remain accessible** on iOS at any time via deep linking or the `/goto` and `/world` chat commands — curation only affects Discover visibility.
-* A weekly review process runs to evaluate and approve new content submissions.
 
 ## Submit your scene or world for iOS review
 
@@ -30,3 +29,9 @@ To request that your scene or world be reviewed for inclusion in the iOS Discove
    * A brief description of the content
 
 Submissions are reviewed within **24 hours**. You will be notified in the channel once your content has been approved or if any follow-up is needed.
+
+## Related
+
+* [Get featured](get-featured.md)
+* [UI best practices for mobile](ui-best-practices.md)
+* [Preview on mobile](preview-on-mobile.md)

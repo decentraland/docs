@@ -14,7 +14,7 @@ If something isn't working in the Decentraland mobile app, this page covers the 
 
 ## A scene won't load or runs slowly
 
-* Some scenes are large and take a moment to download — give it up to a minute, especially on cellular networks.
+* Some scenes are large and take a moment to download — give it a few moments, especially on cellular networks.
 * Try moving to a different scene and back; this resets the load.
 * If a specific scene reliably runs slowly, the creator may not have optimized it for mobile yet. You can try it from a Wi-Fi connection or on a more recent device.
 

@@ -69,7 +69,7 @@ It's possible to position entities underground, to either hide them or to have o
 ## Mesh compression
 
 {% hint style="warning" %}
-**📱 Draco-compressed meshes are not supported on the [mobile client](../building-for-mobile/).** Due to rendering limitations on mobile devices, glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression will fail to load on the Decentraland mobile app. If you want your scene to work on mobile, export your models **without** Draco compression. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
+**📱 Draco-compressed meshes on the [mobile client](../building-for-mobile/) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
 {% endhint %}
 
 ## Lighting

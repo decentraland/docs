@@ -13,7 +13,6 @@
 * [Getting started](mobile-app/getting-started.md)
 * [Controls](mobile-app/controls.md)
 * [Troubleshooting](mobile-app/troubleshooting.md)
-* [iOS Curation](mobile-app/ios-curation.md)
 
 ## FAQs
 

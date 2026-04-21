@@ -8,7 +8,7 @@ The mobile Discover section is the highest-traffic surface on the Decentraland m
 
 ## How to apply
 
-Submit your scene through the **`rl-mobile-featuring`** channel on the Decentraland Discord.
+Submit your scene through the [rl-mobile-featuring](https://discord.com/channels/417796904760639509/1471564023131537590) channel on the Decentraland Discord.
 
 ## Requirements
 

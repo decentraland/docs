@@ -21,7 +21,7 @@ If this is your first time in Decentraland, you can create a new account from in
 
 ## 3. Customize your avatar
 
-When you first sign in you'll be invited to set up your avatar. You can change your look later from the profile menu — see [Customizing Your Avatar](../decentraland-in-world/customizing-your-avatar.md) for the full guide.
+New users are invited to set up an avatar the first time they sign in. Returning users keep the avatar from their existing account. Either way, you can change your look at any time from the profile menu — see [Customizing Your Avatar](../decentraland-in-world/customizing-your-avatar.md) for the full guide.
 
 ## 4. Choose where to go
 

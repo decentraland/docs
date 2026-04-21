@@ -32,7 +32,7 @@ The CLI prints a QR code in the terminal that points to your scene's LAN URL. Sc
 <figure><img src="../../../.gitbook/assets/mobile-preview-cli-qr.png" alt="QR code printed by the Decentraland CLI for mobile preview"><figcaption><p>A QR code printed by <code>npm run start -- --mobile</code>. Scan it with your phone to open the scene in the Decentraland mobile app.</p></figcaption></figure>
 
 {% hint style="info" %}
-**💡 Tip**: When you pass `--mobile`, the desktop explorer is not also launched. If you want to test on both at once, run `npm run start` in one terminal for desktop and `npm run start -- --mobile` (on a different port if needed) for mobile.
+**💡 Tip**: When you pass `--mobile`, the desktop explorer is not also launched. If you want to test on both at once, run `npm run start` in one terminal for desktop and `npm run start -- --mobile` in another for mobile.
 {% endhint %}
 
 ## Hot reload

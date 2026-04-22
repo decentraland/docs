@@ -2,7 +2,7 @@
 description: Common issues with the Decentraland mobile app and where to get help.
 ---
 
-# Mobile app troubleshooting
+# Mobile App Troubleshooting
 
 If something isn't working in the Decentraland mobile app, this page covers the most common situations and where to get more help.
 

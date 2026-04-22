@@ -2,7 +2,7 @@
 description: DOs and DON'Ts for designing scene UIs that work well on mobile.
 ---
 
-# UI best practices for mobile
+# UI Best Practices for Mobile
 
 There is no single proven recipe for Decentraland mobile UI yet — the platform is new and we are still iterating. The recommendations on this page are the current best practices, distilled from work on real scenes. Treat them as a starting point and test on a real device.
 

@@ -2,7 +2,7 @@
 description: First-time setup for the Decentraland mobile app.
 ---
 
-# Getting started on mobile
+# Getting Started on Mobile
 
 This guide walks you through your first session on the Decentraland mobile app.
 

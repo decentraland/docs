@@ -2,7 +2,7 @@
 description: Preview your scene on a real mobile device from the Creator Hub or the CLI.
 ---
 
-# Preview your scene on mobile
+# Preview Your Scene on Mobile
 
 You can preview your scene directly on the Decentraland mobile app from the Creator Hub or from the command line. This is the only reliable way to confirm that your UI, input handling, and performance hold up on a real device.
 

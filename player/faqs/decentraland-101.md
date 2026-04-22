@@ -82,6 +82,7 @@ Mobile hardware targets below are accurate as of April 2026 and may shift as the
 
 |        | Minimum Required         | Recommended Settings |
 | ------ | ------------------------ | -------------------- |
+| OS     | iOS 18                   | iOS 18 or newer      |
 | Device | iPhone 13 / SE (3rd Gen) | iPhone 14 or newer   |
 
 Get the mobile app from the [App Store (iOS)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs\&utm_medium=internal\&utm_content=ios) or [Google Play (Android)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer\&pcampaignid=web_share\&utm_source=docs\&utm_medium=internal\&utm_content=android). See [Decentraland on Mobile](../mobile-app/) for more details.

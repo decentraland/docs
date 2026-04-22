@@ -2,7 +2,7 @@
 description: How input actions map to touch on the Decentraland mobile client.
 ---
 
-# Input on mobile
+# Input on Mobile
 
 Decentraland's input system is designed to be device-agnostic. The same `InputAction` enum that the SDK exposes on desktop is also routed from the on-screen controls on mobile, so most scenes work without any changes. There are, however, a few rules and gotchas worth knowing when you're building for touch.
 

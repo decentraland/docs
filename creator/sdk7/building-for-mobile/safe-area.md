@@ -2,7 +2,7 @@
 description: The screen regions reserved for client controls on mobile.
 ---
 
-# Mobile safe area
+# Mobile Safe Area
 
 When your scene runs on the mobile client, the Decentraland app overlays its own controls on top of the screen — joystick, chat, profile, camera controls, and the interaction button. These regions are reserved: any scene UI that lands inside them will visually clash with the controls and may also be unreachable for touch input.
 

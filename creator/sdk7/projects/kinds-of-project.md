@@ -22,7 +22,7 @@ LAND tokens can be bought in the [Marketplace](https://decentraland.org/marketpl
 
 Scenes published to LAND are easier to discover, as players may run into them while visiting nearby content or exploring.
 
-Scenes published to LAND can use up to 15 MB of space per each parcel in the scene. The more parcels, the more room available. This is to prevent overloading the player's CPU, since players may be experiencing many nearby scenes at the same time. See [size limitations](../sdk7/optimizing/scene-limitations.md).
+Scenes published to LAND can use up to 15 MB of space per each parcel in the scene. The more parcels, the more room available. This is to prevent overloading the player's CPU, since players may be experiencing many nearby scenes at the same time. See [size limitations](../optimizing/scene-limitations.md).
 
 ### Publish to WORLDs
 
@@ -30,7 +30,7 @@ Scenes published to a World must be accessed via a link.
 
 These scenes are linked to NAME tokens. NAME tokens can be bought in the [Marketplace](https://decentraland.org/marketplace/names/claim). You can claim any name you want as long as it's not claimed yet. Alternatively, you can use an [ENS domain](https://ens.domains) to create a World.
 
-Scenes published to a World have a parcel limitation of 300x300. The same [size limitations](../sdk7/optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
+Scenes published to a World have a parcel limitation of 300x300. The same [size limitations](../optimizing/scene-limitations.md) per parcel apply as in scenes published to LAND parcels, but you can add more parcels to your scene without any cost.
 
 If it's a Multi-Scene WORLD, different Collaborators (addresses) can have publishing rights to specific parcels of the WORLD, defined by the World Owner (the address that claimed the World NAME). Also, access to a World can be **Public** or **Private**. More information about [Managing Worlds](../../scene-editor/publish/publish-scene.md#managing-worlds)
 
@@ -69,7 +69,7 @@ Worlds offer several advantages over LAND scenes:
 * More storage capacity - especially for Decentraland NAME holders
 * Access control - you can allow only certain players to access your World
 
-See [Worlds](../worlds/about.md) for more info, or learn about [publishing to Worlds](../sdk7/publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../sdk7/projects/scene-metadata.md#world-configuration).
+See [Worlds](../../worlds/about.md) for more info, or learn about [publishing to Worlds](../publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../projects/scene-metadata.md#world-configuration).
 
 ## Global Scenes
 
@@ -85,7 +85,7 @@ A portable experience is linked to a NAME token. NAME tokens can be bought in th
 
 Portable experiences can be activated as part of the interactive code of a scene (either in LAND or a World).
 
-Players are prompted asking if they want to run this portable experience, and if they do they'll carry it with them wherever they go for the rest of their session. [Learn more](../sdk7/projects/portable-experiences.md). -->
+Players are prompted asking if they want to run this portable experience, and if they do they'll carry it with them wherever they go for the rest of their session. [Learn more](../projects/portable-experiences.md). -->
 
 ### Smart Wearables
 
@@ -93,5 +93,5 @@ Smart wearables are linked to Wearable tokens. These are sold as NFTs and purcha
 
 Smart Wearables are activated whenever the player puts on the associated wearable item. They are turned off if the player takes off the item, or they can also turn off the global scene manually via the UI. Also, the scene that the player is standing in is able to suspend any Smart Wearables that are active in the scene.
 
-* Learn everything about [Creating wearables](../wearables-and-emotes/wearables/creating-wearables.md).
-* Learn about [smart wearables](../sdk7/projects/smart-wearables.md)
+* Learn everything about [Creating wearables](../../wearables-and-emotes/wearables/creating-wearables.md).
+* Learn about [smart wearables](../projects/smart-wearables.md)

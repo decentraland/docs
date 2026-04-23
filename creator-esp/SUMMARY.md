@@ -65,6 +65,7 @@
   * [Flujo de Trabajo de Desarrollo](sdk7/getting-started/dev-workflow.md)
   * [Previsualizar tu Escena](sdk7/getting-started/preview-scene.md)
   * [Usar el CLI](sdk7/getting-started/using-the-cli.md)
+  * [Vibe Coding con IA](sdk7/getting-started/vibe-coding.md)
 * [Diseño de Experiencia](sdk7/design-experience/README.md)
   * [Diseñar Juegos](sdk7/design-experience/design-games.md)
   * [Guía MVP](sdk7/design-experience/mvp-guidelines.md)

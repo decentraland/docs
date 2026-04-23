@@ -119,7 +119,7 @@ Set the Camera Target to set the direction in which players start looking when t
 Click **+ Add Spawn Area** to include as many spawn points as you want. Players will randomly appear in one of those.
 
 {% hint style="info" %}
-**📔 Note**: For more information about Spawn Areas, go to the [Spawn Area](../../../creator/scene-editor/build/spawn-areas.md) docs.
+**📔 Note**: For more information about Spawn Areas, go to the [Spawn Area](../build/spawn-areas.md) docs.
 {% endhint %}
 
 ## Skybox Control

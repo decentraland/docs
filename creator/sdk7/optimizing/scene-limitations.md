@@ -6,7 +6,7 @@ description: How many things can I put on my scene?
 
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. These limits are per-parcel. So the larger the scene, the higher these limits are set.
 
-When working with the [Creator Hub](../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
+When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
 
 ![](../../../.gitbook/assets/triangle-limit1.png)
 
@@ -46,7 +46,11 @@ You can list any other files or folders you want to exclude from being uploaded 
 
 ## Optimizing
 
-See [Performance Optimization](../sdk7/optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
+See [Performance Optimization](../optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
+
+{% hint style="info" %}
+**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../building-for-mobile/), and prefer fewer triangles, fewer materials, and smaller textures.
+{% endhint %}
 
 ## Scene boundaries
 
@@ -60,7 +64,13 @@ It's possible to position entities underground, to either hide them or to have o
 
 ## Shader limitations
 
-3D models used in decentraland must use supported shaders and materials. See [3D model materials](../3d-modeling/materials.md) for a list of supported shaders.
+3D models used in decentraland must use supported shaders and materials. See [3D model materials](../../3d-modeling/materials.md) for a list of supported shaders.
+
+## Mesh compression
+
+{% hint style="warning" %}
+**📱 Draco-compressed meshes on the [mobile client](../building-for-mobile/) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
+{% endhint %}
 
 ## Lighting
 

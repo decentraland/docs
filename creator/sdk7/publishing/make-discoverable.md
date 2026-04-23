@@ -7,7 +7,7 @@ description: Help players discover your scene
 Decentraland offers a vast array of content. You must ensure your scene stands out and connects with its audience. Here are some key strategies:
 
 * **Social media:** Share your scene on social media platforms to increase its visibility. Include multimedia content to tempt more players, don't just add a link and text. Decentraland's Discord server is also an excellent platform to engage with the community.
-* **Categories and tags**: Utilize categories and tags to help players find your scene through the search feature on the Decentraland map. Learn more about this in [Categories](../sdk7/projects/scene-metadata.md#categories).
+* **Categories and tags**: Utilize categories and tags to help players find your scene through the search feature on the Decentraland map. Learn more about this in [Categories](../projects/scene-metadata.md#categories).
 * **Visual Appeal**: Design your scene to be visually appealing from a distance to catch the eye of explorers. Consider how your scene appears on the map's satellite view.
 * **Points of Interest (POIs)**: Submit a [proposal on the DAO](https://decentraland.org/governance/proposals/?type=poi) to have your scene featured as a Point of Interest on the map.
 *   **Description and thumbnail**: Craft enticing descriptions and eye-catching thumbnails to attract players before they enter your scene. These elements are crucial for making a strong impression when selecting a scene on the map, teleporting from another scene, or encountering a shared link on social media.

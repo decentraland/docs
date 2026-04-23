@@ -14,7 +14,7 @@ The rendered shape of an entity is determined by what component it uses.
 
 ## Use the Scene Editor in Creator Hub
 
-The easiest way to give an entity a shape is to use the Scene Editor. You can add a **Mesh Renderer** component to provide a primitive shape, or a **GLTF** component to reference a 3D model from a file. See [Add Components](../scene-editor/build/components.md#add-components).
+The easiest way to give an entity a shape is to use the Scene Editor. You can add a **Mesh Renderer** component to provide a primitive shape, or a **GLTF** component to reference a 3D model from a file. See [Add Components](../../scene-editor/build/components.md#add-components).
 
 ## Primitive shapes
 
@@ -24,10 +24,10 @@ The following shapes are available. Several shapes include optional additional f
 
 *   **box**:
 
-    Use `MeshRenderer.setBox()`, passing the entity. Pass `uvs` as an additional optional field, to map texture alignment. See [materials](../sdk7/3d-essentials/materials.md) for more details.
+    Use `MeshRenderer.setBox()`, passing the entity. Pass `uvs` as an additional optional field, to map texture alignment. See [materials](../3d-essentials/materials.md) for more details.
 *   **plane**:
 
-    Use `MeshRenderer.setPlane()`, passing the entity. Pass `uvs` as an additional optional field, to map texture alignment. See [materials](../sdk7/3d-essentials/materials.md) for more details.
+    Use `MeshRenderer.setPlane()`, passing the entity. Pass `uvs` as an additional optional field, to map texture alignment. See [materials](../3d-essentials/materials.md) for more details.
 *   **sphere**:
 
     Use `MeshRenderer.setSphere()`, passing the entity.
@@ -61,9 +61,9 @@ Transform.create(myCone, {
 MeshRenderer.setCylinder(myCone, 0, 1)
 ```
 
-Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component](../sdk7/3d-essentials/materials.md) to the same entity.
+Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component](../3d-essentials/materials.md) to the same entity.
 
-To make a primitive clickable, or to prevent players from walking through it, you must give the entity a _collider_ via a [MeshCollider](../sdk7/3d-essentials/colliders.md) component.
+To make a primitive clickable, or to prevent players from walking through it, you must give the entity a _collider_ via a [MeshCollider](../3d-essentials/colliders.md) component.
 
 To change the shape of an entity that already has a `MeshRenderer` component, run `MeshRenderer.setBox()` or any of the other helper functions and it will overwrite the original shape. There's no need to remove the original `MeshRenderer` or to use the advanced syntax.
 
@@ -85,7 +85,7 @@ MeshRenderer.setSphere(myCube)
 
 > `import { MeshRenderer } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ## 3D models
@@ -108,18 +108,18 @@ The `src` field is required, you must give it a value when constructing the comp
 **💡 Tip**: We recommend keeping your models separate in the `assets/scene/models` folder inside your scene.
 {% endhint %}
 
-glTF models can include their own embedded textures, materials, colliders and animations. See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more information on this. To override the materials of a model, use the [GltfNodeModifiers](../sdk7/3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../sdk7/3d-essentials/materials.md#modify-gltf-materials) for more details.
+glTF models can include their own embedded textures, materials, colliders and animations. See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more information on this. To override the materials of a model, use the [GltfNodeModifiers](../3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../3d-essentials/materials.md#modify-gltf-materials) for more details.
 
-To prevent players from walking through a 3D model, or to make a model clickable, you must have a [collider](../sdk7/3d-essentials/colliders.md), which may be embedded in the model or provided via a `MeshCollider` component.
+To prevent players from walking through a 3D model, or to make a model clickable, you must have a [collider](../3d-essentials/colliders.md), which may be embedded in the model or provided via a `MeshCollider` component.
 
-Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations](../sdk7/optimizing/scene-limitations.md).
+Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations](../optimizing/scene-limitations.md).
 
 {% hint style="warning" %}
 **📔 Note**: The `GltfContainer` component must be imported via
 
 `import { GltfContainer } from "@dcl/sdk/ecs"`
 
-See [Imports](../sdk7/getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 ### Pre Loading a 3D Model
@@ -169,7 +169,7 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 * Save your models in _.glb_ format, which is a lighter version of _.gltf_.
 * If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
-* If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them underground, or at a scale of 0. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See [entities and components](../sdk7/architecture/entities-components.md#pooling-entities-and-components)
+* If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them underground, or at a scale of 0. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See [entities and components](../architecture/entities-components.md#pooling-entities-and-components)
 
 ## Stretching a shape
 

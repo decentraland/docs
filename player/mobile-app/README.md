@@ -12,7 +12,7 @@ Decentraland is now available on mobile. You can hang out, attend events, explor
 * [Download for Android (Google Play)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer&pcampaignid=web_share&utm_source=docs&utm_medium=internal&utm_content=android)
 
 {% hint style="warning" %}
-**UK users:** the iOS and Android apps are not currently available in the United Kingdom due to CryptoAssets and [Crypto Gaming Regulations](https://www.fca.org.uk/firms/cryptoassets-information).
+**UK users:** the iOS and Android apps are not currently available in the United Kingdom due to [Crypto Gaming Regulations](https://www.fca.org.uk/firms/cryptoassets-information).
 {% endhint %}
 
 {% hint style="info" %}

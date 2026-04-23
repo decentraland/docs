@@ -48,6 +48,10 @@ You can list any other files or folders you want to exclude from being uploaded 
 
 See [Performance Optimization](../optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
+{% hint style="info" %}
+**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../building-for-mobile/), and prefer fewer triangles, fewer materials, and smaller textures.
+{% endhint %}
+
 ## Scene boundaries
 
 When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, that part of your content won't be rendered when players visit your scene.
@@ -61,6 +65,12 @@ It's possible to position entities underground, to either hide them or to have o
 ## Shader limitations
 
 3D models used in decentraland must use supported shaders and materials. See [3D model materials](../../3d-modeling/materials.md) for a list of supported shaders.
+
+## Mesh compression
+
+{% hint style="warning" %}
+**📱 Draco-compressed meshes on the [mobile client](../building-for-mobile/) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
+{% endhint %}
 
 ## Lighting
 

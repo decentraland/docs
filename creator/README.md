@@ -23,6 +23,8 @@ Let's build Decentraland together!
 
 All creators are welcome! In Decentraland you have a wide range of Creative possibilities, for people of different talents and skill levels!
 
+Decentraland is available on desktop (Windows and macOS) and on mobile devices (iOS and Android). Players move seamlessly between clients with the same account, avatar, and inventory — which means your scenes need to work well for everyone, regardless of the device they're playing on. Throughout this guide you'll find recommendations on how to design, build, and test your scenes so they work great on every supported platform. For mobile-specific guidance, see [Building for Mobile](sdk7/building-for-mobile/).
+
 ## The Creator Hub
 
 The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create:

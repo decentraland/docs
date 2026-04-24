@@ -108,7 +108,7 @@ ParticleSystem.create(emitter, {
 import { Vector2 } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
-	initialVelocitySpeed: { min: 2, max: 8 },
+	initialVelocitySpeed: { start: 2, end: 8 },
 })
 ```
 
@@ -146,12 +146,12 @@ import { Color4 } from '@dcl/sdk/math'
 
 ParticleSystem.create(emitter, {
 	initialColor: {
-		from: Color4.create(1, 0.5, 0, 1), // orange
-		to: Color4.create(1, 1, 0, 1), // yellow
+		start: Color4.create(1, 0.5, 0, 1), // orange
+		end: Color4.create(1, 1, 0, 1), // yellow
 	},
 	colorOverTime: {
-		from: Color4.create(0.5, 0, 0, 0.5), // dim red, half transparent
-		to: Color4.create(0, 0, 0, 0), // fully transparent (fade out)
+		start: Color4.create(0.5, 0, 0, 0.5), // dim red, half transparent
+		end: Color4.create(0, 0, 0, 0), // fully transparent (fade out)
 	},
 })
 ```
@@ -164,8 +164,8 @@ Note that the 4th value in a `Color4` is the _alpha_. If you set the final color
 
 ```ts
 ParticleSystem.create(emitter, {
-	initialSize: { min: 0.1, max: 0.3 },
-	sizeOverTime: { min: 0.5, max: 1.0 }, // grow over lifetime
+	initialSize: { start: 0.1, end: 0.3 },
+	sizeOverTime: { start: 0.5, end: 1.0 }, // grow over lifetime
 })
 ```
 
@@ -179,7 +179,7 @@ By default particles render as white squares. Supply a texture to use a custom i
 
 ```ts
 ParticleSystem.create(emitter, {
-	texture: { src: 'assets/scene/textures/spark.png' },
+	texture: { src: 'assets/scene/Images/spark.png' },
 })
 ```
 
@@ -305,15 +305,17 @@ A single particle system can go through a cycle with several bursts, even with v
 ```ts
 ParticleSystem.create(emitter, {
 	rate: 0, // disable continuous emission
-	bursts: { values: [
-		{
-			time: 0, // time in seconds after playback starts
-			count: 200, // particles to emit per burst
-			cycles: 1, // how many times to repeat (0 = infinite)
-			interval: 0.2, // seconds between repeated cycles
-			probability: 1, // 0–1 chance the burst fires each cycle
-		},
-	] },
+	bursts: {
+		values: [
+			{
+				time: 0, // time in seconds after playback starts
+				count: 200, // particles to emit per burst
+				cycles: 1, // how many times to repeat (0 = infinite)
+				interval: 0.2, // seconds between repeated cycles
+				probability: 1, // 0–1 chance the burst fires each cycle
+			},
+		],
+	},
 })
 ```
 
@@ -324,11 +326,13 @@ ParticleSystem.create(emitter, {
 	loop: true,
 	rate: 0,
 	lifetime: 2,
-	bursts: { values: [
-		{ time: 0.0, count: 80, cycles: 0, interval: 3 },
-		{ time: 0.7, count: 100, cycles: 0, interval: 3 },
-		{ time: 1.4, count: 60, cycles: 0, interval: 3 },
-	] },
+	bursts: {
+		values: [
+			{ time: 0.0, count: 80, cycles: 0, interval: 3 },
+			{ time: 0.7, count: 100, cycles: 0, interval: 3 },
+			{ time: 1.4, count: 60, cycles: 0, interval: 3 },
+		],
+	},
 })
 ```
 

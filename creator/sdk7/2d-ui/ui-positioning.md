@@ -139,6 +139,7 @@ By default, child entities are positioned in relation to the top-left corner of 
 * `overflow`: Determines what happens if the size of the children of an entity overflow its parent. It uses values from the `OverflowType` type.
   * `hidden`: Overflowing entities are made invisible.
   * `visible`: Overflowing entities break out of the margins of the parent.
+  * `scroll`: The area becomes scrollable, allowing the player to scroll through the overflowing content. See [Scrollable containers](#scrollable-containers) for details.
 * `flexWrap`: The flex wrap property is set on containers and controls what happens when children overflow the size of the container along the main axis. By default children are forced into a single line (which can shrink entities). If wrapping is allowed items are wrapped into multiple lines along the main axis if needed. wrap reverse behaves the same, but the order of the lines is reversed. This property takes its value from the `FlexWrapType` type.
   * `wrap`
   * `no-wrap`
@@ -188,6 +189,90 @@ export const uiMenu = () => (
 **📔 Note** : The `zIndex` property will only order elements relative to direct siblings, it cannot be used to render an entity on top of other parts of the layout tree. In html/CSS terms, every DCL UI element creates a new [stacking context](https://web.dev/learn/css/z-index#stacking_context).
 
 The default Decentraland UI, including the map, chat, etc is always rendered on top of all other UI elements.
+{% endhint %}
+
+## Scrollable containers
+
+When a UI entity has more content than fits in its assigned size, you can make the area scrollable by setting `overflow` to `scroll` in the entity's `uiTransform`. The player can then scroll through the content by dragging or using the mouse wheel.
+
+To create a scrollable container, the parent entity must have a fixed size (using `width` and `height`), and the children must exceed that size.
+
+```ts
+import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+export const scrollableMenu = () => (
+	<UiEntity
+		uiTransform={{
+			width: 300,
+			height: 400,
+			overflow: 'scroll',
+			flexDirection: 'column',
+		}}
+		uiBackground={{ color: Color4.fromHexString('#1a1a1a') }}
+	>
+		{/* These children exceed the parent's 400px height, making the area scrollable */}
+		<Label value="Item 1" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 2" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 3" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 4" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 5" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 6" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+		<Label value="Item 7" fontSize={18} uiTransform={{ width: '100%', height: 80 }} />
+	</UiEntity>
+)
+```
+
+This is useful for building long lists, inventories, chat logs, leaderboards, or any panel where the content may grow beyond what fits on screen.
+
+You can also nest scrollable containers inside other UI layouts. For example, a dialog modal with a fixed header and a scrollable body:
+
+```ts
+import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+export const dialogWithScroll = () => (
+	<UiEntity
+		uiTransform={{
+			width: 400,
+			height: 500,
+			flexDirection: 'column',
+		}}
+		uiBackground={{ color: Color4.fromHexString('#2a2a2a') }}
+	>
+		{/* Fixed header */}
+		<Label
+			value="Leaderboard"
+			fontSize={22}
+			uiTransform={{ width: '100%', height: 60 }}
+		/>
+
+		{/* Scrollable body */}
+		<UiEntity
+			uiTransform={{
+				width: '100%',
+				flexGrow: 1,
+				overflow: 'scroll',
+				flexDirection: 'column',
+			}}
+		>
+			<Label value="1. Alice - 9500" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="2. Bob - 8200" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="3. Charlie - 7800" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="4. Diana - 6100" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="5. Eve - 5500" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="6. Frank - 4900" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="7. Grace - 4200" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="8. Hank - 3800" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="9. Ivy - 3100" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+			<Label value="10. Jack - 2700" fontSize={16} uiTransform={{ width: '100%', height: 50 }} />
+		</UiEntity>
+	</UiEntity>
+)
+```
+
+{% hint style="info" %}
+**💡 Tip**: Use `flexGrow: 1` on the scrollable entity to make it fill the remaining space in the parent, so it adapts if other siblings (like a header or footer) change size.
 {% endhint %}
 
 ## Responsive UI size

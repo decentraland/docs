@@ -16,16 +16,15 @@ For dealing with avatars that are not players, see [NPC Avatars](npc-avatars.md)
 
 To change the player's position in the scene, use the `movePlayerTo()` function. This function takes an object with three properties:
 
-* `newRelativePosition`: Where to position the player, expressed as a Vector3.
-* `cameraTarget`: (optional) The direction to make the camera face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the camera will maintain the same rotation as before moving.
-* `avatarTarget`: (optional) The direction to make the avatar face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
-* `duration`: (optional) How long the transition should take, in seconds. If no value is provided, the transition will occur instantly. If a duration is provided, the avatar will walk or run to this new position.
+- `newRelativePosition`: Where to position the player, expressed as a Vector3.
+- `cameraTarget`: (optional) The direction to make the camera face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the camera will maintain the same rotation as before moving.
+- `avatarTarget`: (optional) The direction to make the avatar face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
+- `duration`: (optional) How long the transition should take, in seconds. If no value is provided, the transition will occur instantly. If a duration is provided, the avatar will walk or run to this new position.
 
 {% hint style="warning" %}
 **📔 Note**: During the transition, the avatar is not affected by colliders, so it can pass through objects.
 
 {% endhint %}
-
 
 ```ts
 import { movePlayerTo } from '~system/RestrictedActions'
@@ -87,7 +86,7 @@ If the player attempts to move during the duration of their transition, the tran
 
 ```ts
 import { movePlayerTo } from '~system/RestrictedActions'
-import {InputModifier, engine} from '@dcl/sdk/ecs'
+import { InputModifier, engine } from '@dcl/sdk/ecs'
 
 pointerEventsSystem.onPointerDown(
 	{
@@ -95,7 +94,6 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Click' },
 	},
 	async function () {
-
 		// disable all inputs
 		InputModifier.create(engine.PlayerEntity, {
 			mode: InputModifier.Mode.Standard({
@@ -141,7 +139,7 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 
 Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with a single property as an argument:
 
-* `predefinedEmote`: A string name for an existing emote.
+- `predefinedEmote`: A string name for an existing emote.
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -163,41 +161,41 @@ pointerEventsSystem.onPointerDown(
 
 The following emotes show feedback about player actions in your scene, all of these are valid values for the `predefinedEmote` field:
 
-* `buttonDown`
-* `buttonFront`
-* `getHit`
-* `knockOut`
-* `lever`
-* `openChest`
-* `openDoor`
-* `punch`
-* `push`
-* `swingWeaponOneHand`
-* `swingWeaponTwoHands`
-* `throw`
-* `sittingChair1`
-* `sittingChair2`
-* `sittingGround1`
-* `sittingGround2`
+- `buttonDown`
+- `buttonFront`
+- `getHit`
+- `knockOut`
+- `lever`
+- `openChest`
+- `openDoor`
+- `punch`
+- `push`
+- `swingWeaponOneHand`
+- `swingWeaponTwoHands`
+- `throw`
+- `sittingChair1`
+- `sittingChair2`
+- `sittingGround1`
+- `sittingGround2`
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
-* `wave`
-* `fistpump`
-* `robot`
-* `raiseHand`
-* `clap`
-* `money`
-* `kiss`
-* `tik`
-* `hammer`
-* `tektonik`
-* `dontsee`
-* `handsair`
-* `shrug`
-* `disco`
-* `dab`
-* `headexplode`
+- `wave`
+- `fistpump`
+- `robot`
+- `raiseHand`
+- `clap`
+- `money`
+- `kiss`
+- `tik`
+- `hammer`
+- `tektonik`
+- `dontsee`
+- `handsair`
+- `shrug`
+- `disco`
+- `dab`
+- `headexplode`
 
 {% hint style="info" %}
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](#freeze-the-player) for the duration of the avatar animation.
@@ -213,8 +211,8 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 
 This function takes an object with the following properties:
 
-* `src`: A string with a path to the emote file.
-* `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
+- `src`: A string with a path to the emote file.
+- `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
@@ -229,7 +227,10 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Make snowball' },
 	},
 	() => {
-		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+		triggerSceneEmote({
+			src: 'animations/Snowball_Throw_emote.glb',
+			loop: false,
+		})
 	}
 )
 ```
@@ -237,6 +238,54 @@ pointerEventsSystem.onPointerDown(
 {% hint style="info" %}
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](#freeze-the-player) for the duration of the avatar animation.
 {% endhint %}
+
+### Upper body animations
+
+By default, animations played on the avatar affect the whole skeleton, so the player must remain still for the animation to play and they are interrupted as soon as the player moves. You can instead play an animation that only affects the avatar from the waist up, leaving the legs free to walk, run or jump as usual. This is useful for any action that the player should be able to perform while moving around, like carrying an object, waving a flag, aiming a weapon, or holding a drink.
+
+To play an animation only on the upper body, pass a `mask` property with the value `AvatarEmoteMask.AEM_UPPER_BODY`. The mask property is supported both by `triggerEmote()` for default animations and by `triggerSceneEmote()` for custom animations.
+
+```ts
+import { triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarEmoteMask } from '@dcl/sdk/ecs'
+
+triggerSceneEmote({
+	src: 'animations/Juggler_emote.glb',
+	loop: true,
+	mask: AvatarEmoteMask.AEM_UPPER_BODY,
+})
+```
+
+```ts
+import { triggerEmote } from '~system/RestrictedActions'
+import { AvatarEmoteMask } from '@dcl/sdk/ecs'
+
+triggerEmote({
+	predefinedEmote: 'wave',
+	mask: AvatarEmoteMask.AEM_UPPER_BODY,
+})
+```
+
+The `mask` property accepts the following values:
+
+- `AvatarEmoteMask.AEM_FULL_BODY`: The animation affects the whole avatar skeleton. This is the default behavior if no mask is provided, and matches how emotes have always worked.
+- `AvatarEmoteMask.AEM_UPPER_BODY`: The animation only affects the torso, arms and head. The legs keep playing the default locomotion animations, so the player can walk, run, jog or jump while the upper body animation plays.
+
+To stop an upper body animation before it finishes, call `stopEmote()`. This is especially useful for looping animations that should last only while the player is holding an object or performing a sustained action.
+
+```ts
+import { stopEmote } from '~system/RestrictedActions'
+
+stopEmote({})
+```
+
+Keep the following considerations in mind when using upper body animations:
+
+- If the player triggers a full-body emote (for example from the emote wheel), it overrides any upper body animation that is currently playing.
+- Upper body animations pause when the player leaves the scene's bounds, and resume when they come back.
+- Gliding stops any active upper body animation. To block the player from use the glider see [Restricting specific kinds of locomotion](#restricting-specific-kinds-of-locomotion).
+- You may also want to use [Restricting specific kinds of locomotion](#restricting-specific-kinds-of-locomotion) for other things, like preventing the player from running or jumping while carrying something heavy.
+- While an upper body animation is playing, head and hand inverse kinematics are disabled on the avatar, so looking around or pointing has no effect.
 
 ## Restrict locomotion
 
@@ -249,7 +298,7 @@ You can freeze the player so that none of the input keys can move the avatar. Th
 Use the `InputModifier` component on the `engine.PlayerEntity` to prevent the player's inputs from affecting the avatar's locomotion. The avatar will remain still, the player will only be able to rotate the camera.
 
 ```ts
-import {InputModifier, engine} from '@dcl/sdk/ecs'
+import { InputModifier, engine } from '@dcl/sdk/ecs'
 
 InputModifier.create(engine.PlayerEntity, {
 	mode: InputModifier.Mode.Standard({
@@ -260,26 +309,26 @@ InputModifier.create(engine.PlayerEntity, {
 
 Keep the following considerations in mind:
 
-* While the player's interactions are disabled, their avatar is still affected by external forces, like gravity or moving platforms.
-* The `InputModifier` component can only be used with the `engine.PlayerEntity` entity. It can only affect the current player, it can't affect other players.
-* This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they leave the scene.
-* While the player's interactions are disabled, the player can't perform emotes freely, but the scene can trigger animations on the avatar.
-* Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened to by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
+- While the player's interactions are disabled, their avatar is still affected by external forces, like gravity or moving platforms.
+- The `InputModifier` component can only be used with the `engine.PlayerEntity` entity. It can only affect the current player, it can't affect other players.
+- This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they leave the scene.
+- While the player's interactions are disabled, the player can't perform emotes freely, but the scene can trigger animations on the avatar.
+- Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened to by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
 
 ### Restricting specific kinds of locomotion
 
 Instead of entirely freezing the player, you can restrict certain specific forms of locomotion of the player. This could be used for gameplay reasons, for example to preserve the difficulty of a platformer by preventing double-jump and glide. These abilities could even be toggled dynamically as a game mechanic, for example giving the player a stamina bar and preventing them from running when it's depleted. It could also be used to set the tone of a scene, for example preventing running or jumping in a location that is meant to be serene. The `InputModifier` includes the following options:
 
-* `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
-* `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
-* `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
-* `disableJump`: Player can't jump.
-* `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
-* `disableDoubleJump`: The player can't perform a double-jump.
-* `disableGliding`: The player can't glide.
+- `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
+- `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
+- `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
+- `disableJump`: Player can't jump.
+- `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
+- `disableDoubleJump`: The player can't perform a double-jump.
+- `disableGliding`: The player can't glide.
 
 ```ts
-import {InputModifier, engine} from '@dcl/sdk/ecs'
+import { InputModifier, engine } from '@dcl/sdk/ecs'
 
 InputModifier.create(engine.playerEntity, {
 	mode: InputModifier.Mode.Standard({
@@ -290,7 +339,7 @@ InputModifier.create(engine.playerEntity, {
 		disableJump: true,
 		disableEmote: true,
 		disableDoubleJump: true,
-		disableGliding: true
+		disableGliding: true,
 	}),
 })
 ```
@@ -300,7 +349,7 @@ InputModifier.create(engine.playerEntity, {
 To use the component without any helpers, you can use the following syntax:
 
 ```ts
-import {InputModifier, engine} from '@dcl/sdk/ecs'
+import { InputModifier, engine } from '@dcl/sdk/ecs'
 
 InputModifier.createOrReplace(engine.PlayerEntity, {
 	mode: {
@@ -317,7 +366,6 @@ InputModifier.createOrReplace(engine.PlayerEntity, {
 })
 ```
 
-
 ## Locomotion Settings
 
 You can affect the player's locomotion, like their running speed, jump height, and more. This can be altered dynamically, for example to allow a player to collect a temporary speed boost by interacting with an item, or to disable the player's ability to jump for a short period of time.
@@ -325,7 +373,7 @@ You can affect the player's locomotion, like their running speed, jump height, a
 To do this, add an `AvatarLocomotionSettings` component to the `engine.PlayerEntity`.
 
 ```ts
-import {AvatarLocomotionSettings, engine} from '@dcl/sdk/ecs'
+import { AvatarLocomotionSettings, engine } from '@dcl/sdk/ecs'
 
 AvatarLocomotionSettings.create(engine.PlayerEntity, {
 	runSpeed: 10,
@@ -364,15 +412,15 @@ You can create a [smart wearable](../projects/smart-wearables.md) that makes the
 To ensure nobody has unfair advantages at a parkour scene, you can enforce the default parameters by explicitly adding their default values in your scene:
 
 ```ts
-import {AvatarLocomotionSettings, engine} from '@dcl/sdk/ecs'
+import { AvatarLocomotionSettings, engine } from '@dcl/sdk/ecs'
 
 AvatarLocomotionSettings.create(engine.PlayerEntity, {
 	runSpeed: 10,
 	walkSpeed: 1.5,
-	jogSpeed: 8 ,
+	jogSpeed: 8,
 	jumpHeight: 1,
 	runJumpHeight: 1.5,
-	hardLandingCooldown: 0.75
+	hardLandingCooldown: 0.75,
 })
 ```
 
@@ -395,7 +443,7 @@ const entity = engine.addEntity()
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(4, 3, 4),
 	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-	excludeIds: []
+	excludeIds: [],
 })
 
 Transform.create(entity, {
@@ -405,13 +453,13 @@ Transform.create(entity, {
 
 When creating an `AvatarModifierArea` component, you must provide the following:
 
-* `area`: Size of the modifier area
-* `modifiers`: An array listing the modifiers to implement in the area. This property uses values from the `AvatarModifierType` enum.
+- `area`: Size of the modifier area
+- `modifiers`: An array listing the modifiers to implement in the area. This property uses values from the `AvatarModifierType` enum.
 
 The supported modifiers are:
 
-* `AvatarModifierType.AMT_HIDE_AVATARS`
-* `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+- `AvatarModifierType.AMT_HIDE_AVATARS`
+- `AvatarModifierType.AMT_DISABLE_PASSPORTS`
 
 All the effects of an `AvatarModifierArea` only take place within the region of their area. Players return to normal when they walk out of the area.
 
@@ -443,7 +491,7 @@ const entity = engine.addEntity()
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(4, 3, 4),
 	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-	excludeIds: []
+	excludeIds: [],
 })
 
 Transform.create(entity, {
@@ -463,7 +511,7 @@ const entity = engine.addEntity()
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(4, 3, 4),
 	modifiers: [AvatarModifierType.AMT_DISABLE_PASSPORTS],
-	excludeIds: []
+	excludeIds: [],
 })
 
 Transform.create(entity, {
@@ -531,6 +579,7 @@ AvatarModifierArea.create(entity, {
 	excludeIds: [myAvatarList.sort()],
 })
 ```
+
 {% endhint %}
 
 ### Debug modifier areas
@@ -550,7 +599,7 @@ const areaSize = Vector3.create(8, 3, 8)
 AvatarModifierArea.create(entity, {
 	area: areaSize,
 	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-  	excludeIds: []
+	excludeIds: [],
 })
 
 Transform.create(entity, {
@@ -581,4 +630,3 @@ See [NPC Avatars](npc-avatars.md) for more details.
 
 The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
 {% endhint %}
-

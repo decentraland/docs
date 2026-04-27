@@ -283,7 +283,7 @@ Keep the following considerations in mind when using upper body animations:
 
 - If the player triggers a full-body emote (for example from the emote wheel), it overrides any upper body animation that is currently playing.
 - Upper body animations pause when the player leaves the scene's bounds, and resume when they come back.
-- Gliding stops any active upper body animation. To block the player from use the glider see [Restricting specific kinds of locomotion](#restricting-specific-kinds-of-locomotion).
+- Gliding stops any active upper body animation. To block the player from using the glider, see [Restricting specific kinds of locomotion](#restricting-specific-kinds-of-locomotion).
 - You may also want to use [Restricting specific kinds of locomotion](#restricting-specific-kinds-of-locomotion) for other things, like preventing the player from running or jumping while carrying something heavy.
 - While an upper body animation is playing, head and hand inverse kinematics are disabled on the avatar, so looking around or pointing has no effect.
 

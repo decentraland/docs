@@ -537,6 +537,61 @@ In the **Scene** tab you'll see a list of all the stored variables. From here yo
 
 In the **Player** tab you'll see a list of all the players who have any data stored on your server. You can search them by address or name, and then see all their associated data. You can also edit or remove this data by clicking the pencil or trash icon.
 
+### Changing the data structure
+
+Stored data in production is **not cleared when you publish a new version of your scene**. This is great for leaderboards, player progress, and persistent environment changes possible that players expect to live on beyond any small updates to your scene.
+
+The flip side is that the data sitting in storage was written by an older version of your code. If your new code expects a different shape, parsing or reading that old data can fail in subtle ways. A field you renamed will be missing. A field that used to be a string and is now an object will throw when you try to access a property on it. A player who hasn't logged in for months may load data that predates a structure your code no longer knows how to handle.
+
+{% hint style="warning" %}
+**📔 Note**: Schema changes don't just affect the very first read after a deploy. Stored data lives until it's overwritten or deleted, so an old-format value can surface at any time, often from a returning player you'd forgotten about.
+{% endhint %}
+
+#### Best practices
+
+- _Always parse defensively_. Treat anything coming out of storage as untrusted input, even though you wrote it. Wrap `JSON.parse()` in a `try/catch`, check that fields exist before reading them, and have a sensible default ready when they don't:
+
+  ```typescript
+  const raw = await Storage.player.get<string>(playerAddress, 'progress')
+  let progress = { level: 1, coins: 0 }
+  if (raw) {
+  	try {
+  		const parsed = JSON.parse(raw)
+  		progress = {
+  			level: typeof parsed.level === 'number' ? parsed.level : 1,
+  			coins: typeof parsed.coins === 'number' ? parsed.coins : 0,
+  		}
+  	} catch {
+  		// Old or corrupt data — fall back to defaults
+  	}
+  }
+  ```
+
+- _Add fields, don't rename or remove them_. The safest schema change is an additive one: introduce a new field with a default, and leave existing fields alone. Old data will simply be missing the new field, which your defensive parsing already handles. Renaming a field forces every old record to break.
+
+- _Version your stored objects_. Include a `version` field from day one. When you read data, branch on the version and migrate older shapes into the current one before using them. This keeps the rest of your code working with a single, current shape:
+
+  ```typescript
+  type ProgressV2 = { version: 2; level: number; coins: number; xp: number }
+
+  function migrate(raw: any): ProgressV2 {
+  	const version = raw?.version ?? 1
+  	if (version === 1) {
+  		// v1 had no xp field — default it
+  		return { version: 2, level: raw.level ?? 1, coins: raw.coins ?? 0, xp: 0 }
+  	}
+  	return raw as ProgressV2
+  }
+  ```
+
+- _Write back the migrated value_. Once you've upgraded a record in memory, save it back so the next read is already in the new format. Over time this drains the pool of old-shape records without needing a one-shot migration script.
+
+- _For breaking changes, use a new key_. If the new structure is genuinely incompatible and migrating isn't worth it, write to a new storage key (for example `progress_v2`) and ignore the old one. The old key sits harmlessly in storage and you avoid any read path that has to interpret it. You can clean up the old keys later via the [storage UI](https://decentraland.org/storage) or the `npx sdk-commands storage` commands.
+
+- _Test against real production data_. Before deploying a structural change, pull a few real records from the storage UI and run your new parsing code against them. The corner cases that cause problems are usually records you didn't know existed.
+
+- _Leaving an escape hatch_. Keep in mind that you can edit or delete individual records from the storage UI or via `npx sdk-commands storage`. If a single player ends up wedged in a bad state after a schema change, you can fix their record directly without redeploying.
+
 ## Environment Variables
 
 Configure your scene without hardcoding values into the code. Environment variables are useful for sensitive data, and also for feature flags or parameters that can be easily changed without republishing your scene.

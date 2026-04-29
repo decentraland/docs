@@ -12,12 +12,6 @@ Allowing all players to see a scene as having the same content in the same state
 
 An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
-{% hint style="warning" %}
-**📔 Note**: The Authoritative server currently only works on scenes that are published to **Worlds**, not to LAND parcels in Genesis City. If a world has multiple scenes in it, only one of its scenes can have support for its own Authoritative Server.
-
-Both these scenarios - Authoritative server support for scenes on LAND parcels and on multi-scene worlds - will soon be supported.
-{% endhint %}
-
 An authoritative server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
 
 Having an authoritative server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. An authoritative server resolves every change in one place, so all clients converge on the same state.

@@ -6,9 +6,9 @@ description: Stream video into a scene
 
 There are three different ways you can show a video in a scene:
 
-* Upload a video file as part of the scene contents
-* Stream the video from an external source
-* Stream live via Decentraland cast
+- Upload a video file as part of the scene contents
+- Stream the video from an external source
+- Stream live via Decentraland cast
 
 {% hint style="info" %}
 **💡 Tip**: In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can use an **Video Player** [Smart Item](../../scene-editor/interactivity/smart-items.md) for a no-code way to achieve this.
@@ -26,9 +26,9 @@ Keep in mind that streaming video demands a significant effort from the player's
 
 If too many videos are playing at the same time in your scene, some will be paused by the engine. The priority for pausing a screen is determined based on several factors, including proximity to the player, size, and whether the screen is in the player's field of view. The maximum number of simultaneous videos depends on the player's quality settings.
 
-* Low: 1
-* Medium: 5
-* High: 10
+- Low: 1
+- Medium: 5
+- High: 10
 
 We also recommend starting to play the video when the player is near or performs an action to do that. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
@@ -82,11 +82,15 @@ See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentr
 
 ## About External Streaming
 
-The source of the streaming must be an _https_ URL (_http_ URLs aren't supported), and the source should have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit external access. If this is not the case, you might need to set up a server to act as a proxy and expose the stream in a valid way.
+The source of the streaming must be an _https_ URL (_http_ URLs aren't supported).
 
-There are a number of options for streaming video. The simplest option is to use a managed hosting provider like [Vimeo](https://vimeo.com/) , [Livepeer Studio](https://livepeer.studio/) or [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback) where you pay a fee to the provider to manage all the streaming infrastructure.
+You should be able to paste a URL pointing to a video from most popular video streaming sites. Be mindful of the terms of service with these platforms.
 
-The other recommended alternative is to set up your own server, using free software but paying for hosting on a platform like [Digital Ocean](https://try.digitalocean.com/developerbrand/?_campaign=emea_brand_kw_en_cpc&_adgroup=digitalocean_exact_exact&_keyword=digitalocean&_device=c&_adposition=&_content=conversion&_medium=cpc&_source=bing\&msclkid=160bfc160a2a1bab9bbf9933594bd9c5\&utm_source=bing\&utm_medium=cpc\&utm_campaign=emea_brand_kw_en_cpc\&utm_term=digitalocean\&utm_content=DigitalOcean%20Exact_Exact) or [Cloudflare](https://www.cloudflare.com/products/cloudflare-stream/). You can deploy something like a [Node Media Server](https://github.com/illuspas/Node-Media-Server), which provides most of what you need out of the box.
+To stream from a video file you have on your local machine, the easiest path is to upload this video to a public Google Drive and paste the link.
+
+Another option is to use a managed hosting provider like [Vimeo](https://vimeo.com/) , [Livepeer Studio](https://livepeer.studio/) or [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback) where you pay a fee to the provider to manage all the streaming infrastructure.
+
+The most powerful approach is to set up your own server, using free software but paying for hosting on a platform like [Digital Ocean](https://try.digitalocean.com/developerbrand/?_campaign=emea_brand_kw_en_cpc&_adgroup=digitalocean_exact_exact&_keyword=digitalocean&_device=c&_adposition=&_content=conversion&_medium=cpc&_source=bing&msclkid=160bfc160a2a1bab9bbf9933594bd9c5&utm_source=bing&utm_medium=cpc&utm_campaign=emea_brand_kw_en_cpc&utm_term=digitalocean&utm_content=DigitalOcean%20Exact_Exact) or [Cloudflare](https://www.cloudflare.com/products/cloudflare-stream/). You can deploy something like a [Node Media Server](https://github.com/illuspas/Node-Media-Server), which provides most of what you need out of the box.
 
 All these options have pros and cons for different scenarios. You should evaluate what's best for you taking into account your needs, technical skills and budget.
 
@@ -100,12 +104,12 @@ Whether you are using a venue’s stream key or your own RTMP server, your setti
 
 The following simple set-up is recommended:
 
-* Bitrate 2500kbps (which will work with all Decentraland venues)
-* Audio bitrate 160kbps
-* Video encoder preset: Hardware NVENC
-* Audio Encoder AAC
-* Broadest Resolution: 720 (any greater causes issues in DCL)
-* Frame rate 30fps
+- Bitrate 2500kbps (which will work with all Decentraland venues)
+- Audio bitrate 160kbps
+- Video encoder preset: Hardware NVENC
+- Audio Encoder AAC
+- Broadest Resolution: 720 (any greater causes issues in DCL)
+- Frame rate 30fps
 
 {% hint style="warning" %}
 **📔 Note**: Make sure you disable Multitrack streaming in OBS. You can find this in Settings > Stream.
@@ -113,9 +117,9 @@ The following simple set-up is recommended:
 
 ### Advice for new streamers
 
-* Early sound checks are essential to test your set up with the venue.
-* Small errors like a digit wrong in the stream key are the most likely to mess up the stream.
-* Do not go above 720 resolution or a bitrate of 2500 kbps.
+- Early sound checks are essential to test your set up with the venue.
+- Small errors like a digit wrong in the stream key are the most likely to mess up the stream.
+- Do not go above 720 resolution or a bitrate of 2500 kbps.
 
 ## Live streaming
 
@@ -187,9 +191,9 @@ See [materials](../3d-essentials/materials.md) for more details.
 
 The following file formats are supported:
 
-* _.mp4_
-* _.ogg_
-* _.webm_
+- _.mp4_
+- _.ogg_
+- _.webm_
 
 Keep in mind that a video file adds to the total size of the scene, which makes the scene take longer to download for players walking into your scene. The video size might also make you go over the [scene limitations](../optimizing/scene-limitations.md), as you have a maximum of 15 MB per parcel to use. We recommend compressing the video as much as possible, so that it's less of a problem.
 
@@ -234,16 +238,16 @@ pointerEventsSystem.onPointerDown(
 
 The following optional properties are available to set on the `VideoPlayer` component:
 
-* `playing`: Determines if the video is currently playing. If false, the video is paused.
+- `playing`: Determines if the video is currently playing. If false, the video is paused.
 
 {% hint style="warning" %}
 **📔 Note**: There can only be one `VideoPlayer` component active at a time in each scene.
 {% endhint %}
 
-* `playbackRate`: Changes the speed at which the video is played. _1_ by default.
-* `volume`: Lets you change the volume of the audio. _1_ by default.
-* `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _-1_ by default, which makes it start at the actual start of the video.
-* `loop`: Boolean that determines if the video is played continuously in a loop, or if it stops after playing once. _false_ by default.
+- `playbackRate`: Changes the speed at which the video is played. _1_ by default.
+- `volume`: Lets you change the volume of the audio. _1_ by default.
+- `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _-1_ by default, which makes it start at the actual start of the video.
+- `loop`: Boolean that determines if the video is played continuously in a loop, or if it stops after playing once. _false_ by default.
 
 ## Play multiple videos
 
@@ -341,19 +345,19 @@ videoEventsSystem.registerVideoEventsEntity(
 
 The videoEvent object passed as an input for the function contains the following properties:
 
-* `currentOffset` (_number_): The current value of the `position` property on the video. This value shows seconds after the video's original beginning. _-1_ by default, if the video hasn't started playing.
-* `state`: The new video status, expressed as a value from the `VideoState` enum. This enum can hold the following possible values:
-  * `VideoState.VS_READY`
-  * `VideoState.VS_NONE`
-  * `VideoState.VS_ERROR`
-  * `VideoState.VS_SEEKING`
-  * `VideoState.VS_LOADING`
-  * `VideoState.VS_BUFFERING`
-  * `VideoState.VS_PLAYING`
-  * `VideoState.VS_PAUSED`
-* `videoLength` (_number_ ): The length in seconds of the entire video. _-1_ if length is unknown.
-* `timeStamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
-* `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
+- `currentOffset` (_number_): The current value of the `position` property on the video. This value shows seconds after the video's original beginning. _-1_ by default, if the video hasn't started playing.
+- `state`: The new video status, expressed as a value from the `VideoState` enum. This enum can hold the following possible values:
+  - `VideoState.VS_READY`
+  - `VideoState.VS_NONE`
+  - `VideoState.VS_ERROR`
+  - `VideoState.VS_SEEKING`
+  - `VideoState.VS_LOADING`
+  - `VideoState.VS_BUFFERING`
+  - `VideoState.VS_PLAYING`
+  - `VideoState.VS_PAUSED`
+- `videoLength` (_number_ ): The length in seconds of the entire video. _-1_ if length is unknown.
+- `timeStamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
+- `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
 
 ### Latest video event
 
@@ -361,10 +365,10 @@ Query a video for its last state change by using `videoEventsSystem.getVideoStat
 
 ```ts
 function mySystem() {
-    const latestVideoEvent = videoEventsSystem.getVideoState(videoPlayerEntity)
-    if(!latestVideoEvent) return
-    
-    console.log(`state: ${latestVideoEvent.state}
+	const latestVideoEvent = videoEventsSystem.getVideoState(videoPlayerEntity)
+	if (!latestVideoEvent) return
+
+	console.log(`state: ${latestVideoEvent.state}
     \ncurrentOffset: ${latestVideoEvent.currentOffset}
     \nvideoLength: ${latestVideoEvent.videoLength}`)
 }
@@ -409,11 +413,11 @@ This allows you to play your videos on any shape, not just planes. For example, 
 const myEntity = engine.addEntity()
 
 GltfContainer.create(myEntity, {
-  src: 'models/myModel.glb',
+	src: 'models/myModel.glb',
 })
 
 Transform.create(myEntity, {
-  position: Vector3.create(4, 0, 4),
+	position: Vector3.create(4, 0, 4),
 })
 
 VideoPlayer.create(myEntity, {
@@ -421,22 +425,23 @@ VideoPlayer.create(myEntity, {
 	playing: true,
 })
 
-GltfNodeModifiers.create(
-	myEntity,
-	{
-		modifiers: [{
+GltfNodeModifiers.create(myEntity, {
+	modifiers: [
+		{
 			path: '',
 			material: {
 				material: {
-					$case: 'pbr', pbr: {
+					$case: 'pbr',
+					pbr: {
 						texture: Material.Texture.Video({
 							videoPlayerEntity: myEntity,
 						}),
 					},
 				},
 			},
-		}],
-	})
+		},
+	],
+})
 ```
 
 The mapping of the video will follow the original UV mapping that the model uses. This means that if the model has a texture that is mapped to a specific part of the model, the video will be mapped to that same part.
@@ -465,24 +470,24 @@ Control the spatial audio with the following properties:
 - `spatialMaxDistance`: The maximum distance at which the audio is heard. If the player is further away, the audio will be heard at 0 volume. _60_ by default
 
 ```ts
-const videoPlayerEntity = engine.addEntity();
+const videoPlayerEntity = engine.addEntity()
 
 Transform.create(videoPlayerEntity, {
-    position: Vector3.create(8, 2, 8),
-});
+	position: Vector3.create(8, 2, 8),
+})
 
 VideoPlayer.create(videoPlayerEntity, {
 	src: 'https://player.vimeo.com/progressive_redirect/playback/1145666916/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=db1cd6946851313cb8f7be60d1f6c30af0902bcc46fdae0ba2a06e5fdf44c329',
 	playing: true,
 	spatial: true,
 	spatialMinDistance: 5,
-	spatialMaxDistance: 10
-});
+	spatialMaxDistance: 10,
+})
 
 MeshRenderer.setPlane(videoPlayerEntity)
 
 Material.setBasicMaterial(videoPlayerEntity, {
-texture: Material.Texture.Video({ videoPlayerEntity: videoPlayerEntity })
+	texture: Material.Texture.Video({ videoPlayerEntity: videoPlayerEntity }),
 })
 ```
 

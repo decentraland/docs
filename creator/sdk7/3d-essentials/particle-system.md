@@ -2,7 +2,7 @@
 description: Add particle effects like fire, rain, sparks, and magic auras to your scene
 ---
 
-# Particle System
+# Particle Systems
 
 Particle systems let you create dynamic visual effects by emitting and animating large numbers of small sprites. Use them to build fire, smoke, rain, snow, sparks, magic auras, explosions, and many other effects that would be impractical to achieve with static meshes.
 
@@ -362,3 +362,9 @@ The engine enforces a per-scene particle budget and will automatically scale dow
 The engine caps the number of maximum particles that are rendered at any given time to 1000. If you're emitting more particles than that, you may not be seeing all of them.
 
 Also keep in mind that particles can only be seen by a player while they're standing inside your scene. Players who are looking at the scene from the outside will not see any particles until they step in.
+
+## Particle Lab
+
+Enter the world [ParticleLab.dcl.eth](decentraland://?realm=particlelab.dcl.eth&dclenv=org) to experiment with different particle systems. When you approach a particle system, the UI will display all the available fields, you can tweak them live without needing to reload the scene. When you're happy, click the **Copy** button to copy the code for that particle system to your clipboard.
+
+

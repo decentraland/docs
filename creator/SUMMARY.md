@@ -99,6 +99,7 @@
   * [Lights](sdk7/3d-essentials/lights.md)
   * [Materials](sdk7/3d-essentials/materials.md)
   * [Move Entities](sdk7/3d-essentials/move-entities.md)
+  * [Particle System](sdk7/3d-essentials/particle-system.md)
   * [Shape Components](sdk7/3d-essentials/shape-components.md)
   * [Sounds](sdk7/3d-essentials/sounds.md)
   * [Special Types](sdk7/3d-essentials/special-types.md)

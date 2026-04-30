@@ -252,67 +252,87 @@ Keep the following limitations in mind when working with spring bones:
 - **No colliders**: Spring bones do not collide with the avatar's body or other bones. Chains may clip through the body mesh in extreme poses. Future versions may add collider support.
 - **No cross-wearable interactions**: Each wearable's spring chains are independent. Chains from different wearables don't affect each other.
 - **No global wind**: There is no scene-level wind force. You can approximate a wind effect per-wearable by adjusting the `gravityDir` to a diagonal direction.
-- **Performance on remote avatars**: Spring bone simulation is disabled for avatars that are far from the local player to save performance. Nearby avatars will display spring bone physics normally.
+- **Performance on remote avatars**: Spring bone simulation may be disabled for avatars that are far from the local player to save performance. Nearby avatars will display spring bone physics normally.
 - **Alternative clients compatibility**: Wearables with spring bones are backward-compatible with alternative clients and older Explorer versions, but the spring bone elements will remain static. In some cases, there may be minor visual issues.
 
 ## Technical Reference
 
-Spring bone parameters are stored inside the `.glb` file using a glTF vendor extension called `DCL_spring_bone_joint`. When you configure parameters in the Builder, they are written directly into this extension in the file.
+Spring bone physics uses two separate artifacts that work together:
+
+1. **The `.glb` file** carries only the bone names (with the `springbone` token) and their hierarchy. No physics parameters are stored in the model file.
+2. **The wearable's item metadata** (`wearable.data.springBones`) carries all physics parameters as JSON, keyed by the GLB's content hash.
+
+When you configure parameters in the Builder, they are saved into the wearable's item metadata — the `.glb` file is never modified by parameter edits. This means tuning physics values does not change the model's content hash and does not trigger asset-bundle reconversion.
 
 You don't need to interact with this format directly — the Builder handles reading and writing it. This section is provided for reference.
 
-### glTF Extension Structure
+### How It Works
+
+The Explorer reconstructs spring chains at load time by:
+
+1. Resolving the wearable representation for the avatar's body shape and looking up the GLB content hash.
+2. Reading `wearable.data.springBones.models[<hash>]` from the item metadata.
+3. Traversing the `.glb` nodes to find bones whose name contains `springbone` (case-insensitive).
+4. Matching each candidate bone's name against the metadata. A bone with `isRoot: true` in the metadata becomes a **spring root**; all its descendants form the chain.
+
+### `.glb` Node Hierarchy (example)
+
+The model file contains only the bone names and parent-child relationships:
 
 ```json
 {
   "asset": {"version": "2.0"},
-  "extensionsUsed": ["DCL_spring_bone_joint"],
   "nodes": [
     {"name": "Avatar_Head", "children": [1, 2]},
-    {
-      "name": "SpringBone_earring_r",
-      "children": [3],
-      "extensions": {
-        "DCL_spring_bone_joint": {
-          "version": 1,
-          "stiffness": 0.5,
-          "gravityPower": 1.0,
-          "gravityDir": [0, -1, 0],
-          "drag": 0.6,
-          "isRoot": true,
-          "center": "Avatar_Hips"
-        }
-      }
-    },
-    {
-      "name": "SpringBone_hair_left",
-      "children": [4],
-      "extensions": {
-        "DCL_spring_bone_joint": {
-          "version": 1,
-          "stiffness": 2.0,
-          "gravityPower": 0.8,
-          "gravityDir": [0, -1, 0],
-          "drag": 0.4,
-          "isRoot": true,
-          "center": "Avatar_Head"
-        }
-      }
-    },
+    {"name": "SpringBone_earring_r", "children": [3]},
+    {"name": "SpringBone_hair_left", "children": [4]},
     {"name": "springbone_earring_r_tip"},
     {"name": "SpringBone_hair_left_tip"}
   ]
 }
 ```
 
-### Extension Parameters
+### Item Metadata (`wearable.data.springBones`)
+
+The physics parameters are stored in the wearable's metadata, keyed by the GLB content hash:
+
+```json
+{
+  "version": 1,
+  "models": {
+    "bafkreialsvt77jvpy673cnugp5ggnxfaalfncufweayuk3jbxskh3pelkm": {
+      "SpringBone_earring_r": {
+        "stiffness": 0.5,
+        "gravityPower": 1.0,
+        "gravityDir": [0, -1, 0],
+        "drag": 0.6,
+        "isRoot": true,
+        "center": "Avatar_Hips"
+      },
+      "SpringBone_hair_left": {
+        "stiffness": 2.0,
+        "gravityPower": 0.8,
+        "gravityDir": [0, -1, 0],
+        "drag": 0.4,
+        "isRoot": true
+      }
+    }
+  }
+}
+```
+
+- `version` is always `1` (top-level, not per-bone).
+- `models` is keyed by the GLB content hash. Wearables whose male and female representations share the same `.glb` have a single entry.
+- Each bone entry uses the exact node name from the `.glb` (case-sensitive).
+- Tip bones (e.g., `springbone_earring_r_tip`) do not need a metadata entry — they serve only as geometric endpoints.
+
+### Metadata Parameters
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `version` | integer | required (`1`) | Schema version for forward compatibility. |
-| `stiffness` | float | `2.0` | Restoring force toward rest pose. |
-| `gravityPower` | float | `0.0` | Magnitude of gravity force. |
+| `stiffness` | float | `2.0` | Restoring force toward rest pose. Range: 0–4. |
+| `gravityPower` | float | `0` | Magnitude of gravity force. Range: 0–2. |
 | `gravityDir` | vec3 | `[0, -1, 0]` | Direction of gravity in world space. |
-| `drag` | float | `0.5` | Damping / deceleration factor. |
-| `isRoot` | boolean | `true` | Whether this node is the root of a spring chain. |
-| `center` | string | none | Name of a reference bone for relative inertia calculation. |
+| `drag` | float | `0.5` | Damping / deceleration factor. Range: 0–1. |
+| `isRoot` | boolean | — | Whether this node is the root of a spring chain. Required to be `true` for root bones. |
+| `center` | string | — | Optional. Name of a reference bone for relative inertia calculation. |

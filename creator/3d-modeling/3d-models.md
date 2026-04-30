@@ -35,7 +35,7 @@ We use glTF because it provides a powerful set of features that includes:
 
 * Hierarchical objects
 * Skeletal structure and animation
-* Vendor extensions such as `DCL_spring_bone_joint` for [spring bone physics](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones)
+* [Spring bone physics](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for dynamic wearable accessories (bones are defined in the `.glb`; physics parameters are stored in the wearable's item metadata)
 * Robust pipeline for materials and shaders
 * Scene information such light sources and cameras (which can be used in future developments).
 

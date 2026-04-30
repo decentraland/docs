@@ -252,7 +252,7 @@ Keep the following limitations in mind when working with spring bones:
 - **No colliders**: Spring bones do not collide with the avatar's body or other bones. Chains may clip through the body mesh in extreme poses. Future versions may add collider support.
 - **No cross-wearable interactions**: Each wearable's spring chains are independent. Chains from different wearables don't affect each other.
 - **No global wind**: There is no scene-level wind force. You can approximate a wind effect per-wearable by adjusting the `gravityDir` to a diagonal direction.
-- **Performance on remote avatars**: Spring bone simulation may be disabled for avatars that are far from the local player to save performance. Nearby avatars will display spring bone physics normally.
+- **Performance on remote avatars**: Spring bone simulation is disabled for avatars that are far from the local player to save performance. Nearby avatars will display spring bone physics normally.
 - **Alternative clients compatibility**: Wearables with spring bones are backward-compatible with alternative clients and older Explorer versions, but the spring bone elements will remain static. In some cases, there may be minor visual issues.
 
 ## Technical Reference
@@ -260,20 +260,11 @@ Keep the following limitations in mind when working with spring bones:
 Spring bone physics uses two separate artifacts that work together:
 
 1. **The `.glb` file** carries only the bone names (with the `springbone` token) and their hierarchy. No physics parameters are stored in the model file.
-2. **The wearable's item metadata** (`wearable.data.springBones`) carries all physics parameters as JSON, keyed by the GLB's content hash.
+2. **The wearable's item metadata** (`wearable.data.springBones`) carries all physics parameters as JSON.
 
-When you configure parameters in the Builder, they are saved into the wearable's item metadata — the `.glb` file is never modified by parameter edits. This means tuning physics values does not change the model's content hash and does not trigger asset-bundle reconversion.
+When you configure parameters in the Builder, they are saved into the wearable's item metadata — the `.glb` file is never modified by parameter edits.
 
 You don't need to interact with this format directly — the Builder handles reading and writing it. This section is provided for reference.
-
-### How It Works
-
-The Explorer reconstructs spring chains at load time by:
-
-1. Resolving the wearable representation for the avatar's body shape and looking up the GLB content hash.
-2. Reading `wearable.data.springBones.models[<hash>]` from the item metadata.
-3. Traversing the `.glb` nodes to find bones whose name contains `springbone` (case-insensitive).
-4. Matching each candidate bone's name against the metadata. A bone with `isRoot: true` in the metadata becomes a **spring root**; all its descendants form the chain.
 
 ### `.glb` Node Hierarchy (example)
 
@@ -321,7 +312,6 @@ The physics parameters are stored in the wearable's metadata, keyed by the GLB c
 }
 ```
 
-- `version` is always `1` (top-level, not per-bone).
 - `models` is keyed by the GLB content hash. Wearables whose male and female representations share the same `.glb` have a single entry.
 - Each bone entry uses the exact node name from the `.glb` (case-sensitive).
 - Tip bones (e.g., `springbone_earring_r_tip`) do not need a metadata entry — they serve only as geometric endpoints.

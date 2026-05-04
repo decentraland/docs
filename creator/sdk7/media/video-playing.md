@@ -494,3 +494,7 @@ Material.setBasicMaterial(videoPlayerEntity, {
 {% hint style="warning" %}
 **📔 Note**: Some video formats don't support spatial audio. Make sure the stream is encoded in _mp4_, _m4a_, or _mov_.
 {% endhint %}
+
+## Audio analysis
+
+You can read real-time amplitude and frequency data from the audio track of a `VideoPlayer` entity to drive reactive visuals that sync with the video's soundtrack. See [Audio analysis](audio-analysis.md).

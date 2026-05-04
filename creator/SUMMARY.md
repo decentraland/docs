@@ -106,6 +106,7 @@
   * [Text](sdk7/3d-essentials/text.md)
   * [Trigger Areas](sdk7/3d-essentials/trigger-areas.md)
 * [Media](sdk7/media/)
+  * [Audio Analysis](sdk7/media/audio-analysis.md)
   * [Audio Streaming](sdk7/media/audio-streaming.md)
   * [Display a Certified NFT](sdk7/media/display-a-certified-nft.md)
   * [Video Playing](sdk7/media/video-playing.md)

@@ -201,3 +201,7 @@ You can also achieve this by explicitly set the `currentTime` property on an `Au
 ## Audio streaming
 
 See [Audio streaming](../media/audio-streaming.md) to learn how you can play a live audio stream from an external source.
+
+## Audio analysis
+
+See [Audio analysis](../media/audio-analysis.md) to learn how to read real-time amplitude and frequency data from an `AudioSource` and drive reactive visuals from it, like cubes that pulse with the bass or equalizer-style bar visualizers.

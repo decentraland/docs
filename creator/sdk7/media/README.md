@@ -9,6 +9,7 @@ Integrate various media types into your scenes, including audio streams, videos,
 ## What You'll Learn
 
 * Audio streaming
+* Audio analysis for reactive visuals
 * Video playback
 * Displaying certified NFTs
 * Media optimization

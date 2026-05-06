@@ -58,13 +58,11 @@ Spring bones won't work without `springbone` in the bone's name. It has to be us
 
 ### Limits
 
-<-- TODO: replace N and M with final values when defined -->
+Each wearable must stay within the following spring bone limits:
 
-Each wearable has the following spring bone limits:
-
-- Maximum **N** spring chains per wearable
-- Maximum **M** total spring bones (sum of all bones across all chains)
-- Maximum chain depth of **N** bones
+- Maximum **6** spring chains per wearable
+- Maximum **12** total spring bones (sum of all bones across all chains)
+- Maximum chain depth of **6** bones
 
 ## Creating Spring Bones in Blender
 

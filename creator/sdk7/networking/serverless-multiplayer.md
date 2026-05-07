@@ -32,6 +32,10 @@ const doorEntity = engine.addEntity()
 syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1)
 ```
 
+{% hint style="warning" %}
+**📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to an [Authoritative Server](../networking/authoritative-servers.md), the pattern changes: only the server calls `syncEntity`, guarded by `isServer()`. Calling it on the client in an authoritative scene produces errors.
+{% endhint %}
+
 The `syncEntity` function takes the following inputs:
 
 * **entityId**: A reference to the entity to sync

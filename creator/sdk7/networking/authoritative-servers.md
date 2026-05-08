@@ -112,6 +112,7 @@ The simplest case is to validate that the new _value_ being written is within ce
 
 ```typescript
 import { engine, Transform } from "@dcl/sdk/ecs";
+import { Vector3 } from "@dcl/sdk/math";
 import { isServer } from "@dcl/sdk/network";
 
 const entity = engine.addEntity();
@@ -243,7 +244,8 @@ Every incoming value includes a `senderAddress` field. When the sender is the se
 The example below defines a small `protectServerEntity()` helper that applies this check to one or more components on a given entity. It's a convenient way to protect multiple components (like `Transform` and `GltfContainer`) in a single call:
 
 ```typescript
-import { Entity, Transform, GltfContainer } from "@dcl/sdk/ecs";
+import { engine, Entity, Transform, GltfContainer } from "@dcl/sdk/ecs";
+import { Vector3 } from "@dcl/sdk/math";
 import { isServer } from "@dcl/sdk/network";
 import { AUTH_SERVER_PEER_ID } from "@dcl/sdk/network/message-bus-sync";
 
@@ -330,6 +332,8 @@ export const room = registerMessages(Messages);
 Clients can only send messages to the server. There is no direct client-to-client messaging. The server can broadcast to all clients or target specific players by address.
 
 ```typescript
+import { room } from "./shared/messages";
+
 // Client → Server (broadcast, server receives it)
 room.send("playerReady", { displayName: "Alice" });
 
@@ -343,6 +347,8 @@ room.send("gameEnded", { winnerId: "Alice" }, { to: [playerAddress] });
 ### Receive Messages
 
 ```typescript
+import { room } from "./shared/messages";
+
 // Client receives from server
 room.onMessage("gameStarted", (data) => {
   console.log(`Round ${data.roundNumber} started!`);
@@ -363,7 +369,9 @@ On the server, every received message includes a `context` object with the sende
 Clients should wait until the scene state is synced before sending their first message, to avoid race conditions on join:
 
 ```typescript
+import { engine } from "@dcl/sdk/ecs";
 import { isStateSyncronized } from "@dcl/sdk/network";
+import { room } from "./shared/messages";
 
 engine.addSystem(() => {
   if (!isStateSyncronized()) return;
@@ -378,6 +386,8 @@ engine.addSystem(() => {
 All message payloads and custom components use `Schemas` for binary serialization. Here is a quick reference of the types available:
 
 ```typescript
+import { Schemas } from "@dcl/sdk/ecs";
+
 // Basic types
 Schemas.String; // "hello"
 Schemas.Int; // 42
@@ -453,8 +463,10 @@ During local development, storage is written to `node_modules/@dcl/sdk-commands/
 ### World Storage — Shared Across All Players
 
 ```typescript
+import { Storage } from "@dcl/sdk/server";
+
 // Write
-await Storage.world.set(
+await Storage.set(
   "leaderboard",
   JSON.stringify([
     { name: "Alice", score: 100 },
@@ -463,11 +475,11 @@ await Storage.world.set(
 );
 
 // Read
-const raw = await Storage.world.get<string>("leaderboard");
+const raw = await Storage.get<string>("leaderboard");
 const leaderboard = raw ? JSON.parse(raw) : [];
 
 // Delete
-await Storage.world.delete("leaderboard");
+await Storage.delete("leaderboard");
 ```
 
 You can also manage scene storage via the command line, using `npx sdk-commands storage scene`:
@@ -489,6 +501,8 @@ npx sdk-commands storage scene clear --confirm
 ### Player Storage — Per Wallet Address
 
 ```typescript
+import { Storage } from "@dcl/sdk/server";
+
 // Write
 await Storage.player.set(
   playerAddress,
@@ -559,6 +573,8 @@ The flip side is that the data sitting in storage was written by an older versio
 - _Always parse defensively_. Treat anything coming out of storage as untrusted input, even though you wrote it. Wrap `JSON.parse()` in a `try/catch`, check that fields exist before reading them, and have a sensible default ready when they don't:
 
   ```typescript
+  import { Storage } from "@dcl/sdk/server";
+
   const raw = await Storage.player.get<string>(playerAddress, "progress");
   let progress = { level: 1, coins: 0 };
   if (raw) {
@@ -708,6 +724,8 @@ Every component change sends the _entire_ component data over the network. This 
 ### ❌ Avoid monolithic components
 
 ```typescript
+import { engine, Schemas } from "@dcl/sdk/ecs";
+
 // BAD — changing the score also sends the positions array
 const GameState = engine.defineComponent("GameState", {
   playerAScore: Schemas.Int,
@@ -720,6 +738,8 @@ const GameState = engine.defineComponent("GameState", {
 ### ✅ Prefer atomic components
 
 ```typescript
+import { engine, Schemas } from "@dcl/sdk/ecs";
+
 // GOOD — each update is small and independent
 const PlayerScore = engine.defineComponent("PlayerScore", {
   playerA: Schemas.Int,
@@ -738,6 +758,9 @@ _Rule of thumb_: group fields that change together and at a similar frequency. S
 Avoid sending messages on every frame. Batch or throttle where possible:
 
 ```typescript
+import { engine } from "@dcl/sdk/ecs";
+import { room } from "./shared/messages";
+
 let lastSend = 0;
 engine.addSystem((dt) => {
   lastSend += dt;
@@ -758,6 +781,9 @@ For example if the server controls a countdown timer, it's not necessary to send
 Without `validateBeforeChange`, clients can write to any component:
 
 ```typescript
+import { engine, Schemas } from "@dcl/sdk/ecs";
+import { AUTH_SERVER_PEER_ID } from "@dcl/sdk/network/message-bus-sync";
+
 // ❌ BAD — clients can cheat
 const Score = engine.defineComponent("Score", { value: Schemas.Int });
 
@@ -770,6 +796,8 @@ Score.validateBeforeChange((v) => v.senderAddress === AUTH_SERVER_PEER_ID);
 Never let a client dictate its own values for important data like health, score, or position:
 
 ```typescript
+import { room } from "./shared/messages";
+
 // ❌ BAD
 room.onMessage("setHealth", (data) => {
   player.health = data.health; // client controls the value!
@@ -787,6 +815,7 @@ room.onMessage("takeDamage", (data) => {
 Clients must wait until state is synchronized before interacting:
 
 ```typescript
+import { engine } from "@dcl/sdk/ecs";
 import { isStateSyncronized } from "@dcl/sdk/network";
 
 engine.addSystem(() => {
@@ -803,7 +832,7 @@ When a first player comes into the scene after a while of inactivity, the server
 
 ## Complete Example
 
-A minimal multiplayer counter: click a button, the server increments a synced score. The server persists the counter to `Storage.world` so the value survives server restarts. Remember that the server shuts down when no players are in the scene, so without storage the count would reset to zero every time the scene is left empty of players.
+A minimal multiplayer counter: click a button, the server increments a synced score. The server persists the counter to `Storage` so the value survives server restarts. Remember that the server shuts down when no players are in the scene, so without storage the count would reset to zero every time the scene is left empty of players.
 
 ```typescript
 import { engine, Schemas } from "@dcl/sdk/ecs";
@@ -837,8 +866,8 @@ export async function main() {
     // === SERVER ===
 
     // Restore the counter from storage in case the server restarted
-    const savedCount = await Storage.world.get<string>("counter");
-    const savedPlayer = await Storage.world.get<string>("lastPlayer");
+    const savedCount = await Storage.get<string>("counter");
+    const savedPlayer = await Storage.get<string>("lastPlayer");
     const initialCount = savedCount ? parseInt(savedCount) : 0;
     const initialPlayer = savedPlayer ?? "none";
 
@@ -856,8 +885,8 @@ export async function main() {
       counter.lastPlayer = context.from;
 
       // Persist to storage so the value survives server restarts
-      await Storage.world.set("counter", String(counter.value));
-      await Storage.world.set("lastPlayer", counter.lastPlayer);
+      await Storage.set("counter", String(counter.value));
+      await Storage.set("lastPlayer", counter.lastPlayer);
 
       room.send("stateUpdate", {
         count: counter.value,
@@ -897,6 +926,8 @@ As an alternative, you can open a second Decentraland explorer window by writing
 - _Prefix your logs_ with `[SERVER]` or `[CLIENT]` so you can tell them apart in the terminal:
 
   ```typescript
+  import { isServer } from "@dcl/sdk/network";
+
   if (isServer()) {
     console.log("[SERVER] Starting...");
   } else {
@@ -907,6 +938,8 @@ As an alternative, you can open a second Decentraland explorer window by writing
 - _Verify component sync_ on the client by logging entity counts:
 
   ```typescript
+  import { engine } from "@dcl/sdk/ecs";
+
   engine.addSystem(() => {
     const entities = Array.from(engine.getEntitiesWith(MyComponent));
     console.log("[CLIENT] Synced entities:", entities.length);

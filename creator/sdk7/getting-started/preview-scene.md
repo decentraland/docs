@@ -129,4 +129,4 @@ Using the Creator Hub, click the Preview button a second time, and that opens a 
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`

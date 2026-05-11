@@ -42,8 +42,8 @@ Esto abre un panel en la esquina inferior derecha con información sobre el moto
 
 La pestaña **CURRENT SCENE** incluye información sobre la scene en la que estás parado actualmente. Esto incluye:
 
-* El número de parcelas en la scene
-* La altura máxima a la que puedes construir (que es proporcional al número de parcelas en la scene)
+- El número de parcelas en la scene
+- La altura máxima a la que puedes construir (que es proporcional al número de parcelas en la scene)
 
 También puedes marcar la opción **Show Scene Bounds** para ver muros rojos alrededor de la scene, que marcan los límites de la scene.
 
@@ -114,7 +114,7 @@ Si tu scene usa smart items, también puede estar usando la biblioteca `@dcl/ass
 npm i @dcl/asset-packs@latest
 ```
 
-Si estás usando cualquiera de las [utils libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library) asegúrate de que también estén actualizadas, ya que versiones antiguas de estas bibliotecas pueden no ser compatibles con versiones más nuevas de `@dcl/sdk`.
+Si estás usando cualquiera de las [utils libraries](https://studios.decentraland.org/resources?sdk_version=SDK7&resource_type=Library) asegúrate de que también estén actualizadas, ya que versiones antiguas de estas bibliotecas pueden no ser compatibles con versiones más nuevas de `@dcl/sdk`.
 
 ### Condiciones de iluminación
 
@@ -142,7 +142,7 @@ Ambos jugadores se verán entre sí, y pueden interactuar entre sí. Si la scene
 
 Como alternativa, puedes abrir una segunda ventana del Decentraland explorer escribiendo lo siguiente en una URL del navegador:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
 
 ### Usando la red de prueba de Ethereum
 

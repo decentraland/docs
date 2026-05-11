@@ -38,8 +38,8 @@ This opens a panel on the lower-right corner with information about the renderer
 
 The **CURRENT SCENE** tab includes information about the scene you're currently standing on. This includes:
 
-* The number of parcels in the scene
-* The maximum height you're allowed to build at (which is proportional to the number of parcels in the scene)
+- The number of parcels in the scene
+- The maximum height you're allowed to build at (which is proportional to the number of parcels in the scene)
 
 You can also check the **Show Scene Bounds** option to see red walls around the scene, which mark the boundaries of the scene.
 
@@ -110,7 +110,7 @@ If your scene uses smart items, it may also be using the `@dcl/asset-packs` libr
 npm i @dcl/asset-packs@latest
 ```
 
-If you're using any of the [utils libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library) make sure those are also up to date, as older versions of these libraries may not be compatible with newer versions of `@dcl/sdk`.
+If you're using any of the [utils libraries](https://studios.decentraland.org/resources?sdk_version=SDK7&resource_type=Library) make sure those are also up to date, as older versions of these libraries may not be compatible with newer versions of `@dcl/sdk`.
 
 ## Lighting conditions
 
@@ -138,7 +138,7 @@ Both players will see each other, and can interact with each other. If the scene
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
 
 ## Using the Ethereum test network
 

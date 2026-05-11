@@ -21,9 +21,9 @@ Asegúrate de haber [instalado el Creator Hub](../get-started/editor-installatio
 
 Configura diferentes opciones de preview desde el menú desplegable junto al botón **Preview**:
 
-* **Open Console Window During Preview**: Abre una nueva ventana con la salida de consola de la scene. Esto es útil para depurar errores en la scene.
-* **Skip Auth Screen**: Omite la pantalla de selección de cuenta y automáticamente te loguea con tu cuenta actualmente logueada. Esto está deshabilitado por defecto, habilítalo si quieres probar múltiples cuentas.
-* **Landscape Terrain Enabled**: Alterna el paisaje alrededor de la scene. Esto está habilitado por defecto, desactívalo para reducir la huella de memoria de la scene.
+- **Open Console Window During Preview**: Abre una nueva ventana con la salida de consola de la scene. Esto es útil para depurar errores en la scene.
+- **Skip Auth Screen**: Omite la pantalla de selección de cuenta y automáticamente te loguea con tu cuenta actualmente logueada. Esto está deshabilitado por defecto, habilítalo si quieres probar múltiples cuentas.
+- **Landscape Terrain Enabled**: Alterna el paisaje alrededor de la scene. Esto está habilitado por defecto, desactívalo para reducir la huella de memoria de la scene.
 
 ## Usando el CLI
 
@@ -45,14 +45,14 @@ Cada vez que hagas cambios en la scene, el preview se recarga y actualiza autom�
 
 Puedes agregar las siguientes banderas al comando `npm run start` para cambiar su comportamiento:
 
-* `-- --web3` Conecta el preview a la wallet del navegador para usar el avatar y cuenta asociados.
-* `-- --no-debug` Deshabilita el panel de debug, que muestra estadísticas de scene y rendimiento.
-* `-- --explorer-alpha` Ejecuta el preview en el nuevo cliente Decentraland Desktop.
-* `-- --skip-version-checks` Evita verificar si la versión del framework SDK de la scene coincide con tu versión CLI, y lanza el preview de todos modos.
-* `-- --port` para asignar un puerto específico para ejecutar la scene. De lo contrario usará cualquier puerto que esté disponible.
-* `-- --no-browser` para prevenir que el preview abra una nueva pestaña del navegador.
-* `-- --w` o `-- --no-watch` para no abrir watch para cambios del sistema de archivos y evitar hot-reload cada vez que el código de la scene cambie.
-* `-- --c` o `-- --ci` Para ejecutar el previsualizador de parcela en un servidor unix remoto
+- `-- --web3` Conecta el preview a la wallet del navegador para usar el avatar y cuenta asociados.
+- `-- --no-debug` Deshabilita el panel de debug, que muestra estadísticas de scene y rendimiento.
+- `-- --explorer-alpha` Ejecuta el preview en el nuevo cliente Decentraland Desktop.
+- `-- --skip-version-checks` Evita verificar si la versión del framework SDK de la scene coincide con tu versión CLI, y lanza el preview de todos modos.
+- `-- --port` para asignar un puerto específico para ejecutar la scene. De lo contrario usará cualquier puerto que esté disponible.
+- `-- --no-browser` para prevenir que el preview abra una nueva pestaña del navegador.
+- `-- --w` o `-- --no-watch` para no abrir watch para cambios del sistema de archivos y evitar hot-reload cada vez que el código de la scene cambie.
+- `-- --c` o `-- --ci` Para ejecutar el previsualizador de parcela en un servidor unix remoto
 
 {% hint style="warning" %}
 **📔 Nota**: Los parámetros necesitan ser agregados con dos series de guiones, por ejemplo `npm run start -- --web3`.
@@ -98,4 +98,4 @@ Usando el Creator Hub, haz clic en el botón Preview una segunda vez, y eso abre
 
 Como alternativa, puedes abrir una segunda ventana del Decentraland explorer escribiendo lo siguiente en una URL del navegador:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`

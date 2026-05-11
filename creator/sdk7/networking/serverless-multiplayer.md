@@ -10,9 +10,9 @@ Seeing the same content in the same state is extremely important for players to 
 
 There are three ways to sync the scene state, so that all players see the same:
 
-* **Mark an entity as synced**: The easiest option. See [Marked an entity as synced](serverless-multiplayer.md#mark-an-entity-as-synced)
-* **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](serverless-multiplayer.md#send-explicit-messagebus-messages)
-* **Use an Authoritative Server**: See [Authoritative Servers](../networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
+- **Mark an entity as synced**: The easiest option. See [Marked an entity as synced](serverless-multiplayer.md#mark-an-entity-as-synced)
+- **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](serverless-multiplayer.md#send-explicit-messagebus-messages)
+- **Use an Authoritative Server**: See [Authoritative Servers](../networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
 
 The first two options are covered in this document. They are simpler, as they require no server. The downside is that you rely more on player's connection speeds, and the scene state is not persisted when all players leave the scene.
 
@@ -25,22 +25,22 @@ In the [Creator Hub](../../scene-editor/get-started/about-editor.md), mark an en
 To mark an entity as synced via code, use the `syncEntity` function:
 
 ```ts
-import { syncEntity } from '@dcl/sdk/network'
+import { syncEntity } from "@dcl/sdk/network";
 
-const doorEntity = engine.addEntity()
+const doorEntity = engine.addEntity();
 
-syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1)
+syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1);
 ```
 
 {% hint style="warning" %}
-**📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to an [Authoritative Server](../networking/authoritative-servers.md), the pattern changes: only the server calls `syncEntity`, guarded by `isServer()`. Calling it on the client in an authoritative scene produces errors.
+**📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to an [Authoritative Server](../networking/authoritative-servers.md), the pattern changes: only the server should call `syncEntity`, guarded by `isServer()`. Clients should avoid declaring the syncing of shared entities, unless they are created by the client.
 {% endhint %}
 
 The `syncEntity` function takes the following inputs:
 
-* **entityId**: A reference to the entity to sync
-* **componentIds**: A list of the components that need to be synced from that entity. This is an array that may contain as many entities as needed. All values should be `componentId` properties.
-* **entityEnumId**: (optional) A unique id that is used consistently by all players, see [About enum id](serverless-multiplayer.md#about-the-enum-id).
+- **entityId**: A reference to the entity to sync
+- **componentIds**: A list of the components that need to be synced from that entity. This is an array that may contain as many entities as needed. All values should be `componentId` properties.
+- **entityEnumId**: (optional) A unique id that is used consistently by all players, see [About enum id](serverless-multiplayer.md#about-the-enum-id).
 
 Not all entities or components need to be synced. Static elements like a tree that remains in the same spot don't require syncing. On entities you do sync, only the components that change over time should be synchronized. For example, if a cube changes color when clicked, you should only sync the Material component, not the MeshRenderer or the Transform, as those will never change.
 
@@ -58,19 +58,19 @@ Explicitly setting this ID is important to avoid inconsistencies if a race condi
 **💡 Tip**: Create an enum in your scene, to keep clear references to each syncable id in your scene.
 
 ```ts
-import { syncEntity } from '@dcl/sdk/network'
+import { syncEntity } from "@dcl/sdk/network";
 
 enum EntityEnumId {
-	DOOR = 1,
-	DRAW_BRIDGE = 2,
-	ELEVATOR = 3,
+  DOOR = 1,
+  DRAW_BRIDGE = 2,
+  ELEVATOR = 3,
 }
 
 syncEntity(
-	doorEntity,
-	[Transform.componentId, Animator.componentId],
-	EntityEnumId.DOOR
-)
+  doorEntity,
+  [Transform.componentId, Animator.componentId],
+  EntityEnumId.DOOR
+);
 ```
 
 Here the EntityEnumId enum is used to tag entities with a unique identifier, ensuring that every client recognizes the modified entity, regardless of creation order.
@@ -89,13 +89,13 @@ All entities instanced on scene initiation need to have a manually-assigned ID. 
 For example, in a snowball fight scene, every time a player throws a snowball, they're instancing a new entity that gets synced with other players. The snowball doesn't need a unique entityEnumId.
 
 ```ts
-import { syncEntity } from '@dcl/sdk/network'
+import { syncEntity } from "@dcl/sdk/network";
 
 function onThrow() {
-	const ball = engine.addEntity()
-	Transform.create(ball, {})
-	GLTFContainer.create(ball, { src: 'assets/snowBall.glb' })
-	syncEntity(ball, [Transform.componentId, GLTFContainer.componentId])
+  const ball = engine.addEntity();
+  Transform.create(ball, {});
+  GLTFContainer.create(ball, { src: "assets/snowBall.glb" });
+  syncEntity(ball, [Transform.componentId, GLTFContainer.componentId]);
 }
 ```
 
@@ -104,16 +104,16 @@ function onThrow() {
 The parent of an entity is normally defined via `parent` property in the `Transform` component. This property however points to the local entity id of the parent, which could vary, see [About enum id](serverless-multiplayer.md#about-the-enum-id). To parent entities that need to be synced, or that have children that need to be synced, use the `parentEntity()` function instead of the `Transform`.
 
 ```ts
-import { syncEntity, parentEntity } from '@dcl/sdk/network'
+import { syncEntity, parentEntity } from "@dcl/sdk/network";
 
-const parent = engine.addEntity()
-Transform.create(parent, { position: somePosition })
-syncEntity(parent, [])
+const parent = engine.addEntity();
+Transform.create(parent, { position: somePosition });
+syncEntity(parent, []);
 
-const child: Entity = engine.addEntity()
-syncEntity(child, [Transform.componentId])
+const child: Entity = engine.addEntity();
+syncEntity(child, [Transform.componentId]);
 
-parentEntity(child, parent)
+parentEntity(child, parent);
 ```
 
 Note that both the parent and the child are synced with `syncEntity`, so all players have a common understanding of what ids are used by both entities. This is necessary even if the parent's components may never need to change. In this example, the `syncEntity` includes an empty array of components, to avoid syncing any unnecessary components.
@@ -124,38 +124,38 @@ Note that both the parent and the child are synced with `syncEntity`, so all pla
 
 When entities are parented via the `parentEntity()` function, you can also make use of the following helper functions:
 
-* **removeParent()**: Undo the effects of `parentEntity()`. It requires that you pass only the child entity. The entity's new parent becomes the scene's root entity. The original parent entity is not removed from the scene.
-* **getParent()**: Returns the parent entity of an entity you passed.
-* **getChildren()**: Returns the list of children of the entity you passed, as an iterable.
-* **getFirstChild()**: Returns the first child on the list for the entity you passed.
+- **removeParent()**: Undo the effects of `parentEntity()`. It requires that you pass only the child entity. The entity's new parent becomes the scene's root entity. The original parent entity is not removed from the scene.
+- **getParent()**: Returns the parent entity of an entity you passed.
+- **getChildren()**: Returns the list of children of the entity you passed, as an iterable.
+- **getFirstChild()**: Returns the first child on the list for the entity you passed.
 
 ```ts
-import { syncEntity, parentEntity } from '@dcl/sdk/network'
+import { syncEntity, parentEntity } from "@dcl/sdk/network";
 
-const parent = engine.addEntity()
-Transform.create(parent, { position: somePosition })
-syncEntity(parent, [])
+const parent = engine.addEntity();
+Transform.create(parent, { position: somePosition });
+syncEntity(parent, []);
 
-const child: Entity = engine.addEntity()
-syncEntity(child, [Transform.componentId])
+const child: Entity = engine.addEntity();
+syncEntity(child, [Transform.componentId]);
 
 // sets parent as parent
-parentEntity(child, parent)
+parentEntity(child, parent);
 
 // getParent
-const getParentResult = getParent(child)
+const getParentResult = getParent(child);
 // returns parent
 
 // getFirstChild
-const getFirstChildResult = getFirstChild(parent)
+const getFirstChildResult = getFirstChild(parent);
 // returns child
 
 // getChildren
-const getChildrenResult = Array.from(getChildren(parent))
+const getChildrenResult = Array.from(getChildren(parent));
 // returns [child]
 
 // removes parent from child
-removeParent(child)
+removeParent(child);
 ```
 
 ## Check the sync state
@@ -167,27 +167,27 @@ If a player steps out of the parcels of the scene, they will also be out of sync
 You can check if the scene state is currently synced for a player via the `isStateSyncronized()` function. This function returns a boolean, that is true if the player is already synchronized with the scene.
 
 ```ts
-import { isStateSyncronized } from '@dcl/sdk/network'
+import { isStateSyncronized } from "@dcl/sdk/network";
 
-const isConnected = isStateSyncronized()
+const isConnected = isStateSyncronized();
 ```
 
 You could for example include this check in a system, and block any interaction if this function returns false.
 
 ```ts
-import { isStateSyncronized } from '@dcl/sdk/network'
+import { isStateSyncronized } from "@dcl/sdk/network";
 
 engine.addSystem(() => {
-	if (isStateSyncronized() && !button.enabled) {
-		console.log('Enable Start Game')
-		button.enable()
-	}
+  if (isStateSyncronized() && !button.enabled) {
+    console.log("Enable Start Game");
+    button.enable();
+  }
 
-	if (!isStateSyncronized() && button.enabled) {
-		console.log(`Disable Start Game.`)
-		button.disable()
-	}
-})
+  if (!isStateSyncronized() && button.enabled) {
+    console.log(`Disable Start Game.`);
+    button.disable();
+  }
+});
 ```
 
 ## Send Explicit MessageBus Messages
@@ -197,9 +197,9 @@ engine.addSystem(() => {
 Create a message bus object to handle the methods that are needed to send and receive messages between players.
 
 ```ts
-import { MessageBus } from '@dcl/sdk/message-bus'
+import { MessageBus } from "@dcl/sdk/message-bus";
 
-const sceneMessageBus = new MessageBus()
+const sceneMessageBus = new MessageBus();
 ```
 
 **Send messages**
@@ -207,33 +207,33 @@ const sceneMessageBus = new MessageBus()
 Use the `.emit` command of the message bus to send a message to all other players in the scene.
 
 ```ts
-import { MessageBus } from '@dcl/sdk/message-bus'
+import { MessageBus } from "@dcl/sdk/message-bus";
 
-const sceneMessageBus = new MessageBus()
+const sceneMessageBus = new MessageBus();
 
-const myEntity = engine.addEntity()
-MeshRenderer.setBox(myEntity)
-MeshCollider.setBox(myEntity)
+const myEntity = engine.addEntity();
+MeshRenderer.setBox(myEntity);
+MeshCollider.setBox(myEntity);
 
 pointerEventsSystem.onPointerDown(
-	{
-		entity: myEntity,
-		opts: { button: InputAction.IA_PRIMARY, hoverText: 'Click' },
-	},
-	function () {
-		sceneMessageBus.emit('box1Clicked', {})
-	}
-)
+  {
+    entity: myEntity,
+    opts: { button: InputAction.IA_PRIMARY, hoverText: "Click" },
+  },
+  function () {
+    sceneMessageBus.emit("box1Clicked", {});
+  }
+);
 ```
 
 Each message can contain a payload as a second argument. The payload is of type `Object`, and can contain any relevant data you wish to send.
 
 ```ts
-import { MessageBus } from '@dcl/sdk/message-bus'
+import { MessageBus } from "@dcl/sdk/message-bus";
 
-const sceneMessageBus = new MessageBus()
+const sceneMessageBus = new MessageBus();
 
-sceneMessageBus.emit('spawn', { position: { x: 10, y: 2, z: 10 } })
+sceneMessageBus.emit("spawn", { position: { x: 10, y: 2, z: 10 } });
 ```
 
 {% hint style="info" %}
@@ -245,22 +245,22 @@ sceneMessageBus.emit('spawn', { position: { x: 10, y: 2, z: 10 } })
 To handle messages from all other players in that scene, use `.on`. When using this function, you provide a message string and define a function to execute. For each time that a message with a matching string arrives, the given function is executed once.
 
 ```ts
-import { MessageBus } from '@dcl/sdk/message-bus'
+import { MessageBus } from "@dcl/sdk/message-bus";
 
-const sceneMessageBus = new MessageBus()
+const sceneMessageBus = new MessageBus();
 
 type NewBoxPosition = {
-	position: { x: number; y: number; z: number }
-}
+  position: { x: number; y: number; z: number };
+};
 
-sceneMessageBus.on('spawn', (info: NewBoxPosition) => {
-	const myEntity = engine.addEntity()
-	Transform.create(myEntity, {
-		position: { x: info.position.x, y: info.position.y, z: info.position.z },
-	})
-	MeshRenderer.setBox(myEntity)
-	MeshCollider.setBox(myEntity)
-})
+sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
+  const myEntity = engine.addEntity();
+  Transform.create(myEntity, {
+    position: { x: info.position.x, y: info.position.y, z: info.position.z },
+  });
+  MeshRenderer.setBox(myEntity);
+  MeshCollider.setBox(myEntity);
+});
 ```
 
 {% hint style="warning" %}
@@ -272,50 +272,50 @@ sceneMessageBus.on('spawn', (info: NewBoxPosition) => {
 This example uses a message bus to send a new message every time the main cube is clicked, generating a new cube in a random position. The message includes the position of the new cube, so that all players see these new cubes in the same positions.
 
 ```ts
-import { MessageBus } from '@dcl/sdk/message-bus'
+import { MessageBus } from "@dcl/sdk/message-bus";
 
 /// --- Create message bus ---
-const sceneMessageBus = new MessageBus()
+const sceneMessageBus = new MessageBus();
 
 // Cube factory
 function createCube(x: number, y: number, z: number): Entity {
-	const meshEntity = engine.addEntity()
-	Transform.create(meshEntity, { position: { x, y, z } })
-	MeshRenderer.setBox(meshEntity)
-	MeshCollider.setBox(meshEntity)
+  const meshEntity = engine.addEntity();
+  Transform.create(meshEntity, { position: { x, y, z } });
+  MeshRenderer.setBox(meshEntity);
+  MeshCollider.setBox(meshEntity);
 
-	// When a cube is clicked, send message to spawn another one
-	pointerEventsSystem.onPointerDown(
-		{
-			entity: myEntity,
-			opts: { button: InputAction.IA_PRIMARY, hoverText: 'Press E to spawn' },
-		},
-		function () {
-			sceneMessageBus.emit('spawn', {
-				position: {
-					x: 1 + Math.random() * 8,
-					y: Math.random() * 8,
-					z: 1 + Math.random() * 8,
-				},
-			})
-		}
-	)
+  // When a cube is clicked, send message to spawn another one
+  pointerEventsSystem.onPointerDown(
+    {
+      entity: myEntity,
+      opts: { button: InputAction.IA_PRIMARY, hoverText: "Press E to spawn" },
+    },
+    function () {
+      sceneMessageBus.emit("spawn", {
+        position: {
+          x: 1 + Math.random() * 8,
+          y: Math.random() * 8,
+          z: 1 + Math.random() * 8,
+        },
+      });
+    }
+  );
 
-	return meshEntity
+  return meshEntity;
 }
 
 // Init
-createCube(8, 1, 8)
+createCube(8, 1, 8);
 
 // define type of data
 type NewBoxPosition = {
-	position: { x: number; y: number; z: number }
-}
+  position: { x: number; y: number; z: number };
+};
 
 // on spawn message, create new cube
-sceneMessageBus.on('spawn', (info: NewBoxPosition) => {
-	createCube(info.position.x, info.position.y, info.position.z)
-})
+sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
+  createCube(info.position.x, info.position.y, info.position.z);
+});
 ```
 
 ## Test a multiplayer scene locally
@@ -330,7 +330,7 @@ Using the Creator Hub, click the Preview button a second time, and that opens a 
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&open-deeplink-in-new-instance=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
 
 ## Single player scenes
 
@@ -342,9 +342,9 @@ To do this, configure the scene's `scene.json` file to set the **fixedAdapter** 
 
 ```json
 {
-	"worldConfiguration": {
-		"name": "my-name.dcl.eth",
-		"fixedAdapter": "offline:offline"
-	}
+  "worldConfiguration": {
+    "name": "my-name.dcl.eth",
+    "fixedAdapter": "offline:offline"
+  }
 }
 ```

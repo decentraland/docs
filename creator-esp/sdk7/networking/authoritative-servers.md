@@ -18,29 +18,29 @@ Decentraland ejecuta escenas localmente en el navegador de un jugador. Por defec
 
 Permitir que todos los jugadores vean una escena teniendo el mismo contenido en el mismo estado es extremadamente importante para que los jugadores interactúen de maneras más significativas. Sin esto, si un jugador abre una puerta y entra a una casa, otros jugadores verán esa puerta como aún cerrada, y el primer jugador parecerá caminar directamente a través de la puerta cerrada para otros jugadores.
 
-* **Marcar una entidad como sincronizada**: La opción más fácil. Consulta [Marcar una entidad como sincronizada](../sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced)
-* **Enviar Mensajes MessageBus Explícitos**: Enviar y escuchar manualmente mensajes específicos. Consulta [Enviar mensajes MessageBus explícitos](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages)
-* **Usar un Servidor**: Este documento trata sobre esta opción. Esta opción requiere más trabajo para configurar, pero es recomendable si hay incentivos para explotar tu escena.
+- **Marcar una entidad como sincronizada**: La opción más fácil. Consulta [Marcar una entidad como sincronizada](../sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced)
+- **Enviar Mensajes MessageBus Explícitos**: Enviar y escuchar manualmente mensajes específicos. Consulta [Enviar mensajes MessageBus explícitos](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages)
+- **Usar un Servidor**: Este documento trata sobre esta opción. Esta opción requiere más trabajo para configurar, pero es recomendable si hay incentivos para explotar tu escena.
 
 ### Tipos de servidores
 
 Un servidor puede tener diferentes niveles de participación con la escena:
 
-* API + DB: Esto es útil para escenas donde los cambios no ocurren constantemente y donde es aceptable tener retrasos menores en la sincronización. Cuando un jugador cambia algo, envía una solicitud HTTP a una API REST que almacena el nuevo estado de la escena en una base de datos. Los cambios se mantienen almacenados para cualquier jugador nuevo que visite la escena en una fecha posterior. La principal limitación es que los nuevos cambios de otros jugadores no se notifican a los jugadores que ya están allí, los mensajes no pueden enviarse desde el servidor a los jugadores. Los jugadores deben enviar regularmente solicitudes al servidor para obtener el último estado.
+- API + DB: Esto es útil para escenas donde los cambios no ocurren constantemente y donde es aceptable tener retrasos menores en la sincronización. Cuando un jugador cambia algo, envía una solicitud HTTP a una API REST que almacena el nuevo estado de la escena en una base de datos. Los cambios se mantienen almacenados para cualquier jugador nuevo que visite la escena en una fecha posterior. La principal limitación es que los nuevos cambios de otros jugadores no se notifican a los jugadores que ya están allí, los mensajes no pueden enviarse desde el servidor a los jugadores. Los jugadores deben enviar regularmente solicitudes al servidor para obtener el último estado.
 
 {% hint style="info" %}
 **💡 Tip**: También es posible optar por un enfoque híbrido donde los cambios se notifican entre jugadores a través de mensajes Messagebus, pero el estado final también se almacena a través de una API para futuros visitantes.
 {% endhint %}
 
-* Websockets: Esta alternativa es más robusta, ya que establece un canal de comunicación bidireccional entre jugador y servidor. Las actualizaciones pueden enviarse desde el servidor, incluso podrías tener lógica de juego ejecutándose o validándose en el servidor. Esto habilita interacción en tiempo real y hace posibles juegos de ritmo más rápido. También es más seguro, ya que cada mensaje entre jugador y servidor es parte de una sesión que se abre, no hay necesidad de validar cada mensaje.
+- Websockets: Esta alternativa es más robusta, ya que establece un canal de comunicación bidireccional entre jugador y servidor. Las actualizaciones pueden enviarse desde el servidor, incluso podrías tener lógica de juego ejecutándose o validándose en el servidor. Esto habilita interacción en tiempo real y hace posibles juegos de ritmo más rápido. También es más seguro, ya que cada mensaje entre jugador y servidor es parte de una sesión que se abre, no hay necesidad de validar cada mensaje.
 
 ### Escenas de ejemplo con servidor dedicado
 
 API + DB:
 
-* [Leaderboard](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board)
-* [Guestbook](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api)
-* [Validate authenticity](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity)
+- [Leaderboard](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board)
+- [Guestbook](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api)
+- [Validate authenticity](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity)
 
 ### Vista previa de escenas con servidores dedicados
 
@@ -60,7 +60,7 @@ Usando el Creator Hub, haz clic en el botón Preview una segunda vez, y eso abre
 
 Como alternativa, puedes abrir una segunda ventana del explorador de Decentraland escribiendo lo siguiente en una URL del navegador:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
 
 ### Realms separados
 

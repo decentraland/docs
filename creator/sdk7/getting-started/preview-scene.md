@@ -17,10 +17,10 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
-* **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
-* **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
-* **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
-* **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
+- **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
+- **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
+- **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
 
 {% hint style="info" %}
 **📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../building-for-mobile/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../building-for-mobile/) for the full guide.
@@ -46,15 +46,15 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-* `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-* `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
-* `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
-* `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
-* `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
-* `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
-* `-- --no-browser` to prevent the preview from opening a new browser tab.
-* `-- --w` or `-- --no-watch` to not open watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
-* `-- --c` or `-- --ci` To run the parcel previewer on a remote unix server
+- `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
+- `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
+- `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
+- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
+- `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
+- `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
+- `-- --no-browser` to prevent the preview from opening a new browser tab.
+- `-- --w` or `-- --no-watch` to not open watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
+- `-- --c` or `-- --ci` To run the parcel previewer on a remote unix server
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.
@@ -100,4 +100,4 @@ Using the Creator Hub, click the Preview button a second time, and that opens a 
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`

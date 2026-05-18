@@ -982,6 +982,12 @@ You can also manually specify the world name the logs with:
 npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth
 ```
 
+When viewing logs from a scene in a multi-scene world or parcels in Genesis City, also pass a `position` for the coordinates:
+
+```bash
+npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth --position=x,y
+```
+
 You'll be prompted to sign a message with one of the wallets listed in `logsPermissions` to authenticate. Once connected, you'll see server-side `console.log()` output in real time, which is useful for diagnosing issues without needing to redeploy.
 
 ### View storage data

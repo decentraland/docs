@@ -35,10 +35,10 @@ The following steps are common to both DCL Cast and Stream methods:
 Once your scene is published, you can enter as a user with admin permissions and configure the streaming settings.
 
 {% hint style="info" %}
-**💡 Tip**: If you add multiple Video Screens, configure all but one's source to point to the same video player, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens) for more details.
+**💡 Tip**: If you add multiple Video Screens to show the same video, configure all but one's source to point to the same video player, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens) for more details.
 {% endhint %}
 
-## DCL Cast
+## DCL Cast (easy)
 
 ### Sharing access to the app
 
@@ -123,7 +123,7 @@ Otherwise you can mute audio in the Decentraland settings.
 
 You can also share the contents of a slide presentation as an alternative source of images.
 
-- Click the **Share presentation** button, either in the DCL Cast app or in-world in the Scene Admin UI.
+- From in-world, click the **Share presentation** button in-world in the DCL Cast tab. From the DCL Cast app, click the dropdown next to the **Share Screen** button and select **Share presentation**.
 
  <img src="../../images/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
 
@@ -139,7 +139,7 @@ There can only be one active presentation at a time in a DCL Cast session.
 
 You can then switch slides, or even play and pause any videos that are embedded in these slides by pressing buttons that exist both in the DCL Cast app and in-world in the Scene Admin UI.
 
-## Stream method
+## Stream (advanced)
 
 To use the Live Streaming feature on your scene you'll need to install a streaming software that can output to an RTMP endpoint (e.g. [OBS](https://obsproject.com/), [XSplit](https://www.xsplit.com/), [StreamYard](https://streamyard.com/)).
 
@@ -155,7 +155,7 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 
 3.  Copy the **RTMP Server** and **Stream Key** into your streaming software.
 
-    <img src="../../../.gitbook/assets/OBS-configuration.png" alt="OBS configuration" width="700"/>
+    <img src="../../../.gitbook/assets/OBS-configuration.png" alt="OBS configuration"/>
 
 {% hint style="danger" %}
 **❗Warning**: Only one person can stream to a scene at a time. When finished streaming, click **Stop Streaming** in your software to free the channel.
@@ -166,7 +166,7 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 1. Start streaming from your software.
 2. In the Admin UI, click **Activate** to show the stream in the scene.
 
-   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="150"/>
+   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="100"/>
 
 ### Stream keys
 
@@ -182,7 +182,7 @@ Stream keys are generated per scene and are valid for 4 days (96 hours). A singl
 **❗Warning**: Treat stream keys as secrets. Reset the key between presenters if needed.
 {% endhint %}
 
-## Streaming from URL method
+## Streaming from URL (advanced)
 
 You can also stream by configuring the Video Screen to use the option **Video URL** and pasting a stream URL.
 

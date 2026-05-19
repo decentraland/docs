@@ -22,15 +22,15 @@ The following steps are common to both DCL Cast and Stream methods:
 
 1.  Add a **Video Screen** smart item to your scene.
 
-    ![ ](../../../.gitbook/assets/video-player-item.png)
+    ![ ](../../images/editor/admin/video-player-item.png)
 
 2.  Add a **Scene Admin** smart item and enable the **Video Screens** section. Select each screen from the dropdown and give it a friendly name for the admin UI.
 
-    ![ ](../../../.gitbook/assets/multi-video-setup.png)
+    ![ ](../../images/editor/admin/multi-video-setup.png)
 
 3.  Publish your scene (World or Genesis City) and enter as a user with admin permissions.
 
-    ![ ](../../../.gitbook/assets/publish-button.png)
+    ![ ](../../images/editor/publish-button.png)
 
 Once your scene is published, you can enter as a user with admin permissions and configure the streaming settings.
 
@@ -62,7 +62,7 @@ Click the **Copy link** button to copy the links to the clipboard.
 
 When ready to stream, click the **Activate** button to make the stream visible to the audience in the scene.
 
-   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="150"/>
+   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="150"/>
 
 If for any reason you need to reset the room, click the **Reset Room** button to generate a new one. Anyone who's currently streaming will be disconnected.
 
@@ -102,11 +102,11 @@ To override this default behavior:
 
 - Click the **Speakers** button on the scene admin panel
 
- <img src=".../../images/speakers-button.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/speakers-button.png" alt="Participants tab" width="200"/>
 
 - Pick one of the speakers and select a source to showcase (either that speaker's camera or screen)
 
- <img src="../../images/select-speaker-source.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/select-speaker-source.png" alt="Participants tab" width="200"/>
 
 This will force this source to be always shown on screen, regardless of if other speakers are talking.
 
@@ -114,7 +114,7 @@ This will force this source to be always shown on screen, regardless of if other
 **📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app an in the Decentraland scene.
 You can easily mute all audio from the DCL Cast app, but toggling the speaker icon on the bottom-left of the screen
 
- <img src="../../images/mute-dcl-cast.png" alt="Participants tab" width="50"/>
+ <img src="../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
 
 Otherwise you can mute audio in the Decentraland settings.
 {% endhint %}
@@ -125,7 +125,7 @@ You can also share the contents of a slide presentation as an alternative source
 
 - From in-world, click the **Share presentation** button in-world in the DCL Cast tab. From the DCL Cast app, click the dropdown next to the **Share Screen** button and select **Share presentation**.
 
- <img src="../../images/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
 
 - Paste a Google slides link, a link to a .pdf hosted in Drive or a similar source, or upload a .pdf file.
 
@@ -147,15 +147,15 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 
 1.  Open the Admin UI in the scene (top‑right icon).
 
-    ![ ](../../../.gitbook/assets/admin-icon.png)
+    ![ ](../../images/editor/admin/admin-icon.png)
 
 2.  In the **Video** tab, switch to **Live** and click **Get Stream Key**.
 
-    ![ ](../../../.gitbook/assets/get-key.png)
+    ![ ](../../images/editor/admin/get-key.png)
 
 3.  Copy the **RTMP Server** and **Stream Key** into your streaming software.
 
-    <img src="../../../.gitbook/assets/OBS-configuration.png" alt="OBS configuration"/>
+    <img src="../../images/editor/admin/OBS-configuration.png" alt="OBS configuration"/>
 
 {% hint style="danger" %}
 **❗Warning**: Only one person can stream to a scene at a time. When finished streaming, click **Stop Streaming** in your software to free the channel.
@@ -166,13 +166,13 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 1. Start streaming from your software.
 2. In the Admin UI, click **Activate** to show the stream in the scene.
 
-   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="100"/>
+   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="100"/>
 
 ### Stream keys
 
 Stream keys are generated per scene and are valid for 4 days (96 hours). A single live session can run up to 4 hours continuously.
 
-![ ](../../../.gitbook/assets/live-stream-settings.png)
+![ ](../../images/editor/admin/live-stream-settings.png)
 
 - Click **Reset Stream Key** to revoke the current key and issue a new one. Ongoing streams will stop.
 - Each scene has its own streaming address and key. Admins can share the key with external streamers.

@@ -192,3 +192,19 @@ export function main() {
 ```
 
 Verificar este componente es útil si el jugador necesita cambiar modos de cursor y puede necesitar una sugerencia sobre cómo bloquear/desbloquear el cursor. Esto también se puede usar en escenas donde se espera que el jugador reaccione rápido, pero la acción puede tomar un descanso mientras el jugador tiene el cursor desbloqueado.
+
+También puedes forzar el modo de cursor del jugador cambiando el campo `isPointerLocked` del componente. El siguiente ejemplo siempre establece el modo de cursor como desbloqueado:
+
+```ts
+import {PointerLock} from '@dcl/sdk/ecs'
+
+export function main() {
+    PointerLock.createOrReplace(engine.CameraEntity, {isPointerLocked: false});
+    PointerLock.onChange(engine.CameraEntity, (pointerLock) => {
+		    if (!pointerLock) return
+		    if(pointerLock.isPointerLocked){
+			    PointerLock.getMutable(engine.CameraEntity).isPointerLocked = false
+		   }
+	})
+}
+```

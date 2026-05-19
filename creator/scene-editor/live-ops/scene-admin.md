@@ -23,24 +23,27 @@ To assign admins, you need to add the **Scene Admin** smart item to your scene.
 ![ ](../../../.gitbook/assets/admin-smart-item.png)
 
 {% hint style="warning" %}
-**📔 Note**: Update your scene to use the latest dependencies. The Scene Admin Smart item won't work if the scene is outdated.
+**📔 Note**: Update your scene to use the latest dependencies.
 
 <img src="../../../.gitbook/assets/update-dependencies.png" alt=" " data-size="original">
 {% endhint %}
 
 While you're developing the scene and trying it locally, you are always an admin. Once the scene is published, anyone with publish permissions to the scene is also automatically an admin. This includes:
 
-* The owner of the LAND parcels or World NAME where the scene is published
-* Anyone who is granted **Operator rights** on these parcels or name. See [Give permissions](../marketplace/land-manager.md#give-permissions).
-* Any user renting that land. See [Rentals](../marketplace/rentals.md).
+- The owner of the LAND parcels or World NAME where the scene is published
+- Anyone who is granted **Operator rights** on these parcels or name. See [Give permissions](../marketplace/land-manager.md#give-permissions).
+- Any user renting that land. See [Rentals](../marketplace/rentals.md).
 
-You can also assign additional people to the admin list once your scene is published by visiting your scene as an admin and opening the **Moderation Tools** tab.
+To assign additional admins that don't have publish permission but can do live-ops in the scene:
 
-![ ](../../../.gitbook/assets/moderation-tools.png)
+1. Publish the scene and visit the live version as an admin
+2. Open the **Permissions & Moderation** tab.
 
-Write the wallet address of the person you want to add to the admin list and click **Add**.
+   ![ ](../../../.gitbook/assets/moderation-tools.png)
 
-You can see who is an admin in the scene by clicking the **Admin List** button. From this screen you can also **Remove** people from the admin list.
+3. Write the wallet address of the person you want to add next to **Add an Admin** and click **Add**.
+
+You can see who is an admin in the scene by clicking the **View Admin List** button. From this screen you can also **Remove** people from the admin list.
 
 ![ ](../../../.gitbook/assets/admin-list.png)
 
@@ -54,18 +57,17 @@ Whenever an admin player is in the scene, they will see a special UI on the top-
 
 ### Check admin status via code
 
-It is also possible to know if a Player is an Admin of a scene using code. This allows for other behaviours to be available (or not) for a Player, for example, allowing interactions with a specific Entity of the scene.
+It is also possible to know if a Player is an Admin of a scene using code. This allows for other behaviors to be available (or not) for a Player, for example, allowing interactions with a specific Entity of the scene.
 
 ```ts
-import { isAdmin } from '@dcl/asset-packs/dist/admin'
-
+import { isAdmin } from "@dcl/asset-packs/dist/admin";
 
 async function onPlayerSpawn() {
   const isAdminUser = await isAdmin();
   if (isAdminUser) {
-   // Show admin-only UI, teleport to stage, show entity, etc.
-   }
- }
+    // Show admin-only UI, teleport to stage, show entity, etc.
+  }
+}
 ```
 
 {% hint style="info" %}
@@ -108,26 +110,23 @@ If your scene has multiple independent video screens, the **Current Screen** dro
 
 There are three media source options for playing videos:
 
-*   **Video URL**: Play a video file from your local filesystem or from an URL. Paste a video URL into the **Video URL** field and click the green **Activate** button. The video will start playing on the selected screen for all players. You can also stop, pause, restart, mute, or change the volume of the video.
+- **Video URL**: Play a video file from your local filesystem or from an URL. Paste a video URL into the **Video URL** field and click the green **Activate** button. The video will start playing on the selected screen for all players. You can also stop, pause, restart, mute, or change the volume of the video.
 
-    <img src="../../../.gitbook/assets/video-from-url.png" alt="Scene name" width="300"/>
+  <img src="../../../.gitbook/assets/video-from-url.png" alt="Scene name" width="300"/>
 
-    {% hint style="warning" %}
-    **📔 Note**: Not any video URL will work. Videos from sites like Youtube for example have strict policies about their content and will block access to them from Decentraland. See [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) for more information on what you can and can't play in Decentraland.
-    {% endhint %}
+  {% hint style="warning" %}
+  **📔 Note**: Not any video URL will work. Videos from some sites have strict policies about their content and will block access to them from Decentraland. See [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) for more information on what you can and can't play in Decentraland.
+  {% endhint %}
 
-*   **DCL Cast**: Use Decentraland's free streaming web app to easily share your camera or screen with other players in the scene, no need to set up a streaming software.
+- **DCL Cast**: Use Decentraland's free streaming web app to easily share your camera or screen with other players in the scene, no need to set up a streaming software.
 
-    <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
+  <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
 
+- **Live stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
 
-*   **Live stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
+  <img src="../../../.gitbook/assets/live-stream.png" alt="Scene name" width="300"/>
 
-    <img src="../../../.gitbook/assets/live-stream.png" alt="Scene name" width="300"/>
-
-    <img src="../../../.gitbook/assets/activate.png" alt="Scene name" width="200"/>
-
-    See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
+  See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
 
 Each screen in your scene will have one of the above media sources set as **Active**. You can click the **Video** or **Live** buttons to explore the settings on each section, you won't interrupt what's currently playing until you click the **Activate** button on either section.
 
@@ -145,7 +144,7 @@ Select the Message section of the admin UI. Write a message and click **Share**.
 
 You can ban players from your scene by selecting the **Moderation** tab of the admin UI, writing the name or wallet address of the player you want to ban and clicking the **Ban** button.
 
-![ ](../../../.gitbook/assets/ban-players.png)
+![ ](../../../.gitbook/assets/moderation-tools.png)
 
 {% hint style="info" %}
 **💡 Tip**: To obtain a player's wallet address, click on their avatar to open up their profile, then click on the **Copy to clipboard** button next to the wallet address.
@@ -163,9 +162,9 @@ Click **View Ban List** to see the list of currently banned players. From this l
 
 To Trigger an action from any smart item in the scene:
 
-* Add a smart item to your scene
-* Open the settings for the **Scene Admin** Smart Item in the Creator Hub
-* In the **Smart item actions** section, add the smart item from the dropdown, give it a custom name and select a default action
+- Add a smart item to your scene
+- Open the settings for the **Scene Admin** Smart Item in the Creator Hub
+- In the **Smart item actions** section, add the smart item from the dropdown, give it a custom name and select a default action
 
 Once the above is configured, admins can trigger the action by opening the **Smart Item Actions** section of the admin UI and then selecting an item from the dropdown list. They can then either click the **Default** button to trigger the default action of that item, or select any other of the item's actions from the list.
 

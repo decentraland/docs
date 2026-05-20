@@ -4,7 +4,7 @@ description: Shortcuts & Chat Commands in Decentraland
 
 # Shortcuts & Chat Commands
 
-![](<../../.gitbook/assets/Shortcuts (1).png>)
+![](../images/media/Shortcuts.png)
 
 ## Keyboard Shortcuts
 
@@ -31,4 +31,4 @@ Chat commands are specific strings of text used to trigger actions, such as tele
 * **Open Debug Mode (shows FPS and other metrics)** `/debug`
 * **Discover More Chat Commands** `/help`
 
-![](<../../.gitbook/assets/Chat10 (1).png>)
+![](../images/media/Chat10.png)

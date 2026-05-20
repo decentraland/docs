@@ -190,7 +190,7 @@ Material.setPbrMaterial(myEntity, {
 
 Use this feature to cover a large surface with a tiled pattern. For example, repeat the following image:
 
-![](../../../.gitbook/assets/tiles.png)
+![](../../images/editor/tiles.png)
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -202,7 +202,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../../.gitbook/assets/tiles-in-scene.png)
+![](../../images/editor/tiles-in-scene.png)
 
 In the example below, the texture uses a _mirror_ wrap mode, and each repetition of the texture takes only 1/4 of the surface. This means that we'll see 4 copies of the image, mirrored against each other on both axis.
 
@@ -356,7 +356,7 @@ Material.setPbrMaterial(myEntity, {
 
 The `bumpTexture` can simulate bumps and wrinkles on a surface, by modifying how the normals of the surface behave on each pixel.
 
-![](../../../.gitbook/assets/wood-bump.png)
+![](../../images/editor/wood-bump.png)
 
 The `emissiveTexture` can accentuate glow on certain parts of a material, to achieve very interesting effects.
 
@@ -502,7 +502,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../../.gitbook/assets/avatarTexture.png)
+![](../../images/avatarTexture.png)
 
 You can fetch the portrait of any Decentraland player, even if they're not currently connected, and even if they don't have a claimed Decentraland name.
 
@@ -526,7 +526,7 @@ Material.setPbrMaterial(meshEntity, {
 
 If a material uses a .png texture that includes transparency, it will be opaque by default, but you can activate its transparency by setting the `transparencyMode` to `MaterialTransparencyMode.MTM_ALPHA_BLEND`.
 
-![](../../../.gitbook/assets/transparent-image.png)
+![](../../images/editor/transparent-image.png)
 
 ```typescript
 Material.setPbrMaterial(floor, {
@@ -564,7 +564,7 @@ When using an [unlit material](materials.md#unlit-materials), you can add an `al
 **📔 Note**: This must be a single-channel image. In this image use the color red or black to determine what parts of the real texture should be transparent.
 {% endhint %}
 
-![](../../../.gitbook/assets/circular-video-screen.png)
+![](../../images/circular-video-screen.png)
 
 ```ts
 // Using alpha test

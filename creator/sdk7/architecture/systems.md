@@ -6,7 +6,7 @@ description: Learn how systems are used to update the scene state
 
 Decentraland scenes rely on _systems_ to update any data over time, including information stored in each entity's [components](../architecture/entities-components.md).
 
-![](../../../.gitbook/assets/ecs-big-picture.png)
+![](../../images/media/ecs-big-picture.png)
 
 _systems_ are what make scenes dynamic, they're functions that are executed periodically on every tick of the scene's game loop, changing what will be rendered.
 
@@ -41,7 +41,7 @@ engine.addSystem(moveSystem)
 
 In the example above, the system `MoveSystem` is a function that runs on each tick of the game loop, changing position of every entity in the scene that has a Transform.
 
-![](../../../.gitbook/assets/ecs-system-new.png)
+![](../../images/media/ecs-system-new.png)
 
 You can have multiple systems in your scene to decouple different behaviors, making your code cleaner and easier to scale and reuse. For example, one system might handle physics, another might make an obstacle entity move back and forth continuously, another could handle the AI of characters.
 
@@ -129,11 +129,11 @@ Decentraland scenes are updated by default at 30 ticks per second. This means th
 
 If the processing of a frame takes less time than this interval, then the engine will wait the remaining time to keep updates regularly paced and `dt` will remain equal to _1/30_ .
 
-![](../../../.gitbook/assets/ecs-framerate.png)
+![](../../images/media/ecs-framerate.png)
 
 If the processing of a frame takes longer than _1/30_ seconds, the drawing of that frame is delayed. The engine then tries to finish that frame and show it as soon as possible. It then proceeds to the next frame and tries to show it _1/30_ seconds after the last frame. It doesn't compensate for the previous delay.
 
-![](../../../.gitbook/assets/ecs-framerate-heavy.png)
+![](../../images/media/ecs-framerate-heavy.png)
 
 Ideally, you should avoid your scene dropping frames, as it impacts the quality of the player's experience. Since this is dependant on the processing power of the player's machine, it's always a possibility that your scene should be ready to handle gracefully.
 

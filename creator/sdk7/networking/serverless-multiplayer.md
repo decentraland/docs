@@ -20,7 +20,7 @@ The first two options are covered in this document. They are simpler, as they re
 
 In the [Creator Hub](../../scene-editor/get-started/about-editor.md), mark an entity as synced by adding a **Multiplayer component** to it. It includes a checkbox for each of the other components on the entity, allowing you to select which ones to update.
 
-![](../../../.gitbook/assets/multiplayer-component.png)
+![](../../images/editor/multiplayer-component.png)
 
 To mark an entity as synced via code, use the `syncEntity` function:
 
@@ -326,7 +326,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

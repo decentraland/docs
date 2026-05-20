@@ -37,7 +37,7 @@ The _scene.json_ file is a JSON formatted manifest for a scene in the world. A s
 
 Most of the fields on the _scene.json_ file can be edited directly in the UI of the Scene Editor. See [Scene Settings](../../scene-editor/get-started/scene-editor-essentials.md#scene-settings).
 
-![](../../../.gitbook/assets/thumbnail-image.png)
+![](../../images/thumbnail-image.png)
 
 For more information see [scene metadata](../projects/scene-metadata.md#metadata).
 

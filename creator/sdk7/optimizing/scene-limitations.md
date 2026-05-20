@@ -8,11 +8,11 @@ In order to improve performance in the metaverse, we have established a set of l
 
 When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
 
-![](../../../.gitbook/assets/triangle-limit1.png)
+![](../../images/editor/triangle-limit1.png)
 
 You can expand this menu to view details.
 
-![](../../../.gitbook/assets/triangle-limit2.png)
+![](../../images/editor/triangle-limit2.png)
 
 {% hint style="info" %}
 **💡 Tip**: For a reference table of all specific numbers per parcel count, see:

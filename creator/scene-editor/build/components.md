@@ -6,7 +6,7 @@ description: Understand how an item's components work
 
 Select an item by clicking on it on the canvas or on the entity tree. You'll then see its components displayed on the properties panel, on the right of the screen. Different items have different components that each display specific settings.
 
-![](../../../.gitbook/assets/components-in-editor.png)
+![](../../images/editor/components-in-editor.png)
 
 Most non-interactive items have the following components:
 
@@ -19,7 +19,7 @@ The items in your scene are all **Entities**. Everything in a scene is an Entity
 
 To add Components to any Entity, click the **+** sign at the top of the properties tab and select the Component from the list. See [Make any item smart](../interactivity/make-any-item-smart.md)
 
-![](../../../.gitbook/assets/add-component.png)
+![](../../images/editor/add-component.png)
 
 You can delete any Component from an Entity by clicking the three dots icon on its right, and selecting **Delete Component**.
 
@@ -27,7 +27,7 @@ You can delete any Component from an Entity by clicking the three dots icon on i
 
 To create a fresh new Entity, right click on the root **Scene** Entity in the Entity tree, or on any other Entity, and select **Add Child**
 
-![](../../../.gitbook/assets/new-entity.png)
+![](../../images/editor/new-entity.png)
 
 This creates an empty Entity with just a **Transform** Component. The new entity is a child of the parent entity you clicked on. You can then add any other Components you want to it to shape it into anything you desire.
 

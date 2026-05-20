@@ -13,7 +13,7 @@ The Rewards system manages most of the complexities involved in minting items on
 * Monitoring transaction status
 * Informing users about the item they will receive before the transaction is confirmed
 * Emits Notifications when rewards are granted and received
-* ![](<../../.gitbook/assets/overview (1).png>)
+* ![](../images/rewards/overview.png)
 
 ## Limitations
 

@@ -6,7 +6,7 @@ description: Edit your scene's metadata
 
 Click the **Pencil icon** on the top-right of the screen. This opens a series of scene-level properties to edit.
 
-![](../../../.gitbook/assets/pencil-icon.png)
+![](../../images/editor/pencil-icon.png)
 
 Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
 
@@ -16,7 +16,7 @@ See [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
 The **Details** tab lets you configure several fields about your scene. These fields are shown to players that might visit your scene, for example when expanding the location on the map, when being prompted to teleport, or when sharing a link to the scene on social media. Make sure you make the information here attractive and accurate to drive more traffic to your scene!
 
-![](../../../.gitbook/assets/thumbnail-image.png)
+![](../../images/thumbnail-image.png)
 
 The following fields are available:
 
@@ -41,16 +41,16 @@ See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on 
 
 You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
 
-![](../../../.gitbook/assets/creator-wallet-address.png)
+![](../../.gitbook/assets/creator-wallet-address.png)
 
 
 When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
 
-![](../../../.gitbook/assets/Tipicon.png)
+![](../../.gitbook/assets/TipIcon.png)
 
 The tip modal allows the player to select the amount of MANA they want to send. The player must own MANA in their wallet to send a tip. If the address you provided is linked to a Decentraland NAME, this modal will show the name of the wallet owner besides the Ethereum address.
 
-![](../../../.gitbook/assets/tipping-modal.png)
+![](../../.gitbook/assets/tipping-modal.png)
 
 
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
@@ -63,14 +63,14 @@ Scenes in Decentraland occupy one or several adjacent LAND parcels. Each LAND pa
 
 Set the number of parcels for the rows and columns and click **Apply layout** for it to affect how your scene looks on the Scene Editor canvas.
 
-![](../../../.gitbook/assets/scene-layout.png)
+![](../../images/editor/scene-layout.png)
 
 To build something to deploy to LAND parcels you own, make sure the shape of the scene matches the shape of where you want it deployed.
 
 {% hint style="info" %}
 **💡 Tip**: You can toggle each tile on the grid off by clicking on it. This allows you to draw non-rectangular shapes for your scene layout.
 
-<img src="../../../.gitbook/assets/non-rectangular.png" alt="" data-size="original">
+<img src="../../images/editor/non-rectangular.png" alt="" data-size="original">
 {% endhint %}
 
 If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../worlds/about.md). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
@@ -81,7 +81,7 @@ See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better unders
 
 You can also click the **Set Coordinates (Advanced)** button to manually list the coordinates of your scene.
 
-![](../../../.gitbook/assets/advanced-coordinates.png)
+![](../../images/editor/advanced-coordinates.png)
 
 In **Custom Coordinates**, write the coordinates of each of the parcels where you wish to publish. Separate the x and y coordinate with a comma, and each set of coordinates separated by spaces. Remember that these coordinates must all be adjacent to be valid. For example:
 
@@ -93,7 +93,7 @@ In the **Origin Point** field, define which of the coordinates in the scene shou
 
 You can disable certain functionalities on your scene if you chose, in case they might be abused or clash with the kind of experience you want to create.
 
-![](../../../.gitbook/assets/scene-restrictions.png)
+![](../../images/editor/scene-restrictions.png)
 
 * **Silence voice chat**: Prevent players on your scene from using voice chat.
 * **Disable portable experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
@@ -128,4 +128,4 @@ You can control the skybox time of day in the **Settings** tab. You can set a fi
 
 In the Creator Hub, open the scene settings and click on the **Settings** tab to find the **Skybox** section. Uncheck the **Auto** option to avoid using the day/night cycle and set the time of day you want.
 
-![](../../../.gitbook/assets/fixed-time-of-day.png)
+![](../../images/fixed-time-of-day.png)

@@ -20,7 +20,7 @@ To add text as a label on an existing entity, you create a second entity that ha
 
 The easiest way to place text in-world is add a **Text** [Smart item](../../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
 
-![](../../../.gitbook/assets/text-smart-item.png)
+![](../../images/editor/text-smart-item.png)
 
 ## Create a text component
 

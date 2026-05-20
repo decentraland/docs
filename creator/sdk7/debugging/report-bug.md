@@ -20,11 +20,11 @@ Before submitting a bug report, please ensure the following:
 To report a bug with the SDK, you'll need a GitHub account. Follow these steps:
 
 1. Visit the following link: [New Issue Page](https://github.com/decentraland/sdk/issues/new/choose)
-2. Click **Get Started** next to **Bug Report**. ![](../../../.gitbook/assets/report-bug.png)
+2. Click **Get Started** next to **Bug Report**. ![](../../images/report-bug.png)
 3. Complete all the fields in the template. The template provides instructions for each section. The more details you can provide, the quicker our developers can identify and resolve the issue.
 4. Click **Submit new issue**.
 
-![](../../../.gitbook/assets/submit-issue.png)
+![](../../images/submit-issue.png)
 
 Developers may ask follow-up questions on your ticket if they need clarifications or additional information. You'll receive email notifications of updates to your bug report.
 
@@ -49,7 +49,7 @@ You can paste code snippets within your issue text, but the best way to provide 
 1. Write your code snippet on the left, and view your scene on the right panel.
 2. Click the **Share** button and paste the link into your issue report.
 
-![](../../../.gitbook/assets/playground.png)
+![](../../images/playground/playground.png)
 
 Using the playground simplifies issue reproduction and ensures that anyone opening the link can see the same output, regardless of their operating system, SDK version, Node version, etc. It also facilitates quick iteration to identify affected conditions and pinpoint the issue's cause.
 

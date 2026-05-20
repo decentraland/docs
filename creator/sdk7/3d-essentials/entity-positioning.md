@@ -12,7 +12,7 @@ When adding an item to your scene via the Scene Editor, it implicitly includes a
 
 ## Code essentials
 
-![](../../../.gitbook/assets/ecs-simple-components-new.png)
+![](../../images/media/ecs-simple-components-new.png)
 
 ```ts
 // Create a new entity
@@ -449,7 +449,7 @@ The following anchor points are available on the `AvatarAnchorPointType` enum:
 **💡 Tip**: To use these values, write `AvatarAnchorPointType.` and VS Code will display the full list of options on a dropdown.
 {% endhint %}
 
-![](../../../.gitbook/assets/avatar-attach-points.png)
+![](../../images/avatar-attach-points.png)
 
 Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to other players who are seeing that player. If an entity is attached to the default local player, each player will experience the entity as attached to their own avatar.
 

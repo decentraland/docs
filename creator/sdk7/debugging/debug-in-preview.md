@@ -9,7 +9,7 @@ Running a preview provides some useful debugging information and tools to help y
 If the scene can't be compiled, you'll just see the empty ground, with nothing rendered on it. If this occurs, there are several places where you can look for error messages to help you understand what went wrong:
 
 1. Check your code editor to make sure that it didn't mark any syntax or logic errors.
-2. Check the console in the preview window for any error messages. Open the console by clicking the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner.
+2. Check the console in the preview window for any error messages. Open the console by clicking the ![](../../images/console-icon.png) icon on the top-right corner.
 3. If you ran the scene using the Creator Hub, check the window with the console output of the scene. If you ran the scene using the CLI, check the output of the command line where you ran `npm run start`
 
 {% hint style="info" %}
@@ -18,7 +18,7 @@ If the scene can't be compiled, you'll just see the empty ground, with nothing r
 
 ## Use the console
 
-Open the console by clicking the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner.
+Open the console by clicking the ![](../../images/console-icon.png) icon on the top-right corner.
 
 You can also toggle it by pressing the backtick key on your keyboard: **`**. This key is left of the 1 key on most english language keyboards. Or otherwise press Shift + **\`** to open a wider view of the console, in case you need to view more text.
 
@@ -28,11 +28,11 @@ The console also shows error messages, these are marked in red.
 
 ## The debug panel
 
-Open the debug console by clicking the ![](../../../.gitbook/assets/debug-icon.png) icon on the top-right corner.
+Open the debug console by clicking the ![](../../images/debug-icon.png) icon on the top-right corner.
 
 This opens a panel on the lower-right corner with information about the renderer engine, and is updated in real time as things change.
 
-![](../../../.gitbook/assets/debug-panel.png)
+![](../../images/debug-panel.png)
 
 ### Current scene
 
@@ -53,7 +53,7 @@ The **PERFORMANCE** tab includes several fields related to _FPS_ (Frames Per Sec
 
 The most important value here is the **Average FPS**, which rounds up the FPS from the last 1000 frames.
 
-![](../../../.gitbook/assets/fps-debug-panel.png)
+![](../../images/fps-debug-panel.png)
 
 {% hint style="warning" %}
 **📔 Note**: The renderer's FPS is not the same as the scene's updates of the game loop per second. The scene's logic is capped at 30 FPS, the renderer's FPS can go up to 60 or more.
@@ -81,7 +81,7 @@ Whenever you make changes to the scene, the preview reloads and updates automati
 
 If you need to reload the scene you're standing on, click the **Reload Scene** button on the top-left corner of the preview window.
 
-![](../../../.gitbook/assets/reload-button.png)
+![](../../images/reload-button.png)
 
 You can also reload the scene by writing the following into the chat and pushing enter:
 
@@ -95,7 +95,7 @@ If you encounter a problem that is not with your scene, but instead with the Dec
 
 Make sure you always use the latest versions of all dependencies in your scene, as any issues you're experiencing might already be fixed in newer versions. The Creator Hub will notify you when there are updates to install on your Decentraland scene.
 
-![](../../../.gitbook/assets/new-dependencies.png)
+![](../../images/new-dependencies.png)
 
 You can also manually update the dependenceis via the command line. Running a Decentraland scene locally depends on two main libraries: `@dcl/sdk` and `@dcl/js-runtime`, which is installed on each project folder. Make sure both of those are up to date. You can run the following commands to manually update both these libraries to the latest stable version:
 
@@ -132,7 +132,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads. You may need to log out and log in again to the second window to select a different account.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 Both players will see each other, and can interact with each other. If the scene has any multiplayer logic, it will work as expected and get synced between the two players.
 

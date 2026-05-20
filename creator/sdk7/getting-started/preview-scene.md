@@ -13,7 +13,7 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 1. Open your scene project.
 2. Click the **Preview** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
@@ -99,11 +99,11 @@ The scene size shown in the preview is based on the scene's configuration.
 
 Edit this on the second tab of the scene menu in the Scene Editor.
 
-![](../../../.gitbook/assets/scene-parcels-3x3.png)
+![](../../images/editor/scene-parcels-3x3.png)
 
 Use the dropdowns and click **Apply Layout** to change the dimensions of your scene. You can also click each individual parcel to toggle it off from your layout.
 
-![](../../../.gitbook/assets/scene-parcels-toggled.png)
+![](../../images/editor/scene-parcels-toggled.png)
 
 You can also edit the _scene.json_ file to list multiple parcels in the "parcels" field. See [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) for more details.
 
@@ -113,7 +113,7 @@ You can also edit the _scene.json_ file to list multiple parcels in the "parcels
 
 ## View the scene console
 
-Open the console by clicking the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner. Here you can see any error messages, and also any text that your scene prints to the console via `console.log()`.
+Open the console by clicking the ![](../../images/console-icon.png) icon on the top-right corner. Here you can see any error messages, and also any text that your scene prints to the console via `console.log()`.
 
 You can also open it by pressing the **\`** key on your keyboard. You can also press Shift + **\`** to open the console even wider, in case you need to view more text.
 
@@ -125,7 +125,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

@@ -47,7 +47,7 @@ To open Decentraland with the `scene-console` parameter, either:
 
 When running Decentraland with the `scene-console`, you can open the console in three ways:
 
-* Click the ![](../../../.gitbook/assets/console-icon.png) icon on the top-right corner
+* Click the ![](../../images/console-icon.png) icon on the top-right corner
 * Press the **\`** key for a short console
 * Press Shift + **\`** to open a larger view of the console
 

@@ -10,7 +10,7 @@ You can add links from your scene out to other content, either to other scenes o
 
 The easiest way to add an external link or a teleport is to use the Scene Editor. Use the **Teleport** [Smart Item](../../scene-editor/interactivity/smart-items.md) to add teleport to another scene in Genesis City, or use any of the **Social Links** smart items to add links to external sites.
 
-![](../../../.gitbook/assets/social-links.png)
+![](../../images/editor/social-links.png)
 
 ## Teleports
 

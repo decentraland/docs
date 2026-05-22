@@ -182,6 +182,7 @@
   * [Version Support Agreement](sdk7/releases/version-support-agreement.md)
 * [Other](sdk7/other/)
   * [Scene Analytics](sdk7/other/scene-analytics.md)
+  * [Migrate Legacy SDK6 Scenes](sdk7/other/migrate-legacy-sdk6-scenes.md)
 
 ## 3D Modeling and Animations
 

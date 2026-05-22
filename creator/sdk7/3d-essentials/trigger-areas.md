@@ -133,6 +133,17 @@ The following properties are available in the `result` parameter:
   * `rotation`: The rotation of the entity that triggered the trigger
   * `scale`: The scale of the entity that triggered the trigger
 
+{% hint style="warning" %}
+**⚠️ Common confusion — `triggeredEntity` vs `result.trigger?.entity`**
+
+These two fields are easily mixed up:
+
+* **`result.trigger?.entity`** — the entity that **walked into** the trigger area (Entity B — this is usually what you want to check, e.g. to identify which player or object entered).
+* **`result.triggeredEntity`** — the entity that **owns the TriggerArea component** (Entity A — the static trigger zone itself, not the entity that entered it).
+
+Despite the name, `triggeredEntity` does **not** refer to the entity that triggered the event. It refers to the entity whose trigger area was activated. Use `result.trigger?.entity` when you need to identify the entering entity.
+{% endhint %}
+
 ```ts
 import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
 

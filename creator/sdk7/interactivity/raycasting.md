@@ -205,9 +205,9 @@ console.log(transform.position)
 
 ## Collision layers
 
-It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows to to list only specific collision layers, which can include the physics layer (that blocks player movement), the pointer layer (which is used for pointer events), and 8 custom layers that you can assign freely to whatever your needs are. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
+It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows you to list only specific collision layers — the physics layer (scene walls and floors), the pointer layer (pointer events), the player layers (avatars), or 8 custom layers that you can assign freely. See [collision layers](../3d-essentials/colliders.md#collision-layers).
 
-By default, the `collisionMask` field is set to respond to both the layers `ColliderLayer.CL_POINTER` and `ColliderLayer.CL_PHYSICS`. You can change this value to list only one of those, or to include custom layers. Use the `|` separator to list multiple options.
+By default, the `collisionMask` field is set to `ColliderLayer.CL_PHYSICS`. You can change this value to list other layers, or combine multiple with the `|` separator.
 
 ```ts
 raycastSystem.registerLocalDirectionRaycast(
@@ -353,7 +353,51 @@ engine.addSystem((deltaTime) => {
 
 ## Collide with the player
 
-You can't directly hit the player's avatar or those of other players with a ray, but what you can do as a workaround is position an invisible entity occupying the same space as a player using the [AvatarAttach component](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), and check collisions with that cube.
+You can detect avatars directly with raycasts by including either of the avatar collision layers in the mask:
+
+* `ColliderLayer.CL_PLAYER`: matches any avatar — the local player AND any other player rendered in the scene.
+* `ColliderLayer.CL_MAIN_PLAYER`: matches only the local (main) player.
+
+Both layers can be combined or used independently. The default `collisionMask` for a raycast is `CL_PHYSICS`, which does NOT hit avatars — you must explicitly opt in.
+
+```ts
+// Hit only the local player (ignore other avatars)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_MAIN_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    if (raycastResult.hits.length > 0) {
+      console.log('Hit the local player')
+    }
+  }
+)
+
+// Hit any avatar (local + remote)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    // raycastResult.hits[i].entityId is 0 for remote-avatar hits (no scene-local entity id)
+    console.log(raycastResult.hits)
+  }
+)
+```
+
+When a raycast hits the local player, the `hit.entityId` is `engine.PlayerEntity`. Hits on remote avatars don't carry a scene-local entity id (the field is `0`) since the remote player isn't an entity in your scene's world — but the hit is still reported with its `position`, `length`, `normalHit`, and other geometric data.
+
+{% hint style="info" %}
+**💡 Tip**: To detect only **other** players (excluding the local player), use `CL_PLAYER` and filter `hit.entityId !== engine.PlayerEntity` in the callback.
+{% endhint %}
 
 ## Raycasts from the player
 

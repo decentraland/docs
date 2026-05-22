@@ -209,9 +209,9 @@ console.log(transform.position)
 
 ## Capas de colisión
 
-Es una buena práctica solo verificar colisiones contra entidades que sean relevantes, para hacer la escena más eficiente. El campo `collisionMask` permite listar solo capas de colisión específicas, que pueden incluir la capa de physics (que bloquea el movimiento del jugador), la capa de puntero (que se usa para eventos de puntero), y 8 capas personalizadas que puedes asignar libremente según tus necesidades. Consulta [capas de colisión](../3d-essentials/colliders.md#collision-layers). Por defecto, todas las capas se detectan.
+Es una buena práctica solo verificar colisiones contra entidades que sean relevantes, para hacer la escena más eficiente. El campo `collisionMask` permite listar solo capas de colisión específicas — la capa de physics (paredes y suelos), la capa de puntero (eventos de puntero), las capas de jugador (avatares), o 8 capas personalizadas que puedes asignar libremente. Consulta [capas de colisión](../3d-essentials/colliders.md#collision-layers).
 
-Por defecto, el campo `collisionMask` está configurado para responder tanto a las capas `ColliderLayer.CL_POINTER` como `ColliderLayer.CL_PHYSICS`. Puedes cambiar este valor para listar solo una de esas, o para incluir capas personalizadas. Usa el separador `|` para listar múltiples opciones.
+Por defecto, el campo `collisionMask` está configurado en `ColliderLayer.CL_PHYSICS`. Puedes cambiar este valor para listar otras capas, o combinar varias con el separador `|`.
 
 ```ts
 raycastSystem.registerLocalDirectionRaycast(
@@ -357,7 +357,51 @@ engine.addSystem((deltaTime) => {
 
 ## Colisionar con el jugador
 
-No puedes impactar directamente el avatar del jugador o los de otros jugadores con un rayo, pero lo que puedes hacer como solución alternativa es posicionar una entidad invisible ocupando el mismo espacio que un jugador usando el [componente AvatarAttach](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), y verificar colisiones con ese cubo.
+Puedes detectar avatares directamente con raycasts incluyendo una de las capas de colisión de avatar en la máscara:
+
+* `ColliderLayer.CL_PLAYER`: detecta cualquier avatar — el jugador local Y cualquier otro jugador renderizado en la escena.
+* `ColliderLayer.CL_MAIN_PLAYER`: detecta solo al jugador local (main).
+
+Ambas capas pueden combinarse o usarse de forma independiente. La máscara `collisionMask` predeterminada para un raycast es `CL_PHYSICS`, que NO impacta avatares — debes optar por una o ambas capas de avatar explícitamente.
+
+```ts
+// Impactar solo al jugador local (ignorar otros avatares)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_MAIN_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    if (raycastResult.hits.length > 0) {
+      console.log('Impacto al jugador local')
+    }
+  }
+)
+
+// Impactar cualquier avatar (local + remoto)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    // raycastResult.hits[i].entityId es 0 para impactos contra avatares remotos (no tienen entity id en la escena local)
+    console.log(raycastResult.hits)
+  }
+)
+```
+
+Cuando un raycast impacta al jugador local, `hit.entityId` es `engine.PlayerEntity`. Los impactos contra avatares remotos no llevan un entity id de la escena local (el campo es `0`) ya que el jugador remoto no es una entidad en el mundo de tu escena — pero el impacto se reporta igual con su `position`, `length`, `normalHit`, y demás datos geométricos.
+
+{% hint style="info" %}
+**💡 Tip**: Para detectar solo a **otros** jugadores (excluyendo al jugador local), usa `CL_PLAYER` y filtra `hit.entityId !== engine.PlayerEntity` dentro del callback.
+{% endhint %}
 
 ## Raycasts desde el jugador
 

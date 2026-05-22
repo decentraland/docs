@@ -141,10 +141,16 @@ La escena puede manejar capas de colisión separadas, que tienen diferentes comp
 
 Puedes configurar un componente `MeshCollider` o el componente `GltfContainer` para responder solo a un tipo de interacción, o a varias de ellas, o ninguna. Para hacer esto, en el `MeshCollider` establece la propiedad `collisionMask`, y en `GltfContainer` establece las propiedades `visibleMeshesCollisionMask` o `invisibleMeshesCollisionMask` a uno o varios de los siguientes valores:
 
-* `ColliderLayer.CL_PHYSICS`: Solo bloquea el movimiento del jugador (y no afecta eventos de puntero)
-* `ColliderLayer.CL_POINTER`: Responde solo a eventos de puntero (y no bloquea el movimiento del jugador)
-* `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`: Se pueden usar junto con raycasts, para que un rayo solo detecte colisiones con una capa específica.
+* `ColliderLayer.CL_PHYSICS`: Bloquea el movimiento del jugador (paredes, suelos, plataformas). No afecta eventos de puntero.
+* `ColliderLayer.CL_POINTER`: Responde solo a eventos de puntero. No bloquea el movimiento del jugador.
+* `ColliderLayer.CL_PLAYER`: Marca el collider como un "marcador de avatar". Los raycasts y trigger areas que apunten a `CL_PLAYER` lo detectarán, pero la cápsula del jugador lo atraviesa (no hay bloqueo físico). En meshes de escena es útil para señalar un mesh como "objetivo tipo avatar" solo para detección.
+* `ColliderLayer.CL_MAIN_PLAYER`: Igual que `CL_PLAYER`, pero orientado solo al jugador local. Los raycasts y trigger areas con `CL_MAIN_PLAYER` en su máscara lo detectan; los raycasts/triggers de avatares remotos no.
+* `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`: Se pueden usar junto con raycasts y trigger areas para detectar colisiones solo con capas personalizadas específicas.
 * `ColliderLayer.CL_NONE`: No responde a colisiones de ningún tipo.
+
+{% hint style="info" %}
+**💡 Tip**: `CL_PLAYER` y `CL_MAIN_PLAYER` en un `MeshCollider` / `GltfContainer` son capas **solo de detección** — la cápsula del jugador las atraviesa. Si quieres que el mesh sea detectable como avatar Y además bloquee físicamente al jugador, combina la capa de avatar con `CL_PHYSICS` (por ejemplo `CL_PHYSICS | CL_MAIN_PLAYER`).
+{% endhint %}
 
 {% hint style="warning" %}
 **📔 Nota**: Para deshabilitar colisiones de un componente `MeshCollider`, elimina el componente. No establezcas la capa de colisión en `ColliderLayer.CL_NONE`. Hay un problema conocido con el componente `MeshCollider`. En lugar de deshabilitar todas las colisiones, hace que este valor sea equivalente al predeterminado (`ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER`).

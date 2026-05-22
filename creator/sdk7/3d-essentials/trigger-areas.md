@@ -173,7 +173,10 @@ triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
 
 Use the optional second argument of the `TriggerArea` component to set the layers that will activate the trigger area.
 
-By deault, the trigger area is activated only by the layer `ColliderLayer.CL_PLAYER`. This layer includes all players, not just the current player but also any other avatar that is being rendered in the scene. If you want to detect only the current player and not others, add the following check to the trigger function `if (result.trigger?.entity !== engine.PlayerEntity) return`.
+By default, the trigger area is activated only by the layer `ColliderLayer.CL_PLAYER`. This layer includes all players — not just the current player but also any other avatar that is being rendered in the scene. If you want to detect only the current player and not others, you have two options:
+
+- Use the `ColliderLayer.CL_MAIN_PLAYER` layer instead, which matches only the local player.
+- Or keep `CL_PLAYER` and add `if (result.trigger?.entity !== engine.PlayerEntity) return` inside the callback.
 
 ```ts
 import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
@@ -222,6 +225,8 @@ MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 
 Allowed values are the same as the ones for the `MeshCollider` component. See [Collision layers](colliders.md#Collision-layers) for more details.
 
+* `ColliderLayer.CL_PLAYER`: any avatar (local + remote)
+* `ColliderLayer.CL_MAIN_PLAYER`: only the local player
 * `ColliderLayer.CL_PHYSICS`
 * `ColliderLayer.CL_POINTER`
 * `ColliderLayer.CL_CUSTOM1` through to `CL_CUSTOM8`
@@ -229,6 +234,10 @@ Allowed values are the same as the ones for the `MeshCollider` component. See [C
 
 {% hint style="info" %}
 **💡 Tip**: The layers `CL_CUSTOM1` through to `CL_CUSTOM8` don't have any special behavior on their own, you can use them for whatever suits your scene best.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: A trigger area with mask exactly equal to `CL_MAIN_PLAYER` is optimised: the trigger short-circuits any overlap with non-local-player colliders before reaching the handler, so detecting the local player only is essentially free.
 {% endhint %}
 
 You can also set up a trigger area to detect multiple layers at once.

@@ -6,6 +6,10 @@ description: Learn hat mesh properties are supported on 3D models imported to De
 
 3D models have a _mesh_ composed of triangular _faces_. These faces meet each other on _edges_ (the lines along which they touch) and _vertices_ (the points where their corners join).
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ## Space Limitations
 
 All 3D models in your scene must fit within the limits of its parcels. If any part of your models extend beyond these limits when running a preview, these parts that extend will be cut off and not rendered.

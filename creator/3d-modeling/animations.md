@@ -8,6 +8,10 @@ description: >-
 
 Animation is the art of bringing life into things. And there's no better way to make you scene more lively then adding some animations to your 3D models.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 There are a few ways to do it: through **object animation**, through a **rig (skeletal animation)**, or using **shape keys (morph target animation)**.
 
 **Object animation** is best for simple models, such as a bouncing ball, a spinning globe or a floating chair and it doesn't need an armature. It's important to mention that object animation is different from **vertex animation**. In object animation, the model will be animated as a whole, while in vertex animation each vertex of the object can be animated separately.

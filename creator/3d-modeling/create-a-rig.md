@@ -6,6 +6,10 @@ description: Learn How To Create a Rig for Characters in Decentraland.
 
 This document shows how to set up a basic rig in Blender. If you want to get more familiar with some rigging concepts, check out [The Rig: Basic Concepts](https://docs.decentraland.org/creator/emotes/avatar-rig/).
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ### Adding the Armature
 
 First of all, you’ll need to import your 3D model into Blender or, if you did it in Blender already, just open your blend file. In object mode, press `Shift+A` and select _**Armature**_ on the menu, like show below. Then, in _**Object Data Properties**_, under _**Viewport Display**_, toggle _**In Front**_, so you can see the bone through the mesh. Mesh and armature should be aligned, so make sure the model is well positioned in the center of the world before adding the bones. The origin of the armature should be at 0,0,0 (X,Y,Z).

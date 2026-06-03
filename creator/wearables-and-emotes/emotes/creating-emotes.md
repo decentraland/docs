@@ -13,6 +13,10 @@ weight: 2
 
 This documentation will cover the file specifications, the basics of animation in Blender, the proper way to export an Emote, and how to import one into the Builder.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ### Animation Specs Chart
 
 | Frame Rate             | 30 fps                     |

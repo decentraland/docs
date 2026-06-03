@@ -6,6 +6,10 @@ description: Features about the avatar rig and downloadable file.
 
 This documentation explains the set up for Rig 1.0, its controls, and features.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ### Armature Transforms
 
 These are the armature’s transforms in Object Mode with the controls’ setup. **Do not edit this in any way**. The rig should only be manipulated in Pose Mode. To avoid unwanted editing, the transforms have been locked in Object Mode.

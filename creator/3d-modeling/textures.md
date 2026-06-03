@@ -6,6 +6,10 @@ description: Learn about how textures works in Decentraland
 
 Textures are a key part of the 3D art pipeline to achieve the look and feel you want for your scene. In this section you will find everything you need to know to create your textures, limitations, nodes in Blender and optimizing them to perform as its best!
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ## Limitations
 
 ### Texture Size Constraints

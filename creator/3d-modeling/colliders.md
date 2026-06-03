@@ -6,6 +6,10 @@ description: Learn how to add colliders to 3D models imported to Decentraland.
 
 To enable collisions between a 3D model and users of your scene, you must give the model colliders. Without a collider, players are able to walk through models as if they weren’t there. Colliders are also required to make an object respond to the player’s pointer events or to block them, or to be intersected by raycasts or block them. For performance reasons, colliders are often modeled separately as a simpler invisible geometry that has less vertices than the visible geometry.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 The model can either use an invisible geometry to use as colliders, or (as of SDK7) you can instead assign the visible geometry to behave as a collider. See [**Colliders on 3D models**](https://docs.decentraland.org/creator/development-guide/sdk7/colliders/#colliders-on-3d-models) . You can also assign different layer of collisions to the different geometries, to separately control player physics, pointer events, and other custom layers, see [**Colliders on 3D models**](https://docs.decentraland.org/creator/development-guide/sdk7/colliders/#collision-layers) .
 
 Colliders don’t affect how models and entities interact with each other, they can always overlap. Colliders only affect how the model interacts with the player’s avatar.

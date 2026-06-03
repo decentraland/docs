@@ -83,8 +83,13 @@ Scene UI that overlaps the reserved regions will:
 * Compete for taps with the system controls — players will accidentally trigger one or the other.
 * Make your scene feel broken on mobile, which hurts featuring and retention.
 
+{% hint style="info" %}
+The reserved regions on this page belong to the Decentraland **system HUD**. They are separate from the device's own **hardware-reserved** margins (notch, status bar, home indicator). To keep UI clear of those, wrap it in the [`ScreenInsetArea` component](screen-inset-area.md).
+{% endhint %}
+
 ## Related
 
+* [Screen inset area](screen-inset-area.md) — keep UI clear of the device's hardware-reserved margins.
 * [UI best practices for mobile](ui-best-practices.md)
 * [Detect the platform from code](detect-platform.md) — use `isMobile()` to swap layouts.
 * [On-screen UI](../2d-ui/onscreen-ui.md)

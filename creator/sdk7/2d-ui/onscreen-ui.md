@@ -26,6 +26,10 @@ See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to desi
 **📱 Designing for mobile**: The [mobile client](../building-for-mobile/) reserves the left side, the top-right, and the bottom-right of the screen for system controls (joystick, chat, profile, camera, interaction button). Scene UI in those regions will clash with the controls. Before publishing, review the [Mobile safe area](../building-for-mobile/safe-area.md) and the [UI best practices for mobile](../building-for-mobile/ui-best-practices.md). A useful starting point is to design your UI on desktop and then **scale sizes by 3×** for mobile readability.
 {% endhint %}
 
+{% hint style="info" %}
+**📱 Avoid hardware-reserved margins**: On mobile, devices reserve screen space for the notch, status bar, home indicator, and rounded corners. Wrap your UI in the [`ScreenInsetArea` component](../building-for-mobile/screen-inset-area.md) to keep it clear of these areas automatically. It only affects the mobile client — on desktop it has no effect, so it's safe to leave in cross-platform UI.
+{% endhint %}
+
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
 
 ## Render a UI

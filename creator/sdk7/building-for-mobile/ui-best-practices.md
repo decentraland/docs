@@ -10,6 +10,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.
 * **Keep critical UI inside the [safe area](safe-area.md)**.
+* **Wrap UI in [`ScreenInsetArea`](screen-inset-area.md)** to keep it clear of the device's hardware-reserved margins (notch, status bar, home indicator).
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
@@ -40,6 +41,7 @@ If you hit a limitation that is not listed here, please [report it](../debugging
 ## Related
 
 * [Mobile safe area](safe-area.md)
+* [Screen inset area](screen-inset-area.md)
 * [Detect the platform from code](detect-platform.md)
 * [On-screen UI](../2d-ui/onscreen-ui.md)
 * [UX & UI Guide](../design-experience/ux-ui-guide.md)

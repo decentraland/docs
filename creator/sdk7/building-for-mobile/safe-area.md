@@ -1,12 +1,15 @@
 ---
-description: The screen regions reserved for client controls on mobile.
+description: Where scene UI can safely live on mobile — clear of the system HUD and the device's hardware-reserved margins.
 ---
 
 # Mobile Safe Area
 
-When your scene runs on the mobile client, the Decentraland app overlays its own controls on top of the screen — joystick, chat, profile, camera controls, and the interaction button. These regions are reserved: any scene UI that lands inside them will visually clash with the controls and may also be unreachable for touch input.
+On a phone, two things eat into the screen space your UI can safely use:
 
-The **mobile safe area** defines exactly where scene UI can safely live without clashing with the system HUD.
+* **The Decentraland system HUD** — the app overlays its own controls (joystick, chat, profile, camera controls, the interaction button). Scene UI placed under them clashes visually and competes for taps. These regions are mapped out in [Reserved margins](#reserved-margins) below.
+* **The device's hardware-reserved margins** — the notch or camera cutout, status bar, home indicator, and rounded corners. The SDK keeps UI clear of these automatically with the [`ScreenInsetArea` component](#device-hardware-insets-screeninsetarea).
+
+The **mobile safe area** is what's left over — where scene UI can live without clashing with either.
 
 {% hint style="info" %}
 All values below use normalized coordinates `[0.0 – 1.0]` based on a **1600 × 720 px landscape** reference resolution. Always use normalized values so your layout adapts to any screen size. Always verify on a real device using the [preview QR code](preview-on-mobile.md).
@@ -83,13 +86,37 @@ Scene UI that overlaps the reserved regions will:
 * Compete for taps with the system controls — players will accidentally trigger one or the other.
 * Make your scene feel broken on mobile, which hurts featuring and retention.
 
+## Device hardware insets (`ScreenInsetArea`)
+
+The reserved margins above belong to the Decentraland **system HUD**. Separately, the **device hardware** reserves screen space for the notch or camera cutout, the status bar, the home indicator, and rounded corners. UI drawn underneath these is partly hidden or hard to tap.
+
+The `ScreenInsetArea` component keeps your UI clear of these hardware margins automatically, reading the current insets the device reports. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
+
+```tsx
+import ReactEcs, { ReactEcsRenderer, UiEntity, ScreenInsetArea } from '@dcl/sdk/react-ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+export function setupUi() {
+  ReactEcsRenderer.setUiRenderer(() => (
+    <ScreenInsetArea>
+      {/* A child sized 100% × 100% fills the safe inset area exactly */}
+      <UiEntity
+        uiTransform={{ width: '100%', height: '100%' }}
+        uiBackground={{ color: Color4.create(0, 0, 0, 0.5) }}
+      />
+    </ScreenInsetArea>
+  ))
+}
+```
+
+`ScreenInsetArea` positions itself absolutely using the inset values the device reports, so the `positionType` and `position` fields of its `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. The component reacts automatically when the insets change, for example on rotation or when system bars appear or hide.
+
 {% hint style="info" %}
-The reserved regions on this page belong to the Decentraland **system HUD**. They are separate from the device's own **hardware-reserved** margins (notch, status bar, home indicator). To keep UI clear of those, wrap it in the [`ScreenInsetArea` component](screen-inset-area.md).
+**📱 Mobile only:** `ScreenInsetArea` only changes anything on the **mobile client**, where the device reports real inset values. On the **desktop client** the insets are `(0, 0, 0, 0)`, so the component has no effect and your UI renders exactly as it would without it. It's safe to leave in cross-platform UI code.
 {% endhint %}
 
 ## Related
 
-* [Screen inset area](screen-inset-area.md) — keep UI clear of the device's hardware-reserved margins.
 * [UI best practices for mobile](ui-best-practices.md)
 * [Detect the platform from code](detect-platform.md) — use `isMobile()` to swap layouts.
 * [On-screen UI](../2d-ui/onscreen-ui.md)

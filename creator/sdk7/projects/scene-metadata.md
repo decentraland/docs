@@ -97,18 +97,17 @@ After that, the scene is listed on the Places dApp under the `game` and `casino`
 
 ## Age Rating
 
-The **Age Rating** field is used to classify the content of your scene based on its appropriateness for different age groups. It helps in filtering content for players. The following options are available:
+The **Age Rating** field is used to classify the content of your scene. Decentraland is an 18+ platform. The following option is available:
 
-* **🟢 `T` for Teens (13+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms/#8-children). Opt for this category if your scene is limited to moderate violence, suggestive or horror-themed content, simulated gambling, and mild language.
-* **🟡 `A` for Adults (18+)**: Choose this category if your scene features any of the following: intense offensive language, graphic violence, explicit sexual content and/or nudity, real money gambling, or substances like alcohol, tobacco, and drugs.
+* **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
 
-When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write either **T** for teens, or **A** for adults.
+When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults.
 
 ![](../../images/media/content-moderation-flag-icon.png)
 
 ```json
  "scene": {
-    "rating": "T"
+    "rating": "A"
   }
 ```
 

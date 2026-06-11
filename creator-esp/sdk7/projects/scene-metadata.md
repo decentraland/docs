@@ -101,18 +101,17 @@ Después de eso, la escena se lista en la dApp Places bajo las categorías `game
 
 ### Clasificación por Edad
 
-El campo **Age Rating** se usa para clasificar el contenido de tu escena según su idoneidad para diferentes grupos de edad. Ayuda a filtrar contenido para los jugadores. Las siguientes opciones están disponibles:
+El campo **Age Rating** se usa para clasificar el contenido de tu escena. Decentraland es una plataforma exclusiva para mayores de 18 años. La siguiente opción está disponible:
 
-* **🟢 `T` para Teens (13+)**: Este es el requisito de edad mínima según se especifica en los [Términos de Uso](https://decentraland.org/terms/#8-children) de Decentraland. Opta por esta categoría si tu escena se limita a violencia moderada, contenido sugestivo o de terror, apuestas simuladas y lenguaje moderado.
-* **🟡 `A` para Adults (18+)**: Elige esta categoría si tu escena presenta alguno de los siguientes: lenguaje ofensivo intenso, violencia gráfica, contenido sexual explícito y/o desnudez, apuestas con dinero real, o sustancias como alcohol, tabaco y drogas.
+* **🟡 `A` para Adults (18+)**: Este es el requisito de edad mínima según se especifica en los [Términos de Uso](https://decentraland.org/terms) de Decentraland. Elige esta categoría si tu escena presenta contenido para adultos, como lenguaje moderado o intenso, violencia, contenido explícito, apuestas, o sustancias como alcohol, tabaco y drogas.
 
-Al editar el Age Rating a través del `scene.json`, rating es un **código de una sola letra**, escribe ya sea **T** para teens, o **A** para adults.
+Al editar el Age Rating a través del `scene.json`, rating es un **código de una sola letra**, escribe **A** para adults.
 
 ![](../images/media/content-moderation-flag-icon.png)
 
 ```json
  "scene": {
-    "rating": "T"
+    "rating": "A"
   }
 ```
 

@@ -122,7 +122,7 @@ La hora del día en el mundo tiene un gran impacto en cómo se ven los modelos 3
 
 Verifica que tu scene se vea bien en todos los momentos del día cambiando el reloj del juego a diferentes valores. Haz clic en el ícono **skybox time** en el panel izquierdo de la pantalla para establecer cualquier hora que prefieras. Si este deslizador está en gris, asegúrate de que la opción **Auto** esté deshabilitada.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
+<figure><img src="https://github.com/decentraland/docs/blob/main/images/media/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
 
 Los materiales de tu modelo 3d pueden no verse igual a como se veían en la herramienta de modelado con la que lo creaste. Esto es de esperarse, ya que todos los motores de renderizado 3d tienen diferencias sutiles en cómo manejan la luz y los materiales.
 

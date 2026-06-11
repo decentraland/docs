@@ -4,11 +4,11 @@ description: Guidelines to Upload Smart Wearables to the Editor
 
 # Uploading Smart Wearables
 
-After generating your Smart Wearable using the [SDK7](https://github.com/decentraland/docs-creator/blob/main/creator/development-guide/sdk7/smart-wearables/README.md), the next step is to upload it to the builder. This document explains how to upload, publish, and put your Smart Wearables up for sale.
+After generating your Smart Wearable using the [SDK7](https://github.com/decentraland/docs/blob/main/creator/development-guide/sdk7/smart-wearables/README.md), the next step is to upload it to the builder. This document explains how to upload, publish, and put your Smart Wearables up for sale.
 
 ## Uploading Your File
 
-Remember that you need to create a collection before uploading your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/wearables-and-emotes/manage-collections/creator/wearables-and-emotes/manage-collections/creating-collection/README.md). To upload your Smart Wearable, drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is a Smart Wearable. **Remember that the collection max file size is 3MB**.
+Remember that you need to create a collection before uploading your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your Smart Wearable, drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is a Smart Wearable. **Remember that the collection max file size is 3MB**.
 
 ![](../../../.gitbook/assets/01_new_item.png)
 
@@ -114,7 +114,7 @@ This is a brief statement describing your item that will be displayed in the mar
 Overrides determine which Wearable categories or avatar body parts your item will hide. For instance, a hat with attached hair might need to hide the _Hair_ category. A deep-sea diver helmet may require hiding head accessories like earrings, eyewear, tiaras, etc., which wouldn’t be visible. Multiple options can be selected for each override.
 
 * **Base Body**: This refers to core avatar parts like the _head_ and _hands_. For example, if you’re creating a **Handwear** item such as a robot mechanic hand, you’ll likely need to hide _hands_ to prevent overlap and clipping.
-* **Wearables**: This includes other Wearable categories. You can hide multiple categories. Please take a look at [**Creating Wearables**](https://github.com/decentraland/docs-creator/blob/main/creator/wearables/creating-wearables/README.md) for more details on each category and how items interact.
+* **Wearables**: This includes other Wearable categories. You can hide multiple categories. Please take a look at [**Creating Wearables**](https://github.com/decentraland/docs/blob/main/creator/wearables/creating-wearables/README.md) for more details on each category and how items interact.
 
 {% hint style="warning" %}
 Note: The overrides you select will be the suggested default settings for your Wearable. However, users can customize which Wearables are hidden or showing from the Backpack.

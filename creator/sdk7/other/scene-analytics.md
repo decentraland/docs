@@ -14,7 +14,7 @@ As a creator, it's very valuable to track player visits and the way in which pla
 
     Through a one-line code snippet (the 'Builder Tag'), you can expose/access (via API or dashboard) a myriad of interesting scene data including unique visitors, heat maps of visitor foot traffic, visitor activity, your scene rank and more.
 
-    For additional help or suggestions you can reach out to the WeMeta team [here](https://github.com/decentraland/docs-creator/blob/main/sdk7/other/\[https:/docs.wemeta.world]\(https:/www.wemetalabs.com/\)/README.md) or [by mail](mailto:contact@wemeta.world)
+    For additional help or suggestions you can reach out to the WeMeta team [here](https://docs.wemeta.world) or [by mail](mailto:contact@wemeta.world)
 -->
     
 *   The [Decentraland Builder](https://builder.decentraland.org) exposes basic data about user weekly visits to your scenes. This data is only available to users with ownership or operator rights on these parcels, and there is no historical record for checking past periods. As a scene creator you don't need to do any prior actions, this data is available for all published scenes.

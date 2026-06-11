@@ -33,7 +33,7 @@ Esta documentación explica la configuración para Rig 1.0, sus controles y cara
 [Decentraland Blender Rig](https://raw.githubusercontent.com/decentraland/docs/main/creator/images/emotes/Avatar_File.blend)
 
 {% hint style="info" %}
-Si estás usando Maya puedes descargar este [Maya Rig](https://github.com/decentraland/docs-creator/blob/main/images/emotes/DCL_Maya_Rig.ma) y [picker](https://github.com/decentraland/docs-creator/blob/main/images/emotes/emoteAvatar.pkr) proporcionados por [SparkleStudios](https://www.sparkles.studio/) ❤️.
+Si estás usando Maya puedes descargar este [Maya Rig](https://github.com/decentraland/docs/blob/main/images/emotes/DCL_Maya_Rig.ma) y [picker](https://github.com/decentraland/docs/blob/main/images/emotes/emoteAvatar.pkr) proporcionados por [SparkleStudios](https://www.sparkles.studio/) ❤️.
 {% endhint %}
 
 ## **Antes de Comenzar**

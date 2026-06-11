@@ -159,9 +159,9 @@ A wise and common practice for optimizing your scene is sharing textures and mat
 
 The following tool based on [**glTF pipeline**](https://github.com/AnalyticalGraphicsInc/gltf-pipeline)**,** offers some optimizations that will make 3D models lighter and faster to download for players in your scene.
 
-**Mac:** [MAC GLB Extractor](https://github.com/decentraland/docs-creator/blob/main/images/3d-models-and-animations/glb-extractor/texture_extractor.sh)
+**Mac:** [MAC GLB Extractor](https://github.com/decentraland/docs/blob/main/images/3d-models-and-animations/glb-extractor/texture_extractor.sh)
 
-**PC:** [PC GLB Extractor](https://github.com/decentraland/docs-creator/blob/main/images/3d-models-and-animations/glb-extractor/glb_texture_extract.bat)
+**PC:** [PC GLB Extractor](https://github.com/decentraland/docs/blob/main/images/3d-models-and-animations/glb-extractor/glb_texture_extract.bat)
 
 It converts .gltf format into .glb, which is binary and so occupies a lot less. It also places texture files outside the 3D model, which allows you to use the same texture on multiple models.
 

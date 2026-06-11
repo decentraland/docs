@@ -108,7 +108,7 @@ The `src` field is required, you must give it a value when constructing the comp
 **💡 Tip**: We recommend keeping your models separate in the `assets/scene/models` folder inside your scene.
 {% endhint %}
 
-glTF models can include their own embedded textures, materials, colliders and animations. See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more information on this. To override the materials of a model, use the [GltfNodeModifiers](../3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../3d-essentials/materials.md#modify-gltf-materials) for more details.
+glTF models can include their own embedded textures, materials, colliders and animations. See [3D models](https://github.com/decentraland/docs/blob/main/creator/3d-modeling/3d-models/README.md) for more information on this. To override the materials of a model, use the [GltfNodeModifiers](../3d-essentials/materials.md#modify-gltf-materials) component. See [Modify glTF materials](../3d-essentials/materials.md#modify-gltf-materials) for more details.
 
 To prevent players from walking through a 3D model, or to make a model clickable, you must have a [collider](../3d-essentials/colliders.md), which may be embedded in the model or provided via a `MeshCollider` component.
 

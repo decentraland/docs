@@ -12,7 +12,7 @@ Una vez que exportes tu wearable, tendrás que subirlo al builder. Este document
 
 ### Subiendo Tu Archivo
 
-Recuerda que necesitas crear una colección antes de poder subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). Para subir tu wearable, simplemente arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo es un emote o wearable. **Recuerda que el tamaño máximo de archivo de la colección es 3MB**.
+Recuerda que necesitas crear una colección antes de poder subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://github.com/decentraland/docs/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). Para subir tu wearable, simplemente arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo es un emote o wearable. **Recuerda que el tamaño máximo de archivo de la colección es 3MB**.
 
 Cuando subas el archivo, se te pedirá que selecciones un body shape, ingreses un nombre y definas la rarity y la categoría. También puedes agregar la miniatura para el wearable.
 

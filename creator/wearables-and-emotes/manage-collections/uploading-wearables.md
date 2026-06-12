@@ -8,7 +8,7 @@ Once you export your wearable, you’ll have to upload it to the builder. This d
 
 ## Uploading Your File
 
-Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your wearable, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is an emote or wearable. **Remember that the collection max file size is 3MB**.
+Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your wearable, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is an emote or wearable. **Remember that the collection max file size is 3MB**.
 
 ![](<../../../.gitbook/assets/01_new_item (2).png>)
 

@@ -118,7 +118,7 @@ GltfContainer.create(myEntity, {
 })
 ```
 
-See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more details on how to add collider invisible geometry to a 3D model.
+See [3D models](https://github.com/decentraland/docs/blob/main/creator/3d-modeling/3d-models.md) for more details on how to add collider invisible geometry to a 3D model.
 
 {% hint style="warning" %}
 **📔 Note**: The `GltfContainer` component and `ColliderLayer` must be imported via

@@ -6,6 +6,10 @@ description: This 6 part tutorial series will teach you how to create and publis
 
 This series of tutorials will guide you through the complete process of creating and publishing a wearable, from start to finish. The tool you will be using is Blender, and no prior experience is required.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 KJ Walker will take you on this adventure, going from Blender Essentials to advanced concepts in an interactive yet profound way. You can find more information about her and Low Poly Models [here](https://www.lowpolymodelsworld.com/)
 
 The series are divided into 6 different Parts. This page will continue to be updated as each part of the series is uploaded.

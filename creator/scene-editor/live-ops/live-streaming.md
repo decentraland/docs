@@ -22,23 +22,23 @@ The following steps are common to both DCL Cast and Stream methods:
 
 1.  Add a **Video Screen** smart item to your scene.
 
-    ![ ](../../../.gitbook/assets/video-player-item.png)
+    ![ ](../../images/editor/admin/video-player-item.png)
 
 2.  Add a **Scene Admin** smart item and enable the **Video Screens** section. Select each screen from the dropdown and give it a friendly name for the admin UI.
 
-    ![ ](../../../.gitbook/assets/multi-video-setup.png)
+    ![ ](../../images/editor/admin/multi-video-setup.png)
 
 3.  Publish your scene (World or Genesis City) and enter as a user with admin permissions.
 
-    ![ ](../../../.gitbook/assets/publish-button.png)
+    ![ ](../../images/editor/publish-button.png)
 
 Once your scene is published, you can enter as a user with admin permissions and configure the streaming settings.
 
 {% hint style="info" %}
-**💡 Tip**: If you add multiple Video Screens, configure all but one's source to point to the same video player, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens) for more details.
+**💡 Tip**: If you add multiple Video Screens to show the same video, configure all but one's source to point to the same video player, see [Multiple Video Screens](../interactivity/video-screen.md#multiple-video-screens) for more details.
 {% endhint %}
 
-## DCL Cast
+## DCL Cast (easy)
 
 ### Sharing access to the app
 
@@ -56,13 +56,13 @@ You'll see two links that you can copy and share with others.
   Only one person can stream to a scene at a time. When finished streaming, close the DCL Cast browser tab to free the channel.
   {% endhint %}
 
-- **Viewers**: This link is for the audience to use to watch the video from a browser. This is useful for players who are currently not inside Decentraland, or even on a mobile device.
+- **Viewers**: This link is for the audience to use to watch the video from a browser or mobile. This is useful for players who are currently not inside Decentraland.
 
 Click the **Copy link** button to copy the links to the clipboard.
 
 When ready to stream, click the **Activate** button to make the stream visible to the audience in the scene.
 
-   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="150"/>
+   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="150"/>
 
 If for any reason you need to reset the room, click the **Reset Room** button to generate a new one. Anyone who's currently streaming will be disconnected.
 
@@ -96,7 +96,50 @@ On the **Participants** tab you can see three lists:
 
  <img src="../../../.gitbook/assets/participants.png" alt="Participants tab" width="200"/>
 
-## Stream method
+If multiple speakers are present in a DCL Cast session, players in-world will hear the voices of all speakers, and the see the video will automatically switch to show whoever is currently emitting sound, to always show who's speaking.
+
+To override this default behavior:
+
+- Click the **Speakers** button on the scene admin panel
+
+ <img src="../../.gitbook/assets/speakers-button.png" alt="Participants tab" width="200"/>
+
+- Pick one of the speakers and select a source to showcase (either that speaker's camera or screen)
+
+ <img src="../../.gitbook/assets/select-speaker-source.png" alt="Participants tab" width="200"/>
+
+This will force this source to be always shown on screen, regardless of if other speakers are talking.
+
+{% hint style="info" %}
+**📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app an in the Decentraland scene.
+You can easily mute all audio from the DCL Cast app, but toggling the speaker icon on the bottom-left of the screen
+
+ <img src="../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
+
+Otherwise you can mute audio in the Decentraland settings.
+{% endhint %}
+
+### Share presentations
+
+You can also share the contents of a slide presentation as an alternative source of images.
+
+- From in-world, click the **Share presentation** button in-world in the DCL Cast tab. From the DCL Cast app, click the dropdown next to the **Share Screen** button and select **Share presentation**.
+
+ <img src="../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
+
+- Paste a Google slides link, a link to a .pdf hosted in Drive or a similar source, or upload a .pdf file.
+
+The presentation will now be a source that can be selected to show on screen, while the voices of all speakers are still heard.
+
+{% hint style="warning" %}
+**📔 Note**: Presentation files must be under 100 MB. Google slides presentations must be set to _public_.
+
+There can only be one active presentation at a time in a DCL Cast session.
+{% endhint %}
+
+You can then switch slides, or even play and pause any videos that are embedded in these slides by pressing buttons that exist both in the DCL Cast app and in-world in the Scene Admin UI.
+
+## Stream (advanced)
 
 To use the Live Streaming feature on your scene you'll need to install a streaming software that can output to an RTMP endpoint (e.g. [OBS](https://obsproject.com/), [XSplit](https://www.xsplit.com/), [StreamYard](https://streamyard.com/)).
 
@@ -104,15 +147,15 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 
 1.  Open the Admin UI in the scene (top‑right icon).
 
-    ![ ](../../../.gitbook/assets/admin-icon.png)
+    ![ ](../../images/editor/admin/admin-icon.png)
 
 2.  In the **Video** tab, switch to **Live** and click **Get Stream Key**.
 
-    ![ ](../../../.gitbook/assets/get-key.png)
+    ![ ](../../images/editor/admin/get-key.png)
 
 3.  Copy the **RTMP Server** and **Stream Key** into your streaming software.
 
-    <img src="../../../.gitbook/assets/OBS-configuration.png" alt="OBS configuration" width="700"/>
+    <img src="../../images/editor/admin/OBS-configuration.png" alt="OBS configuration"/>
 
 {% hint style="danger" %}
 **❗Warning**: Only one person can stream to a scene at a time. When finished streaming, click **Stop Streaming** in your software to free the channel.
@@ -123,13 +166,13 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 1. Start streaming from your software.
 2. In the Admin UI, click **Activate** to show the stream in the scene.
 
-   <img src="../../../.gitbook/assets/activate.png" alt="Activate stream" width="150"/>
+   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="100"/>
 
 ### Stream keys
 
 Stream keys are generated per scene and are valid for 4 days (96 hours). A single live session can run up to 4 hours continuously.
 
-![ ](../../../.gitbook/assets/live-stream-settings.png)
+![ ](../../images/editor/admin/live-stream-settings.png)
 
 - Click **Reset Stream Key** to revoke the current key and issue a new one. Ongoing streams will stop.
 - Each scene has its own streaming address and key. Admins can share the key with external streamers.
@@ -139,10 +182,14 @@ Stream keys are generated per scene and are valid for 4 days (96 hours). A singl
 **❗Warning**: Treat stream keys as secrets. Reset the key between presenters if needed.
 {% endhint %}
 
-## Streaming from URL method
+## Streaming from URL (advanced)
 
-You can also stream using third‑party infrastructure by configuring the Video Screen to **Video URL** and pasting a stream URL.
+You can also stream by configuring the Video Screen to use the option **Video URL** and pasting a stream URL.
 
-- The URL must be `https` and CORS‑enabled by the provider (YouTube and similar sites won’t allow direct playback). See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
-- Managed providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
+You should be able to paste a URL pointing to a video from most popular video streaming sites. Be mindful of the terms of service with these platforms.
+
+To stream from a video file you have on your local machine, the easiest path is to upload this video to a public Google Drive and paste the link.
+
+- The URL must be `https`. See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
+- Recommended providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
 - Tips for encoder setup: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).

@@ -12,7 +12,7 @@ All image and gif formats that are supported in OpenSea are also supported by De
 
 Use the NFT smart item, that you can find in the **Smart Items** asset pack, or by simply searching _NFT_ in the search bar above. Once you drag a copy of the NFT item to your scene and select it, there are a few fields that your can configure.
 
-![](../../../.gitbook/assets/nft-item.png)
+![](../../images/editor/nft-item.png)
 
 The main fields to configure determine what NFT to display:
 

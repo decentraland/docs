@@ -399,7 +399,7 @@ export function main() {
 
 Consulta [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) para ver cómo reaccionar fácilmente a cambios en el estado del cursor.
 
-El componente `PointerLock` del `engine.CameraEntity` es de solo lectura, no puedes forzar al jugador a bloquear o desbloquear el cursor.
+También puedes forzar el estado del cursor del jugador escribiendo en el campo `isPointerLocked` del componente `PointerLock` en `engine.CameraEntity`. Consulta [Bloquear o desbloquear el cursor](button-events/click-events.md#lock-or-unlock-the-cursor) para ver ejemplos.
 
 {% hint style="warning" %}
 **📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#the-executetask-function).

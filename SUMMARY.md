@@ -549,6 +549,7 @@
       * [Scene Limitations](creator/sdk7/optimizing/scene-limitations.md)
     * [Other Features](creator/sdk7/other/README.md)
       * [Scene Analytics](creator/sdk7/other/scene-analytics.md)
+      * [Migrate Legacy SDK6 Scenes](creator/sdk7/other/migrate-legacy-sdk6-scenes.md)
     * [Programming Patterns](creator/sdk7/programming-patterns/README.md)
       * [Async Functions](creator/sdk7/programming-patterns/async-functions.md)
       * [Game Objects](creator/sdk7/programming-patterns/game-objects.md)

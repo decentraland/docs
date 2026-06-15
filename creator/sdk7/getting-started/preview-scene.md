@@ -13,13 +13,18 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 1. Open your scene project.
 2. Click the **Preview** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
-* **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
-* **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
-* **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+- **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
+- **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
+- **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
+
+{% hint style="info" %}
+**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../building-for-mobile/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../building-for-mobile/) for the full guide.
+{% endhint %}
 
 ## Using the CLI
 
@@ -41,17 +46,47 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-* `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-* `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
-* `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
-* `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
-* `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
-* `-- --no-browser` to prevent the preview from opening a new browser tab.
-* `-- --w` or `-- --no-watch` to not open watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
-* `-- --c` or `-- --ci` To run the parcel previewer on a remote unix server
+- `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
+- `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
+- `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
+- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
+- `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
+- `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
+- `-- --no-browser` to prevent the preview from opening a new browser tab.
+- `-- --w` or `-- --no-watch` to not open watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
+- `-- --c` or `-- --ci` To run the parcel previewer on a remote unix server
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.
+{% endhint %}
+
+### Advanced: Fast iteration with remote asset bundles
+
+For heavy scenes with many 3D models, you can speed up scene loading and reloading by reusing the [asset bundles](../optimizing/performance-optimization.md#asset-bundle-conversion) that are already published on Decentraland's servers, instead of loading the raw unoptimized 3D models. This is especially useful when iterating on code-only changes.
+
+To enable this mode, launch the Decentraland Desktop client with the following arguments:
+
+```bash
+npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab <ab-source>
+```
+
+The `<ab-source>` argument changes depending on where the scene is already published:
+
+- **In Genesis City**: `--lsd-remote-ab-server Genesis`
+- **In a World**: `--lsd-remote-ab-world <world-name>.dcl.eth`
+
+For example, to preview a local copy of a scene that's already deployed to a World:
+
+```bash
+npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab --lsd-remote-ab-world myworld.dcl.eth
+```
+
+In both cases, `--realm http://127.0.0.1:8000/` points the client at your local preview server (run `npm run start` first to start it), and `--local-scene true` tells the client to load the scene's code from there.
+
+{% hint style="warning" %}
+**📔 Important**: When using this mode, it's recommended that **all** of its art are already published, with their asset bundles fully processed by the content servers. If you've added any new assets, you'll miss out on the optimized loading as they will be loaded as raw gltf files, as happens when you normally run a preview. But if you locally modified an asset that was already published, maintaining the same file name, then you'll be seeing the old published version of that asset.
+
+In that case, redeploy the scene first, wait for the asset bundles to be generated (see [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion)), and then resume using this mode for code-only iteration.
 {% endhint %}
 
 ## Upload a scene to decentraland
@@ -64,11 +99,11 @@ The scene size shown in the preview is based on the scene's configuration.
 
 Edit this on the second tab of the scene menu in the Scene Editor.
 
-![](../../../.gitbook/assets/scene-parcels-3x3.png)
+![](../../images/editor/scene-parcels-3x3.png)
 
 Use the dropdowns and click **Apply Layout** to change the dimensions of your scene. You can also click each individual parcel to toggle it off from your layout.
 
-![](../../../.gitbook/assets/scene-parcels-toggled.png)
+![](../../images/editor/scene-parcels-toggled.png)
 
 You can also edit the _scene.json_ file to list multiple parcels in the "parcels" field. See [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) for more details.
 
@@ -78,9 +113,9 @@ You can also edit the _scene.json_ file to list multiple parcels in the "parcels
 
 ## View the scene console
 
-Press the **\`** key on your keyboard to open the scene console. Here you can see any error messages, and also any text that your scene prints to the console via `console.log()`.
+Open the console by clicking the ![](../../images/console-icon.png) icon on the top-right corner. Here you can see any error messages, and also any text that your scene prints to the console via `console.log()`.
 
-You can also press Shift + **\`** to open the console even wider, in case you need to view more text.
+You can also open it by pressing the **\`** key on your keyboard. You can also press Shift + **\`** to open the console even wider, in case you need to view more text.
 
 ## Test a multiplayer scene locally
 
@@ -90,8 +125,8 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../../.gitbook/assets/preview-button.png)
+![](../../images/editor/preview-button.png)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
-> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true`
+> `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`

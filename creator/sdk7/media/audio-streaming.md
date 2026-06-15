@@ -128,3 +128,7 @@ AudioStream.create(audioStreamEntity, {
 {% hint style="warning" %}
 **📔 Note**: Some audio formats don't support spatial audio. Make sure the stream audio is encoded in _mp3_, _AAC-LC_ or _FLAC_.
 {% endhint %}
+
+## Audio analysis
+
+You can read real-time amplitude and frequency data from an `AudioStream` entity to drive reactive visuals like equalizers or beat-pulsing lights. See [Audio analysis](audio-analysis.md).

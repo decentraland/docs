@@ -12,6 +12,10 @@ This guide introduces the basics for creating custom 3D models for Decentraland 
 
 _Note: this guide assumes that you already have some basic to intermediate knowledge of 3D modeling. If you’re new to 3D modeling,_ [_start here_](https://docs.decentraland.org/creator/3d-modeling/3d-models/)_._
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 Before you get started, download the example files for reference meshes and textures: [**Wearables Reference Models**](https://drive.google.com/drive/u/1/folders/12hOVgZsLriBuutoqGkIYEByJF8bA-rAU)
 
 ## The Decentraland Avatar System

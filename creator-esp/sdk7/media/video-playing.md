@@ -10,9 +10,9 @@ metaLinks:
 
 Hay tres formas diferentes en las que puedes mostrar un video en una escena:
 
-* Subir un archivo de video como parte del contenido de la escena
-* Transmitir el video desde una fuente externa
-* Transmitir en vivo vía Decentraland cast
+- Subir un archivo de video como parte del contenido de la escena
+- Transmitir el video desde una fuente externa
+- Transmitir en vivo vía Decentraland cast
 
 {% hint style="info" %}
 **💡 Tip**: En el [Scene Editor](../scene-editor/get-started/about-editor.md), puedes usar un **Video Player** [Smart Item](../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
@@ -20,9 +20,9 @@ Hay tres formas diferentes en las que puedes mostrar un video en una escena:
 
 En todos los casos, necesitarás:
 
-* Una entidad con una [forma primitiva](../sdk7/3d-essentials/shape-components.md) como un plano, cubo, o incluso un cono.
-* Un [material](../sdk7/3d-essentials/materials.md) con una `VideoTexture` asignada a su textura
-* Un componente `VideoPlayer` para controlar el estado del video.
+- Una entidad con una [forma primitiva](../sdk7/3d-essentials/shape-components.md) como un plano, cubo, o incluso un cono.
+- Un [material](../sdk7/3d-essentials/materials.md) con una `VideoTexture` asignada a su textura
+- Un componente `VideoPlayer` para controlar el estado del video.
 
 ### Consideraciones de rendimiento
 
@@ -30,9 +30,9 @@ Ten en cuenta que transmitir video demanda un esfuerzo significativo de la máqu
 
 Si demasiados videos se reproducen al mismo tiempo en tu escena, algunos serán pausados por el motor. La prioridad para pausar una pantalla se determina basándose en varios factores que incluyen proximidad al jugador, tamaño, y si la pantalla está en el campo de visión del jugador. La cantidad máxima de videos simultáneos depende de la configuración de calidad del jugador.
 
-* Baja: 1
-* Media: 5
-* Alta: 10
+- Baja: 1
+- Media: 5
+- Alta: 10
 
 También recomendamos comenzar a reproducir el video cuando el jugador esté cerca o realice una acción para hacerlo. Comenzar a reproducir un video cuando tu escena se carga lejos en el horizonte afectará innecesariamente el rendimiento mientras los jugadores visitan escenas vecinas.
 
@@ -86,11 +86,11 @@ Consulta [Transmisión usando Decentraland cast](video-playing.md#streaming-usin
 
 ### Acerca de la Transmisión Externa
 
-La fuente de la transmisión debe ser una URL _https_ (las URLs _http_ no son soportadas), y la fuente debe tener [políticas CORS (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) que permitan acceder a ella externamente. Si este no es el caso, puede que necesites configurar un servidor para actuar como proxy y exponer la transmisión de una manera válida.
+La fuente de la transmisión debe ser una URL _https_ (las URLs _http_ no son soportadas).
 
 Hay varias opciones para transmitir video. La opción más simple es usar un proveedor de hosting administrado como [Vimeo](https://vimeo.com/), [Livepeer Studio](https://livepeer.studio/) o [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback) donde pagas una tarifa al proveedor para gestionar toda la infraestructura de streaming.
 
-La otra alternativa recomendada es configurar tu propio servidor, usando software gratuito pero pagando por hosting en una plataforma como [Digital Ocean](https://try.digitalocean.com/developerbrand/?_campaign=emea_brand_kw_en_cpc&_adgroup=digitalocean_exact_exact&_keyword=digitalocean&_device=c&_adposition=&_content=conversion&_medium=cpc&_source=bing\&msclkid=160bfc160a2a1bab9bbf9933594bd9c5\&utm_source=bing\&utm_medium=cpc\&utm_campaign=emea_brand_kw_en_cpc\&utm_term=digitalocean\&utm_content=DigitalOcean%20Exact_Exact) o [Cloudflare](https://www.cloudflare.com/products/cloudflare-stream/). Puedes desplegar algo como un [Node Media Server](https://github.com/illuspas/Node-Media-Server), que proporciona la mayor parte de lo que necesitas listo para usar.
+La otra alternativa recomendada es configurar tu propio servidor, usando software gratuito pero pagando por hosting en una plataforma como [Digital Ocean](https://try.digitalocean.com/developerbrand/?_campaign=emea_brand_kw_en_cpc&_adgroup=digitalocean_exact_exact&_keyword=digitalocean&_device=c&_adposition=&_content=conversion&_medium=cpc&_source=bing&msclkid=160bfc160a2a1bab9bbf9933594bd9c5&utm_source=bing&utm_medium=cpc&utm_campaign=emea_brand_kw_en_cpc&utm_term=digitalocean&utm_content=DigitalOcean%20Exact_Exact) o [Cloudflare](https://www.cloudflare.com/products/cloudflare-stream/). Puedes desplegar algo como un [Node Media Server](https://github.com/illuspas/Node-Media-Server), que proporciona la mayor parte de lo que necesitas listo para usar.
 
 Todas estas opciones tienen pros y contras para diferentes escenarios. Debes evaluar qué es mejor para ti teniendo en cuenta tus necesidades, habilidades técnicas y presupuesto.
 
@@ -104,18 +104,18 @@ Ya sea que estés usando la clave de transmisión de un venue o tu propio servid
 
 Se recomienda la siguiente configuración simple:
 
-* Bitrate 2500kbps (que funcionará con todos los venues de Decentraland)
-* Audio bitrate 160kbps
-* Video encoder preset: Hardware NVENC
-* Audio Encoder AAC
-* Broadest Resolution: 720 (cualquier mayor causa problemas en DCL)
-* Frame rate 30fps
+- Bitrate 2500kbps (que funcionará con todos los venues de Decentraland)
+- Audio bitrate 160kbps
+- Video encoder preset: Hardware NVENC
+- Audio Encoder AAC
+- Broadest Resolution: 720 (cualquier mayor causa problemas en DCL)
+- Frame rate 30fps
 
 #### Consejo para nuevos streamers
 
-* Las pruebas de sonido tempranas son esenciales para probar tu configuración con el venue.
-* Pequeños errores como un dígito incorrecto en la clave de transmisión son los más probables de arruinar la transmisión.
-* No subas por encima de la resolución 720 o un bitrate de 2500 kbps.
+- Las pruebas de sonido tempranas son esenciales para probar tu configuración con el venue.
+- Pequeños errores como un dígito incorrecto en la clave de transmisión son los más probables de arruinar la transmisión.
+- No subas por encima de la resolución 720 o un bitrate de 2500 kbps.
 
 ### Transmisión en vivo
 
@@ -187,9 +187,9 @@ Consulta [materiales](../sdk7/3d-essentials/materials.md) para más detalles.
 
 Los siguientes formatos de archivo son soportados:
 
-* _.mp4_
-* _.ogg_
-* _.webm_
+- _.mp4_
+- _.ogg_
+- _.webm_
 
 Ten en cuenta que un archivo de video se suma al tamaño total de la escena, lo que hace que la escena tarde más en descargarse para los jugadores que caminan hacia tu escena. El tamaño del video también podría hacer que excedas las [limitaciones de escena](../sdk7/optimizing/scene-limitations.md), ya que tienes un máximo de 15 MB por parcela para usar. Recomendamos comprimir el video tanto como sea posible, para que sea menos problemático.
 
@@ -234,17 +234,17 @@ pointerEventsSystem.onPointerDown(
 
 Las siguientes propiedades opcionales están disponibles para establecer en el componente `VideoPlayer`:
 
-* `playing`: Determina si el video se está reproduciendo actualmente. Si es false, el video está pausado.
+- `playing`: Determina si el video se está reproduciendo actualmente. Si es false, el video está pausado.
 
 {% hint style="warning" %}
 **📔 Nota**: Solo puede haber un componente `VideoPlayer` activo a la vez en cada escena.
 {% endhint %}
 
-* `playbackRate`: Cambia la velocidad a la que se reproduce el video. _1_ por defecto.
-* `volume`: Te permite cambiar el volumen del audio. _1_ por defecto.
-* `position`: Te permite establecer una posición de inicio diferente en el video. Se expresa en segundos después del inicio original del video. _-1_ por defecto, lo que hace que comience en el inicio real del video.
-* `loop`: Booleano que determina si el video se reproduce continuamente en un loop, o si se detiene después de reproducirse una vez. _false_ por defecto.
-* `playbackRate`: La velocidad a la que se reproduce el video
+- `playbackRate`: Cambia la velocidad a la que se reproduce el video. _1_ por defecto.
+- `volume`: Te permite cambiar el volumen del audio. _1_ por defecto.
+- `position`: Te permite establecer una posición de inicio diferente en el video. Se expresa en segundos después del inicio original del video. _-1_ por defecto, lo que hace que comience en el inicio real del video.
+- `loop`: Booleano que determina si el video se reproduce continuamente en un loop, o si se detiene después de reproducirse una vez. _false_ por defecto.
+- `playbackRate`: La velocidad a la que se reproduce el video
 
 ### Reproducir múltiples videos
 
@@ -342,19 +342,19 @@ videoEventsSystem.registerVideoEventsEntity(
 
 El objeto videoEvent pasado como entrada para la función contiene las siguientes propiedades:
 
-* `currentOffset` (_number_): El valor actual de la propiedad `seek` en el video. Este valor muestra segundos después del inicio original del video. _-1_ por defecto, si el video no ha comenzado a reproducirse.
-* `state`: El valor para el nuevo estado de video del video, expresado como un valor del enum `VideoState`. Este enum puede contener los siguientes valores posibles:
-  * `VideoState.VS_READY`
-  * `VideoState.VS_NONE`
-  * `VideoState.VS_ERROR`
-  * `VideoState.VS_SEEKING`
-  * `VideoState.VS_LOADING`
-  * `VideoState.VS_BUFFERING`
-  * `VideoState.VS_PLAYING`
-  * `VideoState.VS_PAUSED`
-* `videoLength` (_number_): La duración en segundos de todo el video. _-1_ si la duración es desconocida.
-* `timeStamp` (_number_): Un timestamp _lamport_ que se incrementa cada vez que el video cambia de estado.
-* `tickNumber` (_number_): El tiempo en el que ocurrió el evento, expresado como conteo de ticks desde que la escena comenzó a ejecutarse.
+- `currentOffset` (_number_): El valor actual de la propiedad `seek` en el video. Este valor muestra segundos después del inicio original del video. _-1_ por defecto, si el video no ha comenzado a reproducirse.
+- `state`: El valor para el nuevo estado de video del video, expresado como un valor del enum `VideoState`. Este enum puede contener los siguientes valores posibles:
+  - `VideoState.VS_READY`
+  - `VideoState.VS_NONE`
+  - `VideoState.VS_ERROR`
+  - `VideoState.VS_SEEKING`
+  - `VideoState.VS_LOADING`
+  - `VideoState.VS_BUFFERING`
+  - `VideoState.VS_PLAYING`
+  - `VideoState.VS_PAUSED`
+- `videoLength` (_number_): La duración en segundos de todo el video. _-1_ si la duración es desconocida.
+- `timeStamp` (_number_): Un timestamp _lamport_ que se incrementa cada vez que el video cambia de estado.
+- `tickNumber` (_number_): El tiempo en el que ocurrió el evento, expresado como conteo de ticks desde que la escena comenzó a ejecutarse.
 
 #### Último evento de video
 
@@ -362,10 +362,10 @@ Consulta un video por su último cambio de estado usando `videoEventsSystem.getV
 
 ```ts
 function mySystem() {
-    const latestVideoEvent = videoEventsSystem.getVideoState(videoPlayerEntity)
-    if(!latestVideoEvent) return
-    
-    console.log(`state: ${latestVideoEvent.state}
+	const latestVideoEvent = videoEventsSystem.getVideoState(videoPlayerEntity)
+	if (!latestVideoEvent) return
+
+	console.log(`state: ${latestVideoEvent.state}
     \ncurrentOffset: ${latestVideoEvent.currentOffset}
     \nvideoLength: ${latestVideoEvent.videoLength}`)
 }
@@ -406,11 +406,11 @@ Esto te permite reproducir tus videos en cualquier forma, no solo planos. Por ej
 const myEntity = engine.addEntity()
 
 GltfContainer.create(myEntity, {
-  src: 'models/myModel.glb',
+	src: 'models/myModel.glb',
 })
 
 Transform.create(myEntity, {
-  position: Vector3.create(4, 0, 4),
+	position: Vector3.create(4, 0, 4),
 })
 
 VideoPlayer.create(myEntity, {
@@ -418,22 +418,23 @@ VideoPlayer.create(myEntity, {
 	playing: true,
 })
 
-GltfNodeModifiers.create(
-	myEntity,
-	{
-		modifiers: [{
+GltfNodeModifiers.create(myEntity, {
+	modifiers: [
+		{
 			path: '',
 			material: {
 				material: {
-					$case: 'pbr', pbr: {
+					$case: 'pbr',
+					pbr: {
 						texture: Material.Texture.Video({
 							videoPlayerEntity: myEntity,
 						}),
 					},
 				},
 			},
-		}],
-	})
+		},
+	],
+})
 ```
 
 El mapeo del video seguirá el mapeo UV original que usa el modelo. Esto significa que si el modelo tiene una textura que está mapeada a una parte específica del modelo, el video se mapeará a esa misma parte.

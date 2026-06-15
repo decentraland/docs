@@ -8,6 +8,10 @@ description: >-
 
 Materials are embedded into a _.gltf_ or _.glb_ file.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 This document refers to materials that are imported in a 3D model. For materials defined via code to apply onto primitive shapes, see [**materials**](https://docs.decentraland.org/creator/development-guide/materials/) .
 
 {% hint style="warning" %}

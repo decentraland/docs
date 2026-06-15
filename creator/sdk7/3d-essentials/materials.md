@@ -14,8 +14,8 @@ When importing a 3D model with its own materials, keep in mind that not all shad
 
 There are different types of supported materials:
 
-* PBR (Physically Based Rendering): The most common kind of material in Decentraland. It supports plain colors or textures, and different properties like metallic, emissive, transparency, etc. Read more about [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
-* Basic materials: They don't respond to lights and shadows, which makes them ideal for displaying billboard images.
+- PBR (Physically Based Rendering): The most common kind of material in Decentraland. It supports plain colors or textures, and different properties like metallic, emissive, transparency, etc. Read more about [PBR](https://en.wikipedia.org/wiki/Physically_based_rendering).
+- Basic materials: They don't respond to lights and shadows, which makes them ideal for displaying billboard images.
 
 ## Use the Scene Editor in Creator Hub
 
@@ -84,8 +84,8 @@ See [color types](../3d-essentials/color-types.md) for more details on how to se
 
 You can also edit the following fields in a PBR Material to fine-tune how its color is perceived:
 
-* _emissiveColor_: The color emitted from the material.
-* _reflectivityColor_: AKA _Specular Color_ in other nomenclature.
+- _emissiveColor_: The color emitted from the material.
+- _reflectivityColor_: AKA _Specular Color_ in other nomenclature.
 
 To create a plain color material that is not affected by light and shadows in the environment, create a basic material instead of a PBR material.
 
@@ -123,8 +123,8 @@ In the example above, the image for the material is located in a `assets/materia
 
 While creating a texture, you can also pass additional parameters:
 
-* `filterMode`: Determines how pixels in the texture are stretched or compressed when rendered. This takes a value from the `TextureFilterMode` enum. See [Texture Scaling](materials.md#texture-scaling).
-* `wrapMode`: Determines how a texture is tiled onto an object. This takes a value from the `TextureWrapMode` enum. See [Texture Wrapping](materials.md#texture-wrapping).
+- `filterMode`: Determines how pixels in the texture are stretched or compressed when rendered. This takes a value from the `TextureFilterMode` enum. See [Texture Scaling](materials.md#texture-scaling).
+- `wrapMode`: Determines how a texture is tiled onto an object. This takes a value from the `TextureWrapMode` enum. See [Texture Wrapping](materials.md#texture-wrapping).
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -158,7 +158,7 @@ Material.setBasicMaterial(myEntity, {
 })
 ```
 
-The URL must start with `https`, `http` URLs aren't supported. The site where the image is hosted should also have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit externally accessing it.
+The URL must start with `https`, `http` URLs aren't supported.
 
 ### Texture wrapping
 
@@ -166,12 +166,12 @@ You can set how a texture aligns with a surface. By default, the texture is stre
 
 The following fields are available on all textures:
 
-* `offset`: Shifts the texture to change its alignment. The value is a Vector2, where both axis go from 0 to 1, where 1 is the full width or height of the texture.
-* `tiling`: Scales the texture. The default value is the Vector 2 `[1, 1]`, which makes the image repeat once covering all of the surface.
-* `TextureWrapMode`: Determines what happens if the image tiling doesn't cover all of the surface. This property takes its values from the `TextureWrapMode` enum, which allows for the following values:
-  * `TextureWrapMode.TWM_CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh is left transparent. The value of `tiling` is ignored.
-  * `TextureWrapMode.TWM_REPEAT`: The texture is repeated as many times as it fits in the mesh, using the specified size.
-  * `TextureWrapMode.TWM_MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
+- `offset`: Shifts the texture to change its alignment. The value is a Vector2, where both axis go from 0 to 1, where 1 is the full width or height of the texture.
+- `tiling`: Scales the texture. The default value is the Vector 2 `[1, 1]`, which makes the image repeat once covering all of the surface.
+- `TextureWrapMode`: Determines what happens if the image tiling doesn't cover all of the surface. This property takes its values from the `TextureWrapMode` enum, which allows for the following values:
+  - `TextureWrapMode.TWM_CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh is left transparent. The value of `tiling` is ignored.
+  - `TextureWrapMode.TWM_REPEAT`: The texture is repeated as many times as it fits in the mesh, using the specified size.
+  - `TextureWrapMode.TWM_MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -190,7 +190,7 @@ Material.setPbrMaterial(myEntity, {
 
 Use this feature to cover a large surface with a tiled pattern. For example, repeat the following image:
 
-![](../../../.gitbook/assets/tiles.png)
+![](../../images/editor/tiles.png)
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -202,7 +202,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../../.gitbook/assets/tiles-in-scene.png)
+![](../../images/editor/tiles-in-scene.png)
 
 In the example below, the texture uses a _mirror_ wrap mode, and each repetition of the texture takes only 1/4 of the surface. This means that we'll see 4 copies of the image, mirrored against each other on both axis.
 
@@ -232,15 +232,15 @@ Tween.setTextureMove(myEntity, Vector2.create(0, 0), Vector2.create(1, 0), 2000)
 
 The texture tween takes the following information:
 
-* `entity`: The entity to move the texture of
-* `start`: A Vector2 for the starting position
-* `end`: A Vector2 for the ending position
-* `duration`: How many milliseconds it takes to move between the two positions
+- `entity`: The entity to move the texture of
+- `start`: A Vector2 for the starting position
+- `end`: A Vector2 for the ending position
+- `duration`: How many milliseconds it takes to move between the two positions
 
 This other optional parameter is also available:
 
-* `movementType`: defines if the movement will be on the `offset` or the `tiling` field. By default it uses `offset`.
-* `easingFunction`: The curve for the rate of change over time, the default value is `EasingFunction.EF_LINEAR`. Other values make the change accelerate and/or decelerate at different rates.
+- `movementType`: defines if the movement will be on the `offset` or the `tiling` field. By default it uses `offset`.
+- `easingFunction`: The curve for the rate of change over time, the default value is `EasingFunction.EF_LINEAR`. Other values make the change accelerate and/or decelerate at different rates.
 
 ```ts
 const myEntity = engine.addEntity()
@@ -286,14 +286,14 @@ The example above use `setTextureMoveContinuous`, with a direction of `(0, 1)`, 
 
 The texture continuous tween takes the following information:
 
-* `entity`: The entity to move the texture of
-* `direction`: A Vector2 for the movement
-* `speed`: How many units per second the entity will move
+- `entity`: The entity to move the texture of
+- `direction`: A Vector2 for the movement
+- `speed`: How many units per second the entity will move
 
 These other optional parameters are also available:
 
-* `movementType`: defines if the movement will be on the offset or the tiling field. By default it uses offset.
-* `duration`: How many milliseconds to sustain the movement. After this time, the movement will stop.
+- `movementType`: defines if the movement will be on the offset or the tiling field. By default it uses offset.
+- `duration`: How many milliseconds to sustain the movement. After this time, the movement will stop.
 
 **Complex tween sequences**
 
@@ -356,7 +356,7 @@ Material.setPbrMaterial(myEntity, {
 
 The `bumpTexture` can simulate bumps and wrinkles on a surface, by modifying how the normals of the surface behave on each pixel.
 
-![](../../../.gitbook/assets/wood-bump.png)
+![](../../images/editor/wood-bump.png)
 
 The `emissiveTexture` can accentuate glow on certain parts of a material, to achieve very interesting effects.
 
@@ -459,9 +459,9 @@ When textures are stretched or shrinked to a different size from the original te
 
 The `Material` object uses the _bilinear_ algorithm by default, but it lets you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode` property of the texture. This takes a value from the `TextureFilterMode` enum:
 
-* `TextureFilterMode.TFM_POINT`: Uses a "nearest neighbor" algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
-* `TextureFilterMode.TFM_BILINEAR`: Uses a bilinear algorithm to estimate the color of each pixel.
-* `TextureFilterMode.TFM_TRILINEAR`: Uses a trilinear algorithm to estimate the color of each pixel.
+- `TextureFilterMode.TFM_POINT`: Uses a "nearest neighbor" algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+- `TextureFilterMode.TFM_BILINEAR`: Uses a bilinear algorithm to estimate the color of each pixel.
+- `TextureFilterMode.TFM_TRILINEAR`: Uses a trilinear algorithm to estimate the color of each pixel.
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -478,11 +478,11 @@ Most of the times you'll want the materials in your scene to be affected by the 
 
 To create an unlit material, use `Material.setBasicMaterial`. Basic materials don't have all the same properties as PBR materials, they only have the essential:
 
-* `diffuseColor`: Color4 for the color
-* `texture`: Texture
-* `alphaTexture`: Separate texture for the transparency layer
-* `alphaTest`: Threshold for achieving transparency based on the color of the texture
-* `castShadows`: If false, no shadows are projected onto other entities in the scene.
+- `diffuseColor`: Color4 for the color
+- `texture`: Texture
+- `alphaTexture`: Separate texture for the transparency layer
+- `alphaTest`: Threshold for achieving transparency based on the color of the texture
+- `castShadows`: If false, no shadows are projected onto other entities in the scene.
 
 ```ts
 Material.setBasicMaterial(screen, {
@@ -502,15 +502,15 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-![](../../../.gitbook/assets/avatarTexture.png)
+![](../../images/avatarTexture.png)
 
 You can fetch the portrait of any Decentraland player, even if they're not currently connected, and even if they don't have a claimed Decentraland name.
 
 The following properties are supported within the object you pass as an argument:
 
-* `userId`: ID of the user who's profile you want to display
-* `filterMode`: Determines how pixels in the texture are stretched or compressed when rendered. This takes a value from the `TextureFilterMode` enum. See [Texture Scaling](materials.md#texture-scaling).
-* `wrapMode`: Determines how a texture is tiled onto an object. This takes a value from the `TextureWrapMode` enum. See [Texture Wrapping](materials.md#texture-wrapping).
+- `userId`: ID of the user who's profile you want to display
+- `filterMode`: Determines how pixels in the texture are stretched or compressed when rendered. This takes a value from the `TextureFilterMode` enum. See [Texture Scaling](materials.md#texture-scaling).
+- `wrapMode`: Determines how a texture is tiled onto an object. This takes a value from the `TextureWrapMode` enum. See [Texture Wrapping](materials.md#texture-wrapping).
 
 ## Transparent materials
 
@@ -526,7 +526,7 @@ Material.setPbrMaterial(meshEntity, {
 
 If a material uses a .png texture that includes transparency, it will be opaque by default, but you can activate its transparency by setting the `transparencyMode` to `MaterialTransparencyMode.MTM_ALPHA_BLEND`.
 
-![](../../../.gitbook/assets/transparent-image.png)
+![](../../images/editor/transparent-image.png)
 
 ```typescript
 Material.setPbrMaterial(floor, {
@@ -539,11 +539,11 @@ Material.setPbrMaterial(floor, {
 
 The `transparencyMode` can have the following values:
 
-* `MaterialTransparencyMode.MTM_OPAQUE`: No transparency at all
-* `MaterialTransparencyMode.MTM_ALPHA_TEST`: Each pixel is either completely opaque or completely transparent, based on a threshold.
-* `MaterialTransparencyMode.MTM_ALPHA_BLEND`: Intermediate values are possible based on the value of each pixel.
-* `MaterialTransparencyMode.MTM_ALPHA_TEST_AND_ALPHA_BLEND`: Uses a combination of both methods.
-* `MaterialTransparencyMode.MTM_AUTO`: Determines the method based on the provided texture.
+- `MaterialTransparencyMode.MTM_OPAQUE`: No transparency at all
+- `MaterialTransparencyMode.MTM_ALPHA_TEST`: Each pixel is either completely opaque or completely transparent, based on a threshold.
+- `MaterialTransparencyMode.MTM_ALPHA_BLEND`: Intermediate values are possible based on the value of each pixel.
+- `MaterialTransparencyMode.MTM_ALPHA_TEST_AND_ALPHA_BLEND`: Uses a combination of both methods.
+- `MaterialTransparencyMode.MTM_AUTO`: Determines the method based on the provided texture.
 
 If you set the `transparencyMode` to `MaterialTransparencyMode.MTM_ALPHA_TEST`, you can fine tune the threshold used to determine if each pixel is transparent or not. Set the `alphaTest` property between _0_ and _1_. By default its value is _0.5_.
 
@@ -564,7 +564,7 @@ When using an [unlit material](materials.md#unlit-materials), you can add an `al
 **📔 Note**: This must be a single-channel image. In this image use the color red or black to determine what parts of the real texture should be transparent.
 {% endhint %}
 
-![](../../../.gitbook/assets/circular-video-screen.png)
+![](../../images/circular-video-screen.png)
 
 ```ts
 // Using alpha test
@@ -621,8 +621,8 @@ The `$case` field allows you to specify one of the allowed types. Each type supp
 
 The supported values for `$case` are the following:
 
-* `texture`
-* `avatarTexture`
+- `texture`
+- `avatarTexture`
 
 Depending on the value of `$case`, it's valid to define the object for the corresponding shape, passing any relevant properties.
 
@@ -634,8 +634,8 @@ Use the `GltfNodeModifiers` component to modify the materials of a _glTF_ model.
 
 There are two ways to use the `GltfNodeModifiers` component:
 
-* Modify the material of the entire model by leaving the `path` property as an empty string.
-* Modify the material of a specific node in the model (or several nodes) by setting the `path` property to the path to the node.
+- Modify the material of the entire model by leaving the `path` property as an empty string.
+- Modify the material of a specific node in the model (or several nodes) by setting the `path` property to the path to the node.
 
 ### Modify the material of the entire model
 
@@ -673,9 +673,9 @@ GltfNodeModifiers.create(myEntity, {
 
 The `GltfNodeModifiers` component has the following properties:
 
-* `modifiers`: An array of modifiers. Each modifier has the following properties:
-  * `path`: The path to the node in the model to modify.
-  * `material`: The material to use.
+- `modifiers`: An array of modifiers. Each modifier has the following properties:
+  - `path`: The path to the node in the model to modify.
+  - `material`: The material to use.
 
 The `path` property is a string that represents the path to the node in the _glTF_ model to modify. If you want to modify the material of the entire model, you can use an empty string. If you want to modify the material of a specific node, you can use the path to the node. The path must point to a mesh node, not a vertex node.
 
@@ -772,25 +772,25 @@ The Material component provides a simplified interface for accessing and modifyi
 
 The following methods allow easy manipulation of the `Material` component:
 
-* `Material.getFlat(entity: Entity): ReadonlyFlatMaterial`: It returns a **read only** `FlatMaterial` accessor object that provides direct read access to material properties. It will return an error if the entity doesn't have a `Material` component. To avoid this, the next methods can be used as an alternative.
+- `Material.getFlat(entity: Entity): ReadonlyFlatMaterial`: It returns a **read only** `FlatMaterial` accessor object that provides direct read access to material properties. It will return an error if the entity doesn't have a `Material` component. To avoid this, the next methods can be used as an alternative.
 
 ```ts
 const src = Material.getFlat(entity).texture.src
 ```
 
-* `Material.getFlatOrNull(entity: Entity): ReadonlyFlatMaterial | null`: It returns a **read only or null**, depending if the entity has or doesn't have a `Material` component.
+- `Material.getFlatOrNull(entity: Entity): ReadonlyFlatMaterial | null`: It returns a **read only or null**, depending if the entity has or doesn't have a `Material` component.
 
 ```ts
 const src = Material.getFlatOrNull(entity).texture.src
 ```
 
-* `Material.getFlatMutable(entity: Entity): FlatMaterial`: It returns a **read & write** `FlatMaterial`object that allows modifying it's properties. It will throw an error if the entity being called doesn't have the `Material` component.
+- `Material.getFlatMutable(entity: Entity): FlatMaterial`: It returns a **read & write** `FlatMaterial`object that allows modifying it's properties. It will throw an error if the entity being called doesn't have the `Material` component.
 
 ```ts
 const src = Material.getFlatMutable(entity).texture.src
 ```
 
-* `Material.getFlatMutableOrNull(entity: Entity): FlatMaterial | null`: It returns a **read & write or null** `FlatMaterial` object that allows modifying it's properties. In case the entity doesn't have a `Material component`, it will reutrn `null`.
+- `Material.getFlatMutableOrNull(entity: Entity): FlatMaterial | null`: It returns a **read & write or null** `FlatMaterial` object that allows modifying it's properties. In case the entity doesn't have a `Material component`, it will reutrn `null`.
 
 ```ts
 Material.getFlatMutableOrNull(entity).texture.src = myNewTextureFile
@@ -811,4 +811,8 @@ GltfNodeModifiers.create(myEntity, {
 		},
 	],
 })
+
+{% hint style="info" %}
+**💡 Tip**: Textures used in materials can also be applied to particle effects. See [Particle System](particle-system.md) for details on using custom textures and sprite sheets with particles.
+{% endhint %}
 ```

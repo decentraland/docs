@@ -15,6 +15,7 @@ Master the fundamental 3D concepts needed for Decentraland scene development. Th
 * Entity positioning and transforms
 * Lighting
 * Moving entities
+* Particle effects
 * Shape components
 * Sounds and audio
 * Text rendering

@@ -12,11 +12,11 @@ See [Files in a scene](../projects/scene-files.md) for a list of what files are 
 
 To edit a scene's metadata in the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), open a scene and click the **pencil icon**.
 
-![](../../../.gitbook/assets/pencil-icon.png)
+![](../../images/editor/pencil-icon.png)
 
 This opens up the scene menu, where you can configure multiple properties.
 
-![](../../../.gitbook/assets/metadata-ui.png)
+![](../../images/editor/metadata-ui.png)
 
 Alternatively, you can directly edit the `scene.json` file, where all of these values are stored.
 
@@ -32,7 +32,7 @@ Players will see these displayed on a modal when they select the parcels of your
 
 When players navigate the world and enter your scene, they are able to read the scene title from under the minimap.
 
-![](../../../.gitbook/assets/scene-name.png)
+![](../../images/media/scene-name.png)
 
 Add this data via the scene menu in the Scene Editor.
 
@@ -97,18 +97,17 @@ After that, the scene is listed on the Places dApp under the `game` and `casino`
 
 ## Age Rating
 
-The **Age Rating** field is used to classify the content of your scene based on its appropriateness for different age groups. It helps in filtering content for players. The following options are available:
+The **Age Rating** field is used to classify the content of your scene. Decentraland is an 18+ platform. The following option is available:
 
-* **🟢 `T` for Teens (13+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms/#8-children). Opt for this category if your scene is limited to moderate violence, suggestive or horror-themed content, simulated gambling, and mild language.
-* **🟡 `A` for Adults (18+)**: Choose this category if your scene features any of the following: intense offensive language, graphic violence, explicit sexual content and/or nudity, real money gambling, or substances like alcohol, tobacco, and drugs.
+* **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
 
-When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write either **T** for teens, or **A** for adults.
+When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults.
 
-![](../../../.gitbook/assets/content-moderation-flag-icon.png)
+![](../../images/media/content-moderation-flag-icon.png)
 
 ```json
  "scene": {
-    "rating": "T"
+    "rating": "A"
   }
 ```
 
@@ -130,7 +129,7 @@ Scenes with this rating won't load and no one will be able to interact with them
 
 There are certain features that can be disabled in specific scenes so that players can't use these abusively. Configure these on the **Settings** tab of the scene settings.
 
-![](../../../.gitbook/assets/scene-restrictions.png)
+![](../../images/editor/scene-restrictions.png)
 
 Currently, only the following feature is handled like this:
 
@@ -152,7 +151,7 @@ If a `featureToggles` property doesn't exist in your `scene.json` file, create i
 
 You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
 
-![](../../../.gitbook/assets/creator-wallet-address.png)
+![](../../.gitbook/assets/creator-wallet-address.png)
 
 
 You can also provide your scene's tipping address on the `scene.json` file, under the `creator` field.
@@ -163,11 +162,11 @@ You can also provide your scene's tipping address on the `scene.json` file, unde
 
 When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
 
-![](../../../.gitbook/assets/Tipicon.png)
+![](../../.gitbook/assets/TipIcon.png)
 
 The tip modal allows the player to select the amount of MANA they want to send. The player must own MANA in their wallet to send a tip. If the address you provided is linked to a Decentraland NAME, this modal will show the name of the wallet owner besides the Ethereum address.
 
-![](../../../.gitbook/assets/tipping-modal.png)
+![](../../.gitbook/assets/tipping-modal.png)
 
 
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
@@ -176,7 +175,7 @@ You will receive a notification on the Decentraland notifications tab whenever a
 
 The **Spawn Settings** in the **Settings** tab define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
 
-![](../../../.gitbook/assets/spawn-point-ui.png)
+![](../../images/editor/spawn-point-ui.png)
 
 Your scene might have objects that can block players from moving if they spawn on top of them, like trees or stairs. Your scene might also have elevated terrain. To prevent players from spawning in locations where they can't move, you can set multiple spawn positions in specific locations.
 
@@ -360,11 +359,11 @@ When [deploying](../publishing/publishing.md) a scene, the content is uploaded t
 
 Edit this on the second tab of the scene menu in the Scene Editor.
 
-![](../../../.gitbook/assets/scene-parcels-3x3.png)
+![](../../images/editor/scene-parcels-3x3.png)
 
 Use the dropdowns and click **Apply Layout** to change the dimensions of your scene. You can also click each individual parcel to toggle it off from your layout.
 
-![](../../../.gitbook/assets/scene-parcels-toggled.png)
+![](../../images/editor/scene-parcels-toggled.png)
 
 The default scene has its coordinates set to _0,0_. You don't need to change this while developing a scene offline, unless you need to occupy multiple parcels. You will need to change this before deploying to coordinates where you have deploy permissions.
 

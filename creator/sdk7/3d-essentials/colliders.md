@@ -24,7 +24,7 @@ You can add a **Mesh Collider** component to your entity to assign a primitive s
 
 You can also configure the collision layers on a **GLTF** component to change the default [Collision layers](colliders.md#collision-layers) used on either the collider geometry or the visible geometry of the model. See [Add Components](../../scene-editor/build/components.md#add-components).
 
-![](../../../.gitbook/assets/gltf-component.png)
+![](../../images/editor/gltf-component.png)
 
 ## Colliders on primitive shapes
 
@@ -183,11 +183,11 @@ To avoid the camera from going through walls, you must assign both the `Collider
 
 For example, on the Creator Hub, the following combination of settings will prevent the camera from going through walls:
 
-![](../../../.gitbook/assets/colliders-camera.png)
+![](../../images/colliders-camera.png)
 
 Both the `ColliderLayer.CL_PHYSICS` and the `ColliderLayer.CL_POINTER` layers are assigned to the same invisible layer of the geometry of the entity. If they were both assigned to the visible layer, the result would be the same. This is the default behavior, both when adding an entity via the Creator Hub or via code.
 
-![](../../../.gitbook/assets/colliders-no-camera.png)
+![](../../images/colliders-no-camera.png)
 
 In this second example, the camera can go through the wall, because the `ColliderLayer.CL_PHYSICS` layer is assigned to the invisible layer of the entity, and the `ColliderLayer.CL_POINTER` layer is assigned to the visible layer of the entity, even if both geometries have the same overall shape.
 

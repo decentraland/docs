@@ -14,11 +14,11 @@ To import a 3D model, an image, a sound file, or a video into your scene from yo
 
 1. Drag files directly onto the bottom panel. You can also click the **+ Import Assets** button on the top-left of the bottom panel and select from your local drive.
 
-![](../../../.gitbook/assets/import-assets.png)
+![](../../images/editor/import-assets.png)
 
 2. Check the model thumbnail and click **Import**. When importing multiple assets, use the arrow buttons to cycle over each asset.
 
-![](../../../.gitbook/assets/import-confirmation.png)
+![](../../images/editor/import-confirmation.png)
 
 You can now find your asset in the **Local Assets** tab, under the **scene** folder. 3D models appear under the _scene/3D Model_ folder, images under _scene/Image_
 
@@ -28,7 +28,7 @@ You can now find your asset in the **Local Assets** tab, under the **scene** fol
 {% hint style="info" %}
 **💡 Tip**: You can also paste files directly into the project folder. After doing this, press the **Refresh** button next to the **Import Assets** button to see the new files.
 
-<img src="../../../.gitbook/assets/refresh-assets.png" alt="" data-size="original">
+<img src="../../images/editor/refresh-assets.png" alt="" data-size="original">
 {% endhint %}
 
 ### Supported formats

@@ -10,6 +10,10 @@ description: >-
 
 When importing 3D models into Decentraland, it's important to make sure they're in either glTF format. These models can include a variety of supported features. This section is all about how to make them compatible with Decentraland and following best practices.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 Please note that all models, shaders, and textures must comply with the [**scene limitations**](https://docs.decentraland.org/creator/scenes-sdk7/optimizing/scene-limitations/).
 
 ## **Supported 3D Model Formats**

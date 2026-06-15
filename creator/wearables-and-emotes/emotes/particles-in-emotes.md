@@ -6,6 +6,10 @@ description: How to export particles in your Emotes using Armature
 
 Emotes 2.0 can have sounds and props, but did you know it’s also possible to use particles? They can be a lot of fun and add that extra visual spark to it! And they can speed up the animation process too.
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 But since object animation and particle systems are not supported in Emotes 2.0, we need to convert these particles into an armature (which is supported) in order to add them to emotes. We’ll be using a Blender add-on developed by the Foundation’s Content Team for this process, which can be downloaded from the link below.
 
 Use the [Particles to Bones Addon for Blender](https://github.com/decentraland/docs/blob/main/creator/images/emotes/particle_system_to_bone_animation.py) to start!

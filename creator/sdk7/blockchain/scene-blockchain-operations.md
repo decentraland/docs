@@ -17,15 +17,15 @@ All blockchain operations also need to be carried out as [asynchronous functions
 To get a player's Ethereum account, use the `getPlayer()` function.
 
 ```ts
-import { getPlayer } from '@dcl/sdk/src/players'
+import { getPlayer } from "@dcl/sdk/src/players";
 
 export function main() {
-	let userData = getPlayer()
-	if (!userData.isGuest) {
-		console.log(userData.userId)
-	} else {
-		log('Player is not connected with Web3')
-	}
+  let userData = getPlayer();
+  if (!userData.isGuest) {
+    console.log(userData.userId);
+  } else {
+    log("Player is not connected with Web3");
+  }
 }
 ```
 
@@ -44,19 +44,19 @@ After importing the `eth-connect` library, you must instance a web3 provider and
 The function below fetches the current gas price in the Ethereum main network and prints it.
 
 ```ts
-import { RequestManager } from 'eth-connect'
-import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
+import { RequestManager } from "eth-connect";
+import { createEthereumProvider } from "@dcl/sdk/ethereum-provider";
 
 executeTask(async function () {
-	// create an instance of the web3 provider to interface with Metamask
-	const provider = createEthereumProvider()
-	// Create the object that will handle the sending and receiving of RPC messages
-	const requestManager = new RequestManager(provider)
-	// Check the current gas price on the Ethereum network
-	const gasPrice = await requestManager.eth_gasPrice()
-	// log response
-	console.log({ gasPrice })
-})
+  // create an instance of the web3 provider to interface with Metamask
+  const provider = createEthereumProvider();
+  // Create the object that will handle the sending and receiving of RPC messages
+  const requestManager = new RequestManager(provider);
+  // Check the current gas price on the Ethereum network
+  const gasPrice = await requestManager.eth_gasPrice();
+  // log response
+  console.log({ gasPrice });
+});
 ```
 
 {% hint style="info" %}
@@ -92,28 +92,28 @@ For example, here's an example of one function in the MANA ABI:
 ABI definitions can be quite lengthy, as they often include a lot of functions, so we recommend pasting the JSON contents of an ABI file into a separate `.ts` file and importing it into other scene files from there. We also recommend holding all ABI files in a separate folder of your scene, named `/contracts`.
 
 ```ts
-import { abi } from '../contracts/mana'
+import { abi } from "../contracts/mana";
 ```
 
 Here are links to different Decentraland contracts. Obtain the ABI for each contract by clicking _Export ABI_ and choosing _JSON Format_.
 
-* [MANA Token ABI](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code)
-* [Decentraland Marketplace](https://etherscan.io/address/0x19a8ed4860007a66805782ed7e0bed4e44fc6717#code)
-* [LAND ABI](https://etherscan.io/address/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d#code)
-* [Estate ABI](https://etherscan.io/address/0x959e104e1a4db6317fa58f8295f586e1a978c297#code)
-* [AvatarNameRegistry ABI](https://etherscan.io/address/0x894b883905bfEe2CC448880F1b59f4A762E67566)
-* [Catalyst ABI](https://etherscan.io/address/0xcc054fab08127c19f621ab83ade5962cd10584ec)
+- [MANA Token ABI](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code)
+- [Decentraland Marketplace](https://etherscan.io/address/0x19a8ed4860007a66805782ed7e0bed4e44fc6717#code)
+- [LAND ABI](https://etherscan.io/address/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d#code)
+- [Estate ABI](https://etherscan.io/address/0x959e104e1a4db6317fa58f8295f586e1a978c297#code)
+- [AvatarNameRegistry ABI](https://etherscan.io/address/0x894b883905bfEe2CC448880F1b59f4A762E67566)
+- [Catalyst ABI](https://etherscan.io/address/0xcc054fab08127c19f621ab83ade5962cd10584ec)
 
 These are the contracts for the various wearable collections: (each collection was emitted as a separate contract)
 
-* [ExclusiveMasksCollection ABI](https://etherscan.io/address/0xc04528c14c8ffd84c7c1fb6719b4a89853035cdd)
-* [Halloween2019Collection ABI](https://etherscan.io/address/0xc1f4b0eea2bd6690930e6c66efd3e197d620b9c2)
-* [Halloween2019CollectionFactory ABI](https://etherscan.io/address/0x07ccfd0fbada4ac3c22ecd38037ca5e5c0ad8cfa)
-* [Xmas2019Collection ABI](https://etherscan.io/address/0xc3af02c0fd486c8e9da5788b915d6fff3f049866)
-* [MCHCollection ABI](https://etherscan.io/address/0xf64dc33a192e056bb5f0e5049356a0498b502d50)
-* [CommunityContestCollection ABI](https://etherscan.io/address/0x32b7495895264ac9d0b12d32afd435453458b1c6)
-* [DCLLaunchCollection ABI](https://etherscan.io/address/0xd35147be6401dcb20811f2104c33de8e97ed6818)
-* [DCGCollection ABI](https://etherscan.io/address/0x3163d2cfee3183f9874e2869942cc62649eeb004)
+- [ExclusiveMasksCollection ABI](https://etherscan.io/address/0xc04528c14c8ffd84c7c1fb6719b4a89853035cdd)
+- [Halloween2019Collection ABI](https://etherscan.io/address/0xc1f4b0eea2bd6690930e6c66efd3e197d620b9c2)
+- [Halloween2019CollectionFactory ABI](https://etherscan.io/address/0x07ccfd0fbada4ac3c22ecd38037ca5e5c0ad8cfa)
+- [Xmas2019Collection ABI](https://etherscan.io/address/0xc3af02c0fd486c8e9da5788b915d6fff3f049866)
+- [MCHCollection ABI](https://etherscan.io/address/0xf64dc33a192e056bb5f0e5049356a0498b502d50)
+- [CommunityContestCollection ABI](https://etherscan.io/address/0x32b7495895264ac9d0b12d32afd435453458b1c6)
+- [DCLLaunchCollection ABI](https://etherscan.io/address/0xd35147be6401dcb20811f2104c33de8e97ed6818)
+- [DCGCollection ABI](https://etherscan.io/address/0x3163d2cfee3183f9874e2869942cc62649eeb004)
 
 {% hint style="info" %}
 **💡 Tip**: To clearly see the functions exposed by a contract, open it in [abitopic.io](https://abitopic.io). Just paste the contract address there and open the _functions_ tab to see the full list of supported functions and their arguments. You can even test calling the functions with different parameters via the webpage.
@@ -130,22 +130,22 @@ After importing the `eth-connect` library and a contract's _abi_, you must insta
 You must also import the web3 provider. This is because Metamask in the player's browser uses web3, so we need a way to interact with that.
 
 ```ts
-import { RequestManager, ContractFactory } from 'eth-connect'
-import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
-import { abi } from '../contracts/mana'
+import { RequestManager, ContractFactory } from "eth-connect";
+import { createEthereumProvider } from "@dcl/sdk/ethereum-provider";
+import { abi } from "../contracts/mana";
 
 executeTask(async () => {
-	// create an instance of the web3 provider to interface with Metamask
-	const provider = createEthereumProvider()
-	// Create the object that will handle the sending and receiving of RPC messages
-	const requestManager = new RequestManager(provider)
-	// Create a factory object based on the abi
-	const factory = new ContractFactory(requestManager, abi)
-	// Use the factory object to instance a `contract` object, referencing a specific contract
-	const contract = (await factory.at(
-		'0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
-	)) as any
-})
+  // create an instance of the web3 provider to interface with Metamask
+  const provider = createEthereumProvider();
+  // Create the object that will handle the sending and receiving of RPC messages
+  const requestManager = new RequestManager(provider);
+  // Create a factory object based on the abi
+  const factory = new ContractFactory(requestManager, abi);
+  // Use the factory object to instance a `contract` object, referencing a specific contract
+  const contract = (await factory.at(
+    "0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb"
+  )) as any;
+});
 ```
 
 {% hint style="info" %}
@@ -157,39 +157,39 @@ executeTask(async () => {
 Once you've created a `contract` object, you can easily call the functions that are defined in its ABI, passing it the specified input parameters.
 
 ```ts
-import { getPlayer } from '@dcl/sdk/src/players'
-import { createEthereumProvider } from '@dcl/sdk/ethereum-provider'
-import { RequestManager, ContractFactory } from 'eth-connect'
-import { abi } from '../contracts/mana'
+import { getPlayer } from "@dcl/sdk/src/players";
+import { createEthereumProvider } from "@dcl/sdk/ethereum-provider";
+import { RequestManager, ContractFactory } from "eth-connect";
+import { abi } from "../contracts/mana";
 
 executeTask(async () => {
-	try {
-		// Setup steps explained in the section above
-		const provider = createEthereumProvider()
-		const requestManager = new RequestManager(provider)
-		const factory = new ContractFactory(requestManager, abi)
-		const contract = (await factory.at(
-			'0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
-		)) as any
-		let userData = getPlayer()
-		if (userData.isGuest) {
-			return
-		}
+  try {
+    // Setup steps explained in the section above
+    const provider = createEthereumProvider();
+    const requestManager = new RequestManager(provider);
+    const factory = new ContractFactory(requestManager, abi);
+    const contract = (await factory.at(
+      "0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb"
+    )) as any;
+    let userData = getPlayer();
+    if (userData.isGuest) {
+      return;
+    }
 
-		// Perform a function from the contract
-		const res = await contract.setBalance(
-			'0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb',
-			100,
-			{
-				from: userData.userId,
-			}
-		)
-		// Log response
-		console.log(res)
-	} catch (error: any) {
-		console.log(error.toString())
-	}
-})
+    // Perform a function from the contract
+    const res = await contract.setBalance(
+      "0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb",
+      100,
+      {
+        from: userData.userId,
+      }
+    );
+    // Log response
+    console.log(res);
+  } catch (error: any) {
+    console.log(error.toString());
+  }
+});
 ```
 
 The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
@@ -198,11 +198,11 @@ The example above uses the abi for the Ropsten MANA contract and transfers 100 _
 
 The eth-connect library includes a number of other helpers you can use. For example to:
 
-* Get an estimated gas price
-* Get the balance of a given address
-* Get a transaction receipt
-* Get the number of transactions sent from an address
-* Convert between various formats including hexadecimal, binary, utf8, etc.
+- Get an estimated gas price
+- Get the balance of a given address
+- Get a transaction receipt
+- Get the number of transactions sent from an address
+- Convert between various formats including hexadecimal, binary, utf8, etc.
 
 ## Using the Ethereum test network
 
@@ -235,14 +235,14 @@ When running a preview on the legacy web client, of a scene that uses one of the
 Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
 
 ```ts
-import { sendAsync } from '~system/EthereumController'
+import { sendAsync } from "~system/EthereumController";
 
 // send a message
 await sendAsync({
-	id: 1,
-	method: 'myMethod',
-	jsonParams: '{ myParam: myValue }',
-})
+  id: 1,
+  method: "myMethod",
+  jsonParams: "{ myParam: myValue }",
+});
 ```
 
 ## Decentraland smart contracts

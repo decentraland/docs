@@ -6,6 +6,10 @@ description: Learn about how textures works in Decentraland
 
 Textures are a key part of the 3D art pipeline to achieve the look and feel you want for your scene. In this section you will find everything you need to know to create your textures, limitations, nodes in Blender and optimizing them to perform as its best!
 
+{% hint style="info" %}
+**💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
+{% endhint %}
+
 ## Limitations
 
 ### Texture Size Constraints
@@ -20,7 +24,7 @@ Texture sizes must use width and height numbers (in pixels) that match the follo
 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024
 ```
 
-> This sequence is made up of powers of two: `f(x) = 2 ^ x` . **512px is the maximum number we allow for a texture size.** This is a fairly common requirement among other rendering engines, it's there due internal optimizations of the graphics processors.
+> This sequence is made up of powers of two: `f(x) = 2 ^ x` . **1024 is the maximum number we allow for a texture size.** This is a fairly common requirement among other rendering engines, it's there due internal optimizations of the graphics processors.
 
 The width and height don't need to have the same number, but they both need to belong to this sequence.
 
@@ -228,7 +232,7 @@ Once you have exported all the assets to your models folder you can drag the scr
 If you follow all the steps your scene will be much faster now and the assets will share the same texture! When we work with several assets and big scenes the improvement is quite noticeable! With this tool you can save quite a lot of megabytes of information!
 
 {% hint style="warning" %}
-⚠️ After completing this step, it is crucial to check that every texture follows the guidelines. If the textures do not follow the guidelines or are too heavy, optimize them to be lighter before deploying. The recommended texture size for performant scenes is 512x512px. Also check resolution, images with more than 72 DPI would affect performance and won’t make the image look any better.
+⚠️ After completing this step, it is crucial to check that every texture follows the guidelines. If the textures do not follow the guidelines or are too heavy, optimize them to be lighter before deploying. The recommended texture size for performant scenes is 1024x1024. Also check resolution, images with more than 72 DPI would affect performance and won’t make the image look any better.
 {% endhint %}
 
 ## Texture Atlas/ Trim Sheets

@@ -7,7 +7,15 @@
       "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/references/model-catalog.md\")",
       "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/SKILL.md\")",
       "Bash(mkdir -p /Users/Nico/Documents/github/docs/ai-sdk-context/Skills/add-3d-models/references)",
-      "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/references/model-catalog.md\" -o /Users/Nico/Documents/github/docs/ai-sdk-context/Skills/add-3d-models/references/model-catalog.md)"
+      "Bash(curl -sL \"https://raw.githubusercontent.com/dcl-regenesislabs/opendcl/main/skills/add-3d-models/references/model-catalog.md\" -o /Users/Nico/Documents/github/docs/ai-sdk-context/Skills/add-3d-models/references/model-catalog.md)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s https://api.github.com/repos/decentraland/unity-explorer/pulls/6361)",
+      "Bash(python3 -c 'import json,sys;d=json.load\\(sys.stdin\\);print\\(\"TITLE:\",d.get\\(\"title\"\\)\\);print\\(\"BODY:\"\\);print\\(d.get\\(\"body\"\\)\\)')",
+      "Bash(curl -s https://api.github.com/repos/decentraland/js-sdk-toolchain/pulls/1256)",
+      "Bash(curl -s https://api.github.com/repos/decentraland/sdk7-goerli-plaza/pulls/273)",
+      "Bash(git -C /Users/Nico/Documents/github/docs status --short)",
+      "Bash(git -C /Users/Nico/Documents/github/docs diff --stat)",
+      "Bash(git -C /Users/Nico/Documents/github/docs diff creator/sdk7/networking/authoritative-servers.md)"
     ]
   }
 }

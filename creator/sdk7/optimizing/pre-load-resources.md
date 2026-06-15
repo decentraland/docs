@@ -22,14 +22,10 @@ AssetLoad.create(engine.RootEntity, {
 
 The assets listed in the `AssetLoad` component are downloaded and added to memory, ensuring they are instantly available when the scene needs to load them.
 
-{% hint style="info" %}
-**Note:** You can place the `AssetLoad` component on any entity (not just the RootEntity), and you can use it on as many entities as needed. This can be helpful to handle separate load states for different levels or regions of your scene.
+Some important considerations:
 
-The `AssetLoad` component is used to add assets to memory, not to remove them. Removing an asset from the list in `AssetLoad.create` will not free memory.
-{% endhint %}
-
-{% hint style="info" %}
-**Note:** If an asset is used immediately when the scene loads (for example, a GLB model placed in the scene, or a background sound that plays continuously), there is no need to use the `AssetLoad` component, since it is already being downloaded. 
-
-Be mindful when adding assets to `AssetLoad.create`, and only pre-load assets that are not required at scene startup to avoid unnecessary performance costs.
-{% endhint %}
+- You can place the `AssetLoad` component on any entity (not just the RootEntity), and you can use it on as many entities as needed. This can be helpful to handle separate load states for different levels or regions of your scene.
+- The `AssetLoad` component is used to add assets to memory, not to remove them. Removing an asset from the list in `AssetLoad.create` will not free memory.
+- If an asset is used immediately when the scene loads (for example, a GLB model placed in the scene, or a background sound that plays continuously), there is no need to use the `AssetLoad` component, since it is already being downloaded. 
+- Be mindful when adding assets to `AssetLoad.create`, and only pre-load assets that are not required at scene startup to avoid unnecessary performance costs.
+- You can only pre-load assets that are uploaded as part of the scene files. This feature won't work to pre-load images from an external URL

@@ -6,7 +6,11 @@ description: Optimize your scene to load fast and run smoothly for all players.
 
 There are several aspects you can optimize in your scenes to ensure the best possible experience for players who visit them. This document covers some best practices that can make a big difference in how fast your scene loads and how smoothly it runs for players that are on it or on neighboring scenes.
 
-Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, and via the browser, which limits how much of the hardware's processing power is available to use. The experience of visiting your scene should be smooth for everyone.
+Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, via the browser, or from the [mobile app](../building-for-mobile/) on a phone — all of which limit how much processing power is available to your scene. The experience of visiting your scene should be smooth for everyone.
+
+{% hint style="info" %}
+**📱 Mobile**: Mobile devices are usually the most resource-constrained client. If your scene targets mobile players, also see [Building for Mobile](../building-for-mobile/) for mobile-specific guidance.
+{% endhint %}
 
 The Decentraland explorer enforces many optimizations at engine level. These optimizations make a big difference, but the challenge of rendering multiple user-generated experiences simultaneously in a browser is a big one. We need your help to make things run smoothly.
 
@@ -72,11 +76,11 @@ There are several ways in which your 3D models can be optimized to be lighter.
 
 When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, and if they pass any of the [scene limitations](../optimizing/scene-limitations.md).
 
-![](../../../.gitbook/assets/triangle-limit1.png)
+![](../../images/editor/triangle-limit1.png)
 
 You can expand this menu to view details.
 
-![](../../../.gitbook/assets/triangle-limit2.png)
+![](../../images/editor/triangle-limit2.png)
 
 Here are some tips for improving on these metrics:
 
@@ -103,7 +107,7 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 1. Open up the `debug` panel in the scene. 
 * If the scene is published, type `/debug` command in the chat.
-* If you are on Preview mode in the scene., click the Bug icon (<img src="../../../.gitbook/assets/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
+* If you are on Preview mode in the scene., click the Bug icon (<img src="../../images/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
 
 2. The debug panel will appear in the bottom-right corner of the screen.
 

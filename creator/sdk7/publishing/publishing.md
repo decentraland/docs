@@ -9,6 +9,7 @@ description: How to publish my project?
 Make sure of the following:
 
 * Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
+* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../building-for-mobile/) and [Preview on mobile](../building-for-mobile/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 *   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
@@ -52,7 +53,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
    * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
    * Select **Alternative servers** to publish to the [test server](publishing.md#the-test-server) or a [custom server](publishing.md#custom-servers).
 
-![](../../../.gitbook/assets/publish-options.png)
+![](../../images/editor/publish-options.png)
 
 4. This opens a new tab on your browser, showing details about the upload. Approve the transaction.
    * For LAND on a Metamask browser account, confirm the deployment. Then approve the transaction on the Metamask browser extension.

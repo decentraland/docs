@@ -70,11 +70,15 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 ### Layout
 
-Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. The default Decentraland UI, including minimap, chat, etc, is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
+Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. On the desktop client, the default Decentraland UI (minimap, chat, etc.) is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
 
 <figure><img src="../../images/media/UI-Zones.png" alt="Screen regions used by UI" width="300"><figcaption></figcaption></figure>
 
 There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
+
+{% hint style="info" %}
+**📱 Mobile safe area**: The [mobile client](../building-for-mobile/) has its own reserved zones — the **left side** (chat, search, profile, joystick, emotes), the **top right** (profile and camera controls), and the **bottom right** (interaction button). When designing for mobile, keep critical UI in the center or top-center of the screen and follow the [Mobile safe area](../building-for-mobile/safe-area.md). Use [`isMobile()`](../building-for-mobile/detect-platform.md) to swap layouts when the desktop and mobile constraints don't agree.
+{% endhint %}
 
 {% hint style="warning" %}
 **📔 Note**: UI elements from scenes and smart wearables always appear on a layer behind the default Decentraland UI.

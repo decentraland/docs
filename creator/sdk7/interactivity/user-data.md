@@ -395,7 +395,7 @@ export function main() {
 
 See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to see how to easily react to changes in the cursor state.
 
-The `PointerLock` component of the `engine.CameraEntity` is read-only, you can't force the player to lock or unlock the cursor.
+You can also force the player's cursor state by writing to the `isPointerLocked` field of the `PointerLock` component on `engine.CameraEntity`. See [Lock or unlock the cursor](button-events/click-events.md#lock-or-unlock-the-cursor) for examples.
 
 {% hint style="warning" %}
 **📔 Note**: Avoid referring to the `engine.CameraEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, use these inside the `main()` function, or on a function indirectly called by `main()`. You can also encapsulate the behavior in an async [`executeTask` block](../programming-patterns/async-functions.md#the-executetask-function).

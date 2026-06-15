@@ -18,7 +18,7 @@ _.wav_ files are also supported but not generally recommended as they are signif
 
 The easiest way to play a sound is to add an **Audio Source** component visually on the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md) and set it to **Start Playing** and **Loop**. See [Add Components](../../scene-editor/build/components.md#add-components).
 
-![](../../../.gitbook/assets/AudioSource-component.png)
+![](../../images/editor/AudioSource-component.png)
 
 You can also trigger the playing of a sound in a no-code way via **Actions**, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 
@@ -201,3 +201,7 @@ You can also achieve this by explicitly set the `currentTime` property on an `Au
 ## Audio streaming
 
 See [Audio streaming](../media/audio-streaming.md) to learn how you can play a live audio stream from an external source.
+
+## Audio analysis
+
+See [Audio analysis](../media/audio-analysis.md) to learn how to read real-time amplitude and frequency data from an `AudioSource` and drive reactive visuals from it, like cubes that pulse with the bass or equalizer-style bar visualizers.

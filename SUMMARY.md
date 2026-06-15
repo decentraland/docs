@@ -587,6 +587,7 @@
       * [Publishing Collections](creator/wearables-and-emotes/publishing/publishing-collections.md)
     * [Wearables Overview](creator/wearables-and-emotes/wearables/README.md)
       * [Creating Wearables](creator/wearables-and-emotes/wearables/creating-wearables.md)
+      * [Spring Bones](creator/wearables-and-emotes/wearables/spring-bones.md)
       * [Linked Wearables](creator/wearables-and-emotes/wearables/linked-wearables.md)
 * [Bienvenido Jugador](player-spa/README.md)
   * [Tabla de contenidos](player-spa/SUMMARY.md)

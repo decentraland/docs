@@ -13,6 +13,7 @@
 
 * [Wearables](wearables-and-emotes/wearables/)
   * [Creating Wearables](wearables-and-emotes/wearables/creating-wearables.md)
+  * [Spring Bones](wearables-and-emotes/wearables/spring-bones.md)
   * [Linked Wearables](wearables-and-emotes/wearables/linked-wearables.md)
 * [Emotes](wearables-and-emotes/emotes/)
   * [Creating Emotes](wearables-and-emotes/emotes/creating-emotes.md)

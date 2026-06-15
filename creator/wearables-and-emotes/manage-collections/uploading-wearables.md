@@ -8,7 +8,7 @@ Once you export your wearable, you’ll have to upload it to the builder. This d
 
 ## Uploading Your File
 
-Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/manage-collections/creating-a-collection.md). To upload your wearable, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is an emote or wearable. **Remember that the collection max file size is 3MB**.
+Remember that you need to create a collection before you can upload your file. If you don’t know how to do that, check [Creating a Collection](https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/creating-a-collection). To upload your wearable, just drag and drop the file on the _**New Item**_ window or browse your computer. It will automatically detect if the file is an emote or wearable. **Remember that the collection max file size is 3MB**.
 
 ![](<../../../.gitbook/assets/01_new_item (2).png>)
 
@@ -54,6 +54,10 @@ You can add your own custom thumbnail by clicking on the camera icon and browsin
 
 <img src="../../../.gitbook/assets/07_thumbnail (1).png" alt="" data-size="original">
 {% endhint %}
+
+### **Spring Bones**
+
+If your wearable contains bones with `springbone` in their name, the Builder will automatically detect them and display a **Spring Bones** configuration panel. From this panel you can adjust physics parameters like stiffness, gravity, and drag for each spring bone chain. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for details on how to set up spring bones in your model.
 
 ### **Properties**
 

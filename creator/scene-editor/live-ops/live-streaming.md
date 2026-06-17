@@ -143,6 +143,10 @@ You can then switch slides, or even play and pause any videos that are embedded 
 
 To use the Live Streaming feature on your scene you'll need to install a streaming software that can output to an RTMP endpoint (e.g. [OBS](https://obsproject.com/), [XSplit](https://www.xsplit.com/), [StreamYard](https://streamyard.com/)).
 
+{% hint style="danger" %}
+**❗Warning**: Live streaming is not supported in Single Player worlds. If your world has **Single Player** enabled in World Settings (or `fixedAdapter` set to `"offline:offline"` in `scene.json`), disable it before setting up streaming. The streaming feature relies on the communications layer, which is disabled in Single Player mode.
+{% endhint %}
+
 ### Get stream credentials
 
 1.  Open the Admin UI in the scene (top‑right icon).

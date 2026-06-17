@@ -490,6 +490,10 @@ The **name** specified can be either a Decentraland NAME or an ENS Domain and mu
 
 The `fixedAdapter` property indicates which Communication Service should be used by the scene. For the time being, only the `offline:offline` value is allowed. When set, the scene will have no Communication Service at all, and each user joining that world will always be alone. If not set, the Worlds content server will generate a proper value based on how it is configured.
 
+{% hint style="warning" %}
+**📔 Note**: Setting `fixedAdapter` to `"offline:offline"` (or enabling **Single Player** in World Settings via the Creator Hub) disables live streaming. The streaming feature relies on the communications layer to deliver video to viewers. If you need live streaming in your world, do not use this option.
+{% endhint %}
+
 ```json
 {
 	"worldConfiguration": {

@@ -30,6 +30,10 @@ Usa el smart item **Video Screen** junto con el smart item **Scene Admin** para 
 
     ![](../images/editor/publish-button.png)
 
+{% hint style="danger" %}
+**❗Advertencia**: La transmisión en vivo no es compatible con los worlds en modo Single Player. Si tu world tiene **Single Player** habilitado en World Settings (o `fixedAdapter` configurado como `"offline:offline"` en `scene.json`), desactívalo antes de configurar el streaming. La función de streaming depende de la capa de comunicaciones, que se desactiva en el modo Single Player.
+{% endhint %}
+
 ### Obtener credenciales de stream
 
 1.  Abre la UI de Admin en la escena (ícono superior derecho).

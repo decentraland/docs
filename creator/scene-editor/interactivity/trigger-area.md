@@ -10,7 +10,7 @@ To trigger an action when the player walks into or out of an area, use the Trigg
 
 The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
-If any part of the player's body overlaps with this orange cube, the assigned event will be called.
+If any part of an avatar's body — the local player or any other player rendered in the scene — overlaps with this orange cube, the assigned event will be called.
 
 Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on the item's **Triggers** component. The actions on these trigger events are activated every time that the player enters or leaves the area.
 
@@ -34,4 +34,8 @@ Multiple trigger areas can overlap, and don't affect each other.
 **📔 Note**: You can also use **On Player Enters Area** and **On Player Leaves Area** trigger events on any other smart item, but keep in mind that it can be challenging to know the area covered by the trigger.
 
 The size of the triggerable area doesn't relate to the item's visible shape or its colliders, it's always a cube of 1m on each side, affected by the scale of the item.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: Trigger areas in the Scene Editor fire for any avatar — the local player and any other players rendered nearby. If you need to react only to the local player and ignore other avatars, drop down to code and use the [SDK7 TriggerArea component](../../sdk7/3d-essentials/trigger-areas.md) with the `CL_MAIN_PLAYER` collision layer.
 {% endhint %}

@@ -372,7 +372,7 @@ Para mostrar múltiples parcelas en la vista previa de la escena, lista tantas p
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: El tamaño de escena más grande que puedes establecer es de 45 x 45 parcelas.
+**📔 Nota**: El tamaño de escena más grande que puedes establecer es de 300 x 300 parcelas.
 {% endhint %}
 
 #### Establecer parcelas a través de la línea de comandos

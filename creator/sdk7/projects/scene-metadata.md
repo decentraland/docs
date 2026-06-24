@@ -392,7 +392,7 @@ To display multiple parcels in the scene preview, list as many parcels as you in
 ```
 
 {% hint style="warning" %}
-**📔 Note**: The largest scene size you can set is of 45 x 45 parcels.
+**📔 Note**: The largest scene size you can set is of 300 x 300 parcels (90,000 parcels total).
 {% endhint %}
 
 ### Set parcels via the command line

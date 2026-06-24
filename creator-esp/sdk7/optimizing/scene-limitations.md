@@ -105,4 +105,4 @@ Consulta [Límite de Tamaño de Worlds](../worlds/about.md#worlds-size-limit) pa
 
 Tamaño total de los archivos subidos al servidor de contenido. Incluye modelos 3D y audio. No incluye archivos que no se suben, como paquetes de node.js. Puedes ver la lista completa de archivos siendo publicados y sus tamaños antes de confirmar un despliegue.
 
-Todos los demás límites en worlds son por parcela, incluyendo triángulos, materiales, etc. Ya que agregar más parcelas a un world es gratuito, puedes agregar hasta 45x45 parcelas a tu escena, y tener los límites correspondientes a ese conteo de parcelas.
+Todos los demás límites en worlds son por parcela, incluyendo triángulos, materiales, etc. Ya que agregar más parcelas a un world es gratuito, puedes agregar hasta 300x300 parcelas (90,000 en total) a tu escena, y tener los límites correspondientes a ese conteo de parcelas.

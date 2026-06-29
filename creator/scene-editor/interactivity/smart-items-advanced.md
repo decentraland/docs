@@ -92,6 +92,7 @@ The **Actions** component lists actions that the item can carry out. Each smart 
 * **Stop Audio Stream**: Stop any audio streams currently playing.
 * **Open link**: Open a link on browser tab. Players are asked if they trust the domain before they do.
 * **Clone**: Duplicates an item in the designated position.
+* **Spawn Entity**: Creates a new copy of an item in the scene, at a position relative to the item performing the action. The item to spawn doesn't need to be placed in the scene. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
 * **Remove**: Deletes an item from the scene.
 * **Show Image**: Displays an image on the UI, potentially for a limited time. It can also include caption.
 * **Hide Image**: Hides any image currently displayed in the UI via the Show Image action.
@@ -209,6 +210,32 @@ When an item performs a tween, this affects everything about the item. For examp
 
 {% hint style="info" %}
 **📔 Note**: Each entity can only perform one tween at a time. For example, you can´t make an item move sideways and also rotate at the same time. As a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
+{% endhint %}
+
+## About spawning entities
+
+Use a **Spawn Entity** action to create a new copy of an item in the scene while it's running. Unlike the **Clone** action, the item you spawn doesn't need to be placed in the scene first.
+
+### Make an item spawnable
+
+Before an item can be spawned, it must be available in your project's files. To add an item without placing it in the scene:
+
+1. In the **Assets** panel, find the item in the catalog or in your **Custom Items**.
+2. Right-click the item and select **Add to filesystem**.
+
+This copies the item into your project so it can be spawned later. It doesn't add anything visible to the scene. The item then appears in the **Source** dropdown of any **Spawn Entity** action.
+
+### Configure the action
+
+A **Spawn Entity** action has two fields:
+
+* **Source**: The item to spawn. Pick from the items added to your project's files.
+* **Position**: The X, Y, and Z coordinates where the new copy appears, relative to the item performing the action.
+
+If the item you spawn is itself a smart item, each spawned copy keeps its own actions and triggers working independently.
+
+{% hint style="info" %}
+**💡 Tip**: To spawn items from code instead, see [Composites](../../sdk7/architecture/composites.md). Items added to your project's files are stored as composites, the same format used by the SDK's spawn function.
 {% endhint %}
 
 ## About click triggers

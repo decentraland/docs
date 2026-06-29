@@ -15,7 +15,7 @@ Scenes include the following files:
 * **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
 * **tsconfig.json**: Typescript configuration file.
 * **.dclignore**: Lists the files in your project that will not be uploaded when you publish your scene.
-* **main-composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable.
+* **main.composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable. It's one example of a [composite](../architecture/composites.md), a file that describes a tree of entities and components.
 
 ### index.ts
 

@@ -46,6 +46,15 @@ To rename a Custom Item definition, right click on the Custom Item definition on
 
 You can't modify the definition of a Custom Item definition that's already created, you must create a new definition and delete the original.
 
+### Spawning Custom Items dynamically
+
+Each Custom Item is stored as a composite, a file that describes a tree of entities and components. This means you can spawn a new copy of a Custom Item while the scene is running, instead of placing every copy by hand.
+
+You can spawn a Custom Item in two ways:
+
+* **With no code**: Use the **Spawn Entity** action in the Scene Editor. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
+* **With code**: Use `engine.addEntityFromComposite()` in the SDK. See [Composites](../../sdk7/architecture/composites.md).
+
 ### Sharing Custom Items
 
 You can share your custom items with other creators, so they can use them on their own scenes.

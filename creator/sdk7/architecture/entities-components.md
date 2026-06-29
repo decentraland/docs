@@ -57,6 +57,10 @@ export function main() {
 
 When a component is created, it's always assigned to a parent entity. The component's values then affect the entity.
 
+{% hint style="info" %}
+**💡 Tip**: Instead of creating entities one by one, you can spawn a whole tree of entities and components at once from a [composite](composites.md) file.
+{% endhint %}
+
 ## Remove entities
 
 To remove an entity from the engine, use `engine.removeEntity()`

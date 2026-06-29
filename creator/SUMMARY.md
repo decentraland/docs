@@ -81,6 +81,7 @@
   * [Entities & Components](sdk7/architecture/entities-components.md)
   * [Systems](sdk7/architecture/systems.md)
   * [Custom Components](sdk7/architecture/custom-components.md)
+  * [Composites](sdk7/architecture/composites.md)
   * [Querying Components](sdk7/architecture/querying-components.md)
   * [Subscribe to Changes](sdk7/architecture/subscribe-to-changes.md)
   * [Data-Oriented Programming](sdk7/architecture/data-oriented-programming.md)

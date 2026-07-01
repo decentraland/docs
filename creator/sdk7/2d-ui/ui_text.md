@@ -26,6 +26,10 @@ A `Label` entity has the following fields that can be configured:
 
 A `Label` entity can also have other common components found on other types of UI entities, like `uiTransform` and `uiBackground`.
 
+{% hint style="info" %}
+**💡 Tip**: To keep text legible, give it plenty of contrast against whatever is behind it. UI text has no outline property, so the recommended approach is to place the text over a solid `uiBackground` in a contrasting color. This matters especially for players on mobile, who may be viewing the screen under varying lighting conditions. For in-world text via [`TextShape`](../3d-essentials/text.md#text-shadow-and-outline-properties), use a thin outline instead.
+{% endhint %}
+
 _**ui.tsx file:**_
 
 ```ts

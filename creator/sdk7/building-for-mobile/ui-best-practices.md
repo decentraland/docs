@@ -13,6 +13,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
+* **Give text strong contrast against its background.** Mobile players often view their screens under suboptimal lighting, which makes reading harder. For 2D UI text, place it over a solid, contrasting [`uiBackground`](../2d-ui/ui_background.md). For in-world text via [`TextShape`](../3d-essentials/text.md#text-shadow-and-outline-properties), give it a thin outline in a contrasting color.
 
 ## DON'Ts
 

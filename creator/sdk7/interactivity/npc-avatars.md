@@ -145,7 +145,7 @@ export function swapAvatar(avatar: Entity) {
 
 ## Display only wearables
 
-Use the `show_only_wearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
+Use the `showOnlyWearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
 
 ```ts
 const myAvatar = engine.addEntity()

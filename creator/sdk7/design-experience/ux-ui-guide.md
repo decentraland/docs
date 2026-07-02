@@ -70,7 +70,7 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 ### Layout
 
-Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. On the desktop client, the default Decentraland UI (minimap, chat, etc.) is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
+Be careful when placing your UI in screen regions that overlap with the default Decentraland UI elements. On the desktop client, the default Decentraland UI (sidebar, minimap, chat, etc.) is designed to occupy only the left 25% of the screen (highlighted in red in the image). The remaining screen space is a safe zone that content creators are free to use.
 
 <figure><img src="../../images/media/UI-Zones.png" alt="Screen regions used by UI" width="300"><figcaption></figcaption></figure>
 

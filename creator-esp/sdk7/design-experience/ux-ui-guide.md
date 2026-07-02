@@ -38,11 +38,11 @@ Es importante estar bien consciente de este objetivo en cada paso del proceso de
 
 Para escenas que siguen un flujo lineal, donde cada paso depende del anterior, recomendamos cercar la escena y establecer uno o múltiples puntos de entrada fijos, para evitar que los jugadores tropiecen con cosas en el orden incorrecto. Por cierto, los puntos de entrada son un lugar excelente para mostrar un mensaje para dar la bienvenida al jugador y explicar cuál debe ser su objetivo en la escena.
 
-<figure><img src="../../images/media/ux-instructions.png" alt="Banner en el mundo" width="300"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
+<figure><img src="../../images/media/ux-instructions.png" alt="Banner en el mundo" width="360"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
 
 Si la experiencia del jugador en tu escena no está destinada a ser lineal, pero aún necesitas proporcionar algunas instrucciones básicas para asegurar que la disfruten completamente, puedes mostrar instrucciones en un pop-up. Es posible mostrar un popup en la pantalla del jugador tan pronto como entren, independientemente de la dirección de la que vengan, y de esa manera asegurarte de que los jugadores siempre sepan lo esencial.
 
-<figure><img src="../../images/media/ux-banner.png" alt="Banner pop-up" width="300"><figcaption><p>Instrucciones pop-up</p></figcaption></figure>
+<figure><img src="../../images/media/ux-banner.png" alt="Banner pop-up" width="360"><figcaption><p>Instrucciones pop-up</p></figcaption></figure>
 
 {% hint style="warning" %}
 **📔 Nota**: Asegúrate de que el popup no sea demasiado intrusivo y que sea fácil de cerrar haciendo clic en cualquier lugar.
@@ -78,7 +78,7 @@ No podemos subestimar lo valiosos que son el color, los íconos, el movimiento y
 
 Ten cuidado al colocar tu UI en regiones de la pantalla que se superponen con los elementos predeterminados de la UI de Decentraland. La UI predeterminada de Decentraland (barra lateral, minimapa, chat, etc.) está diseñada para ocupar solo el 25% izquierdo de la pantalla (resaltado en rojo en la imagen). El espacio restante es una zona segura que los creadores de contenido pueden usar libremente.
 
-<figure><img src="../../images/media/UI-Zones.png" alt="Regiones de pantalla usadas por la UI" width="300"><figcaption></figcaption></figure>
+<figure><img src="../../images/media/UI-Zones.png" alt="Regiones de pantalla usadas por la UI" width="360"><figcaption></figcaption></figure>
 
 No hay restricciones para colocar elementos de UI en el 25% izquierdo de la pantalla, pero ten en cuenta que el explorador está continuamente haciendo cambios y mejoras a su diseño. Cualquier espacio que no esté ocluido en esa región hoy podría estar cubierto en futuras versiones.
 

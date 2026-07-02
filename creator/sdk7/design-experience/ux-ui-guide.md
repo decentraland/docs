@@ -32,11 +32,11 @@ It’s important to be well aware of this objective through every step of the de
 
 For scenes that follow a linear flow, where each step depends on the previous, we recommend walling the scene and establishing one or multiple fixed entry points, to avoid players stumbling onto things in the wrong order. By the way, entry points are an excellent place to display a message to welcome the player and explain what their objective in the scene should be.
 
-<figure><img src="../../images/media/ux-instructions.png" alt="In-world banner" width="360"><figcaption><p>In-world instructions</p></figcaption></figure>
+<figure><img src="../../images/media/ux-instructions.png" alt="In-world banner" width="468"><figcaption><p>In-world instructions</p></figcaption></figure>
 
 If the player’s experience in your scene isn’t meant to be linear, but you still need to provide some basic instructions to ensure they enjoy it fully, you can show instructions on a pop-up. It’s possible to display a popup on the player’s screen as soon as they enter, regardless of what direction they come from, and in that way make sure that players will always know the essentials.
 
-<figure><img src="../../images/media/ux-banner.png" alt="Pop-up banner" width="360"><figcaption><p>Pop-up instructions</p></figcaption></figure>
+<figure><img src="../../images/media/ux-banner.png" alt="Pop-up banner" width="468"><figcaption><p>Pop-up instructions</p></figcaption></figure>
 
 {% hint style="warning" %}
 **📔 Note**: Make sure the popup isn't too intrusive and that it's easy to close by clicking anywhere.
@@ -72,7 +72,7 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 Be careful when placing your UI in screen regions that overlap with the default Decentraland UI elements. On the desktop client, the default Decentraland UI (sidebar, minimap, chat, etc.) is designed to occupy only the left 25% of the screen (highlighted in red in the image). The remaining screen space is a safe zone that content creators are free to use.
 
-<figure><img src="../../images/media/UI-Zones.png" alt="Screen regions used by UI" width="360"><figcaption></figcaption></figure>
+<figure><img src="../../images/media/UI-Zones.png" alt="Screen regions used by UI" width="468"><figcaption></figcaption></figure>
 
 There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
 

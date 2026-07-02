@@ -76,7 +76,7 @@ No podemos subestimar lo valiosos que son el color, los íconos, el movimiento y
 
 #### Layout
 
-Ten cuidado al colocar tu UI en regiones de la pantalla que se superponen con los elementos predeterminados de la UI de Decentraland. La UI predeterminada de Decentraland, incluyendo minimapa, chat, etc., está diseñada para cubrir solo el 25% izquierdo de la pantalla. El resto del espacio de la pantalla es una zona segura, libre para usar por los creadores de contenido.
+Ten cuidado al colocar tu UI en regiones de la pantalla que se superponen con los elementos predeterminados de la UI de Decentraland. La UI predeterminada de Decentraland (barra lateral, minimapa, chat, etc.) está diseñada para ocupar solo el 25% izquierdo de la pantalla (resaltado en rojo en la imagen). El espacio restante es una zona segura que los creadores de contenido pueden usar libremente.
 
 <figure><img src="../../images/media/UI-Zones.png" alt="Regiones de pantalla usadas por la UI" width="300"><figcaption></figcaption></figure>
 

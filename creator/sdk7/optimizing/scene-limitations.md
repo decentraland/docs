@@ -115,4 +115,4 @@ See [Worlds Size Limit](../projects/kinds-of-project.md#size-limits) for more de
 
 Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages. You can see the full list of files being published and their sizes before you confirm a deployment.
 
-All other limits in worlds are per parcel, including triangles, materials, etc. Since adding more parcels to a world is free, you can add up to 45x45 parcels to your scene, and have the corresponding limits to that parcel count.
+All other limits in worlds are per parcel, including triangles, materials, etc. Since adding more parcels to a world is free, you can add up to 300x300 parcels (90,000 total) to your scene, and have the corresponding limits to that parcel count.

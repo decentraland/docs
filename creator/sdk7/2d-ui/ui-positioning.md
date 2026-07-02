@@ -288,7 +288,7 @@ The `UiCanvasInformation` component holds the following information:
 * `height`: Canvas height in pixels
 * `width`: Canvas width in pixels
 * `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas
-* `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI.
+* `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI. Instead of reading these values manually, you can wrap your UI in the [`InteractableArea` component](#explorer-ui-insets-interactablearea) to apply them automatically.
 
 {% hint style="warning" %}
 **📔 Note** : Different Decentraland explorers will have different values for these, as the global UIs of the platform may differ, and the values might change dynamically as the user expands or hides different global UI menus.
@@ -369,3 +369,36 @@ Some other best practices regarding UI sizes:
 
 * If the width or height of any UI element is dynamic, it's good to also use the `maxWidth`, `minWidth`, `maxHeight`, and `minHeight` parameters to make sure they stay within reasonable values.
 * The font size of text is relative to a fixed number of pixels, you should make it dynamic so it remains readable on retina displays. See [Responsive text size](ui_text.md#responsive-text-size)
+
+## Explorer UI insets (`InteractableArea`)
+
+The Decentraland explorer draws its own UI on top of every scene: the minimap, the chat window, the profile widget, and other overlays. These elements always render above scene UI, so anything you place under them is partly hidden and can't be clicked. How much of the screen they take up depends on the platform, and can change at any moment — for example when the player opens or closes the chat. The portion of the screen that's free of explorer UI is called the **interactable area**.
+
+The `InteractableArea` component keeps your UI inside this region automatically, reading the current values that the explorer reports. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
+
+```tsx
+import ReactEcs, { ReactEcsRenderer, UiEntity, InteractableArea } from '@dcl/sdk/react-ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+export function setupUi() {
+	ReactEcsRenderer.setUiRenderer(() => (
+		<InteractableArea>
+			{/* A child sized 100% × 100% fills the interactable area exactly */}
+			<UiEntity
+				uiTransform={{ width: '100%', height: '100%' }}
+				uiBackground={{ color: Color4.create(0, 0, 0, 0.5) }}
+			/>
+		</InteractableArea>
+	))
+}
+```
+
+`InteractableArea` positions itself absolutely using the inset values from the [`UiCanvasInformation` component](#responsive-ui-size), so the `positionType` and `position` fields of its `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. The component reacts automatically whenever the explorer changes the reported area, for example when the player expands or hides a system menu.
+
+{% hint style="info" %}
+**📔 Note**: For now, only the **mobile client** (Godot) reports an interactable area, so the component only prevents overlaps there. Other clients will adopt it soon. Different explorers reserve different regions; when a client doesn't report an interactable area, the insets are `(0, 0, 0, 0)` and the component simply covers the whole screen, so it's always safe to leave in cross-platform UI code.
+{% endhint %}
+
+`InteractableArea` works just like the [`ScreenInsetArea` component](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea), but the two protect against different things: `InteractableArea` avoids the **explorer's own UI** (minimap, chat, overlays), while `ScreenInsetArea` avoids the **device's hardware-reserved margins** on mobile (notch, status bar, home indicator).
+
+If you prefer to lay things out yourself, you can also read the raw inset values from `UiCanvasInformation.interactableArea`, described in [Responsive UI size](#responsive-ui-size).

@@ -6,7 +6,7 @@ description: Where scene UI can safely live on mobile — clear of the system HU
 
 On a phone, two things eat into the screen space your UI can safely use:
 
-* **The Decentraland system HUD** — the app overlays its own controls (joystick, chat, profile, camera controls, the interaction button). Scene UI placed under them clashes visually and competes for taps. These regions are mapped out in [Reserved margins](#reserved-margins) below.
+* **The Decentraland system HUD** — the app overlays its own controls (joystick, chat, profile, camera controls, the interaction button). Scene UI placed under them clashes visually and competes for taps. These regions are mapped out in [Reserved margins](#reserved-margins) below, and the [`InteractableArea` component](#system-hud-insets-interactablearea) can keep UI clear of them automatically.
 * **The device's hardware-reserved margins** — the notch or camera cutout, status bar, home indicator, and rounded corners. The SDK keeps UI clear of these automatically with the [`ScreenInsetArea` component](#device-hardware-insets-screeninsetarea).
 
 The **mobile safe area** is what's left over — where scene UI can live without clashing with either.
@@ -85,6 +85,35 @@ Scene UI that overlaps the reserved regions will:
 * Be partially hidden behind the joystick, interaction button, or camera controls.
 * Compete for taps with the system controls — players will accidentally trigger one or the other.
 * Make your scene feel broken on mobile, which hurts featuring and retention.
+
+## System HUD insets (`InteractableArea`)
+
+The tables above are design-time guides: use them to plan your layout. At runtime, the explorer also **reports** the region that's currently free of its own UI — the **interactable area** — and the `InteractableArea` component constrains your UI to it automatically. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
+
+```tsx
+import ReactEcs, { ReactEcsRenderer, UiEntity, InteractableArea } from '@dcl/sdk/react-ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+export function setupUi() {
+  ReactEcsRenderer.setUiRenderer(() => (
+    <InteractableArea>
+      {/* A child sized 100% × 100% fills the interactable area exactly */}
+      <UiEntity
+        uiTransform={{ width: '100%', height: '100%' }}
+        uiBackground={{ color: Color4.create(0, 0, 0, 0.5) }}
+      />
+    </InteractableArea>
+  ))
+}
+```
+
+`InteractableArea` positions itself absolutely using the inset values the explorer reports, so the `positionType` and `position` fields of its `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties and UI components work as usual. The reported area can change at any moment — for example when the player opens or closes the chat — and the component reacts automatically.
+
+{% hint style="info" %}
+**📱 Mobile only (for now)**: Currently only the **mobile client** (Godot) reports an interactable area, so `InteractableArea` only prevents overlaps there. Other clients will adopt it soon. On clients that don't report a value, the insets are `(0, 0, 0, 0)` and the component covers the whole screen — safe to leave in cross-platform code, but not a substitute for testing. Always verify your layout on a real device using the [preview QR code](preview-on-mobile.md).
+{% endhint %}
+
+See [Explorer UI insets](../2d-ui/ui-positioning.md#explorer-ui-insets-interactablearea) for more details on this component.
 
 ## Device hardware insets (`ScreenInsetArea`)
 

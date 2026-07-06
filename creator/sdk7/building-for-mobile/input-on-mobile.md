@@ -45,8 +45,14 @@ Prefer instead:
 
 The [`PointerLock` component](../interactivity/button-events/click-events.md#lock-or-unlock-the-cursor) is a desktop-client concept (locked vs. unlocked mouse cursor). It does not apply to touch on mobile and is safe to leave in your scene — it has no effect there.
 
+## Customizing the on-screen controls
+
+Scenes can reconfigure these on-screen controls — hide the joystick or crosshair, change what the central button does, re-icon buttons, or replace them with custom UI. See [On-screen Controls](../interactivity/touch-screen-controls.md) and [UI Input Binding](../2d-ui/ui_input_binding.md).
+
 ## Related
 
+* [On-screen Controls](../interactivity/touch-screen-controls.md)
+* [UI Input Binding](../2d-ui/ui_input_binding.md)
 * [Click events](../interactivity/button-events/click-events.md)
 * [Proximity Events](../interactivity/button-events/proximity-events.md)
 * [Detect the platform from code](detect-platform.md)

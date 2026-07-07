@@ -8,7 +8,7 @@ The `UiInputBinding` component binds a UI entity to one or more `InputAction`s. 
 
 This lets you build your own touch controls out of UI elements. It's typically combined with [On-screen Controls](../interactivity/touch-screen-controls.md): hide the native buttons, then provide your own.
 
-<figure><img src="../../images/touch-controls/ui-input-binding.svg" alt="Custom UI button bound to an input action"><figcaption><p>Custom UI button bound to an input action (placeholder)</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/ui-input-binding.png" alt="Custom UI button bound to an input action"><figcaption><p>Custom UI button bound to an input action (placeholder)</p></figcaption></figure>
 
 ## Usage
 

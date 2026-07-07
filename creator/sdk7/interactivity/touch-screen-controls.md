@@ -6,7 +6,7 @@ description: Configure the native on-screen touch controls for your scene.
 
 The `TouchScreenControls` component lets your scene customize the native on-screen touch controls that a player sees on the mobile client — the virtual joystick and the on-screen gamepad. Use it to declutter the HUD, hide the joystick or crosshair, change what the large central button does, or swap a button's glyph for your own icon.
 
-<figure><img src="../../images/touch-controls/touch-controls-default.svg" alt="Default on-screen controls"><figcaption><p>Default on-screen controls (placeholder)</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/touch-controls-default.jpg" alt="Default on-screen controls"><figcaption><p>Default on-screen controls</p></figcaption></figure>
 
 The component is applied automatically while the player is inside your scene, and reverts to the defaults (nothing hidden, jump as the central button) as soon as they leave — so scenes that don't use it are unaffected. It only affects platforms with native on-screen controls; it's a no-op on desktop and has no effect in VR.
 
@@ -95,7 +95,7 @@ export function main() {
 }
 ```
 
-<figure><img src="../../images/touch-controls/custom-main-action.svg" alt="Central button with a custom icon and action"><figcaption><p>Central button with a custom icon and action (placeholder)</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/custom-main-action.jpg" alt="Central button with a custom icon and action"><figcaption><p>Central button with a custom icon and action</p></figcaption></figure>
 
 To replace the native controls entirely, hide them here and build your own touch buttons with [UI Input Binding](../2d-ui/ui_input_binding.md).
 

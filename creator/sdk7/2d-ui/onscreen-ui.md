@@ -18,7 +18,7 @@ Build a UI by defining a structure of nested `UIEntity` objects in JSX. The synt
 
 A simple UI with static elements can look a lot like HTML, but when you add dynamic elements that respond to a change in state, you can do things that are a lot more powerful.
 
-The default Decentraland explorer UI includes a chat widget, a map, and other elements. These UI elements are always displayed on the top layer, above any scene-specific UI. So if your scene has UI elements that occupy the same screen space as these, they will be occluded.
+The default Decentraland explorer UI includes a chat widget, a map, and other elements. These UI elements are always displayed on the top layer, above any scene-specific UI. So if your scene has UI elements that occupy the same screen space as these, they will be occluded. To keep your UI clear of these elements automatically, wrap it in the [`InteractableArea` component](ui-positioning.md#explorer-ui-insets-interactablearea).
 
 See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to design the look and feel of your UI.
 

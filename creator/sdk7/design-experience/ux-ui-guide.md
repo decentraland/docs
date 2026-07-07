@@ -126,6 +126,10 @@ If you are going to place text that is displayed over imagery (or over the world
 
 <figure><img src="../../images/media/ux-text-over-images.png" alt="Text over images" width="300"><figcaption><p>Prioritize legibility</p></figcaption></figure>
 
+{% hint style="info" %}
+**💡 Tip**: Backgrounds may vary with the scene's lighting conditions, and players on mobile often view their screens under suboptimal light. To keep text readable in every situation, always give it strong contrast against its background. For 2D UI text, place it over a solid, contrasting [`uiBackground`](../2d-ui/ui_background.md). For in-world text via [`TextShape`](../3d-essentials/text.md#text-shadow-and-outline-properties), give it a thin outline in a contrasting color.
+{% endhint %}
+
 ### Icons
 
 Icons synthesise information, helping you identify actions through images. They are an amazingly powerful tool for providing input that can be interpreted fast, as opposed to using text to label things, which demands more of the player’s attention and time. It’s also useful to show icons in combination with text, as this helps disambiguate their meanings.

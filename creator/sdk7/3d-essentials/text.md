@@ -150,6 +150,19 @@ The letters in the text can also have an outline in a different color surroundin
 * `outlineWidth`: _number_. How wide the text outline will be, in all directions, as a number from 0 to 1. By default _0_, which makes it invisible.
 * `outlineColor`: _Color3_ object. _Color3_ objects store an _RBG_ color as three numbers from 0 to 1.
 
+{% hint style="info" %}
+**💡 Tip**: It's a good practice to give your text a thin outline in a contrasting color. This keeps the text legible against whatever is behind it, as the background may vary with the scene's lighting conditions. This is especially important for players viewing the scene on mobile.
+
+```ts
+TextShape.create(sign, {
+	text: 'Hello World',
+	textColor: { r: 1, g: 1, b: 1, a: 1 },
+	outlineWidth: 0.1,
+	outlineColor: { r: 0, g: 0, b: 0 },
+})
+```
+{% endhint %}
+
 ## Multiple lines
 
 If you want your text to span multiple lines, use `\n` as part of the string. The following example has two separate lines of text:

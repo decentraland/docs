@@ -9,10 +9,11 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 ## DOs
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.
-* **Keep critical UI inside the [safe area](safe-area.md)**, and wrap it in [`ScreenInsetArea`](safe-area.md#device-hardware-insets-screeninsetarea) to clear the device's hardware margins (notch, status bar, home indicator).
+* **Keep critical UI inside the [safe area](safe-area.md)**. Wrap it in [`InteractableArea`](safe-area.md#system-hud-insets-interactablearea) to clear the system HUD (joystick, chat, profile, action buttons) and in [`ScreenInsetArea`](safe-area.md#device-hardware-insets-screeninsetarea) to clear the device's hardware margins (notch, status bar, home indicator).
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
+* **Give text strong contrast against its background.** Mobile players often view their screens under suboptimal lighting, which makes reading harder. For 2D UI text, place it over a solid, contrasting [`uiBackground`](../2d-ui/ui_background.md). For in-world text via [`TextShape`](../3d-essentials/text.md#text-shadow-and-outline-properties), give it a thin outline in a contrasting color.
 
 ## DON'Ts
 

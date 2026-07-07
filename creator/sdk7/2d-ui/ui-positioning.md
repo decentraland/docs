@@ -370,7 +370,7 @@ Some other best practices regarding UI sizes:
 * If the width or height of any UI element is dynamic, it's good to also use the `maxWidth`, `minWidth`, `maxHeight`, and `minHeight` parameters to make sure they stay within reasonable values.
 * The font size of text is relative to a fixed number of pixels, you should make it dynamic so it remains readable on retina displays. See [Responsive text size](ui_text.md#responsive-text-size)
 
-## Explorer UI insets (`InteractableArea`)
+## Safe Screen Areas
 
 The Decentraland explorer draws its own UI on top of every scene: the minimap, the chat window, the profile widget, and other overlays. These elements always render above scene UI, so anything you place under them is partly hidden and can't be clicked. How much of the screen they take up depends on the platform, and can change at any moment — for example when the player opens or closes the chat. The portion of the screen that's free of explorer UI is called the **interactable area**.
 

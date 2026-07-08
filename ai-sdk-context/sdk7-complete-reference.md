@@ -394,6 +394,14 @@ BillboardMode.BM_NONE // No rotation
 BillboardMode.BM_X // Fixed X axis
 BillboardMode.BM_Y // Fixed Y axis (most common)
 BillboardMode.BM_Z // Fixed Z axis
+
+// Face another entity instead of the player's camera
+Billboard.create(entity, {
+	targetEntity: otherEntity, // optional; unset = face the camera
+})
+// If the target entity doesn't exist (not yet created, or removed), the
+// billboard keeps its last orientation until the target exists again.
+// targetEntity: engine.CameraEntity is equivalent to leaving it unset.
 ```
 
 #### Face Target

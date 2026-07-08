@@ -50,7 +50,7 @@ ISLA NEGRA = "https://radioislanegra.org/listen/up/basic.aac"
 
 Query the state of an audio stream using the function `AudioStream.getAudioState()`, passing the entity that owns the `AudioStream` component.
 
-The returned state is a value of the `MediaState` enum. This enum has the following possible values:
+The returned value is a `PBAudioEvent` object (or `undefined` if the stream hasn't reported any state yet), containing a `state` field and a `timestamp` field. The `state` field is a value of the `MediaState` enum. This enum has the following possible values:
 
 * `MS_BUFFERING`
 * `MS_ERROR`
@@ -73,11 +73,12 @@ export function main() {
 		url: 'https://audio-edge-es6pf.mia.g.radiomast.io/ref-128k-mp3-stereo',
 	})
 
-	let lastState: ReturnType<typeof AudioStream.getAudioState> = undefined
+	let lastState: MediaState | undefined = undefined
 	engine.addSystem(() => {
-		const currentState = AudioStream.getAudioState(entity)
+		const currentState = AudioStream.getAudioState(entity)?.state
 		if (lastState !== currentState) {
 			console.log('Stream state: ', currentState)
+			lastState = currentState
 
 			if (currentState == MediaState.MS_ERROR) {
 				// Attempt reconnection

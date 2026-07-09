@@ -48,9 +48,8 @@ The movement tween takes the following information:
 * `end`: A Vector3 for the ending position
 * `duration`: How many milliseconds it takes to move between the two positions
 
-These other optonal parameters are also available:
+This other optional parameter is also available:
 
-* `faceDirection`: If true, the entity is rotated to face in the direction of the movement.
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
 ## Rotate between two directions
@@ -98,7 +97,7 @@ Transform.create(childEntity, {
 	position: Vector3.create(1, 0, 0),
 	parent: pivotEntity,
 })
-MeshRenderer.setBox(myEntity)
+MeshRenderer.setBox(childEntity)
 
 Tween.setRotate(pivotEntity, 
 	Quaternion.fromEulerDegrees(0, 0, 0), 
@@ -111,7 +110,7 @@ Note that in this example, the system is rotating the `pivotEntity` entity, that
 
 ## Scale between two sizes
 
-To change the scale of an entity between two sizes, create a `Tween` component with its mode set to `Tween.Mode.Scale`.
+To change the scale of an entity between two sizes, create a `Tween` component with the `setScale` function.
 
 ```ts
 const myEntity = engine.addEntity()
@@ -198,15 +197,15 @@ To make an entity rotate constantly, use the `Tween` component with the `setRota
 ```ts
 Tween.setRotateContinuous(myEntity, 
 	Quaternion.fromEulerDegrees(0, -1, 0), 
-	700
+	45
 )
 ```
 
 The rotate continuous tween takes the following information:
 
 * `entity`: The entity to rotate
-* `direction`: A Quaternion for the rotation
-* `speed`: How many degrees per second the entity will rotate
+* `direction`: A Quaternion that determines the axis to rotate around. Only the axis of this rotation matters, the size of its angle is ignored. For example, `Quaternion.fromEulerDegrees(0, -1, 0)` and `Quaternion.fromEulerDegrees(0, -90, 0)` behave the same, both rotating around the _y_ axis in a negative direction.
+* `speed`: How many degrees per second the entity will rotate. A negative value rotates in the opposite direction.
 
 This other optional parameter is also available:
 
@@ -349,7 +348,7 @@ Transform.create(myEntity, {
 })
 MeshRenderer.setBox(myEntity)
 
-Tween.setMoveRotateScale(mrsEntity, {
+Tween.setMoveRotateScale(myEntity, {
 	position: { start: Vector3.create(14, 1, 2), end: Vector3.create(14, 3, 2) },
 	rotation: { start: Quaternion.fromEulerDegrees(0, 0, 0), end: Quaternion.fromEulerDegrees(0, 180, 90) },
 	scale: { start: Vector3.One(), end: Vector3.create(2, 0.5, 2) },
@@ -360,12 +359,12 @@ Tween.setMoveRotateScale(mrsEntity, {
 The movement tween takes the following information:
 
 * `entity`: The entity to move
-* `params`: An object with several optional parameters
-	* `position`: An object with a `start` and `end` value, both as `Vector3`.
- 	* `rotation`: An object with a `start` and `end` value, both as `Quaternion`.
-  	* `scale`: An object with a `start` and `end` value, both as `Vector3`.	
-	* `duration`: How many milliseconds it takes to transition between the two sets of values
- 	* `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens) 
+* `params`: An object with the following parameters
+	* `position`: _(optional)_ An object with a `start` and `end` value, both as `Vector3`.
+ 	* `rotation`: _(optional)_ An object with a `start` and `end` value, both as `Quaternion`.
+  	* `scale`: _(optional)_ An object with a `start` and `end` value, both as `Vector3`. At least one of `position`, `rotation` or `scale` must be provided.
+	* `duration`: _(required)_ How many milliseconds it takes to transition between the two sets of values
+ 	* `easingFunction`: _(optional)_ What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens) 
 
 
 An entity can only have one `Tween` component, and each tween component can only perform one transformation at a time. Through the `setMoveRotateScale` tween type, you can make an entity move sideways and also rotate at the same time, but both these motions will follow the same timeline. If you need transitions to be independent from each other, as a workaround, you can use parented entities. For example, you can have an invisible parent entity that moves sideways, with a visible child that rotates.
@@ -461,9 +460,9 @@ Transform.create(myEntity, {
 MeshRenderer.setBox(myEntity)
 ```
 
-In this example we're moving an entity by 0.1 meters per tick of the game loop.
+In this example we're moving an entity by 0.05 meters per tick of the game loop.
 
-`Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/10 of its length with `Vector3.scale()`. If our scene has 30 frames per second, the entity is moving at 3 meters per second in speed.
+`Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/20 of its length with `Vector3.scale()`. If our scene has 30 frames per second, the entity is moving at 1.5 meters per second in speed.
 
 ![](../../images/media/gifs/move.gif)
 
@@ -526,7 +525,7 @@ Transform.create(childEntity, {
 	position: Vector3.create(1, 0, 0),
 	parent: pivotEntity,
 })
-MeshRenderer.setBox(myEntity)
+MeshRenderer.setBox(childEntity)
 ```
 
 Note that in this example, the system is rotating the `pivotEntity` entity, that's a parent of the `childEntity` entity.
@@ -716,13 +715,15 @@ function SimpleRotate(dt: number) {
 		Quaternion.fromEulerDegrees(90, 0, 0),
 		dt * 10
 	)
-	if (transform.rotation === Quaternion.fromEulerDegrees(90, 0, 0)) {
+	if (
+		Quaternion.angle(transform.rotation, Quaternion.fromEulerDegrees(90, 0, 0)) < 0.01
+	) {
 		console.log('done')
-		engine.removeSystem(this)
+		engine.removeSystem(SimpleRotate)
 	}
 }
 
-const simpleRotateSystem = engine.addSystem(SimpleRotate)
+engine.addSystem(SimpleRotate)
 
 const myEntity = engine.addEntity()
 Transform.create(myEntity, {
@@ -753,7 +754,7 @@ The `lerp()` function of the `Scalar` object takes three parameters:
 const originScale = 1
 const targetScale = 10
 
-let newScale = Scalar.Lerp(originScale, targetScale, 0.6)
+let newScale = Scalar.lerp(originScale, targetScale, 0.6)
 ```
 
 To implement this lerp in your scene, we recommend creating a custom component to store the necessary information. You also need to define a system that implements the gradual scaling in each frame.
@@ -963,7 +964,7 @@ The texture tween takes the following information:
 This other optional parameter is also available:
 
 * `movementType`: (optional), defines if the movement will be on the offset or the tiling field. By default it uses offset.
-* `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens). Note: This parameter is only used if a duration is provided.
+* `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens).
 
 ## Constant texture movement
 

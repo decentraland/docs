@@ -74,7 +74,7 @@ You can also use Generative AI tools to generate your own 3D models. Check out:
 
 ## Run a local preview
 
-To run a preview of your scene, open a Visual Studio Code window on your project's root folder and click the **Preview** button on the Decentraland tab.
+To run a preview of your scene, open it in the Creator Hub and click the **Preview** button. Alternatively, if you're working from the command line, run `npm run start` on your project's root folder.
 
 * [Preview your scene](preview-scene.md) for more details.
 * Check the [Debug a scene](preview-scene.md#debug-a-scene) for tips on how to debug any issues.

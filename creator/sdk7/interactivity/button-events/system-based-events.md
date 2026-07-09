@@ -118,11 +118,11 @@ If there are multiple entities that the player can interact with in the same way
 ```ts
 engine.addSystem(() => {
 	const result = inputSystem.getInputCommand(
-		InputAction.IA_LEFT,
+		InputAction.IA_POINTER,
 		PointerEventType.PET_DOWN
 	)
 	if (result) {
-		if (result.hit.entityId === myEntity) {
+		if (result.hit?.entityId === myEntity) {
 			// handle click
 		}
 	}
@@ -288,8 +288,8 @@ The `PointerEvents` component requires at least one pointer event definition. Ea
 * `eventInfo`: An object that can contain the following fields:
   * `button` (_required_): Which input to listen for, as a value from the `InputAction` enum. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
   * `hoverText` _(optional)_: What string to display in the hover feedback hint. "Interact" by default.
-  * `hideFeedback` _(optional)_: If true, it hides both the hover hint and the edge highlight for this entity. _false_ by default.
-  * `showHighlight` _(optional)_: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `hideFeedback` is _false_.
+  * `showFeedback` _(optional)_: If false, it hides both the hover hint and the edge highlight for this entity. _true_ by default.
+  * `showHighlight` _(optional)_: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `showFeedback` is _true_.
   * `maxDistance` _(optional)_: Only show feedback when the player is closer than a certain distance from the entity. Default is _10 meters_.
 
 A single `PointerEvents` component can hold multiple pointer events definitions, that can detect different events for different buttons. Each entity can only have _one_ `PointerEvents` component, but this component can include multiple objects in its `pointerEvents` array, one for each event to respond to.
@@ -352,7 +352,13 @@ PointerEvents.create(myEntity, {
 
 // handle click events on the entity
 engine.addSystem(() => {
-	if (inputSystem.isTriggered(InputAction.IA_POINTER, myEntity)) {
+	if (
+		inputSystem.isTriggered(
+			InputAction.IA_POINTER,
+			PointerEventType.PET_DOWN,
+			myEntity
+		)
+	) {
 		// Custom logic in response to an input action
 	}
 })
@@ -467,7 +473,7 @@ PointerEvents.create(chest, {
 })
 ```
 
-To hide both the hover hint and the edge highlight, set the `hideFeedback` to an true. When doing this, the cursor doesn't show any icons, text or any edge highlight. You could also just remove the `PointerEvents` component from the entity.
+To hide both the hover hint and the edge highlight, set `showFeedback` to _false_. When doing this, the cursor doesn't show any icons, text or any edge highlight. You could also just remove the `PointerEvents` component from the entity.
 
 ```ts
 // create entity
@@ -480,7 +486,7 @@ PointerEvents.create(chest, {
 			eventType: PointerEventType.PET_DOWN,
 			eventInfo: {
 				button: InputAction.IA_POINTER,
-				hideFeedback: true,
+				showFeedback: false,
 			},
 		},
 	],
@@ -520,7 +526,7 @@ engine.addSystem(() => {
 	)
 
 	// check if the click was close enough
-	if (cmd.hit.length < 6) {
+	if (cmd && cmd.hit && cmd.hit.length < 6) {
 		// do something
 	}
 })
@@ -573,7 +579,7 @@ engine.addSystem(() => {
 
 ## Proximity events
 
-Check for proximity button presses regardless of where their cursor is aiming by using `PET_DOWN` on an entity that uses `InteractionType.PROXIMITY`. Set the `interactionType` field in the `eventInfo` to mark the event as proximity-based.
+Check for proximity button presses regardless of where their cursor is aiming by using `PET_DOWN` on an entity that uses `InteractionType.PROXIMITY`. Set the `interactionType` field in the pointer event definition, next to `eventInfo`, to mark the event as proximity-based.
 
 See [**Proximity Events**](proximity-events.md) for more details, including the available helper functions.
 
@@ -686,12 +692,12 @@ engine.addSystem(() => {
 		myEntity
 	)
 	if (cmd) {
-		console.log(cmd.hit.entityId)
+		console.log(cmd.hit?.entityId)
 	}
 })
 ```
 
-If there was no input action that matches the query, then `inputSystem.getInputCommand` returns undefined. Make sure that you handle this scenario in your logic.
+If there was no input action that matches the query, then `inputSystem.getInputCommand` returns _null_. Make sure that you handle this scenario in your logic.
 
 ### Max click distance
 
@@ -708,7 +714,7 @@ engine.addSystem(() => {
 	)
 
 	// check if the click was close enough
-	if (cmd && cmd.hit.length < 6) {
+	if (cmd && cmd.hit && cmd.hit.length < 6) {
 		// do something
 	}
 })
@@ -741,7 +747,7 @@ engine.addSystem(() => {
 		PointerEventType.PET_DOWN,
 		myEntity
 	)
-	if (cmd && cmd.hit.meshName === 'firePlace') {
+	if (cmd && cmd.hit?.meshName === 'firePlace') {
 		// light fire
 	}
 })

@@ -9,7 +9,7 @@ A Decentraland scene can detect input actions from all of the buttons that are u
 You can detect input actions against an entity. This involves pressing a button while the player's cursor is pointing at that entity's collider. You can also detect _global_ input event, that involve pressing activating the input at any time, without consideration for where the pointer is aiming.
 
 {% hint style="warning" %}
-**📔 Note**: Entities must have a [collider](../../3d-essentials/colliders.md) to respond to input actions. `MeshRenderer` models must also be given a `MeshCollider` component. Models from a `GLTFContainer` may have their own embedded collision geometry, or they can be configured to use their visible geometry, they can also be given a `MeshCollider` component.
+**📔 Note**: Entities must have a [collider](../../3d-essentials/colliders.md) to respond to input actions. `MeshRenderer` models must also be given a `MeshCollider` component. Models from a `GltfContainer` may have their own embedded collision geometry, or they can be configured to use their visible geometry, they can also be given a `MeshCollider` component.
 {% endhint %}
 
 There are several different ways to handle input actions, depending on the use case.
@@ -57,12 +57,12 @@ You could also implement [advanced custom hints](system-based-events.md#advanced
 
 ## Obstacles
 
-Button events cast rays that only interact with the first entity on their path that is subscribed to the pointer events collision layer. This is true as long as the entity is closer than its distance limits to both the avatar and the camera.
+Button events cast rays that only interact with the first entity on their path that is subscribed to the pointer events collision layer. This is true as long as the entity is within its distance limits. If the entity defines distance limits for both the camera and the avatar, it's enough for either one of the two to be close enough.
 
 For an entity to be intercepted by the ray of a pointer event, either:
 
 * The model must contain [collider meshes](../../../3d-modeling/colliders.md).
-* The `GLTFContainer` must be configured to use the [visible geometry with collision masks](../../3d-essentials/colliders.md#colliders-on-3d-models).
+* The `GltfContainer` must be configured to use the [visible geometry with collision masks](../../3d-essentials/colliders.md#colliders-on-3d-models).
 * The entity must have a [MeshCollider component](../../3d-essentials/colliders.md).
 
 If another entity's collider is standing on the way of the entity that the player wants to interact with it, the player won't be able to click the entity that's behind, unless the entity has no collider, or this collider is configured to not respond to the pointer events collision layer.
@@ -135,12 +135,12 @@ Each `InputAction` is abstracted away from the literal input in the keyboard so 
 
 Each input can produce the following types of pointer events. Each of the following is a value in the `PointerEventType` enum.
 
-* `DOWN`: Player pushes down a specific button while having the cursor pointing at the entity's collider.
-* `UP`: Player releases a specific button while having the cursor pointing at the entity's collider.
-* `HOVER_ENTER`: Player's cursor starts pointing at the entity's collider.
-* `HOVER_LEAVE`: Player's cursor stops pointing at the entity's collider.
-* `PROXIMITY_ENTER`: Player walks within the entity's proximity range, regardless of where they're looking.
-* `PROXIMITY_LEAVE`: Player moves out of the entity's proximity range.
+* `PET_DOWN`: Player pushes down a specific button while having the cursor pointing at the entity's collider.
+* `PET_UP`: Player releases a specific button while having the cursor pointing at the entity's collider.
+* `PET_HOVER_ENTER`: Player's cursor starts pointing at the entity's collider.
+* `PET_HOVER_LEAVE`: Player's cursor stops pointing at the entity's collider.
+* `PET_PROXIMITY_ENTER`: Player walks within the entity's proximity range, regardless of where they're looking.
+* `PET_PROXIMITY_LEAVE`: Player moves out of the entity's proximity range.
 
 See [**Proximity Events**](proximity-events.md) for how to use proximity-based interactions.
 
@@ -150,9 +150,9 @@ All input actions include data about the event, including things like the button
 
 The following information can be obtained from any input event:
 
-* `analog`: Flag to mark if the event is from an analog or a digital input. Digital inputs have a value of _1_, analog inputs (like a joy stick) have a value of _0_.
+* `analog`: Optional number, only present on events from an analog input (like a joystick), storing the input's analog value.
 * `button`: Which button id was pressed. The number corresponds to the `InputAction` enum, that lists all of the available buttons.
-* `state`: Type of pointer event, from the enum `PointerEventType`. _0_ refers to `PointerEventType.PET_DOWN`, _1_ to `PointerEventType.PET_UP`, _2_ to `PointerEventType.PET_HOVER_ENTER`, _3_ to `PointerEventType.PET_HOVER_LEAVE`
+* `state`: Type of pointer event, from the enum `PointerEventType`. _0_ refers to `PointerEventType.PET_UP`, _1_ to `PointerEventType.PET_DOWN`, _2_ to `PointerEventType.PET_HOVER_ENTER`, _3_ to `PointerEventType.PET_HOVER_LEAVE`, _4_ to `PointerEventType.PET_PROXIMITY_ENTER`, _5_ to `PointerEventType.PET_PROXIMITY_LEAVE`
 
 * `timestamp`: A [lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp) to identify each button event.
 
@@ -162,10 +162,11 @@ The following information can be obtained from any input event:
 
   * `entityId`: Id number of the entity that was hit by the ray.
   * `meshName`: _String_ with the internal name of the specific mesh in the 3D model that was hit. This is useful when a 3D model is composed of multiple meshes.
-  * `origin`: _Vector3_ for the position where the ray originates (relative to the scene)
+  * `globalOrigin`: _Vector3_ for the position where the ray originates (relative to the scene)
+  * `direction`: _Vector3_ with the direction vector of the ray, in global coordinates
   * `position`: _Vector3_ for the position where the ray intersected with the hit entity (relative to the scene)
   * `length`: Length of the ray from its origin to the position where the hit against the entity occurred.
-  * `normalHit`: _Quaternion_ for the angle of the normal of the hit in world space.
+  * `normalHit`: _Vector3_ with a normalized direction vector, describing the angle of the normal of the hit in world space.
 
 This data is accessed in different ways depending on what approach you're using to handle input actions.
 
@@ -173,7 +174,7 @@ Using the [**Register a callback**](register-callback.md) approach, the first pa
 
 ```ts
 pointerEventsSystem.onPointerDown({ entity: myEntity }, function (cmd) {
-	console.log(cmd.hit.entityId)
+	console.log(cmd.hit?.entityId)
 })
 ```
 
@@ -187,7 +188,7 @@ engine.addSystem(() => {
 		myEntity
 	)
 	if (cmd) {
-		console.log(cmd.hit.entityId)
+		console.log(cmd.hit?.entityId)
 	}
 })
 ```
@@ -196,16 +197,15 @@ engine.addSystem(() => {
 **📔 Note**: For an entity to not only intercept a pointer event, but also to return data, the entity also needs to have a `PointerEvents` component. The `pointerEventsSystem` helpers also take care of this requirment.
 {% endhint %}
 
-Using the [**Advanced**](advanced-button-events.md) approach, the `PointerEventsResults` contains an array with a recent history of all pointer events against that entity.
+Using the [**Advanced**](advanced-button-events.md) approach, the `PointerEventsResult` contains a list with a recent history of all pointer events against that entity.
 
 ```ts
 engine.addSystem(() => {
-	const pointerEvents = engine.getEntitiesWith(PointerEventsResult)
-	for (const [entity] of pointerEvents) {
-		const poninterEvents = PointerEventsResult.get(entity)
+	for (const [entity] of engine.getEntitiesWith(PointerEventsResult)) {
+		const pointerEvents = PointerEventsResult.get(entity)
 
-		if (poninterEvents.commands.length > 0) {
-			console.log(poninterEvents.commands[0].hit.entityId)
+		for (const event of pointerEvents) {
+			console.log(event.hit?.entityId)
 		}
 	}
 })
@@ -229,17 +229,19 @@ To change the player's cursor state, use the `PointerLock` component on the `eng
 ```ts
 import {PointerLock} from '@dcl/sdk/ecs'
     
-PointerLock.create(engine.CameraEntity, {isPointerLocked: false})
+PointerLock.createOrReplace(engine.CameraEntity, {isPointerLocked: false})
 ```
+
+{% hint style="warning" %}
+**📔 Note**: The engine provides a `PointerLock` component on the `engine.CameraEntity` by default. Use `createOrReplace()` or `getMutable()` rather than `create()`, which throws an error if the component already exists.
+{% endhint %}
 
 You can also query the player's cursor state by reading the `PointerLock` component's state.
 
 ```ts
 import {PointerLock} from '@dcl/sdk/ecs'
 
-PointerLock.create(engine.CameraEntity)
-
-const isPointerLocked = PointerLock.get(engine.CameraEntity).isPointerLocked
+const isPointerLocked = PointerLock.getOrNull(engine.CameraEntity)?.isPointerLocked
 ```
 
 Use the `.onChange` function to react in changes in the pointer state. The following example enforces that the cursor is always unlocked.
@@ -249,7 +251,7 @@ import {PointerLock} from '@dcl/sdk/ecs'
 
 export function main() {
 
-    PointerLock.create(engine.CameraEntity, {isPointerLocked: false});
+    PointerLock.createOrReplace(engine.CameraEntity, {isPointerLocked: false});
 
     PointerLock.onChange(engine.CameraEntity, (pointerLock) => {
 		    if (!pointerLock) return

@@ -28,8 +28,8 @@ This statement requires two parameters:
     * `maxDistance`: The maximum distance between the entity and the player's **camera**, in meters.
 	* `maxPlayerDistance`: The maximum distance between the entity and the player's **avatar**, in meters.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
-    * `hideFeedback`: If true, it hides both the hover hint and the edge highlight for this entity. _false_ by default.
-    * `showHighlight`: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `hideFeedback` is _false_.
+    * `showFeedback`: If false, it hides both the hover hint and the edge highlight for this entity. _true_ by default.
+    * `showHighlight`: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `showFeedback` is _true_.
 * `cb`: A callback function to run each time a button down event occurs while pointing at the entity
 
 ```ts
@@ -44,7 +44,7 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-The above command leaves the callback function registered, and will be called as an [asynchronous functions](../../programming-patterns/async-functions.md) every time the related button event occurs.
+The above command leaves the callback function registered, and it will be called every time the related button event occurs. Note that the callback must be a synchronous function; `async` functions aren't supported here and result in an error.
 
 {% hint style="warning" %}
 **📔 Note**:\
@@ -82,7 +82,7 @@ To hide the hover hint, but leave the edge highlight, set the value of the `hove
 
 ```ts
 pointerEventsSystem.onPointerDown(
-  {entity: myEntity, opts: { button: InputAction.IA_PRIMARY, hoverText: ''}},,
+  {entity: myEntity, opts: { button: InputAction.IA_PRIMARY, hoverText: ''}},
   function () {
     console.log("clicked on surprise interactive item")
   }
@@ -107,11 +107,11 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-To hide both the hover hint and the edge highlight, set the `hideFeedback` to an true. When doing this, the cursor doesn't show any icons, text or any edge highlight.
+To hide both the hover hint and the edge highlight, set `showFeedback` to _false_. When doing this, the cursor doesn't show any icons, text or any edge highlight.
 
 ```ts
 pointerEventsSystem.onPointerDown(
-  {entity: myEntity, opts: { button: InputAction.IA_PRIMARY, hideFeedback: true}},,
+  {entity: myEntity, opts: { button: InputAction.IA_PRIMARY, showFeedback: false}},
   function () {
     console.log("opened secret door")
   }
@@ -125,7 +125,9 @@ When registering an input action with the `EventsSystem`, this is creating a `Po
 ```ts
 const hoverFeedback = PointerEvents.getMutable(myEntity)
 
-hoverFeedback.pointerEvents[0].eventInfo.hoverText = 'Close door'
+if (hoverFeedback.pointerEvents[0]?.eventInfo) {
+	hoverFeedback.pointerEvents[0].eventInfo.hoverText = 'Close door'
+}
 ```
 
 ## Distance limits
@@ -163,14 +165,14 @@ pointerEventsSystem.onPointerUp(
 )
 ```
 
-This statement requires three parameters:
+This statement requires two parameters:
 
 * `data`: An object that contains the following:
   * `entity`: The entity to handle
   * `opts`: An object with optional additional data:
     * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
-    * `hideFeedback`: If true, it hides the hover hint for this entity.
+    * `showFeedback`: If false, it hides the hover hint for this entity. _true_ by default.
     * `maxDistance`: How far away can the player be from the entity to be able to interact with this entity, in meters. If the player is too far, there will be no hover feedback and pointer events won't work.
 * `cb`: A callback function to run each time a button up event occurs while pointing at the entity.
 
@@ -235,7 +237,7 @@ To fetch this data, pass a parameter to the callback function. This parameter co
 pointerEventsSystem.onPointerDown(
 	{ entity: myEntity, opts: { button: InputAction.IA_PRIMARY } },
 	function (cmd) {
-		console.log(cmd.hit.entityId)
+		console.log(cmd.hit?.entityId)
 	}
 )
 ```
@@ -248,7 +250,7 @@ As an alternative, you can use the Register callback approach and set the `butto
 
 ```ts
 pointerEventsSystem.onPointerDown(
-  {entity: myEntity, opts: { button: InputAction.IA_ANY}},,
+  {entity: myEntity, opts: { button: InputAction.IA_ANY}},
   function (cmd) {
       if(cmd.button === InputAction.IA_POINTER){
         // do X

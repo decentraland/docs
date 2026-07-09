@@ -37,9 +37,9 @@ Then you must configure your Metamask account to include the Matic Testnet.
 To do this:
 
 1. Switch networks on Metamask by clicking on the name of the current network and selecting _Custom RPC_ at the bottom of the dropdown.
-2. Fill in 'Matic Testnet' as _Network name_ and [**https://rpc-amoy.polygon.technology**](https://rpc-amoy.polygon.technology) as _New RPC URL_ and the same value as _Block Explorer URL_. For _Symbol_ set **MATIC**
+2. Fill in 'Polygon Amoy Testnet' as _Network name_, [**https://rpc-amoy.polygon.technology**](https://rpc-amoy.polygon.technology) as _New RPC URL_ and [**https://amoy.polygonscan.com**](https://amoy.polygonscan.com) as _Block Explorer URL_. For _Symbol_ set **POL**
 3. Click 'Save' to add this new network to Metamask.
 
 {% hint style="warning" %}
-**📔 Note**: Learn more about how to set up Matic on their [Documentation page](https://docs.matic.network/docs/develop/getting-started)
+**📔 Note**: Learn more about how to set up Polygon on their [Documentation page](https://docs.polygon.technology/)
 {% endhint %}

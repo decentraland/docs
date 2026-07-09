@@ -13,7 +13,7 @@ By following the steps detailed here, you can avoid most of the complexity that 
 
 ## Create a library
 
-> **📔 Note**: Make sure you're using Node version 16.x or newer before you build your library.
+> **📔 Note**: Make sure you're using Node version 20 or newer before you build your library.
 
 To create your own library and share it via NPM, do the following:
 
@@ -74,7 +74,7 @@ This will keep your scene synced to the version of the library that's directly i
 
 > **💡 Tip**: To verify that the linking was successful, run `npm ls --link`. You should see the library name pointing to the folder on your local files.
 
-If you make changes to the library, you must run `npm build` to update them. To avoid having to do that every time:
+If you make changes to the library, you must run `npm run build` to update them. To avoid having to do that every time:
 
 1. Add the script "start": "tsc -p tsconfig.json --watch" to the library
 2. Run `npm start` on the library
@@ -82,7 +82,7 @@ If you make changes to the library, you must run `npm build` to update them. To 
 When you're finished testing, remember to unlink the library.
 
 1. On the scene folder run `npm install <library name>`
-2. Then in the library run `rm node_modules && npm install`
+2. Then in the library run `rm -rf node_modules && npm install`
 
 ## Versioning
 

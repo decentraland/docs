@@ -18,63 +18,68 @@ This page covers how to spawn a composite from code at runtime, for example to s
 Spawning a composite takes two steps: **load** the composite file, then **spawn** it. Loading is asynchronous and spawning is synchronous, so the pattern is always load-then-spawn:
 
 ```ts
+import { engine, Composite, getCompositeProvider } from "@dcl/sdk/ecs";
+
 export async function spawnBarrel() {
   const src = "barrel.composite";
+  const provider = getCompositeProvider();
+  if (!provider || !provider.loadComposite) return;
 
   // 1. Load the composite from its file
-  await engine.getCompositeProvider().loadComposite(src);
+  const resource = await provider.loadComposite(src);
 
   // 2. Spawn it: creates all its entities and components
-  const barrel = engine.addEntityFromComposite(src);
+  const barrel = Composite.instance(engine, resource, provider);
   return barrel;
 }
 ```
 
-`engine.getCompositeProvider().loadComposite(src)` reads the composite file and loads it into memory. In a normal scene built with `@dcl/sdk`, a composite provider is already set up for you, you reach it with `engine.getCompositeProvider()`.
+`provider.loadComposite(src)` reads the composite file and loads it into memory. In a normal scene built with `@dcl/sdk`, a composite provider is already set up for you, you reach it with the `getCompositeProvider()` function from `@dcl/sdk/ecs`.
 
-`engine.addEntityFromComposite(src)` then creates all the entities described in the composite, with all their components, and returns the **root entity** of the spawned tree. Use this returned entity to read or change components later, for example to reposition or remove the spawned item.
+`Composite.instance()` then creates all the entities described in the composite, with all their components, and returns the **root entity** of the spawned tree. Use this returned entity to read or change components later, for example to reposition or remove the spawned item.
 
 {% hint style="info" %}
 **💡 Tip**: To do the same thing without writing code, use the **Spawn Entity** action in the Scene Editor. See [About spawning entities](../../scene-editor/interactivity/smart-items-advanced.md#about-spawning-entities).
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: You must load a composite before you spawn it. `engine.addEntityFromComposite()` is synchronous and can only spawn a composite that's already loaded. If you call it on a composite that hasn't been loaded, it throws `Composite "<src>" not found.`. If no composite provider has been set, it throws `CompositeProvider has not been set.`.
+**📔 Note**: You must load a composite before you spawn it. `Composite.instance()` is synchronous and can only spawn a composite that's already in memory. Only `main.composite` is bundled with your scene and available from the start; any other composite file must be loaded with `loadComposite()` first. To check synchronously whether a composite is already available, use `provider.getCompositeOrNull(src)`.
 
 `loadComposite()` is idempotent: it keys each composite by its `src` string, so calling it again with the same path doesn't reload the file, it returns the already-loaded composite. You can safely call it before every spawn without worrying about loading the same file twice.
 {% endhint %}
 
 ## Position a spawned composite
 
-Pass a `transform` option to `addEntityFromComposite()` to place the spawned composite at a specific position, rotation, or scale. This transform is applied to the root entity.
+To place the spawned composite at a specific position, rotation, or scale, set a `Transform` component on the root entity returned by `Composite.instance()`.
 
 ```ts
+import { engine, Composite, getCompositeProvider, Transform } from "@dcl/sdk/ecs";
 import { Vector3 } from "@dcl/sdk/math";
 
 export async function spawnBarrel() {
   const src = "barrel.composite";
-  await engine.getCompositeProvider().loadComposite(src);
+  const provider = getCompositeProvider();
+  if (!provider || !provider.loadComposite) return;
+
+  const resource = await provider.loadComposite(src);
 
   // Spawn the composite at a specific position
-  engine.addEntityFromComposite(src, {
-    transform: {
-      position: Vector3.create(8, 0, 8),
-    },
+  const barrel = Composite.instance(engine, resource, provider);
+  Transform.createOrReplace(barrel, {
+    position: Vector3.create(8, 0, 8),
   });
 }
 ```
 
-The transform fields (`position`, `rotation`, and `scale`) are all optional. Any field you leave out keeps the value stored in the composite.
-
 {% hint style="warning" %}
-**📔 Note**: The transform you pass replaces the root entity's existing Transform component. Only the root entity is affected, child entities keep their positions relative to the root.
+**📔 Note**: `Transform.createOrReplace()` replaces the root entity's existing Transform component. Only the root entity is affected, child entities keep their positions relative to the root.
 {% endhint %}
 
 ## Current limitation: nested composites
 
-Spawning works for self-contained composites and Custom Items. A composite can reference another composite from one of its entities, but loading does **not** recurse into those nested references yet.
+Spawning works for self-contained composites and Custom Items. A composite can reference another composite from one of its entities, but `loadComposite()` does **not** recurse into those nested references: it only loads the file you pass it.
 
-If a spawned composite's root references another composite (anything other than `main.composite`, the only composite bundled with your scene), it fails to instantiate. For now, keep the composites you spawn self-contained.
+When spawning, `Composite.instance()` recurses into nested references that are already in memory. If a nested composite isn't loaded (anything other than `main.composite`, the only composite bundled with your scene), that branch logs a warning and is skipped. To spawn a composite with nested references, call `loadComposite()` for each referenced file first — or simpler, keep the composites you spawn self-contained.
 
 ## Related pages
 

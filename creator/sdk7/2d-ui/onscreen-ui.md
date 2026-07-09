@@ -10,7 +10,7 @@ You can build a UI for your scene, to be displayed in the screen's fixed 2D spac
 
 UI elements are only visible when the player is standing inside the scene's LAND parcels, as neighboring scenes might have their own UI to display. Parts of the UI can also be triggered to open when certain events occur in the world-space, for example if the player clicks on a specific place.
 
-Build a UI by defining a structure of nested `UIEntity` objects in JSX. The syntax used for UIs is very similar to that of [React](https://reactjs.org/) (a very popular javascript-based library for building web UIs).
+Build a UI by defining a structure of nested `UiEntity` objects in JSX. The syntax used for UIs is very similar to that of [React](https://reactjs.org/) (a very popular javascript-based library for building web UIs).
 
 {% hint style="warning" %}
 **📔 Note**: You can only define UI syntax in files that have a `.tsx` extension. `.tsx` files support everything that `.ts` files support, plus UI syntax. We recommend creating a `ui.tsx` file and defining your UI there. Remember to call your UI render method from `index.ts` with `ReactEcsRenderer.setUiRenderer(yourUiMethodName)`, see example below.
@@ -116,7 +116,10 @@ The following components are available to use in a `UiEntity`:
 * `uiTransform`
 * `uiBackground`
 * `uiText`
-* `onClick`
+* `onMouseDown`
+* `onMouseUp`
+* `onMouseEnter`
+* `onMouseLeave`
 
 Like with HTML tags, you can define components as self-closing or nest one within another.
 
@@ -136,7 +139,7 @@ export const uiMenu = () => (
     }}
     uiBackground={{ color: Color4.Blue() }}
   >
-    // self-closing child entity
+    {/* self-closing child entity */}
     <UiEntity
       uiTransform={{
         width: 400,
@@ -145,7 +148,7 @@ export const uiMenu = () => (
       }}
       uiText={{ value: `Hello world!`, fontSize: 40 }}
     />
-    // closing statement for the parent entity
+    {/* closing statement for the parent entity */}
   </UiEntity>
 )
 ```
@@ -175,7 +178,7 @@ export function setupUi() {
 
 If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
 
-The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`](https://github.com/decentraland/js-sdk-toolchain/blob/fbf4826ef686982ca1e60d368186e8e10c02a6e6/packages/%40dcl/react-ecs/src/system.ts#L124)
+The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight) / devicePixelRatio`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts)
 
 ## Multiple UI modules
 
@@ -276,7 +279,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { UIModule1, UIModule2 } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer([
+    ReactEcsRenderer.setUiRenderer(() => [
       UIModule1(),
       UIModule2(),
       // ...

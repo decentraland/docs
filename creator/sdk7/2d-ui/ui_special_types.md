@@ -12,7 +12,7 @@ Create a `Dropdown` entity to allow users to expand and select an item from a li
 
 A `Dropdown` entity must have at least the following properties:
 
-* `options`: What values to display when the dropdown is expanded. Provide an object containting an arraw with a string value for each option. The first value in the array is displayed as the default option.
+* `options`: What values to display when the dropdown is expanded. Provide an array with a string value for each option. The first value in the array is displayed as the default option.
 * `onChange`: A function that is executed every time that a value is selected in the dropdown, using
 
 You can also configure other comopnents of the `Dropdown` entity, like a `uiTransform`, as in other UI entities.
@@ -92,9 +92,9 @@ Create an `Input` entity to allow users to to type in text. Players must first c
 
 The behavior of the `Input` entity is managed via the following properties:
 
-* `onSubmit`: A function that is executed when the player hits Return/Enter, using the provided text as input. The text field is cleared when this happens.
-* `onChange`: A function that is executed every time that a value in the input text is changed. As the player types into the box, this function is executed once for each character that is added or removed. It also gets called when the player hits Return/Enter and the text is cleared.
-* `disable`: If _true_, the player won't be able to interact with the input entity.
+* `onSubmit`: A function that is executed when the player hits Return/Enter, using the provided text as input. The text field is **not** automatically cleared when this happens, you need to clear it yourself (see the example below).
+* `onChange`: A function that is executed every time that a value in the input text is changed. As the player types into the box, this function is executed once for each character that is added or removed.
+* `disabled`: If _true_, the player won't be able to interact with the input entity.
 
 The following example uses `onSubmit` to log the provided text to the console.
 
@@ -202,8 +202,8 @@ export const uiMenu = () => {
 
 The following properties are also available to customize the look of the text field, most of them similar to those present in `Label` entities:
 
-* `placeHolder`: String to display before the player starts inputing anything. It's useful to make this text a hint about what they should write.
-* `placeHolderColor`: The color to use for the placeholder text, as a [Color4](../3d-essentials/color-types.md).
+* `placeholder`: String to display before the player starts inputing anything. It's useful to make this text a hint about what they should write.
+* `placeholderColor`: The color to use for the placeholder text, as a [Color4](../3d-essentials/color-types.md).
 
 {% hint style="info" %}
 **💡 Tip**: Use a paler shade of the color of text that the player writes.
@@ -215,10 +215,10 @@ The following properties are also available to customize the look of the text fi
 * `color`: The color of the text the player writes, as a [Color4](../3d-essentials/color-types.md).
 
 {% hint style="warning" %}
-**📔 Note**: Make sure you use a different color from the `placeHolderColor`.
+**📔 Note**: Make sure you use a different color from the `placeholderColor`.
 {% endhint %}
 
-* `font`: The font to use, taking a value from the `Font` enum. Supported values are: - `F_SANS_SERIF` - `F_SERIF` _(default)_ - `F_MONOSPACE`
+* `font`: The font to use. Supported values are: - `'sans-serif'` _(default)_ - `'serif'` - `'monospace'`
 
 * `textAlign`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 

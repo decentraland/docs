@@ -89,11 +89,11 @@ const swimAnim = Animator.getClip(sharkEntity, 'swim')
 
 ```ts
 const swimAnim = Animator.getClip(sharkEntity, 'swim')
-swimAnim.looping = false
+swimAnim.loop = false
 ```
 
 {% hint style="warning" %}
-**📔 Note**: If you attempt to use `Animator.getClip()` to fetch a clip that exists in the 3D model, but is not listed in the `Animator` component, it returns `null`.
+**📔 Note**: If you attempt to use `Animator.getClip()` to fetch a clip that is not listed in the `Animator` component, it throws an error. Use `Animator.getClipOrNull()` if you prefer to get a `null` response in that case, instead of an error.
 {% endhint %}
 
 ## Play an animation
@@ -120,11 +120,11 @@ Animator.playSingleAnimation(sharkEntity, 'swim', false)
 
 The following table summarizes how `Animator.playSingleAnimation()` behaves, using different values for the `resetCursor` property:
 
-|                            | `reset` = _false_ (default)     | `reset` = _true_      |
-| -------------------------- | ------------------------------- | --------------------- |
-| **Currently playing**      | Has no effect.                  | Plays from the start. |
-| **Paused**                 | Resumes from last frame played. | Plays from the start. |
-| **Finished (Non-looping)** | Plays from the start.           | Plays from the start. |
+|                            | `resetCursor` = _false_         | `resetCursor` = _true_ (default) |
+| -------------------------- | ------------------------------- | -------------------------------- |
+| **Currently playing**      | Has no effect.                  | Plays from the start.            |
+| **Paused**                 | Resumes from last frame played. | Plays from the start.            |
+| **Finished (Non-looping)** | Plays from the start.           | Plays from the start.            |
 
 ## Looping animations
 
@@ -144,7 +144,7 @@ Animator.create(shark, {
 })
 ```
 
-If `looping` is set to _false_, the animation plays just once and then stops, staying on the posture of the last frame.
+If `loop` is set to _false_, the animation plays just once and then stops, staying on the posture of the last frame.
 
 ## Stop an animation
 
@@ -163,13 +163,12 @@ Animator.stopAllAnimations(shark)
 **📔 Note**: When playing an animation with `Animator.playSingleAnimation`, this function handles stopping all other animations behind the scenes. You don't need to explicitly stop other animations in that case.
 {% endhint %}
 
-When an animation finishes playing a non-looping animation, by default the 3D model remains in the last posture it had. To change this default behavior so that when the animation ends it goes back to the first posture, set the `shouldReset` property to _true_.
+When an animation finishes playing a non-looping animation, by default the 3D model remains in the last posture it had. The `shouldReset` property controls what happens when a stopped animation is played again: if _true_, the animation is restored to its initial state (its first frame, or its last frame if playing with a negative `speed`) whenever it changes from stopped to playing. If _false_ (the default), it resumes from where it was.
 
 ```ts
 Animator.create(shark, {
 	states: [
 		{
-			name: 'bite',
 			clip: 'bite',
 			playing: true,
 			shouldReset: true,
@@ -182,7 +181,7 @@ Animator.create(shark, {
 You can also use `Animator.stopAllAnimations()` at any time to explicitly set the posture back to the first frame in the animation.
 
 {% hint style="warning" %}
-**📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
+**📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly into another posture, play the other animation and blend between the two by gradually shifting their `weight` properties. See [Animation weight](#animation-weight).
 {% endhint %}
 
 ## Handle multiple animations
@@ -203,7 +202,7 @@ Animator.create(shark, {
 			clip: "swim",
 			playing: true,
 			loop: true
-		}. {
+		}, {
 			clip: "bite",
 			playing: true,
 			loop: true
@@ -218,10 +217,10 @@ Each bone in an animation can only be affected by one animation at a time, unles
 
 If one animation only affects a character's legs, and another only affects a character's head, then they can be played at the same time without any issue. But if they both affect the character's legs, then you must either only play one at a time, or play them with lower `weight` values.
 
-If in the above example, the `bite` animation only affects the shark's mouth, and the `swim` animation only affects the bones of the shark's spine, then they can both be played at the same time if they're on separate layers.
+If in the above example, the `bite` animation only affects the shark's mouth, and the `swim` animation only affects the bones of the shark's spine, then they can both be played at the same time.
 
 {% hint style="warning" %}
-**📔 Note**: `Animator.playSingleAnim()` stops all other animations that the entity is currently playing. To play multiple animations at the same time, modify the `playing` property in the animation states manually.
+**📔 Note**: `Animator.playSingleAnimation()` stops all other animations that the entity is currently playing. To play multiple animations at the same time, modify the `playing` property in the animation states manually.
 {% endhint %}
 
 ## Animation speed
@@ -251,7 +250,7 @@ swimAnim.speed = 0.5
 
 ## Animation weight
 
-The `weight` property allows a single model to carry out multiple animations on different layers at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
 
 By default, `weight` is equal to _1_. The value of `weight` can't be any higher than _1_.
 

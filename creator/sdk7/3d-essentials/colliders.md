@@ -67,7 +67,7 @@ MeshRenderer.setBox(myCollider)
 MeshCollider.setBox(myCollider)
 ```
 
-The shape used by the `MeshCollider` doesn't need to necessarily match the one used by the `MeshRenderer`. You can also add a `MeshCollider` to an entity that has a 3D model from a `GLTFContainer` component, or to an entity that has no visible shape at all.
+The shape used by the `MeshCollider` doesn't need to necessarily match the one used by the `MeshRenderer`. You can also add a `MeshCollider` to an entity that has a 3D model from a `GltfContainer` component, or to an entity that has no visible shape at all.
 
 {% hint style="warning" %}
 **📔 Note**: The `MeshCollider` component and `ColliderLayer` must be imported via
@@ -200,7 +200,7 @@ In this second example, the camera can go through the wall, because the `Collide
 ```ts
 // NO CAMERA GOING THROUGH THE WALL
 // default (both pointer and physics use the invisible geometry)
-GLTFContainer.create(myEntity, {
+GltfContainer.create(myEntity, {
 	src: '/models/myModel.gltf',
 })
 
@@ -257,11 +257,11 @@ MeshCollider.setBox(myEntity, ColliderLayer.CL_PHYSICS)
 MeshCollider.setBox(myEntity2, ColliderLayer.CL_POINTER)
 ```
 
-By default, the visible geometry of a `GLTFContainer` isn't mapped to any collision layers, but the invisible geometry affects both the Physics and the Pointer layers. You can change this value to only affect one, or neither, and to affect custom layers instead. You can also configure the visible geometry layer in the same way.
+By default, the visible geometry of a `GltfContainer` isn't mapped to any collision layers, but the invisible geometry affects both the Physics and the Pointer layers. You can change this value to only affect one, or neither, and to affect custom layers instead. You can also configure the visible geometry layer in the same way.
 
 ```ts
 // default (both pointer and physics use the invisible geometry)
-GLTFContainer.create(myEntity, {
+GltfContainer.create(myEntity, {
 	src: '/models/myModel.gltf',
 })
 

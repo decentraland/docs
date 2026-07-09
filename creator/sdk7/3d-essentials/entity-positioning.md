@@ -25,7 +25,7 @@ MeshRenderer.setSphere(ball)
 Transform.create(ball, {
 	position: Vector3.create(5, 1, 5),
 	scale: Vector3.create(1, 1, 1),
-	rotation: Quaternion.Zero(),
+	rotation: Quaternion.Identity(),
 })
 ```
 
@@ -50,7 +50,7 @@ const ball = engine.addEntity()
 // Create transform with a predefined position
 Transform.create(ball, {
 	  position: Vector3.create(5, 1, 5)
-}
+})
 
 // Fetch a mutable version of the transform
 const mutableTransform = Transform.getMutable(ball)
@@ -88,7 +88,7 @@ When setting a position, keep the following considerations in mind:
 
 ## Rotation
 
-`rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_. Each of these numbers goes from 0 to 1. See [Geometry types](../3d-essentials/special-types.md) for more details.
+`rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_. Each of these numbers goes from -1 to 1. See [Geometry types](../3d-essentials/special-types.md) for more details.
 
 ```ts
 // Create a new entity
@@ -96,8 +96,8 @@ const cube = engine.addEntity()
 
 // Create transform with a predefined rotation of 0
 Transform.create(cube, {
-	  rotation: Quaternion.Zero()
-}
+	  rotation: Quaternion.Identity()
+})
 
 // Fetch a mutable version of the transform
 const mutableTransform = Transform.getMutable(cube)
@@ -121,7 +121,7 @@ You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.o
 // Create transform with a predefined rotation in Euler angles
 Transform.create(cube, {
 	  rotation: Quaternion.fromEulerDegrees(0, 90, 0)
-}
+})
 
 // Fetch a mutable version of the transform
 const mutableTransform = Transform.getMutable(cube)
@@ -132,14 +132,14 @@ mutableTransform.rotation = Quaternion.fromEulerDegrees(0, 90, 0)
 
 When using a _3D vector_ to represent Euler angles, _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
 
-When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, use `.toEuler()`:
+When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, use `Quaternion.toEulerAngles()`:
 
 ```ts
 // Fetch a read-only version of the transform
-const transform = Transform.getMutable(cube)
+const transform = Transform.get(cube)
 
-// Set the rotation with an object, from euler angles
-const eulerAngle = Quaternion.toEuler(transform.rotation)
+// Obtain the rotation expressed in euler angles
+const eulerAngle = Quaternion.toEulerAngles(transform.rotation)
 ```
 
 ## Getting Global Position and Rotation of an Entity
@@ -180,7 +180,7 @@ MeshRenderer.setBox(cube)
 // Create transform with a predefined position
 Transform.create(cube, {
 	  position: Vector3.create(5, 1, 5)
-}
+})
 
 // Give the entity a Billboard component
 Billboard.create(cube, {})
@@ -188,12 +188,12 @@ Billboard.create(cube, {})
 
 You can configure how the billboard behaves with the following parameters:
 
-* `billboardMode`: Uses a value of the `BillboardMode` to set its behavior:
-  * `BillboardMode.BM_ALL`: The entity rotates to face the player on all of its rotation axis. If the player is high above the entity, the entity will face up.
+* `billboardMode`: Uses a value of the `BillboardMode` to set which rotation axes automatically rotate to face the player:
+  * `BillboardMode.BM_ALL`: The entity rotates to face the player on all of its rotation axes. If the player is high above the entity, the entity will face up.
   * `BillboardMode.BM_NONE`: The entity won't rotate at all.
-  * `BillboardMode.BM_X`: The entity has its _x_ rotation axis fixed.
-  * `BillboardMode.BM_Y`: The entity has its _y_ rotation axis fixed. It only rotates left and right, not up and down. It stays perpendicular to the ground if the player is above or below the entity.
-  * `BillboardMode.BM_Z`: The entity has its _z_ rotation axis fixed.
+  * `BillboardMode.BM_X`: The entity only rotates on its _x_ rotation axis.
+  * `BillboardMode.BM_Y`: The entity only rotates on its _y_ rotation axis. It only rotates left and right, not up and down. It stays perpendicular to the ground if the player is above or below the entity.
+  * `BillboardMode.BM_Z`: The entity only rotates on its _z_ rotation axis.
 
 ```ts
 // flat billboard
@@ -203,7 +203,7 @@ Transform.create(perpendicularPlane, {
 	position: Vector3.create(8, 1, 8),
 })
 
-PlaneShape.create(perpendicularPlane)
+MeshRenderer.setPlane(perpendicularPlane)
 
 Billboard.create(perpendicularPlane, {
 	billboardMode: BillboardMode.BM_Y,
@@ -247,7 +247,7 @@ For entity A to look at entity B:
 ```
 
 ```ts
-export function turn(entity: Entity, target: ReadOnlyVector3) {
+export function turn(entity: Entity, target: Vector3.ReadonlyVector3) {
 	const transform = Transform.getMutable(entity)
 	const difference = Vector3.subtract(target, transform.position)
 	const normalizedDifference = Vector3.normalize(difference)
@@ -268,7 +268,7 @@ const ball = engine.addEntity()
 // Create transform with a predefined position
 Transform.create(ball, {
 	  scale: Vector3.create(5, 5, 5)
-}
+})
 
 // Fetch a mutable version of the transform
 const mutableTransform = Transform.getMutable(ball)
@@ -385,7 +385,7 @@ The following example places an enitiy attached to a particular avatar, for all 
 ```ts
 import { getPlayer } from '@dcl/sdk/src/players'
 import { AvatarAnchorPointType, AvatarAttach, engine, Entity } from '@dcl/sdk/ecs'
-import { syncEntity } from '@dcl/sdk/src/network'
+import { syncEntity } from '@dcl/sdk/network'
 
 async function attachToPlayer(){
 

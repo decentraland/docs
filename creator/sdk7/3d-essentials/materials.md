@@ -457,7 +457,7 @@ For setting the UVs for a `box` mesh shape, the same structure applies. Each of 
 
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways.
 
-The `Material` object uses the _bilinear_ algorithm by default, but it lets you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode` property of the texture. This takes a value from the `TextureFilterMode` enum:
+The `Material` object uses the _bilinear_ algorithm by default, but it lets you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `filterMode` property of the texture. This takes a value from the `TextureFilterMode` enum:
 
 - `TextureFilterMode.TFM_POINT`: Uses a "nearest neighbor" algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
 - `TextureFilterMode.TFM_BILINEAR`: Uses a bilinear algorithm to estimate the color of each pixel.
@@ -593,22 +593,32 @@ The complete syntax for creating a `Materials` component, without any helpers to
 
 ```ts
 Material.create(myEntity, {
-	texture: {
-		tex: {
-			$case: 'texture',
+	material: {
+		$case: 'pbr',
+		pbr: {
 			texture: {
-				src: 'images/scene-thumbnail.png',
+				tex: {
+					$case: 'texture',
+					texture: {
+						src: 'images/scene-thumbnail.png',
+					},
+				},
 			},
 		},
 	},
 })
 
 Material.create(myEntity, {
-	texture: {
-		tex: {
-			$case: 'avatarTexture',
-			avatarTexture: {
-				userId: '0x517....',
+	material: {
+		$case: 'pbr',
+		pbr: {
+			texture: {
+				tex: {
+					$case: 'avatarTexture',
+					avatarTexture: {
+						userId: '0x517....',
+					},
+				},
 			},
 		},
 	},
@@ -617,16 +627,17 @@ Material.create(myEntity, {
 
 This is how the base protocol interprets Materials components. The helper functions abstract away from this and expose a friendlier syntax, but behind the scenes they output this syntax.
 
-The `$case` field allows you to specify one of the allowed types. Each type supports a different set of parameters. In the example above, the `box` type supports a `uvs` field.
+The `$case` fields allow you to specify one of the allowed types. Each type supports a different set of parameters. There are two levels of `$case` here:
 
-The supported values for `$case` are the following:
+- The `material` field supports the values `pbr` and `unlit`, to define the kind of material.
+- The `tex` field inside a texture supports the following values, to define the kind of texture:
+  - `texture`
+  - `avatarTexture`
+  - `videoTexture`
 
-- `texture`
-- `avatarTexture`
+Depending on the value of `$case`, it's valid to define the object for the corresponding kind, passing any relevant properties.
 
-Depending on the value of `$case`, it's valid to define the object for the corresponding shape, passing any relevant properties.
-
-To add a `Material` component to an entity that potentially already has an instance of this component, use `Material.createOrReplace()`. The helper functions like `MeshRenderer.setPbrMaterial()` handle overwriting existing instances of the component, but running `Material.create()` on an entity that already has this component returns an error.
+To add a `Material` component to an entity that potentially already has an instance of this component, use `Material.createOrReplace()`. The helper functions like `Material.setPbrMaterial()` handle overwriting existing instances of the component, but running `Material.create()` on an entity that already has this component returns an error.
 
 ## Modify glTF materials
 
@@ -781,7 +792,7 @@ const src = Material.getFlat(entity).texture.src
 - `Material.getFlatOrNull(entity: Entity): ReadonlyFlatMaterial | null`: It returns a **read only or null**, depending if the entity has or doesn't have a `Material` component.
 
 ```ts
-const src = Material.getFlatOrNull(entity).texture.src
+const src = Material.getFlatOrNull(entity)?.texture.src
 ```
 
 - `Material.getFlatMutable(entity: Entity): FlatMaterial`: It returns a **read & write** `FlatMaterial`object that allows modifying it's properties. It will throw an error if the entity being called doesn't have the `Material` component.
@@ -793,7 +804,10 @@ const src = Material.getFlatMutable(entity).texture.src
 - `Material.getFlatMutableOrNull(entity: Entity): FlatMaterial | null`: It returns a **read & write or null** `FlatMaterial` object that allows modifying it's properties. In case the entity doesn't have a `Material component`, it will reutrn `null`.
 
 ```ts
-Material.getFlatMutableOrNull(entity).texture.src = myNewTextureFile
+const flatMaterial = Material.getFlatMutableOrNull(entity)
+if (flatMaterial) {
+	flatMaterial.texture.src = myNewTextureFile
+}
 ```
 
 ### Remove shadows from a glTF model
@@ -811,8 +825,8 @@ GltfNodeModifiers.create(myEntity, {
 		},
 	],
 })
+```
 
 {% hint style="info" %}
 **💡 Tip**: Textures used in materials can also be applied to particle effects. See [Particle System](particle-system.md) for details on using custom textures and sprite sheets with particles.
 {% endhint %}
-```

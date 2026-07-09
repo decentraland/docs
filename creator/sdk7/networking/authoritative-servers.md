@@ -33,7 +33,9 @@ npm install @dcl/js-runtime@auth-server
 
 ### 2. Configure scene.json
 
-Optionally add the following to your `scene.json` at root level:
+The authoritative server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. You don't need to add it manually: when using the auth-server branch of the SDK, it's added automatically the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
+
+Optionally, you can also add the following to your `scene.json` at root level:
 
 ```json
 {
@@ -185,52 +187,54 @@ import { isServer } from "@dcl/sdk/network"
 import { isPreview } from "@dcl/asset-packs/dist/admin-toolkit-ui/fetch-utils"
 import { getSceneAdmins } from "@dcl/asset-packs/dist/admin-toolkit-ui/ModerationControl/api"
 
-const videoEntity = engine.addEntity()
-VideoPlayer.create(videoEntity, { src: "videos/intro.mp4" })
+// Cache of admin wallet addresses, refreshed from the scene admin list
+let adminAddresses = new Set<string>()
 
-if (isServer()) {
-  // Cache of admin wallet addresses, refreshed from the scene admin list
-  let adminAddresses = new Set<string>()
-
-  async function updateAdminAddresses() {
-    if (isPreview()) return
-    try {
-      const [error, response] = await getSceneAdmins()
-      if (error) {
-        console.error("[SERVER] Error fetching admin list:", error)
-        adminAddresses = new Set()
-        return
-      }
-      adminAddresses = new Set(
-        (response ?? []).map((admin) => admin.admin.toLowerCase())
-      )
-      console.log(
-        "[SERVER] Updated admin addresses cache:",
-        Array.from(adminAddresses)
-      )
-    } catch (error) {
-      console.error("[SERVER] Error updating admin addresses:", error)
+async function updateAdminAddresses() {
+  if (isPreview()) return
+  try {
+    const [error, response] = await getSceneAdmins()
+    if (error) {
+      console.error("[SERVER] Error fetching admin list:", error)
       adminAddresses = new Set()
+      return
     }
+    adminAddresses = new Set(
+      (response ?? []).map((admin) => admin.admin.toLowerCase())
+    )
+    console.log(
+      "[SERVER] Updated admin addresses cache:",
+      Array.from(adminAddresses)
+    )
+  } catch (error) {
+    console.error("[SERVER] Error updating admin addresses:", error)
+    adminAddresses = new Set()
   }
+}
 
-  // Populate the cache before wiring up validation
-  await updateAdminAddresses()
+export async function main() {
+  const videoEntity = engine.addEntity()
+  VideoPlayer.create(videoEntity, { src: "videos/intro.mp4" })
 
-  VideoPlayer.validateBeforeChange(videoEntity, (value) => {
-    // Always allow changes while running in preview, so local testing is easier
-    if (isPreview()) return true
+  if (isServer()) {
+    // Populate the cache before wiring up validation
+    await updateAdminAddresses()
 
-    const senderAddress = value.senderAddress.toLowerCase()
-    if (!adminAddresses.has(senderAddress)) {
-      console.log(
-        "[SERVER] Unauthorized VideoPlayer change blocked from:",
-        senderAddress
-      )
-      return false
-    }
-    return true
-  })
+    VideoPlayer.validateBeforeChange(videoEntity, (value) => {
+      // Always allow changes while running in preview, so local testing is easier
+      if (isPreview()) return true
+
+      const senderAddress = value.senderAddress.toLowerCase()
+      if (!adminAddresses.has(senderAddress)) {
+        console.log(
+          "[SERVER] Unauthorized VideoPlayer change blocked from:",
+          senderAddress
+        )
+        return false
+      }
+      return true
+    })
+  }
 }
 ```
 
@@ -331,6 +335,10 @@ export const Messages = {
 export const room = registerMessages(Messages)
 ```
 
+{% hint style="warning" %}
+**📔 Note**: Call `registerMessages()` once, at the top level of a shared module, as in the example above. That way it runs when the module first loads, on both the server and the client. Don't call it conditionally or inside functions, both sides must always register the same messages.
+{% endhint %}
+
 ### Send Messages
 
 Clients can only send messages to the server. There is no direct client-to-client messaging. The server can broadcast to all clients or target specific players by address.
@@ -347,6 +355,10 @@ room.send("gameStarted", { roundNumber: 1 })
 // Server → one specific client (by wallet address)
 room.send("gameEnded", { winnerId: "Alice" }, { to: [playerAddress] })
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Messages have a maximum size of around 13 KB. Larger messages are silently dropped by the transport, without producing any error. Keep payloads small; if you need to share larger data, split it into multiple messages or use synced components.
+{% endhint %}
 
 ### Receive Messages
 
@@ -385,6 +397,10 @@ engine.addSystem(() => {
 })
 ```
 
+{% hint style="info" %}
+**💡 Tip**: `isStateSyncronized()` only tells you that the client's state is synced, it doesn't guarantee that the server has finished initializing. For a more robust readiness check, have the server broadcast a "ready" or heartbeat message, and have clients wait for it before sending gameplay messages.
+{% endhint %}
+
 ### Available Schema Types
 
 All message payloads and custom components use `Schemas` for binary serialization. Here is a quick reference of the types available:
@@ -396,7 +412,7 @@ import { Schemas } from "@dcl/sdk/ecs"
 Schemas.String // "hello"
 Schemas.Int // 42
 Schemas.Float // 3.14
-Schemas.Bool // true / false
+Schemas.Boolean // true / false
 Schemas.Int64 // Date.now()
 
 // Vector types
@@ -634,10 +650,15 @@ Environment variables are **server-only**. Guard them with `isServer()`. The ser
 
 ```typescript
 import { EnvVar } from "@dcl/sdk/server"
+import { isServer } from "@dcl/sdk/network"
 
-const maxPlayers = parseInt((await EnvVar.get("MAX_PLAYERS")) || "4")
-const gameDuration = parseInt((await EnvVar.get("GAME_DURATION")) || "300")
-const debugMode = ((await EnvVar.get("DEBUG")) || "false") === "true"
+export async function main() {
+  if (!isServer()) return
+
+  const maxPlayers = parseInt((await EnvVar.get("MAX_PLAYERS")) || "4")
+  const gameDuration = parseInt((await EnvVar.get("GAME_DURATION")) || "300")
+  const debugMode = ((await EnvVar.get("DEBUG")) || "false") === "true"
+}
 ```
 
 ### Sensitive data

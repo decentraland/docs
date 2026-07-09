@@ -27,10 +27,16 @@ To mark an entity as synced via code, use the `syncEntity` function:
 ```ts
 import { syncEntity } from "@dcl/sdk/network";
 
-const doorEntity = engine.addEntity();
+export function main() {
+  const doorEntity = engine.addEntity();
 
-syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1);
+  syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1);
+}
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Always call `syncEntity()` inside the `main()` function, or in a function that runs after `main()` (like a callback or a system). Calling it at the top level of a file throws an error, because at that point the player's profile isn't initialized yet.
+{% endhint %}
 
 {% hint style="warning" %}
 **📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to an [Authoritative Server](../networking/authoritative-servers.md), the pattern changes: only the server should call `syncEntity`, guarded by `isServer()`. Clients should avoid declaring the syncing of shared entities, unless they are created by the client.
@@ -39,7 +45,7 @@ syncEntity(doorEntity, [Transform.componentId, Animator.componentId], 1);
 The `syncEntity` function takes the following inputs:
 
 - **entityId**: A reference to the entity to sync
-- **componentIds**: A list of the components that need to be synced from that entity. This is an array that may contain as many entities as needed. All values should be `componentId` properties.
+- **componentIds**: A list of the components that need to be synced from that entity. This is an array that may contain as many components as needed. All values should be `componentId` properties.
 - **entityEnumId**: (optional) A unique id that is used consistently by all players, see [About enum id](serverless-multiplayer.md#about-the-enum-id).
 
 Not all entities or components need to be synced. Static elements like a tree that remains in the same spot don't require syncing. On entities you do sync, only the components that change over time should be synchronized. For example, if a cube changes color when clicked, you should only sync the Material component, not the MeshRenderer or the Transform, as those will never change.
@@ -66,11 +72,13 @@ enum EntityEnumId {
   ELEVATOR = 3,
 }
 
-syncEntity(
-  doorEntity,
-  [Transform.componentId, Animator.componentId],
-  EntityEnumId.DOOR
-);
+export function main() {
+  syncEntity(
+    doorEntity,
+    [Transform.componentId, Animator.componentId],
+    EntityEnumId.DOOR
+  );
+}
 ```
 
 Here the EntityEnumId enum is used to tag entities with a unique identifier, ensuring that every client recognizes the modified entity, regardless of creation order.
@@ -94,8 +102,8 @@ import { syncEntity } from "@dcl/sdk/network";
 function onThrow() {
   const ball = engine.addEntity();
   Transform.create(ball, {});
-  GLTFContainer.create(ball, { src: "assets/snowBall.glb" });
-  syncEntity(ball, [Transform.componentId, GLTFContainer.componentId]);
+  GltfContainer.create(ball, { src: "assets/snowBall.glb" });
+  syncEntity(ball, [Transform.componentId, GltfContainer.componentId]);
 }
 ```
 
@@ -106,14 +114,16 @@ The parent of an entity is normally defined via `parent` property in the `Transf
 ```ts
 import { syncEntity, parentEntity } from "@dcl/sdk/network";
 
-const parent = engine.addEntity();
-Transform.create(parent, { position: somePosition });
-syncEntity(parent, []);
+export function main() {
+  const parent = engine.addEntity();
+  Transform.create(parent, { position: somePosition });
+  syncEntity(parent, []);
 
-const child: Entity = engine.addEntity();
-syncEntity(child, [Transform.componentId]);
+  const child: Entity = engine.addEntity();
+  syncEntity(child, [Transform.componentId]);
 
-parentEntity(child, parent);
+  parentEntity(child, parent);
+}
 ```
 
 Note that both the parent and the child are synced with `syncEntity`, so all players have a common understanding of what ids are used by both entities. This is necessary even if the parent's components may never need to change. In this example, the `syncEntity` includes an empty array of components, to avoid syncing any unnecessary components.
@@ -130,32 +140,41 @@ When entities are parented via the `parentEntity()` function, you can also make 
 - **getFirstChild()**: Returns the first child on the list for the entity you passed.
 
 ```ts
-import { syncEntity, parentEntity } from "@dcl/sdk/network";
+import {
+  syncEntity,
+  parentEntity,
+  getParent,
+  getFirstChild,
+  getChildren,
+  removeParent,
+} from "@dcl/sdk/network";
 
-const parent = engine.addEntity();
-Transform.create(parent, { position: somePosition });
-syncEntity(parent, []);
+export function main() {
+  const parent = engine.addEntity();
+  Transform.create(parent, { position: somePosition });
+  syncEntity(parent, []);
 
-const child: Entity = engine.addEntity();
-syncEntity(child, [Transform.componentId]);
+  const child: Entity = engine.addEntity();
+  syncEntity(child, [Transform.componentId]);
 
-// sets parent as parent
-parentEntity(child, parent);
+  // sets parent as parent
+  parentEntity(child, parent);
 
-// getParent
-const getParentResult = getParent(child);
-// returns parent
+  // getParent
+  const getParentResult = getParent(child);
+  // returns parent
 
-// getFirstChild
-const getFirstChildResult = getFirstChild(parent);
-// returns child
+  // getFirstChild
+  const getFirstChildResult = getFirstChild(parent);
+  // returns child
 
-// getChildren
-const getChildrenResult = Array.from(getChildren(parent));
-// returns [child]
+  // getChildren
+  const getChildrenResult = Array.from(getChildren(parent));
+  // returns [child]
 
-// removes parent from child
-removeParent(child);
+  // removes parent from child
+  removeParent(child);
+}
 ```
 
 ## Check the sync state
@@ -191,6 +210,10 @@ engine.addSystem(() => {
 ```
 
 ## Send Explicit MessageBus Messages
+
+{% hint style="warning" %}
+**📔 Note**: The `MessageBus` API is flagged as deprecated in the SDK, and may be removed in a future version. For most use cases, prefer [marking entities as synced](serverless-multiplayer.md#mark-an-entity-as-synced).
+{% endhint %}
 
 **Initiate a message bus**
 
@@ -287,7 +310,7 @@ function createCube(x: number, y: number, z: number): Entity {
   // When a cube is clicked, send message to spawn another one
   pointerEventsSystem.onPointerDown(
     {
-      entity: myEntity,
+      entity: meshEntity,
       opts: { button: InputAction.IA_PRIMARY, hoverText: "Press E to spawn" },
     },
     function () {

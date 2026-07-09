@@ -64,7 +64,7 @@ However, Worlds granted by ENS domain ownership serve as the perfect first step 
 
 Worlds offer several advantages over LAND scenes:
 
-* No parcel limitations - you can create scenes of any size
+* No need to own LAND - add as many parcels as you want to your scene at no cost (up to 300x300)
 * Access via link - players can visit your World directly via URL
 * More storage capacity - especially for Decentraland NAME holders
 * Access control - you can allow only certain players to access your World

@@ -41,26 +41,23 @@ for (const [entity] of engine.getEntitiesWith(
 ```ts
 // Define a System
 function PhysicsSystem(dt: number) {
-
-  // query for entities that include both a Transform and a Physics component
-  for (const [entity] of engine.getEntitiesWith(Transform, Physics)) {
-    const transform = Transform.getMutable(entity)
-	cons vel = Physics.get(entity).velocity
-	position.x += vel.x
-	position.y += vel.y
-	position.z += vel.z
-
-  }
+	// query for entities that include both a Transform and a Physics component
+	for (const [entity] of engine.getEntitiesWith(Transform, Physics)) {
+		const transform = Transform.getMutable(entity)
+		const vel = Physics.get(entity).velocity
+		transform.position.x += vel.x
+		transform.position.y += vel.y
+		transform.position.z += vel.z
+	}
 }
 
 // Add the system to the engine
-engine.addSystem(rotationSystem)
-
+engine.addSystem(PhysicsSystem)
 ```
 
 In the example above, the `PhysicsSystem` function iterates over the entities in the query, that is executed on every tick of the game loop.
 
-* If the scene has several _ball_ entities, each with a `Position` and a `Physics` component, then they will be handled, and their position will be updated on each tick.
+* If the scene has several _ball_ entities, each with a `Transform` and a `Physics` component, then they will be handled, and their position will be updated on each tick.
 * If your scene also has other entities, for example a _hoop_ and a _scoreBoard_ that only have a `Transform` but not a `Physics` component, then they won't be affected by `PhysicsSystem`.
 
 ## Dealing with the entities and components
@@ -70,7 +67,9 @@ The `getEntitiesWith` function returns a collection, that includes references to
 Using the simplest syntax, you fetch only a list of references to the corresponding entities.
 
 ```ts
-const [entity] of engine.getEntitiesWith(myComponent, myOtherComponent)
+for (const [entity] of engine.getEntitiesWith(myComponent, myOtherComponent)) {
+	//...
+}
 ```
 
 While iterating on this list of entities, you can then fetch read-only or mutable versions of their components, by using `.get` or `getMutable`.

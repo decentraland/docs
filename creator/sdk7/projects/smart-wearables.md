@@ -56,8 +56,8 @@ The default `wearable.json` file looks like this:
 		],
 		"category": "eyewear"
 	},
-	"name": "Portable Experience Example",
-	"description": "This feature is in Alpha state.",
+	"name": "Smart Wearable Example",
+	"description": "Put the glasses to see a new world",
 	"rarity": "mythic"
 }
 ```
@@ -77,7 +77,7 @@ The following fields are required in `wearable.json`:
   * common (100.000 copies)
 
 {% hint style="warning" %}
-**📔 Note**: If you forked your project from an existing one, make sure the `id` value is unique before publishing your wearable. Use [uuidgenerator.net](https://www.uuidgenerator.net/) to generate a new random UUID
+**📔 Note**: If you forked your project from an existing one and it includes an `id`, make sure the value is unique before publishing your wearable. Use [uuidgenerator.net](https://www.uuidgenerator.net/) to generate a new random UUID
 {% endhint %}
 
 The following fields can also optionally be included. These settings can also be configured from the Builder UI, once you upload the smart wearable.
@@ -126,7 +126,7 @@ Chose an image that sets player expectations and properly represents your creati
 
 ## The Preview
 
-Running a preview of a portable experience is just like running that of a scene, simply click **Run Scene** on the Decentraland tab, or run `npm run start` on the command line. If the `wearable.json` file is properly configured and the project is recognized as a smart wearable, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world.
+Running a preview of a portable experience is just like running that of a scene, simply click **Preview** on the Creator Hub, or run `npm run start` on the command line. If the `wearable.json` file is properly configured and the project is recognized as a smart wearable, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world.
 
 To test how the smart wearable behaves in the context of a scene, you can also run a preview of your wearable at the same time as you run a preview of one or several scenes by using a [Workspace](workspaces.md). For example, you can run your smart wearable together with the [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) scene to test how it behaves on a busy scene, while on an elevator, etc.
 
@@ -151,7 +151,7 @@ To publish your smart wearable:
 2. Run `npm run pack` on your project folder. This generates a `smart-wearable.zip` file in your project folder.
 
 {% hint style="warning" %}
-**📔 Note**: The output of `npm run pack` will indicate the size of the uncompressed exported project, it must be under 3MB. If larger than that, it won’t be accepted by the builder.
+**📔 Note**: The output of `npm run pack` will indicate the size of the uncompressed exported project, it must be under 2MB. If larger than that, it won’t be accepted by the builder.
 {% endhint %}
 
 3. Open the Builder, open the Collections tab, click + to upload a new wearable.
@@ -193,7 +193,7 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 
 ## Limitations
 
-> IMPORTANT: The entire smart wearable needs to fit within 3MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size of your portable experience, run `npm run pack`, the project size is specified in the output text of the command. You can also verify this by uncompressing the generated `smart-wearable.zip` file and checking the size of the folder.
+> IMPORTANT: The entire smart wearable needs to fit within 2MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size of your portable experience, run `npm run pack`, the project size is specified in the output text of the command. You can also verify this by uncompressing the generated `smart-wearable.zip` file and checking the size of the folder.
 
 Smart wearables only run the portable experience for the player wearing the wearable. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the wearable's scene, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the smart wearable's files.
 

@@ -106,7 +106,7 @@ engine.addSystem((dt: number) => {
       
     if (clapTimer >= emoteDuration) {
         // Trigger the clap emote
-        AvatarShape.getMutable(wearable).expressionTriggerTimestamp =+ 1 
+        AvatarShape.getMutable(myAvatar).expressionTriggerTimestamp += 1
         
         clapTimer = 0 // Reset timer
     }

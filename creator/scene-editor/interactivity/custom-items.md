@@ -53,7 +53,7 @@ Each Custom Item is stored as a composite, a file that describes a tree of entit
 You can spawn a Custom Item in two ways:
 
 * **With no code**: Use the **Spawn Entity** action in the Scene Editor. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
-* **With code**: Use `engine.addEntityFromComposite()` in the SDK. See [Composites](../../sdk7/architecture/composites.md).
+* **With code**: Use `Composite.instance()` in the SDK. See [Composites](../../sdk7/architecture/composites.md).
 
 ### Sharing Custom Items
 

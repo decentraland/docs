@@ -51,7 +51,7 @@ If you call `applyImpulseToPlayer()` multiple times within the same frame, the i
 A common pattern is to trigger an impulse when the player steps into an area. Use a trigger area to detect when the player enters:
 
 ```ts
-import { Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, Transform } from '@dcl/sdk/ecs'
+import { engine, Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, Transform } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const launchPad = engine.addEntity()
@@ -118,7 +118,7 @@ Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unl
 The source entity's position is not relevant — it's only used as an identifier.
 
 ```ts
-import { Physics } from '@dcl/sdk/ecs'
+import { engine, Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const windZoneEntity = engine.addEntity()
@@ -157,7 +157,7 @@ Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific am
 * `vector`: Direction and strength combined — the length of the vector encodes the force magnitude.
 
 ```ts
-import { Physics } from '@dcl/sdk/ecs'
+import { engine, Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const gustEntity = engine.addEntity()
@@ -177,7 +177,7 @@ Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 
 This example creates a wind tunnel that pushes the player while they're inside it, and stops when they leave:
 
 ```ts
-import { Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, MeshCollider, Transform } from '@dcl/sdk/ecs'
+import { engine, Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, MeshCollider, Transform } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const windTunnel = engine.addEntity()
@@ -214,7 +214,7 @@ Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away
 * `falloff`: How magnitude decreases with distance (default: `CONSTANT`).
 
 ```ts
-import { Physics, timers } from '@dcl/sdk/ecs'
+import { engine, Physics, Transform, timers } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const repulsionSource = engine.addEntity()

@@ -34,10 +34,10 @@ function getPlayerPosition() {
 engine.addSystem(getPlayerPosition)
 ```
 
-* **PlayerEntity position**: The avatar's position, at chest height. Approximately at 0.88 cm above the ground.
+* **PlayerEntity position**: The avatar's position, at chest height. Approximately at 0.88 meters above the ground.
 * **PlayerEntity rotation**: The direction in which the avatar is facing, expressed as a quaternion.
 * **CameraEntity position**:
-  * In 1st person: Equal to the avatar's position, but at eye-level. Approximately at 1.75 cm above the ground.
+  * In 1st person: Equal to the avatar's position, but at eye-level. Approximately at 1.75 meters above the ground.
   * In 3rd person: May vary depending on camera movements.
 * **PlayerEntity rotation**:
   * In 1st person: Similar to the direction in which the avatar is facing, expressed as a quaternion. May be rounded slightly differently from the player's rotation.
@@ -90,7 +90,7 @@ export function main() {
 `getPlayer()` returns the following:
 
 * `name`: _(string)_ The player's user name, as others see in-world
-* `userId`: _(string)_ A UUID string that identifies the player. If the player has a public key, this field will have the same value as the public key.
+* `userId`: _(string)_ A string that identifies the player. For players connected with a wallet, this is the wallet's address, written in lowercase. For guest accounts, it's a locally-generated identifier.
 * `isGuest`: _(boolean)_ Indicates if the player has a public key. _True_ if the player is a guest account without a public key.
 * `position`: _(Vector3)_ The position of the avatar in the scene.
 * `avatar`: A nested object with data about the player's base avatar and appearance.
@@ -101,9 +101,9 @@ export function main() {
 The `avatar` object has the following nested information:
 
 * `bodyShapeUrn`: An identifier for the avatar's general body shape. Either `urn:decentraland:off-chain:base-avatars:BaseFemale` for female or `urn:decentraland:off-chain:base-avatars:BaseMale` for male.
-* `skinColor`: Player skin color as a `Color4`
-* `eyesColor`: Player eye color as a `Color4`
-* `hairColor`: Player hair color as a `Color4`
+* `skinColor`: Player skin color as a `Color3`
+* `eyesColor`: Player eye color as a `Color3`
+* `hairColor`: Player hair color as a `Color3`
 * `name`: The player's name.
 
 {% hint style="warning" %}
@@ -187,9 +187,9 @@ The `avatar` object has the following nested information:
 
 * `wearables`: `WearableId[]` An array of identifiers for each of the wearables that the player is currently wearing. For example `urn:decentraland:off-chain:base-avatars:green_hoodie`. All wearables have a similar identifier, even if they're NFTs.
 * `bodyShape`: An identifier for the avatar's general body shape. Either `urn:decentraland:off-chain:base-avatars:BaseFemale` for female or `urn:decentraland:off-chain:base-avatars:BaseMale` for male.
-* `skinColor`: _ColorString_ A hex value for the player's skin color.
-* `hairColor`: _ColorString_ A hex value for the player's hair color.
-* `eyeColor`: _ColorString_ A hex value for the player's eye color.
+* `skin`: An object with a `color` field, holding the player's skin color as `{ r, g, b, a }` numbers from 0 to 1.
+* `hair`: An object with a `color` field, holding the player's hair color as `{ r, g, b, a }` numbers from 0 to 1.
+* `eyes`: An object with a `color` field, holding the player's eye color as `{ r, g, b, a }` numbers from 0 to 1.
 * `snapshots`: A nested object with base64 representations of .jpg images of the player in various resolutions.
   * `face256`: _string_ The player's face as a 256x256 pixel image.
   * `body`: _string_ The full resolution image of the player standing straight, with 512x1024 pixels.
@@ -205,7 +205,7 @@ If you know which server the player you want to query is connected to, you can g
 `https://<player server>/lambdas/profile/<player user id>`
 
 {% hint style="info" %}
-**💡 Tip**: You can obtain the current player's server by fetching `getRealm().domain`.
+**💡 Tip**: You can obtain the current player's server by calling `getRealm()` and reading the `realmInfo.baseUrl` field of the response.
 {% endhint %}
 
 This example combines `myProfile.userId` and `getRealm()` to obtain the player's data directly from the server that the player is on:
@@ -216,19 +216,17 @@ import { myProfile } from '@dcl/sdk/network'
 
 async function fetchPlayerData() {
 	const { realmInfo } = await getRealm({})
+	if (!realmInfo) return
 
 	const url = `${realmInfo.baseUrl}/lambdas/profile/${myProfile.userId}`
 	console.log('using URL: ', url)
 
 	try {
-		const json = (await fetch(url)).json()
+		const response = await fetch(url)
+		const json = await response.json()
 
 		console.log('full response: ', json)
-		console.log(
-			'player is wearing :',
-			json[0].metadata.avatars[0].avatar.wearables
-		)
-		console.log('player owns :', json[0].metadata.avatars[0].inventory)
+		console.log('player is wearing :', json.avatars[0].avatar.wearables)
 	} catch {
 		console.log('an error occurred while reaching for player data')
 	}
@@ -245,9 +243,9 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
 * `AvatarBase`: Stores data about the base avatar, including:
   * `name`: The player's name.
   * `bodyShapeUrn`: The ids corresponding to male or female body type.
-  * `skinColor`: Player skin color as a `Color4`
-  * `eyeColor`: Player eye color as a `Color4`
-  * `hairColor`: Player hair color as a `Color4`
+  * `skinColor`: Player skin color as a `Color3`
+  * `eyesColor`: Player eye color as a `Color3`
+  * `hairColor`: Player hair color as a `Color3`
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
@@ -312,8 +310,9 @@ import { getRealm } from '~system/Runtime'
 
 async function fetchWearablesData() {
 	try {
-		let userData = getPlayer({})
+		let userData = getPlayer()
 		const realm = await getRealm({})
+		if (!userData || !realm.realmInfo) return
 
 		const url =
 			`${realm.realmInfo?.baseUrl}/lambdas/collections/wearables-by-owner/${userData.userId}?includeDefinitions`.toString()
@@ -341,7 +340,7 @@ Players can either be using a 1st or 3rd person camera when exploring Decentrala
 
 ```ts
 function checkCameraMode() {
-	if (!Transform.has(engine.CameraEntity)) return
+	if (!CameraMode.has(engine.CameraEntity)) return
 
 	let cameraEntity = CameraMode.get(engine.CameraEntity)
 
@@ -461,7 +460,7 @@ export const uiMenu = () => (
 _**index.ts file:**_
 
 ```ts
-import { engine } from '@dcl/sdk/ecs'
+import { engine, PrimaryPointerInfo } from '@dcl/sdk/ecs'
 import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 

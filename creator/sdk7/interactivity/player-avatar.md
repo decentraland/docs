@@ -281,7 +281,7 @@ Instead of entirely freezing the player, you can restrict certain specific forms
 ```ts
 import {InputModifier, engine} from '@dcl/sdk/ecs'
 
-InputModifier.create(engine.playerEntity, {
+InputModifier.create(engine.PlayerEntity, {
 	mode: InputModifier.Mode.Standard({
 		disableAll: false,
 		disableWalk: false,
@@ -340,6 +340,9 @@ The following properties are available:
 - `runSpeed`: The speed at which the player runs, in meters per second. On the desktop client, players run by pressing the shift key.
 - `jumpHeight`: The height at which the player jumps, in meters.
 - `runJumpHeight`: The height at which the player jumps after running, in meters.
+- `doubleJumpHeight`: The height of the second jump when double-jumping, in meters.
+- `glidingSpeed`: The horizontal speed at which the player moves while gliding, in meters per second.
+- `glidingFallingSpeed`: The falling speed of the player while gliding, in meters per second.
 - `hardLandingCooldown`: The cooldown after a hard landing, in seconds. This is the time that the player has to wait before they can move again after landing from a high fall.
 
 For reference, here are the default values for those properties:
@@ -347,10 +350,11 @@ For reference, here are the default values for those properties:
 - `walkSpeed`: 1.5 m/s
 - `jogSpeed`: 8 m/s
 - `runSpeed`: 10 m/s
-- `glideSpeed`: 6 m/s
+- `glidingSpeed`: 6 m/s
+- `glidingFallingSpeed`: 1 m/s
 - `jumpHeight`: 1 m
 - `runJumpHeight`: 1.5 m
-- `doubleJump`: 2 m
+- `doubleJumpHeight`: 2 m
 - `hardLandingCooldown`: 0.75 s
 
 {% hint style="info" %}
@@ -528,7 +532,7 @@ If the list of excluded IDs is going to be periodically changed (for example bas
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(16, 5, 16),
 	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-	excludeIds: [myAvatarList.sort()],
+	excludeIds: myAvatarList.sort(),
 })
 ```
 {% endhint %}

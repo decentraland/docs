@@ -196,11 +196,6 @@
 * [Animations](3d-modeling/animations.md)
 * [Create a Rig](3d-modeling/create-a-rig.md)
 
-## Worlds
-
-* [Overview](worlds/about.md)
-* [Cast](worlds/cast.md)
-
 ## Marketplace
 
 * [Estates Marketplace Integrations](marketplace/estates-marketplace-integrations.md)

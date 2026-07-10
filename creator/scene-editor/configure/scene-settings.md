@@ -73,7 +73,7 @@ To build something to deploy to LAND parcels you own, make sure the shape of the
 <img src="../../images/editor/non-rectangular.png" alt="" data-size="original">
 {% endhint %}
 
-If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../worlds/about.md). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
+If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
 
 See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 

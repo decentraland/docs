@@ -42,7 +42,7 @@ If you wish to delete the project files, you must do this manually. By default p
 
 ## Managing Worlds
 
-If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../worlds/about.md). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
+If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
 
 ### Visualizing storage space
 

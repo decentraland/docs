@@ -130,7 +130,7 @@ Worlds are personal 3D spaces located beyond the boundaries of Genesis City, whi
 * **Customization**: Worlds can have custom skybox settings (fixed time of day), while LAND scenes share the same sky as surrounding scenes
 * **Cost**: A Decentraland NAME costs 100 MANA, which is typically much less than buying LAND parcels
 
-See [Worlds overview](/creator/worlds/about.md) and [Publishing options](/creator/sdk7/publishing/publishing-options.md) for more information.
+See [Publishing options](/creator/sdk7/publishing/publishing-options.md#decentraland-worlds) for more information.
 
 </details>
 

@@ -4,7 +4,7 @@ description: Learn how to set up a scene and configure its metadata.
 
 # Scene Metadata
 
-A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../../worlds/about.md), players can visit it via URL.
+A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../publishing/publishing-options.md#decentraland-worlds), players can visit it via URL.
 
 See [Files in a scene](../projects/scene-files.md) for a list of what files are used in a scene project.
 
@@ -488,7 +488,7 @@ Here are some more examples of valid values:
 
 ## World configuration
 
-When publishing to a [Decentraland World](../../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
+When publishing to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
 
 ### Basic World configuration
 

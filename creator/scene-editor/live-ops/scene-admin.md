@@ -18,7 +18,7 @@ When a scene admin visits your scene, they see a special UI on the top-right cor
 
 ## Setting up admins
 
-To assign admins, you need to add the **Scene Admin** smart item to your scene.
+To assign admins, you need to add the **Admin Tools** smart item to your scene.
 
 ![ ](../../images/editor/admin/admin-smart-item.png)
 
@@ -78,7 +78,7 @@ async function onPlayerSpawn() {
 
 One of the most common actions for admins to do is to play videos. The admin panel includes a video player section where they can control anything related to videos.
 
-To enable this, you need to add a **Video Player** smart item to your scene and link it to the Scene Admin smart item.
+To enable this, you need to add a **Video Player** smart item to your scene and link it to the Admin Tools smart item.
 
 1.  Add a **Video Player** smart item to your scene
 
@@ -92,7 +92,7 @@ To enable this, you need to add a **Video Player** smart item to your scene and 
     You can include as many video screens as you want. In general, avoid having more than one different video playing at the same time, as that hurts performance a lot.
     {% endhint %}
 
-2.  Open the Scene Admin Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
+2.  Open the Admin Tools Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
 
     <img src="../../images/editor/admin/multi-video-setup.png" alt="Scene name" width="300"/>
 
@@ -163,10 +163,10 @@ Click **View Ban List** to see the list of currently banned players. From this l
 To Trigger an action from any smart item in the scene:
 
 - Add a smart item to your scene
-- Open the settings for the **Scene Admin** Smart Item in the Creator Hub
+- Open the settings for the **Admin Tools** Smart Item in the Creator Hub
 - In the **Smart item actions** section, add the smart item from the dropdown, give it a custom name and select a default action
 
-Once the above is configured, admins can trigger the action by opening the **Smart Item Actions** section of the admin UI and then selecting an item from the dropdown list. They can then either click the **Default** button to trigger the default action of that item, or select any other of the item's actions from the list.
+Once the above is configured, admins can trigger the action by opening the **Smart Item Actions** section of the admin UI and then selecting an item from the dropdown list. They can then pick one of the item's actions from the **Actions** dropdown and click **Play Action** to trigger it. There's also a button to **Hide/Show** the selected item.
 
 <img src="../../images/editor/admin/smart-item-actions.png" alt="Scene name" width="300"/>
 

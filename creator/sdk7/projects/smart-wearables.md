@@ -151,7 +151,7 @@ To publish your smart wearable:
 2. Run `npm run pack` on your project folder. This generates a `smart-wearable.zip` file in your project folder.
 
 {% hint style="warning" %}
-**📔 Note**: The output of `npm run pack` will indicate the size of the uncompressed exported project, it must be under 2MB. If larger than that, it won’t be accepted by the builder.
+**📔 Note**: The output of `npm run pack` will indicate the size of the uncompressed exported project, it must be under 3MB. If larger than that, it won’t be accepted by the builder.
 {% endhint %}
 
 3. Open the Builder, open the Collections tab, click + to upload a new wearable.
@@ -193,7 +193,7 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 
 ## Limitations
 
-> IMPORTANT: The entire smart wearable needs to fit within 2MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size of your portable experience, run `npm run pack`, the project size is specified in the output text of the command. You can also verify this by uncompressing the generated `smart-wearable.zip` file and checking the size of the folder.
+> IMPORTANT: The entire smart wearable needs to fit within 3MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size of your portable experience, run `npm run pack`, the project size is specified in the output text of the command. You can also verify this by uncompressing the generated `smart-wearable.zip` file and checking the size of the folder.
 
 Smart wearables only run the portable experience for the player wearing the wearable. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the wearable's scene, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the smart wearable's files.
 

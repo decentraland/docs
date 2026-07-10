@@ -14,8 +14,8 @@ This document gives an overview on the different ways to obtain permissions. See
 
 In order to publish to LAND in Genesis City, you can do the following:
 
-* **Rent LAND**: Purchase the right to deploy and keep your content on certain parcels for a fixed period of time. See [Rentals](../../marketplace/rentals.md).
-* **Buy land**: Buy land parcels, and publish your content for as long as you wish. See [marketplace](../../marketplace/marketplace.md).
+* **Rent LAND**: Purchase the right to deploy and keep your content on certain parcels for a fixed period of time. See [Rentals](https://docs.decentraland.org/player/marketplace/rentals/).
+* **Buy land**: Buy land parcels, and publish your content for as long as you wish. See [marketplace](https://docs.decentraland.org/player/marketplace/marketplace/).
 * **Get permissions from an owner**: Several land owners and districts manage large extensions of land and are willing to freely host content from others if it fits their theme and the kind of environment they want to create. Connect with them in the [Decentraland Discord server](https://dcl.gg/discord).
 * **Worlds**: You can also deploy a stand-alone scene as a Decentraland World. Worlds exist outside the grid of Genesis City, and can be accessed by name. See [worlds](../../worlds/about.md)
 
@@ -51,13 +51,13 @@ See [Worlds](../../worlds/about.md) for an overview, or learn about [publishing 
 
 If you have a great idea and the means to achieve it, but need financing, you can request for a grant in the DAO. If the proposal convinces enough people from the community to vote on it, you can get a sum of money to achieve your vision, including funds for buying or renting LAND.
 
-See [Community grants](../../archive/grants/community-grants.md).
+See the [Decentraland DAO](https://decentraland.org/dao/) for how to submit a proposal.
 
 ## How land permissions work
 
 LAND tokens can manage permissions that allow the following different kinds of roles to deploy to a particular parcel or estate.
 
 * **LAND owner**: The person that owns the token in their Ethereum wallet. This user can always deploy, assign other roles, or transfer the token (unless the land is currently rented by someone else).
-* **LAND operator**: The operator is only able to deploy, as long as they hold this role. The operator's address is referenced by the token, without needing to own anything. The owner can assign and revoke operator permissions to any number of addresses. See [Give permissions](../../marketplace/land-manager.md#give-permissions).
+* **LAND operator**: The operator is only able to deploy, as long as they hold this role. The operator's address is referenced by the token, without needing to own anything. The owner can assign and revoke operator permissions to any number of addresses. See [Give permissions](https://docs.decentraland.org/player/marketplace/land-manager/#give-permissions).
 
 When renting a land, the tennant who pays for the rent gets to chose a single address that will hold a **LAND Operator** role for the duration of the rent (this can be their own address, or someone else's). While the rent is active, none of the original holders of roles can interfere with the content on that LAND or transfer the token.

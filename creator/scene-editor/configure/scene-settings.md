@@ -8,7 +8,7 @@ Click the **Pencil icon** on the top-right of the screen. This opens a series of
 
 ![](../../images/editor/pencil-icon.png)
 
-Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
+Here you can configure multiple properties including title and thumbnail, scene size, scene categories, and feature toggles.
 
 See [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
@@ -27,14 +27,18 @@ The following fields are available:
     {% hint style="info" %\} 
     **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
     {% endhint %\}
-* **Age rating**
 * **Categories**
-* **Author**
-* **Email**
+* **Creator name** (optional)
+* **Creator contact email** (optional)
+* **Creator wallet address** (optional)
 
 The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
 
 See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
+
+{% hint style="warning" %}
+**📔 Note**: The scene's **Age Rating** is not edited on this panel. You can set the `rating` field directly in the `scene.json` file, or, for scenes published to a World, change the **Content Rating** in the Creator Hub's World Settings after publishing. Decentraland is an 18+ platform, so the rating to set is `A` for Adults. See [Age Rating](../../sdk7/projects/scene-metadata.md#age-rating).
+{% endhint %}
 
 
 ### Tipping
@@ -95,32 +99,9 @@ You can disable certain functionalities on your scene if you chose, in case they
 
 ![](../../images/editor/scene-restrictions.png)
 
-* **Silence voice chat**: Prevent players on your scene from using voice chat.
-* **Disable portable experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
-
-## Spawn points
-
-The **Spawn Area** Entities in the scene define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
-
-![](../../../.gitbook/assets/default-spawn-point-component.png)
-
-Your scene might have objects that can block players from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for players if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
-
-The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in a Transform component.
-
-{% hint style="warning" %}
-📔 Note: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
-{% endhint %}
-
-Uncheck the **Don't Randomize** box to randomly offset the spawning players around the spawn point, with a maximum value in meters. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The Max Offset value is the maximum possible distance from the original spawn point, in both the X or Z axis.
-
-Set the Camera Target to set the direction in which players start looking when they jump into your scene. This allows you to have better control over their first impression.
-
-Click **+ Add Spawn Area** to include as many spawn points as you want. Players will randomly appear in one of those.
-
-{% hint style="info" %}
-**📔 Note**: For more information about Spawn Areas, go to the [Spawn Area](../build/spawn-areas.md) docs.
-{% endhint %}
+* **Silence Voice Chat**: Prevent players on your scene from using voice chat.
+* **Disable Nearby Voice Chat**: Prevent players on your scene from using the nearby (proximity-based) voice chat.
+* **Disable Smart Wearables & Portable Experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
 ## Skybox Control
 

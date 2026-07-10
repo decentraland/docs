@@ -17,8 +17,8 @@ The Scene Editor's UI is divided into a few different sections, with different p
 
 To find your way around the Scene Editor:
 
-* Use **A** and **W** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
-* Use **S** and **D** to move sideways.
+* Use **W** and **S** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
+* Use **A** and **D** to move sideways.
 * Use **Q** and **E** to move up and down.
 * Click the **Right Mouse Button** and drag to rotate the camera.
 * Press **Space bar** to reset the camera back to the default position
@@ -94,9 +94,7 @@ To change the movement granularity and other settings, click the downward arrow 
   * **Position**: The size of movement increments in meters when **Snap** is on.
   * **Rotation**: The size of rotation increments in degree when **Snap** is on.
   * **Scale**: The size of scale increments when **Snap** is on.
-* **Align to world**: Refers to the axis of movement and rotation. They can either always align with the world, or align with the object's orientation. If aligned to world, the axis don't change with the object's orientation.
-  * **Position**: Does the Move tool axis align with the direction that the object faces? Or with the world?
-  * **Rotation**: Do the Rotate tool axis align with the object's orientation, or with the world?
+* **Align to world**: A single checkbox that refers to the axis used by the gizmos. When checked, the Move and Rotate tool axis always align with the world, and don't change with the object's orientation. When unchecked, they align with the object's orientation.
 
 To select multiple items at the same time, press and hold the _Control_ key while selecting them. You can then move, rotate, scale, duplicate or delete all of them in a single action.
 

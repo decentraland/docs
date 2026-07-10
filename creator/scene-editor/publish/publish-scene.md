@@ -28,7 +28,7 @@ After each publish, an internal process optimizes all 3D models before they can 
 
 To publish your scene:
 
-1. Open your scene in the Scene Editor and click **Publish**. This opens a browser tab, showing details.
+1. Open your scene in the Scene Editor and click **Publish**. This opens a window showing details about the publication.
 2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
 ![](../../images/editor/publish-options.png)
@@ -254,6 +254,6 @@ Players are never directed to this server, the only way to access it is to expli
 
 Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, or that 3D models are missing entirely.
 
-After you sign to authorize the deployment of your scene, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network,
+The Creator Hub displays the progress of the publication as it moves through the **Uploading**, **Converting** and **Optimizing** stages, and shows a **Jump In** button as soon as the scene is playable.
 
-You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each one of these servers refers to a different realm, you can reference how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
+To check how the new version of your content propagates through the servers that make up Decentraland's content network, you can use the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/). Each one of these servers refers to a different realm.

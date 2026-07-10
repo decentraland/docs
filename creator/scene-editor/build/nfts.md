@@ -16,7 +16,7 @@ Use the NFT smart item, that you can find in the **Smart Items** asset pack, or 
 
 The main fields to configure determine what NFT to display:
 
-* **Network**: The blockchain network that your NFT is in. It uses Ethereum mainnet by default, but you can also pick Polygon (matic), Solana, etc.
+* **Network**: The blockchain network that your NFT is in. It uses Ethereum mainnet by default, but you can also pick Polygon (matic), or one of several test networks.
 * **NFT Collection Contract**: The contract address of the collection that this NFT belongs to (ie: Cryptokitties, SuperRare, Decentraland Halloween Wearables 2019, etc)
 * **Token ID**: The unique id of this specific NFT
 
@@ -30,7 +30,7 @@ Similarly, you can also obtain these from the OpenSea URL of the token. For exam
 
 _https://opensea.io/assets/0x31385d3520bced94f77aae104b406994d8f2168c/2614_
 
-Yon can infer that the contract is _0x31385d3520bced94f77aae104b406994d8f2168c_ (referring to CryptoPunks) and the ID is _2614_.
+Yon can infer that the contract is _0x31385d3520bced94f77aae104b406994d8f2168c_ and the ID is _2614_.
 
 Other optional fields that can be configured in the NFT smart item are:
 

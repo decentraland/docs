@@ -17,11 +17,11 @@ See [Creator Hub Installation](editor-installation.md) to get started.
 
 ## Create a scene
 
-To create a new scene, open the Creator Hub and press the _Create scene_ button.
+To create a new scene, open the Creator Hub, go into the **Scenes** section, and click on the **+** card, or on the **Templates** button.
 
 ![](../../images/editor/create-scene.png)
 
-You can then select what template to use as a starting point. You can pick a blank scene or a project with some initial content.
+You can then select what template to use as a starting point. You can pick an **Empty Scene** or a project with some initial content.
 
 Then you'll be asked to name your scene, and choose a location to save it.
 
@@ -31,8 +31,8 @@ See [Manage scenes](manage-scenes.md) for more details.
 
 To find your way around the Scene Editor:
 
-* Use **A** and **W** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
-* Use **S** and **D** to move sideways.
+* Use **W** and **S** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
+* Use **A** and **D** to move sideways.
 * Use **Q** and **E** to move up and down.
 * Use the **Left Mouse Button** to click and select items and to move them around.
 * Use the **Right Mouse Button** and drag to rotate the camera.
@@ -73,9 +73,10 @@ To test your scene and experience it like a player, click the _Preview_ button o
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
-* **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
-* **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
-* **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+* **Open Debug Console**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
+* **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+* **Multi-Instance Preview**: Opens a separate preview window each time you click **Preview**, each logged in with its own account. Use this to test multiplayer scenes with multiple accounts. See [Test a multiplayer scene locally](../../sdk7/networking/serverless-multiplayer.md#test-a-multiplayer-scene-locally).
+* **Show QR Code for Mobile**: Displays a QR code to open the scene preview on the Decentraland mobile app, as long as the phone is on the same network. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md).
 
 ## Scene settings
 

@@ -117,7 +117,7 @@ Play videos from either:
 * **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-method) (OBS, XSplit, StreamYard, etc.)**
 
 {% hint style="warning" %}
-**📔 Note**: Avoid playing more than one video at any given time in your scene, because it can severely impact performance for players. Always stop other videos before playing a second video.
+**📔 Note**: Playing videos is demanding on performance, so keep the number of videos playing at the same time low. The engine limits how many videos can play simultaneously based on each player's quality settings (1 on low, 5 on medium, 10 on high), and pauses any videos beyond that limit. See [Play Videos](video-screen.md#play-videos).
 {% endhint %}
 
 See [Play Videos](video-screen.md) for more info.

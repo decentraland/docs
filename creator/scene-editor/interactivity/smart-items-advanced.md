@@ -22,8 +22,8 @@ Properties are grouped into [**components**](../../sdk7/architecture/entities-co
 
 The behavior of most items is controlled by:
 
-* [**Actions**](smart-items-advanced.md#actions): The Actions component defines things that the item can do. For example play a sound, play an animation, move up, or become invisible.
-* [**Triggers**](smart-items-advanced.md#triggers): The Triggers component assigns what events make those actions happen. For example when the player clicks on the item, when the player walks into an area, or when the scene first loads.
+- [**Actions**](smart-items-advanced.md#actions): The Actions component defines things that the item can do. For example play a sound, play an animation, move up, or become invisible.
+- [**Triggers**](smart-items-advanced.md#triggers): The Triggers component assigns what events make those actions happen. For example when the player clicks on the item, when the player walks into an area, or when the scene first loads.
 
 For example, in a door smart item, the **Actions** component includes "Open" and "Close" actions. The **Triggers** component in that item includes an **On Click** trigger that activates the "Open" action when the door is clicked by the player.
 
@@ -35,8 +35,8 @@ Triggers can also happen conditionally. For example, door smart items include tw
 
 To make items interact with each other:
 
-* One item needs to have at least one action defined in an [Actions](smart-items-advanced.md#actions) component.
-* The other item needs a trigger in the [Triggers](smart-items-advanced.md#triggers) component that points to that action.
+- One item needs to have at least one action defined in an [Actions](smart-items-advanced.md#actions) component.
+- The other item needs a trigger in the [Triggers](smart-items-advanced.md#triggers) component that points to that action.
 
 For example, to make a button open a door:
 
@@ -61,57 +61,70 @@ You can use [states and conditional logic](states-and-conditions.md) to only tri
 
 The **Actions** component lists actions that the item can carry out. Each smart item includes a set of pre-defined actions. You can customize existing actions or add new ones. The following types of actions are available:
 
-* **Play Animation**: Plays an animation in the 3D model of the item. See [About playing animations](smart-items-advanced.md#about-playing-animations)
-* **Stop Animation**: Stops all animations being played by the 3D model of the item.
-* **Play Sound**: Plays a sound from a file, at the location of the item. See [About playing sounds](smart-items-advanced.md#about-playing-sounds)
-* **Stop Sound**: Stops all sounds playing from the item.
-* **Start Tween**: Makes a gradual change in position, rotation or scale over a given period. See [Moving, rotating or scaling](smart-items-advanced.md#moving-rotating-or-scaling).
-* **Set Visibility**: Makes the item visible or invisible.
-* **Attach To Player**: Sets the item as a child of the player's avatar. For example to carry it on their hand or above their head.
-* **Detach From Player**: Detaches the item from the player's avatar.
-* **Open Link**: Opens a link to an external website.
+- **Play Animation**: Plays an animation in the 3D model of the item. See [About playing animations](smart-items-advanced.md#about-playing-animations)
+- **Stop Animation**: Stops all animations being played by the 3D model of the item.
+- **Play Sound**: Plays a sound from a file, at the location of the item. See [About playing sounds](smart-items-advanced.md#about-playing-sounds)
+- **Stop Sound**: Stops all sounds playing from the item.
+- **Start Tween**: Makes a gradual change in position, rotation or scale over a given period. See [Moving, rotating or scaling](smart-items-advanced.md#moving-rotating-or-scaling).
+- **Set Visibility**: Makes the item visible or invisible.
+- **Attach To Player**: Sets the item as a child of the player's avatar. For example to carry it on their hand or above their head.
+- **Detach From Player**: Detaches the item from the player's avatar.
+- **Open Link**: Opens a link to an external website on a browser tab. Players are asked if they trust the domain before it opens.
 
 {% hint style="info" %}
 **📔 Note**: This action can only happen as a result of clicking on an item. It can't be triggered by walking into a trigger area.
 {% endhint %}
 
-* **Move Player**: Change the position of the player to a set of local coordinates inside the scene. It's only possible to move the player inside the same scene.
-* **Teleport Player**: Teleport a player to the coordinates of another scene in Decentraland. Players will appear in the spawn-point of the destination scene.
-* **Move Player**: Change the player's position to another position inside the same scene, using coordinates relative to the scene's origin.
-* **Play Emote**: Make the player's avatar perform one of the default avatar animations (eg: wave, or clap).
-* **Play Custom Emote**: Make the player's avatar perform a custom animation, from a file uploaded to the scene.
-* **Show Text**: Display text on the screen's UI, to be hidden after a few seconds. Ideal hints, dialog lines, notifications, etc.
-* **Hide Text**: Hides any UI text that might be currently displayed.
-* **Start Delay**: Delays another action of the same item by as many seconds as you need.
-* **Stop Delay**: Cancels any delayed actions on the item.
-* **Start Loop**: Replays an action from the same item recurrently at a given interval.
-* **Stop Loop**: Cancels any looped actions on the item.
-* **Play Video Stream**: Play a video as a material on a primitive shape.
-* **Stop Video Stream**: Stop any videos currently played.
-* **Play Audio Stream**: Play an audio stream.
-* **Stop Audio Stream**: Stop any audio streams currently playing.
-* **Open link**: Open a link on browser tab. Players are asked if they trust the domain before they do.
-* **Clone**: Duplicates an item in the designated position.
-* **Spawn Entity**: Creates a new copy of an item in the scene, at a position relative to the item performing the action. The item to spawn doesn't need to be placed in the scene. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
-* **Remove**: Deletes an item from the scene.
-* **Show Image**: Displays an image on the UI, potentially for a limited time. It can also include caption.
-* **Hide Image**: Hides any image currently displayed in the UI via the Show Image action.
-* **Damage**: Reduces the health on any healthbar that is near. The _Layer_ property can determine if it only acts on helalthbars on the player, or on other items.
-* **Move player here**: Changes the player's position to that of this item.
-* **Place on Player**: Changes the item's position to that of the player.
-* **Rotate as Player**: Changes the item's rotation to that of the player.
-* **Place on Camera**: Changes the item's position to that of the camera.
-* **Rotate as Camera**: Changes the item's rotation to that of the camera.
-* **Set Position**: Changes the item's position to a specific one. It can be absolute or relative to its current position.
-* **Set Rotation**: Changes the item's rotation to a specific one. It can be absolute or relative to its current rotation.
-* **Set Scale**: Changes the item's scale to a specific one. It can be absolute or relative to its current scale.
-* **Follow Player**: Starts moving and turning in direction to the player's position. It ignores any obstacles on the way. You can set the speed and make it only move on certain axis. Min Distance determines how close it will come to the player.
-* **Stop Following Player**: Stops the Follow Player action.
-* **Random Action**: One of the actions listed here will be played at random with equal probablility each time the random action is called. You can list any of the actions that belong to the item.
-* **Batch Actions**: All of the actions listed here will be played simultaneously each time the batch action is called. You can list any of the actions that bleong to the item.
-* **Heal Player**: Restore health to the player's health bar.
+- **Move Player**: Change the position of the player to a set of local coordinates inside the scene. It's only possible to move the player inside the same scene.
+- **Teleport Player**: Teleport a player to another location in Decentraland. Use the **Teleport Mode** dropdown to either send them **To coordinates** of another scene in Genesis City, or **To World**, indicating a World's name. Players will appear in the spawn-point of the destination scene.
+- **Play Emote**: Make the player's avatar perform one of the default avatar animations (eg: wave, or clap).
+- **Play Custom Emote**: Make the player's avatar perform a custom animation, from a file uploaded to the scene.
+- **Show Text**: Display text on the screen's UI, to be hidden after a few seconds. Ideal hints, dialog lines, notifications, etc.
+- **Hide Text**: Hides any UI text that might be currently displayed.
+- **Start Delay**: Delays another action of the same item by as many seconds as you need.
+- **Stop Delay**: Cancels any delayed actions on the item.
+- **Start Loop**: Replays an action from the same item recurrently at a given interval.
+- **Stop Loop**: Cancels any looped actions on the item.
+- **Play Video**: Play a video as a material on a primitive shape.
+- **Stop Video**: Stop any videos currently played.
+- **Play Audio Stream**: Play an audio stream.
+- **Stop Audio Stream**: Stop any audio streams currently playing.
+- **Clone**: Duplicates an item in the designated position.
+- **Spawn Entity**: Creates a new copy of an item in the scene, at a position relative to the item performing the action. The item to spawn doesn't need to be placed in the scene. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
+- **Remove**: Deletes an item from the scene.
+- **Show Image**: Displays an image on the UI, potentially for a limited time. It can also include caption.
+- **Hide Image**: Hides any image currently displayed in the UI via the Show Image action.
+- **Damage**: Reduces the health on any healthbar that is near. The _Layer_ property can determine if it only acts on helalthbars on the player, or on other items.
+- **Move player here**: Changes the player's position to that of this item.
+- **Place on Player**: Changes the item's position to that of the player.
+- **Rotate as Player**: Changes the item's rotation to that of the player.
+- **Place on Camera**: Changes the item's position to that of the camera.
+- **Rotate as Camera**: Changes the item's rotation to that of the camera.
+- **Set Position**: Changes the item's position to a specific one. It can be absolute or relative to its current position.
+- **Set Rotation**: Changes the item's rotation to a specific one. It can be absolute or relative to its current rotation.
+- **Set Scale**: Changes the item's scale to a specific one. It can be absolute or relative to its current scale.
+- **Follow Player**: Starts moving and turning in direction to the player's position. It ignores any obstacles on the way. You can set the speed and make it only move on certain axis. Min Distance determines how close it will come to the player.
+- **Stop Following Player**: Stops the Follow Player action.
+- **Random Action**: One of the actions listed here will be played at random with equal probablility each time the random action is called. You can list any of the actions that belong to the item.
+- **Batch Actions**: All of the actions listed here will be played simultaneously each time the batch action is called. You can list any of the actions that bleong to the item.
+- **Heal Player**: Restore health to the player's health bar.
+- **Player Face Item**: Makes the player's avatar turn to face the item.
+- **Freeze Player**: Prevents the player from moving, jumping or performing emotes.
+- **Unfreeze Player**: Restores the player's ability to move after a Freeze Player action.
+- **Lights On**: Turns on the item's **Light Source** component.
+- **Lights Off**: Turns off the item's **Light Source** component.
+- **Lights Modify**: Changes properties of the item's **Light Source** component, like its color or intensity.
+- **Select Camera**: Switches the player's view to a **Virtual Camera**, either on this item or on another entity.
+- **Change Text**: Changes the text of an item with a **Text Shape** component. It can also change the font size and color.
+- **Stop Tween**: Stops any tween movement currently in progress on the item.
+- **Slide Texture**: Continuously slides the texture on the item's material in a given direction, for effects like flowing water or conveyor belts.
+- **Change Collisions**: Enables or disables the item's colliders, both for physics and for pointer events.
+- **Change Skybox**: Changes the scene's skybox to a fixed time of day, expressed in seconds since midnight.
+- **Reset Skybox**: Restores the scene's skybox to its default settings.
+- **Log to Console**: Prints a message to the console, useful for debugging while developing the scene.
+- **Delete**: Removes the item and all of its children from the scene.
 
-See [states and conditional logic](states-and-conditions.md) to learn about other actions related to logic conditions.
+See [states and conditional logic](states-and-conditions.md) to learn about other actions related to logic conditions, like **Set State** and the counter actions.
 
 The **Actions** component defines possible actions, but these don't do anything in the scene unless they are triggered. Actions are activated by a [trigger](smart-items-advanced.md#triggers), either from the same smart item, or from a different one.
 
@@ -123,12 +136,23 @@ To add a new action to an item, click the **Add New Action** button at the botto
 
 The **Triggers** component defines trigger events, these activate actions when a certain event happens. The following types of trigger events exist:
 
-* **On Click**: When the player clicks on the item. See [About click triggers](smart-items-advanced.md#about-click-triggers)
-* **Player Enters Area**: When the player enters an area. See [About trigger areas](smart-items-advanced.md#about-trigger-areas)
-* **Player Leaves Area**: When the player leaves an area. See [About trigger areas](smart-items-advanced.md#about-trigger-areas)
-* **On Spawn**: When the scene starts, or the item is spawned in the scene. See [Trigger on spawn](smart-items-advanced.md#trigger-on-spawn)
+- **On Click**: When the player clicks on the item. See [About click triggers](smart-items-advanced.md#about-click-triggers)
+- **On Input Action**: When the player presses an input button while pointing at the item.
+- **On Global Click**: When the player clicks the pointer anywhere, without needing to point at the item.
+- **On Global Primary**: When the player presses the Primary (E) button anywhere.
+- **On Global Secondary**: When the player presses the Secondary (F) button anywhere.
+- **Player Enters Area**: When the player enters an area. See [Trigger Area](trigger-area.md)
+- **Player Leaves Area**: When the player leaves an area. See [Trigger Area](trigger-area.md)
+- **On Spawn**: When the scene starts, or the item is spawned in the scene. See [Trigger on spawn](smart-items-advanced.md#trigger-on-spawn)
+- **On Delay**: When a **Start Delay** action on the item finishes its countdown.
+- **On Loop**: On every iteration of a **Start Loop** action on the item.
+- **On Clone**: When the item is cloned via a **Clone** action, the new copy fires this trigger.
+- **On Click Image**: When the player clicks on an image displayed by a **Show Image** action.
+- **On Damage**: When the item receives damage from a **Damage** action.
+- **On Heal Player**: When the player is healed by a **Heal Player** action.
+- **On Tick**: On every tick of the scene, once per frame. Use with caution, as the actions triggered by it run very frequently.
 
-See [states and conditional logic](states-and-conditions.md) to learn about other triggers related to logic conditions.
+See [states and conditional logic](states-and-conditions.md) to learn about other triggers related to logic conditions, like **On State Change**, **On Counter Change** and **On Tween End**.
 
 To add a new trigger, click the **Add New Trigger Event** at the bottom of the Trigger component. Then select the type of trigger, the entity you want to activate and an action from that entity.
 
@@ -229,8 +253,8 @@ This copies the item into your project so it can be spawned later. It doesn't ad
 
 A **Spawn Entity** action has two fields:
 
-* **Source**: The item to spawn. Pick from the items added to your project's files.
-* **Position**: The X, Y, and Z coordinates where the new copy appears, relative to the item performing the action.
+- **Source**: The item to spawn. Pick from the items added to your project's files.
+- **Position**: The X, Y, and Z coordinates where the new copy appears, relative to the item performing the action.
 
 If the item you spawn is itself a smart item, each spawned copy keeps its own actions and triggers working independently.
 
@@ -280,7 +304,7 @@ In the advanced mode, these items have a **Visibility** component set to invisib
 
 ## See also
 
-* [Smart items - Basics](smart-items.md)
-* [States and conditions](states-and-conditions.md)
-* [Making any item smart](make-any-item-smart.md)
-* [Combine with code](../code/overview.md)
+- [Smart items - Basics](smart-items.md)
+- [States and conditions](states-and-conditions.md)
+- [Making any item smart](make-any-item-smart.md)
+- [Combine with code](../code/overview.md)

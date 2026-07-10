@@ -10,9 +10,9 @@ To trigger an action when the player walks into or out of an area, use the Trigg
 
 The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
-If any part of an avatar's body — the local player or any other player rendered in the scene — overlaps with this orange cube, the assigned event will be called.
+If any part of the player's avatar overlaps with this orange cube, the assigned event will be called. Trigger areas react only to the player on the local machine, not to other players' avatars — each player fires the trigger on their own instance of the scene.
 
-Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on the item's **Triggers** component. The actions on these trigger events are activated every time that the player enters or leaves the area.
+Use the **Player Enters Area** and **Player Leaves Area** trigger types on the item's **Triggers** component. The actions on these trigger events are activated every time that the player enters or leaves the area.
 
 ![](../../images/editor/on_player_enters.png)
 
@@ -37,5 +37,5 @@ The size of the triggerable area doesn't relate to the item's visible shape or i
 {% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: Trigger areas in the Scene Editor fire for any avatar — the local player and any other players rendered nearby. If you need to react only to the local player and ignore other avatars, drop down to code and use the [SDK7 TriggerArea component](../../sdk7/3d-essentials/trigger-areas.md) with the `CL_MAIN_PLAYER` collision layer.
+**💡 Tip**: Trigger areas in the Scene Editor fire only for the local player. If you need to also react to other players' avatars entering the area, use the Script component to add code and use the [SDK7 TriggerArea component](../../sdk7/3d-essentials/trigger-areas.md) with the `CL_PLAYER` collision layer, which detects all avatars.
 {% endhint %}

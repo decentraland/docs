@@ -57,8 +57,8 @@ Use the **Counter** component to keep track of a number, which can change as the
 
 When an entity has a Counter component, you can run the following actions on it:
 
-* **Increment Counter**: Increment the value of the counter by 1.
-* **Decrease Counter**: Decrease the value of the counter by 1.
+* **Increment Counter**: Increment the value of the counter by a configurable **Amount**, 1 by default.
+* **Decrease Counter**: Decrease the value of the counter by a configurable **Amount**, 1 by default.
 * **Set Counter**: Set the value of the counter to a specific number, for example to set it back to 0.
 
 Use the **On Counter Change** trigger to perform an action every time the counter's value changes. Add a condition to this trigger so that it only activates after passing a certain threshold.

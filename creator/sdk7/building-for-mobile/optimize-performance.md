@@ -34,7 +34,7 @@ You can check your scene's mobile performance directly from **Creator Hub** with
 {% hint style="info" %}
 **What does the Performance metric mean?**
 
-The **Performance** value is a percentage of the FPS budget set by the active graphic profile. A score of **100%** means the scene is hitting the full FPS target; a score of **50%** means it is running at half the allowed frame rate. Because a higher score is better, this metric is the inverse of the other limits — you want to stay **above** the soft limit (50%), not below it.
+The **Performance** value is a percentage of the FPS budget set by the active graphic profile. A score of **100%** means the scene is hitting the full FPS target; a score of **50%** means it is running at half the allowed frame rate.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -45,10 +45,12 @@ Always test your scene on all Graphic Profiles and aim for a **Performance score
 See [Hardware Requirements](hardware-requirements.md) for the full list of reference devices and their specifications.
 {% endhint %}
 
-### Switching Graphic Profiles
+{% hint style="info" %}
+**Switching Graphic Profiles**
 
 Players can change the graphic profile from inside the app:
 
 **Menu → Settings → Graphics → set Dynamic Graphics to Off → switch Profiles**
 
 Test your scene with each profile — Low, Medium, and High — and confirm the Performance score stays above 80% in all three before publishing.
+{% endhint %}

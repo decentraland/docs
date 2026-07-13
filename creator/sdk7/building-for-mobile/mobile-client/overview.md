@@ -11,7 +11,13 @@ This section covers how to detect mobile clients from your scene code, how to pr
 * [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)
 * [Download for Android (Google Play)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer&pcampaignid=web_share&utm_source=docs&utm_medium=internal&utm_content=android)
 
-## In this section
+## Building for Mobile
+
+### Reference
+
+* [Sample Scenes](../sample-scenes.md) — open-source scenes built by the Decentraland team and optimized for mobile play.
+* [Missing Features](../missing-features.md) — features available on the desktop client that are not yet supported in the mobile app.
+* [Hardware Requirements](../hardware-requirements.md) — minimum and recommended hardware specs for running Decentraland on mobile.
 
 ### Develop
 
@@ -21,12 +27,6 @@ This section covers how to detect mobile clients from your scene code, how to pr
 * [UI best practices for mobile](../ui-best-practices.md) — DOs and DON'Ts, sizing recommendations, and current limitations.
 * [Input on mobile](../input-on-mobile.md) — touch-friendly input mappings and which `InputAction`s to avoid.
 * [Optimize Performance](../optimize-performance.md) — mobile scene limits, how to preview them in Creator Hub, and performance targets.
-
-### Reference
-
-* [Sample Scenes](../sample-scenes.md) — open-source scenes built by the Decentraland team and optimized for mobile play.
-* [Missing Features](../missing-features.md) — features available on the desktop client that are not yet supported in the mobile app.
-* [Hardware Requirements](../hardware-requirements.md) — minimum and recommended hardware specs for running Decentraland on mobile.
 
 ### Publish
 

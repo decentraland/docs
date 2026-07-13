@@ -57,10 +57,10 @@ export function main() {
 
 * `hideJoystick` (_boolean_) — hides the native virtual movement joystick.
 * `hideCrosshair` (_boolean_) — hides the on-screen crosshair / reticle.
-* `mainAction` (_InputAction_) — the action the large central button triggers. Only gamepad actions are valid (see below). When unset, the default central button (`IA_JUMP`) is kept.
+* `mainAction` (_InputAction_) — moves this action to the front of the button stack, making it the large central button; the other buttons keep their priority order. Only gamepad actions are valid (see below). When unset, the first visible button (`IA_JUMP` by default) is the central button. See [How the button layout works](#how-the-button-layout-works).
 * `touchInputs` (_array_) — per-button overrides. A button that isn't listed keeps its default (shown, with its default glyph). Each entry has:
   * `inputAction` (_InputAction_) — which on-screen button this entry configures.
-  * `hide` (_boolean_) — hide this button. Default is `false` (shown).
+  * `hide` (_boolean_) — hide this button. Default is `false` (shown). Any button can be hidden, **including `IA_JUMP`**; the remaining buttons cascade up to fill its place.
   * `icon` (_string_, optional) — override the button glyph with a content-mapped texture (an image included in your scene). For the jump button this replaces all of its dynamic states (jump / double-jump / glide). If the path can't be resolved, the built-in glyph is used.
 
 ## Which actions map to which buttons
@@ -74,6 +74,28 @@ The `InputAction` values used here are the same ones documented in [Input on mob
 * `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` — the 1 / 2 / 3 / 4 buttons
 
 `IA_ANY` and `IA_MODIFIER` are meta values and can't be used here.
+
+## How the button layout works
+
+The on-screen buttons form a single **priority stack**, in this fixed order:
+
+1. `IA_JUMP`
+2. `IA_POINTER`
+3. `IA_PRIMARY` (E)
+4. `IA_SECONDARY` (F)
+5. `IA_ACTION_3` (1)
+6. `IA_ACTION_4` (2)
+7. `IA_ACTION_5` (3)
+8. `IA_ACTION_6` (4)
+
+The on-screen positions are fixed; the **visible** buttons fill those positions from the top of the list down. This means:
+
+* **Hiding a button cascades the rest up.** When you hide a button, every lower-priority button moves up to fill the gap. Any button can be hidden, **including jump** — hide it and `IA_POINTER` takes the central spot.
+* **The large central button is always the first visible button.** By default that's `IA_JUMP`; if jump is hidden, the next visible button becomes the central one.
+* **`mainAction` moves an action to the front.** The chosen action jumps to the front of the stack and becomes the central button; every other button keeps the normal order. If the `mainAction` target is also hidden, it stays hidden (hiding wins).
+* **The "+" overflow menu only appears when more than four buttons are visible.** With four or fewer visible buttons, they all show directly and there is no "+". With more than four, the first four (the central button plus three around it) show directly and the rest sit behind the "+" toggle.
+
+So hiding higher-priority buttons is also how you surface `IA_ACTION_3`–`IA_ACTION_6`: drop the button count to four or fewer and they show directly instead of behind the "+".
 
 ## Example
 

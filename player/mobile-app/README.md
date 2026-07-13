@@ -6,7 +6,7 @@ description: Decentraland on iOS and Android.
 
 Decentraland is now available on mobile. You can hang out, attend events, explore Genesis City, and visit Worlds from your phone — wherever you are.
 
-![Decentraland mobile app — Genesis City](../../.gitbook/assets/mobile-app-screenshot.png)
+![Decentraland mobile app — Genesis City](../../mobile-app-screenshot.png)
 
 ## Get the app
 

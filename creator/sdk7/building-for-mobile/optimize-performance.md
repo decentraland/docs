@@ -29,7 +29,7 @@ You can check your scene's mobile performance directly from **Creator Hub** with
 2. Select Preview > Show QR Code for Mobile
 3. Open the **Scene Limits Preview** from the top right icon in your phone (monitor with statistics in red).
 
-![Mobile scene limits panel in Creator Hub](../../../.gitbook/assets/mobile_scene_limits.png)
+![Mobile scene limits panel in Creator Hub](../../../mobile_scene_limits.png)
 
 {% hint style="info" %}
 **What does the Performance metric mean?**

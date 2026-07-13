@@ -21,15 +21,15 @@ The table below shows the limits enforced when running on mobile. Reaching a **s
 | Draw calls | 1,000 | 2,000 |
 | Performance (higher is better) | 50% | 30% |
 
-![Mobile scene limits panel in Creator Hub](../../../.gitbook/assets/mobile_scene_limits.png)
-
 ## Preview Mobile Performance
 
 You can check your scene's mobile performance directly from **Creator Hub** without deploying to a physical device.
 
+![Mobile scene limits panel in Creator Hub](../../../.gitbook/assets/mobile_scene_limits.png)
+
 1. Open your scene in **Creator Hub**.
-2. Open the **Scene Limits Preview** panel (visible in the bottom toolbar).
-3. Switch the preview mode to **Mobile** to see the limits above applied to your scene in real time.
+2. Select Preview > Show QR Code for Mobile
+3. Open the **Scene Limits Preview** from the top right icon in your phone (monitor with statistics in red).
 
 {% hint style="info" %}
 **What does the Performance metric mean?**

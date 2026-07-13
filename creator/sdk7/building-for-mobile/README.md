@@ -8,6 +8,8 @@ Decentraland is now available on mobile. Players can explore your scenes from iO
 
 This section covers how to detect mobile clients from your scene code, how to preview and test your scene on a real device from the Creator Hub or the CLI, the safe-area rules for placing UI on small screens, and how to get your scene featured in the mobile Discover section.
 
+![Decentraland mobile app — Genesis City](../../../.gitbook/assets/mobile-app-screenshot.png)
+
 ## Get the mobile app
 
 * [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)

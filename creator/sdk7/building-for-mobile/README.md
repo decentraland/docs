@@ -13,10 +13,6 @@ This section covers how to detect mobile clients from your scene code, how to pr
 * [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)
 * [Download for Android (Google Play)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer&pcampaignid=web_share&utm_source=docs&utm_medium=internal&utm_content=android)
 
-{% hint style="info" %}
-**For beta testers:** the iOS build is also available via [TestFlight](https://testflight.apple.com/join/KF4r3jlU?utm_source=docs&utm_medium=internal&utm_content=ios) for power users who want to try unreleased changes.
-{% endhint %}
-
 ## In this section
 
 * [Detect the platform from code](detect-platform.md) — use `@dcl/sdk/platform` to branch logic for mobile, desktop, or web.

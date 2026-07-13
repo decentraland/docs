@@ -14,21 +14,25 @@ Every `InputAction` that exists on desktop is also available on the mobile clien
 
 <figure><img src="../../images/touch-controls/touch-controls-default.jpg" alt="Default on-screen controls"><figcaption><p>Default on-screen controls</p></figcaption></figure>
 
-The on-screen controls map as follows:
+The on-screen controls map to input actions as follows:
 
-* **On-screen joystick** — drives `IA_FORWARD` / `IA_BACKWARD` / `IA_LEFT` / `IA_RIGHT` and avatar movement.
-* **Interaction button (bottom right)** — fires `IA_POINTER` (the left mouse button on desktop) against whatever the player is aiming at.
-* **E button** — fires `IA_PRIMARY` (the `E` key on desktop).
-* **F button** — fires `IA_SECONDARY` (the `F` key on desktop).
-* **Jump button** — fires `IA_JUMP` (the `Space` key on desktop). By default it's the largest, most reachable button on the HUD, but a scene can reconfigure or even hide it (see [Customizing the on-screen controls](#customizing-the-on-screen-controls)).
-* **1 / 2 / 3 / 4 buttons** — fire `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` respectively. In the default layout these live behind a secondary "+" menu (see below).
-* **Camera drag** — rotates the camera; not exposed as an `InputAction`.
+| Control | InputAction | Notes |
+| --- | --- | --- |
+| **On-screen joystick** | `IA_FORWARD` / `IA_BACKWARD` / `IA_LEFT` / `IA_RIGHT` | Drives avatar movement. |
+| **Interaction button** (bottom right) | `IA_POINTER` | The left mouse button on desktop; fires against whatever the player is aiming at. |
+| **E button** | `IA_PRIMARY` | The `E` key on desktop. |
+| **F button** | `IA_SECONDARY` | The `F` key on desktop. |
+| **Jump button** | `IA_JUMP` | The `Space` key on desktop. By default the largest, most reachable button — but a scene can reconfigure or hide it (see [Customizing the on-screen controls](#customizing-the-on-screen-controls)). |
+| **1 / 2 / 3 / 4 buttons** | `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` | In the default layout these live behind a secondary "+" menu (see below). |
+| **Camera drag** | — | Rotates the camera; not exposed as an `InputAction`. |
 
 ## Inputs to avoid for key actions on mobile
 
-All `InputAction` values are reachable on mobile, but in the **default layout** `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are tucked away behind the secondary "+" menu and are **not easily reachable during gameplay**. If your scene uses them as primary actions, mobile players will not be able to trigger them comfortably.
+All `InputAction` values are reachable on mobile, but in the **default layout** `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are tucked away behind the secondary "+" menu and are **not easily reachable during gameplay**. If your scene uses them as primary actions, mobile players won't be able to trigger them comfortably.
 
-> A scene that customizes the controls can surface these buttons directly — the "+" menu only appears when more than four buttons are visible, so hiding higher-priority buttons pulls `1`–`4` up into reach. See [How the button layout works](../interactivity/touch-screen-controls.md#how-the-button-layout-works). The guidance below applies to the default layout.
+{% hint style="info" %}
+A scene that customizes the controls can surface these buttons directly: the "+" menu only appears when more than four buttons are visible, so hiding higher-priority buttons pulls `1`–`4` up into reach. See [How the button layout works](../interactivity/touch-screen-controls.md#how-the-button-layout-works). The guidance below applies to the default layout.
+{% endhint %}
 
 Avoid binding key actions to:
 

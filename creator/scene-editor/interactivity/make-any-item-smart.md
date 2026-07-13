@@ -41,7 +41,7 @@ For example, you could add a **Pointer Events** trigger to a door, so that it op
 Add a **Trigger** component with **On Click** or **On Input Action** Trigger events.
 
 * **On Click** reacts to every time the player clicks the left-mouse button while pointing at the item.
-* **On Input Action** reacts to every time the player the Primary Button (E) while pointing at the item.
+* **On Input Action** reacts to every time the player presses the Primary Button (E) while pointing at the item.
 
 ![](../../images/editor/on_click.png)
 
@@ -51,9 +51,9 @@ It's important that for an item to be clickable, it must have a **Collider**. Ot
 
 If your model is lacking colliders, any of the following should fix it:
 
-* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, cube, sphere).
+* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, sphere).
 * Change the properties of the **Collisions** section on the **GLTF** component. The **Visible layer** should be assigned to **Pointer**.
-* Edit the 3D model in Blender to include an invisible collider geometry (any mesh with a name that ends in `_collider`). See [colliders](../3d-modeling/colliders.md).
+* Edit the 3D model in Blender to include an invisible collider geometry (any mesh with a name that ends in `_collider`). See [colliders](../../3d-modeling/colliders.md).
 
 {% hint style="info" %}
 **💡 Tip**: If you used the **Mesh Renderer** component to give your model a primitive shape, that alone won't give it a collider. You must also assign it a **Mesh Collider** component.
@@ -73,8 +73,8 @@ You can override the default settings that are used when an item has an **On Cli
 Add a **Trigger** component with **On Global Click**, **On Global Primary** or **On Global Secondary** Triggers events.
 
 * **On Global Click** reacts to every time the player clicks the left-mouse button, anywhere in the scene.
-* **On Global Primary** reacts to every time the player the Primary Button (E), anywhere in the scene.
-* **On Global Secondary** reacts to every time the player the Secondary Button (F), anywhere in the scene.
+* **On Global Primary** reacts to every time the player presses the Primary Button (E), anywhere in the scene.
+* **On Global Secondary** reacts to every time the player presses the Secondary Button (F), anywhere in the scene.
 
 {% hint style="info" %}
 **💡 Tip**: It often makes sense to combine this with [States and conditions](states-and-conditions.md), so that the items only react to the button event if the player is in the room, or some other condition.

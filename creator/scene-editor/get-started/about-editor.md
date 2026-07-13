@@ -88,7 +88,7 @@ See [Scene Settings](../configure/scene-settings.md) for more details.
 
 ## Publish your scene
 
-Once you're happy with your scene, press _Publish scene_.
+Once you're happy with your scene, press the **Publish** button.
 
 ![](../../images/editor/publish-options.png)
 

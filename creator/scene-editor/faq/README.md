@@ -78,7 +78,7 @@ Yes, any Decentraland scene built with SDK7 can be imported into the Scene Edito
 <details>
 <summary><strong>Can I group objects?</strong></summary>
 
-You can multi-select objects by pressing _control_ and keeping it pressed while selecting more, and then apply actions to that group.
+You can multi-select objects by pressing _Control_ (or _⌘ Cmd_ on Mac) and keeping it pressed while selecting more, and then apply actions to that group.
 
 You can also nest items, so that any change to the parent's transform also affects the children. For example, you could set books as children of a bookshelf, so that moving the bookshelf also brings books with it.
 

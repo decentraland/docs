@@ -24,9 +24,9 @@ The following fields are available:
 * **Description**
 *   **Thumbnail**
 
-    {% hint style="info" %\} 
+    {% hint style="info" %} 
     **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
-    {% endhint %\}
+    {% endhint %}
 * **Categories**
 * **Creator name** (optional)
 * **Creator contact email** (optional)
@@ -61,7 +61,7 @@ You will receive a notification on the Decentraland notifications tab whenever a
 
 ## Layout
 
-You can edit the size of your scene by clicking the _pencil icon_ and then changing the number or rows and columns.
+You can edit the size of your scene by clicking the _pencil icon_ and then changing the number of rows and columns.
 
 Scenes in Decentraland occupy one or several adjacent LAND parcels. Each LAND parcel measures 16x16 meters.
 
@@ -77,7 +77,7 @@ To build something to deploy to LAND parcels you own, make sure the shape of the
 <img src="../../images/editor/non-rectangular.png" alt="" data-size="original">
 {% endhint %}
 
-If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
+If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). In that case, you can use any layout of up to 300x300 parcels without needing to own them, but you will have a size limit in MB.
 
 See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 

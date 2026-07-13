@@ -46,7 +46,7 @@ function main() {
 
 	const door1 = engine.getEntityByName<EntityNames>(EntityNames.Door_1)
 
-	// Ne need to check for null
+	// No need to check for null
 	console.log(Transform.get(door1).position.x)
 
 }

@@ -94,7 +94,7 @@ The **Actions** component lists actions that the item can carry out. Each smart 
 - **Remove**: Deletes an item from the scene.
 - **Show Image**: Displays an image on the UI, potentially for a limited time. It can also include caption.
 - **Hide Image**: Hides any image currently displayed in the UI via the Show Image action.
-- **Damage**: Reduces the health on any healthbar that is near. The _Layer_ property can determine if it only acts on helalthbars on the player, or on other items.
+- **Damage**: Reduces the health on any healthbar that is near. The _Layer_ property can determine if it only acts on healthbars on the player, or on other items.
 - **Move player here**: Changes the player's position to that of this item.
 - **Place on Player**: Changes the item's position to that of the player.
 - **Rotate as Player**: Changes the item's rotation to that of the player.
@@ -105,8 +105,8 @@ The **Actions** component lists actions that the item can carry out. Each smart 
 - **Set Scale**: Changes the item's scale to a specific one. It can be absolute or relative to its current scale.
 - **Follow Player**: Starts moving and turning in direction to the player's position. It ignores any obstacles on the way. You can set the speed and make it only move on certain axis. Min Distance determines how close it will come to the player.
 - **Stop Following Player**: Stops the Follow Player action.
-- **Random Action**: One of the actions listed here will be played at random with equal probablility each time the random action is called. You can list any of the actions that belong to the item.
-- **Batch Actions**: All of the actions listed here will be played simultaneously each time the batch action is called. You can list any of the actions that bleong to the item.
+- **Random Action**: One of the actions listed here will be played at random with equal probability each time the random action is called. You can list any of the actions that belong to the item.
+- **Batch Actions**: All of the actions listed here will be played simultaneously each time the batch action is called. You can list any of the actions that belong to the item.
 - **Heal Player**: Restore health to the player's health bar.
 - **Player Face Item**: Makes the player's avatar turn to face the item.
 - **Freeze Player**: Prevents the player from moving, jumping or performing emotes.
@@ -164,7 +164,7 @@ To add a new trigger, click the **Add New Trigger Event** at the bottom of the T
 
 ## About Playing Animations
 
-Use an action of type **Play Animation** to run an animation on the 3D model of the smart item. The animation needs to already exist as part of the 3D model file. The **Select Animation** dropdown displays a list of all of the available animations in the 3D mode.
+Use an action of type **Play Animation** to run an animation on the 3D model of the smart item. The animation needs to already exist as part of the 3D model file. The **Select Animation** dropdown displays a list of all of the available animations in the 3D model.
 
 The **Play Mode** field lets you select if an animation should play just once, or if it should keep looping.
 
@@ -178,7 +178,7 @@ Use the **Stop Animation** action to stop all animations by the item, both loopi
 **💡 Tip**: To easily check the contents of a 3D model, to see what animations it includes and what they look like, a good tool is the [Babylon Sandbox](https://sandbox.babylonjs.com/). Just drag the 3D model file into the window. A dropdown with a list of its animations should appear on the bottom.
 {% endhint %}
 
-To learn more about animations and how you can create your own as part of a 3D model, see [Animations](../3d-modeling/animations.md).
+To learn more about animations and how you can create your own as part of a 3D model, see [Animations](../../3d-modeling/animations.md).
 
 ## About Playing sounds
 

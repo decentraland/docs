@@ -28,7 +28,7 @@ If you also plan on reading and editing code in your scene, you'll also need to 
 You may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
 1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
-2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Chose from your device** to find it.
+2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
 ## Troubleshooting
 

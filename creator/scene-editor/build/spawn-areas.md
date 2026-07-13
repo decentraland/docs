@@ -28,7 +28,7 @@ The Spawn Area is composed of two different entities that work together:
 
 ## Changing Spawn Areas
 
-**Spawn Areas** and their **Camera Target** can be moved directly from the Scene Editor as with any other object in the scene, or modify it's values manually (as with Transforms in other Entities).
+**Spawn Areas** and their **Camera Target** can be moved directly from the Scene Editor as with any other object in the scene, or modify its values manually (as with Transforms in other Entities).
 
 ### Parameters
 
@@ -53,7 +53,7 @@ The creator can have multiple **Spawn Areas** defined. To create a new Spawn Are
 
 <img src="../../../.gitbook/assets/spawn-area-multiple-components.png" width="600" />
 
-3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="100" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area. If there are many Spawn areas toggled as **Main Spawn**, the player will randonmly appear in one of them.
+3. Enable the **Main Spawn** <img src="../../../.gitbook/assets/spawn-areas-main-spawn-toggle.png" width="100" style="vertical-align: middle;" alt="icon"> of the desired Spawn Area. If there are many Spawn areas toggled as **Main Spawn**, the player will randomly appear in one of them.
 4. Preview the scene.
 
 

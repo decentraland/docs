@@ -10,7 +10,7 @@ Select an item by clicking on it on the canvas or on the entity tree. You'll the
 
 Most non-interactive items have the following components:
 
-- **Transform**: Sets the position, rotation, and scale of the item. If the item is a child of another item on the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), these value are relative to those of the parent's.
+- **Transform**: Sets the position, rotation, and scale of the item. If the item is a child of another item on the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), these values are relative to those of the parent's.
 - **GLTF**: What 3D model to load. It includes the local path to the file for this 3D model. It also includes some properties for configuring [colliders](../../sdk7/3d-essentials/colliders.md#colliders-on-3d-models) on the model.
 
 The items in your scene are all **Entities**. Everything in a scene is an Entity, they are the basic building blocks of scenes. Items are Entities that have at least a position and a visible shape.
@@ -39,7 +39,7 @@ The following Components can be added to any Entity via the Scene Editor UI:
 - **Mesh Collider**: Gives the Entity an invisible collider geometry. This can block the player from walking through the item, and/or can make it clickable. See [collider](../../sdk7/3d-essentials/colliders.md).
 - **Material**: Defines the color, texture, and other properties of an Entity that has a **Mesh Renderer** Component. See [materials](../../sdk7/3d-essentials/materials.md).
 
-  {% hint style="warning" %\} **📔 Note**: The item Must have a **Mesh Renderer** Component. It doesn't affect items with a **GLTF** visible shape. \{% endhint %\}
+  {% hint style="warning" %} **📔 Note**: The item Must have a **Mesh Renderer** Component. It doesn't affect items with a **GLTF** visible shape. {% endhint %}
 
 - **Visibility**: Defines if an Entity is invisible.
 - **Light Source**: Adds a light to the Entity.
@@ -70,7 +70,7 @@ The following Components can be added to any Entity via the Scene Editor UI:
 
 See [Combine with code](../code/overview.md) for how to edit the code of your scene.
 
-Also note that an Entity can only hold **one** of each Component. It's not possible to assign a second instance of a Component that already exists in the entity. For example, you can't two **Actions** components to a same Entity.
+Also note that an Entity can only hold **one** of each Component. It's not possible to assign a second instance of a Component that already exists in the entity. For example, you can't add two **Actions** components to a same Entity.
 {% endhint %}
 
 ## Smart items

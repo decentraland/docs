@@ -64,11 +64,11 @@ The following 3D model formats are supported:
 
 Both can include external texture image files, or external binary (_.bin_) files.
 
-You can convert other formats into these formats with various different editors and tools. See [3D modeling](../3d-modeling/3d-models.md) for recommendations and tips.
+You can convert other formats into these formats with various different editors and tools. See [3D modeling](../../3d-modeling/3d-models.md) for recommendations and tips.
 
 All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations](../../sdk7/optimizing/scene-limitations.md) for details.
 
-All 3D model files must each occupy less than 50 MB to be usable in a scene. Larger files aren't supported.
+Each imported file, of any type, must occupy less than 50 MB to be usable in a scene. Larger files aren't supported.
 
 **Free libraries for 3D models**
 
@@ -78,7 +78,6 @@ To get you started, below is a list of libraries that have free or relatively in
 
 - [IWB Catalog](https://dcl-iwb.co/)
 - [SketchFab](https://sketchfab.com/)
-- [Clara.io](https://clara.io/)
 - [Archive3D](https://archive3d.net/)
 - [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
 - [Thingiverse](https://www.thingiverse.com/) (3D models made primarily for 3D printing, but adaptable to Virtual Worlds)
@@ -99,7 +98,7 @@ Note that in several of these sites, you can choose what format to download the 
 
 ### Colliders
 
-You might find that when running a preview the player can walk through your imported 3D models. This is likely because the models are missing a _collider mesh_ to define a collision geometry. See [colliders](../3d-modeling/colliders.md) for more details and instructions.
+You might find that when running a preview the player can walk through your imported 3D models. This is likely because the models are missing a _collider mesh_ to define a collision geometry. See [colliders](../../3d-modeling/colliders.md) for more details and instructions.
 
 {% hint style="info" %}
 **💡 Tip**: Instead of editing the model to add a _collider mesh_, a simpler alternative is to add an _Invisible wall_ smart item with approximately the same shape to stand in its place.

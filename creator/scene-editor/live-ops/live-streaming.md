@@ -51,7 +51,7 @@ You'll see two links that you can copy and share with others.
 - **Cast Speakers**: This link is for the speakers to use to cast their video to the scene.
 
   {% hint style="danger" %}
-  **❗Warning**: Treat the steaming link as a secret, only share it with people you trust. Reset the link between presenters if needed.
+  **❗Warning**: Treat the streaming link as a secret, only share it with people you trust. Reset the link between presenters if needed.
 
   When finished streaming, close the DCL Cast browser tab to free the channel.
   {% endhint %}
@@ -111,8 +111,8 @@ To override this default behavior:
 This will force this source to be always shown on screen, regardless of if other speakers are talking.
 
 {% hint style="info" %}
-**📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app an in the Decentraland scene.
-You can easily mute all audio from the DCL Cast app, but toggling the speaker icon on the bottom-left of the screen
+**📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app and in the Decentraland scene.
+You can easily mute all audio from the DCL Cast app by toggling the speaker icon on the bottom-left of the screen
 
  <img src="../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
 
@@ -195,5 +195,5 @@ You should be able to paste a URL pointing to a video from most popular video st
 To stream from a video file you have on your local machine, the easiest path is to upload this video to a public Google Drive and paste the link.
 
 - The URL must be `https`. See [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
-- Recommended providers include [Vimeo](https://vimeo.com/), [Bunny](bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
+- Recommended providers include [Vimeo](https://vimeo.com/), [Bunny](https://bunny.net), [Livepeer Studio](https://livepeer.studio/) and [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
 - Tips for encoder setup: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).

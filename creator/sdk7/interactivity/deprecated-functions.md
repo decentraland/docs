@@ -250,12 +250,12 @@ executeTask(async () => {
 {% endhint %}
 
 ```ts
-import { getCurrentRealm } from '@decentraland/EnvironmentAPI'
+import { getCurrentRealm } from '~system/EnvironmentApi'
 
 async function fetchPlayerData() {
-	const playerRealm = await getCurrentRealm()
+	const playerRealm = await getCurrentRealm({})
 
-	console.log(playerRealm.domain)
+	console.log(playerRealm.currentRealm?.domain)
 }
 
 fetchPlayerData()
@@ -268,12 +268,12 @@ fetchPlayerData()
 {% endhint %}
 
 ```ts
-import { isPreviewMode } from '~system/EnvironmentAPI'
+import { isPreviewMode } from '~system/EnvironmentApi'
 
 executeTask(async () => {
-	const preview: boolean = await isPreviewMode({})
+	const { isPreview } = await isPreviewMode({})
 
-	if (preview) {
+	if (isPreview) {
 		console.log('Running in preview')
 	}
 })
@@ -316,30 +316,14 @@ The event includes the following data:
 ## Player locks/unlocks cursor
 
 {% hint style="warning" %}
-**📔 Note**: The `onPointerLockedStateChange` event is deprecated from SDK v7.x. See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) for a non-deprecated alternative.
+**📔 Note**: The `onPointerLockedStateChange` event was removed in SDK v7.x, it's no longer available. See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) for the current alternative.
 {% endhint %}
 
 Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
 
 Players unlock the cursor by clicking the _Right mouse button_ or pressing the _Esc_ key, and lock the cursor back by clicking anywhere in the screen.
 
-This `onPointerLockedStateChange` event is activated each time a player switches between these two modes, while near the scene.
-
-```ts
-import { onPointerLockedStateChange } from '@dcl/sdk/observables'
-
-onPointerLockedStateChange.add(({ locked }) => {
-	if (locked) {
-		console.log('Pointer has been locked')
-	} else {
-		console.log('Pointer has been unlocked')
-	}
-})
-```
-
-{% hint style="warning" %}
-**📔 Note**: This event is triggered even if the player is not standing directly inside the scene.
-{% endhint %}
+To react each time a player switches between these two modes, use the `onChange` function on the `PointerLock` component, see [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor).
 
 ## Player changes realm or island
 
@@ -373,7 +357,7 @@ If your scene relies on an [3rd party server](../networking/authoritative-server
 ## Crypto functions
 
 {% hint style="warning" %}
-**📔 Note**: The functions `requirePayment()`, `signMessage()`, `convertMessageToObject()` are deprecated. Use the `sendAsync()` function instead. See [Scene blockchain operations](deprecated-functions.md). There are also libraries that can help simplify some common use cases with these functions.
+**📔 Note**: The functions `requirePayment()`, `signMessage()`, `convertMessageToObject()` are deprecated. Use the `sendAsync()` function instead. See [Scene blockchain operations](../blockchain/scene-blockchain-operations.md). There are also libraries that can help simplify some common use cases with these functions.
 {% endhint %}
 
 ## Video Events
@@ -386,7 +370,7 @@ When a video changes its playing status, the `onVideoEvent` observable receives 
 
 ```ts
 onVideoEvent.add((data) => {
-	log('New Video Event ', data)
+	console.log('New Video Event ', data)
 })
 ```
 

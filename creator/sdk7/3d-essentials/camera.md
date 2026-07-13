@@ -40,7 +40,7 @@ Use `CameraModeArea` in regions where players would have a significantly better 
 When creating an `CameraModeArea` component, you must provide the following:
 
 * `area`: Size of the modifier area
-* `cameraMode`: Which camera mode to force in this area, from the `CameraType` enum.
+* `mode`: Which camera mode to force in this area, from the `CameraType` enum.
 
 The supported camera modes are:
 
@@ -152,7 +152,7 @@ function main() {
 	const myCustomCamera = engine.addEntity()
 	Transform.create(myCustomCamera, {
 		position: Vector3.create(8, 5, 8),
-		rotation: Quaternion.Euler(0, 0, 91) 
+		rotation: Quaternion.fromEulerDegrees(91, 0, 0),
 		// Note that the rotation is 91º, not 90º
 	})
 	VirtualCamera.create(myCustomCamera, {})
@@ -221,7 +221,7 @@ function main() {
 	})
 
 	const mainCamera = MainCamera.createOrReplace(engine.CameraEntity, {
-		virtualCameraEntity: myCustomCamera,
+		virtualCameraEntity: myCustomCamera1,
 	})
 
 	// clickable cube
@@ -269,7 +269,7 @@ If an entity is being followed by the camera, this will only change the rotation
 As the camera rotates, the Transform of the entity with the `VirtualCamera` component does not change. However, you can read the camera's rotation from the Transform on `engine.CameraEntity`. The rotation and position of this entity will be absolute, it won't be conditioned by that of the entity with the `VirtualCamera` component. The rotation of this transform is affected as by the `lookAtEntity` behavior.
 
 {% hint style="warning" %}
-**📔 Note**: If you configure the virtual camera with a `lookAtEntity` that references the same entity that holds the virtual camera, or the `engine.MainCamera` entity, the resulting behavior will be the same as not assigning any entity at all.
+**📔 Note**: If you configure the virtual camera with a `lookAtEntity` that references the same entity that holds the virtual camera, or the `engine.CameraEntity` entity, the resulting behavior will be the same as not assigning any entity at all.
 {% endhint %}
 
 ## Attach to the player

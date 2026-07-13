@@ -28,15 +28,15 @@ You can read the full code of each contract, as it's public information on the b
 
 ## dApp boilerplate code
 
-* [Boilerplate code](https://github.com/decentraland/dapp-boilerplate): This Boilerplate code can be a great starting point for building your own dApp.
+* [Boilerplate code](https://github.com/decentraland/dapp-boilerplate): This boilerplate code can be a starting point for building your own dApp. Note that this repository is archived and no longer maintained, so treat it as a reference rather than an up-to-date template.
 
 ## Helper libraries
 
 While building our own dApps internally, we put together some helper libraries that you might also find useful.
 
-* [Decentraland-eth](https://github.com/decentraland/decentraland-eth): This is a low level library with utility functions to work with the Ethereum blockchain.
-* [Decentraland-dapps](https://github.com/decentraland/decentraland-dapps): This is a higher level library with common modules for dApps. The modules in this library are built using `Decentraland-eth`.
+* [Decentraland-dapps](https://github.com/decentraland/decentraland-dapps): This is a higher level library with common modules for dApps, actively used by Decentraland's own applications.
 * [Decentraland UI](https://ui.decentraland.org/): This library contains a selection of reusable UI elements that are included in Decentraland's projects.
+* [Decentraland-eth](https://github.com/decentraland/decentraland-eth): This is a low level library with utility functions to work with the Ethereum blockchain. Note that this repository is archived and no longer maintained.
 
 ## Sample dApps
 
@@ -49,7 +49,7 @@ Below are links to the full code of several dApps that we built around Decentral
 
 Before launching your dApp into production, we recommend testing it first.
 
-* [dAppeteer](https://github.com/decentraland/dappeteer): We put this framework together to help you run tests on your dApp.
+* [dAppeteer](https://github.com/decentraland/dappeteer): We put this framework together to help you run tests on your dApp. Note that this repository is archived and no longer maintained.
 
 ## Decentraland smart contracts
 

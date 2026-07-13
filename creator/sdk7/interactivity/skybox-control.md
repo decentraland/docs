@@ -6,7 +6,7 @@ description: Change the skybox time
 
 You can change how a player sees the skybox whenever they are standing in your scene, this also affects the hue and direction of the global lighting.
 
-The sky in Decentraland follows a default day/night cycle where 1 minute passes each second, so a full cycle takes 24 minutes to complete. If the scene is not enforcing any fixed time of day, then players are also able to switch to a particular time of day by changing a slider in their UI.
+The sky in Decentraland follows a default day/night cycle that takes 2 hours to complete, so there are 12 full cycles every real day. If the scene is not enforcing any fixed time of day, then players are also able to switch to a particular time of day by changing a slider in their UI.
 
 Whenever players enter a scene with a different time of day, or the scene changes the time of day dynamically, the skybox transitions smoothly over a few seconds to this new value.
 
@@ -53,7 +53,7 @@ The function returns a number between 0 and 86400, where 0 is midnight and 86400
 
 ## Changing the time of day dynamically
 
-You can change the time of day dynamically using the `SkyboxTime` component. This component can only be added to the root entity of the scene `engine.rootEntity`.
+You can change the time of day dynamically using the `SkyboxTime` component. This component can only be added to the root entity of the scene `engine.RootEntity`.
 
 ```ts
 import { SkyboxTime } from '@dcl/sdk/ecs'
@@ -67,13 +67,12 @@ The `fixed_time` property is a number between 0 and 86400, where 0 is midnight a
 
 Whenever this component is added, removed, or the `fixed_time` property is changed, the skybox time of day transitions smoothly over a few seconds to this new value. The same happens when the player steps out or into the scene. While the skybox time of day is fixed, the skybox will no longer follow progress in its day/night cycle and players can't change the time of day via the UI.
 
-By default, the transition always happens in the forward direction, but you can change this by setting the `direction` property to `TransitionMode.TM_FORWARD` or `TransitionMode.TM_BACKWARD`.
+By default, the transition always happens in the forward direction, but you can change this by setting the `transitionMode` property to `TransitionMode.TM_FORWARD` or `TransitionMode.TM_BACKWARD`.
 
 ```ts
-import { TransitionMode } from '~system/Runtime'
-import { SkyboxTime } from '@dcl/sdk/ecs'
+import { SkyboxTime, TransitionMode } from '@dcl/sdk/ecs'
 
 function main() {
-  SkyboxTime.create(engine.RootEntity, { fixedTime: 36000, direction: TransitionMode.TM_BACKWARD })
+  SkyboxTime.create(engine.RootEntity, { fixedTime: 36000, transitionMode: TransitionMode.TM_BACKWARD })
 }
 ```

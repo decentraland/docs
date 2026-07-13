@@ -58,7 +58,7 @@ Transform.create(myCone, {
 	position: Vector3.create(8, 1, 8),
 })
 
-MeshRenderer.setCylinder(myCone, 0, 1)
+MeshRenderer.setCylinder(myCone, 1, 0)
 ```
 
 Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component](../3d-essentials/materials.md) to the same entity.
@@ -276,7 +276,7 @@ export function main() {
 The complete syntax for creating a `MeshRenderer` component, without any helpers to simplify it, looks like this:
 
 ```ts
-MeshRenderer.setBox(myBox, {
+MeshRenderer.create(myBox, {
 	mesh: {
 		$case: 'box',
 		box: { uvs: [] },

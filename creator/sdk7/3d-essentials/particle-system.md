@@ -23,7 +23,7 @@ Transform.create(emitter, {
 ParticleSystem.create(emitter, {})
 ```
 
-With no properties set, the component uses all defaults: a point emitter shooting 10 particles per second upward, with a 5-second particle lifetime.
+With no properties set, the component uses all defaults: a point emitter shooting 10 particles per second, with a 5-second particle lifetime.
 
 ## Emitter shapes
 
@@ -105,8 +105,6 @@ ParticleSystem.create(emitter, {
 `initialVelocitySpeed` is a `FloatRange` that sets a min and max for the random speed range that each particle launches at (in m/s). Both values default to `1`.
 
 ```ts
-import { Vector2 } from '@dcl/sdk/math'
-
 ParticleSystem.create(emitter, {
 	initialVelocitySpeed: { start: 2, end: 8 },
 })
@@ -139,7 +137,7 @@ ParticleSystem.create(emitter, {
 
 ### Color
 
-`initialColor` sets the particle's color at birth; `colorOverTime` sets its color at the end of its lifetime. Both accept a `ColorRange` with a `from` and `to` value—the actual birth/death color is picked randomly within that range.
+`initialColor` sets the particle's color at birth, picked randomly within the given range. `colorOverTime` makes the particle's color transition gradually from the `start` to the `end` value over the particle's lifetime. Both accept a `ColorRange` with a `start` and `end` value.
 
 ```ts
 import { Color4 } from '@dcl/sdk/math'
@@ -160,7 +158,7 @@ Note that the 4th value in a `Color4` is the _alpha_. If you set the final color
 
 ### Size
 
-`initialSize` and `sizeOverTime` are `FloatRange` values that control the particle's scale at birth and death respectively. A value of `1` equals the original texture size.
+`initialSize` and `sizeOverTime` are `FloatRange` values. `initialSize` controls the particle's scale at birth, picked randomly within the given range. `sizeOverTime` makes the particle's scale transition gradually from the `start` to the `end` value over the particle's lifetime. A value of `1` equals the original texture size.
 
 ```ts
 ParticleSystem.create(emitter, {
@@ -343,10 +341,10 @@ Controls whether particles move relative to the emitter (`PSS_LOCAL`, default) o
 Use `PSS_WORLD` for a moving emitter that should leave a trail behind it (e.g., an asteroid or a rocket).
 
 ```ts
-import { ParticleSystemSimulationSpace } from '@dcl/sdk/ecs'
+import { PBParticleSystem_SimulationSpace } from '@dcl/sdk/ecs'
 
 ParticleSystem.create(emitter, {
-	simulationSpace: ParticleSystemSimulationSpace.PSS_WORLD,
+	simulationSpace: PBParticleSystem_SimulationSpace.PSS_WORLD,
 })
 ```
 

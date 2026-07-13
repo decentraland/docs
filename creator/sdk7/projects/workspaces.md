@@ -20,14 +20,14 @@ Running multiple projects in a workspace provides a much more complete testing a
    * `dcl-workspace.json`
    * `package.json`
    * `.gitignore`
-4.  Inside this folder, add one folder at root level for each project you want to work with. You can drag in existing folders with scenes or smart wearables. For new folders, run `npx sdk-commands init` inside each, to create a Decentraland project.
+4.  Inside this folder, add one folder at root level for each project you want to work with. You can drag in existing folders with scenes or smart wearables. For new folders, run `npx @dcl/sdk-commands init` inside each, to create a Decentraland project.
 
     > Note: Make sure that the parcels on each of the scenes don't overlap.
 5.  Standing on the workspace folder, run the following, to create the necessary files:
 
     `npm run update-parcels && npm run sync && npm run test && npm run format`
 
-You can confirm that the projects are part of the workspace by running `dcl workspace ls`.
+You can confirm which projects are part of the workspace by opening the `dcl-workspace.json` file and checking the paths listed in its `folders` array.
 
 ## Run a workspace
 
@@ -37,15 +37,15 @@ Any smart wearables in the workspace are available to try on by looking for them
 
 ## Add projects
 
-Once a workspace is created, you can add additional projects `dcl workspace add`, including the relative address of the folder you want to add. For example `dcl workspace add my-other-example`.
+Once a workspace is created, you can add additional projects by editing the `dcl-workspace.json` file manually. Add an entry to the `folders` array with the relative path to the folder you want to add. For example `my-other-example`.
 
 You can also add a project that is not inside the workspace folder, by using the absolute path.
 
 {% hint style="warning" %}
-**📔 Note**: The folder must already contain a decentraland project initatied with `npx sdk-commands init`. It can't be an empty folder.
+**📔 Note**: The folder must already contain a decentraland project initatied with `npx @dcl/sdk-commands init`. It can't be an empty folder.
 {% endhint %}
 
-You can also edit the `dcl-workspace.json` file manually to add or remove projects. Modify the file to include the relative paths to each of the projects in the workspace in the `folders` array.
+To add or remove projects, edit the `dcl-workspace.json` file to include the relative paths to each of the projects in the workspace in the `folders` array.
 
 ```json
 {

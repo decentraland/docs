@@ -54,7 +54,7 @@ A system's function is executed periodically, once per every tick of the game lo
 In a Decentraland scene, you can think of the game loop as the aggregation of all the system functions in your scene.
 
 {% hint style="warning" %}
-**📔 Note**: If you add multiple instances of a same system to the engine, the function will be executed multiple times per tick of the game loop. For example, adding a system twice could result in an entity moving at twice the speed as expected, as it advances two increments on each tick.
+**📔 Note**: You can't add the same system function to the engine more than once. If you try to add a system that was already added, the engine throws an error: `System "<name>" already added to the engine`.
 {% endhint %}
 
 ## Handle entities by reference
@@ -62,9 +62,12 @@ In a Decentraland scene, you can think of the game loop as the aggregation of al
 Some components and systems are meant for using only on one entity in the scene. For example, on an entity that stores a game's score or perhaps a main gate that is unique in the scene. To access one of those entities within a system, you can simply refer to the entity or its components by name in the system's functions.
 
 ```ts
+// declare the entity reference at module scope so systems can access it
+let game: Entity
+
 export function main(){
 	// create a new entity
-	const game = engine.addEntity()
+	game = engine.addEntity()
 
 	// add component to that entity
 	ScoreComponent.create(game)
@@ -125,13 +128,15 @@ engine.addSystem(MySystem)
 
 _delta time_ represents time that passed since the last tick of the game loop, in seconds.
 
-Decentraland scenes are updated by default at 30 ticks per second. This means that the `dt` argument passed to all systems will tend to equal to _1/30_ (0.0333...).
+The `dt` argument is the real time that elapsed since the last tick of the game loop, measured in seconds. The SDK doesn't enforce a fixed tick rate: the host runtime passes this value, and it varies with the scene's framerate.
 
-If the processing of a frame takes less time than this interval, then the engine will wait the remaining time to keep updates regularly paced and `dt` will remain equal to _1/30_ .
+The smoother a scene runs, the more frequently ticks occur and the smaller each `dt` value is. When a tick takes longer to process, more time passes before the next one and `dt` grows accordingly.
+
+This scene-side frame rate is caped at 30 ticks per second, in which case the value of `dt` is _1/30_ (0.0333...).
 
 ![](../../images/media/ecs-framerate.png)
 
-If the processing of a frame takes longer than _1/30_ seconds, the drawing of that frame is delayed. The engine then tries to finish that frame and show it as soon as possible. It then proceeds to the next frame and tries to show it _1/30_ seconds after the last frame. It doesn't compensate for the previous delay.
+When the processing of a frame takes longer, the drawing of that frame is delayed, and the `dt` passed on the next tick reflects that longer interval. The engine doesn't compensate for the delay retroactively; `dt` always reports the actual elapsed time so your systems can adjust to it.
 
 ![](../../images/media/ecs-framerate-heavy.png)
 
@@ -162,17 +167,21 @@ engine.addSystem(LoopSystem)
 There is also a shortcut function `setInterval` and `clearInterval` that uses Systems on the background. This allows an easier and shorter version when the intention is to run a certain function every X amount of time.
 
 ```ts
+import { timers } from '@dcl/sdk/ecs'
+
 const intervalId = timers.setInterval(() => {
     console.log('Printing this every 10 seconds')
 }, 10000)
 ```
-Where the first argument, `callback`, is the function to be executed (in this case, the `console.log()`), and the second argument, `ms`(1000 in this case), is the miliseconds to wait between each function execution.
+
+Where the first argument, `callback`, is the function to be executed (in this case, the `console.log()`), and the second argument, `ms`(10000 in this case), is the miliseconds to wait between each function execution.
 
 To stop the `setInterval` function, `clearInterval` is used.
 
 ```
 timers.clearInterval(intervalId)
 ```
+
 Where `intervalId` is the reference to the `setInterval` return defined before.
 
 For more complex use cases, where there may be multiple delays and loops being created dynamically, it may be worth defining a custom component to store an individual timer value for each entity. See [Custom components](../architecture/custom-components.md).
@@ -186,13 +195,13 @@ For example, you might have a _physics_ system that updates the position of enti
 When adding a system to the engine, set an optional `priority` field to determine when the system is executed in relation to other systems.
 
 ```ts
-engine.addSystem(PhysicsSystem, 1)
-engine.addSystem(BoundariesSystem, 5)
+engine.addSystem(PhysicsSystem, 5)
+engine.addSystem(BoundariesSystem, 1)
 ```
 
-Systems with a lower priority number are executed first, so a system with a priority of _1_ is executed before one of priority _5_.
+Systems with a higher priority number are executed first, so a system with a priority of _5_ is executed before one of priority _1_.
 
-Systems that aren't given an explicit priority have a default priority of _0_, so these are executed first.
+Systems that aren't given an explicit priority have a default priority of _100000_. Since higher numbers run first, these systems are executed before ones with a lower explicit priority.
 
 If two systems have the same priority number, there's no way to know for certain which of them will be executed first.
 
@@ -217,9 +226,9 @@ engine.addSystem(mySystem, 1, "DelaySystem")
 engine.removeSystem("DelaySystem")
 ```
 
-A scene can potentially have multiple instances of a same system running together, so you need to tell the engine which one of those to remove.
+The string you pass to `engine.removeSystem()` must match the name you assigned to the system when you added it.
 
-Another way to delete a system is to declare a pointer to the system, and then pass that pointer to the `engine.removeSystem()` method.
+Another way to remove a system is to pass the system's function itself to the `engine.removeSystem()` method. This way you don't need to give the system a name when adding it.
 
 ```ts
 // declare system
@@ -227,14 +236,14 @@ function mySystem(dt: number){
   console.log("delay since last tick: ", dt)
 }
 
-// add system (making a pointer)
-const mySystemInstance = engine.addSystem(mySystem)
+// add system
+engine.addSystem(mySystem)
 
-// remove system
-engine.removeSystem(mySystemInstance)
+// remove system by passing its function
+engine.removeSystem(mySystem)
 ```
 
-Note that the pointer is to the _instance_ of the system, not to the system's class. In the above example, `engine.removeSystem()` is not being passed `mySystem` (the system class declaration). It's being passed `mySystemInstance` (the instance that was added to the engine).
+`engine.removeSystem()` accepts either the name string you assigned when adding the system, or a reference to the system's function itself.
 
 You can use the method below to make a system self-terminate when its purpose is complete.
 
@@ -243,7 +252,7 @@ You can use the method below to make a system self-terminate when its purpose is
         time += dt
         if(time > 3){
 		engine.removeSystem(mySystem)
-        }    
+        }
     }
     engine.addSystem(mySystem)
 ```

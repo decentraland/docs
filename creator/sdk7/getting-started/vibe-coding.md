@@ -36,8 +36,11 @@ Use a general-purpose AI code editor like [Cursor](https://www.cursor.com/) or V
 Skills are ready-made instruction sets that teach your AI agent how to work with the Decentraland SDK. Each skill covers a specific topic, like creating scenes, adding 3D models, or setting up multiplayer, so the AI already knows the right patterns, APIs, and constraints without you having to explain them. Installing skills means fewer mistakes and better results from the very first prompt.
 
 ```bash
-# Install all Decentraland skills
+# Choose which Decentraland skills to install from an interactive picker
 npx skills add decentraland/sdk-skills
+
+# Or install all Decentraland skills
+npx skills add decentraland/sdk-skills --all
 
 # Or pick specific skills
 npx skills add decentraland/sdk-skills --skill create-scene
@@ -56,6 +59,7 @@ When you install skills into your agent, the following capabilities are availabl
 | ---------------------- | ------------------------------------------------------------------- |
 | `sdk-scenes`           | Entry point with agent guidelines and index of all topic skills     |
 | `create-scene`         | Scaffold a new SDK7 scene project from scratch                      |
+| `migrate-sdk6-to-sdk7` | Port a legacy SDK6 scene to SDK7                                    |
 | `add-3d-models`        | Add 3D models (`.glb`/`.gltf`) with positioning, scaling, colliders |
 | `add-interactivity`    | Pointer events, triggers, raycasts                                  |
 | `build-ui`             | 2D screen-space UI with React-ECS — HUDs, menus, dialogs            |
@@ -63,12 +67,14 @@ When you install skills into your agent, the following capabilities are availabl
 | `multiplayer-sync`     | Peer-to-peer multiplayer using CRDT networking                      |
 | `authoritative-server` | Headless authoritative server for multiplayer (BETA)                |
 | `audio-video`          | Sound effects, music, audio streaming, and video players            |
+| `audio-analysis`       | Real-time amplitude and frequency data for audio-reactive scenes    |
 | `deploy-scene`         | Deploy scenes to Genesis City (LAND-based)                          |
 | `deploy-worlds`        | Deploy scenes to Worlds (personal 3D spaces)                        |
 | `optimize-scene`       | Performance optimization, scene limits, best practices              |
 | `camera-control`       | Camera mode detection, cinematic camera, virtual cameras            |
 | `composites`           | Composite file format reference for static scene content            |
 | `lighting-environment` | Dynamic lighting, shadows, skybox, fog, environment settings        |
+| `particle-system`      | Particle effects — fire, smoke, sparks, snow, fireworks             |
 | `npcs`                 | Non-player characters — NPC Toolkit library and manual approaches   |
 | `player-avatar`        | Player position, profile, avatar customization, attachments         |
 | `player-physics`       | Physics forces — impulses, knockback, continuous forces             |

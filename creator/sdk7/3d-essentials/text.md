@@ -12,9 +12,7 @@ Text in Decentraland supports all _utf8_ characters, this includes oriental and 
 **📔 Note**: This component is useful for in-world labels and UIs that exist in the 3D space of the scene, not for the player's 2D HUD UI.
 {% endhint %}
 
-The `TextShape` component is mutually exclusive with other shape components like primitive shapes and glTF 3D models, see [Shape components](../3d-essentials/shape-components.md) for more details.
-
-To add text as a label on an existing entity, you create a second entity that has the `TextShape` component and set it as a child of the other entity.
+To add text as a label on an existing entity, a good practice is to create a second entity that has the `TextShape` component and set it as a child of the other entity.
 
 ## Use the Scene Editor in Creator Hub
 
@@ -96,7 +94,7 @@ By default uses it uses `Font.F_SANS_SERIF`.
 ```ts
 TextShape.create(sign, {
 	text: 'Hello World',
-	textColor: { r: 1, g: 0, b: 0 },
+	textColor: { r: 1, g: 0, b: 0, a: 1 },
 	fontSize: 5,
 	font: Font.F_SANS_SERIF,
 })
@@ -114,14 +112,13 @@ TextShape.create(sign, {
 
 The `TextShape` component creates a text box that has a size, padding, etc.
 
-* `textAlign`: Select a value from the `TextAlignMode` enum. Possible values include all combinations between vertical (_top_, _bottom_, _center_) and horizontal (_left_, _right_, _center_) alignment.
+* `textAlign`: Select a value from the `TextAlignMode` enum. Possible values include all combinations between vertical (_top_, _middle_, _bottom_) and horizontal (_left_, _center_, _right_) alignment.
 * `width`: _number_. The width of the text box.
 * `height`: _number_. The height of the text box.
 * `paddingTop`: _number_. Space between the text and the outline of the text box.
 * `paddingRight`: _number_. Space between the text and the outline of the text box.
 * `paddingBottom`: _number_. Space between the text and the outline of the text box.
 * `paddingLeft`: _number_. Space between the text and the outline of the text box.
-* `zIndex`: _number_. Useful for when multiple flat entities occupy the same space, it determines which one to show in front.
 
 {% hint style="info" %}
 **💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
@@ -162,5 +159,5 @@ TextShape.create(sign, {
 
 You can also set up the following properties related to texts with multiple lines:
 
-* `lineCount`: _number_. How many lines of text to fit into the textbox as a maximum. By default _1_. The `textWrapping` property must be _true_ to use more than one line.
-* `lineSpacing`: _string_. How much space between each line, expressed as a string. For example "30px".
+* `lineCount`: _number_. How many lines of text to fit into the textbox as a maximum. If not set, there is no limit to the number of lines. The `textWrapping` property must be _true_ to use more than one line.
+* `lineSpacing`: _number_. How much space between each line.

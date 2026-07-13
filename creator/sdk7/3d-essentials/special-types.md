@@ -38,7 +38,7 @@ let midPoint = Vector3.lerp(myVector, myOtherVector, 0.5)
 
 Vector3 objects are often required in the fields of several components. For example, the `Transform` component contains `Vector3` values for the _position_ and _scale_ of the entity.
 
-To create a [custom component](../architecture/custom-components.md) with parameters that require Vector3 values, set the type of these parameters as `Schema.Vector3`.
+To create a [custom component](../architecture/custom-components.md) with parameters that require Vector3 values, set the type of these parameters as `Schemas.Vector3`.
 
 {% hint style="warning" %}
 **📔 Note**: `Vector3` must be imported via
@@ -65,7 +65,7 @@ The following shortcuts exist for defining generic vectors:
 Quaternions are used to store rotation information for the Transform component. A Quaternion is composed of four numerical values between -1 and 1: _x_, _y_, _z_, _w_.
 
 ```ts
-const myQuaternion: Vector3 = { x: 0, y: 0, z: 0, w: 1 }
+const myQuaternion: Quaternion = { x: 0, y: 0, z: 0, w: 1 }
 ```
 
 Quaternions are different from [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation with numbers that go from 0 to 360 that most people are familiar with. The engine expresses all rotations as Quaternions, so it makes sense to avoid computations to convert to and from euler whenever possible.
@@ -76,7 +76,7 @@ Below are a few lines showing the syntax for some basic operations with Quaterni
 
 ```ts
 // Create a quaternion object
-let myQuaternion = Quaternion.crate(0, 0, 0, 1)
+let myQuaternion = Quaternion.create(0, 0, 0, 1)
 
 // Edit one of its values
 myQuaternion.x = 1
@@ -84,11 +84,9 @@ myQuaternion.x = 1
 // Call functions from the quaternion namespace
 let midPoint = Quaternion.slerp(myQuaternion1, myQuaternion2, 0.5)
 
-let rotationDifference = Quaternion.fromToRotation(
-  myQuaternion1,
-  myQuaternion2,
-  Quaternion.Zero()
-)
+// Get the rotation needed to turn from facing one direction to another,
+// passing two direction Vector3 values
+let rotation = Quaternion.fromToRotation(Vector3.Forward(), Vector3.Up())
 ```
 
 Since it's a lot easier to think in terms of Euler degrees, the SDK includes a couple of functions to convert to and from Quaternions and Euler.
@@ -107,7 +105,7 @@ let myEuler = Quaternion.toEulerAngles(myQuaternion)
 
 Quaternion objects are often required in the fields of components. For example, the `Transform` component contains `Quaternion` values for rotation of the entity.
 
-To create a [custom component](../architecture/custom-components.md) with parameters that require Quaternion values, set the type of these parameters as `Schema.Quaternion`.
+To create a [custom component](../architecture/custom-components.md) with parameters that require Quaternion values, set the type of these parameters as `Schemas.Quaternion`.
 
 {% hint style="warning" %}
 **📔 Note**: `Quaternion` must be imported via

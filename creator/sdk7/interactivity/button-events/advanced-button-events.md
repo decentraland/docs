@@ -10,34 +10,35 @@ If you need the interaction in your scene to follow custom logic that is not com
 
 When a pointer event is detected by the engine, the entity that was clicked is assigned a `PointerEventsResult` component. This component contains all the raw data about the hit event, and stores historic data about previous events.
 
-The helpers in `Input`, like `inputSystem.wasJustClicked` or `inputSystem.getInputCommand` are good for most simple scenarios, but if you need to get more details about the hit event, check the raw data in the `PointerEventsResult`.
+The helpers in `inputSystem`, like `inputSystem.isTriggered` or `inputSystem.getInputCommand` are good for most simple scenarios, but if you need to get more details about the hit event, check the raw data in the `PointerEventsResult`.
 
-The `PointerEventsResult` stores a `commands` array, containing one object for each pointer event it stores. It stores a list of up to 30 events, newer events are stored at the end of the array. Once the list reaches a length of 30, it starts discarding old events for each new one that comes in.
+The `PointerEventsResult` component holds a list of pointer events, containing one object for each event. It stores a list of up to 100 events, newer events are stored at the end of the list. Once the list reaches a length of 100, it starts discarding old events for each new one that comes in.
 
-Each event in the `commands` array has the following data:
+Each event in the list has the following data:
 
-* `analog`: Flag to mark if the event is from an analog or a digital input. Digital inputs have a value of _1_, analog inputs (like a joy stick) have a value of _0_.
+* `analog`: Optional number, only present on events from an analog input (like a joystick), storing the input's analog value.
 * `button`: Which button id was pressed. The number corresponds to the `InputAction` enum, that lists all of the available buttons.
-* `state`: Type of pointer event, from the enum `PointerEventType`. _0_ refers to `PointerEventType.PET_DOWN`, _1_ to `PointerEventType.PET_UP`, _2_ to `PointerEventType.PET_HOVER_ENTER`, _3_ to `PointerEventType.PET_HOVER_LEAVE`
+* `state`: Type of pointer event, from the enum `PointerEventType`. _0_ refers to `PointerEventType.PET_UP`, _1_ to `PointerEventType.PET_DOWN`, _2_ to `PointerEventType.PET_HOVER_ENTER`, _3_ to `PointerEventType.PET_HOVER_LEAVE`, _4_ to `PointerEventType.PET_PROXIMITY_ENTER`, _5_ to `PointerEventType.PET_PROXIMITY_LEAVE`
 *   `timestamp`: A [lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp) to identify each button event.
 
     > Note: This timestamp is not numbered based on the current time. Think of it as a counter that starts at 0 and is incremented by 1 for each event.
 * `hit`: An object that contains the following data about the hit event:
   * `entityId`: Id number of the entity that was hit by the ray.
   * `meshName`: _String_ with the internal name of the specific mesh in the 3D model that was hit. This is useful when a 3D model is composed of multiple meshes.
-  * `origin`: _Vector3_ for the position where the ray originates (relative to the scene)
+  * `globalOrigin`: _Vector3_ for the position where the ray originates (relative to the scene)
+  * `direction`: _Vector3_ with the direction vector of the ray, in global coordinates
   * `position`: _Vector3_ for the position where the ray intersected with the hit entity (relative to the scene)
   * `length`: Length of the ray from its origin to the position where the hit against the entity occurred.
   * `normalHit`: _Vector3_ with a normalized direction vector, describing the angle of the normal of the hit in world space.
 
 ```ts
-function PointerReadingSystem() {
-  const clickedCubes = engine.getEntitiesWith(PointerEventsResult)
-  for (const [entity] of clickedCubes) {
+import { engine, PointerEventsResult } from '@dcl/sdk/ecs'
 
-    const result = PointerEventsResult.getOrNull(entity)
-    if(result){
-      console.log("POINTER EVENT DATA:", result.commands)
+function PointerReadingSystem() {
+  for (const [entity] of engine.getEntitiesWith(PointerEventsResult)) {
+    const events = PointerEventsResult.get(entity)
+    for (const event of events) {
+      console.log('POINTER EVENT DATA:', event)
     }
   }
 }

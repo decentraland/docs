@@ -15,7 +15,7 @@ Scenes include the following files:
 * **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
 * **tsconfig.json**: Typescript configuration file.
 * **.dclignore**: Lists the files in your project that will not be uploaded when you publish your scene.
-* **main.composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable. It's one example of a [composite](../architecture/composites.md), a file that describes a tree of entities and components.
+* **assets/scene/main.composite**: Auto-generated file including everything you added and configured visually in the Scene Editor in Creator Hub. It's not meant to be human-readable. It's one example of a [composite](../architecture/composites.md), a file that describes a tree of entities and components. Scenes created via the CLI instead include a `main.crdt` file at the root level.
 
 ### index.ts
 
@@ -25,10 +25,10 @@ If you rely only on the Scene Editor and [Smart Items](../../scene-editor/intera
 
 If you intend to write custom code, you'll most likely only need to edit this and other .ts files to create your scene. It contains the code that generates the [entities, components](../architecture/entities-components.md) and [systems](../architecture/systems.md) of your scene.
 
-When running the scene, the contents of your `.ts` files are compiled to a single minified `.js` file, `bin/scene.js`.
+When running the scene, the contents of your `.ts` files are compiled to a single `.js` file, `bin/index.js`. When building for production, this file is also minified.
 
 {% hint style="warning" %}
-**📔 Note**: You can use another tool or language instead of TypeScript, as long as your scripts are contained within a single Javascript file (bin/scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+**📔 Note**: You can use another tool or language instead of TypeScript, as long as your scripts are contained within a single Javascript file (bin/index.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 {% endhint %}
 
 ### scene.json

@@ -70,7 +70,7 @@ If players tick the _trust this domain_ checkbox, they won't be prompted again d
 
 ## Copy to clipboard
 
-To copy a string to the player's clipboard, use `CopyToClipboard()`. After this, when the player does _paste_ in the Decentraland chat or in any other application on their machine, they will be pasting your string.
+To copy a string to the player's clipboard, use `copyToClipboard()`. After this, when the player does _paste_ in the Decentraland chat or in any other application on their machine, they will be pasting your string.
 
 ```ts
 import { copyToClipboard } from "~system/RestrictedActions"

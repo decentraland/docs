@@ -6,6 +6,8 @@ description: Decentraland on iOS and Android.
 
 Decentraland is now available on mobile. You can hang out, attend events, explore Genesis City, and visit Worlds from your phone — wherever you are.
 
+![Decentraland mobile app — Genesis City](../../.gitbook/assets/mobile-app-screenshot.png)
+
 ## Get the app
 
 * [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)
@@ -13,10 +15,6 @@ Decentraland is now available on mobile. You can hang out, attend events, explor
 
 {% hint style="warning" %}
 **UK users:** the iOS and Android apps are not currently available in the United Kingdom due to [Crypto Gaming Regulations](https://www.fca.org.uk/firms/cryptoassets-information).
-{% endhint %}
-
-{% hint style="info" %}
-**Beta testing:** the iOS build is also available via [TestFlight](https://testflight.apple.com/join/KF4r3jlU?utm_source=docs&utm_medium=internal&utm_content=ios) for users who want early access to new changes.
 {% endhint %}
 
 ## In this section

@@ -179,18 +179,21 @@
 
 ## Build for Mobile
 
-* [Overview](sdk7/building-for-mobile/)
-  * [Detect the platform](sdk7/building-for-mobile/detect-platform.md)
-  * [Preview on mobile](sdk7/building-for-mobile/preview-on-mobile.md)
-  * [Mobile safe area](sdk7/building-for-mobile/safe-area.md)
-  * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
-  * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
-  * [Hardware Requirements](sdk7/building-for-mobile/hardware-requirements.md)
-  * [Missing Features](sdk7/building-for-mobile/missing-features.md)
+* [Mobile Client](sdk7/building-for-mobile/mobile-client/)
+  * [Overview](sdk7/building-for-mobile/mobile-client/overview.md)
   * [Sample Scenes](sdk7/building-for-mobile/sample-scenes.md)
-  * [Optimize Performance](sdk7/building-for-mobile/optimize-performance.md)
-  * [Get featured](sdk7/building-for-mobile/get-featured.md)
-  * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
+  * [Missing Features](sdk7/building-for-mobile/missing-features.md)
+  * [Hardware Requirements](sdk7/building-for-mobile/hardware-requirements.md)
+* [Develop](sdk7/building-for-mobile/develop/)
+  * [Detect the platform](sdk7/building-for-mobile/detect-platform.md)
+  * [Preview on Mobile](sdk7/building-for-mobile/preview-on-mobile.md)
+  * [Mobile Safe Area](sdk7/building-for-mobile/safe-area.md)
+  * [UI Best Practices](sdk7/building-for-mobile/ui-best-practices.md)
+  * [Input on Mobile](sdk7/building-for-mobile/input-on-mobile.md)
+  * [Performance](sdk7/building-for-mobile/optimize-performance.md)
+* [Publish](sdk7/building-for-mobile/publish/)
+  * [Get Featured](sdk7/building-for-mobile/get-featured.md)
+  * [iOS Curation](sdk7/building-for-mobile/ios-curation.md)
 
 ## 3D Modeling and Animations
 

@@ -29,6 +29,10 @@ The single most useful recommendation when adapting an existing desktop UI to mo
 
 Combined with the SDK's `virtualWidth` / `virtualHeight` setup, this gives you readable text, comfortably tappable buttons, and a layout that holds up across devices. Always confirm the result on a real phone — see [Preview on mobile](preview-on-mobile.md).
 
+{% hint style="info" %}
+**📔 Note**: On mobile, if you don't provide a virtual size, the SDK applies a **1600x720** default (instead of the **1920x1080** used on desktop/web). Phone screens are much wider than 16:9, so if you provide a valid 16:9 virtual size (e.g. `1920x1080`) on mobile it is automatically overridden to **1600x720** to avoid letterboxing the UI. See [Screen Virtual Scale](../2d-ui/onscreen-ui.md#screen-virtual-scale) for the full behavior, including how to disable UI scaling entirely.
+{% endhint %}
+
 ## Current limitations
 
 These limitations apply to scene UI on the current mobile client. They are tracked and expected to be lifted over time.

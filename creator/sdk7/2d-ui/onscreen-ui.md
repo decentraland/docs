@@ -168,7 +168,7 @@ A definition of a UI module can only have one parent-level entity. You can defin
 
 ## Screen Virtual Scale
 
-Set a vitual width and height for the UI. This is encouraged to make sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
+Set a virtual width and height for the UI. This makes sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
 
 ```ts
 export function setupUi() {
@@ -179,6 +179,45 @@ export function setupUi() {
 If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
 
 The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight) / devicePixelRatio`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts)
+
+### Default virtual screen
+
+If you **don't** provide a virtual size, a platform default is now applied automatically, so your UI is scaled consistently even when you don't set one explicitly:
+
+* **1600x720 on mobile**
+* **1920x1080 on any other platform** (desktop, web)
+
+```ts
+export function setupUi() {
+    // No virtual size provided → a platform default is applied automatically
+    ReactEcsRenderer.setUiRenderer(uiComponent)
+}
+```
+
+{% hint style="info" %}
+**📔 Note**: This default applies to both `setUiRenderer()` and `addUiRenderer()`. In earlier SDK versions, omitting the virtual size meant no scaling was applied at all. Scenes that relied on that behavior will now see their pixel values scaled against the platform default.
+{% endhint %}
+
+The virtual size is resolved on every tick, so it reacts correctly when the platform is detected as mobile a few frames after the scene starts.
+
+### Mobile 16:9 override
+
+Phone screens are much wider than 16:9, so a 16:9 virtual canvas would letterbox the UI on mobile. To avoid this, when a **valid 16:9** virtual size (e.g. `1920x1080` or `1280x720`) is provided **on mobile**, it is automatically overridden to **1600x720**. A message is logged to the console (once per provided size) to inform you of the override.
+
+Non-16:9 sizes on mobile, and any valid size on desktop/web, are respected as provided.
+
+### Disabling the virtual screen
+
+If you want to opt out of any UI scaling entirely — including the platform default — provide an **explicitly invalid** virtual size (any value less than or equal to `0`):
+
+```ts
+export function setupUi() {
+    // Disable the virtual screen: no UI scaling is applied
+    ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: -1, virtualHeight: -1 })
+}
+```
+
+With an invalid size, the virtual screen is disabled: no UI scaling is applied, and any previously applied scale factor is released. This matches the old behavior of calling `setUiRenderer()` with no options.
 
 ## Multiple UI modules
 

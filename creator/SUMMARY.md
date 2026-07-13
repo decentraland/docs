@@ -125,15 +125,6 @@
   * [Make Discoverable](sdk7/publishing/make-discoverable.md)
   * [Publishing Options](sdk7/publishing/publishing-options.md)
   * [Publishing](sdk7/publishing/publishing.md)
-* [Building for Mobile](sdk7/building-for-mobile/)
-  * [Overview](sdk7/building-for-mobile/README.md)
-  * [Detect the platform](sdk7/building-for-mobile/detect-platform.md)
-  * [Preview on mobile](sdk7/building-for-mobile/preview-on-mobile.md)
-  * [Mobile safe area](sdk7/building-for-mobile/safe-area.md)
-  * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
-  * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
-  * [Get featured](sdk7/building-for-mobile/get-featured.md)
-  * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 * [Interactivity](sdk7/interactivity/)
   * [Button Events](sdk7/interactivity/button-events/)
     * [Click Events](sdk7/interactivity/button-events/click-events.md)
@@ -185,6 +176,18 @@
 * [Other](sdk7/other/)
   * [Scene Analytics](sdk7/other/scene-analytics.md)
   * [Migrate Legacy SDK6 Scenes](sdk7/other/migrate-legacy-sdk6-scenes.md)
+
+## Build for Mobile
+
+* [Overview](sdk7/building-for-mobile/)
+  * [Detect the platform](sdk7/building-for-mobile/detect-platform.md)
+  * [Preview on mobile](sdk7/building-for-mobile/preview-on-mobile.md)
+  * [Mobile safe area](sdk7/building-for-mobile/safe-area.md)
+  * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
+  * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
+  * [Hardware Requirements](sdk7/building-for-mobile/hardware-requirements.md)
+  * [Get featured](sdk7/building-for-mobile/get-featured.md)
+  * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 
 ## 3D Modeling and Animations
 

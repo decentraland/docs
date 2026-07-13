@@ -188,6 +188,7 @@
   * [Hardware Requirements](sdk7/building-for-mobile/hardware-requirements.md)
   * [Missing Features](sdk7/building-for-mobile/missing-features.md)
   * [Sample Scenes](sdk7/building-for-mobile/sample-scenes.md)
+  * [Optimize Performance](sdk7/building-for-mobile/optimize-performance.md)
   * [Get featured](sdk7/building-for-mobile/get-featured.md)
   * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 

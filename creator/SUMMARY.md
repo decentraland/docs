@@ -186,6 +186,7 @@
   * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
   * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
   * [Hardware Requirements](sdk7/building-for-mobile/hardware-requirements.md)
+  * [Missing Features](sdk7/building-for-mobile/missing-features.md)
   * [Get featured](sdk7/building-for-mobile/get-featured.md)
   * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 

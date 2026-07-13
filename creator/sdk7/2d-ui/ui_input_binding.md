@@ -4,7 +4,7 @@ description: Bind input actions to your own UI elements so they drive player inp
 
 # UI Input Binding
 
-`UiInputBinding` turns any UI element into a control button. Bind an element to one or more `InputAction`s, and while it's pressed — by touch or pointer — those actions are held down, driving both the local player's input (movement, jumping) and any scene `InputAction` listeners, exactly like the native on-screen buttons.
+`UiInputBinding` turns any UI element into a control button. Bind an element to one or more [`InputAction`](../interactivity/button-events/click-events.md#pointer-buttons)s, and while it's pressed — by touch or pointer — those actions are held down, driving both the local player's input (movement, jumping) and any scene [`InputAction`](../interactivity/button-events/click-events.md#pointer-buttons) listeners, exactly like the native on-screen buttons.
 
 Use it to build your own touch controls. It's typically paired with [On-screen Controls](../interactivity/touch-screen-controls.md): hide the native buttons, then put your own in their place.
 
@@ -12,7 +12,7 @@ Use it to build your own touch controls. It's typically paired with [On-screen C
 
 ## Bind an action to a UI element
 
-Add a `uiInputBinding` prop to any element in your `.tsx` UI and list the actions to hold while it's pressed. The prop is available on every UI element (`UiEntity`, `Button`, `Label`, …), just like `uiTransform` and `uiBackground`.
+Add a `uiInputBinding` prop to any element in your `.tsx` UI and list the actions to hold while it's pressed. The prop is available on every UI element ([`UiEntity`](onscreen-ui.md#ui-entities), [`Button`](onscreen-ui.md#ui-entities), [`Label`](onscreen-ui.md#ui-entities), …), just like `uiTransform` and `uiBackground`.
 
 **A button that moves the player forward while held:**
 
@@ -55,13 +55,13 @@ export const customControls = () => (
 )
 ```
 
-The bound actions behave just like the native buttons: `IA_FORWARD` / `IA_BACKWARD` / `IA_LEFT` / `IA_RIGHT` move the avatar, and any action can be read by your scene's `InputAction` listeners. Removing the prop (or the component) releases the binding.
+The bound actions behave just like the native buttons: `IA_FORWARD` / `IA_BACKWARD` / `IA_LEFT` / `IA_RIGHT` move the avatar, and any action can be read by your scene's [`InputAction`](../interactivity/button-events/click-events.md#pointer-buttons) listeners. Removing the prop (or the component) releases the binding.
 
 ## Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `actions` | _array of InputAction_ | The input actions held down while this element is pressed. See [Click events](../interactivity/button-events/click-events.md) for the full list of `InputAction` values. |
+| `actions` | array of [`InputAction`](../interactivity/button-events/click-events.md#pointer-buttons) | The input actions held down while this element is pressed. See [Click events](../interactivity/button-events/click-events.md) for the full list of [`InputAction`](../interactivity/button-events/click-events.md#pointer-buttons) values. |
 
 {% hint style="info" %}
 Pair this with [`TouchScreenControls`](../interactivity/touch-screen-controls.md) to hide the native controls and replace them with your own touch UI — the recommended way to ship a fully custom control scheme.

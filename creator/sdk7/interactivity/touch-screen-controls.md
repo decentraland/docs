@@ -36,9 +36,7 @@ The on-screen positions are fixed too. The **visible** buttons fill those positi
 | **Leave 4 or fewer buttons visible** | All of them show directly; there is no "+" menu. |
 | **Leave more than 4 buttons visible** | The first four show directly (central button plus three around it); the rest sit behind a "+" overflow toggle. |
 
-{% hint style="warning" %}
-**📐 Proposed diagram — `button-layout-stack.jpg`:** the ordered stack (JUMP, POINTER, E, F, 1–4) on the left with arrows to the fixed on-screen slots (big central button, the arc around it, and the "+" column) on the right. A companion **`hide-jump-cascade.jpg`** should show two HUDs side by side — default vs. jump hidden — to illustrate the cascade, and **`overflow-plus-menu.jpg`** should contrast "≤4 visible → no +" with ">4 visible → + holds the rest". _To be produced._
-{% endhint %}
+<figure><img src="../../images/touch-controls/control-ordering.jpg" alt="Three HUDs showing the gamepad reflowing as the number of visible buttons changes"><figcaption><p>How the buttons reflow with the visible count. <strong>Left (7 buttons):</strong> the main button, an arc of 1–3, and the "+" holding the overflow (4–7) in a column that climbs upward. <strong>Center (5 buttons):</strong> the same arc, with a shorter overflow column (4–5) behind the "+". <strong>Right (4 buttons):</strong> all four show directly and the "+" disappears.</p></figcaption></figure>
 
 {% hint style="info" %}
 This is also how you surface the `1`/`2`/`3`/`4` buttons, which are otherwise tucked behind the "+": hide enough higher-priority buttons to bring the visible count to four or fewer, and they show directly.
@@ -111,20 +109,20 @@ Write these directly when you use `createOrReplace`:
 | --- | --- | --- |
 | `hideJoystick` | _boolean_ | Hides the native virtual movement joystick. |
 | `hideCrosshair` | _boolean_ | Hides the on-screen crosshair / reticle. |
-| `mainAction` | _InputAction_ | Moves this action to the front of the stack, making it the large central button; the other buttons keep their order. Only gamepad actions are valid (see below). When unset, the first visible button (`IA_JUMP` by default) leads. See [How the button layout works](#how-the-button-layout-works). |
+| `mainAction` | [_InputAction_](button-events/click-events.md#pointer-buttons) | Moves this action to the front of the stack, making it the large central button; the other buttons keep their order. Only gamepad actions are valid (see below). When unset, the first visible button (`IA_JUMP` by default) leads. See [How the button layout works](#how-the-button-layout-works). |
 | `touchInputs` | _array_ | Per-button overrides. A button that isn't listed keeps its default (shown, with its default glyph). |
 
 Each `touchInputs` entry has:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `inputAction` | _InputAction_ | Which on-screen button this entry configures. |
+| `inputAction` | [_InputAction_](button-events/click-events.md#pointer-buttons) | Which on-screen button this entry configures. |
 | `hide` | _boolean_ | Hides this button. Default is `false` (shown). Any button can be hidden, **including `IA_JUMP`** — the rest cascade up to fill its place. |
 | `icon` | _string_ (optional) | Overrides the button glyph with a content-mapped texture (an image included in your scene). For the jump button this replaces all of its dynamic states (jump / double-jump / glide). If the path can't be resolved, the built-in glyph is used. |
 
 ## Which actions map to which buttons
 
-The `InputAction` values here are the same ones used across [Input on mobile](../building-for-mobile/input-on-mobile.md) and [Click events](button-events/click-events.md). These are the actions that map to on-screen buttons:
+The [`InputAction`](button-events/click-events.md#pointer-buttons) values here are the same ones used across [Input on mobile](../building-for-mobile/input-on-mobile.md) and [Click events](button-events/click-events.md). These are the actions that map to on-screen buttons:
 
 | InputAction | On-screen button |
 | --- | --- |

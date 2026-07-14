@@ -416,6 +416,7 @@ The supported modifiers are:
 
 * `AvatarModifierType.AMT_HIDE_AVATARS`
 * `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+* `AvatarModifierType.AMT_HIDE_NAMETAGS`
 
 All the effects of an `AvatarModifierArea` only take place within the region of their area. Players return to normal when they walk out of the area.
 
@@ -476,6 +477,46 @@ Transform.create(entity, {
 ```
 
 This is especially useful in games where accidentally opening this UI could interrupt the flow of a game, for example in a multiplayer shooter game.
+
+### Hide nametags
+
+When a player walks into an `AvatarModifierArea` that has the `AvatarModifierType.AMT_HIDE_NAMETAGS` modifier, the player's nametag is hidden while the avatar itself remains visible.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+This is useful for stages, presentations, or scripted scenes where you want to suppress player nametags without hiding the avatars themselves. For example, you might want a clean visual experience during a performance, where avatars are visible but the floating names don't distract viewers.
+
+You can also combine `AMT_HIDE_NAMETAGS` with other modifiers. For example, if you use both `AMT_HIDE_AVATARS` and `AMT_HIDE_NAMETAGS` on the same area, the avatar and the nametag are both hidden.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS, AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+{% hint style="info" %}
+**💡 Tip**: The nametag is only hidden while the player's head or torso is inside the area. If the area is too short and the player double-jumps above it, the nametag will briefly reappear. Make the area tall enough to cover the expected range of movement.
+{% endhint %}
 
 ### Exclude Avatars
 

@@ -46,6 +46,7 @@ Los modificadores compatibles son:
 
 * `AvatarModifierType.AMT_HIDE_AVATARS`
 * `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+* `AvatarModifierType.AMT_HIDE_NAMETAGS`
 
 Todos los efectos de un `AvatarModifierArea` solo tienen lugar dentro de la región de su área. Los jugadores vuelven a la normalidad cuando salen del área.
 
@@ -104,6 +105,46 @@ Transform.create(entity, {
 ```
 
 Esto es especialmente útil en juegos donde accidentalmente abrir esta UI podría interrumpir el flujo del juego, por ejemplo en un juego de disparos multijugador.
+
+### Ocultar etiquetas de nombre
+
+Cuando un jugador camina hacia un `AvatarModifierArea` que tiene el modificador `AvatarModifierType.AMT_HIDE_NAMETAGS`, la etiqueta de nombre del jugador se oculta mientras el avatar permanece visible.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+Esto es útil para escenarios, presentaciones o escenas con guión donde quieres ocultar las etiquetas de nombre de los jugadores sin ocultar los avatares. Por ejemplo, podrías querer una experiencia visual limpia durante una actuación, donde los avatares son visibles pero los nombres flotantes no distraen a los espectadores.
+
+También puedes combinar `AMT_HIDE_NAMETAGS` con otros modificadores. Por ejemplo, si usas tanto `AMT_HIDE_AVATARS` como `AMT_HIDE_NAMETAGS` en la misma área, el avatar y la etiqueta de nombre se ocultan.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS, AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+{% hint style="info" %}
+**💡 Consejo**: La etiqueta de nombre solo se oculta mientras la cabeza o torso del jugador está dentro del área. Si el área es demasiado baja y el jugador hace un doble salto por encima, la etiqueta de nombre reaparecerá brevemente. Haz el área lo suficientemente alta para cubrir el rango de movimiento esperado.
+{% endhint %}
 
 ## Modificadores de cámara
 

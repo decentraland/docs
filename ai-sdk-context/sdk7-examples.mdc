@@ -1201,8 +1201,15 @@ import { AvatarModifierArea, AvatarModifierType } from '@dcl/sdk/ecs'
 AvatarModifierArea.create(entity, {
   area: Vector3.create(5, 5, 5),  // Box size
   modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-  // Or AMT_DISABLE_PASSPORTS
+  // Or AMT_DISABLE_PASSPORTS or AMT_HIDE_NAMETAGS
   excludeIds: ['user-address-1', 'user-address-2']  // Optional: players not affected
+})
+
+// Create an area that hides nametags only (avatars remain visible)
+AvatarModifierArea.create(entity, {
+  area: Vector3.create(5, 5, 5),
+  modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS],
+  excludeIds: []
 })
 ```
 

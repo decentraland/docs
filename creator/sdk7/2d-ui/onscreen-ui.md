@@ -117,6 +117,7 @@ The following components are available to use in a `UiEntity`:
 * `uiBackground`
 * `uiText`
 * `onClick`
+* [`uiInputBinding`](ui_input_binding.md) — hold input actions while the element is pressed, to build custom controls
 
 Like with HTML tags, you can define components as self-closing or nest one within another.
 

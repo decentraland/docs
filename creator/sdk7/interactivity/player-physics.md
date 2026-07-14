@@ -235,6 +235,17 @@ timers.setTimeout(() => {
 ```
 
 
+## Forces while gliding
+
+While the player is gliding, continuous forces behave differently:
+
+* Continuous forces — from `applyForceToPlayer()`, `applyForceToPlayerForDuration()`, or `applyRepulsionForceToPlayer()` — are **1.5 times stronger**, since the open glider catches the airflow. Wind zones and currents feel more responsive to a gliding player.
+* The upward component of a continuous force can **lift** a gliding player. The glider's falling speed limit only caps how fast the player descends, it doesn't cancel upward motion, so an angled or vertical wind current pushes the player along the full direction of the force.
+
+One-shot impulses — from `applyImpulseToPlayer()` or `applyKnockbackToPlayer()` — are not affected by gliding. They behave the same whether the glider is open or closed.
+
+You can combine these behaviors to build mechanics like thermal updrafts that carry gliding players upward, or wind corridors that are easier to traverse with the glider open. To adjust the glider's falling speed or forward speed, use the `AvatarLocomotionSettings` component, see [Locomotion Settings](player-avatar.md#locomotion-settings).
+
 ## Convert a local direction to world space
 
 Use `Transform.localToWorldDirection()` to transform a direction vector from an entity's local coordinate space to world space, accounting for the full parent hierarchy. This is useful when applying forces relative to a rotated entity — for example, pushing the player away from a specific face of a rotating obstacle.

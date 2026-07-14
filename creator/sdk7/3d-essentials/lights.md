@@ -183,12 +183,13 @@ If there are more lights than allowed, the engine will automatically disable lig
 
 In all cases, the engine will only render shadows for up to 3 light sources. If there are more lights with shadows than 3, the engine will automatically disable shadows for the remaining lights that are further away.
 
-Besides the maximum number of allowed lights, shadows also depend on distance from the player.
+Besides the maximum number of allowed lights, shadows also depend on distance from the player. The exact distances vary with the light type and the player's quality settings, but as a general rule:
 
-* Less than 10 meter away: Shadows are rendered as soft shadows (high quality)
+* Less than 10 meters away: Shadows are rendered as soft shadows (high quality)
 * Between 10 and 20 meters away: Shadows are rendered as hard shadows (low quality)
-* Between 20 and 40 meters away: Shadows aren't rendered
-* More than 40 meters away: Light sources are not rendered at all
+* More than 20 meters away: Shadows aren't rendered
+
+The light sources themselves keep illuminating the scene at much larger distances: they are only disabled when the player is more than 160 meters away (10 parcels). This makes lights suitable for large-scale setups like stage lighting at live events, where most of the audience is far from the light sources.
 
 It's also important to note that lights are only rendered if the player is standing inside the scene. If the player is outside the scene, the lights will not be rendered.
 

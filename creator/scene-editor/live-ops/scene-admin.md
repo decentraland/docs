@@ -18,7 +18,7 @@ When a scene admin visits your scene, they see a special UI on the top-right cor
 
 ## Setting up admins
 
-To assign admins, you need to add the **Scene Admin** smart item to your scene.
+To assign admins, you need to add the **Admin Tools** smart item to your scene.
 
 ![ ](../../images/editor/admin/admin-smart-item.png)
 
@@ -31,8 +31,8 @@ To assign admins, you need to add the **Scene Admin** smart item to your scene.
 While you're developing the scene and trying it locally, you are always an admin. Once the scene is published, anyone with publish permissions to the scene is also automatically an admin. This includes:
 
 - The owner of the LAND parcels or World NAME where the scene is published
-- Anyone who is granted **Operator rights** on these parcels or name. See [Give permissions](../marketplace/land-manager.md#give-permissions).
-- Any user renting that land. See [Rentals](../marketplace/rentals.md).
+- Anyone who is granted **Operator rights** on these parcels or name. See [Give permissions](https://docs.decentraland.org/player/marketplace/land-manager/#give-permissions).
+- Any user renting that land. See [Rentals](https://docs.decentraland.org/player/marketplace/rentals/).
 
 To assign additional admins that don't have publish permission but can do live-ops in the scene:
 
@@ -48,7 +48,7 @@ You can see who is an admin in the scene by clicking the **View Admin List** but
 ![ ](../../images/editor/admin/admin-list.png)
 
 {% hint style="warning" %}
-**📔 Note**: It's only possible to remove the admin role from players that were added manually to the list via the **Moderation Tools** tab. Players who are owners, operators, or renters of the scene are displayed on this list but can't be removed from their admin roles from this UI. To remove an admin role from an operator, you must first remove their operator role.
+**📔 Note**: It's only possible to remove the admin role from players that were added manually to the list via the **Permissions & Moderation** tab. Players who are owners, operators, or renters of the scene are displayed on this list but can't be removed from their admin roles from this UI. To remove an admin role from an operator, you must first remove their operator role.
 {% endhint %}
 
 Whenever an admin player is in the scene, they will see a special UI on the top-right corner. Non-admin players don't see this UI.
@@ -78,7 +78,7 @@ async function onPlayerSpawn() {
 
 One of the most common actions for admins to do is to play videos. The admin panel includes a video player section where they can control anything related to videos.
 
-To enable this, you need to add a **Video Player** smart item to your scene and link it to the Scene Admin smart item.
+To enable this, you need to add a **Video Player** smart item to your scene and link it to the Admin Tools smart item.
 
 1.  Add a **Video Player** smart item to your scene
 
@@ -92,7 +92,7 @@ To enable this, you need to add a **Video Player** smart item to your scene and 
     You can include as many video screens as you want. In general, avoid having more than one different video playing at the same time, as that hurts performance a lot.
     {% endhint %}
 
-2.  Open the Scene Admin Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
+2.  Open the Admin Tools Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
 
     <img src="../../images/editor/admin/multi-video-setup.png" alt="Scene name" width="300"/>
 
@@ -122,13 +122,13 @@ There are three media source options for playing videos:
 
   <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
 
-- **Live stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
+- **Stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
 
   <img src="../../images/editor/admin/live-stream.png" alt="Scene name" width="300"/>
 
   See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
 
-Each screen in your scene will have one of the above media sources set as **Active**. You can click the **Video** or **Live** buttons to explore the settings on each section, you won't interrupt what's currently playing until you click the **Activate** button on either section.
+Each screen in your scene will have one of the above media sources set as **Active**. You can click the **Video URL**, **DCL Cast** or **Stream** buttons to explore the settings on each section, you won't interrupt what's currently playing until you click the **Activate** button on either section.
 
 ![ ](../../images/editor/admin/activate.png)
 
@@ -153,7 +153,9 @@ You can ban players from your scene by selecting the **Moderation** tab of the a
 Banned players will be unable to load your scene or interact with any of its content. Other players will not see them in the scene, or read any of their chat messages.
 
 {% hint style="warning" %}
-**📔 Note**: The effects of your ban are immediate and permanent. Once a player is banned, they will remain banned until the ban is lifted. Banning a player from your scene only affects what players who are standing inside your scene can see, if a player steps outside your scene's bounds, they are no longer affected by the ban. Banned players are invisible to other players if they're standing outside your scene too.
+**📔 Note**: The effects of your ban are immediate and permanent. Once a player is banned, they will remain banned until the ban is lifted. While banned, a player can't see or interact with your scene, can't chat in the Nearby channel while in it, and other players in the scene can't see them.
+
+If a player steps outside your scene's bounds, they are no longer affected by your scene's ban rules and will see banned players once more.
 {% endhint %}
 
 Click **View Ban List** to see the list of currently banned players. From this list you can also **Unban** players.
@@ -163,10 +165,10 @@ Click **View Ban List** to see the list of currently banned players. From this l
 To Trigger an action from any smart item in the scene:
 
 - Add a smart item to your scene
-- Open the settings for the **Scene Admin** Smart Item in the Creator Hub
+- Open the settings for the **Admin Tools** Smart Item in the Creator Hub
 - In the **Smart item actions** section, add the smart item from the dropdown, give it a custom name and select a default action
 
-Once the above is configured, admins can trigger the action by opening the **Smart Item Actions** section of the admin UI and then selecting an item from the dropdown list. They can then either click the **Default** button to trigger the default action of that item, or select any other of the item's actions from the list.
+Once the above is configured, admins can trigger the action by opening the **Smart Item Actions** section of the admin UI and then selecting an item from the dropdown list. They can then pick one of the item's actions from the **Actions** dropdown and click **Play Action** to trigger it. There's also a button to **Hide/Show** the selected item.
 
 <img src="../../images/editor/admin/smart-item-actions.png" alt="Scene name" width="300"/>
 

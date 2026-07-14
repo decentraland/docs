@@ -10,13 +10,13 @@ Make sure of the following:
 
 * Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
-* You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
+* You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
 {% hint style="warning" %}
 **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels.
 {% endhint %}
 
-Check your [scene's details](../get-started/scene-editor-essentials.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
+Check your [scene's details](../configure/scene-settings.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
 
 {% hint style="danger" %}
 **❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
@@ -28,7 +28,7 @@ After each publish, an internal process optimizes all 3D models before they can 
 
 To publish your scene:
 
-1. Open your scene in the Scene Editor and click **Publish**. This opens a browser tab, showing details.
+1. Open your scene in the Scene Editor and click **Publish**. This opens a window showing details about the publication.
 2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
 ![](../../images/editor/publish-options.png)
@@ -42,7 +42,13 @@ To publish your scene:
 4. The next screen shows all of the files you're currently uploading and their sizes, confirm the operation.
 5. The publication process will then start. Stages **1** and **2** are necessary for your scene to be playable, once done a **Jump In** button appears. You don't need to wait for **Stage 3** to try out your scene. ![](../../images/editor/deploy-steps.png)
 
-\*\*📔 Note\*\*: The three stages of the deployment involve: - \*\*1. Uploading\*\*: Uploading the files to the servers. - \*\*2. Converting\*\*: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes. - \*\*3, Optimizing\*\*: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
+{% hint style="info" %}
+**📔 Note**: The three stages of the deployment involve:
+
+- **1. Uploading**: Uploading the files to the servers.
+- **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes.
+- **3. Optimizing**: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
+{% endhint %}
 
 ## Managing Worlds
 
@@ -50,14 +56,14 @@ The Creator Hub enables World management via the **Manage** tab in its main pane
 
 ### World Settings
 
-A World Owner can edit its settings by going into the desired World **Settings** under the **Manage** panel, or by accessing it during the publishing process by clicking on *Settings** if **Multi-Scene World (advanced)** is enabled.
+A World Owner can edit its settings by going into the desired World **Settings** under the **Manage** panel, or by accessing it during the publishing process by clicking on **Settings** if **Multi-Scene World (Advanced)** is enabled.
 
 <img src="../../../.gitbook/assets/world-manage-settings.png" width="600" />
 
 * **Details**: World's general information:
   * World Title
   * Description
-  * Age Rating
+  * Content Rating
   * Categories
 
 The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
@@ -69,7 +75,7 @@ The information added in **Details** will be shown in Decentraland Places and in
 <img src="../../../.gitbook/assets/world-layout.png" width="600" />
 
 * **Misc**: Other useful World configurations:
-  * World Spawn Position: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
+  * World Spawn Coordinate: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
   * Skybox settings
 
 {% hint style="info" %}
@@ -82,7 +88,7 @@ A World can have multiple scenes, published by the World Owner or by other creat
 
 #### Making a World Multi-Scene
 
-A World Owner can choose to make the World Multi-Scene by toggling **Multi-Scene World (advanced)** when publishing to a single-scene World.
+A World Owner can choose to make the World Multi-Scene by toggling **Multi-Scene World (Advanced)** when publishing to a single-scene World.
 
 <img src="../../../.gitbook/assets/multi-scene-owner-first-deploy.png" width="600" />
 
@@ -138,13 +144,13 @@ Anyone can access the World. This is the default setting of a World.
 
 Only users with the password can enter the World.
 
-Passwords must be at least 8 characters long and contain at least 2 numbers. Once created, the password won't be accesible, so make sure to keep a copy.
+Passwords must be at least 8 characters long and contain at least 2 numbers. Once created, the password won't be accessible, so make sure to keep a copy.
 
 ###### Invitation Only
 
-Only addresses and Communtiies added in the **Approved Addresses** can access the World.
+Only addresses and Communities added in the **Approved Addresses** can access the World.
 
-To add new addresses or communities to the **Apporved Addresses**, follow these steps:
+To add new addresses or communities to the **Approved Addresses**, follow these steps:
 
 1. Click on the **+ New Invite** button.
 
@@ -163,13 +169,13 @@ To add new addresses or communities to the **Apporved Addresses**, follow these 
   0xA1c9E4b7D2f6C8a3B5e9F1d4A7c2E6b8D3f9C5a1
   ```
 
-  Once imported, it tracks each Address individually, as sown in the image.
+  Once imported, it tracks each Address individually, as shown in the image.
   
   <img src="../../../.gitbook/assets/world-access-csv.png" width="600" />
 
 3. After confirming, the address/es are in the **Approved Addresses**. 
 
-4. With a new **+ New Invite**, addresses are added to the existing list, helping the World Owner  manage and extend the list if needed.
+4. With a new **+ New Invite**, addresses are added to the existing list, helping the World Owner manage and extend the list if needed.
 
 <img src="../../../.gitbook/assets/world-access-all.png" width="600" />
 
@@ -181,7 +187,7 @@ To add new addresses or communities to the **Apporved Addresses**, follow these 
 
 #### Jumping into Private Worlds
 
-There are different scenearios if a user jumps into a World that doesn't bave **Public** access:
+There are different scenarios if a user jumps into a World that doesn't have **Public** access:
 
 * Their address in the **Approved Addresses**: Will be able to join normally. If not, they will get information that the World is **Invitation Only**.
 
@@ -196,7 +202,7 @@ There are different scenearios if a user jumps into a World that doesn't bave **
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.
 
-If you're using one of these devices, you can link the hardware wallet to Metamask to enable signing messages, while keeping the tokens more secure. See [this article from Metamask](https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet) for instructions to connect your account.
+If you're using one of these devices, you can link the hardware wallet to Metamask to enable signing messages, while keeping the tokens more secure. See [this article from Metamask](https://support.metamask.io/more-web3/wallets/how-to-connect-a-trezor-or-ledger-hardware-wallet/) for instructions to connect your account.
 
 Once your hardware wallet can be used via Metamask, you can deploy following the same steps as if your tokens were on a Metamask account.
 
@@ -214,7 +220,7 @@ Your scene _A_ can't be partially rendered in just one parcel, so _\[100, 100]_ 
 
 ### The test server
 
-You can deploy content to the test catalyst server to run full tests with multiple users, the sourrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
+You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
 
 {% hint style="warning" %}
 **📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
@@ -230,7 +236,7 @@ To publish to the test server, click the **Publish** button normally, then selec
 
 ## Publish to granted land
 
-If you're publishing to land owned by the Decentraland Foundation that was granted to you via a grant, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the following server address: `http://linker-server.decentraland.org`.
+If you're publishing to land owned by the Decentraland Foundation that was granted to you via a grant, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the following server address: `https://linker-server.decentraland.org`.
 
 {% hint style="warning" %}
 **📔 Note**: You must first manually set the coordinates of your scene in the advanced tab of the Layout settings. See [Scene Settings](../configure/scene-settings.md#layout) for more info.
@@ -242,10 +248,10 @@ You can deploy content to a custom server that doesn't belong to the official DA
 
 To publish to a custom server, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the address of the server.
 
-See [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) for more info on what you can do with your own server and how to set it up.
+See [How to run your own Catalyst Node](https://docs.decentraland.org/contributor/tutorials/how-to-run-a-catalyst/) for more info on what you can do with your own server and how to set it up.
 
 {% hint style="warning" %}
-**📔 Note**: Players will need to manually type in a URL to access your custom server. Certain validations from services like the [rewards server](../rewards/gatting-started.md) or the [quests server](../deprecated/quests/overview.md) might fail in these contexts, as often these services require that the request comes from an official server.
+**📔 Note**: Players will need to manually type in a URL to access your custom server. Certain validations from services like the [rewards server](../../rewards/getting-started.md) might fail in these contexts, as often these services require that the request comes from an official server.
 {% endhint %}
 
 Players are never directed to this server, the only way to access it is to explicitly type in the URL to connect to it.
@@ -254,6 +260,6 @@ Players are never directed to this server, the only way to access it is to expli
 
 Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, or that 3D models are missing entirely.
 
-After you sign to authorize the deployment of your scene, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network,
+The Creator Hub displays the progress of the publication as it moves through the **Uploading**, **Converting** and **Optimizing** stages, and shows a **Jump In** button as soon as the scene is playable.
 
-You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each one of these servers refers to a different realm, you can reference how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
+To check how the new version of your content propagates through the servers that make up Decentraland's content network, you can use the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/). Each one of these servers refers to a different realm.

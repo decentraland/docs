@@ -45,8 +45,10 @@ The AI knows the command and will install them for you.
 **Option B — Install from the command line**
 
 ```bash
-npx skills add decentraland/sdk-skills
+npx skills add decentraland/sdk-skills --all
 ```
+
+The `--all` flag installs all of the available skills. If you leave it out, an interactive picker opens for you to choose which skills to install.
 
 For more details on what skills are available and how they work, see [Vibe Coding with AI](../getting-started/vibe-coding.md#install-skills-for-any-ai-agent).
 

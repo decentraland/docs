@@ -27,7 +27,7 @@ Here are some common items and their default behaviors:
 * **Levers**: When clicked, they switch between two states. Make each position of the lever perform different actions on other smart items.
 * **Chests**: They behave like doors, by default are opened or closed when clicking. You can place smaller items inside them.
 * **Platforms**: They move between two positions. Use their tween actions to control where they move to, their speed, etc.
-* **Trigger area**: An invisible item that can trigger other smart items when the player walks into its area. See [About trigger areas](smart-items.md#about-trigger-areas).
+* **Trigger area**: An invisible item that can trigger other smart items when the player walks into its area. See [About trigger areas](smart-items.md#trigger-areas).
 * **Video Player**: A screen for showing videos or live streams. See [Playing Videos](smart-items.md#playing-videos).
 * **Audio Stream**: Play audio from a live stream. See [Playing Audio Streams](smart-items.md#playing-audio-streams)
 * **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)
@@ -87,7 +87,7 @@ Use the Trigger Area smart item to trigger an action when the player walks into 
 
 ![ ](../../images/editor/trigger.png)
 
-Use the **On Player Enters Area** and **On Player Leaves Area** trigger types on the item's **Triggers** components. The actions on these trigger events are activated every time that the player enters or leaves the area.
+Use the **Player Enters Area** and **Player Leaves Area** trigger types on the item's **Triggers** components. The actions on these trigger events are activated every time that the player enters or leaves the area.
 
 ![ ](../../images/editor/on_player_enters.png)
 
@@ -113,18 +113,18 @@ Play videos from either:
 
 * **Local files**
 * **Stream from a URL**
-* **Stream live from [Decentraland Cast](../live-ops/live-streaming.md#dcl-cast)**
-* **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-method) (OBS, XSplit, StreamYard, etc.)**
+* **Stream live from [Decentraland Cast](../live-ops/live-streaming.md#dcl-cast-easy)**
+* **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-advanced) (OBS, XSplit, StreamYard, etc.)**
 
 {% hint style="warning" %}
-**📔 Note**: Avoid playing more than one video at any given time in your scene, because it can severely impact performance for players. Always stop other videos before playing a second video.
+**📔 Note**: Playing videos is demanding on performance, so keep the number of videos playing at the same time low. The engine limits how many videos can play simultaneously based on each player's quality settings (1 on low, 5 on medium, 10 on high), and pauses any videos beyond that limit. See [Play Videos](video-screen.md#play-videos).
 {% endhint %}
 
 See [Play Videos](video-screen.md) for more info.
 
 ### Playing audio streams
 
-Play an audio stream from a URL, using hte **Audio Stream** smart item.
+Play an audio stream from a URL, using the **Audio Stream** smart item.
 
 {% hint style="info" %}
 **📔 Note**: Not all streaming services allow you to play their audio outside their site. The following are some examples that work in Decentraland:
@@ -174,7 +174,7 @@ You can also configure a background color, this is particularly useful for NFTs 
 
 You can also chose a **Frame style**, to frame the NFT in a variety of different styles, classic and modern.
 
-See [Display an NFT](smart-items.md) for more details.
+See [NFTs](../build/nfts.md) for more details.
 
 ### Health bars
 
@@ -192,7 +192,7 @@ The **Health Bar** smart item is a great building block for several game mechani
 
     ![ ](../../images/editor/nested-under-barrel.png)
 
-Other items can interact with the health bar to add of subtract health from it.
+Other items can interact with the health bar to add or subtract health from it.
 
 *   Items like the **Spikes** or **Robot Enemy** can lower health
 

@@ -80,10 +80,6 @@ Failing quickly allows you to develop your experience by creating successive pro
 
 In game design, a persistent core loop is the fundamental “game loop” that drives player actions and the game’s response to those actions. These persistent loops extend to any form of virtual experience (like those provided by Districts).
 
-{% hint style="warning" %}
-**📔 Note**: The Decentraland client borrows some architectural ideas from [React.js](https://reactjs.org/) and only renders a scene when a change has taken place, not at a constant rate.
-{% endhint %}
-
 **What are transactional layers?**
 
 The transactional layers are the interfaces between systems like an update to the blockchain or another application that has been interfaced with your experience to maintain a persistent record of player actions. Creating and maintaining this persistent record is what builds a more personal experience.
@@ -99,11 +95,7 @@ For example, you could design a scene with the following successive experiences:
 
 ## How to share your MVP
 
-Although the Decentraland world is not yet open to all, you can upload a scene preview to a server and easily share a link to it with people who can give you feedback.
-
-Even once Decentraland is made available to all, we still recommend testing changes with test users in a separate preview server first, before uploading a new version of your scene to Decentraland.
-
-Read [this blogpost](https://decentraland.org/blog/announcements/decentraland-on-now/) for details on how to upload your scene preview to a free server.
+We recommend testing changes with test users before uploading a new version of your scene to Decentraland. You can publish your scene to the test server, where it can be visited without affecting the content in production, or publish it to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to share it via a link without needing any LAND. See [Publish to the test server](../getting-started/dev-workflow.md#publish-to-the-test-server).
 
 ## Additional considerations
 

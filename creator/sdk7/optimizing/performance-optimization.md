@@ -54,7 +54,7 @@ You can also toggle animations on or off for entities that are far or occluded. 
 
 ### Async blocks
 
-Blocks of [async code](../programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
+Blocks of [async code](../programming-patterns/async-functions.md) don't block the progress of everything else while they wait: the scene keeps running, and the async block resumes when its awaited response arrives. Note that scenes run on a single thread, so this isn't parallel processing, it just avoids stalling the scene while waiting for external responses.
 
 Any processes that rely on responses from asynchronous services, such as `getPlayerData()` or `getRealm()` should always run in async blocks, as they otherwise block the rest of the scene's loading while waiting for a response. The same applies to any calls to third party servers.
 

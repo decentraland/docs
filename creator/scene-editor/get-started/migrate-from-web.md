@@ -23,8 +23,8 @@ To edit the code in a scene created with the Web Editor, you must export the sce
 ![](../../images/editor/export.png)
 
 2. This will download a _.zip_ file, extract it.
-3. Open the **Creator Hub**, go into the **Scene Editor** section.
-4. Click the **Import** button and select the path to your exported project folder.
+3. Open the **Creator Hub**, go into the **Scenes** section.
+4. Click the **Import Scene** button and select the path to your exported project folder.
 
 ![](../../images/editor/import-scene.png)
 
@@ -36,8 +36,8 @@ You can also edit the files under the `/src` folder to add behavior with code to
 
 You can import any code-only project into the Creator Hub. To do this,
 
-1. Open the Creator Hub, go into the **Scene Editor** section.
-2. Click the **Import** button and select the path to your exported project folder.
+1. Open the Creator Hub, go into the **Scenes** section.
+2. Click the **Import Scene** button and select the path to your exported project folder.
 
 ![](../../images/editor/import-scene.png)
 

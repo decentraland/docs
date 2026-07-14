@@ -15,6 +15,10 @@ Common uses:
 
 `AudioAnalysis` is a read-only feed — your scene only consumes the values, the runtime fills them in. It works on entities that play audio through an [AudioSource](../3d-essentials/sounds.md), an [AudioStream](audio-streaming.md), or the audio of a [VideoPlayer](video-playing.md).
 
+{% hint style="warning" %}
+**📔 Note**: `AudioAnalysis` is currently only supported by the official Decentraland desktop app. On other clients the component's values are never filled in, so make sure your scene still works if the data never arrives.
+{% endhint %}
+
 ## Minimal example
 
 The following scene plays a sound, attaches `AudioAnalysis` to the same entity, and scales a cube on every frame using the audio's amplitude.
@@ -173,7 +177,7 @@ export function main() {
 }
 ```
 
-This is the same pattern used in the [audio-visualization example scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/audio-visualization), trimmed to the essentials.
+This is the same pattern used in the [audio-visualization example scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization), trimmed to the essentials.
 
 ## Modes
 

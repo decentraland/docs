@@ -21,13 +21,13 @@ If you're running a scene that was shared with you, make sure that this scene wa
 
 #### Issue: Running `npm run start` runs, no error message, but no browser window opens and no URL in the output to open the preview
 
-Make sure your Node version is up to date. It must be 16 or newer.
+Make sure your Node version is up to date. It must be 20 or newer.
 
 #### Issue: Running `npm run start` opens a browser tab, but the loading screen never finishes loading, or I see a red error banner that says "critical error".
 
 *   Make sure you have the latest version of the Decentraland SDK installed in your project. Run:
 
-    `npm i @dcl/sdk"latest`
+    `npm i @dcl/sdk@latest`
 
 #### Issue: The scene runs, in the console I see `Cyclic dependencies` warnings.
 
@@ -75,7 +75,7 @@ To fix these dependencies, you often must resort to calling functions or object 
     See [catalyst-monitor](https://decentraland.github.io/catalyst-monitor/) for a status check of all the servers in the catalyst network. You can also copy the addresses of each one, from the top of each card.
 * Check your scene's `package.json`. A common problem is that there's a `bundleDependencies` and also a `bundledDependencies` (extra d) section. This can sometimes result from running different Node versions on the same project at different times, or from sharing the project between people that ran it with different Node versions installed. Delete `bundleDependencies`, which relates to older Node versions.
 
-Also ensure you have your Node version up to date, at least version 16.
+Also ensure you have your Node version up to date, at least version 20.
 
 #### Issue: Running `npm run deploy` or `npm run build` reports type errors
 
@@ -83,12 +83,11 @@ Your scene might have type errors reported by TypeScript, for example stating th
 
 Unlike JavaScript, TypeScript enforces strict typing of all variables. Even though your scene is written in such a way that for example a certain value will never be `undefined`, TypeScript needs to know what would happen in that scenario, or you need to explicitly clarify that the value can only be for example a string.
 
-As an alternative, you can run `npm run deploy --skip-build` to skip the running of `npm run build`, and prevent these checks from running.
+As an alternative, you can run `npm run deploy -- --skip-build` to skip the running of `npm run build`, and prevent these checks from running.
 
 #### Issue: I deployed my scene but I don't see the changes when I enter Decentraland
 
 * Keep in mind that it can take a few minutes for new content to be propagated throughout all of the servers in the catalyst network, give it a little time.
-* See [Verify Deployment Success](../getting-started/preview-scene.md#verify-deployment-success) for instructions on how you can ensure that the content was properly propagated to all servers.
 
 #### Issue: Once deployed, some 3D models are missing
 

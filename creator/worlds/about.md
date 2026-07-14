@@ -27,5 +27,6 @@ To get your own Decentraland World, you need a [Decentraland NAME](https://build
 * [Publishing options](../sdk7/publishing/publishing-options.md#decentraland-worlds) - How to obtain a NAME or ENS domain
 * [Publishing to Worlds](../sdk7/publishing/publishing.md#publishing-to-worlds) - Step-by-step publishing instructions
 * [World configuration](../sdk7/projects/scene-metadata.md#world-configuration) - Configure skybox, communication settings, and more
+* [Landscape terrain](../sdk7/projects/scene-metadata.md#landscape-terrain) - Disable the auto-generated landscape around your World's scene
 * [Managing Worlds](../scene-editor/get-started/manage-scenes.md#managing-worlds) - Visualize storage space and manage deployments
 * [World FAQs](../scene-editor/faq/README.md#worlds) - Common questions about Worlds

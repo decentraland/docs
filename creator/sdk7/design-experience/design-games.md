@@ -20,6 +20,8 @@ Players that step outside your scene keep rendering it as long as it’s at a vi
 
 You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay. A game like that would be made up of multiple separate _scenes_, that could share data with each other via a server.
 
+If your game is published to a [Decentraland World](../../worlds/about.md), you have more control over what players see beyond your scene's boundaries. Worlds are normally surrounded by an auto-generated landscape of grassland, trees, and sea, but you can [disable this landscape](../projects/scene-metadata.md#landscape-terrain) if it clashes with your game's setting, for example a game that takes place in open water or in space.
+
 ### User inventory
 
 **There currently isn’t an inventory where players can store game items as they walk between scenes.** The following alternatives are available today:

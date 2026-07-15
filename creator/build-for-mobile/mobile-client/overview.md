@@ -41,4 +41,4 @@ Before publishing a scene that should work well on mobile, make sure that:
 * [ ] All critical UI elements stay inside the [mobile safe area](../develop/safe-area.md).
 * [ ] Your UI is sized large enough for touch — follow the [UI best practices](../develop/ui-best-practices.md).
 * [ ] Key actions are not bound to `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` keys), which are not easily reachable on mobile — see [Input on mobile](../develop/input-on-mobile.md).
-* [ ] Your scene's [Performance](../develop/optimize-performance.md) score is above 80% across all graphic profiles on a mid-range phone — see [Hardware Requirements](hardware-requirements.md) for reference devices.
+* [ ] Your scene's [Performance](../develop/optimize-performance.md) is above 90% on the High Graphics Profile on a mid-range phone — see [Hardware Requirements](hardware-requirements.md) for reference devices.

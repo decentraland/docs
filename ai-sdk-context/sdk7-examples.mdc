@@ -1035,14 +1035,22 @@ CameraModeArea.create(entity, {
 ### Emotes
 ```typescript
 import { triggerEmote, triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 // Play a predefined avatar emote
 triggerEmote({ predefinedEmote: 'robot' })  // 'wave', 'dance', etc.
 
 // Play a custom animation
-triggerSceneEmote({ 
+triggerSceneEmote({
   src: 'animations/myAnimation.glb',
   loop: false
+})
+
+// Optional `mask` (both functions): play the animation on only part of the body
+triggerSceneEmote({
+  src: 'animations/myAnimation.glb',
+  loop: false,
+  mask: AvatarMask.AM_UPPER_BODY
 })
 ```
 

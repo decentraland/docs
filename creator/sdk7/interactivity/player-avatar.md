@@ -139,9 +139,10 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 
 ### Default animations
 
-Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with a single property as an argument:
+Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with the following properties as an argument:
 
 * `predefinedEmote`: A string name for an existing emote.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -215,9 +216,11 @@ This function takes an object with the following properties:
 
 * `src`: A string with a path to the emote file.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 const emoter = engine.addEntity()
 Transform.create(emoter, { position: Vector3.create(8, 0, 8) })
@@ -229,7 +232,7 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Make snowball' },
 	},
 	() => {
-		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 	}
 )
 ```

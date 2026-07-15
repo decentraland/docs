@@ -1078,12 +1078,16 @@ engine.addSystem(checkCameraMode)
 
 ```typescript
 import { triggerEmote, triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 // Default emote
 triggerEmote({ predefinedEmote: 'robot' })
 
 // Custom emote (file must end with _emote.glb)
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+
+// Optional `mask` (both functions): play the animation on only part of the body
+triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 ```
 
 Notes:

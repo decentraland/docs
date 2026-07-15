@@ -12,5 +12,6 @@ Manage your deployed scenes and set up live streaming capabilities. This section
 * Managing scene administration rights
 * Moderating your scene
 * Updating live content
+* Viewing and editing live server data
 
 Live operations tools help you manage active scenes and create real-time experiences for your visitors.

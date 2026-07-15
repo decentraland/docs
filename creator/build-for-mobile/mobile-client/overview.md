@@ -21,7 +21,7 @@ This section covers how to detect mobile clients from your scene code, how to pr
 
 ### Develop
 
-* [Detect the platform from code](../develop/detect-platform.md) — use `@dcl/sdk/platform` to branch logic for mobile, desktop, or web.
+* [Detect the platform from code](../develop/detect-platform.md) — use `isMobile()` to branch your scene's logic and UI per platform.
 * [Preview your scene on mobile](../develop/preview-on-mobile.md) — preview directly on a phone via the Creator Hub or the CLI.
 * [Mobile safe area](../develop/safe-area.md) — the screen regions reserved for system controls and the device's hardware margins (notch, home indicator); keep scene UI clear of them, with the `ScreenInsetArea` component or by hand.
 * [UI best practices for mobile](../develop/ui-best-practices.md) — DOs and DON'Ts, sizing recommendations, and current limitations.

@@ -18,7 +18,7 @@ This page tracks the feature gap between the Decentraland desktop (Unity) client
 - [Audio Event Component](https://github.com/decentraland/godot-explorer/issues/861) — No ETA
 - [Audio Analysis Component](https://github.com/decentraland/godot-explorer/issues/1184) — No ETA
 - [Access Password Protected Worlds Modal on Pre-Load](https://github.com/decentraland/godot-explorer/issues/2502) — No ETA
-- **Smart Items** — Not officially supported on mobile
+- Smart Items — Support not yet fully confirmed on mobile; ETA August 2026
 
 ## Desktop Client Features Not in Mobile
 
@@ -31,7 +31,7 @@ This page tracks the feature gap between the Decentraland desktop (Unity) client
 - [Community Streams](https://github.com/decentraland/godot-explorer/issues/676) — No ETA
 - [Profile Badges](https://github.com/decentraland/godot-explorer/issues/678) — No ETA
 - [Daily Quests](https://github.com/decentraland/godot-explorer/issues/682) — No ETA
-- **Marketplace Credits** — No ETA
+- Marketplace Credits — No ETA
 - [Chat Reactions](https://github.com/decentraland/godot-explorer/issues/1824) — No ETA
 - [Chat Auto-Translation](https://github.com/decentraland/godot-explorer/issues/2260) — No ETA
 - [Chat: Direct Messages](https://github.com/decentraland/godot-explorer/issues/1120) — No ETA

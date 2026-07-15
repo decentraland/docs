@@ -23,7 +23,7 @@ The table below shows the limits enforced when running on mobile. Reaching a **s
 
 ## Preview Mobile Performance
 
-You can check your scene's mobile performance directly from **Creator Hub** without deploying to a physical device.
+You can check your scene’s mobile performance directly from **Creator Hub** without deploying to a physical device.
 
 1. Open your scene in **Creator Hub**.
 2. Select Preview > Show QR Code for Mobile
@@ -31,26 +31,12 @@ You can check your scene's mobile performance directly from **Creator Hub** with
 
 ![Mobile scene limits panel in Creator Hub](../../../mobile_scene_limits.png)
 
-{% hint style="info" %}
-**What does the Performance metric mean?**
-
-The **Performance** value is a percentage of the FPS budget set by the active graphic profile. A score of **100%** means the scene is hitting the full FPS target; a score of **50%** means it is running at half the allowed frame rate.
-{% endhint %}
-
 {% hint style="warning" %}
-**Keep Performance above 80% across all Graphic Profiles**
+**Keep Performance above 90% on High Graphics**
 
-Always test your scene on all Graphic Profiles and aim for a **Performance score above 80%** on a mid-spec Android device such as the **Samsung Galaxy A54**. This ensures a smooth experience for the majority of mobile players.
+The **Performance** value is a percentage of the FPS budget set by the active graphic profile. A score of **100%** means the scene is hitting the full FPS target.
 
-See [Hardware Requirements](../mobile-client/hardware-requirements.md) for the full list of reference devices and their specifications.
-{% endhint %}
+Always test on a mid-spec device like the **Samsung Galaxy A54** and aim for a **Performance score above 90% on the High graphic profile**. This ensures a smooth experience for the majority of mobile players. See [Hardware Requirements](../mobile-client/hardware-requirements.md) for reference devices.
 
-{% hint style="info" %}
-**Switching Graphic Profiles**
-
-Players can change the graphic profile from inside the app:
-
-**Menu → Settings → Graphics → set Dynamic Graphics to Off → switch Profiles**
-
-Test your scene with each profile — Low, Medium, and High — and confirm the Performance score stays above 80% in all three before publishing.
+You can change the graphic profile from **In-Game Menu → Settings → Graphics → set Dynamic Graphics to Off → switch Profiles**.
 {% endhint %}

@@ -342,7 +342,7 @@ The following properties are available:
 - `runJumpHeight`: The height at which the player jumps after running, in meters.
 - `doubleJumpHeight`: The height of the second jump when double-jumping, in meters.
 - `glidingSpeed`: The horizontal speed at which the player moves while gliding, in meters per second.
-- `glidingFallingSpeed`: The falling speed of the player while gliding, in meters per second.
+- `glidingFallingSpeed`: The maximum falling speed of the player while gliding, in meters per second. This only caps the player's descent: upward motion, like a lift from a scene's continuous force, isn't limited.
 - `hardLandingCooldown`: The cooldown after a hard landing, in seconds. This is the time that the player has to wait before they can move again after landing from a high fall.
 
 For reference, here are the default values for those properties:
@@ -356,6 +356,10 @@ For reference, here are the default values for those properties:
 - `runJumpHeight`: 1.5 m
 - `doubleJumpHeight`: 2 m
 - `hardLandingCooldown`: 0.75 s
+
+{% hint style="info" %}
+**💡 Tip**: While gliding, continuous forces applied by the scene are 1.5 times stronger, and upward forces can lift the player. See [Forces while gliding](player-physics.md#forces-while-gliding).
+{% endhint %}
 
 {% hint style="info" %}
 **💡 Tip**: None of these properties can be lower than 0. If you set one of them to a negative value, it will be clamped to 0. Setting these values to zero will have the same effect as using the `InputModifier` to block the use of certain keys.

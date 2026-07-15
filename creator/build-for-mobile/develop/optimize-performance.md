@@ -19,7 +19,7 @@ The table below shows the limits enforced when running on mobile. Reaching a **s
 | External content | 40 MB | 50 MB |
 | Memory (process RSS) | 1,638 MB | 2,048 MB |
 | Draw calls | 1,000 | 2,000 |
-| Performance (higher is better) | 50% | 30% |
+| Performance (higher is better) | 90% | 80% |
 
 ## Preview Mobile Performance
 

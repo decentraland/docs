@@ -18,7 +18,20 @@ import { getPlatform, isMobile, isDesktop, isWeb } from '@dcl/sdk/platform'
 * **`isWeb()`** — returns `true` if the player is on the web client.
 
 {% hint style="warning" %}
-**📔 Note**: These functions read a value that is populated asynchronously when the scene starts. If you call them in the very first frame, they may still return `null` / `false`. For UI setup, the safest place to call them is from the `main()` function or any code that runs after the first frame.
+**📔 Note**: These functions read a value that is populated asynchronously when the scene starts, and nothing guarantees it's already available by the time `main()` runs. If you call them too early, they may still return `null` / `false`. To be safe, defer any platform-dependent setup until `getPlatform()` returns something other than `null`, for example by checking inside a system:
+
+```ts
+import { engine } from '@dcl/sdk/ecs'
+import { getPlatform } from '@dcl/sdk/platform'
+
+function platformCheckSystem() {
+  if (getPlatform() === null) return
+  engine.removeSystem(platformCheckSystem)
+  setupUI()
+}
+
+engine.addSystem(platformCheckSystem)
+```
 {% endhint %}
 
 ## Branch your UI by platform

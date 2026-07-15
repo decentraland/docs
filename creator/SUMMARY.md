@@ -178,9 +178,9 @@
   * [Game Objects](sdk7/programming-patterns/game-objects.md)
   * [Mutable Data](sdk7/programming-patterns/mutable-data.md)
 * [API Reference](sdk7/releases/)
-  * [Alpha Testing Guidelines](sdk7/releases/alpha-testing-guidelines.md)
+  * [Testing and Feedback](sdk7/releases/alpha-testing-guidelines.md)
   * [Releases](sdk7/releases/releases.md)
-  * [V7 Alpha](sdk7/releases/v7-alpha.md)
+  * [API Reference](sdk7/releases/v7-alpha.md)
   * [Version Support Agreement](sdk7/releases/version-support-agreement.md)
 * [Other](sdk7/other/)
   * [Scene Analytics](sdk7/other/scene-analytics.md)
@@ -195,11 +195,6 @@
 * [Colliders](3d-modeling/colliders.md)
 * [Animations](3d-modeling/animations.md)
 * [Create a Rig](3d-modeling/create-a-rig.md)
-
-## Worlds
-
-* [Overview](worlds/about.md)
-* [Cast](worlds/cast.md)
 
 ## Marketplace
 

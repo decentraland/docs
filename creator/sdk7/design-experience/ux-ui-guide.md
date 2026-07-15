@@ -144,8 +144,10 @@ UI text can make interfaces more usable and gives players more confidence in the
 
 Receive your players with a Welcome Message and tell them the objective of the scene. Start by clarifying their goal in the scene, then the actions needed to achieve it. Then you can reveal information progressively as it’s needed, this way players won’t feel overwhelmed on the very beginning of the experience. As with graphic resources, try to use consistent words across your UI features and storytelling.
 
-SDK New Features - Coming Soon!
+### Object interactions
 
-Objects interactions Now it’s not possible for players to tell which objects are interactive and which aren’t, until they actually click or press buttons on them. We have been working on a new feature for creators to be able to show custom toast messages when aiming at an interactive object. This message conveys which input to use and may have custom text to describe the effects of interacting with it. We highly recommend that you use it when released, your scene will feel more natural and easy to use.
+Make sure players can tell which objects are interactive and which aren't. When registering button events on an entity, the SDK displays hover feedback by default: an edge highlight on the entity and a hint next to the cursor showing which input to use, with custom text to describe the effects of interacting with it. We highly recommend using it, your scene will feel more natural and easy to use. See [Hover feedback](../interactivity/button-events/register-callback.md#hover-feedback).
 
-3rd person camera We’re currently experimenting with adding support for a 3rd person camera. You can try it out in the explorer by hitting the ‘V’ key. (Note, it’s not supported yet in a scene preview). You can start thinking of developing incredible new experiences or games that might be much more appealing thanks to a 3rd person camera!
+### 3rd person camera
+
+Players can switch between 1st and 3rd person camera at any time by hitting the ‘V’ key. Design your scene so interactions work comfortably in both modes: for example, small click targets are harder to hit in 3rd person. Your scene can read the player's current camera mode, or force a specific one in an area, see [Camera](../3d-essentials/camera.md).

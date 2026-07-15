@@ -14,16 +14,24 @@ This document gives an overview on the different ways to obtain permissions. See
 
 In order to publish to LAND in Genesis City, you can do the following:
 
-* **Rent LAND**: Purchase the right to deploy and keep your content on certain parcels for a fixed period of time. See [Rentals](../../marketplace/rentals.md).
-* **Buy land**: Buy land parcels, and publish your content for as long as you wish. See [marketplace](../../marketplace/marketplace.md).
+* **Rent LAND**: Purchase the right to deploy and keep your content on certain parcels for a fixed period of time. See [Rentals](https://docs.decentraland.org/player/marketplace/rentals/).
+* **Buy land**: Buy land parcels, and publish your content for as long as you wish. See [marketplace](https://docs.decentraland.org/player/marketplace/marketplace/).
 * **Get permissions from an owner**: Several land owners and districts manage large extensions of land and are willing to freely host content from others if it fits their theme and the kind of environment they want to create. Connect with them in the [Decentraland Discord server](https://dcl.gg/discord).
-* **Worlds**: You can also deploy a stand-alone scene as a Decentraland World. Worlds exist outside the grid of Genesis City, and can be accessed by name. See [worlds](../../worlds/about.md)
+* **Worlds**: You can also deploy a stand-alone scene as a Decentraland World. Worlds exist outside the grid of Genesis City, and can be accessed by name. See [Decentraland Worlds](#decentraland-worlds) below.
 
 {% hint style="warning" %}
 **📔 Note**: You can also deploy scenes to a test server where players are not around. The same permissions per parcel apply when deploying to the test server, see [publishing](publishing.md#the-test-server) for more details.
 {% endhint %}
 
 ## Decentraland Worlds
+
+Decentraland Worlds are your own personal 3D space in the Decentraland ecosystem, separate from Genesis City's map of LAND parcels. A World can be kept private or shared with anyone with just a link. Able to host up to 100 concurrent users, you can use your World for purposes such as:
+
+* Hosting events
+* Unleashing your creativity
+* Building new experiences
+* Hosting a portfolio of scenes
+* Testing scenes before deploying them to Genesis City
 
 If you own a Decentraland NAME or an ENS domain, you can publish your scene and let others publish on to your Decentraland World. Check the [Managing Worlds documentation](../../scene-editor/publish/publish-scene.md#managing-worlds) to learn more about Multi Scene Worlds and other topics like Private Worlds.
 
@@ -45,19 +53,25 @@ Inside a World, you're allowed to use as many parcels as you want. For Decentral
 
 Worlds serve as a gateway for aspiring content creators, providing an accessible entry point to creating in Decentraland and the freedom to experiment with scene creation.
 
-See [Worlds](../../worlds/about.md) for an overview, or learn about [publishing to Worlds](publishing.md#publishing-to-worlds) for step-by-step instructions.
+### Learn more about Worlds
+
+* [Worlds as a project type](../projects/kinds-of-project.md#publish-to-worlds) - Learn about size limits and how Worlds differ from LAND scenes
+* [Publishing to Worlds](publishing.md#publishing-to-worlds) - Step-by-step publishing instructions
+* [World configuration](../projects/scene-metadata.md#world-configuration) - Configure skybox, communication settings, and more
+* [Managing Worlds](../../scene-editor/get-started/manage-scenes.md#managing-worlds) - Visualize storage space and manage deployments
+* [World FAQs](../../scene-editor/faq/README.md) - Common questions about Worlds
 
 ## Get DAO funding
 
 If you have a great idea and the means to achieve it, but need financing, you can request for a grant in the DAO. If the proposal convinces enough people from the community to vote on it, you can get a sum of money to achieve your vision, including funds for buying or renting LAND.
 
-See [Community grants](../../archive/grants/community-grants.md).
+See the [Decentraland DAO](https://decentraland.org/dao/) for how to submit a proposal.
 
 ## How land permissions work
 
 LAND tokens can manage permissions that allow the following different kinds of roles to deploy to a particular parcel or estate.
 
 * **LAND owner**: The person that owns the token in their Ethereum wallet. This user can always deploy, assign other roles, or transfer the token (unless the land is currently rented by someone else).
-* **LAND operator**: The operator is only able to deploy, as long as they hold this role. The operator's address is referenced by the token, without needing to own anything. The owner can assign and revoke operator permissions to any number of addresses. See [Give permissions](../../marketplace/land-manager.md#give-permissions).
+* **LAND operator**: The operator is only able to deploy, as long as they hold this role. The operator's address is referenced by the token, without needing to own anything. The owner can assign and revoke operator permissions to any number of addresses. See [Give permissions](https://docs.decentraland.org/player/marketplace/land-manager/#give-permissions).
 
 When renting a land, the tennant who pays for the rent gets to chose a single address that will hold a **LAND Operator** role for the duration of the rent (this can be their own address, or someone else's). While the rent is active, none of the original holders of roles can interfere with the content on that LAND or transfer the token.

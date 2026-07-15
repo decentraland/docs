@@ -15,7 +15,7 @@ Script Components allow the execution of an Entity's custom behaviour without th
 
 ![](../../../.gitbook/assets/new-script-component.png)
 
-2. Click on the CODE button in the component to open the default code editor. Let's check its structure. For more details on how to select and manage your default editor, please go to [Combine with code](reference-items.md).
+2. Click on the CODE button in the component to open the default code editor. Let's check its structure. For more details on how to select and manage your default editor, please go to [Combine with code](overview.md).
 
 
 ## Understanding the Script structure
@@ -24,15 +24,35 @@ When the Script is first opened, it has the following code:
 
 ```ts
 import { engine, Entity } from '@dcl/sdk/ecs'
+import {} from '@dcl/sdk/math'
 
 export class BuildingScript {
+  /**
+   * Properties
+   * Define class fields you want to reuse across methods.
+   * Example usage: this.myVariable
+   */
+   // private myVariable: boolean = true
+
+  /**
+   * Constructor / Inputs
+   * Parameters declared here appear in the Script component UI in Creator Hub.
+   * Supported types: Entity, String, Number, Boolean, ActionCallback.
+   *
+   * Note: After editing this file, click the refresh icon in the Script component UI
+   * to see updated inputs.
+   *
+   * The `src` and `entity` fields in the constructor are required by internal references.
+   */
   constructor(
-    public src: string,
-    public entity: Entity
+    public src: string,     // DO NOT REMOVE
+    public entity: Entity,   // DO NOT REMOVE
+    // Add your custom inputs below
   ) {}
 
   /**
-   * Start function - called when the script is initialized
+   * start()
+   * Called once when the script is initialized.
    */
   start() {
     // Script initialization
@@ -40,8 +60,9 @@ export class BuildingScript {
   }
 
   /**
-   * Update function - called every frame
-   * @param dt - Delta time since last frame (in seconds)
+   * update(dt)
+   * Called every frame.
+   * @param dt - (optional) Delta time since last frame (in seconds)
    */
   update(dt: number) {
     // Called every frame
@@ -186,7 +207,7 @@ The first log belongs to the start() method, indicating that we set numericVaria
 
 ## Exposing Actions to the Creator Hub
 
-It is possible to define an `Action` inside a Script Component script and have it accesible on the Creator Hub's UI. This enables the possibility to trigger this `Action` with another Entity. 
+It is possible to define an `Action` inside a Script Component script and have it accessible on the Creator Hub's UI. This enables the possibility to trigger this `Action` with another Entity. 
 
 ```ts
   /**
@@ -194,7 +215,7 @@ It is possible to define an `Action` inside a Script Component script and have i
    * @action
    */
   exposedAction(creatorHubParameter: number) {
-    console.log("Triggered from another entity using parameter: ", this.numericActionVariable);
+    console.log("Triggered from another entity using parameter: ", this.creatorHubParameter);
   }
   ```
 
@@ -207,12 +228,12 @@ After adding the Action, any Entity in the Creator Hub can trigger it using `Tri
 ![](../../../.gitbook/assets/script-component-action-trigger.png)
 
 {% hint style="info" %}
-**📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accesible independently from the `Action` dropdown.
+**📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accessible independently from the `Action` dropdown.
 {% endhint %}
 
 ## Calling Script methods from Outside
 
-To call a Script method from another Script or from `main.ts`, the following steps should be followed:
+To call a Script method from another Script or from `src/index.ts`, the following steps should be followed:
 
 1. Create a `public` method inside the Script class.
 2. Run `npm run build` from the scene's root directory.
@@ -240,7 +261,7 @@ export class BuildingScript {
 }
 ```
 
-To call it from `main.ts`, use:
+To call it from `src/index.ts`, use:
 
 ```ts
 import { callScriptMethod } from '~sdk/script-utils'
@@ -263,11 +284,11 @@ export function main() {
 ```
 
 First, the `main` function looks for the `Entity` that has the Script component.
-Second, if the `Entity` exists, `callScriptMethod` is called with the following parametrs:
+Second, if the `Entity` exists, `callScriptMethod` is called with the following parameters:
 1. `entity`: `Entity` that has the `public` method.
 2. `scriptPath`: `path` where the `Script` class lives.
 3. `methodName`: name of the `public` method to be called.
-4. `...args`: Arguuments of the method. In this case, there are two. They should be added in order, one after the other.
+4. `...args`: Arguments of the method. In this case, there are two. They should be added in order, one after the other.
 
 Third, we call the defined `callScriptMethod`, in this case, `scriptMethod`.
 
@@ -301,7 +322,7 @@ A selectable `Entity` and `Action` are now available when the Script Component i
 
 ![](../../../.gitbook/assets/script-component-action-callback.png)
 
-The action from the other Entity is now accesible on the Script class. It could be used in many different ways. In the following example, pressing E will trigger `this.anotherEntityAction` by defining a `pointerEventsSystem` in the `start` method.
+The action from the other Entity is now accessible on the Script class. It could be used in many different ways. In the following example, pressing E will trigger `this.anotherEntityAction` by defining a `pointerEventsSystem` in the `start` method.
 
 ```ts
   start() {

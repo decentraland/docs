@@ -25,7 +25,7 @@ Although the Scene Editor in the Creator Hub is easier to use, the CLI allows yo
 
 To deal with the scene via the command line, please install the following dependencies before you run CLI commands with the scene:
 
-* [Node.js](https://nodejs.org) (version 16 or later)
+* [Node.js](https://nodejs.org) (version 20 or later)
 
 ## Initiate a new project
 

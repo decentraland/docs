@@ -69,7 +69,7 @@ Worlds offer several advantages over LAND scenes:
 * More storage capacity - especially for Decentraland NAME holders
 * Access control - you can allow only certain players to access your World
 
-See [Worlds](../../worlds/about.md) for more info, or learn about [publishing to Worlds](../publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../projects/scene-metadata.md#world-configuration).
+See [Worlds](../publishing/publishing-options.md#decentraland-worlds) for more info, or learn about [publishing to Worlds](../publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../projects/scene-metadata.md#world-configuration).
 
 ## Global Scenes
 

@@ -80,13 +80,11 @@ By default, the image will have a purple background and have a frame with a puls
 * `style`: Selects a frame model from an enum of several predetermined options. Use a value from the enum `NftFrameType`, which contains a list of all available styles.
 
 ```ts
-const shapeComponent = new NftShape(
+NftShape.create(nftEntity, {
   urn: 'urn:decentraland:ethereum:erc721:0x06012c8cf97bead5deae237070f9587f8e7a266d:558536',
-  {
-    color: Color3.Green(),
-    style: NftFrameType.NFT_GOLD_EDGES,
-  }
-)
+  color: Color3.Green(),
+  style: NftFrameType.NFT_GOLD_EDGES,
+})
 ```
 
 ![](../../images/media/nft-frames.png)

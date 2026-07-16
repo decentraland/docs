@@ -62,6 +62,7 @@
 * [Operate live](scene-editor/live-ops/)
   * [Scene Admin](scene-editor/live-ops/scene-admin.md)
   * [Live Streaming](scene-editor/live-ops/live-streaming.md)
+  * [Server Data](scene-editor/live-ops/server-data.md)
 * [Editor FAQs](scene-editor/faq/)
 
 ## Scenes (SDK7)

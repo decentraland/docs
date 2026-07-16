@@ -461,6 +461,7 @@
     * [Live Operations](creator/scene-editor/live-ops/README.md)
       * [Live Streaming](creator/scene-editor/live-ops/live-streaming.md)
       * [Scene Admin](creator/scene-editor/live-ops/scene-admin.md)
+      * [Server Data](creator/scene-editor/live-ops/server-data.md)
     * [Publishing Your Scene](creator/scene-editor/publish/README.md)
       * [Publish Scene](creator/scene-editor/publish/publish-scene.md)
   * [sdk7](creator/sdk7/README.md)

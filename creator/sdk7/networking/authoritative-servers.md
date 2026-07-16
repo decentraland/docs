@@ -566,7 +566,7 @@ You can see and edit the live stored data on your server via the storage UI, by 
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 
@@ -687,7 +687,7 @@ You can access the data that is stored by the scene's storage by entering this l
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 
@@ -1017,7 +1017,7 @@ You can access the data that is stored by the scene's storage by entering this l
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 

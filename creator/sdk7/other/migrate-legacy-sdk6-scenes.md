@@ -15,7 +15,7 @@ Start with a fresh, empty SDK7 project. The AI will move your legacy code and as
 **Option A — Creator Hub**
 
 1. Open the Creator Hub.
-2. Select the **Scenes** tab and click **Create Scene**.
+2. Select the **Scenes** tab and click **New Scene**.
 3. Pick the **Empty Scene** template.
 
 **Option B — Command line**

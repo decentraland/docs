@@ -30,6 +30,16 @@ You may need to select your Code Editor in the settings of the Creator Hub. To d
 1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
 2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
+### AI skills
+
+If you plan to use an AI agent to help you write code, we recommend installing the Decentraland SDK skills. These are ready-made instruction sets that teach your AI agent how to work with the Decentraland SDK, so it makes fewer mistakes and gives better results from the very first prompt. To install all of them, run the following command in your scene project's folder:
+
+```bash
+npx skills add decentraland/sdk-skills --all
+```
+
+See [Vibe coding](../../sdk7/getting-started/vibe-coding.md) for more details on installing specific skills and how to use them.
+
 ## Troubleshooting
 
 If you run into issues, see the [troubleshooting](../../sdk7/debugging/troubleshooting.md) section.

@@ -4,6 +4,18 @@ description: Fixes for common problems
 
 # Troubleshooting
 
+## Debug with an AI assistant
+
+Before digging through the issues below, consider handing the problem to an AI assistant, like Cursor's chat, GitHub Copilot, or Claude Code. Paste the error message from the console, or describe what's not behaving as expected, and it can usually find the problem in your scene's code and fix it for you.
+
+For good results, make sure the AI has the Decentraland SDK skills installed. The skills teach it the SDK's patterns and constraints, so it doesn't guess based on generic or outdated information. Install them by running this command in your scene project:
+
+```bash
+npx skills add decentraland/sdk-skills
+```
+
+See [Vibe Coding with AI](../getting-started/vibe-coding.md) for more details on setting up and prompting AI assistants.
+
 ## Issues when running preview
 
 #### Issue: Can't run any scene preview, error message says mentions **Permissions denied** or **EACCES**

@@ -5,4 +5,4 @@
 - [Mobile safe area](safe-area.md): Where scene UI can safely live on mobile — clear of the system HUD and the device's hardware-reserved margins.
 - [UI best practices](ui-best-practices.md): DOs and DON'Ts for designing scene UIs that work well on mobile.
 - [Input on mobile](input-on-mobile.md): How input actions map to touch on the Decentraland mobile client.
-- [Performance](optimize-performance.md): Mobile scene limits, how to preview them in Creator Hub, and how to hit performance targets.
+- [Performance](optimize-performance.md): Mobile scene limits, performance targets, and how to hit 90%+ on High Graphics using Creator Hub.

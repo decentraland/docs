@@ -17,9 +17,9 @@ See [Creator Hub Installation](editor-installation.md) to get started.
 
 ## Create a scene
 
-To create a new scene, open the Creator Hub, go into the **Scenes** section, and click on the **+** card, or on the **Templates** button.
+To create a new scene, open the Creator Hub, go into the **Scenes** section, and click on the **New Scene** card.
 
-![](../../images/editor/create-scene.png)
+![](../../images/editor/new-scene.png)
 
 You can then select what template to use as a starting point. You can pick an **Empty Scene** or a project with some initial content.
 

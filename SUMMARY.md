@@ -519,6 +519,7 @@
       * [Deprecated Functions](creator/sdk7/interactivity/deprecated-functions.md)
       * [Event Listeners](creator/sdk7/interactivity/event-listeners.md)
       * [External Links](creator/sdk7/interactivity/external-links.md)
+      * [Mouse Movement](creator/sdk7/interactivity/mouse-movement.md)
       * [NPC Avatars](creator/sdk7/interactivity/npc-avatars.md)
       * [The Player Avatar](creator/sdk7/interactivity/player-avatar.md)
       * [Raycasting](creator/sdk7/interactivity/raycasting.md)

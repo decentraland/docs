@@ -140,6 +140,8 @@ function main() {
 **💡 Tip**: When the camera turns away from the avatar, it's often a good practice to also freeze the avatar's movements. That way the player doesn't move blindly into obstacles. See [Input Modifiers](../interactivity/player-avatar.md#freeze-the-player)
 {% endhint %}
 
+To let the player steer a virtual camera with the mouse, read how far the cursor moved on each frame from the `screenDelta` property of the `PrimaryPointerInfo` component, and apply that movement to the camera's rotation. This works even while the cursor is locked. See [Mouse Movement](../interactivity/mouse-movement.md) for a full mouselook example.
+
 ## Birds eye view
 
 You can use a virtual camera to look at the scene from a top-down view, this can be a fun variation on the normal perspective of your avatar and enable different game mechanics.

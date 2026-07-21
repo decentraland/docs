@@ -498,14 +498,18 @@ Transform.create(entity, {
 
 This is useful for stages, presentations, or scripted scenes where you want to suppress player nametags without hiding the avatars themselves. For example, you might want a clean visual experience during a performance, where avatars are visible but the floating names don't distract viewers.
 
-You can also combine `AMT_HIDE_NAMETAGS` with other modifiers. For example, if you use both `AMT_HIDE_AVATARS` and `AMT_HIDE_NAMETAGS` on the same area, the avatar and the nametag are both hidden.
+{% hint style="info" %}
+**💡 Tip**: `AMT_HIDE_AVATARS` already hides nametags along with the avatar, so you don't need to add `AMT_HIDE_NAMETAGS` when using `AMT_HIDE_AVATARS`. Use `AMT_HIDE_NAMETAGS` only when you want to hide nametags while keeping avatars visible.
+{% endhint %}
+
+You can combine `AMT_HIDE_NAMETAGS` with other modifiers like `AMT_DISABLE_PASSPORTS` on the same area:
 
 ```ts
 const entity = engine.addEntity()
 
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(4, 3, 4),
-	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS, AvatarModifierType.AMT_HIDE_NAMETAGS],
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS, AvatarModifierType.AMT_DISABLE_PASSPORTS],
 	excludeIds: []
 })
 

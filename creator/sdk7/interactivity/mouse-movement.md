@@ -76,7 +76,7 @@ The same pattern works for any drag interaction: slide an entity along a rail us
 
 ## Mouselook camera controls
 
-Because `screenDelta` keeps working while the cursor is locked, you can use it to build mouselook controls for a [virtual camera](../3d-essentials/camera.md#using-virtual-cameras). The trick is to accumulate the mouse movement into yaw and pitch angles, and apply them to the camera's rotation on every frame.
+Because `screenDelta` keeps working while the cursor is locked, you can use it to build mouselook controls for a [virtual camera](../3d-essentials/camera.md#using-virtual-cameras). To do this, accumulate the mouse movement into yaw and pitch angles, then apply them to the camera's rotation on every frame.
 
 In the following example, the player clicks a box to switch to a virtual camera that they can steer with the mouse, and presses the secondary button (_F_ or right-click) to return to the default camera. While the virtual camera is active, the scene also locks the cursor and freezes the avatar with an [input modifier](player-avatar.md#freeze-the-player), so the player doesn't walk around blindly while steering the camera.
 

@@ -46,6 +46,7 @@ Los modificadores compatibles son:
 
 * `AvatarModifierType.AMT_HIDE_AVATARS`
 * `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+* `AvatarModifierType.AMT_HIDE_NAMETAGS`
 
 Todos los efectos de un `AvatarModifierArea` solo tienen lugar dentro de la región de su área. Los jugadores vuelven a la normalidad cuando salen del área.
 
@@ -104,6 +105,50 @@ Transform.create(entity, {
 ```
 
 Esto es especialmente útil en juegos donde accidentalmente abrir esta UI podría interrumpir el flujo del juego, por ejemplo en un juego de disparos multijugador.
+
+### Ocultar etiquetas de nombre
+
+Cuando un jugador camina hacia un `AvatarModifierArea` que tiene el modificador `AvatarModifierType.AMT_HIDE_NAMETAGS`, la etiqueta de nombre del jugador se oculta mientras el avatar permanece visible.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+Esto es útil para escenarios, presentaciones o escenas con guión donde quieres ocultar las etiquetas de nombre de los jugadores sin ocultar los avatares. Por ejemplo, podrías querer una experiencia visual limpia durante una actuación, donde los avatares son visibles pero los nombres flotantes no distraen a los espectadores.
+
+{% hint style="info" %}
+**💡 Consejo**: `AMT_HIDE_AVATARS` ya oculta las etiquetas de nombre junto con el avatar, por lo que no necesitas agregar `AMT_HIDE_NAMETAGS` cuando usas `AMT_HIDE_AVATARS`. Usa `AMT_HIDE_NAMETAGS` solo cuando quieras ocultar las etiquetas de nombre manteniendo los avatares visibles.
+{% endhint %}
+
+Puedes combinar `AMT_HIDE_NAMETAGS` con otros modificadores como `AMT_DISABLE_PASSPORTS` en la misma área:
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS, AvatarModifierType.AMT_DISABLE_PASSPORTS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+{% hint style="info" %}
+**💡 Consejo**: La etiqueta de nombre solo se oculta mientras la cabeza o torso del jugador está dentro del área. Si el área es demasiado baja y el jugador hace un doble salto por encima, la etiqueta de nombre reaparecerá brevemente. Haz el área lo suficientemente alta para cubrir el rango de movimiento esperado.
+{% endhint %}
 
 ## Modificadores de cámara
 

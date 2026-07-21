@@ -1379,6 +1379,7 @@ AvatarModifierArea.create(modifierArea, {
 // Available modifiers
 AvatarModifierType.AMT_HIDE_AVATARS
 AvatarModifierType.AMT_DISABLE_PASSPORTS
+AvatarModifierType.AMT_HIDE_NAMETAGS   // Hides nametags while keeping avatars visible
 ```
 
 #### Movement Constraints

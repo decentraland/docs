@@ -1,8 +1,10 @@
 ---
-description: Build multiplayer Decentraland scenes with a headless authoritative server.
+description: Build multiplayer Decentraland scenes with a headless multiplayer server.
 ---
 
-# Authoritative Servers
+# Multiplayer Server
+
+**📔 Note**: The Multiplayer Server was previously called the **Authoritative Server**. Only the name changed, the feature is the same. The SDK branch to install is still named `auth-server`, see [Setup](#setup).
 
 ## Overview
 
@@ -10,11 +12,11 @@ Decentraland runs scenes locally in a player's machine. By default, players are 
 
 Allowing all players to see a scene as having the same content in the same state is extremely important to for players to interact in more meaningful ways. Without this, if a player opens a door and walks into a house, other players will see that door as still closed, and the first player will appear to walk directly through the closed door to other players.
 
-An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
+The **Multiplayer Server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. It follows an authoritative server architecture: instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
-An authoritative server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
+The Multiplayer Server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
 
-Having an authoritative server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. An authoritative server resolves every change in one place, so all clients converge on the same state.
+Having a Multiplayer Server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. The Multiplayer Server resolves every change in one place, so all clients converge on the same state.
 
 It also gives you a place to **persist data across sessions**: leaderboards, player progression, unlocked achievements, or environment changes like doors opened or items placed. When players come back, the world reflects what happened before.
 
@@ -24,7 +26,7 @@ Decentraland hosts and deploys the server for you. Publishing your scene via the
 
 ### 1. Install the auth-server SDK version
 
-The native authoritative server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch. Run the following commands to install it in your project instead of the standard SDK branch:
+The native Multiplayer Server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch. Run the following commands to install it in your project instead of the standard SDK branch:
 
 ```bash
 npm install @dcl/sdk@auth-server
@@ -33,7 +35,7 @@ npm install @dcl/js-runtime@auth-server
 
 ### 2. Configure scene.json
 
-The authoritative server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. You don't need to add it manually: when using the auth-server branch of the SDK, it's added automatically the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
+The Multiplayer Server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. You don't need to add it manually: when using the auth-server branch of the SDK, it's added automatically the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
 
 Optionally, you can also add the following to your `scene.json` at root level:
 
@@ -49,7 +51,7 @@ Add `logsPermissions` to list wallet addresses that can see `console.log()` from
 
 ### 3. Run the preview
 
-Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the authoritative server in the background.
+Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the Multiplayer Server in the background.
 
 The local session of the server is not connected to the one in production, so you're free to test things without affecting players who are in your published scene.
 
@@ -96,10 +98,10 @@ if (isServer()) {
 }
 ```
 
-The syntax is identical to what's used by the [Serverless multiplayer](../networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the authoritative server. When a scene uses the authoritative server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
+The syntax is identical to what's used by the [Serverless multiplayer](../networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the Multiplayer Server. When a scene uses the Multiplayer Server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
 
 {% hint style="warning" %}
-**📔 Note**: With the authoritative server, the ideal pattern is to only have the server call `syncEntity`. That way you don't need to worry about entity-id consistency. Rather, the entity is instanced and shared by the server, and all clients get synced about that instance. Always guard it with `isServer()`. This is different from [Serverless multiplayer](../networking/serverless-multiplayer.md), where every client calls `syncEntity` on its own.
+**📔 Note**: With the Multiplayer Server, the ideal pattern is to only have the server call `syncEntity`. That way you don't need to worry about entity-id consistency. Rather, the entity is instanced and shared by the server, and all clients get synced about that instance. Always guard it with `isServer()`. This is different from [Serverless multiplayer](../networking/serverless-multiplayer.md), where every client calls `syncEntity` on its own.
 {% endhint %}
 
 ### Validating changes
@@ -1046,7 +1048,7 @@ The trade-off is that, for a short window right after a deploy, players can end 
 
 If you have an existing scene built on Colyseus, the table below maps common Colyseus patterns to their SDK7 equivalents:
 
-| Colyseus                      | SDK7 Authoritative Server                       |
+| Colyseus                      | SDK7 Multiplayer Server                         |
 | ----------------------------- | ----------------------------------------------- |
 | `room.send(type, data)`       | `room.send(type, data)` — same API              |
 | `room.onMessage(type, cb)`    | `room.onMessage(type, cb)` — same API           |
@@ -1059,4 +1061,4 @@ Key differences to keep in mind:
 
 - _Serialization_: Colyseus sends JSON diffs; the SDK sends the full component on every change. Keep components small (see [Performance Best Practices](#performance-best-practices)).
 - _State model_: Colyseus uses a mutable state tree with automatic diffing. The SDK uses ECS components synced via `syncEntity` and protected with `validateBeforeChange`.
-- _Hosting_: No separate server deployment. The authoritative server is deployed automatically together with the scene.
+- _Hosting_: No separate server deployment. The Multiplayer Server is deployed automatically together with the scene.

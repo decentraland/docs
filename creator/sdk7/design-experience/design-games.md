@@ -62,7 +62,7 @@ Your scene could have a reset mechanism that sets it to an initial state, but yo
 
 The easiest way to share state between players is to mark entities as synced, using the `syncEntity` function. See [Serverless multiplayer](../networking/serverless-multiplayer.md). With this approach, state changes are not stored anywhere: if no players are currently near the scene and loading it, the scene will reset to a default state the next time it’s loaded.
 
-**You can also use a server to store information about your scene and keep all players in sync with it.** This keeps the scene state consistent and persistent even when no players are near, and lets you validate changes so players can't cheat. The recommended option is to use an [Authoritative server](../networking/authoritative-servers.md), which Decentraland hosts and deploys for you as part of publishing your scene. You can also host [your own server](../networking/third-party-servers.md), which lets you keep certain information, like security tokens, only on the server, never exposing that information outside.
+**You can also use a server to store information about your scene and keep all players in sync with it.** This keeps the scene state consistent and persistent even when no players are near, and lets you validate changes so players can't cheat. The recommended option is to use a [Multiplayer Server](../networking/authoritative-servers.md), which Decentraland hosts and deploys for you as part of publishing your scene. You can also host [your own server](../networking/third-party-servers.md), which lets you keep certain information, like security tokens, only on the server, never exposing that information outside.
 
 ### Game timing
 

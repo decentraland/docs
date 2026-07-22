@@ -480,6 +480,41 @@ Data can be stored at two levels:
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
 
+### Save at checkpoints, not on every change
+
+Storage is durable persistence for data that must survive server restarts and redeploys. It is not a live datastore. Keep your working game state in memory on the server. That's faster and it's the right pattern for a server. Write to Storage only when you really need to, at meaningful checkpoints.
+
+{% hint style="warning" %}
+**⚠️ Warning**: The storage service allows a maximum of **40 in-flight requests** at once, and is also rate-limited. If your scene fires storage requests faster than that (for example, a `Storage.set` on every score change, every event, or every tick), the extra requests can be **silently dropped**. When that happens, your persisted data ends up stale or lost, with no error to tell you it failed.
+{% endhint %}
+
+Good moments to persist:
+
+- Game over, or the end of a round.
+- A player leaves.
+- A periodic debounced save (for example, once every 30 seconds), not once per frame.
+
+Persist only the data that must survive a restart or redeploy. Everything else can live in memory.
+
+The example below keeps scores in memory and writes them only at a checkpoint, instead of on every point scored:
+
+```typescript
+import { Storage } from "@dcl/sdk/server"
+
+// Working state lives in memory, updated on every event
+const scores: Record<string, number> = {}
+
+function onPointScored(address: string) {
+  scores[address] = (scores[address] ?? 0) + 1
+  // No Storage call here — just update memory
+}
+
+// Persist only at a checkpoint, such as when a player leaves
+async function onPlayerLeave(address: string) {
+  await Storage.player.set(address, "score", String(scores[address] ?? 0))
+}
+```
+
 ### World Storage — Shared Across All Players
 
 ```typescript

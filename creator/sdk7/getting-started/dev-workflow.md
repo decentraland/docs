@@ -54,23 +54,7 @@ When creating a new scene, choose amongst several base template scenes that incl
 
 If you're an experienced artist or you have access to someone who is, you can create custom `.gltf` or `.glb` models for your scene. See [3D model essentials](../../3d-modeling/3d-models.md) for tips on how to create 3D models for Decentraland.
 
-There are many sources to obtain free or paid art assets. For example:
-
-* [IWB Catalog](https://dcl-iwb.co/)
-* [SketchFab](https://sketchfab.com/)
-* [Clara.io](https://clara.io/)
-* [Archive3D](https://archive3d.net/)
-* [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
-* [Thingiverse](https://www.thingiverse.com/)
-* [ShareCG](https://www.sharecg.com/)
-* [CGTrader](https://cgtrader.com)
-
-You can also use Generative AI tools to generate your own 3D models. Check out:
-
-* [Meshy](https://www.meshy.ai/)
-* [Luma AI](https://lumalabs.ai/genie)
-* [TRipo3D](https://www.tripo3d.ai/app)
-* [Rodin](https://hyper3d.ai/rodin)
+You don't need to create your own assets, though. See [Useful Resources](useful-resources.md) for asset libraries and generative AI tools you can use to source 3D models, as well as other tools that can speed up your workflow.
 
 ## Run a local preview
 

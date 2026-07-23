@@ -72,27 +72,11 @@ Each imported file, of any type, must occupy less than 50 MB to be usable in a s
 
 **Free libraries for 3D models**
 
-Instead of building your own 3D models, you can also download them from several free or paid libraries.
-
-To get you started, below is a list of libraries that have free or relatively inexpensive content:
-
-- [IWB Catalog](https://dcl-iwb.co/)
-- [SketchFab](https://sketchfab.com/)
-- [Archive3D](https://archive3d.net/)
-- [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
-- [Thingiverse](https://www.thingiverse.com/) (3D models made primarily for 3D printing, but adaptable to Virtual Worlds)
-- [ShareCG](https://www.sharecg.com/)
+Instead of building your own 3D models, you can also download them from several free or paid libraries, or generate them with AI tools. See [Useful Resources](../../sdk7/getting-started/useful-resources.md) for a list of recommended asset libraries and generative AI tools.
 
 {% hint style="warning" %}
 **📔 Note**: Pay attention to the license restrictions that the content you download has.
 {% endhint %}
-
-You can also use Generative AI tools to generate your own 3D models. Check out:
-
-- [Meshy](https://www.meshy.ai/)
-- [Luma AI](https://lumalabs.ai/genie)
-- [TRipo3D](https://www.tripo3d.ai/app)
-- [Rodin](https://hyper3d.ai/rodin)
 
 Note that in several of these sites, you can choose what format to download the model in. Always choose _.glTF_ or _.glb_ format if available. If not available, you must convert them to _.glTF_ or _.glb_ before you can use them in a scene. For that, we recommend importing them into Blender and exporting them with one of the available _.glTF_ export add-ons.
 

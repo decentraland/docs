@@ -74,6 +74,7 @@
   * [Using the CLI](sdk7/getting-started/using-the-cli.md)
   * [Coding essentials](sdk7/getting-started/coding-scenes.md)
   * [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md)
+  * [Useful Resources](sdk7/getting-started/useful-resources.md)
 * [Designing the experience](sdk7/design-experience/)
   * [Design Games](sdk7/design-experience/design-games.md)
   * [MVP Guidelines](sdk7/design-experience/mvp-guidelines.md)

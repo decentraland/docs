@@ -143,3 +143,4 @@ The following pages also cover topics related to 3D models for Decentraland:
 * [Textures](textures.md)
 * [Colliders](colliders.md)
 * [Animations](animations.md)
+* [Useful Resources](../sdk7/getting-started/useful-resources.md): Blender add-ons, asset libraries, and AI tools to speed up your 3D workflow

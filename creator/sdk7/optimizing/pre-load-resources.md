@@ -29,3 +29,86 @@ Some important considerations:
 - If an asset is used immediately when the scene loads (for example, a GLB model placed in the scene, or a background sound that plays continuously), there is no need to use the `AssetLoad` component, since it is already being downloaded. 
 - Be mindful when adding assets to `AssetLoad.create`, and only pre-load assets that are not required at scene startup to avoid unnecessary performance costs.
 - You can only pre-load assets that are uploaded as part of the scene files. This feature won't work to pre-load images from an external URL
+
+## Reacting to the loading state
+
+Pre-loading assets is more useful if your scene can react to when each asset finishes downloading. For example, you may want to keep a loading screen up until every asset is ready, show progress to the player, or gracefully handle an asset that failed to download.
+
+To track this, use the `assetLoadLoadingStateSystem`. Call its `registerAssetLoadLoadingStateEntity` method, passing the entity that holds the `AssetLoad` component and a callback function. The callback runs every time the loading state of one of that entity's assets changes.
+
+```ts
+import {
+  AssetLoad,
+  LoadingState,
+  assetLoadLoadingStateSystem,
+} from "@dcl/sdk/ecs"
+
+const preloader = engine.addEntity()
+AssetLoad.create(preloader, {
+  assets: [
+    "assets/scene/bundle1/explosionSound.mp3",
+    "assets/scene/bundle1/explosion.glb",
+  ],
+})
+
+assetLoadLoadingStateSystem.registerAssetLoadLoadingStateEntity(
+  preloader,
+  (assetLoadState) => {
+    console.log(
+      `Asset ${assetLoadState.asset} is now: ${assetLoadState.currentState}`
+    )
+  }
+)
+```
+
+The callback receives an object with the following properties:
+
+- `asset`: The path of the asset whose state changed. This matches one of the strings you listed in the `AssetLoad` component.
+- `currentState`: A value from the `LoadingState` enum, describing the new state of that asset.
+
+The `LoadingState` enum can hold the following values:
+
+- `LoadingState.LOADING`: The asset is currently being downloaded.
+- `LoadingState.FINISHED`: The asset finished downloading successfully and is ready to use.
+- `LoadingState.FINISHED_WITH_ERROR`: The asset was found, but an error occurred while downloading it.
+- `LoadingState.NOT_FOUND`: No asset was found at the provided path.
+- `LoadingState.UNKNOWN`: The state of the asset is not known.
+
+The following example uses the loading state to change the color of an entity depending on how its pre-load is progressing:
+
+```ts
+import {
+  AssetLoad,
+  LoadingState,
+  Material,
+  assetLoadLoadingStateSystem,
+} from "@dcl/sdk/ecs"
+import { Color4 } from "@dcl/sdk/math"
+
+function getLoadingColor(state: LoadingState): Color4 {
+  switch (state) {
+    case LoadingState.FINISHED:
+      return Color4.Green()
+    case LoadingState.LOADING:
+      return Color4.Yellow()
+    case LoadingState.FINISHED_WITH_ERROR:
+    case LoadingState.NOT_FOUND:
+      return Color4.Red()
+    default:
+      return Color4.Gray()
+  }
+}
+
+assetLoadLoadingStateSystem.registerAssetLoadLoadingStateEntity(
+  preloader,
+  (assetLoadState) => {
+    Material.setPbrMaterial(myEntity, {
+      albedoColor: getLoadingColor(assetLoadState.currentState),
+    })
+  }
+)
+```
+
+{% hint style="info" %}
+**💡 Tip**: You can add more assets to an existing `AssetLoad` component after creating it, for example in response to a player action. Use `AssetLoad.getOrCreateMutable()` to fetch the component and push new paths onto its `assets` array. The registered callback will also fire for these newly added assets as they download.
+{% endhint %}

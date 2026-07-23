@@ -482,12 +482,16 @@ Data can be stored at two levels:
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
 
+{% hint style="warning" %}
+**📔 Note**: `Storage.set()`, `Storage.player.set()`, and the `delete` variants resolve to a **boolean**. They never throw — on failure (a network error, or too many concurrent requests, see below) they log the error and resolve to `false`, meaning the value was **not** persisted. Always check the result: a discarded `false` is a silently lost save.
+{% endhint %}
+
 ### Save at checkpoints, not on every change
 
 Storage is durable persistence for data that must survive server restarts and redeploys. It is not a live datastore. Keep your working game state in memory on the server. That's faster and it's the right pattern for a server. Write to Storage only when you really need to, at meaningful checkpoints.
 
 {% hint style="warning" %}
-**⚠️ Warning**: The storage service allows a maximum of **40 in-flight requests** at once, and is also rate-limited. If your scene fires storage requests faster than that (for example, a `Storage.set` on every score change, every event, or every tick), the extra requests can be **silently dropped**. When that happens, your persisted data ends up stale or lost, with no error to tell you it failed.
+**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across *everything* the scene asks the runtime to do — every storage request, `signedFetch`, and other runtime APIs all count against the same limit. If your scene fires storage requests faster than that (for example, a `Storage.set` on every score change, every event, or every tick), the calls over the limit fail immediately: the SDK logs a `too many concurrent host calls` error and the `Storage.set` promise resolves to `false`. If your code discards that boolean, the failed save is invisible — your persisted data ends up stale or lost. Check the result of every write (see the Note above).
 {% endhint %}
 
 Good moments to persist:
@@ -513,7 +517,11 @@ function onPointScored(address: string) {
 
 // Persist only at a checkpoint, such as when a player leaves
 async function onPlayerLeave(address: string) {
-  await Storage.player.set(address, "score", String(scores[address] ?? 0))
+  const saved = await Storage.player.set(address, "score", String(scores[address] ?? 0))
+  if (!saved) {
+    // The write did not persist — keep the value in memory and retry later
+    console.error(`Failed to save score for ${address}`)
+  }
 }
 ```
 
@@ -522,14 +530,17 @@ async function onPlayerLeave(address: string) {
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
-// Write
-await Storage.set(
+// Write — set() resolves to false if the value was NOT persisted
+const ok = await Storage.set(
   "leaderboard",
   JSON.stringify([
     { name: "Alice", score: 100 },
     { name: "Bob", score: 85 },
   ])
 )
+if (!ok) {
+  console.error("Failed to save leaderboard — retry later")
+}
 
 // Read
 const raw = await Storage.get<string>("leaderboard")
@@ -560,8 +571,8 @@ npx sdk-commands storage scene clear --confirm
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
-// Write
-await Storage.player.set(
+// Write — set() resolves to false if the value was NOT persisted
+const ok = await Storage.player.set(
   playerAddress,
   "progress",
   JSON.stringify({
@@ -569,6 +580,9 @@ await Storage.player.set(
     coins: 250,
   })
 )
+if (!ok) {
+  console.error(`Failed to save progress for ${playerAddress} — retry later`)
+}
 
 // Read
 const saved = await Storage.player.get<string>(playerAddress, "progress")

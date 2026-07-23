@@ -145,6 +145,7 @@
   * [Deprecated Functions](sdk7/interactivity/deprecated-functions.md)
   * [Event Listeners](sdk7/interactivity/event-listeners.md)
   * [External Links](sdk7/interactivity/external-links.md)
+  * [Mouse Movement](sdk7/interactivity/mouse-movement.md)
   * [NPC Avatars](sdk7/interactivity/npc-avatars.md)
   * [Player Avatar](sdk7/interactivity/player-avatar.md)
   * [Player Physics](sdk7/interactivity/player-physics.md)

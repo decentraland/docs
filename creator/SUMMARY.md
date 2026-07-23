@@ -161,7 +161,7 @@
   * [UI Text](sdk7/2d-ui/ui_text.md)
   * [Dynamic UI](sdk7/2d-ui/dynamic-ui.md)
 * [Networking](sdk7/networking/)
-  * [Authoritative Servers](sdk7/networking/authoritative-servers.md)
+  * [Multiplayer Server](sdk7/networking/authoritative-servers.md)
   * [Network Connections](sdk7/networking/network-connections.md)
   * [Serverless Multiplayer](sdk7/networking/serverless-multiplayer.md)
   * [Third Party Servers](sdk7/networking/third-party-servers.md)

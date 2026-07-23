@@ -539,7 +539,7 @@
       * [Display a Certified NFT](creator/sdk7/media/display-a-certified-nft.md)
       * [Video Playing](creator/sdk7/media/video-playing.md)
     * [Networking](creator/sdk7/networking/README.md)
-      * [Authoritative Servers](creator/sdk7/networking/authoritative-servers.md)
+      * [Multiplayer Server](creator/sdk7/networking/authoritative-servers.md)
       * [Network Connections](creator/sdk7/networking/network-connections.md)
       * [Serverless Multiplayer](creator/sdk7/networking/serverless-multiplayer.md)
     * [Optimization](creator/sdk7/optimizing/README.md)

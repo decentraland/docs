@@ -136,6 +136,8 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 About once a day, the Decentraland content servers run a process to compress every _.gltf_ and _.glb_ model in every newly deployed scene to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run on the browser.
 
+You can also run this same conversion locally while developing your scene. This makes your preview smoother and lets you check for any issues with the compressed models before publishing. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
+
 {% hint style="info" %}
 **💡 Tip**: When planning an event in Decentraland, make sure you deploy your scene a day in advance, so that the models are all converted to asset bundles by then. If you don't want to spoil the surprize before the event, you can deploy a version of your scene that includes all the final 3D models in the project folder, but where these are not visible or where their size is set to 0.
 {% endhint %}

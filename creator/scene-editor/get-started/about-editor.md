@@ -75,6 +75,7 @@ Configure different preview options from the dropdown menu next to the **Preview
 
 * **Open Debug Console**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
 * **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
+* **Optimize Assets**: Converts the scene's 3D models to asset bundles, an optimized format that loads faster and renders just like the published scene. See [Preview with optimized assets](../../sdk7/getting-started/preview-scene.md#preview-with-optimized-assets).
 * **Multi-Instance Preview**: Opens a separate preview window each time you click **Preview**, each logged in with its own account. Use this to test multiplayer scenes with multiple accounts. See [Test a multiplayer scene locally](../../sdk7/networking/serverless-multiplayer.md#test-a-multiplayer-scene-locally).
 * **Show QR Code for Mobile**: Displays a QR code to open the scene preview on the Decentraland mobile app, as long as the phone is on the same network. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md).
 

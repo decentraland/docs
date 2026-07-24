@@ -63,6 +63,12 @@ To preview your scene on the [Decentraland mobile app](../building-for-mobile/) 
 npm run start -- --mobile
 ```
 
+To make the preview run smoother and render 3D models just as they'll look once published, add the `--asset-bundles` flag. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+
+```bash
+npm run start -- --asset-bundles
+```
+
 See [preview scenes](preview-scene.md) for details and special options when running a preview.
 
 ## Build

@@ -65,7 +65,7 @@ When you install skills into your agent, the following capabilities are availabl
 | `build-ui`             | 2D screen-space UI with React-ECS — HUDs, menus, dialogs            |
 | `animations-tweens`    | GLTF model animations with Animator, SDK tweens                     |
 | `multiplayer-sync`     | Peer-to-peer multiplayer using CRDT networking                      |
-| `authoritative-server` | Headless authoritative server for multiplayer (BETA)                |
+| `authoritative-server` | Headless Multiplayer Server for server-validated scenes (BETA)      |
 | `audio-video`          | Sound effects, music, audio streaming, and video players            |
 | `audio-analysis`       | Real-time amplitude and frequency data for audio-reactive scenes    |
 | `deploy-scene`         | Deploy scenes to Genesis City (LAND-based)                          |
@@ -132,7 +132,7 @@ After each change:
 - Writing click handlers and interactivity
 - Building UI (HUDs, menus, dialogs)
 - Setting up multiplayer sync
-- Configuring authoritative servers for anti-cheat
+- Configuring the Multiplayer Server for anti-cheat
 - Adding audio, video, and streaming
 - Creating animations and tweens
 - Optimizing scene performance
@@ -152,6 +152,6 @@ While AI tools are powerful, keep these in mind:
 
 - [SDK Quick Start](sdk-101.md) — Learn SDK7 fundamentals
 - [Combine with Code](../../scene-editor/code/overview.md) — Mix visual editing with code
-- [Authoritative Servers](../networking/authoritative-servers.md) — Server-authoritative multiplayer
+- [Multiplayer Server](../networking/authoritative-servers.md) — Server-authoritative multiplayer
 - [Scene Examples](https://studios.decentraland.org/resources?sdk_version=SDK7) — Browse example scenes for inspiration
 - [Useful Resources](useful-resources.md) — More AI tools, asset libraries, and add-ons to speed up your workflow

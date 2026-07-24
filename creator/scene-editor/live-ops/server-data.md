@@ -1,10 +1,10 @@
 ---
-description: View and edit the live data stored by your scene's authoritative server.
+description: View and edit the live data stored by your scene's Multiplayer Server.
 ---
 
 # Server Data
 
-Scenes that use an [authoritative server](../../sdk7/networking/authoritative-servers.md) can persist data on the server: leaderboards, player progress, environment changes like doors opened or items placed, and more. This data is updated **live** as players interact with your published scene.
+Scenes that use a [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) can persist data on the server: leaderboards, player progress, environment changes like doors opened or items placed, and more. This data is updated **live** as players interact with your published scene.
 
 You can view all of this data from a web UI, and you can also **change it directly from there**. Any edits you make take effect on the live scene, without needing to republish. This includes:
 
@@ -27,7 +27,7 @@ You can also reach it from the Creator Hub:
 The storage UI shows a list of all the Worlds and LAND locations where you have published scenes, or have operator permissions. Open a scene to see its data, organized into three tabs: **Scene**, **Player**, and **Environment**.
 
 {% hint style="info" %}
-**💡 Tip**: This data only exists for scenes that use an authoritative server and that store data via the `Storage` API. See [Authoritative Servers](../../sdk7/networking/authoritative-servers.md) to learn how to set that up.
+**💡 Tip**: This data only exists for scenes that use a Multiplayer Server and that store data via the `Storage` API. See [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) to learn how to set that up.
 {% endhint %}
 
 ## Scene data
@@ -58,4 +58,4 @@ Environment variables are also great for feature flags or game parameters, like 
 
 ## Learn more
 
-To learn how to read and write this data from your scene's code, including best practices for changing the structure of stored data over time, see [Authoritative Servers](../../sdk7/networking/authoritative-servers.md).
+To learn how to read and write this data from your scene's code, including best practices for changing the structure of stored data over time, see [Multiplayer Server](../../sdk7/networking/authoritative-servers.md).

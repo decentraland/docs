@@ -6,7 +6,7 @@ description: How to get your scene featured in the mobile Discover section.
 
 The mobile Discover section is the highest-traffic surface on the Decentraland mobile app and the best way to get your scene in front of mobile players. Featured scenes are curated — there is no automatic ranking.
 
-![Mobile Discover featured section](../../../mobile-featured.png)
+<figure><img src="../../../mobile-featured.png" alt="Mobile Discover featured section" width="33%"></figure>
 
 ## How to apply
 
@@ -17,8 +17,8 @@ Submit your scene through the [rl-mobile-featuring](https://discord.com/channels
 To be considered, your scene or world should:
 
 * **Propose an engaging or novel mechanic for mobile players** — something that feels worth opening the app for, designed with touch in mind.
-* **Have UI placement that does not conflict with the mobile controls** — follow the [mobile safe area](safe-area.md).
-* **Work as expected on mobile** — preview and test on a real device first; see [Preview on mobile](preview-on-mobile.md).
+* **Have UI placement that does not conflict with the mobile controls** — follow the [mobile safe area](../develop/safe-area.md).
+* **Work as expected on mobile** — preview and test on a real device first; see [Preview on mobile](../develop/preview-on-mobile.md).
 
 ## What to include in your submission
 
@@ -31,13 +31,13 @@ Provide the following with your application:
 
 ## Tips for a strong submission
 
-* Get the basics right first. Validate the [UI best practices](ui-best-practices.md) and [safe area](safe-area.md) before submitting — UI that clashes with controls is the most common reason a scene is held back.
+* Get the basics right first. Validate the [UI best practices](../develop/ui-best-practices.md) and [safe area](../develop/safe-area.md) before submitting — UI that clashes with controls is the most common reason a scene is held back.
 * Show the mobile-specific moment. If your scene has a mechanic that is especially fun on touch (drawing, swiping, drag-to-aim, tap rhythms), make sure your video highlights it.
 * Keep the video short and focused — 30–60 seconds is plenty.
 
 ## Related
 
-* [Mobile safe area](safe-area.md)
-* [UI best practices for mobile](ui-best-practices.md)
-* [Preview on mobile](preview-on-mobile.md)
-* [Make Discoverable](../publishing/make-discoverable.md)
+* [Mobile safe area](../develop/safe-area.md)
+* [UI best practices for mobile](../develop/ui-best-practices.md)
+* [Preview on mobile](../develop/preview-on-mobile.md)
+* [Make Discoverable](../../sdk7/publishing/make-discoverable.md)

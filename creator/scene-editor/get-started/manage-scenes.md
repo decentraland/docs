@@ -8,7 +8,7 @@ Each of your available scenes is shown as a card. Open the card to edit that sce
 
 ## Create a scene
 
-Click **Create scene** to create a new scene. You'll then be asked to choose a template, there are a few options, including a blank scene.
+Click on the **+** card, or on the **Templates** button, to create a new scene. You'll then be asked to choose a template, there are a few options, including an **Empty Scene**.
 
 Then you'll be asked to name your scene, and choose a location to save it.
 
@@ -34,15 +34,15 @@ Scenes you created on the older web editor are stored in the cloud. To work on t
 
 ## Delete a scene
 
-In the scene selector screen, press the _three dots_ icon and select _Delete_.
+In the scene selector screen, press the _three dots_ icon and select _Delete from My Scenes_.
 
-This removes the scene from your Scene Editor home screen, but doesn't delete the files from your machine.
+This removes the scene from your Scene Editor home screen. By default it doesn't delete the files from your machine, but the confirmation dialog includes a checkbox to **also delete the scene's files from your computer**.
 
-If you wish to delete the project files, you must do this manually. By default projects created via the Scene Editor are kept inside a `.decentraland` folder under your user directory. You can navigate here by clicking the three dots on a project card and selecting **Open folder**.
+By default, projects created via the Scene Editor are kept inside a `Scenes` folder in the Creator Hub's application data directory. You can change this location from the app's **Settings**, and you can navigate to a project's folder by clicking the three dots on its card and selecting **Open Folder Location**.
 
 ## Managing Worlds
 
-If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../worlds/about.md). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
+If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
 
 ### Visualizing storage space
 

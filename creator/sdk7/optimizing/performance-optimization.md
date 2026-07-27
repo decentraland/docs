@@ -54,7 +54,7 @@ You can also toggle animations on or off for entities that are far or occluded. 
 
 ### Async blocks
 
-Blocks of [async code](../programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
+Blocks of [async code](../programming-patterns/async-functions.md) don't block the progress of everything else while they wait: the scene keeps running, and the async block resumes when its awaited response arrives. Note that scenes run on a single thread, so this isn't parallel processing, it just avoids stalling the scene while waiting for external responses.
 
 Any processes that rely on responses from asynchronous services, such as `getPlayerData()` or `getRealm()` should always run in async blocks, as they otherwise block the rest of the scene's loading while waiting for a response. The same applies to any calls to third party servers.
 
@@ -161,6 +161,10 @@ Scene UIs can become costly to render when they are made up of many individual e
 Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of at 30 FPS (on every frame). The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
 
 Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
+
+## Landscape terrain in Worlds
+
+Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
 
 ## Monitor Performance
 

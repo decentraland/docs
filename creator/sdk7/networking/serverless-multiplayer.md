@@ -12,7 +12,7 @@ There are three ways to sync the scene state, so that all players see the same:
 
 - **Mark an entity as synced**: The easiest option. See [Marked an entity as synced](serverless-multiplayer.md#mark-an-entity-as-synced)
 - **Send Explicit MessageBus Messages**: Manually send and listen for specific messages. See [Send explicit MessageBus messages](serverless-multiplayer.md#send-explicit-messagebus-messages)
-- **Use an Authoritative Server**: See [Authoritative Servers](../networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
+- **Use a Multiplayer Server**: See [Multiplayer Server](../networking/authoritative-servers.md). The server validates all state changes and is the single source of truth. More setup required, but strongly recommended when players have incentives to exploit your scene.
 
 The first two options are covered in this document. They are simpler, as they require no server. The downside is that you rely more on player's connection speeds, and the scene state is not persisted when all players leave the scene.
 
@@ -39,7 +39,7 @@ export function main() {
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to an [Authoritative Server](../networking/authoritative-servers.md), the pattern changes: only the server should call `syncEntity`, guarded by `isServer()`. Clients should avoid declaring the syncing of shared entities, unless they are created by the client.
+**📔 Note**: In serverless multiplayer, every client calls `syncEntity` on its own. If you upgrade to a [Multiplayer Server](../networking/authoritative-servers.md), the pattern changes: only the server should call `syncEntity`, guarded by `isServer()`. Clients should avoid declaring the syncing of shared entities, unless they are created by the client.
 {% endhint %}
 
 The `syncEntity` function takes the following inputs:
@@ -357,7 +357,7 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 ## Single player scenes
 
-If your scene is deployed to a [Decentraland World](../../worlds/about.md), you can make it a single player scene. Players won't see each other, won't be able to chat or see the effects of each other's actions.
+If your scene is deployed to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you can make it a single player scene. Players won't see each other, won't be able to chat or see the effects of each other's actions.
 
 To do this, configure the scene's `scene.json` file to set the **fixedAdapter** to `offline:offline`. The scene will have no Communication Service at all and each user joining that world will always be alone.
 

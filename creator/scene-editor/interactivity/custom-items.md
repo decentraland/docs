@@ -44,7 +44,7 @@ To delete a custom item definition, right-click on the item on the **Custom Item
 
 To rename a Custom Item definition, right click on the Custom Item definition on the **Custom Items** tab and select **Rename**.
 
-You can't modify the definition of a Custom Item definition that's already created, you must create a new definition and delete the original.
+You can't modify the definition of a Custom Item that's already created, you must create a new definition and delete the original.
 
 ### Spawning Custom Items dynamically
 
@@ -73,6 +73,6 @@ You can also manually find this folder on your machine:
 
 To share with someone else, simply open the Custom Items folder and copy the full folder for the item. You may want to zip the folder to make it easier to transfer. This folder contains everything needed to use your Custom Item.
 
-The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../images/editor/refresh-icon.png" alt="Refresh" data-size="line"> or for the item to appear in their **Custom Items** tab.
+The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../images/editor/refresh-icon.png" alt="Refresh" data-size="line"> for the item to appear in their **Custom Items** tab.
 
 Any **Assets** used by your Custom Item are also stored in the Custom Item's folder. This includes any 3D models, images, scripts, sounds, and videos referenced by the item.

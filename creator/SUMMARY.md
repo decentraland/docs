@@ -62,6 +62,7 @@
 * [Operate live](scene-editor/live-ops/)
   * [Scene Admin](scene-editor/live-ops/scene-admin.md)
   * [Live Streaming](scene-editor/live-ops/live-streaming.md)
+  * [Server Data](scene-editor/live-ops/server-data.md)
 * [Editor FAQs](scene-editor/faq/)
 
 ## Scenes (SDK7)
@@ -135,6 +136,7 @@
   * [Deprecated Functions](sdk7/interactivity/deprecated-functions.md)
   * [Event Listeners](sdk7/interactivity/event-listeners.md)
   * [External Links](sdk7/interactivity/external-links.md)
+  * [Mouse Movement](sdk7/interactivity/mouse-movement.md)
   * [NPC Avatars](sdk7/interactivity/npc-avatars.md)
   * [Player Avatar](sdk7/interactivity/player-avatar.md)
   * [Player Physics](sdk7/interactivity/player-physics.md)
@@ -151,7 +153,7 @@
   * [UI Text](sdk7/2d-ui/ui_text.md)
   * [Dynamic UI](sdk7/2d-ui/dynamic-ui.md)
 * [Networking](sdk7/networking/)
-  * [Authoritative Servers](sdk7/networking/authoritative-servers.md)
+  * [Multiplayer Server](sdk7/networking/authoritative-servers.md)
   * [Network Connections](sdk7/networking/network-connections.md)
   * [Serverless Multiplayer](sdk7/networking/serverless-multiplayer.md)
   * [Third Party Servers](sdk7/networking/third-party-servers.md)
@@ -169,9 +171,9 @@
   * [Game Objects](sdk7/programming-patterns/game-objects.md)
   * [Mutable Data](sdk7/programming-patterns/mutable-data.md)
 * [API Reference](sdk7/releases/)
-  * [Alpha Testing Guidelines](sdk7/releases/alpha-testing-guidelines.md)
+  * [Testing and Feedback](sdk7/releases/alpha-testing-guidelines.md)
   * [Releases](sdk7/releases/releases.md)
-  * [V7 Alpha](sdk7/releases/v7-alpha.md)
+  * [API Reference](sdk7/releases/v7-alpha.md)
   * [Version Support Agreement](sdk7/releases/version-support-agreement.md)
 * [Other](sdk7/other/)
   * [Scene Analytics](sdk7/other/scene-analytics.md)
@@ -204,11 +206,6 @@
 * [Colliders](3d-modeling/colliders.md)
 * [Animations](3d-modeling/animations.md)
 * [Create a Rig](3d-modeling/create-a-rig.md)
-
-## Worlds
-
-* [Overview](worlds/about.md)
-* [Cast](worlds/cast.md)
 
 ## Marketplace
 

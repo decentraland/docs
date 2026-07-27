@@ -14,12 +14,11 @@ Genesis City is a really, really big place. In order to make sure everyone has a
 
 In the bottom left corner of the Scene Editor, if you click on the set of squares, you'll find a little list explaining what each of these limits are, and how far along you are to reaching each one. Let's take a look at each of these:
 
-- **Geometries:** these define different simple shapes, like a box or a wheel.
-- **Bodies:** a body is just a copy of a geometry. For example, a bike might have three bodies: the frame and two wheels. By copying similar geometries, we can save resources.
+- **Bodies:** a body is a single mesh. For example, a bike might have three bodies: the frame and two wheels.
 - **Triangles:** each surface of a body is shaped like a triangle. More complex models have more triangles than simpler models.
 - **Materials:** materials make your scenes more realistic by describing how a model or shape should look. They change the way light is reflected (or emitted) from different models, and can include one or more textures.
 - **Textures:** these are the images used in materials. Textures are images of different patterns and colors - like wood, stone, or grass.
-- **Entities:** an entity can include one or more bodies, like the bike in the example above. Entities include everything you need for an asset: the geometries, bodies, materials, and textures.
+- **Entities:** an entity can include one or more bodies, like the bike in the example above. Entities include everything you need for an asset: the bodies, materials, and textures.
 
 </details>
 
@@ -79,7 +78,7 @@ Yes, any Decentraland scene built with SDK7 can be imported into the Scene Edito
 <details>
 <summary><strong>Can I group objects?</strong></summary>
 
-You can multi-select objects by pressing _control_ and keeping it pressed while selecting more, and then apply actions to that group.
+You can multi-select objects by pressing _Control_ (or _⌘ Cmd_ on Mac) and keeping it pressed while selecting more, and then apply actions to that group.
 
 You can also nest items, so that any change to the parent's transform also affects the children. For example, you could set books as children of a bookshelf, so that moving the bookshelf also brings books with it.
 
@@ -88,7 +87,7 @@ You can also nest items, so that any change to the parent's transform also affec
 <details>
 <summary><strong>Can I snap/attach items to other items?</strong></summary>
 
-No, but you can press and hold Shift for more precise placement when moving objects.
+Item-to-item snapping isn't available, but the Scene Editor has a **Snap to grid** feature, enabled by default, that makes items move, rotate and scale in fixed increments. You can configure the increments or toggle snapping off in the gizmos settings panel, and holding **Shift** temporarily inverts the snapping behavior for more precise placement. See [Scene editor essentials](../get-started/scene-editor-essentials.md#position-items).
 
 </details>
 
@@ -104,16 +103,16 @@ If you can't move, you may be stuck inside an item's geometry. Check your scene'
 <details>
 <summary><strong>Can I pick the color or texture of items?</strong></summary>
 
-Right now, all of the models come with one texture, but we agree that it'd be awesome to have more control over each model's appearance. You can however export a 3D model, edit it in a 3D modeling tool, and import it again into a custom asset pack.
+Yes. For items with a 3D model, add a **Swap Material** component to replace the texture or color of the model, either on the whole model or on specific parts of it. For primitive shapes, edit the **Material** component. You can also always export a 3D model, edit it in a 3D modeling tool, and import it again as a custom item.
 
 </details>
 
 <details>
 <summary><strong>Where can I find the default 3D models in the Scene Editor's asset packs, in case I want to edit them?</strong></summary>
 
-The model's files get added to your project's folder on your local machine as soon as you drag an item into your scene. You'll find all your scene's models under the sub folder `./assets/builder/<item name>` inside the project folder.
+The model's files get added to your project's folder on your local machine as soon as you drag an item into your scene. You'll find all your scene's models under the sub folder `./assets/asset-packs/<item name>` inside the project folder.
 
-You can also find all of these models in [this repo](https://github.com/decentraland/builder-assets/tree/master/assets).
+You can also find all of these models in the [creator-hub repo](https://github.com/decentraland/creator-hub/tree/main/creator-hub/packages/asset-packs/packs).
 
 Before editing the models, see the [3D Modeling section of our docs](/creator/3d-modeling/3d-models.md).
 
@@ -126,11 +125,10 @@ Worlds are personal 3D spaces located beyond the boundaries of Genesis City, whi
 
 * **Access**: Worlds are accessed via link/URL, while LAND scenes are found at specific coordinates on the Genesis City map
 * **Size limits**: Worlds have dynamic storage capacity (based on your holdings for Decentraland NAMEs, or 36MB fixed for ENS domains), while LAND scenes have 15MB per parcel
-* **Parcel limitations**: Worlds have no parcel limitations, while LAND scenes are constrained to adjacent parcels
-* **Customization**: Worlds can have custom skybox settings (fixed time of day), while LAND scenes share the same sky as surrounding scenes
+* **Parcel limitations**: Worlds can use any layout of up to 300x300 parcels without owning them, while LAND scenes are constrained to the adjacent parcels you own or have permissions on
 * **Cost**: A Decentraland NAME costs 100 MANA, which is typically much less than buying LAND parcels
 
-See [Worlds overview](/creator/worlds/about.md) and [Publishing options](/creator/sdk7/publishing/publishing-options.md) for more information.
+See [Publishing options](/creator/sdk7/publishing/publishing-options.md#decentraland-worlds) for more information.
 
 </details>
 

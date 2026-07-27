@@ -394,6 +394,14 @@ BillboardMode.BM_NONE // No rotation
 BillboardMode.BM_X // Fixed X axis
 BillboardMode.BM_Y // Fixed Y axis (most common)
 BillboardMode.BM_Z // Fixed Z axis
+
+// Face another entity instead of the player's camera
+Billboard.create(entity, {
+	targetEntity: otherEntity, // optional; unset = face the camera
+})
+// If the target entity doesn't exist (not yet created, or removed), the
+// billboard keeps its last orientation until the target exists again.
+// targetEntity: engine.CameraEntity is equivalent to leaving it unset.
 ```
 
 #### Face Target
@@ -1070,12 +1078,16 @@ engine.addSystem(checkCameraMode)
 
 ```typescript
 import { triggerEmote, triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 // Default emote
 triggerEmote({ predefinedEmote: 'robot' })
 
 // Custom emote (file must end with _emote.glb)
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+
+// Optional `mask` (both functions): play the animation on only part of the body
+triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 ```
 
 Notes:
@@ -1367,6 +1379,7 @@ AvatarModifierArea.create(modifierArea, {
 // Available modifiers
 AvatarModifierType.AMT_HIDE_AVATARS
 AvatarModifierType.AMT_DISABLE_PASSPORTS
+AvatarModifierType.AMT_HIDE_NAMETAGS   // Hides nametags while keeping avatars visible
 ```
 
 #### Movement Constraints

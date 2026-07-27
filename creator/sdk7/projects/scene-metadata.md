@@ -4,7 +4,7 @@ description: Learn how to set up a scene and configure its metadata.
 
 # Scene Metadata
 
-A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../../worlds/about.md), players can visit it via URL.
+A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../publishing/publishing-options.md#decentraland-worlds), players can visit it via URL.
 
 See [Files in a scene](../projects/scene-files.md) for a list of what files are used in a scene project.
 
@@ -486,9 +486,27 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
+## Landscape terrain
+
+Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. If this landscape doesn't match the aesthetics of your scene, for example a scene that floats in open water or in space, you can disable it. To do this, add the following field to your `scene.json` at root level:
+
+```json
+{
+	"landscapeTerrain": false
+}
+```
+
+With `landscapeTerrain` set to `false`, nothing is rendered beyond your scene's parcels, and players only see the skybox around the scene. Removing the surrounding terrain also frees up rendering resources, which can help your scene run smoother.
+
+If the field is not set, it defaults to `true` and the landscape is displayed as usual.
+
+{% hint style="warning" %}
+**📔 Note**: This field only applies to Worlds that contain a single scene. It's ignored in Genesis City, where the surroundings are always determined by the neighboring parcels. You can also use it while running a local preview of your scene, to check how the scene looks without the landscape.
+{% endhint %}
+
 ## World configuration
 
-When publishing to a [Decentraland World](../../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
+When publishing to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
 
 ### Basic World configuration
 

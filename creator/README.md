@@ -102,7 +102,7 @@ To make your scene interactive:
 You don't need to own any tokens to start building your scene with the Scene Editor. To publish your scene, you can chose from the following options:
 
 - **LAND in Genesis City**: This is the main open world in Decentraland, which is split up in 16x16 meter parcels. Buy one or several adjacent parcels in the [Marketplace](https://decentraland.org/marketplace/lands), and deploy your scene there.
-- **Decentraland Worlds**: [Worlds](worlds/about.md) are your own spaces in the metaverse. All you need is to own a [Decentraland name](https://decentraland.org/marketplace/names/claim), and you can publish a scene as big as you want!
+- **Decentraland Worlds**: [Worlds](sdk7/publishing/publishing-options.md#decentraland-worlds) are your own spaces in the metaverse. All you need is to own a [Decentraland name](https://decentraland.org/marketplace/names/claim), and you can publish a scene as big as you want!
 
 See [Kinds of project](sdk7/projects/kinds-of-project.md) to better understand the different options.
 

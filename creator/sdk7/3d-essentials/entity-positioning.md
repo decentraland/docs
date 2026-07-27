@@ -195,6 +195,8 @@ You can configure how the billboard behaves with the following parameters:
   * `BillboardMode.BM_Y`: The entity only rotates on its _y_ rotation axis. It only rotates left and right, not up and down. It stays perpendicular to the ground if the player is above or below the entity.
   * `BillboardMode.BM_Z`: The entity only rotates on its _z_ rotation axis.
 
+* `targetEntity`: (optional) An entity that the billboard rotates to face, instead of the player's camera. If the referenced entity doesn't exist (for example, it hasn't been created yet or it was removed), the billboard stops rotating and keeps its last orientation until the entity exists again. Setting this to `engine.CameraEntity` is equivalent to leaving it unset.
+
 ```ts
 // flat billboard
 const perpendicularPlane = engine.addEntity()
@@ -221,6 +223,29 @@ TextShape.create(textLabel, {
 })
 
 Billboard.create(textLabel)
+
+// sign that faces another entity instead of the player
+const sphere = engine.addEntity()
+
+Transform.create(sphere, {
+	position: Vector3.create(4, 2, 4),
+})
+
+MeshRenderer.setSphere(sphere)
+
+const sign = engine.addEntity()
+
+Transform.create(sign, {
+	position: Vector3.create(8, 1, 8),
+})
+
+TextShape.create(sign, {
+	text: 'Watching the sphere',
+})
+
+Billboard.create(sign, {
+	targetEntity: sphere,
+})
 ```
 
 {% hint style="info" %}
@@ -232,7 +257,7 @@ The `rotation` value of the entity's `Transform` component doesn't change as the
 If an entity has both a `Billboard` component and `Transform` component with `rotation` values, players will see the entity rotating as a billboard. If the billboard doesn't affect all axis, the remaining axis will be rotated according to the `Transform` component.
 
 {% hint style="warning" %}
-**📔 Note**: If there are multiple players present at the same time, each will see the entities with billboard mode facing them. Billboard rotations are calculated locally for each player, and don't affect what others see.
+**📔 Note**: If there are multiple players present at the same time, each will see the entities with billboard mode facing them. Billboard rotations are calculated locally for each player, and don't affect what others see. This doesn't apply to billboards with a `targetEntity`: since the target's position is part of the scene, all players see those billboards facing the same way.
 {% endhint %}
 
 ## Face a set of coordinates

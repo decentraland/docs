@@ -177,6 +177,8 @@ Puedes configurar cómo se comporta el billboard con los siguientes parámetros:
   * `BillboardMode.BM_Y`: La entidad tiene su eje de rotación _y_ fijo. Solo rota hacia la izquierda y derecha, no arriba y abajo. Permanece perpendicular al suelo si el jugador está encima o debajo de la entidad.
   * `BillboardMode.BM_Z`: La entidad tiene su eje de rotación _z_ fijo.
 
+* `targetEntity`: (opcional) Una entidad hacia la cual rota el billboard, en lugar de la cámara del jugador. Si la entidad referenciada no existe (por ejemplo, todavía no fue creada o fue eliminada), el billboard deja de rotar y mantiene su última orientación hasta que la entidad exista nuevamente. Asignarle `engine.CameraEntity` es equivalente a no asignar el campo.
+
 ```ts
 // billboard plano
 const perpendicularPlane = engine.addEntity()
@@ -203,6 +205,29 @@ TextShape.create(textLabel, {
 })
 
 Billboard.create(textLabel)
+
+// cartel que mira a otra entidad en lugar del jugador
+const sphere = engine.addEntity()
+
+Transform.create(sphere, {
+	position: Vector3.create(4, 2, 4),
+})
+
+MeshRenderer.setSphere(sphere)
+
+const sign = engine.addEntity()
+
+Transform.create(sign, {
+	position: Vector3.create(8, 1, 8),
+})
+
+TextShape.create(sign, {
+	text: 'Mirando la esfera',
+})
+
+Billboard.create(sign, {
+	targetEntity: sphere,
+})
 ```
 
 {% hint style="info" %}
@@ -214,7 +239,7 @@ El valor de `rotation` del componente `Transform` de la entidad no cambia a medi
 Si una entidad tiene tanto un componente `Billboard` como un componente `Transform` con valores de `rotation`, los jugadores verán la entidad rotando como un billboard. Si el billboard no afecta todos los ejes, el eje restante se rotará de acuerdo con el componente `Transform`.
 
 {% hint style="warning" %}
-**📔 Nota**: Si hay varios jugadores presentes al mismo tiempo, cada uno verá las entidades con modo billboard mirándolos. Las rotaciones de billboard se calculan localmente para cada jugador y no afectan lo que ven los demás.
+**📔 Nota**: Si hay varios jugadores presentes al mismo tiempo, cada uno verá las entidades con modo billboard mirándolos. Las rotaciones de billboard se calculan localmente para cada jugador y no afectan lo que ven los demás. Esto no aplica a los billboards con `targetEntity`: como la posición del objetivo es parte de la escena, todos los jugadores ven esos billboards orientados de la misma manera.
 {% endhint %}
 
 ## Mirar un conjunto de coordenadas

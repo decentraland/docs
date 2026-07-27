@@ -491,7 +491,7 @@ During local development, storage is written to `node_modules/@dcl/sdk-commands/
 Storage is durable persistence for data that must survive server restarts and redeploys. It is not a live datastore. Keep your working game state in memory on the server. That's faster and it's the right pattern for a server. Write to Storage only when you really need to, at meaningful checkpoints.
 
 {% hint style="warning" %}
-**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across *everything* the scene asks the runtime to do — every storage request, `signedFetch`, and other runtime APIs all count against the same limit. If your scene fires storage requests faster than that (for example, a `Storage.set` on every score change, every event, or every tick), the calls over the limit fail immediately: the SDK logs a `too many concurrent host calls` error and the `Storage.set` promise resolves to `false`. If your code discards that boolean, the failed save is invisible — your persisted data ends up stale or lost. Check the result of every write (see the Note above).
+**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across *everything* the scene asks the runtime to do: every storage request, `signedFetch`, and other runtime APIs all count against the same limit. Excess calls are **not queued**. They reject immediately with a `too many concurrent host calls` error. The SDK catches the rejection and resolves the `Storage.set` promise to `false` instead of throwing. If your code discards that boolean, the failed save is invisible, and your persisted data ends up stale or lost. Check the result of every write (see the Note above).
 {% endhint %}
 
 Good moments to persist:
@@ -523,6 +523,43 @@ async function onPlayerLeave(address: string) {
     console.error(`Failed to save score for ${address}`)
   }
 }
+```
+
+For scenes with many concurrent players, a more robust approach tracks which keys have unsaved changes (a "dirty set") and retries failed writes on the next flush:
+
+```typescript
+import { engine } from "@dcl/sdk/ecs"
+import { Storage } from "@dcl/sdk/server"
+
+// Working state in memory, updated on every event
+const scores: Record<string, number> = {}
+const dirty = new Set<string>()
+
+function onPointScored(address: string) {
+  scores[address] = (scores[address] ?? 0) + 1
+  dirty.add(address) // Mark for later flush, no Storage call here
+}
+
+// Flush dirty keys periodically (e.g. every ~30s) and at checkpoints
+async function flush() {
+  for (const address of dirty) {
+    const ok = await Storage.player.set(address, "score", String(scores[address]))
+    if (ok) {
+      dirty.delete(address) // Saved successfully
+    }
+    // If ok is false, the key stays dirty and retries on the next flush
+  }
+}
+
+// Run the flush on a timer using a dt accumulator
+let flushTimer = 0
+engine.addSystem((dt) => {
+  flushTimer += dt
+  if (flushTimer > 30) {
+    flushTimer = 0
+    flush()
+  }
+})
 ```
 
 ### World Storage — Shared Across All Players
@@ -851,6 +888,40 @@ engine.addSystem((dt) => {
 ```
 
 For example if the server controls a countdown timer, it's not necessary to send updates to all players every second. It's best to have each client calculate passage of time on their own, and have the server broadcast its current state every 30 seconds or so, to ensure consistency.
+
+## Server Resource Limits
+
+The Multiplayer Server runs each scene in a sandboxed isolate with hard resource caps. Hitting these limits can silently drop data or terminate the server for everyone in the scene, so design your scene to stay well within them.
+
+### Memory
+
+The isolate has a **256 MB** memory ceiling. If exceeded, the isolate is disposed and the server shuts down for all connected players. Keep working state lean and prune per-player data when players leave.
+
+### CPU
+
+Each execution turn has a wall-clock budget:
+
+- **Synchronous execution**: 10 seconds per turn. An unbounded loop that exceeds this kills the isolate.
+- **Async turn settle**: 60 seconds. If a `Promise` chain or `await` takes longer than this to resolve, the isolate is terminated.
+
+Spread heavy work across multiple ticks using a `dt` accumulator in `engine.addSystem()`. Never run unbounded synchronous loops on the server.
+
+### Inbound message rate
+
+Each connected peer can send up to approximately **300 messages per 1,000 ms**. Excess data frames are dropped (not queued). Never send messages on every frame from the client. See [Performance Best Practices](#performance-best-practices) for throttling patterns.
+
+### Message size
+
+- Inbound packets are capped at **128 KB** per packet. Oversized packets are dropped entirely.
+- Scene-to-comms messages are capped at approximately **30 KB**. For the practical transport layer, keep synced messages well under **13 KB** (see the [Messages](#messages) section).
+
+### External fetch
+
+Concurrent `signedFetch` calls are capped at **32** in-flight. Additional fetches queue until a slot opens. Each fetch attempt has a **15-second** timeout with up to **2** retries.
+
+### In-flight host calls
+
+The 40-call cap described in [Data Storage](#data-storage) applies to all host calls isolate-wide, including Storage, `signedFetch`, and other runtime APIs. Excess calls reject immediately and are not queued.
 
 ## Common Pitfalls
 

@@ -29,16 +29,9 @@ The single most useful recommendation when adapting an existing desktop UI to mo
 
 Combined with the SDK's `virtualWidth` / `virtualHeight` setup, this gives you readable text, comfortably tappable buttons, and a layout that holds up across devices. Always confirm the result on a real phone — see [Preview on mobile](preview-on-mobile.md).
 
-## Current limitations
-
-These limitations apply to scene UI on the current mobile client. They are tracked and expected to be lifted over time.
-
-* **`borderRadius` is not supported on mobile yet.** Rounded corners, set via the `borderRadius` property of `uiTransform`, will render as squared on the mobile client. Plan your visual design accordingly, or branch the styling on `isMobile()`.
-
-If you hit a limitation that is not listed here, please [report it](../../sdk7/debugging/report-bug.md) so we can document and prioritize it.
-
 ## Related
 
+* [Missing Features](../mobile-client/missing-features.md)
 * [Mobile safe area](safe-area.md)
 * [Detect the platform from code](detect-platform.md)
 * [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)

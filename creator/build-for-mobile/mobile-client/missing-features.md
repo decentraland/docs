@@ -52,3 +52,7 @@ This page tracks the feature gap between the Decentraland desktop (Unity) client
 - **Static HUD Controls defined by Mobile Client** — ability to remove/modify them arriving July/August. [See issues](https://github.com/orgs/decentraland/projects/43/views/29).
 - **Touch-only input** — no mouse hover states, keyboard shortcuts, or right-click.
 - **No gesture support** — not currently planned.
+
+## Report a Missing Feature
+
+If you hit a limitation that is not listed here, please [report it](../../sdk7/debugging/report-bug.md) so we can document and prioritize it.

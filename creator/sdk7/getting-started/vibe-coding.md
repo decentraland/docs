@@ -84,8 +84,113 @@ When you install skills into your agent, the following capabilities are availabl
 | `scene-runtime`        | Cross-cutting runtime APIs — async work, HTTP, messaging            |
 | `script-components`    | Script component classes for the Creator Hub                        |
 | `game-design`          | Game design patterns, scene limits, performance budgets             |
+| `unity-explorer-mcp`   | Drive a running Explorer to test and verify a scene in-world        |
 
 Note: Some of these skills involve fetching 3D models or other assets from free asset catalogs. The AI agent should always get confirmation from the user before downloading any new assets to a scene project.
+
+## Let the AI see your scene in-world
+
+Normally the AI writes code and _you_ run the preview, look at it, and report back what's wrong. The Decentraland desktop client can close that loop: it ships with an optional **MCP server** that lets an AI agent look at and control the running Explorer directly. The agent takes its own screenshots, reads the scene's console output, walks the player around, clicks on objects, and checks whether the scene actually does what it was asked to build — then fixes what it finds and looks again.
+
+This turns vibe coding from "describe, wait, review" into a loop the agent can run mostly on its own.
+
+{% hint style="info" %}
+**💡 Tip**: Install the `unity-explorer-mcp` skill before trying this. It teaches the agent the whole workflow — how to launch the client, how to frame useful screenshots, how to cross-check what it sees against the scene's actual state, and how to recover when the scene stops loading.
+
+```bash
+npx skills add decentraland/sdk-skills --skill unity-explorer-mcp
+```
+
+{% endhint %}
+
+### What you need
+
+- The **Decentraland desktop client** installed (the same one the Creator Hub launches for previews).
+- An AI agent that can connect to MCP servers over HTTP — Claude Code, Cursor, Cline, VS Code with an MCP-capable extension, and others.
+- An up-to-date SDK in your scene: run `npm i @dcl/sdk@latest` if the `--mcp` flag below is rejected as an unknown option.
+
+### 1. Launch the scene with the MCP server enabled
+
+From your scene folder:
+
+```bash
+npm run start -- --mcp
+```
+
+This does what `npm run start` always does — serves your scene at `http://127.0.0.1:8000` and hot-reloads it whenever you save a file — and additionally launches the desktop client with the MCP server listening on `http://127.0.0.1:8123/unity-explorer-mcp`.
+
+Log in when the client opens. The agent can only start working once you're through the login screen and the world has loaded.
+
+Useful extra flags:
+
+| Flag                | Effect                                                                     |
+| ------------------- | -------------------------------------------------------------------------- |
+| `--mcp-port <port>` | Use a different MCP port (implies `--mcp`)                                 |
+| `--port <port>`     | Use a different port for the scene server                                  |
+| `--position x,y`    | Spawn at a specific parcel                                                 |
+| `--no-client`       | Serve the scene only, don't launch a client (launch your own build instead) |
+| `--multi-instance`  | Allow a second client to run alongside one that's already open              |
+
+Anything after a second standalone `--` is passed straight to the client, for example `npm run start -- --mcp -- --windowed-mode --resolution 1280x720`.
+
+### 2. Connect your AI agent to the server
+
+In **Claude Code**, register it once:
+
+```bash
+claude mcp add --transport http --scope user explorer http://127.0.0.1:8123/unity-explorer-mcp
+```
+
+In **any other MCP client**, add the server the way that client documents, using these details:
+
+| Setting   | Value                                            |
+| --------- | ------------------------------------------------ |
+| Transport | Streamable HTTP (not stdio — there's no command to run, the server lives inside the running client) |
+| URL       | `http://127.0.0.1:8123/unity-explorer-mcp`        |
+| Auth      | None                                              |
+| Name      | `explorer`                                        |
+
+Many clients use a JSON config file for this (`.cursor/mcp.json`, `mcp.json`, and similar — check your client's docs for the exact key names):
+
+```json
+{
+  "mcpServers": {
+    "explorer": {
+      "type": "http",
+      "url": "http://127.0.0.1:8123/unity-explorer-mcp"
+    }
+  }
+}
+```
+
+Restart or reload your AI client after registering the server, so it picks up the connection. If the agent says the Explorer tools aren't available, the usual cause is that the client wasn't running when the agent started — reconnect the server (in Claude Code, run `/mcp`) with the Explorer open.
+
+{% hint style="info" %}
+**Is this safe?** The server only runs while you launch the client with `--mcp`, only accepts connections from your own machine (`127.0.0.1`), and rejects requests coming from web pages. Nothing is exposed to the internet, and it's completely off in a normal client launch.
+{% endhint %}
+
+### 3. Ask for what you want, and let it verify
+
+With the server connected, ask for work the way you normally would — the difference is that the agent can now check its own results:
+
+> "Add a treasure chest at the center of the parcel that opens when clicked, then walk over and click it to confirm the lid animates."
+
+> "The neon sign looks too dim. Take a screenshot, adjust the emissive intensity, and show me a before/after."
+
+> "Something's wrong with the elevator. Walk onto the platform, watch the logs, and tell me why it doesn't move."
+
+Behind the scenes the agent can:
+
+- **See** — take screenshots, read the scene's `console.log` output and errors, check whether the scene loaded or crashed, list the scene's entities and inspect their components, and read the player and camera position.
+- **Control** — move and teleport the player, walk in a direction through real collisions, aim the camera, place a free camera for a specific shot, switch camera modes, click on scene objects, send chat messages and `/commands`, trigger emotes, and reload the scene.
+
+### Tips
+
+- **Ask for proof, not claims.** "Verify with a screenshot" or "confirm from the logs" is what makes this workflow pay off. A good agent cross-checks both: pixels can look right while the underlying state is broken, and the reverse.
+- **Screenshots cost tokens.** Each screenshot the agent looks at consumes part of its context. If you want a long visual sweep — an animation over time, a walk-through of many spots — ask it to capture frames to files and only read the ones that matter. The `unity-explorer-mcp` skill ships a script that does exactly this.
+- **Save once, not five times in a row.** Rapid successive saves can make the client load a half-written bundle and drop the scene entirely, which needs a client restart to recover. Ask the agent to batch its edits into a single save.
+- **Keep the client open.** If you close it, the connection dies and the agent loses its eyes. Relaunching with the same command brings it back.
+- **Teleports behave differently in local scene development.** Moving between parcels with `/goto` is disallowed there, so the agent should reposition the player within the scene instead of teleporting.
 
 ## Tips for Effective Prompting
 
@@ -138,6 +243,7 @@ After each change:
 - Optimizing scene performance
 - Preparing scenes for deployment
 - Debugging issues in existing code
+- Testing and visually verifying a scene in a running Explorer (see [Let the AI see your scene in-world](vibe-coding.md#let-the-ai-see-your-scene-in-world))
 
 ## Limitations
 

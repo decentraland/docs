@@ -154,3 +154,4 @@ While AI tools are powerful, keep these in mind:
 - [Combine with Code](../../scene-editor/code/overview.md) — Mix visual editing with code
 - [Multiplayer Server](../networking/authoritative-servers.md) — Server-authoritative multiplayer
 - [Scene Examples](https://studios.decentraland.org/resources?sdk_version=SDK7) — Browse example scenes for inspiration
+- [Useful Resources](useful-resources.md) — More AI tools, asset libraries, and add-ons to speed up your workflow

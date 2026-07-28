@@ -513,6 +513,7 @@
       * [Development Workflow](creator/sdk7/getting-started/dev-workflow.md)
       * [Preview Your Scene](creator/sdk7/getting-started/preview-scene.md)
       * [SDK Quick Start](creator/sdk7/getting-started/sdk-101.md)
+      * [Useful Resources](creator/sdk7/getting-started/useful-resources.md)
       * [Using the CLI](creator/sdk7/getting-started/using-the-cli.md)
       * [Vibe Coding with AI](creator/sdk7/getting-started/vibe-coding.md)
     * [Interactivity](creator/sdk7/interactivity/README.md)

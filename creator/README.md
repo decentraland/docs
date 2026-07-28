@@ -89,6 +89,7 @@ To make your scene interactive:
 
   - [SDK Quick start](sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
   - [Development workflow](sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
+  - [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md): build scenes by describing what you want in plain language, and let an AI coding assistant write the code for you.
   - [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
 
     ![](../.gitbook/assets/sdk-code.png)
@@ -108,11 +109,6 @@ See [Kinds of project](sdk7/projects/kinds-of-project.md) to better understand t
 
 See [publishing](sdk7/publishing/publishing.md) for details and special options when publishing a scene, to either Genesis City or Worlds.
 
-### Alternative tools
+## Useful Resources
 
-There are also some community-built tools that can help you create Decentraland scenes:
-
-- [**In-World Builder**](https://decentraland.org/play/?realm=https%3A%2F%2Fworlds.dcl-iwb.co%2Fworld%2FBuilderWorld.dcl.eth): Create a scene without leaving the Decentraland explorer. Use various default items or upload your own, without needing to deploy or own land.
-- [**Virtual Land Manager**](https://vlm.gg/): Control various aspects of your scene in real time, including highly customized controls. Includes analytics: View historical user activity, track custom interactions, export lists of players in scene, and more.
-- [**DCL Edit**](https://dcl-edit.com/): Drag and drop 3d models into your scene. You can then work on adding interactivity to the resulting scene using the SDK.
-- [**Unity Exporter Toolkit**](https://github.com/PolygonalMind/dcl-dev-exportersdk7-release): Build in Unity, with a number of pre-built interactive modules. Export a fully-working Decentraland scene.
+Check out [Useful Resources](sdk7/getting-started/useful-resources.md) for a curated list of tools, add-ons, asset libraries, and example projects that can speed up your creation workflow.

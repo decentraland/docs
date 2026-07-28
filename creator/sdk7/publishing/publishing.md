@@ -51,7 +51,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
 3. A prompt will ask if you want to publish to a **WORLD** or to **LAND**.
    * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](publishing-options.md#decentraland-worlds). Then select which of your NAMEs or ENS Domains to publish to.
    * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
-   * Select **Alternative servers** to publish to the [test server](publishing.md#the-test-server) or a [custom server](publishing.md#custom-servers).
+   * Select **Alternative servers** to publish to a [custom server](publishing.md#custom-servers).
 
 ![](../../images/editor/publish-options.png)
 
@@ -196,28 +196,6 @@ We use the content servers to host and distribute all scene content in a similar
 2. The `npm run deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the content servers update their records to point the parcels to the most recent content. Deploying doesn't involve any blockchain transaction, you only sign the new scene entity with your wallet to prove ownership.
 
 The information on each copy of the server is verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate. The community can also vote to approve or remove any of these servers using the DAO.
-
-## The test server
-
-You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers. The difference is that content deployed to this server isn't propagated to the others. However, content deployed to other servers does get propagated to this server, so surrounding scenes should look as they will in production.
-
-{% hint style="warning" %}
-**📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
-{% endhint %}
-
-Players are never directed to this server, the only way to access it is to explicitly provide a URL parameter to connect to it.
-
-If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
-
-### Via the CLI
-
-To deploy to the test server, run:
-
-`npm run deploy -- --target peer-testing.decentraland.org`
-
-To enter the content server, add `&CATALYST=peer-testing.decentraland.org` to the Decentraland URL
-
-_https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
 ## Custom servers
 

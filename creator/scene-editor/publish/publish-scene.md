@@ -216,24 +216,6 @@ Suppose you deployed your scene _A_ over two parcels _\[100, 100]_ and _\[100, 1
 
 Your scene _A_ can't be partially rendered in just one parcel, so _\[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _\[100, 100]_.
 
-## Alternative servers
-
-### The test server
-
-You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
-
-{% hint style="warning" %}
-**📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
-{% endhint %}
-
-Players are never directed to this server, the only way to access it is to explicitly provide a URL parameter to connect to it.
-
-If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
-
-To publish to the test server, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Test Server** from the dropdown.
-
-![](../../images/editor/publish-to-test-server.png)
-
 ## Publish to granted land
 
 If you're publishing to land owned by the Decentraland Foundation that was granted to you via a grant, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Custom Server** from the dropdown and enter the following server address: `https://linker-server.decentraland.org`.

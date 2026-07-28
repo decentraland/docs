@@ -3285,13 +3285,6 @@ npm run build
 npm run deploy
 ```
 
-#### Deploy to Test Server
-
-```bash
-# Deploy to test environment
-npm run deploy -- --target-content https://peer-testing.decentraland.org/content
-```
-
 #### Deploy to Custom World
 
 ```bash

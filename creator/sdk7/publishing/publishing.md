@@ -103,6 +103,23 @@ Keep the following in mind:
 * The scene has no parcel limitations (since January 2023)
 * All Worlds are automatically listed on the Places page unless you opt out as detailed below
 
+### Worlds storage budget
+
+Scenes deployed to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget grows with your Decentraland holdings:
+
+* Each Decentraland NAME you own grants 100 MB.
+* Each LAND parcel you own grants an additional 100 MB.
+* Every 2,000 MANA held in your wallet grants an additional 100 MB.
+
+You're free to distribute this budget between your Worlds however you like. For example, with a 500 MB budget you could deploy one 300 MB scene and one 200 MB scene, or five 100 MB scenes. Worlds published to ENS domains don't draw from this budget, they have a fixed limit of 36 MB per World instead.
+
+You can check how much of your budget is used and how much remains in two places:
+
+* The **Manage** section of the Creator Hub. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+* The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
+
+If you exceed your budget (for example after selling or transferring assets), you have 48 hours to free up space or increase your budget before your Worlds become inaccessible. See [Worlds size limits](../projects/kinds-of-project.md#size-limits) for more details.
+
 ### Multi-scene worlds
 
 By default, when deploying to a world via the CLI your scene will be treated as a single-scene world. If your world already contains a scene, deploying a new scene will overwrite that older scene, even if the coordinates are different.

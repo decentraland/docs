@@ -46,21 +46,25 @@ If you own a Decentraland NAME or ENS domain, you can publish scenes to your [De
 
 ### Visualizing storage space
 
-The [Builder](https://builder.decentraland.org/worlds) serves as the go-to place for visualizing your allocated space and monitoring how much is consumed by each Decentraland NAME or ENS Domain. You can:
+Scenes published to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget is calculated from your holdings: each Decentraland NAME or LAND parcel you own grants 100 MB, and every 2,000 MANA held in your wallet grants an additional 100 MB.
 
-* View your total storage capacity
-* See how much space each World is using
-* Monitor when your storage capacity is exceeded
-* Access comprehensive information about your Worlds, whether they are hosted on Decentraland NAMEs or ENS Domains
+You can check your used and remaining storage budget in two places:
+
+- The **Manage** section of the Creator Hub shows how much of your total budget is used and your total storage capacity. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+
+<img src="../../../.gitbook/assets/world-storage-budget.png" width="300" />
+
+- The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 
 ### Undeploying scenes
 
 If you need to free up storage space, you can undeploy scenes from the World Content Server. This can be done through the Builder interface, which allows you to easily undeploy scenes to release storage space.
 
-For Decentraland NAME holders, if you exceed your allocated storage space (for instance, through asset sales or transfers to another wallet), you will be provided with a 24-hour window to address the situation. Failure to do so will result in your Worlds becoming inaccessible after this grace period.
+For Decentraland NAME holders, if you exceed your allocated storage space (for instance, through asset sales or transfers to another wallet), you will be provided with a 48-hour window to address the situation. Failure to do so will result in your Worlds becoming inaccessible after this grace period.
 
 To regain access to a blocked World, you can either:
-* Acquire more MANA, Decentraland NAMEs, or LANDS to increase your storage capacity
-* Undeploy existing scenes from the World Content Server to free up storage space
+
+- Acquire more MANA, Decentraland NAMEs, or LANDS to increase your storage capacity
+- Undeploy existing scenes from the World Content Server to free up storage space
 
 See [Worlds size limits](../../sdk7/projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.

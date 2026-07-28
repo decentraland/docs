@@ -58,6 +58,10 @@ You can add the following flags to the `npm run start` command to change its beh
 - `-- --no-browser` (alias `-- -b`) to prevent the preview from opening a new browser tab.
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
+- `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
+- `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
+- `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
+- `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.

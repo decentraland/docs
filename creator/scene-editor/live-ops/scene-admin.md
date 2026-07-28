@@ -16,8 +16,6 @@ When a scene admin visits your scene, they see a special admin panel on the top-
 
 ![ ](../../images/editor/admin/admin-console.png)
 
-[Screenshot: updated admin tools panel needs manual refresh to show the new design]
-
 ## Setting up admins
 
 To assign admins, you need to add the **Admin Tools** smart item to your scene.
@@ -42,8 +40,6 @@ To assign additional admins that don't have publish permission but can do live-o
 2. Open the **Permissions** tab (via the icon tabs at the top of the admin panel).
 
    ![ ](../../images/editor/admin/moderation-tools.png)
-
-   [Screenshot: moderation-tools.png needs manual refresh to show the new panel design]
 
 3. Write the wallet address of the person you want to add next to **Add an Admin** and click **Add**.
 
@@ -118,8 +114,6 @@ A segmented control at the top of the video section lets you switch between thre
 
   <img src="../../images/editor/admin/video-from-url.png" alt="Scene name" width="300"/>
 
-  [Screenshot: video-from-url.png needs manual refresh to show the new design]
-
   {% hint style="warning" %}
   **📔 Note**: Not any video URL will work. Videos from some sites have strict policies about their content and will block access to them from Decentraland. See [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) for more information on what you can and can't play in Decentraland.
   {% endhint %}
@@ -128,13 +122,9 @@ A segmented control at the top of the video section lets you switch between thre
 
   <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
 
-  [Screenshot: dcl-cast.png needs manual refresh to show the new inline presentation controls and layout]
-
 - **Stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
 
   <img src="../../images/editor/admin/live-stream.png" alt="Scene name" width="300"/>
-
-  [Screenshot: live-stream.png needs manual refresh to show the new design]
 
   See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
 

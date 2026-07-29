@@ -2264,7 +2264,7 @@ Material.setBasicMaterial(screen, {
 ```typescript
 // Stream from external URL
 VideoPlayer.create(screen, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 

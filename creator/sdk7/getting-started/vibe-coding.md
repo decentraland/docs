@@ -121,18 +121,6 @@ This does what `npm run start` always does — serves your scene at `http://127.
 
 Log in when the client opens. The agent can only start working once you're through the login screen and the world has loaded.
 
-Useful extra flags:
-
-| Flag                | Effect                                                                     |
-| ------------------- | -------------------------------------------------------------------------- |
-| `--mcp-port <port>` | Use a different MCP port (implies `--mcp`)                                 |
-| `--port <port>`     | Use a different port for the scene server                                  |
-| `--position x,y`    | Spawn at a specific parcel                                                 |
-| `--no-client`       | Serve the scene only, don't launch a client (launch your own build instead) |
-| `--multi-instance`  | Allow a second client to run alongside one that's already open              |
-
-Anything after a second standalone `--` is passed straight to the client, for example `npm run start -- --mcp -- --windowed-mode --resolution 1280x720`.
-
 ### 2. Connect your AI agent to the server
 
 In **Claude Code**, register it once:
@@ -218,7 +206,7 @@ Break complex requests into steps:
 2. "Add a counter that increases when the player clicks the target"
 3. "Display the counter value on the scoreboard"
 
-### Include constraints
+### Ask for one thing at a time
 
 > "Add background music that loops, but keep the file size under 1 MB"
 
@@ -229,6 +217,30 @@ After each change:
 1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
 2. Check what works and what doesn't
 3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
+
+### Example prompts
+
+To be ran on a fresh clone of [sdk7-scene-template](https://github.com/decentraland/sdk7-scene-template/).
+
+#### Prompt example 1
+
+```
+I want you to scrap the current scene code and make a small simple labyrinth game, in 1 parcel, the walls can be cubes, and they should have collision.
+
+The game should start when the player actually enters the labyrinth on point A and it finishes when he exits on point B (only  exit of the labyrinth).
+
+I want you to add 3 different doors in the maze, that have to be interacted with the pointed input to open them and pass.
+
+You should verify that the player can actually play and win
+```
+
+
+#### Prompt example 2
+```
+I want you to scrap the current scene code and build a simple platformer game.
+
+You have to verify that the game can be won before considering it finished.
+```
 
 ## What AI Can Help With
 
@@ -252,7 +264,7 @@ While AI tools are powerful, keep these in mind:
 - **Always preview** — AI-generated code may not look exactly how you expect. Run a preview to verify.
 - **Scene limits still apply** — AI cannot bypass Decentraland's [scene limitations](../optimizing/scene-limitations.md) (triangle counts, file sizes, parcel boundaries).
 - **Complex game logic** — For intricate game mechanics, you may need to guide the AI step by step or refine its output manually.
-- **Custom 3D models** — AI can reference existing free assets or load models you provide, but it cannot create 3D models from scratch.
+- **Custom 3D models** — AI can reference existing free assets or load models you provide, but it cannot create 3D models from scratch (unless you use other tools like Blender official MCP server at the same time).
 
 ## Next Steps
 

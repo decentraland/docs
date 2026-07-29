@@ -44,15 +44,16 @@ The maximum file size you can upload to your World depends on whether you're usi
 
 Decentraland NAME holders enjoy dynamic storage capacity within the Foundation Worlds Content Server, which depends on their wallet holdings. The following rules govern this allocation:
 
-* Each Decentraland NAME you own grants 100 MB of storage capacity (as well as a World).
-* Each Decentraland LAND parcel you own grants an additional 100 MB of storage capacity.
-* For every 2,000 MANA held in your wallet, an additional 100 MB of storage capacity is granted.
+- Each Decentraland NAME you own grants 100 MB of storage capacity (as well as a World).
+- Each Decentraland LAND parcel you own grants an additional 100 MB of storage capacity.
+- For every 2,000 MANA held in your wallet, an additional 100 MB of storage capacity is granted.
 
 The space in the Foundation Worlds Content Server can be used to host scenes as large as users want, utilizing the Decentraland NAMEs they own and the combined space granted by their collective Decentraland assets. For instance, a user with multiple Worlds (granted by owning multiple NAMES) and a combined storage capacity of 500 MB can choose to deploy one World with a 200 MB scene file, another with a 200 MB scene file, and a third with a 100 MB scene file. Alternatively, they could opt to deploy one World with a 300 MB scene file and another with a 200 MB scene file.
 
-The maximum server storage capacity for your Decentraland Worlds is calculated dynamically, adhering to the rules outlined above. If, by any chance, a user exceeds their allocated storage space—for instance, through asset sales or transfers to another wallet—they will be provided with a 24-hour window to address the situation. Failure to do so will result in their Worlds becoming inaccessible after this grace period.
+You can check how much of your storage budget is used and how much remains in two places:
 
-To regain access to a blocked World, users can either acquire more MANA, Decentraland NAMEs, or LANDS, increasing their storage capacity or un-deploy existing scenes from the World Content Server to free up their storage space.
+- The **Manage** section of the Creator Hub. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+- The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds), which also shows how much space each of your Worlds is using.
 
 **Worlds from ENS Domains**
 
@@ -64,10 +65,10 @@ However, Worlds granted by ENS domain ownership serve as the perfect first step 
 
 Worlds offer several advantages over LAND scenes:
 
-* No need to own LAND - add as many parcels as you want to your scene at no cost (up to 300x300)
-* Access via link - players can visit your World directly via URL
-* More storage capacity - especially for Decentraland NAME holders
-* Access control - you can allow only certain players to access your World
+- No need to own LAND - add as many parcels as you want to your scene at no cost (up to 300x300)
+- Access via link - players can visit your World directly via URL
+- More storage capacity - especially for Decentraland NAME holders
+- Access control - you can allow only certain players to access your World
 
 See [Worlds](../publishing/publishing-options.md#decentraland-worlds) for more info, or learn about [publishing to Worlds](../publishing/publishing.md#publishing-to-worlds) and [configuring World settings](../projects/scene-metadata.md#world-configuration).
 
@@ -89,9 +90,9 @@ Players are prompted asking if they want to run this portable experience, and if
 
 ### Smart Wearables
 
-Smart wearables are linked to Wearable tokens. These are sold as NFTs and purchased in the [Marketplace](https://decentraland.org/marketplace/browse?section=wearables\&vendor=decentraland\&page=1\&sortBy=newest\&status=on_sale).
+Smart wearables are linked to Wearable tokens. These are sold as NFTs and purchased in the [Marketplace](https://decentraland.org/marketplace/browse?section=wearables&vendor=decentraland&page=1&sortBy=newest&status=on_sale).
 
 Smart Wearables are activated whenever the player puts on the associated wearable item. They are turned off if the player takes off the item, or they can also turn off the global scene manually via the UI. Also, the scene that the player is standing in is able to suspend any Smart Wearables that are active in the scene.
 
-* Learn everything about [Creating wearables](../../wearables-and-emotes/wearables/creating-wearables.md).
-* Learn about [smart wearables](../projects/smart-wearables.md)
+- Learn everything about [Creating wearables](../../wearables-and-emotes/wearables/creating-wearables.md).
+- Learn about [smart wearables](../projects/smart-wearables.md)

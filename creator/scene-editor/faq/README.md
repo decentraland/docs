@@ -171,7 +171,9 @@ The maximum file size you can upload to your World depends on whether you're usi
 
 **ENS Domains**: Fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
 
-The space can be distributed across multiple Worlds as you wish. If you exceed your allocated storage space, you'll have a 24-hour grace period to address the situation before your Worlds become inaccessible.
+The space can be distributed across multiple Worlds as you wish. If you exceed your allocated storage space, you'll have a 48-hour grace period to address the situation before your Worlds become inaccessible.
+
+You can check your used and remaining storage budget in the **Manage** section of the Creator Hub, or in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 
 See [Worlds size limits](/creator/sdk7/projects/kinds-of-project.md#size-limits) for detailed information.
 

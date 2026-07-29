@@ -19,10 +19,6 @@ In order to publish to LAND in Genesis City, you can do the following:
 * **Get permissions from an owner**: Several land owners and districts manage large extensions of land and are willing to freely host content from others if it fits their theme and the kind of environment they want to create. Connect with them in the [Decentraland Discord server](https://dcl.gg/discord).
 * **Worlds**: You can also deploy a stand-alone scene as a Decentraland World. Worlds exist outside the grid of Genesis City, and can be accessed by name. See [Decentraland Worlds](#decentraland-worlds) below.
 
-{% hint style="warning" %}
-**📔 Note**: You can also deploy scenes to a test server where players are not around. The same permissions per parcel apply when deploying to the test server, see [publishing](publishing.md#the-test-server) for more details.
-{% endhint %}
-
 ## Decentraland Worlds
 
 Decentraland Worlds are your own personal 3D space in the Decentraland ecosystem, separate from Genesis City's map of LAND parcels. A World can be kept private or shared with anyone with just a link. Able to host up to 100 concurrent users, you can use your World for purposes such as:

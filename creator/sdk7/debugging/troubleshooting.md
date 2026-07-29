@@ -72,7 +72,7 @@ To fix these dependencies, you often must resort to calling functions or object 
     1. Open your scene and click **Publish**
     2. Select the option **Publish to a different server** on the bottom.
     3. On the dropdown, select **Custom Server**
-    4. Enter the address of the server, for example `peer-testing.decentraland.org`
+    4. Enter the address of the server, for example `peer-ec1.decentraland.org`
     5. Click **Publish to custom server**
     6. Approve the transaction as with a normal deployment.
 

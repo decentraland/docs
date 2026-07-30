@@ -36,7 +36,7 @@ npm run start
 
 Any dependencies that are missing are installed and then the CLI creates a local web server in your system and launches the scene in the Decentraland Desktop client via a `decentraland://` deeplink. The Desktop client is the default preview target.
 
-To preview in a browser tab instead, add `-- --web-explorer` to open the scene in the Web Explorer, or `-- --bevy-web` to open it in the Bevy Web client.
+To preview in a browser tab instead, add `-- --web` (or `-- --bevy-web`) to open the scene in the Bevy Web client at `decentraland.org/bevy-web/`.
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
@@ -48,10 +48,7 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-- `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-- `-- --no-debug` (alias `-- -d`) Disable the debug panel, that shows scene and performance stats.
-- `-- --web-explorer` Launch the scene in the Web Explorer, in a browser tab, instead of the Desktop client.
-- `-- --bevy-web` Opens the preview using the Bevy Web browser window.
+- `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server — when the browser asks to access apps on your device, click "Allow".
 - `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
 - `-- --skip-build` Skip build and only serve the files in preview mode.
 - `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.

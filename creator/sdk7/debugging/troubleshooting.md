@@ -16,6 +16,14 @@ npx skills add decentraland/sdk-skills
 
 See [Vibe Coding with AI](../getting-started/vibe-coding.md) for more details on setting up and prompting AI assistants.
 
+You can also let the AI debug the scene *while it's running*. The Decentraland desktop client can expose an MCP server that lets an agent take its own screenshots, read the scene's console output, walk the player around, and click on objects — so instead of you reproducing the bug and pasting the error, the agent reproduces it itself, sees what happens, and iterates until it's fixed. Launch the scene with `npm run start -- --mcp` and connect your agent to it.
+
+See [Let the AI see your scene in-world](../getting-started/vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full setup, and install the `unity-explorer-mcp` skill so the agent knows the workflow:
+
+```bash
+npx skills add decentraland/sdk-skills --skill unity-explorer-mcp
+```
+
 ## Issues when running preview
 
 #### Issue: Can't run any scene preview, error message says mentions **Permissions denied** or **EACCES**

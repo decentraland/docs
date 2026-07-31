@@ -51,6 +51,21 @@ npx skills add decentraland/sdk-skills -g
 
 This copies skill files into your agent's configuration so it knows Decentraland patterns and constraints.
 
+## Updating Skills
+
+New skills are added over time, and existing ones are improved. To get the latest versions, re-run the install command with `--all`:
+
+```bash
+# Update every installed skill and download any new ones
+npx skills add decentraland/sdk-skills --all
+```
+
+Running `add` again re-fetches the repository, so it refreshes the skills you already have and installs any that were added since your first install. If you installed skills globally, add `-g` to this command too.
+
+{% hint style="warning" %}
+**📔 Note**: Don't use `npx skills update` for this. It only refreshes the skills already on your machine, so any skills added to the repository after your last install are silently skipped. Always use `npx skills add decentraland/sdk-skills --all` instead.
+{% endhint %}
+
 ## Available AI Skills
 
 When you install skills into your agent, the following capabilities are available:

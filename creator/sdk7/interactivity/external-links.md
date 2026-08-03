@@ -68,6 +68,68 @@ The link is opened in a new tab, keeping the original tab in Decentraland.
 If players tick the _trust this domain_ checkbox, they won't be prompted again during their session, as long as the link comes from the same scene and is to the same domain.
 
 
+## Open Explorer UI panels
+
+Use `openExplorerUi()` to open one of the Explorer's built-in fullscreen panels (the map, settings, backpack, and others) from your scene. The player must trigger the action with an explicit click or button event, the same as `openExternalUrl`.
+
+```ts
+import { openExplorerUi } from '~system/RestrictedActions'
+
+// Open the map panel
+const result = await openExplorerUi({ ui: 1 })
+```
+
+The `ui` field selects which panel to open. Use the `ExplorerUi` values from `~system/RestrictedActions`:
+
+| Value | Name | Panel |
+|---|---|---|
+| 0 | `EU_SETTINGS` | Settings |
+| 1 | `EU_MAP` | Map |
+| 2 | `EU_BACKPACK` | Backpack |
+| 3 | `EU_CAMERA_REEL` | Camera Reel |
+| 4 | `EU_COMMUNITIES` | Communities |
+| 5 | `EU_PLACES` | Places |
+| 6 | `EU_EVENTS` | Events |
+
+The function returns a promise with an `openResult` field that tells you what happened:
+
+| Result | Meaning |
+|---|---|
+| `OPENED` | The panel was opened successfully. |
+| `WAS_ALREADY_OPEN` | A fullscreen panel was already open. |
+| `REJECTED_NOT_CURRENT_SCENE` | The player is no longer in the scene that made the request. |
+| `REJECTED_FEATURE_DISABLED` | The requested panel is disabled or unavailable in this client. |
+| `REJECTED_NO_USER_GESTURE` | The call did not come from a user gesture (click or button event). |
+
+Here is a full example that opens the map when a player clicks a cube:
+
+```ts
+import { openExplorerUi } from '~system/RestrictedActions'
+
+// Create a clickable cube that opens the map
+const mapButton = engine.addEntity()
+Transform.create(mapButton, { position: Vector3.create(8, 1, 8) })
+MeshRenderer.setBox(mapButton)
+MeshCollider.setBox(mapButton)
+
+pointerEventsSystem.onPointerDown(
+  {
+    entity: mapButton,
+    opts: { button: InputAction.IA_POINTER, hoverText: 'Open Map' },
+  },
+  async () => {
+    const result = await openExplorerUi({ ui: 1 })
+    if (result.openResult === 1) {
+      console.log('Map opened')
+    }
+  }
+)
+```
+
+{% hint style="warning" %}
+**Note:** Like other restricted actions, `openExplorerUi` can only be called from an explicit user gesture (a click or button event). Calling it from a timer, collision area, or any other trigger will be rejected.
+{% endhint %}
+
 ## Copy to clipboard
 
 To copy a string to the player's clipboard, use `copyToClipboard()`. After this, when the player does _paste_ in the Decentraland chat or in any other application on their machine, they will be pasting your string.

@@ -56,11 +56,15 @@ export function main() {
 }
 ```
 
-**Hide the joystick or crosshair** — remove the movement stick and/or the aiming reticle:
+**Hide the joystick or crosshair** — remove the movement stick and/or the aiming reticle, and bring them back with their `show` counterparts:
 
 ```ts
 TouchScreenControls.hideJoystick()
 TouchScreenControls.hideCrosshair()
+
+// and to bring them back:
+TouchScreenControls.showJoystick()
+TouchScreenControls.showCrosshair()
 ```
 
 **Hide specific buttons** — pass the actions you want gone (the rest cascade up):
@@ -75,6 +79,8 @@ TouchScreenControls.hide([InputAction.IA_SECONDARY, InputAction.IA_JUMP])
 TouchScreenControls.hideAll()
 TouchScreenControls.showAll()
 ```
+
+`showAll()` only affects the gamepad buttons — it doesn't restore a hidden joystick or crosshair. Use `showJoystick()` / `showCrosshair()` for those.
 
 **Replace a button's icon** — for full control (custom icons, several changes at once), write the raw component on `engine.RootEntity`:
 
@@ -101,10 +107,12 @@ The helpers at a glance:
 | --- | --- |
 | `setMainAction(action)` | Sets which action the large central button triggers. |
 | `hideJoystick()` | Hides the native virtual joystick. |
+| `showJoystick()` | Shows the native virtual joystick again. |
 | `hideCrosshair()` | Hides the on-screen crosshair / reticle. |
+| `showCrosshair()` | Shows the on-screen crosshair / reticle again. |
 | `hide(actions)` | Hides the given gamepad buttons (merged into the current config). |
 | `hideAll()` | Hides every gamepad button. |
-| `showAll()` | Shows every gamepad button (clears the hide list). |
+| `showAll()` | Shows every gamepad button (clears the button hide list). Does **not** affect the joystick/crosshair. |
 
 ## Properties
 

@@ -16,7 +16,9 @@ Once you confirm these steps, the scene project will be created. This may take a
 
 Click the three dots on an already created scene's card and click **Duplicate** to make a copy of an existing scene.
 
-To rename your scene, open it and click the pencil icon to change the **Name** field and other properties.
+To rename your scene's display name, open it and click the pencil icon to change the **Name** field and other properties.
+
+To rename the scene's folder on disk, click the three dots on the scene's card and select **Rename Folder**. Enter the new folder name and confirm. The folder name must be valid for your operating system and must not collide with an existing folder in the same location.
 
 ## Import a scene
 

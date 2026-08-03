@@ -80,9 +80,9 @@ Como el modelo tiene sus propias mallas y materiales, este componente anula cual
 
 ##### `Billboard` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/billboard.proto#L17)</small> {#Billboard}
 
-Hace que una Entidad reoriente automáticamente su `Transform` para enfrentar la cámara. Como el nombre indica, se usa para mostrar billboards en el juego y frecuentemente se combina con [`TextShape`](#TextShape).
+Hace que una Entidad reoriente automáticamente su `Transform` para enfrentar la cámara, u opcionalmente otra Entidad referenciada mediante `target_entity`. Como el nombre indica, se usa para mostrar billboards en el juego y frecuentemente se combina con [`TextShape`](#TextShape).
 
-Afecta todas las direcciones por defecto, pero puede configurarse para rotar solo en un eje.
+Afecta todas las direcciones por defecto, pero puede configurarse para rotar solo en un eje. Si la Entidad objetivo referenciada no existe, la reorientación se suspende hasta que exista.
 
 ---
 

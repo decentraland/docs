@@ -106,7 +106,7 @@ engine.addSystem((dt: number) => {
       
     if (clapTimer >= emoteDuration) {
         // Trigger the clap emote
-        AvatarShape.getMutable(wearable).expressionTriggerTimestamp =+ 1 
+        AvatarShape.getMutable(myAvatar).expressionTriggerTimestamp += 1
         
         clapTimer = 0 // Reset timer
     }
@@ -145,7 +145,7 @@ export function swapAvatar(avatar: Entity) {
 
 ## Display only wearables
 
-Use the `show_only_wearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
+Use the `showOnlyWearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
 
 ```ts
 const myAvatar = engine.addEntity()

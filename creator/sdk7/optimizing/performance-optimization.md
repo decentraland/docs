@@ -8,6 +8,8 @@ There are several aspects you can optimize in your scenes to ensure the best pos
 
 Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, via the browser, or from the [mobile app](../building-for-mobile/) on a phone — all of which limit how much processing power is available to your scene. The experience of visiting your scene should be smooth for everyone.
 
+Check out [Useful Resources](../getting-started/useful-resources.md) for tools that can help, like the Decentraland Scene Optimizer, which extracts, deduplicates, and compresses textures from your scene's 3D models.
+
 {% hint style="info" %}
 **📱 Mobile**: Mobile devices are usually the most resource-constrained client. If your scene targets mobile players, also see [Building for Mobile](../building-for-mobile/) for mobile-specific guidance.
 {% endhint %}
@@ -54,7 +56,7 @@ You can also toggle animations on or off for entities that are far or occluded. 
 
 ### Async blocks
 
-Blocks of [async code](../programming-patterns/async-functions.md) are processed in a separate thread from the rest of the scene, to prevent blocking the progress of everything else.
+Blocks of [async code](../programming-patterns/async-functions.md) don't block the progress of everything else while they wait: the scene keeps running, and the async block resumes when its awaited response arrives. Note that scenes run on a single thread, so this isn't parallel processing, it just avoids stalling the scene while waiting for external responses.
 
 Any processes that rely on responses from asynchronous services, such as `getPlayerData()` or `getRealm()` should always run in async blocks, as they otherwise block the rest of the scene's loading while waiting for a response. The same applies to any calls to third party servers.
 
@@ -162,6 +164,10 @@ Avoid making adjustments to the UI on every frame, those are especially costly a
 
 Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
 
+## Landscape terrain in Worlds
+
+Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
+
 ## Monitor Performance
 
 The best metric to know how well a scene is performing is the FPS (Frames Per Second). In preview, you can see the current scene FPS in the debug panel. You should aim to always have 30 FPS or more.
@@ -184,6 +190,6 @@ Keep in mind that the performance you experience in preview may differ from that
 * The compression of the scenes' 3D models into asset bundles can have a positive impact
 * Some players visiting your scene may be running on less powerful hardware
 
-It's always a good practice to try deploying your scene first to the [test environment](../publishing/publishing.md#the-test-server) to do some more thorough testing.
+It's always a good practice to try deploying your scene first to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to do some more thorough testing.
 
 Always ask players for feedback. Never take for granted that how you experience the scene is the same for everyone else.

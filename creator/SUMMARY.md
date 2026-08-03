@@ -62,6 +62,7 @@
 * [Operate live](scene-editor/live-ops/)
   * [Scene Admin](scene-editor/live-ops/scene-admin.md)
   * [Live Streaming](scene-editor/live-ops/live-streaming.md)
+  * [Server Data](scene-editor/live-ops/server-data.md)
 * [Editor FAQs](scene-editor/faq/)
 
 ## Scenes (SDK7)
@@ -73,6 +74,7 @@
   * [Using the CLI](sdk7/getting-started/using-the-cli.md)
   * [Coding essentials](sdk7/getting-started/coding-scenes.md)
   * [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md)
+  * [Useful Resources](sdk7/getting-started/useful-resources.md)
 * [Designing the experience](sdk7/design-experience/)
   * [Design Games](sdk7/design-experience/design-games.md)
   * [MVP Guidelines](sdk7/design-experience/mvp-guidelines.md)
@@ -125,15 +127,6 @@
   * [Make Discoverable](sdk7/publishing/make-discoverable.md)
   * [Publishing Options](sdk7/publishing/publishing-options.md)
   * [Publishing](sdk7/publishing/publishing.md)
-* [Building for Mobile](sdk7/building-for-mobile/)
-  * [Overview](sdk7/building-for-mobile/README.md)
-  * [Detect the platform](sdk7/building-for-mobile/detect-platform.md)
-  * [Preview on mobile](sdk7/building-for-mobile/preview-on-mobile.md)
-  * [Mobile safe area](sdk7/building-for-mobile/safe-area.md)
-  * [UI best practices](sdk7/building-for-mobile/ui-best-practices.md)
-  * [Input on mobile](sdk7/building-for-mobile/input-on-mobile.md)
-  * [Get featured](sdk7/building-for-mobile/get-featured.md)
-  * [iOS curation](sdk7/building-for-mobile/ios-curation.md)
 * [Interactivity](sdk7/interactivity/)
   * [Button Events](sdk7/interactivity/button-events/)
     * [Click Events](sdk7/interactivity/button-events/click-events.md)
@@ -144,6 +137,7 @@
   * [Deprecated Functions](sdk7/interactivity/deprecated-functions.md)
   * [Event Listeners](sdk7/interactivity/event-listeners.md)
   * [External Links](sdk7/interactivity/external-links.md)
+  * [Mouse Movement](sdk7/interactivity/mouse-movement.md)
   * [NPC Avatars](sdk7/interactivity/npc-avatars.md)
   * [Player Avatar](sdk7/interactivity/player-avatar.md)
   * [Player Physics](sdk7/interactivity/player-physics.md)
@@ -162,7 +156,7 @@
   * [UI Text](sdk7/2d-ui/ui_text.md)
   * [Dynamic UI](sdk7/2d-ui/dynamic-ui.md)
 * [Networking](sdk7/networking/)
-  * [Authoritative Servers](sdk7/networking/authoritative-servers.md)
+  * [Multiplayer Server](sdk7/networking/authoritative-servers.md)
   * [Network Connections](sdk7/networking/network-connections.md)
   * [Serverless Multiplayer](sdk7/networking/serverless-multiplayer.md)
   * [Third Party Servers](sdk7/networking/third-party-servers.md)
@@ -180,13 +174,31 @@
   * [Game Objects](sdk7/programming-patterns/game-objects.md)
   * [Mutable Data](sdk7/programming-patterns/mutable-data.md)
 * [API Reference](sdk7/releases/)
-  * [Alpha Testing Guidelines](sdk7/releases/alpha-testing-guidelines.md)
+  * [Testing and Feedback](sdk7/releases/alpha-testing-guidelines.md)
   * [Releases](sdk7/releases/releases.md)
-  * [V7 Alpha](sdk7/releases/v7-alpha.md)
+  * [API Reference](sdk7/releases/v7-alpha.md)
   * [Version Support Agreement](sdk7/releases/version-support-agreement.md)
 * [Other](sdk7/other/)
   * [Scene Analytics](sdk7/other/scene-analytics.md)
   * [Migrate Legacy SDK6 Scenes](sdk7/other/migrate-legacy-sdk6-scenes.md)
+
+## Build for Mobile
+
+* [Mobile Client](build-for-mobile/mobile-client/)
+  * [Overview](build-for-mobile/mobile-client/overview.md)
+  * [Sample Scenes](build-for-mobile/mobile-client/sample-scenes.md)
+  * [Missing Features](build-for-mobile/mobile-client/missing-features.md)
+  * [Hardware Requirements](build-for-mobile/mobile-client/hardware-requirements.md)
+* [Develop](build-for-mobile/develop/)
+  * [Detect the platform](build-for-mobile/develop/detect-platform.md)
+  * [Preview on Mobile](build-for-mobile/develop/preview-on-mobile.md)
+  * [Mobile Safe Area](build-for-mobile/develop/safe-area.md)
+  * [UI Best Practices](build-for-mobile/develop/ui-best-practices.md)
+  * [Input on Mobile](build-for-mobile/develop/input-on-mobile.md)
+  * [Performance](build-for-mobile/develop/optimize-performance.md)
+* [Publish](build-for-mobile/publish/)
+  * [Get Featured](build-for-mobile/publish/get-featured.md)
+  * [iOS Curation](build-for-mobile/publish/ios-curation.md)
 
 ## 3D Modeling and Animations
 
@@ -197,11 +209,6 @@
 * [Colliders](3d-modeling/colliders.md)
 * [Animations](3d-modeling/animations.md)
 * [Create a Rig](3d-modeling/create-a-rig.md)
-
-## Worlds
-
-* [Overview](worlds/about.md)
-* [Cast](worlds/cast.md)
 
 ## Marketplace
 

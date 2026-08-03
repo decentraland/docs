@@ -4,7 +4,7 @@ description: Build multiplayer Decentraland scenes with a third party server.
 
 # Third party Servers
 
-The recommended approach for multiplayer interactions in your scene is using the [authoritative-server](authoritative-servers-md). This document covers other options that are also supported.
+The recommended approach for multiplayer interactions in your scene is using the [Multiplayer Server](authoritative-servers.md). This document covers other options that are also supported.
 
 - **REST API + DB**: Good for data that changes infrequently (leaderboards, guestbooks). Players poll the API for updates; state persists between sessions. See [Network Connections](network-connections.md) for how to make `fetch` requests from a scene.
 - **WebSocket server**: Allows real-time two-way communication. See [Network Connections](network-connections.md) for WebSocket usage. Libraries like [Colyseus](https://colyseus.io/) work well with the Decentraland SDK.

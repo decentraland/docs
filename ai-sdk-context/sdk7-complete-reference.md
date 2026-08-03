@@ -394,6 +394,14 @@ BillboardMode.BM_NONE // No rotation
 BillboardMode.BM_X // Fixed X axis
 BillboardMode.BM_Y // Fixed Y axis (most common)
 BillboardMode.BM_Z // Fixed Z axis
+
+// Face another entity instead of the player's camera
+Billboard.create(entity, {
+	targetEntity: otherEntity, // optional; unset = face the camera
+})
+// If the target entity doesn't exist (not yet created, or removed), the
+// billboard keeps its last orientation until the target exists again.
+// targetEntity: engine.CameraEntity is equivalent to leaving it unset.
 ```
 
 #### Face Target
@@ -1070,12 +1078,16 @@ engine.addSystem(checkCameraMode)
 
 ```typescript
 import { triggerEmote, triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 // Default emote
 triggerEmote({ predefinedEmote: 'robot' })
 
 // Custom emote (file must end with _emote.glb)
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+
+// Optional `mask` (both functions): play the animation on only part of the body
+triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 ```
 
 Notes:
@@ -1367,6 +1379,7 @@ AvatarModifierArea.create(modifierArea, {
 // Available modifiers
 AvatarModifierType.AMT_HIDE_AVATARS
 AvatarModifierType.AMT_DISABLE_PASSPORTS
+AvatarModifierType.AMT_HIDE_NAMETAGS   // Hides nametags while keeping avatars visible
 ```
 
 #### Movement Constraints
@@ -2251,7 +2264,7 @@ Material.setBasicMaterial(screen, {
 ```typescript
 // Stream from external URL
 VideoPlayer.create(screen, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 
@@ -3270,13 +3283,6 @@ npm run build
 
 # Deploy to Decentraland
 npm run deploy
-```
-
-#### Deploy to Test Server
-
-```bash
-# Deploy to test environment
-npm run deploy -- --target-content https://peer-testing.decentraland.org/content
 ```
 
 #### Deploy to Custom World

@@ -4,7 +4,7 @@ description: Learn how to set up a scene and configure its metadata.
 
 # Scene Metadata
 
-A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../../worlds/about.md), players can visit it via URL.
+A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../publishing/publishing-options.md#decentraland-worlds), players can visit it via URL.
 
 See [Files in a scene](../projects/scene-files.md) for a list of what files are used in a scene project.
 
@@ -101,14 +101,12 @@ The **Age Rating** field is used to classify the content of your scene. Decentra
 
 * **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
 
-When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults.
+When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults. The `rating` field goes at the root level of the json tree.
 
 ![](../../images/media/content-moderation-flag-icon.png)
 
 ```json
- "scene": {
-    "rating": "A"
-  }
+ "rating": "A"
 ```
 
 ### Restricted Content
@@ -259,7 +257,7 @@ If a spawn point is marked as `default`, it will always be used, regardless of w
 
 **Spawn regions**
 
-You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers for any dimension of the position, players will appear in a random location within that range. This helps prevent entering players from overlapping.
+You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers for each dimension of the position, players will appear in a random location within that range. This helps prevent entering players from overlapping. Note that all three dimensions must use the same format: either all single numbers, or all arrays of two numbers. To keep a dimension fixed, use an array with the same number twice, like `"y": [1,1]`.
 
 ```json
   "spawnPoints": [
@@ -342,16 +340,33 @@ These features are blocked from use in the scene unless the permission is reques
   ],
 ```
 
-Currently, the following permissions are managed on smart wearables and portable experiences:
+The following permissions can be requested:
 
 * `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
 * `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
+* `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
 * `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
 * `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
 * `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
 * `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
+
+When using `ALLOW_MEDIA_HOSTNAMES`, also include an `allowedMediaHostnames` field at root level, listing the domains that the scene is allowed to stream media from:
+
+```json
+"requiredPermissions": [
+    "ALLOW_MEDIA_HOSTNAMES"
+  ],
+"allowedMediaHostnames": [
+    "somehost.com",
+    "otherhost.xyz"
+  ],
+```
+
+{% hint style="warning" %}
+**📔 Note**: `ALLOW_MEDIA_HOSTNAMES` and `allowedMediaHostnames` are legacy settings, you shouldn't need to add them. They were only enforced by older versions of the web client; current Decentraland clients play external media without them.
+{% endhint %}
 
 ## Scene parcels
 
@@ -398,6 +413,10 @@ To display multiple parcels in the scene preview, list as many parcels as you in
 ### Set parcels via the command line
 
 You can set the parcels in your scene by running the `npx update-parcels` command in your scene folder. This is especially useful for large scenes, as you don't need to list every parcel involved.
+
+{% hint style="warning" %}
+**📔 Note**: `update-parcels` is a third-party community tool, it's not part of the official Decentraland SDK and is not maintained by the Decentraland Foundation.
+{% endhint %}
 
 **Single parcel**
 
@@ -467,9 +486,27 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
+## Landscape terrain
+
+Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. If this landscape doesn't match the aesthetics of your scene, for example a scene that floats in open water or in space, you can disable it. To do this, add the following field to your `scene.json` at root level:
+
+```json
+{
+	"landscapeTerrain": false
+}
+```
+
+With `landscapeTerrain` set to `false`, nothing is rendered beyond your scene's parcels, and players only see the skybox around the scene. Removing the surrounding terrain also frees up rendering resources, which can help your scene run smoother.
+
+If the field is not set, it defaults to `true` and the landscape is displayed as usual.
+
+{% hint style="warning" %}
+**📔 Note**: This field only applies to Worlds that contain a single scene. It's ignored in Genesis City, where the surroundings are always determined by the neighboring parcels. You can also use it while running a local preview of your scene, to check how the scene looks without the landscape.
+{% endhint %}
+
 ## World configuration
 
-When publishing to a [Decentraland World](../../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
+When publishing to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
 
 ### Basic World configuration
 

@@ -31,10 +31,12 @@ Configure different preview options from the dropdown menu next to the **Preview
 To preview a scene run the following command on the scene's main folder:
 
 ```bash
-npm run start -- --explorer-alpha
+npm run start
 ```
 
-Any dependencies that are missing are installed and then the CLI opens the scene in a new browser tab automatically. It creates a local web server in your system and points the web browser tab to this local address.
+Any dependencies that are missing are installed and then the CLI creates a local web server in your system and launches the scene in the Decentraland Desktop client via a `decentraland://` deeplink. The Desktop client is the default preview target.
+
+To preview in a browser tab instead, add `-- --web` (or `-- --bevy-web`) to open the scene in the Bevy Web client at `decentraland.org/bevy-web/`.
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
@@ -46,47 +48,20 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-- `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-- `-- --no-debug` Disable the debug panel, that shows scene and performance stats.
-- `-- --explorer-alpha` Runs the preview in the new Decentraland Desktop client.
+- `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server — when the browser asks to access apps on your device, click "Allow".
 - `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
-- `-- --skip-version-checks` Avoids checking if the scene's SDK framework version matches your CLI version, and launches the preview anyway.
-- `-- --port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
-- `-- --no-browser` to prevent the preview from opening a new browser tab.
-- `-- --w` or `-- --no-watch` to not open watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
-- `-- --c` or `-- --ci` To run the parcel previewer on a remote unix server
+- `-- --skip-build` Skip build and only serve the files in preview mode.
+- `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.
+- `-- --no-browser` (alias `-- -b`) to prevent the preview from opening a new browser tab.
+- `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
+- `-- --ci` To run the parcel previewer on a remote unix server.
+- `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
+- `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
+- `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
+- `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.
-{% endhint %}
-
-### Advanced: Fast iteration with remote asset bundles
-
-For heavy scenes with many 3D models, you can speed up scene loading and reloading by reusing the [asset bundles](../optimizing/performance-optimization.md#asset-bundle-conversion) that are already published on Decentraland's servers, instead of loading the raw unoptimized 3D models. This is especially useful when iterating on code-only changes.
-
-To enable this mode, launch the Decentraland Desktop client with the following arguments:
-
-```bash
-npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab <ab-source>
-```
-
-The `<ab-source>` argument changes depending on where the scene is already published:
-
-- **In Genesis City**: `--lsd-remote-ab-server Genesis`
-- **In a World**: `--lsd-remote-ab-world <world-name>.dcl.eth`
-
-For example, to preview a local copy of a scene that's already deployed to a World:
-
-```bash
-npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab --lsd-remote-ab-world myworld.dcl.eth
-```
-
-In both cases, `--realm http://127.0.0.1:8000/` points the client at your local preview server (run `npm run start` first to start it), and `--local-scene true` tells the client to load the scene's code from there.
-
-{% hint style="warning" %}
-**📔 Important**: When using this mode, it's recommended that **all** of its art are already published, with their asset bundles fully processed by the content servers. If you've added any new assets, you'll miss out on the optimized loading as they will be loaded as raw gltf files, as happens when you normally run a preview. But if you locally modified an asset that was already published, maintaining the same file name, then you'll be seeing the old published version of that asset.
-
-In that case, redeploy the scene first, wait for the asset bundles to be generated (see [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion)), and then resume using this mode for code-only iteration.
 {% endhint %}
 
 ## Upload a scene to decentraland
@@ -130,3 +105,32 @@ Using the Creator Hub, click the Preview button a second time, and that opens a 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 
 > `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
+
+### Advanced: Fast iteration with remote asset bundles
+
+For heavy scenes with many 3D models, you can speed up scene loading and reloading by reusing the [asset bundles](../optimizing/performance-optimization.md#asset-bundle-conversion) that are already published on Decentraland's servers, instead of loading the raw unoptimized 3D models. This is especially useful when iterating on code-only changes.
+
+To enable this mode, launch the Decentraland Desktop client with the following arguments:
+
+```bash
+npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab <ab-source>
+```
+
+The `<ab-source>` argument changes depending on where the scene is already published:
+
+- **In Genesis City**: `--lsd-remote-ab-server Genesis`
+- **In a World**: `--lsd-remote-ab-world <world-name>.dcl.eth`
+
+For example, to preview a local copy of a scene that's already deployed to a World:
+
+```bash
+npm run start -- --realm http://127.0.0.1:8000/ --position 0,0 --local-scene true --debug --skip-version-check true --lsd-use-remote-ab --lsd-remote-ab-world myworld.dcl.eth
+```
+
+In both cases, `--realm http://127.0.0.1:8000/` points the client at your local preview server (run `npm run start` first to start it), and `--local-scene true` tells the client to load the scene's code from there.
+
+{% hint style="warning" %}
+**📔 Important**: When using this mode, it's recommended that **all** of its art are already published, with their asset bundles fully processed by the content servers. If you've added any new assets, you'll miss out on the optimized loading as they will be loaded as raw gltf files, as happens when you normally run a preview. But if you locally modified an asset that was already published, maintaining the same file name, then you'll be seeing the old published version of that asset.
+
+In that case, redeploy the scene first, wait for the asset bundles to be generated (see [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion)), and then resume using this mode for code-only iteration.
+{% endhint %}

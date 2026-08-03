@@ -114,12 +114,13 @@ By default, child entities are positioned in relation to the top-left corner of 
   * `row-reverse`
   * `column`
   * `column-reverse`
-* `justifyContent`: This property describes how to align children within the main axis of their container. For example, you can use this property to center a child horizontally within a container with `flexDirection` set to row or vertically within a container with `flexDirection` set to column. The value of this property must be from the `AlignType` type. Possible values are:
+* `justifyContent`: This property describes how to align children within the main axis of their container. For example, you can use this property to center a child horizontally within a container with `flexDirection` set to row or vertically within a container with `flexDirection` set to column. The value of this property must be from the `JustifyType` type. Possible values are:
   * `flex-start` (DEFAULT): Align children of a container to the start of the container's main axis.
   * `flex-end`: Align children of a container to the end of the container's main axis.
   * `center`: Align children of a container in the center of the container's main axis.
   * `space-between`: Evenly space of children across the container's main axis, distributing remaining space between the children.
   * `space-around`: Evenly space of children across the container's main axis, distributing remaining space around the children. Compared to space between using space around will result in space being distributed to the beginning of the first child and end of the last child.
+  * `space-evenly`: Evenly space of children across the container's main axis, distributing remaining space so that the gaps between children, and between the children and the container's edges, are all equal.
 * `alignItems`: Describes how to align children along the cross axis of their container. Align items is very similar to justify content but instead of applying to the main axis, align items applies to the cross axis. This property requires a value from the `AlignType` type. The following options are available:
   * `stretch`: (DEFAULT) Stretch children of a container to match the height of the container's cross axis.
   * `flex-start`: Align children of a container to the start of the container's cross axis.
@@ -140,9 +141,9 @@ By default, child entities are positioned in relation to the top-left corner of 
   * `hidden`: Overflowing entities are made invisible.
   * `visible`: Overflowing entities break out of the margins of the parent.
   * `scroll`: The area becomes scrollable, allowing the player to scroll through the overflowing content. See [Scrollable containers](#scrollable-containers) for details.
-* `flexWrap`: The flex wrap property is set on containers and controls what happens when children overflow the size of the container along the main axis. By default children are forced into a single line (which can shrink entities). If wrapping is allowed items are wrapped into multiple lines along the main axis if needed. wrap reverse behaves the same, but the order of the lines is reversed. This property takes its value from the `FlexWrapType` type.
+* `flexWrap`: The flex wrap property is set on containers and controls what happens when children overflow the size of the container along the main axis. By default children are wrapped into multiple lines along the main axis if needed. If wrapping is disabled with `nowrap`, children are forced into a single line (which can shrink entities). wrap reverse behaves the same as wrap, but the order of the lines is reversed. This property takes its value from the `FlexWrapType` type.
   * `wrap`
-  * `no-wrap`
+  * `nowrap`
   * `wrap-reverse`
 
 ### Margins and padding
@@ -160,7 +161,7 @@ In Flexbox, entity positions are mostly determined by how they are parented, and
 * `position`: The position values `top`, `right`, `bottom`, and `left` behave differently depending on the `positionType`. For a relative entity they offset the position of the entity in the direction specified. For absolute entity though these properties specify the offset of the entity's side from the same side on the parent. The expected value is an object that contains the properties `top`, `left`, `bottom`, and `right`.
 
 {% hint style="warning" %}
-**📔 Note** : When measuring from the top, the numbers for `position` should be negative. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `position` to 20, -20.
+**📔 Note** : A positive value for `top` or `left` measures the distance inward from that same edge of the parent. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `position` to `{ top: 20, left: 20 }`.
 {% endhint %}
 
 ### Visibility
@@ -289,16 +290,20 @@ The `UiCanvasInformation` component holds the following information:
 * `width`: Canvas width in pixels
 * `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas
 * `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI.
+* `screenInsetArea`: A `BorderRect` object, detailing the screen inset area (safe margins) reserved by the device or platform UI, for example the notch, status bar, home indicator, or rounded corners on mobile. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels reserved on that edge of the screen. On desktop this is typically `0` on all sides.
 
 {% hint style="warning" %}
 **📔 Note** : Different Decentraland explorers will have different values for these, as the global UIs of the platform may differ, and the values might change dynamically as the user expands or hides different global UI menus.
 {% endhint %}
 
 ```ts
-export function Main(){
-  let canvas = UiCanvasInformation.get(engine.RootEntity)
-	console.log("CANVAS DIMENSIONS: ", canvas.width, canvas.height)
-})
+import { engine, UiCanvasInformation } from "@dcl/sdk/ecs"
+
+export function Main() {
+  const canvas = UiCanvasInformation.getOrNull(engine.RootEntity)
+  if (!canvas) return
+  console.log("CANVAS DIMENSIONS: ", canvas.width, canvas.height)
+}
 ```
 
 The following snippet continually calculates a multiplier value based on the screen size:
@@ -332,7 +337,7 @@ export function UIScaleUpdate() {
 }
 ```
 
-The value of the `scaleFactor` variable, that this function updates, can then be used as a multiplier on any UI element in the scene, including `heigh`, `width` and `fontSize` values.
+The value of the `scaleFactor` variable, that this function updates, can then be used as a multiplier on any UI element in the scene, including `height`, `width` and `fontSize` values.
 
 ```ts
 import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
@@ -351,7 +356,7 @@ export const uiMenu = () => (
 		uiBackground={{ color: Color4.Green() }}
 	>
 	  	<Label
-		        value={description}
+		        value="Hello World!"
 		        fontSize={18 * scaleFactor}
 		        textAlign="middle-center"
 		        uiTransform={{

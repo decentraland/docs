@@ -8,7 +8,7 @@ Each of your available scenes is shown as a card. Open the card to edit that sce
 
 ## Create a scene
 
-Click **Create scene** to create a new scene. You'll then be asked to choose a template, there are a few options, including a blank scene.
+Click on the **+** card, or on the **Templates** button, to create a new scene. You'll then be asked to choose a template, there are a few options, including an **Empty Scene**.
 
 Then you'll be asked to name your scene, and choose a location to save it.
 
@@ -34,33 +34,37 @@ Scenes you created on the older web editor are stored in the cloud. To work on t
 
 ## Delete a scene
 
-In the scene selector screen, press the _three dots_ icon and select _Delete_.
+In the scene selector screen, press the _three dots_ icon and select _Delete from My Scenes_.
 
-This removes the scene from your Scene Editor home screen, but doesn't delete the files from your machine.
+This removes the scene from your Scene Editor home screen. By default it doesn't delete the files from your machine, but the confirmation dialog includes a checkbox to **also delete the scene's files from your computer**.
 
-If you wish to delete the project files, you must do this manually. By default projects created via the Scene Editor are kept inside a `.decentraland` folder under your user directory. You can navigate here by clicking the three dots on a project card and selecting **Open folder**.
+By default, projects created via the Scene Editor are kept inside a `Scenes` folder in the Creator Hub's application data directory. You can change this location from the app's **Settings**, and you can navigate to a project's folder by clicking the three dots on its card and selecting **Open Folder Location**.
 
 ## Managing Worlds
 
-If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../worlds/about.md). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
+If you own a Decentraland NAME or ENS domain, you can publish scenes to your [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). Worlds appear in the Scene Editor just like regular scenes, and you can publish to them using the same **Publish** button.
 
 ### Visualizing storage space
 
-The [Builder](https://builder.decentraland.org/worlds) serves as the go-to place for visualizing your allocated space and monitoring how much is consumed by each Decentraland NAME or ENS Domain. You can:
+Scenes published to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget is calculated from your holdings: each Decentraland NAME or LAND parcel you own grants 100 MB, and every 2,000 MANA held in your wallet grants an additional 100 MB.
 
-* View your total storage capacity
-* See how much space each World is using
-* Monitor when your storage capacity is exceeded
-* Access comprehensive information about your Worlds, whether they are hosted on Decentraland NAMEs or ENS Domains
+You can check your used and remaining storage budget in two places:
+
+- The **Manage** section of the Creator Hub shows how much of your total budget is used and your total storage capacity. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+
+<img src="../../../.gitbook/assets/world-storage-budget.png" width="300" />
+
+- The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 
 ### Undeploying scenes
 
 If you need to free up storage space, you can undeploy scenes from the World Content Server. This can be done through the Builder interface, which allows you to easily undeploy scenes to release storage space.
 
-For Decentraland NAME holders, if you exceed your allocated storage space (for instance, through asset sales or transfers to another wallet), you will be provided with a 24-hour window to address the situation. Failure to do so will result in your Worlds becoming inaccessible after this grace period.
+For Decentraland NAME holders, if you exceed your allocated storage space (for instance, through asset sales or transfers to another wallet), you will be provided with a 48-hour window to address the situation. Failure to do so will result in your Worlds becoming inaccessible after this grace period.
 
 To regain access to a blocked World, you can either:
-* Acquire more MANA, Decentraland NAMEs, or LANDS to increase your storage capacity
-* Undeploy existing scenes from the World Content Server to free up storage space
+
+- Acquire more MANA, Decentraland NAMEs, or LANDS to increase your storage capacity
+- Undeploy existing scenes from the World Content Server to free up storage space
 
 See [Worlds size limits](../../sdk7/projects/kinds-of-project.md#size-limits) for detailed information on how storage capacity is calculated.

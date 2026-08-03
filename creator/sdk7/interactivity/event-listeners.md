@@ -70,7 +70,7 @@ This example first obtains the player's id, then subscribes to the events and co
 Go over the full list of players who are currently on your scene by iterating over all entities with a `PlayerIdentityData` component.
 
 ```ts
-import { PlayerIdentityData, Transform } from '@dcl/sdk/ecs'
+import { engine, PlayerIdentityData, Transform } from '@dcl/sdk/ecs'
 
 export function main() {
 	for (const [entity, data, transform] of engine.getEntitiesWith(
@@ -89,6 +89,8 @@ Knowing the camera mode can be very useful to fine-tune the mechanics of your sc
 The following snippet uses the `onChange` function to fire an event each time the camera changes. It also fires an event when the scene loads, with the player's initial camera mode.
 
 ```ts
+import { engine, CameraMode } from '@dcl/sdk/ecs'
+
 export function main() {
 	CameraMode.onChange(engine.CameraEntity, (cameraComponent) => {
 		if (!cameraComponent) return
@@ -157,9 +159,9 @@ The event on `AvatarBase` includes the following information:
 
 * `name`: The player's name.
 * `bodyShapeUrn`: The ids corresponding to male or female body type.
-* `skinColor`: Player skin color as a `Color4`
-* `eyeColor`: Player eye color as a `Color4`
-* `hairColor`: Player hair color as a `Color4`
+* `skinColor`: Player skin color as a `Color3`
+* `eyesColor`: Player eye color as a `Color3`
+* `hairColor`: Player hair color as a `Color3`
 
 You can also detect changes in wearables or avatars form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 

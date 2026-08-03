@@ -139,9 +139,10 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 
 ### Default animations
 
-Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with a single property as an argument:
+Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with the following properties as an argument:
 
 * `predefinedEmote`: A string name for an existing emote.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -215,9 +216,11 @@ This function takes an object with the following properties:
 
 * `src`: A string with a path to the emote file.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 const emoter = engine.addEntity()
 Transform.create(emoter, { position: Vector3.create(8, 0, 8) })
@@ -229,7 +232,7 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Make snowball' },
 	},
 	() => {
-		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 	}
 )
 ```
@@ -281,7 +284,7 @@ Instead of entirely freezing the player, you can restrict certain specific forms
 ```ts
 import {InputModifier, engine} from '@dcl/sdk/ecs'
 
-InputModifier.create(engine.playerEntity, {
+InputModifier.create(engine.PlayerEntity, {
 	mode: InputModifier.Mode.Standard({
 		disableAll: false,
 		disableWalk: false,
@@ -340,6 +343,9 @@ The following properties are available:
 - `runSpeed`: The speed at which the player runs, in meters per second. On the desktop client, players run by pressing the shift key.
 - `jumpHeight`: The height at which the player jumps, in meters.
 - `runJumpHeight`: The height at which the player jumps after running, in meters.
+- `doubleJumpHeight`: The height of the second jump when double-jumping, in meters.
+- `glidingSpeed`: The horizontal speed at which the player moves while gliding, in meters per second.
+- `glidingFallingSpeed`: The maximum falling speed of the player while gliding, in meters per second. This only caps the player's descent: upward motion, like a lift from a scene's continuous force, isn't limited.
 - `hardLandingCooldown`: The cooldown after a hard landing, in seconds. This is the time that the player has to wait before they can move again after landing from a high fall.
 
 For reference, here are the default values for those properties:
@@ -347,11 +353,16 @@ For reference, here are the default values for those properties:
 - `walkSpeed`: 1.5 m/s
 - `jogSpeed`: 8 m/s
 - `runSpeed`: 10 m/s
-- `glideSpeed`: 6 m/s
+- `glidingSpeed`: 6 m/s
+- `glidingFallingSpeed`: 1 m/s
 - `jumpHeight`: 1 m
 - `runJumpHeight`: 1.5 m
-- `doubleJump`: 2 m
+- `doubleJumpHeight`: 2 m
 - `hardLandingCooldown`: 0.75 s
+
+{% hint style="info" %}
+**💡 Tip**: While gliding, continuous forces applied by the scene are 1.5 times stronger, and upward forces can lift the player. See [Forces while gliding](player-physics.md#forces-while-gliding).
+{% endhint %}
 
 {% hint style="info" %}
 **💡 Tip**: None of these properties can be lower than 0. If you set one of them to a negative value, it will be clamped to 0. Setting these values to zero will have the same effect as using the `InputModifier` to block the use of certain keys.
@@ -412,6 +423,7 @@ The supported modifiers are:
 
 * `AvatarModifierType.AMT_HIDE_AVATARS`
 * `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+* `AvatarModifierType.AMT_HIDE_NAMETAGS`
 
 All the effects of an `AvatarModifierArea` only take place within the region of their area. Players return to normal when they walk out of the area.
 
@@ -473,6 +485,50 @@ Transform.create(entity, {
 
 This is especially useful in games where accidentally opening this UI could interrupt the flow of a game, for example in a multiplayer shooter game.
 
+### Hide nametags
+
+When a player walks into an `AvatarModifierArea` that has the `AvatarModifierType.AMT_HIDE_NAMETAGS` modifier, the player's nametag is hidden while the avatar itself remains visible.
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+This is useful for stages, presentations, or scripted scenes where you want to suppress player nametags without hiding the avatars themselves. For example, you might want a clean visual experience during a performance, where avatars are visible but the floating names don't distract viewers.
+
+{% hint style="info" %}
+**💡 Tip**: `AMT_HIDE_AVATARS` already hides nametags along with the avatar, so you don't need to add `AMT_HIDE_NAMETAGS` when using `AMT_HIDE_AVATARS`. Use `AMT_HIDE_NAMETAGS` only when you want to hide nametags while keeping avatars visible.
+{% endhint %}
+
+You can combine `AMT_HIDE_NAMETAGS` with other modifiers like `AMT_DISABLE_PASSPORTS` on the same area:
+
+```ts
+const entity = engine.addEntity()
+
+AvatarModifierArea.create(entity, {
+	area: Vector3.create(4, 3, 4),
+	modifiers: [AvatarModifierType.AMT_HIDE_NAMETAGS, AvatarModifierType.AMT_DISABLE_PASSPORTS],
+	excludeIds: []
+})
+
+Transform.create(entity, {
+	position: Vector3.create(8, 0, 8),
+})
+```
+
+{% hint style="info" %}
+**💡 Tip**: The nametag is only hidden while the player's head or torso is inside the area. If the area is too short and the player double-jumps above it, the nametag will briefly reappear. Make the area tall enough to cover the expected range of movement.
+{% endhint %}
+
 ### Exclude Avatars
 
 You can exclude a list of players from being affected by a modifier area by adding their player Ids to an array in the `excludeIds` property of the modifier area.
@@ -528,7 +584,7 @@ If the list of excluded IDs is going to be periodically changed (for example bas
 AvatarModifierArea.create(entity, {
 	area: Vector3.create(16, 5, 16),
 	modifiers: [AvatarModifierType.AMT_HIDE_AVATARS],
-	excludeIds: [myAvatarList.sort()],
+	excludeIds: myAvatarList.sort(),
 })
 ```
 {% endhint %}

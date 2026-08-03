@@ -4,6 +4,26 @@ description: Fixes for common problems
 
 # Troubleshooting
 
+## Debug with an AI assistant
+
+Before digging through the issues below, consider handing the problem to an AI assistant, like Cursor's chat, GitHub Copilot, or Claude Code. Paste the error message from the console, or describe what's not behaving as expected, and it can usually find the problem in your scene's code and fix it for you.
+
+For good results, make sure the AI has the Decentraland SDK skills installed. The skills teach it the SDK's patterns and constraints, so it doesn't guess based on generic or outdated information. Install them by running this command in your scene project:
+
+```bash
+npx skills add decentraland/sdk-skills
+```
+
+See [Vibe Coding with AI](../getting-started/vibe-coding.md) for more details on setting up and prompting AI assistants.
+
+You can also let the AI debug the scene *while it's running*. The Decentraland desktop client can expose an MCP server that lets an agent take its own screenshots, read the scene's console output, walk the player around, and click on objects — so instead of you reproducing the bug and pasting the error, the agent reproduces it itself, sees what happens, and iterates until it's fixed. Launch the scene with `npm run start -- --mcp` and connect your agent to it.
+
+See [Let the AI see your scene in-world](../getting-started/vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full setup, and install the `unity-explorer-mcp` skill so the agent knows the workflow:
+
+```bash
+npx skills add decentraland/sdk-skills --skill unity-explorer-mcp
+```
+
 ## Issues when running preview
 
 #### Issue: Can't run any scene preview, error message says mentions **Permissions denied** or **EACCES**
@@ -21,13 +41,13 @@ If you're running a scene that was shared with you, make sure that this scene wa
 
 #### Issue: Running `npm run start` runs, no error message, but no browser window opens and no URL in the output to open the preview
 
-Make sure your Node version is up to date. It must be 16 or newer.
+Make sure your Node version is up to date. It must be 20 or newer.
 
 #### Issue: Running `npm run start` opens a browser tab, but the loading screen never finishes loading, or I see a red error banner that says "critical error".
 
 *   Make sure you have the latest version of the Decentraland SDK installed in your project. Run:
 
-    `npm i @dcl/sdk"latest`
+    `npm i @dcl/sdk@latest`
 
 #### Issue: The scene runs, in the console I see `Cyclic dependencies` warnings.
 
@@ -60,7 +80,7 @@ To fix these dependencies, you often must resort to calling functions or object 
     1. Open your scene and click **Publish**
     2. Select the option **Publish to a different server** on the bottom.
     3. On the dropdown, select **Custom Server**
-    4. Enter the address of the server, for example `peer-testing.decentraland.org`
+    4. Enter the address of the server, for example `peer-ec1.decentraland.org`
     5. Click **Publish to custom server**
     6. Approve the transaction as with a normal deployment.
 
@@ -75,7 +95,7 @@ To fix these dependencies, you often must resort to calling functions or object 
     See [catalyst-monitor](https://decentraland.github.io/catalyst-monitor/) for a status check of all the servers in the catalyst network. You can also copy the addresses of each one, from the top of each card.
 * Check your scene's `package.json`. A common problem is that there's a `bundleDependencies` and also a `bundledDependencies` (extra d) section. This can sometimes result from running different Node versions on the same project at different times, or from sharing the project between people that ran it with different Node versions installed. Delete `bundleDependencies`, which relates to older Node versions.
 
-Also ensure you have your Node version up to date, at least version 16.
+Also ensure you have your Node version up to date, at least version 20.
 
 #### Issue: Running `npm run deploy` or `npm run build` reports type errors
 
@@ -83,12 +103,11 @@ Your scene might have type errors reported by TypeScript, for example stating th
 
 Unlike JavaScript, TypeScript enforces strict typing of all variables. Even though your scene is written in such a way that for example a certain value will never be `undefined`, TypeScript needs to know what would happen in that scenario, or you need to explicitly clarify that the value can only be for example a string.
 
-As an alternative, you can run `npm run deploy --skip-build` to skip the running of `npm run build`, and prevent these checks from running.
+As an alternative, you can run `npm run deploy -- --skip-build` to skip the running of `npm run build`, and prevent these checks from running.
 
 #### Issue: I deployed my scene but I don't see the changes when I enter Decentraland
 
 * Keep in mind that it can take a few minutes for new content to be propagated throughout all of the servers in the catalyst network, give it a little time.
-* See [Verify Deployment Success](../getting-started/preview-scene.md#verify-deployment-success) for instructions on how you can ensure that the content was properly propagated to all servers.
 
 #### Issue: Once deployed, some 3D models are missing
 

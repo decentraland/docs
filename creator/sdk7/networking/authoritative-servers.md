@@ -1,8 +1,10 @@
 ---
-description: Build multiplayer Decentraland scenes with a headless authoritative server.
+description: Build multiplayer Decentraland scenes with a headless multiplayer server.
 ---
 
-# Authoritative Servers
+# Multiplayer Server
+
+**📔 Note**: The Multiplayer Server was previously called the **Authoritative Server**. Only the name changed, the feature is the same. The SDK branch to install is still named `auth-server`, see [Setup](#setup).
 
 ## Overview
 
@@ -10,11 +12,11 @@ Decentraland runs scenes locally in a player's machine. By default, players are 
 
 Allowing all players to see a scene as having the same content in the same state is extremely important to for players to interact in more meaningful ways. Without this, if a player opens a door and walks into a house, other players will see that door as still closed, and the first player will appear to walk directly through the closed door to other players.
 
-An **authoritative server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. Instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
+The **Multiplayer Server** is a headless server process that runs your scene code, validates state changes, and broadcasts the result to all connected players. It follows an authoritative server architecture: instead of trusting each client to report its own actions, the server acts as the single source of truth. This makes it the recommended approach for syncing multiplayer scenes.
 
-An authoritative server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
+The Multiplayer Server is ideal whenever fairness is important for game mechanics, as you can implement elaborate anti-cheat validations that run server-side. You can also store private keys and other sensitive information on the server, avoiding ever needing to expose them directly to the user.
 
-Having an authoritative server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. An authoritative server resolves every change in one place, so all clients converge on the same state.
+Having a Multiplayer Server also solves a real problem: in a peer-to-peer setup, two players controlling something like a floating platform can produce conflicting outcomes. Each client sets the platform to a different height, and no one has the authority to decide which is correct. The Multiplayer Server resolves every change in one place, so all clients converge on the same state.
 
 It also gives you a place to **persist data across sessions**: leaderboards, player progression, unlocked achievements, or environment changes like doors opened or items placed. When players come back, the world reflects what happened before.
 
@@ -24,7 +26,7 @@ Decentraland hosts and deploys the server for you. Publishing your scene via the
 
 ### 1. Install the auth-server SDK version
 
-The native authoritative server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch. Run the following commands to install it in your project instead of the standard SDK branch:
+The native Multiplayer Server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch. Run the following commands to install it in your project instead of the standard SDK branch:
 
 ```bash
 npm install @dcl/sdk@auth-server
@@ -33,7 +35,9 @@ npm install @dcl/js-runtime@auth-server
 
 ### 2. Configure scene.json
 
-Optionally add the following to your `scene.json` at root level:
+The Multiplayer Server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. You don't need to add it manually: when using the auth-server branch of the SDK, it's added automatically the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
+
+Optionally, you can also add the following to your `scene.json` at root level:
 
 ```json
 {
@@ -47,7 +51,7 @@ Add `logsPermissions` to list wallet addresses that can see `console.log()` from
 
 ### 3. Run the preview
 
-Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the authoritative server in the background.
+Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the Multiplayer Server in the background.
 
 The local session of the server is not connected to the one in production, so you're free to test things without affecting players who are in your published scene.
 
@@ -94,10 +98,10 @@ if (isServer()) {
 }
 ```
 
-The syntax is identical to what's used by the [Serverless multiplayer](../networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the authoritative server. When a scene uses the authoritative server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
+The syntax is identical to what's used by the [Serverless multiplayer](../networking/serverless-multiplayer.md) feature, making it trivial to upgrade a scene from using this architecture to the Multiplayer Server. When a scene uses the Multiplayer Server, state updates are no longer sent between all players, instead all state updates are now routed and validated via the server.
 
 {% hint style="warning" %}
-**📔 Note**: With the authoritative server, the ideal pattern is to only have the server call `syncEntity`. That way you don't need to worry about entity-id consistency. Rather, the entity is instanced and shared by the server, and all clients get synced about that instance. Always guard it with `isServer()`. This is different from [Serverless multiplayer](../networking/serverless-multiplayer.md), where every client calls `syncEntity` on its own.
+**📔 Note**: With the Multiplayer Server, the ideal pattern is to only have the server call `syncEntity`. That way you don't need to worry about entity-id consistency. Rather, the entity is instanced and shared by the server, and all clients get synced about that instance. Always guard it with `isServer()`. This is different from [Serverless multiplayer](../networking/serverless-multiplayer.md), where every client calls `syncEntity` on its own.
 {% endhint %}
 
 ### Validating changes
@@ -185,52 +189,54 @@ import { isServer } from "@dcl/sdk/network"
 import { isPreview } from "@dcl/asset-packs/dist/admin-toolkit-ui/fetch-utils"
 import { getSceneAdmins } from "@dcl/asset-packs/dist/admin-toolkit-ui/ModerationControl/api"
 
-const videoEntity = engine.addEntity()
-VideoPlayer.create(videoEntity, { src: "videos/intro.mp4" })
+// Cache of admin wallet addresses, refreshed from the scene admin list
+let adminAddresses = new Set<string>()
 
-if (isServer()) {
-  // Cache of admin wallet addresses, refreshed from the scene admin list
-  let adminAddresses = new Set<string>()
-
-  async function updateAdminAddresses() {
-    if (isPreview()) return
-    try {
-      const [error, response] = await getSceneAdmins()
-      if (error) {
-        console.error("[SERVER] Error fetching admin list:", error)
-        adminAddresses = new Set()
-        return
-      }
-      adminAddresses = new Set(
-        (response ?? []).map((admin) => admin.admin.toLowerCase())
-      )
-      console.log(
-        "[SERVER] Updated admin addresses cache:",
-        Array.from(adminAddresses)
-      )
-    } catch (error) {
-      console.error("[SERVER] Error updating admin addresses:", error)
+async function updateAdminAddresses() {
+  if (isPreview()) return
+  try {
+    const [error, response] = await getSceneAdmins()
+    if (error) {
+      console.error("[SERVER] Error fetching admin list:", error)
       adminAddresses = new Set()
+      return
     }
+    adminAddresses = new Set(
+      (response ?? []).map((admin) => admin.admin.toLowerCase())
+    )
+    console.log(
+      "[SERVER] Updated admin addresses cache:",
+      Array.from(adminAddresses)
+    )
+  } catch (error) {
+    console.error("[SERVER] Error updating admin addresses:", error)
+    adminAddresses = new Set()
   }
+}
 
-  // Populate the cache before wiring up validation
-  await updateAdminAddresses()
+export async function main() {
+  const videoEntity = engine.addEntity()
+  VideoPlayer.create(videoEntity, { src: "videos/intro.mp4" })
 
-  VideoPlayer.validateBeforeChange(videoEntity, (value) => {
-    // Always allow changes while running in preview, so local testing is easier
-    if (isPreview()) return true
+  if (isServer()) {
+    // Populate the cache before wiring up validation
+    await updateAdminAddresses()
 
-    const senderAddress = value.senderAddress.toLowerCase()
-    if (!adminAddresses.has(senderAddress)) {
-      console.log(
-        "[SERVER] Unauthorized VideoPlayer change blocked from:",
-        senderAddress
-      )
-      return false
-    }
-    return true
-  })
+    VideoPlayer.validateBeforeChange(videoEntity, (value) => {
+      // Always allow changes while running in preview, so local testing is easier
+      if (isPreview()) return true
+
+      const senderAddress = value.senderAddress.toLowerCase()
+      if (!adminAddresses.has(senderAddress)) {
+        console.log(
+          "[SERVER] Unauthorized VideoPlayer change blocked from:",
+          senderAddress
+        )
+        return false
+      }
+      return true
+    })
+  }
 }
 ```
 
@@ -331,6 +337,10 @@ export const Messages = {
 export const room = registerMessages(Messages)
 ```
 
+{% hint style="warning" %}
+**📔 Note**: Call `registerMessages()` once, at the top level of a shared module, as in the example above. That way it runs when the module first loads, on both the server and the client. Don't call it conditionally or inside functions, both sides must always register the same messages.
+{% endhint %}
+
 ### Send Messages
 
 Clients can only send messages to the server. There is no direct client-to-client messaging. The server can broadcast to all clients or target specific players by address.
@@ -347,6 +357,10 @@ room.send("gameStarted", { roundNumber: 1 })
 // Server → one specific client (by wallet address)
 room.send("gameEnded", { winnerId: "Alice" }, { to: [playerAddress] })
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Messages have a maximum size of around 13 KB. Larger messages are silently dropped by the transport, without producing any error. Keep payloads small; if you need to share larger data, split it into multiple messages or use synced components.
+{% endhint %}
 
 ### Receive Messages
 
@@ -385,6 +399,10 @@ engine.addSystem(() => {
 })
 ```
 
+{% hint style="info" %}
+**💡 Tip**: `isStateSyncronized()` only tells you that the client's state is synced, it doesn't guarantee that the server has finished initializing. For a more robust readiness check, have the server broadcast a "ready" or heartbeat message, and have clients wait for it before sending gameplay messages.
+{% endhint %}
+
 ### Available Schema Types
 
 All message payloads and custom components use `Schemas` for binary serialization. Here is a quick reference of the types available:
@@ -396,7 +414,7 @@ import { Schemas } from "@dcl/sdk/ecs"
 Schemas.String // "hello"
 Schemas.Int // 42
 Schemas.Float // 3.14
-Schemas.Bool // true / false
+Schemas.Boolean // true / false
 Schemas.Int64 // Date.now()
 
 // Vector types
@@ -464,19 +482,102 @@ Data can be stored at two levels:
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
 
+{% hint style="warning" %}
+**📔 Note**: `Storage.set()`, `Storage.player.set()`, and the `delete` variants resolve to a **boolean**. They never throw — on failure (a network error, or too many concurrent requests, see below) they log the error and resolve to `false`, meaning the value was **not** persisted. Always check the result: a discarded `false` is a silently lost save.
+{% endhint %}
+
+### Save at checkpoints, not on every change
+
+Storage is durable persistence for data that must survive server restarts and redeploys. It is not a live datastore. Keep your working game state in memory on the server. That's faster and it's the right pattern for a server. Write to Storage only when you really need to, at meaningful checkpoints.
+
+{% hint style="warning" %}
+**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across *everything* the scene asks the runtime to do: every storage request, `signedFetch`, and other runtime APIs all count against the same limit. Excess calls are **not queued**. They reject immediately with a `too many concurrent host calls` error. The SDK catches the rejection and resolves the `Storage.set` promise to `false` instead of throwing. If your code discards that boolean, the failed save is invisible, and your persisted data ends up stale or lost. Check the result of every write (see the Note above).
+{% endhint %}
+
+Good moments to persist:
+
+- Game over, or the end of a round.
+- A player leaves.
+- A periodic debounced save (for example, once every 30 seconds), not once per frame.
+
+Persist only the data that must survive a restart or redeploy. Everything else can live in memory.
+
+The example below keeps scores in memory and writes them only at a checkpoint, instead of on every point scored:
+
+```typescript
+import { Storage } from "@dcl/sdk/server"
+
+// Working state lives in memory, updated on every event
+const scores: Record<string, number> = {}
+
+function onPointScored(address: string) {
+  scores[address] = (scores[address] ?? 0) + 1
+  // No Storage call here — just update memory
+}
+
+// Persist only at a checkpoint, such as when a player leaves
+async function onPlayerLeave(address: string) {
+  const saved = await Storage.player.set(address, "score", String(scores[address] ?? 0))
+  if (!saved) {
+    // The write did not persist — keep the value in memory and retry later
+    console.error(`Failed to save score for ${address}`)
+  }
+}
+```
+
+For scenes with many concurrent players, a more robust approach tracks which keys have unsaved changes (a "dirty set") and retries failed writes on the next flush:
+
+```typescript
+import { engine } from "@dcl/sdk/ecs"
+import { Storage } from "@dcl/sdk/server"
+
+// Working state in memory, updated on every event
+const scores: Record<string, number> = {}
+const dirty = new Set<string>()
+
+function onPointScored(address: string) {
+  scores[address] = (scores[address] ?? 0) + 1
+  dirty.add(address) // Mark for later flush, no Storage call here
+}
+
+// Flush dirty keys periodically (e.g. every ~30s) and at checkpoints
+async function flush() {
+  for (const address of dirty) {
+    const ok = await Storage.player.set(address, "score", String(scores[address]))
+    if (ok) {
+      dirty.delete(address) // Saved successfully
+    }
+    // If ok is false, the key stays dirty and retries on the next flush
+  }
+}
+
+// Run the flush on a timer using a dt accumulator
+let flushTimer = 0
+engine.addSystem((dt) => {
+  flushTimer += dt
+  if (flushTimer > 30) {
+    flushTimer = 0
+    flush()
+  }
+})
+```
+
 ### World Storage — Shared Across All Players
 
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
-// Write
-await Storage.set(
+// Write — set() resolves to false if the value was NOT persisted
+const ok = await Storage.set(
   "leaderboard",
   JSON.stringify([
     { name: "Alice", score: 100 },
     { name: "Bob", score: 85 },
   ])
 )
+if (!ok) {
+  console.error("Failed to save leaderboard — retry later")
+}
 
 // Read
 const raw = await Storage.get<string>("leaderboard")
@@ -507,8 +608,8 @@ npx sdk-commands storage scene clear --confirm
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
-// Write
-await Storage.player.set(
+// Write — set() resolves to false if the value was NOT persisted
+const ok = await Storage.player.set(
   playerAddress,
   "progress",
   JSON.stringify({
@@ -516,6 +617,9 @@ await Storage.player.set(
     coins: 250,
   })
 )
+if (!ok) {
+  console.error(`Failed to save progress for ${playerAddress} — retry later`)
+}
 
 // Read
 const saved = await Storage.player.get<string>(playerAddress, "progress")
@@ -550,7 +654,7 @@ You can see and edit the live stored data on your server via the storage UI, by 
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 
@@ -634,10 +738,15 @@ Environment variables are **server-only**. Guard them with `isServer()`. The ser
 
 ```typescript
 import { EnvVar } from "@dcl/sdk/server"
+import { isServer } from "@dcl/sdk/network"
 
-const maxPlayers = parseInt((await EnvVar.get("MAX_PLAYERS")) || "4")
-const gameDuration = parseInt((await EnvVar.get("GAME_DURATION")) || "300")
-const debugMode = ((await EnvVar.get("DEBUG")) || "false") === "true"
+export async function main() {
+  if (!isServer()) return
+
+  const maxPlayers = parseInt((await EnvVar.get("MAX_PLAYERS")) || "4")
+  const gameDuration = parseInt((await EnvVar.get("GAME_DURATION")) || "300")
+  const debugMode = ((await EnvVar.get("DEBUG")) || "false") === "true"
+}
 ```
 
 ### Sensitive data
@@ -666,7 +775,7 @@ You can access the data that is stored by the scene's storage by entering this l
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 
@@ -779,6 +888,40 @@ engine.addSystem((dt) => {
 ```
 
 For example if the server controls a countdown timer, it's not necessary to send updates to all players every second. It's best to have each client calculate passage of time on their own, and have the server broadcast its current state every 30 seconds or so, to ensure consistency.
+
+## Server Resource Limits
+
+The Multiplayer Server runs each scene in a sandboxed isolate with hard resource caps. Hitting these limits can silently drop data or terminate the server for everyone in the scene, so design your scene to stay well within them.
+
+### Memory
+
+The isolate has a **256 MB** memory ceiling. If exceeded, the isolate is disposed and the server shuts down for all connected players. Keep working state lean and prune per-player data when players leave.
+
+### CPU
+
+Each execution turn has a wall-clock budget:
+
+- **Synchronous execution**: 10 seconds per turn. An unbounded loop that exceeds this kills the isolate.
+- **Async turn settle**: 60 seconds. If a `Promise` chain or `await` takes longer than this to resolve, the isolate is terminated.
+
+Spread heavy work across multiple ticks using a `dt` accumulator in `engine.addSystem()`. Never run unbounded synchronous loops on the server.
+
+### Inbound message rate
+
+Each connected peer can send up to approximately **300 messages per 1,000 ms**. Excess data frames are dropped (not queued). Never send messages on every frame from the client. See [Performance Best Practices](#performance-best-practices) for throttling patterns.
+
+### Message size
+
+- Inbound packets are capped at **128 KB** per packet. Oversized packets are dropped entirely.
+- Scene-to-comms messages are capped at approximately **30 KB**. For the practical transport layer, keep synced messages well under **13 KB** (see the [Messages](#messages) section).
+
+### External fetch
+
+Concurrent `signedFetch` calls are capped at **32** in-flight. Additional fetches queue until a slot opens. Each fetch attempt has a **15-second** timeout with up to **2** retries.
+
+### In-flight host calls
+
+The 40-call cap described in [Data Storage](#data-storage) applies to all host calls isolate-wide, including Storage, `signedFetch`, and other runtime APIs. Excess calls reject immediately and are not queued.
 
 ## Common Pitfalls
 
@@ -996,7 +1139,7 @@ You can access the data that is stored by the scene's storage by entering this l
 
 [decentraland.org/storage](https://decentraland.org/storage)
 
-You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View server data**.
+You can also reach this page via the Creator Hub. Open the **Manage** tab, click the three dots next to a place where you have published content, and select **View Storage**.
 
 There you can see a list of all the worlds and land where you can publish scenes.
 
@@ -1025,7 +1168,7 @@ The trade-off is that, for a short window right after a deploy, players can end 
 
 If you have an existing scene built on Colyseus, the table below maps common Colyseus patterns to their SDK7 equivalents:
 
-| Colyseus                      | SDK7 Authoritative Server                       |
+| Colyseus                      | SDK7 Multiplayer Server                         |
 | ----------------------------- | ----------------------------------------------- |
 | `room.send(type, data)`       | `room.send(type, data)` — same API              |
 | `room.onMessage(type, cb)`    | `room.onMessage(type, cb)` — same API           |
@@ -1038,4 +1181,4 @@ Key differences to keep in mind:
 
 - _Serialization_: Colyseus sends JSON diffs; the SDK sends the full component on every change. Keep components small (see [Performance Best Practices](#performance-best-practices)).
 - _State model_: Colyseus uses a mutable state tree with automatic diffing. The SDK uses ECS components synced via `syncEntity` and protected with `validateBeforeChange`.
-- _Hosting_: No separate server deployment. The authoritative server is deployed automatically together with the scene.
+- _Hosting_: No separate server deployment. The Multiplayer Server is deployed automatically together with the scene.

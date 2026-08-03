@@ -34,10 +34,10 @@ function getPlayerPosition() {
 engine.addSystem(getPlayerPosition)
 ```
 
-* **PlayerEntity position**: The avatar's position, at chest height. Approximately at 0.88 cm above the ground.
+* **PlayerEntity position**: The avatar's position, at chest height. Approximately at 0.88 meters above the ground.
 * **PlayerEntity rotation**: The direction in which the avatar is facing, expressed as a quaternion.
 * **CameraEntity position**:
-  * In 1st person: Equal to the avatar's position, but at eye-level. Approximately at 1.75 cm above the ground.
+  * In 1st person: Equal to the avatar's position, but at eye-level. Approximately at 1.75 meters above the ground.
   * In 3rd person: May vary depending on camera movements.
 * **PlayerEntity rotation**:
   * In 1st person: Similar to the direction in which the avatar is facing, expressed as a quaternion. May be rounded slightly differently from the player's rotation.
@@ -90,7 +90,7 @@ export function main() {
 `getPlayer()` returns the following:
 
 * `name`: _(string)_ The player's user name, as others see in-world
-* `userId`: _(string)_ A UUID string that identifies the player. If the player has a public key, this field will have the same value as the public key.
+* `userId`: _(string)_ A string that identifies the player. For players connected with a wallet, this is the wallet's address, written in lowercase. For guest accounts, it's a locally-generated identifier.
 * `isGuest`: _(boolean)_ Indicates if the player has a public key. _True_ if the player is a guest account without a public key.
 * `position`: _(Vector3)_ The position of the avatar in the scene.
 * `avatar`: A nested object with data about the player's base avatar and appearance.
@@ -101,9 +101,9 @@ export function main() {
 The `avatar` object has the following nested information:
 
 * `bodyShapeUrn`: An identifier for the avatar's general body shape. Either `urn:decentraland:off-chain:base-avatars:BaseFemale` for female or `urn:decentraland:off-chain:base-avatars:BaseMale` for male.
-* `skinColor`: Player skin color as a `Color4`
-* `eyesColor`: Player eye color as a `Color4`
-* `hairColor`: Player hair color as a `Color4`
+* `skinColor`: Player skin color as a `Color3`
+* `eyesColor`: Player eye color as a `Color3`
+* `hairColor`: Player hair color as a `Color3`
 * `name`: The player's name.
 
 {% hint style="warning" %}
@@ -187,9 +187,9 @@ The `avatar` object has the following nested information:
 
 * `wearables`: `WearableId[]` An array of identifiers for each of the wearables that the player is currently wearing. For example `urn:decentraland:off-chain:base-avatars:green_hoodie`. All wearables have a similar identifier, even if they're NFTs.
 * `bodyShape`: An identifier for the avatar's general body shape. Either `urn:decentraland:off-chain:base-avatars:BaseFemale` for female or `urn:decentraland:off-chain:base-avatars:BaseMale` for male.
-* `skinColor`: _ColorString_ A hex value for the player's skin color.
-* `hairColor`: _ColorString_ A hex value for the player's hair color.
-* `eyeColor`: _ColorString_ A hex value for the player's eye color.
+* `skin`: An object with a `color` field, holding the player's skin color as `{ r, g, b, a }` numbers from 0 to 1.
+* `hair`: An object with a `color` field, holding the player's hair color as `{ r, g, b, a }` numbers from 0 to 1.
+* `eyes`: An object with a `color` field, holding the player's eye color as `{ r, g, b, a }` numbers from 0 to 1.
 * `snapshots`: A nested object with base64 representations of .jpg images of the player in various resolutions.
   * `face256`: _string_ The player's face as a 256x256 pixel image.
   * `body`: _string_ The full resolution image of the player standing straight, with 512x1024 pixels.
@@ -205,7 +205,7 @@ If you know which server the player you want to query is connected to, you can g
 `https://<player server>/lambdas/profile/<player user id>`
 
 {% hint style="info" %}
-**💡 Tip**: You can obtain the current player's server by fetching `getRealm().domain`.
+**💡 Tip**: You can obtain the current player's server by calling `getRealm()` and reading the `realmInfo.baseUrl` field of the response.
 {% endhint %}
 
 This example combines `myProfile.userId` and `getRealm()` to obtain the player's data directly from the server that the player is on:
@@ -216,19 +216,17 @@ import { myProfile } from '@dcl/sdk/network'
 
 async function fetchPlayerData() {
 	const { realmInfo } = await getRealm({})
+	if (!realmInfo) return
 
 	const url = `${realmInfo.baseUrl}/lambdas/profile/${myProfile.userId}`
 	console.log('using URL: ', url)
 
 	try {
-		const json = (await fetch(url)).json()
+		const response = await fetch(url)
+		const json = await response.json()
 
 		console.log('full response: ', json)
-		console.log(
-			'player is wearing :',
-			json[0].metadata.avatars[0].avatar.wearables
-		)
-		console.log('player owns :', json[0].metadata.avatars[0].inventory)
+		console.log('player is wearing :', json.avatars[0].avatar.wearables)
 	} catch {
 		console.log('an error occurred while reaching for player data')
 	}
@@ -245,9 +243,9 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
 * `AvatarBase`: Stores data about the base avatar, including:
   * `name`: The player's name.
   * `bodyShapeUrn`: The ids corresponding to male or female body type.
-  * `skinColor`: Player skin color as a `Color4`
-  * `eyeColor`: Player eye color as a `Color4`
-  * `hairColor`: Player hair color as a `Color4`
+  * `skinColor`: Player skin color as a `Color3`
+  * `eyesColor`: Player eye color as a `Color3`
+  * `hairColor`: Player hair color as a `Color3`
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
@@ -312,8 +310,9 @@ import { getRealm } from '~system/Runtime'
 
 async function fetchWearablesData() {
 	try {
-		let userData = getPlayer({})
+		let userData = getPlayer()
 		const realm = await getRealm({})
+		if (!userData || !realm.realmInfo) return
 
 		const url =
 			`${realm.realmInfo?.baseUrl}/lambdas/collections/wearables-by-owner/${userData.userId}?includeDefinitions`.toString()
@@ -341,7 +340,7 @@ Players can either be using a 1st or 3rd person camera when exploring Decentrala
 
 ```ts
 function checkCameraMode() {
-	if (!Transform.has(engine.CameraEntity)) return
+	if (!CameraMode.has(engine.CameraEntity)) return
 
 	let cameraEntity = CameraMode.get(engine.CameraEntity)
 
@@ -405,7 +404,7 @@ Another option is to refer to the entity inside a system. It will always be avai
 
 ## Check the player's cursor position
 
-Use the `primaryPointerInfo` component on the `engine.RootEntity` to get the player's cursor position. This can be used for mechanics like drag and drop interactions, swipe gestures, etc.
+Use the `PrimaryPointerInfo` component on the `engine.RootEntity` to get the player's cursor position. This can be used for mechanics like drag and drop interactions, swipe gestures, etc.
 
 ```ts
 import { PrimaryPointerInfo } from '@dcl/sdk/ecs'
@@ -422,18 +421,22 @@ engine.addSystem(CursorSystem)
 **📔 Note**: Avoid referring to the `engine.RootEntity` on the initial scene loading, because that can result in errors if the entities are not initialized yet. To avoid this problem, always refer to the entity inside a system. It will always be available, because the first execution of the system is called once the scene is already properly initialized.
 {% endhint %}
 
-The `primaryPointerInfo` component returns an object with the following properties:
+The `PrimaryPointerInfo` component returns an object with the following properties:
 
-* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the top left corner of the screen.
-* `screenDelta`: _(Vector2)_ The delta change in the position of the cursor since the last frame, expressed in pixels.
-* `worldRayDirection`: _(Vector3)_ A vector that represents the direction of the ray from the camera to the cursor.The origin is the camera position. Use this to calculate the position of the cursor in the world.
+* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the bottom left corner of the screen. When the cursor is locked, this reports the center of the screen.
+* `screenDelta`: _(Vector2)_ The change in the position of the cursor since the last frame, expressed in pixels. See [Mouse Movement](mouse-movement.md) for details and examples.
+* `worldRayDirection`: _(Vector3)_ A vector that represents the direction of the ray from the camera to the cursor. The origin is the camera position. Use this to calculate the position of the cursor in the world.
 * `pointerType`: 0 for `none`, 1 for `mouse`
 
 {% hint style="info" %}
-**💡 Tip**: To react to simple hover events on UI elements, you may find it easier to use the `onMouseEnter` and `onMouseLeave` events, see [UI Button Events](../2d-ui/ui_button_events.md#hover-feedback).
+**💡 Tip**: Unlike the other properties, `screenDelta` keeps reporting mouse movement even while the cursor is [locked](button-events/click-events.md#lock-or-unlock-the-cursor). This makes it ideal for real-time interactions like drag gestures and custom camera controls, see [Mouse Movement](mouse-movement.md).
 {% endhint %}
 
-The `primaryPointerInfo` component is read-only, you can't force the player to change the cursor position.
+{% hint style="info" %}
+**Tip:** To react to simple hover events on UI elements, you may find it easier to use the `onMouseEnter` and `onMouseLeave` events, see [UI Button Events](../2d-ui/ui_button_events.md#hover-feedback).
+{% endhint %}
+
+The `PrimaryPointerInfo` component is read-only, you can't force the player to change the cursor position.
 
 The following example shows how to display the cursor position on a UI element.
 
@@ -461,7 +464,7 @@ export const uiMenu = () => (
 _**index.ts file:**_
 
 ```ts
-import { engine } from '@dcl/sdk/ecs'
+import { engine, PrimaryPointerInfo } from '@dcl/sdk/ecs'
 import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 

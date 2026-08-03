@@ -68,7 +68,7 @@ Two new values have been added to the `PointerEventType` enum:
 * `PET_PROXIMITY_ENTER`: Triggered when the player walks within the entity's proximity range.
 * `PET_PROXIMITY_LEAVE`: Triggered when the player moves out of the entity's proximity range.
 
-These can be used with a `PointerEvents` component and the `inputSystem` for the [system-based approach](system-based-events.md#proximity-events). That approach also supports proximity button presses using the `InteractionType.IT_PROXIMITY` field.
+These can be used with a `PointerEvents` component and the `inputSystem` for the [system-based approach](system-based-events.md#proximity-events). That approach also supports proximity button presses using the `InteractionType.PROXIMITY` field.
 
 ## Priority
 

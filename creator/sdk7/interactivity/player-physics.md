@@ -51,7 +51,7 @@ If you call `applyImpulseToPlayer()` multiple times within the same frame, the i
 A common pattern is to trigger an impulse when the player steps into an area. Use a trigger area to detect when the player enters:
 
 ```ts
-import { Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, Transform } from '@dcl/sdk/ecs'
+import { engine, Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, Transform } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const launchPad = engine.addEntity()
@@ -118,7 +118,7 @@ Use `Physics.applyForceToPlayer()` to apply a sustained force to the player. Unl
 The source entity's position is not relevant — it's only used as an identifier.
 
 ```ts
-import { Physics } from '@dcl/sdk/ecs'
+import { engine, Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const windZoneEntity = engine.addEntity()
@@ -157,7 +157,7 @@ Use `Physics.applyForceToPlayerForDuration()` to apply a force for a specific am
 * `vector`: Direction and strength combined — the length of the vector encodes the force magnitude.
 
 ```ts
-import { Physics } from '@dcl/sdk/ecs'
+import { engine, Physics } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const gustEntity = engine.addEntity()
@@ -177,7 +177,7 @@ Physics.applyForceToPlayerForDuration(gustEntity, 1.5, Vector3.create(0, 1, 0), 
 This example creates a wind tunnel that pushes the player while they're inside it, and stops when they leave:
 
 ```ts
-import { Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, MeshCollider, Transform } from '@dcl/sdk/ecs'
+import { engine, Physics, TriggerArea, triggerAreaEventsSystem, ColliderLayer, MeshRenderer, MeshCollider, Transform } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const windTunnel = engine.addEntity()
@@ -214,7 +214,7 @@ Use `Physics.applyRepulsionForceToPlayer()` to continuously push the player away
 * `falloff`: How magnitude decreases with distance (default: `CONSTANT`).
 
 ```ts
-import { Physics, timers } from '@dcl/sdk/ecs'
+import { engine, Physics, Transform, timers } from '@dcl/sdk/ecs'
 import { Vector3 } from '@dcl/sdk/math'
 
 const repulsionSource = engine.addEntity()
@@ -234,6 +234,17 @@ timers.setTimeout(() => {
 }, 500)
 ```
 
+
+## Forces while gliding
+
+While the player is gliding, continuous forces behave differently:
+
+* Continuous forces — from `applyForceToPlayer()`, `applyForceToPlayerForDuration()`, or `applyRepulsionForceToPlayer()` — are **1.5 times stronger**, since the open glider catches the airflow. Wind zones and currents feel more responsive to a gliding player.
+* The upward component of a continuous force can **lift** a gliding player. The glider's falling speed limit only caps how fast the player descends, it doesn't cancel upward motion, so an angled or vertical wind current pushes the player along the full direction of the force.
+
+One-shot impulses — from `applyImpulseToPlayer()` or `applyKnockbackToPlayer()` — are not affected by gliding. They behave the same whether the glider is open or closed.
+
+You can combine these behaviors to build mechanics like thermal updrafts that carry gliding players upward, or wind corridors that are easier to traverse with the glider open. To adjust the glider's falling speed or forward speed, use the `AvatarLocomotionSettings` component, see [Locomotion Settings](player-avatar.md#locomotion-settings).
 
 ## Convert a local direction to world space
 

@@ -13,7 +13,7 @@ If the scene can't be compiled, you'll just see the empty ground, with nothing r
 3. If you ran the scene using the Creator Hub, check the window with the console output of the scene. If you ran the scene using the CLI, check the output of the command line where you ran `npm run start`
 
 {% hint style="info" %}
-**💡 Tip**: Before you publish your scene to the production environment, publish it to the test environment to try it in a context that is a lot closer to production. See [Development Workflow](../getting-started/dev-workflow.md#deploy-to-the-test-environment)
+**💡 Tip**: Before you publish your scene to the production environment, you can publish it to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to try it in a context that is a lot closer to production.
 {% endhint %}
 
 ## Use the console

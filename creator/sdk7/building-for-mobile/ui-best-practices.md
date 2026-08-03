@@ -33,7 +33,7 @@ Combined with the SDK's `virtualWidth` / `virtualHeight` setup, this gives you r
 
 These limitations apply to scene UI on the current mobile client. They are tracked and expected to be lifted over time.
 
-* **`border-radius` is not supported on mobile yet.** Rounded corners on `uiBackground` will render as squared on the mobile client. Plan your visual design accordingly, or branch the styling on `isMobile()`.
+* **`borderRadius` is not supported on mobile yet.** Rounded corners, set via the `borderRadius` property of `uiTransform`, will render as squared on the mobile client. Plan your visual design accordingly, or branch the styling on `isMobile()`.
 
 If you hit a limitation that is not listed here, please [report it](../debugging/report-bug.md) so we can document and prioritize it.
 

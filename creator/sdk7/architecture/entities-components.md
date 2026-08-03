@@ -47,7 +47,9 @@ export function main() {
 	})
 
 	// Give the entity a visible shape via a GltfContainer component
-	GltfContainer.create(door)
+	GltfContainer.create(door, {
+		src: 'assets/models/door.glb',
+	})
 }
 ```
 
@@ -71,7 +73,9 @@ export function main() {
 	const door = engine.addEntity()
 
 	// Give the entity a visible shape via a GltfContainer component
-	GltfContainer.create(door)
+	GltfContainer.create(door, {
+		src: 'assets/models/door.glb',
+	})
 
 	// Remove entity
 	engine.removeEntity(door)
@@ -114,9 +118,7 @@ export function main() {
 
 ### Removing entities behind the scenes
 
-An entity is just an id that is referenced by its components. So when removing an entity you're really removing each of the components that reference this entity. This means that if you manually remove all of the components of an entity, it will have the same effect as doing `engine.removeEntity()`.
-
-Once the entity's components are removed, that entity's id is free to be referenced by new components as a fresh new entity.
+An entity is just an id that is referenced by its components. So when removing an entity you're really removing each of the components that reference this entity. If you manually remove all of the components of an entity, it will look the same to the player as doing `engine.removeEntity()`. However, `engine.removeEntity()` also performs some extra internal bookkeeping, marking the entity id as no longer in use, so it's always the recommended way to remove an entity.
 
 ## Nested entities
 
@@ -358,15 +360,13 @@ VisibilityComponent.onChange(cubeEntity, (newVisibilityComponent) => {
 
 If the component is removed from the entity, then the function is called with an input of `undefined`.
 
-{% hint style="warning" %}
-**📔 Note**: The `.onChange()` function currently only works with native components of the SDK, it doesn't work with [custom comopnents](../architecture/custom-components.md) defined by the creator.
+{% hint style="info" %}
+**💡 Tip**: The `.onChange()` function works both with native components of the SDK and with [custom components](../architecture/custom-components.md) defined by the creator.
 {% endhint %}
 
-## Get all descendant entities
+## Get child entities
 
-When working with nested entity hierarchies, you may need to access all entities that are descendants of a parent entity, regardless of how deeply nested they are. For that you can use `getEntitiesWithParent`. It takes as its arguments the `engine` and the `parent` entity and returns a list of all the entities that have that particular Entiy as its parent.
-
-This is especially useful when you need to find entities that may be nested under various levels beneath a parent entity. Instead of manually traversing the hierarchy level by level, `getEntitiesWithParent()` returns a flat list of all descendants that is easy to iterate over.
+To access all the entities that are direct children of a parent entity, use `getEntitiesWithParent`. It takes as its arguments the `engine` and the `parent` entity and returns a list of all the entities that have that particular entity as its parent. Note that it only returns direct children, not children of children.
 
 ```ts
 import { getEntitiesWithParent } from '@dcl/sdk/ecs'
@@ -377,7 +377,7 @@ for (const child of children) {
 }
 ```
 
-You might otherwise want to use the function `getComponentEntityTree()`, that also filters to only entities that have a given component or list of components.
+To instead access all the descendants of an entity, regardless of how deeply nested they are, use the function `getComponentEntityTree()`. Instead of manually traversing the hierarchy level by level, this function returns a flat list of all descendants that is easy to iterate over. It also filters to only entities that have a given component or list of components.
 
 
 ```ts

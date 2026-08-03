@@ -56,7 +56,7 @@ export const uiMenu = () => (
 	<Button
 		value="Click me"
 		uiTransform={{ width: 100 }}
-		onMouseDown={{ handleClick }}
+		onMouseDown={handleClick}
 	/>
 )
 ```
@@ -67,7 +67,7 @@ The following fields can be added to a `Button` UI element:
 * `onMouseUp`: A callback function that runs every the pointer button is raised while pointing at the entity.
 * `onMouseEnter`: A callback function that runs every time the pointer starts hovering over the button.
 * `onMouseLeave`: A callback function that runs every time the pointer stops hovering over the button.
-* `color`: Background color of the button.
+* `color`: Color of the text on the button.
 * `font`: Font of the text on the button.
 * `textAlign`: Alignment of the text inside the button
 * `uiTransform`: Positioning properties of the UI element.
@@ -199,8 +199,9 @@ export const uiMenu = () => (
 Any element in the UI can be made clickable by adding an `onMouseDown` property to it, it works identically to a button. The following example adds `onMouseDown` properties to background images and text.
 
 ```tsx
-import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
+import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
 import { Color4 } from '@dcl/sdk/math'
+import { engine, Transform } from '@dcl/sdk/ecs'
 
 export const uiMenu = () => (
 	<UiEntity
@@ -223,6 +224,13 @@ export const uiMenu = () => (
 		/>
 	</UiEntity>
 )
+
+function getPlayerPosition() {
+	const playerPosition = Transform.getOrNull(engine.PlayerEntity)
+	if (!playerPosition) return 'unknown'
+	const { x, y, z } = playerPosition.position
+	return `{x: ${x.toFixed(2)}, y: ${y.toFixed(2)}, z: ${z.toFixed(2)} }`
+}
 ```
 
 ## Pointer blocking

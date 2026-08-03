@@ -88,11 +88,11 @@ The intensity is expressed in candels (lumens/m^2 at 1 m distance, or lumens div
 
 The defualt intensity is 16000, this is the brightness of an average lightbulb in the real world and can be seen up to around 10 meters away from the light source. If you need the light to be visible from further away, or during the day, you can increase the intensity.
 
-The distance at which the light is visible is the square root of the intensity value.
+The distance at which the light is visible is the fourth root of the intensity value (`intensity^0.25`).
 
-* At an intensity of 100, the light is visible up to around 10 meters away.
-* At an intensity of 1000, the light is visible up to around 31 meters away.
-* At an intensity of 10000, the light is visible up to around 100 meters away.
+* At an intensity of 625, the light is visible up to around 5 meters away.
+* At an intensity of 10000, the light is visible up to around 10 meters away.
+* At an intensity of 160000, the light is visible up to around 20 meters away.
 
 ## Shadows
 
@@ -140,29 +140,31 @@ LightSource.create(light, {
       innerAngle: 30,
       outerAngle: 60
     }),
-	shadow: true
+	shadow: true,
+	active: true
 })
 
-const switch = engine.addEntity()
+const lightSwitch = engine.addEntity()
 
-Transform.create(switch, {
+Transform.create(lightSwitch, {
   position: Vector3.create(8, 1, 10),
 })
 
-MeshRenderer.setBox(switch, {})
+MeshRenderer.setBox(lightSwitch)
 
-MeshCollider.setBox(switch, {})
+MeshCollider.setBox(lightSwitch)
 
 pointerEventsSystem.onPointerDown(
 	{
-		entity: switch,
+		entity: lightSwitch,
 		opts: {
 			button: InputAction.IA_POINTER,
 			hoverText: 'Click',
 		},
 	},
 	function () {
-		LightSource.getMutable(light).active = !LightSource.getMutable(light).active
+		const lightSource = LightSource.getMutable(light)
+		lightSource.active = !lightSource.active
 	}
 )
 ```
@@ -181,12 +183,13 @@ If there are more lights than allowed, the engine will automatically disable lig
 
 In all cases, the engine will only render shadows for up to 3 light sources. If there are more lights with shadows than 3, the engine will automatically disable shadows for the remaining lights that are further away.
 
-Besides the maximum number of allowed lights, shadows also depend on distance from the player.
+Besides the maximum number of allowed lights, shadows also depend on distance from the player. The exact distances vary with the light type and the player's quality settings, but as a general rule:
 
-* Less than 10 meter away: Shadows are rendered as soft shadows (high quality)
+* Less than 10 meters away: Shadows are rendered as soft shadows (high quality)
 * Between 10 and 20 meters away: Shadows are rendered as hard shadows (low quality)
-* Between 20 and 40 meters away: Shadows aren't rendered
-* More than 40 meters away: Light sources are not rendered at all
+* More than 20 meters away: Shadows aren't rendered
+
+The light sources themselves keep illuminating the scene at much larger distances: they are only disabled when the player is more than 160 meters away (10 parcels). This makes lights suitable for large-scale setups like stage lighting at live events, where most of the audience is far from the light sources.
 
 It's also important to note that lights are only rendered if the player is standing inside the scene. If the player is outside the scene, the lights will not be rendered.
 
@@ -194,9 +197,11 @@ It's also important to note that lights are only rendered if the player is stand
 
 The lightSource component has a `range` property that can be used to set the maximum distance at which the light is visible. By default, the value of the `range` property is -1, which means that the light range depends on the intensity of the light.
 
-* At an intensity of 16000, the range is 10 meters.
-* At an intensity of 160000, the range is 31 meters.
-* At an intensity of 1600000, the range is 100 meters.
+The range is calculated as the fourth root of the intensity value (`intensity^0.25`).
+
+* At an intensity of 16000, the range is around 11 meters.
+* At an intensity of 160000, the range is around 20 meters.
+* At an intensity of 1600000, the range is around 36 meters.
 
 The default setting ensures that the dropoff curve is smooth and looks natural. But in case you want to limit the range of the light, you can set the `range` property to a positive number.
 

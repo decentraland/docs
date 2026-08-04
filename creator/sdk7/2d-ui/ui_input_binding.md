@@ -71,5 +71,5 @@ Pair this with [`TouchScreenControls`](../interactivity/touch-screen-controls.md
 
 * [On-screen Controls](../interactivity/touch-screen-controls.md)
 * [UI Button Events](ui_button_events.md)
-* [Input on mobile](../building-for-mobile/input-on-mobile.md)
+* [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md)
 * [Click events](../interactivity/button-events/click-events.md)

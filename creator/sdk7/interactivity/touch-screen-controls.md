@@ -135,7 +135,7 @@ Each `touchInputs` entry has:
 
 ## Which actions map to which buttons
 
-The [`InputAction`](button-events/click-events.md#pointer-buttons) values here are the same ones used across [Input on mobile](../building-for-mobile/input-on-mobile.md) and [Click events](button-events/click-events.md). These are the actions that map to on-screen buttons:
+The [`InputAction`](button-events/click-events.md#pointer-buttons) values here are the same ones used across [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md) and [Click events](button-events/click-events.md). These are the actions that map to on-screen buttons:
 
 | InputAction | On-screen button |
 | --- | --- |
@@ -179,6 +179,6 @@ To replace the native controls entirely, hide them here and build your own touch
 ## Related
 
 * [UI Input Binding](../2d-ui/ui_input_binding.md)
-* [Input on mobile](../building-for-mobile/input-on-mobile.md)
+* [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md)
 * [Click events](button-events/click-events.md)
-* [Detect the platform from code](../building-for-mobile/detect-platform.md)
+* [Detect the platform from code](../../build-for-mobile/develop/detect-platform.md)

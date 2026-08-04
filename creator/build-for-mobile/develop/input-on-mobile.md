@@ -8,7 +8,7 @@ Decentraland's input system is designed to be device-agnostic. The same `InputAc
 
 For the full input model, see [Click events](../../sdk7/interactivity/button-events/click-events.md). This page focuses on what is mobile-specific.
 
-<figure><img src="../../images/touch-controls/touch-controls-default.jpg" alt="Default on-screen controls"><figcaption><p>The default on-screen controls</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/full-input.png" alt="The on-screen controls with the + menu expanded, showing every input button"><figcaption><p>The on-screen controls with the "+" menu expanded — every input action visible</p></figcaption></figure>
 
 ## What touch maps to
 

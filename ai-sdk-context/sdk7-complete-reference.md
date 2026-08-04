@@ -875,6 +875,24 @@ AudioSource.create(entity, {
 const audio = AudioSource.getMutable(entity)
 audio.playing = true
 audio.volume = 0.5
+
+// Detect when a non-looping sound finishes: the engine flips `playing` back to false.
+// Poll with the READ-ONLY getter (getMutable would dirty the component every frame).
+let wasPlaying = false
+engine.addSystem(() => {
+	const isPlaying = AudioSource.get(entity).playing ?? false
+	if (wasPlaying && !isPlaying) console.log('sound finished')
+	wasPlaying = isPlaying
+})
+
+// Or react to playback state changes (works for AudioSource and AudioStream entities)
+import { audioEventsSystem, MediaState } from '@dcl/sdk/ecs'
+audioEventsSystem.registerAudioEventsEntity(entity, (audioEvent) => {
+	// MS_PLAYING -> MS_READY means the sound stopped; MS_ERROR means the file failed to load
+	if (audioEvent.state === MediaState.MS_READY) console.log('sound stopped')
+})
+const latestAudioEvent = audioEventsSystem.getAudioState(entity) // last reported state
+audioEventsSystem.removeAudioEventsEntity(entity) // unregister
 ```
 
 #### Audio Streaming
@@ -957,6 +975,20 @@ Animator.create(entity, {
 // Control animation
 const animator = Animator.getMutable(entity)
 animator.states[0].playing = false
+
+// Detect when a non-looping animation finishes: the engine flips that state's
+// `playing` back to false. Poll with the READ-ONLY Animator.get() (Animator.getClip /
+// getMutable would dirty the component every frame).
+let wasPlaying = false
+engine.addSystem(() => {
+	const state = Animator.get(entity).states.find((s) => s.clip === 'Bite')
+	const isPlaying = state?.playing ?? false
+	if (wasPlaying && !isPlaying) {
+		console.log('animation finished')
+		Animator.playSingleAnimation(entity, 'Walk') // chain the next animation
+	}
+	wasPlaying = isPlaying
+})
 ```
 
 ### Lights
@@ -1088,11 +1120,27 @@ triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
 
 // Optional `mask` (both functions): play the animation on only part of the body
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
+
+// Detect emote lifecycle (started / finished / interrupted) — works for scene-triggered
+// emotes, emotes the player plays via the emote wheel, and other players' emotes
+import { AvatarEmoteCommand, EmoteState } from '@dcl/sdk/ecs'
+AvatarEmoteCommand.onChange(engine.PlayerEntity, (emote) => {
+	if (!emote) return
+	switch (emote.state ?? EmoteState.ES_STARTED) {
+		case EmoteState.ES_STARTED: // emote started (also when field absent, on older clients)
+			break
+		case EmoteState.ES_FINISHED: // non-looping emote played to its natural end
+			break
+		case EmoteState.ES_INTERRUPTED: // cut short: movement, teleport, another emote, stop, or scene exit
+			break
+	}
+})
 ```
 
 Notes:
 
 - Plays only while the player is still; walking/jumping interrupts.
+- Masked (partial-body) emotes on the local player don't report lifecycle events.
 
 #### Cursor State
 

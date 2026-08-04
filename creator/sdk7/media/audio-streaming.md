@@ -88,6 +88,19 @@ export function main() {
 }
 ```
 
+Instead of polling the state with a system, you can also use `audioEventsSystem.registerAudioEventsEntity` to run a callback function every time the stream's state changes. This is the same system that handles state changes for `AudioSource` sounds, see [Detect when a sound finishes](../3d-essentials/sounds.md#detect-when-a-sound-finishes).
+
+```ts
+import { audioEventsSystem, MediaState } from '@dcl/sdk/ecs'
+
+audioEventsSystem.registerAudioEventsEntity(entity, (audioEvent) => {
+	console.log('Stream state: ', audioEvent.state)
+	if (audioEvent.state == MediaState.MS_ERROR) {
+		// Attempt reconnection
+	}
+})
+```
+
 ## Spatial audio
 
 By default, the audio from an `AudioStream` component is global, meaning it will be heard at a consistent volume throughout your entire scene. If a player steps out of the scene, they will not hear the streaming at all.

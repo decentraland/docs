@@ -241,6 +241,44 @@ pointerEventsSystem.onPointerDown(
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](#freeze-the-player) for the duration of the avatar animation.
 {% endhint %}
 
+### Detect when an emote finishes
+
+Every emote lifecycle event is reported through the `AvatarEmoteCommand` component on the player entity. Each new entry carries a `state` field, with a value from the `EmoteState` enum:
+
+* `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent (entries written by older clients).
+* `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
+* `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
+
+This works for emotes triggered by the scene (`triggerEmote()` and `triggerSceneEmote()`) as well as emotes the player plays themselves through the emote wheel, and also for emotes played by other players in the scene.
+
+Use the `onChange` function on the `AvatarEmoteCommand` component to react to each new entry:
+
+```ts
+import { AvatarEmoteCommand, EmoteState } from '@dcl/sdk/ecs'
+
+export function main() {
+	AvatarEmoteCommand.onChange(engine.PlayerEntity, (emote) => {
+		if (!emote) return
+
+		switch (emote.state ?? EmoteState.ES_STARTED) {
+			case EmoteState.ES_STARTED:
+				console.log('emote started: ', emote.emoteUrn)
+				break
+			case EmoteState.ES_FINISHED:
+				console.log('emote finished naturally: ', emote.emoteUrn)
+				break
+			case EmoteState.ES_INTERRUPTED:
+				console.log('emote was interrupted: ', emote.emoteUrn)
+				break
+		}
+	})
+}
+```
+
+{% hint style="warning" %}
+**📔 Note**: This feature is only supported in the DCL 2.0 desktop client. Emotes played with a `mask` (partial-body emotes) on the local player don't currently report lifecycle events.
+{% endhint %}
+
 ## Restrict locomotion
 
 You can restrict what actions the player can perform in your scene. Use this to freeze the player, or to restrict specific forms of locomotion, for example to prevent the player from jumping or running.

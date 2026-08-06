@@ -9,7 +9,7 @@ description: How to publish my project?
 Make sure of the following:
 
 * Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
-* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../building-for-mobile/) and [Preview on mobile](../building-for-mobile/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
+* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../../build-for-mobile/mobile-client/) and [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 *   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 

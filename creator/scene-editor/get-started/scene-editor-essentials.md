@@ -26,7 +26,7 @@ To find your way around the Scene Editor:
 
 ## Preview on mobile
 
-The dropdown next to the **Preview** button has a **Show QR Code for Mobile** option. Scan the QR code with a phone on the same Wi-Fi network to open your scene in the [Decentraland mobile app](../../sdk7/building-for-mobile/). This is the recommended way to validate UI, controls, and performance for mobile players. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md) for the full guide.
+The dropdown next to the **Preview** button has a **Show QR Code for Mobile** option. Scan the QR code with a phone on the same Wi-Fi network to open your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/). This is the recommended way to validate UI, controls, and performance for mobile players. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for the full guide.
 
 ## Set the Ground
 

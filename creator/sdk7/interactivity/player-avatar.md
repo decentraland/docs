@@ -142,7 +142,7 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with the following properties as an argument:
 
 * `predefinedEmote`: A string name for an existing emote.
-* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -216,7 +216,7 @@ This function takes an object with the following properties:
 
 * `src`: A string with a path to the emote file.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
-* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
@@ -240,6 +240,43 @@ pointerEventsSystem.onPointerDown(
 {% hint style="info" %}
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](#freeze-the-player) for the duration of the avatar animation.
 {% endhint %}
+
+### Animate only the upper body
+
+Both `triggerEmote()` and `triggerSceneEmote()` accept an optional `mask` property, that limits the animation to only part of the avatar's body.
+
+Normally, an animation stops as soon as the player walks or jumps, because the default locomotion animations take over the whole body. When you set `mask` to `AvatarMask.AM_UPPER_BODY`, the animation only drives the avatar from the waist up, and the legs remain controlled by the default locomotion animations. This means the player can keep walking or running around the scene while the upper body plays your animation. Use this for actions that shouldn't interrupt movement, like carrying a crate, holding a torch, or juggling.
+
+```ts
+import { triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
+
+const cheerButton = engine.addEntity()
+Transform.create(cheerButton, { position: Vector3.create(8, 0, 8) })
+MeshRenderer.setBox(cheerButton)
+MeshCollider.setBox(cheerButton)
+pointerEventsSystem.onPointerDown(
+	{
+		entity: cheerButton,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Cheer' },
+	},
+	() => {
+		triggerSceneEmote({
+			src: 'animations/Cheer_emote.glb',
+			loop: true,
+			mask: AvatarMask.AM_UPPER_BODY,
+		})
+	}
+)
+```
+
+In this example, the player clicks a button and starts cheering with their arms in the air, in a looping animation. Since only the upper body is animated, they can keep running around the scene while they cheer, for example to follow the action in a race or a football match.
+
+Some things to keep in mind:
+
+* `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
+* The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
+* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
 
 ## Restrict locomotion
 

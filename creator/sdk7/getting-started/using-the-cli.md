@@ -57,7 +57,7 @@ Run `npm run start` on the root level of a scene, workspace, or smart wearable p
 npm run start
 ```
 
-To preview your scene on the [Decentraland mobile app](../../build-for-mobile/mobile-client/) instead, run `npm run start -- --mobile` (alias `-- -m`). The CLI prints a QR code that opens the scene on a phone connected to the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for the full guide.
+To preview your scene on the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md) instead, run `npm run start -- --mobile` (alias `-- -m`). The CLI prints a QR code that opens the scene on a phone connected to the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for the full guide.
 
 ```bash
 npm run start -- --mobile

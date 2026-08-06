@@ -23,7 +23,7 @@ The default Decentraland explorer UI includes a chat widget, a map, and other el
 See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to design the look and feel of your UI.
 
 {% hint style="info" %}
-**📱 Designing for mobile**: The [mobile client](../../build-for-mobile/mobile-client/) reserves the left side, the top-right, and the bottom-right of the screen for system controls (joystick, chat, profile, camera, interaction button). Scene UI in those regions will clash with the controls. Before publishing, review the [Mobile safe area](../../build-for-mobile/develop/safe-area.md) and the [UI best practices for mobile](../../build-for-mobile/develop/ui-best-practices.md).
+**📱 Designing for mobile**: The [mobile client](../../build-for-mobile/mobile-client/overview.md) reserves the left side, the top-right, and the bottom-right of the screen for system controls (joystick, chat, profile, camera, interaction button). Scene UI in those regions will clash with the controls. Before publishing, review the [Mobile safe area](../../build-for-mobile/develop/safe-area.md) and the [UI best practices for mobile](../../build-for-mobile/develop/ui-best-practices.md).
 {% endhint %}
 
 {% hint style="info" %}

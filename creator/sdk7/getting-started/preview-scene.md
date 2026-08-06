@@ -20,10 +20,10 @@ Configure different preview options from the dropdown menu next to the **Preview
 - **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
 - **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 - **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
-- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 
 {% hint style="info" %}
-**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../../build-for-mobile/mobile-client/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../../build-for-mobile/mobile-client/) for the full guide.
+**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../../build-for-mobile/mobile-client/overview.md) for the full guide.
 {% endhint %}
 
 ## Using the CLI
@@ -49,7 +49,7 @@ Every time you make changes to the scene, the preview reloads and updates automa
 You can add the following flags to the `npm run start` command to change its behavior:
 
 - `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server — when the browser asks to access apps on your device, click "Allow".
-- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
+- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
 - `-- --skip-build` Skip build and only serve the files in preview mode.
 - `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.
 - `-- --no-browser` (alias `-- -b`) to prevent the preview from opening a new browser tab.

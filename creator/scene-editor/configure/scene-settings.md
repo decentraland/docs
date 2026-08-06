@@ -20,17 +20,18 @@ The **Details** tab lets you configure several fields about your scene. These fi
 
 The following fields are available:
 
-* **Name**
-* **Description**
-*   **Thumbnail**
+- **Name**
+- **Description**
+- **Thumbnail**
 
-    {% hint style="info" %} 
-    **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
-    {% endhint %}
-* **Categories**
-* **Creator name** (optional)
-* **Creator contact email** (optional)
-* **Creator wallet address** (optional)
+  {% hint style="info" %}
+  **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image
+  {% endhint %}
+
+- **Categories**
+- **Creator name** (optional)
+- **Creator contact email** (optional)
+- **Creator wallet address** (optional)
 
 The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
 
@@ -40,13 +41,11 @@ See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on 
 **📔 Note**: The scene's **Age Rating** is not edited on this panel. You can set the `rating` field directly in the `scene.json` file, or, for scenes published to a World, change the **Content Rating** in the Creator Hub's World Settings after publishing. Decentraland is an 18+ platform, so the rating to set is `A` for Adults. See [Age Rating](../../sdk7/projects/scene-metadata.md#age-rating).
 {% endhint %}
 
-
 ### Tipping
 
 You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
 
 ![](../../.gitbook/assets/creator-wallet-address.png)
-
 
 When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
 
@@ -56,8 +55,11 @@ The tip modal allows the player to select the amount of MANA they want to send. 
 
 ![](../../.gitbook/assets/tipping-modal.png)
 
-
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
+
+{% hint style="info" %}
+**💡 Tip**: You can also make tipping more discoverable by adding 3D content that invites players to tip, like a tip jar or a donation sign, and using [`openExplorerUi()`](../../sdk7/interactivity/external-links.md#open-explorer-ui-panels) so that clicking it opens the tipping UI.
+{% endhint %}
 
 ## Layout
 
@@ -99,9 +101,9 @@ You can disable certain functionalities on your scene if you chose, in case they
 
 ![](../../images/editor/scene-restrictions.png)
 
-* **Silence Voice Chat**: Prevent players on your scene from using voice chat.
-* **Disable Nearby Voice Chat**: Prevent players on your scene from using the nearby (proximity-based) voice chat.
-* **Disable Smart Wearables & Portable Experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
+- **Silence Voice Chat**: Prevent players on your scene from using voice chat.
+- **Disable Nearby Voice Chat**: Prevent players on your scene from using the nearby (proximity-based) voice chat.
+- **Disable Smart Wearables & Portable Experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
 ## Skybox Control
 

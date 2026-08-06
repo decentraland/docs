@@ -48,7 +48,6 @@ The player will spawn in one of the spawn points of the scene in that world, reg
 
 To send a player back to Genesis City from a world, use `changeRealm` setting the `realm` field to _'https://realm-provider-ea.decentraland.org/main'_.
 
-
 ## External links
 
 To add a link to an external website, use the `openExternalUrl()` command.
@@ -67,7 +66,6 @@ The link is opened in a new tab, keeping the original tab in Decentraland.
 
 If players tick the _trust this domain_ checkbox, they won't be prompted again during their session, as long as the link comes from the same scene and is to the same domain.
 
-
 ## Open Explorer UI panels
 
 Use `openExplorerUi()` to open one of the Explorer's built-in fullscreen panels (the map, settings, backpack, and others) from your scene. The player must trigger the action with an explicit click or button event, the same as `openExternalUrl`.
@@ -81,25 +79,25 @@ const result = await openExplorerUi({ ui: 1 })
 
 The `ui` field selects which panel to open. Use the `ExplorerUi` values from `~system/RestrictedActions`:
 
-| Value | Name | Panel |
-|---|---|---|
-| 0 | `EU_SETTINGS` | Settings |
-| 1 | `EU_MAP` | Map |
-| 2 | `EU_BACKPACK` | Backpack |
-| 3 | `EU_CAMERA_REEL` | Camera Reel |
-| 4 | `EU_COMMUNITIES` | Communities |
-| 5 | `EU_PLACES` | Places |
-| 6 | `EU_EVENTS` | Events |
+| Value | Name             | Panel       |
+| ----- | ---------------- | ----------- |
+| 0     | `EU_SETTINGS`    | Settings    |
+| 1     | `EU_MAP`         | Map         |
+| 2     | `EU_BACKPACK`    | Backpack    |
+| 3     | `EU_CAMERA_REEL` | Camera Reel |
+| 4     | `EU_COMMUNITIES` | Communities |
+| 5     | `EU_PLACES`      | Places      |
+| 6     | `EU_EVENTS`      | Events      |
 
 The function returns a promise with an `openResult` field that tells you what happened:
 
-| Result | Meaning |
-|---|---|
-| `OPENED` | The panel was opened successfully. |
-| `WAS_ALREADY_OPEN` | A fullscreen panel was already open. |
-| `REJECTED_NOT_CURRENT_SCENE` | The player is no longer in the scene that made the request. |
-| `REJECTED_FEATURE_DISABLED` | The requested panel is disabled or unavailable in this client. |
-| `REJECTED_NO_USER_GESTURE` | The call did not come from a user gesture (click or button event). |
+| Result                       | Meaning                                                            |
+| ---------------------------- | ------------------------------------------------------------------ |
+| `OPENED`                     | The panel was opened successfully.                                 |
+| `WAS_ALREADY_OPEN`           | A fullscreen panel was already open.                               |
+| `REJECTED_NOT_CURRENT_SCENE` | The player is no longer in the scene that made the request.        |
+| `REJECTED_FEATURE_DISABLED`  | The requested panel is disabled or unavailable in this client.     |
+| `REJECTED_NO_USER_GESTURE`   | The call did not come from a user gesture (click or button event). |
 
 Here is a full example that opens the map when a player clicks a cube:
 
@@ -129,6 +127,15 @@ pointerEventsSystem.onPointerDown(
 {% hint style="warning" %}
 **Note:** Like other restricted actions, `openExplorerUi` can only be called from an explicit user gesture (a click or button event). Calling it from a timer, collision area, or any other trigger will be rejected.
 {% endhint %}
+
+### Practical uses
+
+Opening Explorer panels directly from your scene's content removes friction for players who might not know where to find these menus. Some ideas:
+
+- **Tipping**: If your scene has [tipping enabled](../projects/scene-metadata.md#tipping), place a tip jar or donation sign as clickable 3D content that UI.
+- **Performance settings**: If your scene detects that the player is running at a low frame rate, show a UI prompt suggesting they lower their graphics settings, with a button that opens the settings panel. See [performance optimization](../optimizing/performance-optimization.md#help-players-adjust-their-settings).
+- **Onboarding**: If your experience relies on wearables or emotes, add a mirror or wardrobe that opens the backpack panel so players can equip them without leaving the flow of your scene.
+- **Photo opportunities**: Next to a scenic photo spot, add a sign that opens the camera reel panel so players can review the pictures they've taken.
 
 ## Copy to clipboard
 

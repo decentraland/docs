@@ -221,10 +221,6 @@ Break complex requests into steps:
 2. "Add a counter that increases when the player clicks the target"
 3. "Display the counter value on the scoreboard"
 
-### Ask for one thing at a time
-
-> "Add background music that loops, but keep the file size under 1 MB"
-
 ### Iterate and refine
 
 After each change:

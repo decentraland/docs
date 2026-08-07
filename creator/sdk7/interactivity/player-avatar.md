@@ -249,7 +249,16 @@ Normally, an animation stops as soon as the player walks or jumps, because the d
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
-import { AvatarMask } from '@dcl/sdk/ecs'
+import {
+	engine,
+	AvatarMask,
+	InputAction,
+	MeshCollider,
+	MeshRenderer,
+	pointerEventsSystem,
+	Transform,
+} from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
 
 const cheerButton = engine.addEntity()
 Transform.create(cheerButton, { position: Vector3.create(8, 0, 8) })

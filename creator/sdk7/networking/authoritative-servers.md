@@ -491,7 +491,7 @@ During local development, storage is written to `node_modules/@dcl/sdk-commands/
 Storage is durable persistence for data that must survive server restarts and redeploys. It is not a live datastore. Keep your working game state in memory on the server. That's faster and it's the right pattern for a server. Write to Storage only when you really need to, at meaningful checkpoints.
 
 {% hint style="warning" %}
-**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across *everything* the scene asks the runtime to do: every storage request, `signedFetch`, and other runtime APIs all count against the same limit. Excess calls are **not queued**. They reject immediately with a `too many concurrent host calls` error. The SDK catches the rejection and resolves the `Storage.set` promise to `false` instead of throwing. If your code discards that boolean, the failed save is invisible, and your persisted data ends up stale or lost. Check the result of every write (see the Note above).
+**⚠️ Warning**: The server runtime allows a maximum of **40 in-flight host calls** at once, shared across _everything_ the scene asks the runtime to do: every storage request, `signedFetch`, and other runtime APIs all count against the same limit. Excess calls are **not queued**. They reject immediately with a `too many concurrent host calls` error. The SDK catches the rejection and resolves the `Storage.set` promise to `false` instead of throwing. If your code discards that boolean, the failed save is invisible, and your persisted data ends up stale or lost. Check the result of every write (see the Note above).
 {% endhint %}
 
 Good moments to persist:
@@ -917,7 +917,7 @@ Each connected peer can send up to approximately **300 messages per 1,000 ms**. 
 
 ### External fetch
 
-Concurrent `signedFetch` calls are capped at **32** in-flight. Additional fetches queue until a slot opens. Each fetch attempt has a **15-second** timeout with up to **2** retries.
+Concurrent `signedFetch` calls are capped at **32** in-flight. Additional fetches queue until a slot opens. Each fetch attempt has a **15-second** timeout. Fetch responses are capped at **10 MB**. WebSocket connections are limited to **32** concurrent sockets, with a maximum message size of **1 MB** per message.
 
 ### In-flight host calls
 
@@ -978,9 +978,13 @@ engine.addSystem(() => {
 
 ### Wait for the server to start up
 
-The server is only active if there's at least one player present in the scene. If nobody's currently there, the server shuts down after a few minutes.
+The server is only active while at least one player is in the scene. After the last player leaves, the server stays up for roughly two minutes, then shuts down. The next visit cold-starts a fresh instance, which takes approximately **15 seconds in production**. Local preview starts the server instantly, so cold-start issues almost always surface only after publishing.
 
-When a first player comes into the scene after a while of inactivity, the server takes a few seconds to start up. Your scene's code should be prepared to have to wait for the server to be online. Initial requests to the server should have catch and retry mechanisms to provide resilience.
+Your scene's code should be prepared to wait for the server to come online. Messages sent before the server finishes starting are silently lost. Show a "server waking up" message to the player while waiting, and add retry logic to initial server requests.
+
+{% hint style="info" %}
+**Tip:** A reliable way to detect server readiness is a heartbeat: have the server write `Date.now()` to a synced component field every 2 seconds, and have the client track when it last saw the value change. If no change arrives within 6 seconds, treat the server as offline. This is more robust than `isStateSyncronized()`, which only confirms the transport is connected, not that the server is running.
+{% endhint %}
 
 ## Complete Example
 

@@ -52,18 +52,18 @@ You can add categories to your scene to help players explore Decentraland. These
 
 **Categories** need to be chosen from a pre-defined list of options:
 
-* 🎨 Art
-* 🕹️ Game
-* 🃏 Casino
-* 👥 Social
-* 🎶 Music
-* 👠 Fashion
-* 🪙 Crypto
-* 📚 Education
-* 🛍️ Shop
-* 🏢 Business
-* 🏅 Sports
-* 🏃 Parkour
+- 🎨 Art
+- 🕹️ Game
+- 🃏 Casino
+- 👥 Social
+- 🎶 Music
+- 👠 Fashion
+- 🪙 Crypto
+- 📚 Education
+- 🛍️ Shop
+- 🏢 Business
+- 🏅 Sports
+- 🏃 Parkour
 
 A scene can belong to more than one category, with a maximum of 3 listed categories.
 
@@ -71,18 +71,18 @@ In the `scene.json` categories are listed in the `tags` array.
 
 These are the predefined categories:
 
-* `art`
-* `game`
-* `casino`
-* `social`
-* `music`
-* `fashion`
-* `crypto`
-* `education`
-* `shop`
-* `business`
-* `sports`
-* `parkour`
+- `art`
+- `game`
+- `casino`
+- `social`
+- `music`
+- `fashion`
+- `crypto`
+- `education`
+- `shop`
+- `business`
+- `sports`
+- `parkour`
 
 For example, a scene could be tagged as `game` and `casino` by adding the following to the `scene.json`
 
@@ -99,7 +99,7 @@ After that, the scene is listed on the Places dApp under the `game` and `casino`
 
 The **Age Rating** field is used to classify the content of your scene. Decentraland is an 18+ platform. The following option is available:
 
-* **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
+- **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
 
 When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults. The `rating` field goes at the root level of the json tree.
 
@@ -113,13 +113,13 @@ When editing the Age Rating via the `scene.json`, rating is a **single-letter co
 
 There is a third category for scenes: 🔴 `R` for Restricted. This rating is manually applied by Content Moderators to scenes that violate Decentraland's [Content Policy](https://decentraland.org/content). Violations may include, but are not limited to:
 
-* Suspicious content or spam
-* Abusive or hateful content
-* Sexual or degrading content
-* Child abuse
-* Harassment or bullying
-* Promotion of terrorism/violence
-* IP/Copyright infringement
+- Suspicious content or spam
+- Abusive or hateful content
+- Sexual or degrading content
+- Child abuse
+- Harassment or bullying
+- Promotion of terrorism/violence
+- IP/Copyright infringement
 
 Scenes with this rating won't load and no one will be able to interact with them. If your scene falls into this category, you should review and update it to comply with the [Content Policy](https://decentraland.org/content).
 
@@ -131,8 +131,8 @@ There are certain features that can be disabled in specific scenes so that playe
 
 Currently, only the following feature is handled like this:
 
-* **Voice Chat**: Refers to players using their microphones to have conversations over voice chat with other nearby players.
-* **Disable Portable Experiences**: This setting will set the behavior for any portable experience of a player while standing inside your scene. This includes not only [portable experiences](../projects/portable-experiences.md) but also [smart wearables](../projects/smart-wearables.md). With this setting, you can chose to either keep them all enabled (default), disable them, or hide their UI. This is useful for scenes where portable experiences might give an unfair advantage to some players, for example using a jetpack in a parkour challenge. It's also recommended to prevent these in scenes where blockchain transactions take place, and where a malicious portable experience could potentially impersonate the scene´s UI.
+- **Voice Chat**: Refers to players using their microphones to have conversations over voice chat with other nearby players.
+- **Disable Portable Experiences**: This setting will set the behavior for any portable experience of a player while standing inside your scene. This includes not only [portable experiences](../projects/portable-experiences.md) but also [smart wearables](../projects/smart-wearables.md). With this setting, you can chose to either keep them all enabled (default), disable them, or hide their UI. This is useful for scenes where portable experiences might give an unfair advantage to some players, for example using a jetpack in a parkour challenge. It's also recommended to prevent these in scenes where blockchain transactions take place, and where a malicious portable experience could potentially impersonate the scene´s UI.
 
 On the `scene.json` file, these toggles are managed under `featureToggles`. The corresponding features are enabled by default, unless specified as _disabled_ in the `scene.json` file.
 
@@ -151,7 +151,6 @@ You can receive tips from players who visit your scene. To enable tipping, got t
 
 ![](../../.gitbook/assets/creator-wallet-address.png)
 
-
 You can also provide your scene's tipping address on the `scene.json` file, under the `creator` field.
 
 ```json
@@ -166,8 +165,11 @@ The tip modal allows the player to select the amount of MANA they want to send. 
 
 ![](../../.gitbook/assets/tipping-modal.png)
 
-
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
+
+{% hint style="info" %}
+**💡 Tip**: You can make tipping more discoverable by adding 3D content to your scene that invites players to tip, like a tip jar on a bar counter or a donation sign. Use [`openExplorerUi()`](../interactivity/external-links.md#open-explorer-ui-panels) so that clicking it opens the tipping UI.
+{% endhint %}
 
 ## Spawn location
 
@@ -342,13 +344,13 @@ These features are blocked from use in the scene unless the permission is reques
 
 The following permissions can be requested:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
-* `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
-* `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
-* `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
-* `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
-* `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
+- `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
+- `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
+- `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
+- `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
+- `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
+- `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
+- `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
@@ -480,11 +482,11 @@ The number refers to the number of seconds since the start of the day, ranging f
 
 Here are some more examples of valid values:
 
-* 0 seconds => _00:00_
-* 21600 seconds => _06:00_
-* 43200 seconds => _12:00_
-* 64800 seconds => _18:00_
-* 86400 seconds => _24:00_
+- 0 seconds => _00:00_
+- 21600 seconds => _06:00_
+- 43200 seconds => _12:00_
+- 64800 seconds => _18:00_
+- 86400 seconds => _24:00_
 
 ## Landscape terrain
 
@@ -521,7 +523,6 @@ To publish to a World, you must specify the NAME or ENS domain in your `scene.js
 ```
 
 The **name** specified can be either a Decentraland NAME or an ENS Domain and must be owned by the wallet signing the deployment (or by any wallet that has been given permission via Access Control Lists).
-
 
 ### Communication service configuration
 
@@ -604,10 +605,10 @@ executeTask(async () => {
 
 The object returned by `getSceneInformation()` includes the following:
 
-* `baseUrl`: The base URL where the scene's content is hosted
-* `content`: An array with all the files of the scene, including their hash, that can be used together with the baseUrl to retrieve them.
-* `metadataJson`: The full contents of the scene's scene.json, as a string. You must parse this to obtain specific values.
-* `urn`: The unique urn for the scene as a whole.
+- `baseUrl`: The base URL where the scene's content is hosted
+- `content`: An array with all the files of the scene, including their hash, that can be used together with the baseUrl to retrieve them.
+- `metadataJson`: The full contents of the scene's scene.json, as a string. You must parse this to obtain specific values.
+- `urn`: The unique urn for the scene as a whole.
 
 The example below parses the contents from `metadataJson` to obtain values from properties in the scene.json file
 

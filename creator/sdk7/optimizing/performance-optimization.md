@@ -193,3 +193,60 @@ Keep in mind that the performance you experience in preview may differ from that
 It's always a good practice to try deploying your scene first to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to do some more thorough testing.
 
 Always ask players for feedback. Never take for granted that how you experience the scene is the same for everyone else.
+
+## Help players adjust their settings
+
+Even a well optimized scene can run poorly on low-end hardware, or when the player has their graphics settings set too high for their machine. You can help these players by detecting a low frame rate from your scene's code and showing a UI tip that recommends lowering their graphics settings, with a button that opens the Explorer's settings panel directly via [`openExplorerUi()`](../interactivity/external-links.md#open-explorer-ui-panels).
+
+Your scene can estimate the frame rate by counting how many times a system runs over a period of time. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel, this click counts as the user gesture that `openExplorerUi()` requires.
+
+```tsx
+import { engine } from '@dcl/sdk/ecs'
+import { openExplorerUi } from '~system/RestrictedActions'
+import ReactEcs, { Button, Label, ReactEcsRenderer, UiEntity } from '@dcl/sdk/react-ecs'
+
+let showSettingsTip = false
+
+// Estimate the average FPS over 5 second intervals
+let elapsed = 0
+let frames = 0
+engine.addSystem((dt: number) => {
+  elapsed += dt
+  frames += 1
+  if (elapsed >= 5) {
+    if (frames / elapsed < 20) {
+      showSettingsTip = true
+    }
+    elapsed = 0
+    frames = 0
+  }
+})
+
+ReactEcsRenderer.setUiRenderer(() => (
+  <UiEntity
+    uiTransform={{
+      display: showSettingsTip ? 'flex' : 'none',
+      flexDirection: 'column',
+      positionType: 'absolute',
+      position: { top: 40, right: 40 },
+      padding: 10,
+    }}
+    uiBackground={{ color: { r: 0, g: 0, b: 0, a: 0.8 } }}
+  >
+    <Label value="Running slow? Try lowering your graphics settings." fontSize={16} />
+    <Button
+      value="Open Settings"
+      fontSize={16}
+      uiTransform={{ height: 36, margin: { top: 8 } }}
+      onMouseDown={() => {
+        showSettingsTip = false
+        openExplorerUi({ ui: 0 }) // 0 = Settings panel
+      }}
+    />
+  </UiEntity>
+))
+```
+
+{% hint style="info" %}
+**💡 Tip**: Only show this kind of prompt once, and let players dismiss it. A recurring popup on a machine that's already struggling only makes the experience worse.
+{% endhint %}

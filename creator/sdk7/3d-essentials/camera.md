@@ -165,6 +165,18 @@ function main() {
 }
 ```
 
+## Field of View
+
+You can set a custom field of view (FOV) on a virtual camera with the `fov` property. The value is in degrees. If omitted, it defaults to 60.
+
+```ts
+VirtualCamera.create(myCustomCamera, {
+	fov: 90,
+})
+```
+
+A wider FOV (higher value) shows more of the scene at once and creates a sense of speed, which can be useful for racing games. A narrower FOV (lower value) zooms in and is useful for aiming or cinematic shots.
+
 ## Camera Transitions
 
 Whenever the scene switches between virtual cameras, or between the default camera behavior and virtual cameras, players see a transition. The position, rotation and any other parameters of the virtual camera change smoothly over a period time.

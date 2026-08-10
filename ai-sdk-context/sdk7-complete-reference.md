@@ -1679,7 +1679,8 @@ uiText={{
   color: Color4.White(),
   textAlign: 'middle-center',  // 'top-left', 'top-center', 'top-right', etc.
   font: 'serif',               // 'sans-serif', 'serif', 'monospace'
-  fontWeight: 'bold'           // 'normal', 'bold'
+  fontWeight: 'bold',          // 'normal', 'bold'
+  textWrap: 'wrap'             // 'wrap' (default), 'nowrap'
 }}
 
 // Rich text with line breaks

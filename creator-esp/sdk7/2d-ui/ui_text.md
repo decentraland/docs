@@ -21,7 +21,7 @@ Una entidad `Label` tiene los siguientes campos que pueden configurarse:
   * `sans-serif` _(predeterminado)_
   * `monospace`
 * `textAlign`: Cómo se alineará el texto con su padre. Toma un valor del tipo `TextAlingType`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-* `textWrap`: Si el texto usa saltos de línea para asegurar que todo se ajuste en el ancho máximo permitido. Puede tomar las cadenas `'wrap'` (predeterminado) o `'nowrap'`.
+* `textWrap`: Si el texto usa saltos de línea para asegurar que todo se ajuste en el ancho máximo permitido. Está activado por defecto (`'wrap'`), para desactivarlo usa el valor `'nowrap'`.
 
 {% hint style="warning" %}
 **📔 Nota**: El `fontSize` no se ve afectado por el tamaño de su entidad o entidades padre.

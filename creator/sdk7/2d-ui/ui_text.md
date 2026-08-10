@@ -18,7 +18,7 @@ A `Label` entity has the following fields that can be configured:
   * `'sans-serif'` _(default)_
   * `'monospace'`
 * `textAlign`: How the text will align with its parent. It takes a value from the `TextAlignType` type. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-* `textWrap`: Sets if the text uses line-breaks to prevent exceeding the maximum width. When using react-ecs (the `Label` component or the `uiText` prop on `UiEntity`), wrapping is **on by default** (`'wrap'`). If you use the lower-level `UiText` SDK component directly (`UiText.create` / `UiText.createOrReplace`) without setting this field, the engine falls back to no-wrap. For predictable behavior regardless of SDK layer, always set `textWrap` explicitly.
+* `textWrap`: Sets if the text uses line-breaks to prevent exceeding the maximum width. It's on by default (`'wrap'`), to deactivate it pass the value `'nowrap'`.
 
 {% hint style="warning" %}
 **📔 Note**: The `fontSize` is not affected by the size of its entity or parent entities.

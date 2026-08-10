@@ -1680,7 +1680,7 @@ uiText={{
   textAlign: 'middle-center',  // 'top-left', 'top-center', 'top-right', etc.
   font: 'serif',               // 'sans-serif', 'serif', 'monospace'
   fontWeight: 'bold',          // 'normal', 'bold'
-  textWrap: 'wrap'             // 'wrap' (default in react-ecs), 'nowrap'. Raw SDK UiText defaults to no-wrap when field is absent — always set explicitly.
+  textWrap: 'wrap'             // 'wrap' (default), 'nowrap'
 }}
 
 // Rich text with line breaks

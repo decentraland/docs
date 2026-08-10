@@ -138,6 +138,64 @@ This other optional parameter is also available:
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
 
+## Move from the current position
+
+While a tween is active, the engine updates the `Transform` component values of the entity in real time. This means you can read the entity's current position from its `Transform` component at any moment, and use that value as the `start` of a new tween. The entity then moves from wherever it currently is to the target, no matter how it got there.
+
+```ts
+pointerEventsSystem.onPointerDown(
+	{
+		entity: myEntity,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move' },
+	},
+	() => {
+		Tween.setMove(myEntity, 
+			Transform.get(myEntity).position, 
+			Vector3.create(8, 1, 8), 
+			2000,
+			EasingFunction.EF_EASEOUTQUAD
+		)
+	}
+)
+```
+
+{% hint style="warning" %}
+**📔 Note**: Always pass an explicit `start` value. If the `start` parameter is left unset, it's treated as _(0, 0, 0)_, so the entity teleports to the scene origin before moving. Likewise, if you pass a hardcoded `start` that doesn't match the entity's current position, the entity visibly teleports to that position before moving. Read the current position from the entity's `Transform` component, as in the examples in this section, whenever you want the movement to start from where the entity currently is.
+{% endhint %}
+
+### Retarget while traveling
+
+Calling `setMove` (or any of the other tween functions) on an entity that already has a running tween replaces the running tween with the new one. Since the `start` is read from the entity's live position, this redirects the entity smoothly mid-travel: it changes course from wherever it is at that moment, without any jumps.
+
+The example below moves an entity to whichever pad the player clicks. If the player clicks another pad while the entity is still traveling, the entity smoothly changes direction towards the new target.
+
+```ts
+function moveTo(target: Vector3) {
+	Tween.setMove(shipEntity, 
+		Transform.get(shipEntity).position, 
+		target, 
+		2000,
+		EasingFunction.EF_EASEOUTQUAD
+	)
+}
+
+pointerEventsSystem.onPointerDown(
+	{
+		entity: padA,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' },
+	},
+	() => moveTo(Vector3.create(2, 1, 2))
+)
+
+pointerEventsSystem.onPointerDown(
+	{
+		entity: padB,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' },
+	},
+	() => moveTo(Vector3.create(14, 1, 14))
+)
+```
+
 ## Non-linear tweens
 
 Tweens can follow different **Easing Functions** that affect the rate of change over time. A **linear** function, means that the speed of the change is constant from start to finish. There are plenty of options to chose, that draw differently shaped curves depending on if the beginning and/or end start slow, and how much. An **easeinexpo** curve starts slow and ends fast, increasing speed exponentially, on the contrary an **easeoutexpo** curve starts fast and ends slow.

@@ -742,6 +742,27 @@ engine.addSystem(() => {
 })
 ```
 
+#### Move from the current position (retarget mid-travel)
+
+```typescript
+// The engine updates Transform values in real time during a tween, so the
+// entity's live position can be used as the tween's start.
+// Calling this again while a previous tween is still running smoothly
+// RETARGETS the entity mid-travel from its current position.
+Tween.setMove(
+	entity,
+	Transform.get(entity).position, // start from wherever the entity is now
+	Vector3.create(8, 1, 8),
+	2000,
+	EasingFunction.EF_EASEOUTQUAD
+)
+
+// WARNING: omitting `start` does NOT mean "current position" — an unset start
+// is treated as (0,0,0) and teleports the entity to the scene origin. A stale
+// hardcoded `start` also teleports the entity to it before moving. Always pass
+// an explicit start; read it from the Transform when you want "from here".
+```
+
 #### Manual Movement via Systems
 
 ```typescript

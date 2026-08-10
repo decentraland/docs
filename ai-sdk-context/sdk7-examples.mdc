@@ -826,6 +826,30 @@ Tween.setMove(entity,
   EasingFunction.EF_LINEAR
 )
 
+// Move from the CURRENT position (Transform values update in real time during
+// a tween, so the live position works as the start). Calling moveTo() again
+// while a previous tween is still running smoothly retargets mid-travel.
+// WARNING: omitting `start` does NOT mean "current position" — unset start is
+// treated as (0,0,0) and teleports the entity to the scene origin.
+function moveTo(target: Vector3) {
+  Tween.setMove(entity,
+    Transform.get(entity).position,
+    target,
+    2000,
+    EasingFunction.EF_EASEOUTQUAD
+  )
+}
+
+// Click-to-move: clicking a new pad mid-travel redirects the entity smoothly
+pointerEventsSystem.onPointerDown(
+  { entity: padA, opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' } },
+  () => moveTo(Vector3.create(2, 1, 2))
+)
+pointerEventsSystem.onPointerDown(
+  { entity: padB, opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' } },
+  () => moveTo(Vector3.create(14, 1, 14))
+)
+
 // Rotate an entity
 Tween.setRotate(entity, 
   Quaternion.fromEulerDegrees(0, 0, 0), 

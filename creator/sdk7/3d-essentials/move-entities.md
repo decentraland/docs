@@ -138,6 +138,70 @@ This other optional parameter is also available:
 * `easingFunction`: What easing function to use. See [Non-linear tweens](move-entities.md#non-linear-tweens)
 
 
+## Move from the current position
+
+While a tween is active, the engine updates the `Transform` component values of the entity in real time. This means you can read the entity's current position from its `Transform` component at any moment, and use that value as the `start` of a new tween. The entity then moves from wherever it currently is to the target, no matter how it got there.
+
+```ts
+pointerEventsSystem.onPointerDown(
+	{
+		entity: myEntity,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move' },
+	},
+	() => {
+		Tween.setMove(myEntity, 
+			Transform.get(myEntity).position, 
+			Vector3.create(8, 1, 8), 
+			2000,
+			EasingFunction.EF_EASEOUTQUAD
+		)
+	}
+)
+```
+
+{% hint style="warning" %}
+**📔 Note**: Always pass an explicit `start` value. If the `start` parameter is left unset, it's treated as _(0, 0, 0)_, so the entity teleports to the scene origin before moving. Likewise, if you pass a hardcoded `start` that doesn't match the entity's current position, the entity visibly teleports to that position before moving. Read the current position from the entity's `Transform` component, as in the examples in this section, whenever you want the movement to start from where the entity currently is.
+{% endhint %}
+
+### Retarget while traveling
+
+Calling `setMove` (or any of the other tween functions) on an entity that already has a running tween replaces the running tween with the new one. Since the `start` is read from the entity's live position, this redirects the entity smoothly mid-travel: it changes course from wherever it is at that moment, without any jumps.
+
+The example below moves an entity to whichever pad the player clicks. If the player clicks another pad while the entity is still traveling, the entity smoothly changes direction towards the new target.
+
+```ts
+function moveTo(target: Vector3) {
+	Tween.setMove(shipEntity, 
+		Transform.get(shipEntity).position, 
+		target, 
+		2000,
+		EasingFunction.EF_EASEOUTQUAD
+	)
+}
+
+pointerEventsSystem.onPointerDown(
+	{
+		entity: padA,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' },
+	},
+	() => moveTo(Vector3.create(2, 1, 2))
+)
+
+pointerEventsSystem.onPointerDown(
+	{
+		entity: padB,
+		opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' },
+	},
+	() => moveTo(Vector3.create(14, 1, 14))
+)
+```
+
+To run logic when the entity reaches its destination, see [On tween finished](#on-tween-finished).
+
+{% hint style="warning" %}
+**📔 Note**: Retarget this way only in response to occasional events, like a click or reaching a waypoint. If the target changes constantly, for example an entity that follows the player, don't create a new tween on every frame: the entity will visibly stutter. See [Follow a moving target](#follow-a-moving-target).
+{% endhint %}
+
 ## Non-linear tweens
 
 Tweens can follow different **Easing Functions** that affect the rate of change over time. A **linear** function, means that the speed of the change is constant from start to finish. There are plenty of options to chose, that draw differently shaped curves depending on if the beginning and/or end start slow, and how much. An **easeinexpo** curve starts slow and ends fast, increasing speed exponentially, on the contrary an **easeoutexpo** curve starts fast and ends slow.
@@ -233,6 +297,41 @@ This other optional parameter is also available:
 * `duration`: How many milliseconds to sustain the movement. After this time, the movement will stop.
 
 The move continuous tween takes the following information:
+
+### Follow a moving target
+
+`setMoveContinuous` is also the right tool when the destination keeps changing, for example an entity that follows the player. It's tempting to instead create a new `setMove` tween on every frame, aimed at the player's latest position, but that produces a visible stutter.
+
+The reason is that the position you read from the `Transform` component of a tweened entity is the position that the engine last reported back to the scene, so it lags a few frames behind where the entity really is. When you pass that value as the `start` of a new tween, the engine applies it immediately, and the entity jumps back to where it was a few frames ago. One of those corrections is imperceptible, but repeating it many times per second is not.
+
+`setMoveContinuous` avoids the problem entirely, because you give it a direction and a speed instead of a starting point. The engine keeps using the entity's real position, so replacing the tween to change direction never makes the entity jump.
+
+```ts
+const CHASE_SPEED = 3
+const STOP_DISTANCE = 1
+
+engine.addSystem(() => {
+	const playerPosition = Transform.get(engine.PlayerEntity).position
+	const myPosition = Transform.get(myEntity).position
+
+	if (Vector3.distance(myPosition, playerPosition) <= STOP_DISTANCE) {
+		// Close enough: a continuous tween has no destination, so you stop it yourself
+		if (Tween.has(myEntity)) {
+			Tween.deleteFrom(myEntity)
+		}
+		return
+	}
+
+	const direction = Vector3.subtract(playerPosition, myPosition)
+	direction.y = 0 // stay on the ground, even if the player jumps
+
+	Tween.setMoveContinuous(myEntity, Vector3.normalize(direction), CHASE_SPEED)
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: A continuous tween never ends on its own, so the entity keeps moving until you remove the `Tween` component with `Tween.deleteFrom()`, or until the optional `duration` runs out. Also note that re-aiming on every single frame sends an update to the engine every frame. To avoid that, only call `setMoveContinuous` again when the direction has changed enough to matter.
+{% endhint %}
 
 ## Tween sequences
 

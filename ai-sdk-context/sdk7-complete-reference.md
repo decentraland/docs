@@ -646,6 +646,35 @@ Tween.setMoveContinuous(entity, Vector3.create(0, 0, 1), 0.7)
 Tween.setRotateContinuous(entity, Quaternion.fromEulerDegrees(0, -1, 0), 700)
 ```
 
+#### Follow a moving target (use setMoveContinuous, NOT repeated setMove)
+
+```typescript
+// A destination that keeps changing (e.g. following the player) must NOT be chased by
+// re-creating a setMove tween every frame: Transform.get() returns the position the engine
+// last reported back, which lags a few frames, and the engine applies that stale `start`
+// immediately — so the entity jumps backwards on every re-aim and visibly stutters.
+// setMoveContinuous takes a direction + speed instead of a start, so the engine keeps using
+// the entity's real position and replacing the tween never snaps it.
+const CHASE_SPEED = 3
+const STOP_DISTANCE = 1
+
+engine.addSystem(() => {
+	const playerPosition = Transform.get(engine.PlayerEntity).position
+	const myPosition = Transform.get(myEntity).position
+
+	if (Vector3.distance(myPosition, playerPosition) <= STOP_DISTANCE) {
+		// A continuous tween has no destination — you stop it yourself
+		if (Tween.has(myEntity)) Tween.deleteFrom(myEntity)
+		return
+	}
+
+	const direction = Vector3.subtract(playerPosition, myPosition)
+	direction.y = 0 // stay grounded even if the player jumps
+	Tween.setMoveContinuous(myEntity, Vector3.normalize(direction), CHASE_SPEED)
+})
+// Re-aim only when the direction changed enough to matter, to avoid a CRDT update per frame.
+```
+
 #### Tween System
 
 ```typescript
@@ -740,6 +769,27 @@ engine.addSystem(() => {
 		console.log('Tween finished!')
 	}
 })
+```
+
+#### Move from the current position (retarget mid-travel)
+
+```typescript
+// The engine updates Transform values in real time during a tween, so the
+// entity's live position can be used as the tween's start.
+// Calling this again while a previous tween is still running smoothly
+// RETARGETS the entity mid-travel from its current position.
+Tween.setMove(
+	entity,
+	Transform.get(entity).position, // start from wherever the entity is now
+	Vector3.create(8, 1, 8),
+	2000,
+	EasingFunction.EF_EASEOUTQUAD
+)
+
+// WARNING: omitting `start` does NOT mean "current position" — an unset start
+// is treated as (0,0,0) and teleports the entity to the scene origin. A stale
+// hardcoded `start` also teleports the entity to it before moving. Always pass
+// an explicit start; read it from the Transform when you want "from here".
 ```
 
 #### Manual Movement via Systems

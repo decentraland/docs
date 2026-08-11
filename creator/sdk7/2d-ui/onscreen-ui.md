@@ -182,7 +182,7 @@ The actual calculation for the Ui Scale Factor that gets multiplied on pixel val
 
 ### Default virtual size
 
-The virtual size is optional. When you don't pass one, a platform default is applied:
+The virtual size is optional, but its two dimensions go together: pass both, or neither. When you don't pass one, a platform default is applied:
 
 | Platform | Default virtual size |
 |---|---|
@@ -191,12 +191,19 @@ The virtual size is optional. When you don't pass one, a platform default is app
 
 This means pixel values in your UI are always scaled against a reference resolution, even when you pass no options at all. It also applies when the scene only uses `addUiRenderer()` and never calls `setUiRenderer()`.
 
-Two special cases:
+Three special cases:
 
 * **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling.
 
   ```ts
   ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 0, virtualHeight: 0 })
+  ```
+
+* **Incomplete sizes**: giving only one of the two dimensions is also invalid, so it disables the virtual screen just like the case above — the platform default does **not** step in. A message is logged to the console once to flag the mistake, since this is more often a typo than a deliberate opt-out.
+
+  ```ts
+  // Don't do this — no scaling is applied at all
+  ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920 })
   ```
 
 * **16:9 sizes on mobile**: phone screens are much wider than 16:9, so a 16:9 virtual canvas would letterbox the UI. If you pass a 16:9 size (`1920x1080`, `1280x720`, …) and the scene runs on mobile, it is overridden to `1600x720`, and a message is logged to the console once. Non-16:9 sizes on mobile, and every valid size on desktop or web, are respected as-is.

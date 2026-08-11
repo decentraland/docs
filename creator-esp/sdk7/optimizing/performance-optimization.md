@@ -83,3 +83,27 @@ Al trabajar con el [Creator Hub](../scene-editor/get-started/editor-installation
 Puedes expandir este menú para ver detalles.
 
 Consulta [Optimización de modelos 3D](../3d-modeling/3d-models.md) para varios consejos sobre cómo mantener tus modelos ligeros.
+
+#### Reutilizar el mismo modelo muchas veces
+
+Las escenas suelen estar llenas de contenido repetido: postes de luz a lo largo de una calle, sillas en una sala, árboles en un parque. La mejor forma de construir esto es la más simple: **dale a cada copia su propia entidad, y apúntalas todas al mismo archivo _.glb_.**
+
+```ts
+// BIEN: un archivo, muchas entidades
+for (const position of lampPostPositions) {
+  const lampPost = engine.addEntity()
+  Transform.create(lampPost, { position })
+  GltfContainer.create(lampPost, { src: 'assets/scene/lampPost.glb' })
+}
+```
+
+El motor reconoce que estas entidades comparten una misma fuente. El archivo se descarga una vez, se convierte a asset bundle una vez, y sus meshes y texturas se mantienen en memoria una sola vez — el vigésimo poste de luz casi no cuesta nada más allá de su propia posición en el mundo. Esto también funciona entre escenas: si una escena vecina usa el mismo archivo, ya está en memoria. En cambio, exportar veinte archivos _.glb_ casi idénticos significa veinte descargas y veinte copias en memoria.
+
+Lo que esto **no** ahorra son draw calls. Veinte postes de luz son veinte objetos a dibujar, ya sea que vengan de veinte entidades o de un único _.glb_ que tenga veinte postes modelados adentro. La única forma de reducir esa cantidad es unir los meshes en tu herramienta de modelado, lo cual es un intercambio real — consulta [Instancing vs Duplicating vs Merging](../../3d-modeling/meshes.md#instancing-objects-vs-duplicating-objects) para saber cuándo vale la pena.
+
+Algunos consejos relacionados:
+
+* **Agrupa en conjuntos en lugar de un único modelo gigante.** Si tienes muchos props dispersos, un buen punto medio es un _.glb_ por grupo — una cuadra de una calle, los muebles de una sala — en lugar de un modelo por prop o un modelo para toda la escena. Reduces la cantidad de objetos y a la vez mantienes cada conjunto lo bastante chico como para que el culling siga sirviendo de algo.
+* **¿Vas a crear muchas copias de golpe?** Precarga el modelo primero con el componente `AssetLoad`. Así las copias se crean a partir de un modelo que ya está en memoria, en lugar de que cada una espere la misma descarga.
+* **Un modelo muy grande es más difícil para el motor que muchos pequeños.** El motor reparte el trabajo de construir tu escena a lo largo de varios frames para evitar tirones, pero no puede dividir un único modelo enorme: ese cae todo en un mismo frame. Muchas piezas pequeñas cargan de forma progresiva; una pieza monolítica tiene más probabilidades de causar un tirón visible.
+* **Repetir un modelo no agrega materiales ni texturas nuevas.** Veinte postes de luz construidos a partir de un modelo reutilizan los materiales y texturas de ese modelo en lugar de sumar al conjunto. Lo que acerca una escena a los [límites](scene-limitations.md) de materiales y texturas es tener muchos modelos *distintos*, cada uno con su propio set — así que consolidar tu escena en torno a una biblioteca más chica de modelos reutilizados también ayuda ahí.

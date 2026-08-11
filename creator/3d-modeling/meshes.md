@@ -131,6 +131,32 @@ _When we export these models, we will still have the same number of draw calls (
 
 _To keep things organized you can simply instance collections in your scene, this way allows you to control all instances from one single folder and source._
 
+{% hint style="info" %}
+**💡 Tip**: The same logic applies on the SDK side. Fourteen entities that all point their `GltfContainer` at the same _.glb_ file behave like instances: the file is downloaded once, converted once, and its meshes and textures are held in memory once, no matter how many entities use it. Splitting the same content into fourteen near-identical _.glb_ files is the equivalent of duplicating, and costs you fourteen downloads and fourteen copies in memory.
+{% endhint %}
+
+### Merge Objects
+
+| Menu:   | Object ‣ Join |
+| ------- | ------------- |
+| Hotkey: | Ctrl-J        |
+
+This joins the selected objects into a single object with a single mesh. Our fourteen light posts stop being fourteen renderable objects and become one, so the engine draws them with 2 draw calls instead of 28 — one per material, once.
+
+This is the only one of the three options that actually reduces draw calls, and it's worth being clear about why: the Decentraland engine builds your scene at runtime from streamed content, so it can't group or batch repeated objects for you the way an engine can with content that was baked in advance. If you need fewer draw calls, the merge has to happen in Blender.
+
+That reduction is not free. Merging gives up several things at once:
+
+* **Disk usage goes back up.** The merged mesh stores the geometry of all fourteen posts, so you lose the saving that instancing gave you.
+* **Frustum culling becomes all-or-nothing.** A merged object is drawn in full whenever any part of it is on screen. Fourteen posts spread along a street will almost always have one post visible, so you end up drawing all fourteen all of the time — which can easily cost more than the draw calls you saved.
+* **The parts stop being individually addressable.** You can no longer move, animate, click, or hide a single post, because there is only one object left.
+
+Use merging narrowly: for many small props that are always seen together in one spot, never interacted with, and only after you've confirmed that the number of objects is what's actually hurting performance. For everything else, instancing is the better default.
+
+{% hint style="warning" %}
+**📔 Note**: Exporting fourteen separate objects into a single _.glb_ file is **not** merging. The engine still sees fourteen objects and still issues 28 draw calls. Only joining the meshes changes the count.
+{% endhint %}
+
 ## Mesh Naming
 
 Use meaningful names for your meshes. Name should give context of where the asset is used or to which part of the object it relates.

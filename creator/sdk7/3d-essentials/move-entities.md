@@ -196,6 +196,12 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
+To run logic when the entity reaches its destination, see [On tween finished](#on-tween-finished).
+
+{% hint style="warning" %}
+**📔 Note**: Retarget this way only in response to occasional events, like a click or reaching a waypoint. If the target changes constantly, for example an entity that follows the player, don't create a new tween on every frame: the entity will visibly stutter. See [Follow a moving target](#follow-a-moving-target).
+{% endhint %}
+
 ## Non-linear tweens
 
 Tweens can follow different **Easing Functions** that affect the rate of change over time. A **linear** function, means that the speed of the change is constant from start to finish. There are plenty of options to chose, that draw differently shaped curves depending on if the beginning and/or end start slow, and how much. An **easeinexpo** curve starts slow and ends fast, increasing speed exponentially, on the contrary an **easeoutexpo** curve starts fast and ends slow.
@@ -291,6 +297,41 @@ This other optional parameter is also available:
 * `duration`: How many milliseconds to sustain the movement. After this time, the movement will stop.
 
 The move continuous tween takes the following information:
+
+### Follow a moving target
+
+`setMoveContinuous` is also the right tool when the destination keeps changing, for example an entity that follows the player. It's tempting to instead create a new `setMove` tween on every frame, aimed at the player's latest position, but that produces a visible stutter.
+
+The reason is that the position you read from the `Transform` component of a tweened entity is the position that the engine last reported back to the scene, so it lags a few frames behind where the entity really is. When you pass that value as the `start` of a new tween, the engine applies it immediately, and the entity jumps back to where it was a few frames ago. One of those corrections is imperceptible, but repeating it many times per second is not.
+
+`setMoveContinuous` avoids the problem entirely, because you give it a direction and a speed instead of a starting point. The engine keeps using the entity's real position, so replacing the tween to change direction never makes the entity jump.
+
+```ts
+const CHASE_SPEED = 3
+const STOP_DISTANCE = 1
+
+engine.addSystem(() => {
+	const playerPosition = Transform.get(engine.PlayerEntity).position
+	const myPosition = Transform.get(myEntity).position
+
+	if (Vector3.distance(myPosition, playerPosition) <= STOP_DISTANCE) {
+		// Close enough: a continuous tween has no destination, so you stop it yourself
+		if (Tween.has(myEntity)) {
+			Tween.deleteFrom(myEntity)
+		}
+		return
+	}
+
+	const direction = Vector3.subtract(playerPosition, myPosition)
+	direction.y = 0 // stay on the ground, even if the player jumps
+
+	Tween.setMoveContinuous(myEntity, Vector3.normalize(direction), CHASE_SPEED)
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: A continuous tween never ends on its own, so the entity keeps moving until you remove the `Tween` component with `Tween.deleteFrom()`, or until the optional `duration` runs out. Also note that re-aiming on every single frame sends an update to the engine every frame. To avoid that, only call `setMoveContinuous` again when the direction has changed enough to matter.
+{% endhint %}
 
 ## Tween sequences
 

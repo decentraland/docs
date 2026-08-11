@@ -143,7 +143,7 @@ _Para mantener las cosas organizadas puedes simplemente hacer instance de collec
 | ------- | ------------- |
 | Hotkey: | Ctrl-J        |
 
-Esto une los objetos seleccionados en un solo objeto con un solo mesh. Nuestros catorce postes de luz dejan de ser catorce objetos renderizables y pasan a ser uno, así que el motor los dibuja con 2 draw calls en lugar de 28 — uno por material, una sola vez.
+Esto une los objetos seleccionados en un solo objeto con un solo mesh. Funciona en Object Mode, une todo dentro del último objeto seleccionado (el _active_), y requiere que todos los objetos seleccionados sean del mismo tipo. Los materiales se conservan y se combinan, así que nuestros catorce postes de luz dejan de ser catorce objetos renderizables y pasan a ser uno, y el motor los dibuja con 2 draw calls en lugar de 28 — uno por material, una sola vez.
 
 Esta es la única de las tres opciones que realmente reduce los draw calls, y vale la pena aclarar por qué: el motor de Decentraland construye la escena en tiempo de ejecución a partir de contenido transmitido, así que no puede agrupar ni batchear objetos repetidos por ti, como sí puede hacerlo un motor con contenido preprocesado de antemano. Si necesitas menos draw calls, el merge tiene que hacerse en Blender.
 

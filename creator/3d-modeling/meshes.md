@@ -141,7 +141,7 @@ _To keep things organized you can simply instance collections in your scene, thi
 | ------- | ------------- |
 | Hotkey: | Ctrl-J        |
 
-This joins the selected objects into a single object with a single mesh. Our fourteen light posts stop being fourteen renderable objects and become one, so the engine draws them with 2 draw calls instead of 28 — one per material, once.
+This joins the selected objects into a single object with a single mesh. It works in Object Mode, merges everything into the last selected _active_ object, and requires all the selected objects to be of the same type. Materials are kept and merged, so our fourteen light posts stop being fourteen renderable objects and become one, and the engine draws them with 2 draw calls instead of 28 — one per material, once.
 
 This is the only one of the three options that actually reduces draw calls, and it's worth being clear about why: the Decentraland engine builds your scene at runtime from streamed content, so it can't group or batch repeated objects for you the way an engine can with content that was baked in advance. If you need fewer draw calls, the merge has to happen in Blender.
 

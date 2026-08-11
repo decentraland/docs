@@ -208,7 +208,7 @@ El componente `UiCanvasInformation` contiene la siguiente información:
 
 * `height`: Alto del canvas en píxeles
 * `width`: Ancho del canvas en píxeles
-* `devicePixelRatio`: La relación de la resolución en píxeles físicos en el dispositivo a los píxeles en el canvas
+* `devicePixelRatio`: La relación de la resolución en píxeles físicos en el dispositivo a los píxeles en el canvas. Útil como pista sobre la densidad de la pantalla, por ejemplo para elegir entre una textura 1x, 2x o 3x.
 * `interactableArea`: Un objeto `BorderRect`, detallando el área designada para elementos UI de escena. Este objeto contiene valores para `top`, `bottom`, `left` y `right`, cada uno de estos es el número de píxeles en ese margen de la pantalla que están ocupados por la UI del explorador.
 
 {% hint style="warning" %}

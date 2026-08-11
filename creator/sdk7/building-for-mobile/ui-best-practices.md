@@ -9,14 +9,14 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 ## DOs
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.
-* **Keep critical UI inside the [safe area](safe-area.md)**, and wrap it in [`ScreenInsetArea`](safe-area.md#device-hardware-insets-screeninsetarea) to clear the device's hardware margins (notch, status bar, home indicator).
+* **Keep critical UI inside the [safe area](safe-area.md).** The device's hardware margins (notch, status bar, home indicator) are [cleared for you by default](safe-area.md#device-hardware-insets-screeninsetarea) — just don't opt out with `screenInset: 'none'`. The Decentraland system HUD regions still need to be avoided by hand.
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
 
 ## DON'Ts
 
-* **Don't size UI elements purely in pixels.** Pixel-only layouts will look different on every device. Use the `virtualWidth` / `virtualHeight` mechanism described in [On-screen UI](../2d-ui/onscreen-ui.md#screen-virtual-scale) and pair it with platform-aware sizing.
+* **Don't size UI elements purely in pixels without a virtual screen in mind.** Pixel values are scaled against the `virtualWidth` / `virtualHeight` reference resolution described in [On-screen UI](../2d-ui/onscreen-ui.md#screen-virtual-scale) — `1600x720` by default on mobile, `1920x1080` on desktop and web. Know which reference resolution your pixel values are authored against, pass it explicitly if it isn't the default, and pair it with platform-aware sizing. Only disable the virtual screen (by passing a size of `0`) if you genuinely want raw canvas pixels.
 * **Don't place elements outside the safe area.** They will clash with the system controls.
 * **Don't rely on small buttons.** Small targets are unreliable to tap on a touch screen.
 * **Don't bind key actions to `IA_ACTION_3`–`IA_ACTION_6`** (the `1`/`2`/`3`/`4` keys on a keyboard). They are not easily reachable on mobile. See [Input on mobile](input-on-mobile.md).
@@ -28,6 +28,8 @@ The single most useful recommendation when adapting an existing desktop UI to mo
 > **Design and test the UI on desktop first, then scale UI sizes by 3× for mobile.**
 
 Combined with the SDK's `virtualWidth` / `virtualHeight` setup, this gives you readable text, comfortably tappable buttons, and a layout that holds up across devices. Always confirm the result on a real phone — see [Preview on mobile](preview-on-mobile.md).
+
+Note that part of that scaling can come for free: if you let the virtual screen default per platform, mobile uses a `1600x720` reference against desktop's `1920x1080`, so the same pixel value already renders larger relative to the screen on a phone. Measure on a device before adding a full 3× on top of it.
 
 ## Current limitations
 

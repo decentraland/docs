@@ -288,7 +288,7 @@ The `UiCanvasInformation` component holds the following information:
 
 * `height`: Canvas height in pixels
 * `width`: Canvas width in pixels
-* `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas
+* `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas. Useful as a display-density hint, for example to pick between a 1x, 2x or 3x version of a texture.
 * `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI.
 * `screenInsetArea`: A `BorderRect` object, detailing the screen inset area (safe margins) reserved by the device or platform UI, for example the notch, status bar, home indicator, or rounded corners on mobile. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels reserved on that edge of the screen. On desktop this is typically `0` on all sides.
 

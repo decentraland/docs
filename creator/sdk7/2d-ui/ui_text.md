@@ -142,13 +142,13 @@ The `scaleFontSize()` function requires two parameters:
 
 The value of `scaleUnit` is a percentage of the window's width or height. So a `scaleUnit` of `"100vw"` is 100% of the width of the screen, a value of `"0.5vw"` is 0.5% of the width of the screen.
 
-The formula that `scaleFontSize()` follows is it multiples the screen width or height by the `scaleUnit`, divides that by the device's pixel ratio, and adds to that the `fontSize` passed in the first parameter.
+The formula that `scaleFontSize()` follows is it multiples the screen width or height by the `scaleUnit`, and adds to that the `fontSize` passed in the first parameter.
 
 ```ts
-final font = fontSize + (screen width * scaleUnit / 100 / devicePixelRatio)
+final font = fontSize + (screen width * scaleUnit / 100)
 ```
 
-For example, in the snippet below uses a `scaleUnit` value of 0.8. If the screen width is _1280px_ and the device pixel ratio is _1_, that will result in text of size of **25.24**, having followed the equation `15 + (1280 * 0.8 / 100 / 1)`.
+For example, in the snippet below uses a `scaleUnit` value of 0.8. If the screen width is _1280px_, that will result in text of size of **25.24**, having followed the equation `15 + (1280 * 0.8 / 100)`.
 
 ```ts
 import { scaleFontSize } from '@dcl/sdk/react-ecs'

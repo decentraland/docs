@@ -27,7 +27,7 @@ See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to desi
 {% endhint %}
 
 {% hint style="info" %}
-**📱 Avoid hardware-reserved margins**: On mobile, devices reserve screen space for the notch, status bar, home indicator, and rounded corners. Wrap your UI in the [`ScreenInsetArea` component](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) to keep it clear of these areas automatically. It only affects the mobile client — on desktop it has no effect, so it's safe to leave in cross-platform UI.
+**📱 Hardware-reserved margins are avoided by default**: On mobile, devices reserve screen space for the notch, status bar, home indicator, and rounded corners. Every UI renderer is placed inside the device safe area automatically — see [Screen inset area](#screen-inset-area) below. You only need to wrap your UI in the [`ScreenInsetArea` component](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) by hand if you opted out with `screenInset: 'none'`. On desktop the insets are zero, so this has no effect there.
 {% endhint %}
 
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
@@ -168,7 +168,7 @@ A definition of a UI module can only have one parent-level entity. You can defin
 
 ## Screen Virtual Scale
 
-Set a vitual width and height for the UI. This is encouraged to make sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
+Set a virtual width and height for the UI. This makes sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
 
 ```ts
 export function setupUi() {
@@ -178,7 +178,61 @@ export function setupUi() {
 
 If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
 
-The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight) / devicePixelRatio`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts)
+The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts).
+
+### Default virtual size
+
+The virtual size is optional. When you don't pass one, a platform default is applied:
+
+| Platform | Default virtual size |
+|---|---|
+| Mobile | `1600x720` |
+| Desktop and Web | `1920x1080` |
+
+This means pixel values in your UI are always scaled against a reference resolution, even when you pass no options at all. It also applies when the scene only uses `addUiRenderer()` and never calls `setUiRenderer()`.
+
+Two special cases:
+
+* **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling.
+
+  ```ts
+  ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 0, virtualHeight: 0 })
+  ```
+
+* **16:9 sizes on mobile**: phone screens are much wider than 16:9, so a 16:9 virtual canvas would letterbox the UI. If you pass a 16:9 size (`1920x1080`, `1280x720`, …) and the scene runs on mobile, it is overridden to `1600x720`, and a message is logged to the console once. Non-16:9 sizes on mobile, and every valid size on desktop or web, are respected as-is.
+
+{% hint style="info" %}
+**📔 Note**: The `vw` and `vh` units are independent of the virtual screen: `1vw` is 1% of the canvas width and `1vh` is 1% of the canvas height, exactly as in CSS.
+{% endhint %}
+
+## Screen inset area
+
+Screens are not fully usable: a phone reserves space for the notch, status bar, home indicator and rounded corners, and every explorer draws its own HUD (minimap, chat, …) over part of the canvas. The optional `screenInset` property of the renderer options selects which screen area your UI is positioned in:
+
+| Value | Area the UI is placed in |
+|---|---|
+| `'device'` _(default)_ | The device safe area, excluding the notch, status bar and rounded corners. Read from `UiCanvasInformation.screenInsetArea`. |
+| `'interactable'` | The area free of the explorer's own HUD (minimap, chat, …). Read from `UiCanvasInformation.interactableArea`. |
+| `'none'` | The whole screen, with `0,0` at its top-left corner. |
+
+```ts
+// UI is kept clear of the notch, status bar and rounded corners — this is the default
+ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+
+// UI is kept clear of the explorer's own HUD
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'interactable' })
+
+// UI covers the whole screen, you handle the margins yourself
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'none' })
+```
+
+On desktop the device insets are zero, so `'device'` places the UI over the whole screen there — the same result as `'none'`. The area is re-read every tick, so the UI follows the insets when they change, for example on rotation or when system bars appear and hide.
+
+{% hint style="warning" %}
+**📔 Note**: Don't wrap your UI in the [`ScreenInsetArea`](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) or `InteractableArea` components while also leaving the matching `screenInset` value on the renderer — the inset would be applied twice, pushing the UI inwards by double the margin. Either rely on `screenInset`, or set it to `'none'` and place the wrapper yourself.
+{% endhint %}
+
+Each renderer honors its own `screenInset`, so the main UI and any UI added with `addUiRenderer()` can use different areas at the same time. Unlike the virtual size, this value is never shared between renderers.
 
 ## Multiple UI modules
 
@@ -210,6 +264,15 @@ An `addUiRenderer()` call can also include a virtual width and height, just like
 
 ```tsx
 ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+```
+
+The virtual size is a single scene-wide value, resolved as follows: the size on `setUiRenderer()` wins; otherwise the first `addUiRenderer()` call that provided one wins; and if no renderer provided one, the [platform default](#default-virtual-size) applies. Options that only carry a `screenInset` don't count as a provided size.
+
+The [`screenInset`](#screen-inset-area) works the other way around — it is per renderer, so each UI module can sit in a different screen area:
+
+```tsx
+// This widget stays clear of the explorer HUD, regardless of what the main UI uses
+ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { screenInset: 'interactable' })
 ```
 
 That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.

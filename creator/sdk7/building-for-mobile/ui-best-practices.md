@@ -9,7 +9,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 ## DOs
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.
-* **Keep critical UI inside the [safe area](safe-area.md).** The device's hardware margins (notch, status bar, home indicator) are [cleared for you by default](safe-area.md#device-hardware-insets-screeninsetarea) — just don't opt out with `screenInset: 'none'`. The Decentraland system HUD regions still need to be avoided by hand.
+* **Keep critical UI inside the [safe area](safe-area.md).** The device's hardware margins (notch, status bar, home indicator) are [cleared for you by default](safe-area.md#device-hardware-insets-screeninsetarea) — just don't opt out with `screenInset: 'none'`. The Decentraland system HUD regions are a separate area, and `screenInset: 'interactable'` covers part of that job: it positions your UI in the rectangle the explorer designates for scene UI. On mobile that clears the left-hand controls; the action buttons on the bottom right are drawn over the area by design, so keep the [reserved margins](safe-area.md#reserved-margins) below in mind for those corners. `'interactable'` requires mobile client `1.12.1` or newer — older clients report no margins at all and the UI covers the whole screen.
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
@@ -23,13 +23,12 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 
 ## Sizing
 
-The single most useful recommendation when adapting an existing desktop UI to mobile:
+The old rule of thumb — *design on desktop, then scale UI sizes by 3× for mobile* — predates two SDK changes and should no longer be applied blindly. Most of that 3× is now applied for you:
 
-> **Design and test the UI on desktop first, then scale UI sizes by 3× for mobile.**
+* **`devicePixelRatio` takes no part in UI layout.** Pixel-sized UI now renders `devicePixelRatio` times larger than it used to — typically **2–3× on a phone**, and on retina laptops too. There is no opt-out.
+* **The virtual screen defaults per platform**, `1600x720` on mobile against `1920x1080` on desktop and web, so the same pixel value already covers about 1.2× more of the screen on a phone.
 
-Combined with the SDK's `virtualWidth` / `virtualHeight` setup, this gives you readable text, comfortably tappable buttons, and a layout that holds up across devices. Always confirm the result on a real phone — see [Preview on mobile](preview-on-mobile.md).
-
-Note that part of that scaling can come for free: if you let the virtual screen default per platform, mobile uses a `1600x720` reference against desktop's `1920x1080`, so the same pixel value already renders larger relative to the screen on a phone. Measure on a device before adding a full 3× on top of it.
+Start from your desktop sizes unchanged, measure on a real device — see [Preview on mobile](preview-on-mobile.md) — and scale up only where tap targets or text actually come up short. Branch with [`isMobile()`](detect-platform.md) when the two genuinely need to differ.
 
 ## Current limitations
 

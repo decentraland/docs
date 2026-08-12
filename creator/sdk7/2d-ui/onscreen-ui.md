@@ -193,23 +193,39 @@ This means pixel values in your UI are always scaled against a reference resolut
 
 Three special cases:
 
-* **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling.
+* **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling. This is the documented way to turn the virtual screen off, so nothing is logged.
 
   ```ts
   ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 0, virtualHeight: 0 })
   ```
 
-* **Incomplete sizes**: giving only one of the two dimensions is also invalid, so it disables the virtual screen just like the case above — the platform default does **not** step in. A message is logged to the console once to flag the mistake, since this is more often a typo than a deliberate opt-out.
+* **Incomplete sizes**: giving only one of the two dimensions is also invalid, so it disables the virtual screen just like the case above — the platform default does **not** step in. Unlike the opt-out above, this one is reported: a half-given size is a mistake rather than a deliberate choice, so the SDK logs `Incomplete virtual screen size (…): both dimensions are required, so the virtual screen is disabled and no UI scaling is applied.` once per size. Pass both dimensions, or neither.
 
   ```ts
   // Don't do this — no scaling is applied at all
   ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920 })
   ```
 
+  This is worth double-checking on the main renderer, because an incomplete size there is also a scene-wide switch: a `setUiRenderer()` call that mentions *either* dimension wins over any `addUiRenderer()`, so the example above disables the virtual screen for the whole scene and discards a valid size passed to an additional renderer.
+
 * **16:9 sizes on mobile**: phone screens are much wider than 16:9, so a 16:9 virtual canvas would letterbox the UI. If you pass a 16:9 size (`1920x1080`, `1280x720`, …) and the scene runs on mobile, it is overridden to `1600x720`, and a message is logged to the console once. Non-16:9 sizes on mobile, and every valid size on desktop or web, are respected as-is.
 
 {% hint style="info" %}
-**📔 Note**: The `vw` and `vh` units are independent of the virtual screen: `1vw` is 1% of the canvas width and `1vh` is 1% of the canvas height, exactly as in CSS.
+**📔 Note**: The `vw` and `vh` units are independent of the virtual screen: `1vw` is 1% of the canvas width and `1vh` is 1% of the canvas height, exactly as in CSS. They also ignore the [`screenInset`](#screen-inset-area), so inside the default `'device'` inset a `width: '100vw'` is wider than a `width: '100%'` — the first spans the whole screen, the second fills the inset area.
+{% endhint %}
+
+{% hint style="info" %}
+**📱 Note**: Platform detection resolves asynchronously. During the first frames the SDK doesn't know yet that it's running on mobile, so the virtual screen starts at `1920x1080` and switches to `1600x720` once detection completes — you may see the UI re-scale briefly on load, and the 16:9 override message appears in the console a moment after the scene starts. Pass an explicit non-16:9 virtual size if you want a single stable reference resolution from the very first frame.
+{% endhint %}
+
+{% hint style="warning" %}
+**📔 What changed for scenes written before this SDK version**
+
+Three changes affect existing scenes. None of them are opt-in, so a scene that isn't touched at all will still look different once it updates its SDK version:
+
+1. **A virtual screen now applies by default.** A scene that passed no options used to lay out pixel values as raw canvas pixels. It's now scaled against `1920x1080` (`1600x720` on mobile). To get the previous behavior back, disable the virtual screen explicitly with `setUiRenderer(ui, { virtualWidth: 0, virtualHeight: 0 })`.
+2. **`screenInset` defaults to `'device'`.** Your UI is now positioned inside the device safe area, so on mobile it moves inwards, and a root-level `100%` is no longer the full screen — full-screen backgrounds, dimmers and overlays stop short of the notch and the home indicator. To get the previous behavior back, pass `setUiRenderer(ui, { screenInset: 'none' })`. See [Screen inset area](#screen-inset-area).
+3. **`devicePixelRatio` takes no part in UI layout.** Pixel-sized UI is now up to 2–3 times larger on high-density (retina and mobile) screens than it was before. **There is no opt-out for this one** — re-check any sizes that were hand-tuned, and remove any scale factor your scene computed for itself.
 {% endhint %}
 
 ## Screen inset area
@@ -219,7 +235,7 @@ Screens are not fully usable: a phone reserves space for the notch, status bar, 
 | Value | Area the UI is placed in |
 |---|---|
 | `'device'` _(default)_ | The device safe area, excluding the notch, status bar and rounded corners. Read from `UiCanvasInformation.screenInsetArea`. |
-| `'interactable'` | The area free of the explorer's own HUD (minimap, chat, …). Read from `UiCanvasInformation.interactableArea`. |
+| `'interactable'` | The area the explorer reports as free of its own HUD (minimap, chat, …). Read from `UiCanvasInformation.interactableArea`. What it covers is up to each explorer — verify on the platforms you target. |
 | `'none'` | The whole screen, with `0,0` at its top-left corner. |
 
 ```ts
@@ -236,7 +252,27 @@ ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'none' })
 On desktop the device insets are zero, so `'device'` places the UI over the whole screen there — the same result as `'none'`. The area is re-read every tick, so the UI follows the insets when they change, for example on rotation or when system bars appear and hide.
 
 {% hint style="warning" %}
+**📔 `'interactable'` is not a no-op on desktop.** Unlike the device insets, the interactable area is *not* zero on the desktop client: it reserves roughly the left 25% of the screen for its own UI, so `screenInset: 'interactable'` places your UI in the remaining 75% there. That is the point of the option, but it does mean it changes your desktop layout too — branch with [`isMobile()`](../building-for-mobile/detect-platform.md) if you only want it on phones.
+
+**Client support**: `'interactable'` needs an explorer that reports the area. It is supported on desktop, and on mobile from client version `1.12.1` onwards — on older mobile clients the value is reported as zero, and the UI falls back to covering the whole screen. That same `1.12.1` release also normalizes the `'device'` area between Android and iOS, so treat it as the floor for any layout that depends on either inset. `'none'` behaves the same everywhere.
+{% endhint %}
+
+{% hint style="warning" %}
 **📔 Note**: Don't wrap your UI in the [`ScreenInsetArea`](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) or `InteractableArea` components while also leaving the matching `screenInset` value on the renderer — the inset would be applied twice, pushing the UI inwards by double the margin. Either rely on `screenInset`, or set it to `'none'` and place the wrapper yourself.
+{% endhint %}
+
+### The three areas on a real device
+
+The captures below are the same scene on the same phone, rendered three times with only the `screenInset` value changed. The magenta rectangle is the UI itself; the outlines are the areas the explorer reports — cyan is the full canvas, amber is `screenInsetArea`, green is `interactableArea`.
+
+<figure><img src="../../../.gitbook/assets/screeninset-none.png" alt="Scene UI covering the whole phone screen, including the notch strip and the areas under the client controls"><figcaption><p><code>screenInset: 'none'</code> — the UI covers the whole canvas. Its corners sit under the notch and behind the client's own controls.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/screeninset-device.png" alt="Scene UI inset to the device safe area, clear of the notch"><figcaption><p><code>screenInset: 'device'</code> (the default) — the UI is pulled in to the device safe area, clear of the notch and the rounded corners. It still overlaps the client's controls, which are not part of this area.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> — the UI is placed inside the rectangle the client designates for scene UI. On mobile client <code>1.12.1</code>, captured here, that excludes the left-hand column (profile, chat, joystick); the action buttons on the bottom right are drawn over the area by design.</p></figcaption></figure>
+
+{% hint style="info" %}
+**💡 Tip**: `'interactable'` gives you the area each explorer designates for scene UI. That is deliberately not the same as "every client control is outside it" — as the third capture shows, the mobile action buttons are drawn over the area on purpose. Anything you place under them is still reachable to you but competes for the same taps, so keep the [reserved margins](../building-for-mobile/safe-area.md#reserved-margins) in mind for the corners, and check the platforms you target: what the area covers is each explorer's call and can change between versions.
 {% endhint %}
 
 Each renderer honors its own `screenInset`, so the main UI and any UI added with `addUiRenderer()` can use different areas at the same time. Unlike the virtual size, this value is never shared between renderers.

@@ -826,6 +826,30 @@ Tween.setMove(entity,
   EasingFunction.EF_LINEAR
 )
 
+// Move from the CURRENT position (Transform values update in real time during
+// a tween, so the live position works as the start). Calling moveTo() again
+// while a previous tween is still running smoothly retargets mid-travel.
+// WARNING: omitting `start` does NOT mean "current position" — unset start is
+// treated as (0,0,0) and teleports the entity to the scene origin.
+function moveTo(target: Vector3) {
+  Tween.setMove(entity,
+    Transform.get(entity).position,
+    target,
+    2000,
+    EasingFunction.EF_EASEOUTQUAD
+  )
+}
+
+// Click-to-move: clicking a new pad mid-travel redirects the entity smoothly
+pointerEventsSystem.onPointerDown(
+  { entity: padA, opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' } },
+  () => moveTo(Vector3.create(2, 1, 2))
+)
+pointerEventsSystem.onPointerDown(
+  { entity: padB, opts: { button: InputAction.IA_POINTER, hoverText: 'Move here' } },
+  () => moveTo(Vector3.create(14, 1, 14))
+)
+
 // Rotate an entity
 Tween.setRotate(entity, 
   Quaternion.fromEulerDegrees(0, 0, 0), 
@@ -849,10 +873,31 @@ Tween.setMoveContinuous(entity,
 )
 
 // Rotate continuously
-Tween.setRotateContinuous(entity, 
-  Quaternion.fromEulerDegrees(0, 0, 90), 
+Tween.setRotateContinuous(entity,
+  Quaternion.fromEulerDegrees(0, 0, 90),
   2000
 )
+
+// Follow a CONSTANTLY changing target (e.g. the player): use setMoveContinuous.
+// Do NOT re-create a setMove tween every frame — Transform.get() lags a few frames behind
+// the real position, and the engine applies that stale `start` at once, so the entity jumps
+// backwards on every re-aim and stutters. A direction + speed has no start to disagree with.
+const CHASE_SPEED = 3
+const STOP_DISTANCE = 1
+
+engine.addSystem(() => {
+  const playerPosition = Transform.get(engine.PlayerEntity).position
+  const myPosition = Transform.get(entity).position
+
+  if (Vector3.distance(myPosition, playerPosition) <= STOP_DISTANCE) {
+    if (Tween.has(entity)) Tween.deleteFrom(entity) // continuous tweens never stop on their own
+    return
+  }
+
+  const direction = Vector3.subtract(playerPosition, myPosition)
+  direction.y = 0
+  Tween.setMoveContinuous(entity, Vector3.normalize(direction), CHASE_SPEED)
+})
 
 // Tween sequences (chained animations)
 TweenSequence.create(entity, {

@@ -20,7 +20,9 @@ To import a 3D model, an image, a sound file, or a video into your scene from yo
 
 ![](../../images/editor/import-confirmation.png)
 
-You can now find your asset in the **Local Assets** tab, under the **scene** folder. Assets are sorted into folders by type: 3D models appear under the _Assets/scene/Models_ folder, images under _Assets/scene/Images_, sound files under _Assets/scene/Audio_, and videos under _Assets/scene/Video_.
+You can now find your asset in the **Local Assets** tab. Assets are sorted into folders by type: 3D models appear under the _assets/Models_ folder, images under _assets/Images_, sound files under _assets/Audio_, and videos under _assets/Video_.
+
+Items from the built-in free asset packs are stored under _assets/asset-packs/_, and custom items created from the editor under _assets/custom/_. Older scenes may have user imports under _assets/scene/_ instead. All of these paths work in your scene code, just reference whichever folder the asset is in.
 
 - For 3D models, drag the `.glb` or `.gltf` files onto the canvas to add them as items on your scene.
 - Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.

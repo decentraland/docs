@@ -18,7 +18,7 @@ A `Label` entity has the following fields that can be configured:
   * `'sans-serif'` _(default)_
   * `'monospace'`
 * `textAlign`: How the text will align with its parent. It takes a value from the `TextAlignType` type. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-* `textWrap`: Sets if the text uses line-breaks to prevent exceding the maximum width. It's on by default (`'wrap'`), to deactivate it pass the value `'nowrap'`.
+* `textWrap`: Sets if the text uses line-breaks to prevent exceeding the maximum width. It's on by default (`'wrap'`), to deactivate it pass the value `'nowrap'`.
 
 {% hint style="warning" %}
 **📔 Note**: The `fontSize` is not affected by the size of its entity or parent entities.

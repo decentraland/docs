@@ -178,4 +178,4 @@ export const uiMenu = () => (
 **💡 Tip**: If you don't have different screen sizes to test, you can try using the Web Explorer and resizing the window where you run the preview. The text will adjust instantly every time you change the window.
 {% endhint %}
 
-As an alternative to using the `scaleFontSize()` function, you can also adjust font size to screen size using the methods described in [Responsive UI Size](ui-positioning.md#responsive-ui-size).
+As an alternative to `scaleFontSize()`, pass a `vw`/`vh` string directly as the `fontSize` — for example `fontSize: '1.8vh'` — which sizes the text against the canvas and ignores the UI scale factor entirely. Do **not** multiply font sizes by a factor you compute yourself from `UiCanvasInformation`: the SDK already applies one, see [Responsive UI size](ui-positioning.md#responsive-ui-size).

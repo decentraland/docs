@@ -193,13 +193,13 @@ This means pixel values in your UI are always scaled against a reference resolut
 
 Three special cases:
 
-* **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling.
+* **Opting out of scaling**: pass an invalid size — any value that is `0` or less — to disable the virtual screen entirely. Pixel values are then used as raw canvas pixels, with no scaling. This is the documented way to turn the virtual screen off, so nothing is logged.
 
   ```ts
   ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 0, virtualHeight: 0 })
   ```
 
-* **Incomplete sizes**: giving only one of the two dimensions is also invalid, so it disables the virtual screen just like the case above — the platform default does **not** step in. Nothing is logged, so this fails silently: your pixel values become raw canvas pixels from one frame to the next. Pass both dimensions, or neither.
+* **Incomplete sizes**: giving only one of the two dimensions is also invalid, so it disables the virtual screen just like the case above — the platform default does **not** step in. Unlike the opt-out above, this one is reported: a half-given size is a mistake rather than a deliberate choice, so the SDK logs `Incomplete virtual screen size (…): both dimensions are required, so the virtual screen is disabled and no UI scaling is applied.` once per size. Pass both dimensions, or neither.
 
   ```ts
   // Don't do this — no scaling is applied at all
@@ -225,7 +225,7 @@ Three changes affect existing scenes. None of them are opt-in, so a scene that i
 
 1. **A virtual screen now applies by default.** A scene that passed no options used to lay out pixel values as raw canvas pixels. It's now scaled against `1920x1080` (`1600x720` on mobile). To get the previous behavior back, disable the virtual screen explicitly with `setUiRenderer(ui, { virtualWidth: 0, virtualHeight: 0 })`.
 2. **`screenInset` defaults to `'device'`.** Your UI is now positioned inside the device safe area, so on mobile it moves inwards, and a root-level `100%` is no longer the full screen — full-screen backgrounds, dimmers and overlays stop short of the notch and the home indicator. To get the previous behavior back, pass `setUiRenderer(ui, { screenInset: 'none' })`. See [Screen inset area](#screen-inset-area).
-3. **`devicePixelRatio` was removed from the UI scale factor.** Pixel-sized UI is now up to 2–3 times larger on high-density (retina and mobile) displays than it was before. **There is no opt-out for this one** — re-check any sizes that were hand-tuned against the old formula, and remove any scale factor your scene computed for itself.
+3. **`devicePixelRatio` takes no part in UI layout.** Pixel-sized UI is now up to 2–3 times larger on high-density (retina and mobile) screens than it was before. **There is no opt-out for this one** — re-check any sizes that were hand-tuned, and remove any scale factor your scene computed for itself.
 {% endhint %}
 
 ## Screen inset area
@@ -269,7 +269,7 @@ The captures below are the same scene on the same phone, rendered three times wi
 
 <figure><img src="../../../.gitbook/assets/screeninset-device.png" alt="Scene UI inset to the device safe area, clear of the notch"><figcaption><p><code>screenInset: 'device'</code> (the default) — the UI is pulled in to the device safe area, clear of the notch and the rounded corners. It still overlaps the client's controls, which are not part of this area.</p></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> — the UI is placed inside the rectangle the client reports as free of its own HUD. On this mobile client that excludes the left-hand column (profile, chat, joystick) but not the action buttons on the bottom right.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> — the UI is placed inside the rectangle the client reports as free of its own HUD. On mobile client <code>1.12.1</code>, captured here, that excludes the left-hand column (profile, chat, joystick) but not the action buttons on the bottom right.</p></figcaption></figure>
 
 {% hint style="info" %}
 **💡 Tip**: What `'interactable'` covers is decided by each explorer, and it can change between versions — as the third capture shows, it is not a guarantee that every client control is avoided. Treat it as "the explorer's best offer", verify on the platforms you target, and keep laying out critical UI with the [reserved margins](../building-for-mobile/safe-area.md#reserved-margins) in mind.

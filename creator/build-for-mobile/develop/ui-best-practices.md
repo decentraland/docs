@@ -25,7 +25,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 
 The old rule of thumb — *design on desktop, then scale UI sizes by 3× for mobile* — predates two SDK changes and should no longer be applied blindly. Most of that 3× is now applied for you:
 
-* **`devicePixelRatio` is no longer divided out of the UI scale factor.** Pixel-sized UI now renders `devicePixelRatio` times larger than it used to — typically **2–3× on a phone**, and on retina laptops too. There is no opt-out.
+* **`devicePixelRatio` takes no part in UI layout.** Pixel-sized UI now renders `devicePixelRatio` times larger than it used to — typically **2–3× on a phone**, and on retina laptops too. There is no opt-out.
 * **The virtual screen defaults per platform**, `1600x720` on mobile against `1920x1080` on desktop and web, so the same pixel value already covers about 1.2× more of the screen on a phone.
 
 Start from your desktop sizes unchanged, measure on a real device — see [Preview on mobile](preview-on-mobile.md) — and scale up only where tap targets or text actually come up short. Branch with [`isMobile()`](detect-platform.md) when the two genuinely need to differ.

@@ -201,7 +201,11 @@ La UI predeterminada de Decentraland, incluyendo el mapa, chat, etc, siempre se 
 Los jugadores con diferentes tamaños de pantalla pueden ver tu diseño UI de manera diferente. Los valores en píxeles se escalan contra la pantalla virtual, así que tu UI mantiene sus proporciones en cualquier resolución: **no necesitas calcular un factor de escala por tu cuenta**, y hacerlo aplicaría el escalado dos veces.
 
 {% hint style="warning" %}
-**📔 Cambio de comportamiento**: Antes el factor de escala de la UI se dividía por `devicePixelRatio`, lo que hacía que la UI medida en píxeles se viera *más chica* en pantallas de alta densidad (retina). Ya no es así — `devicePixelRatio` ahora es sólo una pista sobre la densidad de la pantalla, por ejemplo para elegir entre una textura 1x, 2x o 3x. La UI medida en píxeles ahora se ve hasta 2–3 veces más grande en pantallas retina y en móvil que en versiones anteriores del SDK. Revisá cualquier UI que hayas ajustado a mano para compensar esto.
+**📔 Nota**: `devicePixelRatio` no participa del layout de la UI. Es una pista sobre la densidad de la pantalla — útil para elegir entre una textura 1x, 2x o 3x — y nada más. Si tu escena fue dimensionada en una versión anterior del SDK, esperá que la UI medida en píxeles se vea hasta 2–3 veces más grande en pantallas de alta densidad (retina y móvil), y revisá lo que hayas ajustado a mano.
+{% endhint %}
+
+{% hint style="danger" %}
+**📔 Sacá tu propio factor de escala.** Si tu escena multiplica sus tamaños por un factor que calcula a partir de `UiCanvasInformation` — típicamente `Math.min(width / 1920, height / 1080)` — sacá ese multiplicador. Es el mismo factor que el SDK ahora aplica por defecto, así que mantener los dos hace que tu UI crezca de forma cuadrática con el tamaño de pantalla. Si preferís quedarte con el tuyo como único factor, desactivá la pantalla virtual con `setUiRenderer(ui, { virtualWidth: 0, virtualHeight: 0 })`.
 {% endhint %}
 
 En lugar de posicionar y escalar elementos UI en términos de porcentajes de pantalla, también puedes obtener las dimensiones del canvas y luego calcular las posiciones absolutas y tamaños siguiendo tu propia lógica personalizada. Por ejemplo, podrías elegir diferentes arreglos de diálogo dependiendo del tamaño de pantalla.
@@ -225,70 +229,6 @@ export function Main(){
   let canvas = UiCanvasInformation.get(engine.RootEntity)
 	console.log("DIMENSIONES DEL CANVAS: ", canvas.width, canvas.height)
 })
-```
-
-El siguiente fragmento calcula continuamente un valor multiplicador basado en el tamaño de pantalla:
-
-```ts
-import { engine, UiCanvasInformation } from "@dcl/sdk/ecs"
-
-let timer = 0
-let canvasInfoTimer = 0.5
-export let scaleFactor = 1
-
-export function UIScaleUpdate() {
-
-  engine.addSystem((dt) => {
-    timer += dt
-
-    if (timer <= canvasInfoTimer) return
-    timer = 0
-
-    const uiCanvasInfo = UiCanvasInformation.getOrNull(engine.RootEntity)
-
-    if (!uiCanvasInfo) return
-
-    const newScaleFactor = Math.min(uiCanvasInfo.width / 1920, uiCanvasInfo.height / 1080)
-
-    if (newScaleFactor !== scaleFactor) {
-      scaleFactor = newScaleFactor
-      console.log('NUEVO scaleFactor UI: ', scaleFactor)
-    }
-  })
-}
-```
-
-El valor de la variable `scaleFactor`, que esta función actualiza, puede entonces usarse como un multiplicador en cualquier elemento UI en la escena, incluyendo valores de `heigh`, `width` y `fontSize`.
-
-```ts
-import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
-import { scaleFactor } from './calculate-scale-factor'
-import { Color4 } from '@dcl/sdk/math'
-
-export const uiMenu = () => (
-	<UiEntity
-		uiTransform={{
-			width: 200 * scaleFactor,
-			height: 100 * scaleFactor,
-			justifyContent: 'center',
-			alignItems: 'center',
-			padding: 4 * scaleFactor
-		}}
-		uiBackground={{ color: Color4.Green() }}
-	>
-	  	<Label
-		        value={description}
-		        fontSize={18 * scaleFactor}
-		        textAlign="middle-center"
-		        uiTransform={{
-		          width: "auto",
-		          height: "auto",
-		          alignSelf: "center",
-		          margin: { top: 10 * scaleFactor, bottom: 10 * scaleFactor },
-		        }}
-	      />
-	</UiEntity>
-)
 ```
 
 Algunas otras mejores prácticas respecto a tamaños UI:

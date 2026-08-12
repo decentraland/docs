@@ -281,7 +281,7 @@ export const dialogWithScroll = () => (
 Players with different screen sizes may see your UI layout differently. Pixel values are scaled against the [virtual screen](onscreen-ui.md#screen-virtual-scale) for you, so the same UI keeps its proportions across resolutions — **you don't need to compute a scale factor yourself**, and doing so applies the scaling twice.
 
 {% hint style="warning" %}
-**📔 Changed behavior**: `devicePixelRatio` used to be divided out of the UI scale factor, which made pixel-sized UI *shrink* on high-density (retina) displays. It no longer is — `devicePixelRatio` is now only a display-density hint, for example to pick between a 1x, 2x or 3x texture. Pixel-sized UI on a retina or mobile screen is now up to 2–3 times larger than it was in previous SDK versions. Re-check any UI that was hand-tuned to compensate.
+**📔 Note**: `devicePixelRatio` takes no part in UI layout. It is a display-density hint — useful to pick between a 1x, 2x or 3x version of a texture — and nothing else. If your scene was sized on an earlier SDK version, expect pixel-sized UI to render up to 2–3 times larger on high-density (retina and mobile) screens, and re-check anything that was hand-tuned.
 {% endhint %}
 
 {% hint style="danger" %}

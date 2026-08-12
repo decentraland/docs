@@ -224,6 +224,8 @@ This turns optimization into something you can simply ask for:
 
 > "Check if my scene is within limits, find whatever is dragging the frame rate down near the spawn point, fix it, and show me before and after numbers."
 
-### Automate model fixes with the Blender MCP server
+### Combine with the Blender MCP server
 
-The Decentraland tools tell the agent which models are the heaviest. The [Blender MCP server](https://www.blender.org/lab/mcp-server/) lets it fix them too. With both connected, an agent can find a heavy model, open it in Blender to reduce its triangle count, merge its materials, or shrink its textures, export the optimized `.glb` back into the scene, and then re-measure the frame rate in-world to confirm the improvement. This closes the full optimization loop, from detection to fix to verification, with no manual steps in between.
+The Decentraland tools tell the agent which models are the heaviest, but they don't edit the models themselves. To go further, you can try combining them with the [Blender MCP server](https://www.blender.org/lab/mcp-server/), which gives the agent access to Blender's editing tools. This allows the agent to open a heavy model in Blender, reduce its triangle count, merge its materials, or shrink its textures, and export the result back into the scene as a `.glb` file, where it can then re-measure the frame rate in-world.
+
+Keep in mind that automated mesh edits can visibly change how a model looks, so always review the results and keep backups of your original files.

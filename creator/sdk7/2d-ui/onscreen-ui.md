@@ -261,6 +261,20 @@ On desktop the device insets are zero, so `'device'` places the UI over the whol
 **📔 Note**: Don't wrap your UI in the [`ScreenInsetArea`](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) or `InteractableArea` components while also leaving the matching `screenInset` value on the renderer — the inset would be applied twice, pushing the UI inwards by double the margin. Either rely on `screenInset`, or set it to `'none'` and place the wrapper yourself.
 {% endhint %}
 
+### The three areas on a real device
+
+The captures below are the same scene on the same phone, rendered three times with only the `screenInset` value changed. The magenta rectangle is the UI itself; the outlines are the areas the explorer reports — cyan is the full canvas, amber is `screenInsetArea`, green is `interactableArea`.
+
+<figure><img src="../../../.gitbook/assets/screeninset-none.png" alt="Scene UI covering the whole phone screen, including the notch strip and the areas under the client controls"><figcaption><p><code>screenInset: 'none'</code> — the UI covers the whole canvas. Its corners sit under the notch and behind the client's own controls.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/screeninset-device.png" alt="Scene UI inset to the device safe area, clear of the notch"><figcaption><p><code>screenInset: 'device'</code> (the default) — the UI is pulled in to the device safe area, clear of the notch and the rounded corners. It still overlaps the client's controls, which are not part of this area.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> — the UI is placed inside the rectangle the client reports as free of its own HUD. On this mobile client that excludes the left-hand column (profile, chat, joystick) but not the action buttons on the bottom right.</p></figcaption></figure>
+
+{% hint style="info" %}
+**💡 Tip**: What `'interactable'` covers is decided by each explorer, and it can change between versions — as the third capture shows, it is not a guarantee that every client control is avoided. Treat it as "the explorer's best offer", verify on the platforms you target, and keep laying out critical UI with the [reserved margins](../building-for-mobile/safe-area.md#reserved-margins) in mind.
+{% endhint %}
+
 Each renderer honors its own `screenInset`, so the main UI and any UI added with `addUiRenderer()` can use different areas at the same time. Unlike the virtual size, this value is never shared between renderers.
 
 ## Multiple UI modules

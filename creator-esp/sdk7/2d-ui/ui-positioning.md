@@ -198,7 +198,11 @@ La UI predeterminada de Decentraland, incluyendo el mapa, chat, etc, siempre se 
 
 ### Tamaño UI responsivo
 
-Los jugadores con diferentes tamaños de pantalla pueden ver tu diseño UI de manera diferente. Si estableces el tamaño de cualquier elemento UI a un número fijo de píxeles, esta UI puede verse demasiado pequeña para leer en pantallas retina, que tienen una densidad de píxeles mucho mayor.
+Los jugadores con diferentes tamaños de pantalla pueden ver tu diseño UI de manera diferente. Los valores en píxeles se escalan contra la pantalla virtual, así que tu UI mantiene sus proporciones en cualquier resolución: **no necesitas calcular un factor de escala por tu cuenta**, y hacerlo aplicaría el escalado dos veces.
+
+{% hint style="warning" %}
+**📔 Cambio de comportamiento**: Antes el factor de escala de la UI se dividía por `devicePixelRatio`, lo que hacía que la UI medida en píxeles se viera *más chica* en pantallas de alta densidad (retina). Ya no es así — `devicePixelRatio` ahora es sólo una pista sobre la densidad de la pantalla, por ejemplo para elegir entre una textura 1x, 2x o 3x. La UI medida en píxeles ahora se ve hasta 2–3 veces más grande en pantallas retina y en móvil que en versiones anteriores del SDK. Revisá cualquier UI que hayas ajustado a mano para compensar esto.
+{% endhint %}
 
 En lugar de posicionar y escalar elementos UI en términos de porcentajes de pantalla, también puedes obtener las dimensiones del canvas y luego calcular las posiciones absolutas y tamaños siguiendo tu propia lógica personalizada. Por ejemplo, podrías elegir diferentes arreglos de diálogo dependiendo del tamaño de pantalla.
 
@@ -210,6 +214,7 @@ El componente `UiCanvasInformation` contiene la siguiente información:
 * `width`: Ancho del canvas en píxeles
 * `devicePixelRatio`: La relación de la resolución en píxeles físicos en el dispositivo a los píxeles en el canvas. Útil como pista sobre la densidad de la pantalla, por ejemplo para elegir entre una textura 1x, 2x o 3x.
 * `interactableArea`: Un objeto `BorderRect`, detallando el área designada para elementos UI de escena. Este objeto contiene valores para `top`, `bottom`, `left` y `right`, cada uno de estos es el número de píxeles en ese margen de la pantalla que están ocupados por la UI del explorador.
+* `screenInsetArea`: Un objeto `BorderRect`, detallando los márgenes seguros que reserva el dispositivo o la UI de la plataforma, por ejemplo el notch, la barra de estado, el indicador de inicio o las esquinas redondeadas en móvil. Contiene valores para `top`, `bottom`, `left` y `right`, cada uno es el número de píxeles reservados en ese borde de la pantalla. En escritorio suele ser `0` en los cuatro lados.
 
 {% hint style="warning" %}
 **📔 Nota**: Diferentes exploradores de Decentraland tendrán diferentes valores para estos, ya que las UIs globales de la plataforma pueden diferir, y los valores podrían cambiar dinámicamente a medida que el usuario expande u oculta diferentes menús de UI globales.
@@ -289,4 +294,4 @@ export const uiMenu = () => (
 Algunas otras mejores prácticas respecto a tamaños UI:
 
 * Si el ancho o alto de cualquier elemento UI es dinámico, es bueno también usar los parámetros `maxWidth`, `minWidth`, `maxHeight`, y `minHeight` para asegurarse de que permanezcan dentro de valores razonables.
-* El tamaño de fuente del texto es relativo a un número fijo de píxeles, debes hacerlo dinámico para que permanezca legible en pantallas retina. Consulta [Tamaño de texto responsivo](../sdk7/2d-ui/ui_text.md#responsive-text-size)
+* Un tamaño de fuente numérico es un valor en píxeles virtuales, y se escala como cualquier otro. Si querés un tamaño medido contra el canvas, que no dependa de la pantalla virtual, pasá un string en `vw`/`vh`. Consulta [Tamaño de texto responsivo](../sdk7/2d-ui/ui_text.md#responsive-text-size)

@@ -150,6 +150,10 @@ final font = fontSize + (screen width * scaleUnit / 100)
 
 For example, in the snippet below uses a `scaleUnit` value of 0.8. If the screen width is _1280px_, that will result in text of size of **25.24**, having followed the equation `15 + (1280 * 0.8 / 100)`.
 
+{% hint style="warning" %}
+**📔 Note**: `scaleFontSize()` returns a **number**, so its result is a size in *virtual* pixels — it is still multiplied by the [UI scale factor](onscreen-ui.md#screen-virtual-scale) before being drawn. In the example above, with the default `1920x1080` virtual screen and a 1280px-wide canvas, the scale factor is `1280 / 1920 = 0.667`, so the text renders at about 16.8px. If you want a font size measured directly against the canvas, that ignores the virtual screen, pass a `vw`/`vh` **string** straight to `fontSize` instead — for example `fontSize: '1.8vh'`.
+{% endhint %}
+
 ```ts
 import { scaleFontSize } from '@dcl/sdk/react-ecs'
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'

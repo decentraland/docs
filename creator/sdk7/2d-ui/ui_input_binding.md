@@ -8,7 +8,7 @@ description: Bind input actions to your own UI elements so they drive player inp
 
 Use it to build your own touch controls. It's typically paired with [On-screen Controls](../interactivity/touch-screen-controls.md): hide the native buttons, then put your own in their place.
 
-<figure><img src="../../images/touch-controls/ui-input-binding.jpg" alt="A retro-style gamepad assembled from custom UI elements, each wired to an input action"><figcaption><p>A fully custom gamepad built from UI elements — each button is a UI entity bound to an input action</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/ui-input-binding.png" alt="A retro-style gamepad assembled from custom UI elements, each wired to an input action"><figcaption><p>A fully custom gamepad built from UI elements — each button is a UI entity bound to an input action</p></figcaption></figure>
 
 ## Bind an action to a UI element
 

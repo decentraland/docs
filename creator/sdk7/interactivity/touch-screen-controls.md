@@ -151,7 +151,7 @@ The [`InputAction`](button-events/click-events.md#pointer-buttons) values here a
 
 ## Example
 
-To hide the joystick and crosshair, remove the F button, and make the central button fire `IA_PRIMARY` with a custom icon shipped in your scene:
+To hide the joystick, tuck away the numbered buttons, and give the central jump button a custom icon shipped in your scene:
 
 ```ts
 import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
@@ -159,20 +159,21 @@ import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
 export function main() {
 	TouchScreenControls.createOrReplace(engine.RootEntity, {
 		hideJoystick: true,
-		hideCrosshair: true,
-		mainAction: InputAction.IA_PRIMARY,
 		touchInputs: [
-			{ inputAction: InputAction.IA_SECONDARY, hide: true },
+			{ inputAction: InputAction.IA_ACTION_3, hide: true },
+			{ inputAction: InputAction.IA_ACTION_4, hide: true },
+			{ inputAction: InputAction.IA_ACTION_5, hide: true },
+			{ inputAction: InputAction.IA_ACTION_6, hide: true },
 			{
-				inputAction: InputAction.IA_PRIMARY,
-				icon: { tex: { $case: 'texture', texture: { src: 'images/grab.png' } } },
+				inputAction: InputAction.IA_JUMP,
+				icon: { tex: { $case: 'texture', texture: { src: 'images/banana.png' } } },
 			},
 		],
 	})
 }
 ```
 
-<figure><img src="../../images/touch-controls/custom-main-action.jpg" alt="A mobile HUD whose central button shows a custom icon and triggers the primary action"><figcaption><p>The result: a central button re-iconed and re-mapped to the primary action</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/custom-main-action.png" alt="A mobile HUD with the joystick hidden and the central jump button showing a custom banana icon"><figcaption><p>The result: joystick gone, numbered buttons hidden (so the "+" disappears), and the jump button re-iconed</p></figcaption></figure>
 
 To replace the native controls entirely, hide them here and build your own touch buttons with [UI Input Binding](../2d-ui/ui_input_binding.md).
 

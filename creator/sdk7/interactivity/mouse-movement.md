@@ -25,7 +25,7 @@ Since `screenDelta` only holds the movement of a single frame, always read it in
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: What's described in this document is only relevant to players on desktop. On the [mobile app](../building-for-mobile/), input is touch-based and there is no free-moving cursor, so `screenDelta` always reports 0. See [Input on mobile](../building-for-mobile/input-on-mobile.md) for how input works on touch devices, and [Detect platform](../building-for-mobile/detect-platform.md) to offer alternative controls to mobile players.
+**📔 Note**: What's described in this document is only relevant to players on desktop. On the [mobile app](../../build-for-mobile/mobile-client/overview.md), input is touch-based and there is no free-moving cursor, so `screenDelta` always reports 0. See [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md) for how input works on touch devices, and [Detect platform](../../build-for-mobile/develop/detect-platform.md) to offer alternative controls to mobile players.
 {% endhint %}
 
 ## Mouse movement while the cursor is locked

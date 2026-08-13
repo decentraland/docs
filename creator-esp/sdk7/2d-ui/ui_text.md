@@ -178,4 +178,4 @@ export const uiMenu = () => (
 **💡 Tip**: Si no tienes diferentes tamaños de pantalla para probar, puedes intentar usar el Web Explorer y redimensionar la ventana donde ejecutas la vista previa. El texto se ajustará instantáneamente cada vez que cambies la ventana.
 {% endhint %}
 
-Como alternativa a usar la función `scaleFontSize()`, también puedes ajustar el tamaño de fuente al tamaño de pantalla usando los métodos descritos en [Tamaño UI Responsivo](../sdk7/2d-ui/ui-positioning.md#responsive-ui-size).
+Como alternativa a `scaleFontSize()`, pasá un string en `vw`/`vh` directamente como `fontSize` — por ejemplo `fontSize: '1.8vh'` — que mide el texto contra el canvas e ignora por completo el factor de escala de la UI. **No** multipliques los tamaños de fuente por un factor que calcules vos a partir de `UiCanvasInformation`: el SDK ya aplica uno, ver [Tamaño UI responsivo](../sdk7/2d-ui/ui-positioning.md#responsive-ui-size).

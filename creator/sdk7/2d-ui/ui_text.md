@@ -142,13 +142,17 @@ The `scaleFontSize()` function requires two parameters:
 
 The value of `scaleUnit` is a percentage of the window's width or height. So a `scaleUnit` of `"100vw"` is 100% of the width of the screen, a value of `"0.5vw"` is 0.5% of the width of the screen.
 
-The formula that `scaleFontSize()` follows is it multiples the screen width or height by the `scaleUnit`, divides that by the device's pixel ratio, and adds to that the `fontSize` passed in the first parameter.
+The formula that `scaleFontSize()` follows is it multiples the screen width or height by the `scaleUnit`, and adds to that the `fontSize` passed in the first parameter.
 
 ```ts
-final font = fontSize + (screen width * scaleUnit / 100 / devicePixelRatio)
+final font = fontSize + (screen width * scaleUnit / 100)
 ```
 
-For example, in the snippet below uses a `scaleUnit` value of 0.8. If the screen width is _1280px_ and the device pixel ratio is _1_, that will result in text of size of **25.24**, having followed the equation `15 + (1280 * 0.8 / 100 / 1)`.
+For example, in the snippet below uses a `scaleUnit` value of 0.8. If the screen width is _1280px_, that will result in text of size of **25.24**, having followed the equation `15 + (1280 * 0.8 / 100)`.
+
+{% hint style="warning" %}
+**📔 Note**: `scaleFontSize()` returns a **number**, so its result is a size in *virtual* pixels — it is still multiplied by the [UI scale factor](onscreen-ui.md#screen-virtual-scale) before being drawn. In the example above, with the default `1920x1080` virtual screen and a 1280px-wide canvas, the scale factor is `1280 / 1920 = 0.667`, so the text renders at about 16.8px. If you want a font size measured directly against the canvas, that ignores the virtual screen, pass a `vw`/`vh` **string** straight to `fontSize` instead — for example `fontSize: '1.8vh'`.
+{% endhint %}
 
 ```ts
 import { scaleFontSize } from '@dcl/sdk/react-ecs'
@@ -174,4 +178,4 @@ export const uiMenu = () => (
 **💡 Tip**: If you don't have different screen sizes to test, you can try using the Web Explorer and resizing the window where you run the preview. The text will adjust instantly every time you change the window.
 {% endhint %}
 
-As an alternative to using the `scaleFontSize()` function, you can also adjust font size to screen size using the methods described in [Responsive UI Size](ui-positioning.md#responsive-ui-size).
+As an alternative to `scaleFontSize()`, pass a `vw`/`vh` string directly as the `fontSize` — for example `fontSize: '1.8vh'` — which sizes the text against the canvas and ignores the UI scale factor entirely. Do **not** multiply font sizes by a factor you compute yourself from `UiCanvasInformation`: the SDK already applies one, see [Responsive UI size](ui-positioning.md#responsive-ui-size).

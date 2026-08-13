@@ -123,6 +123,7 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](player-avatar.md#detect-when-an-emote-finishes).
 
 You can also detect emotes form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 

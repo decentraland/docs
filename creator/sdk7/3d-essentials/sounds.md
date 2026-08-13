@@ -188,7 +188,7 @@ audioEventsSystem.registerAudioEventsEntity(sourceEntity, (audioEvent) => {
 A transition from `MS_PLAYING` to `MS_READY` means the sound stopped playing. You can also query the latest reported state at any time with `audioEventsSystem.getAudioState(entity)`, or unregister the callback with `audioEventsSystem.removeAudioEventsEntity(entity)`. The same system also works for entities with an [`AudioStream`](../media/audio-streaming.md) component.
 
 {% hint style="warning" %}
-**📔 Note**: These features are only supported in the DCL 2.0 desktop client.
+**📔 Note**: These features are only supported in the Desktop client.
 {% endhint %}
 
 ## Looping

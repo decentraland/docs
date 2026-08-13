@@ -276,7 +276,7 @@ export function main() {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: This feature is only supported in the DCL 2.0 desktop client. Emotes played with a `mask` (partial-body emotes) on the local player don't currently report lifecycle events.
+**📔 Note**: This feature is only supported in the Desktop client. Emotes played with a `mask` (partial-body emotes) on the local player don't currently report lifecycle events.
 {% endhint %}
 
 ## Restrict locomotion

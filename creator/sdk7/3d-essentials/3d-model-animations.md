@@ -213,7 +213,7 @@ The `playing` property is only flipped by the engine when the animation ends by 
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: This feature is only supported in the DCL 2.0 desktop client.
+**📔 Note**: This feature is only supported in the Desktop client.
 {% endhint %}
 
 ## Handle multiple animations

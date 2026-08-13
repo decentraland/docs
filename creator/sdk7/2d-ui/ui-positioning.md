@@ -34,7 +34,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
+    ReactEcsRenderer.setUiRenderer(uiMenu)
 }
 ```
 
@@ -278,17 +278,15 @@ export const dialogWithScroll = () => (
 
 ## Responsive UI size
 
-Players with different screen sizes may see your UI layout differently. If you set the size of any UI element to a fixed number of pixels, this UI may look too small to read on retina displays, that have a much higher pixel density.
+The SDK applies a virtual screen by default (1920 x 1080 on desktop, 1600 x 720 on mobile), so pixel values in your UI automatically scale to fit any screen. In most cases, you do not need to build your own scaling logic. See [Screen Virtual Scale](onscreen-ui.md#screen-virtual-scale) for details.
 
-Instead of positioning and scaling UI elements in terms of screen percentages, you can also obtain the canvas dimensions and then calculate the absolute positions and sizes following your own custom logic. For example, you could chose different dialog arrangements depending on the screen size.
-
-To obtain information about the screen's dimension, you can check the `UiCanvasInformation`, that's added by default to the scenes's root entity.
+If you need finer control, for example to switch between entirely different UI layouts based on screen size, you can read the canvas dimensions from the `UiCanvasInformation` component on the scene's root entity.
 
 The `UiCanvasInformation` component holds the following information:
 
 * `height`: Canvas height in pixels
 * `width`: Canvas width in pixels
-* `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas
+* `devicePixelRatio`: The ratio of physical pixels to canvas pixels. This is a density hint (similar to CSS `window.devicePixelRatio`), useful for picking asset resolutions. It is not used in the UI scale factor calculation.
 * `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI.
 * `screenInsetArea`: A `BorderRect` object, detailing the screen inset area (safe margins) reserved by the device or platform UI, for example the notch, status bar, home indicator, or rounded corners on mobile. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels reserved on that edge of the screen. On desktop this is typically `0` on all sides.
 

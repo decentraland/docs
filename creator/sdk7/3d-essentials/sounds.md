@@ -198,6 +198,56 @@ To play a segment of a longer sound file, use the `playSoundSegment()` in the SD
 
 You can also achieve this by explicitly set the `currentTime` property on an `AudioSource` component, and then stopping it after waiting for a period of time.
 
+## Monitor audio state
+
+Use the `audioEventsSystem` to get notified when the media state of an `AudioSource` changes (for example, when it starts playing, finishes, or encounters an error). Register a callback on any entity that has an `AudioSource` component.
+
+```ts
+import { engine, AudioSource, MediaState } from '@dcl/sdk/ecs'
+import { audioEventsSystem } from '@dcl/sdk/ecs'
+
+const sourceEntity = engine.addEntity()
+AudioSource.create(sourceEntity, {
+	audioClipUrl: 'sounds/music.mp3',
+	playing: true,
+})
+
+// Get notified when the audio state changes
+audioEventsSystem.registerAudioEventsEntity(sourceEntity, (event) => {
+	console.log('Audio state changed:', event.state)
+
+	if (event.state === MediaState.MS_PLAYING) {
+		console.log('Sound started playing')
+	}
+	if (event.state === MediaState.MS_ERROR) {
+		console.log('Sound failed to play')
+	}
+})
+```
+
+The callback receives a `PBAudioEvent` object with:
+
+* `state`: A value from the `MediaState` enum (`MS_NONE`, `MS_LOADING`, `MS_READY`, `MS_PLAYING`, `MS_PAUSED`, `MS_BUFFERING`, `MS_SEEKING`, `MS_ERROR`).
+* `timestamp`: When the state change occurred.
+
+The callback fires only when the state changes, not on every frame. You can also poll the latest state at any time:
+
+```ts
+const currentState = audioEventsSystem.getAudioState(sourceEntity)
+if (currentState) {
+	console.log('Current state:', currentState.state)
+}
+```
+
+Other methods on `audioEventsSystem`:
+
+* `removeAudioEventsEntity(entity)`: Stop monitoring an entity.
+* `hasAudioEventsEntity(entity)`: Check if an entity is registered.
+
+{% hint style="info" %}
+**Tip:** The `audioEventsSystem` also works with `AudioStream` entities. See [Audio streaming](../media/audio-streaming.md) for stream-specific state monitoring.
+{% endhint %}
+
 ## Audio streaming
 
 See [Audio streaming](../media/audio-streaming.md) to learn how you can play a live audio stream from an external source.

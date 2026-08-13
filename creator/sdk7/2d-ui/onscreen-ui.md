@@ -27,7 +27,7 @@ See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to desi
 {% endhint %}
 
 {% hint style="info" %}
-**📱 Avoid hardware-reserved margins**: On mobile, devices reserve screen space for the notch, status bar, home indicator, and rounded corners. Wrap your UI in the [`ScreenInsetArea` component](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) to keep it clear of these areas automatically. It only affects the mobile client — on desktop it has no effect, so it's safe to leave in cross-platform UI.
+**📱 Avoid hardware-reserved margins**: By default, `setUiRenderer()` uses `screenInset: 'device'`, which automatically keeps your UI clear of the device's notch, status bar, home indicator, and rounded corners. You can also wrap specific parts of your UI in the [`ScreenInsetArea` component](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) for finer control.
 {% endhint %}
 
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
@@ -63,7 +63,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
+    ReactEcsRenderer.setUiRenderer(uiMenu)
 }
 ```
 
@@ -85,7 +85,7 @@ export function setupUI() {
       }}
       uiBackground={{ color: Color4.Red() }}
     />
-  ), { virtualWidth: 1920, virtualHeight: 1080 })
+  ))
 }
 ```
 
@@ -160,7 +160,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
+    ReactEcsRenderer.setUiRenderer(uiMenu)
 }
 ```
 
@@ -168,7 +168,9 @@ A definition of a UI module can only have one parent-level entity. You can defin
 
 ## Screen Virtual Scale
 
-Set a vitual width and height for the UI. This is encouraged to make sure your UI looks the same on different screen sizes, regardless of the actual screen size in pixels.
+The UI uses a virtual screen to make sure your layout looks the same on different screen sizes, regardless of the actual screen in pixels. By default, a virtual size is applied automatically based on the platform: **1920 x 1080** on desktop, **1600 x 720** on mobile.
+
+You can override these defaults by passing `virtualWidth` and `virtualHeight` in the options:
 
 ```ts
 export function setupUi() {
@@ -176,9 +178,44 @@ export function setupUi() {
 }
 ```
 
-If you set a virtual width to 1920, and a virtual height to 1080, the UI will be scaled to fit the screen size. If the screen is 1920x1080, the UI will be displayed at the same size as the virtual size. If the screen is larger or smaller, any pixel values will be scaled to fit the virtual size. For example, if the screen is 3840x2160, an item that is defined as 100 pixels in width will be displayed over 200 actual pixels.
+If the virtual size is 1920 x 1080 and the screen is 3840 x 2160, an item defined as 100 pixels wide will be displayed over 200 actual pixels. The UI Scale Factor is calculated as `Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`.
 
-The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight) / devicePixelRatio`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts)
+{% hint style="warning" %}
+**Note:** On mobile, a 16:9 virtual size (like 1920 x 1080) is automatically overridden to 1600 x 720 to fit phone aspect ratios. If you need to keep a custom size on mobile, use a non-16:9 ratio.
+{% endhint %}
+
+To disable the virtual screen entirely (no UI scaling), set one or both dimensions to 0 or a negative value:
+
+```ts
+ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 0, virtualHeight: 0 })
+```
+
+{% hint style="warning" %}
+**Note:** If you provide only one dimension (for example `virtualWidth` but not `virtualHeight`), the virtual screen is disabled and a warning is logged. Always provide both dimensions or omit both.
+{% endhint %}
+
+### Screen inset
+
+By default, UI is positioned inside the device safe area, which excludes the notch, status bar, home indicator, and rounded corners on mobile. You can change this with the `screenInset` option on `setUiRenderer()` or `addUiRenderer()`:
+
+* `'device'` (default): the device safe area. Keeps UI clear of hardware-reserved margins.
+* `'interactable'`: the area free of the Explorer's native HUD (minimap, chat, profile). Use this when you want your UI to avoid clashing with the Explorer's own controls.
+* `'none'`: the whole screen, with 0,0 at the top-left corner. Use this when you want full control over positioning.
+
+```ts
+// Place UI in the area free of the Explorer HUD
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'interactable' })
+```
+
+Each renderer can use a different inset. For example, your main UI might use `'device'` while an additional renderer uses `'interactable'`.
+
+{% hint style="info" %}
+**Tip:** On desktop, the device safe area insets are typically zero, so `'device'` and `'none'` behave the same. The `screenInset` option is most useful for cross-platform scenes targeting mobile.
+{% endhint %}
+
+{% hint style="info" %}
+**Tip:** You can also wrap specific parts of your UI in [`ScreenInsetArea`](../building-for-mobile/safe-area.md#device-hardware-insets-screeninsetarea) or `InteractableArea` components for finer control. These components automatically compensate for the UI scale factor, so they position correctly regardless of your virtual screen size.
+{% endhint %}
 
 ## Multiple UI modules
 
@@ -206,10 +243,14 @@ export function setupUi() {
 
 This snippet can exist independently of any other UI code in the scene. The rest of the scene might include a `ReactEcsRenderer.setUiRenderer()`, or none at all, and the UI will still be rendered.
 
-An `addUiRenderer()` call can also include a virtual width and height, just like `setUiRenderer()`. However, if the scene has a `setUiRenderer()` call that also defines a virtual width and height, the virtual width and height of the `addUiRenderer()` call will be ignored.
+An `addUiRenderer()` call can also include options for virtual size and screen inset, just like `setUiRenderer()`. However, if the scene has a `setUiRenderer()` call that also defines a virtual width and height, the virtual size from `addUiRenderer()` is ignored. The `screenInset` option is honored independently per renderer.
 
 ```tsx
-ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, {
+  virtualWidth: 1920,
+  virtualHeight: 1080,
+  screenInset: 'interactable'
+})
 ```
 
 That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
@@ -227,7 +268,7 @@ const uiComponent = () => [
   // ...
 ]
 
-ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+ReactEcsRenderer.setUiRenderer(uiComponent)
 ```
 
 Below is a more complete example:
@@ -286,6 +327,6 @@ export function main() {
       // The line below is to use the DCL UI Toolkit library
       // https://github.com/decentraland-scenes/dcl-ui-toolkit
       ui.render(),
-    ], { virtualWidth: 1920, virtualHeight: 1080 })
+    ])
 }
 ```

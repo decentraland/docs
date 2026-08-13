@@ -111,6 +111,8 @@ export function setupUi() {
 
 `ScreenInsetArea` positions itself absolutely using the inset values the device reports, so the `positionType` and `position` fields of its `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. The component reacts automatically when the insets change, for example on rotation or when system bars appear or hide.
 
+`ScreenInsetArea` automatically compensates for the [UI scale factor](../2d-ui/onscreen-ui.md#screen-virtual-scale), so the insets position correctly regardless of your virtual screen size. You do not need to manually adjust for it.
+
 {% hint style="info" %}
 **📱 Mobile only:** `ScreenInsetArea` only changes anything on the **mobile client**, where the device reports real inset values. On the **desktop client** the insets are `(0, 0, 0, 0)`, so the component has no effect and your UI renders exactly as it would without it. It's safe to leave in cross-platform UI code.
 {% endhint %}

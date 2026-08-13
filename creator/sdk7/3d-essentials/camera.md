@@ -94,6 +94,22 @@ function main() {
 
 In this example, the camera will always be on a fixed position in the scene, as long as the player stays inside the scene bounds. As soon as the player steps outside the scene bounds, the default camera behavior will be restored.
 
+### Field of view
+
+You can override the Explorer's default field of view (FOV) for a virtual camera by setting the `fov` property, in degrees. The override applies only while this virtual camera is active. Omitting `fov` uses the Explorer's default (typically 60 degrees).
+
+```ts
+const cinematicCamera = engine.addEntity()
+Transform.create(cinematicCamera, {
+	position: Vector3.create(8, 3, 2),
+})
+VirtualCamera.create(cinematicCamera, {
+	fov: 45,
+})
+```
+
+A narrower FOV (lower value) zooms in, useful for cutscenes or aiming. A wider FOV (higher value) shows more of the scene, useful for panoramic views.
+
 Your scene can include as many entities with a `VirtualCamera`component as you want, and dynamically switch between multiple virtual cameras as the player moves, or as they perform certain actions. Only one virtual camera is active at any given time, this is assigned by the `MainCamera` component on `engine.CameraEntity`.
 
 To revert back to default camera behavior, set the value to `undefined` on `MainCamera.virtualCameraEntity`. The player is then free to switch between 1st and 3rd person cameras. If you want the player to only use one of these two modes, you can use a [Camera modifier areas](#1st-and-3rd-person-camera-modes) to force one of the two.

@@ -123,8 +123,35 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
+* `state`: _(optional)_ The lifecycle state of the emote, from the `EmoteState` enum:
+  * `EmoteState.ES_STARTED` (default): The emote started playing.
+  * `EmoteState.ES_FINISHED`: A non-looping emote completed naturally.
+  * `EmoteState.ES_INTERRUPTED`: Playback was cancelled (the player moved, teleported, played another emote, or left the scene).
 
-You can also detect emotes form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
+Use `state` to detect when an emote finishes or is interrupted, for example to trigger a reward when a dance completes:
+
+```ts
+import { AvatarEmoteCommand, EmoteState } from '@dcl/sdk/ecs'
+
+export function main() {
+	AvatarEmoteCommand.onChange(engine.PlayerEntity, (emote) => {
+		if (!emote) return
+
+		if (emote.state === EmoteState.ES_FINISHED) {
+			console.log('Emote finished: ', emote.emoteUrn)
+		}
+		if (emote.state === EmoteState.ES_INTERRUPTED) {
+			console.log('Emote interrupted: ', emote.emoteUrn)
+		}
+	})
+}
+```
+
+{% hint style="warning" %}
+**Note:** Older explorers may not send the `state` field. When absent, it defaults to `ES_STARTED`.
+{% endhint %}
+
+You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
 ## Player changes profile
 
@@ -207,3 +234,60 @@ export function main() {
 	})
 }
 ```
+
+## Open explorer panels
+
+Your scene can open the Explorer's built-in fullscreen panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. This is useful for directing players to specific Explorer features from your scene's UI.
+
+```ts
+import { openExplorerUi } from '~system/RestrictedActions'
+import { ExplorerUi } from '@dcl/sdk/ecs'
+
+// Open the map panel
+await openExplorerUi({ ui: ExplorerUi.EU_MAP })
+```
+
+The `ExplorerUi` enum has the following values:
+
+* `EU_SETTINGS` (0)
+* `EU_MAP` (1)
+* `EU_BACKPACK` (2)
+* `EU_CAMERA_REEL` (3)
+* `EU_COMMUNITIES` (4)
+* `EU_PLACES` (5)
+* `EU_EVENTS` (6)
+
+{% hint style="warning" %}
+**Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
+{% endhint %}
+
+### Observe when panels open or close
+
+Use the `ExplorerUiEventsResult` component to detect when explorer panels are opened or closed. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. It streams events each time a panel opens or closes.
+
+```ts
+import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
+
+engine.addSystem(() => {
+	// Iterate over new events since the last frame
+	for (const event of ExplorerUiEventsResult.get(engine.RootEntity)) {
+		if (event.event?.$case === 'opened') {
+			console.log('Panel opened:', event.ui)
+		}
+		if (event.event?.$case === 'closed') {
+			console.log('Panel closed:', event.ui)
+		}
+
+		// Check which specific panel
+		if (event.ui === ExplorerUi.EU_MAP && event.event?.$case === 'closed') {
+			console.log('Player closed the map')
+		}
+	}
+})
+```
+
+Each event contains:
+
+* `ui`: Which panel the event is about (an `ExplorerUi` value).
+* `timestamp`: A monotonic counter for when the event occurred.
+* `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.

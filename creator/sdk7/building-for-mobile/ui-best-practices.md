@@ -16,7 +16,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 
 ## DON'Ts
 
-* **Don't size UI elements purely in pixels.** Pixel-only layouts will look different on every device. Use the `virtualWidth` / `virtualHeight` mechanism described in [On-screen UI](../2d-ui/onscreen-ui.md#screen-virtual-scale) and pair it with platform-aware sizing.
+* **Don't size UI elements purely in pixels.** Pixel-only layouts will look different on every device. The SDK applies a default virtual screen (1600 x 720 on mobile, 1920 x 1080 on desktop), but you can customize it. See [Screen Virtual Scale](../2d-ui/onscreen-ui.md#screen-virtual-scale) for details.
 * **Don't place elements outside the safe area.** They will clash with the system controls.
 * **Don't rely on small buttons.** Small targets are unreliable to tap on a touch screen.
 * **Don't bind key actions to `IA_ACTION_3`–`IA_ACTION_6`** (the `1`/`2`/`3`/`4` keys on a keyboard). They are not easily reachable on mobile. See [Input on mobile](input-on-mobile.md).

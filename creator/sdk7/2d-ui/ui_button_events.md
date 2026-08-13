@@ -35,7 +35,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
+    ReactEcsRenderer.setUiRenderer(uiMenu)
 }
 ```
 
@@ -244,7 +244,7 @@ The supported values for `pointerFilter` are:
 * `block`: The UI element is pointer blocking, players can't click on anything behind this UI element.
 * `none`: The UI element is non-pointer blocking. The element is not clickable and anything behind it can be clicked.
 
-Below is a simple UI that doesn't have an `onMouseDown`, but that is overrides the default behavior of not being pointer-blocking by setting `pointerFilter` to `block`.
+Below is a simple UI that doesn't have an `onMouseDown`, but that overrides the default behavior of not being pointer-blocking by setting `pointerFilter` to `block`.
 
 ```tsx
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
@@ -263,3 +263,46 @@ export const uiMenu = () => (
 	/>
 )
 ```
+
+## Drag interactions
+
+UI pointer handlers (`onMouseDown`, `onMouseUp`, `onMouseEnter`, `onMouseLeave`) take no parameters. They fire as simple `() => void` callbacks with no position or coordinate data. There is no `onMouseDrag` or `onMouseMove` handler in the UI system.
+
+To build drag-based UI (sliders, scrub bars, drag handles), use `PrimaryPointerInfo.screenDelta` from `@dcl/sdk/ecs`. This gives the mouse movement in pixels since the last frame, updated every frame regardless of what the cursor is over.
+
+The pattern works as follows:
+
+1. `onMouseDown` on the drag target starts the drag and records the initial value.
+2. A system reads `screenDelta` each frame and accumulates it into the value while the drag is active.
+3. A full-screen invisible overlay with `pointerFilter: 'block'` catches the mouse release, so letting go outside the narrow target still ends the drag.
+
+```ts
+import { engine, PrimaryPointerInfo, UiCanvasInformation } from '@dcl/sdk/ecs'
+
+let dragging = false
+let sliderValue = 0.5
+
+// Call this system every frame to accumulate drag movement
+engine.addSystem(() => {
+	if (!dragging) return
+
+	const delta = PrimaryPointerInfo.getOrNull(engine.RootEntity)?.screenDelta
+	if (!delta || delta.x === 0) return
+
+	// Convert screen pixels to a 0–1 range
+	// Divide by UI scale factor so drag speed matches the cursor
+	const canvas = UiCanvasInformation.getOrNull(engine.RootEntity)
+	const scale = canvas ? Math.min(canvas.width / 1920, canvas.height / 1080) : 1
+	const trackWidth = 200 // virtual px width of the slider track
+
+	sliderValue = Math.max(0, Math.min(1, sliderValue + delta.x / scale / trackWidth))
+})
+```
+
+{% hint style="warning" %}
+**Note:** On mobile, `screenDelta` always reports 0 (there is no free-moving cursor). For mobile-compatible sliders, add stepper buttons (`-` / `+`) alongside the drag track. Use [`isMobile()`](../building-for-mobile/detect-platform.md) from `@dcl/sdk/platform` to branch your UI.
+{% endhint %}
+
+{% hint style="info" %}
+**Tip:** Always divide `screenDelta` by the UI scale factor, or the drag will over- or under-shoot on screens whose resolution differs from your virtual size.
+{% endhint %}

@@ -64,9 +64,9 @@ Note that these properties affect the **default** size of that item, the size of
 {% hint style="warning" %}
 **📔 Note**: In properties that support both numbers and strings, to set the value in pixels, write a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 %`. You can also set a pixel value as a string by ending the string in `px`, for example `200px`.
 
-* When values are expressed as a percentage, they're always in relation to the parent's container. If the entity has no parents, then the value is a percentage of the whole screen.
-* If values are expressed in pixels, they are absolute, and not affected by the parent's scale.
-* If values are expressed in `vh` or `vw`, they are a percentage of the full window, not affected by the parent's scale.
+* When values are expressed as a percentage, they're always in relation to the parent's container. The top-level entity of your UI has a parent too: the renderer places it inside the area selected by [`screenInset`](onscreen-ui.md#screen-inset-area), which by default is the device safe area. So a root-level `100%` is 100% of that area — on a phone that's narrower than the screen, on desktop the two coincide. Pass `screenInset: 'none'` if you need percentages measured against the full screen.
+* If values are expressed in pixels, they are not affected by the parent's scale, but they are **not** raw screen pixels either: they are multiplied by the UI scale factor derived from the [virtual screen](onscreen-ui.md#screen-virtual-scale), which is active by default. A `width: 200` means "200 px on a screen the size of the virtual screen", and grows or shrinks proportionally on any other.
+* If values are expressed in `vh` or `vw`, they are a percentage of the full window, not affected by the parent's scale, by the virtual screen, or by `screenInset`.
 
 For the `auto` width/height to work, the following rules apply:
 
@@ -278,15 +278,23 @@ export const dialogWithScroll = () => (
 
 ## Responsive UI size
 
-The SDK applies a virtual screen by default (1920 x 1080 on desktop, 1600 x 720 on mobile), so pixel values in your UI automatically scale to fit any screen. In most cases, you do not need to build your own scaling logic. See [Screen Virtual Scale](onscreen-ui.md#screen-virtual-scale) for details.
+Players with different screen sizes may see your UI layout differently. Pixel values are scaled against the [virtual screen](onscreen-ui.md#screen-virtual-scale) for you, so the same UI keeps its proportions across resolutions — **you don't need to compute a scale factor yourself**, and doing so applies the scaling twice.
 
-If you need finer control, for example to switch between entirely different UI layouts based on screen size, you can read the canvas dimensions from the `UiCanvasInformation` component on the scene's root entity.
+{% hint style="warning" %}
+**📔 Note**: `devicePixelRatio` takes no part in UI layout. It is a display-density hint — useful to pick between a 1x, 2x or 3x version of a texture — and nothing else. If your scene was sized on an earlier SDK version, expect pixel-sized UI to render up to 2–3 times larger on high-density (retina and mobile) screens, and re-check anything that was hand-tuned.
+{% endhint %}
+
+{% hint style="danger" %}
+**📔 Remove your own scale factor.** If your scene multiplies its sizes by a factor it computes from `UiCanvasInformation` — typically `Math.min(width / 1920, height / 1080)` — remove that multiplier. It is the same factor the SDK now applies by default, so keeping both makes your UI grow quadratically with screen size. If you'd rather keep your own factor as the only one, disable the virtual screen with `setUiRenderer(ui, { virtualWidth: 0, virtualHeight: 0 })`.
+{% endhint %}
+
+`UiCanvasInformation`, added by default to the scene's root entity, is still the right tool for the layout decisions that scaling can't express — a different dialog arrangement on a narrow screen, picking a texture resolution from `devicePixelRatio`, or reading the inset areas yourself. It is not the right tool for sizing.
 
 The `UiCanvasInformation` component holds the following information:
 
 * `height`: Canvas height in pixels
 * `width`: Canvas width in pixels
-* `devicePixelRatio`: The ratio of physical pixels to canvas pixels. This is a density hint (similar to CSS `window.devicePixelRatio`), useful for picking asset resolutions. It is not used in the UI scale factor calculation.
+* `devicePixelRatio`: The ratio of the resolution in physical pixels in the device to the pixels on the canvas. Useful as a display-density hint, for example to pick between a 1x, 2x or 3x version of a texture.
 * `interactableArea`: A `BorderRect` object, detailing the area designated for scene UI elements. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels on that margin of the screen that are taken up by the explorer UI.
 * `screenInsetArea`: A `BorderRect` object, detailing the screen inset area (safe margins) reserved by the device or platform UI, for example the notch, status bar, home indicator, or rounded corners on mobile. This object contains values for `top`, `bottom`, `left` and `right`, each of these is the number of pixels reserved on that edge of the screen. On desktop this is typically `0` on all sides.
 
@@ -304,71 +312,7 @@ export function Main() {
 }
 ```
 
-The following snippet continually calculates a multiplier value based on the screen size:
-
-```ts
-import { engine, UiCanvasInformation } from "@dcl/sdk/ecs"
-
-let timer = 0
-let canvasInfoTimer = 0.5
-export let scaleFactor = 1
-
-export function UIScaleUpdate() {
-
-  engine.addSystem((dt) => {
-    timer += dt
-
-    if (timer <= canvasInfoTimer) return
-    timer = 0
-
-    const uiCanvasInfo = UiCanvasInformation.getOrNull(engine.RootEntity)
-
-    if (!uiCanvasInfo) return
-
-    const newScaleFactor = Math.min(uiCanvasInfo.width / 1920, uiCanvasInfo.height / 1080)
-
-    if (newScaleFactor !== scaleFactor) {
-      scaleFactor = newScaleFactor
-      console.log('NEW UI scaleFactor: ', scaleFactor)
-    }
-  })
-}
-```
-
-The value of the `scaleFactor` variable, that this function updates, can then be used as a multiplier on any UI element in the scene, including `height`, `width` and `fontSize` values.
-
-```ts
-import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
-import { scaleFactor } from './calculate-scale-factor'
-import { Color4 } from '@dcl/sdk/math'
-
-export const uiMenu = () => (
-	<UiEntity
-		uiTransform={{
-			width: 200 * scaleFactor,
-			height: 100 * scaleFactor,
-			justifyContent: 'center',
-			alignItems: 'center',
-			padding: 4 * scaleFactor
-		}}
-		uiBackground={{ color: Color4.Green() }}
-	>
-	  	<Label
-		        value="Hello World!"
-		        fontSize={18 * scaleFactor}
-		        textAlign="middle-center"
-		        uiTransform={{
-		          width: "auto",
-		          height: "auto",
-		          alignSelf: "center",
-		          margin: { top: 10 * scaleFactor, bottom: 10 * scaleFactor },
-		        }}
-	      />
-	</UiEntity>
-)
-```
-
 Some other best practices regarding UI sizes:
 
 * If the width or height of any UI element is dynamic, it's good to also use the `maxWidth`, `minWidth`, `maxHeight`, and `minHeight` parameters to make sure they stay within reasonable values.
-* The font size of text is relative to a fixed number of pixels, you should make it dynamic so it remains readable on retina displays. See [Responsive text size](ui_text.md#responsive-text-size)
+* A numeric font size is a virtual pixel value, scaled like any other. If you want a size measured against the canvas instead, so it holds regardless of the virtual screen, pass a `vw`/`vh` string — see [Responsive text size](ui_text.md#responsive-text-size)

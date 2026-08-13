@@ -123,33 +123,7 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
-* `state`: _(optional)_ The lifecycle state of the emote, from the `EmoteState` enum:
-  * `EmoteState.ES_STARTED` (default): The emote started playing.
-  * `EmoteState.ES_FINISHED`: A non-looping emote completed naturally.
-  * `EmoteState.ES_INTERRUPTED`: Playback was cancelled (the player moved, teleported, played another emote, or left the scene).
-
-Use `state` to detect when an emote finishes or is interrupted, for example to trigger a reward when a dance completes:
-
-```ts
-import { AvatarEmoteCommand, EmoteState } from '@dcl/sdk/ecs'
-
-export function main() {
-	AvatarEmoteCommand.onChange(engine.PlayerEntity, (emote) => {
-		if (!emote) return
-
-		if (emote.state === EmoteState.ES_FINISHED) {
-			console.log('Emote finished: ', emote.emoteUrn)
-		}
-		if (emote.state === EmoteState.ES_INTERRUPTED) {
-			console.log('Emote interrupted: ', emote.emoteUrn)
-		}
-	})
-}
-```
-
-{% hint style="warning" %}
-**Note:** Older explorers may not send the `state` field. When absent, it defaults to `ES_STARTED`.
-{% endhint %}
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](player-avatar.md#detect-when-an-emote-finishes).
 
 You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 

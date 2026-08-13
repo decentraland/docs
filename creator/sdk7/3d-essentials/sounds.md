@@ -134,6 +134,63 @@ function stopSound(entity: Entity) {
 stopSound(sourceEntity)
 ```
 
+## Detect when a sound finishes
+
+When a non-looping sound finishes playing on its own, the engine sets the `playing` property of the `AudioSource` component back to _false_. Your scene's code can read this value to know when the sound ended, for example to chain another sound or action right after it.
+
+```ts
+let wasPlaying = false
+
+engine.addSystem(() => {
+	const audio = AudioSource.get(sourceEntity)
+	const isPlaying = audio.playing ?? false
+
+	if (wasPlaying && !isPlaying) {
+		console.log('sound finished playing')
+		// react here: play another sound, advance a sequence, etc.
+	}
+
+	wasPlaying = isPlaying
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: When polling the component every frame, always read it with `AudioSource.get()` (read-only). Using `AudioSource.getMutable()` would mark the component as changed on every frame, causing unnecessary synchronization work.
+
+The `playing` property is only flipped by the engine when the sound ends by itself. If the scene stops the sound explicitly (via `AudioSource.stopSound()` or by setting `playing` to _false_), that change comes from your own code, and looping sounds play until stopped, so they never flip the property on their own.
+{% endhint %}
+
+Alternatively, use `audioEventsSystem.registerAudioEventsEntity` to define a function that runs every time the playback state of the entity's audio changes, just like [video events](../media/video-playing.md#video-events) for videos. The function receives an event with a `state` field, using the `MediaState` enum.
+
+```ts
+import { engine, AudioSource, audioEventsSystem, MediaState } from '@dcl/sdk/ecs'
+
+// ... Create sourceEntity with an AudioSource component ...
+
+audioEventsSystem.registerAudioEventsEntity(sourceEntity, (audioEvent) => {
+	switch (audioEvent.state) {
+		case MediaState.MS_LOADING:
+			console.log('audio event - sound is LOADING')
+			break
+		case MediaState.MS_READY:
+			console.log('audio event - sound is READY (loaded, or finished playing)')
+			break
+		case MediaState.MS_PLAYING:
+			console.log('audio event - sound started PLAYING')
+			break
+		case MediaState.MS_ERROR:
+			console.log('audio event - sound ERROR (e.g. the file failed to load)')
+			break
+	}
+})
+```
+
+A transition from `MS_PLAYING` to `MS_READY` means the sound stopped playing. The full `MediaState` enum also includes `MS_NONE`, `MS_PAUSED`, `MS_BUFFERING` and `MS_SEEKING`, and each event carries a `timestamp` of when the state change occurred. You can also query the latest reported state at any time with `audioEventsSystem.getAudioState(entity)`, unregister the callback with `audioEventsSystem.removeAudioEventsEntity(entity)`, or check whether an entity is registered with `audioEventsSystem.hasAudioEventsEntity(entity)`. The same system also works for entities with an [`AudioStream`](../media/audio-streaming.md) component.
+
+{% hint style="warning" %}
+**📔 Note**: These features are only supported in the Desktop client.
+{% endhint %}
+
 ## Looping
 
 To keep a sound playing in a continuous loop, set the `loop` field of the `AudioSource` component to _true_ before you start playing it.
@@ -197,56 +254,6 @@ AudioSource.create(sourceEntity, {
 To play a segment of a longer sound file, use the `playSoundSegment()` in the SDK Utils library. See [SDK7 Utils](https://github.com/decentraland/sdk7-utils).
 
 You can also achieve this by explicitly set the `currentTime` property on an `AudioSource` component, and then stopping it after waiting for a period of time.
-
-## Monitor audio state
-
-Use the `audioEventsSystem` to get notified when the media state of an `AudioSource` changes (for example, when it starts playing, finishes, or encounters an error). Register a callback on any entity that has an `AudioSource` component.
-
-```ts
-import { engine, AudioSource, MediaState } from '@dcl/sdk/ecs'
-import { audioEventsSystem } from '@dcl/sdk/ecs'
-
-const sourceEntity = engine.addEntity()
-AudioSource.create(sourceEntity, {
-	audioClipUrl: 'sounds/music.mp3',
-	playing: true,
-})
-
-// Get notified when the audio state changes
-audioEventsSystem.registerAudioEventsEntity(sourceEntity, (event) => {
-	console.log('Audio state changed:', event.state)
-
-	if (event.state === MediaState.MS_PLAYING) {
-		console.log('Sound started playing')
-	}
-	if (event.state === MediaState.MS_ERROR) {
-		console.log('Sound failed to play')
-	}
-})
-```
-
-The callback receives a `PBAudioEvent` object with:
-
-* `state`: A value from the `MediaState` enum (`MS_NONE`, `MS_LOADING`, `MS_READY`, `MS_PLAYING`, `MS_PAUSED`, `MS_BUFFERING`, `MS_SEEKING`, `MS_ERROR`).
-* `timestamp`: When the state change occurred.
-
-The callback fires only when the state changes, not on every frame. You can also poll the latest state at any time:
-
-```ts
-const currentState = audioEventsSystem.getAudioState(sourceEntity)
-if (currentState) {
-	console.log('Current state:', currentState.state)
-}
-```
-
-Other methods on `audioEventsSystem`:
-
-* `removeAudioEventsEntity(entity)`: Stop monitoring an entity.
-* `hasAudioEventsEntity(entity)`: Check if an entity is registered.
-
-{% hint style="info" %}
-**Tip:** The `audioEventsSystem` also works with `AudioStream` entities. See [Audio streaming](../media/audio-streaming.md) for stream-specific state monitoring.
-{% endhint %}
 
 ## Audio streaming
 

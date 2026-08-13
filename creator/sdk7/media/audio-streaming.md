@@ -52,7 +52,7 @@ You can monitor the state of an audio stream using either the `audioEventsSystem
 
 ### Using audioEventsSystem (recommended)
 
-Register a callback that fires only when the stream's state changes. This is the same system used for `AudioSource` entities (see [Monitor audio state](../3d-essentials/sounds.md#monitor-audio-state)).
+Register a callback that fires only when the stream's state changes. This is the same system used for `AudioSource` entities (see [Detect when a sound finishes](../3d-essentials/sounds.md#detect-when-a-sound-finishes)).
 
 ```ts
 import { engine, AudioStream, MediaState } from '@dcl/sdk/ecs'

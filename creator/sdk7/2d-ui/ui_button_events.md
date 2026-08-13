@@ -300,7 +300,7 @@ engine.addSystem(() => {
 ```
 
 {% hint style="warning" %}
-**Note:** On mobile, `screenDelta` always reports 0 (there is no free-moving cursor). For mobile-compatible sliders, add stepper buttons (`-` / `+`) alongside the drag track. Use [`isMobile()`](../building-for-mobile/detect-platform.md) from `@dcl/sdk/platform` to branch your UI.
+**Note:** On mobile, `screenDelta` always reports 0 (there is no free-moving cursor). For mobile-compatible sliders, add stepper buttons (`-` / `+`) alongside the drag track. Use [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) from `@dcl/sdk/platform` to branch your UI.
 {% endhint %}
 
 {% hint style="info" %}

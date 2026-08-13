@@ -7,12 +7,12 @@ description: Where scene UI can safely live on mobile — clear of the system HU
 On a phone, two things eat into the screen space your UI can safely use:
 
 * **The Decentraland system HUD** — the app overlays its own controls (joystick, chat, profile, camera controls, the interaction button). Scene UI placed under them clashes visually and competes for taps. These regions are mapped out in [Reserved margins](#reserved-margins) below.
-* **The device's hardware-reserved margins** — the notch or camera cutout, status bar, home indicator, and rounded corners. The SDK keeps UI clear of these automatically with the [`ScreenInsetArea` component](#device-hardware-insets-screeninsetarea).
+* **The device's hardware-reserved margins** — the notch or camera cutout, status bar, home indicator, and rounded corners. The SDK keeps UI clear of these automatically, with no work on your side — see [Device hardware insets](#device-hardware-insets-screeninsetarea).
 
 The **mobile safe area** is what's left over — where scene UI can live without clashing with either.
 
 {% hint style="info" %}
-All values below use normalized coordinates `[0.0 – 1.0]` based on a **1600 × 720 px landscape** reference resolution. Always use normalized values so your layout adapts to any screen size. Always verify on a real device using the [preview QR code](preview-on-mobile.md).
+All values below use normalized coordinates `[0.0 – 1.0]` based on a **1600 × 720 px landscape** reference resolution — the same resolution the SDK uses as the [default virtual screen on mobile](../../sdk7/2d-ui/onscreen-ui.md#default-virtual-size), so the pixel figures below map 1:1 to your UI's pixel values there. Always use normalized values so your layout adapts to any screen size. Always verify on a real device using the [preview QR code](preview-on-mobile.md).
 {% endhint %}
 
 ## Reserved margins
@@ -90,7 +90,18 @@ Scene UI that overlaps the reserved regions will:
 
 The reserved margins above belong to the Decentraland **system HUD**. Separately, the **device hardware** reserves screen space for the notch or camera cutout, the status bar, the home indicator, and rounded corners. UI drawn underneath these is partly hidden or hard to tap.
 
-The `ScreenInsetArea` component keeps your UI clear of these hardware margins automatically, reading the current insets the device reports. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
+**You get this for free.** Every UI renderer is positioned inside the device safe area by default, so you don't need to do anything to keep your UI clear of these hardware margins. That default is the `screenInset: 'device'` renderer option — see [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area):
+
+```ts
+// Both of these keep the UI inside the device safe area
+ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'device' })
+
+// This one does not — the UI covers the whole screen, notch included
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'none' })
+```
+
+If you opted out with `screenInset: 'none'` and want to protect only part of your UI, use the `ScreenInsetArea` component. It reads the same insets and applies them to its children. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
 
 ```tsx
 import ReactEcs, { ReactEcsRenderer, UiEntity, ScreenInsetArea } from '@dcl/sdk/react-ecs'
@@ -105,7 +116,7 @@ export function setupUi() {
         uiBackground={{ color: Color4.create(0, 0, 0, 0.5) }}
       />
     </ScreenInsetArea>
-  ))
+  ), { screenInset: 'none' })
 }
 ```
 
@@ -113,8 +124,12 @@ export function setupUi() {
 
 `ScreenInsetArea` automatically compensates for the [UI scale factor](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale), so the insets position correctly regardless of your virtual screen size. You do not need to manually adjust for it.
 
+{% hint style="warning" %}
+**📔 Don't apply the insets twice:** the `screenInset: 'none'` in the snippet above matters. Wrapping your UI in `ScreenInsetArea` while the renderer is also using its default `'device'` inset applies the margin twice, pushing your UI inwards by double the amount. Pick one or the other.
+{% endhint %}
+
 {% hint style="info" %}
-**📱 Mobile only:** `ScreenInsetArea` only changes anything on the **mobile client**, where the device reports real inset values. On the **desktop client** the insets are `(0, 0, 0, 0)`, so the component has no effect and your UI renders exactly as it would without it. It's safe to leave in cross-platform UI code.
+**📱 Mobile only:** device insets only have real values on the **mobile client**. On the **desktop client** they are `(0, 0, 0, 0)`, so both the `'device'` renderer option and the `ScreenInsetArea` component have no effect there and your UI renders exactly as it would without them. Both are safe to leave in cross-platform UI code.
 {% endhint %}
 
 ## Related

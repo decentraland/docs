@@ -59,6 +59,7 @@ You can add the following flags to the `npm run start` command to change its beh
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
 - `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
+- `-- --asset-bundles` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Optimize Assets** option in Creator Hub. Only available with the Desktop Client (not Bevy Web).
 - `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
 - `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
 - `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.

@@ -86,6 +86,8 @@ To change the renderer:
 
 The Bevy renderer is an alternative engine for the editing canvas. It affects how your scene looks while editing, not how it looks to players after publishing.
 
+When using the Bevy renderer, you can use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. The Bevy editor also shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated.
+
 {% hint style="warning" %}
 **Note:** The Bevy renderer is experimental and may not support all editing features that the default Babylon renderer does.
 {% endhint %}

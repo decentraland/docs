@@ -17,13 +17,16 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
+- **Preview with**: Choose between **Desktop Client** (the default Decentraland Explorer) and **Bevy (Web)**, which opens the preview in your browser using the Bevy Web client. The Bevy Web option is equivalent to the `--web` CLI flag.
 - **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
 - **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 - **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
-- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
+- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
+- **Optimize Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only available with the Desktop Client (not Bevy Web).
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 
 {% hint style="info" %}
-**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../building-for-mobile/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../building-for-mobile/) for the full guide.
+**Tip:** You can also preview your scene directly on the Decentraland mobile app. Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 {% endhint %}
 
 ## Using the CLI
@@ -49,7 +52,7 @@ Every time you make changes to the scene, the preview reloads and updates automa
 You can add the following flags to the `npm run start` command to change its behavior:
 
 - `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server — when the browser asks to access apps on your device, click "Allow".
-- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
+- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the Decentraland mobile app on a phone connected to the same Wi-Fi network. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
 - `-- --skip-build` Skip build and only serve the files in preview mode.
 - `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.
 - `-- --no-browser` (alias `-- -b`) to prevent the preview from opening a new browser tab.

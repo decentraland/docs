@@ -86,12 +86,13 @@ You can expand this menu to view details.
 
 Here are some tips for improving on these metrics:
 
-*   When possible, share textures across 3D models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1024x1024 pixels instead of several small ones.
+- When possible, share textures across 3D models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1024x1024 pixels instead of several small ones.
 
-    > Note: Avoid using the same image file for both the albedo texture and the normal map or the emissive map of a material. Use separate files, even if identical. Assigning a same image file to different types of texture properties may introduce unwanted visual artifacts when compressed to asset bundles.
-* _.glb_ is a compressed format, it will always weigh less than a _.gltf_. On the other hand, with _.gltf_ it's easy to share texture images by exporting textures as a separate file. You can have the best of both worlds by using the [following pipeline](https://github.com/AnalyticalGraphicsInc/gltf-pipeline), that allows you to have _.glb_ models with external texture files.
-* Avoid using blended transparencies. Blended transparencies have to bypass quite a few of the rendering optimizations. If possible, favor opaque or alpha tested geometry.
-* Avoid skinned meshes. They can drag down the performance significantly.
+  > Note: Avoid using the same image file for both the albedo texture and the normal map or the emissive map of a material. Use separate files, even if identical. Assigning a same image file to different types of texture properties may introduce unwanted visual artifacts when compressed to asset bundles.
+
+- _.glb_ is a compressed format, it will always weigh less than a _.gltf_. On the other hand, with _.gltf_ it's easy to share texture images by exporting textures as a separate file. You can have the best of both worlds by using the [following pipeline](https://github.com/AnalyticalGraphicsInc/gltf-pipeline), that allows you to have _.glb_ models with external texture files.
+- Avoid using blended transparencies. Blended transparencies have to bypass quite a few of the rendering optimizations. If possible, favor opaque or alpha tested geometry.
+- Avoid skinned meshes. They can drag down the performance significantly.
 
 {% hint style="info" %}
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
@@ -107,9 +108,10 @@ If you expect to see the backface or insides of your models, duplicate the faces
 
 To verify if a scene has material Backface Culling issues, follow these steps:
 
-1. Open up the `debug` panel in the scene. 
-* If the scene is published, type `/debug` command in the chat.
-* If you are on Preview mode in the scene., click the Bug icon (<img src="../../images/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
+1. Open up the `debug` panel in the scene.
+
+- If the scene is published, type `/debug` command in the chat.
+- If you are on Preview mode in the scene., click the Bug icon (<img src="../../images/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
 
 2. The debug panel will appear in the bottom-right corner of the screen.
 
@@ -119,9 +121,10 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 4. Toggle **Force Backface Culling**: It shows the materials rendered with Backface Culling On. This is the actual rendering once the Optimization is in production. Toggle On & Off to spot materials that need fixing.
 
-4. Toggle the  **Backface debugger** to easily spot materials that have Backface Culling Off. It highlights:
-  * **Red**: Materials that don't have Backface Culling set to **On**.
-  * **Green**: Materials with Backface Culling **On**.
+5. Toggle the **Backface debugger** to easily spot materials that have Backface Culling Off. It highlights:
+
+- **Red**: Materials that don't have Backface Culling set to **On**.
+- **Green**: Materials with Backface Culling **On**.
 
 <p align="center">
   <img src="../../../.gitbook/assets/backface-culling-off.png" 
@@ -148,9 +151,9 @@ About once a day, the Decentraland content servers run a process to compress eve
 
 If your scene connects to any 3rd party servers or uses the [messagebus](../networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, there are also some things you might want to keep in mind.
 
-* Your scene should only have one active WebSockets connection at a time.
-* HTTP calls are funneled by the engine so that only one is handled at a time. Any additional requests are queued internally and must wait till other requests are completed. This queuing process is handled automatically, you don't need to do anything.
-* When using the [messagebus](../networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly results in sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
+- Your scene should only have one active WebSockets connection at a time.
+- HTTP calls are funneled by the engine so that only one is handled at a time. Any additional requests are queued internally and must wait till other requests are completed. This queuing process is handled automatically, you don't need to do anything.
+- When using the [messagebus](../networking/serverless-multiplayer.md#send-explicit-messagebus-messages) to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly results in sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
 
 ## Scene UI
 
@@ -174,6 +177,18 @@ The best metric to know how well a scene is performing is the FPS (Frames Per Se
 
 In the deployed scene, you can toggle the panel that shows these metrics by writing `/showfps` into the chat window.
 
+### Scene Stats panel
+
+When running a scene in preview on the desktop client, you can open a panel that shows live stats about the content in your scene. Click the stats icon in the top-right corner of the screen, next to the console and debug icons.
+
+<img src="../../images/scene-stats-panel.png" alt="Scene Stats panel" width="400" />
+
+The panel counts the scene's triangles, entities, bodies, and textures against their limits, showing what percentage of each budget is in use. A value turns orange once it reaches 80% of its limit. It also shows plain counts of materials, geometries, colliders, and external videos or audios. Hover over the info icon next to each metric for an explanation of what it counts and why it matters.
+
+The numbers update in real time as content loads and unloads, which makes the panel handy for checking how strategies like [lazy loading](performance-optimization.md#lazy-loading) affect what the engine is actually handling at any given moment. See [scene limitations](scene-limitations.md) for details on each limit. Keep in mind these are soft limits: exceeding one won't block your scene, but it can degrade performance for players.
+
+### Messages between the scene and the engine
+
 One of the main bottlenecks in a scene’s performance is usually the sending of messages between the scene’s code and the engine.
 
 When you run a scene in preview, note that on the top-right corner it says “Y = Toggle Panel”. Hit Y on the keyboard to open a panel with some useful information that gets updated in real time.
@@ -186,10 +201,31 @@ As you interact with things that involve messages between the SDK and the engine
 
 Keep in mind that the performance you experience in preview may differ from that in production:
 
-* Surrounding neighboring scenes might have a negative impact
-* The compression of the scenes' 3D models into asset bundles can have a positive impact
-* Some players visiting your scene may be running on less powerful hardware
+- Surrounding neighboring scenes might have a negative impact
+- The compression of the scenes' 3D models into asset bundles can have a positive impact
+- Some players visiting your scene may be running on less powerful hardware
 
 It's always a good practice to try deploying your scene first to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to do some more thorough testing.
 
 Always ask players for feedback. Never take for granted that how you experience the scene is the same for everyone else.
+
+## Optimize with AI
+
+An AI agent can handle much of the measuring and fixing described on this page for you. Decentraland provides [AI skills](../getting-started/vibe-coding.md#install-skills-for-any-ai-agent) that teach coding agents (like Claude Code or Cursor) how to optimize scenes, and the desktop client includes an [MCP server](../getting-started/vibe-coding.md#let-the-ai-see-your-scene-in-world) that lets the agent inspect and measure your running scene directly.
+
+With the `optimize-scene` and `unity-explorer-mcp` skills installed and the MCP server connected, an agent can:
+
+- **Check the scene against its content budgets**: it reads the same live stats as the Scene Stats panel and compares them to the [scene limitations](scene-limitations.md), so it can tell you which budget is running tight.
+- **Find the assets responsible**: it ranks the 3D models in your scene by how many triangles, materials, and draw calls each one contributes, including what's visible from a specific viewpoint, so it knows exactly which models to optimize first.
+- **Measure the real frame rate**: it positions the player at any spot in the scene and samples the FPS a player actually experiences there, including momentary stutters.
+- **Verify its own work**: after each change it can re-measure, so its recommendations and fixes are backed by real numbers instead of guesses.
+
+This turns optimization into something you can simply ask for:
+
+> "Check if my scene is within limits, find whatever is dragging the frame rate down near the spawn point, fix it, and show me before and after numbers."
+
+### Combine with the Blender MCP server
+
+The Decentraland tools tell the agent which models are the heaviest, but they don't edit the models themselves. To go further, you can try combining them with the [Blender MCP server](https://www.blender.org/lab/mcp-server/), which gives the agent access to Blender's editing tools. This allows the agent to open a heavy model in Blender, reduce its triangle count, merge its materials, or shrink its textures, and export the result back into the scene as a `.glb` file, where it can then re-measure the frame rate in-world.
+
+Keep in mind that automated mesh edits can visibly change how a model looks, so always review the results and keep backups of your original files.

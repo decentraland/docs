@@ -186,6 +186,19 @@ Behind the scenes the agent can:
 
 - **See** — take screenshots, read the scene's `console.log` output and errors, check whether the scene loaded or crashed, list the scene's entities and inspect their components, and read the player and camera position.
 - **Control** — move and teleport the player, walk in a direction through real collisions, aim the camera, place a free camera for a specific shot, switch camera modes, click on scene objects, send chat messages and `/commands`, trigger emotes, and reload the scene.
+- **Measure** — read live counts of the scene's content (triangles, entities, textures, materials, and more) against Decentraland's limits, rank which 3D models contribute the most to that load from any viewpoint, and sample the real frame rate the player experiences at any spot.
+
+### Use it to optimize your scene
+
+Because the agent can measure as well as see, you can hand it performance work directly. It can check your scene against the [scene limitations](../optimizing/scene-limitations.md), identify which 3D models are the heaviest, measure the frame rate at specific spots, and, most importantly, re-measure after making changes to prove that they helped:
+
+> "Check if my scene is within Decentraland's content limits, and tell me which budget is closest to the cap."
+
+> "The scene feels choppy near the fountain. Stand there, measure the frame rate, and tell me which models cost the most from that spot."
+
+> "Optimize the scene: find what's dragging the frame rate down, fix it, and show me before and after measurements."
+
+For best results, install the `optimize-scene` skill together with `unity-explorer-mcp`, so the agent also knows Decentraland's optimization best practices. See [Performance Optimization](../optimizing/performance-optimization.md#optimize-with-ai) for more on this workflow, including how to pair it with the Blender MCP server to automate fixes to the 3D models themselves.
 
 ### Tips
 
@@ -220,10 +233,6 @@ Break complex requests into steps:
 1. "Add a scoreboard UI in the top-right corner"
 2. "Add a counter that increases when the player clicks the target"
 3. "Display the counter value on the scoreboard"
-
-### Ask for one thing at a time
-
-> "Add background music that loops, but keep the file size under 1 MB"
 
 ### Iterate and refine
 

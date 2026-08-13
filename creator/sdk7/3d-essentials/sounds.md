@@ -185,7 +185,7 @@ audioEventsSystem.registerAudioEventsEntity(sourceEntity, (audioEvent) => {
 })
 ```
 
-A transition from `MS_PLAYING` to `MS_READY` means the sound stopped playing. The full `MediaState` enum also includes `MS_NONE`, `MS_PAUSED`, `MS_BUFFERING` and `MS_SEEKING`, and each event carries a `timestamp` of when the state change occurred. You can also query the latest reported state at any time with `audioEventsSystem.getAudioState(entity)`, unregister the callback with `audioEventsSystem.removeAudioEventsEntity(entity)`, or check whether an entity is registered with `audioEventsSystem.hasAudioEventsEntity(entity)`. The same system also works for entities with an [`AudioStream`](../media/audio-streaming.md) component.
+A transition from `MS_PLAYING` to `MS_READY` means the sound stopped playing. The full `MediaState` enum also includes `MS_NONE`, `MS_LOADING`, `MS_PAUSED`, `MS_BUFFERING`, `MS_SEEKING` and `MS_ERROR`, and each event carries a `timestamp` of when the state change occurred. You can also query the latest reported state at any time with `audioEventsSystem.getAudioState(entity)`, unregister the callback with `audioEventsSystem.removeAudioEventsEntity(entity)`, or check whether an entity is registered with `audioEventsSystem.hasAudioEventsEntity(entity)`. The same system also works for entities with an [`AudioStream`](../media/audio-streaming.md) component.
 
 {% hint style="warning" %}
 **📔 Note**: These features are only supported in the Desktop client.

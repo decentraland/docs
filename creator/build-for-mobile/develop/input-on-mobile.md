@@ -8,7 +8,7 @@ Decentraland's input system is designed to be device-agnostic. The same `InputAc
 
 For the full input model, see [Click events](../../sdk7/interactivity/button-events/click-events.md). This page focuses on what is mobile-specific.
 
-<figure><img src="../../images/touch-controls/full-input.png" alt="The on-screen controls with the + menu expanded, showing every input button"><figcaption><p>The on-screen controls with the "+" menu expanded — every input action visible</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/full-input.jpg" alt="The on-screen controls with the + menu expanded, showing every input button"><figcaption><p>The on-screen controls with the "+" menu expanded — every input action visible</p></figcaption></figure>
 
 ## What touch maps to
 
@@ -28,7 +28,7 @@ The on-screen controls map as follows:
 
 Scenes can reconfigure the on-screen controls — hide the joystick or crosshair, hide any button (including jump), change what the central button does, swap button icons, or replace the native controls entirely with custom UI. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) and [UI Input Binding](../../sdk7/2d-ui/ui_input_binding.md).
 
-<figure><img src="../../images/touch-controls/custom-main-action.png" alt="Customized on-screen controls"><figcaption><p>A customized HUD: a re-iconed central button mapped to a different action</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/custom-main-action.jpg" alt="Customized on-screen controls"><figcaption><p>A customized HUD: a re-iconed central button mapped to a different action</p></figcaption></figure>
 
 ## Inputs to avoid for key actions on mobile
 

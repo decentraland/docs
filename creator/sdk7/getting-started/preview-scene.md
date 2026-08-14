@@ -81,6 +81,8 @@ To enable it:
 - **In the Creator Hub**: check **Optimize Assets** in the dropdown menu next to the **Preview** button.
 - **From the CLI**: run `npm run start -- --local-ab`.
 
+![](../../images/editor/optimize-assets-checkbox.png)
+
 With this option enabled, the Decentraland explorer converts the scene's 3D models to asset bundles on your machine before loading them. The conversion is near instant for most scenes, but the first preview can take longer if the scene has very heavy assets. Converted models are cached, so on later previews only new or modified assets need to be converted.
 
 {% hint style="info" %}

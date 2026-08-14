@@ -50,7 +50,7 @@ Every time you make changes to the scene, the preview reloads and updates automa
 You can add the following flags to the `npm run start` command to change its behavior:
 
 - `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-- `-- --asset-bundles` Converts the scene's 3D models to optimized asset bundles and uses them in the preview. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+- `-- --local-ab` Converts the scene's 3D models to optimized asset bundles and uses them in the preview. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 - `-- --no-debug` (alias `-- -d`) Disable the debug panel, that shows scene and performance stats.
 - `-- --web-explorer` Launch the scene in the Web Explorer, in a browser tab, instead of the Desktop client.
 - `-- --bevy-web` Opens the preview using the Bevy Web browser window.
@@ -78,10 +78,10 @@ This option only affects your local preview. The published scene is always conve
 
 To enable it:
 
-- **In the Creator Hub**: check **Optimize Assets** in the dropdown menu next to the **Preview** button. The conversion starts right away in the background, and you can follow its progress next to the checkbox.
-- **From the CLI**: run `npm run start -- --asset-bundles`.
+- **In the Creator Hub**: check **Optimize Assets** in the dropdown menu next to the **Preview** button.
+- **From the CLI**: run `npm run start -- --local-ab`.
 
-The conversion is near instant for most scenes, but the first preview can take longer if the scene has very heavy assets. The converted models are stored in the `.dcl-optimized-assets` folder inside your project, so on later previews only new or modified assets need to be converted. This folder is excluded when you publish, it's never uploaded with your scene.
+With this option enabled, the Decentraland explorer converts the scene's 3D models to asset bundles on your machine before loading them. The conversion is near instant for most scenes, but the first preview can take longer if the scene has very heavy assets. Converted models are cached, so on later previews only new or modified assets need to be converted.
 
 {% hint style="info" %}
 **💡 Tip**: If the conversion of an asset fails for any reason, the preview falls back to loading the raw 3D models, just like a regular preview.

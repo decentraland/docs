@@ -22,7 +22,7 @@ Configure different preview options from the dropdown menu next to the **Preview
 - **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 - **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
 - **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
-- **Optimize Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only available with the Desktop Client (not Bevy Web).
+- **Optimize Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only available with the Desktop Client (not Bevy Web). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 - **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 
 {% hint style="info" %}
@@ -59,13 +59,37 @@ You can add the following flags to the `npm run start` command to change its beh
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
 - `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
-- `-- --asset-bundles` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Optimize Assets** option in Creator Hub. Only available with the Desktop Client (not Bevy Web).
+- `-- --local-ab` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Optimize Assets** option in Creator Hub. Only available with the Desktop Client (not Bevy Web). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 - `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
 - `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
 - `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.
+{% endhint %}
+
+## Preview with optimized assets
+
+When you publish a scene, the Decentraland servers convert all of its 3D models to asset bundles, an optimized format that is much lighter to load and render. See [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). By default, local previews skip this step and load the raw models instead.
+
+Enable optimized assets to run this same conversion locally when you preview your scene. This has two benefits:
+
+- The preview loads faster and runs smoother, especially on scenes with heavy 3D models.
+- You see the models exactly as players will see them after publishing, so you can catch any issues with the asset compression before you publish.
+
+This option only affects your local preview. The published scene is always converted on the servers, whether you use this option or not.
+
+To enable it:
+
+- **In the Creator Hub**: check **Optimize Assets** in the dropdown menu next to the **Preview** button.
+- **From the CLI**: run `npm run start -- --local-ab`.
+
+![](../../images/editor/optimize-assets-checkbox.png)
+
+With this option enabled, the Decentraland explorer converts the scene's 3D models to asset bundles on your machine before loading them. The conversion is near instant for most scenes, but the first preview can take longer if the scene has very heavy assets. Converted models are cached, so on later previews only new or modified assets need to be converted.
+
+{% hint style="info" %}
+**💡 Tip**: If the conversion of an asset fails for any reason, the preview falls back to loading the raw 3D models, just like a regular preview.
 {% endhint %}
 
 ## Upload a scene to decentraland
@@ -111,6 +135,10 @@ As an alternative, you can open a second Decentraland explorer window by writing
 > `decentraland://realm=http://127.0.0.1:8000&local-scene=true&debug=true&multi-instance=true`
 
 ### Advanced: Fast iteration with remote asset bundles
+
+{% hint style="info" %}
+**💡 Tip**: For most scenes, the simplest way to preview with asset bundles is to enable [optimized assets](preview-scene.md#preview-with-optimized-assets), which converts your models locally and always reflects their latest version. The mode below is an alternative that reuses the bundles already published on the servers.
+{% endhint %}
 
 For heavy scenes with many 3D models, you can speed up scene loading and reloading by reusing the [asset bundles](../optimizing/performance-optimization.md#asset-bundle-conversion) that are already published on Decentraland's servers, instead of loading the raw unoptimized 3D models. This is especially useful when iterating on code-only changes.
 

@@ -62,6 +62,7 @@ To run a preview of your scene, open it in the Creator Hub and click the **Previ
 
 * [Preview your scene](preview-scene.md) for more details.
 * Check the [Debug a scene](preview-scene.md#debug-a-scene) for tips on how to debug any issues.
+* Enable **Optimize Assets** in the preview settings (or run `npm run start -- --local-ab` from the CLI) to load your 3D models as optimized asset bundles. The preview runs smoother and shows the models just as they'll look once published. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}
 **💡 Tip**: When using the Creator Hub, every time you make a change on your scene, the preview is automatically updated. Even while running.

@@ -122,6 +122,8 @@ As an alternative, you can run `npm run deploy -- --skip-build` to skip the runn
 
     Note that the generation of compressed asset-bundle versions of your models is a process that takes the servers time (about an hour). You can check if the models are being loaded as compressed asset bundles or not by writing the following command into the chat window `/detectabs`. Compressed models are tinted green, non-compressed are tinted red.
 
+    You can also reproduce this conversion locally before publishing, by enabling [optimized assets in the preview](../getting-started/preview-scene.md#preview-with-optimized-assets). This lets you catch and debug these issues without having to deploy the scene.
+
 #### Issue: My scene has poor FPS in production, even though it runs smoothly in preview.
 
 Your scene's performance could be affected by neighboring scenes that follow bad practices, as they also run in parallel. You can validate that this is the case by opening the settings and setting the line of sight to a minimum, so that only 1 parcel around your current scene is loaded.

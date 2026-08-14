@@ -48,20 +48,47 @@ ISLA NEGRA = "https://radioislanegra.org/listen/up/basic.aac"
 
 ## Stream state
 
-Query the state of an audio stream using the function `AudioStream.getAudioState()`, passing the entity that owns the `AudioStream` component.
+You can monitor the state of an audio stream using either the `audioEventsSystem` (callback-based, recommended) or by polling with `AudioStream.getAudioState()`.
 
-The returned value is a `PBAudioEvent` object (or `undefined` if the stream hasn't reported any state yet), containing a `state` field and a `timestamp` field. The `state` field is a value of the `MediaState` enum. This enum has the following possible values:
+### Using audioEventsSystem (recommended)
 
-* `MS_BUFFERING`
-* `MS_ERROR`
-* `MS_LOADING`
+Register a callback that fires only when the stream's state changes. This is the same system used for `AudioSource` entities (see [Detect when a sound finishes](../3d-essentials/sounds.md#detect-when-a-sound-finishes)).
+
+```ts
+import { engine, AudioStream, MediaState } from '@dcl/sdk/ecs'
+import { audioEventsSystem } from '@dcl/sdk/ecs'
+
+export function main() {
+	const entity = engine.addEntity()
+
+	AudioStream.create(entity, {
+		playing: true,
+		volume: 1,
+		url: 'https://audio-edge-es6pf.mia.g.radiomast.io/ref-128k-mp3-stereo',
+	})
+
+	audioEventsSystem.registerAudioEventsEntity(entity, (event) => {
+		console.log('Stream state: ', event.state)
+
+		if (event.state === MediaState.MS_ERROR) {
+			// Attempt reconnection
+		}
+	})
+}
+```
+
+### Polling with getAudioState
+
+You can also poll the state of a stream each frame using `AudioStream.getAudioState()`. This returns a `PBAudioEvent` object (or `undefined` if no state has been reported yet), with a `state` field and a `timestamp` field. The `state` field is a value of the `MediaState` enum:
+
 * `MS_NONE`
-* `MS_PAUSED`
-* `MS_PLAYING`
+* `MS_LOADING`
 * `MS_READY`
+* `MS_PLAYING`
+* `MS_PAUSED`
+* `MS_BUFFERING`
 * `MS_SEEKING`
-
-The following example checks on the state of a stream, and logs when there's a change.
+* `MS_ERROR`
 
 ```ts
 export function main() {

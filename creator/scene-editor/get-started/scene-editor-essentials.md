@@ -26,7 +26,7 @@ To find your way around the Scene Editor:
 
 ## Preview on mobile
 
-The dropdown next to the **Preview** button has a **Show QR Code for Mobile** option. Scan the QR code with a phone on the same Wi-Fi network to open your scene in the [Decentraland mobile app](../../sdk7/building-for-mobile/). This is the recommended way to validate UI, controls, and performance for mobile players. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md) for the full guide.
+The dropdown next to the **Preview** button has a **Show QR Code for Mobile** option. Scan the QR code with a phone on the same Wi-Fi network to open your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). This is the recommended way to validate UI, controls, and performance for mobile players. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for the full guide.
 
 ## Set the Ground
 
@@ -113,6 +113,16 @@ On the left margin, you'll see a tree structure with all of the entities in the 
 {% endhint %}
 
 Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, or add a component to the entity.
+
+### Searching the entity tree
+
+A search box at the top of the entity tree lets you find entities by name. Type part of an entity's name and the tree filters to show only matching entities and their parent hierarchy, so you can see where each match sits in the tree. The search is case-insensitive. Parent entities of matches are automatically expanded so every result is visible.
+
+Press **Escape** or click the clear icon to remove the filter and return to the full tree. If an entity is selected, clearing the search scrolls back to the selected entity so you don't lose your place.
+
+[Screenshot: entity tree with a search term entered, showing filtered results and expanded parent hierarchy]
+
+### Entity hierarchy
 
 Entities follow a hierarchy that can have as many levels as you want. Establish a parent-child relationship between two entities by dragging one item onto another on the tree. A child entity inherits the position of the parent, so when the parent moves, it carries any children with it. This can be practical while building a scene, for example you can set glasses and plates as children of a table, and then move the table without needing to readjust anything else. It can also be important when interacting with the scene, for items to move together.
 

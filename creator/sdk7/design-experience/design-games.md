@@ -114,7 +114,7 @@ Keep in mind that the SDK doesn't provide a full physics engine for entities. Yo
 
 ## Controller Inputs
 
-**Your game controls should be limited to the set of input actions supported by the SDK**: the movement keys, jumping, point and click, the primary (E) and secondary (F) buttons, and the numbered action buttons (1 to 4). These inputs are abstracted away from the physical keys, so that they can also map to the on-screen controls of the mobile app or to other devices, don't assume that everyone has a keyboard. See [Pointer buttons](../interactivity/button-events/click-events.md#pointer-buttons) for the full list, and [Input on mobile](../building-for-mobile/input-on-mobile.md) for what to prefer when targeting mobile players.
+**Your game controls should be limited to the set of input actions supported by the SDK**: the movement keys, jumping, point and click, the primary (E) and secondary (F) buttons, and the numbered action buttons (1 to 4). These inputs are abstracted away from the physical keys, so that they can also map to the on-screen controls of the mobile app or to other devices, don't assume that everyone has a keyboard. See [Pointer buttons](../interactivity/button-events/click-events.md#pointer-buttons) for the full list, and [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md) for what to prefer when targeting mobile players.
 
 All of these inputs support both global _button up_ and _button down_ events, and hit events that let you identify if an entity was in the player's aim.
 

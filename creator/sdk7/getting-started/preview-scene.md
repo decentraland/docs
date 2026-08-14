@@ -17,14 +17,16 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
+- **Preview with**: Choose between **Desktop Client** (the default Decentraland Explorer) and **Bevy (Web)**, which opens the preview in your browser using the Bevy Web client. The Bevy Web option is equivalent to the `--web` CLI flag.
 - **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
 - **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 - **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
-- **Optimize Assets**: Converts the scene's 3D models to asset bundles, an optimized format that loads faster and renders just like the published scene. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
-- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../building-for-mobile/). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for details.
+- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
+- **Optimize Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only available with the Desktop Client (not Bevy Web). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 
 {% hint style="info" %}
-**📱 Preview on mobile**: You can also preview your scene directly on the [Decentraland mobile app](../building-for-mobile/). Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Building for Mobile](../building-for-mobile/) for the full guide.
+**Tip:** You can also preview your scene directly on the Decentraland mobile app. Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 {% endhint %}
 
 ## Using the CLI
@@ -37,7 +39,7 @@ npm run start
 
 Any dependencies that are missing are installed and then the CLI creates a local web server in your system and launches the scene in the Decentraland Desktop client via a `decentraland://` deeplink. The Desktop client is the default preview target.
 
-To preview in a browser tab instead, add `-- --web-explorer` to open the scene in the Web Explorer, or `-- --bevy-web` to open it in the Bevy Web client.
+To preview in a browser tab instead, add `-- --web` (or `-- --bevy-web`) to open the scene in the Bevy Web client at `decentraland.org/bevy-web/`.
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
@@ -49,17 +51,18 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-- `-- --web3` Connects preview to browser wallet to use the associated avatar and account.
-- `-- --local-ab` Converts the scene's 3D models to optimized asset bundles and uses them in the preview. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
-- `-- --no-debug` (alias `-- -d`) Disable the debug panel, that shows scene and performance stats.
-- `-- --web-explorer` Launch the scene in the Web Explorer, in a browser tab, instead of the Desktop client.
-- `-- --bevy-web` Opens the preview using the Bevy Web browser window.
-- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../building-for-mobile/) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md).
+- `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server: when the browser asks to access apps on your device, click "Allow".
+- `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
 - `-- --skip-build` Skip build and only serve the files in preview mode.
 - `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.
 - `-- --no-browser` (alias `-- -b`) to prevent the preview from opening a new browser tab.
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
+- `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
+- `-- --local-ab` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Optimize Assets** option in Creator Hub. Only available with the Desktop Client (not Bevy Web). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+- `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
+- `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
+- `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
 
 {% hint style="warning" %}
 **📔 Note**: Parameters need to be added with two series of dashes, for example `npm run start -- --web3`.

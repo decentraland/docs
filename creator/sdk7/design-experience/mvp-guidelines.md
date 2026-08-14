@@ -95,7 +95,7 @@ For example, you could design a scene with the following successive experiences:
 
 ## How to share your MVP
 
-We recommend testing changes with test users before uploading a new version of your scene to Decentraland. You can publish your scene to the test server, where it can be visited without affecting the content in production, or publish it to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to share it via a link without needing any LAND. See [Publish to the test server](../getting-started/dev-workflow.md#publish-to-the-test-server).
+We recommend testing changes with test users before uploading a new version of your scene to Decentraland. You can publish your scene to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to share it via a link without needing any LAND, and without affecting the content in production.
 
 ## Additional considerations
 

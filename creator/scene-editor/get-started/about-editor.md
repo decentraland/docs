@@ -71,13 +71,26 @@ To test your scene and experience it like a player, click the _Preview_ button o
 
 ![](../../images/editor/preview-button.png)
 
-Configure different preview options from the dropdown menu next to the **Preview** button:
+Configure different preview options from the dropdown menu next to the **Preview** button. See [Preview your scene](../../sdk7/getting-started/preview-scene.md) for a full list of all available options.
 
-* **Open Debug Console**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
-* **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
-* **Optimize Assets**: Converts the scene's 3D models to asset bundles, an optimized format that loads faster and renders just like the published scene. See [Preview with optimized assets](../../sdk7/getting-started/preview-scene.md#preview-with-optimized-assets).
-* **Multi-Instance Preview**: Opens a separate preview window each time you click **Preview**, each logged in with its own account. Use this to test multiplayer scenes with multiple accounts. See [Test a multiplayer scene locally](../../sdk7/networking/serverless-multiplayer.md#test-a-multiplayer-scene-locally).
-* **Show QR Code for Mobile**: Displays a QR code to open the scene preview on the Decentraland mobile app, as long as the phone is on the same network. See [Preview on mobile](../../sdk7/building-for-mobile/preview-on-mobile.md).
+## Scene renderer
+
+The Scene Editor uses **Babylon** as its default renderer for the editing canvas. You can switch to the **Bevy** renderer, which is available as an experimental preview.
+
+To change the renderer:
+
+1. Open the Creator Hub **Settings** (gear icon).
+2. Go to the **Editor** tab.
+3. Enable **Experimental features**.
+4. In the **Scene renderer** dropdown, select **Bevy (preview)**.
+
+The Bevy renderer is an alternative engine for the editing canvas. It affects how your scene looks while editing, not how it looks to players after publishing.
+
+When using the Bevy renderer, you can use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. The Bevy editor also shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated.
+
+{% hint style="warning" %}
+**Note:** The Bevy renderer is experimental and may not support all editing features that the default Babylon renderer does.
+{% endhint %}
 
 ## Scene settings
 

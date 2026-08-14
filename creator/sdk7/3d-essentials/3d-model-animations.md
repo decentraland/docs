@@ -184,6 +184,38 @@ You can also use `Animator.stopAllAnimations()` at any time to explicitly set th
 **📔 Note**: Resetting the posture is an abrupt change. If you want to make the model transition smoothly into another posture, play the other animation and blend between the two by gradually shifting their `weight` properties. See [Animation weight](#animation-weight).
 {% endhint %}
 
+## Detect when an animation finishes
+
+When a non-looping animation finishes playing, the engine sets that animation state's `playing` property back to _false_. Your scene's code can read this value to know when the animation ended, for example to chain another animation right after it.
+
+```ts
+let wasPlaying = false
+
+engine.addSystem(() => {
+	const animator = Animator.get(shark)
+	const biteState = animator.states.find((state) => state.clip === 'bite')
+	const isPlaying = biteState?.playing ?? false
+
+	if (wasPlaying && !isPlaying) {
+		console.log('bite animation finished')
+		// chain the next animation
+		Animator.playSingleAnimation(shark, 'swim')
+	}
+
+	wasPlaying = isPlaying
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: When polling the animation state every frame, always read it through `Animator.get()` (read-only). Don't use `Animator.getClip()` or `Animator.getMutable()` for polling: these return a mutable version of the component, which marks it as changed on every frame and causes unnecessary synchronization work.
+
+The `playing` property is only flipped by the engine when the animation ends by itself. Looping animations play until stopped, so they never flip the property on their own, and animations with `speed` set to 0 never finish.
+{% endhint %}
+
+{% hint style="warning" %}
+**📔 Note**: This feature is only supported in the Desktop client.
+{% endhint %}
+
 ## Handle multiple animations
 
 If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them.

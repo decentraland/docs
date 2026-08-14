@@ -9,7 +9,7 @@ description: How to publish my project?
 Make sure of the following:
 
 * Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
-* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../building-for-mobile/) and [Preview on mobile](../building-for-mobile/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
+* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../../build-for-mobile/mobile-client/overview.md) and [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 *   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
@@ -51,7 +51,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
 3. A prompt will ask if you want to publish to a **WORLD** or to **LAND**.
    * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](publishing-options.md#decentraland-worlds). Then select which of your NAMEs or ENS Domains to publish to.
    * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
-   * Select **Alternative servers** to publish to the [test server](publishing.md#the-test-server) or a [custom server](publishing.md#custom-servers).
+   * Select **Alternative servers** to publish to a [custom server](publishing.md#custom-servers).
 
 ![](../../images/editor/publish-options.png)
 
@@ -102,6 +102,23 @@ Keep the following in mind:
 * The wallet signing the deployment must own the NAME specified in the `scene.json` file
 * The scene has no parcel limitations (since January 2023)
 * All Worlds are automatically listed on the Places page unless you opt out as detailed below
+
+### Worlds storage budget
+
+Scenes deployed to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget grows with your Decentraland holdings:
+
+* Each Decentraland NAME you own grants 100 MB.
+* Each LAND parcel you own grants an additional 100 MB.
+* Every 2,000 MANA held in your wallet grants an additional 100 MB.
+
+You're free to distribute this budget between your Worlds however you like. For example, with a 500 MB budget you could deploy one 300 MB scene and one 200 MB scene, or five 100 MB scenes. Worlds published to ENS domains don't draw from this budget, they have a fixed limit of 36 MB per World instead.
+
+You can check how much of your budget is used and how much remains in two places:
+
+* The **Manage** section of the Creator Hub. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+* The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
+
+If you exceed your budget (for example after selling or transferring assets), you have 48 hours to free up space or increase your budget before your Worlds become inaccessible. See [Worlds size limits](../projects/kinds-of-project.md#size-limits) for more details.
 
 ### Multi-scene worlds
 
@@ -196,28 +213,6 @@ We use the content servers to host and distribute all scene content in a similar
 2. The `npm run deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the content servers update their records to point the parcels to the most recent content. Deploying doesn't involve any blockchain transaction, you only sign the new scene entity with your wallet to prove ownership.
 
 The information on each copy of the server is verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate. The community can also vote to approve or remove any of these servers using the DAO.
-
-## The test server
-
-You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers. The difference is that content deployed to this server isn't propagated to the others. However, content deployed to other servers does get propagated to this server, so surrounding scenes should look as they will in production.
-
-{% hint style="warning" %}
-**📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
-{% endhint %}
-
-Players are never directed to this server, the only way to access it is to explicitly provide a URL parameter to connect to it.
-
-If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
-
-### Via the CLI
-
-To deploy to the test server, run:
-
-`npm run deploy -- --target peer-testing.decentraland.org`
-
-To enter the content server, add `&CATALYST=peer-testing.decentraland.org` to the Decentraland URL
-
-_https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
 ## Custom servers
 

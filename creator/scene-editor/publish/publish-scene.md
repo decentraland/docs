@@ -8,9 +8,9 @@ description: How to publish your scene to LAND or a NAME.
 
 Make sure of the following:
 
-* Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
-* You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
-* You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Builder](https://decentraland.org/builder/names).
+- Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
+- You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
+- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
 {% hint style="warning" %}
 **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels.
@@ -48,11 +48,23 @@ To publish your scene:
 - **1. Uploading**: Uploading the files to the servers.
 - **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes.
 - **3. Optimizing**: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
-{% endhint %}
+  {% endhint %}
 
 ## Managing Worlds
 
 The Creator Hub enables World management via the **Manage** tab in its main panel. The **Manage** tab allows World tracking and editing. From here, you can edit World Settings, Permissions, and Scenes.
+
+### World storage budget
+
+Scenes published to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget grows with your holdings: each Decentraland NAME or LAND parcel you own grants 100 MB, and every 2,000 MANA held in your wallet grants an additional 100 MB. Worlds published to ENS domains have a fixed limit of 36 MB instead.
+
+The **Manage** tab shows how much of your storage budget you're using. Click **View Details** to see how your MANA, LAND, and NAME holdings add up.
+
+<img src="../../../.gitbook/assets/world-storage-budget.png" width="300" />
+
+You can also check your remaining budget in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
+
+See [Worlds size limits](../../sdk7/projects/kinds-of-project.md#size-limits) for details on how the budget is calculated and what happens if you exceed it.
 
 ### World Settings
 
@@ -60,23 +72,23 @@ A World Owner can edit its settings by going into the desired World **Settings**
 
 <img src="../../../.gitbook/assets/world-manage-settings.png" width="600" />
 
-* **Details**: World's general information:
-  * World Title
-  * Description
-  * Content Rating
-  * Categories
+- **Details**: World's general information:
+  - World Title
+  - Description
+  - Content Rating
+  - Categories
 
 The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
 
-* **Layout**: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
-  * Remove individual scenes by clicking the three dots and selecting **Remove from World**.
-  * **World Map** shows the World layout and identifies parcels with content and the remaining free parcels.
+- **Layout**: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
+  - Remove individual scenes by clicking the three dots and selecting **Remove from World**.
+  - **World Map** shows the World layout and identifies parcels with content and the remaining free parcels.
 
 <img src="../../../.gitbook/assets/world-layout.png" width="600" />
 
-* **Misc**: Other useful World configurations:
-  * World Spawn Coordinate: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
-  * Skybox settings
+- **Misc**: Other useful World configurations:
+  - World Spawn Coordinate: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
+  - Skybox settings
 
 {% hint style="info" %}
 **📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, check the [Marketplace NAMEs section](https://decentraland.org/marketplace/names/claim).
@@ -124,7 +136,7 @@ In the **Collaborators** section, if the World Owner set **Custom Coordinates** 
 
 <img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
 
-### Private Worlds 
+### Private Worlds
 
 A WORLD can have different **Access** settings. It can be accessible to anyone, or be restricted in different ways.
 
@@ -156,24 +168,24 @@ To add new addresses or communities to the **Approved Addresses**, follow these 
 
 2. You can add addresses in three different ways:
 
-  * **Wallet Address**: Add individual wallets, one at a time. 
+- **Wallet Address**: Add individual wallets, one at a time.
 
-  * **Community**: Search and add any Public Community. This adds **all Community addresses** to the **Addresses Approved**.
+- **Community**: Search and add any Public Community. This adds **all Community addresses** to the **Addresses Approved**.
 
   <img src="../../../.gitbook/assets/world-access-community.png" width="600" />
 
-  * **Import CSV**: Use an existing CSV with a list of addresses or community IDs to add to **Approved Addresses**. The structure is one wallet per line, for example:
+- **Import CSV**: Use an existing CSV with a list of addresses or community IDs to add to **Approved Addresses**. The structure is one wallet per line, for example:
 
-  ```
-  0x3bA7fD92eC4a1F6B8d2E9c5A7b1D3f6C8e4A2d9F
-  0xA1c9E4b7D2f6C8a3B5e9F1d4A7c2E6b8D3f9C5a1
-  ```
+```
+0x3bA7fD92eC4a1F6B8d2E9c5A7b1D3f6C8e4A2d9F
+0xA1c9E4b7D2f6C8a3B5e9F1d4A7c2E6b8D3f9C5a1
+```
 
-  Once imported, it tracks each Address individually, as shown in the image.
-  
+Once imported, it tracks each Address individually, as shown in the image.
+
   <img src="../../../.gitbook/assets/world-access-csv.png" width="600" />
 
-3. After confirming, the address/es are in the **Approved Addresses**. 
+3. After confirming, the address/es are in the **Approved Addresses**.
 
 4. With a new **+ New Invite**, addresses are added to the existing list, helping the World Owner manage and extend the list if needed.
 
@@ -189,14 +201,13 @@ To add new addresses or communities to the **Approved Addresses**, follow these 
 
 There are different scenarios if a user jumps into a World that doesn't have **Public** access:
 
-* Their address in the **Approved Addresses**: Will be able to join normally. If not, they will get information that the World is **Invitation Only**.
+- Their address in the **Approved Addresses**: Will be able to join normally. If not, they will get information that the World is **Invitation Only**.
 
 <img src="../../../.gitbook/assets/world-invitation-only-modal.png" width="300" />
 
-* The World is **Password Protected**: Users will be able to write the password. The maximum limit is ten (10) attempts.
+- The World is **Password Protected**: Users will be able to write the password. The maximum limit is ten (10) attempts.
 
 <img src="../../../.gitbook/assets/world-password-modal.png" width="300" />
-
 
 ## Publish from a hardware wallet
 
@@ -215,24 +226,6 @@ If a scene that takes up multiple parcels is only partially overwritten by anoth
 Suppose you deployed your scene _A_ over two parcels _\[100, 100]_ and _\[100, 101]_. Then you sell parcel _\[100, 101]_ to a user who owns adjacent land and that deploys a large scene (_B_) to several parcels, including _\[100, 101]_.
 
 Your scene _A_ can't be partially rendered in just one parcel, so _\[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _\[100, 100]_.
-
-## Alternative servers
-
-### The test server
-
-You can deploy content to the test catalyst server to run full tests with multiple users, the surrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
-
-{% hint style="warning" %}
-**📔 Note**: To deploy to parcels in the test server, you must have the same permissions required to deploy to those parcels in the main network.
-{% endhint %}
-
-Players are never directed to this server, the only way to access it is to explicitly provide a URL parameter to connect to it.
-
-If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
-
-To publish to the test server, click the **Publish** button normally, then select **Publish to a different server** on the bottom. Then select **Test Server** from the dropdown.
-
-![](../../images/editor/publish-to-test-server.png)
 
 ## Publish to granted land
 

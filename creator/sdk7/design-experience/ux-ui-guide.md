@@ -77,7 +77,7 @@ Be careful when placing your UI in screen regions that overlap with the default 
 There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
 
 {% hint style="info" %}
-**📱 Mobile safe area**: The [mobile client](../building-for-mobile/) has its own reserved zones — the **left side** (chat, search, profile, joystick, emotes), the **top right** (profile and camera controls), and the **bottom right** (interaction button). When designing for mobile, keep critical UI in the center or top-center of the screen and follow the [Mobile safe area](../building-for-mobile/safe-area.md). Use [`isMobile()`](../building-for-mobile/detect-platform.md) to swap layouts when the desktop and mobile constraints don't agree.
+**📱 Mobile safe area**: The [mobile client](../../build-for-mobile/mobile-client/overview.md) has its own reserved zones — the **left side** (chat, search, profile, joystick, emotes), the **top right** (profile and camera controls), and the **bottom right** (interaction button). When designing for mobile, keep critical UI in the center or top-center of the screen and follow the [Mobile safe area](../../build-for-mobile/develop/safe-area.md). Use [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) to swap layouts when the desktop and mobile constraints don't agree.
 {% endhint %}
 
 {% hint style="warning" %}

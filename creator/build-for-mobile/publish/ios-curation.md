@@ -33,5 +33,5 @@ Submissions are reviewed within **24 hours**. You will be notified in the channe
 ## Related
 
 * [Get featured](get-featured.md)
-* [UI best practices for mobile](ui-best-practices.md)
-* [Preview on mobile](preview-on-mobile.md)
+* [UI best practices for mobile](../develop/ui-best-practices.md)
+* [Preview on mobile](../develop/preview-on-mobile.md)

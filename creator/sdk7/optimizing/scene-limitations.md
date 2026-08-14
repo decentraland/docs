@@ -53,7 +53,7 @@ You can list any other files or folders you want to exclude from being uploaded 
 See [Performance Optimization](../optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
 {% hint style="info" %}
-**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../building-for-mobile/), and prefer fewer triangles, fewer materials, and smaller textures.
+**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../../build-for-mobile/mobile-client/overview.md), and prefer fewer triangles, fewer materials, and smaller textures.
 {% endhint %}
 
 ## Scene boundaries
@@ -73,7 +73,7 @@ It's possible to position entities underground, to either hide them or to have o
 ## Mesh compression
 
 {% hint style="warning" %}
-**📱 Draco-compressed meshes on the [mobile client](../building-for-mobile/) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
+**📱 Draco-compressed meshes on the [mobile client](../../build-for-mobile/mobile-client/overview.md) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
 {% endhint %}
 
 ## Lighting
@@ -112,8 +112,10 @@ Examples of other valid sizes:
 
 Decentraland [Worlds](../publishing/publishing-options.md#decentraland-worlds) have different limitations, since they are loaded as single scenes.
 
-* Worlds published to Decentraland NAMEs have at least `100 MB`. That number can be increased by owning additional NAMEs, LAND, and MANA on that same account.
+* Worlds published to Decentraland NAMEs draw from a storage budget that is shared across all the Worlds owned by the same wallet. Each NAME you own grants `100 MB`, each LAND parcel grants an additional `100 MB`, and every 2,000 MANA held grants another `100 MB`. You can distribute this budget between your Worlds however you like.
 * Worlds published to ENS domains have a limit of `36 MB` that cannot be expanded.
+
+You can check how much of your budget is used and how much remains in the **Manage** section of the Creator Hub, or in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds). If you exceed your budget (for example after selling or transferring assets), you have 48 hours to free up space before your Worlds become inaccessible.
 
 See [Worlds Size Limit](../projects/kinds-of-project.md#size-limits) for more details.
 

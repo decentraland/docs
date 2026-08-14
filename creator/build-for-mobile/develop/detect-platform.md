@@ -4,7 +4,7 @@ description: Detect whether your scene is running on mobile, desktop, or web.
 
 # Detect the Platform from Code
 
-The `@dcl/sdk/platform` module lets your scene check which client a player is using, so you can adapt your UI, controls, and gameplay accordingly. This is the recommended way to deliver a great experience across all clients without forking your scene.
+Use the `isMobile()` function to adapt your UI, controls, and gameplay specifically for mobile. This is the recommended way to deliver a great experience across all clients without forking your scene logic entirely.
 
 ## Available functions
 
@@ -87,4 +87,4 @@ switch (platform) {
 
 * [Mobile safe area](safe-area.md)
 * [UI best practices for mobile](ui-best-practices.md)
-* [On-screen UI](../2d-ui/onscreen-ui.md)
+* [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)

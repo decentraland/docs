@@ -8,7 +8,7 @@ You can preview your scene directly on the Decentraland mobile app from the Crea
 
 ## Prerequisites
 
-* The Decentraland mobile app installed on your phone — see the [download links](README.md#get-the-mobile-app).
+* The Decentraland mobile app installed on your phone — see the [download links](../mobile-client/overview.md#get-the-mobile-app).
 * The phone and your development machine must be on the **same local network** (Wi-Fi). The preview is served from your computer; the QR code links to a LAN URL.
 
 ## Option A — From the Creator Hub
@@ -47,6 +47,6 @@ Just like with desktop preview, the mobile preview reloads automatically when yo
 
 ## Related
 
-* [Preview Your Scene](../getting-started/preview-scene.md)
-* [Using the CLI](../getting-started/using-the-cli.md)
-* [Get featured on mobile Discover](get-featured.md)
+* [Preview Your Scene](../../sdk7/getting-started/preview-scene.md)
+* [Using the CLI](../../sdk7/getting-started/using-the-cli.md)
+* [Get featured on mobile Discover](../publish/get-featured.md)

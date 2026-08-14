@@ -6,7 +6,9 @@ description: How input actions map to touch on the Decentraland mobile client.
 
 Decentraland's input system is designed to be device-agnostic. The same `InputAction` enum that the SDK exposes on desktop is also routed from the on-screen controls on mobile, so most scenes work without any changes. There are, however, a few rules and gotchas worth knowing when you're building for touch.
 
-For the full input model, see [Click events](../interactivity/button-events/click-events.md). This page focuses on what is mobile-specific.
+For the full input model, see [Click events](../../sdk7/interactivity/button-events/click-events.md). This page focuses on what is mobile-specific.
+
+<figure><img src="../../images/touch-controls/full-input.jpg" alt="The on-screen controls with the + menu expanded, showing every input button"><figcaption><p>The on-screen controls with the "+" menu expanded — every input action visible</p></figcaption></figure>
 
 ## What touch maps to
 
@@ -21,6 +23,12 @@ The on-screen controls map as follows:
 * **Jump button** — fires `IA_JUMP` (the `Space` key on desktop). This is the largest button on the HUD and is always easy to reach.
 * **1 / 2 / 3 / 4 buttons** — fire `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` respectively. These live behind a secondary menu (see below).
 * **Camera drag** — rotates the camera; not exposed as an `InputAction`.
+
+## Controls Customization
+
+Scenes can reconfigure the on-screen controls — hide the joystick or crosshair, hide any button (including jump), change what the central button does, swap button icons, or replace the native controls entirely with custom UI. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) and [UI Input Binding](../../sdk7/2d-ui/ui_input_binding.md).
+
+<figure><img src="../../images/touch-controls/custom-main-action.jpg" alt="Customized on-screen controls"><figcaption><p>A customized HUD: a re-iconed central button mapped to a different action</p></figcaption></figure>
 
 ## Inputs to avoid for key actions on mobile
 
@@ -39,15 +47,17 @@ Prefer instead:
 * `IA_PRIMARY` for the E button action
 * `IA_SECONDARY` for the F button action
 * `IA_JUMP` when an action maps naturally to jumping (it's the largest and most reachable button on the mobile HUD)
-* Proximity-based triggers (see [Proximity Events](../interactivity/button-events/proximity-events.md)) when an action should fire automatically as the player approaches an entity
+* Proximity-based triggers (see [Proximity Events](../../sdk7/interactivity/button-events/proximity-events.md)) when an action should fire automatically as the player approaches an entity
 
 ## Cursor lock
 
-The [`PointerLock` component](../interactivity/button-events/click-events.md#lock-or-unlock-the-cursor) is a desktop-client concept (locked vs. unlocked mouse cursor). It does not apply to touch on mobile and is safe to leave in your scene — it has no effect there.
+The [`PointerLock` component](../../sdk7/interactivity/button-events/click-events.md#lock-or-unlock-the-cursor) is a desktop-client concept (locked vs. unlocked mouse cursor). It does not apply to touch on mobile and is safe to leave in your scene — it has no effect there.
 
 ## Related
 
-* [Click events](../interactivity/button-events/click-events.md)
-* [Proximity Events](../interactivity/button-events/proximity-events.md)
+* [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md)
+* [UI Input Binding](../../sdk7/2d-ui/ui_input_binding.md)
+* [Click events](../../sdk7/interactivity/button-events/click-events.md)
+* [Proximity Events](../../sdk7/interactivity/button-events/proximity-events.md)
 * [Detect the platform from code](detect-platform.md)
 * [UI best practices for mobile](ui-best-practices.md)

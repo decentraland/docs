@@ -646,6 +646,35 @@ Tween.setMoveContinuous(entity, Vector3.create(0, 0, 1), 0.7)
 Tween.setRotateContinuous(entity, Quaternion.fromEulerDegrees(0, -1, 0), 700)
 ```
 
+#### Follow a moving target (use setMoveContinuous, NOT repeated setMove)
+
+```typescript
+// A destination that keeps changing (e.g. following the player) must NOT be chased by
+// re-creating a setMove tween every frame: Transform.get() returns the position the engine
+// last reported back, which lags a few frames, and the engine applies that stale `start`
+// immediately — so the entity jumps backwards on every re-aim and visibly stutters.
+// setMoveContinuous takes a direction + speed instead of a start, so the engine keeps using
+// the entity's real position and replacing the tween never snaps it.
+const CHASE_SPEED = 3
+const STOP_DISTANCE = 1
+
+engine.addSystem(() => {
+	const playerPosition = Transform.get(engine.PlayerEntity).position
+	const myPosition = Transform.get(myEntity).position
+
+	if (Vector3.distance(myPosition, playerPosition) <= STOP_DISTANCE) {
+		// A continuous tween has no destination — you stop it yourself
+		if (Tween.has(myEntity)) Tween.deleteFrom(myEntity)
+		return
+	}
+
+	const direction = Vector3.subtract(playerPosition, myPosition)
+	direction.y = 0 // stay grounded even if the player jumps
+	Tween.setMoveContinuous(myEntity, Vector3.normalize(direction), CHASE_SPEED)
+})
+// Re-aim only when the direction changed enough to matter, to avoid a CRDT update per frame.
+```
+
 #### Tween System
 
 ```typescript
@@ -740,6 +769,27 @@ engine.addSystem(() => {
 		console.log('Tween finished!')
 	}
 })
+```
+
+#### Move from the current position (retarget mid-travel)
+
+```typescript
+// The engine updates Transform values in real time during a tween, so the
+// entity's live position can be used as the tween's start.
+// Calling this again while a previous tween is still running smoothly
+// RETARGETS the entity mid-travel from its current position.
+Tween.setMove(
+	entity,
+	Transform.get(entity).position, // start from wherever the entity is now
+	Vector3.create(8, 1, 8),
+	2000,
+	EasingFunction.EF_EASEOUTQUAD
+)
+
+// WARNING: omitting `start` does NOT mean "current position" — an unset start
+// is treated as (0,0,0) and teleports the entity to the scene origin. A stale
+// hardcoded `start` also teleports the entity to it before moving. Always pass
+// an explicit start; read it from the Transform when you want "from here".
 ```
 
 #### Manual Movement via Systems
@@ -875,6 +925,24 @@ AudioSource.create(entity, {
 const audio = AudioSource.getMutable(entity)
 audio.playing = true
 audio.volume = 0.5
+
+// Detect when a non-looping sound finishes: the engine flips `playing` back to false.
+// Poll with the READ-ONLY getter (getMutable would dirty the component every frame).
+let wasPlaying = false
+engine.addSystem(() => {
+	const isPlaying = AudioSource.get(entity).playing ?? false
+	if (wasPlaying && !isPlaying) console.log('sound finished')
+	wasPlaying = isPlaying
+})
+
+// Or react to playback state changes (works for AudioSource and AudioStream entities)
+import { audioEventsSystem, MediaState } from '@dcl/sdk/ecs'
+audioEventsSystem.registerAudioEventsEntity(entity, (audioEvent) => {
+	// MS_PLAYING -> MS_READY means the sound stopped; MS_ERROR means the file failed to load
+	if (audioEvent.state === MediaState.MS_READY) console.log('sound stopped')
+})
+const latestAudioEvent = audioEventsSystem.getAudioState(entity) // last reported state
+audioEventsSystem.removeAudioEventsEntity(entity) // unregister
 ```
 
 #### Audio Streaming
@@ -957,6 +1025,20 @@ Animator.create(entity, {
 // Control animation
 const animator = Animator.getMutable(entity)
 animator.states[0].playing = false
+
+// Detect when a non-looping animation finishes: the engine flips that state's
+// `playing` back to false. Poll with the READ-ONLY Animator.get() (Animator.getClip /
+// getMutable would dirty the component every frame).
+let wasPlaying = false
+engine.addSystem(() => {
+	const state = Animator.get(entity).states.find((s) => s.clip === 'Bite')
+	const isPlaying = state?.playing ?? false
+	if (wasPlaying && !isPlaying) {
+		console.log('animation finished')
+		Animator.playSingleAnimation(entity, 'Walk') // chain the next animation
+	}
+	wasPlaying = isPlaying
+})
 ```
 
 ### Lights
@@ -1088,11 +1170,27 @@ triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
 
 // Optional `mask` (both functions): play the animation on only part of the body
 triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
+
+// Detect emote lifecycle (started / finished / interrupted) — works for scene-triggered
+// emotes, emotes the player plays via the emote wheel, and other players' emotes
+import { AvatarEmoteCommand, EmoteState } from '@dcl/sdk/ecs'
+AvatarEmoteCommand.onChange(engine.PlayerEntity, (emote) => {
+	if (!emote) return
+	switch (emote.state ?? EmoteState.ES_STARTED) {
+		case EmoteState.ES_STARTED: // emote started (also when field absent, on older clients)
+			break
+		case EmoteState.ES_FINISHED: // non-looping emote played to its natural end
+			break
+		case EmoteState.ES_INTERRUPTED: // cut short: movement, teleport, another emote, stop, or scene exit
+			break
+	}
+})
 ```
 
 Notes:
 
 - Plays only while the player is still; walking/jumping interrupts.
+- Masked (partial-body) emotes on the local player don't report lifecycle events.
 
 #### Cursor State
 
@@ -1679,7 +1777,8 @@ uiText={{
   color: Color4.White(),
   textAlign: 'middle-center',  // 'top-left', 'top-center', 'top-right', etc.
   font: 'serif',               // 'sans-serif', 'serif', 'monospace'
-  fontWeight: 'bold'           // 'normal', 'bold'
+  fontWeight: 'bold',          // 'normal', 'bold'
+  textWrap: 'wrap'             // 'wrap' (default), 'nowrap'
 }}
 
 // Rich text with line breaks
@@ -2264,7 +2363,7 @@ Material.setBasicMaterial(screen, {
 ```typescript
 // Stream from external URL
 VideoPlayer.create(screen, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 
@@ -3283,13 +3382,6 @@ npm run build
 
 # Deploy to Decentraland
 npm run deploy
-```
-
-#### Deploy to Test Server
-
-```bash
-# Deploy to test environment
-npm run deploy -- --target-content https://peer-testing.decentraland.org/content
 ```
 
 #### Deploy to Custom World

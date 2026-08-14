@@ -68,15 +68,9 @@ To run a preview of your scene, open it in the Creator Hub and click the **Previ
 **💡 Tip**: When using the Creator Hub, every time you make a change on your scene, the preview is automatically updated. Even while running.
 {% endhint %}
 
-## Publish to the test server
-
-Test your scene on the test server (Sepolia testnet) before going to mainnet. You don't need to own any LAND or names to publish to the test server.
-
-See [publishing](../publishing/publishing.md).
-
 ## Publish to Decentraland
 
-Once you're happy with your scene and tested it on the test server, it's time to publish to Decentraland. For this, you need to own LAND, a Decentraland NAME, or an ETH ENS name, or have permissions given by someone that does.
+Once you're happy with your scene, it's time to publish to Decentraland. For this, you need to own LAND, a Decentraland NAME, or an ETH ENS name, or have permissions given by someone that does.
 
 See [publishing](../publishing/publishing.md) for instructions on how to do that.
 

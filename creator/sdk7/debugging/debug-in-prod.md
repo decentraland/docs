@@ -12,12 +12,6 @@ When running a scene that's already deployed to land in Decentraland, there are 
 
 Before you deploy your scene to Decentraland, make sure the scene runs well in preview using the latest version of the Decentraland SDK. See [debug in preview](../debugging/debug-in-preview.md).
 
-### The test server
-
-You can deploy scenes to a test server as a staging environment, before publishing them to the live content servers. This server is not frequented by any players that visit Decentraland normally. To enter this server you must manually write its URL, but keep in mind that it's not a private environment.
-
-See [The test server](../publishing/publishing.md#the-test-server) for details.
-
 ## Quick reload
 
 If you need to reload the scene you're standing on, write the following into the chat and push enter:

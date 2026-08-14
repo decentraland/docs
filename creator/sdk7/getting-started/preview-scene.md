@@ -51,7 +51,7 @@ Every time you make changes to the scene, the preview reloads and updates automa
 
 You can add the following flags to the `npm run start` command to change its behavior:
 
-- `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server: when the browser asks to access apps on your device, click "Allow".
+- `-- --web` (alias `-- --bevy-web`) Opens the preview in the Bevy Web browser client at `decentraland.org/bevy-web/` instead of the Desktop Explorer. Chromium-based browsers (Chrome 142+) require the Local Network Access permission for the hosted page to reach your local preview server — when the browser asks to access apps on your device, click "Allow".
 - `-- --mobile` (alias `-- -m`) Shows a QR code in the terminal that opens your scene in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md) on a phone connected to the same Wi-Fi network. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
 - `-- --skip-build` Skip build and only serve the files in preview mode.
 - `-- --port` (alias `-- -p`) to assign a specific port to run the scene. Otherwise it will use whatever port is available.

@@ -23,11 +23,7 @@ The default Decentraland explorer UI includes a chat widget, a map, and other el
 See [UX guidelines](../design-experience/ux-ui-guide.md) for tips on how to design the look and feel of your UI.
 
 {% hint style="info" %}
-**📱 Designing for mobile**: The [mobile client](../../build-for-mobile/mobile-client/overview.md) reserves the left side, the top-right, and the bottom-right of the screen for system controls (joystick, chat, profile, camera, interaction button). Scene UI in those regions will clash with the controls. Before publishing, review the [Mobile safe area](../../build-for-mobile/develop/safe-area.md) and the [UI best practices for mobile](../../build-for-mobile/develop/ui-best-practices.md).
-{% endhint %}
-
-{% hint style="info" %}
-**📱 Hardware-reserved margins are avoided by default**: On mobile, devices reserve screen space for the notch, status bar, home indicator, and rounded corners. Every UI renderer is placed inside the device safe area automatically — see [Screen inset area](#screen-inset-area) below. You only need to wrap your UI in the [`ScreenInsetArea` component](../../build-for-mobile/develop/safe-area.md#device-hardware-insets-screeninsetarea) by hand if you opted out with `screenInset: 'none'`. On desktop the insets are zero, so this has no effect there.
+**📱 Designing for mobile**: Devices reserve screen space for the notch, status bar, home indicator and rounded corners, and the client draws its own controls over part of the canvas. You don't measure either — pick the area your UI is placed in with [`screenInset`](#screen-inset-area) below. It defaults to the device safe area, so hardware margins are avoided with no work on your side. Before publishing, review the [Mobile safe area](../../build-for-mobile/develop/safe-area.md) and the [UI best practices for mobile](../../build-for-mobile/develop/ui-best-practices.md).
 {% endhint %}
 
 When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements are hidden.
@@ -259,7 +255,7 @@ On desktop the device insets are zero, so `'device'` places the UI over the whol
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: Don't wrap your UI in the [`ScreenInsetArea`](../../build-for-mobile/develop/safe-area.md#device-hardware-insets-screeninsetarea) or `InteractableArea` components while also leaving the matching `screenInset` value on the renderer — the inset would be applied twice, pushing the UI inwards by double the margin. Either rely on `screenInset`, or set it to `'none'` and place the wrapper yourself.
+**📔 Note**: Don't wrap your UI in the [`ScreenInsetArea` or `InteractableArea`](../../build-for-mobile/develop/safe-area.md#wrap-part-of-your-ui-instead) components while also leaving the matching `screenInset` value on the renderer — the inset would be applied twice, pushing the UI inwards by double the margin. Either rely on `screenInset`, or set it to `'none'` and place the wrapper yourself.
 {% endhint %}
 
 ### The three areas on a real device
@@ -273,7 +269,7 @@ The captures below are the same scene on the same phone, rendered three times wi
 <figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> — the UI is placed inside the rectangle the client designates for scene UI. On mobile client <code>1.12.1</code>, captured here, that excludes the left-hand column (profile, chat, joystick); the action buttons on the bottom right are drawn over the area by design.</p></figcaption></figure>
 
 {% hint style="info" %}
-**💡 Tip**: `'interactable'` gives you the area each explorer designates for scene UI. That is deliberately not the same as "every client control is outside it" — as the third capture shows, the mobile action buttons are drawn over the area on purpose. Anything you place under them is still reachable to you but competes for the same taps, so keep the [reserved margins](../../build-for-mobile/develop/safe-area.md#reserved-margins) in mind for the corners, and check the platforms you target: what the area covers is each explorer's call and can change between versions.
+**💡 Tip**: `'interactable'` gives you the area each explorer designates for scene UI. That is deliberately not the same as "every client control is outside it" — as the third capture shows, the mobile action buttons are drawn over the area on purpose. Anything you place under them is still reachable to you but competes for the same taps, so keep the [crowded corners](../../build-for-mobile/develop/safe-area.md#where-the-client-controls-live) in mind, and check the platforms you target: what the area covers is each explorer's call and can change between versions.
 {% endhint %}
 
 Each renderer honors its own `screenInset`, so the main UI and any UI added with `addUiRenderer()` can use different areas at the same time. Unlike the virtual size, this value is never shared between renderers.

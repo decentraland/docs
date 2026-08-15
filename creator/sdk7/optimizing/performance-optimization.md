@@ -98,6 +98,30 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
+### Reusing the same model many times
+
+Scenes are often full of repeated content: lamp posts along a street, chairs in a room, trees in a park. The best way to build these is the simplest one — **give each copy its own entity, and point them all at the same _.glb_ file.**
+
+```ts
+// GOOD: one file, many entities
+for (const position of lampPostPositions) {
+  const lampPost = engine.addEntity()
+  Transform.create(lampPost, { position })
+  GltfContainer.create(lampPost, { src: 'assets/scene/lampPost.glb' })
+}
+```
+
+The engine recognizes that these entities share a source. The file is downloaded once, converted to asset bundle once, and its meshes and textures are held in memory once — the twentieth lamp post costs almost nothing beyond its own position in the world. This also works across scenes: if a neighboring scene uses the same file, it's already in memory. Exporting twenty near-identical _.glb_ files instead means twenty downloads and twenty copies in memory.
+
+What this **doesn't** save is draw calls. Twenty lamp posts are twenty objects to draw, whether they come from twenty entities or from a single _.glb_ that contains twenty lamp posts modeled into it. The only way to reduce that count is to join the meshes in your modeling tool, which is a real trade-off — see [Instancing vs Duplicating vs Merging](../../3d-modeling/meshes.md#instancing-objects-vs-duplicating-objects) for when it's worth it.
+
+A few related tips:
+
+* **Group into clusters rather than one giant model.** If you have a lot of scattered props, a good middle ground is one _.glb_ per group — a block of a street, a room's worth of furniture — instead of either one model per prop or one model for the whole scene. You cut down the number of objects while keeping each cluster small enough for culling to still do something useful.
+* **Spawning many copies at once?** Pre-load the model first with the [`AssetLoad` component](pre-load-resources.md). The copies are then created from a model that's already in memory, instead of each one waiting on the same download. Building each copy still takes work, so a large burst can cost you a frame either way — pre-loading removes the wait for the file, not the cost of creating the copies.
+* **One very large model is harder on the engine than many small ones.** The engine spreads the work of building your scene across frames to avoid stutters, but it can't split up a single huge model — that lands in one frame. Many smaller pieces load in smoothly; one monolithic piece is more likely to cause a visible hiccup.
+* **Repeating a model doesn't introduce new textures or geometry.** Twenty lamp posts built from one model share that model's meshes and textures rather than adding to the set — the twentieth costs nothing in texture memory. Materials are the exception: the engine creates a material instance per rendered object in order to apply your scene's boundary clipping, so the material count follows the number of objects you render, not the number of models you use. Those instances still share the same textures and shader variants, so they cost a little memory rather than frame time. What pushes a scene against the texture [limit](scene-limitations.md) is having many *different* models, each with its own bespoke set — so consolidating your scene around a smaller library of reused models helps there.
+
 ### Backface Culling
 
 For performance optimization, Backface Culling will be set to **On** on **all** model's materials once rendered in the engine, independently of their settings.

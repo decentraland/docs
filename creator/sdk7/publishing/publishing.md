@@ -8,17 +8,17 @@ description: How to publish my project?
 
 Make sure of the following:
 
-* Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
-* If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../../build-for-mobile/mobile-client/overview.md) and [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
-* You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
-*   You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
+- Your scene complies with all of the [scene limitations](../optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
+- If you want your scene to work well for mobile players, preview and test it on a real device first — see [Building for Mobile](../../build-for-mobile/mobile-client/overview.md) and [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md). Once published, your scene is reachable from the Decentraland mobile app the same way as from desktop.
+- You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
+- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org) or a NAME in the [Builder](https://decentraland.org/builder/names).
 
 {% hint style="warning" %} **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels. {% endhint %}
 
 {% hint style="danger" %}
-**❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
+**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least 2 hours before the event starts.
 
-After each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
+After each publish, an internal process optimizes all 3D models before they can be rendered. This usually takes around 15 minutes, but can take longer when the servers are busy. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
 {% endhint %}
 
 ## Check scene data
@@ -27,14 +27,14 @@ When deploying, the CLI reads information from the _scene.json_ file to determin
 
 Open your scene's _scene.json_ file and complete the following data:
 
-* **title**: The title is displayed on the UI under the mini-map, whenever players enter your scene. It also shows on the teleport popup.
-* **description**: A description of what players will find in your scene. This is displayed on the teleport popup.
-* **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
-* **Parcels**: The coordinates of the parcels that will be occupied by your scene
-* **Base**: The coordinates of the parcel that will be considered the \[0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
-* **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn. By default players spawn at the _0,0,0_ location of the scene (bottom-left corner). Use this to start players in a specific location, or set a region to prevent players from overlapping with each other when they first appear.
-* **tags**: A set of tags that describe your scene. These help players explore Decentraland by making it easier to find content they're interested in. [See the list of available categories](../projects/scene-metadata.md#categories).
-* **rating**: This is used to classify the content of your scene. Decentraland is an 18+ platform, so the value to set is `A` for Adults. See [Age Rating](../projects/scene-metadata.md#age-rating).
+- **title**: The title is displayed on the UI under the mini-map, whenever players enter your scene. It also shows on the teleport popup.
+- **description**: A description of what players will find in your scene. This is displayed on the teleport popup.
+- **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
+- **Parcels**: The coordinates of the parcels that will be occupied by your scene
+- **Base**: The coordinates of the parcel that will be considered the \[0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
+- **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn. By default players spawn at the _0,0,0_ location of the scene (bottom-left corner). Use this to start players in a specific location, or set a region to prevent players from overlapping with each other when they first appear.
+- **tags**: A set of tags that describe your scene. These help players explore Decentraland by making it easier to find content they're interested in. [See the list of available categories](../projects/scene-metadata.md#categories).
+- **rating**: This is used to classify the content of your scene. Decentraland is an 18+ platform, so the value to set is `A` for Adults. See [Age Rating](../projects/scene-metadata.md#age-rating).
 
 {% hint style="warning" %}
 **📔 Note**: See [scene metadata](../projects/scene-metadata.md) for more details on how to set these parameters.
@@ -49,15 +49,15 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
 1. Open your scene project.
 2. Click the **Publish** button on the top-right corner.
 3. A prompt will ask if you want to publish to a **WORLD** or to **LAND**.
-   * Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](publishing-options.md#decentraland-worlds). Then select which of your NAMEs or ENS Domains to publish to.
-   * Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
-   * Select **Alternative servers** to publish to a [custom server](publishing.md#custom-servers).
+   - Select **PUBLISH TO WORLD** to make your scene available in one of your [WORLDs](publishing-options.md#decentraland-worlds). Then select which of your NAMEs or ENS Domains to publish to.
+   - Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
+   - Select **Alternative servers** to publish to a [custom server](publishing.md#custom-servers).
 
 ![](../../images/editor/publish-options.png)
 
 4. This opens a new tab on your browser, showing details about the upload. Sign the deployment with your wallet. This is only a signature to prove ownership, it's free and doesn't involve any blockchain transaction.
-   * For LAND on a Metamask browser account, confirm the deployment. Then sign the message on the Metamask browser extension.
-   * For LAND linked to a wallet you can use via Wallet Connect, click **Connect wallet**, then scan the QR code with your mobile device and follow the steps on Wallet Connect.
+   - For LAND on a Metamask browser account, confirm the deployment. Then sign the message on the Metamask browser extension.
+   - For LAND linked to a wallet you can use via Wallet Connect, click **Connect wallet**, then scan the QR code with your mobile device and follow the steps on Wallet Connect.
 
 ### Via the CLI
 
@@ -99,24 +99,24 @@ The **name** specified in the `scene.json` can be either a Decentraland NAME or 
 
 Keep the following in mind:
 
-* The wallet signing the deployment must own the NAME specified in the `scene.json` file
-* The scene has no parcel limitations (since January 2023)
-* All Worlds are automatically listed on the Places page unless you opt out as detailed below
+- The wallet signing the deployment must own the NAME specified in the `scene.json` file
+- The scene has no parcel limitations (since January 2023)
+- All Worlds are automatically listed on the Places page unless you opt out as detailed below
 
 ### Worlds storage budget
 
 Scenes deployed to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget grows with your Decentraland holdings:
 
-* Each Decentraland NAME you own grants 100 MB.
-* Each LAND parcel you own grants an additional 100 MB.
-* Every 2,000 MANA held in your wallet grants an additional 100 MB.
+- Each Decentraland NAME you own grants 100 MB.
+- Each LAND parcel you own grants an additional 100 MB.
+- Every 2,000 MANA held in your wallet grants an additional 100 MB.
 
 You're free to distribute this budget between your Worlds however you like. For example, with a 500 MB budget you could deploy one 300 MB scene and one 200 MB scene, or five 100 MB scenes. Worlds published to ENS domains don't draw from this budget, they have a fixed limit of 36 MB per World instead.
 
 You can check how much of your budget is used and how much remains in two places:
 
-* The **Manage** section of the Creator Hub. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
-* The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
+- The **Manage** section of the Creator Hub. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
+- The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 
 If you exceed your budget (for example after selling or transferring assets), you have 48 hours to free up space or increase your budget before your Worlds become inaccessible. See [Worlds size limits](../projects/kinds-of-project.md#size-limits) for more details.
 
@@ -132,8 +132,6 @@ When using this paramter, if the scene you're publishing has different coordinat
 
 {% hint style="warning" %} **📔 Note**: If you have operator rights to a world you don't own, and are given rights only on specific parcels of that world, then you will only be able to publish to those parcels and won't be able to affect content on other parcels of the world.
 {% endhint %}
-
-
 
 ### Opt-out from Places listing
 
@@ -167,7 +165,6 @@ npm run deploy -- --target-content https://worlds-content-server.decentraland.or
 
 Once you run the command, you will be prompted to sign the deployment with your wallet and a set of validations will be executed to allow or reject the scene.
 
-
 ### Accessing a World
 
 Once a scene is uploaded to the Worlds server, you can access it using the Decentraland Explorer with the following URL: `decentraland://?realm=NAME.dcl.eth`, where `NAME` should be replaced with the Decentraland NAME or ENS Domain you deployed to.
@@ -182,8 +179,8 @@ If you are a LAND owner and wish to deploy a World scene to Genesis City, you ca
 
 Things to remember:
 
-* Remove the `worldConfiguration` section from `scene.json`
-* The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
+- Remove the `worldConfiguration` section from `scene.json`
+- The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
 
 ## Publish from a hardware wallet
 
@@ -242,7 +239,9 @@ After you sign to authorize the deployment of your scene, the signing dapp will 
 
 You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each server refers to a different realm. You can see how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
 
-You can also obtain this information at any time by running the following command on the command line console:
+Propagation is only part of the picture: after the upload, the scene's 3D models are converted into optimized asset bundles for each platform (Windows and Mac). Until that conversion finishes, players are deliberately served the last fully-working version of your scene. Plan for 30 to 60 minutes until the new version is reliably playable by everyone. You can query the conversion progress directly, see [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status).
+
+You can also obtain the propagation information at any time by running the following command on the command line console:
 
 `npx @dcl/opscli pointer-consistency --pointer 0,0`
 

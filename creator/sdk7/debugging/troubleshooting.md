@@ -108,21 +108,46 @@ As an alternative, you can run `npm run deploy -- --skip-build` to skip the runn
 #### Issue: I deployed my scene but I don't see the changes when I enter Decentraland
 
 * Keep in mind that it can take a few minutes for new content to be propagated throughout all of the servers in the catalyst network, give it a little time.
+* While the new version's 3D models are being converted to asset bundles, players are deliberately served the last fully-working version of your scene. Plan for 30 to 60 minutes until the new version is reliably playable by everyone. You can [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene directly.
+* Reloading the scene is not enough to pick up a new version: a reload restarts the scene's code, but doesn't fetch the newly published version. Once the conversion is complete, fully quit and relaunch Decentraland, then enter the scene again via a jump link or the `/goto` chat command.
 
-#### Issue: Once deployed, some 3D models are missing
+#### Issue: Some players see the new version of my scene, others still see the old one
 
+The conversion of your scene's 3D models finishes at different times for each platform (Windows and Mac), and each player's client also keeps a local cache. To check if the conversion is done for all platforms, [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) and compare the `windows` and `mac` values under `assetBundles`. Once both are `complete`, ask the affected players to fully quit and relaunch Decentraland.
+
+#### Issue: The publication is stuck on the Converting stage, the Jump In button never appears
+
+Your scene is either queued behind other scenes being converted, or the conversion failed.
+
+* Open `https://asset-bundle-registry.decentraland.org/queues/status` and look for your scene's entity ID. You can find that ID in the `entityId` field when you [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) using your scene's coordinates. If your ID is listed in the queue, the scene is queued and you just need to wait. Avoid republishing while you wait: each publish creates a new version that starts over at the back of the queue.
+* If it's not in the queue, [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene. If a platform shows `failed`, publish the scene again. If it fails a second time, [report the problem](report-bug.md) and include the entity ID.
+
+#### Issue: Once deployed, some 3D models are missing, black, or untextured
+
+* If you just published, the conversion of your models to asset bundles may not be done yet. Type `/detectabs` into the chat window: models tinted red are not yet converted. [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) and wait for it to complete.
 * Make sure the 3D models are all within the scene boundaries, even their bounding boxes. If any part of your models extend beyond these limits when running a preview, these parts that extend will be cut off and not rendered, both when running a preview and on the published scene.
+* If textures are the problem, keep in mind that textures in 3D models are capped to a maximum size of 512x512 pixels during the conversion.
+
+#### Issue: The scene looks fine up close, but is broken or missing when seen from a distance
+
+The low Level of Detail (LOD) versions of your assets, used to render the scene from far away, are generated in the last stage of the publication and may not be finished yet. This doesn't block testing your scene from up close. [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) and look at the values under `lods`, or simply wait and check again later.
 
 #### Issue: Once deployed, my 3D models look different
 
 * If the textures look different, keep in mind that textures in 3D models are capped to a maximum size of 512x512 pixels. This conversion is carried out to ensure that Decentraland runs smoothly for everyone.
 *   If models look different, there could be an issue with the conversion of the models to asset bundles. Read more about asset bundle compression [here](../optimizing/performance-optimization.md#asset-bundle-conversion).
 
-    To validate this, try running the scene with the URL parameter `&DISABLE_ASSET_BUNDLES`. If the models look fine with this flag, the issue must be related to a bug in the conversion of the model.
+    To validate this, try running the scene with the URL parameter `&DISABLE_ASSET_BUNDLES`. If the models look fine with this flag, the issue must be related to a bug in the conversion of the model. In that case, [report the problem](report-bug.md) and include the entity ID of your deployment.
 
-    Note that the generation of compressed asset-bundle versions of your models is a process that takes the servers time (about an hour). You can check if the models are being loaded as compressed asset bundles or not by writing the following command into the chat window `/detectabs`. Compressed models are tinted green, non-compressed are tinted red.
+    Note that the generation of compressed asset-bundle versions of your models is a process that takes the servers time (usually under 15 minutes, but plan for 30 to 60 minutes when the servers are busy). You can check if the models are being loaded as compressed asset bundles or not by writing the following command into the chat window `/detectabs`. Compressed models are tinted green, non-compressed are tinted red.
 
     You can also reproduce this conversion locally before publishing, by enabling [optimized assets in the preview](../getting-started/preview-scene.md#preview-with-optimized-assets). This lets you catch and debug these issues without having to deploy the scene.
+
+#### Issue: My scene vanished entirely
+
+* If the scene is in a World: your Worlds storage budget may be exceeded, for example after selling or transferring NAMEs, LAND, or MANA. You have 48 hours to free up space or increase your budget before your Worlds become inaccessible. Check your budget in the **Manage** tab of the Creator Hub or in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds), then republish. See [Worlds size limits](../projects/kinds-of-project.md#size-limits).
+* If the scene is on LAND: someone with deploy permissions may have published a new scene over your parcels, which erases the previous content. See [scene overwriting](../publishing/publishing.md#scene-overwriting).
+* In rare cases, content that violates Decentraland's content policy can be denylisted from the content servers. If you believe this happened by mistake, reach out through the [Decentraland Discord](https://decentraland.org/discord).
 
 #### Issue: My scene has poor FPS in production, even though it runs smoothly in preview.
 

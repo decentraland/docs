@@ -19,9 +19,9 @@ Make sure of the following:
 Check your [scene's details](../configure/scene-settings.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
 
 {% hint style="danger" %}
-**❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
+**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least 2 hours before the event starts.
 
-After each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
+After each publish, an internal process optimizes all 3D models before they can be rendered. This usually takes around 15 minutes, but can take longer when the servers are busy. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
 {% endhint %}
 
 ## Publish your scene
@@ -49,6 +49,20 @@ To publish your scene:
 - **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes.
 - **3. Optimizing**: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
   {% endhint %}
+
+## How long does publishing take?
+
+- **The upload itself**: seconds to a few minutes. It scales with the total size of your scene and your upload bandwidth.
+- **Until you can test it**: the **Jump In** button appears as soon as the scene is playable, once stages **1** and **2** are done.
+- **Until it's reliably playable by everyone**: plan for 30 to 60 minutes. The conversion of 3D models runs separately for each platform (Windows and Mac), and the new version of the scene also needs to propagate across all the content servers.
+- **Before a live event**: publish your final version at least 2 hours before the event starts.
+
+The following factors can make a publication slower:
+
+- **Total scene size**: affects both the upload and the conversion.
+- **The number and complexity of distinct 3D models**: models are converted one by one.
+- **How busy the conversion servers are**: your scene may be queued behind other scenes published at around the same time. This is often the biggest variable, and you can [check the queue](#check-the-conversion-status) directly.
+- **Republishing repeatedly**: each publish creates a new version of the scene that starts the whole process over, at the back of the queue. Publishing three times in ten minutes is slower than publishing once.
 
 ## Managing Worlds
 
@@ -256,3 +270,10 @@ Once you deployed your scene, these changes will take a few minutes to be propag
 The Creator Hub displays the progress of the publication as it moves through the **Uploading**, **Converting** and **Optimizing** stages, and shows a **Jump In** button as soon as the scene is playable.
 
 To check how the new version of your content propagates through the servers that make up Decentraland's content network, you can use the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/). Each one of these servers refers to a different realm.
+
+### Check the conversion status
+
+While the 3D models of a new version are being converted, players are deliberately served the last fully-working version of your scene. You can query the conversion status directly in a browser:
+
+- `https://asset-bundle-registry.decentraland.org/entities/status/<pointer>`: replace `<pointer>` with one of your scene's coordinates (for example `20,-34`) or with the entity ID of the deployment. The response shows the conversion status for each platform under `assetBundles`, and the status of the LODs under `lods`. When `complete` is `true`, the scene is fully converted for all platforms. For a scene in a World, add the World's name as a query parameter, for example `.../entities/status/0,0?world_name=myname.dcl.eth`.
+- `https://asset-bundle-registry.decentraland.org/queues/status`: lists the IDs of all the scenes currently waiting to be converted, per platform. If your entity ID appears here, your scene is queued behind other conversions and you just need to wait.

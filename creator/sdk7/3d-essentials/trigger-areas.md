@@ -285,3 +285,7 @@ Transform.create(triggerEntity, {
 ```
 
 This will activate the trigger area when any entity with the layers `CL_CUSTOM1` or `CL_CUSTOM2` enters the trigger area.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example that exercises `TriggerArea` end-to-end, see the [`75,-9-trigger-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas) test scene, which covers the ENTER/EXIT wire contract and the SDK's per-tick `onTriggerStay` synthesis, rotated areas, moving triggerers on custom collider layers, and areas attached to falling entities. To see how the collider layers themselves behave, see [`5,5-collider-layers`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/5,5-collider-layers).
+{% endhint %}

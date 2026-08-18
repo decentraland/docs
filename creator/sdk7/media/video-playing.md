@@ -498,3 +498,7 @@ Material.setBasicMaterial(videoPlayerEntity, {
 ## Audio analysis
 
 You can read real-time amplitude and frequency data from the audio track of a `VideoPlayer` entity to drive reactive visuals that sync with the video's soundtrack. See [Audio analysis](audio-analysis.md).
+
+{% hint style="info" %}
+**💡 Tip**: To see video played on a GLTF model rather than a primitive, see the [`74,-8-gltfnodemodifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/74,-8-gltfnodemodifier) test scene, which drives an HLS stream onto specific GLTF nodes using `GltfNodeModifiers` video textures.
+{% endhint %}

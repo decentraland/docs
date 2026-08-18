@@ -185,3 +185,7 @@ A few things to note about this example:
 To read the cursor's absolute position on the screen instead of its movement, use the `screenCoordinates` property of the same component. See [Check the player's cursor position](user-data.md#check-the-players-cursor-position).
 
 To find out which entity is under the cursor, combine the `worldRayDirection` property with a raycast. See [Raycasting](raycasting.md).
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of pointer state, see the [`0,5-primary-cursor-info`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,5-primary-cursor-info) test scene, which reads `PrimaryPointerInfo` each frame and feeds `worldRayDirection` into a raycast; [`31,20-pointer-lock-control`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control), which requests and releases cursor capture by writing `PointerLock.isPointerLocked`; and [`32,20-virtual-camera-mouse-look`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/32,20-virtual-camera-mouse-look), which shows `screenDelta` still reporting movement while `screenCoordinates` is frozen at the screen center during lock.
+{% endhint %}

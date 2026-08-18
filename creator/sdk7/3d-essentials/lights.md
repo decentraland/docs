@@ -284,3 +284,7 @@ For example, the image below displays each of the letters on different sides of 
 {% hint style="info" %}
 **💡 Tip**: Combine lights with a [Particle System](particle-system.md) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.
 {% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of this component, see the [`0,4-dynamic-lights`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) test scene, which covers both `LightSource.Type.Point` and `LightSource.Type.Spot`, runtime changes via `LightSource.getMutable()`, shadows, and `shadowMaskTexture`.
+{% endhint %}

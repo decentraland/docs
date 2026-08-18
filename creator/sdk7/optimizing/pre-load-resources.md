@@ -112,3 +112,7 @@ assetLoadLoadingStateSystem.registerAssetLoadLoadingStateEntity(
 {% hint style="info" %}
 **💡 Tip**: You can add more assets to an existing `AssetLoad` component after creating it, for example in response to a player action. Use `AssetLoad.getOrCreateMutable()` to fetch the component and push new paths onto its `assets` array. The registered callback will also fire for these newly added assets as they download.
 {% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of this component, see the [`88,-12-asset-load`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load) test scene, which pre-loads an mp3, a texture, a video and a glb through one `AssetLoad` component and reports each asset's state through `assetLoadLoadingStateSystem` — including a deliberately missing path that resolves to `NOT_FOUND`.
+{% endhint %}

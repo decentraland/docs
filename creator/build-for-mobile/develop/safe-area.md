@@ -1,107 +1,58 @@
 ---
-description: Where scene UI can safely live on mobile — clear of the system HUD and the device's hardware-reserved margins.
+description: Where scene UI can safely live on mobile — clear of the device's hardware margins and of the client's own controls.
 ---
 
 # Mobile Safe Area
 
-On a phone, two things eat into the screen space your UI can safely use:
+On a phone, two unrelated things eat into the screen space your UI can safely use:
 
-* **The Decentraland system HUD** — the app overlays its own controls (joystick, chat, profile, camera controls, the interaction button). Scene UI placed under them clashes visually and competes for taps. These regions are mapped out in [Reserved margins](#reserved-margins) below.
-* **The device's hardware-reserved margins** — the notch or camera cutout, status bar, home indicator, and rounded corners. The SDK keeps UI clear of these automatically, with no work on your side — see [Device hardware insets](#device-hardware-insets-screeninsetarea).
+* **The device's hardware margins** — the notch or camera cutout, the status bar, the home indicator, and rounded corners. UI drawn underneath them is partly hidden or hard to tap.
+* **The Decentraland client's own controls** — joystick, chat, profile, camera controls, action buttons. Scene UI placed under them clashes visually and competes for the same taps.
 
-The **mobile safe area** is what's left over — where scene UI can live without clashing with either.
+You don't have to measure either one. The client reports both areas at runtime and the SDK positions your UI inside the one you pick, with the [`screenInset`](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) renderer option:
 
-{% hint style="info" %}
-All values below use normalized coordinates `[0.0 – 1.0]` based on a **1600 × 720 px landscape** reference resolution — the same resolution the SDK uses as the [default virtual screen on mobile](../../sdk7/2d-ui/onscreen-ui.md#default-virtual-size), so the pixel figures below map 1:1 to your UI's pixel values there. Always use normalized values so your layout adapts to any screen size. Always verify on a real device using the [preview QR code](preview-on-mobile.md).
+| What you want | What to pass |
+|---|---|
+| Clear of the hardware margins | nothing — `screenInset: 'device'` is the default |
+| Clear of the hardware margins **and** the client controls | `screenInset: 'interactable'` |
+| The whole screen, margins are yours to handle | `screenInset: 'none'` |
+
+```ts
+// Recommended for scene UI that must not clash with the mobile controls
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'interactable' })
+```
+
+{% hint style="warning" %}
+**Client support**: `'interactable'` needs mobile client `1.12.1` or newer. On older clients the area is reported as zero and the UI falls back to covering the whole screen. That same release normalizes the `'device'` area between Android and iOS.
+
+**It is not a no-op on desktop** — the desktop client reserves roughly the left 25% of the screen for its own UI, so `'interactable'` changes your desktop layout too. Branch with [`isMobile()`](detect-platform.md) if you only want the inset on phones.
 {% endhint %}
 
-## Reserved margins
+See [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) for the full reference: the three areas side by side on a real device, per-renderer behavior, and how they relate to the [virtual screen](../../sdk7/2d-ui/onscreen-ui.md#default-virtual-size).
 
-The system HUD occupies the outer edges on all four sides. Do not place scene UI inside these regions:
+## Where the client controls live
 
-| Edge | Reserved for | Size |
-|---|---|---|
-| **Left** | Chat, joystick, emotes | 480 px — 30% of width |
-| **Right** | Profile, action buttons | 400 px — 25% of width |
-| **Top** | System bar | 58 px — 8% of height |
-| **Bottom** | System bar | 58 px — 8% of height |
+`'interactable'` gives you the area **each explorer designates for scene UI** — that is deliberately not a promise that every client control is outside it. On the mobile client it is the device safe area minus the left-hand column (chat, profile, joystick, emotes); the action buttons on the bottom right are drawn over the area **by design**.
 
-```
-// Minimum safe insets (normalized)
-margin: { left: 0.30, right: 0.25, top: 0.08, bottom: 0.08 }
-```
+<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the mobile client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> on mobile client <code>1.12.1</code>. The magenta rectangle is the scene UI, green outlines the interactable area. The left-hand column is excluded; the action buttons on the bottom right sit over the area.</p></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/mobile-safe-area-unsafe.png" alt="Mobile screen with the reserved regions highlighted"><figcaption><p>Reserved regions on the mobile client: left side, top-right, and bottom-right are owned by system controls.</p></figcaption></figure>
+So even with `'interactable'`, treat these as crowded:
 
-## Center safe zone
+* **Bottom right** — the action buttons and the interaction button are drawn on top. Anything you place here is still reachable, but it competes for taps.
+* **Top right** — profile and camera controls sit just outside the area, so UI hugging that corner reads as part of the client's HUD.
 
-The recommended area for all scene UI is the center band of the screen. It gives you **720 × 605 px** of usable space:
-
-| | Pixels | Normalized |
-|---|---|---|
-| **x start** | 480 px | 0.30 |
-| **x end** | 1200 px | 0.75 |
-| **y start** | 58 px | 0.08 |
-| **y end** | 662 px | 0.92 |
-
-```
-// Center safe zone (normalized)
-safeArea: {
-  x: [ 0.30, 0.75 ],  // 480 – 1200 px  →  45% of screen width
-  y: [ 0.08, 0.92 ]   // 58 – 662 px    →  84% of screen height
-}
-```
-
-<figure><img src="../../../.gitbook/assets/mobile-safe-area.png" alt="Mobile screen with the safe area highlighted"><figcaption><p>The center safe zone: 720 × 605 px, from x 30%–75% and y 8%–92%.</p></figcaption></figure>
-
-## Right-side gap (small elements only)
-
-Between the Profile avatar (top-right) and the action button cluster (bottom-right) there is a narrow gap where small UI elements — icons, counters, status indicators — can live. Keep elements here to a maximum of **48 × 48 px** to avoid crowding the controls.
-
-| | Pixels | Normalized |
-|---|---|---|
-| **x range** | 1200 – 1600 px | 0.75 – 1.0 |
-| **y range** | 158 – 360 px | 0.22 – 0.50 |
-
-```
-// Right-side gap (normalized)
-rightGap: {
-  x: [ 0.75, 1.0  ],  // 1200 – 1600 px
-  y: [ 0.22, 0.50 ]   // 158 – 360 px
-}
-```
+What the area covers is each explorer's call and can change between versions. Read it at runtime, never hardcode it, and check it on the platforms you target.
 
 ## Where to put scene UI
 
-* **Center of screen** — actionable dialogs, anything the player needs to read and respond to.
+* **Center of the screen** — actionable dialogs, anything the player needs to read and respond to.
 * **Top-center** — non-actionable messages, status, and notifications.
-* **Center-bottom (above the interaction button)** — context-sensitive hints.
-* **Right-side gap** — small icons or counters only (max 48 × 48 px).
+* **Center-bottom, above the interaction button** — context-sensitive hints.
+* **Not the bottom-right corner** — even inside the interactable area, it belongs to the action buttons.
 
-## Why it matters
+## Wrap part of your UI instead
 
-Scene UI that overlaps the reserved regions will:
-
-* Be partially hidden behind the joystick, interaction button, or camera controls.
-* Compete for taps with the system controls — players will accidentally trigger one or the other.
-* Make your scene feel broken on mobile, which hurts featuring and retention.
-
-## Device hardware insets (`ScreenInsetArea`)
-
-The reserved margins above belong to the Decentraland **system HUD**. Separately, the **device hardware** reserves screen space for the notch or camera cutout, the status bar, the home indicator, and rounded corners. UI drawn underneath these is partly hidden or hard to tap.
-
-**You get this for free.** Every UI renderer is positioned inside the device safe area by default, so you don't need to do anything to keep your UI clear of these hardware margins. That default is the `screenInset: 'device'` renderer option — see [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area):
-
-```ts
-// Both of these keep the UI inside the device safe area
-ReactEcsRenderer.setUiRenderer(uiComponent, { virtualWidth: 1920, virtualHeight: 1080 })
-ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'device' })
-
-// This one does not — the UI covers the whole screen, notch included
-ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'none' })
-```
-
-If you opted out with `screenInset: 'none'` and want to protect only part of your UI, use the `ScreenInsetArea` component. It reads the same insets and applies them to its children. Import it from `@dcl/sdk/react-ecs` and wrap the UI you want to protect:
+If you opted out with `screenInset: 'none'` and want to protect only part of your UI, wrap it in the `ScreenInsetArea` or the `InteractableArea` component. Each reads its matching area and applies it to its children. Import them from `@dcl/sdk/react-ecs`:
 
 ```tsx
 import ReactEcs, { ReactEcsRenderer, UiEntity, ScreenInsetArea } from '@dcl/sdk/react-ecs'
@@ -120,20 +71,29 @@ export function setupUi() {
 }
 ```
 
-`ScreenInsetArea` positions itself absolutely using the inset values the device reports, so the `positionType` and `position` fields of its `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. The component reacts automatically when the insets change, for example on rotation or when system bars appear or hide.
-
-`ScreenInsetArea` automatically compensates for the [UI scale factor](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale), so the insets position correctly regardless of your virtual screen size. You do not need to manually adjust for it.
+Both components position themselves absolutely using the values the client reports, so the `positionType` and `position` fields of their `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. They react automatically when the area changes, for example on rotation or when system bars appear or hide, and they compensate for the [UI scale factor](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale), so the margins land correctly whatever your virtual screen size is.
 
 {% hint style="warning" %}
-**📔 Don't apply the insets twice:** the `screenInset: 'none'` in the snippet above matters. Wrapping your UI in `ScreenInsetArea` while the renderer is also using its default `'device'` inset applies the margin twice, pushing your UI inwards by double the amount. Pick one or the other.
+**📔 Don't apply the inset twice:** the `screenInset: 'none'` in the snippet above matters. Wrapping your UI in a component while the renderer is also applying the matching inset pushes your UI inwards by double the margin. Pick one or the other.
 {% endhint %}
 
 {% hint style="info" %}
-**📱 Mobile only:** device insets only have real values on the **mobile client**. On the **desktop client** they are `(0, 0, 0, 0)`, so both the `'device'` renderer option and the `ScreenInsetArea` component have no effect there and your UI renders exactly as it would without them. Both are safe to leave in cross-platform UI code.
+**📱 Mobile only:** the device insets only have real values on the **mobile client**. On the **desktop client** they are `(0, 0, 0, 0)`, so `screenInset: 'device'` and the `ScreenInsetArea` component have no effect there and your UI renders exactly as it would without them. The interactable area, unlike the device insets, *is* non-zero on desktop.
 {% endhint %}
+
+## Why it matters
+
+Scene UI that overlaps the client's controls will:
+
+* Be partially hidden behind the joystick, interaction button, or camera controls.
+* Compete for taps with those controls — players will accidentally trigger one or the other.
+* Make your scene feel broken on mobile, which hurts featuring and retention.
+
+Always verify on a real device using the [preview QR code](preview-on-mobile.md).
 
 ## Related
 
+* [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) — the full `screenInset` reference.
 * [UI best practices for mobile](ui-best-practices.md)
 * [Detect the platform from code](detect-platform.md) — use `isMobile()` to swap layouts.
 * [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)

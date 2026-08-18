@@ -9,7 +9,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 ## DOs
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.
-* **Keep critical UI inside the [safe area](safe-area.md).** The device's hardware margins (notch, status bar, home indicator) are [cleared for you by default](safe-area.md#device-hardware-insets-screeninsetarea) — just don't opt out with `screenInset: 'none'`. The Decentraland system HUD regions are a separate area, and `screenInset: 'interactable'` covers part of that job: it positions your UI in the rectangle the explorer designates for scene UI. On mobile that clears the left-hand controls; the action buttons on the bottom right are drawn over the area by design, so keep the [reserved margins](safe-area.md#reserved-margins) below in mind for those corners. `'interactable'` requires mobile client `1.12.1` or newer — older clients report no margins at all and the UI covers the whole screen.
+* **Keep critical UI inside the [safe area](safe-area.md).** The device's hardware margins (notch, status bar, home indicator) are cleared for you by default — just don't opt out with `screenInset: 'none'`. The client's own controls are a separate area, and `screenInset: 'interactable'` covers part of that job: it positions your UI in the rectangle the explorer designates for scene UI. On mobile that clears the left-hand controls; the action buttons on the bottom right are drawn over the area by design, so keep [those corners](safe-area.md#where-the-client-controls-live) in mind. `'interactable'` requires mobile client `1.12.1` or newer — older clients report no margins at all and the UI covers the whole screen.
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
@@ -17,7 +17,7 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 ## DON'Ts
 
 * **Don't size UI elements purely in pixels without a virtual screen in mind.** Pixel values are scaled against the `virtualWidth` / `virtualHeight` reference resolution described in [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale) — `1600x720` by default on mobile, `1920x1080` on desktop and web. Know which reference resolution your pixel values are authored against, pass it explicitly if it isn't the default, and pair it with platform-aware sizing. Only disable the virtual screen (by passing a size of `0`) if you genuinely want raw canvas pixels.
-* **Don't place elements outside the safe area.** They will clash with the system controls.
+* **Don't place elements outside the safe area.** They will clash with the client's controls.
 * **Don't rely on small buttons.** Small targets are unreliable to tap on a touch screen.
 * **Don't bind key actions to `IA_ACTION_3`–`IA_ACTION_6`** (the `1`/`2`/`3`/`4` keys on a keyboard). They are not easily reachable on mobile. See [Input on mobile](input-on-mobile.md).
 

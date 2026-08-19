@@ -316,3 +316,7 @@ Some other best practices regarding UI sizes:
 
 * If the width or height of any UI element is dynamic, it's good to also use the `maxWidth`, `minWidth`, `maxHeight`, and `minHeight` parameters to make sure they stay within reasonable values.
 * A numeric font size is a virtual pixel value, scaled like any other. If you want a size measured against the canvas instead, so it holds regardless of the virtual screen, pass a `vw`/`vh` string — see [Responsive text size](ui_text.md#responsive-text-size)
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of UI sizing, see the [`81,-2-ui-screen-inset-area`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area) test scene, which runs all three `screenInset` modes (`'none'`, `'device'`, `'interactable'`) as three coexisting renderers and prints the live `screenInsetArea` and `interactableArea` values, and [`76,-10-UiCanvasInformation`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/76,-10-UiCanvasInformation), which reads `UiCanvasInformation` each frame to size UI responsively.
+{% endhint %}

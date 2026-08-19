@@ -316,3 +316,7 @@ function main() {
 When a player's camera moves in 3rd person mode, the camera might be blocked by colliders or not, depending on the collision layers assigned to the entities. Be mindful of this when designing your scene, you may want to prevent the camera from going through walls or other entities.
 
 See [Colliders](colliders.md#cameras-and-colliders) for more details on how to configure colliders for your scene.
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of camera control, see the [`2,22-virtual-cameras`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) test scene, which cycles several `VirtualCamera` entities through `MainCamera` including `lookAtEntity` aimed at the player and a tweened camera; [`32,20-virtual-camera-mouse-look`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/32,20-virtual-camera-mouse-look), which drives a mouselook camera while the pointer is locked; and [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which forces a camera mode inside a volume with `CameraModeArea`.
+{% endhint %}

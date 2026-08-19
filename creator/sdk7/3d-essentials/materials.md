@@ -830,3 +830,7 @@ GltfNodeModifiers.create(myEntity, {
 {% hint style="info" %}
 **💡 Tip**: Textures used in materials can also be applied to particle effects. See [Particle System](particle-system.md) for details on using custom textures and sprite sheets with particles.
 {% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of materials, see the [`52,-52-testing-gallery`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery) test scene, which sweeps PBR metallic/roughness/emissive/normal-map combinations side by side, [`74,-8-gltfnodemodifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/74,-8-gltfnodemodifier), which overrides PBR and unlit materials on individual GLTF nodes, and [`0,3-texture-movement`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,3-texture-movement), which animates texture offset and tiling.
+{% endhint %}

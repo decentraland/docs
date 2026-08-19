@@ -722,3 +722,6 @@ See [NPC Avatars](npc-avatars.md) for more details.
 The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
 {% endhint %}
 
+{% hint style="info" %}
+**💡 Tip**: For working examples of these APIs, see the [`0,1-input-modifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) test scene, which toggles each `InputModifier` movement flag separately and shows an avatar still being carried by a moving platform while movement is blocked; [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which combines `AvatarModifierArea` with runtime-mutated `excludeIds`; and [`10,99-avatar-modifier-hide-nametags`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/10,99-avatar-modifier-hide-nametags), which isolates the `AMT_HIDE_NAMETAGS` modifier.
+{% endhint %}

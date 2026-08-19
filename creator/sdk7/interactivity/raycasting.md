@@ -660,3 +660,7 @@ engine.addSystem(() => {
 {% endhint %}
 
 In a scene where you use multiple kinds of rays for different purposes (like for path finding, line-of-sight checking, projectile tracing, etc), you might want to use different [collision layers](../3d-essentials/colliders.md#collision-layers), to avoid calculating irrelevant collisions.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of raycasting, see the [`77,-1-raycast-unit-tests`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests) test scene, which asserts raycast behavior through `@dcl/sdk/testing` unit tests across the `localDirection`, `globalDirection`, `globalTarget` and `targetEntity` direction forms, including rays cast from transformed parents. To see how the collider layers a ray can hit behave, see [`5,5-collider-layers`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/5,5-collider-layers).
+{% endhint %}

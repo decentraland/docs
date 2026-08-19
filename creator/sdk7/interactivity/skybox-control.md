@@ -76,3 +76,7 @@ function main() {
   SkyboxTime.create(engine.RootEntity, { fixedTime: 36000, transitionMode: TransitionMode.TM_BACKWARD })
 }
 ```
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of skybox control, see the [`2,1-skybox-sdk-scene-a`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) and [`3,1-skybox-sdk-scene-b`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/3,1-skybox-sdk-scene-b) test scenes, which drive `SkyboxTime` and `TransitionMode` live from a UI panel, and [`2,0-skybox-scene-json`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,0-skybox-scene-json), which reads the `fixedTime` set in `scene.json` back at runtime via `getSceneInformation()`.
+{% endhint %}

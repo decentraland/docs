@@ -265,3 +265,7 @@ Each event contains:
 * `ui`: Which panel the event is about (an `ExplorerUi` value).
 * `timestamp`: A monotonic counter for when the event occurred.
 * `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
+{% endhint %}

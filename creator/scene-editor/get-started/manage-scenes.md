@@ -8,7 +8,7 @@ Each of your available scenes is shown as a card. Open the card to edit that sce
 
 ## Create a scene
 
-Click on the **+** card, or on the **Templates** button, to create a new scene. You'll then be asked to choose a template, there are a few options, including an **Empty Scene**.
+Click the **Create** button and select **New Scene** to create a new scene. You'll then be asked to choose a template, there are a few options, including an **Empty Scene**.
 
 Then you'll be asked to name your scene, and choose a location to save it.
 

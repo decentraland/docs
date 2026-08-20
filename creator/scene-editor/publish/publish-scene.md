@@ -10,7 +10,7 @@ Make sure of the following:
 
 - Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
 - You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
-- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Builder](https://decentraland.org/builder/names).
+- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Marketplace](https://decentraland.org/shop/items?category=names).
 
 {% hint style="warning" %}
 **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels.

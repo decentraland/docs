@@ -65,7 +65,7 @@ When a component is created, it's always assigned to a parent entity. The compon
 
 ## Remove entities
 
-To remove an entity from the engine, use `engine.removeEntity()`
+To remove an entity from the engine, use `engine.removeEntity()`. This function returns a `boolean`: `true` if the entity was removed, `false` if the removal was refused.
 
 ```ts
 export function main() {
@@ -78,13 +78,37 @@ export function main() {
 	})
 
 	// Remove entity
-	engine.removeEntity(door)
+	const removed = engine.removeEntity(door)
+	console.log('Entity removed:', removed) // true
 }
 ```
 
 If a removed entity has any child entities, these change their parent back to the default `engine.RootEntity` entity, which is positioned at the scene base position, with a scale of _1_.
 
-To remove an entity and also all of its children (and any children of its children, recurrently), use the `removeEntityWithChildren()` helper.
+### Renderer-reserved entities
+
+Some entity ids are reserved by the renderer for remote player avatars. You cannot remove these entities. If you call `engine.removeEntity()` on a renderer-reserved entity, it returns `false` and leaves all components untouched.
+
+The [named reserved entities](#reserved-entities) (`engine.RootEntity`, `engine.PlayerEntity`, `engine.CameraEntity`) are a special case: `engine.removeEntity()` still returns `false` for these (their ids are never released), but their components **are** purged. This means you can clear your own components from them (for example, removing an `InputModifier` from `engine.PlayerEntity`), even though the entity id itself is never freed.
+
+```ts
+// Attempting to remove a reserved entity
+const result = engine.removeEntity(engine.PlayerEntity)
+console.log(result) // false — the entity id is not released
+// But the scene's own components on PlayerEntity are purged
+```
+
+You can check the return value when removing entities to handle edge cases:
+
+```ts
+if (!engine.removeEntity(someEntity)) {
+	console.log('Entity could not be removed (reserved)')
+}
+```
+
+### Remove an entity with its children
+
+To remove an entity and also all of its children (and any children of its children, recursively), use the `removeEntityWithChildren()` helper.
 
 ```ts
 export function main() {
@@ -111,6 +135,10 @@ export function main() {
 	removeEntityWithChildren(engine, door)
 }
 ```
+
+{% hint style="warning" %}
+**Note:** If a renderer-reserved entity sits anywhere in the tree, `removeEntityWithChildren` removes all the other descendants but leaves the reserved entity in place. The reserved entity's `Transform.parent` will point at a removed entity. This only happens if your scene parents a reserved entity under a scene entity, which is uncommon.
+{% endhint %}
 
 {% hint style="info" %}
 **💡 Tip**: Instead of removing an entity from the engine, in some cases it might be better to make it invisible, in case you want to be able to load it again without any delay. See [Make invisible](../3d-essentials/shape-components.md#make-invisible)

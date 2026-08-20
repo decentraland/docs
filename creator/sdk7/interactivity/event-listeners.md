@@ -164,11 +164,7 @@ The event on `AvatarBase` includes the following information:
 * `eyesColor`: Player eye color as a `Color3`
 * `hairColor`: Player hair color as a `Color3`
 
-You can also detect changes in wearables or avatars form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
-
-{% hint style="info" %}
-**💡 Tip**: When testing in preview with the legacy web editor, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
-{% endhint %}
+You can also detect changes in wearables or avatars from other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
 You can also detect changes on the profiles of other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 

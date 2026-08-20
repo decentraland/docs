@@ -359,9 +359,21 @@ The videoEvent object passed as an input for the function contains the following
 - `timestamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
 - `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
 
+If you re-register a callback on an entity that already has one (for example, to change what happens on state change), the new callback replaces the old one, and the last-reported state is preserved. This means the new callback is not called again for a state that was already reported to the previous callback.
+
+### Check if an entity is registered
+
+Use `videoEventsSystem.hasVideoEventsEntity()` to check whether an entity already has a registered video events callback.
+
+```ts
+if (videoEventsSystem.hasVideoEventsEntity(videoPlayerEntity)) {
+	console.log('This entity already has a video event listener')
+}
+```
+
 ### Latest video event
 
-Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This function always returns the latest `VideoEvent` value for the video.
+Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This returns the latest `VideoEvent` value for the entity, or `undefined` if no event has been reported yet. You can call this from a system to poll the video state each frame without registering a callback.
 
 ```ts
 function mySystem() {

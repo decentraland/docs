@@ -132,10 +132,6 @@ export function main() {
 }
 ```
 
-{% hint style="info" %}
-**💡 Tip**: When testing in preview with the legacy web editor, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
-{% endhint %}
-
 To get the data for a specific player in the scene, different from the current player, run `getPlayer()` with an object with a `userId` property.
 
 ```ts

@@ -317,6 +317,161 @@ When a player's camera moves in 3rd person mode, the camera might be blocked by 
 
 See [Colliders](colliders.md#cameras-and-colliders) for more details on how to configure colliders for your scene.
 
+## Spectate mode (observer camera)
+
+You can build a spectate mode that switches the player from normal avatar movement to a free-roaming or player-following camera. This is useful for observer roles in competitive games, director cameras for live events, or replay systems.
+
+The pattern combines several SDK features:
+
+| Feature | SDK API | Purpose |
+|---|---|---|
+| Custom camera view | `VirtualCamera` + `MainCamera` | Replaces the player's camera |
+| Freeze avatar movement | `InputModifier` (`disableAll: true`) | Frees WASD to drive the camera |
+| Track players in scene | `onEnterScene` / `onLeaveScene` | Builds a roster of follow targets |
+| Camera controls | `inputSystem.isPressed(InputAction.IA_*)` | WASD for pitch/yaw, E/F for zoom |
+| Mouse-look | `PrimaryPointerInfo.screenDelta` | Rotate the camera with the mouse |
+
+### Camera rig architecture
+
+Use a **two-entity rig** so yaw and pitch stay independent:
+
+```
+rigRoot (entity)           -- world position + yaw rotation
+└── rigCamera (child)      -- pitch rotation + orbit offset
+    └── VirtualCamera
+```
+
+`rigRoot` holds the yaw (left/right turn) and is lerped toward the follow target or a free-cam pivot. `rigCamera` handles pitch (up/down tilt) and the orbit distance from the root. Splitting yaw and pitch across two Transforms keeps the euler math straightforward.
+
+### Enable and disable
+
+```ts
+// Activate spectate mode
+const rigRoot = engine.addEntity()
+Transform.create(rigRoot, {
+  position: Vector3.create(8, 8, 8),
+  rotation: Quaternion.fromEulerDegrees(0, 0, 0),
+})
+
+const rigCamera = engine.addEntity()
+Transform.create(rigCamera, { parent: rigRoot })
+VirtualCamera.create(rigCamera, {})
+
+MainCamera.createOrReplace(engine.CameraEntity, { virtualCameraEntity: rigCamera })
+InputModifier.createOrReplace(engine.PlayerEntity, {
+  mode: InputModifier.Mode.Standard({ disableAll: true }),
+})
+```
+
+```ts
+// Deactivate spectate mode
+// IMPORTANT: clear MainCamera BEFORE removing the VirtualCamera entity.
+// If you remove the entity first, the engine keeps binding to a dead entity
+// and the view falls to the player's feet.
+const mainCamera = MainCamera.getMutableOrNull(engine.CameraEntity)
+if (mainCamera) mainCamera.virtualCameraEntity = undefined
+
+engine.removeEntity(rigCamera)
+engine.removeEntity(rigRoot)
+
+InputModifier.createOrReplace(engine.PlayerEntity, {
+  mode: InputModifier.Mode.Standard({ disableAll: false }),
+})
+```
+
+{% hint style="danger" %}
+**Warning:** Always clear `MainCamera.virtualCameraEntity` before removing the camera entity. Removing the entity first leaves the engine pointing at a dead reference, causing the view to break.
+{% endhint %}
+
+### Camera bounds
+
+The engine disables `VirtualCamera` entities that move outside your scene's parcel bounds. If the camera leaves the scene footprint, it stops working silently. Clamp the camera position to stay inside the scene's axis-aligned bounding box (AABB) every frame, with a small margin.
+
+```ts
+// Example bounds for a 1x1 parcel scene (16m x 16m)
+const BOUNDS_MIN = Vector3.create(0, 0, 0)
+const BOUNDS_MAX = Vector3.create(16, 20, 16)
+const BOUNDS_MARGIN = 0.5
+```
+
+For larger scenes, set the bounds to match your `scene.json` parcels. The maximum height for N parcels per side is approximately `log2(N+1) * 20` metres, so a 4x4 parcel scene would use `Vector3.create(64, 80, 64)`.
+
+### Following players
+
+Use `onEnterScene` and `onLeaveScene` to build a live roster of players in your scene. Players can then cycle through follow targets with keys (for example, `IA_ACTION_3` and `IA_ACTION_4`). When following a player, the rig root lerps toward the followed player's Transform position, and the child camera orbits at a configurable distance.
+
+```ts
+import { onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
+
+const playerEntities = new Map<string, Entity>()
+let playerIds: string[] = []
+
+onEnterScene((player) => {
+  if (!player) return
+  playerIds.push(player.userId)
+  playerEntities.set(player.userId, player.entity)
+})
+
+onLeaveScene((userId) => {
+  if (!userId) return
+  playerIds = playerIds.filter((id) => id !== userId)
+  playerEntities.delete(userId)
+})
+```
+
+To follow a player each frame, lerp the rig root toward their position:
+
+```ts
+const followEntity = playerEntities.get(followTargetId)
+if (followEntity) {
+  const targetPos = Transform.get(followEntity).position
+  const rootTransform = Transform.getMutable(rigRoot)
+  rootTransform.position = Vector3.lerp(
+    rootTransform.position,
+    Vector3.add(targetPos, Vector3.create(0, 1, 0)),
+    0.1
+  )
+}
+```
+
+See [Player enters or leaves scene](../interactivity/event-listeners.md#player-enters-or-leaves-scene) for more on `onEnterScene` and `onLeaveScene`.
+
+### Mouse-look while spectating
+
+Read `PrimaryPointerInfo.screenDelta` each frame to rotate the camera with the mouse. This works while the pointer is locked. See [Mouse Movement](../interactivity/mouse-movement.md) for a full mouselook example.
+
+```ts
+const MOUSE_SENSITIVITY = 0.15 // degrees per pixel
+let yaw = 0
+let pitch = 45
+
+function spectateMouseLook() {
+  const isLocked = PointerLock.getOrNull(engine.CameraEntity)?.isPointerLocked ?? false
+  if (!isLocked) return
+
+  const delta = PrimaryPointerInfo.getOrNull(engine.RootEntity)?.screenDelta
+  if (!delta) return
+
+  yaw = (yaw + delta.x * MOUSE_SENSITIVITY) % 360
+  // Subtract delta.y so mouse-up tilts the camera up; clamp to prevent flip
+  pitch = Math.max(-25, Math.min(80, pitch - delta.y * MOUSE_SENSITIVITY))
+}
+```
+
+{% hint style="warning" %}
+**Note:** `screenDelta` is desktop-only. On mobile it always reports `0`. If your scene targets mobile, design a touch-based fallback.
+{% endhint %}
+
+### Full reference implementation
+
+The [`33,20-spectate-mode`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode) test scene contains a self-contained spectate module in `src/spectate.ts`. It supports free-cam and follow-cam modes, WASD + mouse-look controls, player cycling, orbit-distance zoom, bounds clamping, and an on-screen HUD showing controls and the current follow target.
+
+To use it in your own project:
+
+1. Copy `src/spectate.ts` into your scene.
+2. Update `PIVOT`, `BOUNDS_MIN`, and `BOUNDS_MAX` at the top of the file to match your scene's parcels. This is the most common integration mistake.
+3. Wire `toggleSpectate()` to any trigger: a clickable entity, a UI button, or a key press.
+
 {% hint style="info" %}
-**💡 Tip**: For working examples of camera control, see the [`2,22-virtual-cameras`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) test scene, which cycles several `VirtualCamera` entities through `MainCamera` including `lookAtEntity` aimed at the player and a tweened camera; [`32,20-virtual-camera-mouse-look`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/32,20-virtual-camera-mouse-look), which drives a mouselook camera while the pointer is locked; and [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which forces a camera mode inside a volume with `CameraModeArea`.
+**💡 Tip**: For working examples of camera control, see the [`2,22-virtual-cameras`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) test scene, which cycles several `VirtualCamera` entities through `MainCamera` including `lookAtEntity` aimed at the player and a tweened camera; [`32,20-virtual-camera-mouse-look`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/32,20-virtual-camera-mouse-look), which drives a mouselook camera while the pointer is locked; [`33,20-spectate-mode`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode), which implements a full spectate/observer camera with follow-cam and free-cam modes; and [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which forces a camera mode inside a volume with `CameraModeArea`.
 {% endhint %}

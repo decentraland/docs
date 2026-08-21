@@ -13,7 +13,7 @@ The Creator Hub includes a powerful Scene Editor that combines a simple no-code 
 
 See [Creator Hub Installation](editor-installation.md) to get started.
 
-{% embed url="https://www.youtube.com/watch?v=52LiG-4VI9c" %}
+{% embed url="https://www.youtube.com/watch?v=tK5-fyBVnK0" %}
 
 ## Create a scene
 

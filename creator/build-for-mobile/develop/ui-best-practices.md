@@ -6,6 +6,8 @@ description: DOs and DON'Ts for designing scene UIs that work well on mobile.
 
 There is no single proven recipe for Decentraland mobile UI yet — the platform is new and we are still iterating. The recommendations on this page are the current best practices, distilled from work on real scenes. Treat them as a starting point and test on a real device.
 
+{% embed url="https://www.youtube.com/watch?v=5OmTTzpPdDc" %}
+
 ## DOs
 
 * **Design mobile-specific UIs**, or vary your UI by screen size and platform. Use [`isMobile()`](detect-platform.md) to branch.

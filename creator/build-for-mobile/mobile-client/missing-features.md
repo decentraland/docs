@@ -12,6 +12,8 @@ Last reviewed: **August 2026**.
 
 ## SDK Features Missing on Mobile
 
+- [Scene Dynamic Lights (`LightSource`)](https://github.com/decentraland/godot-explorer/issues/616) — implemented in [PR #2633](https://github.com/decentraland/godot-explorer/pull/2633), ships in **v1.13.0 (September 2026)**
+- [Avatar Masks (upper-body-only emotes)](https://github.com/decentraland/godot-explorer/issues/2621) — implemented in [PR #2690](https://github.com/decentraland/godot-explorer/pull/2690), ships in **v1.13.0 (September 2026)**
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA
 - [SDK audio parity audit (volume curves and spatial attenuation vs Unity)](https://github.com/decentraland/godot-explorer/issues/861) — No ETA
 - [AudioEvent component (`PBAudioEvent`)](https://github.com/decentraland/godot-explorer/issues/2673) — No ETA

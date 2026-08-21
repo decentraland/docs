@@ -55,7 +55,7 @@ These gaps have been closed and are no longer limitations. They may not be in th
 
 ## Cross-Platform Inconsistencies
 
-- [Colliders Shape Consistency Review vs Unity](https://github.com/decentraland/godot-explorer/issues/905) — No ETA
+- [Colliders Shape Consistency Review vs Unity](https://github.com/decentraland/godot-explorer/issues/905) — September 2026
 - [Avatar teeth render dark/gray instead of white](https://github.com/decentraland/godot-explorer/issues/1994) — No ETA
 
 ## Input/Platform Constraints

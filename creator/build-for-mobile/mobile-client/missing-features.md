@@ -10,23 +10,6 @@ This page tracks the feature gap between the Decentraland desktop (Unity) client
 Last reviewed: **August 2026**.
 {% endhint %}
 
-## Recently Added to Mobile
-
-These gaps have been closed and are no longer limitations. They may not be in the build you are testing yet — check that you are on the latest mobile release.
-
-| Feature | Issue | Closed |
-| --- | --- | --- |
-| SDK Particle System support | [#1538](https://github.com/decentraland/godot-explorer/issues/1538) | Jul 2026 |
-| `AssetLoad` (pre-load resources) SDK component | [#2496](https://github.com/decentraland/godot-explorer/issues/2496) | Jul 2026 |
-| `PBPrimaryPointerInfo` (`worldRayDirection`) now populated | [#2411](https://github.com/decentraland/godot-explorer/issues/2411) | Aug 2026 |
-| Scene dynamic lights (`PBPointLight` / `PBSpotlight`) | [#616](https://github.com/decentraland/godot-explorer/issues/616) | Aug 2026 |
-| Password-protected Worlds modal on pre-load | [#2502](https://github.com/decentraland/godot-explorer/issues/2502) | Aug 2026 |
-| Avatar Masks (upper-body-only emotes) | [#2621](https://github.com/decentraland/godot-explorer/issues/2621) | Aug 2026 |
-| Camera — see through walls | [#1814](https://github.com/decentraland/godot-explorer/issues/1814) | Jul 2026 |
-| Minted name swapping in profile | [#1857](https://github.com/decentraland/godot-explorer/issues/1857) | Jul 2026 |
-| Unity client avatars not visible on mobile | [#1815](https://github.com/decentraland/godot-explorer/issues/1815) | Aug 2026 |
-| UI/TextShape elements positioned at different heights | [#2371](https://github.com/decentraland/godot-explorer/issues/2371) | Jul 2026 |
-
 ## SDK Features Missing on Mobile
 
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA

@@ -4,6 +4,8 @@ Decentraland is now available on mobile. Players can explore your scenes from iO
 
 ![Decentraland mobile app — Genesis City](../../../mobile-app-screenshot.png)
 
+{% embed url="https://www.youtube.com/watch?v=FBr2gye3qh8" %}
+
 ## Get the mobile app
 
 * [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)

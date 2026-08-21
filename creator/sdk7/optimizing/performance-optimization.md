@@ -8,6 +8,8 @@ There are several aspects you can optimize in your scenes to ensure the best pos
 
 Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, via the browser, or from the [mobile app](../../build-for-mobile/mobile-client/overview.md) on a phone — all of which limit how much processing power is available to your scene. The experience of visiting your scene should be smooth for everyone.
 
+{% embed url="https://www.youtube.com/watch?v=tc1PwYKW1Kc" %}
+
 Check out [Useful Resources](../getting-started/useful-resources.md) for tools that can help, like the Decentraland Scene Optimizer, which extracts, deduplicates, and compresses textures from your scene's 3D models.
 
 {% hint style="info" %}

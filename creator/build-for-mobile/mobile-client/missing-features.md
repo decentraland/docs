@@ -45,7 +45,6 @@ Last reviewed: **August 2026**.
 
 ## Input/Platform Constraints
 
-- **Static HUD Controls defined by Mobile Client** — ability to remove/modify them arriving July/August. [See issues](https://github.com/orgs/decentraland/projects/43/views/29).
 - **Touch-only input** — no mouse hover states, keyboard shortcuts, or right-click.
 - **No gesture support** — not currently planned.
 

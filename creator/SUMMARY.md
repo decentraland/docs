@@ -46,6 +46,7 @@
 * [Interactivity](scene-editor/interactivity/)
   * [Smart Items - Basic](scene-editor/interactivity/smart-items.md)
   * [Trigger Area](scene-editor/interactivity/trigger-area.md)
+  * [Modifier Areas](scene-editor/interactivity/modifier-areas.md)
   * [Video Screen](scene-editor/interactivity/video-screen.md)
   * [States and conditions](scene-editor/interactivity/states-and-conditions.md)
   * [Smart Items - Advanced](scene-editor/interactivity/smart-items-advanced.md)

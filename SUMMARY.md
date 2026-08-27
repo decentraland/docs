@@ -457,6 +457,7 @@
       * [Smart Items - Basic](creator/scene-editor/interactivity/smart-items.md)
       * [States and conditions](creator/scene-editor/interactivity/states-and-conditions.md)
       * [Trigger Area](creator/scene-editor/interactivity/trigger-area.md)
+      * [Modifier Areas](creator/scene-editor/interactivity/modifier-areas.md)
       * [Video Screen](creator/scene-editor/interactivity/video-screen.md)
     * [Live Operations](creator/scene-editor/live-ops/README.md)
       * [Live Streaming](creator/scene-editor/live-ops/live-streaming.md)

@@ -28,6 +28,8 @@ Here are some common items and their default behaviors:
 * **Chests**: They behave like doors, by default are opened or closed when clicking. You can place smaller items inside them.
 * **Platforms**: They move between two positions. Use their tween actions to control where they move to, their speed, etc.
 * **Trigger area**: An invisible item that can trigger other smart items when the player walks into its area. See [About trigger areas](smart-items.md#trigger-areas).
+* **Avatar Modifier Area**: An invisible area that changes how avatars behave or appear inside it, for example hiding avatars or disabling passport popups. See [Modifier Areas](modifier-areas.md).
+* **Camera Modifier Area**: An invisible area that forces the player's camera into first or third person while inside. See [Modifier Areas](modifier-areas.md).
 * **Video Player**: A screen for showing videos or live streams. See [Playing Videos](smart-items.md#playing-videos).
 * **Audio Stream**: Play audio from a live stream. See [Playing Audio Streams](smart-items.md#playing-audio-streams)
 * **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)

@@ -144,16 +144,30 @@ engine.addSystem((deltaTime) => {
       engineInfo.tickNumber +
       '\ntotalRuntime: ' +
       engineInfo.totalRuntime +
+      '\nsceneHidden: ' +
+      engineInfo.sceneHidden +
       '\n--------------'
   )
 })
 ```
 
-The `EngineInfo`component holds the following data:
+You can use `sceneHidden` to pause resource-intensive work while the scene is not visible:
 
-* `frame_number`: Frame counter of the engine
-* `total_runtime`: Total runtime of this scene in seconds
-* `tick_number`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+```ts
+engine.addSystem((deltaTime) => {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (engineInfo?.sceneHidden) return
+
+  // Normal gameplay logic runs only when the scene is visible
+})
+```
+
+The `EngineInfo` component holds the following data:
+
+* `frameNumber`: Frame counter of the engine.
+* `totalRuntime`: Total runtime of this scene, in seconds.
+* `tickNumber`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148).
+* `sceneHidden`: `true` when the scene is hidden behind the Explorer's fullscreen UI (for example a loading screen or a fullscreen menu). Use this to pause gameplay, audio, or animations while the player can't see or interact with the scene.
 
 {% hint style="warning" %}
 **📔 Note**: The `EngineInfo` component must be imported via

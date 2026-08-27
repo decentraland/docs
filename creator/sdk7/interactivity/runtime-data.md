@@ -144,6 +144,8 @@ engine.addSystem((deltaTime) => {
       engineInfo.tickNumber +
       '\ntotalRuntime: ' +
       engineInfo.totalRuntime +
+      '\nsceneHidden: ' +
+      engineInfo.sceneHidden +
       '\n--------------'
   )
 })
@@ -154,6 +156,7 @@ The `EngineInfo`component holds the following data:
 * `frame_number`: Frame counter of the engine
 * `total_runtime`: Total runtime of this scene in seconds
 * `tick_number`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+* `scene_hidden`: Whether the scene is currently hidden behind the Explorer's fullscreen UI
 
 {% hint style="warning" %}
 **📔 Note**: The `EngineInfo` component must be imported via
@@ -162,3 +165,34 @@ The `EngineInfo`component holds the following data:
 
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
+
+### React to the loading screen fading out
+
+The `scene_hidden` field tells you if the player can actually see your scene, or if it's covered by the Explorer's fullscreen UI. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
+
+This is the only way for a scene to know when that first reveal happens. Use it to hold back anything that would otherwise play out behind the loading screen, and be missed by the player: intro cinematics, welcome sounds, a tween that only reads well if it's watched, an opening UI, or an analytics event that should only count once the player is really there.
+
+```ts
+import { engine, EngineInfo } from '@dcl/sdk/ecs'
+
+function onSceneRevealed() {
+  // The player is now looking at the scene, start the intro here
+  console.log('The loading screen just faded out')
+}
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Only run once
+  engine.removeSystem(waitForSceneRevealed)
+  onSceneRevealed()
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: Your scene keeps running normally while `sceneHidden` is `true`, it's only not being displayed. Don't use this field to pause your scene's logic, use it to time what the player is meant to witness.
+
+`scene_hidden` requires an up-to-date `@dcl/sdk` and a recent version of the Decentraland Explorer. On older clients the field stays at its default value of `false`, so a scene that waits on it still runs — it just won't be in sync with the loading screen fade-out.
+{% endhint %}
+

@@ -178,3 +178,25 @@ Many SDK APIs that previously required `{ $case: '...', ... }` objects now provi
 - `LightSource.Type.Point({ ... })`
 - `Tween.Mode.Move({ ... })`
 
+
+## `EngineInfo.sceneHidden` (detect when the loading screen fades out)
+
+The `EngineInfo` component (on `engine.RootEntity`) gained a `sceneHidden: boolean` field: it reports whether the scene is currently covered by the Explorer's fullscreen UI.
+
+Today it is driven by the **loading screen**: `sceneHidden` is `true` while the loading screen is up, and flips to `false` the moment it fades out. This is the only way for a scene to know when the player first actually sees it — use it to time intro cinematics, welcome sounds, opening UI, or analytics events that shouldn't fire behind the loading screen.
+
+```typescript
+import { EngineInfo, engine } from '@dcl/sdk/ecs'
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Only run once
+  engine.removeSystem(waitForSceneRevealed)
+
+  console.log('The loading screen just faded out')
+})
+```
+
+The scene keeps ticking normally while `sceneHidden` is `true` — it just isn't displayed. Don't use it to pause scene logic. On Explorer versions that predate the field it stays at its default `false`, so a scene that only waits for `sceneHidden === false` still runs (it just won't be synced to the fade-out).

@@ -1,3 +1,9 @@
+---
+description: >-
+  Get started creating Decentraland scenes with the Creator Hub, the SDK7, AI-
+  assisted vibe coding, and the CLI.
+---
+
 # Getting Started
 
 Get started with Decentraland SDK7 development. Learn the basics of creating scenes, understanding the development workflow, using the CLI, and previewing your work.

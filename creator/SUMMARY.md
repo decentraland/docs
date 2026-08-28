@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome Creator](README.md)
+* [Tools & Terminology](glossary.md)
 
 ## Tutorials & Examples
 

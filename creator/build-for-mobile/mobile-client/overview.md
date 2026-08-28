@@ -1,3 +1,9 @@
+---
+description: >-
+  Overview of the Decentraland mobile app for iOS and Android, with download
+  links and a checklist for making scenes mobile-ready.
+---
+
 # Overview
 
 Decentraland is now available on mobile. Players can explore your scenes from iOS and Android devices, in addition to the desktop client and the web. As a creator, you can adapt your scenes so they look great and play well on touch-based devices.

@@ -1,8 +1,7 @@
 # Table of contents
 
 * [Decentraland Documentation](README.md)
-* [ai-sdk-context](ai-sdk-context/README.md)
-  * [Decentraland SDK7 Complete Reference Guide](ai-sdk-context/overview/sdk7-complete-reference.md)
+* [SDK7 Reference for AI Agents](ai-sdk-context/sdk7-complete-reference.md)
 * [Developer Platform API](apis/README.md)
   * [Table of contents](apis/SUMMARY.md)
   * [Archipelago Workers](apis/archipelago-workers/README.md)

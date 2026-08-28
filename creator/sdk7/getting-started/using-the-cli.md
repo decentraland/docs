@@ -1,8 +1,21 @@
 ---
-description: How to use the Decentraland CLI to run, deploy, etc
+description: >-
+  Use the Decentraland CLI to run and deploy scenes. The Creator Hub is the
+  recommended tool for most creators; the CLI suits advanced and automated
+  workflows.
 ---
 
 # Using the CLI
+
+{% hint style="info" %}
+**💡 Tip**: If you're working with an AI coding assistant (like Claude Code, Cursor, or Copilot), install the official Decentraland SDK Skills before it writes any code, so it knows verified SDK7 patterns:
+
+```bash
+npx skills add decentraland/sdk-skills
+```
+
+See [Vibe Coding with AI](vibe-coding.md) for the full AI-assisted workflow.
+{% endhint %}
 
 To build scenes for Decentraland you can either use:
 
@@ -29,7 +42,7 @@ To deal with the scene via the command line, please install the following depend
 
 ## Initiate a new project
 
-Run `npx @dcl/sdk-commands init` on an empty folder to populate it with the default files of a Decentraland [scene](../projects/scene-metadata.md) project.
+Run `npx @dcl/sdk-commands init` on an empty folder to populate it with the default files of a Decentraland [scene](../projects/scene-metadata.md) project. You can also create a new scene with the **New Scene** button in the Creator Hub, which produces the same project structure.
 
 To start from a different kind of project, use the `--project` flag. For example, to create a [smart wearable](../projects/smart-wearables.md) project:
 

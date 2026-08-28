@@ -1,6 +1,8 @@
 ---
 title: Vibe Coding with AI
-description: Use AI assistants to build Decentraland scenes by describing what you want in plain language.
+description: >-
+  Build Decentraland scenes with AI assistants using the Creator Hub and the
+  official Decentraland SDK Skills (npx skills add decentraland/sdk-skills).
 ---
 
 # Vibe Coding with AI

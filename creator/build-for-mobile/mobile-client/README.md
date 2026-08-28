@@ -1,3 +1,9 @@
+---
+description: >-
+  The Decentraland mobile app: overview, sample scenes, missing features, and
+  hardware requirements.
+---
+
 # Mobile Client
 
 - [Overview](overview.md): Overview of the Decentraland mobile app, download links, and a quick checklist before publishing.

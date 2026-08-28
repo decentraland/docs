@@ -1,3 +1,9 @@
+---
+description: >-
+  Mobile scene limits and performance targets for Decentraland scenes, and how
+  to preview and measure them from the Creator Hub.
+---
+
 # Optimize Performance
 
 Mobile devices have tighter resource constraints than desktop or web. Understanding the mobile scene limits and how to preview them helps you ship a scene that runs smoothly for the widest audience.

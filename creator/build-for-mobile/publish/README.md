@@ -1,3 +1,9 @@
+---
+description: >-
+  Publish Decentraland scenes for mobile: the standard deployment flow plus
+  getting featured and iOS curation.
+---
+
 # Publish
 
 Publishing a scene for mobile follows the **same process as any other scene** — deploy via the Creator Hub or the CLI as described in the [Publishing](../../sdk7/publishing/publishing.md) guide. The pages in this section cover what’s specific to mobile on top of that standard flow.

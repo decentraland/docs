@@ -6,7 +6,7 @@ To invite others to visit a scene you built, you'll need to publish it in Decent
 
 This document gives an overview on the different ways to obtain permissions. See [publishing](publishing.md) for instructions on how to publish once you've obtained these.
 
-## About Decentraland Worlds
+## Decentraland Worlds
 
 Decentraland Worlds are your own personal 3D space in the Decentraland ecosystem, separate from Genesis City's public map of LAND parcels.
 
@@ -25,7 +25,7 @@ There are two ways to get a Decentraland World:
   You can get your own Decentraland World by getting a [Decentraland NAME](https://builder.decentraland.org/names), which are NAME NFTs within the DCL ecosystem. A NAME costs 100 MANA and immediately gives you a World with that name. You can [buy a new NAME](https://decentraland.org/shop/items?category=names) or buy an existing one from a previous owner in the [Marketplace](https://decentraland.org/marketplace/names).
 
 - **Buy an ENS domain.**  
-  You can also get a World by buying an [ENS domain](https://ens.domains/), a decentralized name that can be used across both Web2 & 3.
+  You can also get a World by buying an [ENS domain](https://ens.domains/), a decentralized name that can be used across both Web2 & 3. Worlds granted from ENS domains have a fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
 
 Once you have a NAME or ENS domain, you can publish scenes to that World using the standard [Publishing](publishing.md) flow.  
 You can also let others publish on to your Decentraland World. Check the [Managing Worlds documentation](../../scene-editor/publish/publish-scene.md#managing-worlds) to learn more about Multi Scene Worlds and other topics like Private Worlds.

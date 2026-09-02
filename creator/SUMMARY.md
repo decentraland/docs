@@ -2,6 +2,7 @@
 
 * [Welcome Creator](README.md)
 * [Tools & Terminology](glossary.md)
+* [Get Paid to Make Games](studio-onboarding.md)
 
 ## Tutorials & Examples
 

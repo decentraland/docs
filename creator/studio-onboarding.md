@@ -148,11 +148,11 @@ Download and share the skills files below with your preferred AI assistant and a
 
 You do not need to use AI to apply. You can download the same template and complete it yourself.
 
-**[Download the GDD Template]**
+[**Download the GDD Template**](https://github.com/decentraland/docs/raw/main/resources/dcl-gdd.zip)
 
 You can also download a completed example GDD here. This is the level of detail you should aim for:
 
-GDD Example: Dock 7
+[**GDD Example: Dock 7**](https://github.com/decentraland/docs/raw/main/resources/gdd-example.md.zip)
 
 Whichever route you choose, the design decisions are yours. We want to understand how you think about the game, not how well an AI can write the document for you.
 

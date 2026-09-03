@@ -64,9 +64,9 @@ Applications are reviewed and accepted on a weekly basis, so you can apply as so
 
 If your project is not selected, you can keep developing it and apply again. **You can reapply as many times as you like while applications are open.**
 
-Your first application is for **V0 funding,** \*\*$1,000 USD.
+Your first application is for **V0 funding,** $1,000 USD.
 
-Note: You must be over 18 years old to apply.\*\*
+Note: You must be over 18 years old to apply.
 
 ---
 
@@ -119,7 +119,7 @@ Use this first scene to get comfortable with:
 
 Now pick a **game idea you’re excited to build**. It doesn’t need to be fully figured out. A rough idea is enough to start.
 
-First, create a project for the idea. You will use throughout the application and, if funded, continue developing through Creator Success:
+First, create a project for the idea. You will use it throughout the application and, if funded, continue developing through Creator Success:
 
 1. Create a **new Decentraland scene** for your game idea.
 2. Give the scene your game’s **working name**.
@@ -142,13 +142,13 @@ Decentraland’s **Game Design Skills** help you develop your idea against the C
 
 Download and share the skills files below with your preferred AI assistant and ask it to guide you through the process. It will help you work through the key design questions and turn your decisions into a clear GDD.
 
-**[Download the Game Design Skills]**
+[**Download the Game Design Skills**](https://github.com/decentraland/docs/raw/main/resources/dcl-gdd.zip)
 
 ### Complete the template yourself
 
 You do not need to use AI to apply. You can download the same template and complete it yourself.
 
-[**Download the GDD Template**](https://github.com/decentraland/docs/raw/main/resources/dcl-gdd.zip)
+[**Download the GDD Template**](https://github.com/decentraland/docs/raw/main/resources/gdd-template.md.zip)
 
 You can also download a completed example GDD here. This is the level of detail you should aim for:
 
@@ -209,7 +209,7 @@ We also check that your team can successfully build and deploy in Decentraland.
 
 If selected, we agree a **V0 Scope** with you for a small vertical slice of the game. You then build and playtest that slice with Creator Success.
 
-The $1,000 USD payment is made once the agreed VO Scope is completed and can be playtested.
+The $1,000 USD payment is made once the agreed V0 Scope is completed and can be playtested.
 
 ---
 

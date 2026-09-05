@@ -1,39 +1,39 @@
 ---
-description: How to post events in Decentraland
+description: How to post hangouts in Decentraland
 ---
 
-# Posting Events
+# Posting Hangouts
 
 <details>
 
-<summary>Can anyone post an event on the Event Page?</summary>
+<summary>Can anyone post a hangout on the What's On page?</summary>
 
-Yes, anyone in the Decentraland community can create an Event listing for an event that takes place within Genesis City or a World. Being a LAND owner is not a requirement.
+Yes, anyone in the Decentraland community can create a hangout listing for a hangout that takes place within Genesis City or a World. Being a LAND owner is not a requirement.
 
 </details>
 
 <details>
 
-<summary>How do I post an event to the Event page?</summary>
+<summary>How do I post a hangout to the What's On page?</summary>
 
 Check out a quick breakdown here: https://www.youtube.com/watch?v=jMNk\_W1yqjU
 
-And yes you can edit event details after publishing!
+And yes you can edit hangout details after publishing!
 
 </details>
 
 <details>
 
-<summary>How does the event review process work?</summary>
+<summary>How does the hangout review process work?</summary>
 
-Review times depend on day/time of event submission, but won't take longer than a few hours. Events are reviewed by the team at the Decentraland Foundation. Add your email or Discord username so you can be contacted if necessary.
+Review times depend on day/time of hangout submission, but won't take longer than a few hours. Hangouts are reviewed by the team at the Decentraland Foundation. Add your email or Discord username so you can be contacted if necessary.
 
 </details>
 
 <details>
 
-<summary>My event wasn't published, why not?</summary>
+<summary>My hangout wasn't published, why not?</summary>
 
-Your event may not have passed review because you did not fill in all the required information. Make sure you complete every field in the form when submitting an event.
+Your hangout may not have passed review because you did not fill in all the required information. Make sure you complete every field in the form when submitting a hangout.
 
 </details>

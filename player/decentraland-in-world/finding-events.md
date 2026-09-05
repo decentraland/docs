@@ -1,16 +1,16 @@
 ---
-description: Finding Events in Decentraland
+description: Finding What's On in Decentraland
 ---
 
-# Finding Events
+# Finding Hangouts
 
-The best way to meet new people in Decentraland is to attend events! Anyone in the community can submit an event to Decentraland's Event page, so you can discover a wide variety of events, from annual music festivals to weekly hang outs, if you stay updated.
+The best way to meet new people in Decentraland is to join a hangout! Anyone in the community can submit a hangout to Decentraland's What's On page, so you can discover a wide variety of hangouts, from annual music festivals to weekly get-togethers, if you stay updated.
 
-**How to check current and upcoming events in Decentraland:**
+**How to check current and upcoming hangouts in Decentraland:**
 
-* **Event Page:** Browse Decentraland's Event page at [decentraland.org/events](http://decentraland.org/events). You can jump directly to live events or RSVP to upcoming events to get an in-world notification when they start.
-* **Genesis Plaza:** Check the Event board when you land in Genesis Plaza. It will display events happening soon.
-* **World Map:** To see where live events are happening, open the map in-world and look for a red and white icon. Clicking on it will bring up event info and a jump in button.
+* **What's On Page:** Browse Decentraland's What's On page at [decentraland.org/whats-on](https://decentraland.org/whats-on). You can jump directly to live hangouts or RSVP to upcoming ones to get an in-world notification when they start.
+* **Genesis Plaza:** Check the What's On board when you land in Genesis Plaza. It will display hangouts happening soon.
+* **World Map:** To see where live hangouts are happening, open the map in-world and look for a red and white icon. Clicking on it will bring up hangout info and a jump in button.
 * Follow Decentraland [**socials**](https://twitter.com/decentraland) or [**subscribe**](https://decentraland.beehiiv.com/subscribe) to the weekly newsletter to stay updated
 
-Want to submit your own event? Learn more [**here**](../faqs/posting-events.md).
+Want to submit your own hangout? Learn more [**here**](../faqs/posting-events.md).

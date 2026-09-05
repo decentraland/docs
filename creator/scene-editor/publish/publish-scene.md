@@ -92,7 +92,7 @@ A World Owner can edit its settings by going into the desired World **Settings**
   - Content Rating
   - Categories
 
-The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
+The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published. Keep in mind that if the World contains a single scene, these details are overwritten by the scene's metadata on every publish. See [World metadata vs scene metadata](#world-metadata-vs-scene-metadata) below.
 
 - **Layout**: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
   - Remove individual scenes by clicking the three dots and selecting **Remove from World**.
@@ -107,6 +107,27 @@ The information added in **Details** will be shown in Decentraland Places and in
 {% hint style="info" %}
 **📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, check the [Marketplace NAMEs section](https://decentraland.org/marketplace/names/claim).
 {% endhint %}
+
+### World metadata vs scene metadata
+
+A World and each scene published to it have two separate sets of metadata. Both include a name, a description, and a thumbnail:
+
+- **Scene metadata**: Belongs to the scene project, stored in its `scene.json` file. You edit it via the [scene settings](../configure/scene-settings.md) in the Scene Editor, and it's uploaded together with the scene every time you publish.
+- **World metadata**: Belongs to the World itself. You edit it in the World's **Settings**, in the **Manage** tab of the Creator Hub. This is the information shown in Decentraland Places and in the in-world World information.
+
+How these two relate depends on how many scenes the World contains:
+
+- **Empty World**: When you publish a scene to an empty World, the World's metadata is filled in from the scene's metadata.
+- **Single-scene World**: Every time you publish the scene, the World's metadata is updated to match the scene's metadata.
+- **Multi-scene World**: The World's metadata is fully independent from the metadata of each of its scenes. Publishing a scene never changes the World's metadata. The only way to change it is through the World's **Settings** in the **Manage** tab.
+
+In practice, if your World contains a single scene, you don't need to think of the World's metadata as a separate thing: just edit your scene's settings and publish, and the World will always reflect them.
+
+{% hint style="warning" %}
+**📔 Note**: In a single-scene World, any changes you make to the World's **Settings** in the **Manage** tab will be overwritten by the scene's metadata the next time you publish the scene. To make those changes stick, edit the scene's settings instead.
+{% endhint %}
+
+In a Multi-Scene World, the World's **Settings** in the **Manage** tab is the only place to edit the World's metadata.
 
 ### Multi-Scene Worlds
 

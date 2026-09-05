@@ -46,6 +46,10 @@ The image on `navmapThumbnail` should be a path to an image file in the project 
 
 In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
 
+{% hint style="info" %}
+**📔 Note**: Worlds keep their own name, description, and thumbnail, separate from the scene's metadata. If a World contains a single scene, the World's metadata is updated from the scene's metadata on every publish. If it contains multiple scenes, the World's metadata is independent and can only be edited in the **Manage** tab of the Creator Hub. See [World metadata vs scene metadata](../../scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata).
+{% endhint %}
+
 ## Categories
 
 You can add categories to your scene to help players explore Decentraland. These are used in the [Decentraland Places dApp](https://places.decentraland.org) to categorize each place and make it easier for players to find what they're interested in.

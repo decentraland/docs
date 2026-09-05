@@ -103,6 +103,10 @@ Keep the following in mind:
 - The scene has no parcel limitations (since January 2023)
 - All Worlds are automatically listed on the Places page unless you opt out as detailed below
 
+### World metadata
+
+A World has its own name, description, and thumbnail, separate from the metadata of the scenes published to it. When you publish to an empty World, or to a World that contains a single scene, the World's metadata is updated to match the scene's metadata on every publish. If the World contains more than one scene, its metadata is independent: publishing a scene doesn't change it, and it can only be edited in the **Manage** section of the Creator Hub. See [World metadata vs scene metadata](../../scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata).
+
 ### Worlds storage budget
 
 Scenes deployed to Worlds count against a storage budget that is shared across all the Worlds owned by your wallet. The budget grows with your Decentraland holdings:

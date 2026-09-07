@@ -16,16 +16,15 @@ For dealing with avatars that are not players, see [NPC Avatars](npc-avatars.md)
 
 To change the player's position in the scene, use the `movePlayerTo()` function. This function takes an object with three properties:
 
-* `newRelativePosition`: Where to position the player, expressed as a Vector3.
-* `cameraTarget`: (optional) The direction to make the camera face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the camera will maintain the same rotation as before moving.
-* `avatarTarget`: (optional) The direction to make the avatar face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
-* `duration`: (optional) How long the transition should take, in seconds. If no value is provided, the transition will occur instantly. If a duration is provided, the avatar will walk or run to this new position.
+- `newRelativePosition`: Where to position the player, expressed as a Vector3.
+- `cameraTarget`: (optional) The direction to make the camera face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the camera will maintain the same rotation as before moving.
+- `avatarTarget`: (optional) The direction to make the avatar face, expressed as a Vector3 representing the coordinates of a point in space to look at. If no value is provided, the avatar will maintain the same rotation as before moving. If the player is in 1st person camera mode, the camera and avatar rotation are the same.
+- `duration`: (optional) How long the transition should take, in seconds. If no value is provided, the transition will occur instantly. If a duration is provided, the avatar will walk or run to this new position.
 
 {% hint style="warning" %}
 **📔 Note**: During the transition, the avatar is not affected by colliders, so it can pass through objects.
 
 {% endhint %}
-
 
 ```ts
 import { movePlayerTo } from '~system/RestrictedActions'
@@ -125,7 +124,7 @@ pointerEventsSystem.onPointerDown(
 
 You can make the player perform an animation as part of the scene's code. This can help provide more immersion, and it can also help communicate what other players are doing to each other. The avatar animations are seen both by the player (in 3rd person view) and any other players around.
 
-Player-controlled animations that run on the full body are overridden by the default locomotion animations, like walking and jumping. So full-body animations played by the scene only play while the player is standing still. If the player walks or jumps, any full-body animations are interrupted. Upper-body animations don't get interrupted by movement. 
+Player-controlled animations that run on the full body are overridden by the default locomotion animations, like walking and jumping. So full-body animations played by the scene only play while the player is standing still. If the player walks or jumps, any full-body animations are interrupted. Upper-body animations don't get interrupted by movement.
 
 {% hint style="warning" %}
 **📔 Note**: Players can only be animated if they already are standing inside the scene's bounds, not if they are on a neighboring scene. Smart wearables can play animations anywhere.
@@ -141,8 +140,8 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 
 Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with the following properties as an argument:
 
-* `predefinedEmote`: A string name for an existing emote.
-* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
+- `predefinedEmote`: A string name for an existing emote.
+- `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -164,41 +163,41 @@ pointerEventsSystem.onPointerDown(
 
 The following emotes show feedback about player actions in your scene, all of these are valid values for the `predefinedEmote` field:
 
-* `buttonDown`
-* `buttonFront`
-* `getHit`
-* `knockOut`
-* `lever`
-* `openChest`
-* `openDoor`
-* `punch`
-* `push`
-* `swingWeaponOneHand`
-* `swingWeaponTwoHands`
-* `throw`
-* `sittingChair1`
-* `sittingChair2`
-* `sittingGround1`
-* `sittingGround2`
+- `buttonDown`
+- `buttonFront`
+- `getHit`
+- `knockOut`
+- `lever`
+- `openChest`
+- `openDoor`
+- `punch`
+- `push`
+- `swingWeaponOneHand`
+- `swingWeaponTwoHands`
+- `throw`
+- `sittingChair1`
+- `sittingChair2`
+- `sittingGround1`
+- `sittingGround2`
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
-* `wave`
-* `fistpump`
-* `robot`
-* `raiseHand`
-* `clap`
-* `money`
-* `kiss`
-* `tik`
-* `hammer`
-* `tektonik`
-* `dontsee`
-* `handsair`
-* `shrug`
-* `disco`
-* `dab`
-* `headexplode`
+- `wave`
+- `fistpump`
+- `robot`
+- `raiseHand`
+- `clap`
+- `money`
+- `kiss`
+- `tik`
+- `hammer`
+- `tektonik`
+- `dontsee`
+- `handsair`
+- `shrug`
+- `disco`
+- `dab`
+- `headexplode`
 
 {% hint style="info" %}
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](#freeze-the-player) for the duration of the avatar animation.
@@ -214,9 +213,9 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 
 This function takes an object with the following properties:
 
-* `src`: A string with a path to the emote file.
-* `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
-* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
+- `src`: A string with a path to the emote file.
+- `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
+- `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
@@ -283,17 +282,17 @@ In this example, the player clicks a button and starts cheering with their arms 
 
 Some things to keep in mind:
 
-* `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
-* The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
-* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
+- `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
+- The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
+- To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
 
 ### Detect when an emote finishes
 
 Every emote lifecycle event is reported through the `AvatarEmoteCommand` component on the player entity. Each new entry carries a `state` field, with a value from the `EmoteState` enum:
 
-* `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent (entries written by older clients).
-* `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
-* `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
+- `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent (entries written by older clients).
+- `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
+- `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
 
 This works for emotes triggered by the scene (`triggerEmote()` and `triggerSceneEmote()`) as well as emotes the player plays themselves through the emote wheel, and also for emotes played by other players in the scene.
 
@@ -347,23 +346,23 @@ InputModifier.create(engine.PlayerEntity, {
 
 Keep the following considerations in mind:
 
-* While the player's interactions are disabled, their avatar is still affected by external forces, like gravity or moving platforms.
-* The `InputModifier` component can only be used with the `engine.PlayerEntity` entity. It can only affect the current player, it can't affect other players.
-* This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they leave the scene.
-* While the player's interactions are disabled, the player can't perform emotes freely, but the scene can trigger animations on the avatar.
-* Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened to by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
+- While the player's interactions are disabled, their avatar is still affected by external forces, like gravity or moving platforms.
+- The `InputModifier` component can only be used with the `engine.PlayerEntity` entity. It can only affect the current player, it can't affect other players.
+- This component only affects the player while the avatar is within your scene's bounds. Their locomotion stops being restricted as soon as they leave the scene.
+- While the player's interactions are disabled, the player can't perform emotes freely, but the scene can trigger animations on the avatar.
+- Player inputs don't affect the avatar, but the [global input events](button-events/system-based-events.md#global-input-events) can still be listened to by the scene. You could use these to control a vehicle, or use a [Virtual Camera](../3d-essentials/camera.md) to follow another entity as it moves, treating it as an alternative avatar.
 
 ### Restricting specific kinds of locomotion
 
 Instead of entirely freezing the player, you can restrict certain specific forms of locomotion of the player. This could be used for gameplay reasons, for example to preserve the difficulty of a platformer by preventing double-jump and glide. These abilities could even be toggled dynamically as a game mechanic, for example giving the player a stamina bar and preventing them from running when it's depleted. It could also be used to set the tone of a scene, for example preventing running or jumping in a location that is meant to be serene. The `InputModifier` includes the following options:
 
-* `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
-* `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
-* `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
-* `disableJump`: Player can't jump.
-* `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
-* `disableDoubleJump`: The player can't perform a double-jump.
-* `disableGliding`: The player can't glide.
+- `disableWalk`: Player can't walk slowly (pressing control). If the player tries to walk, they will jog or run instead, if allowed.
+- `disableRun`: Player can't run (pressing shift). If the player tries to run, they will jog instead, if allowed.
+- `disableJog`: Player can't jog (this is the default movement speed). If the player tries to jog, they will run or walk instead, if allowed.
+- `disableJump`: Player can't jump.
+- `disableEmote`: Player can't perform emotes voluntarily. The scene is able to trigger animations on the player's avatar.
+- `disableDoubleJump`: The player can't perform a double-jump.
+- `disableGliding`: The player can't glide.
 
 ```ts
 import {InputModifier, engine} from '@dcl/sdk/ecs'
@@ -403,7 +402,6 @@ InputModifier.createOrReplace(engine.PlayerEntity, {
 	},
 })
 ```
-
 
 ## Locomotion Settings
 
@@ -500,14 +498,14 @@ Transform.create(entity, {
 
 When creating an `AvatarModifierArea` component, you must provide the following:
 
-* `area`: Size of the modifier area
-* `modifiers`: An array listing the modifiers to implement in the area. This property uses values from the `AvatarModifierType` enum.
+- `area`: Size of the modifier area
+- `modifiers`: An array listing the modifiers to implement in the area. This property uses values from the `AvatarModifierType` enum.
 
 The supported modifiers are:
 
-* `AvatarModifierType.AMT_HIDE_AVATARS`
-* `AvatarModifierType.AMT_DISABLE_PASSPORTS`
-* `AvatarModifierType.AMT_HIDE_NAMETAGS`
+- `AvatarModifierType.AMT_HIDE_AVATARS`
+- `AvatarModifierType.AMT_DISABLE_PASSPORTS`
+- `AvatarModifierType.AMT_HIDE_NAMETAGS`
 
 All the effects of an `AvatarModifierArea` only take place within the region of their area. Players return to normal when they walk out of the area.
 
@@ -671,6 +669,7 @@ AvatarModifierArea.create(entity, {
 	excludeIds: myAvatarList.sort(),
 })
 ```
+
 {% endhint %}
 
 ### Debug modifier areas
@@ -710,6 +709,122 @@ To activate the effects of the modifier area, the player's head or torso must en
 **📔 Note**: The full area should fit inside the limits of your scene.
 {% endhint %}
 
+## Add a custom label to a nametag
+
+Use the `AvatarNametag` component to display a plate with your own text above an avatar's nametag. This is useful for showing a rank, role, team, or title that your scene assigns to a player, like "VIP", "Team Red", or "Club Owner".
+
+<figure><img src="../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
+
+The component works on any entity that has an avatar:
+
+- The local player, via `engine.PlayerEntity`
+- Any other player in the scene, via that player's entity
+- An NPC, via any entity that has an `AvatarShape` component. See [NPC Avatars](npc-avatars.md).
+
+Writes to any other kind of entity are ignored.
+
+The simplest way to tag players is to attach the component when they enter the scene, using the `onEnterScene` event:
+
+```ts
+import { onEnterScene } from '@dcl/sdk/players'
+import { AvatarNametag } from '@dcl/sdk/ecs'
+
+export function main() {
+	onEnterScene((player) => {
+		AvatarNametag.createOrReplace(player.entity, { label: 'VIP' })
+	})
+}
+```
+
+To tag the local player specifically, use `engine.PlayerEntity`:
+
+```ts
+AvatarNametag.createOrReplace(engine.PlayerEntity, { label: 'Club Owner' })
+```
+
+You can also loop over all players currently in the scene with a query. Each player is a regular entity that carries a `PlayerIdentityData` component, so you can attach the plate to it like to any other entity:
+
+```ts
+import { engine, AvatarNametag, PlayerIdentityData } from '@dcl/sdk/ecs'
+
+for (const [entity, identity] of engine.getEntitiesWith(PlayerIdentityData)) {
+	AvatarNametag.createOrReplace(entity, { label: rankFor(identity.address) })
+}
+```
+
+To remove the plate, delete the component. The avatar's regular nametag is not affected:
+
+```ts
+AvatarNametag.deleteFrom(entity)
+```
+
+{% hint style="info" %}
+**💡 Tip**: You don't need to wait for the avatar to finish loading before writing the component. If the avatar is still loading, the plate is applied as soon as it's ready.
+{% endhint %}
+
+### Nametag fields
+
+The `AvatarNametag` component has the following fields:
+
+- `label`: The text to show on the plate. It's a single line, long labels are truncated with an ellipsis. An empty string draws the plate with no text. Spaces are preserved, so a label made only of spaces widens the empty plate.
+- `labelColor`: (optional) The color of the text, as a `Color3`. If not set, it uses the same color as the avatar's regular nametag text.
+- `backgroundColor`: (optional) The color of the plate, as a `Color3`. If not set, it uses the same color as the avatar's regular nametag background.
+- `borderColor`: (optional) The color of the plate's border, as a `Color3`. If not set, it matches `backgroundColor`, so the plate has no visible border.
+
+```ts
+import { Color3 } from '@dcl/sdk/math'
+
+AvatarNametag.createOrReplace(engine.PlayerEntity, {
+	label: 'Club Owner',
+	labelColor: Color3.White(),
+	backgroundColor: Color3.create(0.47, 0.56, 0.96),
+	borderColor: Color3.create(0.78, 0.85, 1),
+})
+```
+
+Plates are hidden together with the regular nametag when the avatar is inside an `AvatarModifierArea` that uses `AMT_HIDE_NAMETAGS` or `AMT_HIDE_AVATARS`. See [Hide nametags](player-avatar.md#hide-nametags).
+
+### Plates in multiplayer scenes
+
+There are two things to keep in mind when tagging other players:
+
+**Plates are local to each player's client.** The plate is never sent to other players, each player's copy of the scene computes its own plates. If all players should see the same tags, the logic that assigns them must produce the same result on every client from data they all share, for example by deriving the tags from the sorted list of wallet addresses. Otherwise, your scene needs to sync the assignments itself, see [Serverless multiplayer](../networking/serverless-multiplayer.md).
+
+**Player entities are not stable across disconnects.** When a player leaves, their entity id is recycled and may be reused by the next player who joins. If you store a player's entity and write to it later, the plate may land on a different player. Always resolve the entity anew right before you write to it, and remove the component when the player leaves. Both patterns above handle this naturally: `onEnterScene` gives you a fresh entity each time, and a query never holds on to stale ones.
+
+The following example combines these ideas. It runs a system that re-scans all players once a second, sorts them by wallet address so every client assigns the same labels, and only writes the component when the label actually changes:
+
+```ts
+import { engine, Entity, AvatarNametag, PlayerIdentityData } from '@dcl/sdk/ecs'
+
+const ROLES = ['Blue', 'Student', 'Janitor', 'Guest']
+
+let timer = 0
+
+function assignRoles(dt: number) {
+	timer += dt
+	if (timer < 1) return
+	timer = 0
+
+	// Collect the players first, then write. Replacing a component while iterating a query is unsafe.
+	const players: { entity: Entity; address: string }[] = []
+	for (const [entity, identity] of engine.getEntitiesWith(PlayerIdentityData)) {
+		players.push({ entity, address: identity.address.toLowerCase() })
+	}
+	players.sort((a, b) => a.address.localeCompare(b.address))
+
+	players.forEach(({ entity }, index) => {
+		const label = ROLES[index % ROLES.length]
+		if (AvatarNametag.getOrNull(entity)?.label === label) return
+		AvatarNametag.createOrReplace(entity, { label })
+	})
+}
+
+engine.addSystem(assignRoles)
+```
+
+Because the system re-scans every second, players who join late are tagged on the next pass without any extra handling.
+
 ## Change an avatar's appearance
 
 You can't change what wearables the player's avatar is wearing, but you can instead swap the player's avatar for an NPC avatar that you can fully customize.
@@ -723,5 +838,5 @@ The fluidity of control may not be perfect while doing this, you may want to use
 {% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: For working examples of these APIs, see the [`0,1-input-modifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) test scene, which toggles each `InputModifier` movement flag separately and shows an avatar still being carried by a moving platform while movement is blocked; [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which combines `AvatarModifierArea` with runtime-mutated `excludeIds`; and [`10,99-avatar-modifier-hide-nametags`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/10,99-avatar-modifier-hide-nametags), which isolates the `AMT_HIDE_NAMETAGS` modifier.
+**💡 Tip**: For working examples of these APIs, see the [`0,1-input-modifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) test scene, which toggles each `InputModifier` movement flag separately and shows an avatar still being carried by a moving platform while movement is blocked; [`9,99-modifier-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas), which combines `AvatarModifierArea` with runtime-mutated `excludeIds`; and [`10,99-avatar-modifier-hide-nametags`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/10,99-avatar-modifier-hide-nametags), which isolates the `AMT_HIDE_NAMETAGS` modifier; and [`4,24-avatar-nametag`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,24-avatar-nametag), which exercises `AvatarNametag` on the local player, remote players, and NPCs, including the deterministic multiplayer roster in `src/modules/multiplayerRoster.ts`.
 {% endhint %}

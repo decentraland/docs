@@ -25,19 +25,19 @@ Transform.create(myAvatar, {
 
 When passing data to generate an `AvatarShape`, the following fields are required:
 
-* `id`: (required) Internal identifier for the Avatar
+- `id`: (required) Internal identifier for the Avatar
 
 The following optional fields are also available:
 
-* `name`: Name to display over the Avatar's head. Default: "NPC".
-* `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
-* `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
-* `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
-* `eyeColor`: _Color3_ for the eye color (any color is valid)
-* `skinColor`: _Color3_ for the skin color (any color is valid)
-* `hairColor`: _Color3_ for the hair color (any color is valid)
-* `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
-* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
+- `name`: Name to display over the Avatar's head. Default: "NPC".
+- `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
+- `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
+- `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
+- `eyeColor`: _Color3_ for the eye color (any color is valid)
+- `skinColor`: _Color3_ for the skin color (any color is valid)
+- `hairColor`: _Color3_ for the hair color (any color is valid)
+- `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
+- <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
 
 {% hint style="warning" %}
 **📔 Note**: The `AvatarShape`component must be imported via
@@ -103,11 +103,11 @@ let emoteDuration = 2  // 2 seconds
 // system
 engine.addSystem((dt: number) => {
     clapTimer += dt
-      
+
     if (clapTimer >= emoteDuration) {
         // Trigger the clap emote
         AvatarShape.getMutable(myAvatar).expressionTriggerTimestamp += 1
-        
+
         clapTimer = 0 // Reset timer
     }
 })
@@ -116,6 +116,18 @@ engine.addSystem((dt: number) => {
 {% hint style="info" %}
 **💡 Tip**: You must know the duration of the emote, and make that the duration of the system. If you create an emote that fixes the avatar still in a same pose, it's recommendable to make the duration of the emote longer than the system. That way, you can make sure that there are no artifacts when finishing and resetting the animation.
 {% endhint %}
+
+## Add a label above the name
+
+Use the `AvatarNametag` component to show a plate with custom text above the NPC's name, for example a role like "Shopkeeper" or "Boss". Attach it to the same entity that has the `AvatarShape`:
+
+```ts
+AvatarNametag.create(myAvatar, { label: 'Shopkeeper' })
+```
+
+If the `AvatarShape` has an empty `name`, only the plate is shown, with no empty nametag box under it. This is handy for labeling an NPC with a title alone.
+
+See [Add a custom label to a nametag](player-avatar.md#add-a-custom-label-to-a-nametag) for the full list of fields, including colors.
 
 ## Copy wearables from player
 
@@ -139,7 +151,7 @@ export function swapAvatar(avatar: Entity) {
   mutableAvatar.eyeColor = userData.avatar?.eyesColor
   mutableAvatar.skinColor = userData.avatar?.skinColor
   mutableAvatar.hairColor = userData.avatar?.hairColor
-  
+
 }
 ```
 
@@ -182,7 +194,7 @@ Transform.create(myAvatar, {
   position: Vector3.create(8, 0.25, 8),
 })
 AvatarShape.create(myAvatar, {
-  id: "my-avatar-id", 
+  id: "my-avatar-id",
   wearables: [],
   emotes: []
 })

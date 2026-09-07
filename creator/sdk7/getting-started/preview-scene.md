@@ -164,5 +164,5 @@ In both cases, `--realm http://127.0.0.1:8000/` points the client at your local 
 {% hint style="warning" %}
 **📔 Important**: When using this mode, it's recommended that **all** of its art are already published, with their asset bundles fully processed by the content servers. If you've added any new assets, you'll miss out on the optimized loading as they will be loaded as raw gltf files, as happens when you normally run a preview. But if you locally modified an asset that was already published, maintaining the same file name, then you'll be seeing the old published version of that asset.
 
-In that case, redeploy the scene first, wait for the asset bundles to be generated (see [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion)), and then resume using this mode for code-only iteration.
+In that case, redeploy the scene first, wait a few minutes for the asset bundles to be generated (see [Asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion)), and then resume using this mode for code-only iteration.
 {% endhint %}

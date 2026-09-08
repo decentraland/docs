@@ -179,3 +179,16 @@ See [Worlds size limits](/creator/sdk7/projects/kinds-of-project.md#size-limits)
 
 </details>
 
+<details>
+<summary><strong>I edited my World's name, description, or thumbnail in the Manage tab, but it changed back after I published. Why?</strong></summary>
+
+A World has its own metadata (name, description, and thumbnail), separate from the metadata of each scene published to it.
+
+If your World contains a single scene, the World's metadata is updated to match the scene's metadata every time you publish. Any changes made in the World's **Settings** in the **Manage** tab will be overwritten on the next publish. To make the changes stick, edit the scene's settings instead (the pencil icon in the Scene Editor).
+
+If your World contains multiple scenes, the World's metadata is independent from the scenes, and the **Manage** tab is the only place to edit it.
+
+See [World metadata vs scene metadata](/creator/scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata) for details.
+
+</details>
+

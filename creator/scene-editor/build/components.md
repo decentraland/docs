@@ -63,6 +63,8 @@ The following Components can be added to any Entity via the Scene Editor UI:
 - **NFT Shape**: Displays the image of an NFT inside a frame. See [Display an NFT](nfts.md).
 - **Particle System**: Emits particles from the Entity's location, for effects like smoke, fire or sparkles. See [Particle systems](../../sdk7/3d-essentials/particle-system.md).
 - **Virtual Camera**: Defines a custom camera angle that the scene can switch the player's view to. See [Camera](../../sdk7/3d-essentials/camera.md).
+- **Avatar Modifier Area**: Changes how avatars behave or appear for players inside a region centered on this entity. The entity's scale sets the size of the region. See [Modifier Areas](../interactivity/modifier-areas.md).
+- **Camera Modifier Area**: Forces the player's camera into first or third person inside a region centered on this entity. The entity's scale sets the size of the region. See [Modifier Areas](../interactivity/modifier-areas.md).
 - **Script**: Attaches a custom code module to the Entity, with parameters you can configure from the UI. See [Script component](../code/script-component.md).
 
 {% hint style="warning" %}

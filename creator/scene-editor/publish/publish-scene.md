@@ -19,7 +19,7 @@ Make sure of the following:
 Check your [scene's details](../configure/scene-settings.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
 
 {% hint style="danger" %}
-**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least half an hour before the event starts.
+**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least an hour before the event starts.
 
 Players who already had loaded the scene in the current session before your updates will continue to see a cached version of the scene. To see the renewed version they must close and re-enter Decentraland.
 {% endhint %}
@@ -52,7 +52,7 @@ To publish your scene:
 
 ## How long does publishing take?
 
-- **Until I can test it**: seconds to a couple of minutes. It scales with the total size of your scene and your upload bandwidth. The **Jump In** button appears as soon as the scene is playable, once stages **1** and **2** are done.
+- **Until you can test it**: seconds to a couple of minutes. It scales with the total size of your scene and your upload bandwidth. The **Jump In** button appears as soon as the scene is playable, once stages **1** and **2** are done.
 - **Before a live event**: publish your final version at least an hour before the event starts, to leave room for anything unexpected.
 
 The following factors can make a publication slower:

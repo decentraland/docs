@@ -431,12 +431,34 @@ engine.addSystem((deltaTime) => {
   // Get current tick number
   const currentTick = engineInfo.tickNumber
   
+  // Is the scene covered by the Explorer's fullscreen UI (e.g. the loading screen)?
+  const isHidden = engineInfo.sceneHidden
+  
   // Example: Log every 100 frames
   if (currentFrame % 100 === 0) {
     console.log(`Runtime: ${runtime.toFixed(2)}s, Frame: ${currentFrame}, Tick: ${currentTick}`)
   }
 })
 ```
+
+### React to the Loading Screen Fading Out
+`EngineInfo.sceneHidden` is `true` while the Explorer's loading screen covers the scene, and flips to `false` the moment it fades out. This is the only way to know when the player first sees the scene, so use it to time intro cinematics, welcome sounds, opening UI, or analytics events.
+
+```typescript
+import { EngineInfo, engine } from '@dcl/sdk/ecs'
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Only run once
+  engine.removeSystem(waitForSceneRevealed)
+
+  console.log('The loading screen just faded out, start the intro here')
+})
+```
+
+The scene keeps running normally while `sceneHidden` is `true` — it just isn't being displayed. Don't use this flag to pause scene logic, use it to time what the player is meant to witness.
 
 ## Player Data & Camera Controls
 

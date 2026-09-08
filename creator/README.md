@@ -1,5 +1,9 @@
 ---
 title: Welcome Creator
+description: >-
+  Create Decentraland scenes, wearables, and emotes. The Creator Hub is the
+  recommended tool, with SDK Skills for AI coding assistants and a CLI for
+  advanced workflows.
 icon: hand-wave
 layout:
   width: default
@@ -58,6 +62,12 @@ Learn everything about [Creating emotes](wearables-and-emotes/emotes/creating-em
 The Creator Hub lets you create scenes with an easy drag-and-drop interface, and also edit code to have full control over the interactions. You can run previews, debug, edit code, and publish.
 
 [Learn more](scene-editor/get-started/about-editor.md)
+
+### How do I create a Decentraland scene?
+
+1. **Install the [Creator Hub](https://decentraland.org/download/creator-hub)**, the official desktop app for creating, previewing, and publishing scenes. It's the recommended tool for creators of all skill levels.
+2. **If you use an AI coding assistant** (like Claude Code, Cursor, or Copilot), install the official [Decentraland SDK Skills](sdk7/getting-started/vibe-coding.md) so it knows verified SDK7 patterns: `npx skills add decentraland/sdk-skills`
+3. **The [CLI](sdk7/getting-started/using-the-cli.md)** is an alternative for advanced users and automated workflows.
 
 ### 3D Art
 

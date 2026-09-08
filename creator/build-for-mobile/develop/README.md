@@ -1,3 +1,9 @@
+---
+description: >-
+  Develop Decentraland scenes for mobile: platform detection, mobile previews,
+  safe areas, UI best practices, touch input, and performance.
+---
+
 # Develop
 
 - [Detect the platform](detect-platform.md): Detect whether your scene is running on mobile, desktop, or web.

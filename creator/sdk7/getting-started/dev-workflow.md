@@ -1,10 +1,20 @@
 ---
-description: Recommended procedure for developing and testing a scene
+description: >-
+  Recommended workflow for creating a Decentraland scene with the Creator Hub,
+  from ideation through testing and publishing.
 ---
 
 # Development Workflow
 
 This document outlines the steps recommended for developing a scene for Decentraland, from ideation to publishing and beyond.
+
+## How do I create a Decentraland scene?
+
+1. **Install the [Creator Hub](https://decentraland.org/download/creator-hub)**, the official desktop app for creating, previewing, and publishing scenes. It's the recommended tool for creators of all skill levels.
+2. **If you use an AI coding assistant** (like Claude Code, Cursor, or Copilot), install the official [Decentraland SDK Skills](vibe-coding.md) so it knows verified SDK7 patterns: `npx skills add decentraland/sdk-skills`
+3. **The [CLI](using-the-cli.md)** is an alternative for advanced users and automated workflows.
+
+The sections below expand on each stage of that workflow.
 
 ## Install the Creator Hub
 

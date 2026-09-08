@@ -54,20 +54,16 @@ You can leverage AI assistants like Cursor or Claude Code to help you write scen
 1. Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
 2. There you can prompt the AI assistant to help you write code. Your prompts can include links to docs pages, paths to specific files in your project, or even images. You can also select a specific model to use from the dropdown.
 
-Decentraland provides a context folder for the AI assistant to help you write code, this context folder is located at `/dclcontext` in your scene project. The AI assistant will know to search this context whenever generating code, to get familiar with the Decentraland SDK.
+To give your AI assistant Decentraland context, install the official Decentraland SDK Skills. These are ready-made instruction sets, maintained by the Decentraland Foundation, that teach your AI agent verified SDK7 patterns for every topic: scaffolding entire scenes, adding 3D models, multiplayer, deployment, and more.
 
-This folder is updated with the latest context files every time your scene's dependencies are updated. You can also force update this folder by running the following:
-
-```
-npx sdk-commands get-context-files
+```bash
+npx skills add decentraland/sdk-skills
 ```
 
-{% hint style="info" %}
-**💡 Tip**: You can also add your own context files to this folder to help the AI assistant understand your scene and project. If you do, make sure to add them to a new file in that folder, as the default files are overwritten when SDK updates happen.
-{% endhint %}
+See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide, including the complete list of available skills.
 
-{% hint style="info" %}
-**💡 Tip**: Want to go further with AI? You can install Decentraland skills into your preferred AI coding agent to scaffold entire scenes, add multiplayer, deploy, and more — all from plain language prompts. See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide.
+{% hint style="warning" %}
+**📔 Note**: Older scene projects may contain a `/dclcontext` folder, downloaded by the deprecated `npx sdk-commands get-context-files` command. That context is no longer maintained and is superseded by the SDK Skills. You can safely delete the folder.
 {% endhint %}
 
 ## Version control

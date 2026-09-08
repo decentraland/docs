@@ -1,3 +1,9 @@
+---
+description: >-
+  Free open-source Decentraland SDK7 example scenes and templates, from
+  feature demos to complete games.
+---
+
 # Examples
 
 Decentraland Studios provides a comprehensive library of free, open-source example scenes and templates to help you learn and kickstart your projects. These resources are maintained by the community and showcase various SDK features and best practices.

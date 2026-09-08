@@ -1,3 +1,9 @@
+---
+description: >-
+  Manage who can operate a Decentraland Rewards campaign by assigning roles
+  and permissions to wallet addresses.
+---
+
 # Users and Roles
 
 To perform any actions on a campaign within the Rewards service, you must be logged in with a wallet that has the necessary permissions.

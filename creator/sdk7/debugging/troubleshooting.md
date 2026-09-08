@@ -16,7 +16,7 @@ npx skills add decentraland/sdk-skills
 
 See [Vibe Coding with AI](../getting-started/vibe-coding.md) for more details on setting up and prompting AI assistants.
 
-You can also let the AI debug the scene *while it's running*. The Decentraland desktop client can expose an MCP server that lets an agent take its own screenshots, read the scene's console output, walk the player around, and click on objects — so instead of you reproducing the bug and pasting the error, the agent reproduces it itself, sees what happens, and iterates until it's fixed. Launch the scene with `npm run start -- --mcp` and connect your agent to it.
+You can also let the AI debug the scene _while it's running_. The Decentraland desktop client can expose an MCP server that lets an agent take its own screenshots, read the scene's console output, walk the player around, and click on objects — so instead of you reproducing the bug and pasting the error, the agent reproduces it itself, sees what happens, and iterates until it's fixed. Launch the scene with `npm run start -- --mcp` and connect your agent to it.
 
 See [Let the AI see your scene in-world](../getting-started/vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full setup, and install the `unity-explorer-mcp` skill so the agent knows the workflow:
 
@@ -32,8 +32,8 @@ Your operating system doesn't allow you edit permissions on the folder where you
 
 Useful resources:
 
-* [docs.npmjs](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
-* [letscodepare](https://letscodepare.com/blog/npm-resolving-eacces-permissions-denied)
+- [docs.npmjs](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+- [letscodepare](https://letscodepare.com/blog/npm-resolving-eacces-permissions-denied)
 
 #### Issue: Can't run a particular scene preview, error says **Error: Error while building the project**
 
@@ -45,9 +45,9 @@ Make sure your Node version is up to date. It must be 20 or newer.
 
 #### Issue: Running `npm run start` opens a browser tab, but the loading screen never finishes loading, or I see a red error banner that says "critical error".
 
-*   Make sure you have the latest version of the Decentraland SDK installed in your project. Run:
+- Make sure you have the latest version of the Decentraland SDK installed in your project. Run:
 
-    `npm i @dcl/sdk@latest`
+  `npm i @dcl/sdk@latest`
 
 #### Issue: The scene runs, in the console I see `Cyclic dependencies` warnings.
 
@@ -61,39 +61,41 @@ To fix these dependencies, you often must resort to calling functions or object 
 
 #### Issue: You don't have permissions to deploy to these parcels
 
-* Make sure that the `scene.json` file of your scene correctly lists the coordinates where you want to deploy.
-* Make sure that Metamask is correctly set up to use the right wallet to sign the transaction. This may either be the wallet that owns the LAND tokens, or might have operator permissions granted by the owner.
+- Make sure that the `scene.json` file of your scene correctly lists the coordinates where you want to deploy.
+- Make sure that Metamask is correctly set up to use the right wallet to sign the transaction. This may either be the wallet that owns the LAND tokens, or might have operator permissions granted by the owner.
 
 #### Issue: Running `npm run deploy` fails
 
-*   Check the spawn points of your scene, all three x,y,z coordinates of a spawn point must either be a number or a range. Either all three are numbers or all three are ranges. It's not supported to have ranges for some but numbers for others.
+- Check the spawn points of your scene, all three x,y,z coordinates of a spawn point must either be a number or a range. Either all three are numbers or all three are ranges. It's not supported to have ranges for some but numbers for others.
 
-    For example this is not supported:
+  For example this is not supported:
 
-    `"position": {"x": [1,4], "y": 0, "z": [1,4]}`
+  `"position": {"x": [1,4], "y": 0, "z": [1,4]}`
 
-    This is supported:
+  This is supported:
 
-    `"position": {"x": [1,4], "y": [0,0], "z": [1,4]}`
-*   The default catalyst server that you're assigned to deploy to might be down or having issues. You can force the `npm run deploy` command to deploy to a specific catalyst server instead. To deploy to a specific server on the Decentraland Editor:
+  `"position": {"x": [1,4], "y": [0,0], "z": [1,4]}`
 
-    1. Open your scene and click **Publish**
-    2. Select the option **Publish to a different server** on the bottom.
-    3. On the dropdown, select **Custom Server**
-    4. Enter the address of the server, for example `peer-ec1.decentraland.org`
-    5. Click **Publish to custom server**
-    6. Approve the transaction as with a normal deployment.
+- The default catalyst server that you're assigned to deploy to might be down or having issues. You can force the `npm run deploy` command to deploy to a specific catalyst server instead. To deploy to a specific server on the Decentraland Editor:
 
-    To do this via the CLI:
+  1. Open your scene and click **Publish**
+  2. Select the option **Publish to a different server** on the bottom.
+  3. On the dropdown, select **Custom Server**
+  4. Enter the address of the server, for example `peer-ec1.decentraland.org`
+  5. Click **Publish to custom server**
+  6. Approve the transaction as with a normal deployment.
 
-    `npm run deploy -- --target-content <server-name>`
+  To do this via the CLI:
 
-    For example:
+  `npm run deploy -- --target-content <server-name>`
 
-    `npm run deploy -- --target-content peer-ec1.decentraland.org`
+  For example:
 
-    See [catalyst-monitor](https://decentraland.github.io/catalyst-monitor/) for a status check of all the servers in the catalyst network. You can also copy the addresses of each one, from the top of each card.
-* Check your scene's `package.json`. A common problem is that there's a `bundleDependencies` and also a `bundledDependencies` (extra d) section. This can sometimes result from running different Node versions on the same project at different times, or from sharing the project between people that ran it with different Node versions installed. Delete `bundleDependencies`, which relates to older Node versions.
+  `npm run deploy -- --target-content peer-ec1.decentraland.org`
+
+  See [catalyst-monitor](https://decentraland.github.io/catalyst-monitor/) for a status check of all the servers in the catalyst network. You can also copy the addresses of each one, from the top of each card.
+
+- Check your scene's `package.json`. A common problem is that there's a `bundleDependencies` and also a `bundledDependencies` (extra d) section. This can sometimes result from running different Node versions on the same project at different times, or from sharing the project between people that ran it with different Node versions installed. Delete `bundleDependencies`, which relates to older Node versions.
 
 Also ensure you have your Node version up to date, at least version 20.
 
@@ -107,9 +109,9 @@ As an alternative, you can run `npm run deploy -- --skip-build` to skip the runn
 
 #### Issue: I deployed my scene but I don't see the changes when I enter Decentraland
 
-* Keep in mind that it can take a few minutes for new content to be propagated throughout all of the servers in the catalyst network, give it a little time.
-* While the new version's 3D models are being converted to asset bundles, players are deliberately served the last fully-working version of your scene. Plan for 30 to 60 minutes until the new version is reliably playable by everyone. You can [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene directly.
-* Reloading the scene is not enough to pick up a new version: a reload restarts the scene's code, but doesn't fetch the newly published version. Once the conversion is complete, fully quit and relaunch Decentraland, then enter the scene again via a jump link or the `/goto` chat command.
+- Keep in mind that it can take a few minutes if the scene contains heavy assets.
+- While the new version's 3D models are being converted to asset bundles, players are deliberately served the last fully-working version of your scene. This usually only takes a few seconds, but can take longer for very large scenes or when the servers are busy. You can [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene directly.
+- Reloading the scene is not enough to pick up a new version: a reload restarts the scene's code, but doesn't fetch the newly published version. Once the conversion is complete, fully quit and relaunch Decentraland, then enter the scene again via a jump link or the `/goto` chat command.
 
 #### Issue: Some players see the new version of my scene, others still see the old one
 
@@ -119,14 +121,14 @@ The conversion of your scene's 3D models finishes at different times for each pl
 
 Your scene is either queued behind other scenes being converted, or the conversion failed.
 
-* Open `https://asset-bundle-registry.decentraland.org/queues/status` and look for your scene's entity ID. You can find that ID in the `entityId` field when you [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) using your scene's coordinates. If your ID is listed in the queue, the scene is queued and you just need to wait. Avoid republishing while you wait: each publish creates a new version that starts over at the back of the queue.
-* If it's not in the queue, [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene. If a platform shows `failed`, publish the scene again. If it fails a second time, [report the problem](report-bug.md) and include the entity ID.
+- Open `https://asset-bundle-registry.decentraland.org/queues/status` and look for your scene's entity ID. You can find that ID in the `entityId` field when you [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) using your scene's coordinates. If your ID is listed in the queue, the scene is queued and you just need to wait.
+- If it's not in the queue, [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene. If a platform shows `failed`, publish the scene again. If it fails a second time, [report the problem](report-bug.md) and include the entity ID.
 
 #### Issue: Once deployed, some 3D models are missing, black, or untextured
 
-* If you just published, the conversion of your models to asset bundles may not be done yet. Type `/detectabs` into the chat window: models tinted red are not yet converted. [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) and wait for it to complete.
-* Make sure the 3D models are all within the scene boundaries, even their bounding boxes. If any part of your models extend beyond these limits when running a preview, these parts that extend will be cut off and not rendered, both when running a preview and on the published scene.
-* If textures are the problem, keep in mind that textures in 3D models are capped to a maximum size of 512x512 pixels during the conversion.
+- If you just published, the conversion of your models to asset bundles may not be done yet. Type `/detectabs` into the chat window: models tinted red are not yet converted. [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) and wait for it to complete.
+- Make sure the 3D models are all within the scene boundaries, even their bounding boxes. If any part of your models extend beyond these limits when running a preview, these parts that extend will be cut off and not rendered, both when running a preview and on the published scene.
+- If textures are the problem, keep in mind that textures in 3D models are capped to a maximum size of 1024x1024 pixels during the conversion.
 
 #### Issue: The scene looks fine up close, but is broken or missing when seen from a distance
 
@@ -134,20 +136,20 @@ The low Level of Detail (LOD) versions of your assets, used to render the scene 
 
 #### Issue: Once deployed, my 3D models look different
 
-* If the textures look different, keep in mind that textures in 3D models are capped to a maximum size of 512x512 pixels. This conversion is carried out to ensure that Decentraland runs smoothly for everyone.
-*   If models look different, there could be an issue with the conversion of the models to asset bundles. Read more about asset bundle compression [here](../optimizing/performance-optimization.md#asset-bundle-conversion).
+- If the textures look different, keep in mind that textures in 3D models are capped to a maximum size of 1024x1024 pixels. This conversion is carried out to ensure that Decentraland runs smoothly for everyone.
+- If models look different, there could be an issue with the conversion of the models to asset bundles. Read more about asset bundle compression [here](../optimizing/performance-optimization.md#asset-bundle-conversion).
 
-    To validate this, try running the scene with the URL parameter `&DISABLE_ASSET_BUNDLES`. If the models look fine with this flag, the issue must be related to a bug in the conversion of the model. In that case, [report the problem](report-bug.md) and include the entity ID of your deployment.
+  To validate this, try running the scene with the URL parameter `&DISABLE_ASSET_BUNDLES`. If the models look fine with this flag, the issue must be related to a bug in the conversion of the model. In that case, [report the problem](report-bug.md) and include the entity ID of your deployment.
 
-    Note that the generation of compressed asset-bundle versions of your models is a process that takes the servers time (usually under 15 minutes, but plan for 30 to 60 minutes when the servers are busy). You can check if the models are being loaded as compressed asset bundles or not by writing the following command into the chat window `/detectabs`. Compressed models are tinted green, non-compressed are tinted red.
+  Note that the generation of compressed asset-bundle versions of your models takes the servers a little time (usually a few minutes, longer for very large scenes or when the servers are busy). You can check if the models are being loaded as compressed asset bundles or not by writing the following command into the chat window `/detectabs`. Compressed models are tinted green, non-compressed are tinted red.
 
-    You can also reproduce this conversion locally before publishing, by enabling [optimized assets in the preview](../getting-started/preview-scene.md#preview-with-optimized-assets). This lets you catch and debug these issues without having to deploy the scene.
+  You can also reproduce this conversion locally before publishing, by enabling [optimized assets in the preview](../getting-started/preview-scene.md#preview-with-optimized-assets). This lets you catch and debug these issues without having to deploy the scene.
 
 #### Issue: My scene vanished entirely
 
-* If the scene is in a World: your Worlds storage budget may be exceeded, for example after selling or transferring NAMEs, LAND, or MANA. You have 48 hours to free up space or increase your budget before your Worlds become inaccessible. Check your budget in the **Manage** tab of the Creator Hub or in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds), then republish. See [Worlds size limits](../projects/kinds-of-project.md#size-limits).
-* If the scene is on LAND: someone with deploy permissions may have published a new scene over your parcels, which erases the previous content. See [scene overwriting](../publishing/publishing.md#scene-overwriting).
-* In rare cases, content that violates Decentraland's content policy can be denylisted from the content servers. If you believe this happened by mistake, reach out through the [Decentraland Discord](https://decentraland.org/discord).
+- If the scene is in a World: your Worlds storage budget may be exceeded, for example after selling or transferring NAMEs, LAND, or MANA. You have 48 hours to free up space or increase your budget before your Worlds become inaccessible. Check your budget in the **Manage** tab of the Creator Hub or in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds), then republish. See [Worlds size limits](../projects/kinds-of-project.md#size-limits).
+- If the scene is on LAND: someone with deploy permissions may have published a new scene over your parcels, which erases the previous content. See [scene overwriting](../publishing/publishing.md#scene-overwriting).
+- In rare cases, content that violates Decentraland's content policy can be denylisted from the content servers. If you believe this happened by mistake, reach out through the [Decentraland Discord](https://decentraland.org/discord).
 
 #### Issue: My scene has poor FPS in production, even though it runs smoothly in preview.
 

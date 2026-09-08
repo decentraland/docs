@@ -16,9 +16,9 @@ Make sure of the following:
 {% hint style="warning" %} **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels. {% endhint %}
 
 {% hint style="danger" %}
-**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least 2 hours before the event starts.
+**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least an hour before the event starts.
 
-After each publish, an internal process optimizes all 3D models before they can be rendered. This usually takes around 15 minutes, but can take longer when the servers are busy. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
+After each publish, an internal process optimizes all 3D models before they can be rendered. This usually takes just a few seconds, but can take longer for very large scenes or when the servers are busy. Until it's done, players are served the previous version of your scene.
 {% endhint %}
 
 ## Check scene data
@@ -237,13 +237,13 @@ The URL to enter your deployed scene on your custom server will depend on the do
 
 ## Verify deployment success
 
-Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, depending on what realm you enter.
+Once you deployed your scene, these changes can take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might briefly still see the previous version of your content.
 
-After you sign to authorize the deployment of your scene, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network.
+If using the CLI to deploy, the signing dapp will start displaying confirmations that the new version of your content has been propagated throughout all of the servers in the network.
 
 You'll see a list of each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each server refers to a different realm. You can see how these server names map to realm names in the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/).
 
-Propagation is only part of the picture: after the upload, the scene's 3D models are converted into optimized asset bundles for each platform (Windows and Mac). Until that conversion finishes, players are deliberately served the last fully-working version of your scene. Plan for 30 to 60 minutes until the new version is reliably playable by everyone. You can query the conversion progress directly, see [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status).
+Propagation is only part of the picture: after the upload, the scene's 3D models are converted into optimized asset bundles for each platform (Windows and Mac). Until that conversion finishes, players are deliberately served the last fully-working version of your scene. This usually only takes a few seconds, but can take longer for very large scenes or when the servers are busy. You can query the conversion progress directly, see [Check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status).
 
 You can also obtain the propagation information at any time by running the following command on the command line console:
 

@@ -323,7 +323,7 @@ That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , a
 
 ### Stacking order between UI modules
 
-Each UI module is drawn on top of the ones registered before it, so by default the module registered last is in front. To control this explicitly, pass a `zIndex` in the renderer options: modules with a higher `zIndex` render in front of those with a lower one, regardless of the order they were registered in. Modules left at `0` keep their registration order. The option works the same on `setUiRenderer()`, so the main UI can also be placed behind or in front of the other modules.
+By default, UI modules stack in the order they first appear, later ones in front. Modules that first appear in the same frame — typically everything registered before the scene's first frame — are drawn with the main UI from `setUiRenderer()` at the back, followed by the other modules in the order they were added. To control this explicitly, pass a `zIndex` in the renderer options: modules with a higher `zIndex` render in front of those with a lower one, regardless of the order they appeared in. Modules left at `0` keep the default order. The option works the same on `setUiRenderer()`, so the main UI can also be placed in front of the other modules.
 
 ```tsx
 // Registered first, but always in front of the other UI modules

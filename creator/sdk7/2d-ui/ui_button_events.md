@@ -73,7 +73,7 @@ The following fields can be added to a `Button` UI element:
 * `uiTransform`: Positioning properties of the UI element.
 * `uiBackground`: Set the color or texture of the UI element.
 * `variant`: Use this property to set the style of the button as one of the defaults. `primary` and `secondary` are available.
-* `disabled`: Boolean to set a button disabled. When disabled is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called. Also the `alpha` value of the color of both the text and the backgroun is halved, so the button is "grayed-out" and stands out less.
+* `disabled`: Boolean to set a button disabled. When `disabled` is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called, and the button stops advertising any pointer interaction. The button is also drawn "grayed-out": both the text and the background are rendered at half their `alpha` value. This is a display change only. The `Color4` values your scene passes in are never modified, so you can safely reuse a shared palette object across many elements.
 
 ## Button styling
 
@@ -263,6 +263,25 @@ export const uiMenu = () => (
 	/>
 )
 ```
+
+### Blocking follows the layout box, not the visible pixels
+
+A blocking element captures clicks across its **whole rectangle**, whether or not anything is drawn there. A fully transparent background makes no difference.
+
+{% hint style="danger" %}
+**Warning:** Never put a pointer handler or `pointerFilter: 'block'` on a full-screen wrapper sized `100%` by `100%`.
+
+Its rectangle is the entire screen, so a single stray `onMouseDown` on your layout root makes every other UI element and everything in the 3D world unclickable. The UI still looks perfectly correct, because the panel you can see only covers a small part of the screen, which makes this very hard to spot.
+{% endhint %}
+
+Attach handlers to the smallest element that needs them: the panel, the button, the row. Layout wrappers stay handler-free.
+
+There are two cases where a full-screen blocking element is the right thing, and both are deliberate:
+
+* A **modal backdrop**, which is meant to swallow clicks, and which you only render while the modal is open.
+* A **drag-release catcher**, which only exists while a drag is in progress. See [Drag interactions](#drag-interactions) below.
+
+If clicking stops working anywhere in your scene, this is the first thing to check.
 
 ## Drag interactions
 

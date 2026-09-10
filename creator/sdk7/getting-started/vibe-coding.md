@@ -25,6 +25,12 @@ This approach works at any skill level:
 - **Experienced developers** — Skip the boilerplate. Let the AI handle multiplayer sync, UI scaffolding, and deployment config while you focus on creative decisions.
 - **Teams & studios** — Prototype scene concepts quickly before committing full development resources.
 
+## Use the AI Assistant in the Creator Hub
+
+The quickest way to start is the Creator Hub's built-in [AI Assistant](../../scene-editor/code/ai-assistant.md). It sees your open scene, edits entities, components, smart items and code for you, and can run the preview to check its own work. It installs the skills below into your project automatically, so there is nothing to set up beyond signing into a coding CLI.
+
+It is an experimental feature, turned off by default.
+
 ## Combine a code editor with AI
 
 Use a general-purpose AI code editor like [Cursor](https://www.cursor.com/) or VS Code with GitHub Copilot or Claude AI. Decentraland provides a context folder so these tools understand the SDK.

@@ -30,7 +30,7 @@ pointerEventsSystem.onProximityDown(
         opts: {
             button: InputAction.IA_PRIMARY,
             hoverText: 'Press E',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
         },
     },
     function () {
@@ -48,7 +48,7 @@ pointerEventsSystem.onProximityUp(
         opts: {
             button: InputAction.IA_PRIMARY,
             hoverText: 'Release E',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
         },
     },
     function () {
@@ -84,7 +84,7 @@ pointerEventsSystem.onProximityDown(
         opts: {
             button: InputAction.IA_PRIMARY,
             hoverText: 'Open door',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
             priority: 2,
         },
     },
@@ -99,7 +99,7 @@ pointerEventsSystem.onProximityDown(
         opts: {
             button: InputAction.IA_PRIMARY,
             hoverText: 'Step here',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
             priority: 1,
         },
     },
@@ -118,12 +118,26 @@ The `priority` field can also be set in the properties of a `PointerEvents` comp
 The proximity helper functions accept the same options as their pointer counterparts:
 
 * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options.
-* `maxDistance`: Maximum distance from the player's **camera** to the entity, in meters.
-* `maxPlayerDistance`: Maximum distance from the player's **avatar** to the entity, in meters. This is the most relevant setting for proximity events.
+* `maxDistance`: Maximum distance from the player's **avatar** to the entity, in meters. 10 by default.
 * `hoverText`: Text to display in the UI when the player is near the entity.
 * `showHighlight`: If true, shows an edge highlight on the entity when the player is in range. _true_ by default.
 * `showFeedback`: If true, shows hover feedback, hovering around the center of the entity. _true_ by default.
 * `priority`: Resolves conflicts when multiple entities are in proximity. Higher values take precedence. If multiple entities have the same priority value, the closest one is picked.
+
+`maxPlayerDistance` is a deprecated alias of `maxDistance`. Both measure distance from the avatar, so use `maxDistance` in new scenes.
+
+### What counts as being in range
+
+Proximity events measure from the **center of the player's capsule**, roughly chest height, to the closest point on the entity's collider. That is about a meter above where a cursor click measures from, so the same spot can read as a slightly different distance on each path.
+
+Distance alone is not enough. To fire a proximity event, the player must also:
+
+* Be **facing** the entity, within a cone of roughly 120 degrees in front of them.
+* Have a **clear line of sight** to it, with nothing in between.
+
+{% hint style="warning" %}
+**📔 Note**: Proximity events ignore `maxCameraDistance`. Where the camera sits makes no difference. Only the avatar's distance, facing, and line of sight are considered. See [Distance limits](register-callback.md#distance-limits) for how the camera limit works on cursor events.
+{% endhint %}
 
 
 ## Remove callbacks
@@ -151,7 +165,7 @@ pointerEventsSystem.onProximityEnter(
         opts: {
             button: InputAction.IA_POINTER,
             hoverText: 'Nearby',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
         },
     },
     function () {
@@ -165,7 +179,7 @@ pointerEventsSystem.onProximityLeave(
         opts: {
             button: InputAction.IA_POINTER,
             hoverText: 'Nearby',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
         },
     },
     function () {
@@ -197,7 +211,7 @@ pointerEventsSystem.onProximityDown(
         opts: {
             button: InputAction.IA_PRIMARY,
             hoverText: 'Open / Close',
-            maxPlayerDistance: 5,
+            maxDistance: 5,
             priority: 1,
         },
     },

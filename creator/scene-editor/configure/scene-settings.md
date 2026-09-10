@@ -29,7 +29,7 @@ The following fields are available:
   {% endhint %}
 
 - **Categories**
-- **Creator name** (optional)
+- **Creator name**
 - **Creator contact email** (optional)
 - **Creator wallet address** (optional)
 

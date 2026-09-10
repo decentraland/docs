@@ -31,17 +31,17 @@ See [Manage scenes](manage-scenes.md) for more details.
 
 To find your way around the Scene Editor:
 
-* Use **W** and **S** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
-* Use **A** and **D** to move sideways.
-* Use **Q** and **E** to move up and down.
-* Use the **Left Mouse Button** to click and select items and to move them around.
-* Use the **Right Mouse Button** and drag to rotate the camera.
+- Use **W** and **S** to move close or far. You can also use the mouse scroll wheel, or **+** and **-** keys
+- Use **A** and **D** to move sideways.
+- Use **Q** and **E** to move up and down.
+- Use the **Left Mouse Button** to click and select items and to move them around.
+- Use the **Right Mouse Button** and drag to rotate the camera.
 
 {% hint style="info" %}
 **💡 Tip**: You can also rotate the camera by pressing **Alt** on Windows, or **Option** on Mac while dragging. This is especially handy when using a trackpad instead of a mouse.
 {% endhint %}
 
-* Press **Space bar** to reset the camera back to the default position
+- Press **Space bar** to reset the camera back to the default position
 
 ## Add items
 
@@ -75,18 +75,23 @@ Configure different preview options from the dropdown menu next to the **Preview
 
 ## Scene renderer
 
-The Scene Editor uses **Babylon** as its default renderer for the editing canvas. You can switch to the **Bevy** renderer, which is available as an experimental preview.
+The Scene Editor uses **Babylon** as its default renderer for the editing canvas. You can switch to **Bevy (experimental)**.
 
 To change the renderer:
 
 1. Open the Creator Hub **Settings** (gear icon).
-2. Go to the **Editor** tab.
-3. Enable **Experimental features**.
-4. In the **Scene renderer** dropdown, select **Bevy (preview)**.
+2. Go to the **EXPERIMENTAL** tab.
+3. Switch on **Enable Bevy Scene Renderer**.
 
 The Bevy renderer is an alternative engine for the editing canvas. It affects how your scene looks while editing, not how it looks to players after publishing.
 
-When using the Bevy renderer, you can use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. The Bevy editor also shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated.
+When using the Bevy renderer, you can use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
+
+The Bevy editor also loads [custom items](../interactivity/custom-items.md), shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated. The camera toggle in the toolbar reads **Free** or **Player**, depending on the mode you're in.
+
+{% hint style="warning" %}
+**📔 Note**: The scene metrics tab is not available under Bevy. Run a scene preview in the desktop or mobile client and view the stats from there.
+{% endhint %}
 
 {% hint style="warning" %}
 **Note:** The Bevy renderer is experimental and may not support all editing features that the default Babylon renderer does.
@@ -110,7 +115,7 @@ See [Publish scene](../publish/publish-scene.md) for more details.
 
 ## See also
 
-* See [Scene Editor Essentials](scene-editor-essentials.md) for more details about the Scene Editor's interface.
-* See [Smart items](../interactivity/smart-items.md) for how to add simple interactivity to your scene.
-* See [Combine with code](../code/overview.md) for how to edit the code of your scene.
-* See [Publish scene](../publish/publish-scene.md) for how to publish your scene to Decentraland.
+- See [Scene Editor Essentials](scene-editor-essentials.md) for more details about the Scene Editor's interface.
+- See [Smart items](../interactivity/smart-items.md) for how to add simple interactivity to your scene.
+- See [Combine with code](../code/overview.md) for how to edit the code of your scene.
+- See [Publish scene](../publish/publish-scene.md) for how to publish your scene to Decentraland.

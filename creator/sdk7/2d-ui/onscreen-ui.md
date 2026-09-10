@@ -120,6 +120,10 @@ The following components are available to use in a `UiEntity`:
 
 Like with HTML tags, you can define components as self-closing or nest one within another.
 
+{% hint style="danger" %}
+**Warning:** Keep full-screen layout wrappers free of pointer handlers. Adding any of the `onMouse` handlers, or `pointerFilter: 'block'`, to a `UiEntity` sized `100%` by `100%` makes it capture every click on the screen, leaving all your other UI and the whole 3D world unclickable. Put handlers on the panel or button that needs them instead. See [Pointer blocking](ui_button_events.md#pointer-blocking).
+{% endhint %}
+
 _**ui.tsx file:**_
 
 ```tsx

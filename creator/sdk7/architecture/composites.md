@@ -48,6 +48,17 @@ export async function spawnBarrel() {
 `loadComposite()` is idempotent: it keys each composite by its `src` string, so calling it again with the same path doesn't reload the file, it returns the already-loaded composite. You can safely call it before every spawn without worrying about loading the same file twice.
 {% endhint %}
 
+### Spawn onto an existing entity
+
+By default `Composite.instance()` creates a new entity to hold the spawned tree. Pass a `rootEntity` in the options to spawn onto an entity you already have:
+
+```ts
+// Spawn the composite directly at the scene root, with no wrapper entity
+const barrel = Composite.instance(engine, resource, provider, {
+  rootEntity: engine.RootEntity,
+})
+```
+
 ## Position a spawned composite
 
 To place the spawned composite at a specific position, rotation, or scale, set a `Transform` component on the root entity returned by `Composite.instance()`.

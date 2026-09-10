@@ -343,6 +343,10 @@ If a child entity has no `position` on its Transform, the default is `0,0,0`, wh
 
 You can use an invisible entity with no shape component as a parent, to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
+{% hint style="warning" %}
+**📔 Note**: Avoid creating a loop in the hierarchy, where an entity ends up being its own ancestor. The SDK detects these loops and logs a warning naming the entities involved. The affected entities are not positioned correctly until you fix the parenting.
+{% endhint %}
+
 ## Attach an entity to an avatar
 
 There are three methods to attach an entity to the player:

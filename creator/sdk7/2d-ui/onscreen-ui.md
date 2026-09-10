@@ -319,7 +319,21 @@ The [`screenInset`](#screen-inset-area) works the other way around — it is per
 ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { screenInset: 'interactable' })
 ```
 
-That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it.
+That UI can be removed with `ReactEcsRenderer.removeUiRenderer(dummyEntity)` , also If the entity that owns the UI is destroyed, the UI will be removed too. If `ReactEcsRenderer.addUiRenderer()` is called again for the same entity but with a different UiRenderer, the previous one is cleaned up and the new one replaces it, keeping its place in the stacking order. Calling it again is also how you change the options of a UI module that is already rendered, for example its `zIndex`.
+
+### Stacking order between UI modules
+
+Each UI module is drawn on top of the ones registered before it, so by default the module registered last is in front. To control this explicitly, pass a `zIndex` in the renderer options: modules with a higher `zIndex` render in front of those with a lower one, regardless of the order they were registered in. Modules left at `0` keep their registration order. The option works the same on `setUiRenderer()`, so the main UI can also be placed behind or in front of the other modules.
+
+```tsx
+// Registered first, but always in front of the other UI modules
+ReactEcsRenderer.addUiRenderer(dummyEntity, uiComponent, { zIndex: 10 })
+
+// The main UI sits behind every module that doesn't set a lower value
+ReactEcsRenderer.setUiRenderer(mainUi, { zIndex: -10 })
+```
+
+This is a different setting from the `zIndex` of a `UiEntity`, which only orders [siblings inside a UI module](ui-positioning.md#z-index). The renderer option orders whole modules against each other, and the elements inside each module keep their own `zIndex`.
 
 
 ### Sharing a single setUiRenderer statement

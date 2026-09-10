@@ -29,7 +29,7 @@ When passing data to generate an `AvatarShape`, the following fields are require
 
 The following optional fields are also available:
 
-* `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
+* `name`: Name to display over the Avatar's head. Default: "NPC".
 * `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
 * `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing

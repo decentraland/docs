@@ -32,41 +32,21 @@ To move a player to another set of coordinates inside the current scene, use the
 
 ## Teleport to a WORLD
 
-To send a player to a scene that is not published on the open Genesis City map, but instead to an isolated [Decentraland WORLD](../publishing/publishing-options.md#decentraland-worlds), pass a `realm` to `teleportTo()`.
+To send a player to a scene that is not published in the open world Genesis City map, but instead to an isolated [Decentraland WORLD](../publishing/publishing-options.md#decentraland-worlds), use the function `changeRealm()`.
 
 ```ts
-import { teleportTo } from "~system/RestrictedActions"
+import { changeRealm } from "~system/RestrictedActions"
 
 (...)
 
-teleportTo({ realm: 'mannakia.dcl.eth' })
-```
-
-`realm` accepts either a world name such as `mannakia.dcl.eth`, or a realm URL.
-
-With no `worldCoordinates`, the player lands on one of the destination's spawn points. Add coordinates to pick a specific parcel inside that world:
-
-```ts
-// Land on parcel 12,34 of a specific world
-teleportTo({
-	realm: 'mannakia.dcl.eth',
-	worldCoordinates: { x: 12, y: 34 },
-})
+changeRealm({realm: 'mannakia.dcl.eth'})
 ```
 
 Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata](../projects/scene-metadata.md) for details on how to set this data.
 
-To send a player back to Genesis City from a world, set `realm` to _'https://realm-provider-ea.decentraland.org/main'_.
+The player will spawn in one of the spawn points of the scene in that world, regardless of their current coordinates on the map.
 
-{% hint style="warning" %}
-**📔 Note**: The `realm` field requires `@dcl/sdk` version 7.28.0 or newer, and is currently implemented in the Bevy-based explorer.
-{% endhint %}
-
-### changeRealm is deprecated
-
-Older scenes used `changeRealm()` to reach a world. It still works, but use `teleportTo({ realm })` instead.
-
-`changeRealm()` resolves as soon as the player accepts the prompt, not when the new realm is actually live. A `teleportTo()` call right after it would run against the **old** realm and land the player in the wrong place. `teleportTo({ realm })` does both steps in one call, so that gap doesn't exist.
+To send a player back to Genesis City from a world, use `changeRealm` setting the `realm` field to _'https://realm-provider-ea.decentraland.org/main'_.
 
 
 ## External links

@@ -589,6 +589,8 @@ Transform.create(entity, {
 
 This is useful for stages, presentations, or scripted scenes where you want to suppress player nametags without hiding the avatars themselves. For example, you might want a clean visual experience during a performance, where avatars are visible but the floating names don't distract viewers.
 
+`AMT_HIDE_NAMETAGS` also hides any custom plates added with the [`AvatarNametag`](avatar-nametags.md) component.
+
 {% hint style="info" %}
 **💡 Tip**: `AMT_HIDE_AVATARS` already hides nametags along with the avatar, so you don't need to add `AMT_HIDE_NAMETAGS` when using `AMT_HIDE_AVATARS`. Use `AMT_HIDE_NAMETAGS` only when you want to hide nametags while keeping avatars visible.
 {% endhint %}
@@ -714,128 +716,13 @@ To activate the effects of the modifier area, the player's head or torso must en
 
 Use the `AvatarNametag` component to display a plate with your own text above an avatar's nametag. This is useful for showing a rank, role, team, or title that your scene assigns to a player, like "VIP", "Team Red", or "Club Owner".
 
-<figure><img src="../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
-
-The component works on any entity that has an avatar:
-
-* The local player, via `engine.PlayerEntity`
-* Any other player in the scene, via that player's entity
-* An NPC, via any entity that has an `AvatarShape` component. See [NPC Avatars](npc-avatars.md).
-
-Writes to any other kind of entity are ignored.
-
-The simplest way to tag players is to attach the component when they enter the scene, using the `onEnterScene` event:
-
 ```ts
-import { onEnterScene } from '@dcl/sdk/players'
-import { AvatarNametag } from '@dcl/sdk/ecs'
+import { AvatarNametag, engine } from '@dcl/sdk/ecs'
 
-export function main() {
-	onEnterScene((player) => {
-		AvatarNametag.createOrReplace(player.entity, { label: 'VIP' })
-	})
-}
-```
-
-To tag the local player specifically, use `engine.PlayerEntity`:
-
-```ts
 AvatarNametag.createOrReplace(engine.PlayerEntity, { label: 'Club Owner' })
 ```
 
-You can also loop over all players currently in the scene with a query. Each player is a regular entity that carries a `PlayerIdentityData` component, so you can attach the plate to it like to any other entity:
-
-```ts
-import { engine, AvatarNametag, PlayerIdentityData } from '@dcl/sdk/ecs'
-
-for (const [entity, identity] of engine.getEntitiesWith(PlayerIdentityData)) {
-	AvatarNametag.createOrReplace(entity, { label: rankFor(identity.address) })
-}
-```
-
-To remove the plate, delete the component. The avatar's regular nametag is not affected:
-
-```ts
-AvatarNametag.deleteFrom(entity)
-```
-
-{% hint style="info" %}
-**💡 Tip**: You don't need to wait for the avatar to finish loading before writing the component. If the avatar is still loading, the plate is applied as soon as it's ready.
-{% endhint %}
-
-{% hint style="info" %}
-**💡 Tip**: A plate doesn't need any text. To show a color-coded plate alone, for example to mark team membership, set `label` to a string of spaces and pick a `backgroundColor`. Spaces are preserved, so more spaces make a wider plate. See [Nametag fields](player-avatar.md#nametag-fields).
-
-```ts
-AvatarNametag.createOrReplace(player.entity, {
-	label: '      ',
-	backgroundColor: Color3.Red(),
-})
-```
-{% endhint %}
-
-### Nametag fields
-
-The `AvatarNametag` component has the following fields:
-
-* `label`: The text to show on the plate. It's a single line, long labels are truncated with an ellipsis. An empty string draws the plate with no text. Spaces are preserved, so a label made only of spaces widens the empty plate, which is useful for color-only plates.
-* `labelColor`: (optional) The color of the text, as a `Color3`. If not set, it uses the same color as the avatar's regular nametag text.
-* `backgroundColor`: (optional) The color of the plate, as a `Color3`. If not set, it uses the same color as the avatar's regular nametag background.
-* `borderColor`: (optional) The color of the plate's border, as a `Color3`. If not set, it matches `backgroundColor`, so the plate has no visible border.
-
-```ts
-import { Color3 } from '@dcl/sdk/math'
-
-AvatarNametag.createOrReplace(engine.PlayerEntity, {
-	label: 'Club Owner',
-	labelColor: Color3.White(),
-	backgroundColor: Color3.create(0.47, 0.56, 0.96),
-	borderColor: Color3.create(0.78, 0.85, 1),
-})
-```
-
-Plates are hidden together with the regular nametag when the avatar is inside an `AvatarModifierArea` that uses `AMT_HIDE_NAMETAGS` or `AMT_HIDE_AVATARS`. See [Hide nametags](player-avatar.md#hide-nametags).
-
-### Plates in multiplayer scenes
-
-There are two things to keep in mind when tagging other players:
-
-**Plates are local to each player's client.** The plate is never sent to other players, each player's copy of the scene computes its own plates. If all players should see the same tags, the logic that assigns them must produce the same result on every client from data they all share, for example by deriving the tags from the sorted list of wallet addresses. Otherwise, your scene needs to sync the assignments itself, see [Serverless multiplayer](../networking/serverless-multiplayer.md).
-
-**Player entities are not stable across disconnects.** When a player leaves, their entity id is recycled and may be reused by the next player who joins. If you store a player's entity and write to it later, the plate may land on a different player. Always resolve the entity anew right before you write to it, and remove the component when the player leaves. Both patterns above handle this naturally: `onEnterScene` gives you a fresh entity each time, and a query never holds on to stale ones.
-
-The following example combines these ideas. It runs a system that re-scans all players once a second, sorts them by wallet address so every client assigns the same labels, and only writes the component when the label actually changes:
-
-```ts
-import { engine, Entity, AvatarNametag, PlayerIdentityData } from '@dcl/sdk/ecs'
-
-const ROLES = ['Blue', 'Student', 'Janitor', 'Guest']
-
-let timer = 0
-
-function assignRoles(dt: number) {
-	timer += dt
-	if (timer < 1) return
-	timer = 0
-
-	// Collect the players first, then write. Replacing a component while iterating a query is unsafe.
-	const players: { entity: Entity; address: string }[] = []
-	for (const [entity, identity] of engine.getEntitiesWith(PlayerIdentityData)) {
-		players.push({ entity, address: identity.address.toLowerCase() })
-	}
-	players.sort((a, b) => a.address.localeCompare(b.address))
-
-	players.forEach(({ entity }, index) => {
-		const label = ROLES[index % ROLES.length]
-		if (AvatarNametag.getOrNull(entity)?.label === label) return
-		AvatarNametag.createOrReplace(entity, { label })
-	})
-}
-
-engine.addSystem(assignRoles)
-```
-
-Because the system re-scans every second, players who join late are tagged on the next pass without any extra handling.
+The component works on the local player, on any other player in the scene, and on NPC avatars. See [Avatar Nametags](avatar-nametags.md) for the full list of fields, how to tag every player in the scene, and what to keep in mind in multiplayer scenes.
 
 ## Change an avatar's appearance
 

@@ -130,6 +130,7 @@
   * [Publishing Options](sdk7/publishing/publishing-options.md)
   * [Publishing](sdk7/publishing/publishing.md)
 * [Interactivity](sdk7/interactivity/)
+  * [Avatar Nametags](sdk7/interactivity/avatar-nametags.md)
   * [Button Events](sdk7/interactivity/button-events/)
     * [Click Events](sdk7/interactivity/button-events/click-events.md)
     * [Register Callback](sdk7/interactivity/button-events/register-callback.md)

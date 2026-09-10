@@ -46,6 +46,10 @@ Add your custom code in the `index.ts` file under `/src`, inside the `main()` fu
 
 If you have a preview window open running your scene, whenever you change the code in your files and save, the scene reloads automatically with your changes.
 
+## Using the built-in AI Assistant
+
+The Creator Hub can run an AI assistant that sees your open scene and edits it for you, without leaving the app. It is an experimental feature, turned off by default. See [AI Assistant](ai-assistant.md) to set it up.
+
 ## Using AI with Cursor
 
 If you are using Cursor, you can use the AI assistant to help you write code. To do this,

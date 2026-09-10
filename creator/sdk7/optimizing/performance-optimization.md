@@ -100,6 +100,18 @@ Here are some tips for improving on these metrics:
 **💡 Tip**: Read more on 3D model best practices in the \[3D Modeling Section]\(/creator/3d-modeling/3d-models
 {% endhint %}
 
+### Rescue a heavy model in Blender
+
+When the stats point at one specific model, it's usually quicker to fix the model than to work around it in code. The most useful edits, in Blender or any similar tool:
+
+- **Cut the triangle count** with the Decimate modifier. This is a rescue tool for models you already have. New models are better modeled low-poly from the start.
+- **Resize textures** to a power of two, 1024x1024 or smaller, and repack them into the _.glb_.
+- **Delete faces the player never sees**, such as the undersides and backs of props. Turn on [back-face culling](#backface-culling) rather than doubling up geometry.
+- **Merge materials** into one, using a single atlas texture instead of one texture per part.
+- **Strip out lights, cameras, and materials from `_collider` meshes.** The engine ignores them, so they are pure weight.
+
+Check the triangle count and material count before and after, then export back over the same file. If a preview is running, it reloads with your changes.
+
 ### Reusing the same model many times
 
 Scenes are often full of repeated content: lamp posts along a street, chairs in a room, trees in a park. The best way to build these is the simplest one — **give each copy its own entity, and point them all at the same _.glb_ file.**

@@ -32,7 +32,7 @@ The list shows one row per scene, with the following fields:
 - **New Users**: Users who visited your scene for the first time.
 - **D7 Retention**: The percentage of new users who returned to your scene at least once over the 7 days after their first visit.
 - **Revenue**: MANA earned in your scene.
-- **Avg. Playtime**: Average time each user spends in your scene on a single visit.
+- **Median Playtime**: Median time each user spends in your scene per day: half of the daily visits are longer, half shorter.
 
 You can sort the list or search by name, and pin the scenes you care about most to the top.
 
@@ -41,6 +41,10 @@ You can sort the list or search by name, and pin the scenes you care about most 
 Click on any scene in the list to open its detail page. Next to the metrics you'll find a card with general information about the scene: its like rate, whether access is public or private, the World it's published in, who last published it, and when it was last updated. You can also copy the scene's URL, jump into the scene, or create an event for it directly from this page.
 
 Use the **Date Range** selector to compute the metrics over the last 7, 30, or 60 days, and the **Export Analytics** button to download the data as a .csv.
+
+Week-by-week charts, such as the retention cohorts, weekly active users, and socially engaged visitors, always cover the last 16 complete weeks, whatever date range you pick.
+
+A metric that has no data yet shows a dash (`-`) instead of a number.
 
 The metrics are organized into four tabs.
 
@@ -54,7 +58,7 @@ A snapshot of your scene's growth, engagement, and user retention.
 - **Concurrent Users**: The highest number of users in your scene at the same time.
 - **Revenue**: MANA earned in your scene.
 - **Day 7 Retention**: The percentage of new users who returned to your scene at least once over the 7 days after their first visit.
-- **Avg. Playtime**: Average time each user spends in your scene on a single visit.
+- **Median Playtime**: Median time each user spends in your scene per day: half of the daily visits are longer, half shorter.
 - **AFK Time**: Average time users spend in your scene without interacting.
 - **Desktop / Mobile**: Users who visited your scene from a desktop or mobile client.
 

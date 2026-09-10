@@ -49,7 +49,9 @@ If you have a preview window open running your scene, whenever you change the co
 
 ## Using AI
 
-You can leverage AI assistants like Cursor or Claude Code to help you write scene code. For example to use Cursor, do this:
+The Creator Hub has a built-in [AI Assistant](ai-assistant.md) that sees your open scene and edits it for you, without leaving the app. It is an experimental feature, turned off by default.
+
+You can also leverage AI assistants like Cursor or Claude Code to help you write scene code. For example to use Cursor, do this:
 
 1. Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
 2. There you can prompt the AI assistant to help you write code. Your prompts can include links to docs pages, paths to specific files in your project, or even images. You can also select a specific model to use from the dropdown.

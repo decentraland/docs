@@ -40,6 +40,10 @@ All smart items can be configured to behave in custom ways. For example how far 
 
 Select an item in the Scene Editor to view all of its properties on the right.
 
+Most smart items keep their behavior in a [Script component](../code/script-component.md). Their settings appear in the **Script** panel, one field per parameter, each with a tooltip explaining what it does. You don't need to write any code to use them.
+
+<!-- [Screenshot: the Script panel of a selected door smart item, showing its parameters with an info tooltip open on one of them] -->
+
 Some typical fields you can find in many items are:
 
 * **Hover text**: What text is displayed on the UI as a hint when the player passes their cursor over the item. For example a door might say "Open"
@@ -51,9 +55,11 @@ Some typical fields you can find in many items are:
   * **Action4** is key **2**
   * **Action5** is key **3**
   * **Action6** is key **4**
-* **When clicked**: Select what action is carried out when the item is interacted with, using the button from the **Interaction** field. You can activate as many actions as you want, these can be actions on that same item, or on other items too.
+* **Hooks that react to the item**: parameters where you pick an action to run at a particular moment. Which ones an item has depends on what it does. A button has **onClick**, a lever has **onActivate** and **onDeactivate**, a moving platform has **onReachStart** and **onReachEnd**, a bell has **onRing**. Leave a hook empty and nothing happens at that moment.
 
 Each item has its own specific settings, that may vary from one item to another.
+
+A few items keep the older **Config** panel instead. Lights, for example, still set their color and intensity there.
 
 All items have an **Advanced Mode** that lets you configure almost anything about them. This includes things like what sounds are played, or in what direction a platform moves. You can also add custom actions that include all kinds of things, like teleporting the player, playing avatar animations, attaching an item to the player's hands, etc. You can also add conditional logic, to only activate something in certain scenarios. See [Smart Items - Advanced](smart-items-advanced.md).
 
@@ -75,7 +81,9 @@ You can add as many different actions from different items to be triggered toget
 
 Remove actions by clicking the three dots next to an action and selecting _Remove action_.
 
-You can also chain actions. For example, if the door that is opened by the lever includes an action in its own **When Opened** field, this action will also be triggered indirectly by the lever.
+The actions an item exposes keep their familiar names, such as **Open**, **Close**, **Sit Here**, **Turn On**, or **Teleport**, so wiring between items works the same way it always has.
+
+You can also chain actions. For example, if a lever's **onActivate** opens a door, and that door's own hook triggers something else, the lever sets off the whole chain indirectly.
 
 If you use the [Advanced mode](smart-items-advanced.md) you can also add conditional logic to these kinds of actions.
 
@@ -108,6 +116,24 @@ See [Colliders](../../sdk7/3d-essentials/colliders.md) for more info.
 An invisible cube that can be clicked by players to trigger actions on any other smart items. This item can be enabled or disabled by any other smart item, when disabled it won't be clickable. You can also set the text that players see when pointing their cursor at it.
 
 ![ ](../../images/editor/click-area.png)
+
+### Seats
+
+Chairs, benches, and other seats let a player sit down by clicking them.
+
+* A seat only frees up when the player who took it **walks away** from it, more than 1.5 meters.
+* On an item with several spots, such as a bench, clicking it seats you on the **nearest free spot**.
+* When every spot is taken, the hover text reads **Seat is taken** and clicking does nothing.
+
+### Teleports
+
+The **Teleport** item sends the player somewhere else when they interact with it.
+
+Set the **x** and **y** parameters to send them to a parcel in Genesis City. To send them to a [World](../../sdk7/publishing/publishing-options.md#decentraland-worlds) instead, fill in the **world** parameter with the world's name, such as `myname.dcl.eth`, and leave the coordinates empty.
+
+{% hint style="warning" %}
+**📔 Note**: There used to be a separate **World Teleport** item. It has been removed. Use the **Teleport** item with its **world** parameter instead.
+{% endhint %}
 
 ### Playing videos
 

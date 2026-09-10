@@ -25,8 +25,8 @@ This statement requires two parameters:
   * `entity`: The entity to handle
   * `opts`: An object with optional additional data:
     * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
-    * `maxDistance`: The maximum distance between the entity and the player's **camera**, in meters.
-	* `maxPlayerDistance`: The maximum distance between the entity and the player's **avatar**, in meters.
+    * `maxDistance`: The maximum distance between the entity and the player's **avatar**, in meters. 10 by default. See [Distance limits](#distance-limits).
+	* `maxCameraDistance`: The maximum distance between the entity and the **active camera**, in meters. Not set by default. See [Distance limits](#distance-limits).
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
     * `showFeedback`: If false, it hides both the hover hint and the edge highlight for this entity. _true_ by default.
     * `showHighlight`: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `showFeedback` is _true_.
@@ -132,22 +132,66 @@ if (hoverFeedback.pointerEvents[0]?.eventInfo) {
 
 ## Distance limits
 
-The `maxDistance` and `maxPlayerDistance` options set the maximum distance between the entity and the player's camera and avatar, respectively. If the player is too far away, the entity's hightlight effect will be red rather than green, and pointer events won't work.
+By default, a player can only interact with an entity when their **avatar** is within 10 meters of it. If the player is too far away, the entity's highlight effect turns red rather than green, and pointer events don't fire.
+
+Use `maxDistance` to change that range:
 
 ```ts
+// Only clickable when the player's avatar is within 5 meters
 pointerEventsSystem.onPointerDown(
-	{ entity: myEntity, opts: { maxDistance: 10, maxPlayerDistance: 5 } },
+	{ entity: myEntity, opts: { maxDistance: 5 } },
 	function () {
 		console.log('clicked entity')
 	}
 )
 ```
 
-If the scene is using a [Virtual Camera](../../3d-essentials/camera.md#virtual-camera), the `maxDistance` is measured from the virtual camera that is currently active.
+### Limit by camera distance
 
-- If both `maxDistance` and `maxPlayerDistance` are provided, the interaction is allowed if ANY of the checks passes (OR logic). For example, if `maxDistance` is 10 meters and `maxPlayerDistance` is 5 meters, the interaction is allowed if the player is within 10 meters of the camera OR within 5 meters of the avatar.
-- If only one of the two values is provided, the interaction is allowed if the player is within the provided distance, not considering the default value of the other distance.
-- If neither of the two values are provided, the default behaves as if the `maxDistance` (camera) is 10 meters.
+`maxCameraDistance` measures from the **currently active camera** instead of the avatar. This is useful when your scene uses a [Virtual Camera](../../3d-essentials/camera.md#using-virtual-cameras) placed away from the player, and you want the entity to be clickable based on what the camera can see.
+
+```ts
+// Only clickable when the active camera is within 15 meters
+pointerEventsSystem.onPointerDown(
+	{ entity: myEntity, opts: { maxCameraDistance: 15 } },
+	function () {
+		console.log('clicked entity')
+	}
+)
+```
+
+### How the two limits combine
+
+The two options are independent checks. Which ones run depends on which you set:
+
+| What you set | What the player needs |
+| --- | --- |
+| Neither | Avatar within 10 meters (the default) |
+| `maxDistance` only | Avatar within `maxDistance` |
+| `maxCameraDistance` only | Camera within `maxCameraDistance` |
+| Both | **Either** check passing is enough |
+
+Setting both is a way to say "close enough to walk up to it, **or** close enough to see it clearly":
+
+```ts
+// Clickable when the avatar is within 3 meters OR the camera is within 20 meters
+pointerEventsSystem.onPointerDown(
+	{ entity: myEntity, opts: { maxDistance: 3, maxCameraDistance: 20 } },
+	function () {
+		console.log('clicked entity')
+	}
+)
+```
+
+{% hint style="warning" %}
+**📔 Note**: `maxCameraDistance` requires `@dcl/sdk` version 7.28.0 or newer. Support for it is already available in the Bevy-based explorer. If your scene must behave identically on every client today, rely on `maxDistance` and treat `maxCameraDistance` as an enhancement.
+{% endhint %}
+
+### maxPlayerDistance is deprecated
+
+`maxPlayerDistance` is a deprecated alias of `maxDistance`: both measure distance from the avatar. Use `maxDistance` in new scenes.
+
+If a scene sets both, the **larger** of the two is used as the avatar distance limit.
 
 ## Pointer up
 
@@ -173,7 +217,7 @@ This statement requires two parameters:
     * `button`: Which button to listen for. See [Pointer buttons](click-events.md#pointer-buttons) for supported options. If no button is specified, then all buttons are listened to, including movement buttons like forward and jump.
     * `hoverText`: What string to display in the hover feedback hint. "Interact" by default.
     * `showFeedback`: If false, it hides the hover hint for this entity. _true_ by default.
-    * `maxDistance`: How far away can the player be from the entity to be able to interact with this entity, in meters. If the player is too far, there will be no hover feedback and pointer events won't work.
+    * `maxDistance`: How far the player's avatar can be from the entity and still interact with it, in meters. 10 by default. If the player is too far, there will be no hover feedback and pointer events won't work. See [Distance limits](#distance-limits).
 * `cb`: A callback function to run each time a button up event occurs while pointing at the entity.
 
 A same entity can have two different callbacks registered, one for `pointerEventsSystem.onPointerDown` and one for `pointerEventsSystem.onPointerUp`. The entity can only register one callback of each, [Handle multiple buttons](register-callback.md#handle-multiple-buttons) to detect different buttons on one same callback.
@@ -223,9 +267,13 @@ pointerEventsSystem.removeOnPointerHoverLeave(myEntity)
 
 Once removed, the hover feedback on the entity should no longer be displayed, and the entity should no longer be interactive.
 
+Each remove function takes away only the entry that its matching register function added. Registering and removing the same callback repeatedly does not leave stale entries behind on the entity.
+
 ## Proximity interactions
 
-For interactions that trigger based on player proximity rather than cursor aim, see [**Proximity Events**](proximity-events.md). The `pointerEventsSystem` includes equivalent helpers — `onProximityDown`, `onProximityUp`, `onProximityEnter`, and `onProximityLeave` — that follow the same pattern as the functions described on this page.
+For interactions that trigger based on player proximity rather than cursor aim, see [**Proximity Events**](proximity-events.md). The `pointerEventsSystem` includes equivalent helpers (`onProximityDown`, `onProximityUp`, `onProximityEnter`, and `onProximityLeave`) that follow the same pattern as the functions described on this page.
+
+An entity can carry both a cursor handler and a proximity handler for the same event type. Both callbacks run, each when its own condition is met.
 
 ### Data from input action
 

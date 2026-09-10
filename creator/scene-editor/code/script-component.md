@@ -37,7 +37,8 @@ export class BuildingScript {
   /**
    * Constructor / Inputs
    * Parameters declared here appear in the Script component UI in Creator Hub.
-   * Supported types: Entity, String, Number, Boolean, ActionCallback.
+   * Supported types: Entity, String, Number, Boolean, ActionCallback, and Slider
+   * for a number edited with a slider, e.g. public speed: Slider<0, 10, 0.5> = 1
    *
    * Note: After editing this file, click the refresh icon in the Script component UI
    * to see updated inputs.
@@ -112,6 +113,24 @@ The allowed types for the constructor parameters are:
 * `number`
 * `boolean`
 * `ActionCallback`
+* `Slider<Min, Max, Step>`
+
+### Number parameters with a slider
+
+Type a number parameter as `Slider<Min, Max, Step>` to edit it with a slider instead of a plain number box. The Creator Hub shows both a slider and a number box.
+
+```ts
+constructor(
+  public src: string,
+  public entity: Entity,
+  // A slider from 0 to 10, moving in steps of 0.5
+  public speed: Slider<0, 10, 0.5> = 1,
+) {}
+```
+
+* `Step` is optional and defaults to `1`.
+* Negative bounds are allowed, for example `Slider<-90, 90>`.
+* At runtime the value is a plain `number`, so `this.speed` behaves like any other number parameter.
 
 {% hint style="info" %}
 **📔 Note**: Both `public` and `private` constructor parameters are exposed to Creator Hub. The `private` keyword only restricts access within the `BuildingScript` class. For more details, see the official TypeScript documentation on  
@@ -340,6 +359,17 @@ The action from the other Entity is now accessible on the Script class. It could
     );
   }
 ```
+
+### Optional action callbacks
+
+An `ActionCallback` parameter that the creator leaves unwired is `undefined`, and its type is `ActionCallback | undefined`. Check before calling it, so a script works whether or not the action is connected:
+
+```ts
+if (this.anotherEntityAction) {
+  this.anotherEntityAction();
+}
+```
+
 {% hint style="info" %}
 **📔 Note**: Combining exposing and triggering `Actions` is a very powerful tool. You can define a Script Component on one Entity, expose an action using a `public` method, and then triggering it from another Entity's Script Component using an `ActionCallback` parameter.
 {% endhint %}

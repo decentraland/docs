@@ -253,6 +253,8 @@ Once your hardware wallet can be used via Metamask, you can deploy following the
 
 When a new scene is deployed, it overwrites older content that existed on the parcels it occupies.
 
+Publishing normally starts right away. If you're about to replace content that already exists in a World, the Creator Hub asks you to confirm first, and offers a **Don't show again** option.
+
 If a scene that takes up multiple parcels is only partially overwritten by another, all of its parcels are either overwritten or erased.
 
 Suppose you deployed your scene _A_ over two parcels _\[100, 100]_ and _\[100, 101]_. Then you sell parcel _\[100, 101]_ to a user who owns adjacent land and that deploys a large scene (_B_) to several parcels, including _\[100, 101]_.

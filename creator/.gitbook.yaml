@@ -16,7 +16,7 @@ redirects:
   development-guide/3d-model-animations: sdk7/3d-essentials/3d-model-animations.md
   development-guide/async-functions: sdk7/programming-patterns/async-functions.md
   development-guide/audio-streaming: sdk7/media/audio-streaming.md
-  development-guide/avatar-modifiers: sdk7/interactivity/player-avatar.md
+  development-guide/avatar-modifiers: sdk7/interactivity/avatars/modifier-areas.md
   development-guide/cli: sdk7/getting-started/using-the-cli.md
   development-guide/click-events: sdk7/interactivity/button-events/click-events.md
   development-guide/coding-scenes: sdk7/getting-started/coding-scenes.md
@@ -40,7 +40,7 @@ redirects:
   development-guide/manage-dependencies: sdk7/libraries/manage-dependencies.md
   development-guide/materials: sdk7/3d-essentials/materials.md
   development-guide/move-entities: sdk7/3d-essentials/move-entities.md
-  development-guide/move-player: sdk7/interactivity/player-avatar.md
+  development-guide/move-player: sdk7/interactivity/avatars/move-player.md
   development-guide/network-connections: sdk7/networking/network-connections.md
   development-guide/onscreen-ui: sdk7/2d-ui/onscreen-ui.md
   development-guide/performance-optimization: sdk7/optimizing/performance-optimization.md
@@ -94,10 +94,10 @@ redirects:
   development-guide/sdk7/move-entities: sdk7/3d-essentials/move-entities.md
   development-guide/sdk7/mutable-data: sdk7/programming-patterns/mutable-data.md
   development-guide/sdk7/network-connections: sdk7/networking/network-connections.md
-  development-guide/sdk7/npc-avatars: sdk7/interactivity/npc-avatars.md
+  development-guide/sdk7/npc-avatars: sdk7/interactivity/avatars/npc-avatars.md
   development-guide/sdk7/onscreen-ui: sdk7/2d-ui/onscreen-ui.md
   development-guide/sdk7/performance-optimization: sdk7/optimizing/performance-optimization.md
-  development-guide/sdk7/player-avatar: sdk7/interactivity/player-avatar.md
+  development-guide/sdk7/player-avatar: sdk7/interactivity/avatars/README.md
   development-guide/sdk7/portable-experiences: sdk7/projects/portable-experiences.md
   development-guide/sdk7/preview-scene: sdk7/getting-started/preview-scene.md
   development-guide/sdk7/publishing: sdk7/publishing/publishing.md
@@ -142,7 +142,7 @@ redirects:
   development-guide/special-types: sdk7/3d-essentials/special-types.md
   development-guide/systems: sdk7/architecture/systems.md
   development-guide/text: sdk7/3d-essentials/text.md
-  development-guide/trigger-emotes: sdk7/interactivity/player-avatar.md
+  development-guide/trigger-emotes: sdk7/interactivity/avatars/avatar-animations.md
   development-guide/troubleshooting: sdk7/debugging/troubleshooting.md
   development-guide/user-data: sdk7/interactivity/user-data.md
   development-guide/utils: sdk7/libraries/libraries.md
@@ -197,6 +197,9 @@ redirects:
   scene-editor/publish/publish-scene: scene-editor/publish/publish-scene.md
   scenes/sample-scenes: tutorials/examples.md
   sdk7/examples/7: tutorials/examples.md
+  sdk7/interactivity/avatar-nametags: sdk7/interactivity/avatars/avatar-nametags.md
+  sdk7/interactivity/npc-avatars: sdk7/interactivity/avatars/npc-avatars.md
+  sdk7/interactivity/player-avatar: sdk7/interactivity/avatars/README.md
   sdk7/libraries/7: sdk7/libraries/libraries.md
   sdk7/releases/7: sdk7/releases/v7-alpha.md
   smart-items: scene-editor/interactivity/smart-items.md

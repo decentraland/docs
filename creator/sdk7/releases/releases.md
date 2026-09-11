@@ -4,6 +4,16 @@ description: What changed in the SDK and the Creator Hub over the past year, fil
 
 # Release Notes
 
+<!--
+Maintainer notes (not rendered). This page is extended by the weekly sync-skills job and by hand.
+
+- Two sections, "## SDK" and "## Creator Hub", newest version first. One "### <version> (<Mon D, YYYY>)" heading per release. Combine releases published the same day with "### 7.20.2 and 7.20.3 (Feb 23, 2026)" when one alone would be near-empty.
+- Sources: GitHub releases of decentraland/js-sdk-toolchain and decentraland/creator-hub. Creator Hub app releases (0.x tags) fold in the @dcl/inspector and @dcl/asset-packs prerelease notes that shipped since the previous app release. Items are listed under the app version that first shipped them.
+- Keep only changes creators can notice: new components or APIs, editor features, smart items, CLI and publishing behavior, user-visible fixes. Drop CI, tests, tracking/analytics events, dependency and version bumps, refactors, docs-only PRs, and feature-then-revert pairs. Skip a release entirely if nothing survives the filter.
+- Format: "* **Short title**: one plain sentence. [#N](https://github.com/decentraland/<repo>/pull/N)". Features get their own bullet, with a relative link to the docs page when one exists. Fixes are condensed into a single "* **Fixes**: a [#N](...); b [#N](...)." bullet per release.
+- Every item links to its PR. If a release note has no PR, link the release page instead. No em-dashes.
+-->
+
 This page lists the changes to the [SDK](#sdk) and the [Creator Hub](#creator-hub) from the past year that affect how you build scenes. Internal work like build tooling, tests, tracking and refactors is left out. Every item links to its pull request on GitHub, where you can find more details.
 
 For the complete, unfiltered notes see the [SDK releases](https://github.com/decentraland/js-sdk-toolchain/releases) and the [Creator Hub releases](https://github.com/decentraland/creator-hub/releases) on GitHub.

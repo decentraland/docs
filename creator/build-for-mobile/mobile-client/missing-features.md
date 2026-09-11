@@ -7,17 +7,24 @@ description: Features available on the Decentraland desktop client that are not 
 {% hint style="info" %}
 This page tracks the feature gap between the Decentraland desktop (Unity) client and the mobile app. It is sourced from the [godot-explorer feature parity tracker](https://github.com/decentraland/godot-explorer/issues/2402) and updated regularly. ETAs are estimates and subject to change.
 
-Last reviewed: **August 2026**.
+Last reviewed: **September 2026** (mobile app v1.13.1).
 {% endhint %}
+
+## Recently Shipped
+
+These are no longer gaps — they are available in the mobile app as of **v1.13.0**:
+
+- [Scene Dynamic Lights (`LightSource`)](https://github.com/decentraland/godot-explorer/issues/616)
+- [Avatar Masks (upper-body-only emotes)](https://github.com/decentraland/godot-explorer/issues/2621)
 
 ## SDK Features Missing on Mobile
 
-- [Scene Dynamic Lights (`LightSource`)](https://github.com/decentraland/godot-explorer/issues/616) — implemented in [PR #2633](https://github.com/decentraland/godot-explorer/pull/2633), ships in **v1.13.0 (September 2026)**
-- [Avatar Masks (upper-body-only emotes)](https://github.com/decentraland/godot-explorer/issues/2621) — implemented in [PR #2690](https://github.com/decentraland/godot-explorer/pull/2690), ships in **v1.13.0 (September 2026)**
+- **Draco mesh compression (`KHR_draco_mesh_compression`)** — not supported. The mobile client cannot load Draco-compressed `.gltf`/`.glb` models at runtime; export your models without Draco compression. — **No ETA**
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA
-- [SDK audio parity audit (volume curves and spatial attenuation vs Unity)](https://github.com/decentraland/godot-explorer/issues/861) — No ETA
-- [AudioEvent component (`PBAudioEvent`)](https://github.com/decentraland/godot-explorer/issues/2673) — No ETA
-- [Audio Analysis component](https://github.com/decentraland/godot-explorer/issues/1184) — No ETA
+- [AvatarNametag: scene-authored label above the player nametag](https://github.com/decentraland/godot-explorer/issues/2811) — End of September 2026
+- [SDK audio parity audit (volume curves and spatial attenuation vs Unity)](https://github.com/decentraland/godot-explorer/issues/861) — fixed, ships in a future release
+- [AudioEvent component (`PBAudioEvent`)](https://github.com/decentraland/godot-explorer/issues/2673) — fixed, ships in a future release
+- [Audio Analysis component](https://github.com/decentraland/godot-explorer/issues/1184) — fixed, ships in a future release
 - Smart Items — not officially supported on mobile
 
 ## Desktop Client Features Not in Mobile

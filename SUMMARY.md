@@ -570,7 +570,7 @@
       * [Publishing](creator/sdk7/publishing/publishing.md)
     * [Releases](creator/sdk7/releases/README.md)
       * [Alpha Testing Guidelines](creator/sdk7/releases/alpha-testing-guidelines.md)
-      * [Releases](creator/sdk7/releases/releases.md)
+      * [Release Notes](creator/sdk7/releases/releases.md)
       * [V7 Alpha](creator/sdk7/releases/v7-alpha.md)
       * [Version Support Agreement](creator/sdk7/releases/version-support-agreement.md)
   * [wearables-and-emotes](creator/wearables-and-emotes/README.md)

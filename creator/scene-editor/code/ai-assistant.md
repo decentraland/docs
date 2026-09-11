@@ -14,13 +14,17 @@ The assistant is an experimental feature and is turned off by default.
 
 ## Turn it on
 
-1. Open the settings (the wheel icon in the top right).
+1. Click the Creator Hub logo in the top-left corner and select **Settings**.
 2. Go to the **EXPERIMENTAL** tab.
 3. Switch on **Enable AI Assistant**.
 
-<!-- [Screenshot: the EXPERIMENTAL tab of Creator Hub settings, with the "Enable AI Assistant" switch turned on and the "Connect" section expanded below it] -->
+![The EXPERIMENTAL tab of App Preferences, with the Enable AI Assistant switch turned on, the Bill this to an API key instead checkbox, and the Connect section listing Claude and Codex as Connected with Sign out links.](../../images/editor/settings-ai-assistant.png)
 
-Once enabled, an **AI Assistant** button appears in the editor's top bar. Click it to open the chat panel beside your scene.
+Once enabled, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
+
+![The editor top bar, with the scene name on the left and the sparkles AI Assistant icon, Code, Preview and Publish buttons on the right.](../../images/editor/editor-top-bar.png)
+
+![The AI Assistant panel when first opened: a New chat dropdown and a CLI dropdown reading Claude at the top, a welcome message, an About AI usage card, a Selection chip naming the selected entity, and the Ask Assistant input at the bottom.](../../images/editor/ai-assistant-panel.png)
 
 ## Connect a coding CLI
 
@@ -58,7 +62,11 @@ The assistant works on the scene you have open. It can:
 
 Changes are saved as they happen and go into the normal undo history. To take back a whole exchange at once, use **Undo AI changes** on the assistant's reply.
 
-<!-- [Screenshot: the AI Assistant chat panel docked at the right of the editor, showing a reply with the "Undo AI changes" button beneath it] -->
+![The AI Assistant panel docked at the right of the editor after a request to rename an entity and add a Mesh Renderer: the reply lists the tools it ran, describes the result, and shows an Undo AI changes button beneath it.](../../images/editor/ai-assistant-reply.png)
+
+While the assistant works, its changes show up live in the entity tree and the canvas.
+
+![The full Scene Editor with the AI Assistant panel docked on the right, the renamed Stage entity visible in the entity tree, and the assistant's reply ending with Undo AI changes.](../../images/editor/ai-assistant-docked.png)
 
 ## Working with the chat
 
@@ -81,7 +89,7 @@ They are linked at `.claude/skills` and `.agents/skills` inside your project fol
 
 If you already work in Claude Code, Cursor, Codex, or another tool that speaks MCP, you can point it at the open scene rather than using the built-in panel. MCP (Model Context Protocol) is a standard way for an AI tool to call out to another program.
 
-1. In the settings, under the **EXPERIMENTAL** tab, expand **Expose AI assistant MCP server**.
+1. Open the main menu from the Creator Hub logo, select **Settings**, and under the **EXPERIMENTAL** tab expand **Expose AI assistant MCP server**.
 2. Click **Copy configuration**.
 3. Paste it into your tool's MCP configuration.
 

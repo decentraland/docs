@@ -23,10 +23,11 @@ You must install a code editor on your machine to edit the code of your scene. T
 
 Once installed, you may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
-1.  Open the wheel icon in the top-right of the screen
+1. Click the Creator Hub logo in the top-left corner of the screen and select **Settings**.
+2. Open the **EDITOR** tab.
+3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
-    ![](../../images/editor/settings-icon.png)
-2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code.](../../images/editor/settings-editor.png)
 
 ## Open a scene's code
 

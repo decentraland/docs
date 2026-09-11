@@ -17,15 +17,19 @@ See [Creator Hub Installation](editor-installation.md) to get started.
 
 ## Create a scene
 
-To create a new scene, open the Creator Hub and click the **Create** button. From the dropdown, select **New Scene**.
+To create a new scene, open the Creator Hub and click the arrow next to the **Create** button. From the dropdown, select **New Scene**.
 
-![](../../images/editor/new-scene.png)
+![The Create button dropdown, open, with the options New Scene and Import Scene.](../../images/editor/create-dropdown.png)
 
-You can then select what template to use as a starting point. You can pick an **Empty Scene** or a project with some initial content.
-
-Then you'll be asked to name your scene, and choose a location to save it.
+You'll then be asked to name your scene, and choose a location to save it. To start from a project with some initial content instead of an empty scene, click **Templates** on the **Scenes** tab and pick one.
 
 See [Manage scenes](manage-scenes.md) for more details.
+
+Once the scene opens, you'll see the entity tree on the left, the canvas in the middle, the properties of the selected item on the right, and the asset packs at the bottom.
+
+![The Scene Editor with a small scene open: the entity tree on the left lists Player, Camera, Scene and a few items, the canvas shows a grass ground with a barbecue and a bird fountain, and the properties panel on the right shows the Transform and GLTF components of the selected Bird Fountain.](../../images/editor/editor-overview.png)
+
+See [Scene Editor Essentials](scene-editor-essentials.md) for a tour of each section.
 
 ## Moving around
 
@@ -79,13 +83,19 @@ The Scene Editor uses **Babylon** as its default renderer for the editing canvas
 
 To change the renderer:
 
-1. Open the Creator Hub **Settings** (gear icon).
+1. Click the Creator Hub logo in the top-left corner and select **Settings**.
 2. Go to the **EXPERIMENTAL** tab.
 3. Switch on **Enable Bevy Scene Renderer**.
 
+![The App Preferences dialog on the EXPERIMENTAL tab, with the switches Enable Bevy Scene Renderer, Enable UI Editor and Enable AI Assistant.](../../images/editor/settings-experimental.png)
+
 The Bevy renderer is an alternative engine for the editing canvas. It affects how your scene looks while editing, not how it looks to players after publishing.
 
-When using the Bevy renderer, you can use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
+When using the Bevy renderer, the toolbar gains a camera mode dropdown, play and stop buttons to run the scene in the canvas, and an **Interact** toggle (the gamepad icon).
+
+![The editor toolbar under the Bevy renderer: undo and redo, the gizmo tools, a camera dropdown reading Free, play and stop buttons, the Interact gamepad toggle, the Preferences gear and the Inspector button.](../../images/editor/editor-toolbar-bevy.png)
+
+Use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
 
 The Bevy editor also loads [custom items](../interactivity/custom-items.md), shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated. The camera toggle in the toolbar reads **Free** or **Player**, depending on the mode you're in.
 

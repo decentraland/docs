@@ -10,7 +10,7 @@ Smart items are just regular items with an **Action** and/or **Trigger** compone
 
 To add components to an item click the **Plus Icon** next to the item name, and select what component to add from the dropdown list.
 
-![](../../images/editor/add-component.png)
+![The add component menu open on an entity, listing components grouped under 3D Content and Interaction, including Actions and Triggers.](../../images/editor/add-component.png)
 
 This allows for a huge amount of creative possibilities. Turn a candle into a lever that opens up a secret passage behind a book shelf, play mysterious sounds from inside a well, make diamonds into collectable items that shrink to 0 when clicked. There are tons of imaginative ways to combine these mechanics!
 

@@ -180,7 +180,7 @@
   * [Mutable Data](sdk7/programming-patterns/mutable-data.md)
 * [API Reference](sdk7/releases/)
   * [Testing and Feedback](sdk7/releases/alpha-testing-guidelines.md)
-  * [Releases](sdk7/releases/releases.md)
+  * [Release Notes](sdk7/releases/releases.md)
   * [API Reference](sdk7/releases/v7-alpha.md)
   * [Version Support Agreement](sdk7/releases/version-support-agreement.md)
 * [Other](sdk7/other/)

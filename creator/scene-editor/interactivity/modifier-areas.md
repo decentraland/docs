@@ -93,5 +93,5 @@ You can place both types of modifier area on the same entity, or overlap separat
 
 The Scene Editor components correspond directly to the SDK7 `AvatarModifierArea` and `CameraModeArea` components. For full details on the available modifiers, runtime behavior, and advanced options like dynamically changing the exclude list, see:
 
-- [Avatar modifier areas](../../sdk7/interactivity/player-avatar.md#avatar-modifier-areas) (SDK7)
+- [Avatar modifier areas](../../sdk7/interactivity/avatars/modifier-areas.md) (SDK7)
 - [Camera mode areas](../../sdk7/3d-essentials/camera.md#1st-and-3rd-person-camera-modes) (SDK7)

@@ -346,8 +346,8 @@ These features are blocked from use in the scene unless the permission is reques
 
 The following permissions can be requested:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
+* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/avatars/move-player.md)
+* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/avatars/avatar-animations.md)
 * `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
 * `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
 * `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`

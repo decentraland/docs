@@ -6,7 +6,7 @@ description: Show a custom label above an avatar's nametag, to display a rank, a
 
 The `AvatarNametag` component adds a small plate above an avatar's regular nametag, showing text that your scene chooses. Use it to show a rank, a role, a team, or anything else your scene tracks about a player, like "VIP", "Team Red", or "Club Owner".
 
-<figure><img src="../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
+<figure><img src="../../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
 
 This page covers how to add a plate, style it, and keep it in step as players come and go.
 
@@ -38,7 +38,7 @@ The plate uses the client's own nametag colors by default, so it matches the res
 `AvatarNametag` only does something on an entity that carries an avatar:
 
 * `engine.PlayerEntity`, the player running the scene.
-* Another player's entity, found through their [`PlayerIdentityData`](user-data.md) component.
+* Another player's entity, found through their [`PlayerIdentityData`](../user-data.md) component.
 * An [NPC avatar](npc-avatars.md), meaning any entity with an `AvatarShape` component.
 
 On any other entity the component is ignored.
@@ -49,7 +49,7 @@ On any other entity the component is ignored.
 
 ## Change the colors
 
-Three optional fields take a [Color3](../3d-essentials/color-types.md):
+Three optional fields take a [Color3](../../3d-essentials/color-types.md):
 
 * `labelColor`: the text color. Defaults to the client's native nametag text color.
 * `backgroundColor`: the plate's fill. Defaults to the client's native nametag background color.
@@ -118,7 +118,7 @@ export function main() {
 }
 ```
 
-See [Get player data](user-data.md) for more on tracking players as they enter and leave.
+See [Get player data](../user-data.md) for more on tracking players as they enter and leave.
 
 ## Tag every player in the scene
 
@@ -177,17 +177,18 @@ engine.addSystem((dt: number) => {
 
 ## Plates in multiplayer scenes
 
-Plates are local to each player's client. The plate is never sent to other players, each player's copy of the scene computes its own plates. If all players should see the same tags, the logic that assigns them must produce the same result on every client from data they all share. Sorting players by wallet address, as in the example above, is one way to do that. Otherwise, your scene needs to sync the assignments itself, see [Serverless multiplayer](../networking/serverless-multiplayer.md).
+Plates are local to each player's client. The plate is never sent to other players, each player's copy of the scene computes its own plates. If all players should see the same tags, the logic that assigns them must produce the same result on every client from data they all share. Sorting players by wallet address, as in the example above, is one way to do that. Otherwise, your scene needs to sync the assignments itself, see [Serverless multiplayer](../../networking/serverless-multiplayer.md).
 
 ## Interaction with hidden nametags
 
-An [`AvatarModifierArea`](player-avatar.md#hide-nametags) with the `AMT_HIDE_NAMETAGS` modifier hides these plates along with the regular nametags. The same applies to `AMT_HIDE_AVATARS`, which hides the whole avatar.
+An [`AvatarModifierArea`](modifier-areas.md#hide-nametags) with the `AMT_HIDE_NAMETAGS` modifier hides these plates along with the regular nametags. The same applies to `AMT_HIDE_AVATARS`, which hides the whole avatar.
 
 If you want an avatar to show **only** your plate and no name underneath it, set the `AvatarShape` component's `name` to an empty string. See [NPC Avatars](npc-avatars.md#add-a-label-above-the-name).
 
 ## Related pages
 
-* [Player Avatar](player-avatar.md): move, hide, and modify the player's avatar.
+* [Avatar Modifier Areas](modifier-areas.md): hide avatars and nametags inside a region of the scene.
+* [Move the Player](move-player.md) and [Avatar Animations](avatar-animations.md): control the player's avatar.
 * [NPC Avatars](npc-avatars.md): show avatars that aren't players.
-* [Get player data](user-data.md): read data about the player and everyone else in the scene.
-* [Color types](../3d-essentials/color-types.md): how to build `Color3` values.
+* [Get player data](../user-data.md): read data about the player and everyone else in the scene.
+* [Color types](../../3d-essentials/color-types.md): how to build `Color3` values.

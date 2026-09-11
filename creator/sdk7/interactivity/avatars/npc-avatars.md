@@ -37,18 +37,18 @@ The following optional fields are also available:
 * `skinColor`: _Color3_ for the skin color (any color is valid)
 * `hairColor`: _Color3_ for the hair color (any color is valid)
 * `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
-* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
+* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
 
 {% hint style="warning" %}
 **📔 Note**: The `AvatarShape`component must be imported via
 
 > `import { AvatarShape } from "@dcl/sdk/ecs"`
 
-See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
+**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
 {% endhint %}
 
 ## Animations
@@ -71,7 +71,7 @@ Transform.create(myAvatar, {
 })
 ```
 
-The `expressionTriggerId` field supports all [default animations](player-avatar.md#default-animations), as well as custom animations [from a scene file](player-avatar.md#custom-animations), and even URNs from emotes that are published to the marketplace.
+The `expressionTriggerId` field supports all [default animations](avatar-animations.md#default-animations), as well as custom animations [from a scene file](avatar-animations.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
 ### Looping Animations
 
@@ -224,4 +224,16 @@ AvatarAttach.create(attachedEntity, {
 })
 ```
 
-Learn more about the `AvatarAttach` component [here](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+Learn more about the `AvatarAttach` component [here](../../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+
+## Replace the player's avatar
+
+You can't change what wearables the player's avatar is wearing, but you can instead swap the player's avatar for an NPC avatar that you can fully customize.
+
+To do this, hide the player's own avatar with an [Avatar Modifier Area](modifier-areas.md#hide-avatars) that uses the `AMT_HIDE_AVATARS` modifier, and display an `AvatarShape` entity at the player's position instead.
+
+{% hint style="warning" %}
+**📔 Note**: To allow the player to have full control over that avatar, you should listen to button events to detect when they press a button, and then trigger the corresponding animation on the NPC avatar. See [Button Events](../button-events/system-based-events.md) for more details.
+
+The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
+{% endhint %}

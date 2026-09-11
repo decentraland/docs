@@ -97,6 +97,8 @@ This is part of the application process. The V0 application form will ask you ab
 
 Be sure to **return to at least two of the same games on another day.** Did the reason to come back actually work? What felt different on your second visit?
 
+Spend at least **90 minutes exploring Decentraland**, including at least **10 minutes in each of three Featured games**. You can spread this time across multiple sessions and spend the rest exploring other games, experiences or events to understand what creators are building in Decentraland today.
+
 ---
 
 ## 2. Build your first Decentraland scene

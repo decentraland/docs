@@ -112,7 +112,9 @@ On the left margin, you'll see a tree structure with all of the entities in the 
 **💡 Tip**: Everything in a scene is an Entity, they are the basic building blocks of scenes. Items are Entities that have at least a position and a visible shape.
 {% endhint %}
 
-Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, or add a component to the entity.
+Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, turn it into a custom item, or add a component to the entity.
+
+![The entity tree with the right-click menu open on the Bird Fountain entity, listing Rename, Add child, Duplicate, Delete, Create Custom Item and Add component.](../../images/editor/entity-tree-context-menu.png)
 
 ### Searching the entity tree
 
@@ -120,7 +122,7 @@ A search box at the top of the entity tree lets you find entities by name. Type 
 
 Press **Escape** or click the clear icon to remove the filter and return to the full tree. If an entity is selected, clearing the search scrolls back to the selected entity so you don't lose your place.
 
-[Screenshot: entity tree with a search term entered, showing filtered results and expanded parent hierarchy]
+![The entity tree filtered by the search term fount: only the Camera, Scene and Bird Fountain entities remain visible, with the Scene parent expanded to show the match.](../../images/editor/entity-tree-search.png)
 
 ### Entity hierarchy
 

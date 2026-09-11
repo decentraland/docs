@@ -19,7 +19,7 @@ The items in your scene are all **Entities**. Everything in a scene is an Entity
 
 To add Components to any Entity, click the **+** sign at the top of the properties tab and select the Component from the list. See [Make any item smart](../interactivity/make-any-item-smart.md)
 
-![](../../images/editor/add-component.png)
+![The add component menu open on an entity, listing components grouped under 3D Content and Interaction.](../../images/editor/add-component.png)
 
 You can delete any Component from an Entity by clicking the three dots icon on its right, and selecting **Delete Component**.
 

@@ -10,13 +10,15 @@ The UI Editor is an experimental feature and is turned off by default.
 
 ## Turn it on
 
-1. Open the settings (the wheel icon in the top right).
+1. Click the Creator Hub logo in the top-left corner and select **Settings**.
 2. Go to the **EXPERIMENTAL** tab.
 3. Switch on **Enable UI Editor**.
 
-A **2D** / **3D** tab switch then appears in the editor. **3D** is the scene canvas you already know. **2D** is the UI Editor.
+![The App Preferences dialog on the EXPERIMENTAL tab, with the Enable UI Editor switch turned on between the Bevy renderer and AI Assistant switches.](../../images/editor/settings-experimental.png)
 
-<!-- [Screenshot: the 2D / 3D tab switch at the top of the Creator Hub editor, with 2D selected] -->
+A **2D** / **3D** tab switch then appears at the top of the editor's left panel. **3D** is the scene canvas you already know. **2D** is the UI Editor.
+
+![The 2D and 3D tab switch, with 3D selected.](../../images/editor/ui-editor-mode-switch.png)
 
 {% hint style="warning" %}
 **📔 Note**: The UI Editor needs `@dcl/sdk` version 7.26.0 or newer in your scene. On an older scene it shows a **UI Editor Unavailable** notice with an **Update SDK** button that upgrades the scene for you.
@@ -29,22 +31,26 @@ If you are using the Bevy scene renderer, switching to **2D** pauses the running
 ## Make your first UI
 
 1. Switch to the **2D** tab.
-2. In the left panel, click **New GUI**. A GUI is one UI component, stored in its own file.
-3. Drag a widget from the palette along the bottom onto the canvas.
-4. Select it and set its properties in the right panel.
+2. Click **New GUI**, either the button in the middle of the empty canvas or the **+** next to **GUIs** in the left panel. A GUI is one UI component, stored in its own file.
+3. Drag a widget from the palette along the bottom onto the canvas. **Full Screen** is a good first widget, it gives you a root that covers the screen. Then drop other widgets inside it.
+4. Select a widget and set its properties in the right panel.
 
-There is no save button. The editor writes your changes to disk as you go, and the toolbar reads **All changes saved**.
+There is no save button. The editor writes your changes to disk as you go, and the badge at the left of the toolbar reads **All changes saved**.
 
-<!-- [Screenshot: the UI Editor in 2D mode showing the GUIs and Nodes panels on the left, the canvas in the middle with a selected container, the Properties tab on the right, and the widget palette along the bottom] -->
+![The UI Editor in 2D mode: the GUIs and Nodes panels on the left list a GUI named MainUI with a Container holding a Label and a Button, the canvas in the middle shows the container with the Button selected and resize handles around it, the Properties tab on the right shows the Button's position and layout, and the widget palette runs along the bottom.](../../images/editor/ui-editor-overview.png)
 
 ## The panels
 
-* **Left**: **GUIs**, the list of your UI components, and **Nodes**, the tree of the selected one. A search box filters both.
+* **Left**: **GUIs**, the list of your UI components, and **Nodes**, the tree of the selected one. A search box filters both. Hover a node to lock, hide or delete it.
 * **Right**: a **Properties** tab for the selected node, and a **Logic** tab.
 * **Bottom**: the widget palette. Drag a card onto the canvas to add it.
-* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging. **Reset view** re-centers.
+* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging. The zoom controls in the bottom-right corner also switch between desktop and mobile previews, and the frame button re-centers the view.
+
+<div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 
 ## Widgets
+
+![The widget palette along the bottom of the UI Editor, with cards for Full Screen, Container, Image, Label, Button, Input and Dropdown.](../../images/editor/ui-editor-palette.png)
 
 The palette groups widgets into three categories:
 
@@ -62,7 +68,9 @@ The toolbar has three tool modes:
 * **Move**: drag only.
 * **Resize**: handles only.
 
-Positions snap to a 10 pixel grid. Hold **Shift** while dragging to move freely, ignoring the grid. The **Snap** dropdown in the toolbar turns snapping off entirely.
+Positions snap to a 10 pixel grid. Hold **Shift** while dragging to move freely, ignoring the grid. The small arrow next to the tool buttons opens a **Snap** checkbox that turns snapping off entirely.
+
+![The 2D toolbar, with the All changes saved badge, undo and redo, the Free, Move and Resize tools, and the snap dropdown open showing a checked Snap option, followed by the play and stop buttons.](../../images/editor/ui-editor-toolbar.png)
 
 ## Layout: flow and free positioning
 

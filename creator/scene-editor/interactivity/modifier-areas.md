@@ -19,6 +19,8 @@ You can add a modifier area in two ways:
 
 **From the components menu:** Select any existing entity, click the **+** button at the top of the properties panel, and choose **Avatar Modifier Area** or **Camera Modifier Area** from the list. See [Add components](../build/components.md#add-components) for more details.
 
+![The add component menu open on an entity named Stage area, listing components under the 3D Content and Interaction groups, including Avatar Modifier Area and Camera Modifier Area.](../../images/editor/add-component.png)
+
 ## Sizing the area
 
 The size of a modifier area is controlled by the entity's **Transform scale**. If you scale the entity to 4 x 3 x 4, the modifier region becomes a 4 x 3 x 4 meter box centered on the entity's position. Use the scale gizmo or type exact values in the Transform component to set the size you need.
@@ -31,6 +33,8 @@ The size of a modifier area is controlled by the entity's **Transform scale**. I
 
 The Avatar Modifier Area panel has two settings:
 
+![The Avatar Modifier Area component panel, with a Modifiers dropdown showing Hide Avatars selected, an Exclude Player IDs section, and an Add Player ID button.](../../images/editor/avatar-modifier-area-component.png)
+
 ### Modifiers
 
 A multi-select dropdown with the following options:
@@ -38,7 +42,7 @@ A multi-select dropdown with the following options:
 - **Hide Avatars**: Avatars inside the area become invisible. Players inside cannot see each other, but players outside the area still see them normally.
 - **Disable Passports**: Clicking on a player's avatar inside the area no longer opens their profile popup.
 
-You can select one or both modifiers on the same area. By default, no modifiers are selected.
+You can select one or both modifiers on the same area. When you add the component, **Hide Avatars** is selected by default. Click the **x** on a modifier to remove it.
 
 ### Exclude Player IDs
 
@@ -61,6 +65,8 @@ This is useful for events where you want to hide audience avatars on a stage but
 ## Camera Modifier Area
 
 The Camera Modifier Area panel has one setting:
+
+![The Camera Modifier Area component panel, with a Camera Mode dropdown set to First Person.](../../images/editor/camera-modifier-area-component.png)
 
 ### Camera Mode
 

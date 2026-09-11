@@ -29,7 +29,7 @@ When passing data to generate an `AvatarShape`, the following fields are require
 
 The following optional fields are also available:
 
-* `name`: Name to display over the Avatar's head. Default: "NPC".
+* `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
 * `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
 * `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
@@ -116,6 +116,29 @@ engine.addSystem((dt: number) => {
 {% hint style="info" %}
 **💡 Tip**: You must know the duration of the emote, and make that the duration of the system. If you create an emote that fixes the avatar still in a same pose, it's recommendable to make the duration of the emote longer than the system. That way, you can make sure that there are no artifacts when finishing and resetting the animation.
 {% endhint %}
+
+## Add a label above the name
+
+Use the `AvatarNametag` component to show a plate with custom text above the NPC's name, for example a role like "Shopkeeper" or "Boss". Attach it to the same entity that has the `AvatarShape`:
+
+```ts
+AvatarNametag.create(myAvatar, { label: 'Shopkeeper' })
+```
+
+If the `AvatarShape` has an empty `name`, only the plate is shown, with no empty nametag box under it. This is handy for labeling an NPC with a title alone.
+
+{% hint style="info" %}
+**💡 Tip**: For a color-coded plate with no text, set `label` to a string of spaces and pick a `backgroundColor`. Spaces are preserved, so more spaces make a wider plate.
+
+```ts
+AvatarNametag.create(myAvatar, {
+	label: '      ',
+	backgroundColor: Color3.Red(),
+})
+```
+{% endhint %}
+
+See [Avatar Nametags](avatar-nametags.md) for the full list of fields, including colors.
 
 ## Copy wearables from player
 

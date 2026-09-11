@@ -589,6 +589,8 @@ Transform.create(entity, {
 
 This is useful for stages, presentations, or scripted scenes where you want to suppress player nametags without hiding the avatars themselves. For example, you might want a clean visual experience during a performance, where avatars are visible but the floating names don't distract viewers.
 
+`AMT_HIDE_NAMETAGS` also hides any custom plates added with the [`AvatarNametag`](avatar-nametags.md) component.
+
 {% hint style="info" %}
 **💡 Tip**: `AMT_HIDE_AVATARS` already hides nametags along with the avatar, so you don't need to add `AMT_HIDE_NAMETAGS` when using `AMT_HIDE_AVATARS`. Use `AMT_HIDE_NAMETAGS` only when you want to hide nametags while keeping avatars visible.
 {% endhint %}
@@ -709,6 +711,18 @@ To activate the effects of the modifier area, the player's head or torso must en
 {% hint style="warning" %}
 **📔 Note**: The full area should fit inside the limits of your scene.
 {% endhint %}
+
+## Add a custom label to a nametag
+
+Use the `AvatarNametag` component to display a plate with your own text above an avatar's nametag. This is useful for showing a rank, role, team, or title that your scene assigns to a player, like "VIP", "Team Red", or "Club Owner".
+
+```ts
+import { AvatarNametag, engine } from '@dcl/sdk/ecs'
+
+AvatarNametag.createOrReplace(engine.PlayerEntity, { label: 'Club Owner' })
+```
+
+The component works on the local player, on any other player in the scene, and on NPC avatars. See [Avatar Nametags](avatar-nametags.md) for the full list of fields, how to tag every player in the scene, and what to keep in mind in multiplayer scenes.
 
 ## Change an avatar's appearance
 

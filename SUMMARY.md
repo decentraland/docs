@@ -519,6 +519,7 @@
       * [Using the CLI](creator/sdk7/getting-started/using-the-cli.md)
       * [Vibe Coding with AI](creator/sdk7/getting-started/vibe-coding.md)
     * [Interactivity](creator/sdk7/interactivity/README.md)
+      * [Avatar Nametags](creator/sdk7/interactivity/avatar-nametags.md)
       * [Deprecated Functions](creator/sdk7/interactivity/deprecated-functions.md)
       * [Event Listeners](creator/sdk7/interactivity/event-listeners.md)
       * [External Links](creator/sdk7/interactivity/external-links.md)

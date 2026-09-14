@@ -29,7 +29,7 @@ Open your scene's _scene.json_ file and complete the following data:
 
 - **title**: The title is displayed on the UI under the mini-map, whenever players enter your scene. It also shows on the teleport popup.
 - **description**: A description of what players will find in your scene. This is displayed on the teleport popup.
-- **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
+- **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image with a 16:9 aspect ratio, of a recommended size of _1920x1080_ pixels. Keep anything essential inside the central _1080x1080_ square, as some parts of the platform display a square crop of it. See [scene thumbnail](../projects/scene-metadata.md#scene-thumbnail).
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 - **Base**: The coordinates of the parcel that will be considered the \[0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
 - **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn. By default players spawn at the _0,0,0_ location of the scene (bottom-left corner). Use this to start players in a specific location, or set a region to prevent players from overlapping with each other when they first appear.

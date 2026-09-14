@@ -23,17 +23,10 @@ The following fields are available:
 - **Name**
 - **Description**
 - **Thumbnail**
-
-  {% hint style="info" %}
-  **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image
-  {% endhint %}
-
 - **Categories**
 - **Creator name**
 - **Creator contact email** (optional)
 - **Creator wallet address** (optional)
-
-The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
 
 See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
 
@@ -43,6 +36,18 @@ See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on 
 
 {% hint style="warning" %}
 **📔 Note**: The scene's **Age Rating** is not edited on this panel. You can set the `rating` field directly in the `scene.json` file, or, for scenes published to a World, change the **Content Rating** in the Creator Hub's World Settings after publishing. Decentraland is an 18+ platform, so the rating to set is `A` for Adults. See [Age Rating](../../sdk7/projects/scene-metadata.md#age-rating).
+{% endhint %}
+
+### Scene thumbnail
+
+The thumbnail should be a .png or .jpg image with a **16:9** aspect ratio. The recommended size is 1920x1080 pixels. Other sizes are also supported, as long as they keep the same 16:9 proportions, otherwise the image may be stretched.
+
+Some parts of the platform display a reduced square version of the thumbnail, cropped to the central 1080x1080 pixels. Keep anything essential, like text or logos, inside that safe area so that it's not cut off.
+
+![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
+
+{% hint style="info" %}
+**💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image.
 {% endhint %}
 
 ### Tipping

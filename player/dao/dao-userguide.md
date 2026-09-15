@@ -76,7 +76,7 @@ You can filter proposals by **Outcomes**:
 
 * **Active** – proposals that are currently being voted on
 * **Passed** – proposals that have been approved by the community
-* **Rejected** – proposals that have already been voted on and either were rejected by the community or didn't met the acceptance threshold
+* **Rejected** – proposals that have already been voted on and either were rejected by the community or didn't meet the acceptance threshold
 * **Enacted** – proposals that have been enacted on-chain by the DAO Committee
 * **Finished** – proposals that are closed, but do not have yes/no results, like multiple choice polls
 

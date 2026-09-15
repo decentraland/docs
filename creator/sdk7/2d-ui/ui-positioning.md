@@ -187,7 +187,7 @@ export const uiMenu = () => (
 ```
 
 {% hint style="warning" %}
-**📔 Note** : The `zIndex` property will only order elements relative to direct siblings, it cannot be used to render an entity on top of other parts of the layout tree. In html/CSS terms, every DCL UI element creates a new [stacking context](https://web.dev/learn/css/z-index#stacking_context).
+**📔 Note** : The `zIndex` property will only order elements relative to direct siblings, it cannot be used to render an entity on top of other parts of the layout tree. In html/CSS terms, every DCL UI element creates a new [stacking context](https://web.dev/learn/css/z-index#stacking_context). To order independent UI modules added with `addUiRenderer()` against each other, use the `zIndex` of the [renderer options](onscreen-ui.md#stacking-order-between-ui-modules) instead.
 
 The default Decentraland UI, including the map, chat, etc is always rendered on top of all other UI elements.
 {% endhint %}

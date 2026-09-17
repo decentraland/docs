@@ -226,7 +226,7 @@ You can complete the fields with the following:
 - Network: ethereum
 - Contract: 0x32b7495895264ac9d0b12d32afd435453458b1c6
 - Token: 1956
-  {% endhint %}
+{% endhint %}
 
 You can also configure a background color, this is particularly useful for NFTs with a transparent background.
 

@@ -44,7 +44,7 @@ There is no save button. The editor writes your changes to disk as you go, and t
 * **Left**: **GUIs**, the list of your UI components, and **Nodes**, the tree of the selected one. A search box filters both. Hover a node to lock, hide or delete it.
 * **Right**: a **Properties** tab for the selected node, and a **Logic** tab.
 * **Bottom**: the widget palette. Drag a card onto the canvas to add it.
-* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging. The zoom controls in the bottom-right corner also switch between desktop and mobile previews, and the frame button re-centers the view.
+* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging. The controls in the bottom-right corner zoom in and out, switch between desktop and mobile previews, and toggle the on-screen guides. Click the zoom percentage to re-center the view.
 
 <div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 
@@ -103,6 +103,21 @@ The root of a GUI is always positioned freely.
   * **Device Safe Area** also avoids physical obstructions such as a notch or system bars. This option is offered when the canvas is in mobile preview.
 
 If you give a GUI's root a width and a height in fixed pixels, the canvas frames it as an artboard of exactly that size rather than as a screen.
+
+## Check your UI on a phone
+
+The controls in the bottom-right corner of the canvas switch the preview between a desktop screen and a phone. In mobile preview the canvas is drawn inside a phone frame, complete with a notch, so you can see where the screen edges actually fall.
+
+Two sets of guides help you place things where players can see and reach them:
+
+* **Safe-area guides** outline the part of the screen your GUI is confined to, matching the **Scene Inset** you picked. While the Scene Inset is **Device Safe Area** or **Gameplay Safe Area** the outline is always on, because it is what the GUI is clipped to. Set the Scene Inset to **Full Screen** and you can turn the outline on or off with the frame icon button.
+* **HUD guides** draw the mobile client's own controls, such as the joystick, the jump and action buttons, the emote wheel, the profile, chat and compass. They are reference only, you cannot select or move them. The game controller button turns them on and off, it only appears in mobile preview, and the guides show by default when the Scene Inset is a safe area.
+
+Content placed outside the safe area is not hidden, it is drawn past the outline. That overflow is the warning: in the real client it would sit under the game's own HUD.
+
+{% hint style="warning" %}
+**📔 Note**: These guides are an approximation for the editor only. The real areas are reported by the client at runtime and vary by device, so always confirm on a real phone. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
+{% endhint %}
 
 ## Where the files go
 

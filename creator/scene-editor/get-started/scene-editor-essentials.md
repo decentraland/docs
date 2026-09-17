@@ -98,6 +98,34 @@ To change the movement granularity and other settings, click the downward arrow 
 
 To select multiple items at the same time, press and hold the _Control_ key while selecting them. You can then move, rotate, scale, duplicate or delete all of them in a single action.
 
+### Type an exact amount
+
+When dragging isn't precise enough, type the amount instead:
+
+1. Press a tool key: **M** or **G** to move, **R** to rotate, **X** to scale.
+2. Press **X**, **Y** or **Z** to pick an axis. Scale doesn't need one: without an axis it scales every axis by the same factor.
+3. Type the number. Use **.** for decimals, and **-** to switch between positive and negative.
+4. Press **Enter** to apply, or **Esc** to cancel. **Backspace** erases what you typed.
+
+A chip at the bottom of the canvas shows the entry as you type it, tells you what is still missing, and confirms what was applied.
+
+Some examples:
+
+- **R** **X** **1** **5** **Enter** rotates the selection 15 degrees around X.
+- **X** **2** **Enter** makes the selection twice as big.
+- **M** **Y** **-** **3** **Enter** moves it 3 meters down.
+
+A few things worth knowing:
+
+- The amount is always relative to where the selection is now, not an absolute coordinate.
+- Typed values ignore the snap grid.
+- With several items selected, they all move, rotate or scale around their shared center, as a single undo step.
+- Pressing **M**, **G** or **R** a second time still turns its gizmo off. **X** doesn't, because while you're typing it means the X axis.
+
+{% hint style="info" %}
+**💡 Tip**: The keyboard icon in the bottom-right corner of the canvas opens the full list of shortcuts.
+{% endhint %}
+
 ## Smart items
 
 Smart items are special items that come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.

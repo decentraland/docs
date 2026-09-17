@@ -18,7 +18,7 @@ The assistant is an experimental feature and is turned off by default.
 2. Go to the **EXPERIMENTAL** tab.
 3. Switch on **Enable AI Assistant**.
 
-![The EXPERIMENTAL tab of App Preferences, with the Enable AI Assistant switch turned on, the Bill this to an API key instead checkbox, and the Connect section listing Claude and Codex as Connected with Sign out links.](../../images/editor/settings-ai-assistant.png)
+![The EXPERIMENTAL tab of App Preferences, with the Enable AI Assistant switch turned on, the Bill this to an API key instead checkbox, and the Connect section listing the detected CLIs, in this capture Claude and Codex, as Connected with Sign out links.](../../images/editor/settings-ai-assistant.png)
 
 Once enabled, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
 
@@ -30,16 +30,22 @@ Once enabled, an **AI Assistant** button (the sparkles icon) appears in the edit
 
 The assistant does not use an API key of its own. It runs a coding CLI that you install and sign into, so the work is billed to that tool's own subscription.
 
-Two are supported:
+Four are supported:
 
 | CLI | Install | Sign in |
 | --- | --- | --- |
-| Claude Code | `npm i -g @anthropic-ai/claude-code` | `claude` |
+| Claude | `npm i -g @anthropic-ai/claude-code` | `claude` |
 | Codex | `npm i -g @openai/codex` | `codex login` |
+| Cursor | `npm i -g cursor-agent` | `cursor-agent login` |
+| Gemini | `npm i -g @google/gemini-cli` | `gemini` |
 
 You can do this from inside the Creator Hub. In the settings, under **Connect**, each detected CLI shows its status and a **Sign in** link that runs the login for you and opens your browser. A green dot and **Connected** mean it is ready. **Sign out** disconnects it.
 
 If you prefer to do it yourself, open the **Via Terminal** section under a CLI. It gives you the exact **Install** and **Sign In** commands to copy.
+
+{% hint style="warning" %}
+**📔 Note**: Gemini has no **Sign in** button. Its login only runs as an interactive session, so sign in by running `gemini` in a terminal, or set a `GEMINI_API_KEY` in your environment.
+{% endhint %}
 
 The same setup card appears in the chat panel itself the first time you open it with no CLI connected.
 
@@ -49,7 +55,7 @@ The same setup card appears in the chat panel itself the first time you open it 
 
 ### Bill to an API key instead
 
-If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** in the settings. It reads `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` from your environment. This is off by default.
+If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** in the settings. It reads your provider's API key from your environment: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `CURSOR_API_KEY` or `GEMINI_API_KEY`. This is off by default.
 
 ## What it can do
 

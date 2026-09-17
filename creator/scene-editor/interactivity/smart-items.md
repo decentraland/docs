@@ -22,17 +22,17 @@ To use a smart item, drag it into the scene like any other item. All items inclu
 
 Here are some common items and their default behaviors:
 
-* **Doors**: Doors are opened or closed when clicked. You can change this behavior so they're opened by buttons, trigger areas, etc.
-* **Buttons**: When clicked, they play sound and an animation as feedback. Add more actions to their trigger events to activate other smart items.
-* **Levers**: When clicked, they switch between two states. Make each position of the lever perform different actions on other smart items.
-* **Chests**: They behave like doors, by default are opened or closed when clicking. You can place smaller items inside them.
-* **Platforms**: They move between two positions. Use their tween actions to control where they move to, their speed, etc.
-* **Trigger area**: An invisible item that can trigger other smart items when the player walks into its area. See [About trigger areas](smart-items.md#trigger-areas).
-* **Avatar Modifier Area**: An invisible area that changes how avatars behave or appear inside it, for example hiding avatars or disabling passport popups. See [Modifier Areas](modifier-areas.md).
-* **Camera Modifier Area**: An invisible area that forces the player's camera into first or third person while inside. See [Modifier Areas](modifier-areas.md).
-* **Video Player**: A screen for showing videos or live streams. See [Playing Videos](smart-items.md#playing-videos).
-* **Audio Stream**: Play audio from a live stream. See [Playing Audio Streams](smart-items.md#playing-audio-streams)
-* **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)
+- **Doors**: Doors are opened or closed when clicked. You can change this behavior so they're opened by buttons, trigger areas, etc.
+- **Buttons**: When clicked, they play sound and an animation as feedback. Add more actions to their trigger events to activate other smart items.
+- **Levers**: When clicked, they switch between two states. Make each position of the lever perform different actions on other smart items.
+- **Chests**: They behave like doors, by default are opened or closed when clicking. You can place smaller items inside them.
+- **Platforms**: They move between two positions. Use their tween actions to control where they move to, their speed, etc.
+- **Trigger area**: An invisible item that can trigger other smart items when the player walks into its area. See [About trigger areas](smart-items.md#trigger-areas).
+- **Avatar Modifier Area**: An invisible area that changes how avatars behave or appear inside it, for example hiding avatars or disabling passport popups. See [Modifier Areas](modifier-areas.md).
+- **Camera Modifier Area**: An invisible area that forces the player's camera into first or third person while inside. See [Modifier Areas](modifier-areas.md).
+- **Video Player**: A screen for showing videos or live streams. See [Playing Videos](smart-items.md#playing-videos).
+- **Audio Stream**: Play audio from a live stream. See [Playing Audio Streams](smart-items.md#playing-audio-streams)
+- **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)
 
 All smart items can be configured to behave in custom ways. For example how far a platform moves, or what a button activates.
 
@@ -46,16 +46,16 @@ Most smart items keep their behavior in a [Script component](../code/script-comp
 
 Some typical fields you can find in many items are:
 
-* **Hover text**: What text is displayed on the UI as a hint when the player passes their cursor over the item. For example a door might say "Open"
-* **Interaction**: With what button is the item activated? On a typical keyboard:
-  * **Primary** is **E**
-  * **Secondary** is **F**
-  * **Pointer** is **Mouse Left Button**
-  * **Action3** is key **1**
-  * **Action4** is key **2**
-  * **Action5** is key **3**
-  * **Action6** is key **4**
-* **Hooks that react to the item**: parameters where you pick an action to run at a particular moment. Which ones an item has depends on what it does. A button has **onClick**, a lever has **onActivate** and **onDeactivate**, a moving platform has **onReachStart** and **onReachEnd**, a bell has **onRing**. Leave a hook empty and nothing happens at that moment.
+- **Hover text**: What text is displayed on the UI as a hint when the player passes their cursor over the item. For example a door might say "Open"
+- **Interaction**: With what button is the item activated? On a typical keyboard:
+  - **Primary** is **E**
+  - **Secondary** is **F**
+  - **Pointer** is **Mouse Left Button**
+  - **Action3** is key **1**
+  - **Action4** is key **2**
+  - **Action5** is key **3**
+  - **Action6** is key **4**
+- **Hooks that react to the item**: parameters where you pick an action to run at a particular moment. Which ones an item has depends on what it does. A button has **onClick**, a lever has **onActivate** and **onDeactivate**, a moving platform has **onReachStart** and **onReachEnd**, a bell has **onRing**. Leave a hook empty and nothing happens at that moment.
 
 Each item has its own specific settings, that may vary from one item to another.
 
@@ -121,9 +121,9 @@ An invisible cube that can be clicked by players to trigger actions on any other
 
 Chairs, benches, and other seats let a player sit down by clicking them.
 
-* A seat only frees up when the player who took it **walks away** from it, more than 1.5 meters.
-* On an item with several spots, such as a bench, clicking it seats you on the **nearest free spot**.
-* When every spot is taken, the hover text reads **Seat is taken** and clicking does nothing.
+- A seat only frees up when the player who took it **walks away** from it, more than 1.5 meters.
+- On an item with several spots, such as a bench, clicking it seats you on the **nearest free spot**.
+- When every spot is taken, the hover text reads **Seat is taken** and clicking does nothing.
 
 ### Teleports
 
@@ -135,14 +135,43 @@ Set the **x** and **y** parameters to send them to a parcel in Genesis City. To 
 **📔 Note**: There used to be a separate **World Teleport** item. It has been removed. Use the **Teleport** item with its **world** parameter instead.
 {% endhint %}
 
+### Locomotion settings
+
+The **Locomotion Settings** item changes how fast players move and how high they jump while they are inside your scene. Use it to make a scene feel floaty, to slow players down in a museum, or to speed them up across a large map.
+
+Drag it anywhere into your scene. It applies its values when the scene starts, and its placeholder cube is only visible in the editor, never to players.
+
+Each field is a slider, preset to Decentraland's default value:
+
+| Field                 | Default | Range   |
+| --------------------- | ------- | ------- |
+| `walkSpeed`           | 1.5 m/s | 0 to 10 |
+| `jogSpeed`            | 8 m/s   | 0 to 30 |
+| `runSpeed`            | 10 m/s  | 0 to 50 |
+| `jumpHeight`          | 1 m     | 0 to 10 |
+| `runJumpHeight`       | 1.5 m   | 0 to 10 |
+| `doubleJumpHeight`    | 2 m     | 0 to 15 |
+| `glidingSpeed`        | 6 m/s   | 0 to 30 |
+| `glidingFallingSpeed` | 1 m/s   | 0 to 10 |
+| `hardLandingCooldown` | 0.75 s  | 0 to 5  |
+
+Jogging is the speed players move at by default. Walking and running are what they get by holding the control or shift keys.
+
+The item also exposes two actions that other smart items can call:
+
+- `apply`: writes the current field values to the player again, for example after a trigger area or a button.
+- `restoreDefaults`: clears your values, so the player goes back to Decentraland's defaults.
+
+See [Locomotion Settings and Restrictions](../../sdk7/interactivity/avatars/locomotion.md) for what each setting does in detail, and for how to change these values from code.
+
 ### Playing videos
 
 Play videos from either:
 
-* **Local files**
-* **Stream from a URL**
-* **Stream live from [Decentraland Cast](../live-ops/live-streaming.md#dcl-cast-easy)**
-* **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-advanced) (OBS, XSplit, StreamYard, etc.)**
+- **Local files**
+- **Stream from a URL**
+- **Stream live from [Decentraland Cast](../live-ops/live-streaming.md#dcl-cast-easy)**
+- **Stream live from [RTMP Software](../live-ops/live-streaming.md#stream-advanced) (OBS, XSplit, StreamYard, etc.)**
 
 {% hint style="warning" %}
 **📔 Note**: Playing videos is demanding on performance, so keep the number of videos playing at the same time low. The engine limits how many videos can play simultaneously based on each player's quality settings (1 on low, 5 on medium, 10 on high), and pauses any videos beyond that limit. See [Play Videos](video-screen.md#play-videos).
@@ -163,6 +192,7 @@ SIGNS = 'https://edge.singsingmusic.net/MC2.mp3'
 DELTA = 'https://cdn.instream.audio/:9069/stream?_=171cd6c2b6e'
 JAZZ = 'https://live.vegascity.fm/radio/8010/the_flamingos.mp3'
 ```
+
 {% endhint %}
 
 You can adjust the volume of your stream. Note that the audio from the stream is not positional, it is heard at an even volume through all your scene.
@@ -171,14 +201,14 @@ You can adjust the volume of your stream. Note that the audio from the stream is
 
 To display an NFT on a picture frame, use the **NFT** smart item. You must provide the following fields:
 
-* Network
+- Network
 
 {% hint style="info" %}
 **📔 Note**: Currently **ethereum** is the only supported network.
 {% endhint %}
 
-* NFT Collection Contract: The smart contract for the NFT collection.
-* Token ID: The token ID of this particular NFT collectible.
+- NFT Collection Contract: The smart contract for the NFT collection.
+- Token ID: The token ID of this particular NFT collectible.
 
 <img src="../../images/editor/nft-shape.png" alt="NFT shape" width="400"/>
 
@@ -193,10 +223,10 @@ You can obtain this information from [OpenSea](https://opensea.io), by checking 
 
 You can complete the fields with the following:
 
-* Network: ethereum
-* Contract: 0x32b7495895264ac9d0b12d32afd435453458b1c6
-* Token: 1956
-{% endhint %}
+- Network: ethereum
+- Contract: 0x32b7495895264ac9d0b12d32afd435453458b1c6
+- Token: 1956
+  {% endhint %}
 
 You can also configure a background color, this is particularly useful for NFTs with a transparent background.
 
@@ -210,24 +240,27 @@ See [NFTs](../build/nfts.md) for more details.
 
 The **Health Bar** smart item is a great building block for several game mechanics. It can be used in various ways:
 
-*   Nest it under the **Player** to display the player's health over the avatar
+- Nest it under the **Player** to display the player's health over the avatar
 
-    ![ ](../../images/editor/nested-under-player.png)
-*   Nest it under the **Camera** to display it fixed on the UI
+  ![ ](../../images/editor/nested-under-player.png)
 
-    ![ ](../../images/editor/nested-under-camera.png)
-*   Nest it under literally any item in the scene to keep track of that item's health
+- Nest it under the **Camera** to display it fixed on the UI
 
-    ![ ](../../images/editor/nested-under-barrel.png)
+  ![ ](../../images/editor/nested-under-camera.png)
+
+- Nest it under literally any item in the scene to keep track of that item's health
+
+  ![ ](../../images/editor/nested-under-barrel.png)
 
 Other items can interact with the health bar to add or subtract health from it.
 
-*   Items like the **Spikes** or **Robot Enemy** can lower health
+- Items like the **Spikes** or **Robot Enemy** can lower health
 
-    ![ ](../../images/editor/reduce-health.png)
-*   items like **First Aid** or the **Healing Pad** can restore it.
+  ![ ](../../images/editor/reduce-health.png)
 
-    ![ ](../../images/editor/restore-health.png)
+- items like **First Aid** or the **Healing Pad** can restore it.
+
+  ![ ](../../images/editor/restore-health.png)
 
 You must configure the Health Bar to define what will happen when the health equals 0. You might respawn the player to the position of a **Respawn Pad** smart item, reset the counter for their score, respawn any enemies, display a UI text, or whatever makes sense in your game logic.
 
@@ -251,13 +284,13 @@ You can also disable the multiplayer behavior of an item, see [Smart Items - Adv
 
 ## Troubleshooting
 
-* _An item in my scene should be clickable, but can't be clicked_.
+- _An item in my scene should be clickable, but can't be clicked_.
 
 Make sure that it's not being obstructed by something else. You can't click through other items. Some items have a _collider mesh_ that has a simplified geometry that may be obstructing your item, even though its visible shape doesn't seem to be doing it. Try moving the item to see what happens.
 
 ## See also
 
-* [Smart items - Advanced](smart-items-advanced.md)
-* [States and conditions](states-and-conditions.md)
-* [Making any item smart](make-any-item-smart.md)
-* [Combine with code](../code/overview.md)
+- [Smart items - Advanced](smart-items-advanced.md)
+- [States and conditions](states-and-conditions.md)
+- [Making any item smart](make-any-item-smart.md)
+- [Combine with code](../code/overview.md)

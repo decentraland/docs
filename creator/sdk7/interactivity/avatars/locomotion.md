@@ -10,6 +10,10 @@ You can change how the player's avatar moves while inside your scene. Use the `A
 
 You can affect the player's locomotion, like their running speed, jump height, and more. This can be altered dynamically, for example to allow a player to collect a temporary speed boost by interacting with an item, or to disable the player's ability to jump for a short period of time.
 
+{% hint style="info" %}
+**💡 Tip**: You can set these values without writing code. Drag the **Locomotion Settings** smart item into your scene in the [Scene Editor in Creator Hub](../../../scene-editor/get-started/about-editor.md) and move its sliders. See [Locomotion settings](../../../scene-editor/interactivity/smart-items.md#locomotion-settings).
+{% endhint %}
+
 To do this, add an `AvatarLocomotionSettings` component to the `engine.PlayerEntity`.
 
 ```ts

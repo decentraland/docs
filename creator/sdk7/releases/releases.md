@@ -24,6 +24,11 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## SDK
 
+### 7.29.0 (Sep 15, 2026)
+
+* **Stacking order between UI modules**: a `zIndex` renderer option decides which UI module draws in front of which. Without it, modules stack in the order they first appear, with the main UI at the back. See [Stacking order between UI modules](../2d-ui/onscreen-ui.md#stacking-order-between-ui-modules). [#1607](https://github.com/decentraland/js-sdk-toolchain/pull/1607)
+* **Fixes**: removing a pointer event handler now removes the entry it created, so a disabled UI button stops advertising a click it can no longer handle, and re-registering handlers no longer piles up duplicate entries. [#1577](https://github.com/decentraland/js-sdk-toolchain/pull/1577)
+
 ### 7.28.0 (Sep 10, 2026)
 
 * **Pointer events use camera distance**: `maxCameraDistance` replaces `maxPlayerDistance` on pointer events. The old field still works but is deprecated. Hover hints and clicks now depend on how far the camera is from the item, which matches what the player sees. [#1560](https://github.com/decentraland/js-sdk-toolchain/pull/1560)
@@ -203,6 +208,18 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 * **Tags component**: label entities and query them by tag. [#1216](https://github.com/decentraland/js-sdk-toolchain/pull/1216)
 
 ## Creator Hub
+
+### 0.50.0 (Sep 17, 2026)
+
+* **Assets dropped in the project folder show up on their own**: files copied into the project's `assets` folder from outside the editor appear in **Local Assets** without pressing **Refresh**. See [Import custom assets](../../scene-editor/build/import-items.md). [#1606](https://github.com/decentraland/creator-hub/pull/1606)
+* **Fixes**: **Show QR Code for Mobile** works whatever preview client is selected, and the Bevy (Web) preview reuses its tab [#1608](https://github.com/decentraland/creator-hub/pull/1608); publishing no longer waits for LOD generation, so the **Optimizing** step is gone [#1603](https://github.com/decentraland/creator-hub/pull/1603); the UI Editor no longer leaves an orphan `./ui` import on older scenes [#1609](https://github.com/decentraland/creator-hub/pull/1609).
+
+### 0.49.0 (Sep 16, 2026)
+
+* **Locomotion Settings smart item**: change how fast players move and how high they jump, with sliders instead of code. See [Locomotion settings](../../scene-editor/interactivity/smart-items.md#locomotion-settings). [#1584](https://github.com/decentraland/creator-hub/pull/1584)
+* **AI Assistant supports Cursor and Gemini**, alongside Claude and Codex. See [AI Assistant](../../scene-editor/code/ai-assistant.md). [#1591](https://github.com/decentraland/creator-hub/pull/1591)
+* **Type exact transform amounts**: press a tool key, an axis and a number to move, rotate or scale by a precise amount instead of dragging. **F** is no longer a shortcut for the free gizmo. See [Type an exact amount](../../scene-editor/get-started/scene-editor-essentials.md#type-an-exact-amount). [#1599](https://github.com/decentraland/creator-hub/pull/1599)
+* **Fixes**: the UI Editor no longer fogs the view with full-screen containers, and nested GUI preview values and free placement work [#1590](https://github.com/decentraland/creator-hub/pull/1590); the Animator component shows under the Bevy editor [#1587](https://github.com/decentraland/creator-hub/pull/1587); Bevy editor hot-reload is driven by real build events [#1592](https://github.com/decentraland/creator-hub/pull/1592); AI Assistant follow-up turns work again with Codex [#1600](https://github.com/decentraland/creator-hub/pull/1600); dropdown and kebab menus are no longer clipped [#1595](https://github.com/decentraland/creator-hub/pull/1595); one-click Create Scene, entity names keep consecutive spaces, the scene card menu no longer reflows the grid, asset tooltips sit correctly in search results, and you can drag from the Local Assets tree [#1593](https://github.com/decentraland/creator-hub/pull/1593).
 
 ### 0.48.0 (Sep 10, 2026)
 

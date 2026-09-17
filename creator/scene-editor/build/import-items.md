@@ -28,7 +28,7 @@ Items from the built-in free asset packs are stored under _assets/asset-packs/_,
 - Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
 
 {% hint style="info" %}
-**💡 Tip**: You can also paste files directly into the project folder. After doing this, press the **Refresh** button next to the **Import Assets** button to see the new files.
+**💡 Tip**: You can also paste files directly into the project's `assets` folder, from Finder, Explorer or anywhere else. They appear in the **Local Assets** tab on their own, shortly after the copy finishes. If they don't show up, press the **Refresh** button next to the **Import Assets** button.
 
 <img src="../../images/editor/refresh-assets.png" alt="" data-size="original">
 {% endhint %}

@@ -406,7 +406,7 @@ const BOUNDS_MAX = Vector3.create(16, 20, 16)
 const BOUNDS_MARGIN = 0.5
 ```
 
-For larger scenes, set the bounds to match your `scene.json` parcels. The scene height limit is 330 metres regardless of parcel count. A 4x4 parcel scene could use `Vector3.create(64, 80, 64)`.
+For larger scenes, set the bounds to match your `scene.json` parcels. The scene height limit is 330 metres regardless of parcel count. A 4x4 parcel scene could use `Vector3.create(64, 330, 64)`.
 
 ### Following players
 

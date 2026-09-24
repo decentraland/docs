@@ -48,10 +48,10 @@ Because Decentraland is an open world full of different scenes and objects that 
 
 > n represents the number of parcels that a scene occupies.
 
-* **Triangles:** n x 10000 Total amount of triangles for all the models in the scene.
-* **Height:** log2(n+1) x 20 Height in meters.
-* **File size:** 15 MB per parcel - 300 MB max Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn’t include files that aren’t uploaded, such as node.js packages.
-* **Max file size 50 MB per file** No individual file of any type in the scene can exceed 50 MB, no matter how many parcels the scene has.
+- **Triangles:** n x 10000 Total amount of triangles for all the models in the scene.
+- **Height:** 330 meters, regardless of the number of parcels.
+- **File size:** 15 MB per parcel - 300 MB max Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn’t include files that aren’t uploaded, such as node.js packages.
+- **Max file size 50 MB per file** No individual file of any type in the scene can exceed 50 MB, no matter how many parcels the scene has.
 
 For more information check all the scene limitations [here.](https://docs.decentraland.org/creator/development-guide/scene-limitations/)
 
@@ -65,8 +65,8 @@ For more information check all the scene limitations [here.](https://docs.decent
 
 When creating meshes, we should keep in mind these 2 best practices:
 
-* **Modularity:** Break down large meshes into smaller, modular parts. For example, instead of having a single mesh for an entire building, the building could be divided into separate meshes for each wall, floor, and section of the building. This allows Unity's frustum culling to work more effectively, as only the visible parts need to be considered for rendering. It will also improve memory foot-print, because one mesh can be re-used several time for same object in different locations (to achieve this you will need to reference same mesh in your SDK7 scene definition or use instances instead of duplicated objects when exporting the scene from Blender).
-* **Bounding Volume**: Ensure that the bounding volume of each object fits as tightly as possible. Extraneous space in the bounding volume can cause objects to be rendered when they're not visible.
+- **Modularity:** Break down large meshes into smaller, modular parts. For example, instead of having a single mesh for an entire building, the building could be divided into separate meshes for each wall, floor, and section of the building. This allows Unity's frustum culling to work more effectively, as only the visible parts need to be considered for rendering. It will also improve memory foot-print, because one mesh can be re-used several time for same object in different locations (to achieve this you will need to reference same mesh in your SDK7 scene definition or use instances instead of duplicated objects when exporting the scene from Blender).
+- **Bounding Volume**: Ensure that the bounding volume of each object fits as tightly as possible. Extraneous space in the bounding volume can cause objects to be rendered when they're not visible.
 
 ![](../../.gitbook/assets/40-modularity.png)
 
@@ -147,9 +147,9 @@ This is the only one of the three options that actually reduces draw calls, and 
 
 That reduction is not free. Merging gives up several things at once:
 
-* **Disk usage goes back up.** The merged mesh stores the geometry of all fourteen posts, so you lose the saving that instancing gave you.
-* **Frustum culling becomes all-or-nothing.** A merged object is drawn in full whenever any part of it is on screen. Fourteen posts spread along a street will almost always have one post visible, so you end up drawing all fourteen all of the time — which can easily cost more than the draw calls you saved.
-* **The parts stop being individually addressable.** You can no longer move, animate, click, or hide a single post, because there is only one object left.
+- **Disk usage goes back up.** The merged mesh stores the geometry of all fourteen posts, so you lose the saving that instancing gave you.
+- **Frustum culling becomes all-or-nothing.** A merged object is drawn in full whenever any part of it is on screen. Fourteen posts spread along a street will almost always have one post visible, so you end up drawing all fourteen all of the time — which can easily cost more than the draw calls you saved.
+- **The parts stop being individually addressable.** You can no longer move, animate, click, or hide a single post, because there is only one object left.
 
 Use merging narrowly: for many small props that are always seen together in one spot, never interacted with, and only after you've confirmed that the number of objects is what's actually hurting performance. For everything else, instancing is the better default.
 
@@ -163,8 +163,8 @@ Use meaningful names for your meshes. Name should give context of where the asse
 
 For asset naming use mix of `PascalCase` and `snake_case`, which we can call `PascalSnake_case`. Basic rules there - new word or word after separator (`_`) starts with **Capital letter.**
 
-* Use meaningful names for your meshes **Examples:** 🟢 **Prefer** names - `Theater`, `Tram` 🔴 **Avoid** names - `Untitiled.008`, `primitive(1)`, `Cylinder.091`, `_sphere-AB`
-* Use underscore `_` as a separator to bring more context to the name. Put more common things first and specifics at the end. **Examples:** 🟢 **Prefer** names - `FountainStatue`, `TheaterMainWall`, `TramWheelLeft` 🔴 **Avoid** names - `North_MainWall_Theater`, `Tram_LeftFront_Wheel`
+- Use meaningful names for your meshes **Examples:** 🟢 **Prefer** names - `Theater`, `Tram` 🔴 **Avoid** names - `Untitiled.008`, `primitive(1)`, `Cylinder.091`, `_sphere-AB`
+- Use underscore `_` as a separator to bring more context to the name. Put more common things first and specifics at the end. **Examples:** 🟢 **Prefer** names - `FountainStatue`, `TheaterMainWall`, `TramWheelLeft` 🔴 **Avoid** names - `North_MainWall_Theater`, `Tram_LeftFront_Wheel`
 
 If there is more than one object with the same name add a number after the word: `FountainStatue01, FountainStatue02, etc.`
 
@@ -182,9 +182,9 @@ Another way to optimize your meshes using decimation is to decimate the model an
 
 Some retopology addons that can be useful are (some of them are paid):
 
-* **Simplygon:** https://www.simplygon.com/
-* **Speedretopo:** https://blendermarket.com/products/speedretopo?ref=2
-* **Retopoflow:** https://blendermarket.com/products/retopoflow
+- **Simplygon:** https://www.simplygon.com/
+- **Speedretopo:** https://blendermarket.com/products/speedretopo?ref=2
+- **Retopoflow:** https://blendermarket.com/products/retopoflow
 
 ### Mirror Modifier
 
@@ -204,8 +204,8 @@ Select the objects you want to change the name and just replace the default obje
 
 ## Best practices for geometries [#](https://docs.decentraland.org/creator/3d-modeling/meshes/#best-practices-for-geometries)
 
-* Be mindful of how many faces you add to your 3D models, as more faces make its rendering more demanding. See [**scene limitations**](https://docs.decentraland.org/creator/development-guide/scene-limitations/) for the limits imposed by a scene.
-* Make sure there are no hidden faces that can’t be seen but that add to the triangle count.
-* For shapes that should have rounded sides, set them to be _smooth_ rather than adding additional faces.
-* Make sure the _normals_ of all faces are facing outwards instead of inwards. If there are faces in your model that seem not to be there when you render it, this is most likely the cause.
-* Bake the rotation and scale of your meshes, so that their bounding boxes don’t extend out unnecessarily.
+- Be mindful of how many faces you add to your 3D models, as more faces make its rendering more demanding. See [**scene limitations**](https://docs.decentraland.org/creator/development-guide/scene-limitations/) for the limits imposed by a scene.
+- Make sure there are no hidden faces that can’t be seen but that add to the triangle count.
+- For shapes that should have rounded sides, set them to be _smooth_ rather than adding additional faces.
+- Make sure the _normals_ of all faces are facing outwards instead of inwards. If there are faces in your model that seem not to be there when you render it, this is most likely the cause.
+- Bake the rotation and scale of your meshes, so that their bounding boxes don’t extend out unnecessarily.

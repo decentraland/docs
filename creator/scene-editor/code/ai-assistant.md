@@ -6,21 +6,20 @@ description: Build and change your scene by chatting with an AI assistant inside
 
 The Creator Hub can run an AI assistant that sees your open scene and edits it for you. Ask it to place items, wire up behavior, write scripts, or run the preview and check the result.
 
-The assistant is an experimental feature and is turned off by default.
-
 {% hint style="warning" %}
 **📔 Note**: The assistant runs a coding CLI that you install and sign into, with full access to your machine, the same reach it has in your terminal. Only enable it if you trust what you ask it to do.
 {% endhint %}
 
-## Turn it on
+## Where its settings live
+
+The assistant is on by default. Its settings have their own tab:
 
 1. Click the Creator Hub logo in the top-left corner and select **Settings**.
-2. Go to the **EXPERIMENTAL** tab.
-3. Switch on **Enable AI Assistant**.
+2. Go to the **AI** tab.
 
-![The EXPERIMENTAL tab of App Preferences, with the Enable AI Assistant switch turned on, the Bill this to an API key instead checkbox, and the Connect section listing the detected CLIs, in this capture Claude and Codex, as Connected with Sign out links.](../../images/editor/settings-ai-assistant.png)
+That tab holds the **Enable AI Assistant** switch, the **Bill this to an API key instead** option, the **Connect** list of coding CLIs, and the **Expose AI assistant MCP server** settings.
 
-Once enabled, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
+When the assistant is on, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
 
 ![The editor top bar, with the scene name on the left and the sparkles AI Assistant icon, Code, Preview and Publish buttons on the right.](../../images/editor/editor-top-bar.png)
 
@@ -39,7 +38,7 @@ Four are supported:
 | Cursor | `npm i -g cursor-agent` | `cursor-agent login` |
 | Gemini | `npm i -g @google/gemini-cli` | `gemini` |
 
-You can do this from inside the Creator Hub. In the settings, under **Connect**, each detected CLI shows its status and a **Sign in** link that runs the login for you and opens your browser. A green dot and **Connected** mean it is ready. **Sign out** disconnects it.
+You can do this from inside the Creator Hub. In the settings, on the **AI** tab under **Connect**, each detected CLI shows its status and a **Sign in** link that runs the login for you and opens your browser. A green dot and **Connected** mean it is ready. **Sign out** disconnects it.
 
 If you prefer to do it yourself, open the **Via Terminal** section under a CLI. It gives you the exact **Install** and **Sign In** commands to copy.
 
@@ -55,7 +54,7 @@ The same setup card appears in the chat panel itself the first time you open it 
 
 ### Bill to an API key instead
 
-If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** in the settings. It reads your provider's API key from your environment: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `CURSOR_API_KEY` or `GEMINI_API_KEY`. This is off by default.
+If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** on the **AI** tab of the settings. It reads your provider's API key from your environment: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `CURSOR_API_KEY` or `GEMINI_API_KEY`. This is off by default.
 
 ## What it can do
 
@@ -91,11 +90,28 @@ When the assistant runs, the Creator Hub downloads the official [Decentraland SD
 
 They are linked at `.claude/skills` and `.agents/skills` inside your project folder, and both are added to a `.gitignore` for you, so they never end up in your repo.
 
+## Files the assistant leaves in your scene folder
+
+The assistant can read and edit your open scene through a local MCP server. Each CLI is told about that server differently, so depending on which one you use, you may find new files in your project:
+
+| CLI | What appears in the scene folder |
+| --- | --- |
+| Cursor | `.cursor/mcp.json`, plus `.cursor/rules/creator-hub.mdc` |
+| Gemini | `.gemini/settings.json` |
+| Claude | Nothing. The configuration goes in a temporary file outside your project. |
+| Codex | Nothing. The configuration is passed on the command line. |
+
+If you already have one of those configuration files, the Creator Hub merges its entry into it instead of overwriting your own servers.
+
+{% hint style="warning" %}
+**📔 Note**: `.cursor/mcp.json` is the one file that contains the access token itself, because Cursor's configuration format has no way to read it from the environment. The Creator Hub adds it to your `.gitignore` before writing it, so don't commit it or remove that line. The Gemini file references the token through a `$CREATOR_HUB_MCP_TOKEN` environment variable instead, so it holds no secret and isn't ignored.
+{% endhint %}
+
 ## Use your own AI tool instead
 
 If you already work in Claude Code, Cursor, Codex, or another tool that speaks MCP, you can point it at the open scene rather than using the built-in panel. MCP (Model Context Protocol) is a standard way for an AI tool to call out to another program.
 
-1. Open the main menu from the Creator Hub logo, select **Settings**, and under the **EXPERIMENTAL** tab expand **Expose AI assistant MCP server**.
+1. Open the main menu from the Creator Hub logo, select **Settings**, and on the **AI** tab expand **Expose AI assistant MCP server**.
 2. Click **Copy configuration**.
 3. Paste it into your tool's MCP configuration.
 

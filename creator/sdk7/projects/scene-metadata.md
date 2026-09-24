@@ -44,9 +44,13 @@ In case you want other developers to be able to reach out to you, you can also a
 
 ### Scene thumbnail
 
-The thumbnail is set on the `navmapThumbnail` field. It should be a _.png_ or _.jpg_ image with a **16:9** aspect ratio. The recommended size is _1920x1080_ pixels. Other sizes are also supported, as long as they keep the same 16:9 proportions, otherwise the image may be stretched.
+The thumbnail is set on the `navmapThumbnail` field. It must be a _.png_ or _.jpg_ image with a **16:9** aspect ratio. _1920x1080_ pixels is the size to aim for. Other sizes work as long as they keep the same 16:9 proportions.
 
 Some parts of the platform display a reduced square version of the thumbnail, cropped to the central _1080x1080_ pixels. Keep anything essential, like text or logos, inside that safe area so that it's not cut off.
+
+{% hint style="warning" %}
+**📔 Note**: The Creator Hub refuses images that aren't 16:9. If you set `navmapThumbnail` by hand to an image with another shape, it may be stretched or cropped unpredictably by the clients that show it. See [Scene thumbnail](../../scene-editor/configure/scene-settings.md#scene-thumbnail).
+{% endhint %}
 
 ![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
 

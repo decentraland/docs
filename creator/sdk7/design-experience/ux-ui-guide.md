@@ -77,12 +77,41 @@ Be careful when placing your UI in screen regions that overlap with the default 
 There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
 
 {% hint style="info" %}
-**📱 Mobile safe area**: The [mobile client](../../build-for-mobile/mobile-client/overview.md) draws its own controls over part of the canvas — the **left side** (chat, search, profile, joystick, emotes), the **top right** (profile and camera controls), and the **bottom right** (action and interaction buttons). Don't measure those regions by hand: render inside the area the client reports, with `screenInset: 'interactable'`. Keep critical UI in the center or top-center of the screen and follow the [Mobile safe area](../../build-for-mobile/develop/safe-area.md). Use [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) to swap layouts when the desktop and mobile constraints don't agree.
+**📱 Mobile safe area**: The [mobile client](../../build-for-mobile/mobile-client/overview.md) draws its own controls over part of the canvas: the **left side** (chat, search, profile, joystick, emotes), the **top right** (profile and camera controls), and the **bottom right** (action and interaction buttons). Don't measure those regions by hand: render inside the area the client reports, with `screenInset: 'interactable'`. Keep critical UI in the center or top-center of the screen and follow the [Mobile safe area](../../build-for-mobile/develop/safe-area.md). Use [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) to swap layouts when the desktop and mobile constraints don't agree.
 {% endhint %}
 
 {% hint style="warning" %}
 **📔 Note**: UI elements from scenes and smart wearables always appear on a layer behind the default Decentraland UI.
 {% endhint %}
+
+#### Never anchor your UI to the top-left
+
+The most common layout mistake is pinning a panel to the top-left corner, or leaving it at the origin of a root that covers the screen. That corner, and the whole left edge, is where the explorer draws its own minimap and chat, and on mobile the virtual joystick. Scene UI placed there still renders, but the client's own UI is drawn on top of it, so it ends up covered and its buttons are often unclickable. Nothing in the layout engine warns you about this.
+
+Use one of these instead:
+
+* **Anchor to the right, or center the element.** For a score, a timer, or a small panel, set `positionType: 'absolute'` and `position: { top: 40, right: 40 }`, or center it with `justifyContent: 'center'` on the root.
+* **Let the explorer tell you where it's safe.** Set [`screenInset: 'interactable'`](../2d-ui/onscreen-ui.md#screen-inset-area) on the renderer. Your UI is then placed inside the rectangle the explorer reserves for scene UI, which already excludes the minimap, chat, and the left-hand controls.
+
+```ts
+ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'interactable' })
+```
+
+On mobile, the action buttons in the bottom-right corner are drawn over that area on purpose, and taps there go to the client's buttons rather than to your scene. Keep interactive elements out of the lower-right corner, or, for a UI that takes over the screen anyway, hide the touch controls while it is open:
+
+```ts
+import { TouchScreenControls } from '@dcl/sdk/ecs'
+
+// while a full-screen panel is open, the player doesn't need to jump or press E
+TouchScreenControls.hideAll()
+TouchScreenControls.hideJoystick()
+
+// restore them when the panel closes
+TouchScreenControls.showAll()
+TouchScreenControls.showJoystick()
+```
+
+These helpers do nothing on desktop, so you can call them unconditionally. See [On-screen Controls](../interactivity/touch-screen-controls.md).
 
 Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 
@@ -143,6 +172,25 @@ Use motion to provide feedback and lead the way when needed. Motion helps player
 UI text can make interfaces more usable and gives players more confidence in their actions. Always make UI text as concise as possible. Players are there to play, not to read. Any text that seems too long won’t be read by most players.
 
 Receive your players with a Welcome Message and tell them the objective of the scene. Start by clarifying their goal in the scene, then the actions needed to achieve it. Then you can reveal information progressively as it’s needed, this way players won’t feel overwhelmed on the very beginning of the experience. As with graphic resources, try to use consistent words across your UI features and storytelling.
+
+#### Show, don't tell
+
+Two patterns lose players before their first interaction:
+
+* **The rules pop-up**: an intro panel with several dense paragraphs covering every mechanic, score rule and control. Players dismiss it unread.
+* **The in-world rulebook**: the same paragraphs on a sign or a board in the scene. It looks like design, but in-world text is too small and too long to read, and players won't stand still to squint at it.
+
+Keep an intro panel to one screen with no scrolling: 3 to 5 short lines, ideally one line for the goal, one line for the controls, and a picture. A sign should say one thing, in 10 words or fewer, at a large font size, with one sign per idea.
+
+Then show the rest instead of writing it:
+
+* Make the first target unmistakable. Put a glowing, animated, or oversized object in the player's opening line of sight. A pulsing outline teaches "click me" better than a sentence does.
+* Let the player do a mechanic once safely, in a practice area, before the real game starts.
+* Use `hoverText` on interactive entities as a just-in-time instruction. It appears exactly when it's relevant and costs no reading up front. See [Hover feedback](../interactivity/button-events/register-callback.md#hover-feedback).
+* Use a diagram for spatial or sequence rules. A picture of "red gems = 1, blue gems = 5" replaces a paragraph.
+* Deliver anything longer one message at a time, through an NPC or a dialog the player can skip.
+
+If a rule needs more text than that, redesign the mechanic or show it visually.
 
 ### Object interactions
 

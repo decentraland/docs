@@ -75,6 +75,70 @@ See [Combine with code](../code/overview.md) for how to edit the code of your sc
 Also note that an Entity can only hold **one** of each Component. It's not possible to assign a second instance of a Component that already exists in the entity. For example, you can't add two **Actions** components to a same Entity.
 {% endhint %}
 
+## Settings worth knowing
+
+Most component fields map one to one onto the SDK page linked above. A few are easy to miss, or behave in a way that isn't obvious from the field name.
+
+### Audio Source
+
+**Pitch** multiplies the playback speed and shifts the pitch with it. `1` plays the original sound, `2` plays it twice as fast (one octave up), `0.5` half as fast (one octave down). It must be greater than 0, and defaults to `1`.
+
+### Video Player
+
+* **Playback Rate**: same idea as Pitch, for video. `1` is normal speed. Leave it empty for the default.
+* **Start Position (seconds)**: where playback begins when the video starts. Leave it empty to start from the beginning.
+* **Spatial Audio**: turn on **Spatial** to make the video's sound positional, so it fades as the player walks away. **Spatial Distance** then sets the range: the audio plays at full volume up to **Min** meters and fades to silence at **Max** meters. The defaults are 0 and 60.
+
+With **Spatial** off, the audio plays at the same volume everywhere in the scene.
+
+### Text Shape
+
+* **Size**: the width (**W**) and height (**H**) of the text box, in meters. Alignment and padding are measured against this box.
+* **Text Wrapping**: breaks the text into new lines when it reaches the width set in **Size**. With it off, the text stays on one line.
+
+### Material
+
+* **Color Alpha**: the opacity of the main **Color**, from 0 to 1. It has no effect while **Transparency Mode** is **Opaque**.
+* **Alpha test**: the cutoff where a pixel becomes invisible. It only appears when **Transparency Mode** is **Alpha test** or **Alpha test & blend**, since those are the only modes that use it.
+* **None**: color dropdowns now offer a **None** entry that clears the color, and the texture **Type** dropdown offers **None** to remove a texture.
+
+### Particle System
+
+The **Rotation** section controls how particles are oriented and how they spin:
+
+* **Billboard**: each particle always faces the camera. On by default. Turn it off for particles that should tumble freely in 3D.
+* **Face Travel Direction**: each particle starts out pointing the way it's moving, like an arrow.
+* **Initial Rotation (deg)**: how each particle is rotated when it's born, per axis.
+* **Rotation Over Time (deg/sec)**: how fast it spins, per axis. Values are capped at 180 per axis.
+
+When **Use Texture** is on, two more dropdowns appear:
+
+* **Wrap Mode**: how the texture behaves past its edges. **Clamp** (the default) stretches the edge pixels, **Repeat** tiles it, **Mirror** tiles it with alternating flips.
+* **Filter Mode**: how the texture is sampled. **Bilinear** (the default) is smooth, **Point** is pixelated and good for pixel art, **Trilinear** smooths across mipmap levels.
+
+### Tween
+
+**Tween Type** offers five modes:
+
+| Mode | What it does |
+| --- | --- |
+| **Move Item**, **Rotate Item**, **Scale Item** | Animate from a start value to an end value over the **Duration**. |
+| **Move Continuous** | Keep moving in a fixed direction, forever, at a constant speed. |
+| **Rotate Continuous** | Keep spinning around a fixed axis, forever, at a constant speed. |
+
+The two continuous modes have no end value, so **Start**, **End**, **Duration**, **Easing Function** and **Loop** are hidden for them. Instead you get:
+
+* **Move Continuous**: a **Direction** vector and a **Speed (meters/sec)**. Use a direction of length 1 so the speed is exactly meters per second. A negative speed moves the opposite way.
+* **Rotate Continuous**: a **Rotation Axis (degrees)** and a **Speed (degrees/sec)**. Only the direction of the axis matters, not how large the angles are.
+
+Switching **Tween Type** resets these values to sensible defaults for the new mode, because the numbers mean different things in each one.
+
+The **Playing** checkbox (previously called "Auto start") decides whether the tween runs as soon as the scene loads. With it off, the tween is created paused at its start value and only runs once your code sets it to play.
+
+{% hint style="info" %}
+**💡 Tip**: Some component properties can only be set from code. Editing an entity in the inspector no longer discards them, so you can set a value in your scene's code, then keep using the editor on that entity without losing it.
+{% endhint %}
+
 ## Smart items
 
 [Smart items](../interactivity/smart-items.md) can also include special components that Control the Entity's interactivity. These are typically:

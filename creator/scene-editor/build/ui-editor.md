@@ -6,22 +6,14 @@ description: Design your scene's on-screen UI visually in the Creator Hub, on a 
 
 The UI Editor lets you build your scene's on-screen interface by dragging widgets onto a canvas, instead of writing layout code by hand. It writes real files into your scene, so anything you make here is normal SDK7 UI that you can keep editing in code.
 
-The UI Editor is an experimental feature and is turned off by default.
+## Open it
 
-## Turn it on
-
-1. Click the Creator Hub logo in the top-left corner and select **Settings**.
-2. Go to the **EXPERIMENTAL** tab.
-3. Switch on **Enable UI Editor**.
-
-![The App Preferences dialog on the EXPERIMENTAL tab, with the Enable UI Editor switch turned on between the Bevy renderer and AI Assistant switches.](../../images/editor/settings-experimental.png)
-
-A **2D** / **3D** tab switch then appears at the top of the editor's left panel. **3D** is the scene canvas you already know. **2D** is the UI Editor.
+Use the **2D** / **3D** switch at the top of the editor's left panel. **3D** is the scene canvas you already know. **2D** is the UI Editor.
 
 ![The 2D and 3D tab switch, with 3D selected.](../../images/editor/ui-editor-mode-switch.png)
 
 {% hint style="warning" %}
-**📔 Note**: The UI Editor needs `@dcl/sdk` version 7.26.0 or newer in your scene. On an older scene it shows a **UI Editor Unavailable** notice with an **Update SDK** button that upgrades the scene for you.
+**📔 Note**: The UI Editor needs `@dcl/sdk` version 7.26.0 or newer in your scene. On an older scene the **2D** tab shows a **UI Editor Unavailable** notice instead of the canvas, with an **Update SDK** button that upgrades the scene for you and a **Maybe later** button to dismiss it.
 {% endhint %}
 
 The Creator Hub remembers whether you left a scene in 2D or 3D and reopens it the same way. This is stored per project and is never published with your scene.
@@ -44,7 +36,12 @@ There is no save button. The editor writes your changes to disk as you go, and t
 * **Left**: **GUIs**, the list of your UI components, and **Nodes**, the tree of the selected one. A search box filters both. Hover a node to lock, hide or delete it.
 * **Right**: a **Properties** tab for the selected node, and a **Logic** tab.
 * **Bottom**: the widget palette. Drag a card onto the canvas to add it.
-* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging. The controls in the bottom-right corner zoom in and out, switch between desktop and mobile previews, and toggle the on-screen guides. Click the zoom percentage to re-center the view.
+* **Middle**: the canvas. Drag nodes to move them, use the handles to resize, and pan freely with the mouse wheel or by dragging.
+
+Two floating groups of controls sit in the bottom-right corner of the canvas:
+
+* The **preview** group toggles the mobile HUD guides and the safe-area guides, and switches between **Desktop preview** and **Mobile preview**.
+* The **zoom** group has a minus and a plus button, and a percentage readout. Click the percentage to reset the view.
 
 <div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 
@@ -119,12 +116,82 @@ Content placed outside the safe area is not hidden, it is drawn past the outline
 **📔 Note**: These guides are an approximation for the editor only. The real areas are reported by the client at runtime and vary by device, so always confirm on a real phone. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).
 {% endhint %}
 
+## Customize the mobile controls
+
+On the mobile client, players move and act through a set of native on-screen controls: a joystick, a crosshair, and a row of action buttons. The **MobileHUD** entry lets you reshape that HUD without writing code, and shows the result on the canvas as you go.
+
+Once your scene has at least one GUI, **MobileHUD** appears as the first row of the **GUIs** list, above your own GUIs. Select it to open its panel on the right.
+
+[Screenshot: The UI Editor with MobileHUD selected in the GUIs list, showing the Hide Joystick, Hide Crosshair and Hide Input Actions checkboxes and the Input Actions rows on the right panel, with the mobile HUD drawn on the canvas]
+
+Three checkboxes at the top hide whole parts of the HUD:
+
+* **Hide Joystick**: removes the movement stick.
+* **Hide Crosshair**: removes the aiming reticle.
+* **Hide Input Actions**: removes every action button at once.
+
+Below them, the **Input Actions** section lists the eight buttons, in the order they fill the on-screen slots:
+
+| Action | Button on screen |
+| --- | --- |
+| `IA_JUMP` | The large central button, by default |
+| `IA_POINTER` | The interaction button |
+| `IA_PRIMARY (E)` | The E button |
+| `IA_SECONDARY (F)` | The F button |
+| `IA_ACTION_3 (1)` to `IA_ACTION_6 (4)` | The numbered buttons |
+
+Each row gives you three things:
+
+* **Main**: a radio button that makes this action the large central button. `IA_JUMP` is Main by default, and only one action can be Main at a time.
+* An **eye icon** that shows or hides that button. When you hide one, the lower buttons move up to fill the gap.
+* **Custom Icon**: replaces the button's glyph with a `.png`, `.jpg` or `.jpeg` image from your scene.
+
+By default nothing is hidden and `IA_JUMP` is the main button, which is exactly what players get in a scene that doesn't touch the HUD.
+
+{% hint style="info" %}
+**💡 Tip**: The numbered buttons normally sit behind a "+" overflow toggle. Hide enough of the higher buttons and they show directly. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md#how-the-button-layout-works) for how the slots fill.
+{% endhint %}
+
+### The file it writes
+
+Your changes are written to `src/mobile-hud.ts`, which exports a `setupMobileHud()` function built on the SDK's [`TouchScreenControls`](../../sdk7/interactivity/touch-screen-controls.md) component:
+
+```ts
+import { engine, InputAction, TouchScreenControls } from '@dcl/sdk/ecs'
+
+export function setupMobileHud() {
+  TouchScreenControls.createOrReplace(engine.RootEntity, {
+    hideJoystick: true,
+    hideCrosshair: false,
+    mainAction: InputAction.IA_PRIMARY,
+    touchInputs: [
+      { inputAction: InputAction.IA_ACTION_3, hide: true },
+    ],
+  })
+}
+```
+
+The editor also adds the import and the call to your `src/index.ts`:
+
+```ts
+import { setupMobileHud } from './mobile-hud'
+
+setupMobileHud()
+```
+
+The file only exists while it has something to say. If you set everything back to its default, or delete your last GUI, the Creator Hub deletes `src/mobile-hud.ts` and removes those two lines again.
+
+{% hint style="warning" %}
+**📔 Note**: While **MobileHUD** is selected the widget palette is disabled and the preview controls are hidden, since there is nothing to place and the HUD is mobile-only. Select one of your own GUIs to get them back.
+{% endhint %}
+
 ## Where the files go
 
 The UI Editor edits your scene's real source files. There is no separate saved format.
 
 * Each GUI is one `.tsx` file under `src/ui/`.
 * `src/ui/index.tsx` is generated by the editor to gather them together. Don't edit it by hand.
+* `src/mobile-hud.ts` holds your [mobile controls](#customize-the-mobile-controls), if you changed any. It sits outside `src/ui/` on purpose, so it's never treated as a GUI.
 
 If your scene has an older single `src/ui.tsx` file, the editor backs it up as `src/ui.tsx.bak` the first time you open the UI Editor.
 

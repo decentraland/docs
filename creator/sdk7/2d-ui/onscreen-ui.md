@@ -253,6 +253,10 @@ ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'none' })
 On desktop the device insets are zero, so `'device'` places the UI over the whole screen there — the same result as `'none'`. The area is re-read every tick, so the UI follows the insets when they change, for example on rotation or when system bars appear and hide.
 
 {% hint style="warning" %}
+**📔 Don't anchor UI to the top-left.** That corner, and the whole left edge, is where the explorer draws its minimap, its chat, and on mobile the virtual joystick. Scene UI placed there renders, but the client's own UI is drawn on top of it, so it gets covered and its buttons are often unclickable. Anchor your UI to the right or center it, or use `screenInset: 'interactable'` so the explorer places it clear of its own HUD. See [Never anchor your UI to the top-left](../design-experience/ux-ui-guide.md#never-anchor-your-ui-to-the-top-left).
+{% endhint %}
+
+{% hint style="warning" %}
 **📔 `'interactable'` is not a no-op on desktop.** Unlike the device insets, the interactable area is *not* zero on the desktop client: it reserves roughly the left 25% of the screen for its own UI, so `screenInset: 'interactable'` places your UI in the remaining 75% there. That is the point of the option, but it does mean it changes your desktop layout too — branch with [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) if you only want it on phones.
 
 **Client support**: `'interactable'` needs an explorer that reports the area. It is supported on desktop, and on mobile from client version `1.12.1` onwards — on older mobile clients the value is reported as zero, and the UI falls back to covering the whole screen. That same `1.12.1` release also normalizes the `'device'` area between Android and iOS, so treat it as the floor for any layout that depends on either inset. `'none'` behaves the same everywhere.

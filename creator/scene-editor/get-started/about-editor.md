@@ -87,7 +87,7 @@ To change the renderer:
 2. Go to the **EXPERIMENTAL** tab.
 3. Switch on **Enable Bevy Scene Renderer**.
 
-![The App Preferences dialog on the EXPERIMENTAL tab, with the switches Enable Bevy Scene Renderer, Enable UI Editor and Enable AI Assistant.](../../images/editor/settings-experimental.png)
+![The App Preferences dialog on the EXPERIMENTAL tab, with the Enable Bevy Scene Renderer switch.](../../images/editor/settings-experimental.png)
 
 The Bevy renderer is an alternative engine for the editing canvas. It affects how your scene looks while editing, not how it looks to players after publishing.
 

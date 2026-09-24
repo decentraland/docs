@@ -40,14 +40,18 @@ See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on 
 
 ### Scene thumbnail
 
-The thumbnail should be a .png or .jpg image with a **16:9** aspect ratio. The recommended size is 1920x1080 pixels. Other sizes are also supported, as long as they keep the same 16:9 proportions, otherwise the image may be stretched.
+The thumbnail must be a .png or .jpg image with a **16:9** aspect ratio. 1920x1080 pixels is the size to aim for. Other sizes work as long as they keep the same 16:9 proportions.
 
-Some parts of the platform display a reduced square version of the thumbnail, cropped to the central 1080x1080 pixels. Keep anything essential, like text or logos, inside that safe area so that it's not cut off.
+An image that isn't 16:9 is refused: importing one shows an error, and choosing an off-ratio image that's already in your project shows **Thumbnail not supported** and keeps the thumbnail you had.
+
+Some parts of the platform display a reduced square version of the thumbnail, cropped to the central square. That cuts about 22% off each side. Keep anything essential, like text or logos, inside that safe area so it isn't lost.
+
+The **Details** tab shows your thumbnail full width, with those two side bands shaded so you can see exactly what a square view drops, and the image's real pixel size underneath.
 
 ![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
 
 {% hint style="info" %}
-**💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image.
+**💡 Tip**: If you don't provide a thumbnail, the scene uses the automatic capture you see on the scene's card. That capture is cropped from the center to 16:9 and never enlarged, so it can end up smaller than 1920 wide. Uploading your own image is almost always better.
 {% endhint %}
 
 ### Tipping

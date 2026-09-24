@@ -18,7 +18,7 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 Configure different preview options from the dropdown menu next to the **Preview** button:
 
 - **Preview with**: Choose between **Desktop Client** (the default Decentraland Explorer) and **Bevy (Web)**, which opens the preview in your browser using the Bevy Web client. The Bevy Web option is equivalent to the `--web` CLI flag.
-- **Open Console Window During Preview**: Opens a new window with the console output of the scene. This is useful to debug errors in the scene.
+- **Open Debug Console**: Shows the scene's console output inside the Creator Hub while the preview runs. This is useful to debug errors in the scene. See [The Creator Hub console](#the-creator-hub-console).
 - **Skip Auth Screen**: Skips the account selection screen and automatically logs you in with your currently logged in account. This is disabled by default, enable it if you want to test multiple accounts.
 - **Landscape Terrain Enabled**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint.
 - **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
@@ -119,6 +119,20 @@ You can also edit the _scene.json_ file to list multiple parcels in the "parcels
 Open the console by clicking the ![](../../images/console-icon.png) icon on the top-right corner. Here you can see any error messages, and also any text that your scene prints to the console via `console.log()`.
 
 You can also open it by pressing the **\`** key on your keyboard. You can also press Shift + **\`** to open the console even wider, in case you need to view more text.
+
+## The Creator Hub console
+
+The Creator Hub can show the same output without leaving the editor. Turn on **Open Debug Console** in the preview options, then run a preview. A **CONSOLE** tab appears next to **FILE SYSTEM** and **ASSET PACKS** in the panel at the bottom of the editor.
+
+[Screenshot: The Creator Hub editor with the CONSOLE tab open in the bottom panel, showing scene log output and the pop-out icon in its header]
+
+To move the console out of the way, click the pop-out icon in its header, labeled **Open console in a separate window**. The console opens as its own window titled **Console**, which you can move to a second monitor and keep visible while you edit.
+
+The separate window has a **Clear console** button, and a **Dock back in the editor** button that returns the console to the bottom panel. Meanwhile the **CONSOLE** tab in the editor reads **Console opened in a separate window** and offers a **Dock back here** button that does the same thing.
+
+{% hint style="info" %}
+**💡 Tip**: The console keeps collecting output while it's detached, so docking it back doesn't lose anything. When no preview is running it reads **Run a scene to see debug output**.
+{% endhint %}
 
 ## Test a multiplayer scene locally
 

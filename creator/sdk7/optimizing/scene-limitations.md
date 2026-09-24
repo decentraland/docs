@@ -31,7 +31,9 @@ Below are the maximum number of elements that a scene is allowed to render at th
 * **Bodies:** `n x 300` Amount of meshes in the scene.
 * **Materials:** `log2(n+1) x 20` Amount of materials in the scene. It includes materials imported as part of models.
 * **Textures:** `log2(n+1) x 10` Amount of textures in the scene. It includes textures imported as part of models.
-*   **Height:** `log2(n+1) x 20` Height in meters.
+*   **Height:** `330 meters` Maximum height of the scene, regardless of how many parcels it occupies.
+
+    > Warning: Entities placed higher than 200 meters may suffer multiplayer sync issues. Keep any content that players interact with or that is synced between players below that height.
 
     > Important: Only entities that are currently being rendered in the scene are counted for these limits. If your scene switches between 3D models, what matters is the rendered models at any point in time, not the total sum. Player avatars and any items brought by a player from outside the scene don't count for calculating these limits either.
 * **Total file size:** In Genesis City -`15 MB per parcel - 300 MB max`. For Worlds, see [World size](scene-limitations.md#world-size). Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages. You can see the full list of files being published and their sizes before you confirm a deployment.

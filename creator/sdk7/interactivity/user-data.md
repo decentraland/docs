@@ -419,7 +419,7 @@ engine.addSystem(CursorSystem)
 
 The `PrimaryPointerInfo` component returns an object with the following properties:
 
-* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the bottom left corner of the screen. When the cursor is locked, this reports the center of the screen.
+* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the top left corner of the screen, with `y` growing downwards — the same coordinate space as `UiTransform` and `UiCanvasInformation`. When the cursor is locked, this reports the center of the screen.
 * `screenDelta`: _(Vector2)_ The change in the position of the cursor since the last frame, expressed in pixels. See [Mouse Movement](mouse-movement.md) for details and examples.
 * `worldRayDirection`: _(Vector3)_ A vector that represents the direction of the ray from the camera to the cursor. The origin is the camera position. Use this to calculate the position of the cursor in the world.
 * `pointerType`: 0 for `none`, 1 for `mouse`

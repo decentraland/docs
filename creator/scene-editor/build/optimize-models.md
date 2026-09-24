@@ -12,8 +12,6 @@ Heavy 3D models are the most common reason a scene is slow to load. The Creator 
 2. The first time you run it, the Creator Hub asks permission to download the tools it needs. Click **Continue**.
 3. Review the options, then start the run.
 
-[Screenshot: The Optimize models dialog, showing the Meshes and Textures sections with their switches, the Format selector and the Max texture sizes fields]
-
 {% hint style="info" %}
 **💡 Tip**: You can also start it from the **Local Assets** panel at the bottom of the editor. Open the **File System** tab and click the broom icon, labeled **Optimize models**.
 {% endhint %}

@@ -124,8 +124,6 @@ You can also open it by pressing the **\`** key on your keyboard. You can also p
 
 The Creator Hub can show the same output without leaving the editor. Turn on **Open Debug Console** in the preview options, then run a preview. A **CONSOLE** tab appears next to **FILE SYSTEM** and **ASSET PACKS** in the panel at the bottom of the editor.
 
-[Screenshot: The Creator Hub editor with the CONSOLE tab open in the bottom panel, showing scene log output and the pop-out icon in its header]
-
 To move the console out of the way, click the pop-out icon in its header, labeled **Open console in a separate window**. The console opens as its own window titled **Console**, which you can move to a second monitor and keep visible while you edit.
 
 The separate window has a **Clear console** button, and a **Dock back in the editor** button that returns the console to the bottom panel. Meanwhile the **CONSOLE** tab in the editor reads **Console opened in a separate window** and offers a **Dock back here** button that does the same thing.

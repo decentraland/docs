@@ -19,8 +19,6 @@ The assistant is on by default. Its settings have their own tab:
 
 That tab holds the **Enable AI Assistant** switch, the **Bill this to an API key instead** option, the **Connect** list of coding CLIs, and the **Expose AI assistant MCP server** settings.
 
-[Screenshot: The AI tab of App Preferences, with the Enable AI Assistant switch on, the Bill this to an API key instead checkbox, the Connect list showing the detected CLIs, and the Expose AI assistant MCP server section]
-
 When the assistant is on, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
 
 ![The editor top bar, with the scene name on the left and the sparkles AI Assistant icon, Code, Preview and Publish buttons on the right.](../../images/editor/editor-top-bar.png)

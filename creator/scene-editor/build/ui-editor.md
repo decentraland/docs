@@ -122,8 +122,6 @@ On the mobile client, players move and act through a set of native on-screen con
 
 Once your scene has at least one GUI, **MobileHUD** appears as the first row of the **GUIs** list, above your own GUIs. Select it to open its panel on the right.
 
-[Screenshot: The UI Editor with MobileHUD selected in the GUIs list, showing the Hide Joystick, Hide Crosshair and Hide Input Actions checkboxes and the Input Actions rows on the right panel, with the mobile HUD drawn on the canvas]
-
 Three checkboxes at the top hide whole parts of the HUD:
 
 * **Hide Joystick**: removes the movement stick.

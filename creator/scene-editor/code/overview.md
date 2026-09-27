@@ -90,4 +90,4 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 - [Making any item smart](../interactivity/make-any-item-smart.md)
 - [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
 - [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
-- [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+- [Examples](../../tutorials/examples.md): dive right into working example scenes.

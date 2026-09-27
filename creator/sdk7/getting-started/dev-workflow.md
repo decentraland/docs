@@ -57,7 +57,7 @@ See [Publishing options](../publishing/publishing-options.md) for more details.
 
 When creating a new scene, choose amongst several base template scenes that include some basic code and 3d models. Use these to get started faster.
 
-* [Example scenes](https://studios.decentraland.org/resources?sdk_version=SDK7): here you can find a large collection of example scenes, each showcasing different mechanics that you can borrow. You can also clone any of these scenes and use it as a starting point.
+* [Example scenes](../../tutorials/examples.md): here you can find a curated collection of working scenes and repositories, each showcasing mechanics that you can reuse or reference.
 * [Helper libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library): these can simplify many common tasks.
 
 ## Art assets

@@ -15,55 +15,55 @@ This is an index, not a second copy of the code. Examples stay in the repositori
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [SDK Skills](./sdk-skills.md) Maintained instructions that help AI coding agents use verified SDK7 patterns. `ai`, `sdk7`, `workflow` [Open repository](https://github.com/decentraland/sdk-skills) |
-| [SDK7 scene template](./sdk7-scene-template.md) A clean starting point for a new TypeScript SDK7 scene. `starter`, `sdk7`, `scene` [Open repository](https://github.com/decentraland/sdk7-scene-template) |
-| [SDK7 test scenes](./sdk7-test-scenes.md) A large collection of focused, working SDK7 feature demonstrations. `sdk7`, `reference`, `test-scenes` [Open repository](https://github.com/decentraland/sdk7-test-scenes) |
+| [SDK Skills](./sdk-skills.md) | Maintained instructions that help AI coding agents use verified SDK7 patterns. | `ai`, `sdk7`, `workflow` | [Open repository](https://github.com/decentraland/sdk-skills) |
+| [SDK7 scene template](./sdk7-scene-template.md) | A clean starting point for a new TypeScript SDK7 scene. | `starter`, `sdk7`, `scene` | [Open repository](https://github.com/decentraland/sdk7-scene-template) |
+| [SDK7 test scenes](./sdk7-test-scenes.md) | A large collection of focused, working SDK7 feature demonstrations. | `sdk7`, `reference`, `test-scenes` | [Open repository](https://github.com/decentraland/sdk7-test-scenes) |
 
 ## Gameplay and interaction
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [Input modifier](./input-modifier.md) Changing or constraining player movement input in part of a scene. `movement`, `input`, `player` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) |
-| [Particle system](./particle-system.md) Fire, smoke, sparks, snow, and other particle effects. `particles`, `effects`, `visuals` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system) |
-| [Pointer lock control](./pointer-lock-control.md) Capturing mouse input for custom controls. `input`, `mouse`, `camera` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control) |
-| [Raycasting and collider layers](./raycasting-and-collider-layers.md) Pointing at scene geometry and controlling which colliders react to a raycast. `interaction`, `raycast`, `collision` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests) |
-| [Trigger areas](./trigger-areas.md) Detecting players entering and leaving areas, including collider-based triggers. `interaction`, `triggers`, `collision` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas) |
-| [Zombie Attack](./zombie-attack.md) A complete, playable game scene with enemies and scoring. `game`, `complete-scene`, `score` [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack) |
+| [Input modifier](./input-modifier.md) | Changing or constraining player movement input in part of a scene. | `movement`, `input`, `player` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) |
+| [Particle system](./particle-system.md) | Fire, smoke, sparks, snow, and other particle effects. | `particles`, `effects`, `visuals` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system) |
+| [Pointer lock control](./pointer-lock-control.md) | Capturing mouse input for custom controls. | `input`, `mouse`, `camera` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control) |
+| [Raycasting and collider layers](./raycasting-and-collider-layers.md) | Pointing at scene geometry and controlling which colliders react to a raycast. | `interaction`, `raycast`, `collision` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests) |
+| [Trigger areas](./trigger-areas.md) | Detecting players entering and leaving areas, including collider-based triggers. | `interaction`, `triggers`, `collision` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas) |
+| [Zombie Attack](./zombie-attack.md) | A complete, playable game scene with enemies and scoring. | `game`, `complete-scene`, `score` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack) |
 
 ## UI, camera, and player experience
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [NPC Toolkit](./npc-toolkit.md) Reusable NPC behaviours and dialogue UI for SDK7 scenes. `npc`, `dialogue`, `ui` [Open repository](https://github.com/decentraland-scenes/dcl-npc-toolkit) |
-| [Spectate mode](./spectate-mode.md) A spectator-style camera and player viewing flow. `camera`, `spectator`, `player` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode) |
-| [UI animations](./ui-animations.md) Animated UI elements, sprite sheets, and loading indicators. `ui`, `animation`, `sprites` [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations) |
-| [UI safe areas](./ui-safe-areas.md) Positioning interface elements around screen insets and safe areas. `ui`, `hud`, `responsive` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area) |
-| [Virtual cameras](./virtual-cameras.md) Creating and switching to scene-defined cameras. `camera`, `cinematic`, `controls` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) |
+| [NPC Toolkit](./npc-toolkit.md) | Reusable NPC behaviours and dialogue UI for SDK7 scenes. | `npc`, `dialogue`, `ui` | [Open repository](https://github.com/decentraland-scenes/dcl-npc-toolkit) |
+| [Spectate mode](./spectate-mode.md) | A spectator-style camera and player viewing flow. | `camera`, `spectator`, `player` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode) |
+| [UI animations](./ui-animations.md) | Animated UI elements, sprite sheets, and loading indicators. | `ui`, `animation`, `sprites` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations) |
+| [UI safe areas](./ui-safe-areas.md) | Positioning interface elements around screen insets and safe areas. | `ui`, `hud`, `responsive` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area) |
+| [Virtual cameras](./virtual-cameras.md) | Creating and switching to scene-defined cameras. | `camera`, `cinematic`, `controls` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) |
 
 ## Multiplayer, data, and services
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [Authoritative server leaderboard](./authoritative-server-leaderboard.md) A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings. `multiplayer`, `leaderboard`, `server`, `storage` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard) |
-| [Mini Games library](./mini-games-library.md) Player queues, scoreboards, and supporting logic for multiplayer mini games. `multiplayer`, `queue`, `scoreboard`, `game` [Open repository](https://github.com/decentraland/sdk-mini-games) |
-| [Third-party server examples](./third-party-server-examples.md) Leaderboard, guest book, and player-authentication integrations using external services. `api`, `storage`, `authentication`, `leaderboard` [Open repository](https://github.com/decentraland/sdk7-goerli-plaza) |
+| [Authoritative server leaderboard](./authoritative-server-leaderboard.md) | A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings. | `multiplayer`, `leaderboard`, `server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard) |
+| [Mini Games library](./mini-games-library.md) | Player queues, scoreboards, and supporting logic for multiplayer mini games. | `multiplayer`, `queue`, `scoreboard`, `game` | [Open repository](https://github.com/decentraland/sdk-mini-games) |
+| [Third-party server examples](./third-party-server-examples.md) | Leaderboard, guest book, and player-authentication integrations using external services. | `api`, `storage`, `authentication`, `leaderboard` | [Open repository](https://github.com/decentraland/sdk7-goerli-plaza) |
 
 ## Audio, video, and environment
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [Audio visualization](./audio-visualization.md) Using live audio data to drive visual scene behaviour. `audio`, `visualization`, `effects` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization) |
-| [Dynamic lights](./dynamic-lights.md) Changing lights at runtime. `lighting`, `environment`, `effects` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) |
-| [Skybox control](./skybox-control.md) Updating skybox time and transition settings from scene code. `skybox`, `environment`, `lighting` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) |
-| [Video streaming](./video-streaming.md) Playing streamed video on a scene surface. `video`, `streaming`, `media` [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming) |
+| [Audio visualization](./audio-visualization.md) | Using live audio data to drive visual scene behaviour. | `audio`, `visualization`, `effects` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization) |
+| [Dynamic lights](./dynamic-lights.md) | Changing lights at runtime. | `lighting`, `environment`, `effects` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) |
+| [Skybox control](./skybox-control.md) | Updating skybox time and transition settings from scene code. | `skybox`, `environment`, `lighting` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) |
+| [Video streaming](./video-streaming.md) | Playing streamed video on a scene surface. | `video`, `streaming`, `media` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming) |
 
 ## Performance and scene systems
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [Asset loading](./asset-loading.md) Loading scene assets on demand rather than all at once. `performance`, `loading`, `assets` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load) |
-| [Material and texture gallery](./material-and-texture-gallery.md) Material, texture, and GLTF node modifier patterns. `materials`, `textures`, `rendering` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery) |
-| [Modifier areas](./modifier-areas.md) Applying area-specific settings such as hiding player name tags. `player`, `areas`, `modifiers` [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas) |
+| [Asset loading](./asset-loading.md) | Loading scene assets on demand rather than all at once. | `performance`, `loading`, `assets` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load) |
+| [Material and texture gallery](./material-and-texture-gallery.md) | Material, texture, and GLTF node modifier patterns. | `materials`, `textures`, `rendering` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery) |
+| [Modifier areas](./modifier-areas.md) | Applying area-specific settings such as hiding player name tags. | `player`, `areas`, `modifiers` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas) |
 
 ## For AI-assisted creation
 

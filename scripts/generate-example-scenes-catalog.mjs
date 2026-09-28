@@ -100,10 +100,10 @@ function renderOverview(examples) {
 
 		const rows = categoryExamples.map(example => [
 			`| [${example.name}](${example.page})`,
-			`${example.description}`,
-			`${example.tags.map(tag => `\`${tag}\``).join(', ')}`,
+			example.description,
+			example.tags.map(tag => `\`${tag}\``).join(', '),
 			`[Open ${example.source.includes('/tree/') ? 'scene' : 'repository'}](${example.source}) |`,
-		].join(' '))
+		].join(' | '))
 
 		return [
 			`## ${category.name}`,

@@ -1,0 +1,370 @@
+{
+	"schemaVersion": 1,
+	"categories": [
+		{
+			"id": "getting-started",
+			"name": "Start here"
+		},
+		{
+			"id": "gameplay-interaction",
+			"name": "Gameplay and interaction"
+		},
+		{
+			"id": "ui-camera-player",
+			"name": "UI, camera, and player experience"
+		},
+		{
+			"id": "multiplayer-data-services",
+			"name": "Multiplayer, data, and services"
+		},
+		{
+			"id": "audio-video-environment",
+			"name": "Audio, video, and environment"
+		},
+		{
+			"id": "performance-scene-systems",
+			"name": "Performance and scene systems"
+		}
+	],
+	"examples": [
+		{
+			"id": "asset-loading",
+			"name": "Asset loading",
+			"description": "Loading scene assets on demand rather than all at once.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"performance",
+				"loading",
+				"assets"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load",
+			"page": "./asset-loading.md",
+			"fileName": "asset-loading.md"
+		},
+		{
+			"id": "audio-visualization",
+			"name": "Audio visualization",
+			"description": "Using live audio data to drive visual scene behaviour.",
+			"category": "audio-video-environment",
+			"tags": [
+				"audio",
+				"visualization",
+				"effects"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization",
+			"page": "./audio-visualization.md",
+			"fileName": "audio-visualization.md"
+		},
+		{
+			"id": "authoritative-server-leaderboard",
+			"name": "Authoritative server leaderboard",
+			"description": "A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"multiplayer",
+				"leaderboard",
+				"server",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard",
+			"page": "./authoritative-server-leaderboard.md",
+			"fileName": "authoritative-server-leaderboard.md"
+		},
+		{
+			"id": "dynamic-lights",
+			"name": "Dynamic lights",
+			"description": "Changing lights at runtime.",
+			"category": "audio-video-environment",
+			"tags": [
+				"lighting",
+				"environment",
+				"effects"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights",
+			"page": "./dynamic-lights.md",
+			"fileName": "dynamic-lights.md"
+		},
+		{
+			"id": "input-modifier",
+			"name": "Input modifier",
+			"description": "Changing or constraining player movement input in part of a scene.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"movement",
+				"input",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier",
+			"page": "./input-modifier.md",
+			"fileName": "input-modifier.md"
+		},
+		{
+			"id": "material-and-texture-gallery",
+			"name": "Material and texture gallery",
+			"description": "Material, texture, and GLTF node modifier patterns.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"materials",
+				"textures",
+				"rendering"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery",
+			"page": "./material-and-texture-gallery.md",
+			"fileName": "material-and-texture-gallery.md"
+		},
+		{
+			"id": "mini-games-library",
+			"name": "Mini Games library",
+			"description": "Player queues, scoreboards, and supporting logic for multiplayer mini games.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"multiplayer",
+				"queue",
+				"scoreboard",
+				"game"
+			],
+			"source": "https://github.com/decentraland/sdk-mini-games",
+			"page": "./mini-games-library.md",
+			"fileName": "mini-games-library.md"
+		},
+		{
+			"id": "modifier-areas",
+			"name": "Modifier areas",
+			"description": "Applying area-specific settings such as hiding player name tags.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"player",
+				"areas",
+				"modifiers"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas",
+			"page": "./modifier-areas.md",
+			"fileName": "modifier-areas.md"
+		},
+		{
+			"id": "npc-toolkit",
+			"name": "NPC Toolkit",
+			"description": "Reusable NPC behaviours and dialogue UI for SDK7 scenes.",
+			"category": "ui-camera-player",
+			"tags": [
+				"npc",
+				"dialogue",
+				"ui"
+			],
+			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
+			"page": "./npc-toolkit.md",
+			"fileName": "npc-toolkit.md"
+		},
+		{
+			"id": "particle-system",
+			"name": "Particle system",
+			"description": "Fire, smoke, sparks, snow, and other particle effects.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"particles",
+				"effects",
+				"visuals"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system",
+			"page": "./particle-system.md",
+			"fileName": "particle-system.md"
+		},
+		{
+			"id": "pointer-lock-control",
+			"name": "Pointer lock control",
+			"description": "Capturing mouse input for custom controls.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"input",
+				"mouse",
+				"camera"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control",
+			"page": "./pointer-lock-control.md",
+			"fileName": "pointer-lock-control.md"
+		},
+		{
+			"id": "raycasting-and-collider-layers",
+			"name": "Raycasting and collider layers",
+			"description": "Pointing at scene geometry and controlling which colliders react to a raycast.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"interaction",
+				"raycast",
+				"collision"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests",
+			"page": "./raycasting-and-collider-layers.md",
+			"fileName": "raycasting-and-collider-layers.md"
+		},
+		{
+			"id": "sdk-skills",
+			"name": "SDK Skills",
+			"description": "Maintained instructions that help AI coding agents use verified SDK7 patterns.",
+			"category": "getting-started",
+			"tags": [
+				"ai",
+				"sdk7",
+				"workflow"
+			],
+			"source": "https://github.com/decentraland/sdk-skills",
+			"page": "./sdk-skills.md",
+			"fileName": "sdk-skills.md"
+		},
+		{
+			"id": "sdk7-scene-template",
+			"name": "SDK7 scene template",
+			"description": "A clean starting point for a new TypeScript SDK7 scene.",
+			"category": "getting-started",
+			"tags": [
+				"starter",
+				"sdk7",
+				"scene"
+			],
+			"source": "https://github.com/decentraland/sdk7-scene-template",
+			"page": "./sdk7-scene-template.md",
+			"fileName": "sdk7-scene-template.md"
+		},
+		{
+			"id": "sdk7-test-scenes",
+			"name": "SDK7 test scenes",
+			"description": "A large collection of focused, working SDK7 feature demonstrations.",
+			"category": "getting-started",
+			"tags": [
+				"sdk7",
+				"reference",
+				"test-scenes"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes",
+			"page": "./sdk7-test-scenes.md",
+			"fileName": "sdk7-test-scenes.md"
+		},
+		{
+			"id": "skybox-control",
+			"name": "Skybox control",
+			"description": "Updating skybox time and transition settings from scene code.",
+			"category": "audio-video-environment",
+			"tags": [
+				"skybox",
+				"environment",
+				"lighting"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
+			"page": "./skybox-control.md",
+			"fileName": "skybox-control.md"
+		},
+		{
+			"id": "spectate-mode",
+			"name": "Spectate mode",
+			"description": "A spectator-style camera and player viewing flow.",
+			"category": "ui-camera-player",
+			"tags": [
+				"camera",
+				"spectator",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode",
+			"page": "./spectate-mode.md",
+			"fileName": "spectate-mode.md"
+		},
+		{
+			"id": "third-party-server-examples",
+			"name": "Third-party server examples",
+			"description": "Leaderboard, guest book, and player-authentication integrations using external services.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"storage",
+				"authentication",
+				"leaderboard"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza",
+			"page": "./third-party-server-examples.md",
+			"fileName": "third-party-server-examples.md"
+		},
+		{
+			"id": "trigger-areas",
+			"name": "Trigger areas",
+			"description": "Detecting players entering and leaving areas, including collider-based triggers.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"interaction",
+				"triggers",
+				"collision"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas",
+			"page": "./trigger-areas.md",
+			"fileName": "trigger-areas.md"
+		},
+		{
+			"id": "ui-animations",
+			"name": "UI animations",
+			"description": "Animated UI elements, sprite sheets, and loading indicators.",
+			"category": "ui-camera-player",
+			"tags": [
+				"ui",
+				"animation",
+				"sprites"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations",
+			"page": "./ui-animations.md",
+			"fileName": "ui-animations.md"
+		},
+		{
+			"id": "ui-safe-areas",
+			"name": "UI safe areas",
+			"description": "Positioning interface elements around screen insets and safe areas.",
+			"category": "ui-camera-player",
+			"tags": [
+				"ui",
+				"hud",
+				"responsive"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
+			"page": "./ui-safe-areas.md",
+			"fileName": "ui-safe-areas.md"
+		},
+		{
+			"id": "video-streaming",
+			"name": "Video streaming",
+			"description": "Playing streamed video on a scene surface.",
+			"category": "audio-video-environment",
+			"tags": [
+				"video",
+				"streaming",
+				"media"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming",
+			"page": "./video-streaming.md",
+			"fileName": "video-streaming.md"
+		},
+		{
+			"id": "virtual-cameras",
+			"name": "Virtual cameras",
+			"description": "Creating and switching to scene-defined cameras.",
+			"category": "ui-camera-player",
+			"tags": [
+				"camera",
+				"cinematic",
+				"controls"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras",
+			"page": "./virtual-cameras.md",
+			"fileName": "virtual-cameras.md"
+		},
+		{
+			"id": "zombie-attack",
+			"name": "Zombie Attack",
+			"description": "A complete, playable game scene with enemies and scoring.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"complete-scene",
+				"score"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack",
+			"page": "./zombie-attack.md",
+			"fileName": "zombie-attack.md"
+		}
+	]
+}

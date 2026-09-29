@@ -465,8 +465,8 @@ function spectateMouseLook() {
   if (!delta) return
 
   yaw = (yaw + delta.x * MOUSE_SENSITIVITY) % 360
-  // Subtract delta.y so mouse-up tilts the camera up; clamp to prevent flip
-  pitch = Math.max(-25, Math.min(80, pitch - delta.y * MOUSE_SENSITIVITY))
+  // delta.y grows downwards, so mouse-up is negative: adding it tilts the camera up; clamp to prevent flip
+  pitch = Math.max(-25, Math.min(80, pitch + delta.y * MOUSE_SENSITIVITY))
 }
 ```
 

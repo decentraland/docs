@@ -85,6 +85,41 @@
 			"fileName": "dynamic-lights.md"
 		},
 		{
+			"id": "fastlane-bowling",
+			"name": "Fastlane Bowling",
+			"description": "An authoritative multiplayer bowling game with server-simulated Cannon-ES physics, persistent player progression, leaderboards, and storage-backed components.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"authoritative-server",
+				"physics",
+				"progression",
+				"leaderboard",
+				"storage"
+			],
+			"source": "https://github.com/stom66/dcl-bowling",
+			"page": "./fastlane-bowling.md",
+			"fileName": "fastlane-bowling.md"
+		},
+		{
+			"id": "flag-tag",
+			"name": "Flag Tag",
+			"description": "A server-authoritative multiplayer keep-away game with timed rounds, power-ups, and persistent leaderboards.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"authoritative-server",
+				"leaderboard"
+			],
+			"source": "https://github.com/iillee/flagtag",
+			"page": "./flag-tag.md",
+			"fileName": "flag-tag.md"
+		},
+		{
 			"id": "input-modifier",
 			"name": "Input modifier",
 			"description": "Changing or constraining player movement input in part of a scene.",
@@ -240,6 +275,22 @@
 			"fileName": "sdk7-test-scenes.md"
 		},
 		{
+			"id": "sky-chaser",
+			"name": "Sky Chaser",
+			"description": "An authoritative multiplayer game about catching escaping packages, with weekly and all-time leaderboards.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"authoritative-server",
+				"leaderboard"
+			],
+			"source": "https://github.com/stom66/dcl-sky-chaser",
+			"page": "./sky-chaser.md",
+			"fileName": "sky-chaser.md"
+		},
+		{
 			"id": "skybox-control",
 			"name": "Skybox control",
 			"description": "Updating skybox time and transition settings from scene code.",
@@ -252,6 +303,25 @@
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
 			"page": "./skybox-control.md",
 			"fileName": "skybox-control.md"
+		},
+		{
+			"id": "slay-the-steps",
+			"name": "Slay the Steps",
+			"description": "An authoritative multiplayer Festive Trail experience with custom avatars, Marketplace API integration, and a custom colour-wheel picker.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"authoritative-server",
+				"avatars",
+				"marketplace-api",
+				"ui",
+				"festive-trail"
+			],
+			"source": "https://github.com/stom66/dcl-slay-the-steps",
+			"page": "./slay-the-steps.md",
+			"fileName": "slay-the-steps.md"
 		},
 		{
 			"id": "spectate-mode",

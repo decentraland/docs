@@ -3,11 +3,16 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url))
-const repositoryDirectory = join(scriptDirectory, '..')
-const examplesDirectory = join(repositoryDirectory, 'creator', 'tutorials', 'examples')
+const repositoryDirectory = join(scriptDirectory, '..', '..', '..')
+const examplesDirectory = scriptDirectory
 const overviewPath = join(examplesDirectory, 'README.md')
 const catalogPath = join(examplesDirectory, 'catalog.json')
 const summaryPath = join(repositoryDirectory, 'creator', 'SUMMARY.md')
+
+const ignoredMarkdownFiles = new Set([
+	'AGENTS.md',
+	'README.md',
+])
 
 const categories = [
 	{
@@ -129,7 +134,7 @@ function renderSummaryEntries(examples) {
 // MARK: generateCatalog
 async function generateCatalog() {
 	const fileNames = (await readdir(examplesDirectory))
-		.filter(fileName => fileName.endsWith('.md') && fileName !== 'README.md')
+		.filter(fileName => fileName.endsWith('.md') && !ignoredMarkdownFiles.has(fileName))
 		.sort()
 
 	const examples = await Promise.all(fileNames.map(async fileName => {

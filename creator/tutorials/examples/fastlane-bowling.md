@@ -6,6 +6,7 @@ category: published-games
 tags: [game, studio-made, multiplayer, multiplayer-server, physics, progression, leaderboard, storage]
 developer: stom66
 source: https://github.com/stom66/dcl-bowling
+license: NOASSERTION
 ---
 
 # Fastlane Bowling

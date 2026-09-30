@@ -6,6 +6,7 @@ category: published-games
 tags: [game, multiplayer, teamwork, timed-rounds]
 developer: CleanTheClub
 source: https://github.com/CleanTheClub/CleanTheClub
+license: Apache-2.0
 ---
 
 # Clean The Club

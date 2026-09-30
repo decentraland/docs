@@ -6,6 +6,7 @@ category: published-games
 tags: [game, community-made]
 developer: PepeGawd
 source: https://github.com/PepeGawd/Pigeon-Deluxe
+license: unlicensed
 ---
 
 # Pigeon Deluxe

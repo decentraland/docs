@@ -5,6 +5,7 @@ description: A guest book backed by an external HTTP service.
 category: multiplayer-data-services
 tags: [api, storage]
 source: https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api
+license: unlicensed
 ---
 
 # Third-party guest book

@@ -6,6 +6,7 @@ category: published-games
 tags: [game, studio-made, multiplayer, multiplayer-server, avatars, marketplace-api, ui, festive-trail]
 developer: stom66
 source: https://github.com/stom66/dcl-slay-the-steps
+license: NOASSERTION
 ---
 
 # Slay the Steps

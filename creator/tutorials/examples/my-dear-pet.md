@@ -6,6 +6,7 @@ category: published-games
 tags: [game, pets, collection]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/marsh-colony
+license: unlicensed
 ---
 
 # My Dear Pet

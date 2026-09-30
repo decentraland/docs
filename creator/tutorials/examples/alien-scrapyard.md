@@ -6,6 +6,7 @@ category: published-games
 tags: [game, multiplayer, teamwork, timed-rounds]
 developer: procesista
 source: https://github.com/procesista/Alienscrap
+license: unlicensed
 ---
 
 # Alien Scrapyard

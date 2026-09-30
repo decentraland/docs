@@ -5,6 +5,7 @@ description: Pointing at scene geometry and controlling which colliders react to
 category: gameplay-interaction
 tags: [interaction, raycast, collision]
 source: https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests
+license: unlicensed
 ---
 
 # Raycasting and collider layers

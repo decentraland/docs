@@ -6,6 +6,7 @@ category: published-games
 tags: [game, multiplayer, multiplayer-server, teamwork, garden, storage, leaderboard]
 developer: TheLivingGarden
 source: https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main
+license: MIT
 ---
 
 # Bloom Garden

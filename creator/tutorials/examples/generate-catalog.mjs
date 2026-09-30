@@ -91,7 +91,7 @@ function parseExample(
 			return [key, value]
 		}))
 
-	const requiredFields = ['id', 'name', 'description', 'category', 'tags', 'source']
+	const requiredFields = ['id', 'name', 'description', 'category', 'tags', 'source', 'license']
 
 	for (const field of requiredFields) {
 		if (!fields[field]) {
@@ -115,6 +115,7 @@ function parseExample(
 		tags:        fields.tags.slice(1, -1).split(',').map(tag => tag.trim()).filter(Boolean),
 		developer:   fields.developer,
 		source:      fields.source,
+		license:     fields.license,
 		page:        `./${fileName}`,
 		fileName,
 	}

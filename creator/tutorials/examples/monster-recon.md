@@ -6,6 +6,7 @@ category: published-games
 tags: [game, memory-match, collection, leaderboard]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-monster-recon
+license: unlicensed
 ---
 
 # Monster Recon

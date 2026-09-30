@@ -6,6 +6,7 @@ category: published-games
 tags: [game, farming, social]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/cozy-farm
+license: unlicensed
 ---
 
 # Cozy Farm

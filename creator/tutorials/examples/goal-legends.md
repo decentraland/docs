@@ -6,6 +6,7 @@ category: published-games
 tags: [game, sports, football]
 developer: carlosmu
 source: https://github.com/carlosmu/goal-legends-arena
+license: NOASSERTION
 ---
 
 # Goal Legends

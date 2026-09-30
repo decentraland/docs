@@ -659,13 +659,16 @@
 		{
 			"id": "bloom-garden",
 			"name": "Bloom Garden",
-			"description": "Work together to keep a living garden healthy long enough to awaken the Big Bloom.",
+			"description": "A cooperative Multiplayer Server garden with built-in Storage for persistent plant state and a weekly leaderboard.",
 			"category": "published-games",
 			"tags": [
 				"game",
 				"multiplayer",
+				"multiplayer-server",
 				"teamwork",
-				"garden"
+				"garden",
+				"storage",
+				"leaderboard"
 			],
 			"developer": "TheLivingGarden",
 			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",

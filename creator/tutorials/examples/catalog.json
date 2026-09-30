@@ -2,12 +2,12 @@
 	"schemaVersion": 1,
 	"categories": [
 		{
-			"id": "published-games",
-			"name": "Published Games"
-		},
-		{
 			"id": "getting-started",
 			"name": "Start here"
+		},
+		{
+			"id": "published-games",
+			"name": "Published Games"
 		},
 		{
 			"id": "gameplay-interaction",
@@ -414,19 +414,45 @@
 			"fileName": "spectate-mode.md"
 		},
 		{
-			"id": "third-party-server-examples",
-			"name": "Third-party server examples",
-			"description": "Leaderboard, guest book, and player-authentication integrations using external services.",
+			"id": "third-party-guest-book",
+			"name": "Third-party guest book",
+			"description": "A guest book backed by an external HTTP service.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api",
+			"page": "./third-party-guest-book.md",
+			"fileName": "third-party-guest-book.md"
+		},
+		{
+			"id": "third-party-leaderboard",
+			"name": "Third-party leaderboard",
+			"description": "A persistent leaderboard backed by an external HTTP service.",
 			"category": "multiplayer-data-services",
 			"tags": [
 				"api",
 				"storage",
-				"authentication",
 				"leaderboard"
 			],
-			"source": "https://github.com/decentraland/sdk7-goerli-plaza",
-			"page": "./third-party-server-examples.md",
-			"fileName": "third-party-server-examples.md"
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board",
+			"page": "./third-party-leaderboard.md",
+			"fileName": "third-party-leaderboard.md"
+		},
+		{
+			"id": "third-party-player-authentication",
+			"name": "Third-party player authentication",
+			"description": "Verifying player identity for requests sent to an external service.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"authentication",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity",
+			"page": "./third-party-player-authentication.md",
+			"fileName": "third-party-player-authentication.md"
 		},
 		{
 			"id": "trigger-areas",
@@ -560,7 +586,7 @@
 		{
 			"id": "alien-scrapyard",
 			"name": "Alien Scrapyard",
-			"description": "Work together in timed rounds to build alien technology before the clock runs out. Each completed object unlocks new scores and shapes, giving players a reason to return and help finish whatever absurd structure the crowd is building next.",
+			"description": "Multiplayer co-op with timed rounds for building shapes before the clock runs out. Each completed object unlocks new scores and shapes, giving players a reason to return and help finish whatever absurd structure the crowd is building next.",
 			"category": "published-games",
 			"tags": [
 				"game",

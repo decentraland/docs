@@ -14,12 +14,12 @@ const ignoredMarkdownFiles = new Set([
 
 const categories = [
 	{
-		id: 'published-games',
-		name: 'Published Games',
-	},
-	{
 		id: 'getting-started',
 		name: 'Start here',
+	},
+	{
+		id: 'published-games',
+		name: 'Published Games',
 	},
 	{
 		id: 'gameplay-interaction',
@@ -133,23 +133,40 @@ function renderCatalogTables(examples) {
 		}
 
 		const rows = categoryExamples.map(example => [
-			`| [${example.name}](${example.page})`,
+			`[${example.name}](${example.page})`,
 			example.description,
 			...(category.id === 'published-games' ? [example.developer] : []),
 			example.tags.map(tag => `\`${tag}\``).join(', '),
-			`[Open ${example.source.includes('/tree/') ? 'scene' : 'repository'}](${example.source}) |`,
-		].join(' | '))
+			`[Open ${example.source.includes('/tree/') ? 'scene' : 'repository'}](${example.source})`,
+		])
+
+		const headings = category.id === 'published-games'
+			? ['Game', 'What it demonstrates', 'Developer', 'Tags', 'Source']
+			: ['Example', 'What it demonstrates', 'Tags', 'Source']
+
+		if (category.id === 'published-games') {
+			const widths = headings.map((heading, index) => Math.max(
+				heading.length,
+				...rows.map(row => row[index].length),
+			))
+
+			const renderRow = row => `| ${row.map((cell, index) => cell.padEnd(widths[index])).join(' | ')} |`
+
+			return [
+				`## ${category.name}`,
+				'',
+				renderRow(headings),
+				renderRow(widths.map(width => '-'.repeat(width))),
+				...rows.map(renderRow),
+			].join('\n')
+		}
 
 		return [
 			`## ${category.name}`,
 			'',
-			category.id === 'published-games'
-				? '| Game | What it demonstrates | Developer | Tags | Source |'
-				: '| Example | What it demonstrates | Tags | Source |',
-			category.id === 'published-games'
-				? '| --- | --- | --- | --- | --- |'
-				: '| --- | --- | --- | --- |',
-			...rows,
+			`| ${headings.join(' | ')} |`,
+			`| ${headings.map(() => '---').join(' | ')} |`,
+			...rows.map(row => `| ${row.join(' | ')} |`),
 		].join('\n')
 	}).filter(Boolean)
 

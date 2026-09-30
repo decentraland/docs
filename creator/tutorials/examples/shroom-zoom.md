@@ -6,6 +6,7 @@ category: published-games
 tags: [game, platformer, collectibles, racing]
 developer: CanessaDCL
 source: https://github.com/CanessaDCL/dcl-shroomzoom
+license: unlicensed
 ---
 
 # Shroom Zoom

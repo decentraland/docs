@@ -6,6 +6,7 @@ category: published-games
 tags: [game, survival, combat, progression]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/dead-surge
+license: unlicensed
 ---
 
 # Dead Surge

@@ -6,6 +6,7 @@ category: published-games
 tags: [game, platformer, timed-rounds]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/towerofmadness
+license: unlicensed
 ---
 
 # Tower of Madness

@@ -6,6 +6,7 @@ category: published-games
 tags: [game, social, roleplay, multiplayer]
 developer: carlosmu
 source: https://github.com/carlosmu/circus_fortune_teller
+license: unlicensed
 ---
 
 # The Fortune Teller

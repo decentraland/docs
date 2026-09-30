@@ -6,6 +6,7 @@ category: published-games
 tags: [game, seasonal, platformer]
 developer: ToxSam
 source: https://github.com/ToxSam/SlidePenguin
+license: unlicensed
 ---
 
 # Slide Penguin

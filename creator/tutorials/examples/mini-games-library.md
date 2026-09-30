@@ -5,6 +5,7 @@ description: Player queues, scoreboards, and supporting logic for multiplayer mi
 category: multiplayer-data-services
 tags: [multiplayer, queue, scoreboard, game]
 source: https://github.com/decentraland/sdk-mini-games
+license: unlicensed
 ---
 
 # Mini Games library

@@ -44,6 +44,7 @@
 			],
 			"developer": "CanessaDCL",
 			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
+			"license": "unlicensed",
 			"page": "./shroom-zoom.md",
 			"fileName": "shroom-zoom.md"
 		},
@@ -59,6 +60,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/goal-legends-arena",
+			"license": "NOASSERTION",
 			"page": "./goal-legends.md",
 			"fileName": "goal-legends.md"
 		},
@@ -75,6 +77,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/dcl-monster-recon",
+			"license": "unlicensed",
 			"page": "./monster-recon.md",
 			"fileName": "monster-recon.md"
 		},
@@ -91,6 +94,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/circus_fortune_teller",
+			"license": "unlicensed",
 			"page": "./the-fortune-teller.md",
 			"fileName": "the-fortune-teller.md"
 		},
@@ -107,6 +111,7 @@
 			],
 			"developer": "CleanTheClub",
 			"source": "https://github.com/CleanTheClub/CleanTheClub",
+			"license": "Apache-2.0",
 			"page": "./clean-the-club.md",
 			"fileName": "clean-the-club.md"
 		},
@@ -122,6 +127,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
+			"license": "unlicensed",
 			"page": "./cozy-farm.md",
 			"fileName": "cozy-farm.md"
 		},
@@ -138,6 +144,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/dead-surge",
+			"license": "unlicensed",
 			"page": "./dead-surge.md",
 			"fileName": "dead-surge.md"
 		},
@@ -154,6 +161,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
+			"license": "unlicensed",
 			"page": "./kick-off.md",
 			"fileName": "kick-off.md"
 		},
@@ -169,6 +177,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
+			"license": "unlicensed",
 			"page": "./my-dear-pet.md",
 			"fileName": "my-dear-pet.md"
 		},
@@ -184,6 +193,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
+			"license": "unlicensed",
 			"page": "./tower-of-madness.md",
 			"fileName": "tower-of-madness.md"
 		},
@@ -198,6 +208,7 @@
 				"assets"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load",
+			"license": "unlicensed",
 			"page": "./asset-loading.md",
 			"fileName": "asset-loading.md"
 		},
@@ -212,6 +223,7 @@
 				"effects"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization",
+			"license": "unlicensed",
 			"page": "./audio-visualization.md",
 			"fileName": "audio-visualization.md"
 		},
@@ -226,6 +238,7 @@
 				"effects"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights",
+			"license": "unlicensed",
 			"page": "./dynamic-lights.md",
 			"fileName": "dynamic-lights.md"
 		},
@@ -240,6 +253,7 @@
 				"player"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier",
+			"license": "unlicensed",
 			"page": "./input-modifier.md",
 			"fileName": "input-modifier.md"
 		},
@@ -254,6 +268,7 @@
 				"rendering"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery",
+			"license": "unlicensed",
 			"page": "./material-and-texture-gallery.md",
 			"fileName": "material-and-texture-gallery.md"
 		},
@@ -269,6 +284,7 @@
 				"game"
 			],
 			"source": "https://github.com/decentraland/sdk-mini-games",
+			"license": "unlicensed",
 			"page": "./mini-games-library.md",
 			"fileName": "mini-games-library.md"
 		},
@@ -283,6 +299,7 @@
 				"modifiers"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas",
+			"license": "unlicensed",
 			"page": "./modifier-areas.md",
 			"fileName": "modifier-areas.md"
 		},
@@ -298,6 +315,7 @@
 				"storage"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard",
+			"license": "unlicensed",
 			"page": "./authoritative-server-leaderboard.md",
 			"fileName": "authoritative-server-leaderboard.md"
 		},
@@ -312,6 +330,7 @@
 				"visuals"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system",
+			"license": "unlicensed",
 			"page": "./particle-system.md",
 			"fileName": "particle-system.md"
 		},
@@ -326,6 +345,7 @@
 				"camera"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control",
+			"license": "unlicensed",
 			"page": "./pointer-lock-control.md",
 			"fileName": "pointer-lock-control.md"
 		},
@@ -340,6 +360,7 @@
 				"collision"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests",
+			"license": "unlicensed",
 			"page": "./raycasting-and-collider-layers.md",
 			"fileName": "raycasting-and-collider-layers.md"
 		},
@@ -354,6 +375,7 @@
 				"workflow"
 			],
 			"source": "https://github.com/decentraland/sdk-skills",
+			"license": "Apache-2.0",
 			"page": "./sdk-skills.md",
 			"fileName": "sdk-skills.md"
 		},
@@ -368,6 +390,7 @@
 				"scene"
 			],
 			"source": "https://github.com/decentraland/sdk7-scene-template",
+			"license": "unlicensed",
 			"page": "./sdk7-scene-template.md",
 			"fileName": "sdk7-scene-template.md"
 		},
@@ -382,6 +405,7 @@
 				"test-scenes"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes",
+			"license": "unlicensed",
 			"page": "./sdk7-test-scenes.md",
 			"fileName": "sdk7-test-scenes.md"
 		},
@@ -396,6 +420,7 @@
 				"lighting"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
+			"license": "unlicensed",
 			"page": "./skybox-control.md",
 			"fileName": "skybox-control.md"
 		},
@@ -410,6 +435,7 @@
 				"player"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode",
+			"license": "unlicensed",
 			"page": "./spectate-mode.md",
 			"fileName": "spectate-mode.md"
 		},
@@ -423,6 +449,7 @@
 				"storage"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api",
+			"license": "unlicensed",
 			"page": "./third-party-guest-book.md",
 			"fileName": "third-party-guest-book.md"
 		},
@@ -437,6 +464,7 @@
 				"leaderboard"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board",
+			"license": "unlicensed",
 			"page": "./third-party-leaderboard.md",
 			"fileName": "third-party-leaderboard.md"
 		},
@@ -451,6 +479,7 @@
 				"player"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity",
+			"license": "unlicensed",
 			"page": "./third-party-player-authentication.md",
 			"fileName": "third-party-player-authentication.md"
 		},
@@ -465,6 +494,7 @@
 				"collision"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas",
+			"license": "unlicensed",
 			"page": "./trigger-areas.md",
 			"fileName": "trigger-areas.md"
 		},
@@ -479,6 +509,7 @@
 				"sprites"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations",
+			"license": "unlicensed",
 			"page": "./ui-animations.md",
 			"fileName": "ui-animations.md"
 		},
@@ -493,6 +524,7 @@
 				"responsive"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
+			"license": "unlicensed",
 			"page": "./ui-safe-areas.md",
 			"fileName": "ui-safe-areas.md"
 		},
@@ -507,6 +539,7 @@
 				"media"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming",
+			"license": "unlicensed",
 			"page": "./video-streaming.md",
 			"fileName": "video-streaming.md"
 		},
@@ -521,6 +554,7 @@
 				"controls"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras",
+			"license": "unlicensed",
 			"page": "./virtual-cameras.md",
 			"fileName": "virtual-cameras.md"
 		},
@@ -535,6 +569,7 @@
 				"score"
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack",
+			"license": "unlicensed",
 			"page": "./zombie-attack.md",
 			"fileName": "zombie-attack.md"
 		},
@@ -549,6 +584,7 @@
 				"ui"
 			],
 			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
+			"license": "Apache-2.0",
 			"page": "./npc-toolkit.md",
 			"fileName": "npc-toolkit.md"
 		},
@@ -566,6 +602,7 @@
 			],
 			"developer": "iillee",
 			"source": "https://github.com/iillee/flagtag",
+			"license": "unlicensed",
 			"page": "./flag-tag.md",
 			"fileName": "flag-tag.md"
 		},
@@ -580,6 +617,7 @@
 			],
 			"developer": "PepeGawd",
 			"source": "https://github.com/PepeGawd/Pigeon-Deluxe",
+			"license": "unlicensed",
 			"page": "./pigeon-deluxe.md",
 			"fileName": "pigeon-deluxe.md"
 		},
@@ -596,6 +634,7 @@
 			],
 			"developer": "procesista",
 			"source": "https://github.com/procesista/Alienscrap",
+			"license": "unlicensed",
 			"page": "./alien-scrapyard.md",
 			"fileName": "alien-scrapyard.md"
 		},
@@ -616,6 +655,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-bowling",
+			"license": "NOASSERTION",
 			"page": "./fastlane-bowling.md",
 			"fileName": "fastlane-bowling.md"
 		},
@@ -633,6 +673,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-sky-chaser",
+			"license": "NOASSERTION",
 			"page": "./sky-chaser.md",
 			"fileName": "sky-chaser.md"
 		},
@@ -653,6 +694,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-slay-the-steps",
+			"license": "NOASSERTION",
 			"page": "./slay-the-steps.md",
 			"fileName": "slay-the-steps.md"
 		},
@@ -672,6 +714,7 @@
 			],
 			"developer": "TheLivingGarden",
 			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",
+			"license": "MIT",
 			"page": "./bloom-garden.md",
 			"fileName": "bloom-garden.md"
 		},
@@ -687,6 +730,7 @@
 			],
 			"developer": "ToxSam",
 			"source": "https://github.com/ToxSam/SlidePenguin",
+			"license": "unlicensed",
 			"page": "./slide-penguin.md",
 			"fileName": "slide-penguin.md"
 		}

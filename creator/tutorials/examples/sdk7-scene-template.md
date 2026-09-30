@@ -5,6 +5,7 @@ description: A clean starting point for a new TypeScript SDK7 scene.
 category: getting-started
 tags: [starter, sdk7, scene]
 source: https://github.com/decentraland/sdk7-scene-template
+license: unlicensed
 ---
 
 # SDK7 scene template

@@ -5,6 +5,7 @@ description: Verifying player identity for requests sent to an external service.
 category: multiplayer-data-services
 tags: [api, authentication, player]
 source: https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity
+license: unlicensed
 ---
 
 # Third-party player authentication

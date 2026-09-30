@@ -6,6 +6,7 @@ category: published-games
 tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard]
 developer: stom66
 source: https://github.com/stom66/dcl-sky-chaser
+license: NOASSERTION
 ---
 
 # Sky Chaser

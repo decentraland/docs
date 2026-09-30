@@ -6,6 +6,7 @@ category: published-games
 tags: [game, sports, predictions, seasonal]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/kickoff-2026
+license: unlicensed
 ---
 
 # Kick Off

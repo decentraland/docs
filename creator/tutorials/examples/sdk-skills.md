@@ -5,6 +5,7 @@ description: Maintained instructions that help AI coding agents use verified SDK
 category: getting-started
 tags: [ai, sdk7, workflow]
 source: https://github.com/decentraland/sdk-skills
+license: Apache-2.0
 ---
 
 # SDK Skills

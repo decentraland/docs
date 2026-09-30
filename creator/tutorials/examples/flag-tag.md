@@ -6,6 +6,7 @@ category: published-games
 tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard]
 developer: iillee
 source: https://github.com/iillee/flagtag
+license: unlicensed
 ---
 
 # Flag Tag

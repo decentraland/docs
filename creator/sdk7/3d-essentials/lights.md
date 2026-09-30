@@ -296,3 +296,7 @@ For example, the image below displays each of the letters on different sides of 
 {% hint style="info" %}
 **💡 Tip**: For a working example of this component, see the [`0,4-dynamic-lights`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) test scene, which covers both `LightSource.Type.Point` and `LightSource.Type.Spot`, runtime changes via `LightSource.getMutable()`, shadows, and `shadowMaskTexture`.
 {% endhint %}
+
+## Lights in the dark
+
+Lights are easiest to appreciate when the sky doesn't compete with them. The `Skybox` component can black out the sun, the sky colors (and with them the ambient light), the fog, the clouds and the stars, so that your lights become the only source of illumination. See [Complete darkness](../interactivity/skybox-control.md#complete-darkness).

@@ -1,5 +1,5 @@
 ---
-description: Change the skybox time
+description: Change the skybox time, replace the sky and reflections with your own textures, or recolor the sky, sun, fog, clouds and stars
 ---
 
 # Skybox Control
@@ -63,9 +63,9 @@ function main() {
 }
 ```
 
-The `fixed_time` property is a number between 0 and 86400, where 0 is midnight and 86400 is 24:00. Any number higher than 86400 is interpreted also as midnight.
+The `fixedTime` property is a number between 0 and 86400, where 0 is midnight and 86400 is 24:00. Any number higher than 86400 is interpreted also as midnight.
 
-Whenever this component is added, removed, or the `fixed_time` property is changed, the skybox time of day transitions smoothly over a few seconds to this new value. The same happens when the player steps out or into the scene. While the skybox time of day is fixed, the skybox will no longer follow progress in its day/night cycle and players can't change the time of day via the UI.
+Whenever this component is added, removed, or the `fixedTime` property is changed, the skybox time of day transitions smoothly over a few seconds to this new value. The same happens when the player steps out or into the scene. While the skybox time of day is fixed, the skybox will no longer follow progress in its day/night cycle and players can't change the time of day via the UI.
 
 By default, the transition always happens in the forward direction, but you can change this by setting the `transitionMode` property to `TransitionMode.TM_FORWARD` or `TransitionMode.TM_BACKWARD`.
 
@@ -77,6 +77,121 @@ function main() {
 }
 ```
 
+## Custom sky texture and reflections
+
+The `Skybox` component replaces the sky itself and the reflections that every shiny material in the scene uses. Like `SkyboxTime`, it can only be added to the root entity of the scene, `engine.RootEntity`, and it only takes effect while the player is standing inside your scene.
+
+```ts
+import { engine, Material, Skybox } from '@dcl/sdk/ecs'
+
+function main() {
+  Skybox.create(engine.RootEntity, {
+    skyboxTexture: Material.Texture.Common({ src: 'images/sky.png' }),
+    reflectionMap: Material.Texture.Common({ src: 'images/reflections.png' })
+  })
+}
+```
+
+* `skyboxTexture`: an equirectangular image (a 2:1 latitude-longitude panorama) that replaces the visible sky. The time-of-day lighting keeps running underneath it. The horizontal center of the image faces the positive Z axis of the scene.
+* `reflectionMap`: an equirectangular image that replaces the reflection map used by metallic and glossy materials. If you set `skyboxTexture` but not `reflectionMap`, the reflections are derived from the sky texture automatically, so reflective surfaces match what the player sees in the sky.
+
+Only image files from the scene's assets are supported; avatar and video textures are ignored. If an image fails to load, the default sky or reflections stay in place.
+
+## Sky colors, sun, fog, clouds and stars
+
+If you keep the procedural sky, the same component lets you recolor it and adjust its cloud layer and star field. Every field is optional: anything you leave out keeps its default time-of-day behavior.
+
+```ts
+import { engine, Skybox, ColorGradient } from '@dcl/sdk/ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+// A gradient with a single key is a constant color
+function constant(color: Color4): ColorGradient {
+  return { keys: [{ time: 0, color }] }
+}
+
+function main() {
+  Skybox.create(engine.RootEntity, {
+    skyColors: {
+      zenith: constant(Color4.create(0.55, 0.25, 0.12, 1)),
+      horizon: constant(Color4.create(0.95, 0.55, 0.3, 1)),
+      nadir: constant(Color4.create(0.35, 0.15, 0.08, 1))
+    },
+    sun: { color: constant(Color4.create(1, 0.65, 0.4, 1)) },
+    fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)) },
+    clouds: { opacity: 0.3, speed: 0.01 },
+    stars: { brightness: 4.62 }
+  })
+}
+```
+
+* `skyColors`: the color of the sky at its `zenith` (straight up), at the `horizon`, and at its `nadir` (below the horizon). These colors also drive the ambient light of the scene: the zenith color lights objects from above, the horizon color from the sides and the nadir color from below, so that objects and avatars match the sky around them. `skyColors.rim` is the glow drawn along the horizon line; when you leave it unset it follows your `horizon` color, so you only need it for an accent (for example an orange sunrise rim on a dark sky).
+* `sun.color`: the color of the directional light. It also tints the sun disc.
+* `fog.color`: the color of the distance fog. Whether fog is rendered at all is a quality setting chosen by the player, a scene can't turn it on or off.
+* `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer drifts, 0.01 by default, 0 for static clouds. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky.
+* `stars.brightness`: 4.62 by default. Stars are only visible during the night part of the day.
+
+`skyColors`, `clouds` and `stars` have no effect while a `skyboxTexture` is set, since the texture replaces the procedural sky. `sun`, `fog` and the ambient light still apply in that case.
+
+### Color gradients over the day
+
+Every color in the `Skybox` component is a `ColorGradient`: a list of `keys`, each with a `time` and a `Color4`. The `time` is the normalized time of day, from 0 (_00:00_) to 1 (_24:00_), so 0.5 is noon, the same clock that `SkyboxTime` uses. The color is interpolated between neighboring keys; before the first key and after the last one, that key's color is used. A gradient with a single key is simply a constant color.
+
+```ts
+Skybox.createOrReplace(engine.RootEntity, {
+  skyColors: {
+    horizon: {
+      keys: [
+        { time: 0, color: Color4.create(0.05, 0.05, 0.2, 1) }, // midnight
+        { time: 0.25, color: Color4.create(0.95, 0.5, 0.4, 1) }, // dawn
+        { time: 0.5, color: Color4.create(0.7, 0.9, 1, 1) }, // noon
+        { time: 0.75, color: Color4.create(0.95, 0.4, 0.2, 1) }, // dusk
+        { time: 1, color: Color4.create(0.05, 0.05, 0.2, 1) } // midnight again, so there's no jump
+      ]
+    }
+  }
+})
+```
+
+Gradients don't wrap around midnight, so repeat the same color at `time: 0` and `time: 1` if the day should loop seamlessly. Color values are not limited to 1: values above 1 produce a brighter, HDR sun or sky. The alpha channel is ignored. Combine gradients with `SkyboxTime` to pin the day at one specific point of your gradient.
+
+## Hiding the sun and moon
+
+Set `sun.visible` to `false` to hide the sun and moon discs and the sun's lens flare. This also works together with a `skyboxTexture`, where the lens flare would otherwise still show through the texture. The light that the sun casts is not affected.
+
+```ts
+Skybox.createOrReplace(engine.RootEntity, { sun: { visible: false } })
+```
+
+### Complete darkness
+
+To make the lights placed in your scene the only source of illumination, black out everything the sky contributes: the sun and its disc, the sky colors (and with them the ambient light), the fog, the clouds and the stars.
+
+```ts
+import { engine, Skybox } from '@dcl/sdk/ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+const black = { keys: [{ time: 0, color: Color4.Black() }] }
+
+Skybox.createOrReplace(engine.RootEntity, {
+  sun: { color: black, visible: false },
+  skyColors: { zenith: black, horizon: black, nadir: black },
+  fog: { color: black },
+  clouds: { opacity: 0 },
+  stars: { brightness: 0 }
+})
+```
+
+See [Lights](../3d-essentials/lights.md) to add point and spot lights to your scene.
+
+## Scope and reset
+
+All `Skybox` overrides apply only while the player is inside your scene. When the player leaves the scene, when the component is removed, or when a field is unset, the sky, reflections and lighting go back to their defaults, and re-entering the scene applies them again. Changes apply immediately, without a transition.
+
+{% hint style="warning" %}
+**📔 Note**: While active, these overrides are global: neighboring parcels seen from inside your scene are also rendered with your sky, fog and lighting.
+{% endhint %}
+
 {% hint style="info" %}
-**💡 Tip**: For working examples of skybox control, see the [`2,1-skybox-sdk-scene-a`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) and [`3,1-skybox-sdk-scene-b`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/3,1-skybox-sdk-scene-b) test scenes, which drive `SkyboxTime` and `TransitionMode` live from a UI panel, and [`2,0-skybox-scene-json`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,0-skybox-scene-json), which reads the `fixedTime` set in `scene.json` back at runtime via `getSceneInformation()`.
+**💡 Tip**: For working examples of skybox control, see the [`2,1-skybox-sdk-scene-a`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) and [`3,1-skybox-sdk-scene-b`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/3,1-skybox-sdk-scene-b) test scenes, which drive `SkyboxTime` and `TransitionMode` live from a UI panel, and [`2,0-skybox-scene-json`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,0-skybox-scene-json), which reads the `fixedTime` set in `scene.json` back at runtime via `getSceneInformation()`. The [`2,2-reflection-map`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,2-reflection-map) scene exercises the `Skybox` component: sky and reflection textures, environment presets, hiding the sun and a complete-darkness mode.
 {% endhint %}

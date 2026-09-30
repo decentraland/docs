@@ -1,5 +1,5 @@
 ---
-description: Cambia la hora del skybox, reemplaza el cielo y los reflejos con tus propias texturas, o recolorea el cielo, el sol, la niebla, las nubes y las estrellas
+description: Cambia la hora del skybox, reemplaza el cielo y los reflejos con tus propias texturas o videos, o recolorea el cielo, el sol, la niebla, las nubes y las estrellas
 metaLinks:
   alternates:
     - >-
@@ -100,7 +100,30 @@ function main() {
 * `skyboxTexture`: una imagen equirectangular (un panorama latitud-longitud de proporción 2:1) que reemplaza el cielo visible. La iluminación según la hora del día sigue funcionando por debajo. El centro horizontal de la imagen mira hacia el eje Z positivo de la escena.
 * `reflectionMap`: una imagen equirectangular que reemplaza el mapa de reflejos que usan los materiales metálicos y brillantes. Si defines `skyboxTexture` pero no `reflectionMap`, los reflejos se derivan automáticamente de la textura del cielo, así las superficies reflectantes coinciden con lo que el jugador ve en el cielo.
 
-Solo se admiten archivos de imagen de los assets de la escena; las texturas de avatar y de video se ignoran. Si una imagen no se puede cargar, se mantienen el cielo o los reflejos por defecto.
+Ambas texturas aceptan archivos de imagen de los assets de la escena y texturas de video (consulta [Skybox de video](#skybox-de-video) más abajo); las texturas de avatar se ignoran. Si una imagen no se puede cargar, se mantienen el cielo o los reflejos por defecto.
+
+### Skybox de video
+
+`skyboxTexture` y `reflectionMap` también aceptan una textura de video, así que el cielo puede ser un panorama animado o una transmisión en vivo. Agrega un componente `VideoPlayer` a cualquier entidad de la escena y apunta la textura a esa entidad con `Material.Texture.Video()`, de la misma forma que lo harías para una [pantalla de video](../media/video-playing.md).
+
+```ts
+import { engine, Material, Skybox, VideoPlayer } from '@dcl/sdk/ecs'
+
+function main() {
+  const video = engine.addEntity()
+  VideoPlayer.create(video, { src: 'assets/sky.mp4', playing: true, loop: true, volume: 0 })
+
+  Skybox.createOrReplace(engine.RootEntity, {
+    skyboxTexture: Material.Texture.Video({ videoPlayerEntity: video })
+  })
+}
+```
+
+El video se muestrea en vivo para el cielo. Los reflejos derivados de él lo siguen con un retraso de unos pocos fotogramas, ya que se regeneran progresivamente, igual que con el cielo por defecto. Ten en cuenta:
+
+* La entidad con el `VideoPlayer` no necesita una malla ni un material: el video solo lo usa el cielo. Sigue siendo un reproductor de video normal, eso sí: reproduce su audio a menos que definas `volume: 0`, y cuenta para el número máximo de videos simultáneos (consulta [Consideraciones de rendimiento](../media/video-playing.md#consideraciones-de-rendimiento)). Mientras el skybox lo está usando, el motor nunca lo pausa en favor de otros videos más cercanos al jugador.
+* Usa un video de proporción 2:1 para que coincida con el mapeo equirectangular; un video con cualquier otra proporción se estira para ajustarse a él.
+* `clouds.texture` también acepta una textura de video, consulta [Nubes personalizadas](#nubes-personalizadas).
 
 ## Colores del cielo, sol, niebla, nubes y estrellas
 
@@ -133,10 +156,33 @@ function main() {
 * `skyColors`: el color del cielo en su `zenith` (cenit, justo arriba), en el `horizon` (horizonte) y en su `nadir` (bajo el horizonte). Estos colores también controlan la luz ambiental de la escena: el color del cenit ilumina los objetos desde arriba, el del horizonte desde los lados y el del nadir desde abajo, de modo que objetos y avatares coinciden con el cielo que los rodea. `skyColors.rim` es el resplandor que se dibuja a lo largo de la línea del horizonte; si no lo defines, sigue tu color de `horizon`, así que solo lo necesitas como acento (por ejemplo, un borde naranja de amanecer sobre un cielo oscuro).
 * `sun.color`: el color de la luz direccional. También tiñe el disco del sol.
 * `fog.color`: el color de la niebla de distancia. Que la niebla se renderice o no es un ajuste de calidad elegido por el jugador; una escena no puede activarla ni desactivarla.
-* `clouds.opacity`: de 0 (sin nubes) a 1, el valor por defecto. `clouds.speed`: la velocidad a la que se desplaza la capa de nubes, 0.01 por defecto, 0 para nubes estáticas. `clouds.color`: el tinte de la capa de nubes; sin él, las nubes mantienen sus colores por defecto según la hora del día incluso sobre un cielo recoloreado.
+* `clouds.opacity`: de 0 (sin nubes) a 1, el valor por defecto. `clouds.speed`: la velocidad a la que se desplaza la capa de nubes, 0.01 por defecto, 0 para nubes estáticas. `clouds.color`: el tinte de la capa de nubes; sin él, las nubes mantienen sus colores por defecto según la hora del día incluso sobre un cielo recoloreado. `clouds.texture`: tu propia imagen de capa de nubes, consulta [Nubes personalizadas](#nubes-personalizadas).
 * `stars.brightness`: 4.62 por defecto. Las estrellas solo se ven durante la parte nocturna del día.
 
 `skyColors`, `clouds` y `stars` no tienen efecto mientras haya una `skyboxTexture` definida, ya que la textura reemplaza el cielo procedural. `sun`, `fog` y la luz ambiental sí se aplican en ese caso.
+
+### Nubes personalizadas
+
+`clouds.texture` reemplaza la capa de nubes por defecto del cielo procedural con tu propia imagen equirectangular de proporción 2:1, o con una textura de video (consulta [Skybox de video](#skybox-de-video)). El resto de los campos de `clouds` siguen funcionando sobre ella: `opacity` la atenúa, `speed` la hace girar y `color` la tiñe.
+
+```ts
+import { engine, Material, Skybox } from '@dcl/sdk/ecs'
+
+Skybox.createOrReplace(engine.RootEntity, {
+  clouds: {
+    texture: Material.Texture.Common({ src: 'images/clouds.png' }),
+    speed: 0.005
+  }
+})
+```
+
+El motor lee cada canal de color de la imagen por separado:
+
+* **R**: la intensidad del tinte de las nubes, multiplicada por `clouds.color` (o por el tinte por defecto según la hora del día).
+* **G**: la opacidad, o cobertura, de las nubes.
+* **B**: la máscara de resalte solar, donde las nubes reciben la luz del sol.
+
+Una imagen simple en escala de grises, donde los tres canales son iguales, funciona como una máscara de nubes básica: blanco donde hay nubes, negro para cielo despejado. Como el resto de los campos de `clouds`, la textura no tiene efecto mientras haya una `skyboxTexture` definida, ya que el panorama reemplaza todo el cielo procedural, nubes incluidas.
 
 ### Gradientes de color a lo largo del día
 

@@ -1,5 +1,5 @@
 ---
-description: Change the skybox time, replace the sky and reflections with your own textures, or recolor the sky, sun, fog, clouds and stars
+description: Change the skybox time, replace the sky and reflections with your own textures or videos, or recolor the sky, sun, fog, clouds and stars
 ---
 
 # Skybox Control
@@ -95,7 +95,30 @@ function main() {
 * `skyboxTexture`: an equirectangular image (a 2:1 latitude-longitude panorama) that replaces the visible sky. The time-of-day lighting keeps running underneath it. The horizontal center of the image faces the positive Z axis of the scene.
 * `reflectionMap`: an equirectangular image that replaces the reflection map used by metallic and glossy materials. If you set `skyboxTexture` but not `reflectionMap`, the reflections are derived from the sky texture automatically, so reflective surfaces match what the player sees in the sky.
 
-Only image files from the scene's assets are supported; avatar and video textures are ignored. If an image fails to load, the default sky or reflections stay in place.
+Both textures accept image files from the scene's assets and video textures (see [Video skybox](#video-skybox) below); avatar textures are ignored. If an image fails to load, the default sky or reflections stay in place.
+
+### Video skybox
+
+`skyboxTexture` and `reflectionMap` also accept a video texture, so the sky can be an animated panorama or a live stream. Add a `VideoPlayer` component to any entity of the scene and point the texture at that entity with `Material.Texture.Video()`, the same way you would for a [video screen](../media/video-playing.md).
+
+```ts
+import { engine, Material, Skybox, VideoPlayer } from '@dcl/sdk/ecs'
+
+function main() {
+  const video = engine.addEntity()
+  VideoPlayer.create(video, { src: 'assets/sky.mp4', playing: true, loop: true, volume: 0 })
+
+  Skybox.createOrReplace(engine.RootEntity, {
+    skyboxTexture: Material.Texture.Video({ videoPlayerEntity: video })
+  })
+}
+```
+
+The video is sampled live for the sky. Reflections derived from it follow it with a delay of a few frames, since they are regenerated progressively, just like for the default sky. Keep in mind:
+
+* The entity with the `VideoPlayer` doesn't need a mesh or a material: the video is only used by the sky. It is still a normal video player, though: it plays its audio unless you set `volume: 0`, and it counts toward the maximum number of simultaneous videos (see [Performance considerations](../media/video-playing.md#performance-considerations)). While the skybox is using it, the engine never pauses it in favor of other videos closer to the player.
+* Use a 2:1 video to match the equirectangular mapping; a video with any other aspect ratio is stretched to fit it.
+* `clouds.texture` accepts a video texture too, see [Custom clouds](#custom-clouds).
 
 ## Sky colors, sun, fog, clouds and stars
 
@@ -128,10 +151,33 @@ function main() {
 * `skyColors`: the color of the sky at its `zenith` (straight up), at the `horizon`, and at its `nadir` (below the horizon). These colors also drive the ambient light of the scene: the zenith color lights objects from above, the horizon color from the sides and the nadir color from below, so that objects and avatars match the sky around them. `skyColors.rim` is the glow drawn along the horizon line; when you leave it unset it follows your `horizon` color, so you only need it for an accent (for example an orange sunrise rim on a dark sky).
 * `sun.color`: the color of the directional light. It also tints the sun disc.
 * `fog.color`: the color of the distance fog. Whether fog is rendered at all is a quality setting chosen by the player, a scene can't turn it on or off.
-* `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer drifts, 0.01 by default, 0 for static clouds. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky.
+* `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer drifts, 0.01 by default, 0 for static clouds. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky. `clouds.texture`: your own cloud layer image, see [Custom clouds](#custom-clouds).
 * `stars.brightness`: 4.62 by default. Stars are only visible during the night part of the day.
 
 `skyColors`, `clouds` and `stars` have no effect while a `skyboxTexture` is set, since the texture replaces the procedural sky. `sun`, `fog` and the ambient light still apply in that case.
+
+### Custom clouds
+
+`clouds.texture` replaces the default cloud layer of the procedural sky with your own equirectangular 2:1 image, or with a video texture (see [Video skybox](#video-skybox)). The other `clouds` fields keep working on it: `opacity` fades it, `speed` rotates it and `color` tints it.
+
+```ts
+import { engine, Material, Skybox } from '@dcl/sdk/ecs'
+
+Skybox.createOrReplace(engine.RootEntity, {
+  clouds: {
+    texture: Material.Texture.Common({ src: 'images/clouds.png' }),
+    speed: 0.005
+  }
+})
+```
+
+The engine reads each color channel of the image separately:
+
+* **R**: the intensity of the cloud tint, multiplied by `clouds.color` (or by the default time-of-day tint).
+* **G**: the opacity, or coverage, of the clouds.
+* **B**: the sun-highlight mask, where the clouds catch the light of the sun.
+
+A plain grayscale image, where the three channels are the same, works as a simple cloud mask: white where there are clouds, black for clear sky. Like the rest of the `clouds` fields, the texture has no effect while a `skyboxTexture` is set, since the panorama replaces the whole procedural sky, clouds included.
 
 ### Color gradients over the day
 

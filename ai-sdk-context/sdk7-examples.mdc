@@ -1156,7 +1156,7 @@ LightSource.create(entity, {
 
 ### Skybox
 ```typescript
-import { engine, Material, Skybox, ColorGradient } from '@dcl/sdk/ecs'
+import { engine, Material, Skybox, VideoPlayer, ColorGradient } from '@dcl/sdk/ecs'
 import { Color4 } from '@dcl/sdk/math'
 
 // Root entity only; active while the player is inside the scene, reverts on leave/removal.
@@ -1164,6 +1164,15 @@ import { Color4 } from '@dcl/sdk/math'
 Skybox.create(engine.RootEntity, {
   skyboxTexture: Material.Texture.Common({ src: 'images/sky.png' }),
   reflectionMap: Material.Texture.Common({ src: 'images/reflections.png' })  // optional
+})
+
+// Video sky: skyboxTexture / reflectionMap / clouds.texture also accept a VideoTexture (avatar textures ignored).
+// The VideoPlayer entity needs no mesh; it's a normal video player (volume: 0 to mute, counts toward the
+// simultaneous-video limit). Sky is live; reflections derived from a video lag a few frames. Use a 2:1 video.
+const video = engine.addEntity()
+VideoPlayer.create(video, { src: 'assets/sky.mp4', playing: true, loop: true, volume: 0 })
+Skybox.createOrReplace(engine.RootEntity, {
+  skyboxTexture: Material.Texture.Video({ videoPlayerEntity: video })
 })
 
 // Recolor the procedural sky. Every color is a ColorGradient over the normalized time of day
@@ -1182,7 +1191,10 @@ Skybox.createOrReplace(engine.RootEntity, {
     visible: true                                     // false hides sun, moon and lens flare; lighting unaffected
   },
   fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)) },  // fog on/off is a player quality setting
-  clouds: { opacity: 0.3, speed: 0.01, color: constant(Color4.create(0.9, 0.6, 0.4, 1)) },  // defaults 1 / 0.01 / time-of-day tint
+  clouds: {
+    opacity: 0.3, speed: 0.01, color: constant(Color4.create(0.9, 0.6, 0.4, 1)),  // defaults 1 / 0.01 / time-of-day tint
+    texture: Material.Texture.Common({ src: 'images/clouds.png' })  // custom equirect 2:1 cloud layer: R = tint (x color), G = opacity, B = sun highlight; grayscale = plain mask. Inert while skyboxTexture is set
+  },
   stars: { brightness: 4.62 }             // default 4.62, night only
 })
 

@@ -10,6 +10,13 @@ This page tracks the feature gap between the Decentraland desktop (Unity) client
 Last reviewed: **September 2026** (mobile v1.14.0).
 {% endhint %}
 
+## Recently Shipped
+
+These are no longer gaps — they are available in the mobile app as of **v1.13.0**:
+
+- [Scene Dynamic Lights (`LightSource`)](https://github.com/decentraland/godot-explorer/issues/616)
+- [Avatar Masks (upper-body-only emotes)](https://github.com/decentraland/godot-explorer/issues/2621)
+
 ## SDK Features Missing on Mobile
 
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA

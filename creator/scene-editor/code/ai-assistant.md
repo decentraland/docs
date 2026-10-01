@@ -84,6 +84,24 @@ An **About AI usage** card reminds you that the assistant consumes tokens from y
 
 If your Claude CLI is too old, the panel shows a warning. Run `claude update` in a terminal to fix it.
 
+## Attach files to a prompt
+
+Attach a file when the words are easier to show than to describe: a reference image for the look you want, a `.glb` you want placed, a sound you want used. There are three ways to add one:
+
+* Click the paperclip **Attach files** button at the left of the message box and pick one or more files.
+* Drag files onto the message box. It reads **Drop files to attach** while you hover.
+* Paste an image straight from your clipboard.
+
+Each attachment shows up as a chip above the message box, with an icon for its type and an **x** button to remove it. The chips stay under your message after you send it, so you can see what each turn was given. You can send a message that has attachments and no text at all.
+
+Any file type is accepted. Images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.bmp`, `.svg`, `.avif`), 3D models (`.glb`, `.gltf`) and audio (`.mp3`, `.wav`, `.ogg`, `.m4a`, `.flac`) get their own icon.
+
+Files you pick from disk are passed to the assistant by their real path, so pointing it at a model or a reference image already in your project costs you nothing and has no size limit. Pasted images have no path, so the Creator Hub writes them to a temporary file first.
+
+{% hint style="warning" %}
+**📔 Note**: A single prompt carries up to 8 files. Extra files beyond that are dropped.
+{% endhint %}
+
 ## Decentraland skills are installed for you
 
 When the assistant runs, the Creator Hub downloads the official [Decentraland SDK Skills](../../sdk7/getting-started/vibe-coding.md) and links them into your project, so the assistant follows verified SDK7 patterns instead of guessing.

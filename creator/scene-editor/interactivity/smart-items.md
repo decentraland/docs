@@ -97,7 +97,7 @@ Use the Trigger Area smart item to trigger an action when the player walks into 
 
 ![ ](../../images/editor/trigger.png)
 
-Use the **Player Enters Area** and **Player Leaves Area** trigger types on the item's **Triggers** components. The actions on these trigger events are activated every time that the player enters or leaves the area.
+Drag it in, resize the box or sphere to cover the area you want, then use the **When a player enters…** and **When a player leaves…** buttons in its **Reactions** section to describe what should happen. The [AI Assistant](../code/ai-assistant.md) writes the script for you.
 
 ![ ](../../images/editor/on_player_enters.png)
 

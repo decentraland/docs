@@ -39,7 +39,7 @@ This opens a panel on the lower-right corner with information about the renderer
 The **CURRENT SCENE** tab includes information about the scene you're currently standing on. This includes:
 
 - The number of parcels in the scene
-- The maximum height you're allowed to build at (which is proportional to the number of parcels in the scene)
+- The maximum height you're allowed to build at (330 meters for every scene)
 
 You can also check the **Show Scene Bounds** option to see red walls around the scene, which mark the boundaries of the scene.
 

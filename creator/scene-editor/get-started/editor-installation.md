@@ -13,10 +13,14 @@ Download the Creator Hub [HERE](https://decentraland.org/download/creator-hub).
 
 The Creator Hub application checks for updates every time you open it, and self-updates if there's a new version available.
 
-You can also check for updates manually by clicking on the **Check for updates** button in the **Settings** menu. For this,
+You can also check for updates manually. For this,
 
-1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
-2. Click **Check for updates**
+1. Click the Creator Hub logo in the top-left corner of the screen to open the main menu.
+2. Click **Check for Updates**.
+
+![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report Bug, and Help & Support.](../../images/editor/main-menu.png)
+
+The main menu is also where you find the app **Settings**, and links to report a bug or get support.
 
 ## Editing code
 
@@ -27,8 +31,11 @@ If you also plan on reading and editing code in your scene, you'll also need to 
 
 You may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
-1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
-2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
+1. Click the Creator Hub logo in the top-left corner of the screen and select **Settings**.
+2. Open the **EDITOR** tab.
+3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
+
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code, the Preview Options checkboxes, and the App Warnings checkbox.](../../images/editor/settings-editor.png)
 
 ### AI skills
 

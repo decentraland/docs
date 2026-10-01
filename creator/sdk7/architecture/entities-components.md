@@ -480,7 +480,7 @@ This entity lacks a Transform component, but it's used to handle several compone
 
 The `engine.PlayerEntity` entity represents the player's avatar.
 
-Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../interactivity/user-data.md). The player's Transform is read-only, to modify it use the `movePlayerTo()` function, [learn more](../interactivity/player-avatar.md#move-player).
+Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../interactivity/user-data.md). The player's Transform is read-only, to modify it use the `movePlayerTo()` function, [learn more](../interactivity/avatars/move-player.md).
 
 You can also attach objects to the player by setting them as children of this entity, although the [Attach to Player](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar) is often the better option for htat.
 

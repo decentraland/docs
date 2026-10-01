@@ -39,13 +39,13 @@ Use `CameraModeArea` in regions where players would have a significantly better 
 
 When creating an `CameraModeArea` component, you must provide the following:
 
-* `area`: Size of the modifier area
-* `mode`: Which camera mode to force in this area, from the `CameraType` enum.
+- `area`: Size of the modifier area
+- `mode`: Which camera mode to force in this area, from the `CameraType` enum.
 
 The supported camera modes are:
 
-* `CameraType.CT_FIRST_PERSON`
-* `CameraType.CT_THIRD_PERSON`
+- `CameraType.CT_FIRST_PERSON`
+- `CameraType.CT_THIRD_PERSON`
 
 ### Query the camera mode
 
@@ -73,8 +73,8 @@ CameraMode.onChange(engine.CameraEntity, (cameraMode) => {
 
 To use a custom camera behavior in your scene, you need two things:
 
-* Create a Virtual Camera: Create an entity in your scene and give it a `VirtualCamera`.
-* Assign that virtual camera: Add a `MainCamera` component to the [reserved entity](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`, with a reference to the entity with the `VirtualCamera` component.
+- Create a Virtual Camera: Create an entity in your scene and give it a `VirtualCamera`.
+- Assign that virtual camera: Add a `MainCamera` component to the [reserved entity](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`, with a reference to the entity with the `VirtualCamera` component.
 
 The camera will then be attached to the entity with the `VirtualCamera` component. If the entity moves or rotates, the camera moves with it.
 
@@ -153,7 +153,7 @@ function main() {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: When the camera turns away from the avatar, it's often a good practice to also freeze the avatar's movements. That way the player doesn't move blindly into obstacles. See [Input Modifiers](../interactivity/player-avatar.md#freeze-the-player)
+**💡 Tip**: When the camera turns away from the avatar, it's often a good practice to also freeze the avatar's movements. That way the player doesn't move blindly into obstacles. See [Input Modifiers](../interactivity/avatars/locomotion.md#freeze-the-player)
 {% endhint %}
 
 To let the player steer a virtual camera with the mouse, read the `screenDelta` property of the `PrimaryPointerInfo` component to see how far the cursor moved on each frame, then apply that movement to the camera's rotation. This works even while the cursor is locked. See [Mouse Movement](../interactivity/mouse-movement.md) for a full mouselook example.
@@ -211,8 +211,8 @@ VirtualCamera.create(myCustomCamera1, {
 
 Depending on your use case, you may prefer to set the speed of the transition instead of the duration:
 
-* **Fixed Time**: You set the duration of the transition, the camera will move as fast as it needs to complete the path in that period of time.
-* **Fixed Speed**: You set how fast you want the virtual camera to move during the transition, the duration will depend on the distance. The value used for speed is interpreted as **meters per second**.
+- **Fixed Time**: You set the duration of the transition, the camera will move as fast as it needs to complete the path in that period of time.
+- **Fixed Speed**: You set how fast you want the virtual camera to move during the transition, the duration will depend on the distance. The value used for speed is interpreted as **meters per second**.
 
 Below are examples for both these transition modes:
 
@@ -335,13 +335,13 @@ You can build a spectate mode that switches the player from normal avatar moveme
 
 The pattern combines several SDK features:
 
-| Feature | SDK API | Purpose |
-|---|---|---|
-| Custom camera view | `VirtualCamera` + `MainCamera` | Replaces the player's camera |
-| Freeze avatar movement | `InputModifier` (`disableAll: true`) | Frees WASD to drive the camera |
-| Track players in scene | `onEnterScene` / `onLeaveScene` | Builds a roster of follow targets |
-| Camera controls | `inputSystem.isPressed(InputAction.IA_*)` | WASD for pitch/yaw, E/F for zoom |
-| Mouse-look | `PrimaryPointerInfo.screenDelta` | Rotate the camera with the mouse |
+| Feature                | SDK API                                   | Purpose                           |
+| ---------------------- | ----------------------------------------- | --------------------------------- |
+| Custom camera view     | `VirtualCamera` + `MainCamera`            | Replaces the player's camera      |
+| Freeze avatar movement | `InputModifier` (`disableAll: true`)      | Frees WASD to drive the camera    |
+| Track players in scene | `onEnterScene` / `onLeaveScene`           | Builds a roster of follow targets |
+| Camera controls        | `inputSystem.isPressed(InputAction.IA_*)` | WASD for pitch/yaw, E/F for zoom  |
+| Mouse-look             | `PrimaryPointerInfo.screenDelta`          | Rotate the camera with the mouse  |
 
 ### Camera rig architecture
 
@@ -406,7 +406,7 @@ const BOUNDS_MAX = Vector3.create(16, 20, 16)
 const BOUNDS_MARGIN = 0.5
 ```
 
-For larger scenes, set the bounds to match your `scene.json` parcels. The maximum height for N parcels per side is approximately `log2(N+1) * 20` metres, so a 4x4 parcel scene would use `Vector3.create(64, 80, 64)`.
+For larger scenes, set the bounds to match your `scene.json` parcels. The scene height limit is 330 metres regardless of parcel count. A 4x4 parcel scene could use `Vector3.create(64, 330, 64)`.
 
 ### Following players
 
@@ -465,8 +465,8 @@ function spectateMouseLook() {
   if (!delta) return
 
   yaw = (yaw + delta.x * MOUSE_SENSITIVITY) % 360
-  // Subtract delta.y so mouse-up tilts the camera up; clamp to prevent flip
-  pitch = Math.max(-25, Math.min(80, pitch - delta.y * MOUSE_SENSITIVITY))
+  // delta.y grows downwards, so mouse-up is negative: adding it tilts the camera up; clamp to prevent flip
+  pitch = Math.max(-25, Math.min(80, pitch + delta.y * MOUSE_SENSITIVITY))
 }
 ```
 

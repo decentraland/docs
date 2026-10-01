@@ -84,7 +84,7 @@ When setting a position, keep the following considerations in mind:
 *   Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
 
     > Tip: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
-* Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations](../optimizing/scene-limitations.md) for more details.
+* Your scene is also limited in height. The maximum height is 330 meters for every scene, regardless of how many parcels it occupies. Entities placed above 200 meters may suffer multiplayer sync issues. See [scene limitations](../optimizing/scene-limitations.md) for more details.
 
 ## Rotation
 

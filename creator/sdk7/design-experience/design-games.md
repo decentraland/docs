@@ -126,7 +126,7 @@ All of these inputs support both global _button up_ and _button down_ events, an
 
 **Players are able to chat with each other, talk over voice chat, and convey body language by playing emotes** like dancing, clapping or waving, including emotes sold by community creators.
 
-Your scene can detect when a player plays an emote, and can also make a player's avatar play an animation. See [Player plays animation](../interactivity/event-listeners.md#player-plays-animation) and [Trigger emotes](../interactivity/player-avatar.md).
+Your scene can detect when a player plays an emote, and can also make a player's avatar play an animation. See [Player plays animation](../interactivity/event-listeners.md#player-plays-animation) and [Avatar Animations](../interactivity/avatars/avatar-animations.md).
 
 ## Game notifications
 

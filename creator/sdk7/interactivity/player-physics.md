@@ -244,7 +244,7 @@ While the player is gliding, continuous forces behave differently:
 
 One-shot impulses — from `applyImpulseToPlayer()` or `applyKnockbackToPlayer()` — are not affected by gliding. They behave the same whether the glider is open or closed.
 
-You can combine these behaviors to build mechanics like thermal updrafts that carry gliding players upward, or wind corridors that are easier to traverse with the glider open. To adjust the glider's falling speed or forward speed, use the `AvatarLocomotionSettings` component, see [Locomotion Settings](player-avatar.md#locomotion-settings).
+You can combine these behaviors to build mechanics like thermal updrafts that carry gliding players upward, or wind corridors that are easier to traverse with the glider open. To adjust the glider's falling speed or forward speed, use the `AvatarLocomotionSettings` component, see [Locomotion Settings](avatars/locomotion.md#locomotion-settings).
 
 ## Convert a local direction to world space
 

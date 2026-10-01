@@ -4,19 +4,15 @@ description: React to the player's position
 
 # Trigger Area
 
-To trigger an action when the player walks into or out of an area, use the Trigger Area [Smart Item](smart-items.md).
+To make something happen when the player walks into or out of an area, use a Trigger Area [smart item](smart-items.md).
 
 ![](../../images/editor/trigger.png)
 
 The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
+Drag it into your scene and resize it with the scale gizmo. The box or sphere you see is only drawn in the editor, players never see it.
+
 If any part of the player's avatar overlaps with this orange cube, the assigned event will be called. Trigger areas react only to the player on the local machine, not to other players' avatars — each player fires the trigger on their own instance of the scene.
-
-Use the **Player Enters Area** and **Player Leaves Area** trigger types on the item's **Triggers** component. The actions on these trigger events are activated every time that the player enters or leaves the area.
-
-![](../../images/editor/on_player_enters.png)
-
-You can add as many different actions on the same trigger event, this will activate them all simultaneously.
 
 {% hint style="info" %}
 **💡 Tip**: If the trigger areas in your scene start getting in the way of editing other content, remember you can always lock and/or hide them from the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree).
@@ -24,18 +20,34 @@ You can add as many different actions on the same trigger event, this will activ
 <img src="../../images/editor/hide-trigger.png" alt="" data-size="original">
 {% endhint %}
 
-You can also add **Trigger conditions**, so that the actions are only carried out if certain conditions are met in the scene. For example, you could have a trigger area that opens a sliding door when the player walks in; you could use a condition there to check the state of a lever that acts as a power switch, and only open the door if the power is on. See [States and conditions](states-and-conditions.md) for more details.
-
-![](../../images/editor/trigger-conditions-trigger-area.png)
-
 Multiple trigger areas can overlap, and don't affect each other.
 
-{% hint style="info" %}
-**📔 Note**: You can also use **On Player Enters Area** and **On Player Leaves Area** trigger events on any other smart item, but keep in mind that it can be challenging to know the area covered by the trigger.
+You describe what should happen and the [AI Assistant](../code/ai-assistant.md) writes a small script for it.
 
-The size of the triggerable area doesn't relate to the item's visible shape or its colliders, it's always a cube of 1m on each side, affected by the scale of the item.
-{% endhint %}
+### Settings
+
+The item's **Script** component has two fields:
+
+| Field            | What it does                           | Options                                                                                     | Default     |
+| ---------------- | -------------------------------------- | ------------------------------------------------------------------------------------------- | ----------- |
+| **Activated By** | What sets the area off.                | `my player`, `all players`, `any collider`, `clickable`, `custom 1`, `custom 2`, `custom 3` | `my player` |
+| **Shape**        | Whether the volume is a box or a ball. | `box`, `sphere`                                                                             | `box`       |
+
+`my player` reacts only to the avatar of the player running the scene. `all players` reacts to any avatar, including other people in the scene. The remaining options match other [collision layers](../../sdk7/3d-essentials/colliders.md), so you can have the area react to physical objects, to clickable ones, or to your own custom layers.
+
+Switching **Shape** swaps the editor placeholder between a box and a sphere, so what you see while editing is the volume you get.
+
+### Describe what should happen
+
+The area fires two events: **enter** and **exit**. In the **Reactions** section of the Script component there is a button for each one:
+
+- **When a player enters…**
+- **When a player leaves…**
+
+Click one and the Creator Hub writes the opening of a sentence into the AI Assistant's message box, naming the item, for example `When a player enters "Trigger Area", `. The prompt uses the name of the item you see on the entity tree. Finish the sentence with what you want to happen and send it. The assistant writes a separate script and attaches it to the same entity, alongside the detector.
+
+The three chips next to the buttons (**Play a sound**, **Show a message**, **Score points**) fill in a complete sentence for you, so you can send them as they are.
 
 {% hint style="info" %}
-**💡 Tip**: Trigger areas in the Scene Editor fire only for the local player. If you need to also react to other players' avatars entering the area, use the Script component to add code and use the [SDK7 TriggerArea component](../../sdk7/3d-essentials/trigger-areas.md) with the `CL_PLAYER` collision layer, which detects all avatars.
+**💡 Tip**: Reactions need the [AI Assistant](../code/ai-assistant.md) to be turned on. If it isn't, the Creator Hub tells you where to enable it instead of opening the chat.
 {% endhint %}

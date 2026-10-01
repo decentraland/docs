@@ -36,18 +36,28 @@ When players navigate the world and enter your scene, they are able to read the 
 
 Add this data via the scene menu in the Scene Editor.
 
-The thumbnail should be a _.png_ image of a recommended size of _228x160_ pixels. The minimum supported size is _196x143_ pixels. The image may be stretched if the width-to-height proportions don't match _228x160_.
+In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
+
+{% hint style="info" %}
+**📔 Note**: Worlds keep their own name, description, and thumbnail, separate from the scene's metadata. If a World contains a single scene, the World's metadata is updated from the scene's metadata on every publish. If it contains multiple scenes, the World's metadata is independent and can only be edited in the **Manage** tab of the Creator Hub. See [World metadata vs scene metadata](../../scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata).
+{% endhint %}
+
+### Scene thumbnail
+
+The thumbnail is set on the `navmapThumbnail` field. It must be a _.png_ or _.jpg_ image with a **16:9** aspect ratio. _1920x1080_ pixels is the size to aim for. Other sizes work as long as they keep the same 16:9 proportions.
+
+Some parts of the platform display a reduced square version of the thumbnail, cropped to the central _1080x1080_ pixels. Keep anything essential, like text or logos, inside that safe area so that it's not cut off.
+
+{% hint style="warning" %}
+**📔 Note**: The Creator Hub refuses images that aren't 16:9. If you set `navmapThumbnail` by hand to an image with another shape, it may be stretched or cropped unpredictably by the clients that show it. See [Scene thumbnail](../../scene-editor/configure/scene-settings.md#scene-thumbnail).
+{% endhint %}
+
+![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
 
 The image on `navmapThumbnail` should be a path to an image file in the project folder. It can also be a URL link to an image hosted elsewhere.
 
 {% hint style="warning" %}
 **📔 Note**: If you host an image elsewhere, make sure this is in a site that has permissive CORS policies for displaying content on other sites.
-{% endhint %}
-
-In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
-
-{% hint style="info" %}
-**📔 Note**: Worlds keep their own name, description, and thumbnail, separate from the scene's metadata. If a World contains a single scene, the World's metadata is updated from the scene's metadata on every publish. If it contains multiple scenes, the World's metadata is independent and can only be edited in the **Manage** tab of the Creator Hub. See [World metadata vs scene metadata](../../scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata).
 {% endhint %}
 
 ## Categories
@@ -346,8 +356,8 @@ These features are blocked from use in the scene unless the permission is reques
 
 The following permissions can be requested:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
+* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/avatars/move-player.md)
+* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/avatars/avatar-animations.md)
 * `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
 * `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
 * `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`

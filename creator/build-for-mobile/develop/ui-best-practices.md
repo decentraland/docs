@@ -15,13 +15,44 @@ There is no single proven recipe for Decentraland mobile UI yet — the platform
 * **Minimize options.** Show only what the player needs right now and progressively disclose the rest.
 * **Place actionable dialogs at the center of the screen** — anywhere a player needs to read and respond.
 * **Place non-actionable messages at the top-center** — status, notifications, and ambient information.
+* **Hide the touch controls behind a full-screen UI.** While a scoreboard, a shop, or a results panel is open, the player doesn't need to jump or press E. See [Full-screen UI over the action buttons](#full-screen-ui-over-the-action-buttons).
 
 ## DON'Ts
 
 * **Don't size UI elements purely in pixels without a virtual screen in mind.** Pixel values are scaled against the `virtualWidth` / `virtualHeight` reference resolution described in [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale) — `1600x720` by default on mobile, `1920x1080` on desktop and web. Know which reference resolution your pixel values are authored against, pass it explicitly if it isn't the default, and pair it with platform-aware sizing. Only disable the virtual screen (by passing a size of `0`) if you genuinely want raw canvas pixels.
 * **Don't place elements outside the safe area.** They will clash with the client's controls.
+* **Don't anchor UI to the top-left or the left edge.** That's where the client draws chat, the profile and the virtual joystick, all on top of your scene UI. Anchor right or center instead, or use `screenInset: 'interactable'`. See [Never anchor your UI to the top-left](../../sdk7/design-experience/ux-ui-guide.md#never-anchor-your-ui-to-the-top-left).
+* **Don't put interactive elements in the bottom-right corner.** The action buttons are drawn over that region, and taps there go to the client's buttons, not to your scene.
 * **Don't rely on small buttons.** Small targets are unreliable to tap on a touch screen.
 * **Don't bind key actions to `IA_ACTION_3`–`IA_ACTION_6`** (the `1`/`2`/`3`/`4` keys on a keyboard). They are not easily reachable on mobile. See [Input on mobile](input-on-mobile.md).
+
+## Full-screen UI over the action buttons
+
+`screenInset: 'interactable'` keeps your UI clear of the left-hand controls, but the action buttons in the bottom-right are drawn over that area by design. A panel that fills the area is still covered there, and taps in that region trigger the client's buttons instead of your UI.
+
+For a **gameplay HUD** that must stay usable while the player moves, keep it out of the lower-right corner: anchor it top-right or top-center.
+
+For a **UI that interrupts gameplay**, such as a scoreboard, a shop, or a results screen, hide the touch controls while it's open and restore them on close:
+
+```ts
+import { TouchScreenControls } from '@dcl/sdk/ecs'
+
+function openScoreboard() {
+  TouchScreenControls.hideAll()
+  TouchScreenControls.hideJoystick()
+  // ... show your UI
+}
+
+function closeScoreboard() {
+  TouchScreenControls.showAll()
+  TouchScreenControls.showJoystick()
+  // ... hide your UI
+}
+```
+
+`showAll()` only restores the gamepad buttons, so pair it with `showJoystick()`. Both helpers do nothing on desktop, so there's no need to branch on the platform. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) for the full component.
+
+If the avatar should also stop moving while the panel is open, add an [input modifier](../../sdk7/interactivity/avatars/locomotion.md#freeze-the-player) on top.
 
 ## Sizing
 

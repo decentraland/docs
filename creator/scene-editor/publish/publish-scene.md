@@ -40,19 +40,20 @@ To publish your scene:
 {% endhint %}
 
 4. The next screen shows all of the files you're currently uploading and their sizes, confirm the operation.
-5. The publication process will then start. Stages **1** and **2** are necessary for your scene to be playable, once done a **Jump In** button appears. You don't need to wait for **Stage 3** to try out your scene. ![](../../images/editor/deploy-steps.png)
+5. The publication process will then start. It has two stages, and once both are done a **Jump In** button appears. ![](../../images/editor/deploy-steps.png)
 
 {% hint style="info" %}
-**📔 Note**: The three stages of the deployment involve:
+**📔 Note**: The two stages of the deployment involve:
 
 - **1. Uploading**: Uploading the files to the servers.
 - **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This usually takes seconds. It may take longer for very large scenes.
-- **3. Optimizing**: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
-  {% endhint %}
+
+Decentraland's servers also generate Low Level of Detail (LOD) versions of your models, used to draw your scene from far away. That runs in the background once your scene is already live, so publishing never waits for it.
+{% endhint %}
 
 ## How long does publishing take?
 
-- **Until you can test it**: seconds to a couple of minutes. It scales with the total size of your scene and your upload bandwidth. The **Jump In** button appears as soon as the scene is playable, once stages **1** and **2** are done.
+- **Until you can test it**: seconds to a couple of minutes. It scales with the total size of your scene and your upload bandwidth. The **Jump In** button appears as soon as the scene is playable, once both stages are done.
 - **Before a live event**: publish your final version at least an hour before the event starts, to leave room for anything unexpected.
 
 The following factors can make a publication slower:
@@ -287,7 +288,7 @@ Players are never directed to this server, the only way to access it is to expli
 
 Once you deployed your scene, these changes can take a few minutes to be uploaded and processed. If you enter Decentraland right after deploying, you might briefly still see the previous version of your content.
 
-The Creator Hub displays the progress of the publication as it moves through the **Uploading**, **Converting** and **Optimizing** stages, and shows a **Jump In** button as soon as the scene is playable.
+The Creator Hub displays the progress of the publication as it moves through the **Uploading** and **Converting** stages, and shows a **Jump In** button as soon as the scene is playable.
 
 ### Check the conversion status
 

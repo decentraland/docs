@@ -29,7 +29,7 @@ When passing data to generate an `AvatarShape`, the following fields are require
 
 The following optional fields are also available:
 
-* `name`: Name to display over the Avatar's head. Default: "NPC".
+* `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
 * `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
 * `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
@@ -37,18 +37,18 @@ The following optional fields are also available:
 * `skinColor`: _Color3_ for the skin color (any color is valid)
 * `hairColor`: _Color3_ for the hair color (any color is valid)
 * `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
-* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
+* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
 
 {% hint style="warning" %}
 **📔 Note**: The `AvatarShape`component must be imported via
 
 > `import { AvatarShape } from "@dcl/sdk/ecs"`
 
-See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
+See [Imports](../../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
+**📔 Note**: The URN fields must follow the same format used for [NFTShapes](../../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
 {% endhint %}
 
 ## Animations
@@ -71,7 +71,7 @@ Transform.create(myAvatar, {
 })
 ```
 
-The `expressionTriggerId` field supports all [default animations](player-avatar.md#default-animations), as well as custom animations [from a scene file](player-avatar.md#custom-animations), and even URNs from emotes that are published to the marketplace.
+The `expressionTriggerId` field supports all [default animations](avatar-animations.md#default-animations), as well as custom animations [from a scene file](avatar-animations.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
 ### Looping Animations
 
@@ -116,6 +116,29 @@ engine.addSystem((dt: number) => {
 {% hint style="info" %}
 **💡 Tip**: You must know the duration of the emote, and make that the duration of the system. If you create an emote that fixes the avatar still in a same pose, it's recommendable to make the duration of the emote longer than the system. That way, you can make sure that there are no artifacts when finishing and resetting the animation.
 {% endhint %}
+
+## Add a label above the name
+
+Use the `AvatarNametag` component to show a plate with custom text above the NPC's name, for example a role like "Shopkeeper" or "Boss". Attach it to the same entity that has the `AvatarShape`:
+
+```ts
+AvatarNametag.create(myAvatar, { label: 'Shopkeeper' })
+```
+
+If the `AvatarShape` has an empty `name`, only the plate is shown, with no empty nametag box under it. This is handy for labeling an NPC with a title alone.
+
+{% hint style="info" %}
+**💡 Tip**: For a color-coded plate with no text, set `label` to a string of spaces and pick a `backgroundColor`. Spaces are preserved, so more spaces make a wider plate.
+
+```ts
+AvatarNametag.create(myAvatar, {
+	label: '      ',
+	backgroundColor: Color3.Red(),
+})
+```
+{% endhint %}
+
+See [Avatar Nametags](avatar-nametags.md) for the full list of fields, including colors.
 
 ## Copy wearables from player
 
@@ -201,4 +224,16 @@ AvatarAttach.create(attachedEntity, {
 })
 ```
 
-Learn more about the `AvatarAttach` component [here](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+Learn more about the `AvatarAttach` component [here](../../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+
+## Replace the player's avatar
+
+You can't change what wearables the player's avatar is wearing, but you can instead swap the player's avatar for an NPC avatar that you can fully customize.
+
+To do this, hide the player's own avatar with an [Avatar Modifier Area](modifier-areas.md#hide-avatars) that uses the `AMT_HIDE_AVATARS` modifier, and display an `AvatarShape` entity at the player's position instead.
+
+{% hint style="warning" %}
+**📔 Note**: To allow the player to have full control over that avatar, you should listen to button events to detect when they press a button, and then trigger the corresponding animation on the NPC avatar. See [Button Events](../button-events/system-based-events.md) for more details.
+
+The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
+{% endhint %}

@@ -98,6 +98,34 @@ To change the movement granularity and other settings, click the downward arrow 
 
 To select multiple items at the same time, press and hold the _Control_ key while selecting them. You can then move, rotate, scale, duplicate or delete all of them in a single action.
 
+### Type an exact amount
+
+When dragging isn't precise enough, type the amount instead:
+
+1. Press a tool key: **M** or **G** to move, **R** to rotate, **X** to scale.
+2. Press **X**, **Y** or **Z** to pick an axis. Scale doesn't need one: without an axis it scales every axis by the same factor.
+3. Type the number. Use **.** for decimals, and **-** to switch between positive and negative.
+4. Press **Enter** to apply, or **Esc** to cancel. **Backspace** erases what you typed.
+
+A chip at the bottom of the canvas shows the entry as you type it, tells you what is still missing, and confirms what was applied.
+
+Some examples:
+
+- **R** **X** **1** **5** **Enter** rotates the selection 15 degrees around X.
+- **X** **2** **Enter** makes the selection twice as big.
+- **M** **Y** **-** **3** **Enter** moves it 3 meters down.
+
+A few things worth knowing:
+
+- The amount is always relative to where the selection is now, not an absolute coordinate.
+- Typed values ignore the snap grid.
+- With several items selected, they all move, rotate or scale around their shared center, as a single undo step.
+- Pressing **M**, **G** or **R** a second time still turns its gizmo off. **X** doesn't, because while you're typing it means the X axis.
+
+{% hint style="info" %}
+**💡 Tip**: The keyboard icon in the bottom-right corner of the canvas opens the full list of shortcuts.
+{% endhint %}
+
 ## Smart items
 
 Smart items are special items that come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.
@@ -112,7 +140,9 @@ On the left margin, you'll see a tree structure with all of the entities in the 
 **💡 Tip**: Everything in a scene is an Entity, they are the basic building blocks of scenes. Items are Entities that have at least a position and a visible shape.
 {% endhint %}
 
-Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, or add a component to the entity.
+Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, turn it into a custom item, or add a component to the entity.
+
+![The entity tree with the right-click menu open on the Bird Fountain entity, listing Rename, Add child, Duplicate, Delete, Create Custom Item and Add component.](../../images/editor/entity-tree-context-menu.png)
 
 ### Searching the entity tree
 
@@ -120,7 +150,7 @@ A search box at the top of the entity tree lets you find entities by name. Type 
 
 Press **Escape** or click the clear icon to remove the filter and return to the full tree. If an entity is selected, clearing the search scrolls back to the selected entity so you don't lose your place.
 
-[Screenshot: entity tree with a search term entered, showing filtered results and expanded parent hierarchy]
+![The entity tree filtered by the search term fount: only the Camera, Scene and Bird Fountain entities remain visible, with the Scene parent expanded to show the match.](../../images/editor/entity-tree-search.png)
 
 ### Entity hierarchy
 

@@ -28,7 +28,7 @@ Players are presented a confirmation screen before they are teleported, this scr
 
 Bear in mind that teleports take you to a scene at the indicated coordinates, but not necessarily to those same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
 
-To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player](player-avatar.md#move-player).
+To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player](avatars/move-player.md).
 
 ## Teleport to a WORLD
 

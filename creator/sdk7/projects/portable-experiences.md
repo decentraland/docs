@@ -123,7 +123,7 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 
 ## Limitations
 
-Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the portable experience's files.
+Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/avatars/avatar-animations.md#custom-animations) uploaded as part of the portable experience's files.
 
 ## Tips
 

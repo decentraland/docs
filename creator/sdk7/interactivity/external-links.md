@@ -54,17 +54,17 @@ teleportTo({
 })
 ```
 
-Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata](../projects/scene-metadata.md) for details on how to set this data.
+Players are presented a confirmation screen before they change realm. It asks _"Are you sure you want to enter this World?"_ and shows the destination (the world name, or the host of the realm URL). The player is only moved if they accept.
 
 To send a player back to Genesis City from a world, set `realm` to _'https://realm-provider-ea.decentraland.org/main'_.
 
 {% hint style="warning" %}
-**📔 Note**: The `realm` field requires `@dcl/sdk` version 7.28.0 or newer, and is currently implemented in the Bevy-based explorer.
+**📔 Note**: The `realm` field requires `@dcl/sdk` version 7.28.0 or newer.
 {% endhint %}
 
 ### changeRealm is deprecated
 
-Older scenes used `changeRealm()` to reach a world. It still works, but use `teleportTo({ realm })` instead.
+Older scenes used `changeRealm()` to reach a world. It still works, but use `teleportTo({ realm })` instead. `changeRealm()` also shows a confirmation screen; its optional `message` field only replaces the default prompt text.
 
 `changeRealm()` resolves as soon as the player accepts the prompt, not when the new realm is actually live. A `teleportTo()` call right after it would run against the **old** realm and land the player in the wrong place. `teleportTo({ realm })` does both steps in one call, so that gap doesn't exist.
 

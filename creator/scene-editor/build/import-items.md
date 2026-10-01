@@ -25,13 +25,26 @@ You can now find your asset in the **Local Assets** tab. Assets are sorted into 
 Items from the built-in free asset packs are stored under _assets/asset-packs/_, and custom items created from the editor under _assets/custom/_. Older scenes may have user imports under _assets/scene/_ instead. All of these paths work in your scene code, just reference whichever folder the asset is in.
 
 - For 3D models, drag the `.glb` or `.gltf` files onto the canvas to add them as items on your scene.
-- Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
+- Images, sounds and videos can also be dragged onto the canvas. Each one creates the matching [smart item](../interactivity/smart-items.md), already pointed at your file. See [Drag a media file to create an item](#drag-a-media-file-to-create-an-item).
+- You can also drag any asset onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
 
 {% hint style="info" %}
 **💡 Tip**: You can also paste files directly into the project's `assets` folder, from Finder, Explorer or anywhere else. They appear in the **Local Assets** tab on their own, shortly after the copy finishes. If they don't show up, press the **Refresh** button next to the **Import Assets** button.
 
 <img src="../../images/editor/refresh-assets.png" alt="" data-size="original">
 {% endhint %}
+
+### Drag a media file to create an item
+
+Drag an image, sound or video from the **Local Assets** tab onto the canvas and the Scene Editor adds a ready-made item that uses that file:
+
+| File you drag           | Item you get      | What it does                      |
+| ----------------------- | ----------------- | --------------------------------- |
+| `.png`, `.jpg`, `.jpeg` | **Image**         | Shows your picture on a flat pane |
+| `.mp3`, `.ogg`, `.wav`  | **Ambient Sound** | Plays your clip in the scene      |
+| `.mp4`                  | **Video Screen**  | Plays your video on a screen      |
+
+The new item is named after the file, without its extension, and arrives with all the settings of the catalog item it came from. Select it and adjust those settings in the inspector like any other item.
 
 ### Supported formats
 

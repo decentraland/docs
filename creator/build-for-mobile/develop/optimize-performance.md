@@ -21,11 +21,21 @@ The table below shows the limits enforced when running on mobile. Reaching a **s
 | Materials | 400 | 500 |
 | Textures | 400 | 500 |
 | Colliders | 1,200 | 1,500 |
+| VFX emitters | 8 | 10 |
+| Live particles | 25,000 | 50,000 |
+| Light sources | 8 | 16 |
+| Shadow lights | 2 | 4 |
 | Content size | 120 MB | 150 MB |
 | External content | 40 MB | 50 MB |
 | Memory (process RSS) | 1,638 MB | 2,048 MB |
 | Draw calls | 1,000 | 2,000 |
 | Performance (higher is better) | 90% | 85% |
+
+## Lights and particles
+
+The light rows count **authored** scene content, not what the engine ends up running. Each graphic profile activates only a budget of the nearest light sources (0 on Very Low up to 8 on High) and may disable shadows entirely — so a scene that authors 20 lights still pays their scene cost even though at most 8 emit light at once. Author to the limit, don't rely on the runtime budget.
+
+Particles are additionally capped at runtime: 5,000 particles per emitter and 50,000 per scene. Anything authored above those caps is silently clamped, so exceeding them only wastes scene budget.
 
 ## Preview Mobile Performance
 

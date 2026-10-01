@@ -100,7 +100,7 @@ To make your scene interactive:
   - [SDK Quick start](sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
   - [Development workflow](sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
   - [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md): build scenes by describing what you want in plain language, and let an AI coding assistant write the code for you.
-  - [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+  - [Examples](tutorials/examples.md): dive right into working example scenes.
 
     ![](../.gitbook/assets/sdk-code.png)
 

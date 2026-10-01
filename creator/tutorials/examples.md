@@ -1,28 +1,74 @@
 ---
-description: >-
-  Free open-source Decentraland SDK7 example scenes and templates, from
-  feature demos to complete games.
+title: Example Scenes
+description: A curated, AI-readable index of Decentraland SDK7 example scenes, mechanics, and reusable systems.
 ---
 
-# Examples
+# Example Scenes
 
-Decentraland Studios provides a comprehensive library of free, open-source example scenes and templates to help you learn and kickstart your projects. These resources are maintained by the community and showcase various SDK features and best practices.
+Use this catalog before building a common mechanic from scratch. Every entry links to the canonical implementation, so you can inspect, clone, or reference the working code in your own scene or prompt to an AI coding agent.
 
-## What You'll Find
+This is an index, not a second copy of the code. Examples stay in the repositories that maintain them.
 
-On the [SDK 7 example scenes](https://studios.decentraland.org/resources) page, you can explore:
+## Start here
 
-- **Ready-to-use Templates**: Download complete scene templates that you can use as starting points for your own projects
-- **Feature Demonstrations**: See how specific SDK features work in practice, from basic interactions to advanced mechanics
-- **Game Mechanics**: Examples of common game patterns like quests, collectibles, multiplayer interactions, and scoring systems
-- **Interactive Elements**: Learn how to implement buttons, doors, NPCs, UI elements, and other interactive components
-- **Media Integration**: Examples showing how to add video players, audio, and streaming content to your scenes
-- **Blockchain Features**: Scenes demonstrating wearable interactions, token gating, and other Web3 integrations
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| SDK7 scene template | A clean starting point for a new TypeScript SDK7 scene. | `starter`, `sdk7`, `scene` | [Open repository](https://github.com/decentraland/sdk7-scene-template) |
+| SDK7 test scenes | A large collection of focused, working SDK7 feature demonstrations. | `sdk7`, `reference`, `test-scenes` | [Open repository](https://github.com/decentraland/sdk7-test-scenes) |
+| SDK Skills | Maintained instructions that help AI coding agents use verified SDK7 patterns. | `ai`, `sdk7`, `workflow` | [Open repository](https://github.com/decentraland/sdk-skills) |
 
-Each example comes with full source code that you can download, study, and modify for your own scenes. They're an excellent way to learn SDK 7 patterns and accelerate your development.
+## Gameplay and interaction
 
-You can find more working examples of specific SDK features, along with tools and asset libraries to speed up your workflow, in [Useful Resources](../sdk7/getting-started/useful-resources.md).
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| Trigger areas | Detecting players entering and leaving areas, including collider-based triggers. | `interaction`, `triggers`, `collision` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas) |
+| Raycasting and collider layers | Pointing at scene geometry and controlling which colliders react to a raycast. | `interaction`, `raycast`, `collision` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests) |
+| Input modifier | Changing or constraining player movement input in part of a scene. | `movement`, `input`, `player` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier) |
+| Pointer lock control | Capturing mouse input for custom controls. | `input`, `mouse`, `camera` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control) |
+| Particle system | Fire, smoke, sparks, snow, and other particle effects. | `particles`, `effects`, `visuals` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system) |
+| Zombie Attack | A complete, playable game scene with enemies and scoring. | `game`, `complete-scene`, `score` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack) |
 
-{% hint style="info" %}
-**💡 Tip**: Browse the examples before starting a new project - you might find a template that's close to what you want to build, saving you significant development time.
-{% endhint %}
+## UI, camera, and player experience
+
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| UI safe areas | Positioning interface elements around screen insets and safe areas. | `ui`, `hud`, `responsive` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area) |
+| UI animations | Animated UI elements, sprite sheets, and loading indicators. | `ui`, `animation`, `sprites` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations) |
+| Virtual cameras | Creating and switching to scene-defined cameras. | `camera`, `cinematic`, `controls` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) |
+| Spectate mode | A spectator-style camera and player viewing flow. | `camera`, `spectator`, `player` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode) |
+| NPC Toolkit | Reusable NPC behaviours and dialogue UI for SDK7 scenes. | `npc`, `dialogue`, `ui` | [Open repository](https://github.com/decentraland-scenes/dcl-npc-toolkit) |
+
+## Multiplayer, data, and services
+
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| Authoritative server leaderboard | A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings. | `multiplayer`, `leaderboard`, `server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard) |
+| Mini Games library | Player queues, scoreboards, and supporting logic for multiplayer mini games. | `multiplayer`, `queue`, `scoreboard`, `game` | [Open repository](https://github.com/decentraland/sdk-mini-games) |
+| Third-party server examples | Leaderboard, guest book, and player-authentication integrations using external services. | `api`, `storage`, `authentication`, `leaderboard` | [Open repository](https://github.com/decentraland/sdk7-goerli-plaza) |
+
+## Audio, video, and environment
+
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| Audio visualization | Using live audio data to drive visual scene behaviour. | `audio`, `visualization`, `effects` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization) |
+| Video streaming | Playing streamed video on a scene surface. | `video`, `streaming`, `media` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming) |
+| Dynamic lights | Changing lights at runtime. | `lighting`, `environment`, `effects` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) |
+| Skybox control | Updating skybox time and transition settings from scene code. | `skybox`, `environment`, `lighting` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) |
+
+## Performance and scene systems
+
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| Asset loading | Loading scene assets on demand rather than all at once. | `performance`, `loading`, `assets` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load) |
+| Material and texture gallery | Material, texture, and GLTF node modifier patterns. | `materials`, `textures`, `rendering` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery) |
+| Modifier areas | Applying area-specific settings such as hiding player name tags. | `player`, `areas`, `modifiers` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas) |
+
+## For AI-assisted creation
+
+Give your coding agent the link to the closest example along with a clear request. For example: "Use the authoritative server leaderboard scene as a reference and build a score board for my game." Install the [SDK Skills](https://github.com/decentraland/sdk-skills) first so the agent has up-to-date SDK7 guidance.
+
+For a broader guide to working with agents, see [Vibe Coding with AI](../sdk7/getting-started/vibe-coding.md).
+
+## Legacy references
+
+[Awesome Repository](https://github.com/decentraland-scenes/Awesome-Repository) is useful for historical SDK6 material, but it is not a canonical SDK7 source. Prefer the SDK7 examples above for new projects.

@@ -1,0 +1,738 @@
+{
+	"schemaVersion": 1,
+	"categories": [
+		{
+			"id": "getting-started",
+			"name": "Start here"
+		},
+		{
+			"id": "published-games",
+			"name": "Published Games"
+		},
+		{
+			"id": "gameplay-interaction",
+			"name": "Gameplay and interaction"
+		},
+		{
+			"id": "ui-camera-player",
+			"name": "UI, camera, and player experience"
+		},
+		{
+			"id": "multiplayer-data-services",
+			"name": "Multiplayer, data, and services"
+		},
+		{
+			"id": "audio-video-environment",
+			"name": "Audio, video, and environment"
+		},
+		{
+			"id": "performance-scene-systems",
+			"name": "Performance and scene systems"
+		}
+	],
+	"examples": [
+		{
+			"id": "shroom-zoom",
+			"name": "Shroom Zoom",
+			"description": "Bounce, double-jump, and glide around a glowing lakeside mushroom world, collecting sprites, uncovering lore, and racing to beat your best time.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"platformer",
+				"collectibles",
+				"racing"
+			],
+			"developer": "CanessaDCL",
+			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
+			"license": "unlicensed",
+			"page": "./shroom-zoom.md",
+			"fileName": "shroom-zoom.md"
+		},
+		{
+			"id": "goal-legends",
+			"name": "Goal Legends",
+			"description": "Score goals.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"sports",
+				"football"
+			],
+			"developer": "carlosmu",
+			"source": "https://github.com/carlosmu/goal-legends-arena",
+			"license": "NOASSERTION",
+			"page": "./goal-legends.md",
+			"fileName": "goal-legends.md"
+		},
+		{
+			"id": "monster-recon",
+			"name": "Monster Recon",
+			"description": "Outsmart rapid-fire Memory Match rounds, then dash through camp to hunt down monsters and build a Codex of rare, exotic, and epic finds.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"memory-match",
+				"collection",
+				"leaderboard"
+			],
+			"developer": "carlosmu",
+			"source": "https://github.com/carlosmu/dcl-monster-recon",
+			"license": "unlicensed",
+			"page": "./monster-recon.md",
+			"fileName": "monster-recon.md"
+		},
+		{
+			"id": "the-fortune-teller",
+			"name": "The Fortune Teller",
+			"description": "Step into a mystical circus booth where players can get their fortune told or take over the booth to tell friends' fortunes.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"social",
+				"roleplay",
+				"multiplayer"
+			],
+			"developer": "carlosmu",
+			"source": "https://github.com/carlosmu/circus_fortune_teller",
+			"license": "unlicensed",
+			"page": "./the-fortune-teller.md",
+			"fileName": "the-fortune-teller.md"
+		},
+		{
+			"id": "clean-the-club",
+			"name": "Clean The Club",
+			"description": "Team up with friends to transform a trashed nightclub before the next party begins, clearing bottles, cigarettes, and lost items from the chaos of the night before.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"multiplayer",
+				"teamwork",
+				"timed-rounds"
+			],
+			"developer": "CleanTheClub",
+			"source": "https://github.com/CleanTheClub/CleanTheClub",
+			"license": "Apache-2.0",
+			"page": "./clean-the-club.md",
+			"fileName": "clean-the-club.md"
+		},
+		{
+			"id": "cozy-farm",
+			"name": "Cozy Farm",
+			"description": "Grow crops, expand your farm, and make friends.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"farming",
+				"social"
+			],
+			"developer": "dcl-regenesislabs",
+			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
+			"license": "unlicensed",
+			"page": "./cozy-farm.md",
+			"fileName": "cozy-farm.md"
+		},
+		{
+			"id": "dead-surge",
+			"name": "Dead Surge",
+			"description": "Enter the graveyard, defeat zombies, survive as long as possible, and improve your weapons.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"survival",
+				"combat",
+				"progression"
+			],
+			"developer": "dcl-regenesislabs",
+			"source": "https://github.com/dcl-regenesislabs/dead-surge",
+			"license": "unlicensed",
+			"page": "./dead-surge.md",
+			"fileName": "dead-surge.md"
+		},
+		{
+			"id": "kick-off",
+			"name": "Kick Off",
+			"description": "A seasonal World Cup prediction game.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"sports",
+				"predictions",
+				"seasonal"
+			],
+			"developer": "dcl-regenesislabs",
+			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
+			"license": "unlicensed",
+			"page": "./kick-off.md",
+			"fileName": "kick-off.md"
+		},
+		{
+			"id": "my-dear-pet",
+			"name": "My Dear Pet",
+			"description": "A pet collecting game.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"pets",
+				"collection"
+			],
+			"developer": "dcl-regenesislabs",
+			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
+			"license": "unlicensed",
+			"page": "./my-dear-pet.md",
+			"fileName": "my-dear-pet.md"
+		},
+		{
+			"id": "tower-of-madness",
+			"name": "Tower of Madness",
+			"description": "Reach the top before time runs out.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"platformer",
+				"timed-rounds"
+			],
+			"developer": "dcl-regenesislabs",
+			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
+			"license": "unlicensed",
+			"page": "./tower-of-madness.md",
+			"fileName": "tower-of-madness.md"
+		},
+		{
+			"id": "asset-loading",
+			"name": "Asset loading",
+			"description": "Loading scene assets on demand rather than all at once.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"performance",
+				"loading",
+				"assets"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load",
+			"license": "unlicensed",
+			"page": "./asset-loading.md",
+			"fileName": "asset-loading.md"
+		},
+		{
+			"id": "audio-visualization",
+			"name": "Audio visualization",
+			"description": "Using live audio data to drive visual scene behaviour.",
+			"category": "audio-video-environment",
+			"tags": [
+				"audio",
+				"visualization",
+				"effects"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization",
+			"license": "unlicensed",
+			"page": "./audio-visualization.md",
+			"fileName": "audio-visualization.md"
+		},
+		{
+			"id": "dynamic-lights",
+			"name": "Dynamic lights",
+			"description": "Changing lights at runtime.",
+			"category": "audio-video-environment",
+			"tags": [
+				"lighting",
+				"environment",
+				"effects"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights",
+			"license": "unlicensed",
+			"page": "./dynamic-lights.md",
+			"fileName": "dynamic-lights.md"
+		},
+		{
+			"id": "input-modifier",
+			"name": "Input modifier",
+			"description": "Changing or constraining player movement input in part of a scene.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"movement",
+				"input",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier",
+			"license": "unlicensed",
+			"page": "./input-modifier.md",
+			"fileName": "input-modifier.md"
+		},
+		{
+			"id": "material-and-texture-gallery",
+			"name": "Material and texture gallery",
+			"description": "Material, texture, and GLTF node modifier patterns.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"materials",
+				"textures",
+				"rendering"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery",
+			"license": "unlicensed",
+			"page": "./material-and-texture-gallery.md",
+			"fileName": "material-and-texture-gallery.md"
+		},
+		{
+			"id": "mini-games-library",
+			"name": "Mini Games library",
+			"description": "Player queues, scoreboards, and supporting logic for multiplayer mini games.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"multiplayer",
+				"queue",
+				"scoreboard",
+				"game"
+			],
+			"source": "https://github.com/decentraland/sdk-mini-games",
+			"license": "unlicensed",
+			"page": "./mini-games-library.md",
+			"fileName": "mini-games-library.md"
+		},
+		{
+			"id": "modifier-areas",
+			"name": "Modifier areas",
+			"description": "Applying area-specific settings such as hiding player name tags.",
+			"category": "performance-scene-systems",
+			"tags": [
+				"player",
+				"areas",
+				"modifiers"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas",
+			"license": "unlicensed",
+			"page": "./modifier-areas.md",
+			"fileName": "modifier-areas.md"
+		},
+		{
+			"id": "authoritative-server-leaderboard",
+			"name": "Multiplayer Server leaderboard",
+			"description": "A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"multiplayer",
+				"leaderboard",
+				"server",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard",
+			"license": "unlicensed",
+			"page": "./authoritative-server-leaderboard.md",
+			"fileName": "authoritative-server-leaderboard.md"
+		},
+		{
+			"id": "particle-system",
+			"name": "Particle system",
+			"description": "Fire, smoke, sparks, snow, and other particle effects.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"particles",
+				"effects",
+				"visuals"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system",
+			"license": "unlicensed",
+			"page": "./particle-system.md",
+			"fileName": "particle-system.md"
+		},
+		{
+			"id": "pointer-lock-control",
+			"name": "Pointer lock control",
+			"description": "Capturing mouse input for custom controls.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"input",
+				"mouse",
+				"camera"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control",
+			"license": "unlicensed",
+			"page": "./pointer-lock-control.md",
+			"fileName": "pointer-lock-control.md"
+		},
+		{
+			"id": "raycasting-and-collider-layers",
+			"name": "Raycasting and collider layers",
+			"description": "Pointing at scene geometry and controlling which colliders react to a raycast.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"interaction",
+				"raycast",
+				"collision"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests",
+			"license": "unlicensed",
+			"page": "./raycasting-and-collider-layers.md",
+			"fileName": "raycasting-and-collider-layers.md"
+		},
+		{
+			"id": "sdk-skills",
+			"name": "SDK Skills",
+			"description": "Maintained instructions that help AI coding agents use verified SDK7 patterns.",
+			"category": "getting-started",
+			"tags": [
+				"ai",
+				"sdk7",
+				"workflow"
+			],
+			"source": "https://github.com/decentraland/sdk-skills",
+			"license": "Apache-2.0",
+			"page": "./sdk-skills.md",
+			"fileName": "sdk-skills.md"
+		},
+		{
+			"id": "sdk7-scene-template",
+			"name": "SDK7 scene template",
+			"description": "A clean starting point for a new TypeScript SDK7 scene.",
+			"category": "getting-started",
+			"tags": [
+				"starter",
+				"sdk7",
+				"scene"
+			],
+			"source": "https://github.com/decentraland/sdk7-scene-template",
+			"license": "unlicensed",
+			"page": "./sdk7-scene-template.md",
+			"fileName": "sdk7-scene-template.md"
+		},
+		{
+			"id": "sdk7-test-scenes",
+			"name": "SDK7 test scenes",
+			"description": "A large collection of focused, working SDK7 feature demonstrations.",
+			"category": "getting-started",
+			"tags": [
+				"sdk7",
+				"reference",
+				"test-scenes"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes",
+			"license": "unlicensed",
+			"page": "./sdk7-test-scenes.md",
+			"fileName": "sdk7-test-scenes.md"
+		},
+		{
+			"id": "skybox-control",
+			"name": "Skybox control",
+			"description": "Updating skybox time and transition settings from scene code.",
+			"category": "audio-video-environment",
+			"tags": [
+				"skybox",
+				"environment",
+				"lighting"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
+			"license": "unlicensed",
+			"page": "./skybox-control.md",
+			"fileName": "skybox-control.md"
+		},
+		{
+			"id": "spectate-mode",
+			"name": "Spectate mode",
+			"description": "A spectator-style camera and player viewing flow.",
+			"category": "ui-camera-player",
+			"tags": [
+				"camera",
+				"spectator",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode",
+			"license": "unlicensed",
+			"page": "./spectate-mode.md",
+			"fileName": "spectate-mode.md"
+		},
+		{
+			"id": "third-party-guest-book",
+			"name": "Third-party guest book",
+			"description": "A guest book backed by an external HTTP service.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api",
+			"license": "unlicensed",
+			"page": "./third-party-guest-book.md",
+			"fileName": "third-party-guest-book.md"
+		},
+		{
+			"id": "third-party-leaderboard",
+			"name": "Third-party leaderboard",
+			"description": "A persistent leaderboard backed by an external HTTP service.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"storage",
+				"leaderboard"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board",
+			"license": "unlicensed",
+			"page": "./third-party-leaderboard.md",
+			"fileName": "third-party-leaderboard.md"
+		},
+		{
+			"id": "third-party-player-authentication",
+			"name": "Third-party player authentication",
+			"description": "Verifying player identity for requests sent to an external service.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"authentication",
+				"player"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity",
+			"license": "unlicensed",
+			"page": "./third-party-player-authentication.md",
+			"fileName": "third-party-player-authentication.md"
+		},
+		{
+			"id": "trigger-areas",
+			"name": "Trigger areas",
+			"description": "Detecting players entering and leaving areas, including collider-based triggers.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"interaction",
+				"triggers",
+				"collision"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas",
+			"license": "unlicensed",
+			"page": "./trigger-areas.md",
+			"fileName": "trigger-areas.md"
+		},
+		{
+			"id": "ui-animations",
+			"name": "UI animations",
+			"description": "Animated UI elements, sprite sheets, and loading indicators.",
+			"category": "ui-camera-player",
+			"tags": [
+				"ui",
+				"animation",
+				"sprites"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations",
+			"license": "unlicensed",
+			"page": "./ui-animations.md",
+			"fileName": "ui-animations.md"
+		},
+		{
+			"id": "ui-safe-areas",
+			"name": "UI safe areas",
+			"description": "Positioning interface elements around screen insets and safe areas.",
+			"category": "ui-camera-player",
+			"tags": [
+				"ui",
+				"hud",
+				"responsive"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
+			"license": "unlicensed",
+			"page": "./ui-safe-areas.md",
+			"fileName": "ui-safe-areas.md"
+		},
+		{
+			"id": "video-streaming",
+			"name": "Video streaming",
+			"description": "Playing streamed video on a scene surface.",
+			"category": "audio-video-environment",
+			"tags": [
+				"video",
+				"streaming",
+				"media"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming",
+			"license": "unlicensed",
+			"page": "./video-streaming.md",
+			"fileName": "video-streaming.md"
+		},
+		{
+			"id": "virtual-cameras",
+			"name": "Virtual cameras",
+			"description": "Creating and switching to scene-defined cameras.",
+			"category": "ui-camera-player",
+			"tags": [
+				"camera",
+				"cinematic",
+				"controls"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras",
+			"license": "unlicensed",
+			"page": "./virtual-cameras.md",
+			"fileName": "virtual-cameras.md"
+		},
+		{
+			"id": "zombie-attack",
+			"name": "Zombie Attack",
+			"description": "A complete, playable game scene with enemies and scoring.",
+			"category": "gameplay-interaction",
+			"tags": [
+				"game",
+				"complete-scene",
+				"score"
+			],
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack",
+			"license": "unlicensed",
+			"page": "./zombie-attack.md",
+			"fileName": "zombie-attack.md"
+		},
+		{
+			"id": "npc-toolkit",
+			"name": "NPC Toolkit",
+			"description": "Reusable NPC behaviours and dialogue UI for SDK7 scenes.",
+			"category": "ui-camera-player",
+			"tags": [
+				"npc",
+				"dialogue",
+				"ui"
+			],
+			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
+			"license": "Apache-2.0",
+			"page": "./npc-toolkit.md",
+			"fileName": "npc-toolkit.md"
+		},
+		{
+			"id": "flag-tag",
+			"name": "Flag Tag",
+			"description": "A Multiplayer Server keep-away game with timed rounds, power-ups, and persistent leaderboards.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"multiplayer-server",
+				"leaderboard"
+			],
+			"developer": "iillee",
+			"source": "https://github.com/iillee/flagtag",
+			"license": "unlicensed",
+			"page": "./flag-tag.md",
+			"fileName": "flag-tag.md"
+		},
+		{
+			"id": "pigeon-deluxe",
+			"name": "Pigeon Deluxe",
+			"description": "A playable Decentraland scene.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"community-made"
+			],
+			"developer": "PepeGawd",
+			"source": "https://github.com/PepeGawd/Pigeon-Deluxe",
+			"license": "unlicensed",
+			"page": "./pigeon-deluxe.md",
+			"fileName": "pigeon-deluxe.md"
+		},
+		{
+			"id": "alien-scrapyard",
+			"name": "Alien Scrapyard",
+			"description": "Multiplayer co-op with timed rounds for building shapes before the clock runs out. Each completed object unlocks new scores and shapes, giving players a reason to return and help finish whatever absurd structure the crowd is building next.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"multiplayer",
+				"teamwork",
+				"timed-rounds"
+			],
+			"developer": "procesista",
+			"source": "https://github.com/procesista/Alienscrap",
+			"license": "unlicensed",
+			"page": "./alien-scrapyard.md",
+			"fileName": "alien-scrapyard.md"
+		},
+		{
+			"id": "fastlane-bowling",
+			"name": "Fastlane Bowling",
+			"description": "A Multiplayer Server bowling game with server-simulated Cannon-ES physics, persistent player progression, leaderboards, and storage-backed components.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"multiplayer-server",
+				"physics",
+				"progression",
+				"leaderboard",
+				"storage"
+			],
+			"developer": "stom66",
+			"source": "https://github.com/stom66/dcl-bowling",
+			"license": "NOASSERTION",
+			"page": "./fastlane-bowling.md",
+			"fileName": "fastlane-bowling.md"
+		},
+		{
+			"id": "sky-chaser",
+			"name": "Sky Chaser",
+			"description": "A Multiplayer Server game about catching escaping packages, with weekly and all-time leaderboards.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"multiplayer-server",
+				"leaderboard"
+			],
+			"developer": "stom66",
+			"source": "https://github.com/stom66/dcl-sky-chaser",
+			"license": "NOASSERTION",
+			"page": "./sky-chaser.md",
+			"fileName": "sky-chaser.md"
+		},
+		{
+			"id": "slay-the-steps",
+			"name": "Slay the Steps",
+			"description": "A Multiplayer Server Festive Trail experience with custom avatars, Marketplace API integration, and a custom colour-wheel picker.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"studio-made",
+				"multiplayer",
+				"multiplayer-server",
+				"avatars",
+				"marketplace-api",
+				"ui",
+				"festive-trail"
+			],
+			"developer": "stom66",
+			"source": "https://github.com/stom66/dcl-slay-the-steps",
+			"license": "NOASSERTION",
+			"page": "./slay-the-steps.md",
+			"fileName": "slay-the-steps.md"
+		},
+		{
+			"id": "bloom-garden",
+			"name": "Bloom Garden",
+			"description": "A cooperative Multiplayer Server garden with built-in Storage for persistent plant state and a weekly leaderboard.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"multiplayer",
+				"multiplayer-server",
+				"teamwork",
+				"garden",
+				"storage",
+				"leaderboard"
+			],
+			"developer": "TheLivingGarden",
+			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",
+			"license": "MIT",
+			"page": "./bloom-garden.md",
+			"fileName": "bloom-garden.md"
+		},
+		{
+			"id": "slide-penguin",
+			"name": "Slide Penguin",
+			"description": "A seasonal penguin game.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"seasonal",
+				"platformer"
+			],
+			"developer": "ToxSam",
+			"source": "https://github.com/ToxSam/SlidePenguin",
+			"license": "unlicensed",
+			"page": "./slide-penguin.md",
+			"fileName": "slide-penguin.md"
+		}
+	]
+}

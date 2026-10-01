@@ -7,17 +7,17 @@ description: Features available on the Decentraland desktop client that are not 
 {% hint style="info" %}
 This page tracks the feature gap between the Decentraland desktop (Unity) client and the mobile app. It is sourced from the [godot-explorer feature parity tracker](https://github.com/decentraland/godot-explorer/issues/2402) and updated regularly. ETAs are estimates and subject to change.
 
-Last reviewed: **August 2026**.
+Last reviewed: **September 2026** (mobile v1.14.0).
 {% endhint %}
 
 ## SDK Features Missing on Mobile
 
-- [Scene Dynamic Lights (`LightSource`)](https://github.com/decentraland/godot-explorer/issues/616) — implemented in [PR #2633](https://github.com/decentraland/godot-explorer/pull/2633), ships in **v1.13.0 (September 2026)**
-- [Avatar Masks (upper-body-only emotes)](https://github.com/decentraland/godot-explorer/issues/2621) — implemented in [PR #2690](https://github.com/decentraland/godot-explorer/pull/2690), ships in **v1.13.0 (September 2026)**
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA
-- [SDK audio parity audit (volume curves and spatial attenuation vs Unity)](https://github.com/decentraland/godot-explorer/issues/861) — No ETA
-- [AudioEvent component (`PBAudioEvent`)](https://github.com/decentraland/godot-explorer/issues/2673) — No ETA
-- [Audio Analysis component](https://github.com/decentraland/godot-explorer/issues/1184) — No ETA
+- [SDK audio parity audit (volume curves and spatial attenuation vs Unity)](https://github.com/decentraland/godot-explorer/issues/861) — implemented in [PR #2801](https://github.com/decentraland/godot-explorer/pull/2801), ships in **v1.14.0 (September 2026)**
+- [AudioEvent component (`PBAudioEvent`)](https://github.com/decentraland/godot-explorer/issues/2673) — implemented in [PR #2801](https://github.com/decentraland/godot-explorer/pull/2801), ships in **v1.14.0 (September 2026)**
+- [Audio Analysis component (`PBAudioAnalysis`)](https://github.com/decentraland/godot-explorer/issues/1184) — implemented in [PR #2801](https://github.com/decentraland/godot-explorer/pull/2801), ships in **v1.14.0 (September 2026)**
+- [`AvatarNametag` (scene-authored label above a player's nametag)](https://github.com/decentraland/godot-explorer/issues/2811) — September 2026
+- Draco mesh compression (`KHR_draco_mesh_compression`) — not supported; the mobile client cannot load Draco-compressed GLTF/GLB files, so use uncompressed meshes — No ETA
 - Smart Items — not officially supported on mobile
 
 ## Desktop Client Features Not in Mobile
@@ -40,7 +40,7 @@ Last reviewed: **August 2026**.
 
 ## Cross-Platform Inconsistencies
 
-- [Colliders Shape Consistency Review vs Unity](https://github.com/decentraland/godot-explorer/issues/905) — September 2026
+- [Player capsule, step offset and ground contact vs Unity](https://github.com/decentraland/godot-explorer/issues/2753) — No ETA
 - [Avatar teeth render dark/gray instead of white](https://github.com/decentraland/godot-explorer/issues/1994) — No ETA
 
 ## Input/Platform Constraints

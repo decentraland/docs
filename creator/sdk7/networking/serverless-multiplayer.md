@@ -347,7 +347,7 @@ If you launch a scene preview and open it in two (or more) different explorer wi
 
 Interact with the scene on one window, then switch to the other to see that the effects of that interaction are also visible there.
 
-Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
+Using the Creator Hub, turn on **Multi-Instance Preview** in the **Play Options** menu, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
 ![](../../images/editor/preview-button.png)
 

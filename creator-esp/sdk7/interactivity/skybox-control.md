@@ -146,7 +146,7 @@ function main() {
       nadir: constant(Color4.create(0.35, 0.15, 0.08, 1))
     },
     sun: { color: constant(Color4.create(1, 0.65, 0.4, 1)) },
-    fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)) },
+    fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)), density: 0.01 },
     clouds: { opacity: 0.3, speed: 0.01 },
     stars: { brightness: 4.62 }
   })
@@ -155,7 +155,7 @@ function main() {
 
 * `skyColors`: el color del cielo en su `zenith` (cenit, justo arriba), en el `horizon` (horizonte) y en su `nadir` (bajo el horizonte). Estos colores también controlan la luz ambiental de la escena: el color del cenit ilumina los objetos desde arriba, el del horizonte desde los lados y el del nadir desde abajo, de modo que objetos y avatares coinciden con el cielo que los rodea. `skyColors.rim` es el resplandor que se dibuja a lo largo de la línea del horizonte; si no lo defines, sigue tu color de `horizon`, así que solo lo necesitas como acento (por ejemplo, un borde naranja de amanecer sobre un cielo oscuro).
 * `sun.color`: el color de la luz direccional. También tiñe el disco del sol.
-* `fog.color`: el color de la niebla de distancia. Que la niebla se renderice o no es un ajuste de calidad elegido por el jugador; una escena no puede activarla ni desactivarla.
+* `fog.color`: el color de la niebla de distancia. `fog.density`: qué tan rápido se desvanecen las cosas en ella, como densidad exponencial por metro: `1 / density` es aproximadamente la distancia a la que dos tercios de la vista quedan cubiertos por la niebla. El valor por defecto es 0.0005 (unos 2 km); 0.02 cubre todo más allá de unos 50 m y 0 hace la niebla invisible. `fog.startDistance` / `fog.endDistance`: el rango de una niebla lineal en metros, para clientes que renderizan la niebla de esa forma; el Explorer de Decentraland renderiza niebla exponencial, así que usa `density` e ignora estos dos. Que la niebla se renderice o no es un ajuste de calidad elegido por el jugador; una escena no puede activarla ni desactivarla.
 * `clouds.opacity`: de 0 (sin nubes) a 1, el valor por defecto. `clouds.speed`: la velocidad a la que se desplaza la capa de nubes, 0.01 por defecto, 0 para nubes estáticas. `clouds.color`: el tinte de la capa de nubes; sin él, las nubes mantienen sus colores por defecto según la hora del día incluso sobre un cielo recoloreado. `clouds.texture`: tu propia imagen de capa de nubes, consulta [Nubes personalizadas](#nubes-personalizadas).
 * `stars.brightness`: 4.62 por defecto. Las estrellas solo se ven durante la parte nocturna del día.
 
@@ -204,7 +204,7 @@ Skybox.createOrReplace(engine.RootEntity, {
 })
 ```
 
-Los gradientes no dan la vuelta a medianoche, así que repite el mismo color en `time: 0` y `time: 1` si el día debe repetirse sin cortes. Los valores de color no están limitados a 1: valores mayores producen un sol o un cielo más brillantes (HDR). El canal alfa se ignora. Combina los gradientes con `SkyboxTime` para fijar el día en un punto concreto de tu gradiente.
+Los gradientes no dan la vuelta a medianoche, así que repite el mismo color en `time: 0` y `time: 1` si el día debe repetirse sin cortes. Los valores de color no están limitados a 1: valores mayores producen un sol o un cielo más brillantes (HDR). El canal alfa se ignora. Usa como máximo 8 claves por gradiente: los gradientes más largos se remuestrean a 8 claves equidistantes, lo que suaviza el detalle entre ellas. Combina los gradientes con `SkyboxTime` para fijar el día en un punto concreto de tu gradiente.
 
 ## Ocultar el sol y la luna
 

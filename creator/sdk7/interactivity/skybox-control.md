@@ -141,7 +141,7 @@ function main() {
       nadir: constant(Color4.create(0.35, 0.15, 0.08, 1))
     },
     sun: { color: constant(Color4.create(1, 0.65, 0.4, 1)) },
-    fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)) },
+    fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)), density: 0.01 },
     clouds: { opacity: 0.3, speed: 0.01 },
     stars: { brightness: 4.62 }
   })
@@ -150,7 +150,7 @@ function main() {
 
 * `skyColors`: the color of the sky at its `zenith` (straight up), at the `horizon`, and at its `nadir` (below the horizon). These colors also drive the ambient light of the scene: the zenith color lights objects from above, the horizon color from the sides and the nadir color from below, so that objects and avatars match the sky around them. `skyColors.rim` is the glow drawn along the horizon line; when you leave it unset it follows your `horizon` color, so you only need it for an accent (for example an orange sunrise rim on a dark sky).
 * `sun.color`: the color of the directional light. It also tints the sun disc.
-* `fog.color`: the color of the distance fog. Whether fog is rendered at all is a quality setting chosen by the player, a scene can't turn it on or off.
+* `fog.color`: the color of the distance fog. `fog.density`: how quickly things fade into it, as an exponential density per meter: `1 / density` is roughly the distance at which two thirds of the view is fogged. The default is 0.0005 (about 2 km); 0.02 fogs everything beyond about 50 m, 0 makes the fog invisible. `fog.startDistance` / `fog.endDistance`: the range of a linear fog in meters, for clients that render fog that way; the Decentraland Explorer renders exponential fog, so it uses `density` and ignores these two. Whether fog is rendered at all is a quality setting chosen by the player, a scene can't turn it on or off.
 * `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer drifts, 0.01 by default, 0 for static clouds. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky. `clouds.texture`: your own cloud layer image, see [Custom clouds](#custom-clouds).
 * `stars.brightness`: 4.62 by default. Stars are only visible during the night part of the day.
 
@@ -199,7 +199,7 @@ Skybox.createOrReplace(engine.RootEntity, {
 })
 ```
 
-Gradients don't wrap around midnight, so repeat the same color at `time: 0` and `time: 1` if the day should loop seamlessly. Color values are not limited to 1: values above 1 produce a brighter, HDR sun or sky. The alpha channel is ignored. Combine gradients with `SkyboxTime` to pin the day at one specific point of your gradient.
+Gradients don't wrap around midnight, so repeat the same color at `time: 0` and `time: 1` if the day should loop seamlessly. Color values are not limited to 1: values above 1 produce a brighter, HDR sun or sky. The alpha channel is ignored. Use up to 8 keys per gradient: longer gradients are resampled to 8 evenly spaced keys, which smooths out any detail between them. Combine gradients with `SkyboxTime` to pin the day at one specific point of your gradient.
 
 ## Hiding the sun and moon
 

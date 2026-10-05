@@ -4,7 +4,7 @@ description: A description and discussion of the Wearables Curation Committee
 
 # Curation Committee
 
-The Curation Committee is a group of individuals elected by the DAO who are responsible for reviewing and approving wearables and emotes submitted by the Decentraland community. The current Curation Committee includes three members, but it can be expanded to include more. Each member holds a key in a multisig wallet that is used to vote on the approval or rejection of each item submitted via the Wearables Editor.
+The Curation Committee is a group of individuals elected by the DAO who are responsible for reviewing and approving wearables and emotes submitted by the Decentraland community. The current Curation Committee includes three members, as set by [a proposal passed on Jul 28, 2026](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636). Each member holds a key in a multisig wallet that is used to vote on the approval or rejection of each item submitted via the Wearables Editor.
 
 The approval criteria used by the committee when reviewing wearables is outlined in [Publishing Wearables](publishing-collections.md), the criteria for publishing emotes is outlined in [Emotes overview](../emotes/README.md)
 

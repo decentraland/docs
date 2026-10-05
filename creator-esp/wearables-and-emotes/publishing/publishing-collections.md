@@ -26,13 +26,13 @@ Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobació
 
 Hay una tarifa requerida para publicar ítems. Esta tarifa fue originalmente [votada por el DAO de Decentraland](https://governance.decentraland.org/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) para disuadir a los usuarios de publicar un número excesivo de wearables en un intento de hacer "spam" en el mercado de wearables.
 
-El 2 de septiembre de 2023 [una propuesta](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) estableció las tarifas de publicación en **100 USD por ítem, a pagar en MANA de Polygon**.
+El 28 de julio de 2026 [una propuesta](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636) estableció la tarifa de publicación en **25 USD por ítem (20 USD subsidiados temporalmente por la Decentraland Foundation, 5 USD pagados por el creador en MANA o Credits)**. El subsidio de 20 USD cubre los primeros seis meses desde que la nueva tarifa entre en vigencia; luego los creadores pagan los 25 USD completos salvo que el DAO lo ajuste.
 
 {% hint style="warning" %}
 **📔 Nota**: Puedes mover MANA entre Ethereum y Polygon usando la [Account dApp](https://account.decentraland.org).
 {% endhint %}
 
-Por ejemplo, si publicas una colección con dos ítems y el precio de MANA en ese momento es 1.25 USD, tendrás que pagar una tarifa de 160 MANA (100 USD por cada ítem dividido por el precio de MANA en USD) independientemente de la rarity (o cuántos NFTs se pueden acuñar) de esos ítems.
+Por ejemplo, si publicas una colección con dos ítems durante el período de subsidio y el precio de MANA en ese momento es 1.25 USD, tendrás que pagar una tarifa de 8 MANA (5 USD por cada ítem dividido por el precio de MANA en USD) independientemente de la rarity (o cuántos NFTs se pueden acuñar) de esos ítems.
 
 Estas tarifas se transfieren al comité de curadores y al DAO de Decentraland, donde se usan para ayudar a financiar el crecimiento de la plataforma a través de grants y otras iniciativas votadas por la mayor comunidad de Decentraland.
 

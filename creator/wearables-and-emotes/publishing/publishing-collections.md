@@ -24,7 +24,7 @@ There is a required fee for publishing items. This fee was originally [voted in 
 
 On Sep 02, 2023 [a proposal](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) set the publication fees to 100 USD per item, to be paid in Polygon MANA. On Jul 28, 2026 [a new proposal](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636) lowered the publication fee to **25 USD per item**.
 
-For a limited time, the Decentraland Foundation covers 20 USD, so **you pay only 5 USD per item** — in Polygon MANA, with Credits, or by card.
+For a limited time, the Decentraland Foundation covers 20 USD, so **you pay only 5 USD per item**.
 
 {% hint style="warning" %}
 **📔 Note**: You can move MANA between Ethereum and Polygon using the [Account dApp](https://account.decentraland.org).

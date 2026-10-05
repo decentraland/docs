@@ -28,7 +28,7 @@ Hay una tarifa requerida para publicar ítems. Esta tarifa fue originalmente [vo
 
 El 2 de septiembre de 2023 [una propuesta](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) estableció las tarifas de publicación en 100 USD por ítem, a pagar en MANA de Polygon. El 28 de julio de 2026 [una nueva propuesta](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636) redujo la tarifa de publicación a **25 USD por ítem**.
 
-Por tiempo limitado, la Decentraland Foundation cubre 20 USD, así que **solo pagas 5 USD por ítem**, en MANA de Polygon, con Credits o con tarjeta.
+Por tiempo limitado, la Decentraland Foundation cubre 20 USD, así que **solo pagas 5 USD por ítem**, en MANA de Polygon, con Créditos o con tarjeta.
 
 {% hint style="warning" %}
 **📔 Nota**: Puedes mover MANA entre Ethereum y Polygon usando la [Account dApp](https://account.decentraland.org).

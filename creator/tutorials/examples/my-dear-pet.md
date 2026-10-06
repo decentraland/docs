@@ -3,7 +3,7 @@ id: my-dear-pet
 name: My Dear Pet
 description: A pet collecting game.
 category: published-games
-tags: [game, pets, collection]
+tags: [game, collection]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/marsh-colony
 license: unlicensed

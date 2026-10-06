@@ -3,7 +3,7 @@ id: cozy-farm
 name: Cozy Farm
 description: Grow crops, expand your farm, and make friends.
 category: published-games
-tags: [game, farming, social]
+tags: [game, social]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/cozy-farm
 license: unlicensed

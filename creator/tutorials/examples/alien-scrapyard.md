@@ -3,7 +3,7 @@ id: alien-scrapyard
 name: Alien Scrapyard
 description: Multiplayer co-op with timed rounds for building shapes before the clock runs out. Each completed object unlocks new scores and shapes, giving players a reason to return and help finish whatever absurd structure the crowd is building next.
 category: published-games
-tags: [game, multiplayer, teamwork, timed-rounds]
+tags: [game, multiplayer, timed-rounds]
 developer: procesista
 source: https://github.com/procesista/Alienscrap
 license: unlicensed

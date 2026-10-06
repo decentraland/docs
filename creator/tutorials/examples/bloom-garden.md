@@ -3,7 +3,7 @@ id: bloom-garden
 name: Bloom Garden
 description: A cooperative Multiplayer Server garden with built-in Storage for persistent plant state and a weekly leaderboard.
 category: published-games
-tags: [game, multiplayer, multiplayer-server, teamwork, garden, storage, leaderboard]
+tags: [game, multiplayer, multiplayer-server, storage, leaderboard]
 developer: TheLivingGarden
 source: https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main
 license: MIT

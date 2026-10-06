@@ -39,8 +39,7 @@
 			"tags": [
 				"game",
 				"platformer",
-				"collectibles",
-				"racing"
+				"collectibles"
 			],
 			"developer": "CanessaDCL",
 			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
@@ -54,9 +53,7 @@
 			"description": "Score goals.",
 			"category": "published-games",
 			"tags": [
-				"game",
-				"sports",
-				"football"
+				"game"
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/goal-legends-arena",
@@ -71,7 +68,6 @@
 			"category": "published-games",
 			"tags": [
 				"game",
-				"memory-match",
 				"collection",
 				"leaderboard"
 			],
@@ -89,7 +85,6 @@
 			"tags": [
 				"game",
 				"social",
-				"roleplay",
 				"multiplayer"
 			],
 			"developer": "carlosmu",
@@ -106,7 +101,6 @@
 			"tags": [
 				"game",
 				"multiplayer",
-				"teamwork",
 				"timed-rounds"
 			],
 			"developer": "CleanTheClub",
@@ -122,7 +116,6 @@
 			"category": "published-games",
 			"tags": [
 				"game",
-				"farming",
 				"social"
 			],
 			"developer": "dcl-regenesislabs",
@@ -138,7 +131,6 @@
 			"category": "published-games",
 			"tags": [
 				"game",
-				"survival",
 				"combat",
 				"progression"
 			],
@@ -155,8 +147,6 @@
 			"category": "published-games",
 			"tags": [
 				"game",
-				"sports",
-				"predictions",
 				"seasonal"
 			],
 			"developer": "dcl-regenesislabs",
@@ -172,7 +162,6 @@
 			"category": "published-games",
 			"tags": [
 				"game",
-				"pets",
 				"collection"
 			],
 			"developer": "dcl-regenesislabs",
@@ -279,7 +268,6 @@
 			"category": "multiplayer-data-services",
 			"tags": [
 				"multiplayer",
-				"queue",
 				"scoreboard",
 				"game"
 			],
@@ -385,7 +373,6 @@
 			"description": "A clean starting point for a new TypeScript SDK7 scene.",
 			"category": "getting-started",
 			"tags": [
-				"starter",
 				"sdk7",
 				"scene"
 			],
@@ -505,8 +492,7 @@
 			"category": "ui-camera-player",
 			"tags": [
 				"ui",
-				"hud",
-				"responsive"
+				"hud"
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
 			"license": "unlicensed",
@@ -614,7 +600,6 @@
 			"tags": [
 				"game",
 				"multiplayer",
-				"teamwork",
 				"timed-rounds"
 			],
 			"developer": "procesista",
@@ -674,8 +659,7 @@
 				"multiplayer-server",
 				"avatars",
 				"marketplace-api",
-				"ui",
-				"festive-trail"
+				"ui"
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-slay-the-steps",
@@ -692,8 +676,6 @@
 				"game",
 				"multiplayer",
 				"multiplayer-server",
-				"teamwork",
-				"garden",
 				"storage",
 				"leaderboard"
 			],

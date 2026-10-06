@@ -3,7 +3,7 @@ id: slay-the-steps
 name: Slay the Steps
 description: A Multiplayer Server Festive Trail experience with custom avatars, Marketplace API integration, and a custom colour-wheel picker.
 category: published-games
-tags: [game, studio-made, multiplayer, multiplayer-server, avatars, marketplace-api, ui, festive-trail]
+tags: [game, studio-made, multiplayer, multiplayer-server, avatars, marketplace-api, ui]
 developer: stom66
 source: https://github.com/stom66/dcl-slay-the-steps
 license: NOASSERTION

@@ -3,7 +3,7 @@ id: the-fortune-teller
 name: The Fortune Teller
 description: Step into a mystical circus booth where players can get their fortune told or take over the booth to tell friends' fortunes.
 category: published-games
-tags: [game, social, roleplay, multiplayer]
+tags: [game, social, multiplayer]
 developer: carlosmu
 source: https://github.com/carlosmu/circus_fortune_teller
 license: unlicensed

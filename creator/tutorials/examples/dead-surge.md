@@ -3,7 +3,7 @@ id: dead-surge
 name: Dead Surge
 description: Enter the graveyard, defeat zombies, survive as long as possible, and improve your weapons.
 category: published-games
-tags: [game, survival, combat, progression]
+tags: [game, combat, progression]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/dead-surge
 license: unlicensed

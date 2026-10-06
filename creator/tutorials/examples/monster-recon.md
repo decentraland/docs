@@ -3,7 +3,7 @@ id: monster-recon
 name: Monster Recon
 description: Outsmart rapid-fire Memory Match rounds, then dash through camp to hunt down monsters and build a Codex of rare, exotic, and epic finds.
 category: published-games
-tags: [game, memory-match, collection, leaderboard]
+tags: [game, collection, leaderboard]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-monster-recon
 license: unlicensed

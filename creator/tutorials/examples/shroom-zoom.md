@@ -3,7 +3,7 @@ id: shroom-zoom
 name: Shroom Zoom
 description: Bounce, double-jump, and glide around a glowing lakeside mushroom world, collecting sprites, uncovering lore, and racing to beat your best time.
 category: published-games
-tags: [game, platformer, collectibles, racing]
+tags: [game, platformer, collectibles]
 developer: CanessaDCL
 source: https://github.com/CanessaDCL/dcl-shroomzoom
 license: unlicensed

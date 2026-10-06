@@ -3,7 +3,7 @@ id: clean-the-club
 name: Clean The Club
 description: Team up with friends to transform a trashed nightclub before the next party begins, clearing bottles, cigarettes, and lost items from the chaos of the night before.
 category: published-games
-tags: [game, multiplayer, teamwork, timed-rounds]
+tags: [game, multiplayer, timed-rounds]
 developer: CleanTheClub
 source: https://github.com/CleanTheClub/CleanTheClub
 license: Apache-2.0

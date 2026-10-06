@@ -3,7 +3,7 @@ id: kick-off
 name: Kick Off
 description: A seasonal World Cup prediction game.
 category: published-games
-tags: [game, sports, predictions, seasonal]
+tags: [game, seasonal]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/kickoff-2026
 license: unlicensed

@@ -3,7 +3,7 @@ id: goal-legends
 name: Goal Legends
 description: Score goals.
 category: published-games
-tags: [game, sports, football]
+tags: [game]
 developer: carlosmu
 source: https://github.com/carlosmu/goal-legends-arena
 license: NOASSERTION

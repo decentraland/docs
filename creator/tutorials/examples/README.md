@@ -16,7 +16,6 @@ AI Agent? Go here: [catalog.json](./catalog.json). It contains the same entries 
 | --- | --- | --- | --- |
 | [SDK Skills](./sdk-skills.md) | Maintained instructions that help AI coding agents use verified SDK7 patterns. | `ai`, `sdk7`, `workflow` | [Open repository](https://github.com/decentraland/sdk-skills) |
 | [SDK7 scene template](./sdk7-scene-template.md) | A clean starting point for a new TypeScript SDK7 scene. | `starter`, `sdk7`, `scene` | [Open repository](https://github.com/decentraland/sdk7-scene-template) |
-| [SDK7 test scenes](./sdk7-test-scenes.md) | A large collection of focused, working SDK7 feature demonstrations. | `sdk7`, `reference`, `test-scenes` | [Open repository](https://github.com/decentraland/sdk7-test-scenes) |
 
 ## Published Games
 

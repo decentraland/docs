@@ -2,7 +2,7 @@
 description: Migrate your scene from the Web Editor to the Creator Hub.
 ---
 
-# Migrate from Web
+# Migrate into Creator Hub
 
 If you have a scene created with other tools than the Creator Hub, you can easily migrate it to the Creator Hub.
 
@@ -20,17 +20,17 @@ To edit the code in a scene created with the Web Editor, you must export the sce
 
 1. Click the **Download icon** on the top menu of the Web Editor while editing the scene.
 
-![](../../images/editor/export.png)
+![](<../../.gitbook/assets/export (3).png>)
 
 2. This will download a _.zip_ file, extract it.
 3. Open the **Creator Hub**, go into the **Scenes** section.
 4. Click the **Import Scene** button and select the path to your exported project folder.
 
-![](../../images/editor/import-scene.png)
+![](<../../.gitbook/assets/import-scene (3).png>)
 
 Once you're done, you can keep working on your project inside the Creator Hub, with a visual interface that looks a lot like the Web Editor, but much more polished.
 
-You can also edit the files under the `/src` folder to add behavior with code to your scene. See [Combine with code](../code/overview.md) for how to edit the code of your scene.
+You can also edit the files under the `/src` folder to add behavior with code to your scene. See [Combine with code](../extend-with-code/overview.md) for how to edit the code of your scene.
 
 ## Migrate a code-only project
 
@@ -39,13 +39,13 @@ You can import any code-only project into the Creator Hub. To do this,
 1. Open the Creator Hub, go into the **Scenes** section.
 2. Click the **Import Scene** button and select the path to your exported project folder.
 
-![](../../images/editor/import-scene.png)
+![](<../../.gitbook/assets/import-scene (3).png>)
 
 Once done, you can start working on your project inside the Creator Hub, this doesn't prevent you from still using your favorite code editor to edit the code of your scene, or use the command line to run or deploy your scene.
 
 After importing your project, any content that is created via code will not be visible or editable on the Creator Hub canvas, which can make it challenging to place and align new items. You will initially see your scene as an empty grid.
 
-![](../../images/editor/empty-project.png)
+![](<../../.gitbook/assets/empty-project (3).png>)
 
 Instead of manually adding your content to the canvas from scratch, you can run a command to automatically add it for you. To do this, make sure you have the latest version of the SDK installed and run the following command in your terminal:
 
@@ -63,4 +63,4 @@ This command runs your scene and takes a snapshot of the content that is created
 
 Note that this command only captures entities and the components that can be represented on the Creator Hub UI. It does not replicate custom components, or reproduce code that carries out logic, or UI elements that are created via code. To add back any behavior that was commented out, you will need to edit the code in the `.ts` files in the `src` folder and uncomment the lines you need.
 
-You may also want to rewrite part of the code so that instead of creating new entities, it references existing entities by name or by tags to give them behavior. See [Combine with code](../code/overview.md) for how to fetch these entities from your code.
+You may also want to rewrite part of the code so that instead of creating new entities, it references existing entities by name or by tags to give them behavior. See [Combine with code](../extend-with-code/overview.md) for how to fetch these entities from your code.

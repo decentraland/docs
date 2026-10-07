@@ -1,8 +1,8 @@
 ---
 description: >-
-  Canonical names for Decentraland creator tools: the Creator Hub, Scene
-  Editor, SDK7, and SDK Skills are current; the Web Editor, Decentraland
-  Editor, and SDK6 are deprecated.
+  Canonical names for Decentraland creator tools: the Creator Hub, Scene Editor,
+  SDK7, and SDK Skills are current; the Web Editor, Decentraland Editor, and
+  SDK6 are deprecated.
 ---
 
 # Tools & Terminology
@@ -21,15 +21,15 @@ The **Scene Editor** is the visual, drag-and-drop editing view inside the Creato
 
 ### SDK7
 
-**SDK7** is the current version of the Decentraland SDK, the TypeScript library used to write scene code. All new scenes use SDK7. See [SDK Quick Start](sdk7/getting-started/sdk-101.md).
+**SDK7** is the current version of the Decentraland SDK, the TypeScript library used to write scene code. All new scenes use SDK7. See [SDK Quick Start](scenes-sdk7/getting-started/sdk-101.md).
 
 ### SDK Skills
 
-The **Decentraland SDK Skills** are official, maintained instruction sets that teach AI coding assistants verified SDK7 patterns. Install them with `npx skills add decentraland/sdk-skills`. See [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md).
+The **Decentraland SDK Skills** are official, maintained instruction sets that teach AI coding assistants verified SDK7 patterns. Install them with `npx skills add decentraland/sdk-skills`. See [Vibe Coding with AI](scenes-sdk7/getting-started/vibe-coding.md).
 
 ### CLI
 
-The **CLI** (`npx @dcl/sdk-commands`) is the command-line alternative to the Creator Hub, used for automation and advanced workflows. The Creator Hub runs the same commands behind the scenes. See [Using the CLI](sdk7/getting-started/using-the-cli.md).
+The **CLI** (`npx @dcl/sdk-commands`) is the command-line alternative to the Creator Hub, used for automation and advanced workflows. The Creator Hub runs the same commands behind the scenes. See [Using the CLI](scenes-sdk7/getting-started/using-the-cli.md).
 
 ### Builder
 
@@ -43,9 +43,9 @@ The **Explorer** is the application players use to enter Decentraland: the deskt
 
 Do not use these. If a tutorial or an AI assistant recommends one of them, it is out of date.
 
-| Deprecated name | What it was | Use instead |
-| --- | --- | --- |
-| **Web Editor** | A browser-based scene editor | The [Creator Hub](https://decentraland.org/download/creator-hub) |
-| **Decentraland Editor** | A Visual Studio Code extension for building scenes | The [Creator Hub](https://decentraland.org/download/creator-hub) |
-| **SDK6** | The previous version of the SDK. SDK6 code does not run on current Decentraland | [SDK7](sdk7/getting-started/sdk-101.md); to port an old scene, see [Migrate Legacy SDK6 Scenes](sdk7/other/migrate-legacy-sdk6-scenes.md) |
-| **dclcontext folder** | Downloaded AI context files inside scene projects | The [SDK Skills](sdk7/getting-started/vibe-coding.md) |
+| Deprecated name         | What it was                                                                     | Use instead                                                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Web Editor**          | A browser-based scene editor                                                    | The [Creator Hub](https://decentraland.org/download/creator-hub)                                                                                        |
+| **Decentraland Editor** | A Visual Studio Code extension for building scenes                              | The [Creator Hub](https://decentraland.org/download/creator-hub)                                                                                        |
+| **SDK6**                | The previous version of the SDK. SDK6 code does not run on current Decentraland | [SDK7](scenes-sdk7/getting-started/sdk-101.md); to port an old scene, see [Migrate Legacy SDK6 Scenes](scenes-sdk7/other/migrate-legacy-sdk6-scenes.md) |
+| **dclcontext folder**   | Downloaded AI context files inside scene projects                               | The [SDK Skills](scenes-sdk7/getting-started/vibe-coding.md)                                                                                            |

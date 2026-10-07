@@ -10,7 +10,7 @@ This page will guide you through the process of using the Rewards system to ince
 
 ## Prerequisites
 
-Before you begin using the Rewards system, ensure that you have a collection [approved and ready for minting](../wearables-and-emotes/publishing/publishing-collections.md). This collection should contain the items you plan to offer as rewards in your campaign.
+Before you begin using the Rewards system, ensure that you have a collection [approved and ready for minting](../wearables-and-emotes/publishing-collections/publishing-collections.md). This collection should contain the items you plan to offer as rewards in your campaign.
 
 ## Create your first campaign
 
@@ -21,7 +21,7 @@ A campaign refers to an incentive initiative designed to boost user engagement t
 3. Click on the **Campaigns** tab
 4. Click on the **Create Campaign** button. You will be redirected to the campaign creation form.
 
-![](../images/rewards/create-campaign-page.png)
+![](<../.gitbook/assets/create-campaign-page (2).png>)
 
 5. Complete the following fields:
 
@@ -31,7 +31,7 @@ A campaign refers to an incentive initiative designed to boost user engagement t
 
 6. Click the **Create Campaign** button. You will be redirected to the campaign page.
 
-![](../images/rewards/new-campaign.png)
+![](<../.gitbook/assets/new-campaign (2).png>)
 
 After creating your campaign, there are a few more steps to complete before you can start delivering rewards:
 
@@ -56,26 +56,26 @@ To send MATIC from an exchange you just need to withdraw MATIC token to the Poly
 
 When you create a new campaign, it starts with an empty inventory. To begin delivering rewards, you'll need to add items to the campaign:
 
-![](../images/rewards/without-supply.png)
+![](<../.gitbook/assets/without-supply (2).png>)
 
-* **Grant Minting Permissions**: First, authorize the campaign to mint items. Follow [this guide](../wearables-and-emotes/publishing/publishing-collections.md#adding-minters-to-the-collection) and use the campaign address (located below the campaign name) as the minter's address. After submitting, wait for the transaction to be confirmed.
+* **Grant Minting Permissions**: First, authorize the campaign to mint items. Follow [this guide](../wearables-and-emotes/publishing-collections/publishing-collections.md#adding-minters-to-the-collection) and use the campaign address (located below the campaign name) as the minter's address. After submitting, wait for the transaction to be confirmed.
 *   **Add Items to the Campaign Stock**: Once minting permissions are granted, you can start adding items to the campaign's inventory.
 
     a) Click on the **Add Supply** button to view all collections for which the campaign has minting permissions.
 
-![](../images/rewards/collection-available.png)
+![](<../.gitbook/assets/collection-available (2).png>)
 
 ```
 b) Select the item from the collection that you want to add to the stock, then click on the **Add Supply** button.
 ```
 
-![](../images/rewards/add-supply.png)
+![](<../.gitbook/assets/add-supply (2).png>)
 
 ```
 c) Select the amount of items you want to add to the campaign stock and click on the **Add supply** button.
 ```
 
-![](../images/rewards/with-supply.png)
+![](<../.gitbook/assets/with-supply (2).png>)
 
 {% hint style="info" %}
 Priority and Group fields are advanced features that will be covered in a dedicated section.
@@ -87,7 +87,7 @@ Dispensers are the tools used to send or claim rewards from your stock. Each dis
 
 When you create a new campaign, a default dispenser with a master key is automatically provided for testing purposes only. To set up a new dispenser, click the **Add Dispenser** button.
 
-![](../images/rewards/create-dispenser.png)
+![](<../.gitbook/assets/create-dispenser (2).png>)
 
 Select the item group where you want to take items from, and click on the **Save** button.
 
@@ -109,7 +109,7 @@ By default your campaign is inactive. This prevents the rewards service from ass
 
 Once the campaign is completed, if there are remaining funds from the transaction fees, the owner can choose to either reclaim the funds or reassign them to another campaign. To reclaim funds, simply click the Manage Funds button on the campaign detail page.
 
-![](../images/rewards/manage-funds.png)
+![](<../.gitbook/assets/manage-funds (2).png>)
 
 {% hint style="warning" %}
 **📔 Note**: If all funds are removed from a campaign, any pending or new transactions related to that campaign will be blocked until more funds are assigned.

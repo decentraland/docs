@@ -2,7 +2,7 @@
 description: Detect whether your scene is running on mobile, desktop, or web.
 ---
 
-# Detect the Platform from Code
+# Detect the platform
 
 Use the `isMobile()` function to adapt your UI, controls, and gameplay specifically for mobile. This is the recommended way to deliver a great experience across all clients without forking your scene logic entirely.
 
@@ -87,4 +87,4 @@ switch (platform) {
 
 * [Mobile safe area](safe-area.md)
 * [UI best practices for mobile](ui-best-practices.md)
-* [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)
+* [On-screen UI](../../scenes-sdk7/2d-ui/onscreen-ui.md)

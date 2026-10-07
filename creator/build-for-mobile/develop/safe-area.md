@@ -1,5 +1,7 @@
 ---
-description: Where scene UI can safely live on mobile — clear of the device's hardware margins and of the client's own controls.
+description: >-
+  Where scene UI can safely live on mobile — clear of the device's hardware
+  margins and of the client's own controls.
 ---
 
 # Mobile Safe Area
@@ -9,13 +11,13 @@ On a phone, two unrelated things eat into the screen space your UI can safely us
 * **The device's hardware margins** — the notch or camera cutout, the status bar, the home indicator, and rounded corners. UI drawn underneath them is partly hidden or hard to tap.
 * **The Decentraland client's own controls** — joystick, chat, profile, camera controls, action buttons. Scene UI placed under them clashes visually and competes for the same taps.
 
-You don't have to measure either one. The client reports both areas at runtime and the SDK positions your UI inside the one you pick, with the [`screenInset`](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) renderer option:
+You don't have to measure either one. The client reports both areas at runtime and the SDK positions your UI inside the one you pick, with the [`screenInset`](../../scenes-sdk7/2d-ui/onscreen-ui.md#screen-inset-area) renderer option:
 
-| What you want | What to pass |
-|---|---|
-| Clear of the hardware margins | nothing — `screenInset: 'device'` is the default |
-| Clear of the hardware margins **and** the client controls | `screenInset: 'interactable'` |
-| The whole screen, margins are yours to handle | `screenInset: 'none'` |
+| What you want                                             | What to pass                                     |
+| --------------------------------------------------------- | ------------------------------------------------ |
+| Clear of the hardware margins                             | nothing — `screenInset: 'device'` is the default |
+| Clear of the hardware margins **and** the client controls | `screenInset: 'interactable'`                    |
+| The whole screen, margins are yours to handle             | `screenInset: 'none'`                            |
 
 ```ts
 // Recommended for scene UI that must not clash with the mobile controls
@@ -28,13 +30,13 @@ ReactEcsRenderer.setUiRenderer(uiComponent, { screenInset: 'interactable' })
 **It is not a no-op on desktop** — the desktop client reserves roughly the left 25% of the screen for its own UI, so `'interactable'` changes your desktop layout too. Branch with [`isMobile()`](detect-platform.md) if you only want the inset on phones.
 {% endhint %}
 
-See [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) for the full reference: the three areas side by side on a real device, per-renderer behavior, and how they relate to the [virtual screen](../../sdk7/2d-ui/onscreen-ui.md#default-virtual-size).
+See [Screen inset area](../../scenes-sdk7/2d-ui/onscreen-ui.md#screen-inset-area) for the full reference: the three areas side by side on a real device, per-renderer behavior, and how they relate to the [virtual screen](../../scenes-sdk7/2d-ui/onscreen-ui.md#default-virtual-size).
 
 ## Where the client controls live
 
 `'interactable'` gives you the area **each explorer designates for scene UI** — that is deliberately not a promise that every client control is outside it. On the mobile client it is the device safe area minus the left-hand column (chat, profile, joystick, emotes); the action buttons on the bottom right are drawn over the area **by design**.
 
-<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the mobile client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> on mobile client <code>1.12.1</code>. The magenta rectangle is the scene UI, green outlines the interactable area. The left-hand column is excluded; the action buttons on the bottom right sit over the area.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the mobile client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> on mobile client <code>1.12.1</code>. The magenta rectangle is the scene UI, green outlines the interactable area. The left-hand column is excluded; the action buttons on the bottom right sit over the area.</p></figcaption></figure>
 
 So even with `'interactable'`, treat these as crowded:
 
@@ -71,14 +73,14 @@ export function setupUi() {
 }
 ```
 
-Both components position themselves absolutely using the values the client reports, so the `positionType` and `position` fields of their `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. They react automatically when the area changes, for example on rotation or when system bars appear or hide, and they compensate for the [UI scale factor](../../sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale), so the margins land correctly whatever your virtual screen size is.
+Both components position themselves absolutely using the values the client reports, so the `positionType` and `position` fields of their `uiTransform` are reserved — any value you set for them is ignored. All other `uiTransform` properties (`padding`, `flexDirection`, `alignItems`, …) and UI components (`uiBackground`, `onMouseDown`, …) work as usual. They react automatically when the area changes, for example on rotation or when system bars appear or hide, and they compensate for the [UI scale factor](../../scenes-sdk7/2d-ui/onscreen-ui.md#screen-virtual-scale), so the margins land correctly whatever your virtual screen size is.
 
 {% hint style="warning" %}
 **📔 Don't apply the inset twice:** the `screenInset: 'none'` in the snippet above matters. Wrapping your UI in a component while the renderer is also applying the matching inset pushes your UI inwards by double the margin. Pick one or the other.
 {% endhint %}
 
 {% hint style="info" %}
-**📱 Mobile only:** the device insets only have real values on the **mobile client**. On the **desktop client** they are `(0, 0, 0, 0)`, so `screenInset: 'device'` and the `ScreenInsetArea` component have no effect there and your UI renders exactly as it would without them. The interactable area, unlike the device insets, *is* non-zero on desktop.
+**📱 Mobile only:** the device insets only have real values on the **mobile client**. On the **desktop client** they are `(0, 0, 0, 0)`, so `screenInset: 'device'` and the `ScreenInsetArea` component have no effect there and your UI renders exactly as it would without them. The interactable area, unlike the device insets, _is_ non-zero on desktop.
 {% endhint %}
 
 ## Why it matters
@@ -93,8 +95,8 @@ Always verify on a real device using the [preview QR code](preview-on-mobile.md)
 
 ## Related
 
-* [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) — the full `screenInset` reference.
+* [Screen inset area](../../scenes-sdk7/2d-ui/onscreen-ui.md#screen-inset-area) — the full `screenInset` reference.
 * [UI best practices for mobile](ui-best-practices.md)
 * [Detect the platform from code](detect-platform.md) — use `isMobile()` to swap layouts.
-* [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)
-* [UX & UI Guide](../../sdk7/design-experience/ux-ui-guide.md)
+* [On-screen UI](../../scenes-sdk7/2d-ui/onscreen-ui.md)
+* [UX & UI Guide](../../scenes-sdk7/designing-the-experience/ux-ui-guide.md)

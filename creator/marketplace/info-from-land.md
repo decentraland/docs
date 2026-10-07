@@ -6,7 +6,7 @@ description: Get info from land parcels, estates or addresses using the CLI.
 
 You can use the Decentraland CLI to query info directly from LAND tokens in the blockchain and from the scene files uploaded to the content server.
 
-To run these commands, you must first [Install the CLI](../sdk7/getting-started/using-the-cli.md).
+To run these commands, you must first [Install the CLI](../scenes-sdk7/getting-started/using-the-cli.md).
 
 ## Get info about a scene
 

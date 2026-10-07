@@ -8,14 +8,14 @@ description: >-
 
 Decentraland is now available on mobile. Players can explore your scenes from iOS and Android devices, in addition to the desktop client and the web. As a creator, you can adapt your scenes so they look great and play well on touch-based devices.
 
-![Decentraland mobile app — Genesis City](../../../mobile-app-screenshot.png)
+![Decentraland mobile app — Genesis City](../../.gitbook/assets/mobile-app-screenshot.png)
 
 {% embed url="https://www.youtube.com/watch?v=FBr2gye3qh8" %}
 
 ## Get the mobile app
 
-* [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs&utm_medium=internal&utm_content=ios)
-* [Download for Android (Google Play)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer&pcampaignid=web_share&utm_source=docs&utm_medium=internal&utm_content=android)
+* [Download for iOS (App Store)](https://apps.apple.com/app/decentraland/id6478403840?utm_source=docs\&utm_medium=internal\&utm_content=ios)
+* [Download for Android (Google Play)](https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer\&pcampaignid=web_share\&utm_source=docs\&utm_medium=internal\&utm_content=android)
 
 ## Building for Mobile
 

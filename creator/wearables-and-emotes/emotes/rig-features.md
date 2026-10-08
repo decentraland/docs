@@ -26,7 +26,7 @@ This is the bone orientation for Rig 1.0.
 
 _Axes for bone orientation._
 
-_Behavior when mirrorring poses._
+_Behavior when mirroring poses._
 
 ### Mirroring a pose
 

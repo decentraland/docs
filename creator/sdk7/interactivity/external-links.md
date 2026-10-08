@@ -14,7 +14,7 @@ The easiest way to add an external link or a teleport is to use the Scene Editor
 
 ## Teleports
 
-To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to. Like other restricted actions, `teleportTo()` only runs if the player did something to trigger it, such as clicking an entity or pressing a button. A call from a timer or from the scene's startup code is ignored.
+To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to.
 
 ```ts
 import { teleportTo } from "~system/RestrictedActions"

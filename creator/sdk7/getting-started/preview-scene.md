@@ -32,8 +32,6 @@ Hover over **Desktop Client** in the **Play Options** menu to open a submenu wit
 - **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
 - **Compress Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only visible when your platform and your project's SDK version support it. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
-[Screenshot: the Play Options menu open, with Desktop Client hovered and its submenu showing Enable Landscape Terrains, Multi-Instance Preview, Enable MCP Server and Compress Assets.]
-
 The scene's console output doesn't need a menu option. The Creator Hub opens it for you every time you run a preview. See [The Creator Hub console](#the-creator-hub-console).
 
 {% hint style="info" %}

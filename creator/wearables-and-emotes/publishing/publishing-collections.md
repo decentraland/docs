@@ -90,6 +90,8 @@ Items can be sold in **primary sales** and **secondary sales**.
 
 To view items available to purchase in a primary and secondary sales, head to the [**Decentraland Marketplace!**](https://market.decentraland.org/)
 
+Your items can also be sold in the [**Decentraland Shop**](https://decentraland.org/shop), priced in Credits, where you can follow your sales in My Store and run discounts on your collections. See [Selling in the Shop](selling-in-the-shop.md).
+
 ## **Primary Sales**
 
 Primary sales occur when one of your items is purchased for the first time. These sales are only performed by the Decentraland Store’s smart contract.

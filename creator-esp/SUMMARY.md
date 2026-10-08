@@ -27,6 +27,7 @@
 * [Publicar](wearables-and-emotes/publishing/README.md)
   * [Comité de Curación](wearables-and-emotes/publishing/curation-committee.md)
   * [Publicar Colecciones](wearables-and-emotes/publishing/publishing-collections.md)
+  * [Vender en el Shop](wearables-and-emotes/publishing/selling-in-the-shop.md)
 
 ## Scene Editor
 

@@ -25,7 +25,13 @@ You can now find your asset in the **Local Assets** tab. Assets are sorted into 
 Items from the built-in free asset packs are stored under _assets/asset-packs/_, and custom items created from the editor under _assets/custom/_. Older scenes may have user imports under _assets/scene/_ instead. All of these paths work in your scene code, just reference whichever folder the asset is in.
 
 - For 3D models, drag the `.glb` or `.gltf` files onto the canvas to add them as items on your scene.
-- Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
+- You can also drag an image, a sound or a video file onto the canvas. The editor creates a ready-made item that already points at your file:
+  - A `.png`, `.jpg` or `.jpeg` file becomes an **Image** item.
+  - An `.mp3`, `.ogg` or `.wav` file becomes an ambient sound item.
+  - An `.mp4` file becomes a **Video Screen** item.
+
+  The new item is named after the file and arrives with the same components and settings as the equivalent item from the asset packs, so you can tweak it from the inspector straight away.
+- Any asset can also be dragged onto the fields of an item that is already in the scene. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
 
 {% hint style="info" %}
 **💡 Tip**: You can also paste files directly into the project's `assets` folder, from Finder, Explorer or anywhere else. They appear in the **Local Assets** tab on their own, shortly after the copy finishes. If they don't show up, press the **Refresh** button next to the **Import Assets** button.

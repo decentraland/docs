@@ -82,6 +82,18 @@ While the assistant works, its changes show up live in the entity tree and the c
 
 An **About AI usage** card reminds you that the assistant consumes tokens from your connected account. Keep an eye on that account's usage.
 
+### Attach files to a prompt
+
+Sometimes it's easier to show the assistant something than to describe it. You can attach files to any message in three ways:
+
+* Click the paperclip icon on the left of the message box, labeled **Attach files**, and pick one or more files.
+* Drag files from your file explorer onto the message box. A **Drop files to attach** hint appears while you drag.
+* Paste an image straight from your clipboard, for example a screenshot you just took.
+
+Each attached file shows up as a chip above the message box, with an icon for its kind: image, 3D model (`.glb`, `.gltf`), audio (`.mp3`, `.wav`, `.ogg`, `.m4a`, `.flac`), or a generic file for anything else. Click the **Remove** cross on a chip to drop it before sending. You can attach up to 8 files to a single message, and you can send attachments with no text at all.
+
+Files you drag in or pick from disk are handed to the assistant by their real path, so nothing is copied and there is no size limit. The assistant can look at images directly, and it can reference a model or audio file by its path when it writes scene code. Pasted images have no file on disk, so the Creator Hub saves them to a temporary file first; those are capped at 8 MB each.
+
 If your Claude CLI is too old, the panel shows a warning. Run `claude update` in a terminal to fix it.
 
 ## Decentraland skills are installed for you

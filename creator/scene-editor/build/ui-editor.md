@@ -96,8 +96,10 @@ The root of a GUI is always positioned freely.
 * **Opacity**: 100% is fully opaque, 0% fully transparent. The default is 100%.
 * **Scene Inset**: which part of the screen the GUI sits in.
   * **Full Screen** uses the whole renderable screen.
-  * **Gameplay Safe Area** stays clear of the client's own interface, such as chat, the minimap, and HUD indicators.
+  * **Interactable Safe Area** stays clear of the client's own interface, such as chat, the minimap, and HUD indicators.
   * **Device Safe Area** also avoids physical obstructions such as a notch or system bars. This option is offered when the canvas is in mobile preview.
+
+  In the code the editor writes, these three choices become `screenInset: 'none'`, `'interactable'` and `'device'`. See [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area).
 
 If you give a GUI's root a width and a height in fixed pixels, the canvas frames it as an artboard of exactly that size rather than as a screen.
 
@@ -107,10 +109,12 @@ The controls in the bottom-right corner of the canvas switch the preview between
 
 Two sets of guides help you place things where players can see and reach them:
 
-* **Safe-area guides** outline the part of the screen your GUI is confined to, matching the **Scene Inset** you picked. While the Scene Inset is **Device Safe Area** or **Gameplay Safe Area** the outline is always on, because it is what the GUI is clipped to. Set the Scene Inset to **Full Screen** and you can turn the outline on or off with the frame icon button.
+* **Safe-area guides** outline the part of the screen your GUI is confined to, matching the **Scene Inset** you picked. While the Scene Inset is **Device Safe Area** or **Interactable Safe Area** the outline is always on, because it is what the GUI is clipped to. Set the Scene Inset to **Full Screen** and you can turn the outline on or off with the frame icon button.
 * **HUD guides** draw the mobile client's own controls, such as the joystick, the jump and action buttons, the emote wheel, the profile, chat and compass. They are reference only, you cannot select or move them. The game controller button turns them on and off, it only appears in mobile preview, and the guides show by default when the Scene Inset is a safe area.
 
 Content placed outside the safe area is not hidden, it is drawn past the outline. That overflow is the warning: in the real client it would sit under the game's own HUD.
+
+**Interactable Safe Area** clears the mobile client's left-hand column of controls, but it shares its right edge with the device area, so the action buttons in the bottom-right corner are drawn over it by design. Keep those corners free. See [Where the client controls live](../../build-for-mobile/develop/safe-area.md#where-the-client-controls-live).
 
 {% hint style="warning" %}
 **📔 Note**: These guides are an approximation for the editor only. The real areas are reported by the client at runtime and vary by device, so always confirm on a real phone. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md).

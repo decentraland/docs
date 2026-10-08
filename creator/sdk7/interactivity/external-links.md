@@ -14,7 +14,7 @@ The easiest way to add an external link or a teleport is to use the Scene Editor
 
 ## Teleports
 
-To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to.
+To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to. Like other restricted actions, `teleportTo()` only runs if the player did something to trigger it, such as clicking an entity or pressing a button. A call from a timer or from the scene's startup code is ignored.
 
 ```ts
 import { teleportTo } from "~system/RestrictedActions"
@@ -56,7 +56,7 @@ teleportTo({
 
 Players are presented a confirmation screen before they change realm. It asks _"Are you sure you want to enter this World?"_ and shows the destination (the world name, or the host of the realm URL). The player is only moved if they accept.
 
-To send a player back to Genesis City from a world, set `realm` to _'https://realm-provider-ea.decentraland.org/main'_.
+To send a player back to Genesis City from a world, don't include the `realm` field, which defaults to Genesis City.
 
 {% hint style="warning" %}
 **📔 Note**: The `realm` field requires `@dcl/sdk` version 7.28.0 or newer.
@@ -67,7 +67,6 @@ To send a player back to Genesis City from a world, set `realm` to _'https://rea
 Older scenes used `changeRealm()` to reach a world. It still works, but use `teleportTo({ realm })` instead. `changeRealm()` also shows a confirmation screen; its optional `message` field only replaces the default prompt text.
 
 `changeRealm()` resolves as soon as the player accepts the prompt, not when the new realm is actually live. A `teleportTo()` call right after it would run against the **old** realm and land the player in the wrong place. `teleportTo({ realm })` does both steps in one call, so that gap doesn't exist.
-
 
 ## External links
 
@@ -86,7 +85,6 @@ When `openExternalUrl` is called, players are prompted with a confirmation scree
 The link is opened in a new tab, keeping the original tab in Decentraland.
 
 If players tick the _trust this domain_ checkbox, they won't be prompted again during their session, as long as the link comes from the same scene and is to the same domain.
-
 
 ## Copy to clipboard
 

@@ -12,15 +12,15 @@ Define a Custom Item to reuse it easily on any of your scenes, or share it with 
 
 Right-click on an entity on the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), or select several entities and then right-click on them. Select **Create Custom Item**.
 
-![](../../images/editor/create-custom-item.png)
+![](<../../.gitbook/assets/create-custom-item (3).png>)
 
 On the lower section of the screen you are then asked to give your new Custom Item a name.
 
-![](../../images/editor/name-custom-item.png)
+![](<../../.gitbook/assets/name-custom-item (3).png>)
 
 The item is now listed on the **Custom Items** tab, at the bottom of your screen. This tab is only displayed if at least one Custom Item exists in your workspace.
 
-![](../../images/editor/custom-items.png)
+![](<../../.gitbook/assets/custom-items (3).png>)
 
 When defining a custom item, you can select several entities at a same hierarchical level, but not entities from separate parents if they don't share a common ancestor. Any nested entities are automatically included as part of the custom item, they don't need to be selected.
 
@@ -53,19 +53,18 @@ Each Custom Item is stored as a composite, a file that describes a tree of entit
 You can spawn a Custom Item in two ways:
 
 * **With no code**: Use the **Spawn Entity** action in the Scene Editor. See [About spawning entities](smart-items-advanced.md#about-spawning-entities).
-* **With code**: Use `Composite.instance()` in the SDK. See [Composites](../../sdk7/architecture/composites.md).
+* **With code**: Use `Composite.instance()` in the SDK. See [Composites](../../scenes-sdk7/architecture/composites.md).
 
 ### Sharing Custom Items
 
 You can share your custom items with other creators, so they can use them on their own scenes.
 
-Custom Items are stored each on a separate folder on your local machine. Open that folder by clicking the folder icon <img src="../../images/editor/folder-icon.png" alt="Code" data-size="line"> in the top right of the Custom Items tab.
+Custom Items are stored each on a separate folder on your local machine. Open that folder by clicking the folder icon <img src="../../.gitbook/assets/folder-icon.png" alt="Code" data-size="line"> in the top right of the Custom Items tab.
 
 You can also manually find this folder on your machine:
 
 * In Windows: _User/AppData/Roaming/creator-hub/Custom Items_
 * In Mac: _Users/username/Library/Application Support/creator-hub/Custom Items_
-
 
 {% hint style="warning" %}
 **📔 Note**: The _Library_ folder is hidden in Mac by default. The easiest way to access it is by opening Go > Go to Folder, and Typing _application support/creator-hub_
@@ -73,6 +72,6 @@ You can also manually find this folder on your machine:
 
 To share with someone else, simply open the Custom Items folder and copy the full folder for the item. You may want to zip the folder to make it easier to transfer. This folder contains everything needed to use your Custom Item.
 
-The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../images/editor/refresh-icon.png" alt="Refresh" data-size="line"> for the item to appear in their **Custom Items** tab.
+The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../.gitbook/assets/refresh-icon.png" alt="Refresh" data-size="line"> for the item to appear in their **Custom Items** tab.
 
 Any **Assets** used by your Custom Item are also stored in the Custom Item's folder. This includes any 3D models, images, scripts, sounds, and videos referenced by the item.

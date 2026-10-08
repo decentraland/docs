@@ -2,7 +2,7 @@
 description: Configure any item to behave like a smart item.
 ---
 
-# Make Any Item Smart
+# Make any item smart
 
 {% embed url="https://www.youtube.com/watch?v=wnnEU8GCLjc" %}
 
@@ -10,7 +10,7 @@ Smart items are just regular items with an **Action** and/or **Trigger** compone
 
 To add components to an item click the **Plus Icon** next to the item name, and select what component to add from the dropdown list.
 
-![The add component menu open on an entity, listing components grouped under 3D Content and Interaction, including Actions and Triggers.](../../images/editor/add-component.png)
+![The add component menu open on an entity, listing components grouped under 3D Content and Interaction, including Actions and Triggers.](<../../.gitbook/assets/add-component (3).png>)
 
 This allows for a huge amount of creative possibilities. Turn a candle into a lever that opens up a secret passage behind a book shelf, play mysterious sounds from inside a well, make diamonds into collectable items that shrink to 0 when clicked. There are tons of imaginative ways to combine these mechanics!
 
@@ -43,7 +43,7 @@ Add a **Trigger** component with **On Click** or **On Input Action** Trigger eve
 * **On Click** reacts to every time the player clicks the left-mouse button while pointing at the item.
 * **On Input Action** reacts to every time the player presses the Primary Button (E) while pointing at the item.
 
-![](../../images/editor/on_click.png)
+![](<../../.gitbook/assets/on_click (3).png>)
 
 **Colliders**
 
@@ -51,9 +51,9 @@ It's important that for an item to be clickable, it must have a **Collider**. Ot
 
 If your model is lacking colliders, any of the following should fix it:
 
-* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, sphere).
+* Add a **Mesh Collider** component. This will create a collider with a [primitive shape](../../scenes-sdk7/3d-content-essentials/shape-components.md#primitive-shapes) (cube, plane, cylinder, sphere).
 * Change the properties of the **Collisions** section on the **GLTF** component. The **Visible layer** should be assigned to **Pointer**.
-* Edit the 3D model in Blender to include an invisible collider geometry (any mesh with a name that ends in `_collider`). See [colliders](../../3d-modeling/colliders.md).
+* Edit the 3D model in Blender to include an invisible collider geometry (any mesh with a name that ends in `_collider`). See [colliders](../../3d-modeling-and-animations/colliders.md).
 
 {% hint style="info" %}
 **💡 Tip**: If you used the **Mesh Renderer** component to give your model a primitive shape, that alone won't give it a collider. You must also assign it a **Mesh Collider** component.
@@ -95,4 +95,4 @@ This will react to when the player enters or leaves an area of a default size of
 * [Smart items - Basics](smart-items.md)
 * [Smart items - Advanced](smart-items-advanced.md)
 * [States and conditions](states-and-conditions.md)
-* [Combine with code](../code/overview.md)
+* [Combine with code](../extend-with-code/overview.md)

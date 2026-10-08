@@ -2,11 +2,11 @@
 description: How to get your scene featured in the mobile Discover section.
 ---
 
-# Get Featured on Mobile Discover
+# Get Featured
 
 The mobile Discover section is the highest-traffic surface on the Decentraland mobile app and the best way to get your scene in front of mobile players. Featured scenes are curated — there is no automatic ranking.
 
-<figure><img src="../../../mobile-featured.png" alt="Mobile Discover featured section" width="33%"></figure>
+<figure><img src="../../.gitbook/assets/mobile-featured.png" alt="Mobile Discover featured section" width="33%"><figcaption></figcaption></figure>
 
 ## How to apply
 
@@ -40,4 +40,4 @@ Provide the following with your application:
 * [Mobile safe area](../develop/safe-area.md)
 * [UI best practices for mobile](../develop/ui-best-practices.md)
 * [Preview on mobile](../develop/preview-on-mobile.md)
-* [Make Discoverable](../../sdk7/publishing/make-discoverable.md)
+* [Make Discoverable](../../scenes-sdk7/publishing/make-discoverable.md)

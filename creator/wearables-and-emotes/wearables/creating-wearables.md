@@ -4,7 +4,7 @@ description: Tips And Guidelines For Creating Decentraland Wearables
 
 # Creating Wearables
 
-![](../../../.gitbook/assets/00_creating_wearables_banner.png)
+![](<../../.gitbook/assets/00_creating_wearables_banner (4).png>)
 
 ## Intro
 
@@ -42,35 +42,35 @@ You’ll notice that each model contains 8 different meshes related to an armatu
 
 Currently, there are two body shapes: A or B.
 
-![](../../../.gitbook/assets/1_creating_wearables.png)
+![](<../../.gitbook/assets/1_creating_wearables (4).png>)
 
 ### **Head**
 
-![](../../../.gitbook/assets/2_avatar_head.jpeg)
+![](<../../.gitbook/assets/head (4).jpeg>)
 
 _The base head includes different meshes attached that can be customizables as wearables: Eyebrows, Eyes and Mouth work as transparency masks rendered in front of the face._
 
 ### **Upper Body**
 
-![](../../../.gitbook/assets/3_upper_body.png)
+![](<../../.gitbook/assets/3_upper_body (4).png>)
 
 _The upper body, or torso, of an avatar. Does not includes the hands._
 
 ### **Lower Body**
 
-![](../../../.gitbook/assets/4_lower_body.png)
+![](<../../.gitbook/assets/4_lower_body (4).png>)
 
 _The lower body includes the pelvis and legs of an avatar._
 
 ### **Hands**
 
-![](../../../.gitbook/assets/54_hands.png)
+![](<../../.gitbook/assets/54_hands (4).png>)
 
 _The hands are the same for Shape A and B, and start on the wrists of an avatar._
 
 ### **Feet**
 
-![](../../../.gitbook/assets/5_feet.png)
+![](<../../.gitbook/assets/5_feet (4).png>)
 
 _Feet include ankles and foot._
 
@@ -80,7 +80,7 @@ _Feet include ankles and foot._
 
 Each part of the body has caps, making them "water tight". These caps exist to prevent unsightly glitches if there are any animation clipping problems due to bad skin weighting. It’s best to not remove these caps when editing the mesh.
 
-![](../../../.gitbook/assets/14_body_parts.png)
+![](<../../.gitbook/assets/14_body_parts (4).png>)
 
 ## Building 3D Models for Wearables
 
@@ -113,7 +113,7 @@ The dimension for the wearables cannot exceed:
 
 > `Height: 2.42 m`, `Width: 2,42 m`, `Depth: 1,4 m`
 
-![](../../../.gitbook/assets/12_max_width_height.png) ![](../../../.gitbook/assets/13_max_depth.png)
+![](<../../.gitbook/assets/12_max_width_height (4).png>) ![](<../../.gitbook/assets/13_max_depth (4).png>)
 
 #### **Maps**
 
@@ -123,7 +123,7 @@ Decentraland wearables currently supports 3 types of maps, which are:
 2. **Emission**: This map is for the parts that are glowing in your model. The emission map goes in a separated material specifically for emission.
 3. **Alpha**: This map is to handle transparency. It uses the opacity channel of the texture. (_It is always preferable to use Alpha Clip rather than Alpha Blend, using a black and white texture for the cutout_)
 
-![](../../../.gitbook/assets/6_maps.png)
+![](<../../.gitbook/assets/6_maps (4).png>)
 
 Because Decentraland reference client uses of a Toon Shader for the avatar materials, some maps are **not necessary** like:
 
@@ -138,21 +138,21 @@ To use these maps in Decentraland the workaround is to bake them in one texture.
 
 The first one is to toggle the "Backface culling" on the Material properties settings, this is a good practice for spot inverted normals, like in this image:
 
-![](../../../.gitbook/assets/8_normals.gif) ![](../../../.gitbook/assets/9_backface_culling.png)
+![](<../../.gitbook/assets/8_normals (4).gif>) ![](<../../.gitbook/assets/9_backface_culling (4).png>)
 
 The second way to check if the normals are right is by toggling "Face orientation" on the viewport overlay options. It will turn your model blue, but don’t worry. The blue faces are the correct ones and the red ones are the ones that needs to be corrected, you can find this option here:
 
-![](../../../.gitbook/assets/10_normals_face.png)
+![](<../../.gitbook/assets/10_normals_face (4).png>)
 
 #### **Armature**
 
 Remember not to change any of the specifications, naming conventions, hierarchy, or transforms of the given armature. Changing any of these will cause the wearable to stop working in the client after exporting.
 
-![](../../../.gitbook/assets/50_armature.png)
+![](<../../.gitbook/assets/50_armature (4).png>)
 
 Be sure that the armature imported has no any _end_ or _neutral_ bones, otherwise the wearable is not going to work after exporting to the builder. If you are importing an .fbx that has this issue you can toggle _**Ignore Leaf Bones**_ when importing the armature.
 
-![](../../../.gitbook/assets/53_ignore_leaf_bones.png)
+![](<../../.gitbook/assets/53_ignore_leaf_bones (4).png>)
 
 {% hint style="info" %}
 **Spring Bones:** Wearables can include extra bones beyond the base armature for dynamic physics (e.g., swaying hair, dangling earrings). These bones must contain `springbone` in their name. See [Spring Bones](https://docs.decentraland.org/creator/wearables-and-emotes/wearables/spring-bones) for full details.
@@ -164,25 +164,25 @@ These meshes work with a transparent shader so you don’t have to do anything a
 
 Here are some example png textures:
 
-![](../../../.gitbook/assets/21_eyes.png) ![](../../../.gitbook/assets/22_eyebrows.png) ![](../../../.gitbook/assets/23_eyes_mask_uv.jpeg)
+![](<../../.gitbook/assets/21_eyes (4).png>) ![](<../../.gitbook/assets/22_eyebrows (4).png>) ![](<../../.gitbook/assets/23_eyes_mask_uv (4).jpeg>)
 
 _Eyes and Eyewbrows use the same mesh and UV map._
 
-![](../../../.gitbook/assets/24_mouth.png) ![](../../../.gitbook/assets/25_mouth_mask_uv.jpeg)
+![](<../../.gitbook/assets/24_mouth (4).png>) ![](<../../.gitbook/assets/25_mouth_mask_uv (4).jpeg>)
 
 _Mouth mesh and UV map._
 
 To visualize the final result you’ll need to use these nodes (in Blender):
 
-![](../../../.gitbook/assets/26_eyes_nodes.png) ![](../../../.gitbook/assets/27_eyes_alpha.png)
+![](<../../.gitbook/assets/26_eyes_nodes (4).png>) ![](<../../.gitbook/assets/27_eyes_alpha (4).png>)
 
 **Masks:** The Avatar Editor has different color options that players can choose from to customize their avatars.
 
-![](../../../.gitbook/assets/28_eyes_tone.png)
+![](<../../.gitbook/assets/28_eyes_tone (4).png>)
 
 These color choices are applied to a specific mask in the wearable.
 
-![](../../../.gitbook/assets/29_eyes_mask.png) ![](../../../.gitbook/assets/30_eyes_base.png)
+![](<../../.gitbook/assets/29_eyes_mask (4).png>) ![](<../../.gitbook/assets/30_eyes_base (4).png>)
 
 The black area in the image on the left (Eyes Mask) indicates the area of the texture on the right (Eyes Base) that will be colored. It’s important to remember that irises always need to have a grey scale (if the iris is pure black, the tint isn’t going to work. By the contrary, if the iris is pure white it would be fully tinted by the selected color using the editor).
 
@@ -192,13 +192,13 @@ There are two types of **Handwear** you can do under the same category.
 
 1. **Replacing Hands:**
 
-![](../../../.gitbook/assets/55_gloves.png)
+![](<../../.gitbook/assets/55_gloves (4).png>)
 
 If you want to create handwear that replaces both hands you would probably need to override the _**hand**_ base mesh. Doing that, the limit for the handwear wearable would be 1500 tris.
 
 2. **Hand Accessories:**
 
-![](../../../.gitbook/assets/56_dclwatch.png)
+![](<../../.gitbook/assets/56_dclwatch (4).png>)
 
 Also you can create hand accessories like watches, bracelets, rings, etc. In that sense, the hand doesn't need to be overridden and the limit is 1000 tris per item.
 
@@ -216,11 +216,11 @@ There are two important things to remember when creating custom hair wearables.
 
 First, try to follow the shape of the head. You can always refer to the head mesh provided in the example files if you need a place to start.
 
-![](../../../.gitbook/assets/31_hair_base.png)
+![](<../../.gitbook/assets/20_hair_base (4).png>)
 
 Second, if you want users to be able to change the color of the hair or facial hair using the avatar editor, then you need to paint the hair in grayscale and use "Hair" in the naming of the material (example "M\_Hair\_Short"). If you want to include other object which doesn't is influenced by tint just don't add that naming convention.
 
-![](../../../.gitbook/assets/32_hair_mat.png) ![](../../../.gitbook/assets/33_hair_tx.png) ![](../../../.gitbook/assets/49_tint_hair.gif)
+![](<../../.gitbook/assets/32_hair_mat (4).png>) ![](<../../.gitbook/assets/33_hair_tx (4).png>) ![](<../../.gitbook/assets/49_tint_hair (4).gif>)
 
 _Lower tones of gray will appear darker and higher tones of gray will appear brighter, multiplied by the color selected from the user in the avatar editor._
 
@@ -228,15 +228,15 @@ _Lower tones of gray will appear darker and higher tones of gray will appear bri
 
 There are three basic materials for avatar models. One is the material used for the wearable itself, another one is used for the skin and another one for the eyebrows, eyes and mouth.
 
-![](../../../.gitbook/assets/15_avatar_skin_mat.png)
+![](<../../.gitbook/assets/15_avatar_skin_mat (4).png>)
 
 Each base mesh comes with its own skin texture.
 
-![](../../../.gitbook/assets/16_Avatar_MaleSkinBase.png) ![](../../../.gitbook/assets/17_Avatar_FemaleSkinBase.png)
+![](<../../.gitbook/assets/16_Avatar_MaleSkinBase (4).png>) ![](<../../.gitbook/assets/17_Avatar_FemaleSkinBase (4).png>)
 
 The skin texture is made in grayscale so it allows the render engine to tint the skin of the avatar using the editor according to the user’s preference. In order to be able to tint the skin color using the editor the name of the material must be _AvatarSkin\_MAT_.
 
-![](../../../.gitbook/assets/18_skin_tone.png)
+![](<../../.gitbook/assets/18_skin_tone (4).png>)
 
 {% hint style="warning" %}
 Important: always preserve the UV mapping for any body part that is exposed by a wearable, like the legs exposed by the shorts or skirts.
@@ -246,7 +246,7 @@ Important: always preserve the UV mapping for any body part that is exposed by a
 
 You can create custom textures for your wearables! However, it’s always best to use a single, very small, texture file for each wearable. Using the default AvatarWearable\_MAT texture provided in the example files will guarantee that your wearables are performant!
 
-![](../../../.gitbook/assets/20_wearables_uv.png)
+![](<../../.gitbook/assets/20_wearables_uv (4).png>)
 
 {% hint style="warning" %}
 To prevent triggering facial feature-specific shaders, do not include '\_mouth,' '\_eyebrows,' or '\_eyes' in the naming of any meshes. These terms are reserved for facial features, and using them inappropriately will apply the wrong shader to the mesh.
@@ -276,11 +276,11 @@ When skin weighting our new wearables, there are several considerations we need 
 
 Each asset must be weighted to the full skeleton. For example, an upper body asset will look like this when applying skin weights:
 
-![](../../../.gitbook/assets/34_rig.gif)
+![](<../../.gitbook/assets/34_rig (4).gif>)
 
 Wearables that meet at intersections between body parts must be fully weighted to the same bone. For example, in these two green zones, the vertices in the neck need to be fully weighted to the "Neck" bone only.
 
-![](../../../.gitbook/assets/35_head_cuts.png)
+![](<../../.gitbook/assets/35_head_cuts (4).png>)
 
 #### **Key Bones**
 
@@ -309,13 +309,13 @@ The "key" bones to use when skin weighting are:
 
 When exporting wearables, make sure there are no other bones outside of the given Armature, **except for spring bones** (bones with `springbone` in their name, used for dynamic physics). A common problem when importing armatures between different software is the appearance of _"\_end"_ or _"\_neutral"_ bones. Be sure to remove those before exporting. Otherwise, it is very likely that the wearables will not work on the client afterwards.
 
-![](../../../.gitbook/assets/51_export_wearables.png)
+![](<../../.gitbook/assets/51_export_wearables (4).png>)
 
 To export the wearable, select the object and then the armature. Be sure to not export anything else, such as cameras, lights, or empty objects.
 
 Next, export the wearable in _glTF2.0_ format. Make sure you only export the wearable with its skinning properties, and without any other unnecessary features like animation or shape keys.
 
-![](../../../.gitbook/assets/52_export_wearables.png)
+![](<../../.gitbook/assets/52_export_wearables (4).png>)
 
 ## Good Practices For Modeling
 
@@ -325,53 +325,53 @@ When you’re making wearables, the best way to visualize the final result, and 
 
 1. First select the upper body, then you have to toggle "**Edit mode**" and "**On cage**" in the armature modifier.
 
-![](../../../.gitbook/assets/36_60_1.gif)
+![](<../../.gitbook/assets/36_60_1 (4).gif>)
 
 2. Now, in pose mode you can rotate the arms 60°.
 
-![](../../../.gitbook/assets/37_60_2.gif)
+![](<../../.gitbook/assets/37_60_2 (4).gif>)
 
 3. You can edit your mesh in A-Pose instead of T-pose.
 
-![](../../../.gitbook/assets/38_60_3.gif)
+![](<../../.gitbook/assets/38_60_3 (4).gif>)
 
 4. But it is also good to keep in mind that you can easily alternate from A-Pose to T-Pose just toggling back the "Edit mode" and "On cage" in the armature modifier.
 
-![](../../../.gitbook/assets/39_60_4.gif)
+![](<../../.gitbook/assets/39_60_4 (4).gif>)
 
 ### **Joint deformation:**
 
 In order to get the best results on the wearable topology when it comes to joints (arms or legs, for example) it's important to have good practices when creating loops. Here we can see the difference on the deformation of the mesh for different loop cuts:
 
-![](../../../.gitbook/assets/40_joints.gif)
+![](<../../.gitbook/assets/40_joints (4).gif>)
 
 A good way to ensure that everything is deforming correctly is to do a weight paint like the following example:
 
-![](../../../.gitbook/assets/41_joint_weight.png) ![](../../../.gitbook/assets/42_joint_weight_02.png)
+![](<../../.gitbook/assets/41_joint_weight (4).png>) ![](<../../.gitbook/assets/42_joint_weight_02 (4).png>)
 
 ### **Skirts**
 
 A useful tip and good practice when modeling skirts/dresses is to add additional loopcuts in the intersections of the folds. This will be very handy when you have to paint the weights of the rig.
 
-![](../../../.gitbook/assets/43_skirt.png)
+![](<../../.gitbook/assets/43_skirt (4).png>)
 
 With this loopcuts the vertex influence look a lot more smooth and give you better results when you’re animating a skirt/dress.
 
 Here is an example of how the bone influence should be:
 
-![](../../../.gitbook/assets/44_skirt.gif)
+![](<../../.gitbook/assets/44_skirt (4).gif>)
 
 ### **Hats**
 
 A good practice when creating hats is to add a hair to the base mesh of the hat and then hide the category _hair_ using the editor. Doing this is going to prevent that the hat clips with other hairs and reduce unexpected results.
 
-![](../../../.gitbook/assets/45_hat.png)
+![](<../../.gitbook/assets/45_hat (4).png>)
 
 ### **Add Polygon Count**
 
 A valuable tip is to always keep on track of the polycount of your models. To do that in blender you need to turn on statistics on the viewport overlays panel.
 
-![](../../../.gitbook/assets/46_poly_count.png)
+![](<../../.gitbook/assets/46_poly_count (4).png>)
 
 ### Resources
 

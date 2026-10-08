@@ -14,23 +14,23 @@ To import a 3D model, an image, a sound file, or a video into your scene from yo
 
 1. Drag files directly onto the bottom panel. You can also click the **+ Import Assets** button on the top-left of the bottom panel and select from your local drive.
 
-![](../../images/editor/import-assets.png)
+![](<../../.gitbook/assets/import-assets (3).png>)
 
 2. Check the model thumbnail and click **Import**. When importing multiple assets, use the arrow buttons to cycle over each asset.
 
-![](../../images/editor/import-confirmation.png)
+![](<../../.gitbook/assets/import-confirmation (3).png>)
 
 You can now find your asset in the **Local Assets** tab. Assets are sorted into folders by type: 3D models appear under the _assets/Models_ folder, images under _assets/Images_, sound files under _assets/Audio_, and videos under _assets/Video_.
 
 Items from the built-in free asset packs are stored under _assets/asset-packs/_, and custom items created from the editor under _assets/custom/_. Older scenes may have user imports under _assets/scene/_ instead. All of these paths work in your scene code, just reference whichever folder the asset is in.
 
-- For 3D models, drag the `.glb` or `.gltf` files onto the canvas to add them as items on your scene.
-- Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
+* For 3D models, drag the `.glb` or `.gltf` files onto the canvas to add them as items on your scene.
+* Other kinds of assets like images and sound files can be dragged onto the fields of an item. For example you can drag an `.mp3` file onto the _Path_ field of an _Audio Source_ component.
 
 {% hint style="info" %}
 **💡 Tip**: You can also paste files directly into the project's `assets` folder, from Finder, Explorer or anywhere else. They appear in the **Local Assets** tab on their own, shortly after the copy finishes. If they don't show up, press the **Refresh** button next to the **Import Assets** button.
 
-<img src="../../images/editor/refresh-assets.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/refresh-assets (3).png" alt="" data-size="original">
 {% endhint %}
 
 ### Supported formats
@@ -39,42 +39,42 @@ Items from the built-in free asset packs are stored under _assets/asset-packs/_,
 
 The following Audio formats are supported:
 
-- _.mp3_
-- _.wav_
-- _.ogg_
+* _.mp3_
+* _.wav_
+* _.ogg_
 
 #### Image
 
 The following image formats are supported:
 
-- _.png_
-- _.jpg_
-- _.jpeg_
+* _.png_
+* _.jpg_
+* _.jpeg_
 
 #### Video
 
 The following video formats are supported:
 
-- _.mp4_
+* _.mp4_
 
 #### 3D Models
 
 The following 3D model formats are supported:
 
-- _.glTF_
-- _.glb_
+* _.glTF_
+* _.glb_
 
 Both can include external texture image files, or external binary (_.bin_) files.
 
-You can convert other formats into these formats with various different editors and tools. See [3D modeling](../../3d-modeling/3d-models.md) for recommendations and tips.
+You can convert other formats into these formats with various different editors and tools. See [3D modeling](../../3d-modeling-and-animations/3d-models.md) for recommendations and tips.
 
-All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations](../../sdk7/optimizing/scene-limitations.md) for details.
+All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations](../../scenes-sdk7/optimizing/scene-limitations.md) for details.
 
 Each imported file, of any type, must occupy less than 50 MB to be usable in a scene. Larger files aren't supported.
 
 **Free libraries for 3D models**
 
-Instead of building your own 3D models, you can also download them from several free or paid libraries, or generate them with AI tools. See [Useful Resources](../../sdk7/getting-started/useful-resources.md) for a list of recommended asset libraries and generative AI tools.
+Instead of building your own 3D models, you can also download them from several free or paid libraries, or generate them with AI tools. See [Useful Resources](../../scenes-sdk7/getting-started/useful-resources.md) for a list of recommended asset libraries and generative AI tools.
 
 {% hint style="warning" %}
 **📔 Note**: Pay attention to the license restrictions that the content you download has.
@@ -84,7 +84,7 @@ Note that in several of these sites, you can choose what format to download the 
 
 ### Colliders
 
-You might find that when running a preview the player can walk through your imported 3D models. This is likely because the models are missing a _collider mesh_ to define a collision geometry. See [colliders](../../3d-modeling/colliders.md) for more details and instructions.
+You might find that when running a preview the player can walk through your imported 3D models. This is likely because the models are missing a _collider mesh_ to define a collision geometry. See [colliders](../../3d-modeling-and-animations/colliders.md) for more details and instructions.
 
 {% hint style="info" %}
 **💡 Tip**: Instead of editing the model to add a _collider mesh_, a simpler alternative is to add an _Invisible wall_ smart item with approximately the same shape to stand in its place.

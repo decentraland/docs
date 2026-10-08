@@ -5,7 +5,7 @@ description: How to install the scene editor.
 
 # Creator Hub Installation
 
-![Creator Hub](../../images/editor/icon-creator-hub.png)
+![Creator Hub](<../../.gitbook/assets/icon-creator-hub (3).png>)
 
 Download the Creator Hub [HERE](https://decentraland.org/download/creator-hub).
 
@@ -18,7 +18,7 @@ You can also check for updates manually. For this,
 1. Click the Creator Hub logo in the top-left corner of the screen to open the main menu.
 2. Click **Check for Updates**.
 
-![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report Bug, and Help & Support.](../../images/editor/main-menu.png)
+![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report Bug, and Help & Support.](../../.gitbook/assets/main-menu.png)
 
 The main menu is also where you find the app **Settings**, and links to report a bug or get support.
 
@@ -26,8 +26,8 @@ The main menu is also where you find the app **Settings**, and links to report a
 
 If you also plan on reading and editing code in your scene, you'll also need to install either:
 
-* <img src="../../images/editor/vscode.png" alt="VS Code" data-size="line"> [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* <img src="../../images/editor/cursor-icon.png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+* <img src="../../.gitbook/assets/vscode (3).png" alt="VS Code" data-size="line"> [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
+* <img src="../../.gitbook/assets/cursor-icon (3).png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 You may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
@@ -35,7 +35,7 @@ You may need to select your Code Editor in the settings of the Creator Hub. To d
 2. Open the **EDITOR** tab.
 3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
-![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code, the Preview Options checkboxes, and the App Warnings checkbox.](../../images/editor/settings-editor.png)
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code, the Preview Options checkboxes, and the App Warnings checkbox.](../../.gitbook/assets/settings-editor.png)
 
 ### AI skills
 
@@ -45,8 +45,8 @@ If you plan to use an AI agent to help you write code, we recommend installing t
 npx skills add decentraland/sdk-skills --all
 ```
 
-See [Vibe coding](../../sdk7/getting-started/vibe-coding.md) for more details on installing specific skills and how to use them.
+See [Vibe coding](../../scenes-sdk7/getting-started/vibe-coding.md) for more details on installing specific skills and how to use them.
 
 ## Troubleshooting
 
-If you run into issues, see the [troubleshooting](../../sdk7/debugging/troubleshooting.md) section.
+If you run into issues, see the [troubleshooting](../../scenes-sdk7/debugging/troubleshooting.md) section.

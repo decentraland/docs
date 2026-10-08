@@ -1,5 +1,7 @@
 ---
-description: Design your scene's on-screen UI visually in the Creator Hub, on a canvas instead of in code.
+description: >-
+  Design your scene's on-screen UI visually in the Creator Hub, on a canvas
+  instead of in code.
 ---
 
 # UI Editor
@@ -10,7 +12,7 @@ The UI Editor lets you build your scene's on-screen interface by dragging widget
 
 Use the **2D** / **3D** switch at the top of the editor's left panel. **3D** is the scene canvas you already know. **2D** is the UI Editor.
 
-![The 2D and 3D tab switch, with 3D selected.](../../images/editor/ui-editor-mode-switch.png)
+![The 2D and 3D tab switch, with 3D selected.](../../.gitbook/assets/ui-editor-mode-switch.png)
 
 {% hint style="warning" %}
 **📔 Note**: The UI Editor needs `@dcl/sdk` version 7.26.0 or newer in your scene. On an older scene the **2D** tab shows a **UI Editor Unavailable** notice instead of the canvas, with an **Update SDK** button that upgrades the scene for you and a **Maybe later** button to dismiss it.
@@ -29,7 +31,7 @@ If you are using the Bevy scene renderer, switching to **2D** pauses the running
 
 There is no save button. The editor writes your changes to disk as you go, and the badge at the left of the toolbar reads **All changes saved**.
 
-![The UI Editor in 2D mode: the GUIs and Nodes panels on the left list a GUI named MainUI with a Container holding a Label and a Button, the canvas in the middle shows the container with the Button selected and resize handles around it, the Properties tab on the right shows the Button's position and layout, and the widget palette runs along the bottom.](../../images/editor/ui-editor-overview.png)
+![The UI Editor in 2D mode: the GUIs and Nodes panels on the left list a GUI named MainUI with a Container holding a Label and a Button, the canvas in the middle shows the container with the Button selected and resize handles around it, the Properties tab on the right shows the Button's position and layout, and the widget palette runs along the bottom.](../../.gitbook/assets/ui-editor-overview.png)
 
 ## The panels
 
@@ -43,11 +45,11 @@ Two floating groups of controls sit in the bottom-right corner of the canvas:
 * The **preview** group toggles the mobile HUD guides and the safe-area guides, and switches between **Desktop preview** and **Mobile preview**.
 * The **zoom** group has a minus and a plus button, and a percentage readout. Click the percentage to reset the view.
 
-<div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
+<div align="left"><img src="../../.gitbook/assets/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../.gitbook/assets/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 
 ## Widgets
 
-![The widget palette along the bottom of the UI Editor, with cards for Full Screen, Container, Image, Label, Button, Input and Dropdown.](../../images/editor/ui-editor-palette.png)
+![The widget palette along the bottom of the UI Editor, with cards for Full Screen, Container, Image, Label, Button, Input and Dropdown.](../../.gitbook/assets/ui-editor-palette.png)
 
 The palette groups widgets into three categories:
 
@@ -67,7 +69,7 @@ The toolbar has three tool modes:
 
 Positions snap to a 10 pixel grid. Hold **Shift** while dragging to move freely, ignoring the grid. The small arrow next to the tool buttons opens a **Snap** checkbox that turns snapping off entirely.
 
-![The 2D toolbar, with the All changes saved badge, undo and redo, the Free, Move and Resize tools, and the snap dropdown open showing a checked Snap option, followed by the play and stop buttons.](../../images/editor/ui-editor-toolbar.png)
+![The 2D toolbar, with the All changes saved badge, undo and redo, the Free, Move and Resize tools, and the snap dropdown open showing a checked Snap option, followed by the play and stop buttons.](../../.gitbook/assets/ui-editor-toolbar.png)
 
 ## Layout: flow and free positioning
 
@@ -130,13 +132,13 @@ Three checkboxes at the top hide whole parts of the HUD:
 
 Below them, the **Input Actions** section lists the eight buttons, in the order they fill the on-screen slots:
 
-| Action | Button on screen |
-| --- | --- |
-| `IA_JUMP` | The large central button, by default |
-| `IA_POINTER` | The interaction button |
-| `IA_PRIMARY (E)` | The E button |
-| `IA_SECONDARY (F)` | The F button |
-| `IA_ACTION_3 (1)` to `IA_ACTION_6 (4)` | The numbered buttons |
+| Action                                 | Button on screen                     |
+| -------------------------------------- | ------------------------------------ |
+| `IA_JUMP`                              | The large central button, by default |
+| `IA_POINTER`                           | The interaction button               |
+| `IA_PRIMARY (E)`                       | The E button                         |
+| `IA_SECONDARY (F)`                     | The F button                         |
+| `IA_ACTION_3 (1)` to `IA_ACTION_6 (4)` | The numbered buttons                 |
 
 Each row gives you three things:
 
@@ -147,12 +149,12 @@ Each row gives you three things:
 By default nothing is hidden and `IA_JUMP` is the main button, which is exactly what players get in a scene that doesn't touch the HUD.
 
 {% hint style="info" %}
-**💡 Tip**: The numbered buttons normally sit behind a "+" overflow toggle. Hide enough of the higher buttons and they show directly. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md#how-the-button-layout-works) for how the slots fill.
+**💡 Tip**: The numbered buttons normally sit behind a "+" overflow toggle. Hide enough of the higher buttons and they show directly. See [On-screen Controls](../../scenes-sdk7/interactivity/touch-screen-controls.md#how-the-button-layout-works) for how the slots fill.
 {% endhint %}
 
 ### The file it writes
 
-Your changes are written to `src/mobile-hud.ts`, which exports a `setupMobileHud()` function built on the SDK's [`TouchScreenControls`](../../sdk7/interactivity/touch-screen-controls.md) component:
+Your changes are written to `src/mobile-hud.ts`, which exports a `setupMobileHud()` function built on the SDK's [`TouchScreenControls`](../../scenes-sdk7/interactivity/touch-screen-controls.md) component:
 
 ```ts
 import { engine, InputAction, TouchScreenControls } from '@dcl/sdk/ecs'
@@ -189,11 +191,11 @@ The UI Editor edits your scene's real source files. There is no separate saved f
 
 * Each GUI is one `.tsx` file under `src/ui/`.
 * `src/ui/index.tsx` is generated by the editor to gather them together. Don't edit it by hand.
-* `src/mobile-hud.ts` holds your [mobile controls](#customize-the-mobile-controls), if you changed any. It sits outside `src/ui/` on purpose, so it's never treated as a GUI.
+* `src/mobile-hud.ts` holds your [mobile controls](ui-editor.md#customize-the-mobile-controls), if you changed any. It sits outside `src/ui/` on purpose, so it's never treated as a GUI.
 
 If your scene has an older single `src/ui.tsx` file, the editor backs it up as `src/ui.tsx.bak` the first time you open the UI Editor.
 
-Because these are ordinary files, you can open them in your [code editor](../code/overview.md) at any time. See [UI](../../sdk7/2d-ui/) for what the underlying code does.
+Because these are ordinary files, you can open them in your [code editor](../extend-with-code/overview.md) at any time. See [UI](../../sdk7/2d-ui/) for what the underlying code does.
 
 ## Code the editor can't edit
 
@@ -204,5 +206,5 @@ The rest of the GUI around it keeps working normally.
 ## Related pages
 
 * [UI](../../sdk7/2d-ui/): writing scene UI in code.
-* [Combine with code](../code/overview.md): open your scene in a code editor.
+* [Combine with code](../extend-with-code/overview.md): open your scene in a code editor.
 * [Entities and Components](components.md): the 3D side of the editor.

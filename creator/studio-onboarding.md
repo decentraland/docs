@@ -144,7 +144,7 @@ Decentraland’s **Game Design Skills** help you develop your idea against the C
 
 Download and share the skills files below with your preferred AI assistant and ask it to guide you through the process. It will help you work through the key design questions and turn your decisions into a clear GDD.
 
-[**Download the Game Design Skills**](https://github.com/decentraland/docs/raw/main/resources/dcl-gdd.zip)
+[**Download the Game Design Skills**](https://github.com/decentraland/docs/raw/main/resources/game-design-skills.zip)
 
 ### Complete the template yourself
 

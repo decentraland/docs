@@ -18,7 +18,7 @@ You will build alongside other creators, test your work with real players, and g
 
 # How much funding is available?
 
-Creator Success funds games in stages, starting with **up to $4,100 across V0 and V1**. Games that show strong retention can then be considered for additional V2 and V3 funding rounds.
+Creator Success funds games in stages, starting with **up to $4,100 across V0 and V1**. Games that show strong retention can then be considered for additional funding rounds, starting with **V2 at $2,800 USD**, and then V3.
 
 ## V0: The Vertical Slice — $1,000 USD
 
@@ -34,7 +34,7 @@ V1 turns what worked in the vertical slice into the **first complete playable ve
 
 ## What happens after V1?
 
-Games showing strong player retention can be considered for further development and funding.
+Games showing strong player retention can be considered for further development and funding. The next stage, **V2, is funded at $2,800 USD**.
 
 Progression is not automatic. Each stage is based on what we learn from playtesting, live player data and the potential for further development. Strong projects can therefore move from one small paid project into an ongoing series of development stages.
 

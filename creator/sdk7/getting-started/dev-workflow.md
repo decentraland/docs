@@ -68,11 +68,11 @@ You don't need to create your own assets, though. See [Useful Resources](useful-
 
 ## Run a local preview
 
-To run a preview of your scene, open it in the Creator Hub and click the **Preview** button. Alternatively, if you're working from the command line, run `npm run start` on your project's root folder.
+To run a preview of your scene, open it in the Creator Hub and click the **Play** button. Alternatively, if you're working from the command line, run `npm run start` on your project's root folder.
 
 * [Preview your scene](preview-scene.md) for more details.
 * Check the [Debug a scene](preview-scene.md#debug-a-scene) for tips on how to debug any issues.
-* Enable **Optimize Assets** in the preview settings (or run `npm run start -- --local-ab` from the CLI) to load your 3D models as optimized asset bundles. The preview runs smoother and shows the models just as they'll look once published. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+* Enable **Compress Assets** in the **Play Options** menu (or run `npm run start -- --local-ab` from the CLI) to load your 3D models as optimized asset bundles. The preview runs smoother and shows the models just as they'll look once published. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}
 **💡 Tip**: When using the Creator Hub, every time you make a change on your scene, the preview is automatically updated. Even while running.

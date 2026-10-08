@@ -126,7 +126,7 @@ Chose an image that sets player expectations and properly represents your creati
 
 ## The Preview
 
-Running a preview of a portable experience is just like running that of a scene, simply click **Preview** on the Creator Hub, or run `npm run start` on the command line. If the `wearable.json` file is properly configured and the project is recognized as a smart wearable, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world.
+Running a preview of a portable experience is just like running that of a scene, click **Play** on the Creator Hub, or run `npm run start` on the command line. If the `wearable.json` file is properly configured and the project is recognized as a smart wearable, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world.
 
 To test how the smart wearable behaves in the context of a scene, you can also run a preview of your wearable at the same time as you run a preview of one or several scenes by using a [Workspace](workspaces.md). For example, you can run your smart wearable together with the [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) scene to test how it behaves on a busy scene, while on an elevator, etc.
 

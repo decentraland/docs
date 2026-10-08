@@ -22,11 +22,31 @@ _Rig 1.0 transforms._
 
 ## Bone Orientation
 
-This is the bone orientation for Rig 1.0. As it is right now, it’s not possible to mirror behavior on the shoulders, arms, hands, or fingers.
+This is the bone orientation for Rig 1.0.
 
 _Axes for bone orientation._
 
-_Behavior when mirrorring poses._
+_Behavior when mirroring poses._
+
+### Mirroring a pose
+
+The rig's left and right bones are not laid out the same way, so a single mirroring trick does not work for the whole body.
+
+* **Legs and feet** mirror the usual way. Blender's **Paste X-Flipped** gives the right result on `CTRL_FK_Avatar_UpLeg`, `CTRL_FK_Avatar_Leg`, `CTRL_FK_Avatar_Foot`, `CTRL_FK_Avatar_ToeBase`, `CTRL_IK_Foot`, `CTRL_IK_Avatar_ToeBase` and `CTRL_Avatar_Knee`. In numbers: flip the sign of rotation Y and Z, and of location X.
+* **Shoulders, arms, hands and fingers** do not. Their right-side bones are mirrored on a different axis, so **Paste X-Flipped** puts the hand up to 90 cm away from where you want it. Mirror these by hand instead: flip the sign of rotation X and Y, and of location Z. This applies to `CTRL_Avatar_Shoulder`, `CTRL_FK_Avatar_Arm`, `CTRL_FK_Avatar_ForeArm`, `CTRL_FK_Avatar_Hand`, `CTRL_IK_Avatar_Hand`, `CTRL_IK_Avatar_Elbow` and the `CTRL_Avatar_Hand*` finger controls.
+
+{% hint style="warning" %}
+**📔 Note**: The starting pose is not perfectly symmetric to begin with, so mirroring a pose from one side to the other overwrites that small asymmetry. Check the result by eye before keyframing it.
+{% endhint %}
+
+### Rotating arms
+
+The upper arm control, `CTRL_FK_Avatar_Arm`, has a tilted local X axis. Rotating around it sweeps the arm across the chest, which is the most common reason arms end up crossed when you meant to raise them.
+
+* To **aim** the arm, rotate around the world axes instead: world X raises it forward, world Z swings it in and out.
+* To **twist** the arm, so the palm turns up or down and the elbow points in or out, rotate around the bone's own local Y.
+
+Elbows, knees, wrists and fingers are hinges: they only rotate around their local X.
 
 ### Bone Collections
 
@@ -76,6 +96,18 @@ _FK/IK blend for both arms and legs._
 ![How the FK > IK Switch works.](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/IK_FK_rig_1.0.gif)
 
 _How the FK > IK Switch works._
+
+A simple rule covers most cases: if a limb keeps contact with something, keep it on IK; if it loses contact and swings freely, switch it to FK. For a seated pose:
+
+* **Both feet on the ground**: keep the legs on IK. Move the feet with `CTRL_IK_Foot`, then lower `CTRL_Avatar_UpperBody` to drop the body. The feet stay planted. Aim the knees with `CTRL_Avatar_Knee`.
+* **One leg crossed over the other**: switch only the lifted leg to FK.
+* **Feet dangling**: switch both legs to FK.
+
+Use `CTRL_Avatar_UpperBody` to move the whole body up and down. It is the center of gravity. `CTRL_Avatar_Hips` moves only the pelvis and the legs, which stretches the torso, so it is the wrong control for sitting down.
+
+{% hint style="warning" %}
+**📔 Note**: Avoid switching a limb between FK and IK in the middle of a clip. Unless the two chains line up exactly on that frame, the limb pops. If you do need to switch, keyframe the FK > IK property itself so the change happens where you want it.
+{% endhint %}
 
 ### Isolate Rotation FK Blend
 

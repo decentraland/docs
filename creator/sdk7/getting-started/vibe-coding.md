@@ -246,7 +246,7 @@ Break complex requests into steps:
 
 After each change:
 
-1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
+1. Preview the scene (click **Play** in Creator Hub, or `npm run start` in the command line)
 2. Check what works and what doesn't
 3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
 

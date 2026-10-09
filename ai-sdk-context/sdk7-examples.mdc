@@ -1154,6 +1154,61 @@ LightSource.create(entity, {
 })
 ```
 
+### Skybox
+```typescript
+import { engine, Material, Skybox, VideoPlayer, ColorGradient } from '@dcl/sdk/ecs'
+import { Color4 } from '@dcl/sdk/math'
+
+// Root entity only; active while the player is inside the scene, reverts on leave/removal.
+// Equirectangular (2:1) sky texture; reflections derived from it unless reflectionMap is set.
+Skybox.create(engine.RootEntity, {
+  skyboxTexture: Material.Texture.Common({ src: 'images/sky.png' }),
+  reflectionMap: Material.Texture.Common({ src: 'images/reflections.png' })  // optional
+})
+
+// Video sky: skyboxTexture / reflectionMap / clouds.texture also accept a VideoTexture (avatar textures ignored).
+// The VideoPlayer entity needs no mesh; it's a normal video player (volume: 0 to mute, counts toward the
+// simultaneous-video limit). Sky is live; reflections derived from a video lag a few frames. Use a 2:1 video.
+const video = engine.addEntity()
+VideoPlayer.create(video, { src: 'assets/sky.mp4', playing: true, loop: true, volume: 0 })
+Skybox.createOrReplace(engine.RootEntity, {
+  skyboxTexture: Material.Texture.Video({ videoPlayerEntity: video })
+})
+
+// Recolor the procedural sky. Every color is a ColorGradient over the normalized time of day
+// (0 = 00:00, 0.5 = noon, 1 = 24:00); one key = constant color; values > 1 are HDR.
+const constant = (color: Color4): ColorGradient => ({ keys: [{ time: 0, color }] })
+
+Skybox.createOrReplace(engine.RootEntity, {
+  skyColors: {                       // also drive the ambient light (zenith/horizon/nadir)
+    zenith: constant(Color4.create(0.55, 0.25, 0.12, 1)),
+    horizon: constant(Color4.create(0.95, 0.55, 0.3, 1)),
+    nadir: constant(Color4.create(0.35, 0.15, 0.08, 1)),
+    rim: undefined                   // horizon-line glow; unset follows `horizon`
+  },
+  sun: {
+    color: constant(Color4.create(1, 0.65, 0.4, 1)),  // directional light + sun disc
+    visible: true                                     // false hides sun, moon and lens flare; lighting unaffected
+  },
+  fog: { color: constant(Color4.create(0.85, 0.5, 0.3, 1)), density: 0.01 },  // density: exponential per meter, 1/density ≈ 63% fog distance (default 0.0005 ≈ 2 km). Fog on/off is a player quality setting
+  clouds: {
+    opacity: 0.3, speed: 0.01, color: constant(Color4.create(0.9, 0.6, 0.4, 1)),  // defaults 1 / 0.01 / time-of-day tint
+    texture: Material.Texture.Common({ src: 'images/clouds.png' })  // custom equirect 2:1 cloud layer: R = tint (x color), G = opacity, B = sun highlight; grayscale = plain mask. Inert while skyboxTexture is set
+  },
+  stars: { brightness: 4.62 }             // default 4.62, night only
+})
+
+// Complete darkness: only the scene's LightSources illuminate
+const black = constant(Color4.Black())
+Skybox.createOrReplace(engine.RootEntity, {
+  sun: { color: black, visible: false },
+  skyColors: { zenith: black, horizon: black, nadir: black },
+  fog: { color: black },
+  clouds: { opacity: 0 },
+  stars: { brightness: 0 }
+})
+```
+
 ### Visibility Control
 ```typescript
 import { VisibilityComponent } from '@dcl/sdk/ecs'

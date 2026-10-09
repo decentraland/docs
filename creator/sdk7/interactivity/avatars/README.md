@@ -13,6 +13,7 @@ There are various ways you can control the player's avatar and change the gamepl
 * [Locomotion Settings and Restrictions](locomotion.md): change speeds and jump heights with `AvatarLocomotionSettings`, or freeze the player and block specific kinds of movement with `InputModifier`.
 * [Avatar Modifier Areas](modifier-areas.md): hide avatars, hide nametags, or disable the passport popup for players inside a region of the scene.
 * [Avatar Nametags](avatar-nametags.md): add a custom label above an avatar's nametag to show a rank, role, or team. Works on the local player, on other players, and on NPC avatars.
+* [Nearby Voice Chat](voice-chat.md): detect when players speak with `PlayerVoiceState`, and whisper, quiet, mute, or isolate voices inside a region with `VoiceChatModifierArea`.
 * [NPC Avatars](npc-avatars.md): display fully customizable avatars as entities, play animations on them, and use them to replace the player's own avatar.
 
 {% hint style="info" %}

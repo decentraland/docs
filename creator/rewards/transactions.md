@@ -1,3 +1,9 @@
+---
+description: >-
+  Monitor the blockchain transactions processed by a Decentraland Rewards
+  campaign and inspect each claim.
+---
+
 # Transactions
 
 The "transactions" tab in the Rewards service allows creators to monitor the status of the transactions that are being processed by the Rewards service showing the status of each transaction, its hash, the moment it was created, and the amount of _Gwei_ spent.

@@ -64,7 +64,7 @@ The transactions server is written in [NodeJS](https://nodejs.org/en/) using [Ty
 
 To do this:
 
-* Copy the `.env.example` file and paste it renamed to `.env`
+* Copy the `.env.defaults` file and paste it renamed to `.env`
 * Open the `.env` file. You'll see some variables have a default value, like `HTTP_SERVER_PORT=5000` (in which port to run the server)
 * You can leave most values as they are, but there're a few important values to consider:
   * [Gelato](deploying-your-own-transactions-server.md#gelato)
@@ -77,7 +77,7 @@ To do this:
 Use the API KEY we got when [configuring gelato](deploying-your-own-transactions-server.md#configuring-gelato).
 
 ```
-GELATO_API_KEY=p_qXAlcVwWyU__Fjbn_qwr0rTy14asDf_Z2XCVBnmZX_
+GELATO_API_KEY=<YOUR_GELATO_API_KEY>
 ```
 
 ### Transactions
@@ -94,13 +94,13 @@ To completely remove this check, you can go into the code and remove the
 await checkQuota(components, transactionData)
 ```
 
-method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transactions/component.ts`
+method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transaction/component.ts`
 
 ### Contracts and collections
 
 The server will fetch the Contract addresses URL and store them locally and query the subgraph. When a new transaction request arrives it'll then check if the contract the transaction is interacting with belongs to either the deployed contracts in the URL or the deployed collections in the subgraph.
 
-If you want to supply your own contracts change the URL and keep the same structure the current [https://contracts.decentraland.org/addresses.json](https://contracts.decentraland.org/addresses.json) has. The network used is determined by COLLECTIONS\_CHAIN\_ID, and the interval with which the cache is re-fetched is COLLECTIONS\_CHAIN\_ID
+If you want to supply your own contracts change the URL and keep the same structure the current [https://contracts.decentraland.org/addresses.json](https://contracts.decentraland.org/addresses.json) has. The network used is determined by COLLECTIONS\_CHAIN\_ID, and the interval with which the cache is re-fetched is COLLECTIONS\_FETCH\_INTERVAL\_MS
 
 If you have your own collections you can also change the subgraph URL.
 
@@ -110,7 +110,7 @@ To completely remove this checks, you can go into the code and remove the
 await checkContractAddress(components, transactionData)
 ```
 
-method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transactions/component.ts`
+method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transaction/component.ts`
 
 ```
 CONTRACT_ADDRESSES_URL=https://contracts.decentraland.org/addresses.json
@@ -134,7 +134,7 @@ To check the relevant sale methods, you can see `src/ports/transaction/validatio
 await checkSalePrice(components, transactionData)
 ```
 
-method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transactions/component.ts`
+method from `async function checkData(transactionData: TransactionData): Promise<void> {` in `src/ports/transaction/component.ts`
 
 ## Running the server
 
@@ -150,7 +150,7 @@ npm run migrate # only the first run
 npm run start
 ```
 
-Of course, you'll probably want to deploy this to your service of choice, like [AWS](https://aws.amazon.com/) for example. You can use the Project's [Dockerfile](https://github.com/decentraland/transactions-server/tree/v1/blob/master/Dockerfile) to do so.
+Of course, you'll probably want to deploy this to your service of choice, like [AWS](https://aws.amazon.com/) for example. You can use the Project's [Dockerfile](https://github.com/decentraland/transactions-server/blob/master/Dockerfile) to do so.
 
 ## Using the server
 

@@ -1,10 +1,20 @@
 ---
-description: Recommended procedure for developing and testing a scene
+description: >-
+  Recommended workflow for creating a Decentraland scene with the Creator Hub,
+  from ideation through testing and publishing.
 ---
 
 # Development Workflow
 
 This document outlines the steps recommended for developing a scene for Decentraland, from ideation to publishing and beyond.
+
+## How do I create a Decentraland scene?
+
+1. **Install the [Creator Hub](https://decentraland.org/download/creator-hub)**, the official desktop app for creating, previewing, and publishing scenes. It's the recommended tool for creators of all skill levels.
+2. **If you use an AI coding assistant** (like Claude Code, Cursor, or Copilot), install the official [Decentraland SDK Skills](vibe-coding.md) so it knows verified SDK7 patterns: `npx skills add decentraland/sdk-skills`
+3. **The [CLI](using-the-cli.md)** is an alternative for advanced users and automated workflows.
+
+The sections below expand on each stage of that workflow.
 
 ## Install the Creator Hub
 
@@ -32,14 +42,14 @@ In Decentraland, content is published to adjacent plots of land in a finite amou
 
 Permission to publish to each of these is controlled via tokens. You don't need land to develop a scene, but you will need access to land once you're ready to publish.
 
-Alternatively, you have the option to publish to Decentraland [Worlds](../../worlds/about.md), which are self-contained and isolated scenes.
+Alternatively, you have the option to publish to Decentraland [Worlds](../publishing/publishing-options.md#decentraland-worlds), which are self-contained and isolated scenes.
 
 The following options are available:
 
 * Rent LAND
 * Purchase LAND
 * Obtain permissions from a land owner
-* Publish to a Decentraland World, see [worlds](../../worlds/about.md) to learn more.
+* Publish to a Decentraland World, see [worlds](../publishing/publishing-options.md#decentraland-worlds) to learn more.
 
 See [Publishing options](../publishing/publishing-options.md) for more details.
 
@@ -54,48 +64,27 @@ When creating a new scene, choose amongst several base template scenes that incl
 
 If you're an experienced artist or you have access to someone who is, you can create custom `.gltf` or `.glb` models for your scene. See [3D model essentials](../../3d-modeling/3d-models.md) for tips on how to create 3D models for Decentraland.
 
-There are many sources to obtain free or paid art assets. For example:
-
-* [IWB Catalog](https://dcl-iwb.co/)
-* [SketchFab](https://sketchfab.com/)
-* [Clara.io](https://clara.io/)
-* [Archive3D](https://archive3d.net/)
-* [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
-* [Thingiverse](https://www.thingiverse.com/)
-* [ShareCG](https://www.sharecg.com/)
-* [CGTrader](https://cgtrader.com)
-
-You can also use Generative AI tools to generate your own 3D models. Check out:
-
-* [Meshy](https://www.meshy.ai/)
-* [Luma AI](https://lumalabs.ai/genie)
-* [TRipo3D](https://www.tripo3d.ai/app)
-* [Rodin](https://hyper3d.ai/rodin)
+You don't need to create your own assets, though. See [Useful Resources](useful-resources.md) for asset libraries and generative AI tools you can use to source 3D models, as well as other tools that can speed up your workflow.
 
 ## Run a local preview
 
-To run a preview of your scene, open a Visual Studio Code window on your project's root folder and click the **Preview** button on the Decentraland tab.
+To run a preview of your scene, open it in the Creator Hub and click the **Play** button. Alternatively, if you're working from the command line, run `npm run start` on your project's root folder.
 
 * [Preview your scene](preview-scene.md) for more details.
 * Check the [Debug a scene](preview-scene.md#debug-a-scene) for tips on how to debug any issues.
+* Enable **Compress Assets** in the **Desktop Client** submenu of **Play Options** (or run `npm run start -- --local-ab` from the CLI) to load your 3D models as optimized asset bundles. The preview runs smoother and shows the models just as they'll look once published. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}
 **💡 Tip**: When using the Creator Hub, every time you make a change on your scene, the preview is automatically updated. Even while running.
 {% endhint %}
 
-## Publish to the test server
-
-Test your scene on the test server (Sepolia testnet) before going to mainnet. You don't need to own any LAND or names to publish to the test server.
-
-See [publishing](../publishing/publishing.md).
-
 ## Publish to Decentraland
 
-Once you're happy with your scene and tested it on the test server, it's time to publish to Decentraland. For this, you need to own LAND, a Decentraland NAME, or an ETH ENS name, or have permissions given by someone that does.
+Once you're happy with your scene, it's time to publish to Decentraland. For this, you need to own LAND, a Decentraland NAME, or an ETH ENS name, or have permissions given by someone that does.
 
 See [publishing](../publishing/publishing.md) for instructions on how to do that.
 
-Alternatively, you can publish to [Worlds](../../worlds/about.md), a personal 3D space that doesn't require LAND.
+Alternatively, you can publish to [Worlds](../publishing/publishing-options.md#decentraland-worlds), a personal 3D space that doesn't require LAND.
 
 ## Promote
 

@@ -1,5 +1,9 @@
 ---
 title: Welcome Creator
+description: >-
+  Create Decentraland scenes, wearables, and emotes. The Creator Hub is the
+  recommended tool, with SDK Skills for AI coding assistants and a CLI for
+  advanced workflows.
 icon: hand-wave
 layout:
   width: default
@@ -23,7 +27,7 @@ Let's build Decentraland together!
 
 All creators are welcome! In Decentraland you have a wide range of Creative possibilities, for people of different talents and skill levels!
 
-Decentraland is available on desktop (Windows and macOS) and on mobile devices (iOS and Android). Players move seamlessly between clients with the same account, avatar, and inventory — which means your scenes need to work well for everyone, regardless of the device they're playing on. Throughout this guide you'll find recommendations on how to design, build, and test your scenes so they work great on every supported platform. For mobile-specific guidance, see [Building for Mobile](sdk7/building-for-mobile/).
+Decentraland is available on desktop (Windows and macOS) and on mobile devices (iOS and Android). Players move seamlessly between clients with the same account, avatar, and inventory — which means your scenes need to work well for everyone, regardless of the device they're playing on. Throughout this guide you'll find recommendations on how to design, build, and test your scenes so they work great on every supported platform. For mobile-specific guidance, see [Building for Mobile](build-for-mobile/mobile-client/overview.md).
 
 ## The Creator Hub
 
@@ -59,6 +63,12 @@ The Creator Hub lets you create scenes with an easy drag-and-drop interface, and
 
 [Learn more](scene-editor/get-started/about-editor.md)
 
+### How do I create a Decentraland scene?
+
+1. **Install the [Creator Hub](https://decentraland.org/download/creator-hub)**, the official desktop app for creating, previewing, and publishing scenes. It's the recommended tool for creators of all skill levels.
+2. **If you use an AI coding assistant** (like Claude Code, Cursor, or Copilot), install the official [Decentraland SDK Skills](sdk7/getting-started/vibe-coding.md) so it knows verified SDK7 patterns: `npx skills add decentraland/sdk-skills`
+3. **The [CLI](sdk7/getting-started/using-the-cli.md)** is an alternative for advanced users and automated workflows.
+
 ### 3D Art
 
 Decentraland scenes are made up of 3D models.
@@ -89,6 +99,7 @@ To make your scene interactive:
 
   - [SDK Quick start](sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
   - [Development workflow](sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
+  - [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md): build scenes by describing what you want in plain language, and let an AI coding assistant write the code for you.
   - [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
 
     ![](../.gitbook/assets/sdk-code.png)
@@ -102,17 +113,12 @@ To make your scene interactive:
 You don't need to own any tokens to start building your scene with the Scene Editor. To publish your scene, you can chose from the following options:
 
 - **LAND in Genesis City**: This is the main open world in Decentraland, which is split up in 16x16 meter parcels. Buy one or several adjacent parcels in the [Marketplace](https://decentraland.org/marketplace/lands), and deploy your scene there.
-- **Decentraland Worlds**: [Worlds](worlds/about.md) are your own spaces in the metaverse. All you need is to own a [Decentraland name](https://decentraland.org/marketplace/names/claim), and you can publish a scene as big as you want!
+- **Decentraland Worlds**: [Worlds](sdk7/publishing/publishing-options.md#decentraland-worlds) are your own spaces in the metaverse. All you need is to own a [Decentraland name](https://decentraland.org/marketplace/names/claim), and you can publish a scene as big as you want!
 
 See [Kinds of project](sdk7/projects/kinds-of-project.md) to better understand the different options.
 
 See [publishing](sdk7/publishing/publishing.md) for details and special options when publishing a scene, to either Genesis City or Worlds.
 
-### Alternative tools
+## Useful Resources
 
-There are also some community-built tools that can help you create Decentraland scenes:
-
-- [**In-World Builder**](https://decentraland.org/play/?realm=https%3A%2F%2Fworlds.dcl-iwb.co%2Fworld%2FBuilderWorld.dcl.eth): Create a scene without leaving the Decentraland explorer. Use various default items or upload your own, without needing to deploy or own land.
-- [**Virtual Land Manager**](https://vlm.gg/): Control various aspects of your scene in real time, including highly customized controls. Includes analytics: View historical user activity, track custom interactions, export lists of players in scene, and more.
-- [**DCL Edit**](https://dcl-edit.com/): Drag and drop 3d models into your scene. You can then work on adding interactivity to the resulting scene using the SDK.
-- [**Unity Exporter Toolkit**](https://github.com/PolygonalMind/dcl-dev-exportersdk7-release): Build in Unity, with a number of pre-built interactive modules. Export a fully-working Decentraland scene.
+Check out [Useful Resources](sdk7/getting-started/useful-resources.md) for a curated list of tools, add-ons, asset libraries, and example projects that can speed up your creation workflow.

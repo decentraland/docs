@@ -88,7 +88,7 @@ const opaque = Color4.create(1, 1, 1, 1)
 const half = Color4.create(1, 1, 1, 0.5)
 
 // Almost invisible
-const half = Color4.create(1, 1, 1, 0.1)
+const almostInvisible = Color4.create(1, 1, 1, 0.1)
 ```
 
 ## Lerp
@@ -99,7 +99,7 @@ Both `Color3.lerp()` or the `Color4.lerp()` take the following arguments:
 
 * `left`: The first color to use as reference
 * `right`: The second color to use as reference
-* `amount`: A number from 0 to 1 to define how much of the _left_ color to use in the mix. The closer to 0, the closer to the _left_ color.
+* `amount`: A number from 0 to 1 to define how much of the _right_ color to use in the mix. The closer to 0, the closer to the _left_ color.
 
 ```ts
 const orange = Color3.lerp(Color3.Red(), Color3.Yellow(), 0.3)
@@ -115,12 +115,16 @@ const color2 = Color4.Yellow()
 
 export function PulseSystem(dt: number) {
   pulseState += dt
+  // oscillate between 0 and 1
+  const amount = (Math.sin(pulseState) + 1) / 2
   const entitiesWithMaterial = engine.getEntitiesWith(Material)
 
   // iterate over the entities of the group
   for (const [entity] of entitiesWithMaterial) {
     const material = Material.getMutable(entity)
-    material.albedoColor = Color4.lerp(color1, color2, Math.sin(pulseState))
+    if (material.material?.$case === 'pbr') {
+      material.material.pbr.albedoColor = Color4.lerp(color1, color2, amount)
+    }
   }
 }
 

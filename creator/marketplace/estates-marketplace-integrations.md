@@ -16,7 +16,7 @@ For marketplaces, especially the ones without an escrow system, it is 100% recom
 
 It is not recommended to list empty Estates. The Estate smart contract has a method `getEstateSize` that returns the number of LANDs in the Estate. If the result is `0`, we recommend not listing that Estate. If you want to list them anyways, you will see an image like this one:
 
-![](../images/media/estates-marketplace-integrations/dissolved_estate.png)
+![](../images/media/estates-marketplace-integrations/dissolved_estate.png)
 
 ## Example
 
@@ -44,4 +44,8 @@ It is not recommended to list empty Estates. The Estate smart contract has a met
 
 ## Estate Smart Contract Fingerprint Interface
 
-The Estate's smart contract is compliant with a [fingerprint interface](https://github.com/decentraland/land/blob/master/contracts/estate/EstateStorage.sol#L19). In order to check if an order/offer for an estate is still valid or not, you can call the _`verifyFingerprint(uint256 estateId, bytes fingerprint)`_ function implemented in the Estate smart contract. You can check a working production example [here](https://github.com/decentraland/marketplace-contracts/blob/master/contracts/marketplace/MarketplaceV2.sol#L382)
+The Estate's smart contract is compliant with a [fingerprint interface](https://github.com/decentraland/land/blob/master/contracts/estate/EstateStorage.sol#L19). When an Estate is listed for sale or receives an offer, record its fingerprint by calling _`getFingerprintV2(uint256 estateId)`_ and store the value it returns. To check whether that order/offer is still valid at execution time, call _`verifyFingerprint(uint256 estateId, bytes fingerprint)`_ with the stored value.
+
+Always store the value returned by _`getFingerprintV2`_. The older _`getFingerprint`_ method is kept only for backwards compatibility and is being phased out: starting 26 November 2026, _`verifyFingerprint`_ stops accepting values produced by it. New integrations should use _`getFingerprintV2`_.
+
+You can check a working production example [here](https://github.com/decentraland/marketplace-contracts/blob/master/contracts/marketplace/MarketplaceV2.sol#L382).

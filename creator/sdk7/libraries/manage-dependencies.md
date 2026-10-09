@@ -23,7 +23,7 @@ To install a library in your project folder, run `npm i` and the library name in
 
 ### Update
 
-If your `package.json` file lists the version of the scene as `@latest`, then run `npm i` to update all libraries to their corresponding latest versions.
+If your `package.json` file lists the version of the library as `@latest`, then run `npm i` to update all libraries to their corresponding latest versions.
 
 If your `package.json` references a specific version number, you can update it by running the command to install the library, adding `@` and the version number in the end. For example:
 

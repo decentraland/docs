@@ -14,7 +14,7 @@ When importing 3D models into Decentraland, it's important to make sure they're 
 **💡 Tip**: Install the [Decentraland Tools Blender plugin](https://extensions.blender.org/add-ons/decentraland-tools/). It includes several handy functions to help you edit and export 3D models, wearables, and emotes.
 {% endhint %}
 
-Please note that all models, shaders, and textures must comply with the [**scene limitations**](https://docs.decentraland.org/creator/development-guide/scene-limitations/).
+Please note that all models, shaders, and textures must comply with the [**scene limitations**](https://docs.decentraland.org/creator/scenes-sdk7/optimizing/scene-limitations/).
 
 ## **Supported 3D Model Formats**
 
@@ -143,3 +143,4 @@ The following pages also cover topics related to 3D models for Decentraland:
 * [Textures](textures.md)
 * [Colliders](colliders.md)
 * [Animations](animations.md)
+* [Useful Resources](../sdk7/getting-started/useful-resources.md): Blender add-ons, asset libraries, and AI tools to speed up your 3D workflow

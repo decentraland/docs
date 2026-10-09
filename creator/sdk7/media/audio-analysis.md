@@ -15,6 +15,10 @@ Common uses:
 
 `AudioAnalysis` is a read-only feed — your scene only consumes the values, the runtime fills them in. It works on entities that play audio through an [AudioSource](../3d-essentials/sounds.md), an [AudioStream](audio-streaming.md), or the audio of a [VideoPlayer](video-playing.md).
 
+{% hint style="warning" %}
+**📔 Note**: `AudioAnalysis` is currently only supported by the official Decentraland desktop app. On other clients the component's values are never filled in, so make sure your scene still works if the data never arrives.
+{% endhint %}
+
 ## Minimal example
 
 The following scene plays a sound, attaches `AudioAnalysis` to the same entity, and scales a cube on every frame using the audio's amplitude.
@@ -173,7 +177,7 @@ export function main() {
 }
 ```
 
-This is the same pattern used in the [audio-visualization example scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/audio-visualization), trimmed to the essentials.
+This is the same pattern used in the [audio-visualization example scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization), trimmed to the essentials.
 
 ## Modes
 
@@ -265,5 +269,6 @@ type AudioAnalysisView = {
 
 - **8 bands, fixed.** The number of frequency bands is fixed at 8. There is no API to request more or fewer bands.
 - **One audio source per analysis.** Each `AudioAnalysis` component analyzes the audio from the entity it is attached to. To analyze several sources, attach `AudioAnalysis` to each one.
+- **Live video streams are not analyzed.** There is a known issue where `AudioAnalysis` receives no data when the `VideoPlayer` source is a non-progressive stream, like an `.m3u8` HLS URL: the stream's audio plays, but the analysis values stay at zero. Video files (like `.mp4`) are analyzed correctly.
 - **Paused audio reports no updates.** When the underlying audio is stopped or paused, the component values stop changing. Your last-read values remain in your view object until the audio plays again.
 - **Cheap, but not free.** Per-frame analysis is designed to be inexpensive (sub-millisecond per source on desktop). Avoid attaching `AudioAnalysis` to many sources at once if you don't need the data. Remove the component when a visualizer isn't visible.

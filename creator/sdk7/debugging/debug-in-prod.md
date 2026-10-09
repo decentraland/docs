@@ -12,12 +12,6 @@ When running a scene that's already deployed to land in Decentraland, there are 
 
 Before you deploy your scene to Decentraland, make sure the scene runs well in preview using the latest version of the Decentraland SDK. See [debug in preview](../debugging/debug-in-preview.md).
 
-### The test server
-
-You can deploy scenes to a test server as a staging environment, before publishing them to the live content servers. This server is not frequented by any players that visit Decentraland normally. To enter this server you must manually write its URL, but keep in mind that it's not a private environment.
-
-See [The test server](../publishing/publishing.md#the-test-server) for details.
-
 ## Quick reload
 
 If you need to reload the scene you're standing on, write the following into the chat and push enter:
@@ -26,7 +20,7 @@ If you need to reload the scene you're standing on, write the following into the
 
 ## About the publishing pipeline
 
-Keep in mind that after each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process may run even if the 3D models were all previously published.
+Keep in mind that after each publish, an internal process optimizes all 3D models before they can be rendered. This usually takes just a few seconds, but can take longer for very large scenes or when the servers are busy. Until it's done, players are served the previous version of your scene.
 
 You can check the current state of this process for your scene using [this tool](https://decentraland.github.io/opscli/). If the conversion is complete, all three variations of the assets should have green lights.
 
@@ -36,10 +30,10 @@ When using Decentraland normally, it's not possible to open the console to check
 
 To open Decentraland with the `scene-console` parameter, either:
 
-* Write the following deep link into a browser window: `decentraland://?position=0,0&scene-console=true`. This will open the Decentraland desktop application if you have it installed.
-* Write the following on the command line:
-  * **macOS**: `open Decentraland.app --args --position 0,0 --scene-console true`
-  * **winOS**: `"C:\Users\[YOUR-USER]\Downloads\Decentraland_windows64\Decentraland.exe" --position 0,0 --scene-console true`
+- Write the following deep link into a browser window: `decentraland://?position=0,0&scene-console=true`. This will open the Decentraland desktop application if you have it installed.
+- Write the following on the command line:
+  - **macOS**: `open Decentraland.app --args --position 0,0 --scene-console true`
+  - **winOS**: `"C:\Users\[YOUR-USER]\Downloads\Decentraland_windows64\Decentraland.exe" --position 0,0 --scene-console true`
 
 {% hint style="info" %}
 **💡 Tip**: Change the **position** parameter to the coordinates of your scene, to load directly into your scene.
@@ -47,9 +41,9 @@ To open Decentraland with the `scene-console` parameter, either:
 
 When running Decentraland with the `scene-console`, you can open the console in three ways:
 
-* Click the ![](../../images/console-icon.png) icon on the top-right corner
-* Press the **\`** key for a short console
-* Press Shift + **\`** to open a larger view of the console
+- Click the ![](../../images/console-icon.png) icon on the top-right corner
+- Press the **\`** key for a short console
+- Press Shift + **\`** to open a larger view of the console
 
 Keep in mind that messages from each active scene will be logged to the console, so some of the things you see in the console might not be relevant to your scene.
 

@@ -63,7 +63,7 @@ The following optional fields are available when creating a ray with any of the 
 * `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../3d-essentials/colliders.md#collision-layers). If not set, the default layer used is `ColliderLayer.CL_PHYSICS`.
 * `continuous`: If true, will keep running a raycast query on every frame. If false, the ray will only be used on the current frame. If not set, the default is false.
 * When setting the direction with a local or glocal direction, the `direction` field defaults to `Vector3.Forward()`.
-* When setting the direction with a global target, the `globalTarget` field defaults to `Vector3.Zero()`.
+* When setting the direction with a global target, the `target` field defaults to `Vector3.Zero()`.
 * When setting the direction with an entity target, the `targetEntity` field defaults to the scene's root entity, located at `Vector3.Zero()`.
 
 {% hint style="warning" %}
@@ -107,7 +107,7 @@ raycastSystem.registerGlobalTargetRaycast(
     entity: myEntity,
     opts: {
       queryType: RaycastQueryType.RQT_QUERY_ALL,
-      globalTarget: Vector3.Zero(),
+      target: Vector3.Zero(),
     },
   },
   (raycastResult) => {
@@ -154,7 +154,7 @@ Each object in the `hits` array includes:
 * `meshName`: _String_ with the internal name of the specific mesh in the 3D model that was hit. This is useful when a 3D model is composed of multiple meshes.
 * `position`: _Vector3_ for the position where the ray intersected with the hit entity (relative to the scene)
 * `length`: Length of the ray from its origin to the position where the hit against the entity occurred.
-* `normalHit`: _Quaternion_ for the angle of the normal of the hit in world space.
+* `normalHit`: _Vector3_ for the normal of the hit surface in world space.
 * `globalOrigin`: _Vector3_ for the position where the ray originates (relative to the scene)
 * `direction`: The global direction that the ray was pointing, as a `Vector3`.
 
@@ -198,16 +198,16 @@ raycastSystem.registerLocalDirectionRaycast(
 When you get a raycast result that hit an entity, you can use the `entityId` to interact with the entity and its components. An entity is [nothing more than a number](../architecture/entities-components.md#overview), so the `entityId` value itself can be interpreted as an `Entity` type.
 
 ```ts
-const hitEntity = result.entityId as Entity
-const transform = Transform.get(entity)
+const hitEntity = hit.entityId as Entity
+const transform = Transform.get(hitEntity)
 console.log(transform.position)
 ```
 
 ## Collision layers
 
-It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows to to list only specific collision layers, which can include the physics layer (that blocks player movement), the pointer layer (which is used for pointer events), and 8 custom layers that you can assign freely to whatever your needs are. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
+It's a good practice to only check for collisions against entities that are relevant, to make the scene more performant. The `collisionMask` field allows you to list only specific collision layers — the physics layer (scene walls and floors), the pointer layer (pointer events), the player layers (avatars), or 8 custom layers that you can assign freely. See [collision layers](../3d-essentials/colliders.md#collision-layers).
 
-By default, the `collisionMask` field is set to respond to both the layers `ColliderLayer.CL_POINTER` and `ColliderLayer.CL_PHYSICS`. You can change this value to list only one of those, or to include custom layers. Use the `|` separator to list multiple options.
+By default, the `collisionMask` field is set to `ColliderLayer.CL_PHYSICS`. You can change this value to list other layers, or combine multiple with the `|` separator.
 
 ```ts
 raycastSystem.registerLocalDirectionRaycast(
@@ -337,23 +337,69 @@ Please note that since the raycast is executed in a system, the result will only
 ```ts
 engine.addSystem((deltaTime) => {
 		const result = raycastSystem.registerRaycast(
-			entity,
-			localDirectionOptions({
+			myEntity,
+			raycastSystem.localDirectionOptions({
 				collisionMask: ColliderLayer.CL_CUSTOM1 | ColliderLayer.CL_CUSTOM3 | ColliderLayer.CL_POINTER,
 				originOffset: Vector3.create(0, 0.4, 0),
-				maxDistance: RAY_POWER,
-				queryType: raycastQueryType,
-				direction: Vector.forward()
+				maxDistance: 16,
+				queryType: RaycastQueryType.RQT_HIT_FIRST,
+				direction: Vector3.Forward(),
 				continuous: true // don't overuse the 'continuous' property as raycasting is expensive on performance
 			})
 		)
-		if (result) // do something
+		if (result) {
+			// do something
+		}
 	})
 ```
 
 ## Collide with the player
 
-You can't directly hit the player's avatar or those of other players with a ray, but what you can do as a workaround is position an invisible entity occupying the same space as a player using the [AvatarAttach component](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar), and check collisions with that cube.
+You can detect avatars directly with raycasts by including either of the avatar collision layers in the mask:
+
+* `ColliderLayer.CL_PLAYER`: matches any avatar — the local player AND any other player rendered in the scene.
+* `ColliderLayer.CL_MAIN_PLAYER`: matches only the local (main) player.
+
+Both layers can be combined or used independently. The default `collisionMask` for a raycast is `CL_PHYSICS`, which does NOT hit avatars — you must explicitly opt in.
+
+```ts
+// Hit only the local player (ignore other avatars)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_MAIN_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    if (raycastResult.hits.length > 0) {
+      console.log('Hit the local player')
+    }
+  }
+)
+
+// Hit any avatar (local + remote)
+raycastSystem.registerLocalDirectionRaycast(
+  {
+    entity: myEntity,
+    opts: {
+      direction: Vector3.Forward(),
+      collisionMask: ColliderLayer.CL_PLAYER,
+    },
+  },
+  (raycastResult) => {
+    // raycastResult.hits[i].entityId is 0 for remote-avatar hits (no scene-local entity id)
+    console.log(raycastResult.hits)
+  }
+)
+```
+
+When a raycast hits the local player, the `hit.entityId` is `engine.PlayerEntity`. Hits on remote avatars don't carry a scene-local entity id (the field is `0`) since the remote player isn't an entity in your scene's world — but the hit is still reported with its `position`, `length`, `normalHit`, and other geometric data.
+
+{% hint style="info" %}
+**💡 Tip**: To detect only **other** players (excluding the local player), use `CL_PLAYER` and filter `hit.entityId !== engine.PlayerEntity` in the callback.
+{% endhint %}
 
 ## Raycasts from the player
 
@@ -395,7 +441,6 @@ In this example, we detect when the player presses the E key, and then we trace 
 
 ```ts
 import { engine, Entity, InputAction, inputSystem, PointerEventType, RaycastQueryType, raycastSystem, TextShape, Transform } from '@dcl/sdk/ecs'
-import { EntityNames } from '../assets/scene/entity-names'
 import { PrimaryPointerInfo } from '@dcl/sdk/ecs'
 
 let cooldown = 1
@@ -423,7 +468,7 @@ const rayCastSystem = (t: number) => {
     }
 
     cooldown += t
-    if (cooldown > rayFrequency) return
+    if (cooldown < rayFrequency) return
     cooldown = 0
 
     const pointerInfo = PrimaryPointerInfo.getOrCreateMutable(engine.RootEntity)
@@ -469,15 +514,15 @@ A Raycast component describes the invisible ray that is used to query for inters
 Rays are defined using the following data:
 
 * `direction`: An object that contains a `$case` field to select the type of direction, and an additional field that will depend on this type, that determines this direction. The following are the accepted values for `$case`:
-  * `LOCAL_DIRECTION`: A direction relative to the forward-facing direction of the entity, affected also by the transformation of any parent entities. This is useful to detect obstacles in front of vehicles honoring their heading. The rotation is defined by the `localDirection` field, as a `Vector3` that describes a rotation.
-  * `GLOBAL_DIRECTION`: Ignores the entity's rotation, and faces a direction as if the entity's rotation was 0. This is useful to i.e. always point down. The rotation is defined by the `globalDirection` field, as a `Vector3` that describes a rotation.
-  * `GLOBAL_TARGET`: Traces a line between the entity's position and a target global position in the scene. It ignores the entity's rotation. Useful to create tower defense games, each tower's turret can point to a pin-pointed coordinate in space. The target is defined by the `globalTarget` field, as a `Vector3` that describes the global position.
-  * `TARGET_ENTITY`: Traces a line between the entity's position and the position of a second target entity. It ignores the rotation of either entities. The target is defined by the `targetEntity` field, holding a reference to the entity.
+  * `'localDirection'`: A direction relative to the forward-facing direction of the entity, affected also by the transformation of any parent entities. This is useful to detect obstacles in front of vehicles honoring their heading. The rotation is defined by the `localDirection` field, as a `Vector3` that describes a rotation.
+  * `'globalDirection'`: Ignores the entity's rotation, and faces a direction as if the entity's rotation was 0. This is useful to i.e. always point down. The rotation is defined by the `globalDirection` field, as a `Vector3` that describes a rotation.
+  * `'globalTarget'`: Traces a line between the entity's position and a target global position in the scene. It ignores the entity's rotation. Useful to create tower defense games, each tower's turret can point to a pin-pointed coordinate in space. The target is defined by the `globalTarget` field, as a `Vector3` that describes the global position.
+  * `'targetEntity'`: Traces a line between the entity's position and the position of a second target entity. It ignores the rotation of either entities. The target is defined by the `targetEntity` field, holding a reference to the entity.
 * `maxDistance`: _number_ to set the length with which this ray will be traced.
 * `queryType`: _RaycastQueryType_ enum value, to define if the ray will return all hit entities or just the first. The following options are available:
-  * `RaycastQueryType.RQT_QUERY_ALL`: only returns the first hit entity, starting from the origin point.
-  * `RaycastQueryType.RQT_HIT_FIRST`: returns all hit entities, from the origin through to the max distance of the ray.
-* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, all layers are detected.
+  * `RaycastQueryType.RQT_HIT_FIRST`: only returns the first hit entity, starting from the origin point.
+  * `RaycastQueryType.RQT_QUERY_ALL`: returns all hit entities, from the origin through to the max distance of the ray.
+* `collisionMask`: Only detect collisions with certain collision layers. Use this together with a custom collision layer, or to only detect the physics or pointer events layer. See [collision layers](../3d-essentials/colliders.md#collision-layers). By default, the value is `ColliderLayer.CL_POINTER | ColliderLayer.CL_PHYSICS`.
 * `originOffset`: Instead of starting the raycast from the entity's origin position, add an offset to start the query from a relative position. You can for example use a small offset to prevent the ray colliding against the entity's own 3D model.
 * `continuous`: If true, will keep running a raycast query on every frame. If false, the ray will only be used on the current frame. By default this value is false.
 
@@ -498,7 +543,7 @@ Raycast.createOrReplace(entity1, {
   direction: {
     $case: "globalDirection",
     globalDirection: Vector3.create(0, 0, 1)
-  }
+  },
   maxDistance: 16,
   queryType: RaycastQueryType.RQT_HIT_FIRST
 })
@@ -517,7 +562,7 @@ Raycast.createOrReplace(entity1, {
   direction: {
     $case: "localDirection",
     localDirection: Vector3.Forward()
-  }
+  },
   maxDistance: 16,
   queryType: RaycastQueryType.RQT_HIT_FIRST,
   originOffset: Vector3.create(0.5, 0, 0),
@@ -544,7 +589,7 @@ Raycast.createOrReplace(entity1, {
   direction: {
     $case: "targetEntity",
     targetEntity: entity2
-  }
+  },
   maxDistance: 16,
   queryType: RaycastQueryType.RQT_QUERY_ALL
 })
@@ -553,7 +598,7 @@ Raycast.createOrReplace(entity1, {
 ### Raycast results component
 
 {% hint style="warning" %}
-**📔 Note**: The easiest way to deal with raycast results is to use `raycastEventSystem`, and register a callback function as part of the same statement that creates the ray. The`RaycastResult` component is used internally by that that interface, but also exposed to enable more advanced custom logic.
+**📔 Note**: The easiest way to deal with raycast results is to use `raycastSystem`, and register a callback function as part of the same statement that creates the ray. The`RaycastResult` component is used internally by that that interface, but also exposed to enable more advanced custom logic.
 {% endhint %}
 
 After creating a Raycast component, the entity that this component is added to will have a `RaycastResult` component. This component includes information about any hits of the ray. Set up a system to check for this data.
@@ -570,7 +615,7 @@ Each object in the `hits` array includes:
 * `meshName`: _String_ with the internal name of the specific mesh in the 3D model that was hit. This is useful when a 3D model is composed of multiple meshes.
 * `position`: _Vector3_ for the position where the ray intersected with the hit entity (relative to the scene)
 * `length`: Length of the ray from its origin to the position where the hit against the entity occurred.
-* `normalHit`: _Quaternion_ for the angle of the normal of the hit in world space.
+* `normalHit`: _Vector3_ for the normal of the hit surface in world space.
 * `globalOrigin`: _Vector3_ for the position where the ray originates (relative to the scene)
 * `direction`: The global direction that the ray was pointing, as a `Vector3`.
 
@@ -589,7 +634,7 @@ Raycast.createOrReplace(rayEntity, {
   direction: {
     $case: "globalDirection",
     globalDirection: Vector3.create(0, 0, 1)
-  }
+  },
   maxDistance: 16,
   queryType: RaycastQueryType.RQT_QUERY_ALL
 })
@@ -615,3 +660,7 @@ engine.addSystem(() => {
 {% endhint %}
 
 In a scene where you use multiple kinds of rays for different purposes (like for path finding, line-of-sight checking, projectile tracing, etc), you might want to use different [collision layers](../3d-essentials/colliders.md#collision-layers), to avoid calculating irrelevant collisions.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of raycasting, see the [`77,-1-raycast-unit-tests`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests) test scene, which asserts raycast behavior through `@dcl/sdk/testing` unit tests across the `localDirection`, `globalDirection`, `globalTarget` and `targetEntity` direction forms, including rays cast from transformed parents. To see how the collider layers a ray can hit behave, see [`5,5-collider-layers`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/5,5-collider-layers).
+{% endhint %}

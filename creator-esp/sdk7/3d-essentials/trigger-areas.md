@@ -173,7 +173,12 @@ triggerAreaEventsSystem.onTriggerEnter(triggerEntity, function(result) {
 
 Usa el segundo argumento opcional del componente `TriggerArea` para establecer las capas que activarán el área de activación.
 
-Por defecto, el área de activación se activa solo por el jugador, a través de la capa `ColliderLayer.CL_PLAYER`. Puedes cambiar esto a cualquier otra capa de colisión pasándola como segundo argumento del componente `TriggerArea`.
+Por defecto, el área de activación se activa solo por la capa `ColliderLayer.CL_PLAYER`. Esta capa incluye a todos los jugadores — no solo al jugador local sino también a cualquier otro avatar que esté siendo renderizado en la escena. Si quieres detectar solo al jugador local y no a los demás, tienes dos opciones:
+
+* Usar la capa `ColliderLayer.CL_MAIN_PLAYER` en su lugar, que solo coincide con el jugador local.
+* O mantener `CL_PLAYER` y agregar `if (result.trigger?.entity !== engine.PlayerEntity) return` dentro del callback.
+
+También puedes cambiar a cualquier otra capa de colisión pasándola como segundo argumento del componente `TriggerArea`.
 
 ```ts
 import { engine, Transform, TriggerArea, MeshCollider, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
@@ -199,6 +204,8 @@ MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 
 Los valores permitidos son los mismos que los del componente `MeshCollider`. Consulta [Capas de colisión](colliders.md#Collision-layers) para más detalles.
 
+* `ColliderLayer.CL_PLAYER`: cualquier avatar (local + remoto)
+* `ColliderLayer.CL_MAIN_PLAYER`: solo el jugador local
 * `ColliderLayer.CL_PHYSICS`
 * `ColliderLayer.CL_POINTER`
 * `ColliderLayer.CL_CUSTOM1` hasta `CL_CUSTOM8`
@@ -206,6 +213,10 @@ Los valores permitidos son los mismos que los del componente `MeshCollider`. Con
 
 {% hint style="info" %}
 **💡 Consejo**: Las capas `CL_CUSTOM1` hasta `CL_CUSTOM8` no tienen ningún comportamiento especial por sí mismas, puedes usarlas para lo que mejor se adapte a tu escena.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Consejo**: Un trigger area con máscara exactamente igual a `CL_MAIN_PLAYER` está optimizado: el trigger descarta cualquier solapamiento con colliders que no sean del jugador local antes de llegar al handler, así que detectar solo al jugador local es esencialmente gratis.
 {% endhint %}
 
 También puedes configurar un área de activación para detectar múltiples capas a la vez.

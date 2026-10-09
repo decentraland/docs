@@ -25,7 +25,7 @@ This documentation will cover the file specifications, the basics of animation i
 | Animations per File    | 1                          |
 | Export Format          | .glb                       |
 | Sampling Rate          | 1 by default (2 or 3 if needed)        |
-| Max File Size          | 1 MB                       |
+| Max File Size          | 3 MB                       |
 | Max Animation Distance | 1 meter (front/back, left/right) |
 | Max Animation Height   | 4 meter                    |
 
@@ -45,7 +45,7 @@ If you're using Maya you can download this [Maya Rig](/images/emotes/DCL_Maya_Ri
 
 ## **Frame Rate**
 
-Before getting started, it’s important to check the frame rate. Decentraland’s animations must have a frame rate of 30 fps. The rig file provided probably has that set up, but since Blender’s default value is 24 fps, it is best to double check before starting (a wrong frame rate will affect the speed of the animation). That option can be found in Output Properties (the printer icon) under Format, as shown below:
+Before getting started, it’s important to check the frame rate. Decentraland’s animations must have a frame rate of 30 fps. The rig file ships set to 24 fps, so change it to 30 before you animate (a wrong frame rate will affect the speed of the animation). That option can be found in Output Properties (the printer icon) under Format, as shown below:
 
 ![Make sure the framerate is set to 30 fps before starting.](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/framerate.png)
 
@@ -92,6 +92,8 @@ In the rig file provided, there’s already an action, the _**Starting_Pose**_. 
 If you want to do a loop animation, you don’t have to start the animation from the Starting Pose. Feel free to use the pose that makes more sense in your animation!\*\*
 
 {% endhint %}
+
+For a loop to run smoothly, the first and last keyframes must be identical. For example, a 4 second loop at 30 fps needs the same pose on frame 1 and on frame 121. If they differ at all, players see a visible pop every time the clip repeats.
 
 **Animation Area** 
 
@@ -239,6 +241,8 @@ Since we only want the armature and the animation to be exported, turn off the m
 ![](../../images/emotes/mesh_visibility.gif)
 
 Turn off the mesh visibility before exporting!
+
+Your file must also contain only the one action you are exporting. The rig ships with a `Starting_Pose` action, so [delete it](#browsing-and-deleting-animations) along with any other leftover action, otherwise the exported `.glb` carries two clips instead of the [one animation per file](#number-of-animations) that Decentraland expects. Save an editable copy of your `.blend` before you strip anything out.
 
 To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 

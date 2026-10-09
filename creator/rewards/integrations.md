@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect a Rewards campaign to a Decentraland scene or an external server to
+  grant wearables and emotes automatically.
+---
+
 # Integrations
 
 After creating and configuring a campaign and ensuring it has sufficient stock to provide rewards, the next step is to connect the campaign to a rewards trigger. This trigger can be a Scene, a Quest, or an external server. This section explains how different integrations with Rewards can be done.

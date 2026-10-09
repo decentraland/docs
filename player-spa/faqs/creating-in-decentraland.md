@@ -54,7 +54,7 @@ Aprende más sobre crear en Decentraland con la Documentación para Creadores.
 
 ¡Sí, por supuesto! Los creadores de Decentraland pueden monetizar sus habilidades de muchas maneras:
 
-* Los creadores de Wearables y Emotes ganan el 97.5% de las ganancias en todas las ventas primarias y 2.5% de regalías en cualquier venta secundaria después de publicar sus creaciones en el Marketplace pagando una tarifa de publicación de $100 USD
+* Los creadores de Wearables y Emotes ganan el 97.5% de las ganancias en todas las ventas primarias y 2.5% de regalías en cualquier venta secundaria después de publicar sus creaciones en el Marketplace. La tarifa de publicación es de 25 USD por ítem. Por tiempo limitado, Decentraland Foundation cubre 20 USD, así que los creadores solo pagan 5 USD por ítem.
 * Los creadores de escenas son libres de monetizar sus experiencias en el mundo y conservar el 100% de los ingresos que generen
 * Los creadores pueden ofrecer sus servicios de contratación en [**Decentraland Studios**](https://studios.decentraland.org/).
 

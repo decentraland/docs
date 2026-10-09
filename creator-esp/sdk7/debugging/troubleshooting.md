@@ -8,6 +8,26 @@ metaLinks:
 
 # Troubleshooting
 
+## Depurar con un asistente de IA
+
+Antes de revisar los problemas listados abajo, considera pasarle el problema a un asistente de IA, como el chat de Cursor, GitHub Copilot o Claude Code. Pega el mensaje de error de la consola, o describe qué no se está comportando como esperabas, y generalmente puede encontrar el problema en el código de tu scene y corregirlo por ti.
+
+Para obtener buenos resultados, asegúrate de que la IA tenga las skills del SDK de Decentraland instaladas. Las skills le enseñan los patrones y las restricciones del SDK, para que no adivine basándose en información genérica o desactualizada. Instálalas ejecutando este comando en tu proyecto de scene:
+
+```bash
+npx skills add decentraland/sdk-skills
+```
+
+También puedes dejar que la IA depure la scene *mientras se está ejecutando*. El cliente de escritorio de Decentraland puede exponer un servidor MCP que permite a un agente tomar sus propias capturas de pantalla, leer la salida de consola de la scene, mover al jugador y hacer clic en objetos — así, en lugar de que tú reproduzcas el bug y pegues el error, el agente lo reproduce por sí mismo, ve qué sucede, e itera hasta corregirlo. Ejecuta la scene con `npm run start -- --mcp` y conecta tu agente.
+
+Consulta [Let the AI see your scene in-world](../../../creator/sdk7/getting-started/vibe-coding.md#let-the-ai-see-your-scene-in-world) (en inglés) para la configuración completa, e instala la skill `unity-explorer-mcp` para que el agente conozca el flujo de trabajo:
+
+```bash
+npx skills add decentraland/sdk-skills --skill unity-explorer-mcp
+```
+
+Consulta [Vibe Coding con IA](../getting-started/vibe-coding.md) para más detalles sobre cómo configurar y darle instrucciones a los asistentes de IA.
+
 ## Problemas al ejecutar preview
 
 #### Problema: No puedo ejecutar ningún preview de scene, el mensaje de error menciona **Permissions denied** o **EACCES**

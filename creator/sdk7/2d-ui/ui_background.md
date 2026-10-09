@@ -22,7 +22,7 @@ The following fields can be configured, all of them are optional:
 
     * `src`: The path to the image file to use as a texture. (string)
     * `filterMode`: _(optional)_ Determines how pixels in the texture are stretched or compressed when rendered. . See [Texture Scaling](../3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
-    * `wrapMode`: _(optional)_ Determines how a texture is tiled onto an entity. This takes a value from the `TextureWrapMode` enum. See \[Texture Wrapping]\(([See documentation](../)). (WrapMode = 'repeat' | 'clamp' | 'mirror' | 'mirror-once')
+    * `wrapMode`: _(optional)_ Determines how a texture is tiled onto an entity. This takes a value from the `TextureWrapMode` enum. See \[Texture Wrapping]\(([See documentation](../)). (WrapMode = 'repeat' | 'clamp' | 'mirror')
 
     > Tip: You can combine both `texture` and `color` properties on a single `uiBackground` component to produce a tinted texture.
 * `textureMode`: Selects how you want the texture to adapt to the size of the entity that it's applied to. (TextureMode = 'nine-slices' | 'center' | 'stretch')enum, which supports the following vales:
@@ -80,7 +80,7 @@ export const uiMenu = () => (
       height: 400
     }}
     uiBackground={{
-		textureMode: 'center'
+		textureMode: 'center',
 		texture: {
 			src: "images/brick-wall-texture.png",
 			wrapMode: 'repeat'
@@ -136,7 +136,7 @@ export const uiMenu = () => (
 
 ## Opacity
 
-Use the `opacity` property in the `Transform` of a `UiEntity` to add transparency to the entity and all of its children. The opacity property is a value from 0 to 1, where 0 is fully transparent and 1 fully opaque.
+Use the `opacity` property in the `uiTransform` of a `UiEntity` to add transparency to the entity and all of its children. The opacity property is a value from 0 to 1, where 0 is fully transparent and 1 fully opaque.
 
 ```ts
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
@@ -212,7 +212,7 @@ Here's how each segment is affected, using the above image as reference.
 * Segments 2 and 8 are only stetched horizontally
 * Segments 4 and 6 are only stegched vertically.
 
-To use nine-slice stretching on an entity, set the `textureMode` to `BackgroundTextureMode.NINE_SLICES`. You can optionally also set a width for the margin on each side in `textureSlices`.
+To use nine-slice stretching on an entity, set the `textureMode` to `'nine-slices'`. You can optionally also set a width for the margin on each side in `textureSlices`.
 
 ```ts
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'

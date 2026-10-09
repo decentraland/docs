@@ -23,8 +23,8 @@ function main() {
 	// Write the name as a string
 	const door2 = engine.getEntityOrNullByName('Door 2')
 
-	// Ensure both doors exsist in the scene
-	(if door1 && door2){
+	// Ensure both doors exist in the scene
+	if (door1 && door2) {
 		// 
 	}
 
@@ -46,7 +46,7 @@ function main() {
 
 	const door1 = engine.getEntityByName<EntityNames>(EntityNames.Door_1)
 
-	// Ne need to check for null
+	// No need to check for null
 	console.log(Transform.get(door1).position.x)
 
 }
@@ -133,13 +133,14 @@ Once you have a reference to a particular item, you can fetch all of the items t
 
 ```ts
 import { engine, Entity, Transform, Name, getEntitiesWithParent } from '@dcl/sdk/ecs'
+import { EntityNames } from '../assets/scene/entity-names'
 
 function main() {
 	// get parent entity
 	const parent = engine.getEntityByName<EntityNames>(EntityNames.ParentEntity)
 
 	// fetch full list of children
-	const children = getEntitiesWithParent(engine, myEntity)
+	const children = getEntitiesWithParent(engine, parent)
 	for (const child of children) {
    		// process each child entity
 	}

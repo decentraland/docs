@@ -8,7 +8,7 @@ Click the **Pencil icon** on the top-right of the screen. This opens a series of
 
 ![](../../images/editor/pencil-icon.png)
 
-Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
+Here you can configure multiple properties including title and thumbnail, scene size, scene categories, and feature toggles.
 
 See [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
@@ -20,29 +20,45 @@ The **Details** tab lets you configure several fields about your scene. These fi
 
 The following fields are available:
 
-* **Name**
-* **Description**
-*   **Thumbnail**
-
-    {% hint style="info" %\} 
-    **💡 Tip**: If no thumbnail is provided, it uses the automatic capture you see on the scene's card. We recommend uploading a more attractive image 
-    {% endhint %\}
-* **Age rating**
-* **Categories**
-* **Author**
-* **Email**
-
-The thumbnail should be a .png image of a recommended size of 228x160 pixels. The minimum supported size is 196x143 pixels. The image may be stretched if the width-to-height proportions don’t match 228x160.
+- **Name**
+- **Description**
+- **Thumbnail**
+- **Categories**
+- **Creator name**
+- **Creator contact email** (optional)
+- **Creator wallet address** (optional)
 
 See [scene metadata](../../sdk7/projects/scene-metadata.md) for more details on these fields.
 
+{% hint style="info" %}
+**📔 Note**: If you publish your scene to a [World](../../sdk7/publishing/publishing-options.md#decentraland-worlds), the World has its own name, description, and thumbnail, separate from the scene's. If the World contains a single scene, the World's metadata is updated to match the scene's details on every publish, so this panel is all you need to edit. If the World contains multiple scenes, the World's metadata can only be edited in the **Manage** tab of the Creator Hub. See [World metadata vs scene metadata](../publish/publish-scene.md#world-metadata-vs-scene-metadata).
+{% endhint %}
+
+{% hint style="warning" %}
+**📔 Note**: The scene's **Age Rating** is not edited on this panel. You can set the `rating` field directly in the `scene.json` file, or, for scenes published to a World, change the **Content Rating** in the Creator Hub's World Settings after publishing. Decentraland is an 18+ platform, so the rating to set is `A` for Adults. See [Age Rating](../../sdk7/projects/scene-metadata.md#age-rating).
+{% endhint %}
+
+### Scene thumbnail
+
+The thumbnail must be a .png or .jpg image with a **16:9** aspect ratio. 1920x1080 pixels is the size to aim for. Other sizes work as long as they keep the same 16:9 proportions.
+
+An image that isn't 16:9 is refused: importing one shows an error, and choosing an off-ratio image that's already in your project shows **Thumbnail not supported** and keeps the thumbnail you had.
+
+Some parts of the platform display a reduced square version of the thumbnail, cropped to the central square. That cuts about 22% off each side. Keep anything essential, like text or logos, inside that safe area so it isn't lost.
+
+The **Details** tab shows your thumbnail full width, with those two side bands shaded so you can see exactly what a square view drops, and the image's real pixel size underneath.
+
+![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
+
+{% hint style="info" %}
+**💡 Tip**: If you don't provide a thumbnail, the scene uses the automatic capture you see on the scene's card. That capture is cropped from the center to 16:9 and never enlarged, so it can end up smaller than 1920 wide. Uploading your own image is almost always better.
+{% endhint %}
 
 ### Tipping
 
 You can receive tips from players who visit your scene. To enable tipping, got to the **Details** tab on the scene settings and provide an Ethereum address under **Creator wallet address**.
 
 ![](../../.gitbook/assets/creator-wallet-address.png)
-
 
 When a player visits your scene, they will see a piggy bank icon on the top-left of the screen. Clicking on it opens a modal where they can send you a tip. This menu can also be accessed by opening your scene's info on the map.
 
@@ -52,12 +68,11 @@ The tip modal allows the player to select the amount of MANA they want to send. 
 
 ![](../../.gitbook/assets/tipping-modal.png)
 
-
 You will receive a notification on the Decentraland notifications tab whenever a player sends you a tip.
 
 ## Layout
 
-You can edit the size of your scene by clicking the _pencil icon_ and then changing the number or rows and columns.
+You can edit the size of your scene by clicking the _pencil icon_ and then changing the number of rows and columns.
 
 Scenes in Decentraland occupy one or several adjacent LAND parcels. Each LAND parcel measures 16x16 meters.
 
@@ -73,7 +88,7 @@ To build something to deploy to LAND parcels you own, make sure the shape of the
 <img src="../../images/editor/non-rectangular.png" alt="" data-size="original">
 {% endhint %}
 
-If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../worlds/about.md). In that case, you'll have an unlimited number of parcels, but you will have a size limit in MB.
+If you own a Decentraland NAME, you can also deploy your scene to a [Decentraland World](../../sdk7/publishing/publishing-options.md#decentraland-worlds). In that case, you can use any layout of up to 300x300 parcels without needing to own them, but you will have a size limit in MB.
 
 See [Kinds of project](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
@@ -95,32 +110,9 @@ You can disable certain functionalities on your scene if you chose, in case they
 
 ![](../../images/editor/scene-restrictions.png)
 
-* **Silence voice chat**: Prevent players on your scene from using voice chat.
-* **Disable portable experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
-
-## Spawn points
-
-The **Spawn Area** Entities in the scene define where players spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting.
-
-![](../../../.gitbook/assets/default-spawn-point-component.png)
-
-Your scene might have objects that can block players from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for players if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
-
-The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in a Transform component.
-
-{% hint style="warning" %}
-📔 Note: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
-{% endhint %}
-
-Uncheck the **Don't Randomize** box to randomly offset the spawning players around the spawn point, with a maximum value in meters. This prevents all players from appearing overlapping each other when they spawn, which looks especially bad in crowded scenes. The Max Offset value is the maximum possible distance from the original spawn point, in both the X or Z axis.
-
-Set the Camera Target to set the direction in which players start looking when they jump into your scene. This allows you to have better control over their first impression.
-
-Click **+ Add Spawn Area** to include as many spawn points as you want. Players will randomly appear in one of those.
-
-{% hint style="info" %}
-**📔 Note**: For more information about Spawn Areas, go to the [Spawn Area](../build/spawn-areas.md) docs.
-{% endhint %}
+- **Silence Voice Chat**: Prevent players on your scene from using voice chat.
+- **Disable Nearby Voice Chat**: Prevent players on your scene from using the nearby (proximity-based) voice chat.
+- **Disable Smart Wearables & Portable Experiences**: Prevent players from using [Smart Wearables](../../sdk7/projects/smart-wearables.md) or [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
 ## Skybox Control
 

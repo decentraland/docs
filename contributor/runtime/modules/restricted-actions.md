@@ -49,13 +49,21 @@ function movePlayerTo(Request): Promise<Response>;
 
 **`teleportTo`**
 
-Reposition the player to an absolute world location given a by [vectors](restricted-actions.md#Vector3).
+Reposition the player to a parcel, optionally in another realm.
 
 Instead of requiring a pre-approved permission, each call to `teleportTo` must be approved by the player.
 
 ```ts
 interface Request {
-  worldPosition: Vector3;
+  // The parcel to land on. Omitted: the realm's default spawn
+  // (only meaningful together with `realm`).
+  worldCoordinates?: Vector2;
+
+  // The realm the parcel belongs to: a world name (`foo.dcl.eth`) or a realm URL.
+  // When set, the client changes realm (a full reconnect, even to the realm the
+  // player is already in) and then lands on the parcel there.
+  // Omitted: the parcel is in the player's current realm.
+  realm?: string;
 }
 
 interface Response {}
@@ -116,9 +124,11 @@ interface Response {
 function openNftDialog(Request): Promise<Response>;
 ```
 
-**`changeRealm`**
+**`changeRealm`** (deprecated)
 
 Switch the World Explorer to another content server, using its base URL.
+
+Deprecated in favour of [`teleportTo`](restricted-actions.md#teleportTo) with a `realm` (and no `worldCoordinates` for the realm's default spawn). `changeRealm` resolves once the change is accepted rather than once the new realm is live, so a `teleportTo` issued straight after it runs against the previous realm.
 
 ```ts
 interface Request {

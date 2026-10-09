@@ -14,7 +14,7 @@ Running code synchronously ensures consistency, as you can always be sure you'll
 
 On the other hand, your scene needs to be updated many times per second, building the next frame. If a part of your code takes too long to respond, then the whole main thread is stuck and this results in lagging frame rates.
 
-That's why, in some cases you want some commands to run asynchronously. This means that you can start off a task in a new thread, and meanwhile the main thread can keep running over the the next lines of code.
+That's why, in some cases you want some commands to run asynchronously. This means that you can start off a task, and meanwhile the scene can keep running over the the next lines of code. The scene still runs everything on a single thread, but while the asynchronous task waits for a response, the rest of the code isn't blocked.
 
 This is especially useful for tasks that rely on external services that could take time to respond, as you don't want that idle time waiting for that response to block other tasks.
 
@@ -29,7 +29,7 @@ For example:
 
 ## Run an async function
 
-Mark any function as `async` so that it runs on a separate thread from the scene's main thread every time that it's called.
+Mark any function as `async` so that it runs asynchronously, without blocking the rest of the scene's code while it waits.
 
 ```ts
 // declare async function
@@ -45,7 +45,7 @@ myAsyncTask()
 
 ## The executeTask function
 
-The `executeTask()` function executes a lambda function asynchronously, in a separate thread from the scene's main thread. `executeTask()` allows us to declare and execute the function all in one same statement.
+The `executeTask()` function executes a lambda function asynchronously. `executeTask()` allows us to declare and execute the function all in one same statement.
 
 ```ts
 executeTask(async () => {
@@ -67,7 +67,7 @@ myAsyncTask().then((data) => {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: It's generally better to use the `executeTask` approach rather than the `then` function. In this example, the scene won't be considered fully loaded by the explorer till the `myAsyncTask()` function is completed, which may affect load times. Also, if relying too much on the `then` function at multiple nested levels, you can end up with what's known as "callback hell", where the code can become very hard to read and maintain.
+**📔 Note**: It's generally better to use the `executeTask` approach rather than the `then` function. If you rely too much on the `then` function at multiple nested levels, you can end up with what's known as "callback hell", where the code can become very hard to read and maintain.
 {% endhint %}
 
 ## PointerEvents and RayCast functions
@@ -132,7 +132,7 @@ timers.setTimeout(() => {
 }, 1000)
 ```
 
-The `clearTimeout` can be used to cancel the execution of a `setTimeout` function that is still waiting to be executed. When creating the `setTimeout` function, grab a reference to the function, that you can then pass to `clearTimeout`. In this case, the variable `intervalId` is obtained when doing the `setTimeout`, and then passed to `clearTimeout` to cancel it.
+The `clearTimeout` can be used to cancel the execution of a `setTimeout` function that is still waiting to be executed. `setTimeout` returns a timer id (a number), that you can then pass to `clearTimeout`. In this case, the variable `timeoutId` is obtained when doing the `setTimeout`, and then passed to `clearTimeout` to cancel it.
 
 ```ts
 import { timers } from '@dcl/sdk/ecs'
@@ -141,5 +141,5 @@ const timeoutId = timers.setTimeout(() => {
     console.log('Wait 1 second until executing this function')
 }, 1000)
 
-timers.clearTimeout(intervalId)
-  ```
+timers.clearTimeout(timeoutId)
+```

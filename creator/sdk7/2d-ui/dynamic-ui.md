@@ -18,7 +18,7 @@ _**ui.tsx file:**_
 
 ```tsx
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
-import { playerCurrentPosition } from '/index.ts'
+import { playerCurrentPosition } from './index'
 import { Color4 } from '@dcl/sdk/math'
 
 // draw UI
@@ -40,6 +40,7 @@ _**index.ts file:**_
 
 ```ts
 import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
+import { engine, Transform } from '@dcl/sdk/ecs'
 import { uiMenu } from './ui'
 
 export function main() {
@@ -47,7 +48,7 @@ export function main() {
 }
 
 // define variable
-let playerCurrentPosition: string = ""
+export let playerCurrentPosition: string = ""
 
 // system to update variable
 engine.addSystem(() => {
@@ -58,11 +59,11 @@ engine.addSystem(() => {
 })
 ```
 
-In the example above, you could also include the variable as part of the string, by signaling the variable with a `$`.
+In the example above, you could also include the variable as part of the string, by wrapping the variable in `${ }`.
 
 ```ts
 uiText={{
-	value: `Player: $playerCurrentPosition`,
+	value: `Player: ${playerCurrentPosition}`,
 	fontSize: 40
 }}
 ```
@@ -80,7 +81,7 @@ _**ui.tsx file:**_
 ```tsx
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
 import { Color4 } from '@dcl/sdk/math'
-import { engine } from "@dcl/sdk/ecs";
+import { engine, Transform } from "@dcl/sdk/ecs";
 
 export const uiMenu = () => (
   <UiEntity
@@ -97,7 +98,7 @@ export const uiMenu = () => (
 
 function getPlayerPosition(){
   const playerPosition = Transform.getOrNull(engine.PlayerEntity)
-  if (!playerPosition) return
+  if (!playerPosition) return 'loading...'
   const { x, y, z } = playerPosition.position
   return `{x: ${x.toFixed(2)}, y: ${y.toFixed(2)}, z: ${z.toFixed(2)} }`
 }
@@ -137,7 +138,7 @@ function toggleMenuVisibility() {
 export const uiMenu = () => (
    // parent
    <UiEntity>
-      // Menu
+      {/* Menu */}
       <UiEntity
        uiTransform={{
           width: '80%',
@@ -152,7 +153,7 @@ export const uiMenu = () => (
         }}
         uiBackground={{ color: Color4.Green() }}
       />
-      // button
+      {/* button */}
       <UiEntity
         uiTransform={{
           width: 100,
@@ -226,7 +227,7 @@ function TextComponent(props: { value: string; key: string | number }) {
     key={props.key}
     uiTransform={{ width: 80, height: 20 }}
     uiText={{ value: props.value, textAlign: 'middle-center', fontSize: 12 }}
-    uiBackground={{ color: { r: 255, g: 45, b: 85, a: 1 } }}
+    uiBackground={{ color: { r: 1, g: 0.176, b: 0.333, a: 1 } }}
   />
 }
 ```

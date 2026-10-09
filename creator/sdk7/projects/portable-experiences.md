@@ -22,7 +22,7 @@ Smart Wearables are a kind of portable experience that is associated to a wearab
 
 1. Open a command line in a new folder and run
 
-`npx sdk-commands init --project px-template`
+`npx @dcl/sdk-commands init --project px-template`
 
 ## Preview
 
@@ -69,16 +69,14 @@ Portable expereinces need to be activated by a scene, either in Genesis City or 
 To spawn a portable experience from your scene, use the `spawn()` function. To terminate a portable experience, use `kill()`. In both cases, you just need yo know the DCL name where the Portable experience was deployed.
 
 ```ts
-import {spawn} from "~system/PortableExperiences"
+import {spawn, kill} from "~system/PortableExperiences"
 
 // spawn
 executeTask(async () => {
   const { pid } = await spawn({ ens: 'boedo.dcl.eth'})
-})
 
-// kill
-executeTask(async () => {
-  await kill({'boedo.dcl.eth'})
+  // kill, passing the pid returned by spawn
+  await kill({ pid })
 })
 ```
 
@@ -125,7 +123,7 @@ See [Required permissions](scene-metadata.md#required-permissions) for more deta
 
 ## Limitations
 
-Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the portable experience's files.
+Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/avatars/avatar-animations.md#custom-animations) uploaded as part of the portable experience's files.
 
 ## Tips
 

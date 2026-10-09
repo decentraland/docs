@@ -15,7 +15,7 @@ Start with a fresh, empty SDK7 project. The AI will move your legacy code and as
 **Option A — Creator Hub**
 
 1. Open the Creator Hub.
-2. Select the **Scenes** tab and click **Create Scene**.
+2. Select the **Scenes** tab and click **New Scene**.
 3. Pick the **Empty Scene** template.
 
 **Option B — Command line**
@@ -45,8 +45,10 @@ The AI knows the command and will install them for you.
 **Option B — Install from the command line**
 
 ```bash
-npx skills add decentraland/sdk-skills
+npx skills add decentraland/sdk-skills --all
 ```
+
+The `--all` flag installs all of the available skills. If you leave it out, an interactive picker opens for you to choose which skills to install.
 
 For more details on what skills are available and how they work, see [Vibe Coding with AI](../getting-started/vibe-coding.md#install-skills-for-any-ai-agent).
 
@@ -70,7 +72,7 @@ The skills include the full migration playbook, so the AI will:
 
 Once the migration pass finishes, preview the scene and play through it.
 
-- In the Creator Hub, click **Preview**.
+- In the Creator Hub, click **Play**.
 - From the command line, run `npm run start`.
 
 As you test, look for:

@@ -13,22 +13,39 @@ Download the Creator Hub [HERE](https://decentraland.org/download/creator-hub).
 
 The Creator Hub application checks for updates every time you open it, and self-updates if there's a new version available.
 
-You can also check for updates manually by clicking on the **Check for updates** button in the **Settings** menu. For this,
+You can also check for updates manually. For this,
 
-1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
-2. Click **Check for updates**
+1. Click the Creator Hub logo in the top-left corner of the screen to open the main menu.
+2. Click **Check for Updates**.
+
+![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report Bug, and Help & Support.](../../images/editor/main-menu.png)
+
+The main menu is also where you find the app **Settings**, and links to report a bug or get support.
 
 ## Editing code
 
 If you also plan on reading and editing code in your scene, you'll also need to install either:
 
 * <img src="../../images/editor/vscode.png" alt="VS Code" data-size="line"> [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* <img src="../../images/editor/cursor-icon.png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+* <img src="../../images/editor/cursor-icon.png" alt="Cursor" data-size="line"> [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 You may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
-1. Open the wheel icon in the top-right of the screen <img src="../../images/editor/settings-icon.png" alt="Settings" data-size="line">
-2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Chose from your device** to find it.
+1. Click the Creator Hub logo in the top-left corner of the screen and select **Settings**.
+2. Open the **EDITOR** tab.
+3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
+
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code, the Play Options checkboxes, and the App Warnings checkbox.](../../images/editor/settings-editor.png)
+
+### AI skills
+
+If you plan to use an AI agent to help you write code, we recommend installing the Decentraland SDK skills. These are ready-made instruction sets that teach your AI agent how to work with the Decentraland SDK, so it makes fewer mistakes and gives better results from the very first prompt. To install all of them, run the following command in your scene project's folder:
+
+```bash
+npx skills add decentraland/sdk-skills --all
+```
+
+See [Vibe coding](../../sdk7/getting-started/vibe-coding.md) for more details on installing specific skills and how to use them.
 
 ## Troubleshooting
 

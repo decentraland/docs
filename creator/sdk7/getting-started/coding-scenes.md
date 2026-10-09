@@ -54,7 +54,7 @@ When a scene is built, the Typescript code you wrote is compiled into minified J
 
 ### Other languages
 
-You can use another tool or language instead of TypeScript and compile it into JavaScript, as long as your compiled scripts are contained within a single JavaScript file named _game.js_. All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+You can use another tool or language instead of TypeScript and compile it into JavaScript, as long as your compiled scripts are contained within a single JavaScript file matching the path set in the `main` field of your scene's `scene.json` file (by default _bin/index.js_). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
 ## Scenes
 
@@ -83,7 +83,9 @@ export function main() {
 	})
 
 	// Give the entity a visible shape via a GltfContainer component
-	GltfContainer.create(door)
+	GltfContainer.create(door, {
+		src: 'assets/models/door.glb',
+	})
 }
 ```
 
@@ -188,7 +190,7 @@ function boxHeightSystem(dt: number) {
 }
 
 // Add the system to the engine
-engine.addSystem(rotationSystem)
+engine.addSystem(boxHeightSystem)
 ```
 
 ## Scene lifecycle
@@ -333,7 +335,7 @@ export function mySystem(dt: number) {
 
 // on index.ts
 
-import { addEntities, mySystem } from '/extraContent'
+import { addEntities, mySystem } from './extraContent'
 
 export function main() {
 	addEntities()

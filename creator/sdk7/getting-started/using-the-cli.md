@@ -1,8 +1,21 @@
 ---
-description: How to use the Decentraland CLI to run, deploy, etc
+description: >-
+  Use the Decentraland CLI to run and deploy scenes. The Creator Hub is the
+  recommended tool for most creators; the CLI suits advanced and automated
+  workflows.
 ---
 
 # Using the CLI
+
+{% hint style="info" %}
+**💡 Tip**: If you're working with an AI coding assistant (like Claude Code, Cursor, or Copilot), install the official Decentraland SDK Skills before it writes any code, so it knows verified SDK7 patterns:
+
+```bash
+npx skills add decentraland/sdk-skills
+```
+
+See [Vibe Coding with AI](vibe-coding.md) for the full AI-assisted workflow.
+{% endhint %}
 
 To build scenes for Decentraland you can either use:
 
@@ -25,13 +38,19 @@ Although the Scene Editor in the Creator Hub is easier to use, the CLI allows yo
 
 To deal with the scene via the command line, please install the following dependencies before you run CLI commands with the scene:
 
-* [Node.js](https://nodejs.org) (version 8 or later)
+* [Node.js](https://nodejs.org) (version 20 or later)
 
 ## Initiate a new project
 
-Run `npx @dcl/sdk-commands init` on an empty folder to populate it with the default files of a Decentraland project.
+Run `npx @dcl/sdk-commands init` on an empty folder to populate it with the default files of a Decentraland [scene](../projects/scene-metadata.md) project. You can also create a new scene with the **New Scene** button in the Creator Hub, which produces the same project structure.
 
-The CLI then prompts you to chose what kind of project, if you want to build a [scene](../projects/scene-metadata.md), a [workspace](../projects/workspaces.md) or a [smart wearable](../projects/smart-wearables.md). If selecting a scene, the CLI prompts you about what base project to use as a starting point.
+To start from a different kind of project, use the `--project` flag. For example, to create a [smart wearable](../projects/smart-wearables.md) project:
+
+```bash
+npx @dcl/sdk-commands init --project smart-wearable
+```
+
+The available options for `--project` are `scene-template` (the default), `px-template`, `smart-wearable`, and `library`.
 
 ## Update the SDK version of a scene
 
@@ -45,16 +64,22 @@ You can confirm that it worked by checking the `package.json` file for the scene
 
 ## Run a preview
 
-Run `npm run start` on the root level of a scene, workspace, or smart wearable project to open a preview in a browser window.
+Run `npm run start` on the root level of a scene, workspace, or smart wearable project to open a preview in the Decentraland Desktop client.
 
 ```bash
 npm run start
 ```
 
-To preview your scene on the [Decentraland mobile app](../building-for-mobile/) instead, run `npm run start -- --mobile` (alias `-- -m`). The CLI prints a QR code that opens the scene on a phone connected to the same Wi-Fi network as your computer. See [Preview on mobile](../building-for-mobile/preview-on-mobile.md) for the full guide.
+To preview your scene on the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md) instead, run `npm run start -- --mobile` (alias `-- -m`). The CLI prints a QR code that opens the scene on a phone connected to the same Wi-Fi network as your computer. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for the full guide.
 
 ```bash
 npm run start -- --mobile
+```
+
+To make the preview run smoother and render 3D models just as they'll look once published, add the `--local-ab` flag. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+
+```bash
+npm run start -- --local-ab
 ```
 
 See [preview scenes](preview-scene.md) for details and special options when running a preview.

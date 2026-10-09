@@ -133,6 +133,32 @@ _Cuando exportamos estos modelos, todavía tendremos el mismo número de draw ca
 
 _Para mantener las cosas organizadas puedes simplemente hacer instance de collections en tu escena, de esta manera te permite controlar todas las instancias desde una sola carpeta y fuente._
 
+{% hint style="info" %}
+**💡 Tip**: La misma lógica aplica del lado del SDK. Catorce entidades que apuntan su `GltfContainer` al mismo archivo _.glb_ se comportan como instancias: el archivo se descarga una vez, se convierte una vez, y sus meshes y texturas se mantienen en memoria una sola vez, sin importar cuántas entidades lo usen. Dividir el mismo contenido en catorce archivos _.glb_ casi idénticos equivale a duplicar, y cuesta catorce descargas y catorce copias en memoria.
+{% endhint %}
+
+#### Merge Objects
+
+| Menu:   | Object ‣ Join |
+| ------- | ------------- |
+| Hotkey: | Ctrl-J        |
+
+Esto une los objetos seleccionados en un solo objeto con un solo mesh. Funciona en Object Mode, une todo dentro del último objeto seleccionado (el _active_), y requiere que todos los objetos seleccionados sean del mismo tipo. Los materiales se conservan y se combinan, así que nuestros catorce postes de luz dejan de ser catorce objetos renderizables y pasan a ser uno, y el motor los dibuja con 2 draw calls en lugar de 28 — uno por material, una sola vez.
+
+Esta es la única de las tres opciones que realmente reduce los draw calls, y vale la pena aclarar por qué: el motor de Decentraland construye la escena en tiempo de ejecución a partir de contenido transmitido, así que no puede agrupar ni batchear objetos repetidos por ti, como sí puede hacerlo un motor con contenido preprocesado de antemano. Si necesitas menos draw calls, el merge tiene que hacerse en Blender.
+
+Esa reducción no es gratis. Hacer merge implica resignar varias cosas a la vez:
+
+* **El uso de disco vuelve a subir.** El mesh unido almacena la geometría de los catorce postes, así que pierdes el ahorro que te daba el instancing.
+* **El frustum culling pasa a ser todo o nada.** Un objeto unido se dibuja completo cada vez que cualquier parte de él está en pantalla. Catorce postes distribuidos a lo largo de una calle casi siempre van a tener alguno visible, así que terminas dibujando los catorce todo el tiempo — lo que fácilmente puede costar más que los draw calls que ahorraste.
+* **Las partes dejan de ser direccionables individualmente.** Ya no puedes mover, animar, hacer clic ni ocultar un solo poste, porque queda un único objeto.
+
+Usa el merge de forma acotada: para muchos props pequeños que siempre se ven juntos en un mismo lugar, con los que nunca se interactúa, y solo después de confirmar que la cantidad de objetos es realmente lo que está afectando el rendimiento. Para todo lo demás, el instancing es el mejor punto de partida.
+
+{% hint style="warning" %}
+**📔 Nota**: Exportar catorce objetos separados dentro de un mismo archivo _.glb_ **no** es hacer merge. El motor sigue viendo catorce objetos y sigue emitiendo 28 draw calls. Solo unir los meshes cambia ese número.
+{% endhint %}
+
 ### Nomenclatura de Mesh
 
 Usa nombres significativos para tus meshes. El nombre debe dar contexto de dónde se usa el asset o a qué parte del objeto se relaciona.

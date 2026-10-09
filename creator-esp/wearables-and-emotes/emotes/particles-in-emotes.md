@@ -18,13 +18,13 @@ Pero como la animación de objetos y los sistemas de partículas no están sopor
 
 El proceso de agregar partículas a tu emote involucrará dos pasos, puedes seguir las directrices junto con estos videos:
 
-* **Convirtiendo partículas a armature**
+- **Convirtiendo partículas a armature**
 
-[![Video Preview](https://i.vimeocdn.com/video/1803452887-82f74713a8f16df8c3618654f539cfddf78cb1f9dfac951d99d340004ac26ad6-d_590x332)](https://vimeo.com/916038156)
+[![Video Preview](https://i.vimeocdn.com/video/1803452887-82f74713a8f16df8c3618654f539cfddf78cb1f9dfac951d99d340004ac26ad6-d_590x332)](https://vz-8a0704eb-552.b-cdn.net/bb51a195-4a80-48d3-badd-0bfe6cc9e3b3/playlist.m3u8)
 
-* **Fusionando partículas armature a prop armature**
+- **Fusionando partículas armature a prop armature**
 
-[![Video Preview](https://i.vimeocdn.com/video/1803464351-0e8bf5158cb87707397a547948f99278b1af45d7669622887a43c3bd9340c064-d_590x332)](https://vimeo.com/916037817)
+[![Video Preview](https://i.vimeocdn.com/video/1803464351-0e8bf5158cb87707397a547948f99278b1af45d7669622887a43c3bd9340c064-d_590x332)](https://vz-8a0704eb-552.b-cdn.net/9f512c34-ae83-42fe-a858-165ccea6d0c5/playlist.m3u8)
 
 {% hint style="info" %}
 **¡Atención!**
@@ -104,27 +104,27 @@ _Una vez que busques el archivo de partículas, selecciona la carpeta Collection
 
 ![](../images/wearables-and-emotes/particles-emotes/13_collection_02.png)
 
-_Elige la colección generada por el add-on (que tuviste la oportunidad de renombrar). Particles\_Out es solo cómo se renombró para este ejemplo._
+_Elige la colección generada por el add-on (que tuviste la oportunidad de renombrar). Particles_Out es solo cómo se renombró para este ejemplo._
 
 A continuación, vamos a fusionar las armatures. En Object Mode, selecciona primero la armature de partículas, luego mantén presionado Shift para seleccionar la armature de prop y presiona Ctrl+J para unir/fusionarlas, como se muestra a continuación.
 
 ![](../images/wearables-and-emotes/particles-emotes/14_merge_armature.gif)
 
-Una vez que hagas eso, las partículas pueden verse desordenadas, pero no te preocupes, esto es parte del proceso. Para arreglar eso, selecciona cada objeto de partícula en el Outliner uno a la vez, ve a Object Properties (ícono de cuadrado naranja) y bajo Relations, verifica si el padre es Armature\_Prop. Haz esto para todos los objetos de partícula. Esto significa que todos los objetos son hijos de Armature\_Prop.
+Una vez que hagas eso, las partículas pueden verse desordenadas, pero no te preocupes, esto es parte del proceso. Para arreglar eso, selecciona cada objeto de partícula en el Outliner uno a la vez, ve a Object Properties (ícono de cuadrado naranja) y bajo Relations, verifica si el padre es Armature_Prop. Haz esto para todos los objetos de partícula. Esto significa que todos los objetos son hijos de Armature_Prop.
 
 ![](../images/wearables-and-emotes/particles-emotes/15_armature_parent_01.png)
 
-_Asegúrate de que Armature\_Prop sea el padre para cada objeto de partícula._
+_Asegúrate de que Armature_Prop sea el padre para cada objeto de partícula._
 
-Después de hacer eso para todos los objetos de partícula, selecciona el primer objeto de partícula en el Outliner, ve a Modifiers (el ícono de llave inglesa azul) y el campo Object estará vacío. Como esta es la pestaña Modifiers, eso significa que aquí elegirás qué armature dirigirá el objeto. Así que solo haz clic en Object y selecciona Armature\_Prop y repite esto para todos los objetos de partícula. A medida que lo hagas, notarás que los objetos de partículas están volviendo a sus tamaños originales, arreglando todo ese desorden creado cuando se fusionaron las armatures.
+Después de hacer eso para todos los objetos de partícula, selecciona el primer objeto de partícula en el Outliner, ve a Modifiers (el ícono de llave inglesa azul) y el campo Object estará vacío. Como esta es la pestaña Modifiers, eso significa que aquí elegirás qué armature dirigirá el objeto. Así que solo haz clic en Object y selecciona Armature_Prop y repite esto para todos los objetos de partícula. A medida que lo hagas, notarás que los objetos de partículas están volviendo a sus tamaños originales, arreglando todo ese desorden creado cuando se fusionaron las armatures.
 
 ![](../images/wearables-and-emotes/particles-emotes/16_armature_parent_02.png)
 
 _Selecciona la armature apropiada para dirigir los objetos._
 
-Ahora que la armature está correctamente fusionada y configurada, hay un último paso para que esto funcione. Si intentas reproducir la animación, notarás que las partículas no se están moviendo. Y eso es porque ahora son parte de Armature\_Prop, y la animación que está siendo reproducida por ella es la del prop. ¿Recuerdas que las partículas tenían su propio clip de animación? Lo que necesitamos hacer ahora es copiar los keyframes del clip de animación de partículas y pegarlos en el clip de animación de prop.
+Ahora que la armature está correctamente fusionada y configurada, hay un último paso para que esto funcione. Si intentas reproducir la animación, notarás que las partículas no se están moviendo. Y eso es porque ahora son parte de Armature_Prop, y la animación que está siendo reproducida por ella es la del prop. ¿Recuerdas que las partículas tenían su propio clip de animación? Lo que necesitamos hacer ahora es copiar los keyframes del clip de animación de partículas y pegarlos en el clip de animación de prop.
 
-Para hacerlo, ve a _**Pose Mode**_ y en el Outliner, expande _**Armature\_Prop**_ y luego _**Pose**_. Selecciona todos los huesos que pertenecen a partículas.
+Para hacerlo, ve a _**Pose Mode**_ y en el Outliner, expande _**Armature_Prop**_ y luego _**Pose**_. Selecciona todos los huesos que pertenecen a partículas.
 
 ![](../images/wearables-and-emotes/particles-emotes/17_merge_armature_02.gif)
 

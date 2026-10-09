@@ -4,7 +4,7 @@ description: Learn how to set up a scene and configure its metadata.
 
 # Scene Metadata
 
-A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../../worlds/about.md), players can visit it via URL.
+A scene is a Decentraland project that is spatially delimited, and is mapped to one or several parcels. If a scene is deployed to the Decentraland Genesis City map, players can experience it by visiting the scene's coordinates. If a scene is deployed to a [World](../publishing/publishing-options.md#decentraland-worlds), players can visit it via URL.
 
 See [Files in a scene](../projects/scene-files.md) for a list of what files are used in a scene project.
 
@@ -36,15 +36,29 @@ When players navigate the world and enter your scene, they are able to read the 
 
 Add this data via the scene menu in the Scene Editor.
 
-The thumbnail should be a _.png_ image of a recommended size of _228x160_ pixels. The minimum supported size is _196x143_ pixels. The image may be stretched if the width-to-height proportions don't match _228x160_.
+In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
+
+{% hint style="info" %}
+**📔 Note**: Worlds keep their own name, description, and thumbnail, separate from the scene's metadata. If a World contains a single scene, the World's metadata is updated from the scene's metadata on every publish. If it contains multiple scenes, the World's metadata is independent and can only be edited in the **Manage** tab of the Creator Hub. See [World metadata vs scene metadata](../../scene-editor/publish/publish-scene.md#world-metadata-vs-scene-metadata).
+{% endhint %}
+
+### Scene thumbnail
+
+The thumbnail is set on the `navmapThumbnail` field. It must be a _.png_ or _.jpg_ image with a **16:9** aspect ratio. _1920x1080_ pixels is the size to aim for. Other sizes work as long as they keep the same 16:9 proportions.
+
+Some parts of the platform display a reduced square version of the thumbnail, cropped to the central _1080x1080_ pixels. Keep anything essential, like text or logos, inside that safe area so that it's not cut off.
+
+{% hint style="warning" %}
+**📔 Note**: The Creator Hub refuses images that aren't 16:9. If you set `navmapThumbnail` by hand to an image with another shape, it may be stretched or cropped unpredictably by the clients that show it. See [Scene thumbnail](../../scene-editor/configure/scene-settings.md#scene-thumbnail).
+{% endhint %}
+
+![Scene thumbnail safe area: the full 1920x1080 image, with the central 1080x1080 square marked as the safe area and the left and right bands marked as cropped](../../images/scene-thumbnail-safe-area.png)
 
 The image on `navmapThumbnail` should be a path to an image file in the project folder. It can also be a URL link to an image hosted elsewhere.
 
 {% hint style="warning" %}
 **📔 Note**: If you host an image elsewhere, make sure this is in a site that has permissive CORS policies for displaying content on other sites.
 {% endhint %}
-
-In case you want other developers to be able to reach out to you, you can also add contact information to your scene.
 
 ## Categories
 
@@ -97,19 +111,16 @@ After that, the scene is listed on the Places dApp under the `game` and `casino`
 
 ## Age Rating
 
-The **Age Rating** field is used to classify the content of your scene based on its appropriateness for different age groups. It helps in filtering content for players. The following options are available:
+The **Age Rating** field is used to classify the content of your scene. Decentraland is an 18+ platform. The following option is available:
 
-* **🟢 `T` for Teens (13+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms/#8-children). Opt for this category if your scene is limited to moderate violence, suggestive or horror-themed content, simulated gambling, and mild language.
-* **🟡 `A` for Adults (18+)**: Choose this category if your scene features any of the following: intense offensive language, graphic violence, explicit sexual content and/or nudity, real money gambling, or substances like alcohol, tobacco, and drugs.
+* **🟡 `A` for Adults (18+)**: This is the minimum age requirement as specified in Decentraland's [Terms of Use](https://decentraland.org/terms). Choose this category if your scene features content appropriate for adults, such as moderate or intense language, violence, explicit content, gambling, or substances like alcohol, tobacco, and drugs.
 
-When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write either **T** for teens, or **A** for adults.
+When editing the Age Rating via the `scene.json`, rating is a **single-letter code**, write **A** for adults. The `rating` field goes at the root level of the json tree.
 
 ![](../../images/media/content-moderation-flag-icon.png)
 
 ```json
- "scene": {
-    "rating": "T"
-  }
+ "rating": "A"
 ```
 
 ### Restricted Content
@@ -260,7 +271,7 @@ If a spawn point is marked as `default`, it will always be used, regardless of w
 
 **Spawn regions**
 
-You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers for any dimension of the position, players will appear in a random location within that range. This helps prevent entering players from overlapping.
+You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers for each dimension of the position, players will appear in a random location within that range. This helps prevent entering players from overlapping. Note that all three dimensions must use the same format: either all single numbers, or all arrays of two numbers. To keep a dimension fixed, use an array with the same number twice, like `"y": [1,1]`.
 
 ```json
   "spawnPoints": [
@@ -343,16 +354,33 @@ These features are blocked from use in the scene unless the permission is reques
   ],
 ```
 
-Currently, the following permissions are managed on smart wearables and portable experiences:
+The following permissions can be requested:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/player-avatar.md#move-player)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/player-avatar.md#play-animations)
+* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/avatars/move-player.md)
+* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/avatars/avatar-animations.md)
+* `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
 * `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
 * `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
 * `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
 * `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
+
+When using `ALLOW_MEDIA_HOSTNAMES`, also include an `allowedMediaHostnames` field at root level, listing the domains that the scene is allowed to stream media from:
+
+```json
+"requiredPermissions": [
+    "ALLOW_MEDIA_HOSTNAMES"
+  ],
+"allowedMediaHostnames": [
+    "somehost.com",
+    "otherhost.xyz"
+  ],
+```
+
+{% hint style="warning" %}
+**📔 Note**: `ALLOW_MEDIA_HOSTNAMES` and `allowedMediaHostnames` are legacy settings, you shouldn't need to add them. They were only enforced by older versions of the web client; current Decentraland clients play external media without them.
+{% endhint %}
 
 ## Scene parcels
 
@@ -393,12 +421,16 @@ To display multiple parcels in the scene preview, list as many parcels as you in
 ```
 
 {% hint style="warning" %}
-**📔 Note**: The largest scene size you can set is of 45 x 45 parcels.
+**📔 Note**: The largest scene size you can set is of 300 x 300 parcels (90,000 parcels total).
 {% endhint %}
 
 ### Set parcels via the command line
 
 You can set the parcels in your scene by running the `npx update-parcels` command in your scene folder. This is especially useful for large scenes, as you don't need to list every parcel involved.
+
+{% hint style="warning" %}
+**📔 Note**: `update-parcels` is a third-party community tool, it's not part of the official Decentraland SDK and is not maintained by the Decentraland Foundation.
+{% endhint %}
 
 **Single parcel**
 
@@ -468,9 +500,27 @@ Here are some more examples of valid values:
 * 64800 seconds => _18:00_
 * 86400 seconds => _24:00_
 
+## Landscape terrain
+
+Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. If this landscape doesn't match the aesthetics of your scene, for example a scene that floats in open water or in space, you can disable it. To do this, add the following field to your `scene.json` at root level:
+
+```json
+{
+	"landscapeTerrain": false
+}
+```
+
+With `landscapeTerrain` set to `false`, nothing is rendered beyond your scene's parcels, and players only see the skybox around the scene. Removing the surrounding terrain also frees up rendering resources, which can help your scene run smoother.
+
+If the field is not set, it defaults to `true` and the landscape is displayed as usual.
+
+{% hint style="warning" %}
+**📔 Note**: This field only applies to Worlds that contain a single scene. It's ignored in Genesis City, where the surroundings are always determined by the neighboring parcels. You can also use it while running a local preview of your scene, to check how the scene looks without the landscape.
+{% endhint %}
+
 ## World configuration
 
-When publishing to a [Decentraland World](../../worlds/about.md), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
+When publishing to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you can configure several World-specific settings in your `scene.json` file using the `worldConfiguration` object.
 
 ### Basic World configuration
 
@@ -499,6 +549,10 @@ The `fixedAdapter` property indicates which Communication Service should be used
 	}
 }
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Setting `fixedAdapter` to `"offline:offline"` (or enabling **Single Player** in World Settings via the Creator Hub) disables live streaming. The streaming feature relies on the communications layer to deliver video to viewers. If you need live streaming in your world, do not use this option.
+{% endhint %}
 
 ### Places listing configuration
 

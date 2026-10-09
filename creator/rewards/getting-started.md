@@ -1,3 +1,9 @@
+---
+description: >-
+  Set up a Decentraland Rewards campaign: create it, add wearable or emote
+  stock, manage funds, and activate dispensers.
+---
+
 # Getting Started
 
 This page will guide you through the process of using the Rewards system to incentivize user engagement with Decentraland Wearables and Emotes. You'll learn how to set up and manage a rewards campaign, including creating a campaign, adding items to the campaign stock, managing funds, and using dispensers to deliver rewards. Additionally, you'll find instructions for activating your campaign and handling transaction fees.

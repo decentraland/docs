@@ -1,8 +1,8 @@
 ---
-description: Guidelines on how to provide feedback about SDK7
+description: Guidelines on how to try out SDK7 and provide feedback
 ---
 
-# Alpha Testing Guidelines
+# Testing and Feedback
 
 ## Documentation
 
@@ -12,7 +12,7 @@ Find the full documentation for SDK7 in the **SDK7** section of the documentatio
 
 To easily try out SDK7, visit [the playground](https://playground.decentraland.org/). Write SDK7 code on the left of the screen, and see the resulting scene on the right. As you change the code, the scene is updated automatically.
 
-If you run into any issues, please copy a URL to the current setup of your scene with the **Share** button, and [report an issue](alpha-testing-guidelines.md#reporting-issues) including that link to your code.
+If you run into any issues, please copy a URL to the current setup of your scene with the **Share** button, and [report an issue](#reporting-issues) including that link to your code.
 
 ## Using SDK 7
 

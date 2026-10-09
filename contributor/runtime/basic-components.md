@@ -80,9 +80,9 @@ Since the model has its own meshes and materials, this component overrides any b
 
 ##### `Billboard` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/billboard.proto#L17)</small> {#Billboard}
 
-Makes an Entity automatically reorient its `Transform` to face the camera. As the name indicates, it's used to display in-game billboards and frequently combined with [`TextShape`](#TextShape).
+Makes an Entity automatically reorient its `Transform` to face the camera, or optionally another Entity referenced via `target_entity`. As the name indicates, it's used to display in-game billboards and frequently combined with [`TextShape`](#TextShape).
 
-It affects all directions by default, but can be set to only rotate in one axis.
+It affects all directions by default, but can be set to only rotate in one axis. If the referenced target Entity doesn't exist, reorientation is suspended until it does.
 
 ---
 

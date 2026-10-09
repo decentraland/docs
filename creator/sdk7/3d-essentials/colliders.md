@@ -67,7 +67,7 @@ MeshRenderer.setBox(myCollider)
 MeshCollider.setBox(myCollider)
 ```
 
-The shape used by the `MeshCollider` doesn't need to necessarily match the one used by the `MeshRenderer`. You can also add a `MeshCollider` to an entity that has a 3D model from a `GLTFContainer` component, or to an entity that has no visible shape at all.
+The shape used by the `MeshCollider` doesn't need to necessarily match the one used by the `MeshRenderer`. You can also add a `MeshCollider` to an entity that has a 3D model from a `GltfContainer` component, or to an entity that has no visible shape at all.
 
 {% hint style="warning" %}
 **📔 Note**: The `MeshCollider` component and `ColliderLayer` must be imported via
@@ -140,10 +140,16 @@ The scene can handle separate collision layers, that have different behaviors.
 
 You can configure a `MeshCollider` component or the `GltfContainer` component to only respond to one kind of interaction, or to several of them, or none. To do this, on the `MeshCollider` set the `collisionMask` property, and on `GltfContainer` set the `visibleMeshesCollisionMask` or `invisibleMeshesCollisionMask` properties to one or several of the following values:
 
-- `ColliderLayer.CL_PHYSICS`: Only blocks player movement (and doesn't affect pointer events)
-- `ColliderLayer.CL_POINTER`: Responds only to pointer events (and doesn't block the player movement)
-- `ColliderLayer.CL_CUSTOM1` through to `CL_CUSTOM8`: Can be used together with raycasts, so that a ray only detects collisions with one specific layer.
+- `ColliderLayer.CL_PHYSICS`: Blocks player movement (scene walls, floors, platforms). Doesn't affect pointer events.
+- `ColliderLayer.CL_POINTER`: Responds only to pointer events. Doesn't block player movement.
+- `ColliderLayer.CL_PLAYER`: Tags the collider as an avatar marker. Raycasts and trigger areas that target `CL_PLAYER` will detect it, but the player capsule walks straight through it (no physical block). On scene meshes, this is useful to flag a mesh as "an avatar-like target" for detection only.
+- `ColliderLayer.CL_MAIN_PLAYER`: Like `CL_PLAYER`, but targeted at the local player only. Raycasts and trigger areas with `CL_MAIN_PLAYER` in their mask detect it; remote-avatar raycasts/triggers don't.
+- `ColliderLayer.CL_CUSTOM1` through to `CL_CUSTOM8`: Can be used together with raycasts and trigger areas to detect collisions only with specific custom layers.
 - `ColliderLayer.CL_NONE`: Doesn't respond to collisions of any kind.
+
+{% hint style="info" %}
+**💡 Tip**: `CL_PLAYER` and `CL_MAIN_PLAYER` on a `MeshCollider` / `GltfContainer` are **detection-only** layers — the player capsule passes through them. If you want the mesh to BOTH be detectable as an avatar AND physically block the player, combine the avatar layer with `CL_PHYSICS` (e.g. `CL_PHYSICS | CL_MAIN_PLAYER`).
+{% endhint %}
 
 {% hint style="warning" %}
 **📔 Note**: To disable collisions form a `MeshCollider` component, delete the component. Do not set the collision layer to `ColliderLayer.CL_NONE`. There's a known issue with the `MeshCollider` component. Instead of disabling all collisions, it makes this value equivalent to the default (`ColliderLayer.CL_PHYSICS | ColliderLayer.CL_POINTER`).
@@ -194,7 +200,7 @@ In this second example, the camera can go through the wall, because the `Collide
 ```ts
 // NO CAMERA GOING THROUGH THE WALL
 // default (both pointer and physics use the invisible geometry)
-GLTFContainer.create(myEntity, {
+GltfContainer.create(myEntity, {
 	src: '/models/myModel.gltf',
 })
 
@@ -251,11 +257,11 @@ MeshCollider.setBox(myEntity, ColliderLayer.CL_PHYSICS)
 MeshCollider.setBox(myEntity2, ColliderLayer.CL_POINTER)
 ```
 
-By default, the visible geometry of a `GLTFContainer` isn't mapped to any collision layers, but the invisible geometry affects both the Physics and the Pointer layers. You can change this value to only affect one, or neither, and to affect custom layers instead. You can also configure the visible geometry layer in the same way.
+By default, the visible geometry of a `GltfContainer` isn't mapped to any collision layers, but the invisible geometry affects both the Physics and the Pointer layers. You can change this value to only affect one, or neither, and to affect custom layers instead. You can also configure the visible geometry layer in the same way.
 
 ```ts
 // default (both pointer and physics use the invisible geometry)
-GLTFContainer.create(myEntity, {
+GltfContainer.create(myEntity, {
 	src: '/models/myModel.gltf',
 })
 

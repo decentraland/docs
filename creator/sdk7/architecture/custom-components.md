@@ -31,7 +31,7 @@ Once you defined a custom component, you can create instances of this component,
 
 ```ts
 // Create entities
-const wheel = engine.addEntity()
+const wheel1 = engine.addEntity()
 const wheel2 = engine.addEntity()
 
 // Create instances of the component
@@ -52,14 +52,13 @@ Your custom component can also perform the other common functions that are avail
 
 ```ts
 // Fetch a read only instance of the component from an entity
-const readOnlyInstance MyCustomComponent.get(myEntity)
+const readOnlyInstance = MyCustomComponent.get(myEntity)
 
 // Fetch a mutable instance of the component from an entity
-const readOnlyInstance MyCustomComponent.getMutable(myEntity)
+const mutableInstance = MyCustomComponent.getMutable(myEntity)
 
 // Delete an entity's instance of the component
-const readOnlyInstance MyCustomComponent.deleteFrom(myEntity)
-
+MyCustomComponent.deleteFrom(myEntity)
 ```
 
 ## About the componentName
@@ -185,6 +184,21 @@ const MySchema = {
 }
 ```
 
+When you read an array field back with `MyComponent.get()`, the array is read-only. Methods that change it in place, like `.push()`, are not available. Use `MyComponent.getMutable()` when you need to change the contents.
+
+### Optional fields
+
+Use `Schemas.Optional()` to allow a field to hold either a value or `undefined`.
+
+```ts
+const MySchema = {
+	playerId: Schemas.Optional(Schemas.String),
+	score: Schemas.Optional(Schemas.Int),
+}
+```
+
+Only `undefined` counts as "not set". Falsy values like `false`, `0`, and `''` are stored and read back exactly as written.
+
 ### Nested schema types
 
 To set the type of a field to be an object, use `Schemas.Map()`. Pass the contents of this object as a property. This nested object is essentially a schema itself, nested within the parent schema.
@@ -194,8 +208,8 @@ const MySchema = {
 	simpleField: Schemas.Boolean,
 	myComplexField: Schemas.Map({
 		nestedField1: Schemas.Boolean,
-		nestedField2: Schemas.Boolean
-	})}
+		nestedField2: Schemas.Boolean,
+	}),
 }
 ```
 
@@ -217,7 +231,7 @@ const MySchema = {
 
 You can set the type of a field in a schema to be an enum. Enums make it easy to select between a finite number of options, providing human-readable values for each.
 
-To set the type of a field to an enum, you must first define the enum. Then you can refer to it using `Schemas.EnumNumber` or `Schemas.EnumString`, depending on the type of enum. You must pass the enum to reference between `<>`, as well as the type as a parameter (either `Schemas.Int` for number enums, or `Schemas.String` for string enums). You must also pass a default value to use for this field.
+To set the type of a field to an enum, you must first define the enum. Then you can refer to it using `Schemas.EnumNumber` or `Schemas.EnumString`, depending on the type of enum. These functions take two parameters: the enum to reference, and a default value to use for this field.
 
 ```ts
 //// String enum
@@ -248,7 +262,7 @@ enum CurveType {
 
 // Define a component that uses this enum in a field
 const CurveComponent = engine.defineComponent('curveComponent', {
-	curve: Schemas.EnumString<CurveType>(CurveType, CurveType.LINEAR),
+	curve: Schemas.EnumNumber<CurveType>(CurveType, CurveType.LINEAR),
 })
 
 // Use component on an entity
@@ -272,17 +286,36 @@ When creating an instance of the component, you need to specify the selected typ
 ```ts
 MyComponent.create(myEntity, {
 	myField: {
-		$case: type1
-		value: Vector3.create(1, 1, 1)
-	}
+		$case: 'type1',
+		value: Vector3.create(1, 1, 1),
+	},
 })
 ```
+
+Leaving the field unset is also valid. An unset `OneOf` field has no `$case` and reads back as an empty object, `{}`.
+
+### Components from a single type
+
+A component doesn't have to hold an object of several fields. To define one that holds a single value, use `engine.defineComponentFromSchema()` and pass the type directly:
+
+```ts
+// A component that holds one number per entity
+export const Score = engine.defineComponentFromSchema('my-scene::Score', Schemas.Int)
+
+// A component that holds a list of numbers per entity
+export const History = engine.defineComponentFromSchema(
+	'my-scene::History',
+	Schemas.Array(Schemas.Int)
+)
+```
+
+These behave like any other component, including when the stored value is falsy. A `Score` of `0` is a component that exists and holds `0`, not a missing component.
 
 ## Default values
 
 It's often good to have default values in your components, so that it's not necessary to explicitly set each value every time you create a new copy.
 
-The `engine.defineComponent()` function takes in a third argument, that lets you pass an object with values to use by default. This object can include some or all of the values in the schema. Values that are not provided in the defaults will need to always be provided when initializing a copy of the component.
+The `engine.defineComponent()` function takes in a third argument, that lets you pass an object with values to use by default. This object can include some or all of the values in the schema. Fields that are not covered by the defaults or by the values you provide when initializing a copy of the component are initialized with a zero-like value, like `0`, `false`, or an empty string, depending on the type.
 
 ```ts
 // Definition
@@ -340,7 +373,7 @@ export function main() {
 
 ## Building systems to use a component
 
-With your component defined and added to entities in your scene, you can create [Systems](../../deprecated/scenes/architecture/systems.md) to perform logic, making use of this data stored on the component.
+With your component defined and added to entities in your scene, you can create [Systems](systems.md) to perform logic, making use of this data stored on the component.
 
 ```ts
 // define component

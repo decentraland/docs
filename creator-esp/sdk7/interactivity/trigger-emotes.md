@@ -22,9 +22,10 @@ La forma más fácil de hacer que un jugador realice una animación es usar el [
 
 ## Animaciones predeterminadas
 
-Usa la función `triggerEmote()` para ejecutar una de las animaciones predeterminadas que los jugadores pueden reproducir en cualquier lugar de Decentraland. Esta función toma un objeto con una sola propiedad como argumento:
+Usa la función `triggerEmote()` para ejecutar una de las animaciones predeterminadas que los jugadores pueden reproducir en cualquier lugar de Decentraland. Esta función toma un objeto con las siguientes propiedades como argumento:
 
 * `predefinedEmote`: Un nombre de cadena para un emote existente.
+* `mask`: (opcional) Reproduce la animación solo en una parte del cuerpo del avatar, usando un valor del enum `AvatarMask`. Por ejemplo, `AvatarMask.AM_UPPER_BODY` anima solo la parte superior del cuerpo del avatar.
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -98,9 +99,11 @@ Esta función toma un objeto como argumento con los siguientes argumentos:
 
 * `src`: Una cadena con una ruta al archivo de emote.
 * `loop`: Si es true, la animación se repetirá continuamente hasta que el jugador se mueva o se detenga la animación. False por defecto.
+* `mask`: (opcional) Reproduce la animación solo en una parte del cuerpo del avatar, usando un valor del enum `AvatarMask`. Por ejemplo, `AvatarMask.AM_UPPER_BODY` anima solo la parte superior del cuerpo del avatar.
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
+import { AvatarMask } from '@dcl/sdk/ecs'
 
 const emoter = engine.addEntity()
 Transform.create(emoter, { position: Vector3.create(8, 0, 8) })
@@ -112,7 +115,7 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Make snowball' },
 	},
 	() => {
-		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false })
+		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 	}
 )
 ```

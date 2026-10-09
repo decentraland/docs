@@ -70,7 +70,7 @@ This example first obtains the player's id, then subscribes to the events and co
 Go over the full list of players who are currently on your scene by iterating over all entities with a `PlayerIdentityData` component.
 
 ```ts
-import { PlayerIdentityData, Transform } from '@dcl/sdk/ecs'
+import { engine, PlayerIdentityData, Transform } from '@dcl/sdk/ecs'
 
 export function main() {
 	for (const [entity, data, transform] of engine.getEntitiesWith(
@@ -89,6 +89,8 @@ Knowing the camera mode can be very useful to fine-tune the mechanics of your sc
 The following snippet uses the `onChange` function to fire an event each time the camera changes. It also fires an event when the scene loads, with the player's initial camera mode.
 
 ```ts
+import { engine, CameraMode } from '@dcl/sdk/ecs'
+
 export function main() {
 	CameraMode.onChange(engine.CameraEntity, (cameraComponent) => {
 		if (!cameraComponent) return
@@ -121,8 +123,9 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
 
-You can also detect emotes form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
+You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
 ## Player changes profile
 
@@ -157,15 +160,11 @@ The event on `AvatarBase` includes the following information:
 
 * `name`: The player's name.
 * `bodyShapeUrn`: The ids corresponding to male or female body type.
-* `skinColor`: Player skin color as a `Color4`
-* `eyeColor`: Player eye color as a `Color4`
-* `hairColor`: Player hair color as a `Color4`
+* `skinColor`: Player skin color as a `Color3`
+* `eyesColor`: Player eye color as a `Color3`
+* `hairColor`: Player hair color as a `Color3`
 
-You can also detect changes in wearables or avatars form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
-
-{% hint style="info" %}
-**💡 Tip**: When testing in preview with the legacy web editor, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
-{% endhint %}
+You can also detect changes in wearables or avatars from other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
 You can also detect changes on the profiles of other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
@@ -205,3 +204,64 @@ export function main() {
 	})
 }
 ```
+
+## Open explorer panels
+
+Your scene can open the Explorer's built-in fullscreen panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. This is useful for directing players to specific Explorer features from your scene's UI.
+
+```ts
+import { openExplorerUi } from '~system/RestrictedActions'
+import { ExplorerUi } from '@dcl/sdk/ecs'
+
+// Open the map panel
+await openExplorerUi({ ui: ExplorerUi.EU_MAP })
+```
+
+The `ExplorerUi` enum has the following values:
+
+* `EU_SETTINGS` (0)
+* `EU_MAP` (1)
+* `EU_BACKPACK` (2)
+* `EU_CAMERA_REEL` (3)
+* `EU_COMMUNITIES` (4)
+* `EU_PLACES` (5)
+* `EU_EVENTS` (6)
+
+{% hint style="warning" %}
+**Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
+{% endhint %}
+
+### Observe when panels open or close
+
+Use the `ExplorerUiEventsResult` component to detect when explorer panels are opened or closed. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. It streams events each time a panel opens or closes.
+
+```ts
+import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
+
+engine.addSystem(() => {
+	// Iterate over new events since the last frame
+	for (const event of ExplorerUiEventsResult.get(engine.RootEntity)) {
+		if (event.event?.$case === 'opened') {
+			console.log('Panel opened:', event.ui)
+		}
+		if (event.event?.$case === 'closed') {
+			console.log('Panel closed:', event.ui)
+		}
+
+		// Check which specific panel
+		if (event.ui === ExplorerUi.EU_MAP && event.event?.$case === 'closed') {
+			console.log('Player closed the map')
+		}
+	}
+})
+```
+
+Each event contains:
+
+* `ui`: Which panel the event is about (an `ExplorerUi` value).
+* `timestamp`: A monotonic counter for when the event occurred.
+* `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
+{% endhint %}

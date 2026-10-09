@@ -21,17 +21,16 @@ import { getPlayer } from "@dcl/sdk/src/players";
 
 export function main() {
   let userData = getPlayer();
+  if (!userData) return;
   if (!userData.isGuest) {
     console.log(userData.userId);
   } else {
-    log("Player is not connected with Web3");
+    console.log("Player is not connected with Web3");
   }
 }
 ```
 
-Note that if a player has entered Decentraland as a guest, they will not have a connected ethereum wallet. If they are connected as guests, the `isGuest` field in the response from `getPlayer()` will be true. If `hasConnectedWeb3` is true, then you can obtain the player's address from the field `publicKey`. Learn more about the data you can obtain from a player in [get player data](../interactivity/user-data.md#get-player-data)
-
-You should wrap the function in an `async()` function, learn more about this in [async functions](../programming-patterns/async-functions.md)
+Note that if a player has entered Decentraland as a guest, they will not have a connected ethereum wallet. If they are connected as guests, the `isGuest` field in the response from `getPlayer()` will be true. Otherwise, you can obtain the player's wallet address from the `userId` field. Learn more about the data you can obtain from a player in [get player data](../interactivity/user-data.md#get-player-data)
 
 {% hint style="warning" %}
 **📔 Note**: Even though the eth address may contain upper case characters, some browsers convert the returned string to lower case automatically. If you wish compare address values and have it work on all browsers, use the `.toLowerCase()` method to convert the value into lower case.
@@ -172,7 +171,7 @@ executeTask(async () => {
       "0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb"
     )) as any;
     let userData = getPlayer();
-    if (userData.isGuest) {
+    if (!userData || userData.isGuest) {
       return;
     }
 
@@ -192,7 +191,7 @@ executeTask(async () => {
 });
 ```
 
-The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
+The example above uses the abi of a _fake MANA_ test contract, and calls its `setBalance` method to grant 100 _fake MANA_ to an account. When adapting this example, replace the address and abi with those of the contract you want to call, and call the methods that its abi defines.
 
 ### Other functions
 

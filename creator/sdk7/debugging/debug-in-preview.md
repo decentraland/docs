@@ -13,7 +13,7 @@ If the scene can't be compiled, you'll just see the empty ground, with nothing r
 3. If you ran the scene using the Creator Hub, check the window with the console output of the scene. If you ran the scene using the CLI, check the output of the command line where you ran `npm run start`
 
 {% hint style="info" %}
-**💡 Tip**: Before you publish your scene to the production environment, publish it to the test environment to try it in a context that is a lot closer to production. See [Development Workflow](../getting-started/dev-workflow.md#deploy-to-the-test-environment)
+**💡 Tip**: Before you publish your scene to the production environment, you can publish it to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to try it in a context that is a lot closer to production.
 {% endhint %}
 
 ## Use the console
@@ -39,7 +39,7 @@ This opens a panel on the lower-right corner with information about the renderer
 The **CURRENT SCENE** tab includes information about the scene you're currently standing on. This includes:
 
 - The number of parcels in the scene
-- The maximum height you're allowed to build at (which is proportional to the number of parcels in the scene)
+- The maximum height you're allowed to build at (330 meters for every scene)
 
 You can also check the **Show Scene Bounds** option to see red walls around the scene, which mark the boundaries of the scene.
 

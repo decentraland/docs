@@ -60,6 +60,10 @@ Notas:
 - El streaming funciona en Worlds y Genesis City, sin límites de audiencia del lado de la escena.
 - Si agregas múltiples Video Screens, silencia todas menos una para evitar artefactos de audio.
 
+{% hint style="warning" %}
+**Advertencia**: El streaming no es compatible con los worlds en modo Single Player. Si tu world tiene **Single Player** habilitado en World Settings (o `fixedAdapter` configurado como `"offline:offline"` en `scene.json`), desactívalo antes de configurar el streaming.
+{% endhint %}
+
 ### Stream keys
 
 Las stream keys se generan por escena y son válidas por 4 días (96 horas). Una sola sesión en vivo puede ejecutarse hasta 4 horas continuamente.

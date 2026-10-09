@@ -16,9 +16,9 @@ There are three different ways you can show a video in a scene:
 
 In all cases, you'll need:
 
-* An entity with a [primitive shape](../3d-essentials/shape-components.md) like a plane, cube, or even a cone.
-* A [material](../3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
-* A `VideoPlayer` component to control the state of the video.
+- An entity with a [primitive shape](../3d-essentials/shape-components.md) like a plane, cube, or even a cone.
+- A [material](../3d-essentials/materials.md) with a `VideoTexture` assigned to its texture
+- A `VideoPlayer` component to control the state of the video.
 
 ## Performance considerations
 
@@ -73,7 +73,7 @@ To use a video from an external streaming URL, change step 2 so that the `src` p
 ```ts
 // #2
 VideoPlayer.create(screen, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 ```
@@ -241,17 +241,17 @@ The following optional properties are available to set on the `VideoPlayer` comp
 - `playing`: Determines if the video is currently playing. If false, the video is paused.
 
 {% hint style="warning" %}
-**📔 Note**: There can only be one `VideoPlayer` component active at a time in each scene.
+**📔 Note**: Only a limited number of videos can play at the same time, depending on the player's quality settings. If the scene plays more than that, the engine pauses the lowest-priority ones. See [Performance considerations](video-playing.md#performance-considerations).
 {% endhint %}
 
 - `playbackRate`: Changes the speed at which the video is played. _1_ by default.
 - `volume`: Lets you change the volume of the audio. _1_ by default.
-- `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _-1_ by default, which makes it start at the actual start of the video.
+- `position`: Allows you to set a different starting position on the video. It's expressed in seconds after the video's original beginning. _0_ by default, which makes it start at the actual start of the video.
 - `loop`: Boolean that determines if the video is played continuously in a loop, or if it stops after playing once. _false_ by default.
 
 ## Play multiple videos
 
-To avoid running into performance problems, each scene is only allowed to play one video texture at a time. However, a scene can play multiple copies of the same video texture on several different screens. This is not restricted, as it impacts performance considerably less than playing separate videos. To play the same video on multiple entities, simply assign the same instance of the video texture object to the `Material` components of each screen entity.
+To avoid running into performance problems, keep the amount of different videos playing at the same time low; the engine only allows a limited number of simultaneous videos, depending on the player's quality settings (see [Performance considerations](video-playing.md#performance-considerations)). A scene can however play multiple copies of the same video texture on several different screens. This is not restricted, as it impacts performance considerably less than playing separate videos. To play the same video on multiple entities, simply assign the same instance of the video texture object to the `Material` components of each screen entity.
 
 ```ts
 // #1
@@ -265,7 +265,7 @@ Transform.create(screen2, { position: { x: 6, y: 1, z: 4 } })
 
 // #2
 VideoPlayer.create(screen1, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 
@@ -345,7 +345,7 @@ videoEventsSystem.registerVideoEventsEntity(
 
 The videoEvent object passed as an input for the function contains the following properties:
 
-- `currentOffset` (_number_): The current value of the `position` property on the video. This value shows seconds after the video's original beginning. _-1_ by default, if the video hasn't started playing.
+- `currentOffset` (_number_): The current value of the `position` property on the video. This value shows seconds after the video's original beginning. _-1_ if the video hasn't started playing.
 - `state`: The new video status, expressed as a value from the `VideoState` enum. This enum can hold the following possible values:
   - `VideoState.VS_READY`
   - `VideoState.VS_NONE`
@@ -356,12 +356,24 @@ The videoEvent object passed as an input for the function contains the following
   - `VideoState.VS_PLAYING`
   - `VideoState.VS_PAUSED`
 - `videoLength` (_number_ ): The length in seconds of the entire video. _-1_ if length is unknown.
-- `timeStamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
+- `timestamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
 - `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
+
+If you re-register a callback on an entity that already has one (for example, to change what happens on state change), the new callback replaces the old one, and the last-reported state is preserved. This means the new callback is not called again for a state that was already reported to the previous callback.
+
+### Check if an entity is registered
+
+Use `videoEventsSystem.hasVideoEventsEntity()` to check whether an entity already has a registered video events callback.
+
+```ts
+if (videoEventsSystem.hasVideoEventsEntity(videoPlayerEntity)) {
+	console.log('This entity already has a video event listener')
+}
+```
 
 ### Latest video event
 
-Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This function always returns the latest `VideoEvent` value for the video.
+Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This returns the latest `VideoEvent` value for the entity, or `undefined` if no event has been reported yet. You can call this from a system to poll the video state each frame without registering a callback.
 
 ```ts
 function mySystem() {
@@ -421,7 +433,7 @@ Transform.create(myEntity, {
 })
 
 VideoPlayer.create(myEntity, {
-	src: 'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875',
+	src: 'https://vz-7c61c1b5-d59.b-cdn.net/ccea595a-b910-4de6-b160-092819db021d/playlist.m3u8',
 	playing: true,
 })
 
@@ -498,3 +510,7 @@ Material.setBasicMaterial(videoPlayerEntity, {
 ## Audio analysis
 
 You can read real-time amplitude and frequency data from the audio track of a `VideoPlayer` entity to drive reactive visuals that sync with the video's soundtrack. See [Audio analysis](audio-analysis.md).
+
+{% hint style="info" %}
+**💡 Tip**: To see video played on a GLTF model rather than a primitive, see the [`74,-8-gltfnodemodifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/74,-8-gltfnodemodifier) test scene, which drives an HLS stream onto specific GLTF nodes using `GltfNodeModifiers` video textures.
+{% endhint %}

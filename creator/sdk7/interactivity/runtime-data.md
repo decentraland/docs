@@ -49,13 +49,14 @@ executeTask(async () => {
 
 Players in decentraland exist in several separate _realms_. Players in different realms can't see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited amount of players without running into any limitations. It also pairs players who are in close regions, to ensure that ping times between players that interact are acceptable.
 
-If your scene sends data to a [3rd party server](../networking/authoritative-servers.md) to sync changes between players in real time, then it's often important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
+If your scene sends data to a [3rd party server](../networking/third-party-servers.md) to sync changes between players in real time, then it's often important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
 
 ```ts
 import { getRealm } from '~system/Runtime'
 
 executeTask(async () => {
   const { realmInfo } = await getRealm({})
+  if (!realmInfo) return
   console.log(`You are in the realm: `, realmInfo.realmName)
 })
 ```
@@ -81,7 +82,18 @@ The `getRealm()` function returns the following information:
 
 As players move through the map, they may switch rooms to be grouped with those players who are now closest to them. Rooms also shift their borders dynamically to fit a manageable group of people, so even if a player stands still, as players enter and leave the world, the player could find themselves on another room. Players in a same `room` are communicated, and will share messages across the MessageBus even if they;re too far to see each other. Players in a same server but in different rooms are not currently communicating, but they might get communicated as they move around the map and change rooms.
 
-See [onRealmChangedObservable](event-listeners.md#player-changes-realm-or-island) for how to detect changes regarding the player's realm or island.
+To react to changes regarding the player's realm or room, use the `onChange` function on the `RealmInfo` component, which the engine adds to the `engine.RootEntity`. This component holds the same fields returned by `getRealm()`.
+
+```ts
+import { engine, RealmInfo } from '@dcl/sdk/ecs'
+
+export function main() {
+	RealmInfo.onChange(engine.RootEntity, (realmInfo) => {
+		if (!realmInfo) return
+		console.log('Realm changed: ', realmInfo.realmName)
+	})
+}
+```
 
 {% hint style="warning" %}
 **📔 Note**: When the scene first loads, there might not yet be a room assigned for the player. The explorer will eventually assign a room to the player, but this can sometimes occur a couple of seconds after the scene is loaded.
@@ -132,21 +144,68 @@ engine.addSystem((deltaTime) => {
       engineInfo.tickNumber +
       '\ntotalRuntime: ' +
       engineInfo.totalRuntime +
+      '\nsceneHidden: ' +
+      engineInfo.sceneHidden +
       '\n--------------'
   )
 })
 ```
 
-The `EngineInfo`component holds the following data:
+You can use `sceneHidden` to pause resource-intensive work while the scene is not visible:
 
-* `frame_number`: Frame counter of the engine
-* `total_runtime`: Total runtime of this scene in seconds
-* `tick_number`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+```ts
+engine.addSystem((deltaTime) => {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (engineInfo?.sceneHidden) return
+
+  // Normal gameplay logic runs only when the scene is visible
+})
+```
+
+The `EngineInfo` component holds the following data:
+
+* `frameNumber`: Frame counter of the engine.
+* `totalRuntime`: Total runtime of this scene, in seconds.
+* `tickNumber`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148).
+* `sceneHidden`: `true` when the scene is hidden behind the Explorer's fullscreen UI. That covers the loading screen, and also the map, the backpack, and the settings menu. Use this to mute audio and pause heavy work while the player can't see the scene.
 
 {% hint style="warning" %}
 **📔 Note**: The `EngineInfo` component must be imported via
 
-> `import { Vector3, Quaternion } from "@dcl/sdk/ecs"`
+> `import { EngineInfo } from "@dcl/sdk/ecs"`
 
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
+
+### React to the loading screen fading out
+
+The `scene_hidden` field tells you if the player can actually see your scene, or if it's covered by the Explorer's fullscreen UI. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
+
+It turns `true` again later whenever a fullscreen Explorer UI covers the scene, such as the map, the backpack, or the settings menu. That makes it a good cue to mute [audio](../3d-essentials/sounds.md) and pause expensive systems, then resume when it returns to `false`.
+
+This is the only way for a scene to know when that first reveal happens. Use it to hold back anything that would otherwise play out behind the loading screen, and be missed by the player: intro cinematics, welcome sounds, a tween that only reads well if it's watched, an opening UI, or an analytics event that should only count once the player is really there.
+
+```ts
+import { engine, EngineInfo } from '@dcl/sdk/ecs'
+
+function onSceneRevealed() {
+  // The player is now looking at the scene, start the intro here
+  console.log('The loading screen just faded out')
+}
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Only run once
+  engine.removeSystem(waitForSceneRevealed)
+  onSceneRevealed()
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: Your scene keeps running normally while `sceneHidden` is `true`, it's only not being displayed. Don't use this field to pause your scene's logic, use it to time what the player is meant to witness.
+
+`scene_hidden` requires an up-to-date `@dcl/sdk` and a recent version of the Decentraland Explorer. On older clients the field stays at its default value of `false`, so a scene that waits on it still runs — it just won't be in sync with the loading screen fade-out.
+{% endhint %}
+

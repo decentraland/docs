@@ -29,12 +29,11 @@ executeTask(async () => {
 The fetch command can also include a second optional argument that bundles headers, HTTP method and HTTP body into a single object.
 
 * **url**: Address to send the request
-* **init**: A `FlatFetchInit` object that may contain:
+* **init**: A `RequestInit` object that may contain:
   * **method** : HTTP method to use (GET, POST, DELETE, etc)
   * **body**: Contents of the request body. It must be sent as a stringified JSON object.
-  * **headers**: Additional headers to include in the request. Headers related to the signature are added automatically.
+  * **headers**: Additional headers to include in the request.
   * **redirect**: Redirect strategy ('follow' | 'error' | 'manual')
-  * **responseBodyType**: Specify if the body of the response is 'text' or 'json'
   * **timeout**: How long to wait for a response before the request fails. By default 30000 milliseconds (30 seconds).
 
 ```ts
@@ -82,6 +81,8 @@ These kinds of security measures are especially valuable when there may be an in
 To send a signed request, all you need to do is use the `signedFetch()` function, in exactly the same way as you would use the `fetch()` function.
 
 ```ts
+import { signedFetch } from '~system/SignedFetch'
+
 executeTask(async () => {
 	try {
 		let response = await signedFetch({
@@ -93,11 +94,11 @@ executeTask(async () => {
 			},
 		})
 
-		if (!response.statusText) {
+		if (!response.ok) {
 			throw new Error('Invalid response')
 		}
 
-		let json = await JSON.parse(response.statusText)
+		let json = JSON.parse(response.body)
 
 		console.log('Response received: ', json)
 	} catch {
@@ -116,7 +117,7 @@ The `signedFetch()` differs from the `fetch()` function in that the response is 
 * `status`
 * `statusText`
 
-By default, **body** is considered a string, which you can parse like in the example above. If the response body is in json format, you can specify that in the `responseBodyType` and then access that from the `json` property in the response.
+The **body** is always a string, which you can parse like in the example above.
 
 ### Validating a signed request
 
@@ -128,7 +129,7 @@ You can find a simple example of a server performing this task in the following 
 
 ## Request timeout
 
-If an HTTP request takes too long to be responded, it fails so that other requests can be sent. For both `fetch()` and `signedFetch()`, the default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property in any of the two functions. The value of `timeout` is expressed in milliseconds.
+If an HTTP request takes too long to be responded, it fails so that other requests can be sent. For `fetch()`, the default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property. The value of `timeout` is expressed in milliseconds.
 
 ```ts
 fetch('https://some-url.com', { timeout: 1000 })

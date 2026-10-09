@@ -35,7 +35,7 @@ import { ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { uiMenu } from './ui'
 
 export function main() {
-    ReactEcsRenderer.setUiRenderer(uiMenu, { virtualWidth: 1920, virtualHeight: 1080 })
+    ReactEcsRenderer.setUiRenderer(uiMenu)
 }
 ```
 
@@ -56,7 +56,7 @@ export const uiMenu = () => (
 	<Button
 		value="Click me"
 		uiTransform={{ width: 100 }}
-		onMouseDown={{ handleClick }}
+		onMouseDown={handleClick}
 	/>
 )
 ```
@@ -67,13 +67,13 @@ The following fields can be added to a `Button` UI element:
 * `onMouseUp`: A callback function that runs every the pointer button is raised while pointing at the entity.
 * `onMouseEnter`: A callback function that runs every time the pointer starts hovering over the button.
 * `onMouseLeave`: A callback function that runs every time the pointer stops hovering over the button.
-* `color`: Background color of the button.
+* `color`: Color of the text on the button.
 * `font`: Font of the text on the button.
 * `textAlign`: Alignment of the text inside the button
 * `uiTransform`: Positioning properties of the UI element.
 * `uiBackground`: Set the color or texture of the UI element.
 * `variant`: Use this property to set the style of the button as one of the defaults. `primary` and `secondary` are available.
-* `disabled`: Boolean to set a button disabled. When disabled is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called. Also the `alpha` value of the color of both the text and the backgroun is halved, so the button is "grayed-out" and stands out less.
+* `disabled`: Boolean to set a button disabled. When `disabled` is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called, and the button stops advertising any pointer interaction. The button is also drawn "grayed-out": both the text and the background are rendered at half their `alpha` value. This is a display change only. The `Color4` values your scene passes in are never modified, so you can safely reuse a shared palette object across many elements.
 
 ## Button styling
 
@@ -199,8 +199,9 @@ export const uiMenu = () => (
 Any element in the UI can be made clickable by adding an `onMouseDown` property to it, it works identically to a button. The following example adds `onMouseDown` properties to background images and text.
 
 ```tsx
-import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
+import { UiEntity, Label, ReactEcs } from '@dcl/sdk/react-ecs'
 import { Color4 } from '@dcl/sdk/math'
+import { engine, Transform } from '@dcl/sdk/ecs'
 
 export const uiMenu = () => (
 	<UiEntity
@@ -223,6 +224,13 @@ export const uiMenu = () => (
 		/>
 	</UiEntity>
 )
+
+function getPlayerPosition() {
+	const playerPosition = Transform.getOrNull(engine.PlayerEntity)
+	if (!playerPosition) return 'unknown'
+	const { x, y, z } = playerPosition.position
+	return `{x: ${x.toFixed(2)}, y: ${y.toFixed(2)}, z: ${z.toFixed(2)} }`
+}
 ```
 
 ## Pointer blocking
@@ -236,7 +244,7 @@ The supported values for `pointerFilter` are:
 * `block`: The UI element is pointer blocking, players can't click on anything behind this UI element.
 * `none`: The UI element is non-pointer blocking. The element is not clickable and anything behind it can be clicked.
 
-Below is a simple UI that doesn't have an `onMouseDown`, but that is overrides the default behavior of not being pointer-blocking by setting `pointerFilter` to `block`.
+Below is a simple UI that doesn't have an `onMouseDown`, but that overrides the default behavior of not being pointer-blocking by setting `pointerFilter` to `block`.
 
 ```tsx
 import { UiEntity, ReactEcs } from '@dcl/sdk/react-ecs'
@@ -255,3 +263,65 @@ export const uiMenu = () => (
 	/>
 )
 ```
+
+### Blocking follows the layout box, not the visible pixels
+
+A blocking element captures clicks across its **whole rectangle**, whether or not anything is drawn there. A fully transparent background makes no difference.
+
+{% hint style="danger" %}
+**Warning:** Never put a pointer handler or `pointerFilter: 'block'` on a full-screen wrapper sized `100%` by `100%`.
+
+Its rectangle is the entire screen, so a single stray `onMouseDown` on your layout root makes every other UI element and everything in the 3D world unclickable. The UI still looks perfectly correct, because the panel you can see only covers a small part of the screen, which makes this very hard to spot.
+{% endhint %}
+
+Attach handlers to the smallest element that needs them: the panel, the button, the row. Layout wrappers stay handler-free.
+
+There are two cases where a full-screen blocking element is the right thing, and both are deliberate:
+
+* A **modal backdrop**, which is meant to swallow clicks, and which you only render while the modal is open.
+* A **drag-release catcher**, which only exists while a drag is in progress. See [Drag interactions](#drag-interactions) below.
+
+If clicking stops working anywhere in your scene, this is the first thing to check.
+
+## Drag interactions
+
+UI pointer handlers (`onMouseDown`, `onMouseUp`, `onMouseEnter`, `onMouseLeave`) take no parameters. They fire as simple `() => void` callbacks with no position or coordinate data. There is no `onMouseDrag` or `onMouseMove` handler in the UI system.
+
+To build drag-based UI (sliders, scrub bars, drag handles), use `PrimaryPointerInfo.screenDelta` from `@dcl/sdk/ecs`. This gives the mouse movement in pixels since the last frame, updated every frame regardless of what the cursor is over.
+
+The pattern works as follows:
+
+1. `onMouseDown` on the drag target starts the drag and records the initial value.
+2. A system reads `screenDelta` each frame and accumulates it into the value while the drag is active.
+3. A full-screen invisible overlay with `pointerFilter: 'block'` catches the mouse release, so letting go outside the narrow target still ends the drag.
+
+```ts
+import { engine, PrimaryPointerInfo, UiCanvasInformation } from '@dcl/sdk/ecs'
+
+let dragging = false
+let sliderValue = 0.5
+
+// Call this system every frame to accumulate drag movement
+engine.addSystem(() => {
+	if (!dragging) return
+
+	const delta = PrimaryPointerInfo.getOrNull(engine.RootEntity)?.screenDelta
+	if (!delta || delta.x === 0) return
+
+	// Convert screen pixels to a 0–1 range
+	// Divide by UI scale factor so drag speed matches the cursor
+	const canvas = UiCanvasInformation.getOrNull(engine.RootEntity)
+	const scale = canvas ? Math.min(canvas.width / 1920, canvas.height / 1080) : 1
+	const trackWidth = 200 // virtual px width of the slider track
+
+	sliderValue = Math.max(0, Math.min(1, sliderValue + delta.x / scale / trackWidth))
+})
+```
+
+{% hint style="warning" %}
+**Note:** On mobile, `screenDelta` always reports 0 (there is no free-moving cursor). For mobile-compatible sliders, add stepper buttons (`-` / `+`) alongside the drag track. Use [`isMobile()`](../../build-for-mobile/develop/detect-platform.md) from `@dcl/sdk/platform` to branch your UI.
+{% endhint %}
+
+{% hint style="info" %}
+**Tip:** Always divide `screenDelta` by the UI scale factor, or the drag will over- or under-shoot on screens whose resolution differs from your virtual size.
+{% endhint %}

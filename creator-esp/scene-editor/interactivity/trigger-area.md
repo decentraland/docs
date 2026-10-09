@@ -14,7 +14,7 @@ Para activar una acción cuando el jugador camina dentro o fuera de un área, us
 
 El cubo naranja que ves mientras editas tu escena solo es visible en el Scene Editor, se vuelve invisible al ejecutar un preview de la escena. Puedes ajustar y escalar fácilmente el cubo naranja para cubrir exactamente el área que necesitas.
 
-Si alguna parte del cuerpo del jugador se superpone con este cubo naranja, se llamará al evento asignado.
+Si alguna parte del cuerpo de un avatar — el jugador local o cualquier otro jugador renderizado en la escena — se superpone con este cubo naranja, se llamará al evento asignado.
 
 Usa los tipos de trigger **On Player Enters Area** y **On Player Leaves Area** en el componente **Triggers** del ítem. Las acciones en estos eventos de trigger se activan cada vez que el jugador entra o sale del área.
 
@@ -38,4 +38,8 @@ Múltiples trigger areas pueden superponerse, y no se afectan entre sí.
 **📔 Nota**: También puedes usar eventos de trigger **On Player Enters Area** y **On Player Leaves Area** en cualquier otro smart item, pero ten en cuenta que puede ser difícil conocer el área cubierta por el trigger.
 
 El tamaño del área activable no se relaciona con la forma visible del ítem o sus colliders, siempre es un cubo de 1m en cada lado, afectado por la escala del ítem.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: Los trigger areas en el Scene Editor se activan con cualquier avatar — el jugador local y cualquier otro jugador renderizado cerca. Si necesitas reaccionar solo al jugador local e ignorar a los demás avatares, pasa a código y usa el [componente TriggerArea de SDK7](../../sdk7/3d-essentials/trigger-areas.md) con la capa de colisión `CL_MAIN_PLAYER`.
 {% endhint %}

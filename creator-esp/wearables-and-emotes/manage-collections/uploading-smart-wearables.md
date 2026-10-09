@@ -8,11 +8,11 @@ metaLinks:
 
 # Uploading Smart Wearables
 
-Después de generar tu Smart Wearable usando el [SDK7](https://github.com/decentraland/docs-creator/blob/main/creator/development-guide/sdk7/smart-wearables/README.md), el siguiente paso es subirlo al builder. Este documento explica cómo subir, publicar y poner tus Smart Wearables a la venta.
+Después de generar tu Smart Wearable usando el [SDK7](https://github.com/decentraland/docs/blob/main/creator-esp/sdk7/projects/smart-wearables.md), el siguiente paso es subirlo al builder. Este documento explica cómo subir, publicar y poner tus Smart Wearables a la venta.
 
 ### Subiendo Tu Archivo
 
-Recuerda que necesitas crear una colección antes de subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://github.com/decentraland/docs-creator/blob/main/wearables-and-emotes/manage-collections/creator/wearables-and-emotes/manage-collections/creating-collection/README.md). Para subir tu Smart Wearable, arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo es un Smart Wearable. **Recuerda que el tamaño máximo de archivo de la colección es 3MB**.
+Recuerda que necesitas crear una colección antes de subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://github.com/decentraland/docs/blob/main/creator-esp/wearables-and-emotes/manage-collections/creating-a-collection.md). Para subir tu Smart Wearable, arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo es un Smart Wearable. **Recuerda que el tamaño máximo de archivo de la colección es 3MB**.
 
 Cuando subas el archivo, se te pedirá que subas un video showcase.
 
@@ -92,7 +92,7 @@ Esta es una breve declaración describiendo tu ítem que se mostrará en el mark
 Los overrides determinan qué categorías de Wearable o partes del cuerpo del avatar tu ítem ocultará. Por ejemplo, un sombrero con cabello adjunto podría necesitar ocultar la categoría _Hair_. Un casco de buzo de aguas profundas puede requerir ocultar accesorios de cabeza como aretes, eyewear, tiaras, etc., que no serían visibles. Se pueden seleccionar múltiples opciones para cada override.
 
 * **Base Body**: Esto se refiere a partes centrales del avatar como la _head_ y las _hands_. Por ejemplo, si estás creando un ítem de **Handwear** como una mano mecánica de robot, probablemente necesitarás ocultar _hands_ para prevenir superposición y clipping.
-* **Wearables**: Esto incluye otras categorías de Wearable. Puedes ocultar múltiples categorías. Por favor echa un vistazo a [**Creating Wearables**](https://github.com/decentraland/docs-creator/blob/main/creator/wearables/creating-wearables/README.md) para más detalles sobre cada categoría y cómo interactúan los ítems.
+* **Wearables**: Esto incluye otras categorías de Wearable. Puedes ocultar múltiples categorías. Por favor echa un vistazo a [**Creating Wearables**](https://github.com/decentraland/docs/blob/main/creator-esp/wearables-and-emotes/wearables/creating-wearables.md) para más detalles sobre cada categoría y cómo interactúan los ítems.
 
 {% hint style="warning" %}
 Nota: Los overrides que selecciones serán la configuración predeterminada sugerida para tu Wearable. Sin embargo, los usuarios pueden personalizar qué Wearables están ocultos o mostrándose desde el Backpack.

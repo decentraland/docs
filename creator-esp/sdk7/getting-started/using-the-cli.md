@@ -55,7 +55,7 @@ Consulta [preview scenes](preview-scene.md) para detalles y opciones especiales 
 
 ## Build
 
-Ejecuta `npm run build` para construir tu proyecto. Las scenes de Decentraland están escritas en TypeScript, pero se construyen a JavaScript minificado cuando se publican. Consulta [coding scenes](https://github.com/decentraland/docs-creator/blob/main/sdk7/getting-started/coding-scenes.md) para más detalles.
+Ejecuta `npm run build` para construir tu proyecto. Las scenes de Decentraland están escritas en TypeScript, pero se construyen a JavaScript minificado cuando se publican. Consulta [coding scenes](https://github.com/decentraland/docs/blob/main/creator/sdk7/getting-started/coding-scenes.md) para más detalles.
 
 El comando build es opcional, ya que también se ejecuta en segundo plano antes de desplegar (aunque puedes agregar una bandera para saltarlo).
 

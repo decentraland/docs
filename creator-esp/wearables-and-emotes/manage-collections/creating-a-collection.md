@@ -10,19 +10,19 @@ metaLinks:
 
 ## ¿Qué es el Wearables Editor?
 
-El Wearables Editor es una herramienta dentro de [**Decentraland Create**](https://decentraland.org/create) que te permite subir, agregar metadatos y publicar tus propios wearables personalizados.
+El Wearables Editor es una herramienta dentro del Builder de Decentraland que te permite subir, agregar metadatos y publicar tus propios wearables personalizados.
 
 > Recuerda: estas docs no explican cómo crear los modelos, mallas y texturas que componen los wearables, solo explican cómo usar el Wearables Editor para subir y publicar tus wearables. Para una introducción al proceso real de creación de wearables, comienza aquí.
 
 ### **Iniciar Sesión**
 
-Para comenzar a subir y publicar tus wearables, navega a [**Decentraland Create**](https://decentraland.org/create/collections).
+Para comenzar a subir y publicar tus wearables, navega a [**Decentraland Create**](https://decentraland.org/create).
 
 Haz clic en **Sign in**, y luego **Connect** para iniciar sesión con tu wallet Metamask o Fortmatic. Después de iniciar sesión, haz clic en la pestaña **Collections**.
 
 ## Creando una Colección
 
-Antes de que puedas subir un wearable o un emote, debes crear primero una colección. Para hacer eso, ve a [**Decentraland Create**](https://decentraland.org/create/collections) y haz clic en _**Collections**_. Si aún no tienes ninguna colección, haz clic en el botón _**New Collection**_, el que tiene una imagen de una carpeta. Si ya tienes otra colección, haz clic en el botón _**+**_ y selecciona _**New Collection**_.
+Antes de que puedas subir un wearable o un emote, debes crear primero una colección. Para hacer eso, ve a [**Decentraland Create**](https://decentraland.org/create) y haz clic en la pestaña _**Collections**_. Si aún no tienes ninguna colección, haz clic en el botón _**New Collection**_ para crear una nueva.
 
 Después de hacer clic en el botón, se te pedirá que renombres tu colección, como se muestra a continuación. En caso de que cambies de opinión, puedes editar el nombre de tu colección en cualquier momento **antes de publicar**.
 

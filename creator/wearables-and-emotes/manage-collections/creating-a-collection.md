@@ -8,19 +8,19 @@ description: Guidelines to Create a Decentraland Collection
 
 ## What is the Wearables Editor?
 
-The Wearables Editor is a tool within Decentraland’s Builder that allows you to upload, add metadata to, and publish your own custom wearables.
+The Wearables Editor is a tool within [**Decentraland Create**](https://decentraland.org/create) that allows you to upload, add metadata to, and publish your own custom wearables.
 
 > Remember: these docs don’t explain how to create the models, meshes, and textures that make up wearables, they just explain how to use the Wearables Editor to upload and publish your wearables. For an intro on the actual wearable creation process, start here.
 
 ### **Logging in**
 
-To start uploading and publishing your wearables, navigate to [**decentraland.org/create**](https://decentraland.org/create/collections).
+To start uploading and publishing your wearables, navigate to [**Decentraland Create**](https://decentraland.org/create/collections).
 
 Click **Sign in**, and then **Connect** to log in with your Metamask or Fortmatic wallet. After signing in, click the **Collections** tab.
 
 ## Creating a Collection
 
-Before you can upload a wearable or an emote, you must create a collection first. To do that, go to [https://decentraland.org/create/collections](https://decentraland.org/create/collections) and click on _**Collections**_. If you don’t have any collections yet, click on the _**New Collection**_ button, the one with an image of a folder. If you already have another collection, clikc on the _**+**_ button and select _**New Collection**_.
+Before you can upload a wearable or an emote, you must create a collection first. To do that, go to [**Decentraland Create**](https://decentraland.org/create/collections) and click on _**Collections**_. If you don’t have any collections yet, click on the _**New Collection**_ button, the one with an image of a folder. If you already have another collection, click on the _**+**_ button and select _**New Collection**_.
 
 ![](../../../.gitbook/assets/01_create_collection.png) ![](../../../.gitbook/assets/02_add_collection.png)
 

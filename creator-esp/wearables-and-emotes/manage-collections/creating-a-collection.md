@@ -16,13 +16,13 @@ El Wearables Editor es una herramienta dentro del Builder de Decentraland que te
 
 ### **Iniciar Sesión**
 
-Para comenzar a subir y publicar tus wearables, navega a [**builder.decentraland.org**](https://builder.decentraland.org/).
+Para comenzar a subir y publicar tus wearables, navega a [**decentraland.org/create**](https://decentraland.org/create/collections).
 
 Haz clic en **Sign in**, y luego **Connect** para iniciar sesión con tu wallet Metamask o Fortmatic. Después de iniciar sesión, haz clic en la pestaña **Collections**.
 
 ## Creando una Colección
 
-Antes de que puedas subir un wearable o un emote, debes crear primero una colección. Para hacer eso, ve a [https://builder.decentraland.org/](https://builder.decentraland.org/) y haz clic en _**Collections**_. Si aún no tienes ninguna colección, haz clic en el botón _**New Collection**_, el que tiene una imagen de una carpeta. Si ya tienes otra colección, haz clic en el botón _**+**_ y selecciona _**New Collection**_.
+Antes de que puedas subir un wearable o un emote, debes crear primero una colección. Para hacer eso, ve a [https://decentraland.org/create/collections](https://decentraland.org/create/collections) y haz clic en _**Collections**_. Si aún no tienes ninguna colección, haz clic en el botón _**New Collection**_, el que tiene una imagen de una carpeta. Si ya tienes otra colección, haz clic en el botón _**+**_ y selecciona _**New Collection**_.
 
 Después de hacer clic en el botón, se te pedirá que renombres tu colección, como se muestra a continuación. En caso de que cambies de opinión, puedes editar el nombre de tu colección en cualquier momento **antes de publicar**.
 

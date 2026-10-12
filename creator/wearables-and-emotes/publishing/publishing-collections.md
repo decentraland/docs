@@ -73,7 +73,7 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 
 If you collaborated with other artists when creating your items, you can add attributions within the Wearables Editor. This can only be done after publishing a collection.
 
-First, navigate to the [**Builder**](https://builder.decentraland.org/) and select the **Collections** tab. Select the collection containing the items you want to add attributions to, click the **…** icon next to the **Mint Items** button, and select **Collaborators**.
+First, navigate to the [**Decentraland Create**](https://decentraland.org/create/collections) and select the **Collections** tab. Select the collection containing the items you want to add attributions to, click the **…** icon next to the **Mint Items** button, and select **Collaborators**.
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
@@ -98,7 +98,7 @@ When a user makes a primary purchase of one of your items, the store **mints the
 
 > Remember! You do not need to mint your items in order to sell them in primary sales!
 
-To sell your items via primary sales, begin by navigating to the [**Builder**](https://builder.decentraland.org/) and follow the next steps:
+To sell your items via primary sales, begin by navigating to the [**Decentraland Create**](https://decentraland.org/create/collections) and follow the next steps:
 
 To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Enable sales**_ button, after that click **Enable Sales** in the confirmation window that appears.
 

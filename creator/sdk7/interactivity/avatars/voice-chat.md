@@ -17,7 +17,7 @@ To turn voice chat off for your whole scene instead, use the voice chat feature 
 
 ## Detect who is speaking
 
-The engine writes a `PlayerVoiceState` component on every player entity in your scene, including `engine.PlayerEntity`. Its `isSpeaking` field is `true` while the player's voice is detected.
+The engine writes a `PlayerVoiceState` component on the entity of every player standing in your scene, including `engine.PlayerEntity`. Its `isSpeaking` field is `true` while the voice the player is sending to nearby voice chat is detected as speech.
 
 ```ts
 import { engine, PlayerVoiceState } from '@dcl/sdk/ecs'
@@ -50,12 +50,16 @@ engine.addSystem(() => {
 
 * `isSpeaking` reflects nearby voice chat only. Private calls and community calls are never reported.
 * A player's state reaches only the scene that player is standing in.
+* `isSpeaking` is never `true` while the player's microphone is off, muted, or idle on push-to-talk.
+* It updates within about a second and can flicker between words. If you need a steady signal, for example to keep a light on during a sentence, keep it `true` for a short time after it turns `false`.
 * The component is absent while voice chat isn't available to the player, so treat a missing component as "not speaking".
 {% endhint %}
 
 ## Voice chat modifier areas
 
 Add a `VoiceChatModifierArea` to a region of your scene to change how players **speaking inside it** are heard. The effect follows the speaker: everyone hears a player in a whisper corner as whispering, wherever the listener stands.
+
+An area only affects players standing on your scene's parcels. If part of the area reaches past the edge of your scene, that part has no effect, so your areas never change how players in a neighboring scene are heard.
 
 ```ts
 import { engine, Transform, VoiceChatModifierArea } from '@dcl/sdk/ecs'
@@ -75,16 +79,16 @@ Transform.create(whisperCorner, {
 
 Position the area with a `Transform`. Its size comes from `area`; the `scale` of the transform is ignored, and the rotation is applied.
 
-These are the available fields. All of them are optional except `area`:
+These are the available fields. All of them are optional except `area`. A field set to `NaN` or `Infinity` is ignored, as if it weren't set:
 
 | Field | Effect | Default |
 | --- | --- | --- |
 | `area` | Size of the region, as a `Vector3`. | Required |
-| `maxDistance` | Distance in meters at which the voice fades out. Use a small value, like `3`, to whisper. The minimum is `0.1`, and values beyond the client's nearby range have no effect. | The client's nearby range |
-| `volumeScale` | Voice volume, from `0` to `1`. | `1` |
-| `mute` | The voice isn't heard at all. | `false` |
+| `maxDistance` | Distance in meters at which the voice fades out. Use a small value, like `3`, to whisper. Values below `0.1` are raised to `0.1`, and values beyond the client's nearby range have no effect. | The client's nearby range |
+| `volumeScale` | Voice volume, from `0` to `1`. Values outside that range are clamped, so an area can't make a voice louder. | `1` |
+| `mute` | The voice isn't heard at all, the same as a `volumeScale` of `0`. | `false` |
 | `isolate` | Speakers inside are heard only by listeners inside the same area, and those listeners only hear speakers inside it. | `false` |
-| `excludeIds` | Player addresses that stay unaffected, for example a performer on a stage. | `[]` |
+| `excludeIds` | Player addresses that stay unaffected, for example a performer on a stage. Addresses are compared without regard to upper or lower case. | `[]` |
 
 ### Mute an audience and let a performer speak
 
@@ -105,7 +109,7 @@ VoiceChatModifierArea.create(booth, {
 })
 ```
 
-Players inside the booth hear each other normally. Players outside can't hear them, and they can't hear players outside.
+Players inside the booth hear each other normally. Players outside can't hear them, and they can't hear players outside, even players standing in another, non-isolating area. Two separate booths are two separate rooms: players in one booth can't hear players in the other.
 
 ### Overlapping areas
 
@@ -114,11 +118,10 @@ When a player stands in several areas at once, the most restrictive value of eac
 {% hint style="warning" %}
 **📔 Note**:
 
-* An area only affects listeners who are also standing in your scene.
 * A player listed in `excludeIds` is treated as outside the area, including for isolation.
 * A muted speaker still reports `isSpeaking: true` in `PlayerVoiceState`: they are talking, just not heard.
-* An entity can't hold a `VoiceChatModifierArea` together with another area component, such as an `AvatarModifierArea`, a `CameraModeArea`, or a `TriggerArea`. Use a separate entity for each.
-* Areas are applied by each player's client, so they shape the experience but are not a security boundary.
+* If an entity holds a `VoiceChatModifierArea` together with another area component, such as an `AvatarModifierArea`, a `CameraModeArea`, or a `TriggerArea`, only one of them takes effect. Use a separate entity for each.
+* Areas are applied by each listener's client, so they shape the experience but are not a privacy or security boundary. Don't rely on `mute` or `isolate` to keep a conversation private.
 {% endhint %}
 
 ### Debug voice chat modifier areas

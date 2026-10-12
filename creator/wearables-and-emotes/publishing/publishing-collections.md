@@ -100,7 +100,7 @@ When a user makes a primary purchase of one of your items, the store **mints the
 
 To sell your items via primary sales, begin by navigating to [**Decentraland Create**](https://decentraland.org/create) and follow the next steps:
 
-To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the_ **Put on sale**_ button on any of the items from the collection. If it's the first time you put on sale an item from this collection, you will be prompted to _**Enable sales**_. After confirmation, you can continue to the next step to set a price for your item.
+To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Put on sale**_ button on any of the items from the collection. If it's the first time you put an item from this collection on sale, you will be prompted to _**Enable sales**_. After confirmation, you can continue to the next step to set a price for your item.
 
 ![](../../../.gitbook/assets/25_enable_sales.png)
 
@@ -179,7 +179,7 @@ In order to transfer the ownership of a Collection, you will need:
 ⚠️ Note: This applies only to Polygon Wearables.
 {% endhint %}
 
-Copy your collection address in [**Decentraland Create**](https://decentraland.org/create/collections)
+Copy your collection address in [**Decentraland Create**](https://decentraland.org/create).
 
 ![](../../../.gitbook/assets/copy-collection-address.png)
 

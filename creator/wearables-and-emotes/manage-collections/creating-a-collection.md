@@ -20,7 +20,7 @@ Click **Sign in**, and then **Connect** to log in with your Metamask or Fortmati
 
 ## Creating a Collection
 
-Before you can upload a wearable or an emote, you must create a collection first. To do that, go to [**Decentraland Create**](https://decentraland.org/create) and click on _**Collections**_ tab. If you don’t have any collections yet, click on the _**New Collection**_ button to create a new one.
+Before you can upload a wearable or an emote, you must create a collection first. To do that, go to [**Decentraland Create**](https://decentraland.org/create) and click on the _**Collections**_ tab. If you don’t have any collections yet, click on the _**New Collection**_ button to create a new one.
 
 ![](../../../.gitbook/assets/01_create_collection.png) ![](../../../.gitbook/assets/02_add_collection.png)
 

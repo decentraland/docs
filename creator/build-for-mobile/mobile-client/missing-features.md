@@ -40,21 +40,21 @@ These are no longer gaps. They are available in the mobile app as of the version
 
 ## Desktop Client Features Not in Mobile
 
-- [Proximity Voice Chat](https://github.com/decentraland/godot-explorer/issues/888) — No ETA
+- [Proximity Voice Chat](https://github.com/decentraland/godot-explorer/issues/888) — Q1 2027
 - [Point-At In World](https://github.com/decentraland/godot-explorer/issues/1736) — No ETA
 - [Nameplate Color Change](https://github.com/decentraland/godot-explorer/issues/1684) — No ETA
-- [Communities](https://github.com/decentraland/godot-explorer/issues/656) — No ETA
-- [Photo Gallery](https://github.com/decentraland/godot-explorer/issues/680) — No ETA
-- [Community Streams](https://github.com/decentraland/godot-explorer/issues/676) — No ETA
-- [Profile Badges](https://github.com/decentraland/godot-explorer/issues/678) — No ETA
+- [Communities](https://github.com/decentraland/godot-explorer/issues/656) — Q1 2027
+- [Photo Gallery](https://github.com/decentraland/godot-explorer/issues/680) — December 2026
+- [Community Streams](https://github.com/decentraland/godot-explorer/issues/676) — Q1 2027
+- [Profile Badges](https://github.com/decentraland/godot-explorer/issues/678) — December 2026
 - [Daily Quests](https://github.com/decentraland/godot-explorer/issues/682) — No ETA
-- [Chat Reactions](https://github.com/decentraland/godot-explorer/issues/1824) — No ETA
-- [Chat Auto-Translation](https://github.com/decentraland/godot-explorer/issues/2260) — No ETA
-- [Chat: Direct Messages](https://github.com/decentraland/godot-explorer/issues/1120) — No ETA
+- [Chat Reactions](https://github.com/decentraland/godot-explorer/issues/1824) — Q1 2027
+- [Chat Auto-Translation](https://github.com/decentraland/godot-explorer/issues/2260) — Q1 2027
+- [Chat: Direct Messages](https://github.com/decentraland/godot-explorer/issues/1120) — Q1 2027
 - [DCL Cast Support on mobile](https://github.com/decentraland/godot-explorer/issues/1881) — No ETA
 - [YouTube / Google Drive Video URLs unsupported](https://github.com/decentraland/godot-explorer/issues/2081) — Restricted in mobile for store compliance
-- [Outfit Slots in Backpack](https://github.com/decentraland/godot-explorer/issues/1625) — No ETA
-- [Gifting wearables to other players](https://github.com/decentraland/godot-explorer/issues/2957) — No ETA
+- [Outfit Slots in Backpack](https://github.com/decentraland/godot-explorer/issues/1625) — December 2026
+- [Gifting wearables to other players](https://github.com/decentraland/godot-explorer/issues/2957) — December 2026
 - ["Session ended" notice when the same account signs in on another device](https://github.com/decentraland/godot-explorer/issues/2880) — No ETA
 - [Discover categories (browse experiences by category)](https://github.com/decentraland/godot-explorer/issues/3037) — No ETA
 

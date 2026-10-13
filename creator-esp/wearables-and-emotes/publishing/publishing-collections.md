@@ -77,7 +77,7 @@ Por favor consulta la Content Policy completa [aquí](https://decentraland.org/c
 
 Si colaboraste con otros artistas al crear tus ítems, puedes agregar atribuciones dentro del Wearables Editor. Esto solo se puede hacer después de publicar una colección.
 
-Primero, navega al [**Builder**](https://builder.decentraland.org/) y selecciona la pestaña **Collections**. Selecciona la colección que contiene los ítems a los que quieres agregar atribuciones, haz clic en el ícono **…** junto al botón **Mint Items**, y selecciona **Collaborators**.
+Primero, navega a [**Decentraland Create**](https://decentraland.org/create) y selecciona la pestaña **Collections**. Selecciona la colección que contiene los ítems a los que quieres agregar atribuciones, haz clic en el ícono **…** junto al botón **Send Items**, y selecciona **Collaborators**.
 
 Para agregar colaboradores, simplemente ingresa su dirección de Ethereum, y haz clic en **Add**. Puedes agregar tantos colaboradores como quieras. Para eliminar un colaborador, simplemente haz clic en **Remove** junto a la dirección del colaborador.
 
@@ -102,9 +102,9 @@ Cuando un usuario hace una compra primaria de uno de tus ítems, la tienda **acu
 
 > ¡Recuerda! ¡No necesitas acuñar tus ítems para venderlos en ventas primarias!
 
-Para vender tus ítems a través de ventas primarias, comienza navegando al [**Builder**](https://builder.decentraland.org/) y sigue los siguientes pasos:
+Para vender tus ítems a través de ventas primarias, comienza navegando a [**Decentraland Create**](https://decentraland.org/create) y sigue los siguientes pasos:
 
-Para habilitar Primary Sales, ve a la pestaña **Collections**, selecciona la que quieres habilitar y haz clic en el botón _**Enable sales**_, después de eso haz clic en **Enable Sales** en la ventana de confirmación que aparece.
+Para habilitar Primary Sales, ve a la pestaña **Collections**, selecciona la que quieres habilitar y haz clic en el botón _**Put on sale**_ de cualquiera de los ítems de la colección. Si es la primera vez que pones a la venta un ítem de esta colección, se te pedirá que hagas clic en _**Enable sales**_. Después de confirmar, puedes continuar al siguiente paso para establecer el precio de tu ítem.
 
 ![](../images/wearables-and-emotes/uploading-wearables/25_enable_sales.png)
 

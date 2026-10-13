@@ -1,0 +1,148 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Decentraland Docs
+  structure:
+    - type: section
+      key: section-1
+      title: Players
+      path: player
+      description: ""
+      icon: house
+      default: true
+      children:
+        - type: space
+          key: space-1
+          title: EN
+          path: player
+          default: true
+          content:
+            directory: ./player
+            language: en
+        - type: space
+          key: space-5
+          title: ES
+          path: player-es
+          content:
+            directory: ./player/player-es
+            language: es
+        - type: space
+          key: space-8
+          title: PT
+          path: player-pt
+          content:
+            directory: ./player/player-pt
+            language: pt-br
+        - type: space
+          key: space-11
+          title: KO
+          path: player-ko
+          content:
+            directory: ./player/player-ko
+            language: ko
+        - type: space
+          key: space-14
+          title: ZH
+          path: player-zh
+          content:
+            directory: ./player/player-zh
+            language: zh
+    - type: section
+      key: section-3
+      title: Content Creators
+      path: creator
+      description: ""
+      icon: laptop
+      children:
+        - type: space
+          key: space-3
+          title: EN
+          path: content-creator
+          default: true
+          content:
+            directory: ./creator
+            language: en
+        - type: space
+          key: space-6
+          title: ES
+          path: content-creator-es
+          content:
+            directory: ./creator/content-creator-es
+            language: es
+        - type: space
+          key: space-9
+          title: PT
+          path: content-creator-pt
+          content:
+            directory: ./creator/content-creator-pt
+            language: pt-br
+        - type: space
+          key: space-12
+          title: KO
+          path: content-creator-ko
+          content:
+            directory: ./creator/content-creator-ko
+            language: ko
+        - type: space
+          key: space-15
+          title: ZH
+          path: content-creator-zh
+          content:
+            directory: ./creator/content-creator-zh
+            language: zh
+    - type: section
+      key: section-2
+      title: Contributor
+      path: contributor
+      description: ""
+      icon: file-lines
+      children:
+        - type: space
+          key: space-2
+          title: EN
+          path: contributor
+          default: true
+          content:
+            directory: ./contributor
+            language: en
+        - type: space
+          key: space-7
+          title: ES
+          path: contributor-es
+          content:
+            directory: ./contributor/contributor-es
+            language: es
+        - type: space
+          key: space-10
+          title: PT
+          path: contributor-pt
+          content:
+            directory: ./contributor/contributor-pt
+            language: pt-br
+        - type: space
+          key: space-13
+          title: KO
+          path: contributor-ko
+          content:
+            directory: ./contributor/contributor-ko
+            language: ko
+        - type: space
+          key: space-16
+          title: ZH
+          path: contributor-zh
+          content:
+            directory: ./contributor/contributor-zh
+            language: zh
+    - type: section
+      key: section-4
+      title: APIs
+      path: apis
+      description: Decentraland Services APIs
+      icon: square-pen
+      children:
+        - type: space
+          key: space-4
+          title: API Reference
+          path: api-reference
+          default: true
+          content:
+            directory: ./apis

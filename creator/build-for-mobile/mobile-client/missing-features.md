@@ -12,7 +12,7 @@ Last reviewed: **October 2026** (mobile app v1.15.0).
 
 ## Recently Shipped
 
-These are no longer gaps. They are available in the mobile app as of the version shown:
+These are no longer gaps as of mobile app **v1.15.0**, which is rolling out to the app stores in October 2026:
 
 - [`stopEmote` restricted action](../../sdk7/interactivity/avatars/avatar-animations.md#animate-only-the-upper-body). Upper-body emotes started by a scene also pause when the player leaves the scene, resume on return, and stop when the scene unloads — v1.15.0
 - [`Tween` `MoveRotateScale` mode](../../sdk7/3d-essentials/move-entities.md#simultaneous-tweens) — v1.15.0
@@ -26,7 +26,7 @@ These are no longer gaps. They are available in the mobile app as of the version
 - [`AvatarNametag` (scene-authored label above a player's nametag)](https://github.com/decentraland/godot-explorer/issues/2811) — No ETA
 - [Tween sequences (`TweenSequence`)](../../sdk7/3d-essentials/move-entities.md#tween-sequences) — not implemented; sequenced tweens don't animate — No ETA
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA
-- [Draco mesh compression (`KHR_draco_mesh_compression`)](https://github.com/decentraland/godot-explorer/issues/2432) — not supported. The mobile client cannot load Draco-compressed `.gltf`/`.glb` models at runtime; export your models without Draco compression — No ETA
+- Draco mesh compression (`KHR_draco_mesh_compression`) — the mobile app has no runtime Draco decoder. Draco-compressed `.gltf`/`.glb` models load only from the scene's optimized assets, where the asset server has already decompressed them. When a scene has no optimized assets, as in local preview, they fail to load without an error. Export your models without Draco compression to be safe. An error dialog for this case is tracked in [#2432](https://github.com/decentraland/godot-explorer/issues/2432) — No ETA
 - Smart Items — not officially supported on mobile
 
 ## Desktop Client Features Not in Mobile
@@ -55,7 +55,7 @@ These are no longer gaps. They are available in the mobile app as of the version
   - [Slopes, edges, walls, landing and moving platforms](https://github.com/decentraland/godot-explorer/issues/2852) and [glide behavior](https://github.com/decentraland/godot-explorer/issues/2854) — fix in review, No ETA
   - [Scene colliders thinner than 1 cm only collide from above, and invisible blockers and some SDK collision layers don't block the player](https://github.com/decentraland/godot-explorer/issues/2853) — No ETA
   - Spawn, landing and jump animations, movement blending ([#1553](https://github.com/decentraland/godot-explorer/issues/1553), [#1554](https://github.com/decentraland/godot-explorer/issues/1554), [#2855](https://github.com/decentraland/godot-explorer/issues/2855), [#2856](https://github.com/decentraland/godot-explorer/issues/2856)) — fix in review, No ETA
-- [Scene-triggered emotes from Bevy Web players don't play on mobile](https://github.com/decentraland/godot-explorer/issues/2986) — fix in review, No ETA
+- [Some emotes from other clients don't play on mobile: scene-triggered emotes from Bevy Web players, and Unity players' emotes that arrive over LiveKit](https://github.com/decentraland/godot-explorer/issues/2986) — fix in review, No ETA
 - [In a Creator Hub mobile preview, the mobile player's avatar is not visible to desktop testers](https://github.com/decentraland/godot-explorer/issues/2773) — fix in progress, No ETA
 - [Avatar teeth render dark/gray instead of white](https://github.com/decentraland/godot-explorer/issues/1994) — No ETA
 

@@ -14,15 +14,6 @@ Last reviewed: **October 2026** (mobile app v1.15.0).
 
 These are no longer gaps. They are available in the mobile app as of the version shown:
 
-- [Scene Dynamic Lights (`LightSource`)](../../sdk7/3d-essentials/lights.md) — v1.13.0
-- [Avatar Masks (upper-body-only emotes)](../../sdk7/interactivity/avatars/avatar-animations.md#animate-only-the-upper-body) — v1.13.0
-- SDK audio parity with Unity (volume curves and spatial attenuation) — v1.14.0
-- [AudioEvent component (`PBAudioEvent`)](../../sdk7/3d-essentials/sounds.md#detect-when-a-sound-finishes) — v1.14.0
-- [Audio Analysis component](../../sdk7/media/audio-analysis.md) — v1.14.0
-- [`teleportTo` with a `realm`, to send players to a place in another World or realm](https://github.com/decentraland/godot-explorer/issues/2816) — v1.14.0
-- Scenes can read the player's language (`getExplorerInformation().configurations.locale`) — v1.14.0
-- `TextEncoder` / `TextDecoder` globals — v1.14.0
-- Material texture `offset` / `tiling` move in the same vertical direction as on desktop — v1.14.0
 - [`stopEmote` restricted action](../../sdk7/interactivity/avatars/avatar-animations.md#animate-only-the-upper-body). Upper-body emotes started by a scene also pause when the player leaves the scene, resume on return, and stop when the scene unloads — v1.15.0
 - [`Tween` `MoveRotateScale` mode](../../sdk7/3d-essentials/move-entities.md#simultaneous-tweens) — v1.15.0
 - Other players' positions are reported to scenes relative to the scene, like the local player's (`getPlayer({ userId }).position`, `onEnterScene`, items attached to other players) — v1.15.0

@@ -4,45 +4,13 @@ import { fileURLToPath } from 'node:url'
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url))
 const examplesDirectory = scriptDirectory
-const overviewPath = join(examplesDirectory, 'README.md')
+const overviewPath = join(dirname(examplesDirectory), 'examples.md')
 const catalogPath = join(examplesDirectory, 'catalog.json')
 
 const ignoredMarkdownFiles = new Set([
 	'AGENTS.md',
 	'README.md',
 ])
-
-const categories = [
-	{
-		id: 'getting-started',
-		name: 'Start here',
-	},
-	{
-		id: 'published-games',
-		name: 'Published Games',
-	},
-	{
-		id: 'gameplay-interaction',
-		name: 'Gameplay and interaction',
-	},
-	{
-		id: 'ui-camera-player',
-		name: 'UI, camera, and player experience',
-	},
-	{
-		id: 'multiplayer-data-services',
-		name: 'Multiplayer, data, and services',
-	},
-	{
-		id: 'audio-video-environment',
-		name: 'Audio, video, and environment',
-	},
-	{
-		id: 'performance-scene-systems',
-		name: 'Performance and scene systems',
-	},
-]
-
 
 // MARK: getRepositoryAuthor
 function getRepositoryAuthor(source) {
@@ -67,6 +35,7 @@ function getCanonicalSource(source) {
 // MARK: parseExample
 function parseExample(
 	fileName,
+	category,
 	content,
 ) {
 	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
@@ -75,23 +44,36 @@ function parseExample(
 		throw new Error(`${fileName} must begin with YAML front matter.`)
 	}
 
-	const fields = Object.fromEntries(match[1]
-		.split(/\r?\n/)
-		.filter(Boolean)
-		.map(line => {
-			const separator = line.indexOf(':')
+	const fields = {}
+	let listKey = null
 
-			if (separator === -1) {
+	for (const line of match[1].split(/\r?\n/).filter(Boolean)) {
+		const listItemMatch = line.match(/^\s*-\s*(.+)$/)
+
+		if (listItemMatch) {
+			if (!listKey || !Array.isArray(fields[listKey])) {
 				throw new Error(`${fileName} has an invalid front matter line: ${line}`)
 			}
 
-			const key = line.slice(0, separator).trim()
-			const value = line.slice(separator + 1).trim()
+			fields[listKey].push(listItemMatch[1].trim())
 
-			return [key, value]
-		}))
+			continue
+		}
 
-	const requiredFields = ['id', 'name', 'description', 'category', 'tags', 'source', 'license']
+		const separator = line.indexOf(':')
+
+		if (separator === -1) {
+			throw new Error(`${fileName} has an invalid front matter line: ${line}`)
+		}
+
+		const key = line.slice(0, separator).trim()
+		const value = line.slice(separator + 1).trim()
+
+		fields[key] = value || []
+		listKey = Array.isArray(fields[key]) ? key : null
+	}
+
+	const requiredFields = ['id', 'name', 'description', 'tags', 'source', 'license']
 
 	for (const field of requiredFields) {
 		if (!fields[field]) {
@@ -99,11 +81,17 @@ function parseExample(
 		}
 	}
 
-	if (!/^\[[^\]]*\]$/.test(fields.tags)) {
-		throw new Error(`${fileName} tags must use an inline YAML list.`)
+	const tags = Array.isArray(fields.tags)
+		? fields.tags
+		: /^\[[^\]]*\]$/.test(fields.tags)
+			? fields.tags.slice(1, -1).split(',').map(tag => tag.trim()).filter(Boolean)
+			: null
+
+	if (!tags) {
+		throw new Error(`${fileName} tags must use an inline or block YAML list.`)
 	}
 
-	if (fields.category === 'published-games' && !fields.developer) {
+	if (category === 'published-games' && !fields.developer) {
 		throw new Error(`${fileName} must define a developer for Published Games.`)
 	}
 
@@ -111,8 +99,8 @@ function parseExample(
 		id:          fields.id,
 		name:        fields.name,
 		description: fields.description,
-		category:    fields.category,
-		tags:        fields.tags.slice(1, -1).split(',').map(tag => tag.trim()).filter(Boolean),
+		category,
+		tags,
 		developer:   fields.developer,
 		source:      fields.source,
 		license:     fields.license,
@@ -122,8 +110,53 @@ function parseExample(
 }
 
 
+// MARK: parseCategory
+function parseCategory(
+	categoryId,
+	content,
+) {
+	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
+
+	if (!match) {
+		throw new Error(`${categoryId}/README.md must begin with YAML front matter.`)
+	}
+
+	const fields = Object.fromEntries(match[1]
+		.split(/\r?\n/)
+		.filter(Boolean)
+		.map(line => {
+			const separator = line.indexOf(':')
+
+			if (separator === -1) {
+				throw new Error(`${categoryId}/README.md has an invalid front matter line: ${line}`)
+			}
+
+			const key = line.slice(0, separator).trim()
+			const value = line.slice(separator + 1).trim()
+
+			return [key, value]
+		}))
+
+	const order = Number(fields.order)
+
+	if (!fields.title || !fields.description || !Number.isInteger(order)) {
+		throw new Error(`${categoryId}/README.md requires title, description, and integer order fields.`)
+	}
+
+	return {
+		id:          categoryId,
+		name:        fields.title,
+		description: fields.description,
+		order,
+	}
+}
+
+
 // MARK: renderCatalogTables
-function renderCatalogTables(examples) {
+function renderCatalogTables(
+	examples,
+	categories,
+) {
 	const sections = categories.map(category => {
 		const categoryExamples = examples
 			.filter(example => example.category === category.id)
@@ -134,7 +167,7 @@ function renderCatalogTables(examples) {
 		}
 
 		const rows = categoryExamples.map(example => [
-			`[${example.name}](${example.page})`,
+			`[${example.name}](./examples/${example.fileName})`,
 			example.description,
 			...(category.id === 'published-games' ? [example.developer] : []),
 			example.tags.map(tag => `\`${tag}\``).join(', '),
@@ -156,6 +189,8 @@ function renderCatalogTables(examples) {
 			return [
 				`## ${category.name}`,
 				'',
+				category.description,
+				'',
 				renderRow(headings),
 				renderRow(widths.map(width => '-'.repeat(width))),
 				...rows.map(renderRow),
@@ -164,6 +199,8 @@ function renderCatalogTables(examples) {
 
 		return [
 			`## ${category.name}`,
+			'',
+			category.description,
 			'',
 			`| ${headings.join(' | ')} |`,
 			`| ${headings.map(() => '---').join(' | ')} |`,
@@ -177,15 +214,31 @@ function renderCatalogTables(examples) {
 
 // MARK: generateCatalog
 async function generateCatalog() {
-	const fileNames = (await readdir(examplesDirectory))
-		.filter(fileName => fileName.endsWith('.md') && !ignoredMarkdownFiles.has(fileName))
-		.sort()
+	const categoryIds = (await readdir(examplesDirectory, { withFileTypes: true }))
+		.filter(entry => entry.isDirectory())
+		.map(entry => entry.name)
 
-	const examples = (await Promise.all(fileNames.map(async fileName => {
-		const content = await readFile(join(examplesDirectory, fileName), 'utf8')
+	const categories = (await Promise.all(categoryIds.map(async categoryId => {
+		const categoryPath = join(examplesDirectory, categoryId, 'README.md')
+		const content = await readFile(categoryPath, 'utf8')
 
-		return parseExample(fileName, content)
+		return parseCategory(categoryId, content)
 	})))
+		.sort((firstCategory, secondCategory) => firstCategory.order - secondCategory.order || firstCategory.name.localeCompare(secondCategory.name))
+
+	const examples = (await Promise.all(categories.map(async category => {
+		const categoryDirectory = join(examplesDirectory, category.id)
+		const fileNames = (await readdir(categoryDirectory))
+			.filter(fileName => fileName.endsWith('.md') && !ignoredMarkdownFiles.has(fileName))
+			.sort()
+
+		return Promise.all(fileNames.map(async fileName => {
+			const content = await readFile(join(categoryDirectory, fileName), 'utf8')
+			const examplePath = `${category.id}/${fileName}`
+
+			return parseExample(examplePath, category.id, content)
+		}))
+	}))).flat()
 		.sort((firstExample, secondExample) => {
 			const authorComparison = getRepositoryAuthor(firstExample.source)
 				.localeCompare(getRepositoryAuthor(secondExample.source))
@@ -229,14 +282,14 @@ async function generateCatalog() {
 	const overviewMarkers = /<!-- example-scenes-catalog:start -->[\s\S]*?<!-- example-scenes-catalog:end -->/
 
 	if (!overviewMarkers.test(overview)) {
-		throw new Error('Could not find the example-scenes-catalog markers in creator/tutorials/examples/README.md.')
+		throw new Error('Could not find the example-scenes-catalog markers in creator/tutorials/examples.md.')
 	}
 
 	const generatedOverview = overview.replace(
 		overviewMarkers,
 		[
 			'<!-- example-scenes-catalog:start -->',
-			renderCatalogTables(examples),
+			renderCatalogTables(examples, categories),
 			'<!-- example-scenes-catalog:end -->',
 		].join('\n'),
 	)

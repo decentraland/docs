@@ -1,0 +1,12 @@
+---
+id: sdk-skills
+name: SDK Skills
+description: Maintained instructions that help AI coding agents use verified SDK7 patterns.
+tags: [ai, sdk7, workflow]
+source: https://github.com/decentraland/sdk-skills
+license: Apache-2.0
+---
+
+# SDK Skills
+
+Use these maintained instructions to guide AI coding agents toward verified SDK7 patterns.

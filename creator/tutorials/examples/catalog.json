@@ -367,21 +367,6 @@
 			"fileName": "gameplay-interaction/raycasting-and-collider-layers.md"
 		},
 		{
-			"id": "sdk-skills",
-			"name": "SDK Skills",
-			"description": "Maintained instructions that help AI coding agents use verified SDK7 patterns.",
-			"category": "getting-started",
-			"tags": [
-				"ai",
-				"sdk7",
-				"workflow"
-			],
-			"source": "https://github.com/decentraland/sdk-skills",
-			"license": "Apache-2.0",
-			"page": "./getting-started/sdk-skills.md",
-			"fileName": "getting-started/sdk-skills.md"
-		},
-		{
 			"id": "sdk7-scene-template",
 			"name": "SDK7 scene template",
 			"description": "A clean starting point for a new TypeScript SDK7 scene.",

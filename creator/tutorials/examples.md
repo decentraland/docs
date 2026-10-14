@@ -19,7 +19,6 @@ Core SDK7 references and starting points for new scenes.
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [SDK Skills](./examples/getting-started/sdk-skills.md) | Maintained instructions that help AI coding agents use verified SDK7 patterns. | `ai`, `sdk7`, `workflow` | [Open repository](https://github.com/decentraland/sdk-skills) |
 | [SDK7 scene template](./examples/getting-started/sdk7-scene-template.md) | A clean starting point for a new TypeScript SDK7 scene. | `sdk7`, `scene` | [Open repository](https://github.com/decentraland/sdk7-scene-template) |
 
 ## Published Games
@@ -108,7 +107,9 @@ Asset loading and scene-level systems.
 
 ## For AI-assisted creation
 
-Give your coding agent the link to the closest example along with a clear request. For example: "Use the Multiplayer Server leaderboard scene as a reference and build a score board for my game." Install the [SDK Skills](https://github.com/decentraland/sdk-skills) first so the agent has up-to-date SDK7 guidance.
+Give your coding agent the link to the closest example along with a clear request. For example: "Use the Multiplayer Server leaderboard scene as a reference and build a score board for my game."
+
+Install the [SDK Skills](https://github.com/decentraland/sdk-skills) first so the agent has up-to-date SDK7 guidance.
 
 For a broader guide to working with agents, see [Vibe Coding with AI](../sdk7/getting-started/vibe-coding.md).
 

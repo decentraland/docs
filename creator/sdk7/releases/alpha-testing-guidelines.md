@@ -30,7 +30,7 @@ You can deploy scenes with SDK7 via the **Publish** button on the Scene Editor i
 
 You can find more example scenes written with SDK7 here:
 
-* [Scene examples](https://studios.decentraland.org/resources)
+* [Scene examples](../../tutorials/examples.md)
 
 ## Reporting issues
 

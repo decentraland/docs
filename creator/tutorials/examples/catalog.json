@@ -3,31 +3,45 @@
 	"categories": [
 		{
 			"id": "getting-started",
-			"name": "Start here"
+			"name": "Start here",
+			"description": "Core SDK7 references and starting points for new scenes.",
+			"order": 1
 		},
 		{
 			"id": "published-games",
-			"name": "Published Games"
+			"name": "Published Games",
+			"description": "Released Decentraland scenes that demonstrate real-world mechanics.",
+			"order": 2
 		},
 		{
 			"id": "gameplay-interaction",
-			"name": "Gameplay and interaction"
+			"name": "Gameplay and interaction",
+			"description": "Core gameplay mechanics and player interactions.",
+			"order": 3
 		},
 		{
 			"id": "ui-camera-player",
-			"name": "UI, camera, and player experience"
+			"name": "UI, camera, and player experience",
+			"description": "Interface, camera, and player-facing systems.",
+			"order": 4
 		},
 		{
 			"id": "multiplayer-data-services",
-			"name": "Multiplayer, data, and services"
+			"name": "Multiplayer, data, and services",
+			"description": "Multiplayer patterns, persistent data, and external services.",
+			"order": 5
 		},
 		{
 			"id": "audio-video-environment",
-			"name": "Audio, video, and environment"
+			"name": "Audio, video, and environment",
+			"description": "Media, lighting, and environment controls.",
+			"order": 6
 		},
 		{
 			"id": "performance-scene-systems",
-			"name": "Performance and scene systems"
+			"name": "Performance and scene systems",
+			"description": "Asset loading and scene-level systems.",
+			"order": 7
 		}
 	],
 	"examples": [
@@ -44,8 +58,8 @@
 			"developer": "CanessaDCL",
 			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
 			"license": "unlicensed",
-			"page": "./shroom-zoom.md",
-			"fileName": "shroom-zoom.md"
+			"page": "./published-games/shroom-zoom.md",
+			"fileName": "published-games/shroom-zoom.md"
 		},
 		{
 			"id": "goal-legends",
@@ -58,8 +72,8 @@
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/goal-legends-arena",
 			"license": "NOASSERTION",
-			"page": "./goal-legends.md",
-			"fileName": "goal-legends.md"
+			"page": "./published-games/goal-legends.md",
+			"fileName": "published-games/goal-legends.md"
 		},
 		{
 			"id": "monster-recon",
@@ -74,8 +88,8 @@
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/dcl-monster-recon",
 			"license": "unlicensed",
-			"page": "./monster-recon.md",
-			"fileName": "monster-recon.md"
+			"page": "./published-games/monster-recon.md",
+			"fileName": "published-games/monster-recon.md"
 		},
 		{
 			"id": "the-fortune-teller",
@@ -90,8 +104,8 @@
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/circus_fortune_teller",
 			"license": "unlicensed",
-			"page": "./the-fortune-teller.md",
-			"fileName": "the-fortune-teller.md"
+			"page": "./published-games/the-fortune-teller.md",
+			"fileName": "published-games/the-fortune-teller.md"
 		},
 		{
 			"id": "clean-the-club",
@@ -106,8 +120,8 @@
 			"developer": "CleanTheClub",
 			"source": "https://github.com/CleanTheClub/CleanTheClub",
 			"license": "Apache-2.0",
-			"page": "./clean-the-club.md",
-			"fileName": "clean-the-club.md"
+			"page": "./published-games/clean-the-club.md",
+			"fileName": "published-games/clean-the-club.md"
 		},
 		{
 			"id": "cozy-farm",
@@ -121,8 +135,8 @@
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
 			"license": "unlicensed",
-			"page": "./cozy-farm.md",
-			"fileName": "cozy-farm.md"
+			"page": "./published-games/cozy-farm.md",
+			"fileName": "published-games/cozy-farm.md"
 		},
 		{
 			"id": "dead-surge",
@@ -137,8 +151,8 @@
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/dead-surge",
 			"license": "unlicensed",
-			"page": "./dead-surge.md",
-			"fileName": "dead-surge.md"
+			"page": "./published-games/dead-surge.md",
+			"fileName": "published-games/dead-surge.md"
 		},
 		{
 			"id": "kick-off",
@@ -152,8 +166,8 @@
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
 			"license": "unlicensed",
-			"page": "./kick-off.md",
-			"fileName": "kick-off.md"
+			"page": "./published-games/kick-off.md",
+			"fileName": "published-games/kick-off.md"
 		},
 		{
 			"id": "my-dear-pet",
@@ -167,8 +181,8 @@
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
 			"license": "unlicensed",
-			"page": "./my-dear-pet.md",
-			"fileName": "my-dear-pet.md"
+			"page": "./published-games/my-dear-pet.md",
+			"fileName": "published-games/my-dear-pet.md"
 		},
 		{
 			"id": "tower-of-madness",
@@ -183,8 +197,8 @@
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
 			"license": "unlicensed",
-			"page": "./tower-of-madness.md",
-			"fileName": "tower-of-madness.md"
+			"page": "./published-games/tower-of-madness.md",
+			"fileName": "published-games/tower-of-madness.md"
 		},
 		{
 			"id": "asset-loading",
@@ -198,8 +212,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load",
 			"license": "unlicensed",
-			"page": "./asset-loading.md",
-			"fileName": "asset-loading.md"
+			"page": "./performance-scene-systems/asset-loading.md",
+			"fileName": "performance-scene-systems/asset-loading.md"
 		},
 		{
 			"id": "audio-visualization",
@@ -213,8 +227,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization",
 			"license": "unlicensed",
-			"page": "./audio-visualization.md",
-			"fileName": "audio-visualization.md"
+			"page": "./audio-video-environment/audio-visualization.md",
+			"fileName": "audio-video-environment/audio-visualization.md"
 		},
 		{
 			"id": "dynamic-lights",
@@ -228,8 +242,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights",
 			"license": "unlicensed",
-			"page": "./dynamic-lights.md",
-			"fileName": "dynamic-lights.md"
+			"page": "./audio-video-environment/dynamic-lights.md",
+			"fileName": "audio-video-environment/dynamic-lights.md"
 		},
 		{
 			"id": "input-modifier",
@@ -243,8 +257,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier",
 			"license": "unlicensed",
-			"page": "./input-modifier.md",
-			"fileName": "input-modifier.md"
+			"page": "./gameplay-interaction/input-modifier.md",
+			"fileName": "gameplay-interaction/input-modifier.md"
 		},
 		{
 			"id": "material-and-texture-gallery",
@@ -258,8 +272,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery",
 			"license": "unlicensed",
-			"page": "./material-and-texture-gallery.md",
-			"fileName": "material-and-texture-gallery.md"
+			"page": "./performance-scene-systems/material-and-texture-gallery.md",
+			"fileName": "performance-scene-systems/material-and-texture-gallery.md"
 		},
 		{
 			"id": "mini-games-library",
@@ -273,8 +287,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk-mini-games",
 			"license": "unlicensed",
-			"page": "./mini-games-library.md",
-			"fileName": "mini-games-library.md"
+			"page": "./multiplayer-data-services/mini-games-library.md",
+			"fileName": "multiplayer-data-services/mini-games-library.md"
 		},
 		{
 			"id": "modifier-areas",
@@ -288,8 +302,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas",
 			"license": "unlicensed",
-			"page": "./modifier-areas.md",
-			"fileName": "modifier-areas.md"
+			"page": "./performance-scene-systems/modifier-areas.md",
+			"fileName": "performance-scene-systems/modifier-areas.md"
 		},
 		{
 			"id": "authoritative-server-leaderboard",
@@ -304,8 +318,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard",
 			"license": "unlicensed",
-			"page": "./authoritative-server-leaderboard.md",
-			"fileName": "authoritative-server-leaderboard.md"
+			"page": "./multiplayer-data-services/authoritative-server-leaderboard.md",
+			"fileName": "multiplayer-data-services/authoritative-server-leaderboard.md"
 		},
 		{
 			"id": "particle-system",
@@ -319,8 +333,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system",
 			"license": "unlicensed",
-			"page": "./particle-system.md",
-			"fileName": "particle-system.md"
+			"page": "./gameplay-interaction/particle-system.md",
+			"fileName": "gameplay-interaction/particle-system.md"
 		},
 		{
 			"id": "pointer-lock-control",
@@ -334,8 +348,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control",
 			"license": "unlicensed",
-			"page": "./pointer-lock-control.md",
-			"fileName": "pointer-lock-control.md"
+			"page": "./gameplay-interaction/pointer-lock-control.md",
+			"fileName": "gameplay-interaction/pointer-lock-control.md"
 		},
 		{
 			"id": "raycasting-and-collider-layers",
@@ -349,8 +363,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests",
 			"license": "unlicensed",
-			"page": "./raycasting-and-collider-layers.md",
-			"fileName": "raycasting-and-collider-layers.md"
+			"page": "./gameplay-interaction/raycasting-and-collider-layers.md",
+			"fileName": "gameplay-interaction/raycasting-and-collider-layers.md"
 		},
 		{
 			"id": "sdk-skills",
@@ -364,8 +378,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk-skills",
 			"license": "Apache-2.0",
-			"page": "./sdk-skills.md",
-			"fileName": "sdk-skills.md"
+			"page": "./getting-started/sdk-skills.md",
+			"fileName": "getting-started/sdk-skills.md"
 		},
 		{
 			"id": "sdk7-scene-template",
@@ -378,8 +392,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-scene-template",
 			"license": "unlicensed",
-			"page": "./sdk7-scene-template.md",
-			"fileName": "sdk7-scene-template.md"
+			"page": "./getting-started/sdk7-scene-template.md",
+			"fileName": "getting-started/sdk7-scene-template.md"
 		},
 		{
 			"id": "skybox-control",
@@ -393,8 +407,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
 			"license": "unlicensed",
-			"page": "./skybox-control.md",
-			"fileName": "skybox-control.md"
+			"page": "./audio-video-environment/skybox-control.md",
+			"fileName": "audio-video-environment/skybox-control.md"
 		},
 		{
 			"id": "spectate-mode",
@@ -408,8 +422,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode",
 			"license": "unlicensed",
-			"page": "./spectate-mode.md",
-			"fileName": "spectate-mode.md"
+			"page": "./ui-camera-player/spectate-mode.md",
+			"fileName": "ui-camera-player/spectate-mode.md"
 		},
 		{
 			"id": "third-party-guest-book",
@@ -422,8 +436,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api",
 			"license": "unlicensed",
-			"page": "./third-party-guest-book.md",
-			"fileName": "third-party-guest-book.md"
+			"page": "./multiplayer-data-services/third-party-guest-book.md",
+			"fileName": "multiplayer-data-services/third-party-guest-book.md"
 		},
 		{
 			"id": "third-party-leaderboard",
@@ -437,8 +451,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board",
 			"license": "unlicensed",
-			"page": "./third-party-leaderboard.md",
-			"fileName": "third-party-leaderboard.md"
+			"page": "./multiplayer-data-services/third-party-leaderboard.md",
+			"fileName": "multiplayer-data-services/third-party-leaderboard.md"
 		},
 		{
 			"id": "third-party-player-authentication",
@@ -452,8 +466,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity",
 			"license": "unlicensed",
-			"page": "./third-party-player-authentication.md",
-			"fileName": "third-party-player-authentication.md"
+			"page": "./multiplayer-data-services/third-party-player-authentication.md",
+			"fileName": "multiplayer-data-services/third-party-player-authentication.md"
 		},
 		{
 			"id": "trigger-areas",
@@ -467,8 +481,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas",
 			"license": "unlicensed",
-			"page": "./trigger-areas.md",
-			"fileName": "trigger-areas.md"
+			"page": "./gameplay-interaction/trigger-areas.md",
+			"fileName": "gameplay-interaction/trigger-areas.md"
 		},
 		{
 			"id": "ui-animations",
@@ -482,8 +496,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations",
 			"license": "unlicensed",
-			"page": "./ui-animations.md",
-			"fileName": "ui-animations.md"
+			"page": "./ui-camera-player/ui-animations.md",
+			"fileName": "ui-camera-player/ui-animations.md"
 		},
 		{
 			"id": "ui-safe-areas",
@@ -496,8 +510,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
 			"license": "unlicensed",
-			"page": "./ui-safe-areas.md",
-			"fileName": "ui-safe-areas.md"
+			"page": "./ui-camera-player/ui-safe-areas.md",
+			"fileName": "ui-camera-player/ui-safe-areas.md"
 		},
 		{
 			"id": "video-streaming",
@@ -511,8 +525,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming",
 			"license": "unlicensed",
-			"page": "./video-streaming.md",
-			"fileName": "video-streaming.md"
+			"page": "./audio-video-environment/video-streaming.md",
+			"fileName": "audio-video-environment/video-streaming.md"
 		},
 		{
 			"id": "virtual-cameras",
@@ -526,8 +540,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras",
 			"license": "unlicensed",
-			"page": "./virtual-cameras.md",
-			"fileName": "virtual-cameras.md"
+			"page": "./ui-camera-player/virtual-cameras.md",
+			"fileName": "ui-camera-player/virtual-cameras.md"
 		},
 		{
 			"id": "zombie-attack",
@@ -541,8 +555,8 @@
 			],
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack",
 			"license": "unlicensed",
-			"page": "./zombie-attack.md",
-			"fileName": "zombie-attack.md"
+			"page": "./gameplay-interaction/zombie-attack.md",
+			"fileName": "gameplay-interaction/zombie-attack.md"
 		},
 		{
 			"id": "npc-toolkit",
@@ -556,8 +570,8 @@
 			],
 			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
 			"license": "Apache-2.0",
-			"page": "./npc-toolkit.md",
-			"fileName": "npc-toolkit.md"
+			"page": "./ui-camera-player/npc-toolkit.md",
+			"fileName": "ui-camera-player/npc-toolkit.md"
 		},
 		{
 			"id": "flag-tag",
@@ -574,8 +588,8 @@
 			"developer": "iillee",
 			"source": "https://github.com/iillee/flagtag",
 			"license": "unlicensed",
-			"page": "./flag-tag.md",
-			"fileName": "flag-tag.md"
+			"page": "./published-games/flag-tag.md",
+			"fileName": "published-games/flag-tag.md"
 		},
 		{
 			"id": "pigeon-deluxe",
@@ -589,8 +603,8 @@
 			"developer": "PepeGawd",
 			"source": "https://github.com/PepeGawd/Pigeon-Deluxe",
 			"license": "unlicensed",
-			"page": "./pigeon-deluxe.md",
-			"fileName": "pigeon-deluxe.md"
+			"page": "./published-games/pigeon-deluxe.md",
+			"fileName": "published-games/pigeon-deluxe.md"
 		},
 		{
 			"id": "alien-scrapyard",
@@ -605,8 +619,8 @@
 			"developer": "procesista",
 			"source": "https://github.com/procesista/Alienscrap",
 			"license": "unlicensed",
-			"page": "./alien-scrapyard.md",
-			"fileName": "alien-scrapyard.md"
+			"page": "./published-games/alien-scrapyard.md",
+			"fileName": "published-games/alien-scrapyard.md"
 		},
 		{
 			"id": "fastlane-bowling",
@@ -626,8 +640,8 @@
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-bowling",
 			"license": "NOASSERTION",
-			"page": "./fastlane-bowling.md",
-			"fileName": "fastlane-bowling.md"
+			"page": "./published-games/fastlane-bowling.md",
+			"fileName": "published-games/fastlane-bowling.md"
 		},
 		{
 			"id": "sky-chaser",
@@ -644,8 +658,8 @@
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-sky-chaser",
 			"license": "NOASSERTION",
-			"page": "./sky-chaser.md",
-			"fileName": "sky-chaser.md"
+			"page": "./published-games/sky-chaser.md",
+			"fileName": "published-games/sky-chaser.md"
 		},
 		{
 			"id": "slay-the-steps",
@@ -664,8 +678,8 @@
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-slay-the-steps",
 			"license": "NOASSERTION",
-			"page": "./slay-the-steps.md",
-			"fileName": "slay-the-steps.md"
+			"page": "./published-games/slay-the-steps.md",
+			"fileName": "published-games/slay-the-steps.md"
 		},
 		{
 			"id": "bloom-garden",
@@ -682,8 +696,8 @@
 			"developer": "TheLivingGarden",
 			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",
 			"license": "MIT",
-			"page": "./bloom-garden.md",
-			"fileName": "bloom-garden.md"
+			"page": "./published-games/bloom-garden.md",
+			"fileName": "published-games/bloom-garden.md"
 		},
 		{
 			"id": "slide-penguin",
@@ -698,8 +712,8 @@
 			"developer": "ToxSam",
 			"source": "https://github.com/ToxSam/SlidePenguin",
 			"license": "unlicensed",
-			"page": "./slide-penguin.md",
-			"fileName": "slide-penguin.md"
+			"page": "./published-games/slide-penguin.md",
+			"fileName": "published-games/slide-penguin.md"
 		}
 	]
 }

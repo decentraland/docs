@@ -43,7 +43,9 @@ pointerEventsSystem.onPointerDown(
 )
 ```
 
-The following emotes show feedback about player actions in your scene, all of these are valid values for the `predefinedEmote` field:
+The following emotes show feedback about player actions in your scene. All of these are valid values for the `predefinedEmote` field.
+
+Most of them play once and then return the avatar to its normal idle:
 
 * `buttonDown`
 * `buttonFront`
@@ -57,10 +59,22 @@ The following emotes show feedback about player actions in your scene, all of th
 * `swingWeaponOneHand`
 * `swingWeaponTwoHands`
 * `throw`
+* `crafting`
+* `handsintheair`
+* `Victory`
+* `Waving`
+* `fistpump_short`
+
+The sitting emotes loop, holding the pose until the player moves or you stop the emote:
+
 * `sittingChair1`
 * `sittingChair2`
 * `sittingGround1`
 * `sittingGround2`
+
+{% hint style="warning" %}
+**📔 Note**: Spell these ids exactly as listed. `handsintheair` has no separators, and `fistpump_short` keeps its suffix. A misspelled id plays nothing.
+{% endhint %}
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
@@ -95,9 +109,13 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 
 This function takes an object with the following properties:
 
-* `src`: A string with a path to the emote file.
+* `src`: The full path to the emote file, counted from your project's root folder. A file at `assets/animations/sit_emote.glb` needs `'assets/animations/sit_emote.glb'`.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
 * `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
+
+{% hint style="warning" %}
+**📔 Note**: `src` must be the full path to the file. There is no search by file name, and the `_emote` suffix is not added for you. If the path is wrong, `triggerSceneEmote()` resolves to `false` and nothing plays. Copy the path from your project folder and include every folder in it.
+{% endhint %}
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
@@ -113,7 +131,7 @@ pointerEventsSystem.onPointerDown(
 		opts: { button: InputAction.IA_POINTER, hoverText: 'Make snowball' },
 	},
 	() => {
-		triggerSceneEmote({ src: 'animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
+		triggerSceneEmote({ src: 'assets/animations/Snowball_Throw_emote.glb', loop: false, mask: AvatarMask.AM_UPPER_BODY })
 	}
 )
 ```
@@ -152,7 +170,7 @@ pointerEventsSystem.onPointerDown(
 	},
 	() => {
 		triggerSceneEmote({
-			src: 'animations/Cheer_emote.glb',
+			src: 'assets/animations/Cheer_emote.glb',
 			loop: true,
 			mask: AvatarMask.AM_UPPER_BODY,
 		})

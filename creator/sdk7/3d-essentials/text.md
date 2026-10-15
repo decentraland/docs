@@ -161,3 +161,58 @@ You can also set up the following properties related to texts with multiple line
 
 * `lineCount`: _number_. How many lines of text to fit into the textbox as a maximum. If not set, there is no limit to the number of lines. The `textWrapping` property must be _true_ to use more than one line.
 * `lineSpacing`: _number_. How much space between each line.
+
+## Which way the text faces
+
+A `TextShape` reads correctly from its local **-Z** side. If you create one and don't rotate it, players standing on the entity's -Z side can read it.
+
+So to label the **+Z** face of a model, parent the text to the model, offset it slightly on **+Z** so it doesn't sink into the mesh, and rotate it 180 degrees around Y:
+
+```ts
+// A label stuck to the +Z face of a model
+import { engine, TextShape, Transform } from '@dcl/sdk/ecs'
+import { Quaternion, Vector3 } from '@dcl/sdk/math'
+
+const label = engine.addEntity()
+
+Transform.create(label, {
+	parent: myModel,
+	// A small offset on +Z keeps the text clear of the model's surface
+	position: Vector3.create(0, 1, 0.01),
+	rotation: Quaternion.fromEulerDegrees(0, 180, 0),
+})
+
+TextShape.create(label, { text: 'Front' })
+```
+
+{% hint style="info" %}
+**💡 Tip**: If the text should stay readable from wherever the player stands, add a [Billboard](entity-positioning.md#face-the-player) instead of rotating it by hand.
+{% endhint %}
+
+## Lay out columns
+
+Spaces don't line up columns in the default fonts, because their characters have different widths. Padding a string with spaces to build a table gives you ragged edges.
+
+Use one `TextShape` per column instead. Put each one at its own `x` position, give it the alignment that suits it, and keep the rows as `\n`-separated lines inside that one text value:
+
+```ts
+// A two-column score table: names on the left, scores on the right
+import { engine, TextAlignMode, TextShape, Transform } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+const names = engine.addEntity()
+Transform.create(names, { position: Vector3.create(7, 2, 8) })
+TextShape.create(names, {
+	text: 'Ana\nBruno\nCarla',
+	textAlign: TextAlignMode.TAM_MIDDLE_LEFT,
+})
+
+const scores = engine.addEntity()
+Transform.create(scores, { position: Vector3.create(9, 2, 8) })
+TextShape.create(scores, {
+	text: '120\n95\n1040',
+	textAlign: TextAlignMode.TAM_MIDDLE_RIGHT,
+})
+```
+
+Use `TAM_MIDDLE_LEFT` for text columns and `TAM_MIDDLE_RIGHT` for numbers, so the digits line up on their right edge. Because every column holds the same number of lines, the rows stay level.

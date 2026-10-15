@@ -29,22 +29,44 @@ When the assistant is on, an **AI Assistant** button (the sparkles icon) appears
 
 The assistant does not use an API key of its own. It runs a coding CLI that you install and sign into, so the work is billed to that tool's own subscription.
 
-Four are supported:
+Four are supported: Claude, Codex, Cursor and Gemini. You install each one with its vendor's own installer, from a terminal.
 
-| CLI | Install | Sign in |
+### Install a CLI
+
+Run the command for your operating system:
+
+| CLI | macOS and Linux | Windows |
 | --- | --- | --- |
-| Claude | `npm i -g @anthropic-ai/claude-code` | `claude` |
-| Codex | `npm i -g @openai/codex` | `codex login` |
-| Cursor | `npm i -g cursor-agent` | `cursor-agent login` |
-| Gemini | `npm i -g @google/gemini-cli` | `gemini` |
+| Claude | `curl -fsSL https://claude.ai/install.sh \| bash` | `winget install Anthropic.ClaudeCode` |
+| Codex | `curl -fsSL https://chatgpt.com/codex/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 \| iex"` |
+| Cursor | `curl https://cursor.com/install -fsS \| bash` | `powershell -ExecutionPolicy ByPass -c "irm 'https://cursor.com/install?win32=true' \| iex"` |
+| Gemini | `npm install -g @google/gemini-cli` | `npm install -g @google/gemini-cli` |
 
-You can do this from inside the Creator Hub. In the settings, on the **AI** tab under **Connect**, each detected CLI shows its status and a **Sign in** link that runs the login for you and opens your browser. A green dot and **Connected** mean it is ready. **Sign out** disconnects it.
+You don't have to copy these by hand. In the settings, on the **AI** tab under **Connect**, open the **Via Terminal** section below a CLI. It shows the exact **Install** and **Sign In** commands for your operating system, each with a **Copy** button, plus a link to that vendor's install guide:
 
-If you prefer to do it yourself, open the **Via Terminal** section under a CLI. It gives you the exact **Install** and **Sign In** commands to copy.
+* [Claude Code install guide](https://code.claude.com/docs/en/terminal-guide)
+* [Codex CLI install guide](https://developers.openai.com/codex/cli)
+* [Cursor CLI install guide](https://cursor.com/docs/cli/installation)
+* [Gemini CLI install guide](https://www.geminicli.com/docs/get-started/installation)
+
+After installing, click **Recheck** so the Creator Hub picks up the new CLI. On Windows this works without restarting the app.
 
 {% hint style="warning" %}
-**📔 Note**: Gemini has no **Sign in** button. Its login only runs as an interactive session, so sign in by running `gemini` in a terminal, or set a `GEMINI_API_KEY` in your environment.
+**📔 Note**: The Gemini CLI now works only with a paid Gemini API key or a Gemini Code Assist Standard or Enterprise license.
 {% endhint %}
+
+### Sign in
+
+| CLI | Sign in | Where |
+| --- | --- | --- |
+| Claude | `claude auth login` | Terminal |
+| Codex | `codex login` | **Sign in** button, or terminal |
+| Cursor | `cursor-agent login` | Terminal |
+| Gemini | run `gemini` and follow the prompts | Terminal |
+
+Codex is the only CLI the Creator Hub can sign in and out for you. Under **Connect** on the **AI** tab, its **Sign in** link runs the login and opens your browser, and **Sign out** disconnects it. Claude, Cursor and Gemini sign in from a terminal, so they show the commands instead of a button.
+
+A green dot and **Connected** next to a CLI mean it is ready to use.
 
 The same setup card appears in the chat panel itself the first time you open it with no CLI connected.
 
@@ -52,9 +74,32 @@ The same setup card appears in the chat panel itself the first time you open it 
 **💡 Tip**: If you have more than one CLI signed in, a dropdown in the chat panel lets you switch between them.
 {% endhint %}
 
+{% hint style="warning" %}
+**📔 Note**: If you have Claude Desktop but not Claude Code, the Creator Hub says so. The assistant needs Claude Code, Anthropic's terminal tool, and Claude Desktop's sign-in is not shared with it. Install Claude Code and sign in once.
+{% endhint %}
+
+### When an agent asks you to sign in again
+
+A saved sign-in can expire while the CLI still looks connected. When a CLI answers a message with "not logged in", the Creator Hub shows a **Sign-in needed** state with an amber dot instead of passing the raw command line through to the chat.
+
+The **Via Terminal** section opens on its own and shows the two commands to run, one at a time, finishing in your browser:
+
+| CLI | Sign out, then sign back in |
+| --- | --- |
+| Claude | `claude auth logout`, then `claude auth login` |
+| Codex | `codex logout`, then `codex login` |
+| Cursor | `cursor-agent logout`, then `cursor-agent login` |
+| Gemini | run `gemini`, then `/auth logout`, then `/auth login` |
+
+For Codex, use **Sign out** and then **Sign in** on the **AI** tab instead.
+
+Send your message again once you are signed in. The agent stays enabled the whole time, so you don't have to set it up from scratch.
+
 ### Bill to an API key instead
 
 If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** on the **AI** tab of the settings. It reads your provider's API key from your environment: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `CURSOR_API_KEY` or `GEMINI_API_KEY`. This is off by default.
+
+This is also offered as a way around a sign-in you can't complete. The Creator Hub shows the matching variable name next to each CLI as an **Or use an API key** hint.
 
 ## What it can do
 
@@ -81,6 +126,10 @@ While the assistant works, its changes show up live in the entity tree and the c
 * The panel can be dragged wider or narrower.
 
 An **About AI usage** card reminds you that the assistant consumes tokens from your connected account. Keep an eye on that account's usage.
+
+The assistant runs one message at a time. While a reply is in progress, a **Thinking…** indicator stays up until the turn finishes, including during long tool calls. Sending a second message doesn't cancel the first one: wait for the reply, or press **Stop** to end the turn yourself.
+
+Some replies ask you a question before continuing. If you leave one unanswered for too long, it closes with "This question is no longer active." and you can ask again.
 
 ### Attach files to a prompt
 

@@ -330,6 +330,50 @@ executeTask(fetchWearablesData)
 **💡 Tip**: You can fetch even more info about specific wearables from the [following API](https://decentraland.github.io/catalyst-api-specs/#tag/Lambdas/operation/searchWearables).
 {% endhint %}
 
+## Get the player's language
+
+`getPlayerLanguage()` returns the language the player's client is set to, as a [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) tag. A BCP-47 tag is the standard short code for a language, like `'es'` for Spanish or `'pt-BR'` for Brazilian Portuguese. Use it to show your scene's text in the player's own language.
+
+```ts
+// Show a greeting in the player's language
+import { getPlayerLanguage } from '@dcl/sdk/platform'
+
+const greetings: Record<string, string> = {
+	es: '¡Hola!',
+	'pt-BR': 'Olá!',
+}
+
+function greet() {
+	const language = getPlayerLanguage()
+	return greetings[language] ?? 'Hello!'
+}
+```
+
+Players whose language you don't have a translation for get `'en'`, which is also the value on clients that don't report a language at all. Always provide a fallback.
+
+{% hint style="warning" %}
+**📔 Note**: `getPlayerLanguage()` returns a value right away, but the real language arrives from the client a moment after your scene starts. Calling it in `main()` gives you `'en'` on every client, every time. Read it from a system instead, after the first few frames have run, or react to `onPlayerLanguageChanged`.
+{% endhint %}
+
+### React when the player switches language
+
+`onPlayerLanguageChanged` fires when the player changes their client language while in your scene. It also fires the first time the client reports a language that isn't `'en'`, which makes it a reliable place to set your scene's text.
+
+```ts
+// Update the scene's text whenever the player's language changes
+import { onPlayerLanguageChanged } from '@dcl/sdk/platform'
+
+onPlayerLanguageChanged.add(({ language }) => {
+	console.log('Player language is now', language)
+})
+```
+
+It only fires on a real change, so it stays quiet if the language never moves away from `'en'`. Keep your default text in place for that case.
+
+{% hint style="info" %}
+**💡 Tip**: `getPlayerLanguage()` comes from the same `@dcl/sdk/platform` module as [`getPlatform()`](../../build-for-mobile/develop/detect-platform.md), which tells you whether the player is on mobile, desktop or web.
+{% endhint %}
+
 ## Check the player's camera mode
 
 Players can either be using a 1st or 3rd person camera when exploring Decentraland. Check which of these the player is using by checking the value `CameraMode` component of the `engine.CameraEntity` entity.

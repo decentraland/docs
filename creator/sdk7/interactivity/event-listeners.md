@@ -258,7 +258,7 @@ A panel opens only when the call is a direct response to something the player ju
 
 * Calling from `main()`, so a panel can't greet the player on load.
 * Calling from a timer, or after the player's action has passed.
-* Calling after an `await`, which puts your code in a later frame. Do the work first, then open the panel.
+* Calling after an `await` on something that takes time, such as a `fetch` or another restricted action. The player action only counts for about one frame. Do the work first, then open the panel.
 * Hovering. `PET_HOVER_ENTER` and `PET_HOVER_LEAVE` are not player actions.
 * Movement keys. Walking, running and jumping don't count, only the activation buttons listed above.
 

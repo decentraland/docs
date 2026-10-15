@@ -191,7 +191,7 @@ TextShape.create(label, { text: 'Front' })
 
 ## Lay out columns
 
-Spaces don't line up columns, not even with `Font.F_MONOSPACE`. Padding a string with spaces to build a table gives you ragged edges.
+Spaces don't line up columns in the default fonts, because their characters have different widths. Padding a string with spaces to build a table gives you ragged edges.
 
 Use one `TextShape` per column instead. Put each one at its own `x` position, give it the alignment that suits it, and keep the rows as `\n`-separated lines inside that one text value:
 

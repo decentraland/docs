@@ -268,7 +268,7 @@ A panel opens only when the call is a direct response to something the player ju
 | -------------------------------- | ---------------------------------------------- |
 | `UNSPECIFIED` (0)                | No result was reported.                        |
 | `OPENED` (1)                     | The panel opened.                              |
-| `WAS_ALREADY_OPEN` (2)           | Another panel that uses the same screen slot was already open. Panels that share a slot can't be open at the same time. |
+| `WAS_ALREADY_OPEN` (2)           | That panel, or another panel that uses the same screen slot, was already open. Panels that share a slot can't be open at the same time. |
 | `REJECTED_NOT_CURRENT_SCENE` (3) | The player isn't standing in your scene.       |
 | `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off.        |
 | `REJECTED_NO_USER_GESTURE` (5)   | The call wasn't a response to a player action. |

@@ -128,6 +128,69 @@ pointerEventsSystem.onPointerDown(
 **Note:** Like other restricted actions, `openExplorerUi` can only be called from an explicit user gesture (a click or button event). Calling it from a timer, collision area, or any other trigger will be rejected.
 {% endhint %}
 
+### Which actions count as a user gesture
+
+The Explorer only accepts `openExplorerUi` within the same tick as a user gesture. Otherwise the call returns `REJECTED_NO_USER_GESTURE` and no panel opens.
+
+- Call `openExplorerUi` directly inside the click handler. If you `await` something else first (a fetch, a timer, another restricted action), the call can land after the gesture's tick and be rejected.
+- Opening a panel on scene load, on a timer, when the player walks into a trigger area, or on hover is never accepted. Design the panel as the result of something the player presses, and label it so they know what the press does.
+- Clicks on 3D entities (`pointerEventsSystem` events) count as gestures in all Explorer versions. Clicks on scene UI (`onMouseDown` on a `Button` or `UiEntity`) and key presses read through `inputSystem` count only in Explorer releases **after v0.187.0**. On older versions they return `REJECTED_NO_USER_GESTURE`.
+
+Always check `openResult`, and give players another way to reach what the panel offers if the call is rejected.
+
+### Wait for the player to close the panel
+
+To continue a flow once the player is done with a panel, use `openExplorerUiAndWait()` from `@dcl/sdk/explorer-ui` (SDK 7.30.0 or later). It opens the panel and returns a promise that resolves when the player closes it. The same gesture rules apply, so call it directly from the click handler.
+
+```ts
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+pointerEventsSystem.onPointerDown(
+  {
+    entity: wardrobe,
+    opts: { button: InputAction.IA_POINTER, hoverText: 'Change outfit' },
+  },
+  async () => {
+    const outcome = await openExplorerUiAndWait(ExplorerUi.EU_BACKPACK)
+    if (outcome.$case === 'closed') {
+      // The player closed the backpack, continue your flow here
+    } else if (outcome.$case === 'notOpened') {
+      console.log('Backpack not opened, result:', outcome.openResult)
+    }
+  }
+)
+```
+
+The resolved value has a `$case` field:
+
+| `$case`     | Meaning                                                                                           |
+| ----------- | ------------------------------------------------------------------------------------------------- |
+| `closed`    | The panel this call opened was closed.                                                            |
+| `notOpened` | The panel didn't open. `openResult` holds the reason, with the values listed above.              |
+| `timedOut`  | The `timeoutMs` option was set and that time passed before the panel closed.                      |
+| `matched`   | A stop condition passed in the `until` option fired before the panel closed.                      |
+
+A panel can stay open for a long time. To stop waiting after a set time, pass a timeout in milliseconds:
+
+```ts
+const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_MAP }, { timeoutMs: 60000 })
+```
+
+### React when panels open or close
+
+To react whenever an Explorer panel opens or closes, including panels the player opened on their own, read the `ExplorerUiEventsResult` component on `engine.RootEntity`. Each new entry reports the panel (`ui`) and whether it was `opened` or `closed`.
+
+```ts
+import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
+
+ExplorerUiEventsResult.onChange(engine.RootEntity, (entry) => {
+  if (!entry) return
+  if (entry.ui === ExplorerUi.EU_MAP && entry.event?.$case === 'opened') {
+    console.log('Map was opened')
+  }
+})
+```
+
 ### Practical uses
 
 Opening Explorer panels directly from your scene's content removes friction for players who might not know where to find these menus. Some ideas:

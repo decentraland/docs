@@ -200,6 +200,10 @@ Even a well optimized scene can run poorly on low-end hardware, or when the play
 
 Your scene can estimate the frame rate by counting how many times a system runs over a period of time. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel, this click counts as the user gesture that `openExplorerUi()` requires.
 
+{% hint style="warning" %}
+**Note:** A click on a scene UI button counts as a user gesture only in Explorer releases after v0.187.0. On older versions `openExplorerUi()` returns `REJECTED_NO_USER_GESTURE` and the panel doesn't open. To support them, make the tip a clickable 3D entity instead. See [which actions count as a user gesture](../interactivity/external-links.md#which-actions-count-as-a-user-gesture).
+{% endhint %}
+
 ```tsx
 import { engine } from '@dcl/sdk/ecs'
 import { openExplorerUi } from '~system/RestrictedActions'

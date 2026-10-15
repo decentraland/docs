@@ -25,19 +25,19 @@ Transform.create(myAvatar, {
 
 When passing data to generate an `AvatarShape`, the following fields are required:
 
-- `id`: (required) Internal identifier for the Avatar
+* `id`: (required) Internal identifier for the Avatar
 
 The following optional fields are also available:
 
-- `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
-- `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
-- `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
-- `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
-- `eyeColor`: _Color3_ for the eye color (any color is valid)
-- `skinColor`: _Color3_ for the skin color (any color is valid)
-- `hairColor`: _Color3_ for the hair color (any color is valid)
-- `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
-- <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
+* `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
+* `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
+* `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
+* `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
+* `eyeColor`: _Color3_ for the eye color (any color is valid)
+* `skinColor`: _Color3_ for the skin color (any color is valid)
+* `hairColor`: _Color3_ for the hair color (any color is valid)
+* `talking`: If _true_, it displays a green set of bars next to the name, like when players use voice chat in-world.
+* <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>💡 Tip</strong>: See <a href="../../3d-essentials/color-types.md">color types</a> for more details on how to set colors.</p></div>
 
 {% hint style="warning" %}
 **📔 Note**: The `AvatarShape`component must be imported via
@@ -73,7 +73,7 @@ Transform.create(myAvatar, {
 
 The `expressionTriggerId` field supports all [default animations](avatar-animations.md#default-animations), as well as custom animations [from a scene file](avatar-animations.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
-To use a custom animation, give the path to the `_emote.glb` file from your project's root folder, exactly as the file sits on disk, for example `'assets/animations/Cheer_emote.glb'`. As with [`triggerSceneEmote()`](avatar-animations.md#custom-animations), a wrong path plays nothing and logs no error.
+To use a custom animation, give the path to the `_emote.glb` file from your project's root folder, for example `'assets/animations/Cheer_emote.glb'`. As with [`triggerSceneEmote()`](avatar-animations.md#custom-animations), a wrong path plays nothing.
 
 {% hint style="warning" %}
 **📔 Note**: `AvatarShape` has no `mask` field, so an `expressionTriggerId` animation always plays on the whole body. [Animating only the upper body](avatar-animations.md#animate-only-the-upper-body) is available on the player's own avatar, not on NPCs.
@@ -115,11 +115,11 @@ let emoteDuration = 2  // 2 seconds
 // system
 engine.addSystem((dt: number) => {
     clapTimer += dt
-
+      
     if (clapTimer >= emoteDuration) {
         // Trigger the clap emote
         AvatarShape.getMutable(myAvatar).expressionTriggerTimestamp += 1
-
+        
         clapTimer = 0 // Reset timer
     }
 })
@@ -148,7 +148,6 @@ AvatarNametag.create(myAvatar, {
 	backgroundColor: Color3.Red(),
 })
 ```
-
 {% endhint %}
 
 See [Avatar Nametags](avatar-nametags.md) for the full list of fields, including colors.
@@ -175,7 +174,7 @@ export function swapAvatar(avatar: Entity) {
   mutableAvatar.eyeColor = userData.avatar?.eyesColor
   mutableAvatar.skinColor = userData.avatar?.skinColor
   mutableAvatar.hairColor = userData.avatar?.hairColor
-
+  
 }
 ```
 
@@ -218,7 +217,7 @@ Transform.create(myAvatar, {
   position: Vector3.create(8, 0.25, 8),
 })
 AvatarShape.create(myAvatar, {
-  id: "my-avatar-id",
+  id: "my-avatar-id", 
   wearables: [],
   emotes: []
 })

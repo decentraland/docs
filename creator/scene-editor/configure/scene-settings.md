@@ -56,17 +56,17 @@ The **Details** tab shows your thumbnail full width, with those two side bands s
 
 #### Keep the file under 1 MB
 
-Publishing to a [World](../../sdk7/publishing/publishing-options.md#decentraland-worlds) fails if the thumbnail is larger than 1 MB (1,048,576 bytes). The error looks like this:
+Never use a thumbnail larger than 1 MB (1,048,576 bytes). [Worlds](../../sdk7/publishing/publishing-options.md#decentraland-worlds) reject larger thumbnails with an error like this:
 
 ```
-Invalid thumbnail: size 1185064 bytes exceeds maximum of 1048576 bytes (1MB)
+Invalid thumbnail: size 1185064 bytes exceeds maximum of 1048576 bytes (1MB).
 ```
 
-An ordinary 1920x1080 PNG can go over the limit. The check runs on the Worlds content server, not in the Creator Hub, so nothing warns you until the publish fails.
+An ordinary 1920x1080 PNG can go over the limit, and the Creator Hub doesn't warn you about the size before you publish.
 
 Two ways to stay under it:
 
-* **Export a JPEG instead of a PNG**, at high quality. For example, `ffmpeg -i cover.png -q:v 2 cover.jpg` produces a file of roughly 100 KB at 1344x756.
+* **Export a JPEG instead of a PNG**, at high quality. For example, `ffmpeg -i cover.png -vf scale=1344:756 -q:v 2 cover.jpg` resizes the image to 1344x756 and produces a file of roughly 100 KB.
 * **Render at 1344x756** instead of 1920x1080. It is still 16:9, and the smaller file leaves plenty of room.
 
 Check the file size before you publish, not after a failed attempt.

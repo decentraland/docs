@@ -120,10 +120,10 @@ export function main() {
 
 The event includes the following information:
 
-- `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
-- `loop`: If the emote is looping or playing once
-- `timestamp`: When the emote was triggered.
-- `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
+* `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
+* `loop`: If the emote is looping or playing once
+* `timestamp`: When the emote was triggered.
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
 
 You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
@@ -153,16 +153,16 @@ export function main() {
 
 The event on `AvatarEquippedData` includes the following information:
 
-- `wearableUrns`: The list of wearables that the player currently has equipped.
-- `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
+* `wearableUrns`: The list of wearables that the player currently has equipped.
+* `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
 
 The event on `AvatarBase` includes the following information:
 
-- `name`: The player's name.
-- `bodyShapeUrn`: The ids corresponding to male or female body type.
-- `skinColor`: Player skin color as a `Color3`
-- `eyesColor`: Player eye color as a `Color3`
-- `hairColor`: Player hair color as a `Color3`
+* `name`: The player's name.
+* `bodyShapeUrn`: The ids corresponding to male or female body type.
+* `skinColor`: Player skin color as a `Color3`
+* `eyesColor`: Player eye color as a `Color3`
+* `hairColor`: Player hair color as a `Color3`
 
 You can also detect changes in wearables or avatars from other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
@@ -232,13 +232,13 @@ pointerEventsSystem.onPointerDown(
 
 The `ExplorerUi` enum has the following values:
 
-- `EU_SETTINGS` (0)
-- `EU_MAP` (1)
-- `EU_BACKPACK` (2)
-- `EU_CAMERA_REEL` (3)
-- `EU_COMMUNITIES` (4)
-- `EU_PLACES` (5)
-- `EU_EVENTS` (6)
+* `EU_SETTINGS` (0)
+* `EU_MAP` (1)
+* `EU_BACKPACK` (2)
+* `EU_CAMERA_REEL` (3)
+* `EU_COMMUNITIES` (4)
+* `EU_PLACES` (5)
+* `EU_EVENTS` (6)
 
 {% hint style="warning" %}
 **Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
@@ -248,22 +248,27 @@ The `ExplorerUi` enum has the following values:
 
 A panel opens only when the call is a direct response to something the player just did. A call that isn't, is refused.
 
-**Works:** clicking a 3D entity with `pointerEventsSystem.onPointerDown`.
+**Works:**
+
+* Clicking a 3D entity, with `pointerEventsSystem.onPointerDown`.
+* Clicking an element of your scene's UI, with `onMouseDown`.
+* Pressing one of the activation buttons, `E`, `F` or `1` to `4`, detected with `inputSystem.isTriggered(..., PointerEventType.PET_DOWN)` (`IA_PRIMARY`, `IA_SECONDARY`, `IA_ACTION_3` to `IA_ACTION_6`).
 
 **Does not work:**
 
-- Calling from `main()`, so a panel can't greet the player on load.
-- Calling from a timer, or after the player's action has passed.
-- Calling after an `await`, which puts your code in a later frame. Do the work first, then open the panel.
-- Hovering. `PET_HOVER_ENTER` and `PET_HOVER_LEAVE` are not player actions.
-- Movement keys. Walking, running and jumping don't count. Only the activation buttons do: the pointer, `E`, `F` and `1` to `4`.
+* Calling from `main()`, so a panel can't greet the player on load.
+* Calling from a timer, or after the player's action has passed.
+* Calling after an `await`, which puts your code in a later frame. Do the work first, then open the panel.
+* Hovering. `PET_HOVER_ENTER` and `PET_HOVER_LEAVE` are not player actions.
+* Movement keys. Walking, running and jumping don't count, only the activation buttons listed above.
 
 `openExplorerUi` resolves with an `openResult` that tells you what happened:
 
 | Value                            | Meaning                                        |
 | -------------------------------- | ---------------------------------------------- |
+| `UNSPECIFIED` (0)                | No result was reported.                        |
 | `OPENED` (1)                     | The panel opened.                              |
-| `WAS_ALREADY_OPEN` (2)           | A fullscreen panel was already on screen.      |
+| `WAS_ALREADY_OPEN` (2)           | Another panel that uses the same screen slot was already open. Panels that share a slot can't be open at the same time. |
 | `REJECTED_NOT_CURRENT_SCENE` (3) | The player isn't standing in your scene.       |
 | `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off.        |
 | `REJECTED_NO_USER_GESTURE` (5)   | The call wasn't a response to a player action. |
@@ -295,10 +300,10 @@ Call `openBackpack()` from a click handler, the same as `openExplorerUi`. The `a
 
 The outcome is one of:
 
-- `closed`: the panel this call opened was closed. This is the usual result.
-- `notOpened`: nothing opened. `outcome.openResult` says why, using the same values as above.
-- `timedOut`: the `timeoutMs` you set ran out first.
-- `matched`: a `until` condition you set fired first, so the panel may still be on screen.
+* `closed`: the panel this call opened was closed. This is the usual result.
+* `notOpened`: nothing opened. `outcome.openResult` says why, using the same values as above.
+* `timedOut`: the `timeoutMs` you set ran out first.
+* `matched`: a `until` condition you set fired first, so the panel may still be on screen.
 
 Pass a second argument to bound the wait. A panel can stay open for minutes, and there is no default timeout, so set one if your scene can't wait indefinitely:
 
@@ -337,9 +342,9 @@ engine.addSystem(() => {
 
 Each event contains:
 
-- `ui`: Which panel the event is about (an `ExplorerUi` value).
-- `timestamp`: A monotonic counter for when the event occurred.
-- `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
+* `ui`: Which panel the event is about (an `ExplorerUi` value).
+* `timestamp`: A monotonic counter for when the event occurred.
+* `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
 
 {% hint style="info" %}
 **💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.

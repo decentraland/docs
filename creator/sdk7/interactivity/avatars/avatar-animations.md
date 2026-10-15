@@ -73,7 +73,7 @@ The sitting emotes loop, holding the pose until the player moves or you stop the
 * `sittingGround2`
 
 {% hint style="warning" %}
-**📔 Note**: These ids are case-sensitive and must be written exactly as shown. `Victory` and `Waving` start with a capital letter, `handsintheair` is all lowercase with no separators, and `fistpump_short` keeps its suffix. A misspelled id plays nothing.
+**📔 Note**: Spell these ids exactly as listed. `handsintheair` has no separators, and `fistpump_short` keeps its suffix. A misspelled id plays nothing.
 {% endhint %}
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
@@ -109,12 +109,12 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 
 This function takes an object with the following properties:
 
-* `src`: The path to the emote file, counted from your project's root folder, written exactly as the file sits on disk. A file at `assets/animations/sit_emote.glb` needs `'assets/animations/sit_emote.glb'`.
+* `src`: The full path to the emote file, counted from your project's root folder. A file at `assets/animations/sit_emote.glb` needs `'assets/animations/sit_emote.glb'`.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
 * `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 {% hint style="warning" %}
-**📔 Note**: `src` is matched against your scene's files exactly. There is no search by file name, and the `_emote` suffix is not matched for you. If the path is wrong, `triggerSceneEmote()` resolves to `false`, nothing plays, and no error is logged, so the animation fails silently. Copy the path from your project folder and include every folder in it.
+**📔 Note**: `src` must be the full path to the file. There is no search by file name, and the `_emote` suffix is not added for you. If the path is wrong, `triggerSceneEmote()` resolves to `false` and nothing plays. Copy the path from your project folder and include every folder in it.
 {% endhint %}
 
 ```ts

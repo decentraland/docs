@@ -26,7 +26,7 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ### 7.30.0 and 7.30.1 (Oct 8, 2026)
 
-* **Player language**: `getPlayerLanguage()` returns the player's client language as a BCP-47 tag, and `onPlayerLanguageChanged` fires when they switch it. See [Get the player's language](../interactivity/user-data.md#get-the-players-language). [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)
+* **Player language**: `getPlayerLanguage()` returns the player's client language as a BCP-47 tag, and `onPlayerLanguageChanged` fires when they switch it. [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)
 * **`openExplorerUiAndWait`**: a helper that resolves once the player closes the explorer panel you opened. See [Wait for a panel to close](../interactivity/event-listeners.md#wait-for-a-panel-to-close). [#1543](https://github.com/decentraland/js-sdk-toolchain/pull/1543)
 * **Fixes**: adding the first smart item to a scene while a preview is running no longer breaks the bundle with `Component asset-packs::Actions not found`, so you no longer need to restart the preview [#1644](https://github.com/decentraland/js-sdk-toolchain/pull/1644); the bundle watcher ignores `node_modules` [#1640](https://github.com/decentraland/js-sdk-toolchain/pull/1640).
 
@@ -218,7 +218,7 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 ### 0.51.1 (Oct 14, 2026)
 
 * **AI agent setup points at each vendor's official installer**, with the right command for your operating system, and a link to that vendor's install guide. In-app **Sign in** and **Sign out** now apply to Codex only: Claude, Cursor and Gemini are set up from a terminal. See [AI Assistant](../../scene-editor/code/ai-assistant.md). [#1684](https://github.com/decentraland/creator-hub/pull/1684)
-* **Expired sign-ins are detected**: when an agent replies that it is not logged in, the Creator Hub shows a **Sign-in needed** state with the sign-out and sign-in commands instead of the raw CLI line. The agent stays enabled, so you can retry once you are signed in. See [When an agent asks you to sign in again](../../scene-editor/code/ai-assistant.md#when-an-agent-asks-you-to-sign-in-again). [#1685](https://github.com/decentraland/creator-hub/pull/1685)
+* **Expired sign-ins are detected**: when an agent replies that it is not logged in, the Creator Hub shows a **Sign-in needed** state with the sign-out and sign-in commands instead of the raw CLI line. The agent stays enabled, so you can retry once you are signed in. [#1685](https://github.com/decentraland/creator-hub/pull/1685)
 * **Fixes**: under the Bevy renderer, publishing no longer writes a stale parcel layout back to `scene.json` and discards parcel changes made in **Scene Settings** [#1682](https://github.com/decentraland/creator-hub/pull/1682); the Collections card opens the creators app [#1687](https://github.com/decentraland/creator-hub/pull/1687); AI panel reliability, including running one turn at a time, a **Thinking…** indicator that stays up for the whole turn, expired questions closing with "This question is no longer active.", chat history keeping the newest messages past its size budget, and **Stop** fully killing the CLI on Windows [#1681](https://github.com/decentraland/creator-hub/pull/1681).
 
 ### 0.51.0 (Oct 8, 2026)

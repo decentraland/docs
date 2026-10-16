@@ -1,6 +1,6 @@
 ---
 description: >-
-  Regala Créditos a tus jugadores desde la página de estudio del Shop, con el
+  Regala Créditos a tus jugadores desde la página Studio del Shop, con el
   presupuesto de Créditos que Decentraland le dio a tu estudio.
 ---
 
@@ -14,16 +14,16 @@ Si Decentraland le dio a tu estudio un presupuesto de Créditos, se los regalas 
 * **Las cuentas de tu propio estudio no pueden recibir sus Créditos.** Usa otra cuenta para cualquier regalo de prueba.
 * **Los regalos son definitivos.** Los Créditos regalados no vencen y no se pueden quitar, así que revisa la lista antes de confirmarla.
 
-## La página de tu estudio
+## Tu página Studio
 
-Inicia sesión en [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Si tu cuenta gestiona más de un estudio, elígelo en el menú **Estudio**. La página muestra:
+Inicia sesión en la página Studio, en [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Si tu cuenta gestiona más de un estudio, elígelo en el menú **Estudio**. La página muestra:
 
 * **Presupuesto disponible**: los Créditos que tu estudio todavía puede regalar.
 * **Regalado hasta ahora**: lo que tu estudio regaló, y en cuántos regalos.
 * **Máximo por jugador**: el regalo más grande que puede recibir un jugador de una vez.
 * **Regalos**: cada regalo que hizo tu estudio, con el jugador, los Créditos, el motivo, la fecha y quién lo envió.
 
-![La página del estudio, con el presupuesto disponible, lo regalado hasta ahora, el máximo por jugador y la lista de regalos](../../.gitbook/assets/studio-gifts-page.png)
+![La página Studio, con el presupuesto disponible, lo regalado hasta ahora, el máximo por jugador y la lista de regalos](../../.gitbook/assets/studio-gifts-page.png)
 
 Si la página dice que el estudio está en pausa, no puede regalar hasta que Decentraland lo reactive.
 
@@ -63,7 +63,7 @@ Los regalos se envían de a uno y cada fila muestra cómo salió. Si la ventana 
 | --- | --- |
 | Esta cuenta pertenece a tu estudio | Las cuentas de tu propio estudio no pueden recibir sus Créditos. Quita la fila. |
 | Esta cuenta no puede recibir regalos | Este jugador no puede recibir Créditos. Quita la fila. |
-| Supera el máximo por jugador | Baja el monto al **Máximo por jugador** que muestra la página de tu estudio. |
+| Supera el máximo por jugador | Baja el monto al **Máximo por jugador** que muestra tu página Studio. |
 | No queda presupuesto suficiente | Pídele más presupuesto a tu contacto de Decentraland, o regala menos. |
 | El estudio está en pausa | Espera a que Decentraland reactive el estudio y presiona **Continuar**. |
 | No recibimos confirmación | Revisa la lista de **Regalos** antes de enviarlo de nuevo: puede que el regalo ya esté. **Continuar** nunca le regala dos veces a nadie. |

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Gift Credits to your players from the Shop's studio page, out of the Credits
+  Gift Credits to your players from the Shop's Studio page, using the Credits
   budget Decentraland gave your studio.
 ---
 
@@ -14,16 +14,16 @@ If Decentraland gave your studio a Credits budget, you gift those Credits to you
 * **Your studio's own accounts can't receive its Credits.** Use a different account for any test gift.
 * **Gifts are final.** Gifted Credits never expire and can't be taken back, so check the list before you confirm it.
 
-## Your studio page
+## Your Studio page
 
-Sign in at [decentraland.org/shop/studio](https://decentraland.org/shop/studio). If your account manages more than one studio, pick it from the **Studio** menu. The page shows:
+Sign in to the Studio page at [decentraland.org/shop/studio](https://decentraland.org/shop/studio). If your account manages more than one studio, pick it from the **Studio** menu. The page shows:
 
 * **Budget left**: the Credits your studio can still gift.
 * **Gifted so far**: what your studio has gifted, and in how many gifts.
 * **Most per player**: the largest gift a single player can get at once.
 * **Gifts**: every gift your studio made, with the player, the Credits, the reason, the date and who sent it.
 
-![The studio page, with the budget left, the Credits gifted so far, the most per player and the list of gifts](../../.gitbook/assets/studio-gifts-page.png)
+![The Studio page, with the budget left, the Credits gifted so far, the most per player and the list of gifts](../../.gitbook/assets/studio-gifts-page.png)
 
 If the page says the studio is paused, it can't gift until Decentraland resumes it.
 
@@ -63,7 +63,7 @@ The gifts are sent one by one and each row shows how it went. If the window clos
 | --- | --- |
 | This account belongs to your studio | Your studio's own accounts can't receive its Credits. Remove the row. |
 | This account can't receive gifts | This player can't receive Credits. Remove the row. |
-| Above the most per player | Lower the amount to the **Most per player** shown on your studio page. |
+| Above the most per player | Lower the amount to the **Most per player** shown on your Studio page. |
 | There isn't enough budget left | Ask your Decentraland contact for more budget, or gift less. |
 | The studio is paused | Wait until Decentraland resumes the studio, then press **Continue**. |
 | We didn't get a confirmation | Check the **Gifts** list before sending it again: the gift may already be there. Pressing **Continue** never gifts anyone twice. |

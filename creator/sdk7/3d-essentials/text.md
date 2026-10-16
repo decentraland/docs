@@ -69,6 +69,7 @@ mutableText.text = 'new string'
 The `TextShape` component has several properties that can be set to style the text. Below are some of the most common:
 
 * `font`: Value from the enum `Font`.
+* `fontSrc`: _string_. Path to a `.ttf` font file in your scene, to render the text with a custom font. See [Custom fonts](#custom-fonts).
 * `fontSize`: _number_. An entiy with font 10 is 1 meter tall.
 * `textColor`: _Color4_ object. _Color4_ objects store an _RBG_ color as three numbers from 0 to 1, plus _alpha_ for transparency. See [color types](../3d-essentials/color-types.md) for more details.
 
@@ -107,6 +108,33 @@ TextShape.create(sign, {
 {% hint style="info" %}
 **💡 Tip**: If using VS studio or some other IDE, type `Font.` and you should see a list of suggestions with all of the available fonts.
 {% endhint %}
+
+### Custom fonts
+
+To render text with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder (just like the `src` of a `GltfContainer`). Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
+
+```ts
+TextShape.create(sign, {
+	text: 'Hello World',
+	fontSize: 5,
+	fontSrc: 'assets/fonts/Lobster-Regular.ttf',
+	font: Font.F_SANS_SERIF,
+})
+```
+
+The same `fontSrc` property exists on the UI `Label`, `Input` and `Dropdown` entities. See [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts).
+
+Keep the following in mind when using custom fonts:
+
+* **Only `.ttf` files are supported**. The file must be a TrueType font. OpenType fonts with CFF outlines (usually `.otf`), font collections (`.ttc`) and web fonts (`.woff`, `.woff2`) are rejected, and the text renders with the fallback `font`.
+* **The font must be a file in your scene**. `fontSrc` can't point to an external URL, and font family names (for example from Google Fonts) are not supported either. Download the `.ttf` file, include it in your scene folder and reference its path. Make sure the font's license allows redistributing it; most fonts on Google Fonts use the SIL Open Font License, which does.
+* **Custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. The same applies to local previews: the custom font only shows when previewing with optimized assets (the **Compress Assets** option in the Creator Hub, or `npm run start -- --local-ab` from the CLI). See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
+* **Not supported on mobile**. The Decentraland mobile app ignores `fontSrc` and renders the fallback `font`. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space. See [Missing Features on mobile](../../build-for-mobile/mobile-client/missing-features.md).
+* **The font file can be at most 16 MB**. Larger files are rejected and the fallback `font` is used. Fonts with extremely complex glyph outlines may also be rejected.
+* **Characters**: Latin characters (ASCII and Latin-1) are prerendered. Any other characters that the font includes, like Cyrillic or Chinese, are rendered the first time they appear in the scene, which can cause a brief hitch. Characters that the font doesn't include are drawn with the built-in sans-serif font.
+* **Fonts are shared**: all text entities that use the same `fontSrc` share a single copy of the font, so reusing a font across the scene costs no more than using it once. Prefer a handful of fonts over many different ones, since each font has its own texture.
+
+When the desktop client rejects a font, it prints a message to the console explaining why. Open the console in the preview to check it.
 
 ## Text alignment and padding properties
 

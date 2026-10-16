@@ -23,6 +23,7 @@ These are no longer gaps as of mobile app **v1.15.0**, which is rolling out to t
 
 ## SDK Features Missing on Mobile
 
+- [Custom fonts (`fontSrc` on `TextShape`, `Label`, `Input` and `Dropdown`)](../../sdk7/2d-ui/ui_text.md#custom-fonts) — the mobile app ignores `fontSrc` and renders the fallback `font` — No ETA
 - [`AvatarNametag` (scene-authored label above a player's nametag)](https://github.com/decentraland/godot-explorer/issues/2811) — No ETA
 - [Tween sequences (`TweenSequence`)](../../sdk7/3d-essentials/move-entities.md#tween-sequences) — not implemented; sequenced tweens don't animate — No ETA
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA

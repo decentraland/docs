@@ -188,4 +188,4 @@
 * [Usuarios y Roles](rewards/users-and-roles.md)
 * [Transacciones](rewards/transactions.md)
 * [Integraciones](rewards/integrations.md)
-* [Regalar Créditos](rewards/regalar-creditos.md)
+* [Regalar Créditos (Beta)](rewards/regalar-creditos.md)

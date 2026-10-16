@@ -232,4 +232,4 @@
 * [Users and Roles](rewards/users-and-roles.md)
 * [Transactions](rewards/transactions.md)
 * [Integrations](rewards/integrations.md)
-* [Gifting Credits](rewards/gifting-credits.md)
+* [Gifting Credits (Beta)](rewards/gifting-credits.md)

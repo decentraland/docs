@@ -1,12 +1,14 @@
 ---
 description: >-
-  Gift Credits to your players from the Shop's Studio page, using the Credits
-  budget Decentraland gave your studio.
+  Gifting Credits is an invite-only beta program: participating studios gift
+  Credits to their players from the Shop's Studio page.
 ---
 
-# Gifting Credits
+# Gifting Credits (Beta)
 
-If Decentraland gave your studio a Credits budget, you gift those Credits to your players from the Shop, at [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Players can spend them on anything in the Shop.
+Gifting Credits is currently an invite-only beta program. Participating studios can gift Credits to their players.
+
+If your studio has been invited to participate, you can gift Credits through the Shop's Studio page at [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Players can spend these Credits on anything in the Shop.
 
 ## Before you start
 
@@ -64,6 +66,6 @@ The gifts are sent one by one and each row shows how it went. If the window clos
 | This account belongs to your studio | Your studio's own accounts can't receive its Credits. Remove the row. |
 | This account can't receive gifts | This player can't receive Credits. Remove the row. |
 | Above the most per player | Lower the amount to the **Most per player** shown on your Studio page. |
-| There isn't enough budget left | Ask your Decentraland contact for more budget, or gift less. |
+| There isn't enough budget left | Gift less, or talk to your Decentraland contact about your budget. |
 | The studio is paused | Wait until Decentraland resumes the studio, then press **Continue**. |
 | We didn't get a confirmation | Check the **Gifts** list before sending it again: the gift may already be there. Pressing **Continue** never gifts anyone twice. |

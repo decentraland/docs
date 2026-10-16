@@ -1,12 +1,14 @@
 ---
 description: >-
-  Regala Créditos a tus jugadores desde la página Studio del Shop, con el
-  presupuesto de Créditos que Decentraland le dio a tu estudio.
+  Regalar Créditos es un programa beta solo por invitación: los estudios que
+  participan regalan Créditos a sus jugadores desde la página Studio del Shop.
 ---
 
-# Regalar Créditos
+# Regalar Créditos (Beta)
 
-Si Decentraland le dio a tu estudio un presupuesto de Créditos, se los regalas a tus jugadores desde el Shop, en [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Los jugadores pueden gastarlos en cualquier cosa del Shop.
+Regalar Créditos es, por ahora, un programa beta solo por invitación. Los estudios que participan pueden regalar Créditos a sus jugadores.
+
+Si tu estudio fue invitado a participar, puedes regalar Créditos desde la página Studio del Shop, en [decentraland.org/shop/studio](https://decentraland.org/shop/studio). Los jugadores pueden gastar estos Créditos en cualquier cosa del Shop.
 
 ## Antes de empezar
 
@@ -64,6 +66,6 @@ Los regalos se envían de a uno y cada fila muestra cómo salió. Si la ventana 
 | Esta cuenta pertenece a tu estudio | Las cuentas de tu propio estudio no pueden recibir sus Créditos. Quita la fila. |
 | Esta cuenta no puede recibir regalos | Este jugador no puede recibir Créditos. Quita la fila. |
 | Supera el máximo por jugador | Baja el monto al **Máximo por jugador** que muestra tu página Studio. |
-| No queda presupuesto suficiente | Pídele más presupuesto a tu contacto de Decentraland, o regala menos. |
+| No queda presupuesto suficiente | Regala menos, o habla de tu presupuesto con tu contacto de Decentraland. |
 | El estudio está en pausa | Espera a que Decentraland reactive el estudio y presiona **Continuar**. |
 | No recibimos confirmación | Revisa la lista de **Regalos** antes de enviarlo de nuevo: puede que el regalo ya esté. **Continuar** nunca le regala dos veces a nadie. |

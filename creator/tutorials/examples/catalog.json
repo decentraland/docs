@@ -153,6 +153,26 @@
 			"fileName": "published-games/clean-the-club.md"
 		},
 		{
+			"id": "astro-crew",
+			"name": "Astro Crew",
+			"description": "A cooperative spaceship game where players shoot asteroids and saucers, repair hull breaches, and improve their gunner and engineering levels.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"multiplayer",
+				"multiplayer-server",
+				"progression",
+				"leaderboard",
+				"storage"
+			],
+			"developer": "DansStuff",
+			"source": "https://github.com/DansStuff/AstroCrew",
+			"realm": "astrocrew.dcl.eth",
+			"license": "unlicensed",
+			"page": "./published-games/astro-crew.md",
+			"fileName": "published-games/astro-crew.md"
+		},
+		{
 			"id": "cozy-farm",
 			"name": "Cozy Farm",
 			"description": "Grow crops, expand your farm, and make friends.",

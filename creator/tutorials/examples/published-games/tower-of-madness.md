@@ -11,6 +11,7 @@ license: unlicensed
 
 # Tower of Madness
 
-Study a timed platforming game where players race to reach the top.
+- [Source on GitHub](https://github.com/dcl-regenesislabs/towerofmadness)
+- [Play on Decentraland](https://decentraland.org/jump?realm=towerofmadness.dcl.eth)
 
-Play it in the [Tower of Madness World](https://play.decentraland.org/?realm=towerofmadness.dcl.eth).
+Study a timed platforming game where players race to reach the top.

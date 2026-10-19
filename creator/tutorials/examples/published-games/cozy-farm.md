@@ -11,6 +11,7 @@ license: unlicensed
 
 # Cozy Farm
 
-Study a social farming game focused on growing crops, expanding a farm, and meeting other players.
+- [Source on GitHub](https://github.com/dcl-regenesislabs/cozy-farm)
+- [Play on Decentraland](https://decentraland.org/jump?realm=cozyfarm.dcl.eth)
 
-Play it in the [Cozy Farm World](https://play.decentraland.org/?realm=cozyfarm.dcl.eth).
+Study a social farming game focused on growing crops, expanding a farm, and meeting other players.

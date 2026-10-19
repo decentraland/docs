@@ -11,6 +11,7 @@ license: unlicensed
 
 # Pigeon Deluxe
 
-Study a playable community-made Decentraland scene.
+- [Source on GitHub](https://github.com/PepeGawd/Pigeon-Deluxe)
+- [Play on Decentraland](https://decentraland.org/jump?realm=pigeondeluxe.dcl.eth)
 
-Play it in the [Pigeon Deluxe World](https://play.decentraland.org/?realm=pigeondeluxe.dcl.eth).
+Study a playable community-made Decentraland scene.

@@ -11,6 +11,7 @@ license: unlicensed
 
 # Shroom Zoom
 
-Study a platforming and time-trial game with double-jumping, gliding, collectibles, and exploration.
+- [Source on GitHub](https://github.com/CanessaDCL/dcl-shroomzoom)
+- [Play on Decentraland](https://decentraland.org/jump?realm=shroomzoom.dcl.eth)
 
-Play it in the [Shroom Zoom World](https://play.decentraland.org/?realm=shroomzoom.dcl.eth).
+Study a platforming and time-trial game with double-jumping, gliding, collectibles, and exploration.

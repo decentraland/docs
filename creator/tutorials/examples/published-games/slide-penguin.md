@@ -11,6 +11,7 @@ license: unlicensed
 
 # Slide Penguin
 
-Study a seasonal penguin game.
+- [Source on GitHub](https://github.com/ToxSam/SlidePenguin)
+- [Play on Decentraland](https://decentraland.org/jump?position=-140%2C101)
 
-Play it at [Slide Penguin](https://play.decentraland.org/?position=-140%2C101).
+Study a seasonal penguin game.

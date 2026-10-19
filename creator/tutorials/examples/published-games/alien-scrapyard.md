@@ -14,8 +14,9 @@ license: unlicensed
 
 # Alien Scrapyard
 
-Study a cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
+- [Source on GitHub](https://github.com/procesista/Alienscrap)
+- [Play on Decentraland](https://decentraland.org/jump?realm=alienscrapyard.dcl.eth)
 
-Play it in the [Alien Scrapyard World](https://play.decentraland.org/?realm=alienscrapyard.dcl.eth).
+Study a cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
 
 ![[2d6ba101-9e5a-463d-bfab-45708b79c225-1792428492.jpg]]

@@ -11,6 +11,7 @@ license: unlicensed
 
 # My Dear Pet
 
-Study a pet collecting game.
+- [Source on GitHub](https://github.com/dcl-regenesislabs/marsh-colony)
+- [Play on Decentraland](https://decentraland.org/jump?realm=marshcolony.dcl.eth)
 
-Play it in the [My Dear Pet World](https://play.decentraland.org/?realm=marshcolony.dcl.eth).
+Study a pet collecting game.

@@ -11,6 +11,7 @@ license: unlicensed
 
 # The Fortune Teller
 
-Study a social roleplay experience where players can receive fortunes or tell fortunes for friends.
+- [Source on GitHub](https://github.com/carlosmu/circus_fortune_teller)
+- [Play on Decentraland](https://decentraland.org/jump?realm=fortunes.dcl.eth)
 
-Play it in [The Fortune Teller World](https://play.decentraland.org/?realm=fortunes.dcl.eth).
+Study a social roleplay experience where players can receive fortunes or tell fortunes for friends.

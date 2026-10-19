@@ -11,6 +11,7 @@ license: unlicensed
 
 # Dead Surge
 
-Study a zombie survival game with combat and weapon progression.
+- [Source on GitHub](https://github.com/dcl-regenesislabs/dead-surge)
+- [Play on Decentraland](https://decentraland.org/jump?realm=deadsurge.dcl.eth)
 
-Play it in the [Dead Surge World](https://play.decentraland.org/?realm=deadsurge.dcl.eth).
+Study a zombie survival game with combat and weapon progression.

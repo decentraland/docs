@@ -11,6 +11,7 @@ license: Apache-2.0
 
 # Clean The Club
 
-Study a cooperative cleanup game where players race to restore a nightclub before the next party.
+- [Source on GitHub](https://github.com/CleanTheClub/CleanTheClub)
+- [Play on Decentraland](https://decentraland.org/jump?realm=cleantheclub.dcl.eth)
 
-Play it in the [Clean The Club World](https://play.decentraland.org/?realm=cleantheclub.dcl.eth).
+Study a cooperative cleanup game where players race to restore a nightclub before the next party.

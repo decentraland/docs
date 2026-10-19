@@ -11,6 +11,7 @@ license: NOASSERTION
 
 # Sky Chaser
 
-Study an SDK7 Multiplayer Server game where players compete to catch escaping packages in each round. The scene includes weekly and all-time leaderboards.
+- [Source on GitHub](https://github.com/stom66/dcl-sky-chaser)
+- [Play on Decentraland](https://decentraland.org/jump?realm=skychaser.dcl.eth)
 
-Play it in the [Sky Chaser World](https://play.decentraland.org/?realm=skychaser.dcl.eth).
+Study an SDK7 Multiplayer Server game where players compete to catch escaping packages in each round. The scene includes weekly and all-time leaderboards.

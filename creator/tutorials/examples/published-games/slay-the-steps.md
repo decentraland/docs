@@ -11,6 +11,7 @@ license: NOASSERTION
 
 # Slay the Steps
 
-Study a Studio-made Multiplayer Server experience built for Decentraland Festive Trail 2025. It includes custom avatars, Marketplace API integration, and a custom colour-wheel picker. Its code separates client, server, and shared modules, and includes the source assets alongside the deployable scene.
+- [Source on GitHub](https://github.com/stom66/dcl-slay-the-steps)
+- [Play on Decentraland](https://decentraland.org/jump?realm=slaythesteps.dcl.eth)
 
-Play it in the [Slay the Steps World](https://play.decentraland.org/?realm=slaythesteps.dcl.eth).
+Study a Studio-made Multiplayer Server experience built for Decentraland Festive Trail 2025. It includes custom avatars, Marketplace API integration, and a custom colour-wheel picker. Its code separates client, server, and shared modules, and includes the source assets alongside the deployable scene.

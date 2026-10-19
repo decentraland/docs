@@ -11,6 +11,7 @@ license: unlicensed
 
 # Monster Recon
 
-Study a game that combines rapid memory-match rounds, exploration, monster collecting, and leaderboards.
+- [Source on GitHub](https://github.com/carlosmu/dcl-monster-recon)
+- [Play on Decentraland](https://decentraland.org/jump?realm=monsterrecon.dcl.eth)
 
-Play it in the [Monster Recon World](https://play.decentraland.org/?realm=monsterrecon.dcl.eth).
+Study a game that combines rapid memory-match rounds, exploration, monster collecting, and leaderboards.

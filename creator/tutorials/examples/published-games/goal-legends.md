@@ -11,6 +11,7 @@ license: NOASSERTION
 
 # Goal Legends
 
-Study a football game centred on scoring goals.
+- [Source on GitHub](https://github.com/carlosmu/goal-legends-arena)
+- [Play on Decentraland](https://decentraland.org/jump?realm=goallegends.dcl.eth)
 
-Play it in the [Goal Legends World](https://play.decentraland.org/?realm=goallegends.dcl.eth).
+Study a football game centred on scoring goals.

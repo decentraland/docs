@@ -11,6 +11,7 @@ license: unlicensed
 
 # Flag Tag
 
-Study a 24/7 Multiplayer Server keep-away game. Players compete to hold a flag during five-minute rounds, using boomerangs and banana traps while persistent daily, monthly, and all-time leaderboards track results.
+- [Source on GitHub](https://github.com/iillee/flagtag)
+- [Play on Decentraland](https://decentraland.org/jump?realm=flagtag.dcl.eth)
 
-Play it in the [Flag Tag World](https://play.decentraland.org/?realm=flagtag.dcl.eth).
+Study a 24/7 Multiplayer Server keep-away game. Players compete to hold a flag during five-minute rounds, using boomerangs and banana traps while persistent daily, monthly, and all-time leaderboards track results.

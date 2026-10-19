@@ -11,6 +11,7 @@ license: unlicensed
 
 # Kick Off
 
-Study a seasonal World Cup prediction game.
+- [Source on GitHub](https://github.com/dcl-regenesislabs/kickoff-2026)
+- [Play on Decentraland](https://decentraland.org/jump?realm=kickoff.dcl.eth)
 
-Play it in the [Kick Off World](https://play.decentraland.org/?realm=kickoff.dcl.eth).
+Study a seasonal World Cup prediction game.

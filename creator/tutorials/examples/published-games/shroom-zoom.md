@@ -5,6 +5,7 @@ description: Bounce, double-jump, and glide around a glowing lakeside mushroom w
 tags: [game, platformer, collectibles]
 developer: CanessaDCL
 source: https://github.com/CanessaDCL/dcl-shroomzoom
+realm: shroomzoom.dcl.eth
 license: unlicensed
 ---
 

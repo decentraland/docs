@@ -5,6 +5,7 @@ description: A playable Decentraland scene.
 tags: [game, community-made]
 developer: PepeGawd
 source: https://github.com/PepeGawd/Pigeon-Deluxe
+realm: pigeondeluxe.dcl.eth
 license: unlicensed
 ---
 

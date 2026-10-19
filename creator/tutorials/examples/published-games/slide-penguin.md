@@ -5,6 +5,7 @@ description: A seasonal penguin game.
 tags: [game, seasonal, platformer]
 developer: ToxSam
 source: https://github.com/ToxSam/SlidePenguin
+position: -140,101
 license: unlicensed
 ---
 

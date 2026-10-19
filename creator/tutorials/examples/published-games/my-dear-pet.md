@@ -5,6 +5,7 @@ description: A pet collecting game.
 tags: [game, collection]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/marsh-colony
+realm: marshcolony.dcl.eth
 license: unlicensed
 ---
 

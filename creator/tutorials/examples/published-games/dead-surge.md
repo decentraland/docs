@@ -5,6 +5,7 @@ description: Enter the graveyard, defeat zombies, survive as long as possible, a
 tags: [game, combat, progression]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/dead-surge
+realm: deadsurge.dcl.eth
 license: unlicensed
 ---
 

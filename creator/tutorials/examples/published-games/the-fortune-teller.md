@@ -5,6 +5,7 @@ description: Step into a mystical circus booth where players can get their fortu
 tags: [game, social, multiplayer]
 developer: carlosmu
 source: https://github.com/carlosmu/circus_fortune_teller
+realm: fortunes.dcl.eth
 license: unlicensed
 ---
 

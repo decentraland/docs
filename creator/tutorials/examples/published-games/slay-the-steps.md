@@ -5,6 +5,7 @@ description: A Multiplayer Server Festive Trail experience with custom avatars, 
 tags: [game, studio-made, multiplayer, multiplayer-server, avatars, marketplace-api, ui]
 developer: stom66
 source: https://github.com/stom66/dcl-slay-the-steps
+realm: slaythesteps.dcl.eth
 license: NOASSERTION
 ---
 

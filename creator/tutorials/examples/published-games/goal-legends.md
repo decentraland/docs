@@ -5,6 +5,7 @@ description: Score goals.
 tags: [game]
 developer: carlosmu
 source: https://github.com/carlosmu/goal-legends-arena
+realm: goallegends.dcl.eth
 license: NOASSERTION
 ---
 

@@ -8,6 +8,7 @@ tags:
   - timed-rounds
 developer: procesista
 source: https://github.com/procesista/Alienscrap
+realm: alienscrapyard.dcl.eth
 license: unlicensed
 ---
 
@@ -16,3 +17,5 @@ license: unlicensed
 Study a cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
 
 Play it in the [Alien Scrapyard World](https://play.decentraland.org/?realm=alienscrapyard.dcl.eth).
+
+![[2d6ba101-9e5a-463d-bfab-45708b79c225-1792428492.jpg]]

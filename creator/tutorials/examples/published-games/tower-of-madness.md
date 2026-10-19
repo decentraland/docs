@@ -5,6 +5,7 @@ description: Reach the top before time runs out.
 tags: [game, platformer, timed-rounds]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/towerofmadness
+realm: towerofmadness.dcl.eth
 license: unlicensed
 ---
 

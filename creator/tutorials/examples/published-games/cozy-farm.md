@@ -5,6 +5,7 @@ description: Grow crops, expand your farm, and make friends.
 tags: [game, social]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/cozy-farm
+realm: cozyfarm.dcl.eth
 license: unlicensed
 ---
 

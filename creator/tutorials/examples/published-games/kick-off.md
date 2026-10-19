@@ -5,6 +5,7 @@ description: A seasonal World Cup prediction game.
 tags: [game, seasonal]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/kickoff-2026
+realm: kickoff.dcl.eth
 license: unlicensed
 ---
 

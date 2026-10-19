@@ -103,6 +103,8 @@ function parseExample(
 		tags,
 		developer:   fields.developer,
 		source:      fields.source,
+		realm:       fields.realm,
+		position:    fields.position,
 		license:     fields.license,
 		page:        `./${fileName}`,
 		fileName,

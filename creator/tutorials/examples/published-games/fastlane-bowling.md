@@ -5,6 +5,7 @@ description: A Multiplayer Server bowling game with server-simulated Cannon-ES p
 tags: [game, studio-made, multiplayer, multiplayer-server, physics, progression, leaderboard, storage]
 developer: stom66
 source: https://github.com/stom66/dcl-bowling
+realm: stom.dcl.eth
 license: NOASSERTION
 ---
 

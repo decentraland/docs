@@ -5,6 +5,7 @@ description: A Multiplayer Server game about catching escaping packages, with we
 tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard]
 developer: stom66
 source: https://github.com/stom66/dcl-sky-chaser
+realm: skychaser.dcl.eth
 license: NOASSERTION
 ---
 

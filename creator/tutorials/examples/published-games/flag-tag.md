@@ -5,6 +5,7 @@ description: A Multiplayer Server keep-away game with timed rounds, power-ups, a
 tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard]
 developer: iillee
 source: https://github.com/iillee/flagtag
+realm: flagtag.dcl.eth
 license: unlicensed
 ---
 

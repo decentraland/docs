@@ -5,6 +5,7 @@ description: A cooperative Multiplayer Server garden with built-in Storage for p
 tags: [game, multiplayer, multiplayer-server, storage, leaderboard]
 developer: TheLivingGarden
 source: https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main
+realm: bloomgarden.dcl.eth
 license: MIT
 ---
 

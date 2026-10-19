@@ -5,6 +5,7 @@ description: Outsmart rapid-fire Memory Match rounds, then dash through camp to 
 tags: [game, collection, leaderboard]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-monster-recon
+realm: monsterrecon.dcl.eth
 license: unlicensed
 ---
 

@@ -5,6 +5,7 @@ description: Team up with friends to transform a trashed nightclub before the ne
 tags: [game, multiplayer, timed-rounds]
 developer: CleanTheClub
 source: https://github.com/CleanTheClub/CleanTheClub
+realm: cleantheclub.dcl.eth
 license: Apache-2.0
 ---
 

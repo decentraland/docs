@@ -42,6 +42,12 @@
 			"name": "Performance and scene systems",
 			"description": "Asset loading and scene-level systems.",
 			"order": 7
+		},
+		{
+			"id": "scene-management-feedback",
+			"name": "Scene management and feedback",
+			"description": "Tools for managing scenes and collecting player feedback.",
+			"order": 8
 		}
 	],
 	"examples": [
@@ -57,6 +63,7 @@
 			],
 			"developer": "CanessaDCL",
 			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
+			"realm": "shroomzoom.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/shroom-zoom.md",
 			"fileName": "published-games/shroom-zoom.md"
@@ -71,6 +78,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/goal-legends-arena",
+			"realm": "goallegends.dcl.eth",
 			"license": "NOASSERTION",
 			"page": "./published-games/goal-legends.md",
 			"fileName": "published-games/goal-legends.md"
@@ -87,6 +95,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/dcl-monster-recon",
+			"realm": "monsterrecon.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/monster-recon.md",
 			"fileName": "published-games/monster-recon.md"
@@ -103,6 +112,7 @@
 			],
 			"developer": "carlosmu",
 			"source": "https://github.com/carlosmu/circus_fortune_teller",
+			"realm": "fortunes.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/the-fortune-teller.md",
 			"fileName": "published-games/the-fortune-teller.md"
@@ -119,6 +129,7 @@
 			],
 			"developer": "CleanTheClub",
 			"source": "https://github.com/CleanTheClub/CleanTheClub",
+			"realm": "cleantheclub.dcl.eth",
 			"license": "Apache-2.0",
 			"page": "./published-games/clean-the-club.md",
 			"fileName": "published-games/clean-the-club.md"
@@ -134,6 +145,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
+			"realm": "cozyfarm.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/cozy-farm.md",
 			"fileName": "published-games/cozy-farm.md"
@@ -150,6 +162,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/dead-surge",
+			"realm": "deadsurge.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/dead-surge.md",
 			"fileName": "published-games/dead-surge.md"
@@ -165,6 +178,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
+			"realm": "kickoff.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/kick-off.md",
 			"fileName": "published-games/kick-off.md"
@@ -180,6 +194,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
+			"realm": "marshcolony.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/my-dear-pet.md",
 			"fileName": "published-games/my-dear-pet.md"
@@ -196,6 +211,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
+			"realm": "towerofmadness.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/tower-of-madness.md",
 			"fileName": "published-games/tower-of-madness.md"
@@ -335,6 +351,21 @@
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/particle-system.md",
 			"fileName": "gameplay-interaction/particle-system.md"
+		},
+		{
+			"id": "playtest-feedback",
+			"name": "Playtest feedback",
+			"description": "Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage.",
+			"category": "scene-management-feedback",
+			"tags": [
+				"ui",
+				"multiplayer-server",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback",
+			"license": "unlicensed",
+			"page": "./scene-management-feedback/playtest-feedback.md",
+			"fileName": "scene-management-feedback/playtest-feedback.md"
 		},
 		{
 			"id": "pointer-lock-control",
@@ -572,6 +603,7 @@
 			],
 			"developer": "iillee",
 			"source": "https://github.com/iillee/flagtag",
+			"realm": "flagtag.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/flag-tag.md",
 			"fileName": "published-games/flag-tag.md"
@@ -587,6 +619,7 @@
 			],
 			"developer": "PepeGawd",
 			"source": "https://github.com/PepeGawd/Pigeon-Deluxe",
+			"realm": "pigeondeluxe.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/pigeon-deluxe.md",
 			"fileName": "published-games/pigeon-deluxe.md"
@@ -603,6 +636,7 @@
 			],
 			"developer": "procesista",
 			"source": "https://github.com/procesista/Alienscrap",
+			"realm": "alienscrapyard.dcl.eth",
 			"license": "unlicensed",
 			"page": "./published-games/alien-scrapyard.md",
 			"fileName": "published-games/alien-scrapyard.md"
@@ -624,6 +658,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-bowling",
+			"realm": "stom.dcl.eth",
 			"license": "NOASSERTION",
 			"page": "./published-games/fastlane-bowling.md",
 			"fileName": "published-games/fastlane-bowling.md"
@@ -642,6 +677,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-sky-chaser",
+			"realm": "skychaser.dcl.eth",
 			"license": "NOASSERTION",
 			"page": "./published-games/sky-chaser.md",
 			"fileName": "published-games/sky-chaser.md"
@@ -662,6 +698,7 @@
 			],
 			"developer": "stom66",
 			"source": "https://github.com/stom66/dcl-slay-the-steps",
+			"realm": "slaythesteps.dcl.eth",
 			"license": "NOASSERTION",
 			"page": "./published-games/slay-the-steps.md",
 			"fileName": "published-games/slay-the-steps.md"
@@ -680,6 +717,7 @@
 			],
 			"developer": "TheLivingGarden",
 			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",
+			"realm": "bloomgarden.dcl.eth",
 			"license": "MIT",
 			"page": "./published-games/bloom-garden.md",
 			"fileName": "published-games/bloom-garden.md"
@@ -696,6 +734,7 @@
 			],
 			"developer": "ToxSam",
 			"source": "https://github.com/ToxSam/SlidePenguin",
+			"position": "-140,101",
 			"license": "unlicensed",
 			"page": "./published-games/slide-penguin.md",
 			"fileName": "published-games/slide-penguin.md"

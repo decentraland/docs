@@ -101,6 +101,24 @@
 			"fileName": "published-games/monster-recon.md"
 		},
 		{
+			"id": "prime-drive",
+			"name": "Prime Drive",
+			"description": "A three-lane bike racing game with obstacle dodging, coin collecting, and a track-record ghost to beat.",
+			"category": "published-games",
+			"tags": [
+				"game",
+				"multiplayer-server",
+				"leaderboard",
+				"storage"
+			],
+			"developer": "carlosmu",
+			"source": "https://github.com/carlosmu/dcl-prime-drive",
+			"realm": "primedrive.dcl.eth",
+			"license": "unlicensed",
+			"page": "./published-games/prime-drive.md",
+			"fileName": "published-games/prime-drive.md"
+		},
+		{
 			"id": "the-fortune-teller",
 			"name": "The Fortune Teller",
 			"description": "Step into a mystical circus booth where players can get their fortune told or take over the booth to tell friends' fortunes.",

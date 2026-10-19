@@ -11,7 +11,9 @@ This is an index, not a second copy of the code. Examples stay in the repositori
 
 AI Agent? Go here: [catalog.json](./examples/catalog.json). It contains the same entries and metadata in a machine-readable format.
 
-<!-- Generated from creator/tutorials/examples/*/*.md. Do not edit between the catalog markers. -->
+<!--
+	EDITORS READ THIS: Don't edit below this line. Instead, edit the files in the ./examples/ directory and then run the generate-catalog.mjs script to update the tables below.
+-->
 <!-- example-scenes-catalog:start -->
 ## Start here
 

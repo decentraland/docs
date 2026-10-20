@@ -2,7 +2,7 @@
 
 This directory contains the source entries for the Example Scenes catalog. Each category has its own folder, and each example has its own Markdown file. These files are the source of truth.
 
-`creator/tutorials/examples.md` and `catalog.json` are generated from the individual example files. Do not edit them directly.
+`creator/tutorials/examples.md` and `catalog.json` are generated from the individual example files. Do not edit them directly. The generator also registers example pages under Example Scenes in `creator/SUMMARY.md` so GitBook publishes their detail pages.
 
 Do not add this file to `creator/SUMMARY.md`. It is contributor guidance, not a catalog entry.
 

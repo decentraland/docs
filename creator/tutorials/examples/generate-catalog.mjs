@@ -6,6 +6,7 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url))
 const examplesDirectory = scriptDirectory
 const overviewPath = join(dirname(examplesDirectory), 'examples.md')
 const catalogPath = join(examplesDirectory, 'catalog.json')
+const summaryPath = join(dirname(scriptDirectory), '..', 'SUMMARY.md')
 
 const ignoredMarkdownFiles = new Set([
 	'AGENTS.md',
@@ -297,6 +298,23 @@ async function generateCatalog() {
 	)
 
 	await writeFile(overviewPath, generatedOverview)
+
+	const summary = await readFile(summaryPath, 'utf8')
+	const summarySection = /^\* \[Example Scenes\]\(tutorials\/examples\.md\)\r?\n(?:[\t ]+\* [^\r\n]*\r?\n)*/m
+
+	if (!summarySection.test(summary)) {
+		throw new Error('Could not find Example Scenes in creator/SUMMARY.md.')
+	}
+
+	const summaryEntries = categories.flatMap(category => examples
+		.filter(example => example.category === category.id)
+		.sort((first, second) => first.name.localeCompare(second.name))
+		.map(example => `\t* [${example.name}](tutorials/examples/${example.fileName})`))
+
+	await writeFile(summaryPath, summary.replace(
+		summarySection,
+		['* [Example Scenes](tutorials/examples.md)', ...summaryEntries, ''].join('\n'),
+	))
 
 	console.log(`Generated ${examples.length} examples in ${catalogPath} and ${overviewPath}.`)
 }

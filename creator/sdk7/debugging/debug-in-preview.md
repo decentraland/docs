@@ -118,7 +118,7 @@ The in-world time of day has a big impact on how 3d models look. The color of th
 
 Check that your scene looks good at all times of day by switching the game clock to different values. Click the **skybox time** icon on the left panel of the screen to set any time you prefer. If this slider is grayed out, make sure that the **Auto** option is disabled.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
+<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
 
 Your 3d model's materials might not look the same as they did in the modeling tool you created it with. This is to be expected, as all 3d rendering engines have subtle differences in how they deal with light and materials.
 

@@ -8,10 +8,14 @@ source: https://github.com/dcl-regenesislabs/marsh-colony
 realm: marshcolony.dcl.eth
 license: unlicensed
 ---
-
 # My Dear Pet
 
 - [Source on GitHub](https://github.com/dcl-regenesislabs/marsh-colony)
 - [Play on Decentraland](https://decentraland.org/jump?realm=marshcolony.dcl.eth)
 
-Study a pet collecting game.
+A pet collecting game.
+### Key features
+
+- TBD
+
+![[myDearPet-preview.jpg]]

@@ -8,10 +8,14 @@ source: https://github.com/PepeGawd/Pigeon-Deluxe
 realm: pigeondeluxe.dcl.eth
 license: unlicensed
 ---
-
 # Pigeon Deluxe
 
 - [Source on GitHub](https://github.com/PepeGawd/Pigeon-Deluxe)
 - [Play on Decentraland](https://decentraland.org/jump?realm=pigeondeluxe.dcl.eth)
 
-Study a playable community-made Decentraland scene.
+A community-made game.
+### Key features
+
+- TBD
+
+![[pigeonDeluxe-preview.png]]

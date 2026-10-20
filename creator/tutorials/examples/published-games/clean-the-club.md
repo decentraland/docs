@@ -8,10 +8,14 @@ source: https://github.com/CleanTheClub/CleanTheClub
 realm: cleantheclub.dcl.eth
 license: Apache-2.0
 ---
-
 # Clean The Club
 
 - [Source on GitHub](https://github.com/CleanTheClub/CleanTheClub)
 - [Play on Decentraland](https://decentraland.org/jump?realm=cleantheclub.dcl.eth)
 
-Study a cooperative cleanup game where players race to restore a nightclub before the next party.
+A cooperative cleanup game where players race to restore a nightclub before the next party.
+### Key features
+
+- TBD
+
+![[cleanTheClub-preview.png]]

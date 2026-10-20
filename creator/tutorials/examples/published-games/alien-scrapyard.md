@@ -11,12 +11,14 @@ source: https://github.com/procesista/Alienscrap
 realm: alienscrapyard.dcl.eth
 license: unlicensed
 ---
-
 # Alien Scrapyard
 
 - [Source on GitHub](https://github.com/procesista/Alienscrap)
 - [Play on Decentraland](https://decentraland.org/jump?realm=alienscrapyard.dcl.eth)
 
-Study a cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
+A cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
+### Key features
 
-![[2d6ba101-9e5a-463d-bfab-45708b79c225-1792428492.jpg]]
+- TBD
+
+![[alienScrapyard-preview.jpg]]

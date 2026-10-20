@@ -159,9 +159,9 @@ Una práctica sabia y común para optimizar tu escena es compartir texturas y ma
 
 La siguiente herramienta basada en [**glTF pipeline**](https://github.com/AnalyticalGraphicsInc/gltf-pipeline)\*\*, \*\* ofrece algunas optimizaciones que harán que los modelos 3D sean más ligeros y más rápidos de descargar para los jugadores en tu escena.
 
-**Mac:** [MAC GLB Extractor](https://github.com/decentraland/docs-creator/blob/main/images/3d-models-and-animations/glb-extractor/texture_extractor.sh)
+**Mac:** [MAC GLB Extractor](https://github.com/decentraland/docs/blob/main/creator/images/3d-models-and-animations/glb-extractor/texture_extractor.sh)
 
-**PC:** [PC GLB Extractor](https://github.com/decentraland/docs-creator/blob/main/images/3d-models-and-animations/glb-extractor/glb_texture_extract.bat)
+**PC:** [PC GLB Extractor](https://github.com/decentraland/docs/blob/main/creator/images/3d-models-and-animations/glb-extractor/glb_texture_extract.bat)
 
 Convierte el formato .gltf en .glb, que es binario y por lo tanto ocupa mucho menos. También coloca archivos de textura fuera del modelo 3D, lo que te permite usar la misma textura en múltiples modelos.
 

@@ -113,10 +113,6 @@ TextShape.create(sign, {
 
 To render text with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder (just like the `src` of a `GltfContainer`). Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
 
-{% hint style="warning" %}
-**📔 Note**: `fontSrc` requires an SDK version newer than 7.30.1. On 7.30.1 and earlier the property doesn't exist.
-{% endhint %}
-
 ```ts
 TextShape.create(sign, {
 	text: 'Hello World',

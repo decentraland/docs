@@ -280,4 +280,4 @@ Por ejemplo, la imagen a continuación muestra cada una de las letras en diferen
 
 ## Luces en la oscuridad
 
-Las luces se aprecian mejor cuando el cielo no compite con ellas. El componente `Skybox` puede dejar en negro el sol, los colores del cielo (y con ellos la luz ambiental), la niebla, las nubes y las estrellas, de modo que tus luces sean la única fuente de iluminación. Consulta [Oscuridad total](../interactivity/skybox-control.md#oscuridad-total).
+Las luces se aprecian mejor cuando el cielo no compite con ellas. Los componentes `Skybox`, `Sun` y `EnvironmentFog` pueden dejar en negro la luz del sol, los colores del cielo (y con ellos la luz ambiental), la niebla, las nubes y las estrellas, de modo que tus luces sean la única fuente de iluminación. Consulta [Oscuridad total](../interactivity/skybox-control.md#oscuridad-total).

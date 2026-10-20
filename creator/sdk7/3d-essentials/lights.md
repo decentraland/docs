@@ -299,4 +299,4 @@ For example, the image below displays each of the letters on different sides of 
 
 ## Lights in the dark
 
-Lights are easiest to appreciate when the sky doesn't compete with them. The `Skybox` component can black out the sun, the sky colors (and with them the ambient light), the fog, the clouds and the stars, so that your lights become the only source of illumination. See [Complete darkness](../interactivity/skybox-control.md#complete-darkness).
+Lights are easiest to appreciate when the sky doesn't compete with them. The `Skybox`, `Sun` and `EnvironmentFog` components can black out the sunlight, the sky colors (and with them the ambient light), the fog, the clouds and the stars, so that your lights become the only source of illumination. See [Complete darkness](../interactivity/skybox-control.md#complete-darkness).

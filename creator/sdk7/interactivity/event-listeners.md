@@ -209,12 +209,25 @@ export function main() {
 
 Your scene can open the Explorer's built-in fullscreen panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. This is useful for directing players to specific Explorer features from your scene's UI.
 
-```ts
-import { openExplorerUi } from '~system/RestrictedActions'
-import { ExplorerUi } from '@dcl/sdk/ecs'
+The player has to ask for it. Call `openExplorerUi` from inside a click handler, not on its own:
 
-// Open the map panel
-await openExplorerUi({ ui: ExplorerUi.EU_MAP })
+```ts
+// Open the map when the player clicks a cube
+import { openExplorerUi } from '~system/RestrictedActions'
+import { engine, ExplorerUi, InputAction, MeshCollider, MeshRenderer, pointerEventsSystem, Transform } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+const mapButton = engine.addEntity()
+Transform.create(mapButton, { position: Vector3.create(8, 1, 8) })
+MeshRenderer.setBox(mapButton)
+MeshCollider.setBox(mapButton)
+
+pointerEventsSystem.onPointerDown(
+	{ entity: mapButton, opts: { button: InputAction.IA_POINTER, hoverText: 'Open map' } },
+	() => {
+		void openExplorerUi({ ui: ExplorerUi.EU_MAP })
+	}
+)
 ```
 
 The `ExplorerUi` enum has the following values:
@@ -230,6 +243,77 @@ The `ExplorerUi` enum has the following values:
 {% hint style="warning" %}
 **Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
 {% endhint %}
+
+### Only a player action can open a panel
+
+A panel opens only when the call is a direct response to something the player just did. A call that isn't, is refused.
+
+**Works:**
+
+* Clicking a 3D entity, with `pointerEventsSystem.onPointerDown`.
+* Clicking an element of your scene's UI, with `onMouseDown`.
+* Pressing one of the activation buttons, `E`, `F` or `1` to `4`, detected with `inputSystem.isTriggered(..., PointerEventType.PET_DOWN)` (`IA_PRIMARY`, `IA_SECONDARY`, `IA_ACTION_3` to `IA_ACTION_6`).
+
+**Does not work:**
+
+* Calling from `main()`, so a panel can't greet the player on load.
+* Calling from a timer, or after the player's action has passed.
+* Calling after an `await` on something that takes time, such as a `fetch` or another restricted action. The player action only counts for about one frame. Do the work first, then open the panel.
+* Hovering. `PET_HOVER_ENTER` and `PET_HOVER_LEAVE` are not player actions.
+* Movement keys. Walking, running and jumping don't count, only the activation buttons listed above.
+
+`openExplorerUi` resolves with an `openResult` that tells you what happened:
+
+| Value                            | Meaning                                        |
+| -------------------------------- | ---------------------------------------------- |
+| `UNSPECIFIED` (0)                | No result was reported.                        |
+| `OPENED` (1)                     | The panel opened.                              |
+| `WAS_ALREADY_OPEN` (2)           | That panel, or another panel that uses the same screen slot, was already open. Panels that share a slot can't be open at the same time. |
+| `REJECTED_NOT_CURRENT_SCENE` (3) | The player isn't standing in your scene.       |
+| `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off.        |
+| `REJECTED_NO_USER_GESTURE` (5)   | The call wasn't a response to a player action. |
+
+{% hint style="warning" %}
+**Note:** If nothing opens and you see no error, check `openResult`. `REJECTED_NO_USER_GESTURE` (5) means your call ran outside a player action, usually because it sits in `main()`, in a timer, or after an `await`.
+{% endhint %}
+
+### Wait for a panel to close
+
+`openExplorerUiAndWait` opens a panel and gives you back a promise that resolves once the player closes it. Use it when your scene should pause, or react, while the player is off in the backpack or the map.
+
+```ts
+// Open the backpack, then react once the player closes it
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+async function openBackpack() {
+	const outcome = await openExplorerUiAndWait(ExplorerUi.EU_BACKPACK)
+
+	if (outcome.$case === 'closed') {
+		console.log('The player closed the backpack')
+	} else if (outcome.$case === 'notOpened') {
+		console.log('Nothing opened:', outcome.openResult)
+	}
+}
+```
+
+Call `openBackpack()` from a click handler, the same as `openExplorerUi`. The `await` happens inside the function, after the call, so the player action still counts.
+
+The outcome is one of:
+
+* `closed`: the panel this call opened was closed. This is the usual result.
+* `notOpened`: nothing opened. `outcome.openResult` says why, using the same values as above.
+* `timedOut`: the `timeoutMs` you set ran out first.
+* `matched`: a `until` condition you set fired first, so the panel may still be on screen.
+
+Pass a second argument to bound the wait. A panel can stay open for minutes, and there is no default timeout, so set one if your scene can't wait indefinitely:
+
+```ts
+// Give up waiting after 60 seconds
+const outcome = await openExplorerUiAndWait(
+	{ ui: ExplorerUi.EU_BACKPACK },
+	{ timeoutMs: 60000 }
+)
+```
 
 ### Observe when panels open or close
 

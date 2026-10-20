@@ -24,6 +24,12 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## SDK
 
+### 7.30.0 and 7.30.1 (Oct 8, 2026)
+
+* **Player language**: `getPlayerLanguage()` returns the player's client language as a BCP-47 tag, and `onPlayerLanguageChanged` fires when they switch it. [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)
+* **`openExplorerUiAndWait`**: a helper that resolves once the player closes the explorer panel you opened. See [Wait for a panel to close](../interactivity/event-listeners.md#wait-for-a-panel-to-close). [#1543](https://github.com/decentraland/js-sdk-toolchain/pull/1543)
+* **Fixes**: adding the first smart item to a scene while a preview is running no longer breaks the bundle with `Component asset-packs::Actions not found`, so you no longer need to restart the preview [#1644](https://github.com/decentraland/js-sdk-toolchain/pull/1644); the bundle watcher ignores `node_modules` [#1640](https://github.com/decentraland/js-sdk-toolchain/pull/1640).
+
 ### 7.29.0 (Sep 15, 2026)
 
 * **Stacking order between UI modules**: a `zIndex` renderer option decides which UI module draws in front of which. Without it, modules stack in the order they first appear, with the main UI at the back. See [Stacking order between UI modules](../2d-ui/onscreen-ui.md#stacking-order-between-ui-modules). [#1607](https://github.com/decentraland/js-sdk-toolchain/pull/1607)
@@ -209,13 +215,19 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## Creator Hub
 
+### 0.51.1 (Oct 14, 2026)
+
+* **AI agent setup points at each vendor's official installer**, with the right command for your operating system, and a link to that vendor's install guide. In-app **Sign in** and **Sign out** now apply to Codex only: Claude, Cursor and Gemini are set up from a terminal. See [AI Assistant](../../scene-editor/code/ai-assistant.md). [#1684](https://github.com/decentraland/creator-hub/pull/1684)
+* **Expired sign-ins are detected**: when an agent replies that it is not logged in, the Creator Hub shows a **Sign-in needed** state with the sign-out and sign-in commands instead of the raw CLI line. The agent stays enabled, so you can retry once you are signed in. [#1685](https://github.com/decentraland/creator-hub/pull/1685)
+* **Fixes**: under the Bevy renderer, publishing no longer writes a stale parcel layout back to `scene.json` and discards parcel changes made in **Scene Settings** [#1682](https://github.com/decentraland/creator-hub/pull/1682); the Collections card opens the creators app [#1687](https://github.com/decentraland/creator-hub/pull/1687); AI panel reliability, including running one turn at a time, a **Thinking…** indicator that stays up for the whole turn, expired questions closing with "This question is no longer active.", chat history keeping the newest messages past its size budget, and **Stop** fully killing the CLI on Windows [#1681](https://github.com/decentraland/creator-hub/pull/1681).
+
 ### 0.51.0 (Oct 8, 2026)
 
 * **Attach files to AI Assistant prompts**: drag files onto the message box, pick them with the paperclip button, or paste an image from the clipboard. Images, 3D models, audio and any other file are supported, up to 8 per message. See [Attach files to a prompt](../../scene-editor/code/ai-assistant.md#attach-files-to-a-prompt). [#1670](https://github.com/decentraland/creator-hub/pull/1670)
 * **Quick items from media drops**: dragging an image, sound or video from **Local Assets** onto the canvas now creates a ready-made item that already points at that file. See [Import custom assets](../../scene-editor/build/import-items.md). [#1616](https://github.com/decentraland/creator-hub/pull/1616)
 * **The toolbar button is labeled Play again**, and its menu is split into a main panel that picks where to preview plus a **Desktop Client** submenu for the options that only apply there. The debug console now opens by default, so it is no longer a menu option. See [Preview your scene](../getting-started/preview-scene.md). [#1671](https://github.com/decentraland/creator-hub/pull/1671), [#1656](https://github.com/decentraland/creator-hub/pull/1656)
 * **Scene Inset option renamed**: "Gameplay Safe Area" is now "Interactable Safe Area" in the UI Editor. It writes the same `screenInset: 'interactable'` value as before. See [UI Editor](../../scene-editor/build/ui-editor.md). [#1673](https://github.com/decentraland/creator-hub/pull/1673)
-* **Fixes**: Trigger Area duplication and shape-edit field loss [#1658](https://github.com/decentraland/creator-hub/pull/1658); the MobileHUD preview is framed against the mobile screen instead of the active GUI [#1648](https://github.com/decentraland/creator-hub/pull/1648); renaming a scene no longer drops keystrokes, and the editor header updates [#1651](https://github.com/decentraland/creator-hub/pull/1651); the debug console no longer disappears after **Reload scene from disk** [#1652](https://github.com/decentraland/creator-hub/pull/1652); Bevy editor undo cleanup, mute button and dependency toast [#1669](https://github.com/decentraland/creator-hub/pull/1669); the Decentraland logo renders in the smart item tooltip [#1677](https://github.com/decentraland/creator-hub/pull/1677).
+* **Fixes**: Trigger Area duplication and shape-edit field loss [#1658](https://github.com/decentraland/creator-hub/pull/1658); the MobileHUD preview is framed against the mobile screen instead of the active GUI [#1648](https://github.com/decentraland/creator-hub/pull/1648); renaming a scene no longer drops keystrokes, and the editor header updates [#1651](https://github.com/decentraland/creator-hub/pull/1651); the debug console no longer disappears after **Reload scene from disk** [#1652](https://github.com/decentraland/creator-hub/pull/1652); Bevy editor undo cleanup, mute button and dependency toast [#1669](https://github.com/decentraland/creator-hub/pull/1669); the Decentraland logo renders in the smart item tooltip [#1677](https://github.com/decentraland/creator-hub/pull/1677); deleting an entity and undoing restores it fully, instead of bringing it back as an unselectable bare entity number missing from the Admin Tools smart-item picker [#1679](https://github.com/decentraland/creator-hub/pull/1679); long checkbox labels in the Multiplayer component wrap instead of overflowing the entity panel [#1676](https://github.com/decentraland/creator-hub/pull/1676).
 
 ### 0.50.0 (Sep 23, 2026)
 

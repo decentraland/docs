@@ -73,6 +73,18 @@ Transform.create(myAvatar, {
 
 The `expressionTriggerId` field supports all [default animations](avatar-animations.md#default-animations), as well as custom animations [from a scene file](avatar-animations.md#custom-animations), and even URNs from emotes that are published to the marketplace.
 
+To use a custom animation, give the path to the `_emote.glb` file from your project's root folder, for example `'assets/animations/Cheer_emote.glb'`. As with [`triggerSceneEmote()`](avatar-animations.md#custom-animations), a wrong path plays nothing.
+
+{% hint style="warning" %}
+**📔 Note**: `AvatarShape` has no `mask` field, so an `expressionTriggerId` animation always plays on the whole body. [Animating only the upper body](avatar-animations.md#animate-only-the-upper-body) is available on the player's own avatar, not on NPCs.
+{% endhint %}
+
+### Moving an NPC while it plays an emote
+
+Writing the avatar's `Transform.position`, or running a [Tween](../../3d-essentials/move-entities.md) on it, cancels the emote that is playing. The avatar drops back to its walk cycle, because Decentraland works out which locomotion animation to blend from how far the avatar moved since the last frame.
+
+To move an NPC during an emote, if the movement is over a small area you may want to bake the movement into the animation itself, as root or hips motion inside the `_emote.glb` file.
+
 ### Looping Animations
 
 Animations on an `AvatarShape` play once, if you want the avatar to keep looping an animation, you should create a system that tells it to play the animation again every couple of seconds.

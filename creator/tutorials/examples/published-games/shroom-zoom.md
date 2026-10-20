@@ -8,10 +8,15 @@ source: https://github.com/CanessaDCL/dcl-shroomzoom
 realm: shroomzoom.dcl.eth
 license: unlicensed
 ---
-
 # Shroom Zoom
 
 - [Source on GitHub](https://github.com/CanessaDCL/dcl-shroomzoom)
 - [Play on Decentraland](https://decentraland.org/jump?realm=shroomzoom.dcl.eth)
 
-Study a platforming and time-trial game with double-jumping, gliding, collectibles, and exploration.
+A platforming and time-trial game with double-jumping, gliding, collectibles, and exploration.
+### Key features
+
+- Multiplayer server
+- Physics impulses for bouncy mushrooms
+
+![[shroomZoom-preview.jpg]]

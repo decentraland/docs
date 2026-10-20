@@ -8,10 +8,18 @@ source: https://github.com/stom66/dcl-sky-chaser
 realm: skychaser.dcl.eth
 license: NOASSERTION
 ---
-
 # Sky Chaser
 
 - [Source on GitHub](https://github.com/stom66/dcl-sky-chaser)
 - [Play on Decentraland](https://decentraland.org/jump?realm=skychaser.dcl.eth)
 
-Study an SDK7 Multiplayer Server game where players compete to catch escaping packages in each round. The scene includes weekly and all-time leaderboards.
+A multiplayer game where players compete to catch escaping packages in each round. The scene includes weekly and all-time leaderboards.
+### Key features
+
+- Multiplayer server
+- Synced gameplay via synced Mulberry32 RNG
+- Storage API for leaderboards
+- Player locomotion tweaks and physics forces for booster/trampolines/explosions
+- Particle systems (boost trails, explosions, pickups)
+
+![[skyChaser-preview.jpg]]

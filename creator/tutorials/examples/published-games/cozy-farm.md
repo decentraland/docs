@@ -18,4 +18,4 @@ A social farming game focused on growing crops, expanding a farm, and meeting ot
 
 - TBD
 
-![[cozyFarm-preview.png]]
+![Cozy Farm preview](images/cozyFarm-preview.png)

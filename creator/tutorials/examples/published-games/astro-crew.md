@@ -27,4 +27,4 @@ A co-op scene where the crew shares one ship. At each stop they shoot incoming a
 - In-world **TextShape** rows for the weekly board. Clicking a row opens that mission's results.
 - **AvatarModifierArea** turns off the passport prompt across the scene.
 
-![[astroCrew-preview.webp]]
+![Astro Crew preview](images/astroCrew-preview.webp)

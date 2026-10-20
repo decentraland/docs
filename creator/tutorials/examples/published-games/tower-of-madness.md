@@ -18,4 +18,4 @@ A timed platforming game where players race to reach the top.
 
 - TBD
 
-![[4c85255e-c1db-48f0-8e0f-35dec36f3ab0-1792498908.jpg]]
+![Tower of Madness preview](images/4c85255e-c1db-48f0-8e0f-35dec36f3ab0-1792498908.jpg)

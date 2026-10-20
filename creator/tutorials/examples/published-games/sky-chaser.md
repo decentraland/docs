@@ -22,4 +22,4 @@ A multiplayer game where players compete to catch escaping packages in each roun
 - Player locomotion tweaks and physics forces for booster/trampolines/explosions
 - Particle systems (boost trails, explosions, pickups)
 
-![[skyChaser-preview.jpg]]
+![Sky Chaser preview](images/skyChaser-preview.jpg)

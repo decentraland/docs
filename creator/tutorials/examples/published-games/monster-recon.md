@@ -28,4 +28,4 @@ A memory-match game where you clear timed boards, then chase down the monster yo
 - Custom bitmap font for UI
 - Synced live feed of other players’ catches
 
-![[monsterRecon-preview.webp]]
+![Monster Recon preview](images/monsterRecon-preview.webp)

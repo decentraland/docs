@@ -19,4 +19,4 @@ A platforming and time-trial game with double-jumping, gliding, collectibles, an
 - Multiplayer server
 - Physics impulses for bouncy mushrooms
 
-![[shroomZoom-preview.jpg]]
+![Shroom Zoom preview](images/shroomZoom-preview.jpg)

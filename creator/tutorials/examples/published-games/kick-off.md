@@ -18,4 +18,4 @@ A seasonal World Cup prediction game.
 
 - TBD
 
-![[dclKickoff-preview.jpg]]
+![Kick Off preview](images/dclKickoff-preview.jpg)

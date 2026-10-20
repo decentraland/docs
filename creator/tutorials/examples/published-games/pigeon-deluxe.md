@@ -18,4 +18,4 @@ A community-made game.
 
 - TBD
 
-![[pigeonDeluxe-preview.png]]
+![Pigeon Deluxe preview](images/pigeonDeluxe-preview.png)

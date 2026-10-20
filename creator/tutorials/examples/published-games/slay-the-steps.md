@@ -21,4 +21,4 @@ A Studio-made Multiplayer Server experience built for Decentraland Festive Trail
 - **Multiplayer** for syncing rounds/player outfits
 - Custom 3D color picker
 
-![[slayTheSteps-preview.png]]
+![Slay the Steps preview](images/slayTheSteps-preview.png)

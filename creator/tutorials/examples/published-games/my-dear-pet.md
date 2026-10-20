@@ -18,4 +18,4 @@ A pet collecting game.
 
 - TBD
 
-![[myDearPet-preview.jpg]]
+![My Dear Pet preview](images/myDearPet-preview.jpg)

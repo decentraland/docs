@@ -18,4 +18,4 @@ A social roleplay experience where players can receive fortunes or tell fortunes
 
 - TBD
 
-![[Decentraland_n9oGHbJPnR.png]]
+![The Fortune Teller preview](images/Decentraland_n9oGHbJPnR.png)

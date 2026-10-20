@@ -18,4 +18,4 @@ Zombie survival game with combat and weapon progression.
 
 - TBD
 
-![[deadSurge-preview.png]]
+![Dead Surge preview](images/deadSurge-preview.png)

@@ -24,4 +24,4 @@ A multiplayer bowling game with realistic physics provided by Cannon-ES. Multipl
 - **`GltfNodeModifiers`** for scrolling neon texture UVs.
 - SDK-controlled **glTF animations** for lane bumpers, countdowns, and scoring effects.
 
-![[fastlaneBowling-preview.jpg]]
+![Fastlane Bowling preview](images/fastlaneBowling-preview.jpg)

@@ -20,4 +20,4 @@ Its Multiplayer Server uses built-in Storage for plant state, a weekly leaderboa
 
 - TBD
 
-![[bloomGarden-preview.png]]
+![Bloom Garden preview](images/bloomGarden-preview.png)

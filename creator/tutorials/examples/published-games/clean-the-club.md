@@ -18,4 +18,4 @@ A cooperative cleanup game where players race to restore a nightclub before the 
 
 - TBD
 
-![[cleanTheClub-preview.png]]
+![Clean The Club preview](images/cleanTheClub-preview.png)

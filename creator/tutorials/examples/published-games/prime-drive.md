@@ -19,4 +19,4 @@ A three-lane bike racing game where players dodge obstacles, collect coins, and 
 
 - TBD
 
-![[primeDrive-preview.png]]
+![Prime Drive preview](images/primeDrive-preview.png)

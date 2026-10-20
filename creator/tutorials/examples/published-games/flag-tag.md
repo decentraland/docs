@@ -21,4 +21,4 @@ A 24/7 Multiplayer Server keep-away game. Players compete to hold a flag during 
 - Avatar masking for custom animations
 
 
-![[flagTag-preview.jpg]]
+![Flag Tag preview](images/flagTag-preview.jpg)

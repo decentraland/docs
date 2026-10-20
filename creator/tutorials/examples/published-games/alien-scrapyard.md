@@ -21,4 +21,4 @@ A cooperative, timed building game where players work together to assemble alien
 
 - TBD
 
-![[alienScrapyard-preview.jpg]]
+![Alien Scrapyard preview](images/alienScrapyard-preview.jpg)

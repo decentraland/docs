@@ -25,4 +25,4 @@ A multiplayer penalty shootout game. Duel another player or the GL-Bot: pick lef
 - **Particles** for the fireworks
 - A portal with lights and **`GltfNodeModifiers`** that takes you to another World.
 
-![[goalLegends-preview.webp]]
+![Goal Legends preview](images/goalLegends-preview.webp)

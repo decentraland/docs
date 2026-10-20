@@ -107,6 +107,14 @@ Asset loading and scene-level systems.
 | [Asset loading](./examples/performance-scene-systems/asset-loading.md) | Loading scene assets on demand rather than all at once. | `performance`, `loading`, `assets` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load) |
 | [Material and texture gallery](./examples/performance-scene-systems/material-and-texture-gallery.md) | Material, texture, and GLTF node modifier patterns. | `materials`, `textures`, `rendering` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery) |
 | [Modifier areas](./examples/performance-scene-systems/modifier-areas.md) | Applying area-specific settings such as hiding player name tags. | `player`, `areas`, `modifiers` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas) |
+
+## Scene management and feedback
+
+Tools for managing scenes and collecting player feedback.
+
+| Example | What it demonstrates | Tags | Source |
+| --- | --- | --- | --- |
+| [Playtest feedback](./examples/scene-management-feedback/playtest-feedback.md) | Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage. | `ui`, `multiplayer-server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback) |
 <!-- example-scenes-catalog:end -->
 
 ## For AI-assisted creation

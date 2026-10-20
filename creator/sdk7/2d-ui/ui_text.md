@@ -92,22 +92,27 @@ Because this differs per explorer, a preview that looks right in one client does
 
 To render a `Label` with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder. Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
 
+{% hint style="warning" %}
+**📔 Note**: `fontSrc` requires an SDK version newer than 7.30.1. On 7.30.1 and earlier the property doesn't exist.
+{% endhint %}
+
 ```tsx
 <Label
 	value="Welcome!"
 	fontSize={40}
+	uiTransform={{ width: 300, height: 60 }}
 	fontSrc="assets/fonts/Lobster-Regular.ttf"
 	font="sans-serif"
 />
 ```
 
-The [`Input` and `Dropdown`](ui_special_types.md) entities accept `fontSrc` too, and so does the [`TextShape`](../3d-essentials/text.md#custom-fonts) component for text in the 3D space.
+The `Button` entity, the `uiText` of a `UiEntity` and the [`Input` and `Dropdown`](ui_special_types.md) entities accept `fontSrc` too, and so does the [`TextShape`](../3d-essentials/text.md#custom-fonts) component for text in the 3D space.
 
 Keep the following in mind when using custom fonts:
 
 * **Only `.ttf` files are supported**. OpenType fonts with CFF outlines (usually `.otf`), font collections and web fonts are rejected, and the text renders with the fallback `font`.
 * **The font must be a file in your scene**. `fontSrc` can't point to an external URL, and font family names (for example from Google Fonts) are not supported either. Download the `.ttf` file and include it in your scene folder. Make sure its license allows redistributing it.
-* **Custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. The same applies to local previews: the custom font only shows when previewing with optimized assets (the **Compress Assets** option in the Creator Hub, or `npm run start -- --local-ab` from the CLI). See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
+* **Custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. The same applies to local previews: the custom font only shows when previewing with optimized assets (the **Compress Assets** option in the Creator Hub, or `npm run start -- --asset-bundles` from the CLI). See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
 * **Not supported on mobile**. The Decentraland mobile app ignores `fontSrc` and renders the fallback `font`. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space. See [Missing Features on mobile](../../build-for-mobile/mobile-client/missing-features.md).
 * **Characters that the font doesn't include** are drawn with the built-in sans-serif font. Non-Latin characters that the font does include are rendered the first time they appear, which can cause a brief hitch.
 

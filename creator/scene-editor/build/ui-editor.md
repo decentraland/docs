@@ -41,7 +41,7 @@ There is no save button. The editor writes your changes to disk as you go, and t
 Two floating groups of controls sit in the bottom-right corner of the canvas:
 
 * The **preview** group toggles the mobile HUD guides and the safe-area guides, and switches between **Desktop preview** and **Mobile preview**.
-* The **zoom** group has a minus and a plus button, and a percentage readout. Click the percentage to reset the view.
+* The **zoom** group has a minus and a plus button, and a percentage field. Click the percentage to type an exact zoom level between 10 and 200, then press Enter or click away to apply it, or Escape to cancel. The plus button turns off once you reach 200%.
 
 <div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 

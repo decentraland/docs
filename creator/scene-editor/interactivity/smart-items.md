@@ -97,7 +97,7 @@ Use the Trigger Area smart item to trigger an action when the player walks into 
 
 ![ ](../../images/editor/trigger.png)
 
-Drag it in, resize the box or sphere to cover the area you want, then use the **When a player enters…** and **When a player leaves…** buttons in its **Reactions** section to describe what should happen. The [AI Assistant](../code/ai-assistant.md) writes the script for you.
+Drag it in, resize the box or sphere to cover the area you want, then use the **When a player enters…** and **When a player leaves…** buttons in its **Reactions** section to describe what should happen. The [AI Assistant](../code/ai-assistant.md) writes the script for you. See [Trigger area](trigger-area.md) for the full walkthrough.
 
 ![ ](../../images/editor/on_player_enters.png)
 

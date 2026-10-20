@@ -26,18 +26,20 @@ Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobació
 
 Hay una tarifa requerida para publicar ítems. Esta tarifa fue originalmente [votada por el DAO de Decentraland](https://governance.decentraland.org/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) para disuadir a los usuarios de publicar un número excesivo de wearables en un intento de hacer "spam" en el mercado de wearables.
 
-El 2 de septiembre de 2023 [una propuesta](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) estableció las tarifas de publicación en **100 USD por ítem, a pagar en MANA de Polygon**.
+El 2 de septiembre de 2023 [una propuesta](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) estableció las tarifas de publicación en 100 USD por ítem, a pagar en MANA de Polygon. El 28 de julio de 2026 [una nueva propuesta](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636) redujo la tarifa de publicación a **25 USD por ítem**.
+
+Por tiempo limitado, Decentraland Foundation cubre 20 USD, así que **solo pagas 5 USD por ítem**.
 
 {% hint style="warning" %}
 **📔 Nota**: Puedes mover MANA entre Ethereum y Polygon usando la [Account dApp](https://account.decentraland.org).
 {% endhint %}
 
-Por ejemplo, si publicas una colección con dos ítems y el precio de MANA en ese momento es 1.25 USD, tendrás que pagar una tarifa de 160 MANA (100 USD por cada ítem dividido por el precio de MANA en USD) independientemente de la rarity (o cuántos NFTs se pueden acuñar) de esos ítems.
+Por ejemplo, si publicas una colección con dos ítems y pagas en MANA cuando el precio de MANA es 0.25 USD, pagarás 40 MANA (5 USD por cada ítem dividido por el precio de MANA en USD) independientemente de la rarity (o cuántos NFTs se pueden acuñar) de esos ítems.
 
-Estas tarifas se transfieren al comité de curadores y al DAO de Decentraland, donde se usan para ayudar a financiar el crecimiento de la plataforma a través de grants y otras iniciativas votadas por la mayor comunidad de Decentraland.
+La tarifa completa, incluida la parte que cubre Decentraland Foundation, se transfiere a la tesorería de la DAO de Decentraland, donde se usa para ayudar a financiar el crecimiento de la plataforma a través de grants y otras iniciativas votadas por la mayor comunidad de Decentraland.
 
 {% hint style="warning" %}
-**📔 Nota**: Actualmente, debido al tiempo y recursos requeridos para revisar cada colección enviada, **la tarifa de publicación no es reembolsable**. Si tu colección es rechazada, no recibirás tu MANA de vuelta. Si tu colección no es aprobada inmediatamente, el Curation Committee te proporcionará sugerencias y comentarios sobre cómo mejorarla, pero la aceptación final de tu colección no puede ser garantizada.
+**📔 Nota**: Actualmente, debido al tiempo y recursos requeridos para revisar cada colección enviada, **la tarifa de publicación no es reembolsable**. Si tu colección es rechazada, no recibirás de vuelta lo que pagaste. Si tu colección no es aprobada inmediatamente, el Curation Committee te proporcionará sugerencias y comentarios sobre cómo mejorarla, pero la aceptación final de tu colección no puede ser garantizada.
 {% endhint %}
 
 ### **Criterios de Aceptación**
@@ -75,7 +77,7 @@ Por favor consulta la Content Policy completa [aquí](https://decentraland.org/c
 
 Si colaboraste con otros artistas al crear tus ítems, puedes agregar atribuciones dentro del Wearables Editor. Esto solo se puede hacer después de publicar una colección.
 
-Primero, navega al [**Builder**](https://builder.decentraland.org/) y selecciona la pestaña **Collections**. Selecciona la colección que contiene los ítems a los que quieres agregar atribuciones, haz clic en el ícono **…** junto al botón **Mint Items**, y selecciona **Collaborators**.
+Primero, navega a [**Decentraland Create**](https://decentraland.org/create) y selecciona la pestaña **Collections**. Selecciona la colección que contiene los ítems a los que quieres agregar atribuciones, haz clic en el ícono **…** junto al botón **Send Items**, y selecciona **Collaborators**.
 
 Para agregar colaboradores, simplemente ingresa su dirección de Ethereum, y haz clic en **Add**. Puedes agregar tantos colaboradores como quieras. Para eliminar un colaborador, simplemente haz clic en **Remove** junto a la dirección del colaborador.
 
@@ -100,9 +102,9 @@ Cuando un usuario hace una compra primaria de uno de tus ítems, la tienda **acu
 
 > ¡Recuerda! ¡No necesitas acuñar tus ítems para venderlos en ventas primarias!
 
-Para vender tus ítems a través de ventas primarias, comienza navegando al [**Builder**](https://builder.decentraland.org/) y sigue los siguientes pasos:
+Para vender tus ítems a través de ventas primarias, comienza navegando a [**Decentraland Create**](https://decentraland.org/create) y sigue los siguientes pasos:
 
-Para habilitar Primary Sales, ve a la pestaña **Collections**, selecciona la que quieres habilitar y haz clic en el botón _**Enable sales**_, después de eso haz clic en **Enable Sales** en la ventana de confirmación que aparece.
+Para habilitar Primary Sales, ve a la pestaña **Collections**, selecciona la que quieres habilitar y haz clic en el botón _**Put on sale**_ de cualquiera de los ítems de la colección. Si es la primera vez que pones a la venta un ítem de esta colección, se te pedirá que hagas clic en _**Enable sales**_. Después de confirmar, puedes continuar al siguiente paso para establecer el precio de tu ítem.
 
 ![](../images/wearables-and-emotes/uploading-wearables/25_enable_sales.png)
 

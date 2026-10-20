@@ -67,7 +67,7 @@ Click and drag a selected item to move it freely around the scene at ground leve
 
 ## Preview
 
-To test your scene and experience it like a player, click the _Play_ button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
+To test your scene and experience it like a player, click the **Play** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
 
 {% hint style="warning" %}
 **📔 Note**: If you don't have it installed on your machine, download the **Decentraland Launcher** from [Decentraland.org](https://decentraland.org).
@@ -75,7 +75,7 @@ To test your scene and experience it like a player, click the _Play_ button on t
 
 ![](../../images/editor/preview-button.png)
 
-Click the arrow next to the **Play** button to open the **Play Options** menu, where you choose which client to run and how. See [Preview your scene](../../sdk7/getting-started/preview-scene.md#play-options) for a full list of all available options.
+Click the arrow next to the **Play** button to open the **Play Options** menu, where you choose whether to preview on the desktop client, in a browser, or on a phone. See [Preview your scene](../../sdk7/getting-started/preview-scene.md) for a full list of all available options.
 
 ## Scene renderer
 
@@ -97,7 +97,7 @@ When using the Bevy renderer, the toolbar gains a camera mode dropdown, play and
 
 Use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
 
-Click the speaker button to silence the scene while you work. It silences every [Audio Source](../../sdk7/3d-essentials/sounds.md) and audio stream in the scene, both while you edit and while the scene runs, and it stays muted if the scene reloads. Click it again, now labeled **Unmute scene audio**, to bring the sound back. The button only appears under the Bevy renderer, because Babylon does not play the scene's audio.
+Click the speaker button, labeled **Mute scene audio**, to silence the scene while you work. It silences every [Audio Source](../../sdk7/3d-essentials/sounds.md) and audio stream in the scene, both while you edit and while the scene runs in the canvas, and the scene stays muted if it reloads. Click it again, now labeled **Unmute scene audio**, to bring the sound back. The button only appears under the Bevy renderer, because the Babylon renderer does not play the scene's audio.
 
 The Bevy editor also loads [custom items](../interactivity/custom-items.md), shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated. The camera toggle in the toolbar reads **Free** or **Player**, depending on the mode you're in.
 

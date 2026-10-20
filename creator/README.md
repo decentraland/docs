@@ -31,11 +31,7 @@ Decentraland is available on desktop (Windows and macOS) and on mobile devices (
 
 ## The Creator Hub
 
-The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create:
-
-- [Wearables & Smart Wearables](./#wearables)
-- [Emotes](./#emotes)
-- [Scenes](./#scenes)
+The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create [Scenes](./#scenes).
 
 ![](../.gitbook/assets/scene-editor.png)
 

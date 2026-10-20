@@ -15,27 +15,24 @@ Make sure you've [installed the Creator Hub](../get-started/editor-installation.
 
 ![](../../images/editor/preview-button.png)
 
-### Play Options
+### Choose where to preview
 
-Click the arrow next to the **Play** button to open the **Play Options** menu. The first two rows pick which client runs your scene:
+Click the arrow next to the **Play** button to open the **Play Options** menu. The main panel is where you pick what runs your scene:
 
-- **Desktop Client**: the default Decentraland Explorer, in its own window. Hover over this row to open a side menu with the extra options described below. They apply to the desktop client only.
-- **Web (Bevy)**: opens the preview in your browser using the Bevy Web client. Equivalent to the `--web` CLI flag.
+- **Desktop Client**: Opens the preview in the Decentraland Desktop Explorer. This is the default.
+- **Web (Bevy)**: Opens the preview in your browser, using the Bevy Web client. Equivalent to the `--web` CLI flag.
+- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. Click the dark area around the popup to close it. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
 
-Below a divider there is one more entry:
+### Desktop Client options
 
-- **Show QR Code for Mobile**: Displays a QR code that opens your scene preview in the [Decentraland mobile app](../../build-for-mobile/mobile-client/overview.md). Scan the code with a phone on the same Wi-Fi network as your computer. Picking it closes the menu and opens the QR code in a window, which you can dismiss by clicking the dark background around it. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
+Select **Desktop Client** in the **Play Options** menu, then hover over it to open a submenu with the settings that only affect the desktop client:
 
-#### Desktop client options
+- **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint. It's greyed out when the scene's own settings already hide the terrain.
+- **Multi-Instance Preview**: Lets several Explorer windows run at the same time, so you can [test a multiplayer scene locally](#test-a-multiplayer-scene-locally). With this on, each window asks you to sign in, so you can connect as a different player in each one. Only visible when your project uses SDK 7.20.4 or later.
+- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project uses SDK 7.25.0 or later. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
+- **Compress Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only visible when your platform and your project's SDK version support it. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
-Hover over **Desktop Client** to reveal these checkboxes:
-
-- **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint. If the scene's own settings already hide the terrain, the checkbox is greyed out.
-- **Multi-Instance Preview**: Lets you open several Explorer windows for the same preview at once, so you can test a multiplayer scene on your own. Each window asks you to sign in, so you can use a different account in each one. See [Test a multiplayer scene locally](#test-a-multiplayer-scene-locally).
-- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
-- **Compress Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only visible when your project's SDK version supports it, and not available on Linux. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
-
-The menu has no debug console option, because the Creator Hub's console is on by default. The scene's output shows up in the editor as soon as a preview runs. See [The Creator Hub console](#the-creator-hub-console).
+The scene's console output doesn't need a menu option. The Creator Hub opens it for you every time you run a preview. See [The Creator Hub console](#the-creator-hub-console).
 
 {% hint style="info" %}
 **Tip:** You can also preview your scene directly on the Decentraland mobile app. Use the **Show QR Code for Mobile** option in Creator Hub, or run `npm run start -- --mobile` from the CLI. See [Preview on mobile](../../build-for-mobile/develop/preview-on-mobile.md) for details.
@@ -71,7 +68,7 @@ You can add the following flags to the `npm run start` command to change its beh
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
 - `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
-- `-- --local-ab` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Compress Assets** option in Creator Hub. Only available with the Desktop Client (not Bevy Web). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+- `-- --local-ab` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Compress Assets** option in Creator Hub. Only available with the Desktop Client (not the Bevy Web client). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 - `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
 - `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
 - `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
@@ -93,7 +90,7 @@ This option only affects your local preview. The published scene is always conve
 
 To enable it:
 
-- **In the Creator Hub**: check **Compress Assets** in the **Play Options** menu, under **Desktop Client**.
+- **In the Creator Hub**: open **Play Options** next to the **Play** button, hover over **Desktop Client**, and check **Compress Assets**.
 - **From the CLI**: run `npm run start -- --local-ab`.
 
 ![](../../images/editor/optimize-assets-checkbox.png)
@@ -134,7 +131,9 @@ You can also open it by pressing the **\`** key on your keyboard. You can also p
 
 ## The Creator Hub console
 
-The Creator Hub shows the same output without leaving the editor. Run a preview and a **CONSOLE** tab appears next to **FILE SYSTEM** and **ASSET PACKS** in the panel at the bottom of the editor. This is on by default. To turn it off, open **Settings**, go to the **EDITOR** tab, and clear **Open Debug Console** under **Play Options**.
+The Creator Hub shows the same output without leaving the editor, and it does so by default. Run a preview and a **CONSOLE** tab appears next to **FILE SYSTEM** and **ASSET PACKS** in the panel at the bottom of the editor.
+
+To stop the console from opening, uncheck **Open Debug Console** under **Play Options** on the **EDITOR** tab of the Creator Hub settings.
 
 To move the console out of the way, click the pop-out icon in its header, labeled **Open console in a separate window**. The console opens as its own window titled **Console**, which you can move to a second monitor and keep visible while you edit.
 
@@ -150,7 +149,7 @@ If you launch a scene preview and open it in two (or more) different explorer wi
 
 Interact with the scene on one window, then switch to the other to see that the effects of that interaction are also visible there.
 
-Using the Creator Hub, turn on **Multi-Instance Preview** in the **Play Options** menu, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
+Using the Creator Hub, turn on **Multi-Instance Preview** in the **Desktop Client** submenu of **Play Options**, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
 ![](../../images/editor/preview-button.png)
 

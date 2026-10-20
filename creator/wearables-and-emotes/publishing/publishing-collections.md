@@ -22,18 +22,20 @@ For detailed instructions on how to submit your collections for approval before 
 
 There is a required fee for publishing items. This fee was originally [voted in place by the Decentraland DAO](https://governance.decentraland.org/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) to deter users from publishing an excessive number of wearables in an attempt to "spam" the wearables market.
 
-On Sep 02, 2023 [a proposal](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) set the publication fees to **100 USD per item, to be paid in Polygon MANA**.
+On Sep 02, 2023 [a proposal](https://governance.decentraland.org/proposal/?id=98d74360-3eae-11ee-88e6-1fe6cb69ee51) set the publication fees to 100 USD per item, to be paid in Polygon MANA. On Jul 28, 2026 [a new proposal](https://decentraland.org/governance/proposal/?id=e2a13c58-d66d-412d-802f-83190d063636) lowered the publication fee to **25 USD per item**.
+
+For a limited time, the Decentraland Foundation covers 20 USD, so **you pay only 5 USD per item**.
 
 {% hint style="warning" %}
 **📔 Note**: You can move MANA between Ethereum and Polygon using the [Account dApp](https://account.decentraland.org).
 {% endhint %}
 
-For example, if you publish a collection with two items and the price of MANA at the time is 1.25 USD, you will have to pay a fee of 160 MANA (100 USD for each item divided by the price of MANA in USD) regardless of the rarity (or how many NFTs can be minted) of those items.
+For example, if you publish a collection with two items and pay in MANA when the price of MANA is 0.25 USD, you will pay 40 MANA (5 USD for each item divided by the price of MANA in USD) regardless of the rarity (or how many NFTs can be minted) of those items.
 
-These fees are transferred to the curators committee and the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
+The full fee, including the part covered by the Decentraland Foundation, is transferred to the Decentraland DAO treasury, where it is used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
 
 {% hint style="warning" %}
-**📔 Note**: Currently, due to the time and resources required to review each collection submitted, **the publication fee is non-refundable**. If your collection is rejected, you will not receive your MANA back. If your collection is not immediately approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
+**📔 Note**: Currently, due to the time and resources required to review each collection submitted, **the publication fee is non-refundable**. If your collection is rejected, you will not get your payment back. If your collection is not immediately approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
 {% endhint %}
 
 ## **Acceptance Criteria**
@@ -71,7 +73,7 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 
 If you collaborated with other artists when creating your items, you can add attributions within the Wearables Editor. This can only be done after publishing a collection.
 
-First, navigate to the [**Builder**](https://builder.decentraland.org/) and select the **Collections** tab. Select the collection containing the items you want to add attributions to, click the **…** icon next to the **Mint Items** button, and select **Collaborators**.
+First, navigate to [**Decentraland Create**](https://decentraland.org/create) and select the **Collections** tab. Select the collection containing the items you want to add attributions to, click the **…** icon next to the **Send Items** button, and select **Collaborators**.
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
@@ -96,9 +98,9 @@ When a user makes a primary purchase of one of your items, the store **mints the
 
 > Remember! You do not need to mint your items in order to sell them in primary sales!
 
-To sell your items via primary sales, begin by navigating to the [**Builder**](https://builder.decentraland.org/) and follow the next steps:
+To sell your items via primary sales, begin by navigating to [**Decentraland Create**](https://decentraland.org/create) and follow the next steps:
 
-To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Enable sales**_ button, after that click **Enable Sales** in the confirmation window that appears.
+To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Put on sale**_ button on any of the items from the collection. If it's the first time you put an item from this collection on sale, you will be prompted to _**Enable sales**_. After confirmation, you can continue to the next step to set a price for your item.
 
 ![](../../../.gitbook/assets/25_enable_sales.png)
 
@@ -177,7 +179,7 @@ In order to transfer the ownership of a Collection, you will need:
 ⚠️ Note: This applies only to Polygon Wearables.
 {% endhint %}
 
-Copy your collection address in the builder
+Copy your collection address in [**Decentraland Create**](https://decentraland.org/create).
 
 ![](../../../.gitbook/assets/copy-collection-address.png)
 

@@ -12,6 +12,7 @@ When adding, removing, or changing an example entry:
 2. Each category folder has a `README.md` with its display `title`, `description`, and `order`. Change that file to rename, describe, or reorder a category. It is not an example entry.
 3. Keep each example's YAML front matter valid and complete. Every page requires `id`, `name`, `description`, `tags`, `source`, and `license`.
 4. Published games belong in `published-games` and include `developer`, derived from the GitHub repository owner.
+	- Include `realm` with the World name from the deployed play link, such as `skychaser.dcl.eth`. For Genesis City deployments, use `position` with parcel coordinates, such as `-140,101`, instead.
 5. Run `node creator/tutorials/examples/generate-catalog.mjs` from the repository root before committing.
 6. Commit the generated `catalog.json` and `creator/tutorials/examples.md` changes with the entry change.
 7. Use an existing tag where it fits. Current tags are:

@@ -512,6 +512,7 @@
       * [Design Games](creator/sdk7/design-experience/design-games.md)
       * [MVP Guidelines](creator/sdk7/design-experience/mvp-guidelines.md)
       * [UX & UI Guide](creator/sdk7/design-experience/ux-ui-guide.md)
+      * [Playtests](creator/sdk7/design-experience/playtests.md)
     * [Getting Started](creator/sdk7/getting-started/README.md)
       * [Coding essentials](creator/sdk7/getting-started/coding-scenes.md)
       * [Development Workflow](creator/sdk7/getting-started/dev-workflow.md)

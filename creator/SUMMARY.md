@@ -84,6 +84,7 @@
   * [Design Games](sdk7/design-experience/design-games.md)
   * [MVP Guidelines](sdk7/design-experience/mvp-guidelines.md)
   * [UX & UI Guide](sdk7/design-experience/ux-ui-guide.md)
+  * [Playtests](sdk7/design-experience/playtests.md)
 * [Architecture](sdk7/architecture/)
   * [Entities & Components](sdk7/architecture/entities-components.md)
   * [Systems](sdk7/architecture/systems.md)

@@ -8,7 +8,7 @@ Playtesting helps you make better games by finding out how real players experien
 
 You don't need a finished game or a large group of testers to get started. You can test early, make improvements, and test again as your game develops.
 
-This guide explains how to organise playtests, collect player feedback, and use what you learn to improve your game.
+This guide explains how to organize playtests, collect player feedback, and use what you learn to improve your game.
 
 ## Why playtest your game?
 
@@ -66,7 +66,7 @@ You can:
 
 ### Install Scene Feedback
 
-1. Open the [Scene Feedback repository](https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback).
+1. Open the [Scene Feedback repository](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback).
 2. Follow the README to install the module in your scene. You can also give the installation prompt to your AI coding agent.
 3. Choose a small set of questions that match your playtest goals.
 4. Decide when each question should appear.
@@ -74,7 +74,7 @@ You can:
 
 The repository includes ready-to-use questions, examples, and guidance for choosing questions.
 
-## Organise a live playtest
+## Organize a live playtest
 
 A live playtest lets you watch players experience your game and ask them questions afterwards.
 
@@ -164,7 +164,7 @@ When you're ready, post a message that includes:
 
 ### Choose how players can participate
 
-You can organise playtesting in two ways.
+You can organize playtesting in two ways.
 
 **Option 1: Host a live playtest**
 
@@ -178,7 +178,7 @@ Let players test your game whenever they're available during a set period.
 
 Install Scene Feedback to collect responses while they play.
 
-This is useful when you want feedback from more players without organising a live session.
+This is useful when you want feedback from more players without organizing a live session.
 
 ### Encourage players to participate
 
@@ -211,7 +211,7 @@ Indie developers commonly recruit from:
 After each playtest, review what you learned before deciding what to build next.
 
 1. **Group similar problems.** Look for issues that multiple players experienced.
-2. **Prioritise important issues.** Fix anything that stops players from understanding, progressing, or enjoying the game.
+2. **Prioritize important issues.** Fix anything that stops players from understanding, progressing, or enjoying the game.
 3. **Make improvements.** Start with changes that are quick to implement and likely to help.
 4. **Test again.** Check whether new players have a better experience.
 5. **Track your changes.** Keep a short record of what you changed and what happened in the next playtest.
@@ -251,7 +251,7 @@ Test when you introduce a new mechanic, change onboarding, adjust difficulty, or
 
 ## Resources
 
-- [Scene Feedback module and installation guide](https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback)
+- [Scene Feedback module and installation guide](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback)
 - [Decentraland Discord](https://discord.gg/decentraland)
 - [Decentraland Events](https://decentraland.org/events/)
 - [RITE method: Rapid Iterative Testing and Evaluation](https://handbook.gitlab.com/handbook/upstream-studios/experience-research/rite/)

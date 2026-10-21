@@ -125,6 +125,100 @@ When using the official Decentraland desktop app, this function should return th
 
 Players using the official Decentraland desktop app are likely to have a much smoother experience than those on the browser, since the browser imposes performance limitations on how much of the machine's processing power the browser tab can use. They will also be missing many features like camera control, dynamic lights, freezing player movement, UI enhancements, etc.
 
+## Get player language
+
+Players choose the language of the Decentraland client in its settings. Use `getPlayerLanguage()` to read that language, so your scene can show its UI, signs and instructions in the player's language.
+
+```ts
+import { getPlayerLanguage } from '@dcl/sdk/platform'
+
+export function main() {
+  console.log('Player language: ', getPlayerLanguage())
+}
+```
+
+`getPlayerLanguage()` returns a language tag, like `'en'`, `'es'` or `'pt-BR'`. When the client includes a region, the region is kept. The tag always uses a hyphen, so a client value of `pt_BR` is returned as `pt-BR`.
+
+It returns `'en'` in the following cases:
+
+* Before the client reports its language. This happens shortly after the scene starts.
+* On clients that don't report a language.
+* If the value the client reports is empty or isn't a valid language tag.
+
+`getPlayerLanguage()` never returns an empty string, so you can always use its value to look up a translation. Always include English text in your scene, since that's what players on older clients get.
+
+{% hint style="warning" %}
+**📔 Note**: `getPlayerLanguage()` and `onPlayerLanguageChanged` require `@dcl/sdk` version 7.30.0 or later.
+{% endhint %}
+
+### React to language changes
+
+Players can switch the client language in the middle of a session. Use `onPlayerLanguageChanged` to update your scene's text when that happens.
+
+```ts
+import { onPlayerLanguageChanged } from '@dcl/sdk/platform'
+
+export function main() {
+  onPlayerLanguageChanged.add(({ language }) => {
+    console.log('Player switched language to: ', language)
+  })
+}
+```
+
+`onPlayerLanguageChanged` only fires when the value actually changes. This includes the moment the client first reports a language other than `'en'`, shortly after the scene starts. To always show the right language, read `getPlayerLanguage()` when you first create your text, and update it in `onPlayerLanguageChanged`.
+
+### Translate your scene's text
+
+A simple way to localize a scene is to keep all the text in a dictionary, with one entry per language, and look up each string with a helper function. The example below tries the full tag first (`pt-BR`), then the base language (`pt`), and falls back to English.
+
+_**translations.ts file:**_
+
+```ts
+import { getPlayerLanguage } from '@dcl/sdk/platform'
+
+const translations: Record<string, Record<string, string>> = {
+  en: { welcome: 'Welcome to my scene!' },
+  es: { welcome: '¡Bienvenido a mi escena!' },
+  pt: { welcome: 'Bem-vindo à minha cena!' }
+}
+
+export function t(key: string): string {
+  const language = getPlayerLanguage()
+  const baseLanguage = language.split('-')[0].toLowerCase()
+  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key]
+}
+```
+
+The [UI](../2d-ui/onscreen-ui.md) is rendered again on every tick, so calling `t()` inside the UI definition picks up a language change automatically. See [Dynamic UI](../2d-ui/dynamic-ui.md).
+
+```ts
+import { Label, ReactEcs } from '@dcl/sdk/react-ecs'
+import { t } from './translations'
+
+export const uiMenu = () => (
+  <Label value={t('welcome')} fontSize={24} uiTransform={{ width: 400, height: 50 }} />
+)
+```
+
+Values that you only set once, like the text of a [TextShape](../3d-essentials/text.md), don't update by themselves. Set them again when `onPlayerLanguageChanged` fires.
+
+```ts
+import { engine, Transform, TextShape } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+import { onPlayerLanguageChanged } from '@dcl/sdk/platform'
+import { t } from './translations'
+
+export function main() {
+  const sign = engine.addEntity()
+  Transform.create(sign, { position: Vector3.create(8, 2, 8) })
+  TextShape.create(sign, { text: t('welcome') })
+
+  onPlayerLanguageChanged.add(() => {
+    TextShape.getMutable(sign).text = t('welcome')
+  })
+}
+```
+
 ## The EngineInfo Component
 
 The `EngineInfo`component keeps track of data about the scene's lifecycle, which can sometimes be useful to tell when an event is occurring, relative to the scene's initialization.

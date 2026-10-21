@@ -413,6 +413,41 @@ executeTask(async () => {
 })
 ```
 
+### Player Language
+`getPlayerLanguage()` returns the client language as a language tag (`'en'`, `'es'`, `'pt-BR'`). It returns `'en'` until the client reports its language, on clients that don't report one, and for invalid values, never an empty string. Requires `@dcl/sdk` 7.30.0+.
+
+```typescript
+import { engine, Transform, TextShape } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+import { getPlayerLanguage, onPlayerLanguageChanged } from '@dcl/sdk/platform'
+
+const translations: Record<string, Record<string, string>> = {
+  en: { welcome: 'Welcome to my scene!' },
+  es: { welcome: '¡Bienvenido a mi escena!' },
+  pt: { welcome: 'Bem-vindo à minha cena!' }
+}
+
+// Try the full tag ('pt-BR'), then the base language ('pt'), then English
+function t(key: string): string {
+  const language = getPlayerLanguage()
+  const baseLanguage = language.split('-')[0].toLowerCase()
+  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key]
+}
+
+export function main() {
+  const sign = engine.addEntity()
+  Transform.create(sign, { position: Vector3.create(8, 2, 8) })
+  TextShape.create(sign, { text: t('welcome') })
+
+  // Fires when the language actually changes, including the client's first report of a non-'en' language
+  onPlayerLanguageChanged.add(() => {
+    TextShape.getMutable(sign).text = t('welcome')
+  })
+}
+```
+
+React ECS UI re-renders every tick, so calling `t()` inside the JSX picks up language changes without subscribing.
+
 ### Engine Information
 ```typescript
 import { EngineInfo, engine } from '@dcl/sdk/ecs'

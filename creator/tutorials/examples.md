@@ -114,7 +114,7 @@ Tools for managing scenes and collecting player feedback.
 
 | Example | What it demonstrates | Tags | Source |
 | --- | --- | --- | --- |
-| [Playtest feedback](./examples/scene-management-feedback/playtest-feedback.md) | Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage. | `ui`, `multiplayer-server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback) |
+| [Scene Feedback](./examples/scene-management-feedback/playtest-feedback.md) | Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage. | `ui`, `multiplayer-server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback) |
 <!-- example-scenes-catalog:end -->
 
 ## For AI-assisted creation

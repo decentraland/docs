@@ -391,21 +391,6 @@
 			"fileName": "gameplay-interaction/particle-system.md"
 		},
 		{
-			"id": "playtest-feedback",
-			"name": "Playtest feedback",
-			"description": "Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage.",
-			"category": "scene-management-feedback",
-			"tags": [
-				"ui",
-				"multiplayer-server",
-				"storage"
-			],
-			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/feat/scene-feedback/scenes/0,-1-scene-feedback",
-			"license": "unlicensed",
-			"page": "./scene-management-feedback/playtest-feedback.md",
-			"fileName": "scene-management-feedback/playtest-feedback.md"
-		},
-		{
 			"id": "pointer-lock-control",
 			"name": "Pointer lock control",
 			"description": "Capturing mouse input for custom controls.",
@@ -434,6 +419,21 @@
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/raycasting-and-collider-layers.md",
 			"fileName": "gameplay-interaction/raycasting-and-collider-layers.md"
+		},
+		{
+			"id": "playtest-feedback",
+			"name": "Scene Feedback",
+			"description": "Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage.",
+			"category": "scene-management-feedback",
+			"tags": [
+				"ui",
+				"multiplayer-server",
+				"storage"
+			],
+			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback",
+			"license": "unlicensed",
+			"page": "./scene-management-feedback/playtest-feedback.md",
+			"fileName": "scene-management-feedback/playtest-feedback.md"
 		},
 		{
 			"id": "sdk7-scene-template",

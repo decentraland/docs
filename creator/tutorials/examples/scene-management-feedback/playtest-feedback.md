@@ -9,10 +9,24 @@ license: unlicensed
 # Scene Feedback
 
 - [Source on GitHub](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback)
-- [Full installation and usage guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md)
+- [Play shared test build (Zone)](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1)
+- [Installation and usage guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md)
 
-Add a reusable feedback module to your scene to collect player ratings and optional comments. Ask questions at chosen moments during play, or let players open a feedback form through a button, kiosk, or trigger area. A coin-hunt demo shows both approaches.
+Learn what players find confusing, frustrating or enjoyable, even when you cannot watch them play. In the coin hunt, the first coin opens an invitation to give feedback, followed by a question if accepted. The first completed round brings a short set of questions for players who agreed to participate.
 
-Copy the module's source and assets into your scene, then customise its questions and rating scales. Responses are saved as CSV in scene Storage by a Multiplayer Server. The example requires `@dcl/sdk@auth-server` and `authoritativeMultiplayer: true` in `scene.json`.
+### Key features
 
-For AI-assisted planning, integration, and response analysis, see the [Scene Feedback SDK skill (in review)](https://github.com/decentraland/sdk-skills/pull/131).
+- **Gameplay and player-opened feedback.** Ask at chosen game moments, or let players open a form through a button, kiosk or marked area. Declining gameplay questions still leaves those forms available.
+- **Flexible questions.** Choose labelled ratings, optional comments or text-only answers, with your own question wording and rating scales.
+- **Demo participation rewards.** Once per visit, answer every question in one form to get a visit-only Playtest Contributor nameplate visible to you, +5 coin score and double score for the next five pickups. Any rating counts; comments remain optional.
+- **CSV results in scene Storage.** A Multiplayer Server saves each response with its question and gameplay moment. Download the files to review in a spreadsheet.
+
+### Try and adapt it
+
+Follow [How to test this scene](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#how-to-test-this-scene) to run it locally. Collect a coin, accept the invitation, finish a round, then try the **Leave feedback** button.
+
+For your scene, use the README's [full installation steps](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene) for dependencies, permissions and World setup. Adapt the questions and moments using the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md), including an invitation now and a question after later gameplay.
+
+For playtest planning and finding players, see [Playtests](https://docs.decentraland.org/creator/scenes-sdk7/designing-the-experience/playtests). For AI-assisted planning, integration and analysis, use the [Scene Feedback SDK skill](https://github.com/decentraland/sdk-skills/tree/main/scene-feedback).
+
+![Scene Feedback question with five rating choices and an optional comment field](https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png)

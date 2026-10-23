@@ -23,7 +23,7 @@ Give your AI agent the [Scene Feedback SDK skill](https://github.com/decentralan
 The skill can help at two stages:
 
 - **Before a playtest:** adapt questions, rating scales and timing to your game, then integrate the module after you review the plan.
-- **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a [human-readable HTML report](#example-feedback-report) with grouped answers and rating summaries.
+- **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a [human-readable HTML report](#example-ai-generated-feedback-report) with grouped answers and rating summaries.
 
 Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
 
@@ -51,9 +51,11 @@ By default, gameplay questions go only to participants. Players can join through
 
 Use the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md) to connect questions to your own game events, including inviting participants now and asking after later gameplay. For playtest planning and finding players, see [Playtests](https://docs.decentraland.org/creator/scenes-sdk7/designing-the-experience/playtests).
 
-### Example feedback report
+### Example AI-generated feedback report
 
-This example illustrates how the Scene Feedback SDK skill can present collected responses as grouped findings, rating summaries and next steps. It uses synthetic responses from a fictional scene; ask the skill to tailor your report to your own questions and data.
+**The report is created by an AI agent, not by the Scene Feedback module.** Give your agent the exported CSV files and use the Scene Feedback SDK skill to analyze them and generate an HTML report.
+
+This example uses synthetic responses from a fictional scene. Your agent can tailor the analysis and report to your own playtest questions and data.
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-example-report.png" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
 

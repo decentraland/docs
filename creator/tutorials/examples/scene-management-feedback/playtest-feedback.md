@@ -29,7 +29,7 @@ Prefer to integrate it yourself? Follow the [installation guide](https://github.
 
 ### How the module fits into your scene
 
-You choose when to invite players, which questions to ask and the game moments that show them. The [coin-hunt demo in Zone](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1) shows one possible setup:
+You choose when to invite players, which questions to ask and when those questions appear in your game. The [coin-hunt demo in Zone](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1) shows one possible setup:
 
 1. **Collect the first coin.** An invitation asks whether the player wants to give feedback: "Hi, we're the Coin Hunt team!" If accepted, one question follows: "How easy or difficult was it to spot the coins?" The player chooses a rating and can add a comment.
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.

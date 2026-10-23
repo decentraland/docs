@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene Feedback sample report — race playtest</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #fff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e3e1dc;
+    --red: #c8443a; --amber: #c98a1b; --green: #3f8f5a; --blue: #3a6ec8;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 920px; margin: 0 auto; padding: 28px 18px 48px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 32px 0 12px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; margin-bottom: 12px; }
+  .summary { border-left: 4px solid var(--red); }
+  .summary p { margin: 0 0 8px; }
+  .summary p:last-child { margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 22px; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  .theme-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+  .theme-head h3 { margin: 0; font-size: 16px; flex: 1 1 260px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; color: #fff; white-space: nowrap; }
+  .t-red { background: var(--red); } .t-amber { background: var(--amber); }
+  .t-green { background: var(--green); } .t-blue { background: var(--blue); }
+  .count { font-weight: 600; white-space: nowrap; }
+  .theme p { margin: 8px 0; }
+  blockquote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: #333; }
+  blockquote small { display: block; color: var(--muted); }
+  .next { margin: 8px 0 0; padding: 8px 12px; background: #f3f6fb; border-radius: 6px; font-size: 14px; }
+  details { margin-top: 8px; }
+  summary { cursor: pointer; color: var(--blue); font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  td.id { font-family: ui-monospace, Consolas, monospace; white-space: nowrap; }
+  td.c { overflow-wrap: anywhere; }
+  .dist { display: grid; grid-template-columns: 120px 1fr 28px; gap: 6px 10px; align-items: center; font-size: 14px; }
+  .bar { height: 16px; border-radius: 4px; }
+  .r1 { background: var(--red); } .r2 { background: #e07a5f; } .r3 { background: #b9b6ae; }
+  .r4 { background: #7fb88f; } .r5 { background: var(--green); }
+  ol.actions { margin: 0; padding-left: 20px; }
+  ol.actions li { margin-bottom: 8px; }
+  .muted { color: var(--muted); font-size: 13px; }
+  ul.tight { margin: 6px 0; padding-left: 20px; }
+  @media (max-width: 560px) {
+    .dist { grid-template-columns: 96px 1fr 22px; }
+    th.hide-sm, td.hide-sm { display: none; }
+  }
+
+  .sample { display: inline-block; padding: 3px 9px; border-radius: 4px; background: #e8e5fc; color: #4b3585; font-size: 12px; font-weight: 700; letter-spacing: .04em; margin: 0 0 10px; }
+  .scope-note { color: #55545b; font-size: 13px; margin: 0 0 18px; }
+  table { table-layout: fixed; }
+  th:first-child, td.id { width: 104px; }
+  th:nth-child(2):not(:last-child) { width: 130px; }
+  th.hide-sm { width: 80px; }
+  @media (max-width: 560px) {
+    main { padding: 20px 14px 32px; }
+    h1 { font-size: 23px; }
+    .card { padding: 14px; }
+    th:first-child, td.id { width: 80px; }
+    th:nth-child(2):not(:last-child) { width: 84px; }
+    td, th { overflow-wrap: anywhere; padding: 6px 5px; }
+    .count { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<p class="sample">SYNTHETIC EXAMPLE · FICTIONAL RACING SCENE</p>
+<h1>Race playtest: first visit</h1>
+<p class="sub">Build <b>world-v1</b> · questions after the first race (<code>first-race-end</code>) · 20 Oct 2026</p>
+<p class="scope-note">Fictional responses and issues, not verified bugs in Scene Feedback. This sample illustrates one possible AI-assisted readout; adapt the structure to your playtest and responses.</p>
+
+<div class="card summary">
+  <p><b>Main finding:</b> 7 of 12 players reported difficulty finding the race start. The race itself received positive comments from 6 of 12.</p>
+  <p>Separately, 2 of 3 mobile players said the keyboard covered the feedback form’s submit button. One player reported losing coins after reconnecting; this has not been reproduced.</p>
+</div>
+
+<div class="grid">
+  <div class="stat"><b>12</b><span>players included: 9 desktop, 3 mobile</span></div>
+  <div class="stat"><b>7 / 12</b><span>rated finding the start Difficult or Very difficult</span></div>
+  <div class="stat"><b>6 / 12</b><span>commented positively on the race</span></div>
+  <div class="stat"><b>2 / 3</b><span>mobile players reported the keyboard hiding Submit</span></div>
+</div>
+
+<h2>How easy was it to find the start?</h2>
+<div class="card">
+  <p class="muted" style="margin-top:0">“How easy was it to find the start of your first race?” · EASE scale · 12 answers</p>
+  <div class="dist" role="img" aria-label="12 ratings: Very difficult 2, Difficult 5, OK 1, Easy 2, Very easy 2.">
+    <span>Very difficult</span><div class="bar r1" style="width:calc(2/5*100%)"></div><b>2</b>
+    <span>Difficult</span><div class="bar r2" style="width:calc(5/5*100%)"></div><b>5</b>
+    <span>OK</span><div class="bar r3" style="width:calc(1/5*100%)"></div><b>1</b>
+    <span>Easy</span><div class="bar r4" style="width:calc(2/5*100%)"></div><b>2</b>
+    <span>Very easy</span><div class="bar r5" style="width:calc(2/5*100%)"></div><b>2</b>
+  </div>
+  <p class="muted" style="margin-bottom:0">All 7 players who gave a low rating also described trouble finding the start in the open question. Their ratings and comments agree on this issue.</p>
+</div>
+
+<h2>Themes in the responses</h2>
+<p class="muted">A response may belong to more than one theme. Counts refer to 12 players unless stated otherwise. Quotes retain the original English wording; response IDs make the evidence traceable.</p>
+
+<div class="card theme">
+  <div class="theme-head">
+    <h3>The race start is hard to find</h3>
+    <span class="count">7 of 12</span><span class="tag t-red">main issue</span>
+  </div>
+  <p>Players described wandering around the lobby, mistaking the gate for decoration, trying the shop first, not knowing which pad starts the race, or following another player.</p>
+  <blockquote>The race itself was fun, but the starting gate looked like decoration.<small>t02</small></blockquote>
+  <blockquote>Which pad starts the race? I tried the shop first.<small>t03</small></blockquote>
+  <blockquote>I followed another player because I could not tell where the race begins.<small>t06</small></blockquote>
+  <p class="muted">Each response records 3 players in the scene. Some participants may have found the start by following others. Finding it alone might be harder; that is a hypothesis to test, not an observed result.</p>
+  <div class="next"><b>Check next:</b> can new players see the gate from spawn, tell it is interactive, and distinguish it from the shop? Observe first-time players without hints.</div>
+  <details>
+    <summary>See all 7 responses</summary>
+    <table><thead><tr><th scope="col">Response ID</th><th scope="col">Start rating</th><th scope="col">Original comment</th><th class="hide-sm" scope="col">Device</th></tr></thead><tbody><tr><td class="id">t01</td><td>Difficult (2)</td><td class="c">I wandered around the lobby before finding where to begin.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t02</td><td>Difficult (2)</td><td class="c">The race itself was fun, but the starting gate looked like decoration.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t03</td><td>Very difficult (1)</td><td class="c">Which pad starts the race? I tried the shop first.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t04</td><td>Difficult (2)</td><td class="c">A clearer sign to the start would help. The race felt good once I found it.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t05</td><td>Difficult (2)</td><td class="c">On my phone the keyboard hid the submit button. I also missed the entrance to the race.</td><td class="hide-sm">Mobile</td></tr><tr><td class="id">t06</td><td>Very difficult (1)</td><td class="c">I followed another player because I could not tell where the race begins.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t07</td><td>Difficult (2)</td><td class="c">Took a while to spot the launch area. Also the mobile keyboard covered the send button.</td><td class="hide-sm">Mobile</td></tr></tbody></table>
+  </details>
+</div>
+
+<div class="card theme">
+  <div class="theme-head">
+    <h3>Some players found the start clear</h3>
+    <span class="count">2 of 12</span><span class="tag t-green">contrasting experience</span>
+  </div>
+  <p>Two players explicitly said the start was easy to find; both rated it Very easy. Another two rated it Easy (t11, t12), but their comments addressed other topics.</p>
+  <details><summary>See responses</summary><table><thead><tr><th scope="col">Response ID</th><th scope="col">Start rating</th><th scope="col">Original comment</th><th class="hide-sm" scope="col">Device</th></tr></thead><tbody><tr><td class="id">t08</td><td>Very easy (5)</td><td class="c">Race was enjoyable and getting started was clear for me.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t09</td><td>Very easy (5)</td><td class="c">Everything was easy to find. Please keep the short rounds.</td><td class="hide-sm">Desktop</td></tr></tbody></table></details>
+</div>
+
+<div class="card theme">
+  <div class="theme-head">
+    <h3>Players enjoyed the race itself</h3>
+    <span class="count">6 of 12</span><span class="tag t-green">preserve</span>
+  </div>
+  <p>Players praised the race, speed boosts, and short rounds. Two of them (t02, t04) also struggled to find the start. This suggests examining the route into the race separately from the race experience.</p>
+  <blockquote>Touch input was fine. Loved the little speed boosts.<small>t11</small></blockquote>
+  <details>
+    <summary>See all 6 responses</summary>
+    <table><thead><tr><th scope="col">Response ID</th><th scope="col">Start rating</th><th scope="col">Original comment</th><th class="hide-sm" scope="col">Device</th></tr></thead><tbody><tr><td class="id">t02</td><td>Difficult (2)</td><td class="c">The race itself was fun, but the starting gate looked like decoration.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t04</td><td>Difficult (2)</td><td class="c">A clearer sign to the start would help. The race felt good once I found it.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t08</td><td>Very easy (5)</td><td class="c">Race was enjoyable and getting started was clear for me.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t09</td><td>Very easy (5)</td><td class="c">Everything was easy to find. Please keep the short rounds.</td><td class="hide-sm">Desktop</td></tr><tr><td class="id">t11</td><td>Easy (4)</td><td class="c">Touch input was fine. Loved the little speed boosts.</td><td class="hide-sm">Mobile</td></tr><tr><td class="id">t12</td><td>Easy (4)</td><td class="c">The game was fun. Literal text: &lt;img src=x onerror=&quot;window.__injected=1&quot;&gt; &lt;/script&gt;&lt;script&gt;window.__injected=2&lt;/script&gt;</td><td class="hide-sm">Desktop</td></tr></tbody></table>
+    <p class="muted">Response t12 intentionally contains HTML-like text as a safety test. It is displayed as text, never executed.</p>
+  </details>
+</div>
+
+<div class="card theme">
+  <div class="theme-head">
+    <h3>Mobile keyboard covers the form’s submit button</h3>
+    <span class="count">2 of 3 mobile players</span><span class="tag t-amber">collection issue</span>
+  </div>
+  <p>The reports concern the feedback form, rather than race controls. Both players managed to submit an answer. Players unable to submit would be absent from this data, so the full extent of the issue is unknown.</p>
+  <div class="next"><b>Check next:</b> use <code>PREVIEW_MOBILE = true</code> to inspect the mobile layout. Then test comment entry and submit-button visibility on an actual phone: desktop preview cannot verify native keyboard behavior. Address the issue before the next playtest.</div>
+  <details>
+    <summary>See responses</summary><table><thead><tr><th scope="col">Response ID</th><th scope="col">Original comment</th></tr></thead><tbody><tr><td class="id">t05</td><td class="c">On my phone the keyboard hid the submit button. I also missed the entrance to the race.</td></tr><tr><td class="id">t07</td><td class="c">Took a while to spot the launch area. Also the mobile keyboard covered the send button.</td></tr></tbody></table>
+    <p class="muted">The third mobile player (t11) wrote “Touch input was fine.” This may refer to gameplay controls; it does not establish that the form worked correctly.</p>
+  </details>
+</div>
+
+<div class="card theme">
+  <div class="theme-head">
+    <h3>Coins disappeared after reconnecting</h3>
+    <span class="count">1 of 12</span><span class="tag t-red">single serious report</span>
+  </div>
+  <p>This is one report, and the player says they tried only once. The issue has not been reproduced. If confirmed, it would mean players can lose progress.</p>
+  <blockquote>After reconnecting, my earned coins disappeared. I only tried once.<small>t10 · start rating: OK (3)</small></blockquote>
+  <div class="next"><b>Check next:</b> earn coins, reconnect, and inspect where the balance is stored.</div>
+</div>
+
+<h2>Next steps</h2>
+<div class="card">
+  <ol class="actions">
+    <li><b>Make the start recognizable from spawn.</b> Possibilities include a gate label or prompt, animation, directions, or moving the shop. These are candidate changes to test.</li>
+    <li><b>Observe 3–5 first-time players.</b> Recruit people who have not visited the scene. Measure time from arrival to starting the race.</li>
+    <li><b>Fix the mobile feedback form</b> before the next playtest.</li>
+    <li><b>Try to reproduce lost coins</b> after reconnecting.</li>
+    <li><b>Repeat under comparable conditions:</b> keep the same <code>startEase</code> question and wording, ask after the first race, and recruit players the same way. This makes a v1-to-v2 comparison more meaningful.</li>
+  </ol>
+</div>
+
+<h2>Scope and limitations</h2>
+<div class="card">
+  <p style="margin-top:0">The analysis includes 12 players in <b>world-v1</b>. Each answered both questions: ease of finding the start, and an open question about the experience. The sample CSV has 31 records, or 30 unique response IDs after deduplication.</p>
+  <details>
+    <summary>See exclusions and data checks</summary>
+    <ul class="tight">
+      <li><b>t01:</b> the export contains a duplicate record with the same response ID; count it once.</li>
+      <li><b>debug1:</b> a debug-mode test response.</li>
+      <li><b>preview1:</b> a local-preview response.</li>
+      <li><b>old1:</b> a response from <b>world-v0</b>. It shares question ID <code>startEase</code> but has different wording (“How challenging was the race?”) and a different scale (CHALLENGE). Do not combine it with the current ratings.</li>
+      <li><b>skip1:</b> one player skipped the open question. There is no record establishing whether they saw the start question.</li>
+      <li><b>intro1 / intro2:</b> only two participation-invitation responses are present (1 accepted, 1 declined). They cannot establish an overall participation rate.</li>
+    </ul>
+  </details>
+  <ul class="tight">
+    <li>This is a small sample, so counts are shown instead of percentages. Only 3 players used mobile; there is insufficient evidence for broad platform comparisons.</li>
+    <li>All responses share the same recorded scene time (180 seconds) and timestamp. Those fields cannot establish how long players spent looking for the start.</li>
+    <li>Players who answered may differ from those who did not. Proposed changes remain hypotheses. Positive comments are self-reported experiences, not measured retention or proof of overall game quality.</li>
+  </ul>
+</div>
+
+</main>
+</body>
+</html>

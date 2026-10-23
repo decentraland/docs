@@ -23,7 +23,7 @@ Give your AI agent the [Scene Feedback SDK skill](https://github.com/decentralan
 The skill can help at two stages:
 
 - **Before a playtest:** adapt questions, rating scales and timing to your game, then integrate the module after you review the plan.
-- **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a human-readable HTML report with grouped answers and rating summaries.
+- **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a [human-readable HTML report](#example-feedback-report) with grouped answers and rating summaries.
 
 Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
 
@@ -35,7 +35,9 @@ Prefer to integrate it yourself? Follow the [installation guide](https://github.
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
 3. **Give feedback at any time.** The **Leave feedback** button, clickable kiosk and marked area open a welcome message followed by a question set. These remain available even after declining gameplay questions.
 
-![Example feedback form with five rating choices and an optional comment field](https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png)
+<figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>First, players choose whether to give feedback.</p></figcaption></figure>
+
+<figure><img src="https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png" alt="Example feedback form with five rating choices and an optional comment field" width="400"><figcaption><p>A question with a labelled rating and an optional comment.</p></figcaption></figure>
 
 ### Key features
 
@@ -46,3 +48,13 @@ Prefer to integrate it yourself? Follow the [installation guide](https://github.
 ### Adapt it to your scene
 
 Use the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md) to connect questions to your own game events, including inviting participants now and asking after later gameplay. For playtest planning and finding players, see [Playtests](https://docs.decentraland.org/creator/scenes-sdk7/designing-the-experience/playtests).
+
+### Example feedback report
+
+See one possible way to turn collected responses into grouped findings, rating summaries and next steps. This example uses synthetic responses from a fictional scene; your report should follow your own questions and data.
+
+<figure><img src="../../../.gitbook/assets/scene-feedback-example-report.png" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
+
+{% file src="../../../.gitbook/assets/scene-feedback-example-report.html" %}
+Download the example report and open the HTML file in your browser.
+{% endfile %}

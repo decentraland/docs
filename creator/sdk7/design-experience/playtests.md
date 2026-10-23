@@ -172,7 +172,7 @@ RITE works especially well during early development, when you can make changes q
 
 ## Find playtesters
 
-Start by inviting people who haven't played your game before. Regular Decentraland players can help you test gameplay, but people from outside the community can reveal problems that experienced players might miss.
+Regular Decentraland players are the easiest to reach, but also look [outside the Decentraland community](#outside-the-decentraland-community): they catch problems that experienced players miss.
 
 ### On Discord
 
@@ -215,7 +215,7 @@ Indie developers commonly recruit from:
 - **People who don't usually play games.** If they can get through your onboarding, almost anyone can.
 - **Communities you're already part of.** A game jam server, a hobby forum, a local meetup, or a group that matches your game's theme.
 
-If your testers are new to Decentraland, help them get in: share a direct link to your World or LAND and a short note on installing the client and signing in. Keep notes on where they struggle before reaching your scene, but treat that separately from feedback about your game.
+If your testers are new to Decentraland, help them get in: share the web link to your scene (`https://decentraland.org/jump/?realm=<your-world-name>.dcl.eth` for a World, or `https://decentraland.org/jump/?position=<x>,<y>` for LAND), which the Creator Hub shows after you publish, plus a short note on installing the client and signing in. The link opens in a browser even before the client is installed. Keep notes on where they struggle before reaching your scene, but treat that separately from feedback about your game.
 
 ## Use feedback to improve your next version
 

@@ -55,6 +55,6 @@ See one possible way to turn collected responses into grouped findings, rating s
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-example-report.png" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
 
-{% file src="../../../.gitbook/assets/scene-feedback-example-report.html" %}
-Download the example report and open the HTML file in your browser.
+{% file src="../../../.gitbook/assets/scene-feedback-example-report.zip" %}
+Download the example report, extract the ZIP and open the HTML file in your browser.
 {% endfile %}

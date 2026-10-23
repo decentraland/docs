@@ -27,15 +27,17 @@ The skill can help at two stages:
 
 Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
 
-### What players experience
+### How the module fits into your scene
 
-[Try the coin hunt in Zone](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1):
+You choose when to invite players, which questions to ask and the game moments that show them. The [coin-hunt demo in Zone](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1) shows one possible setup:
 
 1. **Collect the first coin.** An invitation asks whether the player wants to give feedback: "Hi, we're the Coin Hunt team!" If accepted, one question follows: "How easy or difficult was it to spot the coins?" The player chooses a rating and can add a comment.
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
 3. **Give feedback at any time.** The **Leave feedback** button, clickable kiosk and marked area open a welcome message followed by a question set. These remain available even after declining gameplay questions.
 
-<figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>First, players choose whether to give feedback.</p></figcaption></figure>
+By default, gameplay questions go only to participants. Players can join through an invitation, or your own game logic can mark selected players as participants with `feedback.enroll`—for example, testers who have already agreed to take part. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
+
+<figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
 
 <figure><img src="https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png" alt="Example feedback form with five rating choices and an optional comment field" width="400"><figcaption><p>A question with a labelled rating and an optional comment.</p></figcaption></figure>
 

@@ -35,7 +35,7 @@ You choose when to invite players, which questions to ask and the game moments t
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
 3. **Give feedback at any time.** The **Leave feedback** button, clickable kiosk and marked area open a welcome message followed by a question set. These remain available even after declining gameplay questions.
 
-By default, gameplay questions go only to participants. Players can join through an invitation, or your own game logic can mark selected players as participants with `feedback.enroll`—for example, testers who have already agreed to take part. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
+By default, gameplay questions go only to participants. Players can join through an invitation, or your scene can use `feedback.enroll` to add selected playtesters—for example, by checking wallet addresses against your tester list or applying another selection rule. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
 

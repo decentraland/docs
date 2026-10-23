@@ -183,11 +183,19 @@ Light sources can have a pretty big impact on the performance of your scene. For
 
 The number allowed active lights in a scene is capped at one per parcel, and beyond that it depends on the user´s selected quality settings.
 
-- Low quality: Maximum 4 lights (in a scene with enough parcels)
+- Low quality: no scene lights at all
 - Medium quality: Maximum 6 lights (in a scene with enough parcels)
 - High quality: Maximum 10 lights (in a scene with enough parcels)
 
+The quality settings slider can lower a preset's cap further.
+
 If there are more lights than allowed, the engine will automatically disable lights based on proximity of the light source to the player. As the player moves, the engine will re-enable lights that are close enough to the player.
+
+{% hint style="warning" %}
+**📔 Note**: On the Low quality preset, scene lights are switched off completely. A correctly built `LightSource` then shows nothing, and no amount of intensity, range or material tuning changes that. If a light "doesn't work", check the quality setting before anything else. Treat Medium as the lowest setting your scene supports, rather than requiring High.
+
+An emissive material that glows is not proof that a light is working. A glowing lamp mesh and the light it casts on nearby surfaces are two separate things to check.
+{% endhint %}
 
 In all cases, the engine will only render shadows for up to 3 light sources. If there are more lights with shadows than 3, the engine will automatically disable shadows for the remaining lights that are further away.
 

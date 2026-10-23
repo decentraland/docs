@@ -161,3 +161,35 @@ You can also set up the following properties related to texts with multiple line
 
 * `lineCount`: _number_. How many lines of text to fit into the textbox as a maximum. If not set, there is no limit to the number of lines. The `textWrapping` property must be _true_ to use more than one line.
 * `lineSpacing`: _number_. How much space between each line.
+
+## Lay out text in columns
+
+Spaces and tabs do not line up columns in a `TextShape`, not even with `Font.F_MONOSPACE`. Padding a scoreboard with spaces gives you ragged columns that shift as soon as a name or a number changes length.
+
+To build a table, use one `TextShape` per column. Give each column its own entity, position it, and put the rows in its `text` field separated by `\n`. Every row then sits at the same height across all columns.
+
+```ts
+// A two column scoreboard: one TextShape for names, one for scores
+const board = engine.addEntity()
+Transform.create(board, { position: Vector3.create(8, 2, 8) })
+
+const names = engine.addEntity()
+Transform.create(names, { parent: board, position: Vector3.create(-1, 0, 0) })
+TextShape.create(names, {
+	text: 'Ana\nBruno\nChiara',
+	textAlign: TextAlignMode.TAM_MIDDLE_LEFT,
+	fontSize: 2,
+})
+
+const scores = engine.addEntity()
+Transform.create(scores, { parent: board, position: Vector3.create(1, 0, 0) })
+TextShape.create(scores, {
+	text: '120\n85\n9',
+	textAlign: TextAlignMode.TAM_MIDDLE_RIGHT,
+	fontSize: 2,
+})
+```
+
+Align each column towards the gap between the columns: `TAM_MIDDLE_LEFT` for the left column, `TAM_MIDDLE_RIGHT` for the right one. Numbers read best right-aligned, so their digits line up.
+
+To update a row, rewrite the whole `text` string of each column. Keep the number of lines the same in every column, otherwise the rows stop matching up.

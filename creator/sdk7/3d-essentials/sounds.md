@@ -27,10 +27,15 @@ To play a sound via code, use the `AudioSource.playSound` function.
 ```ts
 // Create entity
 const sourceEntity = engine.addEntity()
+Transform.create(sourceEntity, { position: Vector3.create(8, 1, 8) })
 
 // Play sound
 AudioSource.playSound(sourceEntity, 'assets/sounds/sound-effect.mp3')
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Every entity with an `AudioSource` also needs a `Transform`, including global sounds. Without one, nothing plays and no error is logged, which makes this a hard problem to spot. Items placed in the Scene Editor always have a `Transform`, so this only affects entities you create in code.
+{% endhint %}
 
 The sound file must be inside the project folder. In the example above, the audio file is located in an `assets/sounds` folder, which is located at root level of the scene project folder.
 
@@ -58,6 +63,7 @@ Another way to play sounds is to manually create an `AudioSource` component on a
 ```ts
 // Create entity
 const sourceEntity = engine.addEntity()
+Transform.create(sourceEntity, { position: Vector3.create(8, 1, 8) })
 
 // Create AudioSource component
 AudioSource.create(sourceEntity, {
@@ -248,6 +254,8 @@ AudioSource.create(sourceEntity, {
 	global: true,
 })
 ```
+
+A global sound still needs a `Transform` on its entity, even though its position no longer affects what the player hears. Any position will do.
 
 ## Play a segment of a sound
 

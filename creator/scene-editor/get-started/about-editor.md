@@ -65,6 +65,18 @@ Click and drag a selected item to move it freely around the scene at ground leve
 
 ![](../../images/editor/smart-items.jpg)
 
+To give the 3D view the full height of the window, collapse the asset panel with the chevron button at the right end of its tab bar. The panel shrinks to just its tabs, and the same button brings it back at the height you had. Clicking any tab while it's collapsed also reopens it.
+
+### Avatar animations
+
+The **Avatar Animations** pack holds animations for the player's avatar rather than items to place: sitting poses, fishing, carrying a box, dancing, and more. They're sorted into the same **Actions**, **Sitting** and **Expressions** groups as the rest.
+
+Hover over a card to see the animation play. Drag one onto the 3D view to copy its file into your scene's local assets. No entity is added, because an animation isn't something that sits in the scene: you play it from code. See [Avatar Animations](../../sdk7/interactivity/avatars/avatar-animations.md).
+
+Cards marked with a **Built-in** badge work differently. Those animations already ship with Decentraland, so every scene can play them with no file to add. You can't drag them in. Instead, right-click a card and choose **Copy name** to get the name to use in your code.
+
+In the **Local Assets** tab, the **Avatar Animations** filter gathers the animation files in your project, along with a read-only **Built-in animations** folder listing the ones that need no file.
+
 ## Preview
 
 To test your scene and experience it like a player, click the **Play** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.

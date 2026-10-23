@@ -236,6 +236,7 @@ The `ExplorerUi` enum has the following values:
 `openExplorerUiAndWait()` opens a panel and hands you a promise that resolves once the player closes it. Use it when your scene should carry on only after the player is done, for example after sending them to the backpack to put on a wearable.
 
 ```ts
+import { executeTask } from '@dcl/sdk/ecs'
 import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
 
 // Open the backpack, then continue once the player closes it
@@ -266,6 +267,7 @@ When the panel can't open, the promise resolves immediately with `notOpened`. Yo
 There is no time limit by default. A player can leave a panel open for several minutes, and the promise stays pending all that time. Pass `timeoutMs` when your scene needs to move on regardless.
 
 ```ts
+import { executeTask } from '@dcl/sdk/ecs'
 import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
 
 // Stop waiting after 30 seconds, whether or not the map is still open

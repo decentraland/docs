@@ -144,7 +144,7 @@ Both splash when a player walks or jumps into them. You can set:
 They also expose **enter** and **exit** events, and a **Splash** action that makes a splash in the middle of the water on demand.
 
 {% hint style="warning" %}
-**📔 Note**: Each water layer needs its normal map. A layer without one stops looking like water, and if none are left the splash area shrinks to 1 x 1 m.
+**📔 Note**: Each water layer needs its normal map. A layer without one is no longer animated, and if none are left the splash area shrinks to 1 x 1 m.
 {% endhint %}
 
 ### Teleports

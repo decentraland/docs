@@ -22,8 +22,8 @@ The easiest way to make a player perform an animation is to use the Scene Editor
 
 Use the `triggerEmote()` function to run one of the default animations that players are able to play anywhere in Decentraland. This function takes an object with the following properties as an argument:
 
-- `predefinedEmote`: A string name for an existing emote.
-- `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
+* `predefinedEmote`: A string name for an existing emote.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerEmote } from '~system/RestrictedActions'
@@ -45,51 +45,51 @@ pointerEventsSystem.onPointerDown(
 
 The following emotes show feedback about player actions in your scene, all of these are valid values for the `predefinedEmote` field:
 
-- `buttonDown`
-- `buttonFront`
-- `getHit`
-- `knockOut`
-- `lever`
-- `openChest`
-- `openDoor`
-- `punch`
-- `push`
-- `swingWeaponOneHand`
-- `swingWeaponTwoHands`
-- `throw`
-- `sittingChair1`
-- `sittingChair2`
-- `sittingGround1`
-- `sittingGround2`
+* `buttonDown`
+* `buttonFront`
+* `getHit`
+* `knockOut`
+* `lever`
+* `openChest`
+* `openDoor`
+* `punch`
+* `push`
+* `swingWeaponOneHand`
+* `swingWeaponTwoHands`
+* `throw`
+* `sittingChair1`
+* `sittingChair2`
+* `sittingGround1`
+* `sittingGround2`
 
 The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. All the others play through once and the avatar returns to idle.
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
-- `wave`
-- `fistpump`
-- `robot`
-- `raiseHand`
-- `clap`
-- `money`
-- `kiss`
-- `tik`
-- `hammer`
-- `tektonik`
-- `dontsee`
-- `handsair`
-- `shrug`
-- `disco`
-- `dab`
-- `headexplode`
-- `crafting`
-- `handsintheair`
-- `Victory`
-- `Waving`
-- `fistpump_short`
+* `wave`
+* `fistpump`
+* `robot`
+* `raiseHand`
+* `clap`
+* `money`
+* `kiss`
+* `tik`
+* `hammer`
+* `tektonik`
+* `dontsee`
+* `handsair`
+* `shrug`
+* `disco`
+* `dab`
+* `headexplode`
+* `crafting`
+* `handsintheair`
+* `Victory`
+* `Waving`
+* `fistpump_short`
 
 {% hint style="warning" %}
-**📔 Note**: These names are case sensitive, and a wrong one fails silently: nothing plays and nothing is logged. Watch out for `Victory` and `Waving` with their capital first letter, `handsintheair` all in lowercase with no separators, and `fistpump_short` with its suffix.
+**📔 Note**: Use these names exactly as listed. A wrong name fails silently in your scene: nothing plays and nothing appears in the scene console. Watch out for `handsintheair` with no separators, and `fistpump_short` with its suffix.
 {% endhint %}
 
 {% hint style="info" %}
@@ -101,7 +101,7 @@ These emotes are available to all players in their default emote wheel, and can 
 Use the `triggerSceneEmote()` to make the player perform a custom animation, stored as a .glb file as part of the scene's asset.
 
 {% hint style="info" %}
-**💡 Tip**: You don't have to make these yourself. The **Avatar Animations** pack in the Scene Editor has 45 ready-made animations, including sitting poses, fishing, carrying a box and dancing. Drag one onto the 3D view and the editor copies its file into your scene, then pass that file's path to `triggerSceneEmote()`. Files land under `assets/asset-packs/`, named after the animation, for example `assets/asset-packs/whack/Whack_Avatar_emote.glb`. See [Add items](../../../scene-editor/get-started/about-editor.md#avatar-animations).
+**💡 Tip**: You don't have to make these yourself. The **Avatar Animations** pack in the Scene Editor has 45 ready-made animations, including sitting poses, fishing, carrying a box and dancing. Drag one onto the 3D view and the editor copies its file into your scene, then pass that file's path to `triggerSceneEmote()`. Files land under `assets/asset-packs/<animation-folder>/`, for example `assets/asset-packs/whack/Whack_Avatar_emote.glb`. Check the exact path in **Local Assets**. See [Add items](../../../scene-editor/get-started/about-editor.md#avatar-animations).
 {% endhint %}
 
 {% hint style="warning" %}
@@ -110,9 +110,9 @@ Use the `triggerSceneEmote()` to make the player perform a custom animation, sto
 
 This function takes an object with the following properties:
 
-- `src`: A string with a path to the emote file, relative to your project's root folder. It must match how the file sits on disk, exactly. A wrong path fails silently: nothing plays and nothing is logged, so check it first when an animation doesn't appear.
-- `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
-- `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
+* `src`: A string with a path to the emote file, relative to your project's root folder. It must match how the file sits on disk, exactly. A wrong path fails silently: nothing plays and nothing is logged, so check it first when an animation doesn't appear.
+* `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
+* `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
 ```ts
 import { triggerSceneEmote } from '~system/RestrictedActions'
@@ -179,17 +179,17 @@ In this example, the player clicks a button and starts cheering with their arms 
 
 Some things to keep in mind:
 
-- `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
-- The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
-- To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
+* `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
+* The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
+* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
 
 ### Detect when an emote finishes
 
 Every emote lifecycle event is reported through the `AvatarEmoteCommand` component on the player entity. Each new entry carries a `state` field, with a value from the `EmoteState` enum:
 
-- `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent.
-- `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
-- `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
+* `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent.
+* `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
+* `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
 
 This works for emotes triggered by the scene (`triggerEmote()` and `triggerSceneEmote()`) as well as emotes the player plays themselves through the emote wheel, and also for emotes played by other players in the scene.
 

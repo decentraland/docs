@@ -35,9 +35,9 @@ You choose when to invite players, which questions to ask and when those questio
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
 3. **Give feedback at any time.** Any visitor can use the **Leave feedback** button, clickable kiosk or marked area to open a welcome message followed by a question set, even after declining gameplay questions.
 
-Choose who receives questions during play:
+Choose how players take part:
 
-- **Players who opt in:** ask only players who accept an on-screen invitation, as in the demo’s default setup.
+- **Players who opt in:** invite players with an on-screen prompt, or let them open a feedback form through a button, kiosk or marked area.
 - **Selected testers:** use your game logic to choose testers by wallet list or another rule, then enroll them with `feedback.enroll`. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
 - **Or ask anyone:** show questions to visitors during play without a prior invitation or tester list. Players can still decline. See the [participation settings](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#asking-participants-during-play-dynamic-approach).
 

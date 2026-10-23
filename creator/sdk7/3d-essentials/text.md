@@ -134,7 +134,7 @@ Keep the following in mind when using custom fonts:
 * **Characters**: Latin characters (ASCII and Latin-1) are prerendered. Any other characters that the font includes, like Cyrillic or Chinese, are rendered the first time they appear in the scene, which can cause a brief hitch. Characters that the font doesn't include are drawn with the built-in sans-serif font.
 * **Fonts are shared**: all text entities that use the same `fontSrc` share a single copy of the font, so reusing a font across the scene costs no more than using it once. Prefer a handful of fonts over many different ones, since each font has its own texture. Each font file adds an optimized download of about 700 KB.
 
-When the desktop client rejects a font, it prints a message to the console explaining why. Open the console in the preview to check it.
+When the desktop client can't use a custom font, it logs a message to the console saying the fallback font is being used, without a reason. If you see it, check that the file is a TrueType `.ttf` under 16 MB, then publish again.
 
 ## Text alignment and padding properties
 

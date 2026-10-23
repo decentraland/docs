@@ -33,9 +33,13 @@ You choose when to invite players, which questions to ask and when those questio
 
 1. **Collect the first coin.** An invitation asks whether the player wants to give feedback: "Hi, we're the Coin Hunt team!" If accepted, one question follows: "How easy or difficult was it to spot the coins?" The player chooses a rating and can add a comment.
 2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
-3. **Give feedback at any time.** The **Leave feedback** button, clickable kiosk and marked area open a welcome message followed by a question set. These remain available even after declining gameplay questions.
+3. **Give feedback at any time.** Any visitor can use the **Leave feedback** button, clickable kiosk or marked area to open a welcome message followed by a question set, even after declining gameplay questions.
 
-By default, gameplay questions go only to participants. Players can join through an invitation, or your scene can use `feedback.enroll` to add selected playtesters—for example, by checking wallet addresses against your tester list or applying another selection rule. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
+Choose who receives questions during play:
+
+- **Anyone:** ask any visitor during play, without a prior invitation or tester list. Players can still decline. See the [participation settings](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#asking-participants-during-play-dynamic-approach).
+- **Players who opt in:** ask only players who accept an on-screen invitation, as in the demo’s default setup.
+- **Selected testers:** use your game logic to choose testers by wallet list or another rule, then enroll them with `feedback.enroll`. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
 

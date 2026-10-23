@@ -43,8 +43,8 @@ By default, gameplay questions go only to participants. Players can join through
 
 ### Key features
 
-- **Flexible questions.** Choose labelled ratings, optional comments or text-only answers, with your own question wording and rating scales.
-- **Demo participation rewards.** Once per visit, answer every question in one form to get a visit-only Playtest Contributor nameplate visible to you, +5 coin score and double score for the next five pickups. Any rating counts; comments remain optional.
+- **Flexible questions.** Choose ready-made questions and rating scales, adapt them to your game or create your own. Use labelled ratings, optional comments or text-only answers.
+- **Participation rewards.** Encourage participation with a reward that fits your game. In the demo, answering every question in one form earns a visit-only Playtest Contributor nameplate visible to you, +5 coin score and double score for the next five pickups, once per visit. Any rating counts; comments remain optional.
 - **CSV results in scene Storage.** A Multiplayer Server saves each response with its question and gameplay moment. Download the files to review in a spreadsheet.
 
 ### Adapt it to your scene
@@ -53,7 +53,7 @@ Use the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/b
 
 ### Example feedback report
 
-See one possible way to turn collected responses into grouped findings, rating summaries and next steps. This example uses synthetic responses from a fictional scene; your report should follow your own questions and data.
+This example illustrates how the Scene Feedback SDK skill can present collected responses as grouped findings, rating summaries and next steps. It uses synthetic responses from a fictional scene; ask the skill to tailor your report to your own questions and data.
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-example-report.png" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
 

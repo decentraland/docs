@@ -16,11 +16,10 @@ Learn what players find confusing, frustrating or enjoyable, even when you canno
 
 ### Add it with an AI agent
 
-Give your AI agent the [Scene Feedback SDK skill](https://github.com/decentraland/sdk-skills/tree/main/scene-feedback) link and ask:
+1. Make sure [Decentraland SDK Skills](https://github.com/decentraland/sdk-skills#updating-skills) are installed and up to date.
+2. Tell your AI agent: "I want to gather feedback from players in this scene."
 
-> Help me add Scene Feedback to this scene. First suggest suitable questions and when to ask them, then review the plan with me before integrating it.
-
-The skill can help at two stages:
+The agent can use the Scene Feedback skill to help at two stages:
 
 - **Before a playtest:** adapt questions, rating scales and timing to your game, then integrate the module after you review the plan.
 - **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a [human-readable HTML report](#example-ai-generated-feedback-report) with grouped answers and rating summaries.

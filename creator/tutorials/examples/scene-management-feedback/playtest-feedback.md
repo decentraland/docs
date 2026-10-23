@@ -39,7 +39,7 @@ Choose who receives questions during play:
 
 - **Players who opt in:** ask only players who accept an on-screen invitation, as in the demo’s default setup.
 - **Selected testers:** use your game logic to choose testers by wallet list or another rule, then enroll them with `feedback.enroll`. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
-- **Or ask anyone:** ask any visitor during play, without a prior invitation or tester list. Players can still decline. See the [participation settings](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#asking-participants-during-play-dynamic-approach).
+- **Or ask anyone:** show questions to visitors during play without a prior invitation or tester list. Players can still decline. See the [participation settings](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#asking-participants-during-play-dynamic-approach).
 
 <figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
 

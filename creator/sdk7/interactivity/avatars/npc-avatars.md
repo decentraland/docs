@@ -77,6 +77,8 @@ The `expressionTriggerId` field supports all [default animations](avatar-animati
 
 Animations on an `AvatarShape` play once, if you want the avatar to keep looping an animation, you should create a system that tells it to play the animation again every couple of seconds.
 
+The one exception is the looping default emotes, `sittingChair1`, `sittingChair2`, `sittingGround1` and `sittingGround2`, which hold their pose on an `AvatarShape` with no need to replay them. A custom animation from a file never loops on an `AvatarShape`, even if the clip itself is marked as looping, so a sustained custom pose needs the replay pattern below.
+
 Use the `expressionTriggerTimestamp` to replay a same emote. The value of this field is a [lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp), meaning that it's not a time value, but rather an index that is raised by 1 for each repetition of the emote.
 
 So the first time you play an emote, you set `expressionTriggerTimestamp` to _0_. To play the emote again, you must update this value to 1. That's how the engine knows that this is a new instruction, and not an instruction it already acted upon.

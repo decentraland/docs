@@ -64,13 +64,17 @@ You can:
 - Collect 1 to 5 ratings and written comments.
 - Download responses as a CSV file from your World's Scene Storage.
 
+### What you need first
+
+Scene Feedback stores answers on a server, so your scene needs a [Multiplayer Server](../networking/authoritative-servers.md), enabled by using `@dcl/sdk@auth-server` and setting `"authoritativeMultiplayer": true` in `scene.json`.
+
 ### Install Scene Feedback
 
 1. Open the [Scene Feedback repository](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback).
 2. Follow the README to install the module in your scene. You can also give the installation prompt to your AI coding agent.
 3. Choose a small set of questions that match your playtest goals.
 4. Decide when each question should appear.
-5. Download player responses from Scene Storage in Creator Hub.
+5. Download player responses as a CSV file. In Creator Hub, open **Manage**, then your World's **⋮** menu, then **View Storage**.
 
 The repository includes ready-to-use questions, examples, and guidance for choosing questions.
 

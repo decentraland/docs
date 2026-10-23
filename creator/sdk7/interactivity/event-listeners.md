@@ -231,6 +231,57 @@ The `ExplorerUi` enum has the following values:
 **Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
 {% endhint %}
 
+### Wait until the player closes a panel
+
+`openExplorerUiAndWait()` opens a panel and hands you a promise that resolves once the player closes it. Use it when your scene should carry on only after the player is done, for example after sending them to the backpack to put on a wearable.
+
+```ts
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+// Open the backpack, then continue once the player closes it
+executeTask(async () => {
+  const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_BACKPACK })
+
+  if (outcome.$case === 'closed') {
+    console.log('The player closed the backpack')
+  }
+})
+```
+
+The object you get back has a `$case` field that tells you how the wait ended:
+
+* `closed`: the player closed the panel your scene opened. This is the normal outcome.
+* `notOpened`: nothing opened. The `openResult` field says why, for example because the player was outside your parcels.
+* `timedOut`: the time limit you set ran out while the panel was still open.
+* `matched`: an `until` condition ended the wait early, so the panel may still be on screen.
+
+When the panel can't open, the promise resolves immediately with `notOpened`. Your scene never sits waiting for a panel that isn't there.
+
+{% hint style="warning" %}
+**📔 Note**: `openExplorerUiAndWait()` requires `@dcl/sdk` version 7.30.0 or newer. It comes from the `@dcl/sdk/explorer-ui` module, which also re-exports `ExplorerUi`.
+{% endhint %}
+
+#### Set a time limit
+
+There is no time limit by default. A player can leave a panel open for several minutes, and the promise stays pending all that time. Pass `timeoutMs` when your scene needs to move on regardless.
+
+```ts
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+// Stop waiting after 30 seconds, whether or not the map is still open
+executeTask(async () => {
+  const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_MAP }, { timeoutMs: 30000 })
+
+  if (outcome.$case === 'timedOut') {
+    console.log('The player is still looking at the map')
+  }
+})
+```
+
+#### Stop on an event instead
+
+The `until` option ends the wait as soon as an event arrives on a channel, resolving with `matched` rather than `closed`. Channels are exported from the same module: `ExplorerUiEvents` for panel open and close events, and `ItemPurchase` for the result of a purchase flow. Add the same channel to the `collect` option if you also want the events themselves, which arrive in the outcome's `events` array.
+
 ### Observe when panels open or close
 
 Use the `ExplorerUiEventsResult` component to detect when explorer panels are opened or closed. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. It streams events each time a panel opens or closes.

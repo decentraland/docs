@@ -33,6 +33,8 @@ Here are some common items and their default behaviors:
 - **Video Player**: A screen for showing videos or live streams. See [Playing Videos](smart-items.md#playing-videos).
 - **Audio Stream**: Play audio from a live stream. See [Playing Audio Streams](smart-items.md#playing-audio-streams)
 - **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)
+- **Floor Pressure Button**: A round plate that sinks while a player stands on it and pops back up when they step off. Use its **On Press** and **On Release** hooks to run actions, for example to hold a door open while someone stands on it.
+- **Water Plane** and **Water Cylinder**: Water surfaces that splash when a player walks or jumps into them. See [Water](#water).
 
 All smart items can be configured to behave in custom ways. For example how far a platform moves, or what a button activates.
 
@@ -124,6 +126,26 @@ Chairs, benches, and other seats let a player sit down by clicking them.
 - A seat only frees up when the player who took it **walks away** from it, more than 1.5 meters.
 - On an item with several spots, such as a bench, clicking it seats you on the **nearest free spot**.
 - When every spot is taken, the hover text reads **Seat is taken** and clicking does nothing.
+
+### Water
+
+Two items under the **Materials** category give you water the player can splash in:
+
+- **Water Plane**: a flat 16 x 16 m surface. Scale it to cover a pond, a canal, or a sea.
+- **Water Cylinder**: a round pool, 8 m wide and 2 m deep.
+
+Both splash when a player walks or jumps into them. You can set:
+
+- **Activated By**: `my player` so only you see your own splashes, or `all players` so every avatar splashes.
+- **Depth**: how far below the surface the splash area reaches, in meters. It never reaches past the bottom of a pool.
+- **Splash Size**: the size of the splash effect, in meters.
+- **Sound**: the name of an audio file inside the item's folder, played on each splash. Leave it empty for silent water.
+
+They also expose **enter** and **exit** events, and a **Splash** action that makes a splash in the middle of the water on demand.
+
+{% hint style="warning" %}
+**📔 Note**: Each water layer needs its normal map. A layer without one stops looking like water, and if none are left the splash area shrinks to 1 x 1 m.
+{% endhint %}
 
 ### Teleports
 

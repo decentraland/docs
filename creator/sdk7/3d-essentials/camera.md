@@ -115,6 +115,21 @@ Your scene can include as many entities with a `VirtualCamera`component as you w
 To revert back to default camera behavior, set the value to `undefined` on `MainCamera.virtualCameraEntity`. The player is then free to switch between 1st and 3rd person cameras. If you want the player to only use one of these two modes, you can use a [Camera modifier areas](#1st-and-3rd-person-camera-modes) to force one of the two.
 
 {% hint style="warning" %}
+**📔 Note**: Release the camera with `undefined`, never with `0`. Only an absent value hands control back to the player. A value of `0` is `engine.RootEntity`, which has no `VirtualCamera`, so the engine keeps whichever virtual camera was last active and the player stays stuck in that view.
+
+This catches code that saves and restores the camera, because `virtualCameraEntity` is optional and reads as `undefined` on a fresh `MainCamera`. A `?? 0` or `|| 0` fallback turns that into a `0` that gets written back later. Check the entity before restoring it:
+
+```ts
+function restoreCamera(previous: Entity | undefined) {
+	const camera = MainCamera.getMutableOrNull(engine.CameraEntity)
+	if (!camera) return
+	// Only restore a camera that really exists, otherwise release control
+	camera.virtualCameraEntity = previous && VirtualCamera.has(previous) ? previous : undefined
+}
+```
+{% endhint %}
+
+{% hint style="warning" %}
 **📔 Note**: Camera modifier areas only have an effect on the player if no virtual cameras are active. If the scene is currently using a virtual camera and the player steps into a camera modifier area, nothing happens.
 
 If a 3D model includes a `camera` node as part of its contents, this can't be used by the SDK. You must create all cameras as entities with the SDK.

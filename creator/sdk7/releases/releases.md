@@ -24,6 +24,12 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## SDK
 
+### 7.30.0 and 7.30.1 (Oct 8, 2026)
+
+* **Player language**: `getPlayerLanguage()` returns the language the player's client is set to, as a BCP 47 tag, and `onPlayerLanguageChanged` reports changes made mid-session. See [Get player language](../interactivity/runtime-data.md#get-player-language). [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)
+* **Wait for an explorer panel to close**: the new `openExplorerUiAndWait()` helper in `@dcl/sdk/explorer-ui` opens a panel and resolves once the player closes it, with an optional time limit. See [Wait until the player closes a panel](../interactivity/event-listeners.md#wait-until-the-player-closes-a-panel). [#1543](https://github.com/decentraland/js-sdk-toolchain/pull/1543)
+* **Fixes**: the bundle watcher ignores `node_modules` [#1640](https://github.com/decentraland/js-sdk-toolchain/pull/1640); the preview re-checks the editor scene on every watch rebuild [#1644](https://github.com/decentraland/js-sdk-toolchain/pull/1644).
+
 ### 7.29.0 (Sep 15, 2026)
 
 * **Stacking order between UI modules**: a `zIndex` renderer option decides which UI module draws in front of which. Without it, modules stack in the order they first appear, with the main UI at the back. See [Stacking order between UI modules](../2d-ui/onscreen-ui.md#stacking-order-between-ui-modules). [#1607](https://github.com/decentraland/js-sdk-toolchain/pull/1607)
@@ -208,6 +214,17 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 * **Tags component**: label entities and query them by tag. [#1216](https://github.com/decentraland/js-sdk-toolchain/pull/1216)
 
 ## Creator Hub
+
+### 0.52.0 (Oct 20, 2026)
+
+* **Avatar Animations asset pack**: 45 ready-to-use avatar animations, plus the 32 built-in ones every scene can already play. Hover a card to watch it, drag one in to copy its file into your scene, then play it from code. See [Avatar animations](../../scene-editor/get-started/about-editor.md#avatar-animations). [#1689](https://github.com/decentraland/creator-hub/pull/1689)
+* **Mention assets in an AI Assistant prompt**: double-click an asset in **Local Assets** to attach it to your next message, alongside whatever you have selected. See [Point at an asset in your prompt](../../scene-editor/code/ai-assistant.md#point-at-an-asset-in-your-prompt). [#1689](https://github.com/decentraland/creator-hub/pull/1689)
+* **Over 400 new assets, and Buildings and Materials categories**: models from Genesis Plaza and Decentraland's template scenes, plus Water Plane and Water Cylinder smart items that splash, and a Floor Pressure Button that presses while a player stands on it. See [Water](../../scene-editor/interactivity/smart-items.md#water). [#1696](https://github.com/decentraland/creator-hub/pull/1696)
+* **Collapsible assets panel**: a chevron at the right of the panel's tab bar shrinks it to just its tabs, giving the 3D view the full height of the window. See [Add items](../../scene-editor/get-started/about-editor.md#add-items). [#1691](https://github.com/decentraland/creator-hub/pull/1691)
+* **AI Assistant setup from a terminal**: Claude and Cursor are now installed and signed into from a terminal, like Gemini. Each setup screen shows the vendor's install command for your operating system and links to its install guide, and **Recheck** finds a fresh install without restarting. See [Connect a coding CLI](../../scene-editor/code/ai-assistant.md#connect-a-coding-cli). [#1684](https://github.com/decentraland/creator-hub/pull/1684)
+* **A shareable link after publishing**: the success screen shows and copies a web link that anyone can open in a browser, instead of one that needs the desktop client. See [Publish your scene](../../scene-editor/publish/publish-scene.md). [#1688](https://github.com/decentraland/creator-hub/pull/1688)
+* **Collections card opens the creators app**: the wearables and emotes **Collections** card on the **More** page now opens the new creators app instead of the legacy Builder. [#1687](https://github.com/decentraland/creator-hub/pull/1687)
+* **Fixes**: a publish failure reporting that the scene thumbnail "must be a file included in the deployment", which affected scenes fix themselves on the next thumbnail save [#1657](https://github.com/decentraland/creator-hub/pull/1657); a layout resized in the Layout tab sticks, so publishing no longer resets the scene to a single parcel under the Bevy renderer [#1682](https://github.com/decentraland/creator-hub/pull/1682); AI Assistant reliability, with a silent turn now showing an error, expired questions closing, **Stop** really ending a turn on Windows, and a message sent mid-turn returning to the composer instead of being lost [#1681](https://github.com/decentraland/creator-hub/pull/1681); sign-in guidance when an agent reports you are not logged in [#1685](https://github.com/decentraland/creator-hub/pull/1685); deleted entities stay restorable by undo [#1679](https://github.com/decentraland/creator-hub/pull/1679); long checkbox labels wrap [#1676](https://github.com/decentraland/creator-hub/pull/1676).
 
 ### 0.51.0 (Oct 8, 2026)
 

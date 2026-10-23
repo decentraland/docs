@@ -55,6 +55,8 @@ Three optional fields take a [Color3](../../3d-essentials/color-types.md):
 * `backgroundColor`: the plate's fill. Defaults to the client's native nametag background color.
 * `borderColor`: the plate's outline. Defaults to `backgroundColor`, so there is no visible border unless you set it.
 
+`Color3` has no alpha channel, and the component has no opacity field, so the plate is always fully opaque.
+
 ```ts
 import { AvatarNametag, engine } from '@dcl/sdk/ecs'
 import { Color3 } from '@dcl/sdk/math'
@@ -87,10 +89,11 @@ AvatarNametag.deleteFrom(engine.PlayerEntity)
 
 A few details are worth knowing before you pick your label text:
 
+* **Labels are a single line.** They never wrap.
 * **Long labels are truncated** with an ellipsis. Keep labels to a word or two.
 * **An empty label** (`''`) draws the plate with no text in it.
-* **Spaces are kept**, so a label made only of spaces widens a text-less plate. This is a way to size a plain colored plate.
-* **To hide the word but keep its width**, set `labelColor` to the same value as `backgroundColor`.
+* **Spaces are kept**, so a label made only of spaces widens a text-less plate. This is the way to size a plain colored plate.
+* **Setting `labelColor` to match `backgroundColor` does not hide the text.** The drawn text color isn't an exact match to the plate color, so the word stays faintly visible. Use a label of spaces instead.
 
 {% hint style="info" %}
 **💡 Tip**: A plate doesn't need any text. To show a color-coded plate alone, for example to mark team membership, set `label` to a string of spaces and pick a `backgroundColor`. More spaces make a wider plate.

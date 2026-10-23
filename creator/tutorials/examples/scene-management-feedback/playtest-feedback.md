@@ -20,7 +20,12 @@ Give your AI agent the [Scene Feedback SDK skill](https://github.com/decentralan
 
 > Help me add Scene Feedback to this scene. First suggest suitable questions and when to ask them, then review the plan with me before integrating it.
 
-The skill helps adapt questions, rating scales and timing to your game, integrate the module and review collected responses. Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
+The skill can help at two stages:
+
+- **Before a playtest:** adapt questions, rating scales and timing to your game, then integrate the module after you review the plan.
+- **After a playtest:** use the skill again with your CSV files to identify recurring problems and preferences, review the evidence and decide what to investigate next. You can also ask for a human-readable HTML report with grouped answers and rating summaries.
+
+Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
 
 ### What players experience
 

@@ -12,21 +12,32 @@ license: unlicensed
 - [Play shared test build (Zone)](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1)
 - [Installation and usage guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md)
 
-Learn what players find confusing, frustrating or enjoyable, even when you cannot watch them play. In the coin hunt, the first coin opens an invitation to give feedback, followed by a question if accepted. The first completed round brings a short set of questions for players who agreed to participate.
+Learn what players find confusing, frustrating or enjoyable, even when you cannot watch them play. This reusable module includes a coin-hunt scene showing how to collect feedback during play and when players choose to give it.
+
+### Add it with an AI agent
+
+Give your AI agent the [Scene Feedback SDK skill](https://github.com/decentraland/sdk-skills/tree/main/scene-feedback) link and ask:
+
+> Help me add Scene Feedback to this scene. First suggest suitable questions and when to ask them, then review the plan with me before integrating it.
+
+The skill helps adapt questions, rating scales and timing to your game, integrate the module and review collected responses. Prefer to integrate it yourself? Follow the [installation guide](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene).
+
+### What players experience
+
+[Try the coin hunt in Zone](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1):
+
+1. **Collect the first coin.** An invitation asks whether the player wants to give feedback: "Hi, we're the Coin Hunt team!" If accepted, one question follows: "How easy or difficult was it to spot the coins?" The player chooses a rating and can add a comment.
+2. **Finish the first round (five coins).** Players who agreed to participate receive two questions, one after another: how clear the next goal is and whether they want to keep playing.
+3. **Give feedback at any time.** The **Leave feedback** button, clickable kiosk and marked area open a welcome message followed by a question set. These remain available even after declining gameplay questions.
+
+![Example feedback form with five rating choices and an optional comment field](https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png)
 
 ### Key features
 
-- **Gameplay and player-opened feedback.** Ask at chosen game moments, or let players open a form through a button, kiosk or marked area. Declining gameplay questions still leaves those forms available.
 - **Flexible questions.** Choose labelled ratings, optional comments or text-only answers, with your own question wording and rating scales.
 - **Demo participation rewards.** Once per visit, answer every question in one form to get a visit-only Playtest Contributor nameplate visible to you, +5 coin score and double score for the next five pickups. Any rating counts; comments remain optional.
 - **CSV results in scene Storage.** A Multiplayer Server saves each response with its question and gameplay moment. Download the files to review in a spreadsheet.
 
-### Try and adapt it
+### Adapt it to your scene
 
-Follow [How to test this scene](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#how-to-test-this-scene) to run it locally. Collect a coin, accept the invitation, finish a round, then try the **Leave feedback** button.
-
-For your scene, use the README's [full installation steps](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#add-it-to-your-scene) for dependencies, permissions and World setup. Adapt the questions and moments using the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md), including an invitation now and a question after later gameplay.
-
-For playtest planning and finding players, see [Playtests](https://docs.decentraland.org/creator/scenes-sdk7/designing-the-experience/playtests). For AI-assisted planning, integration and analysis, use the [Scene Feedback SDK skill](https://github.com/decentraland/sdk-skills/tree/main/scene-feedback).
-
-![Scene Feedback question with five rating choices and an optional comment field](https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png)
+Use the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md) to connect questions to your own game events, including inviting participants now and asking after later gameplay. For playtest planning and finding players, see [Playtests](https://docs.decentraland.org/creator/scenes-sdk7/designing-the-experience/playtests).

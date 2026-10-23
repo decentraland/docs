@@ -35,6 +35,7 @@ Focus on one or two questions rather than trying to test everything at once.
 | Test the core mechanic | Can players use the main game mechanic? Is it enjoyable?     |
 | Test the game loop     | Do players understand how to make progress and earn rewards? |
 | Test difficulty        | Where do players get stuck, bored, or frustrated?            |
+| Test emotional response | Do players feel excited, curious, or eager to keep playing? Which moments create the strongest reactions? |
 
 Choose players who are unfamiliar with your game whenever possible. They are more likely to find problems that experienced players no longer notice.
 
@@ -74,7 +75,31 @@ You can:
 
 The repository includes ready-to-use questions, examples, and guidance for choosing questions.
 
-## Organize a live playtest
+If you use an AI coding assistant, install or update the [Decentraland SDK Skills](../getting-started/vibe-coding.md). They include a Scene Feedback skill that can help you decide what to ask and when, install the module, and analyze the responses afterwards:
+
+```bash
+npx skills add decentraland/sdk-skills --all
+```
+
+## Organize your playtest
+
+You can organize a playtest in two ways.
+
+**Option 1: Host a live playtest**
+
+Invite everyone to play at the same time. You can observe players, discuss their experiences, and collect feedback afterwards.
+
+You can also create an event on [Decentraland Events](https://decentraland.org/events/) so players can find and join your playtest.
+
+**Option 2: Run a playtest over several days**
+
+Let players test your game whenever they're available during a set period.
+
+Install Scene Feedback to collect responses while they play.
+
+This is useful when you want feedback from more players without organizing a live session.
+
+## Host a live playtest
 
 A live playtest lets you watch players experience your game and ask them questions afterwards.
 
@@ -112,6 +137,8 @@ After playing, ask a few open questions:
 
 Avoid leading questions such as "Did you like the new upgrade system?" These can influence the answers you receive.
 
+If you're not sure what to ask, the Scene Feedback skill mentioned above can walk you through choosing a focus and wording the questions, whether you plan to ask them in person or in-game.
+
 Write down the problems players experienced, not just their suggestions.
 
 ## Improve your game with the RITE method
@@ -145,15 +172,15 @@ RITE works especially well during early development, when you can make changes q
 
 ## Find playtesters
 
+Start by inviting people who haven't played your game before. Regular Decentraland players can help you test gameplay, but people from outside the community can reveal problems that experienced players might miss.
+
 ### On Discord
 
-The Decentraland Discord has a channel for people who enjoy testing games and helping creators improve them.
-
-Join the [Decentraland Discord](https://discord.gg/decentraland) and find the #playtesters channel.
+The #playtesters channel on the [Decentraland Discord](https://discord.gg/decentraland) is for people who enjoy testing games and helping creators improve them. Join the server and find the channel.
 
 ### Post your playtest
 
-When you're ready, post a message that includes:
+When you're ready, post a message on #playtesters that includes:
 
 - **Game:** The name of your game and a short description.
 - **Location:** A link to your game in Decentraland.
@@ -162,35 +189,17 @@ When you're ready, post a message that includes:
 - **How to give feedback:** Through live discussion, Discord, or Scene Feedback.
 - **Rewards:** Any incentive you're offering for participation.
 
-### Choose how players can participate
-
-You can organize playtesting in two ways.
-
-**Option 1: Host a live playtest**
-
-Invite everyone to play at the same time. You can observe players, discuss their experiences, and collect feedback afterwards.
-
-You can also create an event on [Decentraland Events](https://decentraland.org/events/) so players can find and join your playtest.
-
-**Option 2: Run a playtest over several days**
-
-Let players test your game whenever they're available during a set period.
-
-Install Scene Feedback to collect responses while they play.
-
-This is useful when you want feedback from more players without organizing a live session.
-
 ### Encourage players to participate
 
 Consider offering a small reward to thank players for their time.
 
 For example:
 
-- Give participants a special Wearable or Emote.
+- Gift participants a special Wearable or Emote.
 - Offer an exclusive in-game reward.
 - Give eligible players Marketplace Credits.
 
-**Gifting Wearables and Emotes.** You can give any Wearable or Emote you own to another player directly from the desktop client: right-click the player and choose **Gift**. The item is transferred to their account and appears in their Backpack. If you created a Wearable or Emote collection, you can also mint items straight to any player's address from the Builder, even if you don't run into them in-world. See [Minting Wearables](../../wearables-and-emotes/publishing/publishing-collections.md#minting-wearables).
+**Gifting Wearables and Emotes.** You can give any Wearable or Emote you own to another player directly from the desktop client: right-click the player and choose **Gift**. The item is transferred to their account and appears in their Backpack. You can also transfer an item you own from the [Marketplace](https://decentraland.org/marketplace/) using the recipient's wallet address. If you created the Wearable or Emote collection, you can mint items straight to any wallet address from the Builder, even if you don't run into the player in-world. See [Minting Wearables](../../wearables-and-emotes/publishing/publishing-collections.md#minting-wearables).
 
 **Marketplace Credits gifting is currently in beta and available to invited studios.** Eligible studios can gift Credits to players, who can spend them in the Decentraland Shop. See [Gifting Credits (Beta)](../../rewards/gifting-credits.md).
 
@@ -198,13 +207,15 @@ Rewards can encourage participation, but make it clear that you want genuine fee
 
 ### Outside the Decentraland community
 
-You can also invite people who've never used Decentraland. Decentraland players already know how the client works, so they'll go straight to your game. People from outside see everything with fresh eyes, including the parts you've stopped noticing.
+You can also invite people who've never used Decentraland. Decentraland players already know how the client works, so they'll go straight to your game. People from outside see everything with fresh eyes, including the parts you've stopped noticing. Playtesting with them is also a good way to introduce new players to Decentraland.
 
 Indie developers commonly recruit from:
 
 - **Friends and family.** Easy to reach, and happy to give you an hour. Ask them to be honest and to tell you when they're confused.
 - **People who don't usually play games.** If they can get through your onboarding, almost anyone can.
 - **Communities you're already part of.** A game jam server, a hobby forum, a local meetup, or a group that matches your game's theme.
+
+If your testers are new to Decentraland, help them get in: share a direct link to your World or LAND and a short note on installing the client and signing in. Keep notes on where they struggle before reaching your scene, but treat that separately from feedback about your game.
 
 ## Use feedback to improve your next version
 

@@ -21,7 +21,7 @@ Our SDK includes the following:
 
 - **The Creator Hub**: A standalone application that, amongst other things, lets you create scenes with an easy drag-and-drop interface. You can run previews, debug, edit code, and publish. [Read more](../../scene-editor/get-started/about-editor.md)
 - **The Decentraland ECS**: A TypeScript package containing the framework of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
-- **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://studios.decentraland.org/resources?sdk_version=SDK7).
+- **Scene examples**: Take inspiration and coding best practices from the [scene examples](../../tutorials/examples.md).
 
 Other legacy tools:
 

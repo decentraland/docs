@@ -94,6 +94,8 @@ Los ítems pueden venderse en **ventas primarias** y **ventas secundarias**.
 
 Para ver ítems disponibles para comprar en ventas primarias y secundarias, dirígete al [**Decentraland Marketplace!**](https://market.decentraland.org/)
 
+Tus ítems también pueden venderse en el [**Shop de Decentraland**](https://decentraland.org/shop), con precio en Credits, donde puedes seguir tus ventas en My Store y crear descuentos para tus colecciones. Consulta [Vender en el Shop](selling-in-the-shop.md).
+
 ### **Ventas Primarias**
 
 Las ventas primarias ocurren cuando uno de tus ítems se compra por primera vez. Estas ventas solo son realizadas por el smart contract de la Tienda de Decentraland.

@@ -31,6 +31,7 @@
 * [Publishing Collections](wearables-and-emotes/publishing/)
   * [Publishing Collections](wearables-and-emotes/publishing/publishing-collections.md)
   * [Curation Committee](wearables-and-emotes/publishing/curation-committee.md)
+  * [Selling in the Shop](wearables-and-emotes/publishing/selling-in-the-shop.md)
 
 ## Scene Editor
 

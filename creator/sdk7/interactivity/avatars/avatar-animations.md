@@ -6,7 +6,7 @@ description: Make the player's avatar play default or custom animations, and det
 
 You can make the player perform an animation as part of the scene's code. This can help provide more immersion, and it can also help communicate what other players are doing to each other. The avatar animations are seen both by the player (in 3rd person view) and any other players around.
 
-Player-controlled animations that run on the full body are overridden by the default locomotion animations, like walking and jumping. So full-body animations played by the scene only play while the player is standing still. If the player walks or jumps, any full-body animations are interrupted. Upper-body animations don't get interrupted by movement. 
+Player-controlled animations that run on the full body are overridden by the default locomotion animations, like walking and jumping. So full-body animations played by the scene only play while the player is standing still. If the player walks or jumps, any full-body animations are interrupted. Upper-body animations don't get interrupted by movement.
 
 {% hint style="warning" %}
 **📔 Note**: Players can only be animated if they already are standing inside the scene's bounds, not if they are on a neighboring scene. Smart wearables can play animations anywhere.
@@ -62,6 +62,8 @@ The following emotes show feedback about player actions in your scene, all of th
 * `sittingGround1`
 * `sittingGround2`
 
+The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. All the others play through once and the avatar returns to idle.
+
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
 * `wave`
@@ -80,6 +82,15 @@ These emotes are available to all players in their default emote wheel, and can 
 * `disco`
 * `dab`
 * `headexplode`
+* `crafting`
+* `handsintheair`
+* `Victory`
+* `Waving`
+* `fistpump_short`
+
+{% hint style="warning" %}
+**📔 Note**: Use these names exactly as listed. A wrong name fails silently in your scene: nothing plays and nothing appears in the scene console. Watch out for `handsintheair` with no separators, and `fistpump_short` with its suffix.
+{% endhint %}
 
 {% hint style="info" %}
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](locomotion.md#freeze-the-player) for the duration of the avatar animation.
@@ -89,13 +100,17 @@ These emotes are available to all players in their default emote wheel, and can 
 
 Use the `triggerSceneEmote()` to make the player perform a custom animation, stored as a .glb file as part of the scene's asset.
 
+{% hint style="info" %}
+**💡 Tip**: You don't have to make these yourself. The **Avatar Animations** pack in the Scene Editor has 45 ready-made animations, including sitting poses, fishing, carrying a box and dancing. Drag one onto the 3D view and the editor copies its file into your scene, then pass that file's path to `triggerSceneEmote()`. Files land under `assets/asset-packs/<animation-folder>/`, for example `assets/asset-packs/whack/Whack_Avatar_emote.glb`. Check the exact path in **Local Assets**. See [Add items](../../../scene-editor/get-started/about-editor.md#avatar-animations).
+{% endhint %}
+
 {% hint style="warning" %}
 **📔 Note**: The file's name **must** end in `_emote.glb` to work as an avatar animation.
 {% endhint %}
 
 This function takes an object with the following properties:
 
-* `src`: A string with a path to the emote file.
+* `src`: A string with a path to the emote file, relative to your project's root folder. It must match how the file sits on disk, exactly. A wrong path fails silently: nothing plays and nothing is logged, so check it first when an animation doesn't appear.
 * `loop`: If true, the animation will loop continuously until the player moves or the animation is stopped. False by default.
 * `mask`: (optional) Play the animation on only part of the avatar's body, using a value from the `AvatarMask` enum. For example, `AvatarMask.AM_UPPER_BODY` animates only the avatar's upper body. See [Animate only the upper body](#animate-only-the-upper-body).
 
@@ -172,7 +187,7 @@ Some things to keep in mind:
 
 Every emote lifecycle event is reported through the `AvatarEmoteCommand` component on the player entity. Each new entry carries a `state` field, with a value from the `EmoteState` enum:
 
-* `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent (entries written by older clients).
+* `EmoteState.ES_STARTED`: The emote started playing. This is also the value reported when the `state` field is absent.
 * `EmoteState.ES_FINISHED`: A non-looping emote played through to its natural end.
 * `EmoteState.ES_INTERRUPTED`: The emote was cut short: the player moved or jumped, teleported, another emote started, the emote was explicitly stopped, or the player left the scene.
 

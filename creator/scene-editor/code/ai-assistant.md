@@ -42,47 +42,50 @@ Run the command for your operating system:
 | Cursor | `curl https://cursor.com/install -fsS \| bash` | `powershell -ExecutionPolicy ByPass -c "irm 'https://cursor.com/install?win32=true' \| iex"` |
 | Gemini | `npm install -g @google/gemini-cli` | `npm install -g @google/gemini-cli` |
 
-You don't have to copy these by hand. In the settings, on the **AI** tab under **Connect**, open the **Via Terminal** section below a CLI. It shows the exact **Install** and **Sign In** commands for your operating system, each with a **Copy** button, plus a link to that vendor's install guide:
+You don't have to copy these by hand. The Creator Hub shows the exact commands for your operating system in two places, along with a link to that vendor's install guide:
+
+* The setup card in the chat panel, which appears the first time you open the panel with no CLI connected.
+* The settings, on the **AI** tab under **Connect**, in the **Via Terminal** section below each CLI. Each command there has a **Copy** button.
+
+The vendor guides:
 
 * [Claude Code install guide](https://code.claude.com/docs/en/terminal-guide)
 * [Codex CLI install guide](https://developers.openai.com/codex/cli)
 * [Cursor CLI install guide](https://cursor.com/docs/cli/installation)
 * [Gemini CLI install guide](https://www.geminicli.com/docs/get-started/installation)
 
-After installing, click **Recheck** so the Creator Hub picks up the new CLI. On Windows this works without restarting the app.
+After installing, click **Recheck** on the chat panel's setup card so the Creator Hub picks up the new CLI, with no need to restart the app. The **AI** tab checks again on its own each time you open it.
 
 {% hint style="warning" %}
-**📔 Note**: The Gemini CLI now works only with a paid Gemini API key or a Gemini Code Assist Standard or Enterprise license.
+**📔 Note**: Claude Desktop is not the same thing as Claude Code. The assistant needs Claude Code, Anthropic's terminal tool, and signing into the desktop app does not sign you into it. If the Creator Hub finds Claude Desktop without Claude Code, it says so and shows you the install command.
+
+Gemini CLI needs a paid Gemini API key, or a Gemini Code Assist Standard or Enterprise license.
 {% endhint %}
 
 ### Sign in
 
-| CLI | Sign in | Where |
-| --- | --- | --- |
-| Claude | `claude auth login` | Terminal |
-| Codex | `codex login` | **Sign in** button, or terminal |
-| Cursor | `cursor-agent login` | Terminal |
-| Gemini | run `gemini` and follow the prompts | Terminal |
+| CLI | Sign in |
+| --- | --- |
+| Claude | `claude auth login` |
+| Codex | `codex login` |
+| Cursor | `cursor-agent login` |
+| Gemini | run `gemini` and follow the prompts |
 
-Codex is the only CLI the Creator Hub can sign in and out for you. Under **Connect** on the **AI** tab, its **Sign in** link runs the login and opens your browser, and **Sign out** disconnects it. Claude, Cursor and Gemini sign in from a terminal, so they show the commands instead of a button.
+Run the sign-in command in a terminal. It finishes in your browser.
+
+Codex has a shortcut: if it isn't installed yet, the Creator Hub can install it and sign you in for you. Click **Sign in with Codex** on the chat panel's setup card, or **Sign in** next to Codex under **Connect** on the **AI** tab. The Creator Hub runs the login and opens your browser, and a **Sign out** link then appears in the same place. If you installed Codex yourself with the command above, there is no button: sign in from a terminal like the others.
 
 A green dot and **Connected** next to a CLI mean it is ready to use.
 
-The same setup card appears in the chat panel itself the first time you open it with no CLI connected.
-
 {% hint style="info" %}
 **💡 Tip**: If you have more than one CLI signed in, a dropdown in the chat panel lets you switch between them.
-{% endhint %}
-
-{% hint style="warning" %}
-**📔 Note**: If you have Claude Desktop but not Claude Code, the Creator Hub says so. The assistant needs Claude Code, Anthropic's terminal tool, and Claude Desktop's sign-in is not shared with it. Install Claude Code and sign in once.
 {% endhint %}
 
 ### When an agent asks you to sign in again
 
 A saved sign-in can expire while the CLI still looks connected. When a CLI answers a message with "not logged in", the Creator Hub shows a **Sign-in needed** state with an amber dot instead of passing the raw command line through to the chat.
 
-The **Via Terminal** section opens on its own and shows the two commands to run, one at a time, finishing in your browser:
+The chat panel and the **Via Terminal** section on the **AI** tab show the two commands to run, one at a time, finishing in your browser:
 
 | CLI | Sign out, then sign back in |
 | --- | --- |
@@ -91,7 +94,7 @@ The **Via Terminal** section opens on its own and shows the two commands to run,
 | Cursor | `cursor-agent logout`, then `cursor-agent login` |
 | Gemini | run `gemini`, then `/auth logout`, then `/auth login` |
 
-For Codex, use **Sign out** and then **Sign in** on the **AI** tab instead.
+If the Creator Hub installed Codex for you, use **Sign out** and then **Sign in** on the **AI** tab instead.
 
 Send your message again once you are signed in. The agent stays enabled the whole time, so you don't have to set it up from scratch.
 
@@ -99,7 +102,7 @@ Send your message again once you are signed in. The agent stays enabled the whol
 
 If you would rather pay per token than use a CLI subscription, switch on **Bill this to an API key instead** on the **AI** tab of the settings. It reads your provider's API key from your environment: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `CURSOR_API_KEY` or `GEMINI_API_KEY`. This is off by default.
 
-This is also offered as a way around a sign-in you can't complete. The Creator Hub shows the matching variable name next to each CLI as an **Or use an API key** hint.
+This is also a way around a sign-in you can't complete. When a CLI is in the **Sign-in needed** state, the Creator Hub shows an **Or use an API key** hint with the matching variable name.
 
 ## What it can do
 
@@ -144,6 +147,20 @@ Each attached file shows up as a chip above the message box, with an icon for it
 Files you drag in or pick from disk are handed to the assistant by their real path, so nothing is copied and there is no size limit. The assistant can look at images directly, and it can reference a model or audio file by its path when it writes scene code. Pasted images have no file on disk, so the Creator Hub saves them to a temporary file first; those are capped at 8 MB each.
 
 If your Claude CLI is too old, the panel shows a warning. Run `claude update` in a terminal to fix it.
+
+### Point at an asset in your prompt
+
+Attaching a file sends its contents. Mentioning an asset is lighter: it just tells the assistant which asset in your project you mean, so you can say "use this one" instead of typing out a path.
+
+With the assistant open, double-click any asset in the **Local Assets** tab. It appears as a chip above the message box, reading **Asset: _filename_**, or **Built-in animation: _name_** for one of the built-in avatar animations.
+
+* Mention as many assets as you like. Each one gets its own chip and its own **Remove** cross.
+* Mentions sit next to the **Selection** chip, so you can point at an entity in your scene and an asset at the same time: "put this animation on that NPC".
+* Mentions apply to your next message only. They clear once you send it.
+
+{% hint style="info" %}
+**💡 Tip**: Selecting the Scene root counts as selecting nothing, so it is never sent to the assistant. Select a real entity when you want the assistant to act on it.
+{% endhint %}
 
 ## Decentraland skills are installed for you
 

@@ -40,7 +40,15 @@ To publish your scene:
 {% endhint %}
 
 4. The next screen shows all of the files you're currently uploading and their sizes, confirm the operation.
-5. The publication process will then start. It has two stages, and once both are done a **Jump In** button appears. ![](../../images/editor/deploy-steps.png)
+5. The publication process will then start. It has two stages, and once both are done a **Jump In** button appears.
+
+{% hint style="info" %}
+**💡 Tip**: The success screen also shows a web link to your scene, with a button to copy it. Anyone can open that link in a browser, whether or not they have the desktop client installed, so it's the one to paste into a Discord message or an event page. It looks like `https://decentraland.org/jump?realm=<your-world-name>` for a World, or `https://decentraland.org/jump?position=<x>,<y>` for a scene in Genesis City.
+
+The **Jump In** button is for you rather than your audience: it opens the scene in your own desktop client so you can check your work.
+{% endhint %}
+
+![](../../images/editor/deploy-steps.png)
 
 {% hint style="info" %}
 **📔 Note**: The two stages of the deployment involve:

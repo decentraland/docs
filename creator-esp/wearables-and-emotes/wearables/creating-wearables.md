@@ -93,7 +93,7 @@ Hay límites para el número de triángulos y texturas que se pueden usar para c
 * No más de 1.5K triángulos por slot de wearable: hat, helmet, upper body, lower body, feet y hair.
 * No más de 500 triángulos por categorías: mask, eyewear, earring, tiara, top\_head y facial hair.
 * Para accesorios de mano, el presupuesto es 1k tris. Si el hand wear oculta la mano base del avatar, el presupuesto es 1.5k tris.
-* No más de 2 texturas (a una resolución de 512x512px o menor) por wearable. Todas las texturas deben ser cuadradas a una resolución de 72 pixel/inch.
+* No más de 2 texturas (a una resolución de 1024x1024px o menor) por wearable. Todas las texturas deben ser cuadradas a una resolución de 72 pixel/inch.
 * No más de 2 materiales (sin contar el AvatarSkin\_MAT)
 * En el caso de skin wearable, la cantidad de tris permitidos son 5k y 5 texturas.
 
@@ -248,7 +248,7 @@ Para prevenir activar shaders específicos de características faciales, no incl
 
 **UVPacker**
 
-UvPacker es un addon gratuito que te ayuda a empaquetar y organizar tus uvs con solo unos clics. Como Decentraland trabaja con 512x para los wearables, esta herramienta es una gran ayuda para crear mejores y más organizadas texturas.
+UvPacker es un addon gratuito que te ayuda a empaquetar y organizar tus uvs con solo unos clics. Como Decentraland trabaja con texturas de hasta 1024x para los wearables, esta herramienta es una gran ayuda para crear mejores y más organizadas texturas.
 
 Puedes descargar directamente desde el sitio web aquí:
 

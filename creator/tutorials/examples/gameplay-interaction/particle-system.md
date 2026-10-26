@@ -2,9 +2,10 @@
 id: particle-system
 name: Particle system
 description: Fire, smoke, sparks, snow, and other particle effects.
-tags: [particles, effects, visuals]
+tags: [ particles, effects, visuals ]
 source: https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system
-license: unlicensed
+license:
+  status: unknown
 ---
 
 # Particle system
@@ -13,6 +14,8 @@ license: unlicensed
 **Maintained by:** Decentraland
 
 [View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system)
+
+**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
 <!-- example-context:end -->
 
 Create fire, smoke, sparks, snow, and other particle effects.

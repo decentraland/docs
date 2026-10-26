@@ -1,12 +1,55 @@
 ---
 id: slay-the-steps
 name: Slay the Steps
-description: "A multiplayer Festive Trail scene with custom avatars, Marketplace integration, a raycast-driven color wheel, and tracking cameras."
-tags: [game, studio-made, multiplayer, multiplayer-server, avatars, marketplace-api, ui, camera, raycast]
+description: "A multiplayer Festive Trail scene with custom avatars, Marketplace integration, a
+  raycast-driven color wheel, and tracking cameras."
+tags:
+  [
+    game,
+    studio-made,
+    multiplayer,
+    multiplayer-server,
+    avatars,
+    marketplace-api,
+    ui,
+    camera,
+    raycast
+  ]
 developer: stom66
 source: https://github.com/stom66/dcl-slay-the-steps
 realm: slaythesteps.dcl.eth
-license: NOASSERTION
+license:
+  status: identified
+  name: CC BY-NC-ND 4.0
+  url: https://github.com/stom66/dcl-slay-the-steps/blob/main/LICENSE.md
+highlights:
+  - title: Turn a 3D pointer hit into a color selection
+    description: "`GetLocalMousePosition` raycasts from the camera and converts the hit into the wheel's
+      local position. `SampleColorWheel` maps its angle and radius to hue and saturation, invokes a
+      callback, and tints the value slider."
+    tags:
+      - input
+      - ui
+    references:
+      - label: "`GetLocalMousePosition`"
+        url: https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L306-L335
+      - label: "`SampleColorWheel`"
+        url: https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L203-L238
+    context: The implementation uses the project's wheel meshes, HSV conversion helper, and
+      material-node names.
+  - title: Track a moving target with a virtual camera
+    description: The camera position system and tween chain periodically calculate a position relative
+      to the player and target, then tween toward it. `TrackEntity` creates the camera with
+      `lookAtEntity` and makes it active.
+    tags:
+      - camera
+      - movement
+    references:
+      - label: camera position system and tween chain
+        url: https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L46-L96
+      - label: "`TrackEntity`"
+        url: https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L99-L137
+    context: Read `ResetCamera` and the game's event binding for the end of the tracking lifecycle.
 ---
 # Slay the Steps
 
@@ -14,6 +57,8 @@ license: NOASSERTION
 **Maintained by:** Community · stom66
 
 [View upstream source](https://github.com/stom66/dcl-slay-the-steps)
+
+**License:** [CC BY-NC-ND 4.0](https://github.com/stom66/dcl-slay-the-steps/blob/main/LICENSE.md). Check upstream terms before reuse; code and assets may have different terms.
 
 This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 
@@ -30,11 +75,13 @@ A Studio-made Multiplayer Server experience built for Decentraland Festive Trail
 - **Multiplayer** for syncing rounds/player outfits
 - Custom 3D color picker
 
+<!-- example-highlights:start -->
 ### Explore the code
 
 These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
 
-- **Turn a 3D pointer hit into a color selection.** [`GetLocalMousePosition`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L306-L335) raycasts from the camera and converts the hit into the wheel's local position. [`SampleColorWheel`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L203-L238) maps its angle and radius to hue and saturation, invokes a callback, and tints the value slider. The implementation uses the project's wheel meshes, HSV conversion helper, and material-node names.
-- **Track a moving target with a virtual camera.** The [camera position system and tween chain](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L46-L96) periodically calculate a position relative to the player and target, then tween toward it. [`TrackEntity`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L99-L137) creates the camera with `lookAtEntity` and makes it active. Read `ResetCamera` and the game's event binding for the end of the tracking lifecycle.
+- **Turn a 3D pointer hit into a color selection.** `GetLocalMousePosition` raycasts from the camera and converts the hit into the wheel's local position. `SampleColorWheel` maps its angle and radius to hue and saturation, invokes a callback, and tints the value slider. The implementation uses the project's wheel meshes, HSV conversion helper, and material-node names. Sources: [`GetLocalMousePosition`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L306-L335); [`SampleColorWheel`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/colorPickers.ts#L203-L238).
+- **Track a moving target with a virtual camera.** The camera position system and tween chain periodically calculate a position relative to the player and target, then tween toward it. `TrackEntity` creates the camera with `lookAtEntity` and makes it active. Read `ResetCamera` and the game's event binding for the end of the tracking lifecycle. Sources: [camera position system and tween chain](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L46-L96); [`TrackEntity`](https://github.com/stom66/dcl-slay-the-steps/blob/9f6026c826fb61d25eeea6a98f22a4dd16b29a15/dcl/src/client/cameraController.ts#L99-L137).
+<!-- example-highlights:end -->
 
 ![Slay the Steps preview](images/slayTheSteps-preview.webp)

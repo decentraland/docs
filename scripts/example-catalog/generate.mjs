@@ -53,6 +53,10 @@ async function updateExampleContext(example) {
 		`**Maintained by:** ${renderMaintenance(example)}`,
 		'',
 		`[${example.maintenance === 'community' ? 'View upstream source' : 'View source'}](${example.source})`,
+		'',
+		example.license.status === 'identified'
+			? `**License:** [${example.license.name}](${example.license.url}). Check upstream terms before reuse; code and assets may have different terms.`
+			: '**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.',
 		...(example.maintenance === 'community' ? [
 			'',
 			'This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.',
@@ -66,10 +70,22 @@ async function updateExampleContext(example) {
 		throw new Error(`${example.fileName} must have a page heading for its generated context.`)
 	}
 
-	const updated = markers.test(content)
+	let updated = markers.test(content)
 		? content.replace(markers, () => context)
 		: content.replace(/^(# .+)$/m, heading => `${heading}\n\n${context}`)
 
+	const highlightMarkers = /<!-- example-highlights:start -->[\s\S]*?<!-- example-highlights:end -->/
+	const highlights = [
+		'<!-- example-highlights:start -->',
+		...(example.highlights.length ? [
+			'### Explore the code', '',
+			'These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.', '',
+			...example.highlights.map(highlight => `- **${highlight.title}.** ${highlight.description} ${highlight.context} Sources: ${highlight.references.map(reference => `[${reference.label}](${reference.url})`).join('; ')}.`),
+		] : []),
+		'<!-- example-highlights:end -->',
+	].join('\n')
+	if (highlightMarkers.test(updated)) updated = updated.replace(highlightMarkers, () => highlights)
+	else if (example.highlights.length) updated = `${updated.trimEnd()}\n\n${highlights}\n`
 	await writeFile(pagePath, updated)
 }
 
@@ -196,7 +212,7 @@ async function generateCatalog() {
 	}
 
 	const catalog = {
-		schemaVersion: 1,
+		schemaVersion: 2,
 		categories,
 		examples,
 	}
@@ -223,21 +239,35 @@ async function generateCatalog() {
 	await writeFile(overviewPath, generatedOverview)
 
 	const summary = await readFile(summaryPath, 'utf8')
-	const summarySection = /^\* \[Example Scenes\]\(tutorials\/examples\.md\)\r?\n(?:[\t ]+\* [^\r\n]*\r?\n)*/m
 
-	if (!summarySection.test(summary)) {
-		throw new Error('Could not find Example Scenes in creator/SUMMARY.md.')
+	const summaryMarkers = /<!-- example-navigation:start -->[\s\S]*?<!-- example-navigation:end -->\n?/
+	const legacySection = /^\* \[Example Scenes\]\(tutorials\/examples\.md\)\r?\n(?:[\t ]+\* [^\r\n]*\r?\n)*/m
+	const summarySection = summaryMarkers.test(summary) ? summaryMarkers : legacySection
+	if (!summarySection.test(summary)) throw new Error('Could not find Example Scenes in creator/SUMMARY.md.')
+	const summaryEntries = categories.flatMap(category => [
+		`* [${category.name}](tutorials/examples/${category.id}/README.md)`,
+		...examples.filter(example => example.category === category.id)
+			.sort((first, second) => first.name.localeCompare(second.name))
+			.map(example => `\t* [${example.name}](tutorials/examples/${example.fileName})`),
+	])
+	await writeFile(summaryPath, summary.replace(summarySection, () => [
+		'<!-- example-navigation:start -->', '* [Example Scenes](tutorials/examples.md)',
+		...summaryEntries, '<!-- example-navigation:end -->', '',
+	].join('\n')))
+	for (const category of categories) {
+		const path = join(examplesDirectory, category.id, 'README.md')
+		const content = await readFile(path, 'utf8')
+		const markers = /<!-- example-category:start -->[\s\S]*?<!-- example-category:end -->/
+		const section = [
+			'<!-- example-category:start -->',
+			renderCatalogTables(examples, [category])
+				.replace(/^## /, '# ')
+				.replaceAll(`](./examples/${category.id}/`, '](./'),
+			'', '[Browse all example scenes](../../examples.md)',
+			'<!-- example-category:end -->',
+		].join('\n')
+		await writeFile(path, markers.test(content) ? content.replace(markers, () => section) : `${content.trimEnd()}\n\n${section}\n`)
 	}
-
-	const summaryEntries = categories.flatMap(category => examples
-		.filter(example => example.category === category.id)
-		.sort((first, second) => first.name.localeCompare(second.name))
-		.map(example => `\t* [${example.name}](tutorials/examples/${example.fileName})`))
-
-	await writeFile(summaryPath, summary.replace(
-		summarySection,
-		['* [Example Scenes](tutorials/examples.md)', ...summaryEntries, ''].join('\n'),
-	))
 
 	console.log(`Generated ${examples.length} examples in ${catalogPath} and ${overviewPath}.`)
 }

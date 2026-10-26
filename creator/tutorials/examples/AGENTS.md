@@ -2,7 +2,7 @@
 
 This directory contains the source entries for the Example Scenes catalog. Each category has its own folder, and each example has its own Markdown file. These files are the source of truth.
 
-`creator/tutorials/examples.md` and `catalog.json` are generated from the individual example files. Do not edit them directly. The generator also registers example pages under Example Scenes in `creator/SUMMARY.md` so GitBook publishes their detail pages.
+`creator/tutorials/examples.md` and `catalog.json` are generated from the individual example files. Do not edit them directly. The generator also updates the category landing-page blocks and groups example pages by category in `creator/SUMMARY.md`. Keep the overview and categories at the same sidebar level, with examples nested one level below their category.
 
 The tooling lives in `scripts/example-catalog/` at the repository root. Keep public data and images alongside the example content.
 
@@ -10,17 +10,17 @@ The generator derives `maintainer` from the GitHub source URL and `maintenance` 
 
 Do not add this file to `creator/SUMMARY.md`. It is contributor guidance, not a catalog entry.
 
-To enrich an example, inspect its implementation and add an "Explore the code" section outside the generated context block. Explain a concrete technique, link to the relevant files or lines at a full commit SHA, and mention project-specific dependencies needed to understand it. Keep the main source link pointed at upstream development. Do not describe code highlights as a security assessment. Prefer explanations and source links; check the upstream license before copying code or assets.
+To enrich an example, inspect its implementation and add `highlights` to its YAML front matter. Each highlight requires `title`, `description`, `context` (project-specific dependencies or limitations), `tags`, and `references`. Each reference requires a `label` and an HTTPS GitHub file `url` pinned to a full 40-character commit SHA. Prefer line ranges when useful. The generator renders the “Explore the code” section between `example-highlights` markers and exports the same metadata in `catalog.json`; do not edit the rendered section. Keep the main source link pointed at upstream development. Highlights are learning references, not a security assessment.
+
+The `license` field is a mapping. Use `{ status: unknown }` when this catalog has not identified applicable license information; this does not assert that no license exists. When upstream terms are identified, provide `status: identified`, a human-readable `name`, and an HTTPS `url` to the actual upstream license file or notice. Check the contents rather than copying GitHub's `NOASSERTION` label. Ownership does not establish licensing, and code and assets may have different terms. Check upstream terms before copying material. Catalog JSON schema version 2 adds structured license information and highlights.
 
 When adding, removing, or changing an example entry:
 
-1. Place the file in the folder for its category. The tooling lives in `scripts/example-catalog/` at the repository root. Keep public data and images alongside the example content.
-
-The generator derives the category from the folder name.
-2. Each category folder has a `README.md` with its display `title`, `description`, and `order`. Change that file to rename, describe, or reorder a category. It is not an example entry.
+1. Place the file in the folder for its category. The generator derives the category from the folder name.
+2. Each category folder has a `README.md` with its display `title`, `description`, and `order`. Change that file to rename, describe, or reorder a category. Its body contains a generated category table between `example-category` markers; edit its metadata and regenerate. It is not an example entry.
 3. Keep each example's YAML front matter valid and complete. Every page requires `id`, `name`, `description`, `tags`, `source`, and `license`.
 4. Published games belong in `published-games` and include `developer`, derived from the GitHub repository owner.
 	- Include `realm` with the World name from the deployed play link, such as `skychaser.dcl.eth`. For Genesis City deployments, use `position` with parcel coordinates, such as `-140,101`, instead.
-5. Install dependencies with `npm ci --ignore-scripts` (Node.js 22 or newer), then run `npm run generate:examples` from the repository root before committing. Run `npm test` for parser validation. CI runs `npm run check:examples` to ensure generated content is committed.
-6. Commit generated changes to `catalog.json`, `creator/tutorials/examples.md`, `creator/SUMMARY.md`, and the detail-page context blocks with the entry change.
+5. Install dependencies with `npm ci --ignore-scripts` (Node.js 22 or newer), then run `npm run generate:examples` from the repository root before committing. Run `npm test` for validation tests and `npm run check:links` for repository-wide local links. CI runs `npm run check:examples` to ensure generated content is committed.
+6. Commit generated changes to `catalog.json`, `creator/tutorials/examples.md`, `creator/SUMMARY.md`, category landing pages, and the detail-page context and highlight blocks with the entry change.
 7. Reuse existing tags where they fit. Consult the `tags` arrays in [catalog.json](catalog.json) for the current vocabulary.

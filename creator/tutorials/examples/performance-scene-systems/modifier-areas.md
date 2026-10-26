@@ -2,9 +2,10 @@
 id: modifier-areas
 name: Modifier areas
 description: Applying area-specific settings such as hiding player name tags.
-tags: [player, areas, modifiers]
+tags: [ player, areas, modifiers ]
 source: https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas
-license: unlicensed
+license:
+  status: unknown
 ---
 
 # Modifier areas
@@ -13,6 +14,8 @@ license: unlicensed
 **Maintained by:** Decentraland
 
 [View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas)
+
+**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
 <!-- example-context:end -->
 
 Apply area-specific settings such as hiding player name tags.

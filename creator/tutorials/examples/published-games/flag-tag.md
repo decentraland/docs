@@ -1,12 +1,51 @@
 ---
 id: flag-tag
 name: Flag Tag
-description: "Multiplayer keep-away with timed rounds, persistent leaderboards, pooled projectiles, and a proximity-based lighting budget."
-tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard, timed-rounds, lighting, performance]
+description: "Multiplayer keep-away with timed rounds, persistent leaderboards, pooled projectiles,
+  and a proximity-based lighting budget."
+tags:
+  [
+    game,
+    studio-made,
+    multiplayer,
+    multiplayer-server,
+    leaderboard,
+    timed-rounds,
+    lighting,
+    performance
+  ]
 developer: iillee
 source: https://github.com/iillee/flagtag
 realm: flagtag.dcl.eth
-license: unlicensed
+license:
+  status: unknown
+highlights:
+  - title: Reuse projectile visuals by model variant
+    description: The projectile pool pre-creates ten hidden entities for each boomerang color. Acquire
+      and release helpers find an available entity and return it to its hidden position after
+      stopping its sound.
+    tags:
+      - object-pooling
+      - projectiles
+    references:
+      - label: The projectile pool
+        url: https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L11-L37
+      - label: Acquire and release helpers
+        url: https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L48-L66
+    context: The flight code must position acquired entities and return them when finished; the pool
+      relies on the project's boomerang assets and sound helper.
+  - title: Limit active lights around the player
+    description: proximityLightSystem checks periodically, selects the nearest lights with
+      squared-distance comparisons and reusable arrays, and changes only lights whose active state
+      differs. The scene caps the active set at eight and gates it through its day/night helper.
+    tags:
+      - lighting
+      - performance
+    references:
+      - label: proximityLightSystem
+        url: https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/proximityLights.ts#L109-L168
+    context: Read the setup and constants in the same file to understand the world-position conversion
+      and device-specific intensity settings.
 ---
 # Flag Tag
 
@@ -14,6 +53,8 @@ license: unlicensed
 **Maintained by:** Community · iillee
 
 [View upstream source](https://github.com/iillee/flagtag)
+
+**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
 
 This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 
@@ -29,11 +70,13 @@ A 24/7 Multiplayer Server keep-away game. Players compete to hold a flag during 
 - Storage for player progression, unlocks
 - Avatar masking for custom animations
 
+<!-- example-highlights:start -->
 ### Explore the code
 
 These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
 
-- **Reuse projectile visuals by model variant.** [The projectile pool](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L11-L37) pre-creates ten hidden entities for each boomerang color. [Acquire and release helpers](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L48-L66) find an available entity and return it to its hidden position after stopping its sound. The flight code must position acquired entities and return them when finished; the pool relies on the project's boomerang assets and sound helper.
-- **Limit active lights around the player.** [proximityLightSystem](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/proximityLights.ts#L109-L168) checks periodically, selects the nearest lights with squared-distance comparisons and reusable arrays, and changes only lights whose active state differs. The scene caps the active set at eight and gates it through its day/night helper. Read the setup and constants in the same file to understand the world-position conversion and device-specific intensity settings.
+- **Reuse projectile visuals by model variant.** The projectile pool pre-creates ten hidden entities for each boomerang color. Acquire and release helpers find an available entity and return it to its hidden position after stopping its sound. The flight code must position acquired entities and return them when finished; the pool relies on the project's boomerang assets and sound helper. Sources: [The projectile pool](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L11-L37); [Acquire and release helpers](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/projectile/pool.ts#L48-L66).
+- **Limit active lights around the player.** proximityLightSystem checks periodically, selects the nearest lights with squared-distance comparisons and reusable arrays, and changes only lights whose active state differs. The scene caps the active set at eight and gates it through its day/night helper. Read the setup and constants in the same file to understand the world-position conversion and device-specific intensity settings. Sources: [proximityLightSystem](https://github.com/iillee/flagtag/blob/d5d9c8fbf0f69eadb4d79c3ae4054e8947f256b6/src/systems/proximityLights.ts#L109-L168).
+<!-- example-highlights:end -->
 
 ![Flag Tag preview](images/flagTag-preview.webp)

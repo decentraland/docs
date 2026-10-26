@@ -1,12 +1,39 @@
 ---
 id: goal-legends
 name: Goal Legends
-description: "Multiplayer penalty shootouts with server-run matches, persistent leaderboards, phase-driven cameras, and synchronized ball animations."
-tags: [game, multiplayer, multiplayer-server, storage, leaderboard, camera, animation]
+description: "Multiplayer penalty shootouts with server-run matches, persistent leaderboards,
+  phase-driven cameras, and synchronized ball animations."
+tags: [ game, multiplayer, multiplayer-server, storage, leaderboard, camera, animation ]
 developer: carlosmu
 source: https://github.com/carlosmu/goal-legends-arena
 realm: goallegends.dcl.eth
-license: NOASSERTION
+license:
+  status: identified
+  name: Apache-2.0 notice
+  url: https://github.com/carlosmu/goal-legends-arena/blob/master/LICENCE
+highlights:
+  - title: Switch cameras with match phases
+    description: "`initGameplayCamera` selects gameplay, winner, or standard cameras from the client
+      match snapshot. The winner camera orbits a pivot, while spectators can choose a free camera
+      during play."
+    tags:
+      - camera
+      - game-state
+    references:
+      - label: "`initGameplayCamera`"
+        url: https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/gameplayCamera.ts#L109-L165
+    context: Follow this alongside `clientSnapshot`, the `GameState` enum, and the named scene camera pivot.
+  - title: Coordinate a prop animation with the game state
+    description: "`tickAnimationManager` starts a ball clip when the phase changes, chooses goal/save
+      animations from the shot direction, and briefly hides the prop while changing clips. This path
+      is specific to the bot kicker; human kickers carry the ball in their emotes."
+    tags:
+      - animation
+      - game-state
+    references:
+      - label: "`tickAnimationManager`"
+        url: https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/animationManager.ts#L78-L114
+    context: It depends on the scene's ball model and named animation clips.
 ---
 # Goal Legends
 
@@ -14,6 +41,8 @@ license: NOASSERTION
 **Maintained by:** Community · carlosmu
 
 [View upstream source](https://github.com/carlosmu/goal-legends-arena)
+
+**License:** [Apache-2.0 notice](https://github.com/carlosmu/goal-legends-arena/blob/master/LICENCE). Check upstream terms before reuse; code and assets may have different terms.
 
 This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 
@@ -34,11 +63,13 @@ A multiplayer penalty shootout game. Duel another player or the GL-Bot: pick lef
 - **Particles** for the fireworks
 - A portal with lights and **`GltfNodeModifiers`** that takes you to another World.
 
+<!-- example-highlights:start -->
 ### Explore the code
 
 These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
 
-- **Switch cameras with match phases.** [`initGameplayCamera`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/gameplayCamera.ts#L109-L165) selects gameplay, winner, or standard cameras from the client match snapshot. The winner camera orbits a pivot, while spectators can choose a free camera during play. Follow this alongside `clientSnapshot`, the `GameState` enum, and the named scene camera pivot.
-- **Coordinate a prop animation with the game state.** [`tickAnimationManager`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/animationManager.ts#L78-L114) starts a ball clip when the phase changes, chooses goal/save animations from the shot direction, and briefly hides the prop while changing clips. This path is specific to the bot kicker; human kickers carry the ball in their emotes. It depends on the scene's ball model and named animation clips.
+- **Switch cameras with match phases.** `initGameplayCamera` selects gameplay, winner, or standard cameras from the client match snapshot. The winner camera orbits a pivot, while spectators can choose a free camera during play. Follow this alongside `clientSnapshot`, the `GameState` enum, and the named scene camera pivot. Sources: [`initGameplayCamera`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/gameplayCamera.ts#L109-L165).
+- **Coordinate a prop animation with the game state.** `tickAnimationManager` starts a ball clip when the phase changes, chooses goal/save animations from the shot direction, and briefly hides the prop while changing clips. This path is specific to the bot kicker; human kickers carry the ball in their emotes. It depends on the scene's ball model and named animation clips. Sources: [`tickAnimationManager`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/animationManager.ts#L78-L114).
+<!-- example-highlights:end -->
 
 ![Goal Legends preview](images/goalLegends-preview.webp)

@@ -1,12 +1,45 @@
 ---
 id: bloom-garden
 name: Bloom Garden
-description: "A cooperative garden with persistent plant state, server-clock offset estimation, and pooled petal animations."
-tags: [game, multiplayer, multiplayer-server, storage, leaderboard, animation, effects]
+description: "A cooperative garden with persistent plant state, server-clock offset estimation, and
+  pooled petal animations."
+tags: [ game, multiplayer, multiplayer-server, storage, leaderboard, animation, effects ]
 developer: TheLivingGarden
 source: https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main
 realm: bloomgarden.dcl.eth
-license: MIT
+license:
+  status: identified
+  name: MIT
+  url: https://github.com/TheLivingGarden/TheLivingGarden/blob/main/LICENSE
+highlights:
+  - title: Estimate the offset between server and client clocks
+    description: The clock helper keeps five offset samples, rejects large deviations, and converts
+      server timestamps into local time. The watering client feeds it timestamps received through
+      the scene's message definitions.
+    tags:
+      - multiplayer
+      - timing
+    references:
+      - label: The clock helper
+        url: https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/shared/clockSync.ts#L3-L55
+      - label: The watering client
+        url: https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/wateringSystem.ts#L1144-L1146
+    context: This illustrates a lightweight timing estimate; network transit time is included in the
+      samples.
+  - title: Let temporary effects finish naturally
+    description: The petal setup and controls create a reusable pool from the scene's named Petal model,
+      then start or settle the effect. The update phases scale petals in, let them fall and rest,
+      and shrink them before recycling. Study this when an effect should stop spawning while
+      existing objects complete their animation.
+    tags:
+      - effects
+      - entity-lifecycle
+    references:
+      - label: The petal setup and controls
+        url: https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L119-L173
+      - label: The update phases
+        url: https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L207-L310
+    context: Placement depends on BLOOM_CENTER and the module's timing constants.
 ---
 # Bloom Garden
 
@@ -14,6 +47,8 @@ license: MIT
 **Maintained by:** Community · TheLivingGarden
 
 [View upstream source](https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main)
+
+**License:** [MIT](https://github.com/TheLivingGarden/TheLivingGarden/blob/main/LICENSE). Check upstream terms before reuse; code and assets may have different terms.
 
 This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 
@@ -26,11 +61,13 @@ A cooperative garden experience where players work together to maintain a living
 
 Its Multiplayer Server uses built-in Storage for plant state, a weekly leaderboard, and per-player watering limits.
 
+<!-- example-highlights:start -->
 ### Explore the code
 
 These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
 
-- **Estimate the offset between server and client clocks.** [The clock helper](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/shared/clockSync.ts#L3-L55) keeps five offset samples, rejects large deviations, and converts server timestamps into local time. [The watering client](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/wateringSystem.ts#L1144-L1146) feeds it timestamps received through the scene's message definitions. This illustrates a lightweight timing estimate; network transit time is included in the samples.
-- **Let temporary effects finish naturally.** [The petal setup and controls](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L119-L173) create a reusable pool from the scene's named Petal model, then start or settle the effect. [The update phases](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L207-L310) scale petals in, let them fall and rest, and shrink them before recycling. Study this when an effect should stop spawning while existing objects complete their animation. Placement depends on BLOOM_CENTER and the module's timing constants.
+- **Estimate the offset between server and client clocks.** The clock helper keeps five offset samples, rejects large deviations, and converts server timestamps into local time. The watering client feeds it timestamps received through the scene's message definitions. This illustrates a lightweight timing estimate; network transit time is included in the samples. Sources: [The clock helper](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/shared/clockSync.ts#L3-L55); [The watering client](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/wateringSystem.ts#L1144-L1146).
+- **Let temporary effects finish naturally.** The petal setup and controls create a reusable pool from the scene's named Petal model, then start or settle the effect. The update phases scale petals in, let them fall and rest, and shrink them before recycling. Study this when an effect should stop spawning while existing objects complete their animation. Placement depends on BLOOM_CENTER and the module's timing constants. Sources: [The petal setup and controls](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L119-L173); [The update phases](https://github.com/TheLivingGarden/TheLivingGarden/blob/b2c9a90791b1eed5c92a4ffadf6ac480d91510ea/src/petalSystem.ts#L207-L310).
+<!-- example-highlights:end -->
 
 ![Bloom Garden preview](images/bloomGarden-preview.webp)

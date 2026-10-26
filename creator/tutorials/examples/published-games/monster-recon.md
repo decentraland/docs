@@ -1,12 +1,41 @@
 ---
 id: monster-recon
 name: Monster Recon
-description: "Memory matching followed by trigger-based monster chases, with collectible progression, leaderboards, and custom bitmap text."
-tags: [game, collection, leaderboard, triggers, ui, sprites, animation]
+description: "Memory matching followed by trigger-based monster chases, with collectible
+  progression, leaderboards, and custom bitmap text."
+tags: [ game, collection, leaderboard, triggers, ui, sprites, animation ]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-monster-recon
 realm: monsterrecon.dcl.eth
-license: unlicensed
+license:
+  status: unknown
+highlights:
+  - title: Build a chase from scene markers and trigger areas
+    description: "`spawnHop` combines a bobbing tween, spherical trigger, sound, and billboard sprite at
+      a selected marker. The catch handler checks that the entering entity is the local player
+      before cleaning up and calling the reward callback."
+    tags:
+      - triggers
+      - ai
+    references:
+      - label: "`spawnHop`"
+        url: https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L216-L271
+      - label: catch handler
+        url: https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L183-L214
+    context: Read this with the marker names, sprite atlas, and callbacks supplied to `startPrizeChase`.
+  - title: Render custom bitmap text in ReactEcs
+    description: "`BitmapTextLine` lays out individual glyph images using atlas UVs, glyph offsets, and
+      kerning. The preceding measurement and wrapping helpers break text into lines by measured
+      width."
+    tags:
+      - ui
+      - text
+    references:
+      - label: "`BitmapTextLine`"
+        url: https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L268-L327
+      - label: measurement and wrapping helpers
+        url: https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L229-L266
+    context: The renderer needs matching bitmap-font metrics and texture assets.
 ---
 # Monster Recon
 
@@ -14,6 +43,8 @@ license: unlicensed
 **Maintained by:** Community · carlosmu
 
 [View upstream source](https://github.com/carlosmu/dcl-monster-recon)
+
+**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
 
 This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 
@@ -37,11 +68,13 @@ A memory-match game where you clear timed boards, then chase down the monster yo
 - Custom bitmap font for UI
 - Synced live feed of other players’ catches
 
+<!-- example-highlights:start -->
 ### Explore the code
 
 These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
 
-- **Build a chase from scene markers and trigger areas.** [`spawnHop`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L216-L271) combines a bobbing tween, spherical trigger, sound, and billboard sprite at a selected marker. The [catch handler](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L183-L214) checks that the entering entity is the local player before cleaning up and calling the reward callback. Read this with the marker names, sprite atlas, and callbacks supplied to `startPrizeChase`.
-- **Render custom bitmap text in ReactEcs.** [`BitmapTextLine`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L268-L327) lays out individual glyph images using atlas UVs, glyph offsets, and kerning. The preceding [measurement and wrapping helpers](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L229-L266) break text into lines by measured width. The renderer needs matching bitmap-font metrics and texture assets.
+- **Build a chase from scene markers and trigger areas.** `spawnHop` combines a bobbing tween, spherical trigger, sound, and billboard sprite at a selected marker. The catch handler checks that the entering entity is the local player before cleaning up and calling the reward callback. Read this with the marker names, sprite atlas, and callbacks supplied to `startPrizeChase`. Sources: [`spawnHop`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L216-L271); [catch handler](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L183-L214).
+- **Render custom bitmap text in ReactEcs.** `BitmapTextLine` lays out individual glyph images using atlas UVs, glyph offsets, and kerning. The preceding measurement and wrapping helpers break text into lines by measured width. The renderer needs matching bitmap-font metrics and texture assets. Sources: [`BitmapTextLine`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L268-L327); [measurement and wrapping helpers](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L229-L266).
+<!-- example-highlights:end -->
 
 ![Monster Recon preview](images/monsterRecon-preview.webp)

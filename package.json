@@ -4,12 +4,15 @@
   "scripts": {
     "generate:examples": "node scripts/example-catalog/generate.mjs",
     "test": "node --test test/*.test.mjs",
-    "check:examples": "npm run generate:examples && git diff --exit-code -- creator/tutorials/examples.md creator/tutorials/examples creator/SUMMARY.md"
+    "check:examples": "npm run generate:examples && git diff --exit-code -- creator/tutorials/examples.md creator/tutorials/examples creator/SUMMARY.md",
+    "check:links": "node scripts/check-local-links.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
+    "markdown-it": "15.0.3",
+    "parse5": "8.0.1",
     "yaml": "2.9.1"
   }
 }

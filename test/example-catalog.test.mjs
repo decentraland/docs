@@ -10,7 +10,7 @@ description: >-
   and a second line.
 tags: ["game", 'camera']
 source: "https://github.com/decentraland/example"
-license: MIT
+license: { status: unknown }
 ---
 # Example
 `
@@ -33,7 +33,7 @@ test('accepts block lists with comments and derives external ownership', () => {
 	assert.equal(parsed.maintenance, 'community')
 })
 
-for (const field of ['id', 'name', 'description', 'source', 'license']) {
+for (const field of ['id', 'name', 'description', 'source']) {
 	for (const value of ['', '[]', 'true', '42', '"  "']) {
 		test(`rejects ${field} with invalid value ${JSON.stringify(value)}`, () => {
 			// Replace the complete description block as well as scalar fields.
@@ -52,13 +52,13 @@ test('rejects empty, scalar, and mixed-type tags', () => {
 test('requires a developer for games and validates optional fields', () => {
 	assert.throws(() => parseExample('sample.md', 'published-games', example), /developer must be/)
 	for (const field of ['developer', 'realm', 'position']) {
-		assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: MIT', `license: MIT\n${field}: []`)), new RegExp(`${field} must be`))
+		assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: { status: unknown }', `license: { status: unknown }\n${field}: []`)), new RegExp(`${field} must be`))
 	}
 })
 
 test('rejects duplicate YAML keys and malformed YAML', () => {
-	assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: MIT', 'license: MIT\nlicense: Apache-2.0')), /invalid YAML/)
-	assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: MIT', 'license: [broken')), /invalid YAML/)
+	assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: { status: unknown }', 'license: { status: unknown }\nlicense: Apache-2.0')), /invalid YAML/)
+	assert.throws(() => parseExample('sample.md', 'gameplay-interaction', example.replace('license: { status: unknown }', 'license: [broken')), /invalid YAML/)
 })
 
 test('requires a GitHub repository source', () => {
@@ -73,4 +73,18 @@ test('parses category YAML and validates order without coercion', () => {
 	for (const value of ['', '"2"', 'true', '1.5']) {
 		assert.throws(() => parseCategory('audio', content.replace('order: 2', `order: ${value}`)), /order must be an integer/)
 	}
+})
+
+test('distinguishes unidentified licenses from linked upstream terms', () => {
+	const parse = license => parseExample('sample.md','gameplay-interaction',example.replace('license: { status: unknown }', `license: ${license}`))
+	assert.deepEqual(parse('{status: unknown}').license,{status:'unknown'})
+	assert.deepEqual(parse('{status: identified, name: MIT, url: "https://github.com/owner/repo/blob/main/LICENSE"}').license,{status:'identified',name:'MIT',url:'https://github.com/owner/repo/blob/main/LICENSE'})
+	for(const value of ['MIT','{}','{status: unknown, name: MIT}','{status: identified}','{status: identified, name: MIT, url: "http://example.com"}']) assert.throws(()=>parse(value))
+})
+
+test('validates highlight fields and requires full commit references', () => {
+	const highlight={title:'Reuse particles',description:'Pool particle entities.',context:'Uses a custom entity pool.',tags:['particles'],references:[{label:'Pool',url:`https://github.com/owner/repo/blob/${'a'.repeat(40)}/src/pool.ts#L1-L20`}]}
+	const parse = highlights => parseExample('sample.md','gameplay-interaction',example.replace('license: { status: unknown }', `license: { status: unknown }\nhighlights: ${JSON.stringify(highlights)}`))
+	assert.deepEqual(parse([highlight]).highlights,[highlight])
+	for(const value of [null,{},[],[null],[{...highlight,title:''}],[{...highlight,context:''}],[{...highlight,tags:[]}],[{...highlight,references:[]}],[{...highlight,references:[{label:'Pool',url:'https://github.com/owner/repo/blob/main/pool.ts'}]}]]) assert.throws(()=>parse(value))
 })

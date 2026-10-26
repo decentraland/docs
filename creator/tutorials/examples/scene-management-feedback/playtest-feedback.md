@@ -1,10 +1,12 @@
 ---
 id: playtest-feedback
 name: Scene Feedback
-description: Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage.
-tags: [ui, multiplayer-server, storage]
+description: Collect player ratings and comments during play or through a feedback button, kiosk, or
+  area, with CSV results in scene Storage.
+tags: [ ui, multiplayer-server, storage ]
 source: https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback
-license: unlicensed
+license:
+  status: unknown
 ---
 # Scene Feedback
 
@@ -12,6 +14,8 @@ license: unlicensed
 **Maintained by:** Decentraland
 
 [View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback)
+
+**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
 <!-- example-context:end -->
 
 - [Play shared test build (Zone)](https://decentraland.zone/jump/?dclenv=zone&realm=sdk7testscenes.dcl.eth&position=0,-1)

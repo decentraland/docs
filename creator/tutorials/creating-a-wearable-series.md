@@ -38,8 +38,8 @@ Key concepts featured in this video:
 * [Download Blender and GLB files (Wearable Hat ZIP)](https://github.com/decentraland/docs/raw/refs/heads/main/resources/BlenderForBeginnersPart1.zip
 )
 
-<img src="../../.gitbook/assets/wereable-tutorial-01-blend.webp" width="240" />
-<img src="../../.gitbook/assets/wereable-tutorial-01-glb.webp" width="240" />
+<img src="../.gitbook/assets/wereable-tutorial-01-blend.webp" width="240" />
+<img src="../.gitbook/assets/wereable-tutorial-01-glb.webp" width="240" />
 
 <a id="part-2"></a>
 ## Part 2: Creating a Hat from Scratch
@@ -63,5 +63,5 @@ Key concepts covered in this video:
 * [Download Blender and GLB files (Wearable Hat Number 2 ZIP)](https://github.com/decentraland/docs/raw/refs/heads/main/resources/BlenderForBeginnersPart2.zip
 )
 
-<img src="../../.gitbook/assets/wearable-tutorial-02-blend.webp" width="240" />
-<img src="../../.gitbook/assets/wearable-tutorial-02-glb.webp" width="240" />
+<img src="../.gitbook/assets/wearable-tutorial-02-blend.webp" width="240" />
+<img src="../.gitbook/assets/wearable-tutorial-02-glb.webp" width="240" />

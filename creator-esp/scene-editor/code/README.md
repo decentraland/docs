@@ -17,8 +17,8 @@ Consulta [Reference items in code](../scene-editor/code/reference-items.md) para
 
 Debes instalar un editor de código en tu máquina para editar el código de tu escena. Las opciones recomendadas son:
 
-* ![](../images/editor/vscode.png) [Visual Studio Code](https://code.visualstudio.com/): Esta es la opción recomendada para desarrolladores experimentados.
-* ![](../images/editor/cursor-icon.png) [Cursor AI](https://www.cursor.com/): Este es un poderoso editor de código que está integrado con AI. Te permite elegir diferentes modelos de AI para ayudarte a escribir código, todos ellos son gratuitos. Esta es una buena opción para desarrolladores que son nuevos en Decentraland o TypeScript, o si quieres ahorrar tiempo escribiendo código.
+* ![](../../.gitbook/assets/vscode.webp) [Visual Studio Code](https://code.visualstudio.com/): Esta es la opción recomendada para desarrolladores experimentados.
+* ![](../../.gitbook/assets/cursor-icon.webp) [Cursor AI](https://www.cursor.com/): Este es un poderoso editor de código que está integrado con AI. Te permite elegir diferentes modelos de AI para ayudarte a escribir código, todos ellos son gratuitos. Esta es una buena opción para desarrolladores que son nuevos en Decentraland o TypeScript, o si quieres ahorrar tiempo escribiendo código.
 
 {% hint style="warning" %}
 **📔 Nota**: Si estás en macOS, asegúrate de que la aplicación del editor de código esté en el directorio Applications.
@@ -28,18 +28,18 @@ Una vez instalado, puede que necesites seleccionar tu Code Editor en la configur
 
 1.  Abre el ícono de rueda en la parte superior derecha de la pantalla
 
-    ![](../images/editor/settings-icon.png)
+    ![](../../.gitbook/assets/settings-icon.webp)
 2. Bajo **Code editor of choice**, selecciona tu Code Editor. Puedes encontrar tu editor listado en el desplegable, o puede que necesites seleccionar **Chose from your device** para encontrarlo.
 
 ### Abrir el código de una escena
 
 Una vez que instalaste un editor de código en tu máquina y lo seleccionaste en la configuración del Creator Hub, puedes hacer clic en el botón **< > CODE** para abrirlo en tu proyecto de escena.
 
-![](../images/editor/code-button.png)
+![](../../.gitbook/assets/code-button.webp)
 
 Esto abre una ventana separada con el editor de código. En el margen izquierdo puedes navegar los archivos y la estructura de carpetas de tu proyecto.
 
-![](../images/editor/files-on-vs-studio.png)
+![](../../.gitbook/assets/files-on-vs-studio.webp)
 
 Agrega tu código personalizado en el archivo `index.ts` bajo `/src`, dentro de la función `main()`. De lo contrario, puedes agregar código personalizado fuera de esa función o crear nuevos archivos `.ts` dentro de la carpeta `/src`, pero estos deben ser referenciados de alguna manera dentro de la función `main()` de `index.ts`.
 
@@ -55,7 +55,7 @@ Si estás usando Cursor, puedes usar el asistente AI para ayudarte a escribir c�
 
 1.  Abre el asistente AI de Cursor haciendo clic en el botón **AI** en la parte superior derecha de la pantalla
 
-    ![](../images/editor/cursor-icon.png)
+    ![](../../.gitbook/assets/cursor-icon.webp)
 2. Allí puedes solicitar al asistente AI que te ayude a escribir código. También puedes seleccionar un modelo para usar desde el desplegable.
 
 Decentraland proporciona una carpeta de contexto para que el asistente AI te ayude a escribir código, esta carpeta de contexto se encuentra en `/dclcontext` en tu proyecto de escena. El asistente AI sabrá buscar este contexto cada vez que genere código, para familiarizarse con el Decentraland SDK.

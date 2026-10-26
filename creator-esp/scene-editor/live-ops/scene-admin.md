@@ -16,18 +16,18 @@ Durante un evento en vivo, un admin puede controlar espontáneamente lo que suce
 
 Cuando un admin de escena visita tu escena, ve una UI especial en la esquina superior derecha que solo ellos pueden ver. A través de esta UI pueden reproducir videos o streams en vivo, enviar anuncios, banear jugadores o activar cualquier smart item que esté configurado para ser activado así. Estas acciones son vistas por todos los demás jugadores en la escena que están conectados a la misma isla de comms que el admin.
 
-![](../images/editor/admin/admin-console.png)
+![](../../.gitbook/assets/admin-console.webp)
 
 ### Configurar admins
 
 Para asignar admins, necesitas agregar el smart item **Scene Admin** a tu escena.
 
-![](../images/editor/admin/admin-smart-item.png)
+![](../../.gitbook/assets/admin-smart-item.webp)
 
 {% hint style="warning" %}
 **📔 Nota**: Actualiza tu escena para usar las últimas dependencias. El Smart item Scene Admin no funcionará si la escena está desactualizada.
 
-<img src="../images/editor/admin/update-dependencies.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/update-dependencies.webp" alt="" data-size="original">
 {% endhint %}
 
 Mientras estás desarrollando la escena y probándola localmente, siempre eres un admin. Una vez que la escena se publica, cualquier persona con permisos de publicación en la escena también es automáticamente un admin. Esto incluye:
@@ -52,7 +52,7 @@ Puedes ver quién es admin en la escena haciendo clic en el botón **Admin List*
 
 Cada vez que un jugador admin está en la escena, verá una UI especial en la esquina superior derecha. Los jugadores no-admin no ven esta UI.
 
-![](../images/editor/admin/admin-console.png)
+![](../../.gitbook/assets/admin-console.webp)
 
 ### Reproducción de videos
 
@@ -62,7 +62,7 @@ Para habilitar esto, necesitas agregar un smart item **Video Player** a tu escen
 
 1.  Agrega un smart item **Video Player** a tu escena
 
-    ![](../images/editor/admin/video-player-item.png)
+    ![](../../.gitbook/assets/video-player-item.webp)
 
     Consulta [Video Screen](../scene-editor/interactivity/video-screen.md) para más detalles sobre cómo puedes configurar la media source predeterminada, marcador de posición de imagen y otras configuraciones del smart item Video Player. La mayoría de estas configuraciones pueden ser sobrescritas por el admin una vez dentro de la escena.
 
@@ -71,11 +71,11 @@ Para habilitar esto, necesitas agregar un smart item **Video Player** a tu escen
     Puedes incluir tantas video screens como desees. En general, evita tener más de un video diferente reproduciéndose al mismo tiempo, ya que eso perjudica mucho el rendimiento. \{% endhint %\}
 2.  Abre el Smart Item Scene Admin, asegúrate de que la casilla **Video Screens** esté habilitada para que esta sección se muestre. Luego selecciona la pantalla de una lista desplegable y dale un nombre amigable para mostrar en la UI de Admin. Puedes agregar tantas Video Screens como desees, cada pantalla se controla de forma independiente.
 
-    ![](../../../.gitbook/assets/multi-video-setup.webp)
+    ![](../../.gitbook/assets/multi-video-setup.webp)
 
 Una vez que lo anterior esté configurado, los usuarios admin en tu escena pueden abrir el panel de admin y seleccionar la sección de video para controlar estas video screens.
 
-![](../images/editor/admin/video-player.png)
+![](../../.gitbook/assets/video-player.webp)
 
 Si tu escena tiene múltiples video screens, el desplegable **Current Screen** te permite elegir qué video screen controlar. La lista muestra los nombres que diste a cada video screen en la configuración del smart item Admin Tools.
 
@@ -96,7 +96,7 @@ Hay dos tipos de media sources para reproducir videos:
 
 Cada pantalla en tu escena tendrá una de las media sources anteriores establecida como **Active**. Puedes hacer clic en los botones **Video** o **Live** para explorar la configuración en cada sección, no interrumpirás lo que se está reproduciendo actualmente hasta que hagas clic en el botón **Activate** en cualquiera de las secciones.
 
-![](../images/editor/admin/activate.png)
+![](../../.gitbook/assets/activate.webp)
 
 ### Anuncios
 
@@ -104,13 +104,13 @@ En la pestaña **Announcements** del panel de admin, los admins pueden escribir 
 
 Selecciona la sección Message de la UI de admin. Escribe un mensaje y haz clic en **Share**. El mensaje puede tener hasta 90 caracteres de largo.
 
-![](../images/editor/admin/announcement.png)
+![](../../.gitbook/assets/announcement.webp)
 
 ### Banear jugadores
 
 Puedes banear jugadores de tu escena seleccionando la pestaña **Moderation** de la UI de admin, escribiendo el nombre o dirección de wallet del jugador que deseas banear y haciendo clic en el botón **Ban**.
 
-![](../images/editor/admin/ban-players.png)
+![](../../.gitbook/assets/ban-players.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Para obtener la dirección de wallet de un jugador, haz clic en su avatar para abrir su perfil, luego haz clic en el botón **Copy to clipboard** junto a la dirección de wallet.
@@ -134,6 +134,6 @@ Para Activar una acción de cualquier smart item en la escena:
 
 Una vez que lo anterior esté configurado, los admins pueden activar la acción abriendo la sección **Smart Item Actions** de la UI de admin y luego seleccionando un ítem de la lista desplegable. Luego pueden hacer clic en el botón **Default** para activar la acción predeterminada de ese ítem, o seleccionar cualquier otra de las acciones del ítem de la lista.
 
-![](../images/editor/admin/smart-item-actions.png)
+![](../../.gitbook/assets/smart-item-actions.webp)
 
 También puedes mostrar u ocultar cualquier smart item en esta lista, incluso si no incluye una acción para hacer eso.

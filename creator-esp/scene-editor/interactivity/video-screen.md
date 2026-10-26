@@ -10,13 +10,13 @@ metaLinks:
 
 Para reproducir videos pre-grabados o transmitidos en una pantalla en tu escena, usa el Video Player [Smart Item](../scene-editor/interactivity/smart-items.md).
 
-![](../images/editor/admin/video-player-item.png)
+![](../../.gitbook/assets/video-player-item.webp)
 
 ### Configuraciones generales
 
 Estas configuraciones son relevantes para todos los escenarios, ya sea que estés reproduciendo videos o transmitiendo.
 
-![](../images/editor/admin/video-automatic.png)
+![](../../.gitbook/assets/video-automatic.webp)
 
 Puedes configurar el volumen del audio del video. Ten en cuenta que el audio del stream no es posicional, se escucha a un volumen uniforme a través de toda tu escena.
 
@@ -36,12 +36,12 @@ El momento en que el smart item Video Player reproduce un video puede depender d
 
 - **Automatic**: El video comienza a reproducirse tan pronto como se carga la escena. Para esto, establece el desplegable de media source predeterminado en **Video URL** y pega una URL directamente en el campo **Default Video URL**.
 
-  ![](../images/editor/admin/video-automatic.png)
+  ![](../../.gitbook/assets/video-automatic.webp)
 
 - **Activado por un admin**: Un [Scene admin](../scene-editor/live-ops/scene-admin.md) que está actualmente en la escena puede usar la UI de Admin para pegar una URL de video y reproducirlo para todos los jugadores que están actualmente en la escena.
 - **Basado en acciones del jugador**: Define una Action de tipo **Play Video Stream**. Esto te permite activar la reproducción del video como resultado de interactuar con algún otro smart item, como caminar a una habitación o presionar un botón. Consulta [Smart Items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
 
-  ![](../images/editor/video-from-action.png)
+  ![](../../.gitbook/assets/video-from-action.webp)
 
 En todos los casos, configuras el video para que se reproduzca en bucle o una sola vez.
 

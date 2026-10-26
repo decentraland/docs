@@ -25,7 +25,7 @@ Inicia sesión en la página Studio, en [decentraland.org/shop/studio](https://d
 * **Máximo por jugador**: el regalo más grande que puede recibir un jugador de una vez.
 * **Regalos**: cada regalo que hizo tu estudio, con el jugador, los Créditos, el motivo, la fecha y quién lo envió.
 
-![La página Studio, con el presupuesto disponible, lo regalado hasta ahora, el máximo por jugador y la lista de regalos](../../.gitbook/assets/studio-gifts-page.webp)
+![La página Studio, con el presupuesto disponible, lo regalado hasta ahora, el máximo por jugador y la lista de regalos](../.gitbook/assets/studio-gifts-page.webp)
 
 Si la página dice que el estudio está en pausa, no puede regalar hasta que Decentraland lo reactive.
 
@@ -45,11 +45,11 @@ Si la página dice que el estudio está en pausa, no puede regalar hasta que Dec
    * Cada cuenta va en una sola fila: si un jugador recibe dos montos, súmalos.
 4. Revisa el resumen debajo de la lista (jugadores, total de Créditos y el presupuesto que queda después) y presiona **Revisar**.
 
-   ![La ventana Regalar Créditos con un motivo y dos jugadores, cada uno con sus Créditos y su motivo](../../.gitbook/assets/studio-gifts-add-players.webp)
+   ![La ventana Regalar Créditos con un motivo y dos jugadores, cada uno con sus Créditos y su motivo](../.gitbook/assets/studio-gifts-add-players.webp)
 5. La revisión te avisa si algún jugador recibió el mismo regalo (mismos Créditos y motivo) de tu estudio en los últimos 30 días. Vuelve y quítalo, salvo que quieras regalarle de nuevo.
 6. Escribe el total de Créditos para confirmar y presiona **Regalar a … jugadores**.
 
-   ![El paso de confirmación, con el total de Créditos escrito y el botón para regalar a 2 jugadores](../../.gitbook/assets/studio-gifts-confirm.webp)
+   ![El paso de confirmación, con el total de Créditos escrito y el botón para regalar a 2 jugadores](../.gitbook/assets/studio-gifts-confirm.webp)
 
 Los regalos se envían de a uno y cada fila muestra cómo salió. Si la ventana se cierra o detienes la lista, vuelve a abrir **Regalar Créditos** y presiona **Continuar**: los jugadores que ya recibieron su regalo nunca lo reciben dos veces.
 

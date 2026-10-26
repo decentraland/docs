@@ -35,11 +35,11 @@ function main() {
 }
 ```
 
-![](../images/editor/door-names.png)
+![](../../.gitbook/assets/door-names.webp)
 
 El enum `EntityNames` contiene la lista completa de entidades agregadas por el Creator Hub y se actualiza inmediatamente tan pronto como haces cualquier cambio. Si importas `EntityNames.` en tu código, tu IDE te presentará un desplegable que incluye todos los nombres de las entidades disponibles.
 
-![](../images/editor/EntityNames.png)
+![](../../.gitbook/assets/EntityNames.webp)
 
 También puedes usar la función `engine.getEntityByName<EntityNames>()`, pasando `<EntityNames>` como un [genérico de TypeScript](https://www.typescriptlang.org/docs/handbook/2/generics.html), para validar que una entidad con ese nombre realmente existe en tu escena. Si la entidad referenciada se renombra en el Creator Hub, este método te advertirá con un error. Como la salida de esta función no puede ser `null`, puedes evitar verificar que la entidad existe.
 
@@ -100,12 +100,12 @@ También puedes obtener entidades por sus tags. Los tags son una forma de agrupa
 
 Agrega Tags a una entidad a través de la sección **Tags** en la parte superior del panel de propiedades del ítem. Puedes elegir de los tags genéricos como **Tag Group 1** hasta **Tag Group 4**, o crear el tuyo propio con un nombre más específico.
 
-![](../images/editor/tags.png)
+![](../../.gitbook/assets/tags.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Una sola entidad puede tener múltiples tags asignados a ella.
 
-<img src="../images/editor/tags-multiple.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/tags-multiple.webp" alt="" data-size="original">
 {% endhint %}
 
 Luego puedes obtener todas las entidades que tienen un tag específico usando la función `engine.getEntitiesByTag()`. Esto es ideal para cuando quieres iterar sobre un grupo de entidades que tienen el mismo propósito o comportamiento.
@@ -173,7 +173,7 @@ Usa `getTriggerEvents` para obtener un objeto que pueda manejar eventos de trigg
 
 Por ejemplo, si una escena tiene un botón con el siguiente evento genérico **On Click**, puedes escribir el código a continuación para ejecutar código personalizado cada vez que se activa el botón.
 
-![](../images/editor/restart-button.png)
+![](../../.gitbook/assets/restart-button.webp)
 
 ```ts
 import { engine } from '@dcl/sdk/ecs'
@@ -202,7 +202,7 @@ Usa `getActionEvents` para obtener un objeto para manejar las acciones de un sma
 
 Por ejemplo, si una escena tiene una puerta con la siguiente acción predeterminada **Open**, puedes escribir el código a continuación para ejecutar código personalizado cada vez que se abre la puerta.
 
-![](../images/editor/door-actions.png)
+![](../../.gitbook/assets/door-actions.webp)
 
 ```ts
 import { engine } from '@dcl/sdk/ecs'

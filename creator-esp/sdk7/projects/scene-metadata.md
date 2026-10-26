@@ -16,11 +16,11 @@ Consulta [Archivos en una escena](../sdk7/projects/scene-files.md) para obtener 
 
 Para editar los metadatos de una escena en el [Scene Editor](../scene-editor/get-started/about-editor.md), abre una escena y haz clic en el **ícono de lápiz**.
 
-![](../images/editor/pencil-icon.png)
+![](../../.gitbook/assets/pencil-icon.webp)
 
 Esto abre el menú de la escena, donde puedes configurar múltiples propiedades.
 
-![](../images/editor/metadata-ui.png)
+![](../../.gitbook/assets/metadata-ui.webp)
 
 Alternativamente, puedes editar directamente el archivo `scene.json`, donde se almacenan todos estos valores.
 
@@ -36,7 +36,7 @@ Los jugadores verán estos datos mostrados en un modal cuando seleccionen las pa
 
 Cuando los jugadores navegan por el mundo y entran a tu escena, pueden leer el título de la escena desde debajo del minimapa.
 
-![](../images/media/scene-name.png)
+![](../../.gitbook/assets/scene-name.webp)
 
 Agrega estos datos a través del menú de escena en el [Scene Editor](../scene-editor/get-started/about-editor.md).
 
@@ -107,7 +107,7 @@ El campo **Age Rating** se usa para clasificar el contenido de tu escena. Decent
 
 Al editar el Age Rating a través del `scene.json`, rating es un **código de una sola letra**, escribe **A** para adults.
 
-![](../images/media/content-moderation-flag-icon.png)
+![](../../.gitbook/assets/content-moderation-flag-icon.webp)
 
 ```json
  "scene": {
@@ -133,7 +133,7 @@ Las escenas con esta clasificación no se cargarán y nadie podrá interactuar c
 
 Hay ciertas funcionalidades que pueden deshabilitarse en escenas específicas para que los jugadores no puedan usarlas de forma abusiva. Configura estas en la pestaña **Settings** de la configuración de escena.
 
-![](../images/editor/scene-restrictions.png)
+![](../../.gitbook/assets/scene-restrictions.webp)
 
 Actualmente, solo se maneja de esta manera la siguiente funcionalidad:
 
@@ -155,7 +155,7 @@ Si una propiedad `featureToggles` no existe en tu archivo `scene.json`, créala 
 
 Los **Spawn Settings** en la pestaña **Settings** definen dónde aparecen los jugadores cuando acceden a tu escena directamente, ya sea escribiendo directamente las coordenadas en el navegador o teletransportándose.
 
-![](../images/editor/spawn-point-ui.png)
+![](../../.gitbook/assets/spawn-point-ui.webp)
 
 Tu escena podría tener objetos que pueden bloquear a los jugadores de moverse si resulta que aparecen justo sobre ellos, como árboles o escaleras, o tu escena podría tener un terreno elevado. Sería una mala experiencia para los jugadores si aparecieran sobre algo que no les permite moverse. Por eso tienes la opción de establecer múltiples posiciones de aparición en ubicaciones ad-hoc.
 
@@ -339,11 +339,11 @@ Al [desplegar](../sdk7/publishing/publishing.md) una escena, el contenido se sub
 
 Edita esto en la segunda pestaña del menú de escena en el Scene Editor.
 
-![](../images/editor/scene-parcels-3x3.png)
+![](../../.gitbook/assets/scene-parcels-3x3.webp)
 
 Usa los dropdowns y haz clic en **Apply Layout** para cambiar las dimensiones de tu escena. También puedes hacer clic en cada parcela individual para desactivarla de tu diseño.
 
-![](../images/editor/scene-parcels-toggled.png)
+![](../../.gitbook/assets/scene-parcels-toggled.webp)
 
 La escena predeterminada tiene sus coordenadas establecidas en _0,0_, esta información no es necesario cambiarla mientras desarrollas una escena offline, a menos que necesites ocupar múltiples parcelas. Necesitarás cambiar esto antes de desplegar, a coordenadas donde tengas permisos de despliegue.
 
@@ -429,7 +429,7 @@ Puedes establecer una hora del día fija para tu escena. Todos los jugadores ver
 
 Abre la configuración de la escena y haz clic en la pestaña **Settings** para encontrar la sección **Skybox**. Desmarca la opción **Auto** y establece la hora del día que desees.
 
-![](../images/editor/fixed-time-of-day.png)
+![](../../.gitbook/assets/fixed-time-of-day.webp)
 
 También puedes establecer la hora del día del skybox en el código de tu escena. Para hacer esto, agrega la siguiente sección a tu `scene.json` al nivel raíz:
 

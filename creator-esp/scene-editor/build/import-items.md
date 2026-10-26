@@ -18,11 +18,11 @@ Para importar un modelo 3D, una imagen, un archivo de sonido o un video a tu esc
 
 1. Arrastra archivos directamente al panel inferior. También puedes hacer clic en el botón **+ Import Assets** en la parte superior izquierda del panel inferior y seleccionar desde tu unidad local.
 
-![](../images/editor/import-assets.png)
+![](../../.gitbook/assets/import-assets.webp)
 
 2. Verifica la miniatura del modelo y haz clic en **Import**. Al importar múltiples assets, usa los botones de flecha para recorrer cada asset.
 
-![](../images/editor/import-confirmation.png)
+![](../../.gitbook/assets/import-confirmation.webp)
 
 Ahora puedes encontrar tu asset en la pestaña **Local Assets**, bajo la carpeta **scene**. Los modelos 3D aparecen bajo la carpeta _scene/3D Model_, las imágenes bajo _scene/Image_
 
@@ -32,7 +32,7 @@ Ahora puedes encontrar tu asset en la pestaña **Local Assets**, bajo la carpeta
 {% hint style="info" %}
 **💡 Tip**: También puedes pegar archivos directamente en la carpeta del proyecto. Después de hacer esto, presiona el botón **Refresh** junto al botón **Import Assets** para ver los nuevos archivos.
 
-<img src="../images/editor/refresh-assets.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/refresh-assets.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Formatos soportados

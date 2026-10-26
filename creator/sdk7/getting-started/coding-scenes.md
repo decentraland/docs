@@ -70,7 +70,7 @@ You can also run a scene locally on your machine by running a preview from the C
 
 Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_. Entities have _components_, each component gives the entity it belongs to specific properties. A door entity is likely to have at least a Transform component (that sets position, rotation & scale) and another to provide it a shape. Components are just a place to store data, they don't carry out any actions by themselves.
 
-![](<../../../.gitbook/assets/ecs-components-new (1).webp>)
+![](<../../images/media/ecs-components-new.webp>)
 
 ```ts
 export function main() {
@@ -91,7 +91,7 @@ export function main() {
 
 Entities may be nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
 
-![](<../../../.gitbook/assets/ecs-nested-entities-new (1).webp>)
+![](<../../images/media/ecs-nested-entities-new.webp>)
 
 Entities are an abstract concept. An entity is just an id, that is used as a reference to group different components.
 
@@ -236,7 +236,7 @@ See [mutable data](../programming-patterns/mutable-data.md) for more details.
 
 The _engine_ is what sits in between _entities_, and _components_ on one hand and _systems_ on the other.
 
-![](<../../../.gitbook/assets/ecs-big-picture (1).webp>)
+![](<../../images/media/ecs-big-picture.webp>)
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every tick of the game loop, the engine runs the functions of each of the systems to update the values stored in the components.
 

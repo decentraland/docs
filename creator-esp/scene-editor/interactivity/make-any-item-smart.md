@@ -47,7 +47,7 @@ Agrega un componente **Trigger** con eventos de Trigger **On Click** u **On Inpu
 * **On Click** reacciona cada vez que el jugador hace clic en el botón izquierdo del mouse mientras apunta al ítem.
 * **On Input Action** reacciona cada vez que el jugador presiona el Botón Primario (E) mientras apunta al ítem.
 
-![](../images/editor/on_click.png)
+![](../../.gitbook/assets/on_click.webp)
 
 **Colliders**
 

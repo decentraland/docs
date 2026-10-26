@@ -16,7 +16,7 @@ Decentraland ofrece una amplia gama de contenido. Debes asegurarte de que tu esc
 * **Puntos de Interés (POIs)**: Envía una [propuesta en el DAO](https://decentraland.org/governance/proposals/?type=poi) para que tu escena sea presentada como un Punto de Interés en el mapa.
 *   **Descripción y miniatura**: Crea descripciones tentadoras y miniaturas llamativas para atraer jugadores antes de que entren a tu escena. Estos elementos son cruciales para hacer una impresión fuerte al seleccionar una escena en el mapa, teletransportarse desde otra escena, o encontrar un enlace compartido en redes sociales.
 
-    ![](../images/thumbnail-image.png)
+    ![](../../.gitbook/assets/thumbnail-image.webp)
 * **Eventos**: Aprovecha la [página de eventos](https://decentraland.org/events/) para promover reuniones, desde inauguraciones de escenas hasta eventos temáticos de temporada. Hospedar eventos puede atraer grandes multitudes, y ofrecer recompensas como wearables o emotes puede mejorar la participación del jugador.
 * **Quests**: Incorpora tu escena en [Quests](../deprecated/quests/overview.md) para guiar a los jugadores a través de varias experiencias. Crear quests puede alentar visitas a tu escena como parte de un viaje interesante.
 * **Construir Tráfico**: Atrae jugadores creando una escena vibrante que atraiga visitantes. Una vez que una masa crítica de jugadores está presente, otros pueden unirse, atraídos por la actividad bulliciosa.

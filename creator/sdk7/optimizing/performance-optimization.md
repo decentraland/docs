@@ -155,7 +155,7 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 3. Under **Current Scene**, click the **Backface debugger** button.
 
-![](../../../.gitbook/assets/debug-panel-backface-debugging.webp)
+![](../../.gitbook/assets/debug-panel-backface-debugging.webp)
 
 4. Toggle **Force Backface Culling**: It shows the materials rendered with Backface Culling On. This is the actual rendering once the Optimization is in production. Toggle On & Off to spot materials that need fixing.
 
@@ -165,9 +165,9 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 - **Green**: Materials with Backface Culling **On**.
 
 <p align="center">
-  <img src="../../../.gitbook/assets/backface-culling-off.webp"
+  <img src="../../.gitbook/assets/backface-culling-off.webp"
        style="width:120px; height:120px; object-fit:contain;" />
-  <img src="../../../.gitbook/assets/backface-culling-on.webp"
+  <img src="../../.gitbook/assets/backface-culling-on.webp"
        style="width:120px; height:120px; object-fit:contain;" />
   <br/>
   <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>

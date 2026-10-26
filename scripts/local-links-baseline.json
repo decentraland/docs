@@ -94,7 +94,6 @@
     "transports"
   ],
   "contributor-esp/communications/main-realm.md": [
-    "/images/main-realm.png",
     "archipelago",
     "transport-types/livekit"
   ],
@@ -363,7 +362,6 @@
     "transports"
   ],
   "contributor/communications/main-realm.md": [
-    "/images/main-realm.png",
     "archipelago",
     "transport-types/livekit"
   ],
@@ -561,117 +559,6 @@
     "..//contributor/content/entity-types/scenes.md#permissions",
     "../modules/restricted_actions.md"
   ],
-  "creator-esp/3d-modeling/animations.md": [
-    "../images/3d-models-and-animations/animations/01_object_animation_02.gif",
-    "../images/3d-models-and-animations/animations/02_rig_animation_02.gif",
-    "../images/3d-models-and-animations/animations/03_object_animation_push_down_02.gif",
-    "../images/3d-models-and-animations/animations/04_export_single_animation_clip.png",
-    "../images/3d-models-and-animations/animations/05_sampling_rate.png"
-  ],
-  "creator-esp/3d-modeling/colliders.md": [
-    "../images/3d-models-and-animations/3d-essentials/25-collider.png",
-    "../images/3d-models-and-animations/3d-essentials/26-collider-2.png",
-    "../images/3d-models-and-animations/3d-essentials/27-collider.png",
-    "../images/3d-models-and-animations/3d-essentials/28-optimizing-colliders.png",
-    "../images/3d-models-and-animations/3d-essentials/29-convex-collider.png"
-  ],
-  "creator-esp/3d-modeling/create-a-rig.md": [
-    "../images/3d-models-and-animations/create-rig/01_add_armature.gif",
-    "../images/3d-models-and-animations/create-rig/02_bone_head_tail.png",
-    "../images/3d-models-and-animations/create-rig/03_bone_pivot_rotation.gif",
-    "../images/3d-models-and-animations/create-rig/04_bone_roll.gif",
-    "../images/3d-models-and-animations/create-rig/05_toggle_axes.png",
-    "../images/3d-models-and-animations/create-rig/06_bone_roll_fingers.gif",
-    "../images/3d-models-and-animations/create-rig/07_symmetrize.gif",
-    "../images/3d-models-and-animations/create-rig/08_skinning.gif",
-    "../images/3d-models-and-animations/create-rig/09_weight_paint.gif",
-    "../images/3d-models-and-animations/create-rig/10_weight_paint_tools.png",
-    "../images/3d-models-and-animations/create-rig/11_weight_paint_tools_02.png",
-    "../images/3d-models-and-animations/create-rig/12_blur_tool.gif",
-    "../images/3d-models-and-animations/create-rig/13_IK_example_mch_arm.gif",
-    "../images/3d-models-and-animations/create-rig/14_IK_example_buddha.gif",
-    "../images/3d-models-and-animations/create-rig/15_Duplicating_bones.gif",
-    "../images/3d-models-and-animations/create-rig/16_uncheck_deform.png",
-    "../images/3d-models-and-animations/create-rig/17_IK_bone.gif",
-    "../images/3d-models-and-animations/create-rig/18_constraint_tab.png",
-    "../images/3d-models-and-animations/create-rig/19_creating_pole_target.gif",
-    "../images/3d-models-and-animations/create-rig/20_pole_target_rotation.png",
-    "../images/3d-models-and-animations/create-rig/21_pole_target_rotation_fix.png",
-    "../images/3d-models-and-animations/create-rig/22_constraints.gif",
-    "../images/3d-models-and-animations/create-rig/23_symmetrize_constraints.gif",
-    "../images/3d-models-and-animations/create-rig/24_b-bone_scale.gif",
-    "../images/3d-models-and-animations/create-rig/25_bone_groups.png",
-    "../images/3d-models-and-animations/create-rig/26_bone_shape.gif",
-    "../images/3d-models-and-animations/create-rig/27_bone_shape_edit.gif"
-  ],
-  "creator-esp/3d-modeling/materials.md": [
-    "../images/3d-models-and-animations/3d-essentials/30-materials.png",
-    "../images/3d-models-and-animations/3d-essentials/60-principledBSDF.png",
-    "../images/3d-models-and-animations/3d-essentials/55-testing-environment.png",
-    "../images/3d-models-and-animations/3d-essentials/61-metallic-material.png",
-    "../images/3d-models-and-animations/3d-essentials/63-roughness.png",
-    "../images/3d-models-and-animations/3d-essentials/62-specular.png",
-    "../images/3d-models-and-animations/3d-essentials/31-transparent-materials.png",
-    "../images/3d-models-and-animations/3d-essentials/33-alpha-clip.png",
-    "../images/3d-models-and-animations/3d-essentials/34-alpha-blend.png",
-    "../images/3d-models-and-animations/3d-essentials/34-emissive-materials.png",
-    "../images/3d-models-and-animations/3d-essentials/35-emissive-nodes.png",
-    "../images/3d-models-and-animations/3d-essentials/52-emissive-materials.png",
-    "../images/3d-models-and-animations/3d-essentials/50-normal.gif",
-    "../images/3d-models-and-animations/3d-essentials/59-backface-culling.png"
-  ],
-  "creator-esp/3d-modeling/meshes.md": [
-    "../images/editor/cut-train.png",
-    "../images/editor/train-out-of-bounds.png",
-    "../images/3d-models-and-animations/3d-essentials/07-apply-rotations.gif",
-    "../images/3d-models-and-animations/3d-essentials/10-apply-rotation.png",
-    "../images/3d-models-and-animations/3d-essentials/41-stats.gif",
-    "../images/3d-models-and-animations/3d-essentials/40-modularity.png",
-    "../images/3d-models-and-animations/3d-essentials/18-frustum-culling.png",
-    "../images/3d-models-and-animations/3d-essentials/19-frustum-culling-2.gif",
-    "../images/3d-models-and-animations/3d-essentials/20-duplicate-objects.png",
-    "../images/3d-models-and-animations/3d-essentials/21-duplicate-objects-2.png",
-    "../images/3d-models-and-animations/3d-essentials/22-duplicate-objects-3.png",
-    "../images/3d-models-and-animations/3d-essentials/23-instancing.png",
-    "../images/3d-models-and-animations/3d-essentials/24-instancing-2.png",
-    "../images/3d-models-and-animations/3d-essentials/42-decimate-01.png",
-    "../images/3d-models-and-animations/3d-essentials/43-decimate-02.png",
-    "../images/3d-models-and-animations/3d-essentials/44-mirror-modifier.png",
-    "../images/3d-models-and-animations/3d-essentials/45-batch-rename.png",
-    "../images/3d-models-and-animations/3d-essentials/47-batch-rename-methods.png",
-    "../images/3d-models-and-animations/3d-essentials/46-batch-rename-types.png"
-  ],
-  "creator-esp/3d-modeling/textures.md": [
-    "../images/3d-models-and-animations/3d-essentials/58-difusemap.png",
-    "../images/3d-models-and-animations/3d-essentials/64-metallic-map.png",
-    "../images/3d-models-and-animations/3d-essentials/48-roughness.png",
-    "../images/3d-models-and-animations/3d-essentials/49-roughness.gif",
-    "../images/3d-models-and-animations/3d-essentials/33-alpha-clip-leave.jpeg",
-    "../images/3d-models-and-animations/3d-essentials/33-alpha-clip-mask.jpeg",
-    "../images/3d-models-and-animations/3d-essentials/33-alpha-blender.png",
-    "../images/3d-models-and-animations/3d-essentials/33-alpha-blend.png",
-    "../images/3d-models-and-animations/3d-essentials/57-emissive-map.gif",
-    "../images/3d-models-and-animations/3d-essentials/51-normal-map.png",
-    "../images/3d-models-and-animations/3d-essentials/50-normal.gif",
-    "../images/3d-models-and-animations/3d-essentials/56-normal-map.png",
-    "../images/3d-models-and-animations/glb-extractor/01-scene-base.png",
-    "../images/3d-models-and-animations/glb-extractor/02-model-01.png",
-    "../images/3d-models-and-animations/glb-extractor/03-model-02.png",
-    "../images/3d-models-and-animations/glb-extractor/04-models-folder.png",
-    "../images/3d-models-and-animations/glb-extractor/05-texture-extractor.png",
-    "../images/3d-models-and-animations/glb-extractor/06-move-to-terminal.png",
-    "../images/3d-models-and-animations/glb-extractor/06-terminal.png",
-    "../images/3d-models-and-animations/glb-extractor/07-run-terminal.png",
-    "../images/3d-models-and-animations/glb-extractor/08-out-folder.png",
-    "../images/3d-models-and-animations/glb-extractor/09-replace-assets.png",
-    "../images/3d-models-and-animations/glb-extractor/10-windows-01.png",
-    "../images/3d-models-and-animations/glb-extractor/11-windows-02.png",
-    "../images/3d-models-and-animations/glb-extractor/12-windows-03.png",
-    "../images/3d-models-and-animations/glb-extractor/13-windows-03.png",
-    "../images/3d-models-and-animations/3d-essentials/37-atlas-texture.png",
-    "../images/3d-models-and-animations/3d-essentials/38-uv-atlas.png",
-    "../images/3d-models-and-animations/3d-essentials/39-trim-sheets.png"
-  ],
   "creator-esp/rewards/gatting-started.md": [
     "../../creator/creator/wearables-and-emotes/publishing/publishing-collections.md",
     "../../creator/land/api.md"
@@ -684,12 +571,10 @@
     "../../creator/deprecated/quests/overview.md"
   ],
   "creator-esp/scene-editor/build/components.md": [
-    "../images/editor/components-in-editor.png",
     "../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree",
     "../sdk7/3d-essentials/colliders.md#colliders-on-3d-models",
     "../scene-editor/interactivity/make-any-item-smart.md",
     "../images/editor/add-component.png",
-    "../images/editor/new-entity.png",
     "../sdk7/3d-essentials/colliders.md",
     "../sdk7/3d-essentials/materials.md",
     "../sdk7/3d-essentials/sounds.md",
@@ -702,24 +587,13 @@
     "../sdk7/architecture/entities-components.md"
   ],
   "creator-esp/scene-editor/build/import-items.md": [
-    "../images/editor/import-assets.png",
-    "../images/editor/import-confirmation.png",
-    "../images/editor/refresh-assets.png",
     "../3d-modeling/3d-models.md",
     "../sdk7/optimizing/scene-limitations.md",
     "../3d-modeling/colliders.md",
     "../scene-editor/interactivity/make-any-item-smart.md"
   ],
-  "creator-esp/scene-editor/build/nfts.md": [
-    "../images/editor/nft-item.png"
-  ],
   "creator-esp/scene-editor/code/README.md": [
     "../scene-editor/code/reference-items.md",
-    "../images/editor/vscode.png",
-    "../images/editor/cursor-icon.png",
-    "../images/editor/settings-icon.png",
-    "../images/editor/code-button.png",
-    "../images/editor/files-on-vs-studio.png",
     "../scene-editor/interactivity/smart-items.md",
     "../scene-editor/interactivity/smart-items-advanced.md",
     "../scene-editor/interactivity/states-and-conditions.md",
@@ -728,52 +602,26 @@
     "../sdk7/getting-started/dev-workflow.md"
   ],
   "creator-esp/scene-editor/code/reference-items.md": [
-    "../images/editor/door-names.png",
-    "../images/editor/EntityNames.png",
-    "../images/editor/tags.png",
-    "../images/editor/tags-multiple.png",
-    "../images/editor/restart-button.png",
-    "../images/editor/door-actions.png",
     "../scene-editor/interactivity/make-any-item-smart.md"
   ],
   "creator-esp/scene-editor/configure/scene-settings.md": [
-    "../images/editor/pencil-icon.png",
     "../sdk7/projects/scene-metadata.md",
-    "../images/thumbnail-image.png",
-    "../images/editor/scene-layout.png",
-    "../images/editor/non-rectangular.png",
     "../worlds/about.md",
     "../sdk7/projects/kinds-of-project.md",
-    "../images/editor/advanced-coordinates.png",
-    "../images/editor/scene-restrictions.png",
     "../sdk7/projects/smart-wearables.md",
-    "../sdk7/projects/portable-experiences.md",
-    "../images/editor/spawn-settings.png",
-    "../images/fixed-time-of-day.png"
+    "../sdk7/projects/portable-experiences.md"
   ],
   "creator-esp/scene-editor/get-started/about-editor.md": [
-    "../images/editor/icon-creator-hub.png",
     "../scene-editor/get-started/editor-installation.md",
-    "../images/editor/create-scene.png",
     "../scene-editor/get-started/manage-scenes.md",
-    "../images/editor/asset-packs.png",
-    "../images/editor/drop-item.gif",
     "../scene-editor/get-started/scene-editor-essentials.md#position-items",
     "../scene-editor/interactivity/smart-items.md",
-    "../images/editor/smart-items.jpg",
-    "../images/editor/preview-button.png",
-    "../images/editor/pencil-icon.png",
     "../scene-editor/configure/scene-settings.md",
-    "../images/editor/publish-options.png",
     "../scene-editor/publish/publish-scene.md",
     "../scene-editor/get-started/scene-editor-essentials.md",
     "../scene-editor/code/overview.md"
   ],
   "creator-esp/scene-editor/get-started/editor-installation.md": [
-    "../images/editor/icon-creator-hub.png",
-    "../images/editor/settings-icon.png",
-    "../images/editor/vscode.png",
-    "../images/editor/cursor-icon.png",
     "../sdk7/debugging/troubleshooting.md"
   ],
   "creator-esp/scene-editor/get-started/manage-scenes.md": [
@@ -782,48 +630,26 @@
   ],
   "creator-esp/scene-editor/get-started/migrate-from-web.md": [
     "../scene-editor/get-started/editor-installation.md",
-    "../images/editor/export.png",
-    "../images/editor/import-scene.png",
-    "../scene-editor/code/overview.md",
-    "../images/editor/empty-project.png"
+    "../scene-editor/code/overview.md"
   ],
   "creator-esp/scene-editor/get-started/scene-editor-essentials.md": [
-    "../images/editor/editor-layout.png",
-    "../images/editor/ground.png",
-    "../images/editor/ground-entities.png",
-    "../images/editor/asset-packs.png",
-    "../images/editor/drop-item.gif",
     "../scene-editor/build/import-items.md",
-    "../images/editor/gizmos.png",
-    "../images/editor/move-items.gif",
     "../scene-editor/interactivity/smart-items.md",
-    "../images/editor/smart-items.jpg",
-    "../images/editor/item-hierarchy.png",
-    "../images/editor/hide-lock-item.png",
-    "../images/editor/components-in-editor.png",
     "../scene-editor/build/components.md",
     "../sdk7/optimizing/scene-limitations.md",
-    "../images/editor/triangle-limit1.png",
-    "../images/editor/triangle-limit2.png",
     "../scene-editor/get-started/scene-editor-essentials.md#scene-sizes",
-    "../images/editor/out-of-bounds.png",
     "../3d-modeling/meshes.md#bounding-boxes",
-    "../images/editor/pencil-icon.png",
     "../scene-editor/configure/scene-settings.md",
     "../scene-editor/code/overview.md",
     "../scene-editor/publish/publish-scene.md"
   ],
   "creator-esp/scene-editor/interactivity/custom-items.md": [
-    "../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree",
-    "../images/editor/create-custom-item.png",
-    "../images/editor/name-custom-item.png",
-    "../images/editor/custom-items.png"
+    "../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree"
   ],
   "creator-esp/scene-editor/interactivity/make-any-item-smart.md": [
     "../images/editor/add-component.png",
     "../scene-editor/interactivity/smart-items-advanced.md",
     "../scene-editor/interactivity/states-and-conditions.md",
-    "../images/editor/on_click.png",
     "../sdk7/3d-essentials/shape-components.md#primitive-shapes",
     "../3d-modeling/colliders.md",
     "../scene-editor/interactivity/smart-items.md#trigger-areas",
@@ -831,63 +657,27 @@
     "../scene-editor/code/overview.md"
   ],
   "creator-esp/scene-editor/interactivity/smart-items-advanced.md": [
-    "../images/editor/advanced-settings-smart-item.png",
     "../sdk7/architecture/entities-components.md",
     "../scene-editor/interactivity/states-and-conditions.md",
-    "../images/editor/button-to-door.png",
-    "../images/editor/button-to-door2.png",
-    "../images/editor/new-action.png",
-    "../images/editor/new-trigger.png",
-    "../images/editor/play-animation.png",
     "../3d-modeling/animations.md",
-    "../images/editor/play-sound.png",
-    "../images/editor/audiosource.png",
     "../sdk7/3d-essentials/sounds.md",
-    "../images/editor/tweens.png",
-    "../images/editor/easing-functions.jpeg",
-    "../images/editor/on_click.png",
     "../scene-editor/interactivity/make-any-item-smart.md#interactivity",
     "../sdk7/3d-essentials/colliders.md#pointer-blocking",
-    "../images/editor/on_spawn.png",
     "../scene-editor/interactivity/smart-items.md",
     "../scene-editor/interactivity/make-any-item-smart.md",
     "../scene-editor/code/overview.md"
   ],
   "creator-esp/scene-editor/interactivity/smart-items.md": [
-    "../images/editor/smart-items.jpg",
-    "../images/editor/smart-item-icon.png",
     "../scene-editor/interactivity/smart-items-advanced.md",
-    "../images/editor/advanced-mode.png",
-    "../images/editor/button-to-door.png",
-    "../images/editor/lever-to-door.png",
-    "../images/editor/trigger.png",
-    "../images/editor/on_player_enters.png",
     "../scene-editor/interactivity/trigger-area.md",
-    "../images/editor/invisible-walls.png",
     "../sdk7/3d-essentials/colliders.md",
-    "../images/editor/click-area.png",
     "../creator/worlds/cast.md",
     "../scene-editor/interactivity/video-screen.md",
-    "../images/editor/nft-shape.png",
-    "../images/editor/opensea.png",
-    "../images/editor/health-bar.png",
-    "../images/editor/nested-under-player.png",
-    "../images/editor/nested-under-camera.png",
-    "../images/editor/nested-under-barrel.png",
-    "../images/editor/reduce-health.png",
-    "../images/editor/restore-health.png",
-    "../images/editor/wall-with-health.png",
     "../scene-editor/interactivity/states-and-conditions.md",
     "../scene-editor/interactivity/make-any-item-smart.md",
     "../scene-editor/code/overview.md"
   ],
   "creator-esp/scene-editor/interactivity/states-and-conditions.md": [
-    "../images/editor/condition.png",
-    "../images/editor/multiple-conditions.png",
-    "../images/editor/set-state.png",
-    "../images/editor/door_conditions.png",
-    "../images/editor/new_state.png",
-    "../images/editor/on_counter_change.png",
     "../scene-editor/interactivity/smart-items.md",
     "../scene-editor/interactivity/smart-items-advanced.md",
     "../scene-editor/interactivity/make-any-item-smart.md",
@@ -895,20 +685,13 @@
   ],
   "creator-esp/scene-editor/interactivity/trigger-area.md": [
     "../scene-editor/interactivity/smart-items.md",
-    "../images/editor/trigger.png",
-    "../images/editor/on_player_enters.png",
     "../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree",
-    "../images/editor/hide-trigger.png",
-    "../scene-editor/interactivity/states-and-conditions.md",
-    "../images/editor/trigger-conditions-trigger-area.png"
+    "../scene-editor/interactivity/states-and-conditions.md"
   ],
   "creator-esp/scene-editor/interactivity/video-screen.md": [
     "../scene-editor/interactivity/smart-items.md",
-    "../images/editor/admin/video-player-item.png",
-    "../images/editor/admin/video-automatic.png",
     "../scene-editor/live-ops/scene-admin.md",
     "../scene-editor/interactivity/smart-items-advanced.md",
-    "../images/editor/video-from-action.png",
     "../sdk7/optimizing/scene-limitations.md",
     "../scene-editor/live-ops/live-streaming.md",
     "../sdk7/media/video-playing.md#about-external-streaming",
@@ -917,43 +700,24 @@
   "creator-esp/scene-editor/live-ops/live-streaming.md": [
     "../scene-editor/interactivity/video-screen.md",
     "../scene-editor/live-ops/scene-admin.md",
-    "../images/editor/admin/video-player-item.png",
-    "../images/editor/publish-button.png",
-    "../images/editor/admin/admin-icon.png",
-    "../images/editor/admin/get-key.png",
-    "../images/editor/admin/OBS-configuration.png",
-    "../images/editor/admin/activate.png",
-    "../images/editor/admin/live-stream-settings.png",
     "../sdk7/media/video-playing.md#about-external-streaming",
     "../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming"
   ],
   "creator-esp/scene-editor/live-ops/scene-admin.md": [
-    "../images/editor/admin/admin-console.png",
-    "../images/editor/admin/admin-smart-item.png",
-    "../images/editor/admin/update-dependencies.png",
     "../marketplace/land-manager.md#give-permissions",
     "../marketplace/rentals.md",
     "../images/editor/admin/moderation-tools.png",
     "../images/editor/admin/admin-list.png",
-    "../images/editor/admin/video-player-item.png",
     "../scene-editor/interactivity/video-screen.md",
-    "../images/editor/admin/video-player.png",
     "../images/editor/admin/video-from-url.png",
     "../scene-editor/interactivity/video-screen.md#streaming-from-other-sources",
     "../images/editor/admin/live-stream.png",
-    "../scene-editor/live-ops/live-streaming.md",
-    "../images/editor/admin/activate.png",
-    "../images/editor/admin/announcement.png",
-    "../images/editor/admin/ban-players.png",
-    "../images/editor/admin/smart-item-actions.png"
+    "../scene-editor/live-ops/live-streaming.md"
   ],
   "creator-esp/scene-editor/publish/publish-scene.md": [
     "../sdk7/optimizing/scene-limitations.md",
     "../scene-editor/get-started/scene-editor-essentials.md#scene-details",
     "../sdk7/projects/kinds-of-project.md",
-    "../images/editor/publish-options.png",
-    "../images/editor/deploy-steps.png",
-    "../images/editor/publish-to-test-server.png",
     "../images/editor/publish-to-granted-land.png",
     "../scene-editor/configure/scene-settings.md#layout",
     "../tutorials/how-to-run-a-catalyst.md",
@@ -1075,30 +839,19 @@
     "../sdk7/interactivity/user-data.md#get-player-data"
   ],
   "creator-esp/sdk7/debugging/debug-in-preview.md": [
-    "../images/console-icon.png",
     "../sdk7/getting-started/dev-workflow.md#deploy-to-the-test-environment",
-    "../images/debug-icon.png",
-    "../images/debug-panel.png",
-    "../images/fps-debug-panel.png",
     "../scene-editor/get-started/editor-installation.md",
-    "../images/reload-button.png",
     "../sdk7/debugging/report-bug.md",
-    "../images/new-dependencies.png",
-    "../sdk7/interactivity/skybox-control.md",
-    "../images/editor/preview-button.png"
+    "../sdk7/interactivity/skybox-control.md"
   ],
   "creator-esp/sdk7/debugging/debug-in-prod.md": [
     "../sdk7/debugging/debug-in-preview.md",
     "../sdk7/publishing/publishing.md#the-test-server",
-    "../images/console-icon.png",
     "../sdk7/debugging/report-bug.md"
   ],
   "creator-esp/sdk7/debugging/report-bug.md": [
     "../sdk7/debugging/debug-in-preview.md",
-    "../sdk7/debugging/debug-in-prod.md",
-    "../images/report-bug.png",
-    "../images/submit-issue.png",
-    "../images/playground/playground.png"
+    "../sdk7/debugging/debug-in-prod.md"
   ],
   "creator-esp/sdk7/debugging/troubleshooting.md": [
     "../sdk7/getting-started/preview-scene.md#verify-deployment-success",
@@ -1113,46 +866,18 @@
   "creator-esp/sdk7/design-experience/mvp-guidelines.md": [
     "../sdk7/design-experience/design-games.md"
   ],
-  "creator-esp/sdk7/design-experience/ux-ui-guide.md": [
-    "../../images/media/ux-instructions.png",
-    "../../images/media/ux-banner.png",
-    "../../images/media/UI-Zones.png",
-    "../../images/media/ux-color-wheel2.png",
-    "../../images/media/ux-color-wheel.png",
-    "../../images/media/ux-switches.png",
-    "../../images/media/ux-active-button.png",
-    "../../images/media/ux-icons.png",
-    "../../images/media/ux-text-over-images.png",
-    "../../images/media/ux-icons2.png",
-    "../../images/media/ux-glow.png"
-  ],
   "creator-esp/sdk7/getting-started/dev-workflow.md": [
     "../get-started/editor-installation.md",
     "../worlds/about.md",
     "../3d-modeling/3d-models.md"
   ],
   "creator-esp/sdk7/getting-started/preview-scene.md": [
-    "../get-started/editor-installation.md",
-    "../images/editor/preview-button.png",
-    "../images/editor/scene-parcels-3x3.png",
-    "../images/editor/scene-parcels-toggled.png"
+    "../get-started/editor-installation.md"
   ],
   "creator-esp/sdk7/getting-started/sdk-101.md": [
     "../get-started/about-editor.md",
     "../get-started/editor-installation.md",
-    "../images/editor/create-scene.png",
-    "../images/editor/asset-packs.png",
-    "../images/editor/drop-item.gif",
     "../get-started/scene-editor-essentials.md#position-items",
-    "../images/editor/running-preview.png",
-    "../images/editor/avocado-babylon.png",
-    "../images/editor/import-avocado.png",
-    "../images/editor/avocado-in-local-assets.png",
-    "../images/editor/code-button.png",
-    "../images/editor/files-on-vs-studio.png",
-    "../images/editor/avocados.png",
-    "../images/editor/avocado-components.png",
-    "../images/editor/logs-avocado.png",
     "../3d-modeling/colliders.md",
     "../get-started/scene-editor-essentials.md#the-entity-tree",
     "../code/reference-items.md",
@@ -1262,7 +987,6 @@
     "../sdk7/architecture/data-oriented-programming.md"
   ],
   "creator-esp/sdk7/projects/kinds-of-project.md": [
-    "../images/content-types.png",
     "../sdk7/optimizing/scene-limitations.md",
     "../worlds/about.md",
     "../worlds/about.md#world-defaults",
@@ -1289,22 +1013,13 @@
     "../worlds/about.md",
     "../sdk7/projects/scene-files.md",
     "../scene-editor/get-started/about-editor.md",
-    "../images/editor/pencil-icon.png",
-    "../images/editor/metadata-ui.png",
     "../sdk7/interactivity/external-links.md",
-    "../images/media/scene-name.png",
-    "../images/media/content-moderation-flag-icon.png",
-    "../images/editor/scene-restrictions.png",
     "../sdk7/projects/portable-experiences.md",
     "../sdk7/projects/smart-wearables.md",
-    "../images/editor/spawn-point-ui.png",
     "../sdk7/3d-essentials/entity-positioning.md",
     "../sdk7/interactivity/move-player.md",
     "../sdk7/interactivity/trigger-emotes.md",
     "../sdk7/publishing/publishing.md",
-    "../images/editor/scene-parcels-3x3.png",
-    "../images/editor/scene-parcels-toggled.png",
-    "../images/editor/fixed-time-of-day.png",
     "../sdk7/programming-patterns/async-functions.md"
   ],
   "creator-esp/sdk7/projects/smart-wearables.md": [
@@ -1320,7 +1035,6 @@
   ],
   "creator-esp/sdk7/publishing/make-discoverable.md": [
     "../sdk7/projects/scene-metadata.md#categories",
-    "../images/thumbnail-image.png",
     "../deprecated/quests/overview.md"
   ],
   "creator-esp/sdk7/publishing/publishing-options.md": [
@@ -1350,60 +1064,10 @@
     "../wearables-and-emotes/wearables/wearables-overview.md"
   ],
   "creator-esp/wearables-and-emotes/emotes/avatar-rig.md": [
-    "../wearables-and-emotes/emotes/rig-features.md",
-    "../images/emotes/boneAxis.gif",
-    "../images/emotes/boneorientation.gif",
-    "../images/emotes/DeformationBones.png",
-    "../images/emotes/NonDeformationBones.png",
-    "../images/emotes/BaseSkeleton.png",
-    "../images/emotes/RigControls.png",
-    "../images/emotes/FK.png",
-    "../images/emotes/FK_GIF.gif",
-    "../images/emotes/IK.png",
-    "../images/emotes/IK_last.gif"
-  ],
-  "creator-esp/wearables-and-emotes/emotes/particles-in-emotes.md": [
-    "../images/wearables-and-emotes/particles-emotes/01_love_grenade.png",
-    "../images/wearables-and-emotes/particles-emotes/02_guitar.png",
-    "../images/wearables-and-emotes/particles-emotes/03_particles.gif",
-    "../images/wearables-and-emotes/particles-emotes/04_add_on_01.png",
-    "../images/wearables-and-emotes/particles-emotes/05_add_on_02.png",
-    "../images/wearables-and-emotes/particles-emotes/06_add_on_03.png",
-    "../images/wearables-and-emotes/particles-emotes/07_add_on_04.png",
-    "../images/wearables-and-emotes/particles-emotes/08_particles_converter.gif",
-    "../images/wearables-and-emotes/particles-emotes/09_add_on_05.png",
-    "../images/wearables-and-emotes/particles-emotes/10_add_on_06.png",
-    "../images/wearables-and-emotes/particles-emotes/11_merge_01.png",
-    "../images/wearables-and-emotes/particles-emotes/12_collection_01.png",
-    "../images/wearables-and-emotes/particles-emotes/13_collection_02.png",
-    "../images/wearables-and-emotes/particles-emotes/14_merge_armature.gif",
-    "../images/wearables-and-emotes/particles-emotes/15_armature_parent_01.png",
-    "../images/wearables-and-emotes/particles-emotes/16_armature_parent_02.png",
-    "../images/wearables-and-emotes/particles-emotes/17_merge_armature_02.gif",
-    "../images/wearables-and-emotes/particles-emotes/18_merge_armature_04.gif"
-  ],
-  "creator-esp/wearables-and-emotes/emotes/rig-features.md": [
-    "../images/media/RigTransforms.png",
-    "../images/media/AxesBoneOrientation.png",
-    "../images/media/MirrorPose.png",
-    "../images/media/BoneCollections.png",
-    "../images/media/RigControls.png",
-    "../images/media/keyframes.gif"
+    "../wearables-and-emotes/emotes/rig-features.md"
   ],
   "creator-esp/wearables-and-emotes/manage-collections/uploading-emotes.md": [
-    "../images/wearables-and-emotes/uploading-emotes/01_new_item.png",
-    "../images/wearables-and-emotes/uploading-emotes/upload_emote.png",
-    "../images/wearables-and-emotes/uploading-emotes/Edit_thumbnail.gif",
-    "../images/wearables-and-emotes/uploading-emotes/editor.png",
-    "../images/wearables-and-emotes/uploading-emotes/edit_avatar.gif",
-    "../images/wearables-and-emotes/uploading-emotes/boundaries.gif",
-    "../images/wearables-and-emotes/uploading-emotes/editor2.png",
-    "../images/wearables-and-emotes/uploading-emotes/getting_started.png",
-    "../images/wearables-and-emotes/uploading-emotes/choice.png",
-    "../images/wearables-and-emotes/uploading-emotes/custom_catalyst.png",
-    "../images/wearables-and-emotes/uploading-emotes/monoco.png",
-    "../images/wearables-and-emotes/uploading-emotes/testing.gif",
-    "../images/wearables-and-emotes/uploading-emotes/last.png"
+    "../images/wearables-and-emotes/uploading-emotes/01_new_item.png"
   ],
   "creator-esp/wearables-and-emotes/publishing/curation-committee.md": [
     "../wearables-and-emotes/publishing/publishing-collections.md",
@@ -1413,74 +1077,10 @@
     "../wearables-and-emotes/manage-collections/creating-a-collection.md",
     "../wearables-and-emotes/publishing/curation-committee.md",
     "../wearables-and-emotes/wearables/creating-wearables.md",
-    "../wearables-and-emotes/emotes/creating-emotes.md",
-    "../images/wearables-and-emotes/publishing-collections/add-collaborators.png",
-    "../images/wearables-and-emotes/uploading-wearables/25_enable_sales.png",
-    "../images/wearables-and-emotes/publishing-collections/put_item_for_sale.png",
-    "../images/wearables-and-emotes/publishing-collections/minting-items-1.png",
-    "../images/wearables-and-emotes/publishing-collections/minting-items-2.png",
-    "../images/wearables-and-emotes/publishing-collections/add-minters.png",
-    "../images/wearables-and-emotes/publishing-collections/ownership_transfer.png"
+    "../wearables-and-emotes/emotes/creating-emotes.md"
   ],
   "creator-esp/wearables-and-emotes/wearables/README.md": [
-    "../images/wearables-and-emotes/wearables-overview/00_wearables_overview.png",
-    "../images/wearables-and-emotes/creating-wearables/47_base_categories.png",
-    "../images/wearables-and-emotes/creating-wearables/48_accessories_categories.png",
     "../wearables-and-emotes/wearables/creating-wearables.md"
-  ],
-  "creator-esp/wearables-and-emotes/wearables/creating-wearables.md": [
-    "../images/wearables-and-emotes/creating-wearables/00_creating_wearables_banner.png",
-    "../images/wearables-and-emotes/creating-wearables/1_creating_wearables.png",
-    "../images/wearables-and-emotes/creating-wearables/2_avatar_head.jpeg",
-    "../images/wearables-and-emotes/creating-wearables/3_upper_body.png",
-    "../images/wearables-and-emotes/creating-wearables/4_lower_body.png",
-    "../images/wearables-and-emotes/creating-wearables/54_hands.png",
-    "../images/wearables-and-emotes/creating-wearables/5_feet.png",
-    "../images/wearables-and-emotes/creating-wearables/14_body_parts.png",
-    "../images/wearables-and-emotes/creating-wearables/12_max_width_height.png",
-    "../images/wearables-and-emotes/creating-wearables/13_max_depth.png",
-    "../images/wearables-and-emotes/creating-wearables/6_maps.png",
-    "../images/wearables-and-emotes/creating-wearables/8_normals.gif",
-    "../images/wearables-and-emotes/creating-wearables/9_backface_culling.png",
-    "../images/wearables-and-emotes/creating-wearables/10_normals_face.png",
-    "../images/wearables-and-emotes/creating-wearables/50_armature.png",
-    "../images/wearables-and-emotes/creating-wearables/53_ignore_leaf_bones.png",
-    "../images/wearables-and-emotes/creating-wearables/21_eyes.png",
-    "../images/wearables-and-emotes/creating-wearables/22_eyebrows.png",
-    "../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.jpeg",
-    "../images/wearables-and-emotes/creating-wearables/24_mouth.png",
-    "../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.jpeg",
-    "../images/wearables-and-emotes/creating-wearables/26_eyes_nodes.png",
-    "../images/wearables-and-emotes/creating-wearables/27_eyes_alpha.png",
-    "../images/wearables-and-emotes/creating-wearables/28_eyes_tone.png",
-    "../images/wearables-and-emotes/creating-wearables/29_eyes_mask.png",
-    "../images/wearables-and-emotes/creating-wearables/30_eyes_base.png",
-    "../images/wearables-and-emotes/creating-wearables/55_gloves.png",
-    "../images/wearables-and-emotes/creating-wearables/56_dclwatch.png",
-    "../images/wearables-and-emotes/creating-wearables/31_hair_base.png",
-    "../images/wearables-and-emotes/creating-wearables/32_hair_mat.png",
-    "../images/wearables-and-emotes/creating-wearables/33_hair_tx.png",
-    "../images/wearables-and-emotes/creating-wearables/49_tint_hair.gif",
-    "../images/wearables-and-emotes/creating-wearables/15_avatar_skin_mat.png",
-    "../images/wearables-and-emotes/creating-wearables/16_Avatar_MaleSkinBase.png",
-    "../images/wearables-and-emotes/creating-wearables/17_Avatar_FemaleSkinBase.png",
-    "../images/wearables-and-emotes/creating-wearables/18_skin_tone.png",
-    "../images/wearables-and-emotes/creating-wearables/20_wearables_uv.png",
-    "../images/wearables-and-emotes/creating-wearables/34_rig.gif",
-    "../images/wearables-and-emotes/creating-wearables/35_head_cuts.png",
-    "../images/wearables-and-emotes/creating-wearables/51_export_wearables.png",
-    "../images/wearables-and-emotes/creating-wearables/52_export_wearables.png",
-    "../images/wearables-and-emotes/creating-wearables/36_60_1.gif",
-    "../images/wearables-and-emotes/creating-wearables/37_60_2.gif",
-    "../images/wearables-and-emotes/creating-wearables/38_60_3.gif",
-    "../images/wearables-and-emotes/creating-wearables/39_60_4.gif",
-    "../images/wearables-and-emotes/creating-wearables/40_joints.gif",
-    "../images/wearables-and-emotes/creating-wearables/41_joint_weight.png",
-    "../images/wearables-and-emotes/creating-wearables/42_joint_weight_02.png",
-    "../images/wearables-and-emotes/creating-wearables/43_skirt.png",
-    "../images/wearables-and-emotes/creating-wearables/44_skirt.gif",
-    "../images/wearables-and-emotes/creating-wearables/45_hat.png",
-    "../images/wearables-and-emotes/creating-wearables/46_poly_count.png"
   ],
   "creator-esp/wearables-and-emotes/wearables/linked-wearables.md": [
     "../wearables-and-emotes/wearables/wearables-overview.md",
@@ -1516,25 +1116,11 @@
   "creator/sdk7/projects/scene-metadata.md": [
     "../../worlds/about.md"
   ],
-  "creator/wearables-and-emotes/emotes/creating-emotes.md": [
-    "/images/emotes/DCL_Maya_Rig.ma",
-    "/images/emotes/emoteAvatar.pkr",
-    "/images/emotes/Flag_Emote.glb",
-    "/images/emotes/Flag_Emote_Final.blend"
-  ],
-  "creator/wearables-and-emotes/wearables/README.md": [
-    "../images/wearables-and-emotes/wearables-overview/00_wearables_overview.png",
-    "../images/wearables-and-emotes/creating-wearables/47_base_categories.png",
-    "../images/wearables-and-emotes/creating-wearables/48_accessories_categories.png"
-  ],
   "player-spa/blockchain-integration/get-a-wallet.md": [
     "broken-reference"
   ],
   "player-spa/faqs/decentraland-101.md": [
     "broken-reference"
-  ],
-  "player-spa/faqs/security.md": [
-    "../images/players/domains.png"
   ],
   "player-spa/in-world/customizing-your-avatar.md": [
     "broken-reference"

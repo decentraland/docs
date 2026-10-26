@@ -24,11 +24,11 @@ Antes de enviar un reporte de bug, por favor asegúrate de lo siguiente:
 Para reportar un bug con el SDK, necesitarás una cuenta de GitHub. Sigue estos pasos:
 
 1. Visita el siguiente enlace: [New Issue Page](https://github.com/decentraland/sdk/issues/new/choose)
-2. Haz clic en **Get Started** junto a **Bug Report**. ![](../images/report-bug.png)
+2. Haz clic en **Get Started** junto a **Bug Report**. ![](../../.gitbook/assets/report-bug.webp)
 3. Completa todos los campos en la plantilla. La plantilla proporciona instrucciones para cada sección. Cuantos más detalles puedas proporcionar, más rápido nuestros desarrolladores pueden identificar y resolver el problema.
 4. Haz clic en **Submit new issue**.
 
-![](../images/submit-issue.png)
+![](../../.gitbook/assets/submit-issue.webp)
 
 Los desarrolladores pueden hacer preguntas de seguimiento en tu ticket si necesitan aclaraciones o información adicional. Recibirás notificaciones por correo electrónico de actualizaciones a tu reporte de bug.
 
@@ -53,7 +53,7 @@ Puedes pegar fragmentos de código dentro del texto de tu problema, pero la mejo
 1. Escribe tu fragmento de código a la izquierda, y ve tu scene en el panel derecho.
 2. Haz clic en el botón **Share** y pega el enlace en tu reporte de problema.
 
-![](../images/playground/playground.png)
+![](../../.gitbook/assets/playground.webp)
 
 Usar el playground simplifica la reproducción de problemas y asegura que cualquiera que abra el enlace pueda ver la misma salida, independientemente de su sistema operativo, versión de SDK, versión de Node, etc. También facilita la iteración rápida para identificar condiciones afectadas y señalar la causa del problema.
 

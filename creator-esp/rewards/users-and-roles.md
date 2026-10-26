@@ -17,7 +17,7 @@ Para agregar un usuario a la campaña:
 3. Completa el formulario ingresando la dirección de billetera del usuario (o nombre ENS) y seleccionando su rol.
 4. Haz clic en el botón **Add User** para finalizar la adición.
 
-![](../../.gitbook/assets/users.webp)
+![](../.gitbook/assets/users.webp)
 
 ### Permisos para roles
 

@@ -16,11 +16,11 @@ Los modelos 3D tienen un _mesh_ compuesto de _faces_ triangulares. Estas faces s
 
 Todos los modelos 3D en tu escena deben caber dentro de los límites de sus parcels. Si alguna parte de tus modelos se extiende más allá de estos límites al ejecutar un preview, estas partes que se extienden serán cortadas y no renderizadas.
 
-![](../images/editor/cut-train.png)
+![](../.gitbook/assets/cut-train.webp)
 
 En el editor del Creator Hub, verás el modelo teñido de rojo y su bounding box marcado en rojo.
 
-![](../images/editor/train-out-of-bounds.png)
+![](../.gitbook/assets/train-out-of-bounds.webp)
 
 {% hint style="info" %}
 **📔 Nota**: En el antiguo cliente Web de Decentraland, por razones de performance, si alguna parte de un modelo 3D estaba fuera de límites, incluso si solo era el bounding box, entonces el modelo completo no se renderizaba. A partir del cliente desktop de Decentraland 2.0, solo las partes de un modelo que están fuera de límites se cortan. Las partes del modelo que están dentro de la escena se renderizan.
@@ -34,13 +34,13 @@ Cada mesh tiene un bounding box, que rodea los límites de la forma. Para hacer 
 
 Para evitar este problema, puedes limpiar tus modelos 3D para restablecer posiciones y rotaciones de meshes para que los bounding boxes no se extiendan más allá de los meshes que envuelven.
 
-![](../images/3d-models-and-animations/3d-essentials/07-apply-rotations.gif)
+![](../.gitbook/assets/07-apply-rotations.webp)
 
 _En Blender puedes hacer eso seleccionando los objetos, presionando Ctrl+A y luego Apply "All transforms"._
 
 Por ejemplo, ten cuidado al rotar un sub-mesh cerca del borde de tu modelo. Como los bounding boxes son cubos, incluso si el mesh es redondo, las esquinas de su bounding box pueden terminar sobresaliendo después de rotarlo 45°.
 
-![](../images/3d-models-and-animations/3d-essentials/10-apply-rotation.png)
+![](../.gitbook/assets/10-apply-rotation.webp)
 
 Recomendamos que hornees la rotation y scale de cada mesh en el modelo, para asegurarte de que no haya bounding boxes no deseados extendiéndose más allá del tamaño que necesitan tener.
 
@@ -60,7 +60,7 @@ Para más información verifica todas las limitaciones de escena [aquí.](https:
 {% hint style="warning" %}
 **🔥Tip de Optimización🔥: Agregar Polygon Count** Un tip valioso es siempre mantener un seguimiento del polycount de tus modelos. Para hacer eso en blender necesitas activar statistics en el panel viewport overlays.
 
-<img src="../images/3d-models-and-animations/3d-essentials/41-stats.gif" alt="" data-size="original">
+<img src="../.gitbook/assets/41-stats.gif" alt="" data-size="original">
 {% endhint %}
 
 ### Meshes en Escenas Grandes
@@ -70,17 +70,17 @@ Al crear meshes, debemos tener en cuenta estas 2 mejores prácticas:
 * **Modularity:** Divide meshes grandes en partes más pequeñas y modulares. Por ejemplo, en lugar de tener un solo mesh para un edificio completo, el edificio podría dividirse en meshes separados para cada pared, piso y sección del edificio. Esto permite que el frustum culling de Unity funcione más efectivamente, ya que solo las partes visibles necesitan ser consideradas para rendering. También mejorará el memory foot-print, porque un mesh puede ser reutilizado varias veces para el mismo objeto en diferentes ubicaciones (para lograr esto necesitarás referenciar el mismo mesh en tu definición de escena SDK7 o usar instancias en lugar de objetos duplicados al exportar la escena desde Blender).
 * **Bounding Volume**: Asegúrate de que el bounding volume de cada objeto se ajuste lo más apretado posible. El espacio extraño en el bounding volume puede causar que los objetos se rendericen cuando no son visibles.
 
-![](../images/3d-models-and-animations/3d-essentials/40-modularity.png)
+![](../.gitbook/assets/40-modularity.webp)
 
 #### ¿Qué es Frustrum Culling?
 
 Frustum Culling es una técnica de optimización que desactiva los renderers (meshes) para objetos que están fuera del área de visualización de la cámara. Ve estos 2 ejemplos:
 
-![](../images/3d-models-and-animations/3d-essentials/18-frustum-culling.png)
+![](../.gitbook/assets/18-frustum-culling.webp)
 
 _Un nivel interior tipo laberinto. Esta vista de escena normal muestra todos los Game Objects visibles._
 
-![](../images/3d-models-and-animations/3d-essentials/19-frustum-culling-2.gif)
+![](../.gitbook/assets/19-frustum-culling-2.webp)
 
 _El frustum culling regular solo renderiza objetos dentro de la vista de la cámara. Esto es automático y siempre sucede._
 
@@ -96,11 +96,11 @@ En términos de performance, el instancing puede ser mucho más eficiente que du
 
 En general, el instancing puede ser una herramienta poderosa para mejorar el performance y la eficiencia del flujo de trabajo en Blender y en tu Escena de Decentraland, especialmente cuando se trabaja con escenas grandes y complejas.
 
-![](../images/3d-models-and-animations/3d-essentials/20-duplicate-objects.png)
+![](../.gitbook/assets/20-duplicate-objects.webp)
 
 En algunos casos, al duplicar objetos como árboles, plantas y postes de luz, el instancing puede mejorar significativamente el performance en comparación con duplicarlos. Por ejemplo, esta escena tiene catorce postes de luz, todos exactamente iguales. Sabemos que cada poste de luz tiene dos texturas diferentes, una para el poste y otra para la luz. Así que en este caso tendremos dos draw calls, uno por textura.
 
-![](../images/3d-models-and-animations/3d-essentials/21-duplicate-objects-2.png)
+![](../.gitbook/assets/21-duplicate-objects-2.webp)
 
 En Blender, cuando estás en la etapa de clonar y posicionar elementos en el espacio, tienes tres opciones. Duplicate, Instance o Merge objects.
 
@@ -114,7 +114,7 @@ Analicemos cuáles son los pros y contras de cada procedimiento.
 
 Esto creará una copia visualmente idéntica del objeto seleccionado pero serán tratados como objetos diferentes. Así que cuando lo exportes tendrá 2 draw calls por objeto, 2 \* 14 = 28 draw calls, y un uso total de disco de 320kb.
 
-![](../images/3d-models-and-animations/3d-essentials/22-duplicate-objects-3.png)
+![](../.gitbook/assets/22-duplicate-objects-3.webp)
 
 #### Instancing Objects
 
@@ -125,11 +125,11 @@ Esto creará una copia visualmente idéntica del objeto seleccionado pero serán
 
 Esto creará un nuevo objeto con todos sus datos vinculados al objeto original. Si modificas uno de los objetos vinculados en Edit Mode, todas las copias vinculadas se modifican. Las propiedades Transform todavía permanecen como copias, no links, así que aún puedes rotar, escalar y mover libremente sin afectar las otras copias.
 
-![](../images/3d-models-and-animations/3d-essentials/23-instancing.png)
+![](../.gitbook/assets/23-instancing.webp)
 
 _Cuando exportamos estos modelos, todavía tendremos el mismo número de draw calls (28). Sin embargo, nota que ahora tenemos solo un mesh, lo que reduce significativamente el uso de disco (41 kb)._
 
-![](../images/3d-models-and-animations/3d-essentials/24-instancing-2.png)
+![](../.gitbook/assets/24-instancing-2.webp)
 
 _Para mantener las cosas organizadas puedes simplemente hacer instance de collections en tu escena, de esta manera te permite controlar todas las instancias desde una sola carpeta y fuente._
 
@@ -178,7 +178,7 @@ Hay muchos addons y herramientas externas que facilitan el trabajo al crear asse
 
 Este es un modifier bien conocido que puede usarse para reducir la cantidad de tris de tu mesh mientras mantiene la estructura de superficie del modelo. Aunque esta es una herramienta muy poderosa para optimizar modelos, ten en cuenta que una vez que el modelo está decimated, la topología puede verse afectada causando una mala topología (porque rompe la geometría en piezas impredecibles). Por otro lado, la decimation convertirá los quads de tu mesh en triángulos haciéndolo difícil de modificar después de ser usado. En ese sentido **la decimation puede ser útil para modelos estáticos pero no es preferida para modelos animados.**
 
-![](../images/3d-models-and-animations/3d-essentials/42-decimate-01.png) ![](../images/3d-models-and-animations/3d-essentials/43-decimate-02.png)
+![](../.gitbook/assets/42-decimate-01.webp) ![](../.gitbook/assets/43-decimate-02.webp)
 
 Otra forma de optimizar tus meshes usando decimation es decimate el modelo y luego hacer una retopología adecuada. De esta manera puedes asegurar un resultado más predecible y una topología limpia.
 
@@ -192,17 +192,17 @@ Algunos addons de retopología que pueden ser útiles son (algunos de ellos son 
 
 El Mirror Modifier en Blender es una herramienta usada para crear modelos simétricos reflejando una mitad de un objeto en cualquier dirección (X,Y,Z). Es una gran herramienta cuando tienes modelos simétricos porque reduce el tiempo de modelado 3D, haciendo UV Unwrapping (porque solo necesitarás desenvolver una parte del modelo y el resto compartirá las mismas coordenadas UV) y también optimiza tus texturas evitando desperdiciar resolución de textura en partes que son esencialmente reflejadas.
 
-![](../images/3d-models-and-animations/3d-essentials/44-mirror-modifier.png)
+![](../.gitbook/assets/44-mirror-modifier.webp)
 
 #### Batch Rename
 
 Una herramienta muy útil para cambiar convenciones de nombres de manera fácil es usar el Batch Rename que Blender tiene integrado en su toolkit. Para acceder a él ve a _Edit_ y luego _Batch Rename_.
 
-![](../images/3d-models-and-animations/3d-essentials/45-batch-rename.png)
+![](../.gitbook/assets/45-batch-rename.webp)
 
 Selecciona los objetos que quieres cambiar el nombre y simplemente reemplaza el nombre de objeto por defecto por el nuevo. Esta herramienta proporciona diferentes métodos y tipos de asset para renombrar así que es muy flexible para cambiar los nombres también para meshes, animations, bones, etc.
 
-![](../images/3d-models-and-animations/3d-essentials/47-batch-rename-methods.png) ![](../images/3d-models-and-animations/3d-essentials/46-batch-rename-types.png)
+![](../.gitbook/assets/47-batch-rename-methods.webp) ![](../.gitbook/assets/46-batch-rename-types.webp)
 
 ### Mejores prácticas para geometrías
 

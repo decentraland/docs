@@ -6,7 +6,7 @@ description: How to get your scene featured in the mobile Discover section.
 
 The mobile Discover section is the highest-traffic surface on the Decentraland mobile app and the best way to get your scene in front of mobile players. Featured scenes are curated — there is no automatic ranking.
 
-<figure><img src="../../../mobile-featured.webp" alt="Mobile Discover featured section" width="33%"></figure>
+<figure><img src="../../.gitbook/assets/mobile-featured.webp" alt="Mobile Discover featured section" width="33%"></figure>
 
 ## How to apply
 

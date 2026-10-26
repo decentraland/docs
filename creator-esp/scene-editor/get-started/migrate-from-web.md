@@ -24,13 +24,13 @@ Para editar el código en una escena creada con el Web Editor, debes exportar la
 
 1. Haz clic en el **ícono de Descarga** en el menú superior del Web Editor mientras editas la escena.
 
-![](../images/editor/export.png)
+![](../../.gitbook/assets/export.webp)
 
 2. Esto descargará un archivo _.zip_, extráelo.
 3. Abre el **Creator Hub**, ve a la sección **Scene Editor**.
 4. Haz clic en el botón **Import** y selecciona la ruta a tu carpeta de proyecto exportada.
 
-![](../images/editor/import-scene.png)
+![](../../.gitbook/assets/import-scene.webp)
 
 Una vez que hayas terminado, puedes seguir trabajando en tu proyecto dentro del Creator Hub, con una interfaz visual que se parece mucho al Web Editor, pero mucho más pulida.
 
@@ -43,13 +43,13 @@ Puedes importar cualquier proyecto solo de código al Creator Hub. Para hacer es
 1. Abre el Creator Hub, ve a la sección **Scene Editor**.
 2. Haz clic en el botón **Import** y selecciona la ruta a tu carpeta de proyecto exportada.
 
-![](../images/editor/import-scene.png)
+![](../../.gitbook/assets/import-scene.webp)
 
 Una vez hecho, puedes comenzar a trabajar en tu proyecto dentro del Creator Hub, esto no te impide seguir usando tu editor de código favorito para editar el código de tu escena, o usar la línea de comandos para ejecutar o desplegar tu escena.
 
 Después de importar tu proyecto, cualquier contenido que se cree a través de código no será visible ni editable en el canvas del Creator Hub, lo que puede dificultar la colocación y alineación de nuevos ítems. Inicialmente verás tu escena como una cuadrícula vacía.
 
-![](../images/editor/empty-project.png)
+![](../../.gitbook/assets/empty-project.webp)
 
 En lugar de agregar manualmente tu contenido al canvas desde cero, puedes ejecutar un comando para agregarlo automáticamente por ti. Para hacer esto, asegúrate de tener la última versión del SDK instalada y ejecuta el siguiente comando en tu terminal:
 

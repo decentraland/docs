@@ -12,7 +12,7 @@ La mayoría de los smart items tienen un módulo básico donde puedes configurar
 
 El siguiente ítem tiene un componente Transform y un módulo básico que expone solo los campos básicos para configurar un botón. Pero si te desplazas hacia abajo más allá del marcador **Advanced**, encontrarás todas las configuraciones disponibles.
 
-![](../images/editor/advanced-settings-smart-item.png)
+![](../../.gitbook/assets/advanced-settings-smart-item.webp)
 
 {% hint style="info" %}
 **📔 Nota**: La mayoría de las configuraciones en el módulo básico también están disponibles en los componentes más abajo. Los cambios hechos en el módulo básico se reflejan en los componentes más abajo y viceversa, excepto en algunos casos donde las configuraciones básicas son una abstracción de múltiples configuraciones más abajo. En esos casos, cambiar las configuraciones avanzadas a valores que no son soportados por el módulo básico resultará en que el campo en el módulo básico se marque como indefinido.
@@ -47,12 +47,12 @@ Por ejemplo, para hacer que un botón abra una puerta:
 3. Selecciona el smart item para la puerta en el primer desplegable.
 4. En el segundo desplegable, selecciona la acción "Open".
 
-![](../images/editor/button-to-door.png)
+![](../../.gitbook/assets/button-to-door.webp)
 
 {% hint style="info" %}
 **💡 Tip**: En su lugar, puedes crear un nuevo evento de Trigger que solo maneje la acción de la puerta. Ambos eventos de trigger se llaman cada vez que se hace clic en el botón.
 
-<img src="../images/editor/button-to-door2.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/button-to-door2.webp" alt="" data-size="original">
 {% endhint %}
 
 Cualquier ítem puede activar cualquier acción de cualquier otro ítem, siempre que la acción esté definida. Consulta [Triggers](smart-items-advanced.md#triggers) para más formas en las que se puede activar una acción.
@@ -118,7 +118,7 @@ El componente **Actions** define acciones posibles, pero estas no hacen nada en 
 
 Para agregar una nueva acción a un ítem, haz clic en el botón **Add New Action** en la parte inferior del componente Action. Luego dale un nombre a la acción, selecciona un tipo y completa cualquier campo adicional específico para el tipo de acción.
 
-![](../images/editor/new-action.png)
+![](../../.gitbook/assets/new-action.webp)
 
 #### Triggers
 
@@ -133,7 +133,7 @@ Consulta [states and conditional logic](../scene-editor/interactivity/states-and
 
 Para agregar un nuevo trigger, haz clic en **Add New Trigger Event** en la parte inferior del componente Trigger. Luego selecciona el tipo de trigger, la entidad que deseas activar y una acción de esa entidad.
 
-![](../images/editor/new-trigger.png)
+![](../../.gitbook/assets/new-trigger.webp)
 
 {% hint style="info" %}
 **📔 Nota**: Una acción necesita estar definida en el componente [Actions](smart-items-advanced.md#actions) de la entidad antes de que puedas activarla. Los triggers solo pueden afectar entidades que tienen un componente Actions.
@@ -145,7 +145,7 @@ Usa una acción de tipo **Play Animation** para ejecutar una animación en el mo
 
 El campo **Play Mode** te permite seleccionar si una animación debe reproducirse solo una vez, o si debe seguir en bucle.
 
-![](../images/editor/play-animation.png)
+![](../../.gitbook/assets/play-animation.webp)
 
 Una vez que la acción se crea, puedes activarla a través del componente [Triggers](smart-items-advanced.md#triggers) de ese mismo ítem o de cualquier otro ítem.
 
@@ -167,7 +167,7 @@ Usa una acción de tipo **Play Sound** para reproducir un archivo de sonido. Pue
 
 Usa el campo **Play Mode** para elegir si reproducir el sonido una vez, o en bucle continuamente.
 
-![](../images/editor/play-sound.png)
+![](../../.gitbook/assets/play-sound.webp)
 
 Una vez que la acción se crea, puedes activarla a través del componente [Triggers](smart-items-advanced.md#triggers) de ese mismo ítem o de cualquier otro ítem.
 
@@ -175,7 +175,7 @@ Usa la acción **Stop Sound** para detener todos los sonidos del ítem, tanto en
 
 Para hacer que un ítem reproduzca un sonido en bucle siempre, por ejemplo para ambiente o música, es más fácil usar el componente **AudioSource**, en lugar de usar Actions y Triggers. Este componente solo requiere que proporciones una ruta a un archivo, y marques las casillas **Start Playing** y **Loop**.
 
-![](../images/editor/audiosource.png)
+![](../../.gitbook/assets/audiosource.webp)
 
 {% hint style="info" %}
 **📔 Nota**: Un smart item solo puede reproducir un sonido a la vez. Llamar a un segundo sonido interrumpirá cualquier otro sonido actualmente sonando. Esto también se aplica a sonidos del componente **AudioSource**. Si necesitas dos sonidos para sonar juntos, considera agregar una entidad invisible en la misma ubicación para contener una acción **Play Sound**.
@@ -193,13 +193,13 @@ Los tweens en rotación también pueden ser relativos o absolutos. Una rotación
 
 Usa el campo **Duration** para establecer cuánto tiempo debe tomar todo el movimiento, en segundos. Ten en cuenta que el deslizador va hasta 100 segundos, pero también puedes escribir un número mayor manualmente si es necesario.
 
-![](../images/editor/tweens.png)
+![](../../.gitbook/assets/tweens.webp)
 
 Una vez que la acción se crea, puedes activarla a través del componente [Triggers](smart-items-advanced.md#triggers) de ese mismo ítem o de cualquier otro ítem.
 
 Los tweens pueden seguir diferentes **Curve Types** que afectan la tasa de cambio con el tiempo. Una curva **linear** (predeterminada), significa que la velocidad del cambio es constante de principio a fin. Hay muchas opciones para elegir, que dibujan curvas de diferentes formas dependiendo de si el comienzo y/o el final comienzan lento, y cuánto. Una curva **easeinexpo** comienza lenta y termina rápida, aumentando la velocidad exponencialmente, por el contrario una curva **easeoutexpo** comienza rápida y termina lenta.
 
-![](../images/editor/easing-functions.jpeg)
+![](../../.gitbook/assets/easing-functions.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Experimenta con diferentes curvas de movimiento. Las diferencias a menudo son sutiles, pero interpretamos subconscientemente información de cómo se mueven las cosas, como peso, fricción, o incluso personalidad.
@@ -217,7 +217,7 @@ Cuando un ítem realiza un tween, esto afecta todo sobre el ítem. Por ejemplo, 
 
 Para activar una acción haciendo clic en un ítem, crea un trigger **On Click**. La acción se activará cada vez que el jugador haga clic en la entidad.
 
-![](../images/editor/on_click.png)
+![](../../.gitbook/assets/on_click.webp)
 
 Consulta [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md#interactivity) para más detalles.
 
@@ -235,7 +235,7 @@ Los triggers de tipo **On Spawn** activan una acción cuando se carga la escena.
 
 Por ejemplo, usa esto para hacer que una plataforma se mueva continuamente. Usa un trigger **On Spawn** para activar una acción de tween. Luego usa triggers **On State Change** para mantenerla moviéndose entre dos o más posiciones.
 
-![](../images/editor/on_spawn.png)
+![](../../.gitbook/assets/on_spawn.webp)
 
 ### Multiplayer
 

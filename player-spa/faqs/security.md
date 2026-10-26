@@ -32,7 +32,7 @@ Una de las estafas más comunes son sitios web, cuentas sociales, correos electr
 
 Otra táctica común es hacerse pasar por un cliente potencial y enviar un archivo que contiene un virus. Siempre ten mucho cuidado con los mensajes de personas que no conoces personalmente y **nunca** descargues archivos de ellos.
 
-![](../images/players/domains.png)
+![](../.gitbook/assets/domains.webp)
 
 Una buena regla es siempre tomarse el tiempo para verificar las URLs y direcciones de correo electrónico antes de tomar cualquier acción. Los sitios web verdaderos de Decentraland siempre tendrán la base [decentraland.org](http://decentraland.org) y el boletín semanal solo vendrá de hello@decentraland.org.
 

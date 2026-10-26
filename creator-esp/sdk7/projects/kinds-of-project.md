@@ -10,7 +10,7 @@ metaLinks:
 
 Hay diferentes tipos de contenido que puedes hacer para Decentraland.
 
-![](../images/content-types.png)
+![](../../.gitbook/assets/content-types.webp)
 
 ### Escenas
 

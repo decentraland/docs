@@ -8,7 +8,7 @@ metaLinks:
 
 # Wearables Overview
 
-![](../images/wearables-and-emotes/wearables-overview/00_wearables_overview.png)
+![](../../.gitbook/assets/00_wearables_overview.webp)
 
 ## ¿Qué son los Wearables?
 
@@ -34,7 +34,7 @@ Cada wearable tiene una categoría específica que determina a qué parte del cu
 
 Las diferentes categorías son:
 
-![](../images/wearables-and-emotes/creating-wearables/47_base_categories.png)
+![](../../.gitbook/assets/47_base_categories.webp)
 
 * **Skin:** Reemplaza todo el avatar (cabeza, parte superior del cuerpo, parte inferior del cuerpo y pies excepto accesorios)
 * **Head:**
@@ -50,7 +50,7 @@ Las diferentes categorías son:
 
 También hay accesorios que se pueden aplicar a diferentes áreas de un avatar. Algunos de estos accesorios pueden afectar a otros wearables. Los accesorios son:
 
-![](../images/wearables-and-emotes/creating-wearables/48_accessories_categories.png)
+![](../../.gitbook/assets/48_accessories_categories.webp)
 
 * **Mask**
 * **Eyewear**

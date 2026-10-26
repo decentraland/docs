@@ -38,7 +38,7 @@ This documentation explains the set up for Rig 1.0, its controls, and features.
 [Decentraland Blender Rig](../../images/emotes/Avatar_File.blend)
 
 {% hint style="info" %}
-If you're using Maya you can download this [Maya Rig](/images/emotes/DCL_Maya_Rig.ma) and [picker](/images/emotes/emoteAvatar.pkr) provided by [SparkleStudios](https://www.sparkles.studio/) ❤️.
+If you're using Maya you can download this [Maya Rig](../../images/emotes/DCL_Maya_Rig.ma) and [picker](../../images/emotes/emoteAvatar.pkr) provided by [SparkleStudios](https://www.sparkles.studio/) ❤️.
 {% endhint %}
 
 # **Before Starting**
@@ -164,7 +164,7 @@ You can delete animations directly from Blender File under Display Mode in the o
 Do not always edit the same animation track. Before making major changes, just duplicate the animation. That way you have a back up version in case you regret deleting or changing something. This is also a nice way to keep track of the progress made so far!
 {% endhint %}
 
-![](../../images/emotes/duplicating_animation2.webp)
+![](../../images/emotes/duplicating_animation.webp)
 
 Duplicating animation clips.
 
@@ -282,6 +282,6 @@ If you’re still not sure where to start or need some reference or inspiration,
 
 [Chic.glb](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/chic.glb)
 
-[Flag_Emote.glb](/images/emotes/Flag_Emote.glb)
+[Flag_Emote.glb](../../images/emotes/Flag_Emote.glb)
 
-[Flag_Emote.blend](/images/emotes/Flag_Emote_Final.blend)
+[Flag_Emote.blend](../../images/emotes/Flag_Emote_Final.blend)

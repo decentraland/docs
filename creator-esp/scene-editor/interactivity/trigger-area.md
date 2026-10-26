@@ -10,7 +10,7 @@ metaLinks:
 
 Para activar una acción cuando el jugador camina dentro o fuera de un área, usa el Trigger Area [Smart Item](../scene-editor/interactivity/smart-items.md).
 
-![](../images/editor/trigger.png)
+![](../../.gitbook/assets/trigger.webp)
 
 El cubo naranja que ves mientras editas tu escena solo es visible en el Scene Editor, se vuelve invisible al ejecutar un preview de la escena. Puedes ajustar y escalar fácilmente el cubo naranja para cubrir exactamente el área que necesitas.
 
@@ -18,19 +18,19 @@ Si alguna parte del cuerpo de un avatar — el jugador local o cualquier otro ju
 
 Usa los tipos de trigger **On Player Enters Area** y **On Player Leaves Area** en el componente **Triggers** del ítem. Las acciones en estos eventos de trigger se activan cada vez que el jugador entra o sale del área.
 
-![](../images/editor/on_player_enters.png)
+![](../../.gitbook/assets/on_player_enters.webp)
 
 Puedes agregar tantas acciones diferentes en el mismo evento de trigger, esto las activará todas simultáneamente.
 
 {% hint style="info" %}
 **💡 Tip**: Si las trigger areas en tu escena comienzan a interponerse en la edición de otro contenido, recuerda que siempre puedes bloquearlas y/o ocultarlas desde el [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree).
 
-<img src="../images/editor/hide-trigger.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/hide-trigger.webp" alt="" data-size="original">
 {% endhint %}
 
 También puedes agregar **Trigger conditions**, para que las acciones solo se lleven a cabo si se cumplen ciertas condiciones en la escena. Por ejemplo, podrías tener un trigger area que abre una puerta deslizante cuando el jugador camina; podrías usar una condición allí para verificar el estado de una palanca que actúa como un interruptor de energía, y solo abrir la puerta si la energía está encendida. Consulta [States and conditions](../scene-editor/interactivity/states-and-conditions.md) para más detalles.
 
-![](../images/editor/trigger-conditions-trigger-area.png)
+![](../../.gitbook/assets/trigger-conditions-trigger-area.webp)
 
 Múltiples trigger areas pueden superponerse, y no se afectan entre sí.
 

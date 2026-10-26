@@ -6,7 +6,7 @@ La red Catalyst es la infraestructura de entrega de contenido descentralizada de
 
 La red Catalyst opera como un sistema distribuido completamente en malla donde los nodos se comunican directamente entre sí para sincronizar contenido y mantener la salud de la red.
 
-![Topología de Red Catalyst](<../../.gitbook/assets/catalyst (1).webp>)
+![Topología de Red Catalyst](<../images/catalyst.webp>)
 
 ## Componentes Catalyst
 

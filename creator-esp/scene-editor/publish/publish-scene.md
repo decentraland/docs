@@ -35,7 +35,7 @@ Para publicar tu escena:
 1. Abre tu escena en el Scene Editor y haz clic en **Publish**. Esto abre una pestaña del navegador, mostrando detalles.
 2. Selecciona si quieres publicar en LAND o en un WORLD. Consulta [Kinds of projects](../sdk7/projects/kinds-of-project.md) para entender mejor las diferentes opciones.
 
-![](../images/editor/publish-options.png)
+![](../../.gitbook/assets/publish-options.webp)
 
 3. Si publicas en LAND, selecciona la ubicación en el mapa. Verás tus parcels elegibles marcados en rojo. Si publicas en un WORLD, verás tus NAMEs elegibles en un desplegable.
 
@@ -44,7 +44,7 @@ Para publicar tu escena:
 {% endhint %}
 
 4. La siguiente pantalla muestra todos los archivos que estás cargando actualmente y sus tamaños, confirma la operación.
-5. El proceso de publicación comenzará entonces. Las etapas **1** y **2** son necesarias para que tu escena sea jugable, una vez hecho aparece un botón **Jump In**. No necesitas esperar la **Etapa 3** para probar tu escena. ![](../images/editor/deploy-steps.png)
+5. El proceso de publicación comenzará entonces. Las etapas **1** y **2** son necesarias para que tu escena sea jugable, una vez hecho aparece un botón **Jump In**. No necesitas esperar la **Etapa 3** para probar tu escena. ![](../../.gitbook/assets/deploy-steps.webp)
 
 \*\*📔 Nota\*\*: Las tres etapas del despliegue involucran: - \*\*1. Uploading\*\*: Subiendo los archivos a los servidores. - \*\*2. Converting\*\*: Los modelos 3D de la escena se comprimen en Asset Bundles para un rendering más rápido. Esto puede tomar 15 minutos o menos. Puede demorarse más para escenas muy grandes, o si los servidores están actualmente ocupados convirtiendo otras escenas. - \*\*3, Optimizing\*\*: Se generan versiones de Nivel de Detalle Bajo (LOD) de tus assets. Estos solo se usan para renderizar tu escena desde lejos, lo que significa que no necesitas esperar a que esto termine para saltar y probar tu escena.
 
@@ -82,7 +82,7 @@ Si estás trabajando en un proyecto confidencial que no quieres revelar hasta el
 
 Para publicar en el servidor de prueba, haz clic en el botón **Publish** normalmente, luego selecciona **Publish to a different server** en la parte inferior. Luego selecciona **Test Server** del desplegable.
 
-![](../images/editor/publish-to-test-server.png)
+![](../../.gitbook/assets/publish-to-test-server.webp)
 
 ### Publicar en land otorgada
 

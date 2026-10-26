@@ -16,15 +16,15 @@ Define un Custom Item para reutilizarlo fácilmente en cualquiera de tus escenas
 
 Haz clic derecho en una entidad en el [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree), o selecciona varias entidades y luego haz clic derecho en ellas. Selecciona **Create Custom Item**.
 
-![](../images/editor/create-custom-item.png)
+![](../../.gitbook/assets/create-custom-item.webp)
 
 En la sección inferior de la pantalla se te pedirá que le des un nombre a tu nuevo Custom Item.
 
-![](../images/editor/name-custom-item.png)
+![](../../.gitbook/assets/name-custom-item.webp)
 
 El ítem ahora está listado en la pestaña **Custom Items**, en la parte inferior de tu pantalla. Esta pestaña solo se muestra si existe al menos un Custom Item en tu espacio de trabajo.
 
-![](../images/editor/custom-items.png)
+![](../../.gitbook/assets/custom-items.webp)
 
 Al definir un custom item, puedes seleccionar varias entidades en un mismo nivel jerárquico, pero no entidades de padres separados si no comparten un ancestro común. Cualquier entidad anidada se incluye automáticamente como parte del custom item, no necesitan ser seleccionadas.
 

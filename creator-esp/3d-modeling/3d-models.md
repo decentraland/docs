@@ -10,7 +10,7 @@ metaLinks:
 
 # Modelos 3D
 
-![](../../.gitbook/assets/01-3d-essentials-banner.webp)
+![](../.gitbook/assets/01-3d-essentials-banner.webp)
 
 Al importar modelos 3D a Decentraland, es importante asegurarse de que estén en formato glTF. Estos modelos pueden incluir una variedad de características compatibles. Esta sección trata sobre cómo hacerlos compatibles con Decentraland y seguir las mejores prácticas.
 
@@ -52,7 +52,7 @@ Blender tiene un exportador glTF nativo.
 
 Para exportar selecciona los modelos que deseas que estén contenidos en el archivo .glb luego ve a File - Export - glTF 2.0
 
-![](../../.gitbook/assets/02-export-glt-from-blender.webp) ![](../../.gitbook/assets/03-exporting-options.webp)
+![](../.gitbook/assets/02-export-glt-from-blender.webp) ![](../.gitbook/assets/03-exporting-options.webp)
 
 _En el panel lateral marca "Selected Objects" en caso de que desees exportar solo los objetos seleccionados en la escena. Además, en el menú desplegable Mesh selecciona Apply Modifiers (si fueron aplicados), luego Export._
 
@@ -108,19 +108,19 @@ Una forma rápida y fácil de previsualizar el contenido de un modelo glTF antes
 
 En el sandbox también puedes previsualizar las animaciones que están incrustadas en el modelo, selecciona cuál mostrar eligiéndola de un menú desplegable.
 
-![](../../.gitbook/assets/04-preview-gltf.webp)
+![](../.gitbook/assets/04-preview-gltf.webp)
 
 ### **Analizar glTF**
 
 Una gran herramienta para analizar tus glTFs es usar [**glTF Sample Viewer**](https://github.khronos.org/glTF-Sample-Viewer-Release/). Esta herramienta te permite inspeccionar canales, texturas, reacción a diferentes entornos de luz, previsualizar animaciones ¡y mucho más! Ideal para modelos individuales.
 
-![](../../.gitbook/assets/05-gltf-sample-viewer.webp)
+![](../.gitbook/assets/05-gltf-sample-viewer.webp)
 
 Otra herramienta útil es [**gltf.report/**](https://gltf.report/). Simplemente arrastra y suelta tus modelos en el sitio web para ver el contenido del paquete glTF y evaluar qué partes del modelo se pueden optimizar.
 
 Esta herramienta puede ser especialmente útil para archivos grandes que contienen múltiples modelos, texturas y animaciones. Por ejemplo, al organizar texturas por tamaño, puedes identificar fácilmente qué texturas están usando más recursos.
 
-![](../../.gitbook/assets/05-gltf-report.webp)
+![](../.gitbook/assets/05-gltf-report.webp)
 
 ### **Optimizar un glTF**
 

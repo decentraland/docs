@@ -10,7 +10,7 @@ metaLinks:
 
 Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla. Esto abre una serie de propiedades a nivel de escena para editar.
 
-![](../images/editor/pencil-icon.png)
+![](../../.gitbook/assets/pencil-icon.webp)
 
 Aquí puedes configurar múltiples propiedades incluyendo título y miniatura, tamaño de escena, categoría de escena y clasificación por edad, ubicaciones de spawn de jugadores y toggles de características.
 
@@ -20,7 +20,7 @@ Consulta [Scene Metadata](../sdk7/projects/scene-metadata.md).
 
 La pestaña **Details** te permite configurar varios campos sobre tu escena. Estos campos se muestran a los jugadores que podrían visitar tu escena, por ejemplo al expandir la ubicación en el mapa, cuando se les solicita teletransportarse, o al compartir un enlace a la escena en redes sociales. ¡Asegúrate de hacer que la información aquí sea atractiva y precisa para dirigir más tráfico a tu escena!
 
-![](../images/thumbnail-image.png)
+![](../../.gitbook/assets/thumbnail-image.webp)
 
 Los siguientes campos están disponibles:
 
@@ -46,14 +46,14 @@ Las escenas en Decentraland ocupan uno o varios parcels de LAND adyacentes. Cada
 
 Establece el número de parcels para las filas y columnas y haz clic en **Apply layout** para que afecte cómo se ve tu escena en el canvas del Scene Editor.
 
-![](../images/editor/scene-layout.png)
+![](../../.gitbook/assets/scene-layout.webp)
 
 Para construir algo para desplegar en parcels de LAND que posees, asegúrate de que la forma de la escena coincida con la forma de donde quieres desplegarla.
 
 {% hint style="info" %}
 **💡 Tip**: Puedes alternar cada mosaico en la cuadrícula desactivándolo haciendo clic en él. Esto te permite dibujar formas no rectangulares para el layout de tu escena.
 
-<img src="../images/editor/non-rectangular.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/non-rectangular.webp" alt="" data-size="original">
 {% endhint %}
 
 Si posees un NAME de Decentraland, también puedes desplegar tu escena en un [Decentraland World](../worlds/about.md). En ese caso, tendrás un número ilimitado de parcels, pero tendrás un límite de tamaño en MB.
@@ -64,7 +64,7 @@ Consulta [Kinds of project](../sdk7/projects/kinds-of-project.md) para entender 
 
 También puedes hacer clic en el botón **Set Coordinates (Advanced)** para listar manualmente las coordenadas de tu escena.
 
-![](../images/editor/advanced-coordinates.png)
+![](../../.gitbook/assets/advanced-coordinates.webp)
 
 En **Custom Coordinates**, escribe las coordenadas de cada uno de los parcels donde deseas publicar. Separa la coordenada x e y con una coma, y cada conjunto de coordenadas separadas por espacios. Recuerda que estas coordenadas deben ser todas adyacentes para ser válidas. Por ejemplo:
 
@@ -76,7 +76,7 @@ En el campo **Origin Point**, define cuál de las coordenadas en la escena debe 
 
 Puedes deshabilitar ciertas funcionalidades en tu escena si lo deseas, en caso de que puedan ser abusadas o entrar en conflicto con el tipo de experiencia que quieres crear.
 
-![](../images/editor/scene-restrictions.png)
+![](../../.gitbook/assets/scene-restrictions.webp)
 
 * **Silence voice chat**: Evita que los jugadores en tu escena usen el voice chat.
 * **Disable portable experiences**: Evita que los jugadores usen [Smart Wearables](../sdk7/projects/smart-wearables.md) o [Portable Experiences](../sdk7/projects/portable-experiences.md).
@@ -85,7 +85,7 @@ Puedes deshabilitar ciertas funcionalidades en tu escena si lo deseas, en caso d
 
 Los Spawn Settings en la pestaña Settings definen dónde aparecen los jugadores cuando acceden a tu escena directamente, ya sea escribiendo directamente las coordenadas en el navegador o teletransportándose.
 
-![](../images/editor/spawn-settings.png)
+![](../../.gitbook/assets/spawn-settings.webp)
 
 Tu escena podría tener objetos que pueden bloquear a los jugadores de moverse si sucede que aparecen justo sobre ellos, como árboles o escaleras, o tu escena podría tener un terreno elevado. Sería una mala experiencia para los jugadores si aparecieran sobre algo que no les permite moverse. Es por eso que tienes la opción de establecer múltiples posiciones de spawn en ubicaciones ad-hoc.
 
@@ -107,4 +107,4 @@ Puedes controlar la hora del día del skybox en la pestaña **Settings**. Puedes
 
 En el Creator Hub, abre la configuración de escena y haz clic en la pestaña **Settings** para encontrar la sección **Skybox**. Desmarca la opción **Auto** para evitar usar el ciclo día/noche y establece la hora del día que desees.
 
-![](../images/fixed-time-of-day.png)
+![](../../.gitbook/assets/fixed-time-of-day.webp)

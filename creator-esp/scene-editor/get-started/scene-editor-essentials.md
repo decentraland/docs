@@ -10,7 +10,7 @@ metaLinks:
 
 La UI del Scene Editor está dividida en algunas secciones diferentes, con diferentes propósitos.
 
-![](../images/editor/editor-layout.png)
+![](../../.gitbook/assets/editor-layout.webp)
 
 * **Canvas**: Manipula ítems directamente y ve cómo se ve tu escena.
 * **Entity tree**: Contiene una lista de todos los ítems en la escena y su jerarquía.
@@ -34,11 +34,11 @@ El suelo de la escena puede usar varias texturas diferentes. Puedes encontrarlas
 
 Los ítems de tipo **Ground** tienen un ícono de balde de pintura en ellos. Si arrastras uno de estos a tu escena, cubre todo el suelo de tu escena con copias de este ítem.
 
-![](../images/editor/ground.png)
+![](../../.gitbook/assets/ground.webp)
 
 También puedes agregar una sola copia del ítem manteniendo presionado **Shift** mientras arrastras el ground a la escena.
 
-![](../images/editor/ground-entities.png)
+![](../../.gitbook/assets/ground-entities.webp)
 
 La colección de ítems de ground aparece en el [entity tree](scene-editor-essentials.md#the-entity-tree) dentro de una carpeta. Cada uno de ellos está bloqueado, para evitar seleccionarlos accidentalmente. [Desactiva](scene-editor-essentials.md#lock-or-hide-items) los ítems para moverlos o editarlos.
 
@@ -46,13 +46,13 @@ La colección de ítems de ground aparece en el [entity tree](scene-editor-essen
 
 Navega por las categorías de asset packs temáticos en el menú de la parte inferior para encontrar diferentes ítems que puedes colocar en tu escena.
 
-![](../images/editor/asset-packs.png)
+![](../../.gitbook/assets/asset-packs.webp)
 
 También puedes usar el cuadro de búsqueda. Ten en cuenta que cuando estás dentro de un asset pack, la búsqueda solo busca en ese asset pack.
 
 Para colocar un ítem, haz clic y arrástralo desde el menú de asset pack hacia una ubicación en tu escena en el canvas.
 
-![](../images/editor/drop-item.gif)
+![](../../.gitbook/assets/drop-item.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Tus cambios se guardan automáticamente cada vez que agregas, mueves o editas propiedades de cualquiera de los ítems en tu escena.
@@ -76,13 +76,13 @@ Haz clic con el **Botón Izquierdo del Mouse** y arrastra un ítem seleccionado 
 
 También puedes usar las herramientas en el menú superior:
 
-![](../images/editor/gizmos.png)
+![](../../.gitbook/assets/gizmos.webp)
 
 * **Move tool**: Haz clic y arrastra cada flecha para mover el ítem en un solo eje a la vez. Con esta herramienta también puedes posicionar cosas por encima del nivel del suelo.
 * **Rotate tool**: Haz clic y arrastra cada uno de los aros alrededor del ítem para rotar el ítem en un eje a la vez.
 * **Scale tool**: Haz clic en el centro del gizmo y arrastra hacia adentro o hacia afuera para agrandar. Esta herramienta también te permite estirar un ítem en un solo eje para cambiar sus proporciones, para hacer esto haz clic en uno de los ejes del gizmo y arrastra.
 
-![](../images/editor/move-items.gif)
+![](../../.gitbook/assets/move-items.webp)
 
 Para tener mayor precisión al mover, rotar o escalar un ítem, presiona y mantén presionada la tecla _Shift_ mientras haces ajustes. Esto evitará el ajuste a la cuadrícula.
 
@@ -102,7 +102,7 @@ Para seleccionar múltiples ítems al mismo tiempo, presiona y mantén presionad
 
 Los smart items son ítems especiales que vienen con comportamientos interactivos incorporados. Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para más detalles.
 
-![](../images/editor/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.jpg)
 
 ### The entity tree
 
@@ -116,7 +116,7 @@ En lugar de seleccionar un ítem haciendo clic en él desde la vista 3D de la es
 
 Las entidades siguen una jerarquía que puede tener tantos niveles como quieras. Establece una relación padre-hijo entre dos entidades arrastrando un ítem sobre otro en el árbol. Una entidad hija hereda la posición del padre, por lo que cuando el padre se mueve, lleva consigo a cualquier hijo. Esto puede ser práctico mientras construyes una escena, por ejemplo puedes establecer vasos y platos como hijos de una mesa, y luego mover la mesa sin necesidad de reajustar nada más. También puede ser importante al interactuar con la escena, para que los ítems se muevan juntos.
 
-![](../images/editor/item-hierarchy.png)
+![](../../.gitbook/assets/item-hierarchy.webp)
 
 También puedes minimizar o expandir los hijos de una entidad para mantener la vista simple, esta acción no tiene efecto en la escena.
 
@@ -134,13 +134,13 @@ Puede ser útil a veces bloquear un ítem, para evitar seleccionarlo y moverlo a
 
 También puedes querer ocultar un ítem que podría obstruir tu vista mientras colocas otros. Esto es especialmente útil para ocultar el techo de un edificio, mientras trabajas en los interiores. Los ítems ocultos solo están ocultos en la ventana del canvas del Scene Editor, no para los jugadores que ingresan a la escena. Para ocultar un ítem, búscalo en el entity tree a la izquierda, pasa el mouse sobre él y selecciona el ícono de ojo. Puedes alternar este comportamiento activado y desactivado a través de ese mismo ícono.
 
-![](../images/editor/hide-lock-item.png)
+![](../../.gitbook/assets/hide-lock-item.webp)
 
 ### Panel de propiedades
 
 Selecciona un ítem haciendo clic en él en el canvas o en el entity tree. Luego verás sus componentes mostrados en el panel de propiedades, a la derecha de la pantalla. Diferentes ítems tienen diferentes componentes que cada uno muestra configuraciones específicas.
 
-![](../images/editor/components-in-editor.png)
+![](../../.gitbook/assets/components-in-editor.webp)
 
 La mayoría de los ítems no interactivos tienen los siguientes componentes:
 
@@ -157,11 +157,11 @@ Las escenas de Decentraland deben seguir ciertas limitaciones, para poder ejecut
 
 Si el contenido en tu escena excede cualquiera de estos límites, el Scene Editor lo notificará en la esquina inferior izquierda.
 
-![](../images/editor/triangle-limit1.png)
+![](../../.gitbook/assets/triangle-limit1.webp)
 
 Puedes expandir este menú para ver detalles.
 
-![](../images/editor/triangle-limit2.png)
+![](../../.gitbook/assets/triangle-limit2.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Si estás construyendo un Decentraland World, siempre puedes aumentar el [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) para aumentar tus límites.
@@ -169,7 +169,7 @@ Puedes expandir este menú para ver detalles.
 
 El contenido en una escena de Decentraland también debe evitar derramarse en parcels vecinos. Si alguna parte de los modelos en tu escena se extiende más allá de los límites, cuando abras el preview de la escena verás estas partes cortadas. El Scene Editor marcará todo el modelo en rojo, pero solo debes preocuparte realmente por las partes del modelo que se extienden más allá de los límites de la escena.
 
-![](../images/editor/out-of-bounds.png)
+![](../../.gitbook/assets/out-of-bounds.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Si los modelos que quieres mostrar no caben, puede que quieras aumentar el tamaño de tu escena. Consulta [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) para agrandar tu escena.
@@ -181,7 +181,7 @@ Incluso si toda la geometría del modelo 3D cabe en tu escena, un modelo puede e
 
 Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla. Esto abre una serie de propiedades a nivel de escena para editar.
 
-![](../images/editor/pencil-icon.png)
+![](../../.gitbook/assets/pencil-icon.webp)
 
 Aquí puedes configurar múltiples propiedades incluyendo título y miniatura, tamaño de escena, categoría de escena y clasificación por edad, ubicaciones de spawn de jugadores y toggles de características.
 

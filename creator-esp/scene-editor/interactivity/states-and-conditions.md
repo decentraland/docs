@@ -14,14 +14,14 @@ Agrega condiciones en un trigger, para que la acción solo ocurra si se cumplen 
 
 Para agregar una condición, haz clic en el ícono de tres puntos junto a **Trigger event** y selecciona **Add Trigger Condition**.
 
-![](../images/editor/condition.png)
+![](../../.gitbook/assets/condition.webp)
 
 Un solo trigger puede incluir múltiples condiciones. Haz clic en el ícono **+** para agregar más condiciones. Cuando existe más de una condición, puedes seleccionar una de estas opciones:
 
 * **All Conditions should be met (AND)**: El trigger solo ocurre si cada una de las condiciones es verdadera.
 * **Any Condition can be met (OR)**: El trigger ocurre si al menos una de las condiciones es verdadera.
 
-![](../images/editor/multiple-conditions.png)
+![](../../.gitbook/assets/multiple-conditions.webp)
 
 ### States
 
@@ -31,21 +31,21 @@ Puedes hacer las siguientes cosas con los estados:
 
 1. Usar una condición en un trigger para verificar el estado de una entidad. De esa manera, la acción solo se lleva a cabo si un estado específico está activo.
 
-![](../images/editor/condition.png)
+![](../../.gitbook/assets/condition.webp)
 
 2. Cambiar un estado a través de la acción **Set State**.
 
-![](../images/editor/set-state.png)
+![](../../.gitbook/assets/set-state.webp)
 
 3. Reaccionar a cambios en el estado a través del evento de trigger **On State Change**.
 
 Para alternar entre dos acciones, define dos triggers, cada uno con una condición que verifica un estado. Por ejemplo, las puertas tienen un trigger que activa la acción Open, con una condición que primero verifica que el estado de la puerta sea _Closed_, y otro trigger que activa la acción Close, con una condición que verifica que el estado de la puerta sea _Open_. Solo uno de los dos se activa cada vez que el jugador hace clic en la puerta.
 
-![](../images/editor/door_conditions.png)
+![](../../.gitbook/assets/door_conditions.webp)
 
 Puedes agregar tantos estados como desees a un smart item. Solo haz clic en el botón **Add New State** para agregar otro a la lista.
 
-![](../images/editor/new_state.png)
+![](../../.gitbook/assets/new_state.webp)
 
 Uno de los estados se selecciona como predeterminado, el ítem siempre comenzará en este estado cuando se ejecute la escena. Puedes asignar un estado diferente para que sea el predeterminado haciendo clic en los tres puntos junto a otro de los estados y seleccionando **Set as Default**.
 
@@ -65,7 +65,7 @@ Cuando una entidad tiene un componente Counter, puedes ejecutar las siguientes a
 
 Usa el trigger **On Counter Change** para realizar una acción cada vez que cambie el valor del contador. Agrega una condición a este trigger para que solo se active después de pasar un cierto umbral.
 
-![](../images/editor/on_counter_change.png)
+![](../../.gitbook/assets/on_counter_change.webp)
 
 En una condición, puedes verificar si el valor del contador es
 

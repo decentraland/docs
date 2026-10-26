@@ -106,7 +106,7 @@ There are LANDs that are available for Sale or Rent. In case both options are av
 
 Once you find the LAND you want to rent, you need to select the Rent Period, this is the days you will have the LAND. After selecting the Rent Period, you will see the total price to be paid for the Rent.
 
-![](../images/Rentals/Image12.webp)
+![](../images/Rentals/Image11.webp)
 
 You'll need to approve the Rent Smart Contract to take the MANA from your account before you proceed.
 

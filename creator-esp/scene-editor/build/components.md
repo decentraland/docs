@@ -10,7 +10,7 @@ metaLinks:
 
 Selecciona un ítem haciendo clic en él en el canvas o en el entity tree. Luego verás sus componentes mostrados en el panel de propiedades, a la derecha de la pantalla. Diferentes ítems tienen diferentes componentes que cada uno muestra configuraciones específicas.
 
-![](../images/editor/components-in-editor.png)
+![](../../.gitbook/assets/components-in-editor.webp)
 
 La mayoría de los ítems no interactivos tienen los siguientes componentes:
 
@@ -31,7 +31,7 @@ Puedes eliminar cualquier Component de una Entity haciendo clic en el ícono de 
 
 Para crear una nueva Entity desde cero, haz clic derecho en la Entity raíz **Scene** en el Entity tree, o en cualquier otra Entity, y selecciona **Add Child**
 
-![](../images/editor/new-entity.png)
+![](../../.gitbook/assets/new-entity.webp)
 
 Esto crea una Entity vacía con solo un Component **Transform**. La nueva entidad es hija de la entidad padre en la que hiciste clic. Luego puedes agregar cualquier otro Component que desees para darle forma a lo que desees.
 

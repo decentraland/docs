@@ -12,7 +12,7 @@ Decentraland offers different ways to stream live video into your scene:
 - **Stream** _(Advanced Mode)_: Use a streaming software like [OBS](https://obsproject.com/) to stream through Decentraland's streaming infrastructure. This mode allows you to have more control over the stream, like screen layout and audio sources.
 - **Video URL** _(Advanced Mode)_: Point to your own streaming infrastructure, by pasting the URL into the **Video URL** field.
 
-<img src="../../../.gitbook/assets/streaming-modes.webp" alt="Stream methods" width="400"/>
+<img src="../../.gitbook/assets/streaming-modes.webp" alt="Stream methods" width="400"/>
 
 Streaming works in Worlds and Genesis City, with no audience limits on the scene side.
 
@@ -44,7 +44,7 @@ Once your scene is published, you can enter as a user with admin permissions and
 
 Enter your published scene as an admin user, and open the admin panel. Select the **Video** tab, then select the **DCL Cast** functionality.
 
-   <img src="../../../.gitbook/assets/dcl-cast.webp" alt="DCL Cast" width="400"/>
+   <img src="../../.gitbook/assets/dcl-cast.webp" alt="DCL Cast" width="400"/>
 
 You'll see two links that you can copy and share with others.
 
@@ -66,13 +66,13 @@ When ready to stream, click the **Activate** button to make the stream visible t
 
 If for any reason you need to reset the room, click the **Reset Room** button to generate a new one. Anyone who's currently streaming will be disconnected.
 
- <img src="../../../.gitbook/assets/reset-room.webp" alt="Reset room" width="150"/>
+ <img src="../../.gitbook/assets/reset-room.webp" alt="Reset room" width="150"/>
 
 ### Using the DCL Cast app
 
 When someone pastes the speaker link into a browser, they'll see a screen like this:
 
- <img src="../../../.gitbook/assets/dcl-cast-landing.webp" alt="DCL Cast app" width="400"/>
+ <img src="../../.gitbook/assets/dcl-cast-landing.webp" alt="DCL Cast app" width="400"/>
 
 The browser will ask for permission to share your camera and microphone. You can also configure the different input devices to use for the stream.
 
@@ -86,7 +86,7 @@ Once streaming, the app is similar to various familiar video conferencing apps, 
 
 The chat is read-only, and listens to all messages sent by players inside the scene in Decentraland. This is great to keep in touch with the audience, even if you're streaming from a different device.
 
- <img src="../../../.gitbook/assets/dcl-cast-app.webp" alt="DCL Cast app" width="700"/>
+ <img src="../../.gitbook/assets/dcl-cast-app.webp" alt="DCL Cast app" width="700"/>
 
 On the **Participants** tab you can see three lists:
 
@@ -94,7 +94,7 @@ On the **Participants** tab you can see three lists:
 - **Viewers**: The people who are currently watching the stream from a browser.
 - **In-world participants**: The players who are currently inside the scene, watching the stream in-world.
 
- <img src="../../../.gitbook/assets/participants.webp" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/participants.webp" alt="Participants tab" width="200"/>
 
 If multiple speakers are present in a DCL Cast session, players in-world will hear the voices of all speakers, and the see the video will automatically switch to show whoever is currently emitting sound, to always show who's speaking.
 

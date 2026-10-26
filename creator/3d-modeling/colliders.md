@@ -18,7 +18,7 @@ For an object to be recognized by a Decentraland scene as a collider, all it nee
 
 For example, to create a collider for a lamp post you can create a simple box object surrounding its trunk. Players in the scene won’t see this box, but it will block their path.
 
-![](../../.gitbook/assets/25-collider.webp)
+![](../images/3d-models-and-animations/3d-essentials/25-collider.webp)
 
 In this case, we can name the box “LampPos&#x74;_&#x63;ollider” and export both the tree and the box as a single \_\_gltf model. The \*\_\_collider_\* tag alerts the Decentraland world engine that the box object belongs to the collection of colliders, making the collider mesh invisible.
 
@@ -45,12 +45,12 @@ Using a ramp object also avoids creating unnecessary geometry, saving room for o
 
 1. Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
 
-![](../../.gitbook/assets/26-collider-2.webp)
+![](../images/3d-models-and-animations/3d-essentials/26-collider-2.webp)
 
 2. Name the ramp object something similar to &#x53;_&#x74;air\_collider_. It must end in \__collider_.
 3. Overlay the ramp object to the stairs so that they occupy the same space.
 
-![](../../.gitbook/assets/27-collider.webp)
+![](../images/3d-models-and-animations/3d-essentials/27-collider.webp)
 
 4. Export both objects together as a single _glTF_ model.
 
@@ -61,7 +61,7 @@ Now when players view the stairs in your scene, they’ll see the more elaborate
 * Prefer using **Box**, **Sphere** and **Capsule** collision meshes, because it will be more performant on loading and at runtime.
 * Consider approximating complex collision mesh by several Primitive collision meshes (**Box**/**Sphere**/**Capsule**)
 
-![](../../.gitbook/assets/28-optimizing-colliders.webp)
+![](../images/3d-models-and-animations/3d-essentials/28-optimizing-colliders.webp)
 
 _Example: Collider for Ring can be composed as several Capsule or Box colliders_
 
@@ -71,7 +71,7 @@ _Example: Collider for Ring can be composed as several Capsule or Box colliders_
 
 If using arbitrary mesh collider is the only possibility, then make collision mesh Convex (not Concave). It will prevent strange physics situations, like stuttering, stuckings inside the collider or clipping through it. Note, that it is often possible to mimic concave mesh by several convex meshes.
 
-![](../../.gitbook/assets/29-convex-collider.webp)
+![](../images/3d-models-and-animations/3d-essentials/29-convex-collider.webp)
 
 ## Collision Naming
 

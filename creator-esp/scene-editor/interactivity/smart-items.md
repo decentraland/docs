@@ -12,11 +12,11 @@ Algunos de los ítems en el catálogo del Scene Editor son **Smart Items**. Los 
 
 Puedes reconocer estos ítems en el explorador de asset packs porque tienen un ícono de rayo y un fondo de color diferente.
 
-![](../images/editor/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.jpg)
 
 Puedes reconocer qué ítems en tu escena son smart porque tienen el ícono de rayo junto a ellos en el entity tree.
 
-![](../images/editor/smart-item-icon.png)
+![](../../.gitbook/assets/smart-item-icon.webp)
 
 ### Usar ítems
 
@@ -57,7 +57,7 @@ Cada ítem tiene sus propias configuraciones específicas, que pueden variar de 
 
 Todos los ítems tienen un **Advanced Mode** que te permite configurar casi cualquier cosa sobre ellos. Esto incluye cosas como qué sonidos se reproducen, o en qué dirección se mueve una plataforma. También puedes agregar acciones personalizadas que incluyen todo tipo de cosas, como teletransportar al jugador, reproducir animaciones de avatar, adjuntar un ítem a las manos del jugador, etc. También puedes agregar lógica condicional, para solo activar algo en ciertos escenarios. Consulta [Smart Items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
 
-![](../images/editor/advanced-mode.png)
+![](../../.gitbook/assets/advanced-mode.webp)
 
 ### Llamar una acción en otro ítem
 
@@ -65,11 +65,11 @@ Los smart items pueden activar acciones en otros smart items, para que sucedan c
 
 Por ejemplo, aquí hay un botón que abre o cierra una puerta. Cada vez que se presiona el botón, la puerta se abrirá o cerrará.
 
-![](../images/editor/button-to-door.png)
+![](../../.gitbook/assets/button-to-door.webp)
 
 Aquí hay una palanca que abre una puerta cuando se activa, y cierra esa puerta cuando se desactiva.
 
-![](../images/editor/lever-to-door.png)
+![](../../.gitbook/assets/lever-to-door.webp)
 
 Puedes agregar tantas acciones diferentes de diferentes ítems para que se activen juntas. Solo haz clic en **+ Assign Action**.
 
@@ -87,11 +87,11 @@ Algunos smart items tienen características únicas que los hacen muy útiles pa
 
 Usa el smart item Trigger Area para activar una acción cuando el jugador camina hacia un área.
 
-![](../images/editor/trigger.png)
+![](../../.gitbook/assets/trigger.webp)
 
 Usa los tipos de trigger **On Player Enters Area** y **On Player Leaves Area** en los componentes **Triggers** del ítem. Las acciones en estos eventos de trigger se activan cada vez que el jugador entra o sale del área.
 
-![](../images/editor/on_player_enters.png)
+![](../../.gitbook/assets/on_player_enters.webp)
 
 Consulta [Trigger area](../scene-editor/interactivity/trigger-area.md) para más información.
 
@@ -99,7 +99,7 @@ Consulta [Trigger area](../scene-editor/interactivity/trigger-area.md) para más
 
 Una colección de formas invisibles que pueden bloquear a los jugadores de caminar a través o hacer clic a través de un área.
 
-![](../images/editor/invisible-walls.png)
+![](../../.gitbook/assets/invisible-walls.webp)
 
 Estos muros invisibles pueden ser útiles al importar un modelo 3D que no tiene un collider mesh, o cuando quieres crear un muro que no sea visible para el jugador.
 
@@ -109,7 +109,7 @@ Consulta [Colliders](../sdk7/3d-essentials/colliders.md) para más información.
 
 Un cubo invisible que puede ser clickeado por los jugadores para activar acciones en cualquier otro smart item. Este ítem puede ser habilitado o deshabilitado por cualquier otro smart item, cuando está deshabilitado no será clickeable. También puedes establecer el texto que los jugadores ven al apuntar su cursor a él.
 
-![](../images/editor/click-area.png)
+![](../../.gitbook/assets/click-area.webp)
 
 #### Reproducir videos
 
@@ -156,11 +156,11 @@ Para mostrar un NFT en un marco de cuadro, usa el smart item **NFT**. Debes prop
 * NFT Collection Contract: El smart contract para la colección de NFT.
 * Token ID: El token ID de este NFT coleccionable en particular.
 
-![](../images/editor/nft-shape.png)
+![](../../.gitbook/assets/nft-shape.webp)
 
 Puedes obtener esta información desde [OpenSea](https://opensea.io), verificando la pestaña **Details** bajo la imagen del NFT.
 
-![](../images/editor/opensea.png)
+![](../../.gitbook/assets/opensea.webp)
 
 {% hint style="info" %}
 **📔 Nota**: También puedes obtener esta información de la URL de opensea. Por ejemplo, si la URL del NFT es la siguiente:
@@ -182,28 +182,28 @@ Consulta [Display an NFT](smart-items.md) para más detalles.
 
 #### Barras de salud
 
-![](../images/editor/health-bar.png)
+![](../../.gitbook/assets/health-bar.webp)
 
 El smart item **Health Bar** es un gran bloque de construcción para varias mecánicas de juego. Se puede usar de varias maneras:
 
 *   Anídalo bajo el **Player** para mostrar la salud del jugador sobre el avatar
 
-    ![](../images/editor/nested-under-player.png)
+    ![](../../.gitbook/assets/nested-under-player.webp)
 *   Anídalo bajo la **Camera** para mostrarlo fijo en la UI
 
-    ![](../images/editor/nested-under-camera.png)
+    ![](../../.gitbook/assets/nested-under-camera.webp)
 *   Anídalo literalmente bajo cualquier ítem en la escena para hacer seguimiento de la salud de ese ítem
 
-    ![](../images/editor/nested-under-barrel.png)
+    ![](../../.gitbook/assets/nested-under-barrel.webp)
 
 Otros ítems pueden interactuar con la barra de salud para agregar o restar salud de ella.
 
 *   Ítems como los **Spikes** o **Robot Enemy** pueden reducir la salud
 
-    ![](../images/editor/reduce-health.png)
+    ![](../../.gitbook/assets/reduce-health.webp)
 *   Ítems como **First Aid** o el **Healing Pad** pueden restaurarla.
 
-    ![](../images/editor/restore-health.png)
+    ![](../../.gitbook/assets/restore-health.webp)
 
 Debes configurar la Health Bar para definir qué sucederá cuando la salud sea igual a 0. Podrías reaparecer al jugador en la posición de un smart item **Respawn Pad**, restablecer el contador para su puntuación, reaparecer cualquier enemigo, mostrar un texto UI, o lo que tenga sentido en tu lógica de juego.
 
@@ -211,7 +211,7 @@ También puedes activar acciones cuando la salud esté por debajo de cierto valo
 
 ¡Las barras de salud se pueden configurar para afectar cualquier cosa! Por ejemplo, agrega una barra de salud anidada bajo el smart item **Wooden Door**. Esta barra puede tener su salud reducida por el jugador usando el smart item **Sword**, pero también desde una explosión del **Barrel** o el ataque del **Robot Enemy**. Para que esto funcione, configura la barra de salud para que realice una acción en su ítem padre cuando su valor sea 0.
 
-![](../images/editor/wall-with-health.png)
+![](../../.gitbook/assets/wall-with-health.webp)
 
 Las armas como la **Sword** pueden ser recogidas por el jugador, y luego usadas para causar daño en cualquier otro ítem con una barra de salud que esté cerca del jugador al realizar la acción.
 

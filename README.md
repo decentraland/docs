@@ -154,6 +154,28 @@ Reference images using relative paths:
 
 ## 🤝 Contributing
 
+### Maintaining the example catalog
+
+Edit example pages and category metadata in [`creator/tutorials/examples/`](creator/tutorials/examples/). See the [catalog editing instructions](creator/tutorials/examples/AGENTS.md) for required fields, ownership labels, and code highlights. The generator and YAML parser live in [`scripts/example-catalog/`](scripts/example-catalog/); tests live in [`test/example-catalog.test.mjs`](test/example-catalog.test.mjs).
+
+With Node.js 22 or newer, run these commands from the repository root:
+
+```bash
+npm ci --ignore-scripts
+npm run generate:examples
+npm test
+```
+
+Commit the generated overview, `catalog.json`, category landing pages, detail-page context and highlight blocks, and `creator/SUMMARY.md` alongside your entry changes. Keep the public JSON and images with the content. After committing, run `npm run check:examples` to verify generation leaves those files unchanged; CI runs the same check. Do not manually edit generated sections.
+
+### Validating local links
+
+Run `npm run check:links` to validate local links in every tracked or unignored Markdown file, including translations and contributor instructions. CI runs this on every pull request and push to `main`, including asset-only changes that could break links from unchanged pages.
+
+The check covers Markdown links and images (including reference links), HTML `href`, `src`, and `poster` attributes, and GitBook file/embed/image URLs. Paths are case-sensitive; relative paths resolve from the Markdown file and leading `/` paths resolve from the repository root. It checks file/directory existence, not heading fragments or external URLs, and ignores front matter and code samples.
+
+The initial scan found 1,134 existing broken links. These are explicitly recorded in [`scripts/local-links-baseline.json`](scripts/local-links-baseline.json); no Markdown directories are excluded. CI fails for new broken links and stale baseline entries. When repairing a known link, remove its exact entry from that file. Do not add entries to accommodate new failures. Run `npm run check:links -- --strict` to fail on the entire backlog, or append `--json` for a machine-readable report. The ordinary check reports how many known failures remain; passing it does not mean all historical links have been repaired.
+
 ### Quick Start
 
 1. **Clone the repository**

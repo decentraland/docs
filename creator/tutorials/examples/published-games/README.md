@@ -9,6 +9,16 @@ order: 2
 
 Released Decentraland scenes that demonstrate real-world mechanics.
 
+{% hint style="warning" %}
+**Community-maintained code — review before use**
+
+Community projects listed here are maintained outside the Decentraland GitHub organization. Their source code and live deployments may change independently.
+
+Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
+
+[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project's security policy. Do not include exploit details or credentials in public issues.
+{% endhint %}
+
 | Game                                                                   | What it demonstrates                                                                                                                      | Maintained by                 | Tags                                                                                                                        | Source                                                                          |
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [Alien Scrapyard](./alien-scrapyard.md)       | Cooperative building rounds with data-defined construction puzzles and phase-driven cinematic cameras.                                    | Community · procesista        | `game`, `multiplayer`, `timed-rounds`, `camera`, `cinematic`                                                                | [Open repository](https://github.com/procesista/Alienscrap)                     |

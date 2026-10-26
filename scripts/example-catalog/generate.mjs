@@ -43,6 +43,23 @@ function renderMaintenance(example) {
 }
 
 
+function renderCommunityWarning(collection = false) {
+	return [
+		'{% hint style="warning" %}',
+		'**Community-maintained code — review before use**',
+		'',
+		collection
+			? 'Community projects listed here are maintained outside the Decentraland GitHub organization. Their source code and live deployments may change independently.'
+			: 'This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently.',
+		'',
+		'Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.',
+		'',
+		"[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project's security policy. Do not include exploit details or credentials in public issues.",
+		'{% endhint %}',
+	].join('\n')
+}
+
+
 // MARK: updateExampleContext
 async function updateExampleContext(example) {
 	const pagePath = join(examplesDirectory, example.fileName)
@@ -50,6 +67,8 @@ async function updateExampleContext(example) {
 	const markers = /<!-- example-context:start -->[\s\S]*?<!-- example-context:end -->/
 	const context = [
 		'<!-- example-context:start -->',
+		'## Project information',
+		'',
 		`**Maintained by:** ${renderMaintenance(example)}`,
 		'',
 		`[${example.maintenance === 'community' ? 'View upstream source' : 'View source'}](${example.source})`,
@@ -57,12 +76,7 @@ async function updateExampleContext(example) {
 		example.license.status === 'identified'
 			? `**License:** [${example.license.name}](${example.license.url}). Check upstream terms before reuse; code and assets may have different terms.`
 			: '**License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.',
-		...(example.maintenance === 'community' ? [
-			'',
-			'This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.',
-			'',
-			'[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project\'s security policy. Do not include exploit details or credentials in public issues.',
-		] : []),
+		...(example.maintenance === 'community' ? ['', renderCommunityWarning()] : []),
 		'<!-- example-context:end -->',
 	].join('\n')
 
@@ -78,9 +92,15 @@ async function updateExampleContext(example) {
 	const highlights = [
 		'<!-- example-highlights:start -->',
 		...(example.highlights.length ? [
-			'### Explore the code', '',
+			'## Explore the code', '',
 			'These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.', '',
-			...example.highlights.map(highlight => `- **${highlight.title}.** ${highlight.description} ${highlight.context} Sources: ${highlight.references.map(reference => `[${reference.label}](${reference.url})`).join('; ')}.`),
+			...example.highlights.flatMap(highlight => [
+				`### ${highlight.title}`, '',
+				highlight.description, '',
+				`**Project context:** ${highlight.context}`, '',
+				'**Source references:**', '',
+				...highlight.references.map(reference => `- [${reference.label}](${reference.url})`), '',
+			]),
 		] : []),
 		'<!-- example-highlights:end -->',
 	].join('\n')
@@ -128,6 +148,8 @@ function renderCatalogTables(
 				`## ${category.name}`,
 				'',
 				category.description,
+				'',
+				renderCommunityWarning(true),
 				'',
 				renderRow(headings),
 				renderRow(widths.map(width => '-'.repeat(width))),

@@ -176,6 +176,16 @@ The check covers Markdown links and images (including reference links), HTML `hr
 
 The initial scan found 1,134 existing broken links. These are explicitly recorded in [`scripts/local-links-baseline.json`](scripts/local-links-baseline.json); no Markdown directories are excluded. CI fails for new broken links and stale baseline entries. When repairing a known link, remove its exact entry from that file. Do not add entries to accommodate new failures. Run `npm run check:links -- --strict` to fail on the entire backlog, or append `--json` for a machine-readable report. The ordinary check reports how many known failures remain; passing it does not mean all historical links have been repaired.
 
+### Validating media formats
+
+Use **SVG** for vector images, **WebP** for still or animated raster images, and **WebM** for video. Run `npm run check:media` before committing assets. CI runs the same check on every pull request and push to `main`.
+
+The script scans all tracked and unignored files using the `file` utility (preinstalled on macOS and the Ubuntu CI runner). It checks both the extension and detected content: renaming a PNG to `.webp` or hiding it under another extension fails. Non-media documents, audio files, models, and archives are outside this image/video policy. It does not inspect remote media or files inside archives. SVG/WebP/WebM extensions must match their content; codec compatibility is not checked. Symlinks are unsupported.
+
+The initial optimization retained 374 PNG/JPEG/GIF files where lossless conversion was larger, failed exact verification, or the source was invalid, plus two existing ICO favicons. These 376 files are recorded by exact path and SHA-256 in [`scripts/media-format-exceptions.json`](scripts/media-format-exceptions.json). Only their unchanged contents are accepted. New files, copies at another path, and modifications must use an allowed format. When deleting or converting a legacy asset, remove its exception; stale entries fail CI. Do not add exceptions for new assets.
+
+Convert assets with an appropriate encoder rather than changing their extension, preserve useful detail and animation behavior, and update all references. Run `npm run check:links` after replacing files.
+
 ### Quick Start
 
 1. **Clone the repository**

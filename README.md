@@ -186,6 +186,16 @@ The initial optimization retained 374 PNG/JPEG/GIF files where lossless conversi
 
 Convert assets with an appropriate encoder rather than changing their extension, preserve useful detail and animation behavior, and update all references. Run `npm run check:links` after replacing files.
 
+### Checking for unused assets
+
+Run `npm run check:assets` to check whether repository assets are referenced by at least one Markdown file. CI runs this on every pull request and push to `main`, so removing a page's last asset reference is checked even when the asset itself has not changed.
+
+The inventory includes image, video, audio, font, model, archive and document asset extensions, all non-Markdown files under `images/` or `assets/`, and JSON downloads in documentation spaces. It excludes tooling/configuration files and does not inspect files inside archives. The check resolves Markdown links/images, reference-style links, HTML `src`/`href`/`poster`, GitBook file/embed/image URLs, and string paths in YAML front matter. Current `main` GitHub/raw URLs pointing into this repository also count. Paths must match exactly; mentioning a filename in prose or a code sample, or linking to its directory, does not count as using the asset.
+
+The initial inventory found **3,796 unreferenced assets out of 4,573**. They are recorded in [`scripts/unreferenced-assets-baseline.json`](scripts/unreferenced-assets-baseline.json). CI fails on new unreferenced assets and stale baseline entries. Add a useful reference or remove the unused asset; when fixing an existing entry, remove it from the baseline. Do not add entries for new unused assets. This check does not delete files automatically, and passing it does not mean the historical backlog has been cleaned up.
+
+Run `npm run check:assets -- --strict` to fail on every unreferenced asset, or `npm run check:assets -- --json` to produce a complete machine-readable inventory, including the backlog.
+
 ### Quick Start
 
 1. **Clone the repository**

@@ -25,11 +25,11 @@ Click the arrow next to the **Play** button to open the **Play Options** menu. T
 
 ### Desktop Client options
 
-Hover over **Desktop Client** in the **Play Options** menu to open a submenu with the settings that only affect the desktop client:
+Select **Desktop Client** in the **Play Options** menu, then hover over it to open a submenu with the settings that only affect the desktop client:
 
 - **Enable Landscape Terrains**: Toggles the landscape around the scene. This is enabled by default, disable it to lower the scene's memory footprint. It's greyed out when the scene's own settings already hide the terrain.
-- **Multi-Instance Preview**: Lets several Explorer windows run at the same time, so you can [test a multiplayer scene locally](#test-a-multiplayer-scene-locally). With this on, each window asks you to sign in, so you can connect as a different player in each one.
-- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project's SDK version supports it. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
+- **Multi-Instance Preview**: Lets several Explorer windows run at the same time, so you can [test a multiplayer scene locally](#test-a-multiplayer-scene-locally). With this on, each window asks you to sign in, so you can connect as a different player in each one. Only visible when your project uses SDK 7.20.4 or later.
+- **Enable MCP Server**: Launches the Explorer with the MCP automation server enabled, so AI agents can see and control the running preview. Only visible when your project uses SDK 7.25.0 or later. See [Vibe Coding with AI](vibe-coding.md#let-the-ai-see-your-scene-in-world) for the full workflow.
 - **Compress Assets**: Previews the scene with locally generated asset bundles, matching how it renders in production after [asset bundle conversion](../optimizing/performance-optimization.md#asset-bundle-conversion). The first run converts all assets, which can take several minutes on large scenes. Only visible when your platform and your project's SDK version support it. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
 The scene's console output doesn't need a menu option. The Creator Hub opens it for you every time you run a preview. See [The Creator Hub console](#the-creator-hub-console).
@@ -68,7 +68,7 @@ You can add the following flags to the `npm run start` command to change its beh
 - `-- -w` or `-- --no-watch` to not watch for filesystem changes and avoid hot-reload whenever the scene's code changes.
 - `-- --ci` To run the parcel previewer on a remote unix server.
 - `-- --multi-instance` Allow running multiple Explorer instances simultaneously.
-- `-- --local-ab` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Compress Assets** option in Creator Hub. Only available with the Desktop Client (not the Bevy Web client). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
+- `-- --asset-bundles` Preview with optimized asset bundles. The Desktop Explorer converts the scene's assets into asset bundles itself during preview, matching how the scene renders in production. Equivalent to the **Compress Assets** option in Creator Hub. Only available with the Desktop Client (not the Bevy Web client). See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 - `-- --no-client` Suppress every auto-launch (desktop Explorer deeplink, browser open, mobile QR). The file watcher still notifies a desktop Explorer if it connects on its own. Useful when an external tool owns the Explorer process.
 - `-- --mcp` Enable the MCP server in the Explorer (forwarded as a deep link parameter).
 - `-- --mcp-port` Port for the MCP server in the Explorer (forwarded as a deep link parameter). For example: `npm run start -- --mcp --mcp-port 3001`.
@@ -91,7 +91,7 @@ This option only affects your local preview. The published scene is always conve
 To enable it:
 
 - **In the Creator Hub**: open **Play Options** next to the **Play** button, hover over **Desktop Client**, and check **Compress Assets**.
-- **From the CLI**: run `npm run start -- --local-ab`.
+- **From the CLI**: run `npm run start -- --asset-bundles`.
 
 ![](../../images/editor/optimize-assets-checkbox.png)
 

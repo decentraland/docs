@@ -10,7 +10,7 @@ Materials can be applied to entities that use primitive shapes (cube, sphere, pl
 
 _glTF_ models include their own materials that are implicitly imported into a scene together with the model. To modify or override these materials, use the `GltfNodeModifiers` component. See [Modify glTF materials](materials.md#modify-gltf-materials) for more details.
 
-When importing a 3D model with its own materials, keep in mind that not all shaders are supported by the Decentraland engine. Only standard materials and PBR (physically based rendering) materials are supported. See [external 3D model considerations](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/materials/README.md) for more details.
+When importing a 3D model with its own materials, keep in mind that not all shaders are supported by the Decentraland engine. Only standard materials and PBR (physically based rendering) materials are supported. See [external 3D model considerations](https://github.com/decentraland/docs/blob/main/creator/3d-modeling/materials.md) for more details.
 
 There are different types of supported materials:
 

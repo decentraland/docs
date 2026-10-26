@@ -45,7 +45,7 @@ Apply it to the rotation, whether you work in quaternions or Euler angles. The s
 
 For example, a pasted arm reading X -0.5, Z 0.1 becomes X 0.5, Z -0.1.
 
-This gets the whole arm chain exactly right, down to 0.000 m. Measured in Blender 5.1.1 against `Avatar_File.blend` on 2026-10-07.
+This gets the whole arm chain exactly right.
 
 **Why the upper body is different:** the right leg's bone frames are a plain mirror of the left ones, which is what **Paste X-Flipped** assumes. The right arm's frames mirror the left with the local **Z** axis flipped instead of X, so the flipped paste comes out rotated the wrong way. Negating X and Z corrects exactly that.
 

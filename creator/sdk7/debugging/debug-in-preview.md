@@ -118,7 +118,7 @@ The in-world time of day has a big impact on how 3d models look. The color of th
 
 Check that your scene looks good at all times of day by switching the game clock to different values. Click the **skybox time** icon on the left panel of the screen to set any time you prefer. If this slider is grayed out, make sure that the **Auto** option is disabled.
 
-<figure><img src="https://github.com/decentraland/docs-creator/blob/main/images/media/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
+<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
 
 Your 3d model's materials might not look the same as they did in the modeling tool you created it with. This is to be expected, as all 3d rendering engines have subtle differences in how they deal with light and materials.
 
@@ -130,7 +130,7 @@ If you launch a scene preview and open it in two (or more) different explorer wi
 
 Interact with the scene on one window, then switch to the other to see that the effects of that interaction are also visible there.
 
-Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads. You may need to log out and log in again to the second window to select a different account.
+Using the Creator Hub, turn on **Multi-Instance Preview** in the **Desktop Client** submenu of **Play Options**, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads. You may need to log out and log in again to the second window to select a different account.
 
 ![](../../images/editor/preview-button.png)
 

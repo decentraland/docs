@@ -263,8 +263,11 @@ Set `targetEntity` to `engine.PlayerEntity` to follow the avatar rather than the
 // A label that turns to face the avatar, not the camera
 Billboard.create(label, {
 	targetEntity: engine.PlayerEntity,
+	billboardMode: BillboardMode.BM_Y,
 })
 ```
+
+The avatar's position is at its feet, so a label above its head would tilt down toward them. `BM_Y` keeps the label upright and only turns it left and right.
 
 ### Which way a billboard faces
 

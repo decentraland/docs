@@ -250,9 +250,9 @@ A panel opens only when the call is a direct response to something the player ju
 
 **Works:**
 
-* Clicking a 3D entity, with `pointerEventsSystem.onPointerDown`.
+* Clicking a 3D entity, with `pointerEventsSystem.onPointerDown` or `pointerEventsSystem.onPointerUp`.
 * Clicking an element of your scene's UI, with `onMouseDown`.
-* Pressing one of the activation buttons, `E`, `F` or `1` to `4`, detected with `inputSystem.isTriggered(..., PointerEventType.PET_DOWN)` (`IA_PRIMARY`, `IA_SECONDARY`, `IA_ACTION_3` to `IA_ACTION_6`).
+* Pressing or releasing one of the activation buttons, `E`, `F` or `1` to `4`, detected with `inputSystem.isTriggered` and `PointerEventType.PET_DOWN` or `PointerEventType.PET_UP` (`IA_PRIMARY`, `IA_SECONDARY`, `IA_ACTION_3` to `IA_ACTION_6`).
 
 **Does not work:**
 
@@ -277,43 +277,58 @@ A panel opens only when the call is a direct response to something the player ju
 **Note:** If nothing opens and you see no error, check `openResult`. `REJECTED_NO_USER_GESTURE` (5) means your call ran outside a player action, usually because it sits in `main()`, in a timer, or after an `await`.
 {% endhint %}
 
-### Wait for a panel to close
+### Wait until the player closes a panel
 
-`openExplorerUiAndWait` opens a panel and gives you back a promise that resolves once the player closes it. Use it when your scene should pause, or react, while the player is off in the backpack or the map.
+`openExplorerUiAndWait()` opens a panel and hands you a promise that resolves once the player closes it. Use it when your scene should carry on only after the player is done, for example after sending them to the backpack to put on a wearable.
 
 ```ts
-// Open the backpack, then react once the player closes it
 import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
 
+// Open the backpack, then continue once the player closes it
 async function openBackpack() {
-	const outcome = await openExplorerUiAndWait(ExplorerUi.EU_BACKPACK)
+	const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_BACKPACK })
 
 	if (outcome.$case === 'closed') {
 		console.log('The player closed the backpack')
-	} else if (outcome.$case === 'notOpened') {
-		console.log('Nothing opened:', outcome.openResult)
 	}
 }
 ```
 
-Call `openBackpack()` from a click handler, the same as `openExplorerUi`. The `await` happens inside the function, after the call, so the player action still counts.
+Call `openBackpack()` from a click handler, the same as `openExplorerUi`. The `await` happens inside the function, after the panel is requested, so the player action still counts.
 
-The outcome is one of:
+The object you get back has a `$case` field that tells you how the wait ended:
 
-* `closed`: the panel this call opened was closed. This is the usual result.
-* `notOpened`: nothing opened. `outcome.openResult` says why, using the same values as above.
-* `timedOut`: the `timeoutMs` you set ran out first.
-* `matched`: a `until` condition you set fired first, so the panel may still be on screen.
+* `closed`: the player closed the panel your scene opened. This is the normal outcome.
+* `notOpened`: nothing opened. The `openResult` field says why, using the values in the table above.
+* `timedOut`: the time limit you set ran out while the panel was still open.
+* `matched`: an `until` condition ended the wait early, so the panel may still be on screen.
 
-Pass a second argument to bound the wait. A panel can stay open for minutes, and there is no default timeout, so set one if your scene can't wait indefinitely:
+When the panel can't open, the promise resolves immediately with `notOpened`. Your scene never sits waiting for a panel that isn't there.
+
+{% hint style="warning" %}
+**📔 Note**: `openExplorerUiAndWait()` requires `@dcl/sdk` version 7.30.0 or newer. It comes from the `@dcl/sdk/explorer-ui` module, which also re-exports `ExplorerUi`.
+{% endhint %}
+
+#### Set a time limit
+
+There is no time limit by default. A player can leave a panel open for several minutes, and the promise stays pending all that time. Pass `timeoutMs` when your scene needs to move on regardless.
 
 ```ts
-// Give up waiting after 60 seconds
-const outcome = await openExplorerUiAndWait(
-	{ ui: ExplorerUi.EU_BACKPACK },
-	{ timeoutMs: 60000 }
-)
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+// Stop waiting after 30 seconds, whether or not the map is still open
+async function openMap() {
+	const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_MAP }, { timeoutMs: 30000 })
+
+	if (outcome.$case === 'timedOut') {
+		console.log('The player is still looking at the map')
+	}
+}
 ```
+
+#### Stop on an event instead
+
+The `until` option ends the wait as soon as an event arrives on a channel, resolving with `matched` rather than `closed`. Channels are exported from the same module: `ExplorerUiEvents` for panel open and close events, and `ItemPurchase` for the result of a purchase flow. Add the same channel to the `collect` option if you also want the events themselves, which arrive in the outcome's `events` array.
 
 ### Observe when panels open or close
 

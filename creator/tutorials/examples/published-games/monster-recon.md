@@ -37,4 +37,11 @@ A memory-match game where you clear timed boards, then chase down the monster yo
 - Custom bitmap font for UI
 - Synced live feed of other players’ catches
 
+### Explore the code
+
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Build a chase from scene markers and trigger areas.** [`spawnHop`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L216-L271) combines a bobbing tween, spherical trigger, sound, and billboard sprite at a selected marker. The [catch handler](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/prizeChase.ts#L183-L214) checks that the entering entity is the local player before cleaning up and calling the reward callback. Read this with the marker names, sprite atlas, and callbacks supplied to `startPrizeChase`.
+- **Render custom bitmap text in ReactEcs.** [`BitmapTextLine`](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L268-L327) lays out individual glyph images using atlas UVs, glyph offsets, and kerning. The preceding [measurement and wrapping helpers](https://github.com/carlosmu/dcl-monster-recon/blob/eb0bc6fa87b9ebf98c8c068ebb9bba686a9467cb/src/bitmapFont.tsx#L229-L266) break text into lines by measured width. The renderer needs matching bitmap-font metrics and texture assets.
+
 ![Monster Recon preview](images/monsterRecon-preview.webp)

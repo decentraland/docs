@@ -26,8 +26,12 @@ This community project is maintained outside the Decentraland GitHub organizatio
 - [Play on Decentraland](https://decentraland.org/jump?realm=alienscrapyard.dcl.eth)
 
 A cooperative, timed building game where players work together to assemble alien technology and unlock new scores and shapes.
-### Key features
 
-- TBD
+### Explore the code
+
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Represent build puzzles as data.** [Slot definitions](https://github.com/procesista/Alienscrap/blob/be0b1b93580452f9cc778dc36554fe9354ee0ea2/src/shared/templates.ts#L3-L39) describe the required part, position, scale, and label for each piece. [Template helpers](https://github.com/procesista/Alienscrap/blob/be0b1b93580452f9cc778dc36554fe9354ee0ea2/src/shared/templates.ts#L140-L184) recenter and scale the layouts, expose a sequence of puzzles, and look up individual slots. This is useful for studying how to add new constructions through data. Read it alongside the shared scene-center and part-type constants.
+- **Tie a cinematic camera to round state.** [The cinematic system](https://github.com/procesista/Alienscrap/blob/be0b1b93580452f9cc778dc36554fe9354ee0ea2/src/client/cinematic.ts#L93-L129) activates shots for countdown and performance phases, handles players joining mid-round, and releases the camera when the snapshot is stale. [The final update](https://github.com/procesista/Alienscrap/blob/be0b1b93580452f9cc778dc36554fe9354ee0ea2/src/client/cinematic.ts#L158-L176) adds round-change and elapsed-time exits before moving the camera along its shot. The example depends on the client snapshot, shared timing constants, and HUD visibility helpers.
 
 ![Alien Scrapyard preview](images/alienScrapyard-preview.jpg)

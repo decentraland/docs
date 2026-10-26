@@ -24,8 +24,11 @@ This community project is maintained outside the Decentraland GitHub organizatio
 
 A three-lane bike racing game where players dodge obstacles, collect coins, and chase the track-record ghost over a 10 km course.
 
-### Key features
+### Explore the code
 
-- TBD
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Create a long race with recycled scenery.** [`setWorldOffset` and `scrollTrack`](https://github.com/carlosmu/dcl-prime-drive/blob/d3767141bc39ccef031e56ff9640592ecb349645/src/client/game/track.ts#L43-L92) move a shared world root sideways for lane changes and wrap road decorations back ahead after they pass the player. The bike stays in place while the scenery supplies the sense of movement. Read the ring builders and shared `TRACK`/`SPAWN` settings to understand spacing and wrap distances.
+- **Show record ghosts relative to the player.** [`updateGhosts`](https://github.com/carlosmu/dcl-prime-drive/blob/d3767141bc39ccef031e56ff9640592ecb349645/src/client/game/ghost.ts#L129-L183) places ghost bikes from their distance gap, hides ghosts outside the viewing range, and smoothly moves them into lanes away from the player. This module consumes `GhostRunView` data; it displays supplied progress and does not itself record a replay.
 
 ![Prime Drive preview](images/primeDrive-preview.png)

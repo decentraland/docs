@@ -36,4 +36,11 @@ A co-op scene where the crew shares one ship. At each stop they shoot incoming a
 - In-world **TextShape** rows for the weekly board. Clicking a row opens that mission's results.
 - **AvatarModifierArea** turns off the passport prompt across the scene.
 
+### Explore the code
+
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Point players toward off-screen objectives.** [edgePositionForBreach](https://github.com/DansStuff/AstroCrew/blob/dbe11b05be2a753b27b6d5dd866d0554ff73344f/src/ui/breachIcons.tsx#L27-L76) projects a breach direction onto the camera's horizontal axes, finds an edge of a rectangle, and clamps the icon inside the screen using the canvas aspect ratio. [BreachIcon](https://github.com/DansStuff/AstroCrew/blob/dbe11b05be2a753b27b6d5dd866d0554ff73344f/src/ui/breachIcons.tsx#L78-L107) connects that position to a pulsing ReactEcs marker. Read it with the scene's breach positions, active-breach state, and UI constants.
+- **Add camera shake that returns to the original pose.** [shakeEntity](https://github.com/DansStuff/AstroCrew/blob/dbe11b05be2a753b27b6d5dd866d0554ff73344f/src/effects/cameraShake.ts#L13-L47) records a base transform and combines overlapping shakes using intensity and remaining duration. [CameraShakeSystem](https://github.com/DansStuff/AstroCrew/blob/dbe11b05be2a753b27b6d5dd866d0554ff73344f/src/effects/cameraShake.ts#L87-L121) applies diminishing position and rotation offsets, then restores the base pose and removes the component. The effect uses the project's amplitude constants and must be registered as an ECS system.
+
 ![Astro Crew preview](images/astroCrew-preview.webp)

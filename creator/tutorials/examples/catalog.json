@@ -725,7 +725,7 @@
 		{
 			"id": "pigeon-deluxe",
 			"name": "Pigeon Deluxe",
-			"description": "A playable Decentraland scene.",
+			"description": "A timed parcel-delivery game with pickup and drop-off areas and an avatar-mounted direction pointer.",
 			"category": "published-games",
 			"tags": [
 				"game",
@@ -851,7 +851,7 @@
 		{
 			"id": "slide-penguin",
 			"name": "Slide Penguin",
-			"description": "A seasonal penguin game.",
+			"description": "A penguin-sliding game with timed sweeping, deceleration, and distance-based scoring.",
 			"category": "published-games",
 			"tags": [
 				"game",

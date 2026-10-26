@@ -34,4 +34,11 @@ A multiplayer penalty shootout game. Duel another player or the GL-Bot: pick lef
 - **Particles** for the fireworks
 - A portal with lights and **`GltfNodeModifiers`** that takes you to another World.
 
+### Explore the code
+
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Switch cameras with match phases.** [`initGameplayCamera`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/gameplayCamera.ts#L109-L165) selects gameplay, winner, or standard cameras from the client match snapshot. The winner camera orbits a pivot, while spectators can choose a free camera during play. Follow this alongside `clientSnapshot`, the `GameState` enum, and the named scene camera pivot.
+- **Coordinate a prop animation with the game state.** [`tickAnimationManager`](https://github.com/carlosmu/goal-legends-arena/blob/5d42bba8f10ac2c3103a4e5804541c693e8528b3/src/client/animationManager.ts#L78-L114) starts a ball clip when the phase changes, chooses goal/save animations from the shot direction, and briefly hides the prop while changing clips. This path is specific to the bot kicker; human kickers carry the ball in their emotes. It depends on the scene's ball model and named animation clips.
+
 ![Goal Legends preview](images/goalLegends-preview.webp)

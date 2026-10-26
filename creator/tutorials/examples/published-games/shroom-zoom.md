@@ -28,4 +28,11 @@ A platforming and time-trial game with double-jumping, gliding, collectibles, an
 - Multiplayer server
 - Physics impulses for bouncy mushrooms
 
+### Explore the code
+
+These links point to a specific source snapshot so the explanations remain useful as upstream development continues. They are learning references, not a security assessment.
+
+- **Combine a nearby trigger with a precise contact check.** [BounceTrigger callbacks](https://github.com/CanessaDCL/dcl-shroomzoom/blob/042968e3c13b5d1093d2922d5713570ad4cb0284/src/bounce/class.bounce.ts#L75-L101) enable raycasting while the player is inside a trigger and remove that system on exit. [The raycast and bounce logic](https://github.com/CanessaDCL/dcl-shroomzoom/blob/042968e3c13b5d1093d2922d5713570ad4cb0284/src/bounce/class.bounce.ts#L103-L164) check downward hits against the configured mushroom entity and apply a player impulse near its surface. Read it alongside BounceZoom or BounceRegular for the scene's trigger dimensions and impulse settings.
+- **Turn collected items into an animated entourage.** [Follower target helpers](https://github.com/CanessaDCL/dcl-shroomzoom/blob/042968e3c13b5d1093d2922d5713570ad4cb0284/src/spriteFollowers.ts#L400-L437) calculate offsets around the player and positions around an orbit. [followSpritesSystem](https://github.com/CanessaDCL/dcl-shroomzoom/blob/042968e3c13b5d1093d2922d5713570ad4cb0284/src/spriteFollowers.ts#L678-L706) interpolates each sprite toward its target, switching to orbiting when the collection is complete and rotating sprites toward their owner. The scene's collection sets, follower entities, and per-player orbit timestamps supply the state for this visual behavior.
+
 ![Shroom Zoom preview](images/shroomZoom-preview.jpg)

@@ -154,6 +154,20 @@ Reference images using relative paths:
 
 ## 🤝 Contributing
 
+### Maintaining the example catalog
+
+Edit example pages and category metadata in [`creator/tutorials/examples/`](creator/tutorials/examples/). See the [catalog editing instructions](creator/tutorials/examples/AGENTS.md) for required fields, ownership labels, and code highlights. The generator and YAML parser live in [`scripts/example-catalog/`](scripts/example-catalog/); tests live in [`test/example-catalog.test.mjs`](test/example-catalog.test.mjs).
+
+With Node.js 22 or newer, run these commands from the repository root:
+
+```bash
+npm ci --ignore-scripts
+npm run generate:examples
+npm test
+```
+
+Commit the generated overview, `catalog.json`, detail-page context blocks, and `creator/SUMMARY.md` alongside your entry changes. Keep the public JSON and images with the content. After committing, run `npm run check:examples` to verify generation leaves those files unchanged; CI runs the same check. Do not manually edit generated sections.
+
 ### Quick Start
 
 1. **Clone the repository**

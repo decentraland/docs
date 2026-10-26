@@ -1,13 +1,14 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parseCategory, parseExample } from './catalog-frontmatter.mjs'
+import { parseCategory, parseExample } from './frontmatter.mjs'
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url))
-const examplesDirectory = scriptDirectory
+const repositoryRoot = join(scriptDirectory, '..', '..')
+const examplesDirectory = join(repositoryRoot, 'creator', 'tutorials', 'examples')
 const overviewPath = join(dirname(examplesDirectory), 'examples.md')
 const catalogPath = join(examplesDirectory, 'catalog.json')
-const summaryPath = join(dirname(scriptDirectory), '..', 'SUMMARY.md')
+const summaryPath = join(repositoryRoot, 'creator', 'SUMMARY.md')
 
 const ignoredMarkdownFiles = new Set([
 	'AGENTS.md',

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { parseCategory, parseExample } from '../creator/tutorials/examples/catalog-frontmatter.mjs'
+import { parseCategory, parseExample } from '../scripts/example-catalog/frontmatter.mjs'
 
 const example = `---
 id: sample

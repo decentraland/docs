@@ -2,7 +2,7 @@
   "name": "docs",
   "private": true,
   "scripts": {
-    "generate:examples": "node creator/tutorials/examples/generate-catalog.mjs",
+    "generate:examples": "node scripts/example-catalog/generate.mjs",
     "test": "node --test test/*.test.mjs",
     "check:examples": "npm run generate:examples && git diff --exit-code -- creator/tutorials/examples.md creator/tutorials/examples creator/SUMMARY.md"
   },

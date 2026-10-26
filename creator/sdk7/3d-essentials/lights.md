@@ -268,7 +268,7 @@ LightSource.create(light, {
 
 For example, you can apply the image below to produce a fun effect where the light is only visible in the areas where the texture is white. You can can use this with lights of any color and intensity.
 
-![](../../images/lightmask1.png)
+![](../../images/lightmask1.webp)
 
 With a black and white image, the light is either hitting an area or not. It's also possible to pass an image with colors, and these colors will tint your light on each area, this can be used to project a colored logo or image onto a surface.
 
@@ -295,7 +295,7 @@ LightSource.create(light, {
 
 For example, the image below displays each of the letters on different sides of the cube (Y on top, -Y on the bottom, X on the right, -X on the left, Z on the front, -Z on the back).
 
-![](../../images/point-light-mask1.png)
+![](../../images/point-light-mask1.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Combine lights with a [Particle System](particle-system.md) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.

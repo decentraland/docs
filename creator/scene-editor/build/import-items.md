@@ -14,11 +14,11 @@ To import a 3D model, an image, a sound file, or a video into your scene from yo
 
 1. Drag files directly onto the bottom panel. You can also click the **+ Import Assets** button on the top-left of the bottom panel and select from your local drive.
 
-![](../../images/editor/import-assets.png)
+![](../../images/editor/import-assets.webp)
 
 2. Check the model thumbnail and click **Import**. When importing multiple assets, use the arrow buttons to cycle over each asset.
 
-![](../../images/editor/import-confirmation.png)
+![](../../images/editor/import-confirmation.webp)
 
 You can now find your asset in the **Local Assets** tab. Assets are sorted into folders by type: 3D models appear under the _assets/Models_ folder, images under _assets/Images_, sound files under _assets/Audio_, and videos under _assets/Video_.
 
@@ -36,7 +36,7 @@ Items from the built-in free asset packs are stored under _assets/asset-packs/_,
 {% hint style="info" %}
 **💡 Tip**: You can also paste files directly into the project's `assets` folder, from Finder, Explorer or anywhere else. They appear in the **Local Assets** tab on their own, shortly after the copy finishes. If they don't show up, press the **Refresh** button next to the **Import Assets** button.
 
-<img src="../../images/editor/refresh-assets.png" alt="" data-size="original">
+<img src="../../images/editor/refresh-assets.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Supported formats

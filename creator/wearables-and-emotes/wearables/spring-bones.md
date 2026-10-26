@@ -12,7 +12,7 @@ Spring bones are **not** part of the base avatar armature. They are additional b
 
 This implementation follows the [VRM Spring Bone standard](https://vrm.dev/en/vrm1/springbone/), a widely adopted convention for avatar physics in formats like VRM and MMD.
 
-![](../../images/spring-bones/01_spring_bones_workflow.png)
+![](../../images/spring-bones/01_spring_bones_workflow.webp)
 
 ### How Spring Bones Work
 
@@ -26,9 +26,9 @@ A **spring chain** is a sequence of bones that simulates physics together and it
 
 The chain, or hierarchy, for spring bones should be **linear**, which means that each bone can only have one child. Bones with two or more children may have an unexpected behaviour.
 
-![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.png)
+![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.webp)
 
-![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.png)
+![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.webp)
 
 ### The Hierarchy
 
@@ -80,7 +80,7 @@ Once you create the bones, rename them following the naming convention mentioned
 
 To rename a bone, select it in Edit Mode or Pose Mode, got to the Bone Properties tab and rename it according to the naming convention. Do this for all the bones in the chain.
 
-![](../../images/spring-bones/Rename_Bones.png)
+![](../../images/spring-bones/Rename_Bones.webp)
 
 {% hint style="info" %} Tip!
 
@@ -130,13 +130,13 @@ Before exporting, make sure to delete any animation clip created when testing th
 
 If you have any other objects in your scene, like avatar mesh, turn the visibility off by clicking on the eye icon in the Outliner. Then, go to **File** > **Export** > **gltf 2.0 (.glb, .gltf)**. For the export settings, expand Include and in **Limit to** toggle **Visible Objects**. Click on Export and you're ready to upload your file to the Builder!
 
-![](../../images/spring-bones/Export_Settings.png)
+![](../../images/spring-bones/Export_Settings.webp)
 
 ## Configuring Spring Bones in the Builder
 
 After uploading a wearable that contains `springbone`-named bones, the Builder automatically detects them and shows the **Spring Bones** configuration panel.
 
-![](../../images/spring-bones/03_spring_bones_panel.png)
+![](../../images/spring-bones/03_spring_bones_panel.webp)
 
 From this panel you can configure the physics parameters for each spring root bone. The avatar preview in the Builder will immediately reflect your changes, so you can fine-tune the behavior in real time.
 

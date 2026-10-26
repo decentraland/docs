@@ -15,19 +15,19 @@ La transmisión a través de Decentraland Cast es una característica exclusiva 
 1. Visita [Decentraland Cast](https://cast.decentraland.org/)
 2. Selecciona tu World: Inicia sesión y selecciona el world al que transmitir.\
    \
-   ![](../../.gitbook/assets/world-selector.png)\\
+   ![](../../.gitbook/assets/world-selector.webp)\\
 3. Únete a la Sesión: Una vez que se selecciona el world, se unirá a una sesión.\
    \
-   ![](../../.gitbook/assets/cast-ui.png)\\
+   ![](../../.gitbook/assets/cast-ui.webp)\\
 4. Compartir Pantalla o Video de Cámara: Si está autorizado, los usuarios tienen la opción de activar sus cámaras o compartir sus pantallas directamente dentro de la aplicación.
 
 {% hint style="warning" %}
 **📔 Nota**: Si tienes la intención de transmitir un video junto con su audio, es aconsejable utilizar Google Chrome o un navegador construido sobre el motor de Chrome. Estos navegadores ofrecen la funcionalidad para compartir fácilmente tanto video como audio directamente desde una pestaña del navegador.
 {% endhint %}
 
-![](../../.gitbook/assets/screen-sharing-host.png)\
+![](../../.gitbook/assets/screen-sharing-host.webp)\
 5\. Integración Perfecta: La integración de Decentraland Cast con el world garantiza comunicación ininterrumpida, permitiendo a los usuarios enviar, recibir y escuchar mensajes de chat y voz sin esfuerzo.\
-![](../../.gitbook/assets/screen-sharing-viewer.png)
+![](../../.gitbook/assets/screen-sharing-viewer.webp)
 
 ### Mostrar la transmisión en un world
 
@@ -49,4 +49,4 @@ Como la sesión en Decentraland Cast es la misma sesión de LiveKit dentro del w
 
 Se recomienda que los espectadores se unan al world (no a la aplicación de Decentraland Cast) a menos que accedan a través de teléfonos móviles. En Decentraland Cast, todos los usuarios podrán ver lo que se está transmitiendo, el chat y otras personas en la sesión, pero aquellos que carezcan de autorización encontrarán sus capacidades restringidas. Específicamente, no tendrán permisos para transmitir ningún dato, ya sea video, chat de voz o mensajería de texto.
 
-![](../../.gitbook/assets/cast-mobile.png)
+![](../../.gitbook/assets/cast-mobile.webp)

@@ -14,7 +14,7 @@ The Friends icon lives in the bottom left of your screen and is home to your Fri
 
 Hovering by a Friend's name will make other options appear. If your friend is online, you can chat or jump to their location. If you click on the three dots by their name, you can access their personal menu.
 
-![](../images/media/friends.png)
+![](../images/media/friends.webp)
 
 ### **Friend Requests**
 
@@ -22,11 +22,11 @@ To send a friend request to someone, open their profile (hovering over any avata
 
 See requests you've sent and received in the 'Requests' tab of your Friends interface. Requests with an envelop icon have a message attached. Read it by clicking on the envelope.
 
-![](../images/media/request.png)
+![](../images/media/request.webp)
 
 To cancel a request or unfriend someone, you'll use the same button in their profile, as it changes in relation to your status with someone. Hovering over the button will show the option to cancel requests or unfriend.
 
-![](../images/media/cancel.png)
+![](../images/media/cancel.webp)
 
 ## Blocking Accounts
 
@@ -36,7 +36,7 @@ If you block a player in Decentraland, you will no longer see their avatar in-wo
 
 To block a player, open their profile card by clicking on their avatar and click on the three dots in the upper right corner above their avatar image, then select the option 'Block'. You can also block someone within a chat by clicking on their name to open their personal menu and selecting 'Block'.
 
-![](../images/media/block.png)
+![](../images/media/block.webp)
 
 **How to Unblock a Player**
 
@@ -50,23 +50,23 @@ In Decentraland, the main line of communication is text-based chatting. In-world
 
 Identifiable by the Decentraland icon, Nearby Chat is where you can chat with the people around you in-world, even if you aren't friends. It will always be listed at the top of your chat list. Nearby Chat can also be used for entering Chat commands that only you will see—learn more [**here**](shortcuts-and-chat-commands.md#chat-commands).
 
-![](../images/media/nearby.png)
+![](../images/media/nearby.webp)
 
 ### Private Chats
 
 The option to start chatting with someone can be accessed from their Profile or personal menu. If you are friends with them, a chat icon will also appear next to their name in your Friends List. However, keep in mind, outside of friendships, who you can send and receive DMs from will depend on both parties' chat settings.
 
-![](../images/media/private.png)
+![](../images/media/private.webp)
 
 Please also note that messages can only be sent to players that are currently online.
 
-![](../images/media/offline.png)
+![](../images/media/offline.webp)
 
 ### Chat Settings
 
 Within your in-world Settings, you'll see a Chat tab.
 
-![](../images/media/chatsettings.png)
+![](../images/media/chatsettings.webp)
 
 **DM Permissions**
 
@@ -79,7 +79,7 @@ There are two options when it comes to selecting who you want to be able to send
 
 If you have your sound on, you have the option of receiving a notification ping for selected chats. You can set your preferences from each individual chat by clicking on the 3 dots in the upper right of a chat box. From the main Chat Settings, you can select the setting for all your chats simultaneously.
 
-![](../images/media/notificationping.png)
+![](../images/media/notificationping.webp)
 
 **Chat Bubbles**
 

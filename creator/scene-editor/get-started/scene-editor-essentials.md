@@ -6,7 +6,7 @@ description: How to use the Scene Editor
 
 The Scene Editor's UI is divided into a few different sections, with different purposes.
 
-![](../../images/editor/editor-layout.png)
+![](../../images/editor/editor-layout.webp)
 
 - **Canvas**: Manipulate items directly and see what your scene looks like.
 - **Entity tree**: Contains a list of all items in the scene and their hierarchy.
@@ -34,11 +34,11 @@ The scene's ground can use various different textures. You can find these in the
 
 Items of type **Ground** have a paint bucket icon on them. If you drag one of these into your scene, it covers all of your scene's ground with copies of this item.
 
-![](../../images/editor/ground.png)
+![](../../images/editor/ground.webp)
 
 You can also add a single copy of the item by holding **Shift** while you drag the ground onto the scene.
 
-![](../../images/editor/ground-entities.png)
+![](../../images/editor/ground-entities.webp)
 
 The collection of ground items appear in the [entity tree](scene-editor-essentials.md#the-entity-tree) inside a folder. Each one of them is locked, to prevent accidentally selecting. [Untoggle](scene-editor-essentials.md#lock-or-hide-items) the items to move or edit them.
 
@@ -46,13 +46,13 @@ The collection of ground items appear in the [entity tree](scene-editor-essentia
 
 Navigate the themed asset pack categories on the menu on the bottom to find different items that you can place on your scene.
 
-![](../../images/editor/asset-packs.png)
+![](../../images/editor/asset-packs.webp)
 
 You can also use the search box. Note that when you're inside an asset pack, the search only looks in that asset pack.
 
 To place an item, click and drag it in from the asset pack menu into a location on your scene in the canvas.
 
-![](../../images/editor/drop-item.gif)
+![](../../images/editor/drop-item.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Your changes are saved automatically whenever you add, move, or edit properties of any of the items in your scene.
@@ -78,13 +78,13 @@ Click with the **Left Mouse Button** and drag a selected item to move it freely 
 
 You can also use the tools on the top menu:
 
-![](../../images/editor/gizmos.png)
+![](../../images/editor/gizmos.webp)
 
 - **Move tool**: Click and drag each arrow to move the item in a single axis at a time. With this tool you can also position things above the ground level.
 - **Rotate tool**: Click and drag each of the hoops around the item to rotate the item on one axis at a time.
 - **Scale tool**: Click on the center of the gizmo and drag in or out to enlarge. This tool also lets you stretch an item in a single axis to change its proportions, to do this click on one of the axis of the gizmo and drag.
 
-![](../../images/editor/move-items.gif)
+![](../../images/editor/move-items.webp)
 
 To have greater precision while moving, rotating or scaling an item, press and hold the _Shift_ key while making adjustments. This will avoid snapping to the grid.
 
@@ -142,7 +142,7 @@ On the left margin, you'll see a tree structure with all of the entities in the 
 
 Instead of selecting an item by clicking on it from the 3D view of the scene, you can select it from the tree view. Click the right-mouse button on an entity to reveal more options: you can rename, delete, or duplicate, also create a child entity, turn it into a custom item, or add a component to the entity.
 
-![The entity tree with the right-click menu open on the Bird Fountain entity, listing Rename, Add child, Duplicate, Delete, Create Custom Item and Add component.](../../images/editor/entity-tree-context-menu.png)
+![The entity tree with the right-click menu open on the Bird Fountain entity, listing Rename, Add child, Duplicate, Delete, Create Custom Item and Add component.](../../images/editor/entity-tree-context-menu.webp)
 
 ### Searching the entity tree
 
@@ -150,13 +150,13 @@ A search box at the top of the entity tree lets you find entities by name. Type 
 
 Press **Escape** or click the clear icon to remove the filter and return to the full tree. If an entity is selected, clearing the search scrolls back to the selected entity so you don't lose your place.
 
-![The entity tree filtered by the search term fount: only the Camera, Scene and Bird Fountain entities remain visible, with the Scene parent expanded to show the match.](../../images/editor/entity-tree-search.png)
+![The entity tree filtered by the search term fount: only the Camera, Scene and Bird Fountain entities remain visible, with the Scene parent expanded to show the match.](../../images/editor/entity-tree-search.webp)
 
 ### Entity hierarchy
 
 Entities follow a hierarchy that can have as many levels as you want. Establish a parent-child relationship between two entities by dragging one item onto another on the tree. A child entity inherits the position of the parent, so when the parent moves, it carries any children with it. This can be practical while building a scene, for example you can set glasses and plates as children of a table, and then move the table without needing to readjust anything else. It can also be important when interacting with the scene, for items to move together.
 
-![](../../images/editor/item-hierarchy.png)
+![](../../images/editor/item-hierarchy.webp)
 
 You can also minimize or expand the children of an entity to keep the view simple, this action has no effect on the scene.
 
@@ -174,13 +174,13 @@ You might find it handy to sometimes lock an item, to prevent accidentally selec
 
 You might also want to hide an item that could obstruct your view while placing others. This is especially useful to hide the roof or a building, while working on the interiors. Hidden items are only hidden in the Scene Editor's canvas window, not to players entering the scene. To hide an item, look for it on the entity tree on the left, hover over it, and select the eye icon. You can toggle this behavior on and off via that same icon.
 
-![](../../images/editor/hide-lock-item.png)
+![](../../images/editor/hide-lock-item.webp)
 
 ## Properties panel
 
 Select an item by clicking on it on the canvas or the entity tree. You'll then see its components displayed on the properties panel, on the right of the screen. Different items have different components that each display specific settings.
 
-![](../../images/editor/components-in-editor.png)
+![](../../images/editor/components-in-editor.webp)
 
 Most non-interactive items have the following components:
 
@@ -197,11 +197,11 @@ Decentraland scenes need to follow certain limitations, to be able to run them o
 
 If the content in your scene exceeds any of these limits, the Scene Editor will notify this on the bottom-left corner.
 
-![](../../images/editor/triangle-limit1.png)
+![](../../images/editor/triangle-limit1.webp)
 
 You can expand this menu to view details.
 
-![](../../images/editor/triangle-limit2.png)
+![](../../images/editor/triangle-limit2.webp)
 
 {% hint style="info" %}
 **💡 Tip**: If you're building a Decentraland World, you can always increase the [scene size](../configure/scene-settings.md#layout) to increase your limits.
@@ -209,7 +209,7 @@ You can expand this menu to view details.
 
 The content in a Decentraland scene must also avoid spilling onto neighbor parcels. If any part of the models in your scene extend beyond the limits, when you open the scene preview you will see these parts cut off. The Scene Editor will mark the entire model in red, but you should only really worry about the parts of the model that extend beyond the scene limits.
 
-![](../../images/editor/out-of-bounds.png)
+![](../../images/editor/out-of-bounds.webp)
 
 {% hint style="info" %}
 **💡 Tip**: If the models you want to display don't fit, you may want to increase the size of your scene. See [scene size](../configure/scene-settings.md#layout) to enlarge your scene.
@@ -221,11 +221,11 @@ Even if the whole geometry of the 3D model fits in your scene, a model might be 
 
 Keep your project tidy by removing assets that are no longer used. Open the **Local Assets** tab at the bottom of the screen and click the brush icon.
 
-![](../../images/editor/brush-icon.png)
+![](../../images/editor/brush-icon.webp)
 
 A dialog opens listing all assets in your scene and highlights those not referenced by any item.
 
-![](../../images/editor/clean-up-assets.png)
+![](../../images/editor/clean-up-assets.webp)
 
 Select the assets you want to delete using the checkboxes, then click **Remove Selected** to permanently remove them.
 
@@ -239,7 +239,7 @@ Deleting an item from the scene does not remove its files. Imported models, text
 
 Click the **Pencil icon** on the top-right of the screen. This opens a series of scene-level properties to edit.
 
-![](../../images/editor/pencil-icon.png)
+![](../../images/editor/pencil-icon.webp)
 
 Here you can configure multiple properties including title and thumbnail, scene size, scene category and age rating, player spawn locations, and feature toggles.
 

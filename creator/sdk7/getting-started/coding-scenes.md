@@ -37,8 +37,8 @@ You must have:
 
 If you plan to edit the scene's code, you'll also need to install one of the following:
 
-- <img src="../../images/editor/vscode.png" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
-- <img src="../../images/editor/cursor-icon.png" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
+- <img src="../../images/editor/vscode.webp" alt="VS Code" data-size="line"> **Visual Studio Code**: Download it [here](https://code.visualstudio.com/). It helps you write code a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports.
+- <img src="../../images/editor/cursor-icon.webp" alt="Cursor" data-size="line"> **Cursor AI**: Download it [here](https://www.cursor.com/). A powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code, all of them are free. The AI assistant doesn't just autocomplete as you write, you can also prompt it to refactor a large code base, write documentation, and more.
 
 {% hint style="info" %}
 **💡 Tip**: You can use AI assistants like Cursor, OpenDCL, or Claude Code to build entire scenes from plain language descriptions — no TypeScript experience required. See [Vibe Coding with AI](vibe-coding.md) to get started.
@@ -70,7 +70,7 @@ You can also run a scene locally on your machine by running a preview from the C
 
 Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_. Entities have _components_, each component gives the entity it belongs to specific properties. A door entity is likely to have at least a Transform component (that sets position, rotation & scale) and another to provide it a shape. Components are just a place to store data, they don't carry out any actions by themselves.
 
-![](<../../../.gitbook/assets/ecs-components-new (1).png>)
+![](<../../../.gitbook/assets/ecs-components-new (1).webp>)
 
 ```ts
 export function main() {
@@ -91,7 +91,7 @@ export function main() {
 
 Entities may be nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
 
-![](<../../../.gitbook/assets/ecs-nested-entities-new (1).png>)
+![](<../../../.gitbook/assets/ecs-nested-entities-new (1).webp>)
 
 Entities are an abstract concept. An entity is just an id, that is used as a reference to group different components.
 
@@ -236,7 +236,7 @@ See [mutable data](../programming-patterns/mutable-data.md) for more details.
 
 The _engine_ is what sits in between _entities_, and _components_ on one hand and _systems_ on the other.
 
-![](<../../../.gitbook/assets/ecs-big-picture (1).png>)
+![](<../../../.gitbook/assets/ecs-big-picture (1).webp>)
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every tick of the game loop, the engine runs the functions of each of the systems to update the values stored in the components.
 
@@ -361,7 +361,7 @@ When you paste a snippet into your scene, however, you will likely see some elem
 - Select **Add Import From**
 - An import line appears at the start of the file.
 
-![](../../images/media/imports.png)
+![](../../images/media/imports.webp)
 
 If there are many different things to import, you can also select **Add all missing imports** from the same dropdown.
 

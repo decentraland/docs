@@ -25,7 +25,7 @@ Sign in to the Studio page at [decentraland.org/shop/studio](https://decentralan
 * **Most per player**: the largest gift a single player can get at once.
 * **Gifts**: every gift your studio made, with the player, the Credits, the reason, the date and who sent it.
 
-![The Studio page, with the budget left, the Credits gifted so far, the most per player and the list of gifts](../../.gitbook/assets/studio-gifts-page.png)
+![The Studio page, with the budget left, the Credits gifted so far, the most per player and the list of gifts](../../.gitbook/assets/studio-gifts-page.webp)
 
 If the page says the studio is paused, it can't gift until Decentraland resumes it.
 
@@ -45,11 +45,11 @@ If the page says the studio is paused, it can't gift until Decentraland resumes 
    * Each account goes in one row only: if a player gets two amounts, add them up.
 4. Check the summary under the list (players, total Credits, and the budget left after), then press **Review**.
 
-   ![The Gift Credits window with a reason and two players, each with their own Credits and reason](../../.gitbook/assets/studio-gifts-add-players.png)
+   ![The Gift Credits window with a reason and two players, each with their own Credits and reason](../../.gitbook/assets/studio-gifts-add-players.webp)
 5. The review warns you about any player who got the same gift (same Credits and reason) from your studio in the last 30 days. Go back and remove them unless you mean to gift them again.
 6. Type the total Credits to confirm, and press **Gift to … players**.
 
-   ![The confirmation step, with the total Credits typed in and the Gift to 2 players button](../../.gitbook/assets/studio-gifts-confirm.png)
+   ![The confirmation step, with the total Credits typed in and the Gift to 2 players button](../../.gitbook/assets/studio-gifts-confirm.webp)
 
 The gifts are sent one by one and each row shows how it went. If the window closes or you stop the list, open **Gift Credits** again and press **Continue**: players who already got their gift never get it twice.
 

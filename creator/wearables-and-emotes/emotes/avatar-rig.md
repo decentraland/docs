@@ -38,11 +38,11 @@ Deforming bones are the ones that will deform the mesh, they are responsible for
 
 Non-deforming bones are the ones that won’t deform the mesh, but they are still necessary in a robust rig and are used for the setup for [IKs, FKs](avatar-rig.md#what’s-FK-and-IK-in-a-rig) and other custom properties. Examples for non-deforming bones are controls, IK and FK bones, foot setup bones. These shouldn’t be exported, they are only used for animation purposes.
 
-![](../../images/emotes/DeformationBones.png)
+![](../../images/emotes/DeformationBones.webp)
 
 _Deforming bones._
 
-![](../../images/emotes/NonDeformationBones.png)
+![](../../images/emotes/NonDeformationBones.webp)
 
 _Non-deforming bones._
 
@@ -50,7 +50,7 @@ _Non-deforming bones._
 ⚠️ **Attention!** **Do not edit the base skeleton at all!**
 {% endhint %}
 
-![](../../images/emotes/BaseSkeleton.png)
+![](../../images/emotes/BaseSkeleton.webp)
 
 _The base skeleton._
 
@@ -62,7 +62,7 @@ Controls are basically non-deforming bones, which means they will not affect the
 
 It’s also important to notice that it’s not possible to use the controls setup in a software different from the one it was originally done in. Each software has its own logic and it’s not possible to export constraints.
 
-![](../../images/emotes/RigControls.png) \_Controls and their different shapes and colors.\_
+![](../../images/emotes/RigControls.webp) \_Controls and their different shapes and colors.\_
 
 {% hint style="warning" %}
 ⚠️ **Warning**: The rig has to be animated in the same software it was created in. It's not possible to use a Blender setup in, for example, Maya and vice versa.
@@ -86,7 +86,7 @@ _In FK, each bone has to be rotated individually._
 
 In inverse kinematics, or IK, the child in the hierarchy can influence the movement of its parents. In this case, taking the arm as an example again, when the hand is moved around, the rest of the arm will follow the motion. It also means that no matter how the shoulder moves, the hand will maintain its position. In this setup, a pole vector/pole target will control in which direction the bones will bend. Legs are usually in IK and that’s essential for the feet to stick to ground level while animating.
 
-![](../../images/emotes/IK.png)
+![](../../images/emotes/IK.webp)
 
 _Direction of movement in hierarchy._ 
 

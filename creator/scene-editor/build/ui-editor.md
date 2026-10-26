@@ -10,7 +10,7 @@ The UI Editor lets you build your scene's on-screen interface by dragging widget
 
 Use the **2D** / **3D** switch at the top of the editor's left panel. **3D** is the scene canvas you already know. **2D** is the UI Editor.
 
-![The 2D and 3D tab switch, with 3D selected.](../../images/editor/ui-editor-mode-switch.png)
+![The 2D and 3D tab switch, with 3D selected.](../../images/editor/ui-editor-mode-switch.webp)
 
 {% hint style="warning" %}
 **📔 Note**: The UI Editor needs `@dcl/sdk` version 7.26.0 or newer in your scene. On an older scene the **2D** tab shows a **UI Editor Unavailable** notice instead of the canvas, with an **Update SDK** button that upgrades the scene for you and a **Maybe later** button to dismiss it.
@@ -29,7 +29,7 @@ If you are using the Bevy scene renderer, switching to **2D** pauses the running
 
 There is no save button. The editor writes your changes to disk as you go, and the badge at the left of the toolbar reads **All changes saved**.
 
-![The UI Editor in 2D mode: the GUIs and Nodes panels on the left list a GUI named MainUI with a Container holding a Label and a Button, the canvas in the middle shows the container with the Button selected and resize handles around it, the Properties tab on the right shows the Button's position and layout, and the widget palette runs along the bottom.](../../images/editor/ui-editor-overview.png)
+![The UI Editor in 2D mode: the GUIs and Nodes panels on the left list a GUI named MainUI with a Container holding a Label and a Button, the canvas in the middle shows the container with the Button selected and resize handles around it, the Properties tab on the right shows the Button's position and layout, and the widget palette runs along the bottom.](../../images/editor/ui-editor-overview.webp)
 
 ## The panels
 
@@ -43,11 +43,11 @@ Two floating groups of controls sit in the bottom-right corner of the canvas:
 * The **preview** group toggles the mobile HUD guides and the safe-area guides, and switches between **Desktop preview** and **Mobile preview**.
 * The **zoom** group has a minus and a plus button, and a percentage field. Click the percentage to type an exact zoom level between 10 and 200, then press Enter or click away to apply it, or Escape to cancel. The plus button turns off once you reach 200%.
 
-<div align="left"><img src="../../images/editor/ui-editor-left-panel.png" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.png" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
+<div align="left"><img src="../../images/editor/ui-editor-left-panel.webp" alt="The left panel of the UI Editor, with the 2D and 3D tabs, a search box, the GUIs list containing MainUI, and the Nodes tree showing a Container with a Label and a Button, the Button row showing lock, hide and delete icons." width="220"> <img src="../../images/editor/ui-editor-properties.webp" alt="The Properties tab of the UI Editor for a selected Button, with Visibility, Interaction States, a Position section with Constraints, Position and Z-Index, and a Layout section with Size, Min Size, Max Size, Padding and Margin." width="360"></div>
 
 ## Widgets
 
-![The widget palette along the bottom of the UI Editor, with cards for Full Screen, Container, Image, Label, Button, Input and Dropdown.](../../images/editor/ui-editor-palette.png)
+![The widget palette along the bottom of the UI Editor, with cards for Full Screen, Container, Image, Label, Button, Input and Dropdown.](../../images/editor/ui-editor-palette.webp)
 
 The palette groups widgets into three categories:
 
@@ -67,7 +67,7 @@ The toolbar has three tool modes:
 
 Positions snap to a 10 pixel grid. Hold **Shift** while dragging to move freely, ignoring the grid. The small arrow next to the tool buttons opens a **Snap** checkbox that turns snapping off entirely.
 
-![The 2D toolbar, with the All changes saved badge, undo and redo, the Free, Move and Resize tools, and the snap dropdown open showing a checked Snap option, followed by the play and stop buttons.](../../images/editor/ui-editor-toolbar.png)
+![The 2D toolbar, with the All changes saved badge, undo and redo, the Free, Move and Resize tools, and the snap dropdown open showing a checked Snap option, followed by the play and stop buttons.](../../images/editor/ui-editor-toolbar.webp)
 
 ## Layout: flow and free positioning
 

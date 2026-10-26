@@ -14,7 +14,7 @@ You can recognize these items in the asset pack explorer because they have a lig
 
 You can recognize which items in your scene are smart because they have the lightning icon next to them in the entity tree.
 
-![ ](../../images/editor/smart-item-icon.png)
+![ ](../../images/editor/smart-item-icon.webp)
 
 ## Using items
 
@@ -65,7 +65,7 @@ A few items keep the older **Config** panel instead. Lights, for example, still 
 
 All items have an **Advanced Mode** that lets you configure almost anything about them. This includes things like what sounds are played, or in what direction a platform moves. You can also add custom actions that include all kinds of things, like teleporting the player, playing avatar animations, attaching an item to the player's hands, etc. You can also add conditional logic, to only activate something in certain scenarios. See [Smart Items - Advanced](smart-items-advanced.md).
 
-![ ](../../images/editor/advanced-mode.png)
+![ ](../../images/editor/advanced-mode.webp)
 
 ## Call an action on another item
 
@@ -73,11 +73,11 @@ Smart items can trigger actions on other smart items, so that they happen every 
 
 For example here's a button that opens or closes a door. Each time the button is pressed, the door will either open or close.
 
-![ ](../../images/editor/button-to-door.png)
+![ ](../../images/editor/button-to-door.webp)
 
 Here's a lever that opens a door when activated, and closes that door when deactivated.
 
-![ ](../../images/editor/lever-to-door.png)
+![ ](../../images/editor/lever-to-door.webp)
 
 You can add as many different actions from different items to be triggered together. Just click **+ Assign Action**.
 
@@ -97,11 +97,11 @@ Some smart items have unique characteristics that make them very handy for commo
 
 Use the Trigger Area smart item to trigger an action when the player walks into an area.
 
-![ ](../../images/editor/trigger.png)
+![ ](../../images/editor/trigger.webp)
 
 Drag it in, resize the box or sphere to cover the area you want, then use the **When a player enters…** and **When a player leaves…** buttons in its **Reactions** section to describe what should happen. The [AI Assistant](../code/ai-assistant.md) writes the script for you. See [Trigger area](trigger-area.md) for the full walkthrough.
 
-![ ](../../images/editor/on_player_enters.png)
+![ ](../../images/editor/on_player_enters.webp)
 
 See [Trigger area](trigger-area.md) for more info.
 
@@ -117,7 +117,7 @@ See [Colliders](../../sdk7/3d-essentials/colliders.md) for more info.
 
 An invisible cube that can be clicked by players to trigger actions on any other smart items. This item can be enabled or disabled by any other smart item, when disabled it won't be clickable. You can also set the text that players see when pointing their cursor at it.
 
-![ ](../../images/editor/click-area.png)
+![ ](../../images/editor/click-area.webp)
 
 ### Seats
 
@@ -232,11 +232,11 @@ To display an NFT on a picture frame, use the **NFT** smart item. You must provi
 - NFT Collection Contract: The smart contract for the NFT collection.
 - Token ID: The token ID of this particular NFT collectible.
 
-<img src="../../images/editor/nft-shape.png" alt="NFT shape" width="400"/>
+<img src="../../images/editor/nft-shape.webp" alt="NFT shape" width="400"/>
 
 You can obtain this information from [OpenSea](https://opensea.io), by checking the **Details** tab under the NFT image.
 
-<img src="../../images/editor/opensea.png" alt="OpenSea details" width="400"/>
+<img src="../../images/editor/opensea.webp" alt="OpenSea details" width="400"/>
 
 {% hint style="info" %}
 **📔 Note**: You can also obtain this information from the opensea URL. For example, if the NFT's URL is the following:
@@ -258,31 +258,31 @@ See [NFTs](../build/nfts.md) for more details.
 
 ### Health bars
 
-![ ](../../images/editor/health-bar.png)
+![ ](../../images/editor/health-bar.webp)
 
 The **Health Bar** smart item is a great building block for several game mechanics. It can be used in various ways:
 
 - Nest it under the **Player** to display the player's health over the avatar
 
-  ![ ](../../images/editor/nested-under-player.png)
+  ![ ](../../images/editor/nested-under-player.webp)
 
 - Nest it under the **Camera** to display it fixed on the UI
 
-  ![ ](../../images/editor/nested-under-camera.png)
+  ![ ](../../images/editor/nested-under-camera.webp)
 
 - Nest it under literally any item in the scene to keep track of that item's health
 
-  ![ ](../../images/editor/nested-under-barrel.png)
+  ![ ](../../images/editor/nested-under-barrel.webp)
 
 Other items can interact with the health bar to add or subtract health from it.
 
 - Items like the **Spikes** or **Robot Enemy** can lower health
 
-  ![ ](../../images/editor/reduce-health.png)
+  ![ ](../../images/editor/reduce-health.webp)
 
 - items like **First Aid** or the **Healing Pad** can restore it.
 
-  ![ ](../../images/editor/restore-health.png)
+  ![ ](../../images/editor/restore-health.webp)
 
 You must configure the Health Bar to define what will happen when the health equals 0. You might respawn the player to the position of a **Respawn Pad** smart item, reset the counter for their score, respawn any enemies, display a UI text, or whatever makes sense in your game logic.
 
@@ -290,7 +290,7 @@ You can also trigger actions when the health is lower than a certain value, for 
 
 Health bars can be configured to affect anything! For example, add a health bar nested under the **Wooden Door** smart item. This bar can have its health lowered by the player using the **Sword** smart item, but also from an explosion from the **Barrel** or the attack of the **Robot Enemy**. For this to work, configure the health bar so that it performs an action on its parent item when its value is 0.
 
-![ ](../../images/editor/wall-with-health.png)
+![ ](../../images/editor/wall-with-health.webp)
 
 Weapons like the **Sword** can be picked up by the player, and then used to cause damage on any other item with a health bar that's near the player when performing the action.
 

@@ -87,7 +87,7 @@ _Push down every object's animation to the NLA Track._
 
 Once all the animations are listed on the NLA Editor, select all the objects, go to **File > Export > glTF2.0**. Expand Include and check Selected Objects. Expand Animation, expand Animation again and uncheck **Group by NLA Track**. You can rename the animation clip in Merged Animation Name and then just press **Export glTF 2.0**.
 
-![](../../.gitbook/assets/04_export_single_animation_clip.png)
+![](../../.gitbook/assets/04_export_single_animation_clip.webp)
 
 _Settings to export multiple animations as a single one._
 
@@ -109,7 +109,7 @@ Usually, a **sampling rate of 2 or 3** will do the trick. Those numbers can opti
 
 You can find the _**Sampling Rate**_ in the export settings, under _**Animation**_.
 
-![](../../.gitbook/assets/05_sampling_rate.png)
+![](../../.gitbook/assets/05_sampling_rate.webp)
 
 {% hint style="info" %}
 **💡 Tip**: If the number of frames of the animation can be divided by the sampling rate, that's a good thing! It means that the final frame will be baked, preserving the transition from end to start of the animation.

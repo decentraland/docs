@@ -34,7 +34,7 @@ See [Screen inset area](../../sdk7/2d-ui/onscreen-ui.md#screen-inset-area) for t
 
 `'interactable'` gives you the area **each explorer designates for scene UI** — that is deliberately not a promise that every client control is outside it. On the mobile client it is the device safe area minus the left-hand column (chat, profile, joystick, emotes); the action buttons on the bottom right are drawn over the area **by design**.
 
-<figure><img src="../../../.gitbook/assets/screeninset-interactable.png" alt="Scene UI inset to the area the mobile client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> on mobile client <code>1.12.1</code>. The magenta rectangle is the scene UI, green outlines the interactable area. The left-hand column is excluded; the action buttons on the bottom right sit over the area.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/screeninset-interactable.webp" alt="Scene UI inset to the area the mobile client reports as free of its own HUD"><figcaption><p><code>screenInset: 'interactable'</code> on mobile client <code>1.12.1</code>. The magenta rectangle is the scene UI, green outlines the interactable area. The left-hand column is excluded; the action buttons on the bottom right sit over the area.</p></figcaption></figure>
 
 So even with `'interactable'`, treat these as crowded:
 

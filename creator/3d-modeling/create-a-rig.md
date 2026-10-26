@@ -22,7 +22,7 @@ _Adding an armature and showing it through the mesh._
 
 After adding the Armature object, select it and go to _**Edit Mode**_. Here is where you add the other bones by extruding the original one (press `E`), duplicating it (`Shift+D`) or simply adding a new one with `Shift+A`. The skeleton should follow the shape of the model, like a real skeleton. Bones can be scaled, grabbed and rotated and they have two parts: the head and the tail. The head is the pivot point, which means that rotations and scale will start from there. That also means that it’s where the mesh deformation will happen, so position the bones as centered in the mesh as possible.
 
-![](../../.gitbook/assets/02_bone_head_tail.png)
+![](../../.gitbook/assets/02_bone_head_tail.webp)
 
 _Bone structure._
 
@@ -46,7 +46,7 @@ The axes should be aligned with the direction in which you want the bones to rot
 
 _Fixing the bone roll._
 
-![](../../.gitbook/assets/05_toggle_axes.png)
+![](../../.gitbook/assets/05_toggle_axes.webp)
 
 _Toggle Axes on so you can see the direction in which the bone will rotate._
 
@@ -94,11 +94,11 @@ _Edit a bone’s influence in Weight Paint._
 
 Before you start editing, to have you weight paint automatically mirrored as you paint, toggle _**Mirror Vertex Groups**_ and select _**X**_ in _**Mirror**_ under _**Symmetry**_ (in Blender 3.4.0) To edit the influences, select the vertex group one you want and, in the _**Tool**_ menu, under _**Blend**_, switch between _**Add**_ and _**Subtract**_ according to your needs. You can also change the size, weight and strength of the brush.
 
-![](../../.gitbook/assets/10_weight_paint_tools.png)
+![](../../.gitbook/assets/10_weight_paint_tools.webp)
 
 _Change the Blend to add or remove influence. Make sure Symmetry is right._
 
-![](../../.gitbook/assets/11_weight_paint_tools_02.png)
+![](../../.gitbook/assets/11_weight_paint_tools_02.webp)
 
 Use the _**Blur**_ tool ont the left side of the screen to smooth the weight paint and make it more even.
 
@@ -126,7 +126,7 @@ Remeber to rename the duplicated bones, adding IK to the name so you know they a
 
 _Duplicate the bones and move them to a different layer._
 
-![](../../.gitbook/assets/16_uncheck_deform.png)
+![](../../.gitbook/assets/16_uncheck_deform.webp)
 
 _Select all the IK bones and, while holding `Alt`, uncheck Deform._
 
@@ -138,7 +138,7 @@ _Creating an IK bone._
 
 In _**Pose Mode**_, click on the shin bone, press `CTRL+Shift+C` and select _**Inverse Kinematics**_. It will look all messed up, but don’t worry, it will be fixed once you change a few settings. With the shin selected, got to the _**Bone Constraint Properties**_ as shown below.
 
-![](../../.gitbook/assets/18_constraint_tab.png)
+![](../../.gitbook/assets/18_constraint_tab.webp)
 
 _In Bone Constraint Properties you can edit the IK settings._
 
@@ -160,11 +160,11 @@ _Creating a Pole Target._
 
 Back into _**Pose Mode**_, select the shin again and go to the _**Bone Constraint Properties**_. For _**Pole Target**_ select _**Armature**_ and for _**Bone**_, select the pole target one you just created. If you show the deform bones, you will see that the pole target rotated the IK a little.
 
-![](../../.gitbook/assets/20_pole_target_rotation.png)
+![](../../.gitbook/assets/20_pole_target_rotation.webp)
 
 _IK chain and deform bones are not aligned anymore because of pole target._
 
-![](../../.gitbook/assets/21_pole_target_rotation_fix.png)
+![](../../.gitbook/assets/21_pole_target_rotation_fix.webp)
 
 _The rotation can be fixed by changing the Pole Angle._
 
@@ -208,7 +208,7 @@ For the constraints, select a control bonefirst and the respective deforming bon
 
 You can separate the control bones into different groups and assign colors to them. Go to _**Pose Mode**_ > _**Object Data Properties**_ > _**Bone Groups**_. Click on the _**+**_ icon to add a new group, rename it as you see fit and select a color for it. Then, select the bones you want to be part of that group and click on _**Assign**_. You can create as many groups as you like to keep everything organized. You can also move different bone groups to different layers.
 
-![](../../.gitbook/assets/25_bone_groups.png)
+![](../../.gitbook/assets/25_bone_groups.webp)
 
 _Bone groups will help you keep your rig organized and more intuitive._
 

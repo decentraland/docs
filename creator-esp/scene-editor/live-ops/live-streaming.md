@@ -24,7 +24,7 @@ Usa el smart item **Video Screen** junto con el smart item **Scene Admin** para 
 
 2.  Agrega un smart item **Scene Admin** y habilita la sección **Video Screens**. Selecciona cada pantalla del desplegable y dale un nombre amigable para la UI de admin.
 
-    ![](../../../.gitbook/assets/multi-video-setup.png)
+    ![](../../../.gitbook/assets/multi-video-setup.webp)
 
 3.  Publica tu SC (World o Genesis City) y entra como un usuario con permisos de admin.
 

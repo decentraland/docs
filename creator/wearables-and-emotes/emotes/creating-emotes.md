@@ -70,7 +70,7 @@ In the rig file, other than the two windows for the viewport (front and side vie
 With this workspace, you have everything needed to start animating!
 
 
-![](../../images/emotes/workspace.png) 
+![](../../images/emotes/workspace.webp)
 
 These are the bottom windows. The top one is in the _**Graph Editor,**_ the middle one in the _**Dope Sheet,**_ and the bottom one is the _**Timeline.**_ The top red arrow shows the _**Only Show Selected**_ tool and the bottom one shows the _**Auto Keying**_.
 
@@ -104,7 +104,7 @@ In the provided avatar file, you will find a collection called ***Animation_Area
 - Root_Animation_Area is a cylinder that defines the area where you can move the avatar root/center of gravity (CTRL_Avatar_UpperBody or Avatar_Hips). The cylinder is 4 meters high, which means the root can go all the way up as long as no mesh is outside of the bounding box. Avatar legs, arms and other body parts can be outside of the cylinder, as long as they are never outside of the Animation_Area_Reference.
 
 
-![Animation area reference.](../../images/emotes/Animation_area.png)
+![Animation area reference.](../../images/emotes/Animation_area.webp)
 
 To summarize, avatar can move right, left, front amd back and long as the root stays within the cylinder, which means 1 meter in any of the four directions.
 
@@ -112,14 +112,14 @@ To summarize, avatar can move right, left, front amd back and long as the root s
 
 As for the height, it can go all the way up (max 4 meters) as long as the avatar stays within the bounding box.  Below are some cases on avatar height done right (whole body within bounding box) and some  done wrong (mesh outside of bounding box).
 
-| ![](../../images/emotes/height_right_1.png) | ![](../../images/emotes/height_right_2.png) |
+| ![](../../images/emotes/height_right_1.webp) | ![](../../images/emotes/height_right_2.webp) |
 |-----------------------------------------|---------------------------------------------|
 
-| ![](../../images/emotes/height_right_3.png)   | ![](../../images/emotes/height_wrong_1.png)   |
+| ![](../../images/emotes/height_right_3.webp)   | ![](../../images/emotes/height_wrong_1.webp)   |
 |-----------------------------------------|---------------------------------------------|
 
 
-![](../../images/emotes/height_wrong_2.png)
+![](../../images/emotes/height_wrong_2.webp)
 
 Here are some examples of emotes that are within the animation area boundaries.
 
@@ -140,7 +140,7 @@ On the *Browse Action* section, simply click on ***Create A New Action*** button
 
 Belnder 4.4 introduced *Slotted Actions*, the icon to the right of the *Browse Action* section from previous versions. There’s no need to mess with that if you’re creating an emote with no prop, so you can just leave it as it is. If you’re animating the avatar, make sure the slotted action is Avatar_Animation.
 
-![](../../images/emotes/duplicating_animation.gif)
+![](../../images/emotes/duplicating_animation.webp)
 
 Create a new animation by duplicating the existing one or by clicking on _**Unlink Action**_ and then _**New**_.
 
@@ -164,7 +164,7 @@ You can delete animations directly from Blender File under Display Mode in the o
 Do not always edit the same animation track. Before making major changes, just duplicate the animation. That way you have a back up version in case you regret deleting or changing something. This is also a nice way to keep track of the progress made so far!
 {% endhint %}
 
-![](../../images/emotes/duplicating_animation2.gif)
+![](../../images/emotes/duplicating_animation2.webp)
 
 Duplicating animation clips.
 
@@ -250,12 +250,12 @@ To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 
-| ![](../../images/emotes/export_settings.png) | ![](../../images/emotes/export_settings_GIF.gif) |
+| ![](../../images/emotes/export_settings.webp) | ![](../../images/emotes/export_settings_GIF.webp) |
 |-----------------------------------------|---------------------------------------------|
 
 If you need to sample the animation, expand the Animation tab, expand Sampling Animations and choose the number of samples wanted. 
 
-| ![](../../images/emotes/sampling_rate.png)   | ![](../../images/emotes/sampling_rate_GIF.gif)   |
+| ![](../../images/emotes/sampling_rate.webp)   | ![](../../images/emotes/sampling_rate_GIF.webp)   |
 |-----------------------------------------|---------------------------------------------|
 
 That’s it for exporting the animation!

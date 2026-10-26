@@ -21,9 +21,9 @@ That tab holds the **Enable AI Assistant** switch, the **Bill this to an API key
 
 When the assistant is on, an **AI Assistant** button (the sparkles icon) appears in the editor's top bar, to the left of the **Code** button. Click it to open the chat panel beside your scene.
 
-![The editor top bar, with the scene name on the left and the sparkles AI Assistant icon, Code, Preview and Publish buttons on the right.](../../images/editor/editor-top-bar.png)
+![The editor top bar, with the scene name on the left and the sparkles AI Assistant icon, Code, Preview and Publish buttons on the right.](../../images/editor/editor-top-bar.webp)
 
-![The AI Assistant panel when first opened: a New chat dropdown and a CLI dropdown reading Claude at the top, a welcome message, an About AI usage card, a Selection chip naming the selected entity, and the Ask Assistant input at the bottom.](../../images/editor/ai-assistant-panel.png)
+![The AI Assistant panel when first opened: a New chat dropdown and a CLI dropdown reading Claude at the top, a welcome message, an About AI usage card, a Selection chip naming the selected entity, and the Ask Assistant input at the bottom.](../../images/editor/ai-assistant-panel.webp)
 
 ## Connect a coding CLI
 
@@ -71,11 +71,11 @@ The assistant works on the scene you have open. It can:
 
 Changes are saved as they happen and go into the normal undo history. To take back a whole exchange at once, use **Undo AI changes** on the assistant's reply.
 
-![The AI Assistant panel docked at the right of the editor after a request to rename an entity and add a Mesh Renderer: the reply lists the tools it ran, describes the result, and shows an Undo AI changes button beneath it.](../../images/editor/ai-assistant-reply.png)
+![The AI Assistant panel docked at the right of the editor after a request to rename an entity and add a Mesh Renderer: the reply lists the tools it ran, describes the result, and shows an Undo AI changes button beneath it.](../../images/editor/ai-assistant-reply.webp)
 
 While the assistant works, its changes show up live in the entity tree and the canvas.
 
-![The full Scene Editor with the AI Assistant panel docked on the right, the renamed Stage entity visible in the entity tree, and the assistant's reply ending with Undo AI changes.](../../images/editor/ai-assistant-docked.png)
+![The full Scene Editor with the AI Assistant panel docked on the right, the renamed Stage entity visible in the entity tree, and the assistant's reply ending with Undo AI changes.](../../images/editor/ai-assistant-docked.webp)
 
 ## Working with the chat
 

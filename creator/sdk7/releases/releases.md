@@ -24,6 +24,12 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## SDK
 
+### 7.31.0 (Oct 22, 2026)
+
+* **Custom fonts**: the new `fontSrc` property on `TextShape`, and on the UI `Label`, `Button`, `Input` and `Dropdown` entities, renders text with a `.ttf` font file from your scene. See [Custom fonts](../3d-essentials/text.md#custom-fonts) and [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts). [#1656](https://github.com/decentraland/js-sdk-toolchain/pull/1656)
+* **Batched deployments**: when the content server supports it, scenes are deployed in batches, so publishing large scenes is more reliable. [#1635](https://github.com/decentraland/js-sdk-toolchain/pull/1635)
+* **Fixes**: the preview's pointer endpoints send each scene entity once [#1650](https://github.com/decentraland/js-sdk-toolchain/pull/1650).
+
 ### 7.30.0 and 7.30.1 (Oct 8, 2026)
 
 * **Player language**: `getPlayerLanguage()` returns the language the player's client is set to, as a BCP 47 tag, and `onPlayerLanguageChanged` reports changes made mid-session. See [Get player language](../interactivity/runtime-data.md#get-player-language). [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)

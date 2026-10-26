@@ -96,6 +96,13 @@ function parseExample(
 		throw new Error(`${fileName} must define a developer for Published Games.`)
 	}
 
+	const sourceUrl = new URL(fields.source)
+	const [maintainer] = sourceUrl.pathname.split('/').filter(Boolean)
+
+	if (sourceUrl.protocol !== 'https:' || sourceUrl.hostname !== 'github.com' || !maintainer) {
+		throw new Error(`${fileName} source must be an HTTPS GitHub repository URL.`)
+	}
+
 	return {
 		id:          fields.id,
 		name:        fields.name,
@@ -103,6 +110,8 @@ function parseExample(
 		category,
 		tags,
 		developer:   fields.developer,
+		maintainer,
+		maintenance: maintainer.toLowerCase() === 'decentraland' ? 'decentraland' : 'community',
 		source:      fields.source,
 		realm:       fields.realm,
 		position:    fields.position,
@@ -110,6 +119,45 @@ function parseExample(
 		page:        `./${fileName}`,
 		fileName,
 	}
+}
+
+
+// MARK: renderMaintenance
+function renderMaintenance(example) {
+	return example.maintenance === 'community'
+		? `Community · ${example.maintainer}`
+		: 'Decentraland'
+}
+
+
+// MARK: updateExampleContext
+async function updateExampleContext(example) {
+	const pagePath = join(examplesDirectory, example.fileName)
+	const content = await readFile(pagePath, 'utf8')
+	const markers = /<!-- example-context:start -->[\s\S]*?<!-- example-context:end -->/
+	const context = [
+		'<!-- example-context:start -->',
+		`**Maintained by:** ${renderMaintenance(example)}`,
+		'',
+		`[${example.maintenance === 'community' ? 'View upstream source' : 'View source'}](${example.source})`,
+		...(example.maintenance === 'community' ? [
+			'',
+			'This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.',
+			'',
+			'[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project\'s security policy. Do not include exploit details or credentials in public issues.',
+		] : []),
+		'<!-- example-context:end -->',
+	].join('\n')
+
+	if (!markers.test(content) && !/^# .+$/m.test(content)) {
+		throw new Error(`${example.fileName} must have a page heading for its generated context.`)
+	}
+
+	const updated = markers.test(content)
+		? content.replace(markers, () => context)
+		: content.replace(/^(# .+)$/m, heading => `${heading}\n\n${context}`)
+
+	await writeFile(pagePath, updated)
 }
 
 
@@ -172,14 +220,14 @@ function renderCatalogTables(
 		const rows = categoryExamples.map(example => [
 			`[${example.name}](./examples/${example.fileName})`,
 			example.description,
-			...(category.id === 'published-games' ? [example.developer] : []),
+			renderMaintenance(example),
 			example.tags.map(tag => `\`${tag}\``).join(', '),
 			`[Open ${example.source.includes('/tree/') ? 'scene' : 'repository'}](${example.source})`,
 		])
 
 		const headings = category.id === 'published-games'
-			? ['Game', 'What it demonstrates', 'Developer', 'Tags', 'Source']
-			: ['Example', 'What it demonstrates', 'Tags', 'Source']
+			? ['Game', 'What it demonstrates', 'Maintained by', 'Tags', 'Source']
+			: ['Example', 'What it demonstrates', 'Maintained by', 'Tags', 'Source']
 
 		if (category.id === 'published-games') {
 			const widths = headings.map((heading, index) => Math.max(
@@ -270,6 +318,10 @@ async function generateCatalog() {
 		}
 
 		sources.add(source)
+	}
+
+	for (const example of examples) {
+		await updateExampleContext(example)
 	}
 
 	const catalog = {

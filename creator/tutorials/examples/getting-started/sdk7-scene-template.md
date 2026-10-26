@@ -9,4 +9,10 @@ license: unlicensed
 
 # SDK7 scene template
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-scene-template)
+<!-- example-context:end -->
+
 Start a new SDK7 scene from this clean TypeScript template.

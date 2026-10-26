@@ -9,4 +9,10 @@ license: unlicensed
 
 # Third-party player authentication
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity)
+<!-- example-context:end -->
+
 Study a scene that verifies player identity when communicating with an external service.

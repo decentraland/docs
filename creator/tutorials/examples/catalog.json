@@ -62,6 +62,8 @@
 				"collectibles"
 			],
 			"developer": "CanessaDCL",
+			"maintainer": "CanessaDCL",
+			"maintenance": "community",
 			"source": "https://github.com/CanessaDCL/dcl-shroomzoom",
 			"realm": "shroomzoom.dcl.eth",
 			"license": "unlicensed",
@@ -77,6 +79,8 @@
 				"game"
 			],
 			"developer": "carlosmu",
+			"maintainer": "carlosmu",
+			"maintenance": "community",
 			"source": "https://github.com/carlosmu/goal-legends-arena",
 			"realm": "goallegends.dcl.eth",
 			"license": "NOASSERTION",
@@ -94,6 +98,8 @@
 				"leaderboard"
 			],
 			"developer": "carlosmu",
+			"maintainer": "carlosmu",
+			"maintenance": "community",
 			"source": "https://github.com/carlosmu/dcl-monster-recon",
 			"realm": "monsterrecon.dcl.eth",
 			"license": "unlicensed",
@@ -112,6 +118,8 @@
 				"storage"
 			],
 			"developer": "carlosmu",
+			"maintainer": "carlosmu",
+			"maintenance": "community",
 			"source": "https://github.com/carlosmu/dcl-prime-drive",
 			"realm": "primedrive.dcl.eth",
 			"license": "unlicensed",
@@ -129,6 +137,8 @@
 				"multiplayer"
 			],
 			"developer": "carlosmu",
+			"maintainer": "carlosmu",
+			"maintenance": "community",
 			"source": "https://github.com/carlosmu/circus_fortune_teller",
 			"realm": "fortunes.dcl.eth",
 			"license": "unlicensed",
@@ -146,6 +156,8 @@
 				"timed-rounds"
 			],
 			"developer": "CleanTheClub",
+			"maintainer": "CleanTheClub",
+			"maintenance": "community",
 			"source": "https://github.com/CleanTheClub/CleanTheClub",
 			"realm": "cleantheclub.dcl.eth",
 			"license": "Apache-2.0",
@@ -166,6 +178,8 @@
 				"storage"
 			],
 			"developer": "DansStuff",
+			"maintainer": "DansStuff",
+			"maintenance": "community",
 			"source": "https://github.com/DansStuff/AstroCrew",
 			"realm": "astrocrew.dcl.eth",
 			"license": "unlicensed",
@@ -182,6 +196,8 @@
 				"social"
 			],
 			"developer": "dcl-regenesislabs",
+			"maintainer": "dcl-regenesislabs",
+			"maintenance": "community",
 			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
 			"realm": "cozyfarm.dcl.eth",
 			"license": "unlicensed",
@@ -199,6 +215,8 @@
 				"progression"
 			],
 			"developer": "dcl-regenesislabs",
+			"maintainer": "dcl-regenesislabs",
+			"maintenance": "community",
 			"source": "https://github.com/dcl-regenesislabs/dead-surge",
 			"realm": "deadsurge.dcl.eth",
 			"license": "unlicensed",
@@ -215,6 +233,8 @@
 				"seasonal"
 			],
 			"developer": "dcl-regenesislabs",
+			"maintainer": "dcl-regenesislabs",
+			"maintenance": "community",
 			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
 			"realm": "kickoff.dcl.eth",
 			"license": "unlicensed",
@@ -231,6 +251,8 @@
 				"collection"
 			],
 			"developer": "dcl-regenesislabs",
+			"maintainer": "dcl-regenesislabs",
+			"maintenance": "community",
 			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
 			"realm": "marshcolony.dcl.eth",
 			"license": "unlicensed",
@@ -248,6 +270,8 @@
 				"timed-rounds"
 			],
 			"developer": "dcl-regenesislabs",
+			"maintainer": "dcl-regenesislabs",
+			"maintenance": "community",
 			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
 			"realm": "towerofmadness.dcl.eth",
 			"license": "unlicensed",
@@ -264,6 +288,8 @@
 				"loading",
 				"assets"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-12-asset-load",
 			"license": "unlicensed",
 			"page": "./performance-scene-systems/asset-loading.md",
@@ -279,6 +305,8 @@
 				"visualization",
 				"effects"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization",
 			"license": "unlicensed",
 			"page": "./audio-video-environment/audio-visualization.md",
@@ -294,6 +322,8 @@
 				"environment",
 				"effects"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights",
 			"license": "unlicensed",
 			"page": "./audio-video-environment/dynamic-lights.md",
@@ -309,6 +339,8 @@
 				"input",
 				"player"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/input-modifier.md",
@@ -324,6 +356,8 @@
 				"textures",
 				"rendering"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery",
 			"license": "unlicensed",
 			"page": "./performance-scene-systems/material-and-texture-gallery.md",
@@ -339,6 +373,8 @@
 				"scoreboard",
 				"game"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk-mini-games",
 			"license": "unlicensed",
 			"page": "./multiplayer-data-services/mini-games-library.md",
@@ -354,6 +390,8 @@
 				"areas",
 				"modifiers"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/9,99-modifier-areas",
 			"license": "unlicensed",
 			"page": "./performance-scene-systems/modifier-areas.md",
@@ -370,6 +408,8 @@
 				"server",
 				"storage"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard",
 			"license": "unlicensed",
 			"page": "./multiplayer-data-services/authoritative-server-leaderboard.md",
@@ -385,6 +425,8 @@
 				"effects",
 				"visuals"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/particle-system.md",
@@ -400,6 +442,8 @@
 				"mouse",
 				"camera"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/pointer-lock-control.md",
@@ -415,6 +459,8 @@
 				"raycast",
 				"collision"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/77,-1-raycast-unit-tests",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/raycasting-and-collider-layers.md",
@@ -430,6 +476,8 @@
 				"multiplayer-server",
 				"storage"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback",
 			"license": "unlicensed",
 			"page": "./scene-management-feedback/playtest-feedback.md",
@@ -444,6 +492,8 @@
 				"sdk7",
 				"scene"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-scene-template",
 			"license": "unlicensed",
 			"page": "./getting-started/sdk7-scene-template.md",
@@ -459,6 +509,8 @@
 				"environment",
 				"lighting"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a",
 			"license": "unlicensed",
 			"page": "./audio-video-environment/skybox-control.md",
@@ -474,6 +526,8 @@
 				"spectator",
 				"player"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/33,20-spectate-mode",
 			"license": "unlicensed",
 			"page": "./ui-camera-player/spectate-mode.md",
@@ -488,6 +542,8 @@
 				"api",
 				"storage"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api",
 			"license": "unlicensed",
 			"page": "./multiplayer-data-services/third-party-guest-book.md",
@@ -503,6 +559,8 @@
 				"storage",
 				"leaderboard"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board",
 			"license": "unlicensed",
 			"page": "./multiplayer-data-services/third-party-leaderboard.md",
@@ -518,6 +576,8 @@
 				"authentication",
 				"player"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity",
 			"license": "unlicensed",
 			"page": "./multiplayer-data-services/third-party-player-authentication.md",
@@ -533,6 +593,8 @@
 				"triggers",
 				"collision"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/trigger-areas.md",
@@ -548,6 +610,8 @@
 				"animation",
 				"sprites"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations",
 			"license": "unlicensed",
 			"page": "./ui-camera-player/ui-animations.md",
@@ -562,6 +626,8 @@
 				"ui",
 				"hud"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area",
 			"license": "unlicensed",
 			"page": "./ui-camera-player/ui-safe-areas.md",
@@ -577,6 +643,8 @@
 				"streaming",
 				"media"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/video-streaming",
 			"license": "unlicensed",
 			"page": "./audio-video-environment/video-streaming.md",
@@ -592,6 +660,8 @@
 				"cinematic",
 				"controls"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras",
 			"license": "unlicensed",
 			"page": "./ui-camera-player/virtual-cameras.md",
@@ -607,6 +677,8 @@
 				"complete-scene",
 				"score"
 			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/zombie-attack",
 			"license": "unlicensed",
 			"page": "./gameplay-interaction/zombie-attack.md",
@@ -622,6 +694,8 @@
 				"dialogue",
 				"ui"
 			],
+			"maintainer": "decentraland-scenes",
+			"maintenance": "community",
 			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
 			"license": "Apache-2.0",
 			"page": "./ui-camera-player/npc-toolkit.md",
@@ -640,6 +714,8 @@
 				"leaderboard"
 			],
 			"developer": "iillee",
+			"maintainer": "iillee",
+			"maintenance": "community",
 			"source": "https://github.com/iillee/flagtag",
 			"realm": "flagtag.dcl.eth",
 			"license": "unlicensed",
@@ -656,6 +732,8 @@
 				"community-made"
 			],
 			"developer": "PepeGawd",
+			"maintainer": "PepeGawd",
+			"maintenance": "community",
 			"source": "https://github.com/PepeGawd/Pigeon-Deluxe",
 			"realm": "pigeondeluxe.dcl.eth",
 			"license": "unlicensed",
@@ -673,6 +751,8 @@
 				"timed-rounds"
 			],
 			"developer": "procesista",
+			"maintainer": "procesista",
+			"maintenance": "community",
 			"source": "https://github.com/procesista/Alienscrap",
 			"realm": "alienscrapyard.dcl.eth",
 			"license": "unlicensed",
@@ -695,6 +775,8 @@
 				"storage"
 			],
 			"developer": "stom66",
+			"maintainer": "stom66",
+			"maintenance": "community",
 			"source": "https://github.com/stom66/dcl-bowling",
 			"realm": "stom.dcl.eth",
 			"license": "NOASSERTION",
@@ -714,6 +796,8 @@
 				"leaderboard"
 			],
 			"developer": "stom66",
+			"maintainer": "stom66",
+			"maintenance": "community",
 			"source": "https://github.com/stom66/dcl-sky-chaser",
 			"realm": "skychaser.dcl.eth",
 			"license": "NOASSERTION",
@@ -735,6 +819,8 @@
 				"ui"
 			],
 			"developer": "stom66",
+			"maintainer": "stom66",
+			"maintenance": "community",
 			"source": "https://github.com/stom66/dcl-slay-the-steps",
 			"realm": "slaythesteps.dcl.eth",
 			"license": "NOASSERTION",
@@ -754,6 +840,8 @@
 				"leaderboard"
 			],
 			"developer": "TheLivingGarden",
+			"maintainer": "TheLivingGarden",
+			"maintenance": "community",
 			"source": "https://github.com/TheLivingGarden/TheLivingGarden/tree/main-main",
 			"realm": "bloomgarden.dcl.eth",
 			"license": "MIT",
@@ -771,6 +859,8 @@
 				"platformer"
 			],
 			"developer": "ToxSam",
+			"maintainer": "ToxSam",
+			"maintenance": "community",
 			"source": "https://github.com/ToxSam/SlidePenguin",
 			"position": "-140,101",
 			"license": "unlicensed",

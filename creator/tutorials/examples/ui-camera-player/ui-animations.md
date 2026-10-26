@@ -9,4 +9,10 @@ license: unlicensed
 
 # UI animations
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/ui-animations)
+<!-- example-context:end -->
+
 Create animated UI elements, sprite sheets, and loading indicators.

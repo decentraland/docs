@@ -9,4 +9,10 @@ license: unlicensed
 
 # Audio visualization
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/88,-10-audio-visualization)
+<!-- example-context:end -->
+
 Use live audio data to drive visual scene behaviour.

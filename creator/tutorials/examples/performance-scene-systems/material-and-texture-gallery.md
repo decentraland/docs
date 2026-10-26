@@ -9,4 +9,10 @@ license: unlicensed
 
 # Material and texture gallery
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/52,-52-testing-gallery)
+<!-- example-context:end -->
+
 Explore material, texture, and GLTF node modifier patterns.

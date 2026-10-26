@@ -9,4 +9,10 @@ license: unlicensed
 
 # Third-party leaderboard
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board)
+<!-- example-context:end -->
+
 Study a leaderboard scene that stores and retrieves scores through an external HTTP service.

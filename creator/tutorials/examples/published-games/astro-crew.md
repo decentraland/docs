@@ -10,7 +10,16 @@ license: unlicensed
 ---
 # Astro Crew
 
-- [Source on GitHub](https://github.com/DansStuff/AstroCrew "Source on GitHub")
+<!-- example-context:start -->
+**Maintained by:** Community · DansStuff
+
+[View upstream source](https://github.com/DansStuff/AstroCrew)
+
+This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently. Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
+
+[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project's security policy. Do not include exploit details or credentials in public issues.
+<!-- example-context:end -->
+
 - [Play on Decentraland](https://decentraland.org/play/?realm=astrocrew.dcl.eth "Play on Decentraland")
 
 A co-op scene where the crew shares one ship. At each stop they shoot incoming asteroids and saucers, repair hull breaches, and raise gunner and engineering levels. The fight runs on an authoritative multiplayer server.

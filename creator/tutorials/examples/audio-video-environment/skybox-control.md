@@ -9,4 +9,10 @@ license: unlicensed
 
 # Skybox control
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a)
+<!-- example-context:end -->
+
 Update skybox time and transition settings from scene code.

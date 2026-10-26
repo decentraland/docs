@@ -9,4 +9,10 @@ license: unlicensed
 
 # Input modifier
 
+<!-- example-context:start -->
+**Maintained by:** Decentraland
+
+[View source](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,1-input-modifier)
+<!-- example-context:end -->
+
 Change or constrain player movement input in part of a scene.

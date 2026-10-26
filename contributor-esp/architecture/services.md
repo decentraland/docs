@@ -32,7 +32,7 @@ La red Catalyst forma la base de la infraestructura de contenido de Decentraland
 * Asset Bundle Registry - Activa optimización de activos en despliegue
 * Archipelago Workers - Proporciona datos de isla/cluster
 
-**Referencia de API**: [API Catalyst](../../apis/catalyst/overview)
+**Referencia de API**: [API Catalyst](../../apis/apis/catalyst/README.md)
 
 ### Lamb2
 
@@ -46,7 +46,7 @@ Lamb2 proporciona endpoints utilitarios para consumo y consultas de contenido qu
 
 **Rol Arquitectónico**: Actúa como una capa de conveniencia sobre el acceso crudo de entidades del Content Server, proporcionando patrones de consulta de nivel superior comúnmente necesarios por clientes.
 
-**Referencia de API**: [API Lamb2](../../apis/lamb2/overview)
+**Referencia de API**: [API Lamb2](../../apis/apis/lamb2/README.md)
 
 ***
 
@@ -70,7 +70,7 @@ El Realm Provider es el punto de entrada para todos los clientes de Decentraland
 * Agrega estadísticas de Archipelago
 * Proporciona vista unificada de red distribuida
 
-**Referencia de API**: [API Realm Provider](../../apis/realm-provider/overview)
+**Referencia de API**: [API Realm Provider](../../apis/apis/realm-provider/README.md)
 
 ### Comms Gatekeeper
 
@@ -90,7 +90,7 @@ El Gatekeeper gestiona el acceso a servidores de medios LiveKit para chat de voz
 * Worlds API - Valida propiedad de world para derechos de admin
 * Signed Fetch - Autentica todas las solicitudes a través de firmas de wallet
 
-**Referencia de API**: [API Comms Gatekeeper](../../apis/comms-gatekeeper/overview)
+**Referencia de API**: [API Comms Gatekeeper](../../apis/apis/comms-gatekeeper/README.md)
 
 ### Archipelago Workers
 
@@ -116,7 +116,7 @@ Archipelago implementa el protocolo de clustering basado en proximidad que agrup
 * Realm Provider - Proporciona estadísticas de isla
 * Places API - Datos de conteo de usuarios para escenas populares
 
-**Referencia de API**: [API Archipelago Workers](../../apis/archipelago-workers/overview)
+**Referencia de API**: [API Archipelago Workers](../../apis/apis/archipelago-workers/README.md)
 
 ***
 
@@ -140,7 +140,7 @@ Worlds permite a los usuarios desplegar escenas en entornos aislados:
 * Se integra con Comms Gatekeeper para salas de chat de voz
 * Activa pipeline de procesamiento de activos en despliegue
 
-**Referencia de API**: [API Worlds](../../apis/worlds/overview)
+**Referencia de API**: [API Worlds](../../apis/apis/worlds/README.md)
 
 ### Events
 
@@ -155,7 +155,7 @@ Gestiona el ciclo de vida completo de eventos virtuales:
 
 **Rol Arquitectónico**: Proporciona contexto temporal al metaverso. Los eventos impulsan el descubrimiento y compromiso de usuarios destacando experiencias sensibles al tiempo.
 
-**Referencia de API**: [API Events](../../apis/events/overview)
+**Referencia de API**: [API Events](../../apis/apis/events/README.md)
 
 ### Places
 
@@ -175,7 +175,7 @@ Agrega y cura ubicaciones interesantes en Decentraland:
 * Archipelago Stats - Conteos de usuarios en tiempo real por escena
 * Comms Gatekeeper - Disponibilidad y estado de realm
 
-**Referencia de API**: [API Places](../../apis/places/overview)
+**Referencia de API**: [API Places](../../apis/apis/places/README.md)
 
 ### Atlas Server
 
@@ -190,7 +190,7 @@ Proporciona datos completos de mapa del mundo:
 
 **Rol Arquitectónico**: Proporciona el índice espacial para la cuadrícula LAND de Decentraland. Esencial para IUs de mapa y navegación espacial.
 
-**Referencia de API**: [API Atlas Server](../../apis/atlas-server/overview)
+**Referencia de API**: [API Atlas Server](../../apis/apis/atlas-server/README.md)
 
 ### Camera Reel
 
@@ -204,7 +204,7 @@ Gestiona capturas de pantalla e imágenes de usuarios:
 
 **Rol Arquitectónico**: Habilita características de compartir contenido y sociales en torno a fotografía generada por usuario.
 
-**Referencia de API**: [API Camera Reel](../../apis/camera-reel/overview)
+**Referencia de API**: [API Camera Reel](../../apis/apis/camera-reel/README.md)
 
 ### Exploration Games
 
@@ -218,7 +218,7 @@ Sistema de quests interactivo para onboarding de nuevos usuarios:
 
 **Rol Arquitectónico**: Reduce fricción para nuevos usuarios proporcionando introducción estructurada y orientada a objetivos a características de Decentraland.
 
-**Referencia de API**: [API Exploration Games](../../apis/exploration-games/overview)
+**Referencia de API**: [API Exploration Games](../../apis/apis/exploration-games/README.md)
 
 ***
 
@@ -243,7 +243,7 @@ Implementa el modelo de autenticación wallet-first de Decentraland:
 3. Auth Server verifica firma y emite JWT
 4. Cliente incluye JWT en solicitudes API subsiguientes
 
-**Referencia de API**: [API Auth Server](../../apis/auth-server/overview)
+**Referencia de API**: [API Auth Server](../../apis/apis/auth-server/README.md)
 
 ### Social Service
 
@@ -264,7 +264,7 @@ Gestiona relaciones sociales y comunidades:
 * NATS - Publica actualizaciones de estado de amigos
 * Archipelago - Consulta estado en línea y ubicaciones
 
-**Referencia de API**: [API Social Service](../../apis/social-service/overview)
+**Referencia de API**: [API Social Service](../../apis/apis/social-service/README.md)
 
 ### Marketplace Server
 
@@ -279,7 +279,7 @@ Backend para el marketplace de wearables y emotes de Decentraland:
 
 **Rol Arquitectónico**: Conecta datos NFT on-chain con IU de marketplace amigable para el usuario. Indexa eventos blockchain para consultas rápidas.
 
-**Referencia de API**: [API Marketplace Server](../../apis/marketplace-server/overview)
+**Referencia de API**: [API Marketplace Server](../../apis/apis/marketplace-server/README.md)
 
 ***
 
@@ -295,7 +295,7 @@ Registro de bundles de activos optimizados para plataforma:
 * Versionado
 * Distribución CDN
 
-**Referencia de API**: [API Asset Bundle Registry](../apis/asset-bundle-registry/)
+**Referencia de API**: [API Asset Bundle Registry](../../apis/apis/asset-bundle-registry/README.md)
 
 **Componentes del Sistema**:
 
@@ -327,7 +327,7 @@ Gestión de contenido generado por usuario:
 * Subidas de imágenes
 * Organización de galería
 
-**Referencia de API**: [API Camera Reel](../apis/camera-reel/)
+**Referencia de API**: [API Camera Reel](../../apis/apis/camera-reel/README.md)
 
 ### Credits Server
 
@@ -342,7 +342,7 @@ Gestiona el sistema de créditos virtuales de Decentraland:
 
 **Rol Arquitectónico**: Proporciona una alternativa de moneda de menor fricción a tokens blockchain para compras y características en el mundo.
 
-**Referencia de API**: [API Credits Server](../../apis/credits-server/overview)
+**Referencia de API**: [API Credits Server](../../apis/apis/credits-server/README.md)
 
 ### Badges
 
@@ -360,7 +360,7 @@ Otorgamiento de insignias impulsado por eventos:
 
 **Rol Arquitectónico**: Gamifica el compromiso de usuario a través de logros. Proporciona visibilidad y reconocimiento para actividades de usuario.
 
-**Referencia de API**: [API Badges](../../apis/badges/overview)
+**Referencia de API**: [API Badges](../../apis/apis/badges/README.md)
 
 ### Rewards API
 
@@ -375,7 +375,7 @@ Gestiona campañas de recompensas NFT promocionales:
 
 **Rol Arquitectónico**: Habilita campañas de marketing y adquisición de usuarios a través de recompensas NFT.
 
-**Referencia de API**: [API Rewards](../../apis/rewards/overview)
+**Referencia de API**: [API Rewards](../../apis/apis/rewards/README.md)
 
 ### Notifications Workers
 
@@ -394,7 +394,7 @@ Infraestructura de notificaciones multicanal:
 
 **Rol Arquitectónico**: Mantiene a usuarios comprometidos a través de alertas oportunas sobre actividad de amigos, eventos, recompensas y actualizaciones del sistema.
 
-**Referencia de API**: [API Notifications Workers](../../apis/notifications-workers/overview)
+**Referencia de API**: [API Notifications Workers](../../apis/apis/notifications-workers/README.md)
 
 ### Events Notifier
 
@@ -413,7 +413,7 @@ Sistema de publicación de eventos centralizado que activa acciones descendentes
 * Badges Processor - Otorga insignias de logro
 * Rewards API - Rastrea elegibilidad de campaña
 
-**Referencia de API**: [API Events Notifier](../../apis/events-notifier/overview)
+**Referencia de API**: [API Events Notifier](../../apis/apis/events-notifier/README.md)
 
 ***
 
@@ -517,10 +517,10 @@ flowchart TB
 ### Referencias de API
 
 * [Documentación de API](../../apis/README.md) - Especificaciones completas de API
-* [Autenticación](../auth/authchain.md) - Flujos de auth basados en wallet
-* [Comunicaciones](../comms/overview.md) - Protocolos de mensajería en tiempo real
+* [Autenticación](../authentication/authchain.md) - Flujos de auth basados en wallet
+* [Comunicaciones](../communications/overview.md) - Protocolos de mensajería en tiempo real
 
 ### Desarrollo
 
-* [Guías del Contribuidor](../contributor-guides/overview.md) - Flujos de trabajo de desarrollo
-* [Guía de Pruebas](../practice/testing.md) - Prácticas de pruebas de servicios
+* [Guías del Contribuidor](../contributor-guides/contributor-guides.md) - Flujos de trabajo de desarrollo
+* [Guía de Pruebas](../contributor-guides/testing-standards/testing-services-wkc.md) - Prácticas de pruebas de servicios

@@ -1,5 +1,5 @@
 
-El runtime trata a las [escenas](..//contributor/content/entity-types/scenes.md) como módulos típicos de Node. Una vez que el sandbox está configurado (es decir, todos los [globales](../globals.md) están inyectados y los [módulos](../modules.md) están listos para ser cargados), el código de la escena será evaluado para que pueda poblar el objeto [exports](../globals.md#module).
+El runtime trata a las [escenas](../content/entity-types/scenes.md) como módulos típicos de Node. Una vez que el sandbox está configurado (es decir, todos los [globales](globals.md) están inyectados y los [módulos](modules/README.md) están listos para ser cargados), el código de la escena será evaluado para que pueda poblar el objeto [exports](globals.md#module).
 
 Dos métodos serán recogidos por el host desde `exports`: [`onStart`](#onStart) (opcional) y [`onUpdate`](#onUpdate) (obligatorio).
 
@@ -30,7 +30,7 @@ El ciclo de vida de una escena comienza con el método asíncrono `onStart`. Es 
 onStart(): Promise<void>
 ```
 
-Las escenas deben usar esta llamada para solicitar cualquier estado preexistente del runtime (como las [entidades básicas](../entities.md)) y realizar su propia configuración inicial.
+Las escenas deben usar esta llamada para solicitar cualquier estado preexistente del runtime (como las [entidades básicas](basic-entities.md)) y realizar su propia configuración inicial.
 
 Exportar `onStart` es recomendado para todas las escenas (y hecho automáticamente cuando se usa el SDK), pero no es requerido por protocolo. El método puede estar faltando, o devolver un `Promise` inmediatamente resuelto.
 

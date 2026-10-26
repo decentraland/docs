@@ -1,4 +1,4 @@
-El módulo `Players` permite a las [escenas](/contributor/content/entity-types/scenes) buscar jugadores en su entorno y obtener información sobre su identidad y [perfiles](/contributor/content/entity-types/profiles).
+El módulo `Players` permite a las [escenas](../../content/entity-types/scenes.md) buscar jugadores en su entorno y obtener información sobre su identidad y [perfiles](../../content/entity-types/profiles.md).
 
 ```ts
 const Players = require("~system/Players");
@@ -79,9 +79,9 @@ interface Player {
 
 Contiene información (posiblemente parcial) sobre un usuario, su identidad y avatar.
 
-Los World Explorers obtienen esta información a través del [sistema de contenido](/contributor/content/overview).
+Los World Explorers obtienen esta información a través del [sistema de contenido](../../content/overview.md).
 
-La [definición de entidad de perfil](/contributor/content/entity-types/profiles) detalla todos estos campos y más. Mientras que la estructura y claves de `UserData` son ligeramente diferentes, el significado de cada campo es el mismo.
+La [definición de entidad de perfil](../../content/entity-types/profiles.md) detalla todos estos campos y más. Mientras que la estructura y claves de `UserData` son ligeramente diferentes, el significado de cada campo es el mismo.
 
 ```ts
 export interface UserData {

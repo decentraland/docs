@@ -8,7 +8,7 @@ Once you have [built a new scene](preview-scene.md#create-your-first-scene) or d
 
 ## Using the Scene Editor in Creator Hub
 
-Make sure you've [installed the Creator Hub](../get-started/editor-installation.md).
+Make sure you've [installed the Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Open your scene project.
 2. Click the **Play** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.

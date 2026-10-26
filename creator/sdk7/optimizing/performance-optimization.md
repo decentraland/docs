@@ -209,7 +209,7 @@ Avoid having many hidden UI elements, these also have an effect on performance e
 
 ## Landscape terrain in Worlds
 
-Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
+Scenes published to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
 
 ## Monitor Performance
 

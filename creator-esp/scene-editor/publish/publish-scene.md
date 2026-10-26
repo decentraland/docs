@@ -12,7 +12,7 @@ metaLinks:
 
 Asegúrate de lo siguiente:
 
-* Tu escena cumple con todas las [scene limitations](../sdk7/optimizing/scene-limitations.md). La mayoría de estas se validan cada vez que ejecutas un preview de tu escena.
+* Tu escena cumple con todas las [scene limitations](../../sdk7/optimizing/scene-limitations.md). La mayoría de estas se validan cada vez que ejecutas un preview de tu escena.
 * Tienes una cuenta de [Metamask](https://metamask.io/), con tus parcels de LAND o NAME asignados a ella.
 * Posees la cantidad necesaria de parcels de LAND adyacentes o un NAME de Decentraland. De lo contrario, puedes comprar LAND en el [Market](https://market.decentraland.org) o un NAME en el [Builder](https://decentraland.org/builder/names).
 
@@ -20,7 +20,7 @@ Asegúrate de lo siguiente:
 **📔 Nota**: Las escenas multi-parcel solo se pueden desplegar en parcels adyacentes.
 {% endhint %}
 
-Verifica los [detalles de tu escena](../scene-editor/get-started/scene-editor-essentials.md#scene-details), asegúrate de proporcionar un nombre atractivo, descripción, miniatura, categorías, etc.
+Verifica los [detalles de tu escena](../configure/scene-settings.md#scene-details), asegúrate de proporcionar un nombre atractivo, descripción, miniatura, categorías, etc.
 
 {% hint style="danger" %}
 **❗Advertencia**: Al planear eventos en vivo, asegúrate de no hacer cambios de último minuto en la escena justo antes del evento.
@@ -33,7 +33,7 @@ Después de cada publicación, un proceso interno optimiza todos los modelos 3D 
 Para publicar tu escena:
 
 1. Abre tu escena en el Scene Editor y haz clic en **Publish**. Esto abre una pestaña del navegador, mostrando detalles.
-2. Selecciona si quieres publicar en LAND o en un WORLD. Consulta [Kinds of projects](../sdk7/projects/kinds-of-project.md) para entender mejor las diferentes opciones.
+2. Selecciona si quieres publicar en LAND o en un WORLD. Consulta [Kinds of projects](../../sdk7/projects/kinds-of-project.md) para entender mejor las diferentes opciones.
 
 ![](../../.gitbook/assets/publish-options.webp)
 
@@ -88,10 +88,8 @@ Para publicar en el servidor de prueba, haz clic en el botón **Publish** normal
 
 Si estás publicando en land propiedad de la Decentraland Foundation que te fue otorgada a través de una grant, haz clic en el botón **Publish** normalmente, luego selecciona **Publish to a different server** en la parte inferior. Luego selecciona **Custom Server** del desplegable e ingresa la siguiente dirección de servidor: `http://linker-server.decentraland.org`.
 
-![](../images/editor/publish-to-granted-land.png)
-
 {% hint style="warning" %}
-**📔 Nota**: Primero debes establecer manualmente las coordenadas de tu escena en la pestaña avanzada de la configuración de Layout. Consulta [Scene Settings](../scene-editor/configure/scene-settings.md#layout) para más información.
+**📔 Nota**: Primero debes establecer manualmente las coordenadas de tu escena en la pestaña avanzada de la configuración de Layout. Consulta [Scene Settings](../configure/scene-settings.md#layout) para más información.
 {% endhint %}
 
 ### Servidores personalizados
@@ -100,10 +98,10 @@ Puedes desplegar contenido en un servidor personalizado que no pertenece a la re
 
 Para publicar en un servidor personalizado, haz clic en el botón **Publish** normalmente, luego selecciona **Publish to a different server** en la parte inferior. Luego selecciona **Custom Server** del desplegable e ingresa la dirección del servidor.
 
-Consulta [How to run your own Catalyst Node](../tutorials/how-to-run-a-catalyst.md) para más información sobre qué puedes hacer con tu propio servidor y cómo configurarlo.
+Consulta [How to run your own Catalyst Node](../../../contributor-esp/tutorials/how-to-run-a-catalyst.md) para más información sobre qué puedes hacer con tu propio servidor y cómo configurarlo.
 
 {% hint style="warning" %}
-**📔 Nota**: Los jugadores necesitarán escribir manualmente una URL para acceder a tu servidor personalizado. Ciertas validaciones de servicios como el [rewards server](../rewards/gatting-started.md) o el [quests server](../deprecated/quests/overview.md) pueden fallar en estos contextos, ya que a menudo estos servicios requieren que la solicitud provenga de un servidor oficial.
+**📔 Nota**: Los jugadores necesitarán escribir manualmente una URL para acceder a tu servidor personalizado. Ciertas validaciones de servicios como el [rewards server](../../rewards/gatting-started.md) o el [quests server (documentación archivada)](https://github.com/decentraland/documentation/blob/5f8c7f73c67a9a36e85095cb02e72dc6355fa590/content/creator/deprecated/quests/overview.md) pueden fallar en estos contextos, ya que a menudo estos servicios requieren que la solicitud provenga de un servidor oficial.
 {% endhint %}
 
 Los jugadores nunca son dirigidos a este servidor, la única forma de acceder a él es escribir explícitamente la URL para conectarse a él.

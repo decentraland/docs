@@ -36,7 +36,7 @@ Ten en cuenta las siguientes consideraciones:
 * El componente `InputModifier` solo puede usarse con la entidad `engine.PlayerEntity`. Solo puede afectar al jugador actual, no puede afectar a otros jugadores.
 * Este componente solo afecta al jugador mientras el avatar está dentro de los límites de tu escena. Su locomoción deja de estar restringida tan pronto como salgan.
 * Mientras las interacciones del jugador están deshabilitadas, el jugador no puede realizar emotes libremente, pero la escena puede activar animaciones en el avatar.
-* Las entradas del jugador no afectan al avatar, pero los [eventos de entrada globales](system-based-events.md#global-input-events) aún pueden ser escuchados por la escena. Podrías usarlos para controlar un vehículo, o usar una [Cámara Virtual](../3d-essentials/camera.md) para seguir otra entidad mientras se mueve, tratándola como un avatar alternativo.
+* Las entradas del jugador no afectan al avatar, pero los [eventos de entrada globales](button-events/system-based-events.md#global-input-events) aún pueden ser escuchados por la escena. Podrías usarlos para controlar un vehículo, o usar una [Cámara Virtual](../3d-essentials/camera.md) para seguir otra entidad mientras se mueve, tratándola como un avatar alternativo.
 
 ## Restringir la locomoción
 

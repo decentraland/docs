@@ -16,7 +16,7 @@ Antes de enviar un reporte de bug, por favor asegúrate de lo siguiente:
 
 * Asegúrate de estar usando la última versión del SDK, en caso de que el problema ya haya sido corregido en versiones más nuevas.
 * Verifica la documentación para la característica que estás intentando usar, para confirmar que se supone que se comporte como esperas, y que esto no es solo un malentendido.
-* Descarta que el problema podría ser causado por cómo está construida tu scene. Consulta [Debug in Preview](../sdk7/debugging/debug-in-preview.md) y [Debug in Prod](../sdk7/debugging/debug-in-prod.md) para consejos.
+* Descarta que el problema podría ser causado por cómo está construida tu scene. Consulta [Debug in Preview](debug-in-preview.md) y [Debug in Prod](debug-in-prod.md) para consejos.
 * Evita duplicados. Verifica la [lista de bugs conocidos](https://github.com/orgs/decentraland/projects/20/views/13) para evitar hacer un duplicado. Si tienes más información para agregar a un problema existente, por favor agrega un comentario al problema en lugar de crear un nuevo problema.
 
 ### Reportando un bug

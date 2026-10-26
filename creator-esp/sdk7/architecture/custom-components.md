@@ -10,9 +10,9 @@ metaLinks:
 
 # Componentes Personalizados
 
-Los datos sobre una entidad se almacenan en sus [componentes](../sdk7/architecture/entities-components.md). El SDK de Decentraland proporciona una serie de componentes base que gestionan diferentes aspectos sobre una entidad, como su posición, forma, material, etc. El motor sabe cómo interpretar la información en estos, y cambiará cómo se renderiza la entidad en consecuencia tan pronto como cambien sus valores.
+Los datos sobre una entidad se almacenan en sus [componentes](entities-components.md). El SDK de Decentraland proporciona una serie de componentes base que gestionan diferentes aspectos sobre una entidad, como su posición, forma, material, etc. El motor sabe cómo interpretar la información en estos, y cambiará cómo se renderiza la entidad en consecuencia tan pronto como cambien sus valores.
 
-Si la lógica de tu escena requiere almacenar información sobre una entidad que no es manejada por los componentes predeterminados del SDK, entonces puedes crear un tipo personalizado de componente en tu escena. Luego puedes construir [sistemas](../sdk7/architecture/systems.md) que verifiquen cambios en estos componentes y respondan en consecuencia.
+Si la lógica de tu escena requiere almacenar información sobre una entidad que no es manejada por los componentes predeterminados del SDK, entonces puedes crear un tipo personalizado de componente en tu escena. Luego puedes construir [sistemas](systems.md) que verifiquen cambios en estos componentes y respondan en consecuencia.
 
 ### Acerca de definir componentes
 
@@ -74,11 +74,11 @@ Cada componente debe tener un nombre de componente o identificador único, que l
 
 Al crear componentes que se compartirán como parte de una librería, ten en cuenta que los nombres de componentes en tu librería no deben superponerse con ningún nombre de componente en el proyecto donde se está usando, o en otras librerías que también son usadas por ese proyecto. Para evitar el riesgo de cualquier superposición, la mejor práctica recomendada es incluir el nombre de la librería como parte de la cadena `componentName`. Puedes seguir esta fórmula: `${packageName}::${componentName}`. Por ejemplo, si construyes una librería `MyUtilities` que incluye un componente `MoveEntity`, establece el `componentName` de ese componente como `MyUtilities::moveEntity`.
 
-### Componentes como banderas
+### Componentes como banderas {#components-as-flags}
 
 Puede que quieras agregar un componente que simplemente marque una entidad para diferenciarla de otras, sin usarlo para almacenar datos. Para hacer esto, deja el esquema como un objeto vacío.
 
-Esto es especialmente útil cuando usas [consultas de componentes](../sdk7/architecture/querying-components.md). Un componente de bandera simple puede usarse para diferenciar entidades de otras, y evitar que el sistema itere sobre más entidades de las necesarias.
+Esto es especialmente útil cuando usas [consultas de componentes](querying-components.md). Un componente de bandera simple puede usarse para diferenciar entidades de otras, y evitar que el sistema itere sobre más entidades de las necesarias.
 
 ```ts
 export const IsEnemyFlag = engine.defineComponent('isEnemyFlag', {})
@@ -162,10 +162,10 @@ Los siguientes tipos complejos también existen. Cada uno incluye una serie de p
 * `Schemas.Color4`
 
 {% hint style="info" %}
-**💡 Tip**: Consulta [Tipos de geometría](../sdk7/3d-essentials/special-types.md) y [Tipos de color](../sdk7/3d-essentials/color-types.md) para más detalles sobre cómo estos tipos de datos son útiles.
+**💡 Tip**: Consulta [Tipos de geometría](../3d-essentials/special-types.md) y [Tipos de color](../3d-essentials/color-types.md) para más detalles sobre cómo estos tipos de datos son útiles.
 {% endhint %}
 
-Por ejemplo, puedes usar estos tipos de esquema en un componente como este para rastrear el movimiento gradual de una entidad. Este componente almacena una posición inicial y final como valores Vector3, así como una velocidad y fracción de la ruta completada como números flotantes. Consulta [Mover entidades](../sdk7/3d-essentials/move-entities.md#move-between-two-points) para la implementación completa de este ejemplo.
+Por ejemplo, puedes usar estos tipos de esquema en un componente como este para rastrear el movimiento gradual de una entidad. Este componente almacena una posición inicial y final como valores Vector3, así como una velocidad y fracción de la ruta completada como números flotantes. Consulta [Mover entidades](../3d-essentials/move-entities.md#move-between-two-points) para la implementación completa de este ejemplo.
 
 ```ts
 const MoveTransportData = {
@@ -330,7 +330,7 @@ El ejemplo anterior crea un componente `WheelSpinComponent` que incluye tanto un
 
 ### Suscribirse a cambios
 
-Un caso de uso común es solo ejecutar una función en caso de que los datos en un cierto componente cambien. Usa la función [OnChange](../sdk7/architecture/subscribe-to-changes.md) para evitar tener que definir un sistema y tener que comparar explícitamente valores antiguos con valores nuevos.
+Un caso de uso común es solo ejecutar una función en caso de que los datos en un cierto componente cambien. Usa la función [OnChange](subscribe-to-changes.md) para evitar tener que definir un sistema y tener que comparar explícitamente valores antiguos con valores nuevos.
 
 ```ts
 export function main() {
@@ -346,7 +346,7 @@ export function main() {
 
 ### Construir sistemas para usar un componente
 
-Con tu componente definido y agregado a entidades en tu escena, puedes crear [Sistemas](../sdk7/architecture/systems.md) para realizar lógica, haciendo uso de estos datos almacenados en el componente.
+Con tu componente definido y agregado a entidades en tu escena, puedes crear [Sistemas](systems.md) para realizar lógica, haciendo uso de estos datos almacenados en el componente.
 
 ```ts
 // definir componente
@@ -397,4 +397,4 @@ export function spinSystem(dt: number) {
 engine.addSystem(spinSystem)
 ```
 
-El ejemplo anterior define un sistema que itera sobre todas las entidades que incluyen el `wheelSpinComponent` personalizado, y las rota ligeramente en cada tick del bucle del juego. La cantidad de esta rotación es proporcional al valor `speed` almacenado en la instancia del componente de cada entidad. El ejemplo hace uso de [consultas de componentes](../sdk7/architecture/querying-components.md) para obtener solo las entidades relevantes.
+El ejemplo anterior define un sistema que itera sobre todas las entidades que incluyen el `wheelSpinComponent` personalizado, y las rota ligeramente en cada tick del bucle del juego. La cantidad de esta rotación es proporcional al valor `speed` almacenado en la instancia del componente de cada entidad. El ejemplo hace uso de [consultas de componentes](querying-components.md) para obtener solo las entidades relevantes.

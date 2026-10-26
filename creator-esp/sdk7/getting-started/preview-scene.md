@@ -12,7 +12,7 @@ Una vez que hayas [construido una nueva scene](preview-scene.md#create-your-firs
 
 ## Usando el Scene Editor
 
-Asegúrate de haber [instalado el Creator Hub](../get-started/editor-installation.md).
+Asegúrate de haber [instalado el Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Abre tu proyecto de scene.
 2. Haz clic en el botón **Preview** en la esquina superior derecha. Esto abrirá una nueva ventana con el Decentraland Desktop Explorer, ejecutando solo tu scene. Allí puedes moverte por la scene e interactuar con ítems interactivos.

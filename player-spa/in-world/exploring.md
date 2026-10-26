@@ -27,7 +27,7 @@ Los pines rojos de '**Eventos en Vivo**' muestran la ubicación de un evento que
 
 Los pines amarillos de '**Puntos de Interés**' marcan ubicaciones que la comunidad consideró imperdibles—podrían ser cualquier cosa, desde un juego hasta una obra de arte impresionante. Hacer clic en el ícono mostrará una descripción y un botón 'Entrar' para teletransportarte directamente.
 
-![](broken-reference)
+![](../.gitbook/assets/POS.webp)
 
 ### **Categorías de Ubicación**
 
@@ -35,7 +35,7 @@ Descubre ubicaciones interesantes en Decentraland basadas en categorías. Cuando
 
 Haz clic en una categoría para mostrar pines que marcan las ubicaciones etiquetadas con esa categoría. Hacer clic en uno abrirá una tarjeta de información con una descripción y un botón 'Entrar' para que puedas teletransportarte directamente a la escena.
 
-![](broken-reference)
+![](../.gitbook/assets/Location.webp)
 
 ### **Teletransportarse a Parcelas Específicas**
 
@@ -56,11 +56,11 @@ Aunque los Worlds tienden a ser más privados, puedes descubrirlos navegando por
 
 Más de 1K propietarios de Worlds eligen listar públicamente sus Worlds en la página de Places, haciéndolos más fáciles de descubrir. Navega a través de ellos y filtra por categorías para encontrar el World perfecto para tu aventura diaria.
 
-![](broken-reference)
+![](../.gitbook/assets/worlds.webp)
 
 Los eventos también se pueden organizar en Worlds—¡asistiéndolos puedes hacer amigos y explorar! A continuación se muestra un ejemplo de un evento organizado en un World. Por la flecha roja de 'entrar', puedes ver el nombre del World en lugar de coordenadas de Genesis City.
 
-![](broken-reference)
+![](../.gitbook/assets/events.webp)
 
 ### Teletransportarse a un World
 

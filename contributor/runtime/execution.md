@@ -1,5 +1,5 @@
 
-The runtime treats [scenes](..//contributor/content/entity-types/scenes.md) like typical Node modules. Once the sandbox is set up (i.e. all [globals](../globals.md) are injected and [modules](../modules.md) are ready to be loaded), the code of the scene will be evaluated so it can populate the [exports](../globals.md#module) object.
+The runtime treats [scenes](../content/entity-types/scenes.md) like typical Node modules. Once the sandbox is set up (i.e. all [globals](globals.md) are injected and [modules](modules/README.md) are ready to be loaded), the code of the scene will be evaluated so it can populate the [exports](globals.md#module) object.
 
 Two methods will be picked up by the host from `exports`: [`onStart`](#onStart) (optional) and [`onUpdate`](#onUpdate) (mandatory).
 
@@ -30,7 +30,7 @@ The life-cycle of a scene begins with the asynchronous `onStart` method. It's th
 onStart(): Promise<void>
 ```
 
-Scenes should use this call to request any pre-existing state from the runtime (such as the [basic entities](../entities.md)) and perform their own initial setup.
+Scenes should use this call to request any pre-existing state from the runtime (such as the [basic entities](basic-entities.md)) and perform their own initial setup.
 
 Exporting `onStart` is recommended for all scenes (and done automatically when using the SDK), but it's not required by protocol. The method may be missing, or return an immediately resolved `Promise`.
 

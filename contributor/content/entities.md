@@ -2,15 +2,15 @@
 
 Each individual piece of content in the world (such as a scene or a wearable item) is called an _entity_.
 
-Entities are immutable packages of [files](../filesystem.md) with a unique string identifier, deterministically derived from the contained data, which can be used to discover and download the related files from the content server.
+Entities are immutable packages of [files](file-system.md) with a unique string identifier, deterministically derived from the contained data, which can be used to discover and download the related files from the content server.
 
-The main file of an entity is the _manifest_, a JSON document describing the entity's general properties, as well as special attributes for each [type](entities.md#types). The identifier for an entity is actually the [file identifier](../filesystem.md#identifiers) of this manifest.
+The main file of an entity is the _manifest_, a JSON document describing the entity's general properties, as well as special attributes for each [type](entities.md#types). The identifier for an entity is actually the [file identifier](file-system.md#identifiers) of this manifest.
 
-Since they are immutable, entities can't be updated in the traditional sense. Instead, they are replaced by new entities discoverable using the same stable [pointer](../pointers.md). The newest version of an entity is said to be _active_.
+Since they are immutable, entities can't be updated in the traditional sense. Instead, they are replaced by new entities discoverable using the same stable [pointer](pointers.md). The newest version of an entity is said to be _active_.
 
 Every entity is signed by an owner (who is associated to an Ethereum account). The owner can later use the same signing keys to upload a new version of the entity and indicate that it replaces the old one. Content servers validate these signatures before accepting new entities, whether they come straight from a client or were relayed by another server.
 
-You can look at actually deployed entities in the [practice](../practice.md) section.
+You can look at actually deployed entities in the [practice](practice/README.md) section.
 
 ### Entity Types <a href="#types" id="types"></a>
 
@@ -32,9 +32,9 @@ Every entity has certain common properties in its manifest, applicable to all ty
 | Field       | Value                                                                                   |
 | ----------- | --------------------------------------------------------------------------------------- |
 | `type`      | One of `scene`, `profile`, `wearable`, `emote`, `store` or `outfits`.                   |
-| `pointers`  | An array of [pointers](../pointers.md) associated to this entity.                       |
+| `pointers`  | An array of [pointers](pointers.md) associated to this entity.                       |
 | `timestamp` | The Unix UTC timestamp when this entity was uploaded.                                   |
-| `content`   | An array of references to additional [files](../filesystem.md) in the entity's package. |
+| `content`   | An array of references to additional [files](file-system.md) in the entity's package. |
 | `metadata`  | An object with information specific to this entity type.                                |
 
 The structure and values of the `metadata` field for each type are detailed in their specific pages. The `pointers` array also has different contents dependent on the type.
@@ -67,16 +67,16 @@ When looking at entity manifests, you may find undocumented fields. This is beca
 
 ### Files <a href="#files" id="files"></a>
 
-As mentioned above, all entities have at least one associated file: the JSON manifest describing the entity itself. The entity identifier is actually the [file identifier](../filesystem.md#identifiers) of this special file.
+As mentioned above, all entities have at least one associated file: the JSON manifest describing the entity itself. The entity identifier is actually the [file identifier](file-system.md#identifiers) of this special file.
 
 The `content` field inside each manifest is an array of references to additional files. These are typically assets, such as 3D models and animations, or scripts for scenes.
 
-All files are stored in Decentraland's [distributed file system](../filesystem.md), and each item in the array has two properties:
+All files are stored in Decentraland's [distributed file system](file-system.md), and each item in the array has two properties:
 
 | Field  | Value                                                                                           |
 | ------ | ----------------------------------------------------------------------------------------------- |
 | `file` | The internal name used by files in this entity to reference each other.                         |
-| `hash` | The global [identifier for this file](../filesystem.md#identifiers), unique across all content. |
+| `hash` | The global [identifier for this file](file-system.md#identifiers), unique across all content. |
 
 This is how it typically looks inside the `content` field:
 
@@ -102,16 +102,16 @@ The lifespan of a file is tied to the entity that contains it. For active entiti
 
 ### Ownership and Authentication <a href="#ownership" id="ownership"></a>
 
-To prove ownership and authorize actions around entities, the [authentication chain](../../auth/authchain.md) mechanism is used.
+To prove ownership and authorize actions around entities, the [authentication chain](../authentication/authchain.md) mechanism is used.
 
 The [`decentraland-crypto`](https://github.com/decentraland/decentraland-crypto) repository contains the implementation of all cryptographic procedures.
 
 ### Discovering and Downloading Entities
 
-Content servers can be used to locate entities using [pointers](../pointers.md), and to download their manifests and any additional files.
+Content servers can be used to locate entities using [pointers](pointers.md), and to download their manifests and any additional files.
 
 * To resolve a pointer into an entity ID, you can use the [`/entities/active`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getListOfEntities) endpoint.
 * Using the entity ID, you can download the manifest with the [`/contents/<id>`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getContentFile) endpoint.
-* To get all active entities of a certain type, start by downloading a [snapshot](../snapshots.md).
+* To get all active entities of a certain type, start by downloading a [snapshot](snapshots.md).
 
-Check out the [practice](../practice.md) section for examples and guides.
+Check out the [practice](practice/README.md) section for examples and guides.

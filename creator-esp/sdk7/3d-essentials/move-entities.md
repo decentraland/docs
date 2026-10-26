@@ -13,7 +13,7 @@ metaLinks:
 Para mover, rotar o cambiar el tamaño de una entidad en tu escena durante un período de tiempo, usa el componente `Tween`. El motor realiza la transformación deseada suavemente, mostrando actualizaciones en cada fotograma hasta que se complete la duración especificada. Además, los valores del componente `Transform` de la entidad afectada se actualizan en tiempo real en caso de que sea necesario realizar verificaciones de proximidad en el código de la escena.
 
 {% hint style="info" %}
-**💡 Consejo**: En el [Scene Editor](../../scene-editor/about-editor.md), puedes mover entidades de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
+**💡 Consejo**: En el [Scene Editor](../../scene-editor/get-started/about-editor.md), puedes mover entidades de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/interactivity/smart-items.md).
 {% endhint %}
 
 El componente Tween tiene las siguientes funciones:
@@ -26,7 +26,7 @@ El componente Tween tiene las siguientes funciones:
 * `setTextureMove`: Desplazar la textura de un material entre dos posiciones
 * `setTextureMoveContinuous`: Desplazar la textura de un material constantemente en la misma dirección
 
-## Mover entre dos puntos
+## Mover entre dos puntos {#move-between-two-points}
 
 Para mover una entidad entre dos puntos, crea un componente `Tween` con la función `setMove`.
 

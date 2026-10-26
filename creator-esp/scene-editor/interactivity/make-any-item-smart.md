@@ -14,11 +14,11 @@ Los smart items son solo ítems regulares con un componente **Action** y/o **Tri
 
 Para agregar componentes a un ítem, haz clic en el **Ícono de Plus** junto al nombre del ítem, y selecciona qué componente agregar de la lista desplegable.
 
-![](../images/editor/add-component.png)
+![Menú para agregar componentes a una entidad](../../.gitbook/assets/add-component-current.webp)
 
 Esto permite una gran cantidad de posibilidades creativas. Convierte una vela en una palanca que abre un pasaje secreto detrás de una estantería, reproduce sonidos misteriosos desde dentro de un pozo, haz que los diamantes sean ítems coleccionables que se reducen a 0 cuando se hace clic. ¡Hay toneladas de formas imaginativas de combinar estas mecánicas!
 
-### Interactividad
+### Interactividad {#interactivity}
 
 Puedes hacer que un ítem reaccione a diferentes acciones del jugador.
 
@@ -32,10 +32,10 @@ Agrega un componente **Trigger**, para detectar diferentes acciones del jugador:
 * **Global button events**: Cuando el jugador presiona una tecla, donde sea que estén en la escena.
 * **Player proximity**: Cuando el jugador camina hacia la posición del ítem.
 
-El componente **Trigger** se puede configurar para estar al tanto de cualquiera de estos tipos de triggers. Cada vez que ocurre un trigger, puede llamar Actions de su propio componente **Actions**, o de los componentes **Actions** de otros ítems en la escena. Consulta [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
+El componente **Trigger** se puede configurar para estar al tanto de cualquiera de estos tipos de triggers. Cada vez que ocurre un trigger, puede llamar Actions de su propio componente **Actions**, o de los componentes **Actions** de otros ítems en la escena. Consulta [Smart items - Advanced](smart-items-advanced.md).
 
 {% hint style="info" %}
-**💡 Tip**: También puedes combinar estos triggers con [lógica condicional](../scene-editor/interactivity/states-and-conditions.md), para que las acciones no se llamen cada vez que ocurre el trigger, solo si las condiciones son verdaderas.
+**💡 Tip**: También puedes combinar estos triggers con [lógica condicional](states-and-conditions.md), para que las acciones no se llamen cada vez que ocurre el trigger, solo si las condiciones son verdaderas.
 
 Por ejemplo, podrías agregar un trigger **Pointer Events** a una puerta, para que se abra cuando se hace clic, pero incluir lógica condicional para que solo se abra si está desbloqueada.
 {% endhint %}
@@ -55,9 +55,9 @@ Es importante que para que un ítem sea clickeable, debe tener un **Collider**. 
 
 Si tu modelo carece de colliders, cualquiera de los siguientes debería arreglarlo:
 
-* Agrega un componente **Mesh Collider**. Esto creará un collider con una [forma primitiva](../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cubo, plano, cilindro, cubo, esfera).
+* Agrega un componente **Mesh Collider**. Esto creará un collider con una [forma primitiva](../../sdk7/3d-essentials/shape-components.md#primitive-shapes) (cubo, plano, cilindro, cubo, esfera).
 * Cambia las propiedades de la sección **Collisions** en el componente **GLTF**. La **Visible layer** debe estar asignada a **Pointer**.
-* Edita el modelo 3D en Blender para incluir una geometría de collider invisible (cualquier mesh con un nombre que termine en `_collider`). Consulta [colliders](../3d-modeling/colliders.md).
+* Edita el modelo 3D en Blender para incluir una geometría de collider invisible (cualquier mesh con un nombre que termine en `_collider`). Consulta [colliders](../../3d-modeling/colliders.md).
 
 {% hint style="info" %}
 **💡 Tip**: Si usaste el componente **Mesh Renderer** para darle a tu modelo una forma primitiva, eso solo no le dará un collider. También debes asignarle un componente **Mesh Collider**.
@@ -81,7 +81,7 @@ Agrega un componente **Trigger** con eventos de Triggers **On Global Click**, **
 * **On Global Secondary** reacciona cada vez que el jugador presiona el Botón Secundario (F), en cualquier lugar de la escena.
 
 {% hint style="info" %}
-**💡 Tip**: A menudo tiene sentido combinar esto con [States and conditions](../scene-editor/interactivity/states-and-conditions.md), para que los ítems solo reaccionen al evento de botón si el jugador está en la habitación, o alguna otra condición.
+**💡 Tip**: A menudo tiene sentido combinar esto con [States and conditions](states-and-conditions.md), para que los ítems solo reaccionen al evento de botón si el jugador está en la habitación, o alguna otra condición.
 {% endhint %}
 
 #### Posición del jugador
@@ -91,12 +91,12 @@ Agrega un componente **Trigger** con eventos de Triggers **Player Enters Area**,
 Esto reaccionará cuando el jugador entre o salga de un área de un tamaño predeterminado de 1x1x1, posicionado en el centro del ítem.
 
 {% hint style="info" %}
-**💡 Tip**: A menudo es mejor usar el smart item [**Trigger Area**](../scene-editor/interactivity/smart-items.md#trigger-areas) en su lugar, ya que las dimensiones de este ítem se pueden visualizar claramente en el Scene Editor.
+**💡 Tip**: A menudo es mejor usar el smart item [**Trigger Area**](smart-items.md#trigger-areas) en su lugar, ya que las dimensiones de este ítem se pueden visualizar claramente en el Scene Editor.
 {% endhint %}
 
 ### Ver también
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Basics](smart-items.md)
+* [Smart items - Advanced](smart-items-advanced.md)
+* [States and conditions](states-and-conditions.md)
+* [Combine with code](../code/README.md)

@@ -9,7 +9,7 @@ You can use [`httpie`](https://github.com/httpie/httpie) or format responses wit
 This is what we'll do:
 
 1. Query the status of the content server.
-2. Locate and download a daily [snapshot](../../practice/snapshots/) with a list of entities.
+2. Locate and download a daily [snapshot](../snapshots.md) with a list of entities.
 3. Obtain the manifest for an entity.
 4. Download one of the entity's files.
 
@@ -32,7 +32,7 @@ curl "https://peer.decentraland.org/about"
 
 Looks like the server is up and running normally (`"healthy": true`), and is giving us information about the version it implements for each feature set, plus some configuration options of the instance.
 
-We're interested in downloading some content, so let's explore the available [snapshots](../../practice/snapshots/) to get our hands on some identifiers via `/content/snapshots`.
+We're interested in downloading some content, so let's explore the available [snapshots](../snapshots.md) to get our hands on some identifiers via `/content/snapshots`.
 
 ```bash
 curl "https://peer.decentraland.org/content/snapshots"
@@ -54,7 +54,7 @@ curl "https://peer.decentraland.org/content/snapshots"
 ]
 ```
 
-Each item in the array describes a [snapshot](../../practice/snapshots/). Let's grab a `hash` and download the file from the `/content/contents` endpoint.
+Each item in the array describes a [snapshot](../snapshots.md). Let's grab a `hash` and download the file from the `/content/contents` endpoint.
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafybeia6qoum64psaooiqo3f45i6hykfwx723uc236waub3gng2naof224" > snapshot
@@ -98,11 +98,11 @@ tail -n+2 snapshot | head -n1
 Since snapshots expire and entities are replaced, the identifiers in this article won't work. Follow along in your command line to get real, active file IDs.
 {% endhint %}
 
-This is information we could save. We'll use the `entityId` to download the entity's JSON manifest, but persisting the listed [pointer](../../practice/pointers/) is a good idea if we want to locate this entity and any updated versions in the future.
+This is information we could save. We'll use the `entityId` to download the entity's JSON manifest, but persisting the listed [pointer](../pointers.md) is a good idea if we want to locate this entity and any updated versions in the future.
 
-We also have the [authentication chain](../../entities/#ownership) used to sign this entity, and we could validate the listed signatures to verify the authenticity of any related files we download.
+We also have the [authentication chain](../entities.md#ownership) used to sign this entity, and we could validate the listed signatures to verify the authenticity of any related files we download.
 
-Let's get our hands on the entity manifest. Remember, the `entityId` is the [file identifier](../../practice/\(filesystem/#identifiers\)) we need, and we can use the `/content/contents` endpoint again:
+Let's get our hands on the entity manifest. Remember, the `entityId` is the [file identifier](../file-system.md#identifiers) we need, and we can use the `/content/contents` endpoint again:
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafkreigcreq7rv6b2wf4zc4fsnif43ziwb4q46v4qhsewpf7gbsyxew3om"

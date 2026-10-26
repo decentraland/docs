@@ -2,7 +2,7 @@
 
 Collections are groups of [wearables](entity-types/wearables.md) and [emotes](entity-types/emotes.md) defined in the same off-chain namespace or on-chain contract.
 
-They are not [entities](../entities.md) in and of themselves, but their individual items can be obtained from content servers normally using [pointers](../pointers.md).
+They are not [entities](entities.md) in and of themselves, but their individual items can be obtained from content servers normally using [pointers](pointers.md).
 
 ### URNs and Pointers <a href="#pointers" id="pointers"></a>
 
@@ -35,11 +35,11 @@ urn:decentraland:mainnet:collections-v1:DCL Test Masks
 urn:decentraland:matic:collections-v2:0x25a1d66891d44cdf7b8c45802489c1dea7aadf8b
 ```
 
-If the `:<id>` segment is appended at the end, the URN becomes a [pointer](../pointers.md) to an item inside the collection. See [wearable pointers](entity-types/wearables.md#pointers) and [emote pointers](entity-types/emotes.md#pointers) for information on these.
+If the `:<id>` segment is appended at the end, the URN becomes a [pointer](pointers.md) to an item inside the collection. See [wearable pointers](entity-types/wearables.md#pointers) and [emote pointers](entity-types/emotes.md#pointers) for information on these.
 
 #### Third-party Collections
 
-Third-party collections, also known as [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md), are different from regular wearables in that they are tied to existing NFTs outside Decentraland. They allow players to display NFTs from their personal set on their in-world avatars.
+Third-party collections, also known as [linked wearables](../../creator/wearables-and-emotes/wearables/linked-wearables.md), are different from regular wearables in that they are tied to existing NFTs outside Decentraland. They allow players to display NFTs from their personal set on their in-world avatars.
 
 Their URNs look like this:
 
@@ -47,7 +47,7 @@ Their URNs look like this:
 urn:decentraland:<blockchain>:collections-thirdparty:<third-party-id>:<collection-id>
 ```
 
-You can find ample information about these in the [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md) documentation for creators.
+You can find ample information about these in the [linked wearables](../../creator/wearables-and-emotes/wearables/linked-wearables.md) documentation for creators.
 
 ### Discovering Collections
 

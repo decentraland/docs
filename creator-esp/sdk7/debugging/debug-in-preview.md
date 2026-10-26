@@ -17,7 +17,7 @@ Si la scene no puede compilarse, solo verás el suelo vacío, sin nada renderiza
 3. Si ejecutaste la scene usando el Creator Hub, verifica la ventana con la salida de consola de la scene. Si ejecutaste la scene usando el CLI, verifica la salida de la línea de comandos donde ejecutaste `npm run start`
 
 {% hint style="info" %}
-**💡 Tip**: Antes de publicar tu scene en el entorno de producción, publícala en el entorno de prueba para probarla en un contexto que está mucho más cerca de producción. Consulta [Development Workflow](../sdk7/getting-started/dev-workflow.md#deploy-to-the-test-environment)
+**💡 Tip**: Antes de publicar tu scene en el entorno de producción, publícala en el entorno de prueba para probarla en un contexto que está mucho más cerca de producción. Consulta [Development Workflow](../getting-started/dev-workflow.md#deploy-to-the-test-environment)
 {% endhint %}
 
 ### Usar la consola
@@ -72,7 +72,7 @@ La sección **WEB REQUESTS** te permite abrir la pestaña Network de Chrome Devt
 Si tu scene interactúa con un servidor de terceros, a menudo es útil ver qué datos entran y salen. Haz clic en **Open Chrome Devtools** para abrir una nueva ventana de Chrome con la pestaña Network abierta.
 
 {% hint style="warning" %}
-**📔 Nota**: Para usar esta característica, primero debes instalar el [Creator Hub](../scene-editor/get-started/editor-installation.md), ya que las dependencias necesarias vienen empaquetadas con esa instalación.
+**📔 Nota**: Para usar esta característica, primero debes instalar el [Creator Hub](../../scene-editor/get-started/editor-installation.md), ya que las dependencias necesarias vienen empaquetadas con esa instalación.
 
 No necesitas tener el Creator Hub abierto o ejecutar tu preview de scene via el Creator Hub para usar esta característica, también se puede usar si estás usando el CLI para ejecutar tu preview de scene.
 {% endhint %}
@@ -93,7 +93,7 @@ También puedes recargar la scene escribiendo lo siguiente en el chat y presiona
 
 ### Reportar un bug
 
-Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](../sdk7/debugging/report-bug.md).
+Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](report-bug.md).
 
 ### Versiones de dependencias
 
@@ -126,7 +126,7 @@ Verifica que tu scene se vea bien en todos los momentos del día cambiando el re
 
 Los materiales de tu modelo 3d pueden no verse igual a como se veían en la herramienta de modelado con la que lo creaste. Esto es de esperarse, ya que todos los motores de renderizado 3d tienen diferencias sutiles en cómo manejan la luz y los materiales.
 
-También puedes configurar tu scene para que la hora del día esté fija y la iluminación no cambie. Consulta [Skybox control](../sdk7/interactivity/skybox-control.md) para más detalles.
+También puedes configurar tu scene para que la hora del día esté fija y la iluminación no cambie. Consulta [Skybox control](../interactivity/skybox-control.md) para más detalles.
 
 ### Pruebas multijugador
 

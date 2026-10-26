@@ -10,7 +10,7 @@ metaLinks:
 
 # Publishing Collections
 
-Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobación antes de la publicación, consulta [how to create a collection](../wearables-and-emotes/manage-collections/creating-a-collection.md). Este documento explica cómo funciona el proceso de aprobación al publicar wearables y emotes, y qué criterios usa el Curation Committee al revisar wearables. Para información detallada sobre el Curation Committee, [comienza aquí](../wearables-and-emotes/publishing/curation-committee.md).
+Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobación antes de la publicación, consulta [how to create a collection](../manage-collections/creating-a-collection.md). Este documento explica cómo funciona el proceso de aprobación al publicar wearables y emotes, y qué criterios usa el Curation Committee al revisar wearables. Para información detallada sobre el Curation Committee, [comienza aquí](curation-committee.md).
 
 ### **El Proceso de Publicación**
 
@@ -63,14 +63,14 @@ Por favor consulta la Content Policy completa [aquí](https://decentraland.org/c
 > * Los wearables deben preservar el mapeo UV del avatar para asegurar que los tonos de piel seleccionados por el usuario puedan renderizarse como se espera.
 > * Las dimensiones de las texturas de eyebrow, eye y mouth no deben exceder 256 por 256px, y la imagen debe tener fondo transparente.
 > * En el caso de la categoría hands, el wearable no puede ser un ítem adjunto a la mano (una espada, escudo, etc). La categoría está destinada a accesorios de mano como pulseras, relojes, anillos, etc. y en el caso de reemplazar la mano completamente debe seguir un skinning de armature apropiado para los huesos de la mano.
-> * Los wearables con un número desproporcionado de triángulos, texturas y materiales pueden ser rechazados porque pueden causar mal rendimiento y una mala experiencia para los jugadores. Los creadores no deben exceder las [directrices](../wearables-and-emotes/wearables/creating-wearables.md) de limitación al crear wearables.
+> * Los wearables con un número desproporcionado de triángulos, texturas y materiales pueden ser rechazados porque pueden causar mal rendimiento y una mala experiencia para los jugadores. Los creadores no deben exceder las [directrices](../wearables/creating-wearables.md) de limitación al crear wearables.
 > * Los wearables no pueden contener ítems duplicados dentro de una colección. (Cada ítem dentro de una colección debe ser único.)
 > * Los wearables no pueden imitar o copiar otros wearables que ya han sido publicados.
 > * Por razones de seguridad, cualquier wearable que contenga cualquier tipo de Código QR puede ser rechazado.
 > * Wearables que excedan las restricciones de espacio.
 > * Los wearables con categorías engañosas pueden ser rechazados; por ejemplo, un sombrero que está categorizado como un ítem de lower body.
 > * Los wearables deben seguir la estructura humanoide de armature para asegurar un gameplay de buena calidad. En este sentido, actualmente vehículos o mascotas no están permitidos porque estos no son wearables por definición.
-> * Emotes que excedan las restricciones de tiempo y espacio. Para más información consulta las [directrices de emote](../wearables-and-emotes/emotes/creating-emotes.md)
+> * Emotes que excedan las restricciones de tiempo y espacio. Para más información consulta las [directrices de emote](../emotes/creating-emotes.md)
 > * Los curadores del comité de curadores pueden enviar colecciones pero no aprobar las propias. En este caso, otro curador del comité necesitaría revisar para aprobar o rechazar.
 
 ### **Atribuyendo Colaboradores** [**#**](https://docs.decentraland.org/creator/wearables/wearables-editor-user-guide/#attributing-collaborators)

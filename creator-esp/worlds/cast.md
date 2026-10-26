@@ -10,7 +10,7 @@ Decentraland Cast es una herramienta especializada diseñada para propietarios d
 
 ### Transmitir
 
-La transmisión a través de Decentraland Cast es una característica exclusiva disponible solo para propietarios de World o aquellos con derechos de transmisión para una escena de World. Para más detalles sobre estos derechos, consulta la sección [Listas de Control de Acceso](../../creator/creator/worlds/about.md#access-control-lists-acl).
+La transmisión a través de Decentraland Cast es una característica exclusiva disponible solo para propietarios de World o aquellos con derechos de transmisión para una escena de World. Para más detalles sobre estos derechos, consulta la sección [Listas de Control de Acceso](about.md#access-control-lists-acl).
 
 1. Visita [Decentraland Cast](https://cast.decentraland.org/)
 2. Selecciona tu World: Inicia sesión y selecciona el world al que transmitir.\

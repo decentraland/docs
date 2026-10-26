@@ -11,7 +11,7 @@ El Creator Hub más código personalizado es una combinación muy poderosa para 
 
 Por ejemplo, puedes aprovechar un smart item de palanca existente, que ya viene con sus sonidos y animaciones y estados, y escribir código que detecta cuándo se tira de la palanca para ejecutar tu propia lógica personalizada.
 
-Consulta [Reference items in code](../scene-editor/code/reference-items.md) para saber cómo obtener ítems por nombre o por tags desde tu código.
+Consulta [Reference items in code](reference-items.md) para saber cómo obtener ítems por nombre o por tags desde tu código.
 
 ### Editar código
 
@@ -82,10 +82,10 @@ Si no estás familiarizado con cómo hacer esto, consulta [Quickstart for reposi
 
 ### Ver también
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [SDK Quick start](../sdk7/getting-started/sdk-101.md): sigue este mini tutorial para un curso intensivo rápido.
-* [Development workflow](../sdk7/getting-started/dev-workflow.md): lee esto para entender la creación de escenas de principio a fin.
+* [Smart items - Basics](../interactivity/smart-items.md)
+* [Smart items - Advanced](../interactivity/smart-items-advanced.md)
+* [States and conditions](../interactivity/states-and-conditions.md)
+* [Making any item smart](../interactivity/make-any-item-smart.md)
+* [SDK Quick start](../../sdk7/getting-started/sdk-101.md): sigue este mini tutorial para un curso intensivo rápido.
+* [Development workflow](../../sdk7/getting-started/dev-workflow.md): lee esto para entender la creación de escenas de principio a fin.
 * [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): sumérgete directamente en ejemplos de escenas funcionales.

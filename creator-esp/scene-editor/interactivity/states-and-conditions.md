@@ -81,7 +81,7 @@ Para hacer que una acción ocurra solo una vez al pasar un umbral, y no se repit
 
 ### Ver también
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Basics](smart-items.md)
+* [Smart items - Advanced](smart-items-advanced.md)
+* [Making any item smart](make-any-item-smart.md)
+* [Combine with code](../code/README.md)

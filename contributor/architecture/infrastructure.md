@@ -16,7 +16,7 @@ This page covers supporting infrastructure and external services that power Dece
 * Screen sharing
 * Spatial audio (in development)
 
-**Access Control**: [Comms Gatekeeper](../apis/comms-gatekeeper/) generates time-limited tokens
+**Access Control**: [Comms Gatekeeper](../../apis/apis/comms-gatekeeper/README.md) generates time-limited tokens
 
 **Used By**:
 
@@ -34,7 +34,7 @@ Sends notification emails:
 * Event reminders
 * System notifications
 
-**Triggered By**: [Notifications system](../apis/notifications-workers/)
+**Triggered By**: [Notifications system](../../apis/apis/notifications-workers/README.md)
 
 ***
 
@@ -143,7 +143,7 @@ Generates avatar preview images:
 
 Converts deployed assets to optimized bundles for all platforms.
 
-**Registers bundles in**: [Asset Bundle Registry](../apis/asset-bundle-registry/)
+**Registers bundles in**: [Asset Bundle Registry](../../apis/apis/asset-bundle-registry/README.md)
 
 ### LODs Generator
 

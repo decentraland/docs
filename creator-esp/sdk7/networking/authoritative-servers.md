@@ -18,8 +18,8 @@ Decentraland ejecuta escenas localmente en el navegador de un jugador. Por defec
 
 Permitir que todos los jugadores vean una escena teniendo el mismo contenido en el mismo estado es extremadamente importante para que los jugadores interactúen de maneras más significativas. Sin esto, si un jugador abre una puerta y entra a una casa, otros jugadores verán esa puerta como aún cerrada, y el primer jugador parecerá caminar directamente a través de la puerta cerrada para otros jugadores.
 
-- **Marcar una entidad como sincronizada**: La opción más fácil. Consulta [Marcar una entidad como sincronizada](../sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced)
-- **Enviar Mensajes MessageBus Explícitos**: Enviar y escuchar manualmente mensajes específicos. Consulta [Enviar mensajes MessageBus explícitos](../sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages)
+- **Marcar una entidad como sincronizada**: La opción más fácil. Consulta [Marcar una entidad como sincronizada](serverless-multiplayer.md#mark-an-entity-as-synced)
+- **Enviar Mensajes MessageBus Explícitos**: Enviar y escuchar manualmente mensajes específicos. Consulta [Enviar mensajes MessageBus explícitos](serverless-multiplayer.md#send-explicit-messagebus-messages)
 - **Usar un Servidor**: Este documento trata sobre esta opción. Esta opción requiere más trabajo para configurar, pero es recomendable si hay incentivos para explotar tu escena.
 
 ### Tipos de servidores
@@ -68,7 +68,7 @@ Los jugadores en decentraland existen en muchos _realms_ separados. Los jugadore
 
 Si tu escena envía datos a un servidor de terceros para sincronizar cambios entre jugadores en tiempo real, entonces es importante que los cambios solo se sincronicen entre jugadores que estén en el mismo realm. Debes manejar todos los cambios que pertenecen a un realm como separados de aquellos en un realm diferente. De lo contrario, los jugadores verán cosas cambiar de una manera espeluznante, sin nadie haciendo el cambio.
 
-Consulta cómo obtener el realm para cada jugador en [obtener datos del jugador](../sdk7/interactivity/user-data.md)
+Consulta cómo obtener el realm para cada jugador en [obtener datos del jugador](../interactivity/user-data.md)
 
 ### Persistencia multijugador
 

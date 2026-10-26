@@ -20,7 +20,7 @@ El siguiente ítem tiene un componente Transform y un módulo básico que expone
 
 ### Configuración avanzada
 
-Las propiedades están agrupadas en [**componentes**](../sdk7/architecture/entities-components.md). Diferentes smart items pueden tener diferentes componentes, dependiendo de su funcionalidad.
+Las propiedades están agrupadas en [**componentes**](../../sdk7/architecture/entities-components.md). Diferentes smart items pueden tener diferentes componentes, dependiendo de su funcionalidad.
 
 El comportamiento de la mayoría de los ítems está controlado por:
 
@@ -31,7 +31,7 @@ Por ejemplo, en un smart item de puerta, el componente **Actions** incluye accio
 
 Los triggers de un smart item pueden activar acciones en cualquier smart item en la escena, no solo en ese mismo smart item. Por ejemplo, un smart item de botón puede tener un componente **Triggers** que activa la acción "move up" definida en el componente **Actions** de una plataforma flotante.
 
-Los triggers también pueden suceder condicionalmente. Por ejemplo, los smart items de puerta incluyen dos triggers **On Click** en su componente Triggers: uno abre la puerta si esa puerta estaba cerrada, el otro cierra la puerta si estaba abierta. Para más detalles consulta [States and conditional logic](../scene-editor/interactivity/states-and-conditions.md).
+Los triggers también pueden suceder condicionalmente. Por ejemplo, los smart items de puerta incluyen dos triggers **On Click** en su componente Triggers: uno abre la puerta si esa puerta estaba cerrada, el otro cierra la puerta si estaba abierta. Para más detalles consulta [States and conditional logic](states-and-conditions.md).
 
 ### Interacciones entre ítems
 
@@ -57,7 +57,7 @@ Por ejemplo, para hacer que un botón abra una puerta:
 
 Cualquier ítem puede activar cualquier acción de cualquier otro ítem, siempre que la acción esté definida. Consulta [Triggers](smart-items-advanced.md#triggers) para más formas en las que se puede activar una acción.
 
-Puedes usar [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) para solo activar una acción si se cumple una condición. La condición puede incluso verificar el estado de un tercer smart item. Por ejemplo, un botón solo abre la puerta si un smart item personalizado "power generator" tiene su estado establecido en "On".
+Puedes usar [states and conditional logic](states-and-conditions.md) para solo activar una acción si se cumple una condición. La condición puede incluso verificar el estado de un tercer smart item. Por ejemplo, un botón solo abre la puerta si un smart item personalizado "power generator" tiene su estado establecido en "On".
 
 ### Actions
 
@@ -112,7 +112,7 @@ El componente **Actions** lista acciones que el ítem puede llevar a cabo. Cada 
 * **Batch Actions**: Todas las acciones listadas aquí se reproducirán simultáneamente cada vez que se llame a la acción batch. Puedes listar cualquiera de las acciones que pertenecen al ítem.
 * **Heal Player**: Restaura salud a la barra de salud del jugador.
 
-Consulta [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) para aprender sobre otras acciones relacionadas con condiciones de lógica.
+Consulta [states and conditional logic](states-and-conditions.md) para aprender sobre otras acciones relacionadas con condiciones de lógica.
 
 El componente **Actions** define acciones posibles, pero estas no hacen nada en la escena a menos que se activen. Las acciones se activan por un [trigger](smart-items-advanced.md#triggers), ya sea del mismo smart item, o de uno diferente.
 
@@ -129,7 +129,7 @@ El componente **Triggers** define eventos de trigger, estos activan acciones cua
 * **Player Leaves Area**: Cuando el jugador sale de un área. Consulta [About trigger areas](smart-items-advanced.md#about-trigger-areas)
 * **On Spawn**: Cuando la escena comienza, o el ítem se genera en la escena. Consulta [Trigger on spawn](smart-items-advanced.md#trigger-on-spawn)
 
-Consulta [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) para aprender sobre otros triggers relacionados con condiciones de lógica.
+Consulta [states and conditional logic](states-and-conditions.md) para aprender sobre otros triggers relacionados con condiciones de lógica.
 
 Para agregar un nuevo trigger, haz clic en **Add New Trigger Event** en la parte inferior del componente Trigger. Luego selecciona el tipo de trigger, la entidad que deseas activar y una acción de esa entidad.
 
@@ -155,7 +155,7 @@ Usa la acción **Stop Animation** para detener todas las animaciones del ítem, 
 **💡 Tip**: Para verificar fácilmente el contenido de un modelo 3D, para ver qué animaciones incluye y cómo se ven, una buena herramienta es el [Babylon Sandbox](https://sandbox.babylonjs.com/). Solo arrastra el archivo del modelo 3D a la ventana. Debería aparecer un desplegable con una lista de sus animaciones en la parte inferior.
 {% endhint %}
 
-Para aprender más sobre animaciones y cómo puedes crear las tuyas propias como parte de un modelo 3D, consulta [Animations](../3d-modeling/animations.md).
+Para aprender más sobre animaciones y cómo puedes crear las tuyas propias como parte de un modelo 3D, consulta [Animations](../../3d-modeling/animations.md).
 
 ### About Playing sounds
 
@@ -181,7 +181,7 @@ Para hacer que un ítem reproduzca un sonido en bucle siempre, por ejemplo para 
 **📔 Nota**: Un smart item solo puede reproducir un sonido a la vez. Llamar a un segundo sonido interrumpirá cualquier otro sonido actualmente sonando. Esto también se aplica a sonidos del componente **AudioSource**. Si necesitas dos sonidos para sonar juntos, considera agregar una entidad invisible en la misma ubicación para contener una acción **Play Sound**.
 {% endhint %}
 
-Consulta [sounds](../sdk7/3d-essentials/sounds.md) para más sobre reproducir sonidos en Decentraland.
+Consulta [sounds](../../sdk7/3d-essentials/sounds.md) para más sobre reproducir sonidos en Decentraland.
 
 ### Moving, rotating, or scaling
 
@@ -205,7 +205,7 @@ Los tweens pueden seguir diferentes **Curve Types** que afectan la tasa de cambi
 **💡 Tip**: Experimenta con diferentes curvas de movimiento. Las diferencias a menudo son sutiles, pero interpretamos subconscientemente información de cómo se mueven las cosas, como peso, fricción, o incluso personalidad.
 {% endhint %}
 
-Usa eventos de trigger **On Tween End** en el componente **Triggers** para activar una acción después de que un tween haya terminado. Usa [states and conditional logic](../scene-editor/interactivity/states-and-conditions.md) para describir una ruta en bucle para una plataforma flotante, para que se mueva constantemente entre dos ubicaciones.
+Usa eventos de trigger **On Tween End** en el componente **Triggers** para activar una acción después de que un tween haya terminado. Usa [states and conditional logic](states-and-conditions.md) para describir una ruta en bucle para una plataforma flotante, para que se mueva constantemente entre dos ubicaciones.
 
 Cuando un ítem realiza un tween, esto afecta todo sobre el ítem. Por ejemplo, si cambia de escala, cambia la escala de su modelo 3D visible y también la geometría de collider invisible, el tamaño del texto, etc. Si el ítem tiene hijos (anidados en el entity tree a la izquierda), estas entidades hijas también se ven afectadas por el tween.
 
@@ -219,10 +219,10 @@ Para activar una acción haciendo clic en un ítem, crea un trigger **On Click**
 
 ![](../../.gitbook/assets/on_click.webp)
 
-Consulta [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md#interactivity) para más detalles.
+Consulta [Make any item smart](make-any-item-smart.md#interactivity) para más detalles.
 
 {% hint style="info" %}
-**📔 Nota**: Al usar modelos 3D personalizados, el modelo debe tener una geometría de collider invisible para que sea clickeable. Consulta [colliders](../sdk7/3d-essentials/colliders.md#pointer-blocking).
+**📔 Nota**: Al usar modelos 3D personalizados, el modelo debe tener una geometría de collider invisible para que sea clickeable. Consulta [colliders](../../sdk7/3d-essentials/colliders.md#pointer-blocking).
 
 Como alternativa, puedes configurar el componente **GLTF** del ítem, para que su **Visible Layer** de colisión esté establecida en **Pointer**.
 
@@ -239,7 +239,7 @@ Por ejemplo, usa esto para hacer que una plataforma se mueva continuamente. Usa 
 
 ### Multiplayer
 
-Todos los smart items son multijugador por defecto. Consulta [Smart Items - Basic](../scene-editor/interactivity/smart-items.md) para más detalles.
+Todos los smart items son multijugador por defecto. Consulta [Smart Items - Basic](smart-items.md) para más detalles.
 
 Puedes cambiar o ajustar este comportamiento multijugador para solo sincronizar ciertos componentes del ítem.
 
@@ -255,7 +255,7 @@ En el modo avanzado, estos ítems tienen un componente **Visibility** establecid
 
 ### Ver también
 
-* [Smart items - Basics](../scene-editor/interactivity/smart-items.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Basics](smart-items.md)
+* [States and conditions](states-and-conditions.md)
+* [Making any item smart](make-any-item-smart.md)
+* [Combine with code](../code/README.md)

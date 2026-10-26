@@ -20,7 +20,7 @@ Si encuentras algún problema, por favor copia una URL a la configuración actua
 
 ### Usando SDK 7
 
-Instala el [Creator Hub](../scene-editor/get-started/about-editor.md).
+Instala el [Creator Hub](../../scene-editor/get-started/about-editor.md).
 
 {% hint style="warning" %}
 **📔 Nota**: Ten en cuenta que las escenas que usan SDK7 no tienen el paquete `decentraland-ecs` instalado. En su lugar, tienen el paquete `@dcl/sdk`.
@@ -38,4 +38,4 @@ Puedes encontrar más escenas de ejemplo escritas con SDK7 aquí:
 
 ### Reportando problemas
 
-Si encuentras un problema, por favor consulta [Reportar un bug](../sdk7/debugging/report-bug.md).
+Si encuentras un problema, por favor consulta [Reportar un bug](../debugging/report-bug.md).

@@ -58,11 +58,11 @@ La mayoría de las escenas usan el SDK de Decentraland, que encapsula el módulo
 
 Los IDs de entidad son enteros simples comenzando con `0`.
 
-Por protocolo, los IDs por debajo de `512` están reservados para el World Explorer, y por lo tanto son inválidos para entidades creadas por escenas. Los números `0`, `1` y `2` están actualmente en uso (ver [entidades básicas](../entities)), con el resto del rango disponible para extensiones futuras.
+Por protocolo, los IDs por debajo de `512` están reservados para el World Explorer, y por lo tanto son inválidos para entidades creadas por escenas. Los números `0`, `1` y `2` están actualmente en uso (ver [entidades básicas](../basic-entities.md)), con el resto del rango disponible para extensiones futuras.
 
 Cada escena tiene su propio rango privado de IDs, que el Explorer puede mapear transparentemente a un identificador global entre todas las entidades en el motor del juego.
 
-Con el tiempo, a medida que las entidades son creadas y eliminadas, es perfectamente válido reusar IDs que fueron liberados previamente -- de hecho, esto puede requerirse por razones de rendimiento ([ver abajo](crdtStateDeleteEntities)).
+Con el tiempo, a medida que las entidades son creadas y eliminadas, es perfectamente válido reusar IDs que fueron liberados previamente -- de hecho, esto puede requerirse por razones de rendimiento ([ver abajo](#crdtStateDeleteEntities)).
 
 ### Synchronization {#synchronization}
 
@@ -231,7 +231,7 @@ La mayoría de casos serán resueltos por las reglas `1`, `2` y `3`.
 
 #### Initial Synchronization
 
-Antes de que una escena comience a ejecutar su propio código, el runtime puebla el CRDT con el estado de todas las [entidades básicas](../entities) y sus componentes.
+Antes de que una escena comience a ejecutar su propio código, el runtime puebla el CRDT con el estado de todas las [entidades básicas](../basic-entities.md) y sus componentes.
 
 Durante esta sincronización inicial, solo el runtime puede establecer el estado compartido. La escena no tiene permitido hacer modificaciones hasta que el proceso esté completo.
 

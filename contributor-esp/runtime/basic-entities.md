@@ -1,4 +1,4 @@
-El World Explorer [reserva un rango](modules/engine_api#identifying) de IDs de entidad para su propio uso. De este rango, los identificadores `0`, `1` y `2` están pre-asignados a un conjunto de entidades básicas garantizadas de existir.
+El World Explorer [reserva un rango](modules/engine-api.md#identifying) de IDs de entidad para su propio uso. De este rango, los identificadores `0`, `1` y `2` están pre-asignados a un conjunto de entidades básicas garantizadas de existir.
 
 Estos son:
 
@@ -6,10 +6,10 @@ Estos son:
 - `1`: `PlayerEntity`
 - `2`: `CameraEntity`
 
-Estas entidades tienen un conjunto conocido de componentes adjuntos que son gestionados por el runtime, es decir, su estado es de solo lectura para la escena. Obtener el estado inicial de estos componentes es parte de la [inicialización de escena](execution#onStart).
+Estas entidades tienen un conjunto conocido de componentes adjuntos que son gestionados por el runtime, es decir, su estado es de solo lectura para la escena. Obtener el estado inicial de estos componentes es parte de la [inicialización de escena](execution.md#onStart).
 
 {% hint style="info" %}
-Componentes adicionales para estas entidades están en desarrollo. El [mecanismo de sincronización CRDT](modules/engine_api#synchronization) se está expandiendo para proporcionar parte de la funcionalidad ofrecida por diferentes módulos.
+Componentes adicionales para estas entidades están en desarrollo. El [mecanismo de sincronización CRDT](modules/engine-api.md#synchronization) se está expandiendo para proporcionar parte de la funcionalidad ofrecida por diferentes módulos.
 
 Por ejemplo, las escenas podrán detectar el estado de la ventana del Explorer para optimizar su uso de red y CPU, o acceder a información más rica sobre el jugador, el sistema de comms y la cámara del juego.
 {% endhint %}

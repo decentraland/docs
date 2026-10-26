@@ -502,7 +502,7 @@ Here are some more examples of valid values:
 
 ## Landscape terrain
 
-Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. If this landscape doesn't match the aesthetics of your scene, for example a scene that floats in open water or in space, you can disable it. To do this, add the following field to your `scene.json` at root level:
+Scenes published to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) are surrounded by an auto-generated landscape of grassland, trees, and sea. If this landscape doesn't match the aesthetics of your scene, for example a scene that floats in open water or in space, you can disable it. To do this, add the following field to your `scene.json` at root level:
 
 ```json
 {

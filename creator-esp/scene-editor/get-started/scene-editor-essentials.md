@@ -62,7 +62,7 @@ Para duplicar un ítem, selecciónalo y presiona **Ctrl + C** y luego **Ctrl + V
 
 Para eliminar un ítem de la escena, selecciónalo y presiona la tecla _Delete_.
 
-Consulta [Import items](../scene-editor/build/import-items.md) para agregar tus propios modelos 3D personalizados desde el disco.
+Consulta [Import items](../build/import-items.md) para agregar tus propios modelos 3D personalizados desde el disco.
 
 {% hint style="warning" %}
 **📔 Nota**: Una vez que arrastras un modelo 3D a tu escena, se descarga en tu carpeta de proyecto y permanece allí incluso si lo eliminas. Estos modelos no utilizados pueden aumentar el tamaño de tu escena.
@@ -70,7 +70,7 @@ Consulta [Import items](../scene-editor/build/import-items.md) para agregar tus 
 Abre la pestaña **Local Assets** para eliminar cualquier modelo no utilizado.
 {% endhint %}
 
-### Posicionar ítems
+### Posicionar ítems {#position-items}
 
 Haz clic con el **Botón Izquierdo del Mouse** y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo.
 
@@ -100,7 +100,7 @@ Para seleccionar múltiples ítems al mismo tiempo, presiona y mantén presionad
 
 ### Smart items
 
-Los smart items son ítems especiales que vienen con comportamientos interactivos incorporados. Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para más detalles.
+Los smart items son ítems especiales que vienen con comportamientos interactivos incorporados. Consulta [Smart items](../interactivity/smart-items.md) para más detalles.
 
 ![](../../.gitbook/assets/smart-items.jpg)
 
@@ -147,13 +147,13 @@ La mayoría de los ítems no interactivos tienen los siguientes componentes:
 * **Transform**: Establece posición, rotación y escala del ítem.
 * **GLTF**: Qué modelo 3D cargar.
 
-Los [Smart items](../scene-editor/interactivity/smart-items.md) pueden incluir otros componentes.
+Los [Smart items](../interactivity/smart-items.md) pueden incluir otros componentes.
 
-Consulta [Components](../scene-editor/build/components.md) para aprender más.
+Consulta [Components](../build/components.md) para aprender más.
 
-### Limitaciones de escena
+### Limitaciones de escena {#scene-sizes}
 
-Las escenas de Decentraland deben seguir ciertas limitaciones, para poder ejecutarlas una al lado de la otra. Hay un número máximo de materiales, texturas, triángulos, etc., que es proporcional al número de parcels en la escena. Consulta [scene limitations](../sdk7/optimizing/scene-limitations.md) para más detalles.
+Las escenas de Decentraland deben seguir ciertas limitaciones, para poder ejecutarlas una al lado de la otra. Hay un número máximo de materiales, texturas, triángulos, etc., que es proporcional al número de parcels en la escena. Consulta [scene limitations](../../sdk7/optimizing/scene-limitations.md) para más detalles.
 
 Si el contenido en tu escena excede cualquiera de estos límites, el Scene Editor lo notificará en la esquina inferior izquierda.
 
@@ -164,7 +164,7 @@ Puedes expandir este menú para ver detalles.
 ![](../../.gitbook/assets/triangle-limit2.webp)
 
 {% hint style="info" %}
-**💡 Tip**: Si estás construyendo un Decentraland World, siempre puedes aumentar el [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) para aumentar tus límites.
+**💡 Tip**: Si estás construyendo un Decentraland World, siempre puedes aumentar el [scene size](scene-editor-essentials.md#scene-sizes) para aumentar tus límites.
 {% endhint %}
 
 El contenido en una escena de Decentraland también debe evitar derramarse en parcels vecinos. Si alguna parte de los modelos en tu escena se extiende más allá de los límites, cuando abras el preview de la escena verás estas partes cortadas. El Scene Editor marcará todo el modelo en rojo, pero solo debes preocuparte realmente por las partes del modelo que se extienden más allá de los límites de la escena.
@@ -172,12 +172,12 @@ El contenido en una escena de Decentraland también debe evitar derramarse en pa
 ![](../../.gitbook/assets/out-of-bounds.webp)
 
 {% hint style="info" %}
-**💡 Tip**: Si los modelos que quieres mostrar no caben, puede que quieras aumentar el tamaño de tu escena. Consulta [scene size](../scene-editor/get-started/scene-editor-essentials.md#scene-sizes) para agrandar tu escena.
+**💡 Tip**: Si los modelos que quieres mostrar no caben, puede que quieras aumentar el tamaño de tu escena. Consulta [scene size](scene-editor-essentials.md#scene-sizes) para agrandar tu escena.
 {% endhint %}
 
-Incluso si toda la geometría del modelo 3D cabe en tu escena, un modelo puede estar marcado en rojo si el Bounding Box del modelo se extiende más allá del área. Si este es el caso, puedes ignorar las advertencias, ya que todo el modelo se mostrará correctamente. Aprende más sobre [Bounding Boxes](../3d-modeling/meshes.md#bounding-boxes).
+Incluso si toda la geometría del modelo 3D cabe en tu escena, un modelo puede estar marcado en rojo si el Bounding Box del modelo se extiende más allá del área. Si este es el caso, puedes ignorar las advertencias, ya que todo el modelo se mostrará correctamente. Aprende más sobre [Bounding Boxes](../../3d-modeling/meshes.md#bounding-boxes).
 
-### Configuración de escena
+### Configuración de escena {#scene-settings}
 
 Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla. Esto abre una serie de propiedades a nivel de escena para editar.
 
@@ -185,10 +185,10 @@ Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla.
 
 Aquí puedes configurar múltiples propiedades incluyendo título y miniatura, tamaño de escena, categoría de escena y clasificación por edad, ubicaciones de spawn de jugadores y toggles de características.
 
-Consulta [Scene Settings](../scene-editor/configure/scene-settings.md).
+Consulta [Scene Settings](../configure/scene-settings.md).
 
 ### Ver también
 
-* Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
-* Consulta [Combine with code](../scene-editor/code/overview.md) para saber cómo editar el código de tu escena.
-* Consulta [Publish scene](../scene-editor/publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.
+* Consulta [Smart items](../interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
+* Consulta [Combine with code](../code/README.md) para saber cómo editar el código de tu escena.
+* Consulta [Publish scene](../publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.

@@ -284,7 +284,7 @@ Each renderer honors its own `screenInset`, so the main UI and any UI added with
 
 ## Multiple UI modules
 
-If your scene contains multiple systems or modules that each define their own UI, you can render each UI module with `ReactEcsRenderer.addUiRenderer()`. This is especially useful when working on a complex scene with multiple UI components, or when defining UIs for a [smart item](../smart-items/smart-items.md), which should be usable independent of what's in the code of the rest of the scene.
+If your scene contains multiple systems or modules that each define their own UI, you can render each UI module with `ReactEcsRenderer.addUiRenderer()`. This is especially useful when working on a complex scene with multiple UI components, or when defining UIs for a [smart item](../../scene-editor/interactivity/smart-items.md), which should be usable independent of what's in the code of the rest of the scene.
 
 The `ReactEcsRenderer.addUiRenderer()` function requires that you provide an entity as the owner of the UI. This can be any entity, even a dummy entity created only to be used as the owner of the UI.
 

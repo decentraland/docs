@@ -55,7 +55,7 @@ Algunos campos típicos que puedes encontrar en muchos ítems son:
 
 Cada ítem tiene sus propias configuraciones específicas, que pueden variar de un ítem a otro.
 
-Todos los ítems tienen un **Advanced Mode** que te permite configurar casi cualquier cosa sobre ellos. Esto incluye cosas como qué sonidos se reproducen, o en qué dirección se mueve una plataforma. También puedes agregar acciones personalizadas que incluyen todo tipo de cosas, como teletransportar al jugador, reproducir animaciones de avatar, adjuntar un ítem a las manos del jugador, etc. También puedes agregar lógica condicional, para solo activar algo en ciertos escenarios. Consulta [Smart Items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
+Todos los ítems tienen un **Advanced Mode** que te permite configurar casi cualquier cosa sobre ellos. Esto incluye cosas como qué sonidos se reproducen, o en qué dirección se mueve una plataforma. También puedes agregar acciones personalizadas que incluyen todo tipo de cosas, como teletransportar al jugador, reproducir animaciones de avatar, adjuntar un ítem a las manos del jugador, etc. También puedes agregar lógica condicional, para solo activar algo en ciertos escenarios. Consulta [Smart Items - Advanced](smart-items-advanced.md).
 
 ![](../../.gitbook/assets/advanced-mode.webp)
 
@@ -77,7 +77,7 @@ Elimina acciones haciendo clic en los tres puntos junto a una acción y seleccio
 
 También puedes encadenar acciones. Por ejemplo, si la puerta que se abre con la palanca incluye una acción en su propio campo **When Opened**, esta acción también se activará indirectamente con la palanca.
 
-Si usas el [Advanced mode](../scene-editor/interactivity/smart-items-advanced.md) también puedes agregar lógica condicional a estos tipos de acciones.
+Si usas el [Advanced mode](smart-items-advanced.md) también puedes agregar lógica condicional a estos tipos de acciones.
 
 ### Smart items especiales
 
@@ -93,7 +93,7 @@ Usa los tipos de trigger **On Player Enters Area** y **On Player Leaves Area** e
 
 ![](../../.gitbook/assets/on_player_enters.webp)
 
-Consulta [Trigger area](../scene-editor/interactivity/trigger-area.md) para más información.
+Consulta [Trigger area](trigger-area.md) para más información.
 
 #### Invisible walls
 
@@ -103,7 +103,7 @@ Una colección de formas invisibles que pueden bloquear a los jugadores de camin
 
 Estos muros invisibles pueden ser útiles al importar un modelo 3D que no tiene un collider mesh, o cuando quieres crear un muro que no sea visible para el jugador.
 
-Consulta [Colliders](../sdk7/3d-essentials/colliders.md) para más información.
+Consulta [Colliders](../../sdk7/3d-essentials/colliders.md) para más información.
 
 #### Click area
 
@@ -117,13 +117,13 @@ Reproduce videos desde:
 
 * **Archivos locales**
 * **Stream desde una URL**
-* **Stream en vivo desde** [**Decentraland Cast**](../creator/worlds/cast.md)
+* **Stream en vivo desde** [**Decentraland Cast**](../../worlds/cast.md)
 
 {% hint style="warning" %}
 **📔 Nota**: Evita reproducir más de un video en cualquier momento dado en tu escena, porque puede impactar severamente el rendimiento para los jugadores. Siempre detén otros videos antes de reproducir un segundo video.
 {% endhint %}
 
-Consulta [Play Videos](../scene-editor/interactivity/video-screen.md) para más información.
+Consulta [Play Videos](video-screen.md) para más información.
 
 #### Reproducir audio streams
 
@@ -223,7 +223,7 @@ Sin embargo, si no hay jugadores cerca de la escena, entonces la escena se resta
 
 Asegúrate de diseñar tu escena para que las acciones de un jugador no sabotee la escena para otros que vienen más tarde. Por ejemplo, si la escena es un juego de rompecabezas, puedes usar una acción _delay_ en un smart item _tools_ para hacer que todos los ítems en la escena se restablezcan a su estado inicial unos segundos después de que se resuelva el rompecabezas.
 
-También puedes deshabilitar el comportamiento multijugador de un ítem, consulta [Smart Items - Advanced](../scene-editor/interactivity/smart-items-advanced.md).
+También puedes deshabilitar el comportamiento multijugador de un ítem, consulta [Smart Items - Advanced](smart-items-advanced.md).
 
 ### Solución de problemas
 
@@ -233,7 +233,7 @@ Asegúrate de que no esté siendo obstruido por algo más. No puedes hacer clic 
 
 ### Ver también
 
-* [Smart items - Advanced](../scene-editor/interactivity/smart-items-advanced.md)
-* [States and conditions](../scene-editor/interactivity/states-and-conditions.md)
-* [Making any item smart](../scene-editor/interactivity/make-any-item-smart.md)
-* [Combine with code](../scene-editor/code/overview.md)
+* [Smart items - Advanced](smart-items-advanced.md)
+* [States and conditions](states-and-conditions.md)
+* [Making any item smart](make-any-item-smart.md)
+* [Combine with code](../code/README.md)

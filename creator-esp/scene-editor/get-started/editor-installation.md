@@ -39,4 +39,4 @@ Puede que necesites seleccionar tu Code Editor en la configuración del Creator 
 
 ### Solución de problemas
 
-Si encuentras problemas, consulta la sección [troubleshooting](../sdk7/debugging/troubleshooting.md).
+Si encuentras problemas, consulta la sección [troubleshooting](../../sdk7/debugging/troubleshooting.md).

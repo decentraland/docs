@@ -1,10 +1,10 @@
-Las escenas son las [entidades](../entities) que producen comportamiento en diferentes partes de Decentraland. Pueden abarcar múltiples parcelas land, y los jugadores caminando a través de ellas en un World Explorer ejecutarán código especial proporcionado por la escena.
+Las escenas son las [entidades](../entities.md) que producen comportamiento en diferentes partes de Decentraland. Pueden abarcar múltiples parcelas land, y los jugadores caminando a través de ellas en un World Explorer ejecutarán código especial proporcionado por la escena.
 
 Puedes encontrar un ejemplo completo de la vida real en [el manifest de esta escena](https://peer.decentraland.org/content/contents/bafkreidihplrc5cxarjkji2enmzhicpjoa2vrlqyyffnholmxb3o2xft3u) en el servidor de contenido de la Foundation.
 
 ## Punteros {#pointers}
 
-Las escenas tienen uno o más [punteros](../pointers) asociados en forma de cadenas de coordenadas de parcela, como `"0,0"`. Cada parcela ejecutando la escena se listará en el [array `pointers`](../entities#properties) del manifest de entidad, y todos esos punteros serán resueltos por el servidor de contenido a esa escena.
+Las escenas tienen uno o más [punteros](../pointers.md) asociados en forma de cadenas de coordenadas de parcela, como `"0,0"`. Cada parcela ejecutando la escena se listará en el [array `pointers`](../entities.md#properties) del manifest de entidad, y todos esos punteros serán resueltos por el servidor de contenido a esa escena.
 
 En otras palabras, puedes elegir las coordenadas x/y de una parcela y localizar la escena que está ejecutando consultando al servidor de contenido por el puntero `"<x>,<y>"`. Esta es la forma en que los World Explorers deciden si habilitar el comportamiento de una escena mientras el jugador navega el mundo.
 
@@ -25,12 +25,12 @@ Estos datos también están disponibles en el campo `metadata.scene.parcels` det
 
 ## Campos de Metadata
 
-Hay varias propiedades especiales para [entidades](../entities) de tipo `scene` ubicadas en el campo de nivel superior `metadata`.
+Hay varias propiedades especiales para [entidades](../entities.md) de tipo `scene` ubicadas en el campo de nivel superior `metadata`.
 
 | Campo | Valor |
 | ----- | --- |
 | `owner` | Información sobre el mantenedor de la escena.
-| `main` | El [nombre de archivo interno](../entities#files) al archivo JavaScript principal de esta escena.
+| `main` | El [nombre de archivo interno](../entities.md#files) al archivo JavaScript principal de esta escena.
 | `tags` | Un array de etiquetas de cadena descriptivas de esta escena.
 | `display` | Información sobre la escena para que Explorers muestren a jugadores (ver abajo).
 | `scene` | Las parcelas en las que esta escena está activa, y su ubicación central (ver abajo).
@@ -51,8 +51,8 @@ En `metadata.display`, encontrarás propiedades útiles para informar a jugadore
 | ----- | --- |
 | `title` | El nombre de visualización de esta escena.
 | `description` | Una descripción extendida de esta escena.
-| `favicon` | _Obsoleto_ El [nombre de archivo interno](../entities#files) a un ícono, mostrado cuando esta escena está activa.
-| `navmapThumbnail` | El [nombre de archivo interno](../entities#files) a la miniatura de esta escena para el mapa del mundo.
+| `favicon` | _Obsoleto_ El [nombre de archivo interno](../entities.md#files) a un ícono, mostrado cuando esta escena está activa.
+| `navmapThumbnail` | El [nombre de archivo interno](../entities.md#files) a la miniatura de esta escena para el mapa del mundo.
 
 Un ejemplo:
 

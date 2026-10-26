@@ -75,7 +75,7 @@ TextShape.create(myEntity, {
 
 > `import { Color3, Color4 } from "@dcl/sdk/math"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Transparencia

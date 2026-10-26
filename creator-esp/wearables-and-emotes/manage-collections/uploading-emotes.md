@@ -14,7 +14,7 @@ Una vez que exportes tu emote, tendrás que subirlo al builder. Este documento c
 
 Recuerda que necesitas crear una colección antes de poder subir tu archivo. Si no sabes cómo hacer eso, consulta [Creating a Collection](https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/creating-a-collection). Para subir tu emote, simplemente arrastra y suelta el archivo en la ventana _**New Item**_ o busca en tu computadora. Detectará automáticamente si el archivo tiene alguna animación, identificándolo como un emote.
 
-![](../images/wearables-and-emotes/uploading-emotes/01_new_item.png)
+![Ventana New Item para subir un wearable o emote](../../.gitbook/assets/01_new_item-current.webp)
 
 Arrastra y suelta tu archivo de animación para subirlo.
 

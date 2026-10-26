@@ -10,7 +10,7 @@ Esta página te guiará a través del proceso de usar el sistema de Rewards para
 
 ### Prerequisitos
 
-Antes de comenzar a usar el sistema de Rewards, asegúrate de tener una colección [aprobada y lista para acuñar](../../creator/creator/wearables-and-emotes/publishing/publishing-collections.md). Esta colección debe contener los artículos que planeas ofrecer como recompensas en tu campaña.
+Antes de comenzar a usar el sistema de Rewards, asegúrate de tener una colección [aprobada y lista para acuñar](../wearables-and-emotes/publishing/publishing-collections.md). Esta colección debe contener los artículos que planeas ofrecer como recompensas en tu campaña.
 
 ### Crear tu primera campaña
 
@@ -103,7 +103,7 @@ Por defecto tu campaña está inactiva. Esto evita que el servicio de recompensa
 **📔 Nota**: Si una campaña activa se establece como inactiva, las recompensas pendientes aún se enviarán. Sin embargo, las nuevas reclamaciones o reclamaciones que necesiten ser reintentadas por alguna razón serán prevenidas.
 {% endhint %}
 
-**Ahora estás listo para comenzar a acuñar wearables/emotes usando la** [**API**](../../creator/land/api.md)
+**Ahora estás listo para comenzar a acuñar wearables/emotes usando la** [**API**](integrations.md)
 
 #### Gestionar fondos
 

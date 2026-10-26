@@ -1,4 +1,4 @@
-The `Players` module allows [scenes](/contributor/content/entity-types/scenes) to look for players in their environment and get information about their identity and [profiles](/contributor/content/entity-types/profiles).
+The `Players` module allows [scenes](../../content/entity-types/scenes.md) to look for players in their environment and get information about their identity and [profiles](../../content/entity-types/profiles.md).
 
 ```ts
 const Players = require("~system/Players");
@@ -79,9 +79,9 @@ interface Player {
 
 Holds (possibly partial) information about a user, their identity and avatar.
 
-World Explorers obtain this information through the [content system](/contributor/content/overview).
+World Explorers obtain this information through the [content system](../../content/overview.md).
 
-The [profile entity definition](/contributor/content/entity-types/profiles) details all of these fields and more. While the structure and keys of `UserData` are slightly different, the meaning of each field is the same.
+The [profile entity definition](../../content/entity-types/profiles.md) details all of these fields and more. While the structure and keys of `UserData` are slightly different, the meaning of each field is the same.
 
 ```ts
 export interface UserData {

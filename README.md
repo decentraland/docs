@@ -174,7 +174,7 @@ Run `npm run check:links` to validate local links in every tracked or unignored 
 
 The check covers Markdown links and images (including reference links), HTML `href`, `src`, and `poster` attributes, and GitBook file/embed/image URLs. Paths are case-sensitive; relative paths resolve from the Markdown file and leading `/` paths resolve from the repository root. It checks file/directory existence, not heading fragments or external URLs, and ignores front matter and code samples.
 
-After repairing 386 asset links, 748 pre-existing broken local links remain. These are explicitly recorded in [`scripts/local-links-baseline.json`](scripts/local-links-baseline.json); no Markdown directories are excluded. CI fails for new broken links and stale baseline entries. When repairing a known link, remove its exact entry from that file. Do not add entries to accommodate new failures. Run `npm run check:links -- --strict` to fail on the entire backlog, or append `--json` for a machine-readable report. The ordinary check reports how many known failures remain; passing it does not mean all historical links have been repaired.
+Every broken local path fails CI; there is no historical exemption list. Use explicit repository file paths (including `.md` for Markdown pages), and update links when moving or deleting content. Run `npm run check:links -- --json` for a machine-readable report.
 
 ### Validating media formats
 
@@ -252,4 +252,4 @@ This preview feature ensures that documentation changes can be thoroughly review
 
 ## 📜 License
 
-This documentation is licensed under the [Apache License 2.0](LICENSE).
+This documentation is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

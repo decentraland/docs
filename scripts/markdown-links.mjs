@@ -61,14 +61,3 @@ export function findBrokenLinks(source, content, paths) {
 	}
 	return errors
 }
-
-export function compareBaseline(errors, baseline) {
-	const key = (source, link) => JSON.stringify([source, link])
-	const known = new Set(Object.entries(baseline).flatMap(([source, links]) => links.map(link => key(source, link))))
-	const actual = new Set(errors.map(error => key(error.source, error.link)))
-	return {
-		newErrors: errors.filter(error => !known.has(key(error.source, error.link))),
-		stale: [...known].filter(entry => !actual.has(entry)).map(entry => { const [source, link] = JSON.parse(entry); return { source, link } }),
-		existing: errors.filter(error => known.has(key(error.source, error.link))).length,
-	}
-}

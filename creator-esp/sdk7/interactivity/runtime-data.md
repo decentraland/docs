@@ -157,7 +157,7 @@ El componente `EngineInfo` contiene los siguientes datos:
 
 > `import { EngineInfo } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ### Reaccionar a la desaparición de la pantalla de carga

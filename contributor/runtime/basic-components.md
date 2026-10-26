@@ -38,7 +38,7 @@ Coordinates can be fractionary, and thus use a 4-byte floating point number.
 
 The `parent` field indicates that this Entity should be positioned relative to another one, identified by their ID.
 
-Since the null-value for `parent` is also the [`RootEntity`](/contributor/runtime/entities#RootEntity) ID (`0`), any `Transform` is relative to it by default.
+Since the null-value for `parent` is also the [`RootEntity`](basic-entities.md#RootEntity) ID (`0`), any `Transform` is relative to it by default.
 
 By protocol, `Transform` must be serialized in big-endian byte order.
 
@@ -72,7 +72,7 @@ To completely customize the visual properties of an Entity, use [`GltfContainer`
 
 ##### `GltfContainer` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/gltf_container.proto#L7)</small> {#GltfContainer}
 
-Attaches a 3D model to this Entity, given the [file path](/contributor/content/entities#files) of a `.gltf` asset in the scene's manifest.
+Attaches a 3D model to this Entity, given the [file path](../content/entities.md#files) of a `.gltf` asset in the scene's manifest.
 
 Since the model has its own meshes and materials, this component overrides any behavior from [`MeshRenderer`](#MeshRenderer), [`MeshCollider`](#MeshCollider) and [`Material`](#Material).
 
@@ -122,11 +122,11 @@ Invisible objects still exist, and will exhibit behavior from any other attached
 
 Contains information about the player's avatar, including their body shape, colors, wearables and transitory state.
 
-This component is attached to entities in the [avatar scene](execution#avatarScene).
+This component is attached to entities in the [avatar scene](execution.md#avatarScene).
 
 ## Game Components {#game}
 
-Some basic components can be used by the scene and the runtime to exchange information. They leverage the [ECS synchronization mechanism](modules/engine_api#synchronization) to guarantee consistency and ordering for any state changes or events.
+Some basic components can be used by the scene and the runtime to exchange information. They leverage the [ECS synchronization mechanism](modules/engine-api.md#synchronization) to guarantee consistency and ordering for any state changes or events.
 
 ---
 
@@ -140,7 +140,7 @@ Can be used to determine whether the player has a first-person o third-person vi
 
 Can be used to determine whether the mouse pointer is automatically following the camera's point of focus (locked), or can move freely on the screen (unlocked).
 
-It's attached to the [`CameraEntity`](/contributor/runtime/entities#CameraEntity), and its state can be read (but not written) from the scene.
+It's attached to the [`CameraEntity`](basic-entities.md#CameraEntity), and its state can be read (but not written) from the scene.
 
 ---
 
@@ -180,7 +180,7 @@ Scenes can attach special components to display images, show video or play sound
 
 ##### `AudioSource` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/audio_source.proto#L7)</small> {#AudioSource}
 
-Plays an audio clip bundled with the scene, given the [file's path in its manifest](/contributor/content/entities#files).
+Plays an audio clip bundled with the scene, given the [file's path in its manifest](../content/entities.md#files).
 
 The sound originates from the associated entity's position. Its pitch, volume and looping behavior can be set, and the state of the audio player can be read.
 

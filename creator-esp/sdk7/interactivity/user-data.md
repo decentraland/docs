@@ -53,7 +53,7 @@ engine.addSystem(getPlayerPosition)
 Otra opción es referirte a estas entidades dentro de un sistema. Allí siempre estarán disponibles, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
 
-## Obtener todos los jugadores
+## Obtener todos los jugadores {#fetch-all-players}
 
 Todos los jugadores en la escena tienen un componente `Transform`. Este componente es de solo lectura en avatares. Para obtener las posiciones de todos los jugadores, [itera sobre todas las entidades con](../architecture/querying-components.md) un componente `PlayerIdentityData`.
 
@@ -72,7 +72,7 @@ El código anterior itera sobre todas las entidades con un componente `Transform
 
 Consulta [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) para aprender cómo detectar y reaccionar cuando nuevos jugadores se unen a la escena.
 
-## Obtener datos del jugador
+## Obtener datos del jugador {#get-player-data}
 
 Usa `getPlayer()` para obtener datos sobre el jugador actual, o cualquier otro jugador en la escena.
 
@@ -275,7 +275,7 @@ for (const [entity, data, base, attach, transform] of engine.getEntitiesWith(
 **📔 Nota**: Todos estos componentes son de solo lectura. No puedes cambiar sus valores desde la escena.
 {% endhint %}
 
-## Obtener Experiencias Portátiles
+## Obtener Experiencias Portátiles {#get-portable-experiences}
 
 Las experiencias portátiles son esencialmente escenas que no están limitadas a parcelas de tierra. Los jugadores pueden llevarlas consigo a cualquier lugar en Decentraland, agregando una nueva capa de contenido sobre el mundo. Los Smart Wearables son ejemplos de experiencias portátiles. Es posible que desees saber si un jugador está usando uno de estos, ya que un wearable inteligente puede permitir que los jugadores tengan habilidades que podrían considerarse trampa en un juego competitivo. Por ejemplo, en un juego de plataformas, un jugador que usa un jetpack tiene una ventaja muy injusta sobre otros.
 
@@ -339,7 +339,7 @@ executeTask(fetchWearablesData)
 **💡 Consejo**: Puedes obtener aún más información sobre wearables específicos desde la [siguiente API](https://decentraland.github.io/catalyst-api-specs/#tag/Lambdas/operation/searchWearables).
 {% endhint %}
 
-## Verificar el modo de cámara del jugador
+## Verificar el modo de cámara del jugador {#check-the-players-camera-mode}
 
 Los jugadores pueden estar usando una cámara en primera o tercera persona cuando exploran Decentraland. Verifica cuál de estas está usando el jugador verificando el valor del componente `CameraMode` de la entidad `engine.CameraEntity`.
 

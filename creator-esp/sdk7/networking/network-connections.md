@@ -16,7 +16,7 @@ También puedes configurar tu propio servidor externo para ayudar a tu escena y 
 
 El código de tu escena puede enviar llamadas a una API REST para obtener datos.
 
-Dado que el servidor podría tardar en enviar su respuesta, debes ejecutar este comando como una [función asíncrona](../sdk7/programming-patterns/async-functions.md), usando `executeTask()`.
+Dado que el servidor podría tardar en enviar su respuesta, debes ejecutar este comando como una [función asíncrona](../programming-patterns/async-functions.md), usando `executeTask()`.
 
 ```ts
 executeTask(async () => {
@@ -175,7 +175,7 @@ Tu escena puede llamar a servicios API disponibles públicamente, obteniendo dat
 * Valores de acciones o valores de criptomonedas
 * Hora actual del día en un lugar del mundo
 * Información de blockchain
-* Generación de números aleatorios a partir de un servicio externo. Consulta [números aleatorios](../sdk7/programming-patterns/random-numbers.md)
+* Generación de números aleatorios a partir de un servicio externo.
 
 Para llevar a cabo estas solicitudes, consulta [Call a REST API](network-connections.md#call-a-rest-api).
 

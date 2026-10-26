@@ -12,8 +12,8 @@ Usa el smart item **Video Screen** junto con el smart item **Scene Admin** para 
 
 ### Requisitos
 
-- Una escena con al menos un smart item [Video Screen](../scene-editor/interactivity/video-screen.md).
-- El smart item [Scene Admin](../scene-editor/live-ops/scene-admin.md) vinculado a tus video screens.
+- Una escena con al menos un smart item [Video Screen](../interactivity/video-screen.md).
+- El smart item [Scene Admin](scene-admin.md) vinculado a tus video screens.
 - Software de streaming que pueda enviar a un endpoint RTMP (ej. [OBS](https://obsproject.com/), [XSplit](https://www.xsplit.com/), [StreamYard](https://streamyard.com/)).
 
 ### Configurar la escena
@@ -82,6 +82,6 @@ Las stream keys se generan por escena y son válidas por 4 días (96 horas). Una
 
 También puedes transmitir usando infraestructura de terceros configurando el Video Screen a **Video URL** y pegando una URL de stream.
 
-- La URL debe ser `https`. Consulta [About External Streaming](../sdk7/media/video-playing.md#about-external-streaming).
+- La URL debe ser `https`. Consulta [About External Streaming](../../sdk7/media/video-playing.md#about-external-streaming).
 - Los proveedores administrados incluyen [Vimeo](https://vimeo.com/), [Livepeer Studio](https://livepeer.studio/) y [Serraform](https://serraform.gitbook.io/streaming-docs/guides/decentraland-playback).
-- Tips para configuración de encoder: [Setting up OBS for successful streaming](../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).
+- Tips para configuración de encoder: [Setting up OBS for successful streaming](../../sdk7/media/video-playing.md#setting-up-obs-for-successful-streaming).

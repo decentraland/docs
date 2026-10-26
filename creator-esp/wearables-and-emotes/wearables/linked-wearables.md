@@ -16,7 +16,7 @@ Este documento está principalmente orientado para representantes de comunidades
 
 ### ¿Qué son los Linked Wearables?
 
-Los Linked Wearables son representaciones 3D de NFTs que se originan fuera de Decentraland que pueden usarse como wearables en el mundo, pueden equiparse en el avatar y se encuentran en el backpack. No son [wearables regulares](../wearables-and-emotes/wearables/wearables-overview.md). Se ven igual, y siguen las [directrices](../wearables-and-emotes/wearables/creating-wearables.md) de wearables regulares pero llevan un significado completamente diferente.
+Los Linked Wearables son representaciones 3D de NFTs que se originan fuera de Decentraland que pueden usarse como wearables en el mundo, pueden equiparse en el avatar y se encuentran en el backpack. No son [wearables regulares](README.md). Se ven igual, y siguen las [directrices](creating-wearables.md) de wearables regulares pero llevan un significado completamente diferente.
 
 Los Linked Wearables no existen dentro de colecciones de wearables tradicionales (pertenecen a un tipo especial de colección), no tienen rarity, y no pueden venderse en mercados [primarios](https://market.decentraland.org/browse?assetType=item\&section=wearables) o [secundarios](https://market.decentraland.org/browse?assetType=nft\&section=wearables\&vendor=decentraland\&page=1\&sortBy=recently_listed\&onlyOnSale=true\&viewAsGuest=false\&onlySmart=false). Son solo **representaciones en el mundo vinculadas a NFTs externos.**
 
@@ -71,7 +71,7 @@ Para hacer eso, sigue estos pasos:
 
 1. Haz clic en el botón **New items**.
 2. Selecciona la opción **Singe items**.
-3. Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" para más información sobre cómo configurarlo.
+3. Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)" para más información sobre cómo configurarlo.
 
 ### Agregando Wearables a la Linked Wearables Collection - En Lote
 
@@ -85,7 +85,7 @@ Cada ítem requerirá que se construya un archivo ZIP que incluya los siguientes
 * Un archivo `wearable.json` **requerido** que contenga la información del wearable.
 * Un archivo `thumbnail.png` **opcional** que contenga la miniatura del wearable que se verá en el Builder y el mundo. Si no se proporciona, se generará una usando el modelo 3D.
 
-Los modelos 3D y el `thumbnail.png` opcional siguen la [sección Custom Thumbnails](../wearables-and-emotes/manage-collections/uploading-wearables.md#custom-thumbnails) en el artículo Uploading Wearables sobre cómo crear una miniatura personalizada.
+Los modelos 3D y el `thumbnail.png` opcional siguen la [sección Custom Thumbnails](../manage-collections/uploading-wearables.md#custom-thumbnails) en el artículo Uploading Wearables sobre cómo crear una miniatura personalizada.
 
 El `wearable.json` que acompaña el contenido de los wearables tiene el siguiente formato (escrito como TypeScript):
 
@@ -224,7 +224,7 @@ Para agregar una miniatura personalizada al wearable, puedes agregar un archivo 
 
 Algunas cosas a considerar sobre el archivo `wearable.json`:
 
-* Toda la información sobre las categorías de wearables y cuál elegir se puede encontrar en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md).
+* Toda la información sobre las categorías de wearables y cuál elegir se puede encontrar en las [directrices para crear wearables](creating-wearables.md).
 * El array de representations contendrá la información sobre cómo se verá cada forma de cuerpo. Cada wearable DEBE contener al menos una representation (puede tener una o las dos), es decir, tomando en consideración las formas de cuerpo que actualmente tenemos, ya sea `urn:decentraland:off-chain:base-avatars:BaseMale` o `urn:decentraland:off-chain:base-avatars:BaseFemale`. Cada representation describirá qué modelos se usarán para cada forma de cuerpo.
 * El objeto mapping debe configurarse como uno de los mecanismos disponibles para vincular tu NFT a tu wearable, siguiendo la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-linked-wearables-represent-nfts)".
 
@@ -311,7 +311,7 @@ Para eliminar una Linked Wearable Collection sigue estos pasos:
 Para editar un solo wearable, sigue estos pasos:
 
 1. Haz clic en el menú de tres puntos (tres puntos horizontales) a la derecha del ítem que quieres ver en el mundo. Aparecerá un desplegable. Selecciona **Open in editor**.
-2. Edita el wearable como se editan los wearables estándar. Sigue la sección **Editing items** en las [directrices para crear wearables](../wearables-and-emotes/wearables/creating-wearables.md) sobre cómo crear una miniatura personalizada.
+2. Edita el wearable como se editan los wearables estándar. Sigue la sección **Editing items** en las [directrices para crear wearables](creating-wearables.md) sobre cómo crear una miniatura personalizada.
 
 #### Editando el enlace del wearable
 
@@ -425,7 +425,7 @@ El proceso de curación diferirá según el proceso usado para generar los weara
 
 #### Wearables hechos a mano
 
-Para modelos 3D que fueron hechos individualmente sin ningún proceso automatizado (el método usual para la mayoría de los wearables regulares) el Curador necesitará revisar todos los ítems en la colección individualmente para asegurarse de que todos cumplan con las [Wearable Guidelines](../wearables-and-emotes/wearables/creating-wearables.md).
+Para modelos 3D que fueron hechos individualmente sin ningún proceso automatizado (el método usual para la mayoría de los wearables regulares) el Curador necesitará revisar todos los ítems en la colección individualmente para asegurarse de que todos cumplan con las [Wearable Guidelines](creating-wearables.md).
 
 #### Colecciones programáticas
 

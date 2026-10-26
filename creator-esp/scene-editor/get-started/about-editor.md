@@ -14,7 +14,7 @@ El Creator Hub incluye un poderoso Scene Editor que combina una interfaz simple 
 
 ![](../../.gitbook/assets/icon-creator-hub.webp)
 
-Consulta [Instalación del Creator Hub](../scene-editor/get-started/editor-installation.md) para comenzar.
+Consulta [Instalación del Creator Hub](editor-installation.md) para comenzar.
 
 ### Crear una escena
 
@@ -26,7 +26,7 @@ Luego puedes seleccionar qué template usar como punto de partida. Puedes elegir
 
 Luego se te pedirá que nombres tu escena y elijas una ubicación para guardarla.
 
-Consulta [Gestionar escenas](../scene-editor/get-started/manage-scenes.md) para más detalles.
+Consulta [Gestionar escenas](manage-scenes.md) para más detalles.
 
 ### Moverse
 
@@ -51,10 +51,10 @@ Para colocar un ítem, haz clic y arrástralo desde el menú de asset pack hacia
 
 ![](../../.gitbook/assets/drop-item.webp)
 
-Haz clic y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo. Consulta [Scene editor essentials](../scene-editor/get-started/scene-editor-essentials.md#position-items) para más detalles.
+Haz clic y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo. Consulta [Scene editor essentials](scene-editor-essentials.md#position-items) para más detalles.
 
 {% hint style="info" %}
-**💡 Tip**: Algunos ítems son **Smart items**, estos vienen con comportamientos interactivos incorporados. Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para más detalles.
+**💡 Tip**: Algunos ítems son **Smart items**, estos vienen con comportamientos interactivos incorporados. Consulta [Smart items](../interactivity/smart-items.md) para más detalles.
 {% endhint %}
 
 ![](../../.gitbook/assets/smart-items.jpg)
@@ -81,7 +81,7 @@ Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla.
 
 ![](../../.gitbook/assets/pencil-icon.webp)
 
-Consulta [Scene Settings](../scene-editor/configure/scene-settings.md) para más detalles.
+Consulta [Scene Settings](../configure/scene-settings.md) para más detalles.
 
 ### Publicar tu escena
 
@@ -89,11 +89,11 @@ Una vez que estés satisfecho con tu escena, presiona _Publish scene_.
 
 ![](../../.gitbook/assets/publish-options.webp)
 
-Consulta [Publish scene](../scene-editor/publish/publish-scene.md) para más detalles.
+Consulta [Publish scene](../publish/publish-scene.md) para más detalles.
 
 ### Ver también
 
-* Consulta [Scene Editor Essentials](../scene-editor/get-started/scene-editor-essentials.md) para más detalles sobre la interfaz del Scene Editor.
-* Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
-* Consulta [Combine with code](../scene-editor/code/overview.md) para saber cómo editar el código de tu escena.
-* Consulta [Publish scene](../scene-editor/publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.
+* Consulta [Scene Editor Essentials](scene-editor-essentials.md) para más detalles sobre la interfaz del Scene Editor.
+* Consulta [Smart items](../interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
+* Consulta [Combine with code](../code/README.md) para saber cómo editar el código de tu escena.
+* Consulta [Publish scene](../publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.

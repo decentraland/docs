@@ -12,9 +12,9 @@ metaLinks:
 
 Hay varios eventos a los que la escena puede suscribirse, para conocer las acciones del jugador mientras está en o cerca de la escena.
 
-Para eventos de botones y clics realizados por el jugador, consulta [Eventos de botones](click-events.md).
+Para eventos de botones y clics realizados por el jugador, consulta [Eventos de botones](button-events/click-events.md).
 
-## El jugador entra o sale de la escena
+## El jugador entra o sale de la escena {#player-enters-or-leaves-scene}
 
 Cada vez que un avatar entra o sale de las parcelas de tierra que conforman tu escena, o se teletransporta dentro o fuera, esto crea un evento al que puedes escuchar.
 

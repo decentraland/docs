@@ -60,7 +60,7 @@ También hay accesorios que se pueden aplicar a diferentes áreas de un avatar. 
 * **Hat**
 * **Helmet**
 
-Para una descripción detallada de cada categoría, y cómo los ítems dentro de cada categoría interactúan u ocultan unos a otros, consulta [**Creating Wearables**](../wearables-and-emotes/wearables/creating-wearables.md).
+Para una descripción detallada de cada categoría, y cómo los ítems dentro de cada categoría interactúan u ocultan unos a otros, consulta [**Creating Wearables**](creating-wearables.md).
 
 Puedes previsualizar wearables básicos usando la [Wearable Preview Tool](https://wearable-preview.decentraland.org/?profile=default1\&transparentBackground\&loop=true).
 

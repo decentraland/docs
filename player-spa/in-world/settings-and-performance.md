@@ -40,7 +40,7 @@ Renderizar el mundo abierto de Decentraland requiere un cierto nivel de potencia
 
 Si tu computadora no cumple con todos los requisitos mínimos de hardware de Decentraland, puedes intentar optimizar tu experiencia bajando tu configuración de gráficos en el mundo. Aquí están las configuraciones para el mejor rendimiento:
 
-![](broken-reference)
+![](../.gitbook/assets/lowsettings.webp)
 
 ## Configuración de Sonido
 
@@ -51,16 +51,16 @@ Modifica el volumen de sonidos individuales para personalizar tu experiencia en 
 * **Música y SFX en el Mundo:** Afecta música, audio de streams y cualquier otro efecto de sonido generado por una escena
 * **SFX de Avatar y Emotes:** Afecta sonidos de avatares y Emotes con efectos de sonido
 
-![](broken-reference)
+![](../.gitbook/assets/sound.webp)
 
 ## Configuración de Control
 
 Aquí puedes modificar la sensibilidad de tu mouse en el mundo.
 
-![](broken-reference)
+![](../.gitbook/assets/control.webp)
 
 ## Configuración de Chat
 
 Desde la configuración principal, puedes modificar las preferencias de notificaciones y burbujas de chat para todos tus chats simultáneamente, así como tus permisos de mensajes directos. Consulta la sección [**Chat**](friends-and-chatting.md#chat-settings) para un desglose completo.
 
-![](broken-reference)
+![](../.gitbook/assets/chat15.webp)

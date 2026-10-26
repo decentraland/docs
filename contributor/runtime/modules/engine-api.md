@@ -60,11 +60,11 @@ Most scenes use the Decentraland SDK, which encapsulates the `EngineApi` module 
 
 Entity IDs are plain integers starting with `0`.
 
-By protocol, IDs below `512` are reserved for the World Explorer, and thus invalid for scene-created entities. Numbers `0`, `1` and `2` are actually in use (see [basic entities](../../entities/)), with the rest of the range available for future extensions.
+By protocol, IDs below `512` are reserved for the World Explorer, and thus invalid for scene-created entities. Numbers `0`, `1` and `2` are actually in use (see [basic entities](../basic-entities.md)), with the rest of the range available for future extensions.
 
 Each scene has its own private range of IDs, which the Explorer can transparently map to a global identifier among all entities in the game engine.
 
-Over time, as entities are created and deleted, it's perfectly valid to reuse IDs that were previously freed -- indeed, this may be required for perfomance reasons ([see below](../../runtime-modules/crdtStateDeleteEntities/)).
+Over time, as entities are created and deleted, it's perfectly valid to reuse IDs that were previously freed -- indeed, this may be required for perfomance reasons ([see below](#crdtStateDeleteEntities)).
 
 #### Synchronization <a href="#synchronization" id="synchronization"></a>
 
@@ -162,6 +162,8 @@ The pseudocode above (if translated to actual code) is obviously incomplete and 
 * `shouldCreate` must add new entities, but refuse to re-create deleted entities.
 * `shouldReplace` must prefer to keep states that have greater timestamps (with some edge cases).
 
+<a id="crdtStateDeleteEntities"></a>
+
 To support the `shouldCreate` requirement, you'll want to keep track of deleted entity IDs, in order to ignore any future state updates for those. Let's see this in more pseudocode:
 
 ```ts
@@ -229,7 +231,7 @@ Most cases will be resolved by rules `1`, `2` and `3`.
 
 **Initial Synchronization**
 
-Before a scene starts running its own code, the runtime populates the CRDT with the state of all [basic entities](../../entities/) and their components.
+Before a scene starts running its own code, the runtime populates the CRDT with the state of all [basic entities](../basic-entities.md) and their components.
 
 During this initial synchronization, only the runtime can set the shared state. The scene is not allowed to make modifications until the process is complete.
 

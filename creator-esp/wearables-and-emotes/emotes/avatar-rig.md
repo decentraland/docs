@@ -8,7 +8,7 @@ metaLinks:
 
 # Avatar Rig
 
-Un rig es un esqueleto virtual que permite que un modelo se mueva. Consiste en una jerarquía de huesos individuales, muy parecido a un esqueleto de la vida real, y funciona bajo una relación padre/hijo. Este documento cubrirá algunos conceptos básicos de rigging, como posición de huesos, orientación de huesos, huesos que deforman y no deforman, la diferencia entre IK y FK y sus propósitos. La estructura del rig de un avatar, atributos personalizados y configuración para animar se pueden encontrar en [rig features](../wearables-and-emotes/emotes/rig-features.md).
+Un rig es un esqueleto virtual que permite que un modelo se mueva. Consiste en una jerarquía de huesos individuales, muy parecido a un esqueleto de la vida real, y funciona bajo una relación padre/hijo. Este documento cubrirá algunos conceptos básicos de rigging, como posición de huesos, orientación de huesos, huesos que deforman y no deforman, la diferencia entre IK y FK y sus propósitos. La estructura del rig de un avatar, atributos personalizados y configuración para animar se pueden encontrar en [rig features](rig-features.md).
 
 ## **Los Conceptos Básicos**
 

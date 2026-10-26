@@ -24,7 +24,7 @@ Adquirir un NAME de Decentraland requiere 100 MANA y puede asignarse a tu avatar
 
 Los Worlds sirven como puerta de entrada para aspirantes a creadores de contenido, proporcionando un punto de entrada accesible para crear en Decentraland y la libertad de experimentar con la creación de escenas.
 
-### Límite de Tamaño de Worlds
+### Límite de Tamaño de Worlds {#worlds-size-limit}
 
 El tamaño máximo de archivo que puedes subir a tu World es una consideración esencial al desplegar tus escenas. Es importante notar que el tamaño máximo de archivo de escena que puedes subir a tu World difiere entre Worlds otorgados por NAMEs de Decentraland y aquellos de dominios ENS.
 
@@ -136,7 +136,7 @@ Cosas para recordar:
 * elimina la sección `worldConfiguration` de `scene.json`
 * la limitación de tamaño para Worlds (100 Mb de tamaño total) es diferente a la de parcelas LAND (15MB por parcela), ¡así que asegúrate de que tu escena tenga el tamaño correcto para despliegues en Genesis City!
 
-### Configuraciones predeterminadas de World
+### Configuraciones predeterminadas de World {#world-defaults}
 
 Un par de configuraciones personalizadas opcionales pueden especificarse en el `scene.json` al desplegar una escena de world:
 
@@ -158,7 +158,7 @@ Un par de configuraciones personalizadas opcionales pueden especificarse en el `
 }
 ```
 
-### Listas de Control de Acceso (ACL)
+### Listas de Control de Acceso (ACL) {#access-control-lists-acl}
 
 Cuando un equipo (más de una persona) está contribuyendo al desarrollo de una escena, puede ser beneficioso que cada colaborador tenga la capacidad de publicar la escena bajo un solo NAME. Como se indicó anteriormente, el propietario del NAME es el único permitido para ejecutar tal despliegue.
 

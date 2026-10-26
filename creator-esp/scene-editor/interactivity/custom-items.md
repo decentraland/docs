@@ -14,7 +14,7 @@ Define un Custom Item para reutilizarlo fácilmente en cualquiera de tus escenas
 
 ### Cómo Definir un Custom Item
 
-Haz clic derecho en una entidad en el [Entity Tree](../scene-editor/get-started/scene-editor-essentials.md#the-entity-tree), o selecciona varias entidades y luego haz clic derecho en ellas. Selecciona **Create Custom Item**.
+Haz clic derecho en una entidad en el [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), o selecciona varias entidades y luego haz clic derecho en ellas. Selecciona **Create Custom Item**.
 
 ![](../../.gitbook/assets/create-custom-item.webp)
 

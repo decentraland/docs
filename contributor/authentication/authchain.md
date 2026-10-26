@@ -3,7 +3,7 @@
 
 Many actions in the Decentraland protocol either require or benefit from authorization with a signature from the user's Ethereum account. For example:
 
-1. Upload a new version of any [Entity](../../content/entities.md) they own (such as their profile).
+1. Upload a new version of any [Entity](../content/entities.md) they own (such as their profile).
 2. Authenticate themselves to 3rd-party services.
 3. Authorize delegates to act on their behalf.
 
@@ -145,7 +145,7 @@ As mentioned above, the most common serialization of an authentication chain is 
 
 However, the protocol does not impose this. Developers are allowed to use an alternative serialization strategy if it's more convenient for a particular use-case, such as YAML, CSV files, optimized binary formats or simple strings with delimited fields.
 
-An example of alternative serialization from within the protocol itself can be found in the [`SignedFetch`](../../runtime/modules/signed_fetch.md) module, which uses a sequence of HTTP headers instead of a JSON array.
+An example of alternative serialization from within the protocol itself can be found in the [`SignedFetch`](../runtime/modules/signed-fetch.md) module, which uses a sequence of HTTP headers instead of a JSON array.
 
 ### Choosing an Expiration Date
 

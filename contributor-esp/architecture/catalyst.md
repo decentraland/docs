@@ -24,7 +24,7 @@ Almacena y sirve:
 * Scripts
 * Avatares y wearables
 
-**Referencia de API**: [API Catalyst](../apis/catalyst/)
+**Referencia de API**: [API Catalyst](../../apis/apis/catalyst/README.md)
 
 ### Lambdas
 
@@ -159,7 +159,7 @@ La infraestructura de comunicaciones se ejecuta junto a Catalyst:
 * Manejo de protocolo
 * Autenticación de conexión
 
-**Referencia de API**: [API Archipelago Workers](../apis/archipelago-workers/)
+**Referencia de API**: [API Archipelago Workers](../../apis/apis/archipelago-workers/README.md)
 
 #### Archipelago Core
 

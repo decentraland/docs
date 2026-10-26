@@ -1,6 +1,6 @@
 # restricted-actions
 
-The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](../../content/entity-types/scenes/#permissions) system, which scenes use to request the use of individual methods.
+The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](../../content/entity-types/scenes.md#permissions) system, which scenes use to request the use of individual methods.
 
 ```ts
 const RestrictedActions = require("~system/RestrictedActions");
@@ -10,7 +10,7 @@ const RestrictedActions = require("~system/RestrictedActions");
 As a World Explorer implementer, your runtime could have no enforcement of permissions. We **strongly** advise against this, since it puts players in danger.
 {% endhint %}
 
-Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../../globals/).
+Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../globals.md).
 
 The module contains the following methods and types:
 
@@ -25,13 +25,13 @@ The module contains the following methods and types:
 
 ### Methods
 
-Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes/#permissions) that can be requested in the scene manifest.
+Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes.md#permissions) that can be requested in the scene manifest.
 
 **`movePlayerTo`**
 
 Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#Vector3).
 
-Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {
@@ -75,7 +75,7 @@ function teleportTo(Request): Promise<Response>;
 
 Make the player's avatar display an emote animation, using one of the predefined names.
 
-Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {
@@ -91,7 +91,7 @@ function triggerEmote(Request): Promise<Response>;
 
 Offer to show a website to the player, using an appropriate UI (which may be another application).
 
-Requires the [`OPEN_EXTERNAL_LINK`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`OPEN_EXTERNAL_LINK`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {

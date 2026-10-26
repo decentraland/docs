@@ -14,9 +14,9 @@ Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla.
 
 Aquí puedes configurar múltiples propiedades incluyendo título y miniatura, tamaño de escena, categoría de escena y clasificación por edad, ubicaciones de spawn de jugadores y toggles de características.
 
-Consulta [Scene Metadata](../sdk7/projects/scene-metadata.md).
+Consulta [Scene Metadata](../../sdk7/projects/scene-metadata.md).
 
-### Detalles de escena
+### Detalles de escena {#scene-details}
 
 La pestaña **Details** te permite configurar varios campos sobre tu escena. Estos campos se muestran a los jugadores que podrían visitar tu escena, por ejemplo al expandir la ubicación en el mapa, cuando se les solicita teletransportarse, o al compartir un enlace a la escena en redes sociales. ¡Asegúrate de hacer que la información aquí sea atractiva y precisa para dirigir más tráfico a tu escena!
 
@@ -36,7 +36,7 @@ Los siguientes campos están disponibles:
 
 La miniatura debe ser una imagen .png de un tamaño recomendado de 228x160 píxeles. El tamaño mínimo soportado es 196x143 píxeles. La imagen puede estirarse si las proporciones de ancho a alto no coinciden con 228x160.
 
-Consulta [scene metadata](../sdk7/projects/scene-metadata.md) para más detalles sobre estos campos.
+Consulta [scene metadata](../../sdk7/projects/scene-metadata.md) para más detalles sobre estos campos.
 
 ### Layout
 
@@ -56,9 +56,9 @@ Para construir algo para desplegar en parcels de LAND que posees, asegúrate de 
 <img src="../../.gitbook/assets/non-rectangular.webp" alt="" data-size="original">
 {% endhint %}
 
-Si posees un NAME de Decentraland, también puedes desplegar tu escena en un [Decentraland World](../worlds/about.md). En ese caso, tendrás un número ilimitado de parcels, pero tendrás un límite de tamaño en MB.
+Si posees un NAME de Decentraland, también puedes desplegar tu escena en un [Decentraland World](../../worlds/about.md). En ese caso, tendrás un número ilimitado de parcels, pero tendrás un límite de tamaño en MB.
 
-Consulta [Kinds of project](../sdk7/projects/kinds-of-project.md) para entender mejor las diferentes opciones.
+Consulta [Kinds of project](../../sdk7/projects/kinds-of-project.md) para entender mejor las diferentes opciones.
 
 #### Vista avanzada
 
@@ -79,7 +79,7 @@ Puedes deshabilitar ciertas funcionalidades en tu escena si lo deseas, en caso d
 ![](../../.gitbook/assets/scene-restrictions.webp)
 
 * **Silence voice chat**: Evita que los jugadores en tu escena usen el voice chat.
-* **Disable portable experiences**: Evita que los jugadores usen [Smart Wearables](../sdk7/projects/smart-wearables.md) o [Portable Experiences](../sdk7/projects/portable-experiences.md).
+* **Disable portable experiences**: Evita que los jugadores usen [Smart Wearables](../../sdk7/projects/smart-wearables.md) o [Portable Experiences](../../sdk7/projects/portable-experiences.md).
 
 ### Spawn points
 

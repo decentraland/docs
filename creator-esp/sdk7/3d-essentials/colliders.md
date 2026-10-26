@@ -22,11 +22,11 @@ Hay capas de colisión separadas para interactuar con la física del jugador o c
 
 ## Usar el Scene Editor
 
-La forma más fácil de administrar los colisionadores de una entidad es usar el [Scene Editor](../../scene-editor/about-editor.md).
+La forma más fácil de administrar los colisionadores de una entidad es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md).
 
 Puedes agregar un componente **Mesh Collider** a tu entidad para asignar una forma primitiva (cubo, plano, esfera, cilindro o cono) a tu entidad. Luego puedes elegir [Capas de colisión](colliders.md#collision-layers) de un menú desplegable.
 
-También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](colliders.md#collision-layers) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
+También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](colliders.md#collision-layers) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
 
 
 
@@ -75,10 +75,10 @@ La forma utilizada por el `MeshCollider` no necesita coincidir necesariamente co
 
 > `import { MeshCollider, ColliderLayer } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
-## Colisionadores en modelos 3D
+## Colisionadores en modelos 3D {#colliders-on-3d-models}
 
 Los modelos 3D pueden tener colisionadores asignados en dos niveles de geometría diferentes:
 
@@ -119,14 +119,14 @@ GltfContainer.create(myEntity, {
 })
 ```
 
-Consulta [modelos 3D](../../../creator/3d-modeling/3d-models/) para más detalles sobre cómo agregar geometría de colisionador invisible a un modelo 3D.
+Consulta [modelos 3D](../../3d-modeling/3d-models.md) para más detalles sobre cómo agregar geometría de colisionador invisible a un modelo 3D.
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `GltfContainer` y `ColliderLayer` deben importarse mediante
 
 > `import { GltfContainer, ColliderLayer } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ### Modelos animados
@@ -236,9 +236,9 @@ GltfContainer.create(myEntity2, {
 })
 ```
 
-### Bloqueo de puntero
+### Bloqueo de puntero {#pointer-blocking}
 
-Solo las formas que tienen colisionadores pueden activarse con [eventos de puntero](../interactivity/click-events.md). Una entidad también necesita tener un colisionador para bloquear eventos de puntero que pasen a través de ella y evitar hacer clic en entidades detrás de ella. Entonces, por ejemplo, un jugador no puede recoger algo que está encerrado dentro de un cofre, si el cofre tiene colisionadores a su alrededor. Los eventos de puntero del jugador solo se ven afectados por meshes que están activos en la capa `ColliderLayer.CL_POINTER`.
+Solo las formas que tienen colisionadores pueden activarse con [eventos de puntero](../interactivity/button-events/click-events.md). Una entidad también necesita tener un colisionador para bloquear eventos de puntero que pasen a través de ella y evitar hacer clic en entidades detrás de ella. Entonces, por ejemplo, un jugador no puede recoger algo que está encerrado dentro de un cofre, si el cofre tiene colisionadores a su alrededor. Los eventos de puntero del jugador solo se ven afectados por meshes que están activos en la capa `ColliderLayer.CL_POINTER`.
 
 Por defecto, un MeshCollider afecta tanto a las capas de Física como de Puntero, pero puedes cambiar este valor para afectar solo a una, o ninguna, y para afectar capas personalizadas en su lugar.
 

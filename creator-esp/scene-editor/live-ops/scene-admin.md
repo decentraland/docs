@@ -33,21 +33,21 @@ Para asignar admins, necesitas agregar el smart item **Scene Admin** a tu escena
 Mientras estás desarrollando la escena y probándola localmente, siempre eres un admin. Una vez que la escena se publica, cualquier persona con permisos de publicación en la escena también es automáticamente un admin. Esto incluye:
 
 * El propietario de los parcels de LAND o World NAME donde se publica la escena
-* Cualquiera a quien se le otorguen **derechos de Operator** en estos parcels o name. Consulta [Give permissions](../marketplace/land-manager.md#give-permissions).
-* Cualquier usuario que alquile esa land. Consulta [Rentals](../marketplace/rentals.md).
+* Cualquiera a quien se le otorguen **derechos de Operator** en estos parcels o name. Consulta [Give permissions](../../../player-spa/marketplace/land-manager.md#dar-permisos).
+* Cualquier usuario que alquile esa land. Consulta [Rentals](../../../player-spa/marketplace/rentals.md).
 
-También puedes asignar personas adicionales a la lista de admin una vez que tu escena esté publicada visitando tu escena como admin y abriendo la pestaña **Moderation Tools**.
+También puedes asignar personas adicionales a la lista de admin una vez que tu escena esté publicada visitando tu escena como admin y abriendo la pestaña **Permissions & Moderation** desde los iconos de la parte superior del panel.
 
-![](../images/editor/admin/moderation-tools.png)
+![Herramientas de permisos y moderación para agregar administradores](../../.gitbook/assets/moderation-tools-current.webp)
 
 Escribe la dirección de wallet de la persona que deseas agregar a la lista de admin y haz clic en **Add**.
 
-Puedes ver quién es admin en la escena haciendo clic en el botón **Admin List**. Desde esta pantalla también puedes **Remove** personas de la lista de admin.
+Puedes ver quién es admin en la escena haciendo clic en el botón **View Admin List**. Desde esta pantalla también puedes **Remove** personas de la lista de admin.
 
-![](../images/editor/admin/admin-list.png)
+![Botón View Admin List](../../.gitbook/assets/admin-list-current.webp)
 
 {% hint style="warning" %}
-**📔 Nota**: Solo es posible eliminar el rol de admin de jugadores que fueron agregados manualmente a la lista a través de la pestaña **Moderation Tools**. Los jugadores que son propietarios, operators o renters de la escena se muestran en esta lista pero no se pueden eliminar de sus roles de admin desde esta UI. Para eliminar un rol de admin de un operator, primero debes eliminar su rol de operator.
+**📔 Nota**: Solo es posible eliminar el rol de admin de jugadores que fueron agregados manualmente a la lista a través de la pestaña **Permissions & Moderation**. Los jugadores que son propietarios, operators o renters de la escena se muestran en esta lista pero no se pueden eliminar de sus roles de admin desde esta UI. Para eliminar un rol de admin de un operator, primero debes eliminar su rol de operator.
 {% endhint %}
 
 Cada vez que un jugador admin está en la escena, verá una UI especial en la esquina superior derecha. Los jugadores no-admin no ven esta UI.
@@ -64,7 +64,7 @@ Para habilitar esto, necesitas agregar un smart item **Video Player** a tu escen
 
     ![](../../.gitbook/assets/video-player-item.webp)
 
-    Consulta [Video Screen](../scene-editor/interactivity/video-screen.md) para más detalles sobre cómo puedes configurar la media source predeterminada, marcador de posición de imagen y otras configuraciones del smart item Video Player. La mayoría de estas configuraciones pueden ser sobrescritas por el admin una vez dentro de la escena.
+    Consulta [Video Screen](../interactivity/video-screen.md) para más detalles sobre cómo puedes configurar la media source predeterminada, marcador de posición de imagen y otras configuraciones del smart item Video Player. La mayoría de estas configuraciones pueden ser sobrescritas por el admin una vez dentro de la escena.
 
     \{% hint style="warning" %\} **📔 Nota**: Un admin solo puede gestionar videos que se reproducen en el smart item Video Screen, no en pantallas agregadas a través de código SDK.
 
@@ -75,26 +75,28 @@ Para habilitar esto, necesitas agregar un smart item **Video Player** a tu escen
 
 Una vez que lo anterior esté configurado, los usuarios admin en tu escena pueden abrir el panel de admin y seleccionar la sección de video para controlar estas video screens.
 
-![](../../.gitbook/assets/video-player.webp)
+![Panel de video con las fuentes Video URL, DCL Cast y Stream](../../.gitbook/assets/video-sources-current.webp)
 
-Si tu escena tiene múltiples video screens, el desplegable **Current Screen** te permite elegir qué video screen controlar. La lista muestra los nombres que diste a cada video screen en la configuración del smart item Admin Tools.
+Si tu escena tiene múltiples video screens, el desplegable **Screen** te permite elegir qué video screen controlar. La lista muestra los nombres que diste a cada video screen en la configuración del smart item Admin Tools.
 
 #### Media Sources
 
-Hay dos tipos de media sources para reproducir videos:
+El selector de la sección de video permite elegir entre tres fuentes. La fuente activa se indica con una etiqueta; cambiar de pestaña solo muestra su configuración y no interrumpe la reproducción hasta pulsar **Activate**:
 
-*   **Video**: Reproduce un archivo de video desde tu sistema de archivos local o desde una URL. Pega una URL de video en el campo **Video URL** y haz clic en el botón verde **Activate**. El video comenzará a reproducirse en la pantalla seleccionada para todos los jugadores. También puedes detener, pausar, reiniciar, silenciar o cambiar el volumen del video.
+*   **Video URL**: Reproduce un video desde una URL. Pega la dirección en el campo **Video URL** y haz clic en **Activate**. El video comenzará a reproducirse en la pantalla seleccionada para todos los jugadores. También puedes detener, pausar, reiniciar, silenciar o cambiar el volumen del video.
 
-    ![](../images/editor/admin/video-from-url.png)
+    ![Controles para reproducir un video desde una URL](../../.gitbook/assets/video-from-url-current.webp)
 
-    \{% hint style="warning" %\} **📔 Nota**: No cualquier URL de video funcionará. Los videos de sitios como Youtube, por ejemplo, tienen políticas estrictas sobre su contenido y bloquearán el acceso a ellos desde Decentraland. Consulta [Streaming from other sources](../scene-editor/interactivity/video-screen.md#streaming-from-other-sources) para más información sobre qué puedes y no puedes reproducir en Decentraland. \{% endhint %\}
-*   **Live stream**: Reproduce un stream en vivo usando la infraestructura de streaming gratuita de Decentraland y un software de streaming como OBS o StreamYard.
+    \{% hint style="warning" %\} **📔 Nota**: No cualquier URL de video funcionará. Los videos de sitios como Youtube, por ejemplo, tienen políticas estrictas sobre su contenido y bloquearán el acceso a ellos desde Decentraland. Consulta [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) para más información sobre qué puedes y no puedes reproducir en Decentraland. \{% endhint %\}
+*   **DCL Cast**: Comparte tu cámara o pantalla con otros jugadores mediante la aplicación web gratuita de Decentraland, sin configurar software de streaming. Consulta [DCL Cast](../../worlds/cast.md).
 
-    ![](../images/editor/admin/live-stream.png)
+*   **Stream**: Reproduce un stream en vivo usando la infraestructura de streaming gratuita de Decentraland y un software de streaming como OBS o StreamYard.
 
-    Consulta [Live Streaming](../scene-editor/live-ops/live-streaming.md) para más información sobre cómo configurar un stream en vivo.
+    ![Controles Stream con servidor RTMP y clave oculta](../../.gitbook/assets/live-stream-current.webp)
 
-Cada pantalla en tu escena tendrá una de las media sources anteriores establecida como **Active**. Puedes hacer clic en los botones **Video** o **Live** para explorar la configuración en cada sección, no interrumpirás lo que se está reproduciendo actualmente hasta que hagas clic en el botón **Activate** en cualquiera de las secciones.
+    Consulta [Live Streaming](live-streaming.md) para más información sobre cómo configurar un stream en vivo.
+
+Cada pantalla en tu escena tendrá una de las media sources anteriores establecida como **Active**. Puedes hacer clic en **Video URL**, **DCL Cast** o **Stream** para explorar la configuración en cada sección, no interrumpirás lo que se está reproduciendo actualmente hasta que hagas clic en el botón **Activate** en cualquiera de las secciones.
 
 ![](../../.gitbook/assets/activate.webp)
 
@@ -108,7 +110,7 @@ Selecciona la sección Message de la UI de admin. Escribe un mensaje y haz clic 
 
 ### Banear jugadores
 
-Puedes banear jugadores de tu escena seleccionando la pestaña **Moderation** de la UI de admin, escribiendo el nombre o dirección de wallet del jugador que deseas banear y haciendo clic en el botón **Ban**.
+Puedes banear jugadores de tu escena seleccionando la pestaña **Permissions & Moderation** de la UI de admin, escribiendo el nombre o dirección de wallet del jugador que deseas banear y haciendo clic en el botón **Ban**.
 
 ![](../../.gitbook/assets/ban-players.webp)
 

@@ -1,8 +1,8 @@
 ---
 id: goal-legends
 name: Goal Legends
-description: Score goals.
-tags: [game]
+description: "Multiplayer penalty shootouts with server-run matches, persistent leaderboards, phase-driven cameras, and synchronized ball animations."
+tags: [game, multiplayer, multiplayer-server, storage, leaderboard, camera, animation]
 developer: carlosmu
 source: https://github.com/carlosmu/goal-legends-arena
 realm: goallegends.dcl.eth

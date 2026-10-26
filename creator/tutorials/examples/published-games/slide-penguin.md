@@ -1,8 +1,8 @@
 ---
 id: slide-penguin
 name: Slide Penguin
-description: A penguin-sliding game with timed sweeping, deceleration, and distance-based scoring.
-tags: [game, seasonal, platformer]
+description: "Penguin sliding with timed sweeping that modifies deceleration and scoring based on distance from the target."
+tags: [game, seasonal, platformer, input, movement, score]
 developer: ToxSam
 source: https://github.com/ToxSam/SlidePenguin
 position: -140,101

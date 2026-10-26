@@ -45,7 +45,7 @@ Choose how players take part:
 - **Selected testers:** use your game logic to choose testers by wallet list or another rule, then enroll them with `feedback.enroll`. See the [selected-tester example](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/EXAMPLES.md#4-selected-testers-without-an-intro).
 - **Or ask anyone:** show questions to visitors during play without a prior invitation or tester list. Players can still decline. See the [participation settings](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0,-1-scene-feedback/README.md#asking-participants-during-play-dynamic-approach).
 
-<figure><img src="../../../.gitbook/assets/scene-feedback-invitation.png" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/scene-feedback-invitation.webp" alt="Coin Hunt participation invitation with Skip and Give feedback buttons" width="400"><figcaption><p>The demo invites players to choose whether to participate.</p></figcaption></figure>
 
 <figure><img src="https://raw.githubusercontent.com/decentraland/sdk7-test-scenes/main/scenes/0%2C-1-scene-feedback/assets/images/feedback-panel.png" alt="Example feedback form with five rating choices and an optional comment field" width="400"><figcaption><p>A question with a labelled rating and an optional comment.</p></figcaption></figure>
 
@@ -65,7 +65,7 @@ Use the [integration recipes](https://github.com/decentraland/sdk7-test-scenes/b
 
 This example uses synthetic responses from a fictional scene. Your agent can tailor the analysis and report to your own playtest questions and data.
 
-<figure><img src="../../../.gitbook/assets/scene-feedback-example-report.png" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/scene-feedback-example-report.webp" alt="Synthetic racing-scene report showing a main finding, response counts and a rating distribution" width="600"><figcaption><p>Illustrative report using synthetic responses from a fictional scene.</p></figcaption></figure>
 
 {% file src="../../../.gitbook/assets/scene-feedback-example-report.zip" %}
 Download the example report, extract the ZIP and open the HTML file in your browser.

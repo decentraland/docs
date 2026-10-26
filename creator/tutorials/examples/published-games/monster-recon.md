@@ -1,8 +1,8 @@
 ---
 id: monster-recon
 name: Monster Recon
-description: Outsmart rapid-fire Memory Match rounds, then dash through camp to hunt down monsters and build a Codex of rare, exotic, and epic finds.
-tags: [game, collection, leaderboard]
+description: "Memory matching followed by trigger-based monster chases, with collectible progression, leaderboards, and custom bitmap text."
+tags: [game, collection, leaderboard, triggers, ui, sprites, animation]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-monster-recon
 realm: monsterrecon.dcl.eth

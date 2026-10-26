@@ -1,8 +1,8 @@
 ---
 id: astro-crew
 name: Astro Crew
-description: A cooperative spaceship game where players shoot asteroids and saucers, repair hull breaches, and improve their gunner and engineering levels.
-tags: [game, multiplayer, multiplayer-server, progression, leaderboard, storage]
+description: "Cooperative spaceship combat with server-owned game state, persistent progression, turret cameras, and screen-edge objective markers."
+tags: [game, multiplayer, multiplayer-server, progression, leaderboard, storage, camera, ui, combat]
 developer: DansStuff
 source: https://github.com/DansStuff/AstroCrew
 realm: astrocrew.dcl.eth

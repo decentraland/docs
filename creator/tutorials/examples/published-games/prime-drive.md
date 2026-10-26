@@ -1,8 +1,8 @@
 ---
 id: prime-drive
 name: Prime Drive
-description: A three-lane bike racing game with obstacle dodging, coin collecting, and a track-record ghost to beat.
-tags: [game, multiplayer-server, leaderboard, storage]
+description: "Three-lane racing with recycled scenery, distance-based record ghosts, and persistent leaderboard data."
+tags: [game, multiplayer-server, leaderboard, storage, movement, performance]
 developer: carlosmu
 source: https://github.com/carlosmu/dcl-prime-drive
 realm: primedrive.dcl.eth
@@ -31,4 +31,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Create a long race with recycled scenery.** [`setWorldOffset` and `scrollTrack`](https://github.com/carlosmu/dcl-prime-drive/blob/d3767141bc39ccef031e56ff9640592ecb349645/src/client/game/track.ts#L43-L92) move a shared world root sideways for lane changes and wrap road decorations back ahead after they pass the player. The bike stays in place while the scenery supplies the sense of movement. Read the ring builders and shared `TRACK`/`SPAWN` settings to understand spacing and wrap distances.
 - **Show record ghosts relative to the player.** [`updateGhosts`](https://github.com/carlosmu/dcl-prime-drive/blob/d3767141bc39ccef031e56ff9640592ecb349645/src/client/game/ghost.ts#L129-L183) places ghost bikes from their distance gap, hides ghosts outside the viewing range, and smoothly moves them into lanes away from the player. This module consumes `GhostRunView` data; it displays supplied progress and does not itself record a replay.
 
-![Prime Drive preview](images/primeDrive-preview.png)
+![Prime Drive preview](images/primeDrive-preview.webp)

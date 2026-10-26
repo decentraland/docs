@@ -1,6 +1,7 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { parseCategory, parseExample } from './catalog-frontmatter.mjs'
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url))
 const examplesDirectory = scriptDirectory
@@ -30,95 +31,6 @@ function getCanonicalSource(source) {
 	sourceUrl.pathname = sourceUrl.pathname.replace(/\/$/, '')
 
 	return sourceUrl.toString()
-}
-
-
-// MARK: parseExample
-function parseExample(
-	fileName,
-	category,
-	content,
-) {
-	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
-
-	if (!match) {
-		throw new Error(`${fileName} must begin with YAML front matter.`)
-	}
-
-	const fields = {}
-	let listKey = null
-
-	for (const line of match[1].split(/\r?\n/).filter(Boolean)) {
-		const listItemMatch = line.match(/^\s*-\s*(.+)$/)
-
-		if (listItemMatch) {
-			if (!listKey || !Array.isArray(fields[listKey])) {
-				throw new Error(`${fileName} has an invalid front matter line: ${line}`)
-			}
-
-			fields[listKey].push(listItemMatch[1].trim())
-
-			continue
-		}
-
-		const separator = line.indexOf(':')
-
-		if (separator === -1) {
-			throw new Error(`${fileName} has an invalid front matter line: ${line}`)
-		}
-
-		const key = line.slice(0, separator).trim()
-		const value = line.slice(separator + 1).trim()
-
-		fields[key] = value || []
-		listKey = Array.isArray(fields[key]) ? key : null
-	}
-
-	const requiredFields = ['id', 'name', 'description', 'tags', 'source', 'license']
-
-	for (const field of requiredFields) {
-		if (!fields[field]) {
-			throw new Error(`${fileName} is missing required field: ${field}`)
-		}
-	}
-
-	const tags = Array.isArray(fields.tags)
-		? fields.tags
-		: /^\[[^\]]*\]$/.test(fields.tags)
-			? fields.tags.slice(1, -1).split(',').map(tag => tag.trim()).filter(Boolean)
-			: null
-
-	if (!tags) {
-		throw new Error(`${fileName} tags must use an inline or block YAML list.`)
-	}
-
-	if (category === 'published-games' && !fields.developer) {
-		throw new Error(`${fileName} must define a developer for Published Games.`)
-	}
-
-	const sourceUrl = new URL(fields.source)
-	const [maintainer] = sourceUrl.pathname.split('/').filter(Boolean)
-
-	if (sourceUrl.protocol !== 'https:' || sourceUrl.hostname !== 'github.com' || !maintainer) {
-		throw new Error(`${fileName} source must be an HTTPS GitHub repository URL.`)
-	}
-
-	return {
-		id:          fields.id,
-		name:        fields.name,
-		description: fields.description,
-		category,
-		tags,
-		developer:   fields.developer,
-		maintainer,
-		maintenance: maintainer.toLowerCase() === 'decentraland' ? 'decentraland' : 'community',
-		source:      fields.source,
-		realm:       fields.realm,
-		position:    fields.position,
-		license:     fields.license,
-		page:        `./${fileName}`,
-		fileName,
-	}
 }
 
 
@@ -161,48 +73,6 @@ async function updateExampleContext(example) {
 }
 
 
-// MARK: parseCategory
-function parseCategory(
-	categoryId,
-	content,
-) {
-	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
-
-	if (!match) {
-		throw new Error(`${categoryId}/README.md must begin with YAML front matter.`)
-	}
-
-	const fields = Object.fromEntries(match[1]
-		.split(/\r?\n/)
-		.filter(Boolean)
-		.map(line => {
-			const separator = line.indexOf(':')
-
-			if (separator === -1) {
-				throw new Error(`${categoryId}/README.md has an invalid front matter line: ${line}`)
-			}
-
-			const key = line.slice(0, separator).trim()
-			const value = line.slice(separator + 1).trim()
-
-			return [key, value]
-		}))
-
-	const order = Number(fields.order)
-
-	if (!fields.title || !fields.description || !Number.isInteger(order)) {
-		throw new Error(`${categoryId}/README.md requires title, description, and integer order fields.`)
-	}
-
-	return {
-		id:          categoryId,
-		name:        fields.title,
-		description: fields.description,
-		order,
-	}
-}
-
-
 // MARK: renderCatalogTables
 function renderCatalogTables(
 	examples,
@@ -223,7 +93,7 @@ function renderCatalogTables(
 			renderMaintenance(example),
 			example.tags.map(tag => `\`${tag}\``).join(', '),
 			`[Open ${example.source.includes('/tree/') ? 'scene' : 'repository'}](${example.source})`,
-		])
+		].map(cell => cell.replace(/\r?\n/g, ' ').replace(/\|/g, '\\|')))
 
 		const headings = category.id === 'published-games'
 			? ['Game', 'What it demonstrates', 'Maintained by', 'Tags', 'Source']

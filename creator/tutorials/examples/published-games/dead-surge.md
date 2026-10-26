@@ -1,8 +1,8 @@
 ---
 id: dead-surge
 name: Dead Surge
-description: Enter the graveyard, defeat zombies, survive as long as possible, and improve your weapons.
-tags: [game, combat, progression]
+description: "Zombie survival with weapon progression, pooled reward text, and local enemy steering around other zombies and obstacles."
+tags: [game, combat, progression, movement, ui, performance]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/dead-surge
 realm: deadsurge.dcl.eth
@@ -31,4 +31,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Reuse entities for floating reward text.** [`spawnZcRewardTextAtPosition` and its pool initializer](https://github.com/dcl-regenesislabs/dead-surge/blob/4e967ba0590e0cdf7d6550ebbf56ea3b246a36dd/src/zombie.ts#L592-L640) cycle through a fixed set of text entities. The [`rewardTextSystem`](https://github.com/dcl-regenesislabs/dead-surge/blob/4e967ba0590e0cdf7d6550ebbf56ea3b246a36dd/src/zombie.ts#L815-L850) makes them rise, face the camera, and fade before hiding them for reuse. Read the scene's `RewardTextComponent` and game-time updates with these functions to understand their lifetime tracking.
 - **Steer enemies around each other and simple obstacles.** [`getZombieSeparationDirection`](https://github.com/dcl-regenesislabs/dead-surge/blob/4e967ba0590e0cdf7d6550ebbf56ea3b246a36dd/src/zombie.ts#L868-L896) combines repulsion from nearby zombies. [`resolveZombieMovePosition`](https://github.com/dcl-regenesislabs/dead-surge/blob/4e967ba0590e0cdf7d6550ebbf56ea3b246a36dd/src/zombie.ts#L898-L939) tries the desired direction, a fallback, and individual movement axes against circular brick obstacles. This illustrates local steering; the behavior depends on the scene's movement entries, obstacle positions, and radius constants.
 
-![Dead Surge preview](images/deadSurge-preview.png)
+![Dead Surge preview](images/deadSurge-preview.webp)

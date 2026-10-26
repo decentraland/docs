@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "generate:examples": "node creator/tutorials/examples/generate-catalog.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check:examples": "npm run generate:examples && git diff --exit-code -- creator/tutorials/examples.md creator/tutorials/examples creator/SUMMARY.md"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "yaml": "2.9.1"
+  }
+}

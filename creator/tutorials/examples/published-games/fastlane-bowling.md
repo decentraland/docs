@@ -1,8 +1,8 @@
 ---
 id: fastlane-bowling
 name: Fastlane Bowling
-description: A Multiplayer Server bowling game with server-simulated Cannon-ES physics, persistent player progression, leaderboards, and storage-backed components.
-tags: [game, studio-made, multiplayer, multiplayer-server, physics, progression, leaderboard, storage]
+description: "Multiplayer bowling with server-simulated physics, persistent progression, batched state updates, and mobile-scaled particle effects."
+tags: [game, studio-made, multiplayer, multiplayer-server, physics, progression, leaderboard, storage, particles]
 developer: stom66
 source: https://github.com/stom66/dcl-bowling
 realm: stom.dcl.eth
@@ -40,4 +40,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Batch synchronized state changes into client events.** In [`LaneWatcher.onLaneChanged`](https://github.com/stom66/dcl-bowling/blob/25c5a7f9152835c190d9d20fa18b6010d0c6ce50/dcl/src/client/laneWatcher.ts#L79-L90), a set collects changed lanes and schedules one flush. [`flush`](https://github.com/stom66/dcl-bowling/blob/25c5a7f9152835c190d9d20fa18b6010d0c6ce50/dcl/src/client/laneWatcher.ts#L132-L153) reads each lane's snapshot and emits state and phase-transition events. Follow this flow to understand how the scene connects synchronized components to client reactions. Read it alongside the project's `LaneStore` and event-bus definitions.
 - **Scale particle effects for mobile.** [`getParticleRatio` and `scaleConfig`](https://github.com/stom66/dcl-bowling/blob/25c5a7f9152835c190d9d20fa18b6010d0c6ce50/dcl/src/client/particleSpawner.ts#L176-L218) adjust emission rates, particle limits, and burst counts using a mobile ratio while preserving the original configuration. [`spawn`](https://github.com/stom66/dcl-bowling/blob/25c5a7f9152835c190d9d20fa18b6010d0c6ce50/dcl/src/client/particleSpawner.ts#L91-L121) applies that configuration to a new emitter, with optional parenting and timed cleanup. This is useful when studying how one effect configuration can serve different devices.
 
-![Fastlane Bowling preview](images/fastlaneBowling-preview.jpg)
+![Fastlane Bowling preview](images/fastlaneBowling-preview.webp)

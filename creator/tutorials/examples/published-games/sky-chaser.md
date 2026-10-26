@@ -1,8 +1,8 @@
 ---
 id: sky-chaser
 name: Sky Chaser
-description: A Multiplayer Server game about catching escaping packages, with weekly and all-time leaderboards.
-tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard]
+description: "Multiplayer package-catching rounds with persistent leaderboards, pooled projectiles, and pickup placement seeded from round state."
+tags: [game, studio-made, multiplayer, multiplayer-server, leaderboard, performance, timed-rounds]
 developer: stom66
 source: https://github.com/stom66/dcl-sky-chaser
 realm: skychaser.dcl.eth
@@ -38,4 +38,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Reuse projectile entities during play.** [`fireProjectile` and `getIdleProjectile`](https://github.com/stom66/dcl-sky-chaser/blob/e546854d2a2634ca5e28635c8b9be124a173f6dc/dcl/src/client/projectileManager.ts#L76-L124) reuse inactive projectiles, create new ones when the pool is exhausted, and update only active projectiles. Follow the project's `Projectile` class and event handlers for movement, collision responses, and round-end cleanup.
 - **Seed pickup placement from round state.** [`onGameStart` and `getRandomPosition`](https://github.com/stom66/dcl-sky-chaser/blob/e546854d2a2634ca5e28635c8b9be124a173f6dc/dcl/src/client/spawners/pickupSpawner.ts#L115-L164) use the round start time to initialize the project's random generator, then sample pickup distances and heights. Read the pickup configuration and component store alongside it: mobile limits and later pickup activity affect the sequence of random calls, so a shared seed alone does not guarantee identical layouts on every client.
 
-![Sky Chaser preview](images/skyChaser-preview.jpg)
+![Sky Chaser preview](images/skyChaser-preview.webp)

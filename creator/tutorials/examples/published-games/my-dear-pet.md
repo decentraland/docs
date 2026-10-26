@@ -1,8 +1,8 @@
 ---
 id: my-dear-pet
 name: My Dear Pet
-description: A pet collecting game.
-tags: [game, collection]
+description: "Pet collecting with acceleration and braking for movement, plus phase-offset animation of editor-placed eggs."
+tags: [game, collection, movement, animation]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/marsh-colony
 realm: marshcolony.dcl.eth
@@ -31,4 +31,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Give moving pets acceleration and braking.** [`petMotionStep`](https://github.com/dcl-regenesislabs/marsh-colony/blob/55dea4d3e13b3d821aa20bd277fbc4e0bc920b6f/src/client/petMotion.ts#L9-L35) keeps a speed per entity, limits the target speed using the remaining stopping distance, and returns a frame-sized movement step. The caller still supplies the route and updates the transform. Read the arrival-distance, acceleration, and braking values in `shared/config` alongside this helper when studying its movement feel.
 - **Animate editor-placed props with different phases.** [`setupEggShake`](https://github.com/dcl-regenesislabs/marsh-colony/blob/55dea4d3e13b3d821aa20bd277fbc4e0bc920b6f/src/client/eggShake.ts#L29-L53) finds named egg entities, remembers their original rotations, and applies a small sine-wave rotation with a different phase for each egg. This adds variation while retaining each prop's authored orientation. It depends on the egg names generated from the Creator Hub scene.
 
-![My Dear Pet preview](images/myDearPet-preview.jpg)
+![My Dear Pet preview](images/myDearPet-preview.webp)

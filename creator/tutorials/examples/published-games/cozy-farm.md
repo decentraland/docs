@@ -1,8 +1,8 @@
 ---
 id: cozy-farm
 name: Cozy Farm
-description: Grow crops, expand your farm, and make friends.
-tags: [game, social]
+description: "A social farming game with timed crop-growth stages, fertilizer modifiers, and repeated farms built from one entity hierarchy."
+tags: [game, social, progression, assets, scene]
 developer: dcl-regenesislabs
 source: https://github.com/dcl-regenesislabs/cozy-farm
 realm: cozyfarm.dcl.eth
@@ -31,4 +31,4 @@ These links point to a specific source snapshot so the explanations remain usefu
 - **Turn elapsed time into crop growth stages.** [`growthSystem`](https://github.com/dcl-regenesislabs/cozy-farm/blob/440805a68d4d93a665c42cf17830735804b54a71/src/systems/growthSystem.ts#L62-L142) derives progress from a planting timestamp, adjusts the duration for tutorial crops and fertilizer, and swaps models only when a stage changes. Follow it alongside `PlotState`, `CROP_DATA`, and the model helpers in `game/actions` to see how simulation state drives visual feedback.
 - **Build multiple farms from one entity hierarchy.** [`cloneEntityTree`](https://github.com/dcl-regenesislabs/cozy-farm/blob/440805a68d4d93a665c42cf17830735804b54a71/src/systems/farmInstances.ts#L127-L168) recursively recreates a template's children, preserves local transforms, copies selected rendering components, and records each clone by name. This shows how repeated areas can share an authored layout. The helper expects the scene's child map and copies an explicit component list, so new component types need deliberate handling.
 
-![Cozy Farm preview](images/cozyFarm-preview.png)
+![Cozy Farm preview](images/cozyFarm-preview.webp)

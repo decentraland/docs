@@ -17,7 +17,7 @@ When adding, removing, or changing an example entry:
 3. Keep each example's YAML front matter valid and complete. Every page requires `id`, `name`, `description`, `tags`, `source`, and `license`.
 4. Published games belong in `published-games` and include `developer`, derived from the GitHub repository owner.
 	- Include `realm` with the World name from the deployed play link, such as `skychaser.dcl.eth`. For Genesis City deployments, use `position` with parcel coordinates, such as `-140,101`, instead.
-5. Run `node creator/tutorials/examples/generate-catalog.mjs` from the repository root before committing.
+5. Install dependencies with `npm ci --ignore-scripts` (Node.js 22 or newer), then run `npm run generate:examples` from the repository root before committing. Run `npm test` for parser validation. CI runs `npm run check:examples` to ensure generated content is committed.
 6. Commit generated changes to `catalog.json`, `creator/tutorials/examples.md`, `creator/SUMMARY.md`, and the detail-page context blocks with the entry change.
 7. Use an existing tag where it fits. Current tags are:
 

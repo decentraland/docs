@@ -176,7 +176,7 @@ Once you select See in world, a new tab will open on your browser, and you will 
 
 Click on _**TRUST PEER-TESTING.DECENTRALAND.ORG**_ and a pop-up will show up. Simply click on Open Decentraland. To test your wearable, go to the backpack and equip it.
 
-![](../../images/wearables-and-emotes/uploading-wearables/28_wearable_world.gif)
+![](../../images/wearables-and-emotes/uploading-wearables/28_wearable_world.webp)
 
 ## **Before Publishing**
 

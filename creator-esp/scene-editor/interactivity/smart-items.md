@@ -12,7 +12,7 @@ Algunos de los ítems en el catálogo del Scene Editor son **Smart Items**. Los 
 
 Puedes reconocer estos ítems en el explorador de asset packs porque tienen un ícono de rayo y un fondo de color diferente.
 
-![](../../.gitbook/assets/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.webp)
 
 Puedes reconocer qué ítems en tu escena son smart porque tienen el ícono de rayo junto a ellos en el entity tree.
 

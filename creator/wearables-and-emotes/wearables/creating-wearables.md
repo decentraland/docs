@@ -46,7 +46,7 @@ Currently, there are two body shapes: A or B.
 
 ### **Head**
 
-![](../../images/head.jpeg)
+![](../../images/head.webp)
 
 _The base head includes different meshes attached that can be customizables as wearables: Eyebrows, Eyes and Mouth work as transparency masks rendered in front of the face._
 
@@ -164,11 +164,11 @@ These meshes work with a transparent shader so you don’t have to do anything a
 
 Here are some example png textures:
 
-![](../../images/wearables-and-emotes/creating-wearables/21_eyes.webp) ![](../../images/wearables-and-emotes/creating-wearables/22_eyebrows.webp) ![](../../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.jpeg)
+![](../../images/wearables-and-emotes/creating-wearables/21_eyes.webp) ![](../../images/wearables-and-emotes/creating-wearables/22_eyebrows.webp) ![](../../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.webp)
 
 _Eyes and Eyewbrows use the same mesh and UV map._
 
-![](../../images/wearables-and-emotes/creating-wearables/24_mouth.webp) ![](../../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.jpeg)
+![](../../images/wearables-and-emotes/creating-wearables/24_mouth.webp) ![](../../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.webp)
 
 _Mouth mesh and UV map._
 
@@ -343,7 +343,7 @@ When you’re making wearables, the best way to visualize the final result, and 
 
 In order to get the best results on the wearable topology when it comes to joints (arms or legs, for example) it's important to have good practices when creating loops. Here we can see the difference on the deformation of the mesh for different loop cuts:
 
-![](../../images/wearables-and-emotes/creating-wearables/40_joints.gif)
+![](../../images/wearables-and-emotes/creating-wearables/40_joints.webp)
 
 A good way to ensure that everything is deforming correctly is to do a weight paint like the following example:
 

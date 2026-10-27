@@ -181,7 +181,7 @@ Duplicating animation clips.
 
 Emote overrides happen when deform bones don’t have a keyframe set in one of the parameters. Without a keyframe, that bone won’t have the information of where it should be, how much it has been rotated and scaled, leaving that channel open. The consequence is that if you play an emote in world and then trigger yours while the previous one was still playing, the information of location, rotation and scale will be overridden by the previous emote, which will cause a combination of them both. Unless this is done in purpose, it will affect your animation, sometimes with a fun result, but others with completely messed up the emote. Below is an example of an emote override.
 
-![](../../images//wearables-and-emotes/creating-emotes/01_emote_override.gif)
+![](../../images//wearables-and-emotes/creating-emotes/01_emote_override.webp)
 
 To avoid that, select all layers with bones in them (which can be found in **_Object Data Properties_** > **_Skeleton_** > **_Layers_**). Then, in **_Pose Mode_**, leave the timeline cursor in the first frame of your animation and, with your mouse in **_Viewport Display_**, press **_A_** to select everything. In the **_Graph Editor_**, click twice on the **_Eye_** icon next to the armature channel to make all channels visible. With all bones selected, press **_I_** to set a keyframe. Do the same for the last frame.
 

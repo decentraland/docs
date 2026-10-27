@@ -92,7 +92,7 @@ By clicking on the icon at the lower left you will be able to edit the avatar. C
 
 The icon at the botton left allows you to edit the avatar.
 
-![](../../images/wearables-and-emotes/uploading-emotes/boundaries.gif)
+![](../../images/wearables-and-emotes/uploading-emotes/boundaries.webp)
 
 Cylinder icon shows the boundaries for the animation.
 
@@ -159,7 +159,7 @@ Once in world, press I to open the backpack and, in the emotes tab, select the e
 \
 \\
 
-![](../../images/wearables-and-emotes/uploading-emotes/testing.gif)
+![](../../images/wearables-and-emotes/uploading-emotes/testing.webp)
 
 \
 \\

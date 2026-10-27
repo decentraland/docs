@@ -49,7 +49,7 @@ Cuando el rigging esté listo y el skinning tenga buenas deformaciones, ¡estás
 * Muévete a un frame diferente en el timeline y manipula el bone como quieras para obtener la pose que deseas. Puedes cambiar la location, rotation y scale de un bone dependiendo de cómo configuraste tu rig.
 * Cuando tengas un buen resultado, establece otro keyframe para todo el armature. Sigue haciendo eso hasta que termines tu animación. Recuerda tener el primer y último frames iguales si la animación va a hacer loop.
 
-![](../.gitbook/assets/02_rig_animation_02.gif)
+![](../.gitbook/assets/02_rig_animation_02.webp)
 
 Si eres nuevo en el proceso de animación, mira este tutorial con algunos buenos consejos para principiantes:
 

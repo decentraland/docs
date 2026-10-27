@@ -80,7 +80,7 @@ _Use the Symmetrize option to mirror your bones._
 
 Skinning is the process of binding the mesh to the armature. To do so, in _**Object Mode**_, select the mesh, then the armature and press `CTRL+P` > _**Armature Deform > With Automatic Weights.**_ Then, go to _**Pose Mode**_ and test different poses to test the mesh deformation. Most of the time it will need some adjustments, as seen below.
 
-![](../images/3d-models-and-animations/create-rig/08_skinning.gif)
+![](../images/3d-models-and-animations/create-rig/08_skinning.webp)
 
 _For the Skinning, make the mesh child of the armature by pressing `CTRL+P` and test it in Pose Mode._
 
@@ -110,11 +110,11 @@ _Blur Tool._
 
 IK is essential when you want something to stay in place. The best example of its use is on legs, but it can be adopted in a variety of situations, like in the examples below:
 
-![](../images/3d-models-and-animations/create-rig/13_IK_example_mch_arm.gif)
+![](../images/3d-models-and-animations/create-rig/13_IK_example_mch_arm.webp)
 
 _IK use in a mechanical arm._
 
-![](../images/3d-models-and-animations/create-rig/14_IK_example_buddha.gif)
+![](../images/3d-models-and-animations/create-rig/14_IK_example_buddha.webp)
 
 _IK use in cables._
 
@@ -122,7 +122,7 @@ Since it’ll change the hierarchy of bones, it’s best to keep it as a separat
 
 Remeber to rename the duplicated bones, adding IK to the name so you know they are part of the IK setup. And since they shouldn’t deform the mesh, select all them and in _**Bone Property**_, press and hold `Alt` and uncheck _**Deform**_.
 
-![](../images/3d-models-and-animations/create-rig/15_Duplicating_bones.gif)
+![](../images/3d-models-and-animations/create-rig/15_Duplicating_bones.webp)
 
 _Duplicate the bones and move them to a different layer._
 

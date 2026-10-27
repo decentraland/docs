@@ -108,17 +108,17 @@ If you know for sure that you won't need certain bones to affect the mesh, you c
 
 In this method, Blender will create all vertex groups for each bone in the armature, but they will have a weight of zero by default. You will have to manually assign the weights in Edit Mode or paint them in Weight Paint mode. This gives you more control over what's being affected by each group and can be extra helpful for hard surfaces or object that need to be completely assigned to a certain group. In any case, once you've assigned the weights, they will need to be tested in Pose Mode and then tweaked in Weight Paint.
 
-![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.gif)
+![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.webp)
 
 #### Painting Weights
 
 To test the skinned mesh, select the armature and go to **Pose Mode**, set a key frame, then rotate the bones to create another pose and set another keyframe. That way you can check how the mesh is deforming with movement. Once you have the poses set, go back to **Object Mode**, select the mesh and go to **Weight Paint**.
 
-![](../../images/spring-bones/Setting_Poses_Compressed.gif)
+![](../../images/spring-bones/Setting_Poses_Compressed.webp)
 
 In **Weight Paint**, in the Tools tab you will find different brushes to tweak the skin weights. Select the Vertex Group you want to edit (if they are locked, just unlock them so you can edit edit the influence) and use the brush to add or remove influence. Black means zero influence, while red means that that group completely influences the mesh. Enabling the wireframe on **Overlays** will make it easier to see what you are painting.
 
-![](../../images/spring-bones/Weight_Paint_Compressed.gif)
+![](../../images/spring-bones/Weight_Paint_Compressed.webp)
 
 Use the add, subtract or smooth brushes to get the desired result. Test different extreme poses too to see how the mesh is deforming and if there are no vertex left without weights. If you're happy with the result, it's time to export it!
 

@@ -160,11 +160,11 @@ Estas mallas funcionan con un shader transparente, por lo que no tienes que hace
 
 Aquí hay algunos ejemplos de texturas png:
 
-![](../../.gitbook/assets/21_eyes.webp) ![](../../.gitbook/assets/22_eyebrows.webp) ![](../../.gitbook/assets/23_eyes_mask_uv.jpeg)
+![](../../.gitbook/assets/21_eyes.webp) ![](../../.gitbook/assets/22_eyebrows.webp) ![](../../.gitbook/assets/23_eyes_mask_uv.webp)
 
 _Eyes y Eyebrows usan la misma malla y mapa UV._
 
-![](../../.gitbook/assets/24_mouth.webp) ![](../../.gitbook/assets/25_mouth_mask_uv.jpeg)
+![](../../.gitbook/assets/24_mouth.webp) ![](../../.gitbook/assets/25_mouth_mask_uv.webp)
 
 _Malla y mapa UV de Mouth._
 
@@ -335,7 +335,7 @@ Cuando estás haciendo wearables, la mejor manera de visualizar el resultado fin
 
 Para obtener los mejores resultados en la topología del wearable cuando se trata de joints (brazos o piernas, por ejemplo) es importante tener buenas prácticas al crear loops. Aquí podemos ver la diferencia en la deformación de la malla para diferentes loop cuts:
 
-![](../../.gitbook/assets/40_joints.gif)
+![](../../.gitbook/assets/40_joints.webp)
 
 Una buena manera de asegurar que todo se esté deformando correctamente es hacer un weight paint como el siguiente ejemplo:
 

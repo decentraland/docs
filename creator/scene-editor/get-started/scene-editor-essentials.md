@@ -130,7 +130,7 @@ A few things worth knowing:
 
 Smart items are special items that come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.
 
-![](../../images/editor/smart-items.jpg)
+![](../../images/editor/smart-items.webp)
 
 ## The entity tree
 

@@ -80,7 +80,7 @@ _Usa la opción Symmetrize para hacer mirror de tus bones._
 
 Skinning es el proceso de vincular el mesh al armature. Para hacerlo, en _**Object Mode**_, selecciona el mesh, luego el armature y presiona `CTRL+P` > _**Armature Deform > With Automatic Weights.**_ Luego, ve a _**Pose Mode**_ y prueba diferentes poses para probar la deformación del mesh. La mayoría de las veces necesitará algunos ajustes, como se ve a continuación.
 
-![](../.gitbook/assets/08_skinning.gif)
+![](../.gitbook/assets/08_skinning.webp)
 
 _Para el Skinning, haz que el mesh sea child del armature presionando `CTRL+P` y pruébalo en Pose Mode._
 
@@ -110,11 +110,11 @@ _Blur Tool._
 
 IK es esencial cuando quieres que algo se quede en su lugar. El mejor ejemplo de su uso es en las piernas, pero se puede adoptar en una variedad de situaciones, como en los ejemplos a continuación:
 
-![](../.gitbook/assets/13_IK_example_mch_arm.gif)
+![](../.gitbook/assets/13_IK_example_mch_arm.webp)
 
 _Uso de IK en un brazo mecánico._
 
-![](../.gitbook/assets/14_IK_example_buddha.gif)
+![](../.gitbook/assets/14_IK_example_buddha.webp)
 
 _Uso de IK en cables._
 
@@ -122,7 +122,7 @@ Como cambiará la jerarquía de bones, es mejor mantenerlo como una configuraci�
 
 Recuerda renombrar los bones duplicados, agregando IK al nombre para que sepas que son parte de la configuración IK. Y como no deben deformar el mesh, selecciona todos ellos y en _**Bone Property**_, presiona y mantén presionado `Alt` y desmarca _**Deform**_.
 
-![](../.gitbook/assets/15_Duplicating_bones.gif)
+![](../.gitbook/assets/15_Duplicating_bones.webp)
 
 _Duplica los bones y muévelos a una capa diferente._
 

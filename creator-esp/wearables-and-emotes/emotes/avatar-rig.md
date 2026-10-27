@@ -28,7 +28,7 @@ La orientación de los huesos definirá en qué dirección rotarán, como X posi
 
 _Activa los ejes para mostrar la orientación de los huesos._
 
-![](../../.gitbook/assets/boneorientation.gif)
+![](../../.gitbook/assets/boneorientation.webp)
 
 _Los ejes son las direcciones en las que el hueso rotará._
 
@@ -76,7 +76,7 @@ En la cinemática directa, o FK, el padre en la jerarquía mueve todos los hueso
 
 _Dirección del movimiento en la jerarquía._
 
-![](../../.gitbook/assets/FK_GIF.gif)
+![](../../.gitbook/assets/FK_GIF.webp)
 
 _En FK, cada hueso tiene que ser rotado individualmente._
 
@@ -88,6 +88,6 @@ En cinemática inversa, o IK, el hijo en la jerarquía puede influenciar el movi
 
 _Dirección del movimiento en jerarquía._
 
-![](../../.gitbook/assets/IK_last.gif)
+![](../../.gitbook/assets/IK_last.webp)
 
 _En IK, la mano moverá todo el brazo y también mantendrá su posición. El pole target dirige la dirección en la que el codo se dobla._

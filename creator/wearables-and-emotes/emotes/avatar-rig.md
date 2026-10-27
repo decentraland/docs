@@ -28,7 +28,7 @@ The orientation of bones will define in which direction they’ll rotate, like p
 
 _Turn on the axes to show bone orientation._
 
-![](../../images/emotes/boneorientation.gif)
+![](../../images/emotes/boneorientation.webp)
 
 _The axes are the directions in which the bone will rotate._
 
@@ -78,7 +78,7 @@ In the forward kinematics, or FK, the parent in the hierarchy moves all the chil
 
 _Direction of movement in the hierarchy._
 
-![](../../images/emotes/FK_GIF.gif)
+![](../../images/emotes/FK_GIF.webp)
 
 _In FK, each bone has to be rotated individually._
 
@@ -90,6 +90,6 @@ In inverse kinematics, or IK, the child in the hierarchy can influence the movem
 
 _Direction of movement in hierarchy._ 
 
-![](../../images/emotes/IK_last.gif)
+![](../../images/emotes/IK_last.webp)
 
 _In IK, the hand will move all the arm and also maintain it’s position. The pole target drives the direction in which the elbow bends._

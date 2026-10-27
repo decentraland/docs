@@ -49,7 +49,7 @@ When the rigging is done and skinning has nice deformations, you're ready to sta
 * Move to a different frame in the timeline and manipulate the bone however you like to get the pose you want. You can change a bone's location, rotation and scale depending on how you set your rig up.
 * When you have a nice result, set another keyframe to the whole armature. Keep doing that until you finish your animation. Remember to have the first and last frames the same if the animation is going to loop.
 
-![](../images/3d-models-and-animations/animations/02_rig_animation_02.gif)
+![](../images/3d-models-and-animations/animations/02_rig_animation_02.webp)
 
 If you're new to the animation process, check out this tutorial with some nice tips for beginners:
 

@@ -111,16 +111,6 @@ In the example above, the scene is using `kill()` to terminate portable experien
 
 An alternative to terminating portable experiences is to change the behavior of your scene when they are present. For example, the player might be able to keep their portable experience, but not be allowed to start a match, or to claim any rewards as long as they have any enabled.
 
-## Restricted actions in portable experiences
-
-To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
-
-See [Required permissions](scene-metadata.md#required-permissions) for more details.
-
-{% hint style="warning" %}
-**📔 Note**: Players are notified about the required flags by the portable experience. Avoid adding permissions you don't need, since it can make players distrust your portable experience and reject it.
-{% endhint %}
-
 ## Limitations
 
 Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/avatars/avatar-animations.md#custom-animations) uploaded as part of the portable experience's files.

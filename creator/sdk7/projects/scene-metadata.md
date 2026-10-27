@@ -341,51 +341,6 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
 
 This example spawns a player at _5, 1, 4_ facing East toward _10, 1, 4_. If the spawn position is a range, the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
-## Required Permissions
-
-The `requiredPermissions` property manages various controlled features that could be used in an abusive way and damage a player's experience.
-
-{% hint style="warning" %}
-**📔 Note**: Permissions are only relevant in [portable experiences](../projects/portable-experiences.md) and [smart wearables](../projects/smart-wearables.md). Normal scenes (both in parcels or in Worlds) are not affected by these permissions, and are free to use the corresponding functionality.
-{% endhint %}
-
-These features are blocked from use in the scene unless the permission is requested in the `scene.json` file.
-
-```json
-"requiredPermissions": [
-    "ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE",
-		"OPEN_EXTERNAL_LINK",
-  ],
-```
-
-The following permissions can be requested:
-
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player](../interactivity/avatars/move-player.md)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar](../interactivity/avatars/avatar-animations.md)
-* `ALLOW_MEDIA_HOSTNAMES`: _(legacy)_ Refers to streaming media (like [video](../media/video-playing.md) or [audio](../media/audio-streaming.md)) from external domains.
-* `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
-* `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
-* `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
-* `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
-
-If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
-
-When using `ALLOW_MEDIA_HOSTNAMES`, also include an `allowedMediaHostnames` field at root level, listing the domains that the scene is allowed to stream media from:
-
-```json
-"requiredPermissions": [
-    "ALLOW_MEDIA_HOSTNAMES"
-  ],
-"allowedMediaHostnames": [
-    "somehost.com",
-    "otherhost.xyz"
-  ],
-```
-
-{% hint style="warning" %}
-**📔 Note**: `ALLOW_MEDIA_HOSTNAMES` and `allowedMediaHostnames` are legacy settings, you shouldn't need to add them. They were only enforced by older versions of the web client; current Decentraland clients play external media without them.
-{% endhint %}
-
 ## Scene parcels
 
 When [deploying](../publishing/publishing.md) a scene, the content is uploaded to the coordinates assigned in the scene configuration. A scene can include a single parcel, or a list of up to dozens of them.

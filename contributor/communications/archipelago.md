@@ -44,13 +44,13 @@ sequenceDiagram
 
 ## Sending Heartbeat {#heartbeat}
 
-During their session, clients must periodically send a [`Heartbeat`](#heartbeat) message to keep Archipelago updated with the necessary information to issue island assignments.
+During their session, clients must periodically send a [`Heartbeat`](#heartbeat-message) message to keep Archipelago updated with the necessary information to issue island assignments.
 
 {% hint style="info" %}
 The recommended heartbeat frequency for comms clients is about one update per second.
 {% endhint %}
 
-If a client stops sending [`Heartbeat`](#heartbeat) messages, Archipelago (depending on its current policy) may close the connection.
+If a client stops sending [`Heartbeat`](#heartbeat-message) messages, Archipelago (depending on its current policy) may close the connection.
 
 ## Getting Island Assignments {#assignment}
 
@@ -98,7 +98,7 @@ The first key in the [authentication chain](../authentication/authchain.md) must
 
 ---
 
-### `Heartbeat` <small>[↗ source][Heartbeat]</small> {#heartbeat}
+### `Heartbeat` <small>[↗ source][Heartbeat]</small> {#heartbeat-message}
 
 Sent by the client at regular intervals (typically once per second), to update Archipelago on their position and/or request an island assignment.
 

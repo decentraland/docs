@@ -70,7 +70,7 @@ for (const [entity, data, transform] of engine.getEntitiesWith(
 
 El código anterior itera sobre todas las entidades con un componente `Transform` y `PlayerIdentityData`, y registra sus datos. Puedes usar este mismo método para obtener cualquiera de los datos disponibles de todos los jugadores.
 
-Consulta [Event listeners](event-listeners.md#el-jugador-bloquea-o-desbloquea-el-cursor) para aprender cómo detectar y reaccionar cuando nuevos jugadores se unen a la escena.
+Consulta [Event listeners](event-listeners.md#player-enters-or-leaves-scene) para aprender cómo detectar y reaccionar cuando nuevos jugadores se unen a la escena.
 
 ## Obtener datos del jugador {#get-player-data}
 

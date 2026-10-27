@@ -223,18 +223,18 @@ Los valores `type` y `payload` para identificación y delegación son estándar 
 
 El protocolo define tres tipos estándar y un propósito estándar:
 
-### Type `SIGNER` {#signer}
+#### Type `SIGNER` {#signer}
 
 **Debe** ser el `type` inicial en la cadena, donde `payload` es la dirección de Ethereum del usuario y `signature` es una cadena vacía.
 
-### Type `ECDSA_EPHEMERAL` {#ecdsa_ephemeral}
+#### Type `ECDSA_EPHEMERAL` {#ecdsa_ephemeral}
 
 **Debe** ser el `type` para pasos intermedios en la cadena, donde `payload` está en la forma descrita anteriormente.
 
-**Type `ECDSA_SIGNED_ENTITY`**
+#### Type `ECDSA_SIGNED_ENTITY` {#ecdsa_signed_entity}
 
 El `type` final en la cadena para autorizar despliegues de entidades, donde `payload` es el ID de una entidad propiedad del usuario.
 
-**Purpose `Decentraland Login`**
+#### Purpose `Decentraland Login` {#decentraland-login}
 
 El `purpose` usual para World Explorers, firmado tanto al iniciar sesión en el mundo como al renovar su clave delegada.

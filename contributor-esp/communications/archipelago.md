@@ -44,13 +44,13 @@ sequenceDiagram
 
 ## Enviando Heartbeat {#heartbeat}
 
-Durante su sesión, los clientes deben enviar periódicamente un mensaje [`Heartbeat`](#heartbeat) para mantener a Archipelago actualizado con la información necesaria para emitir asignaciones de isla.
+Durante su sesión, los clientes deben enviar periódicamente un mensaje [`Heartbeat`](#heartbeat-message) para mantener a Archipelago actualizado con la información necesaria para emitir asignaciones de isla.
 
 {% hint style="info" %}
 La frecuencia de heartbeat recomendada para clientes comms es aproximadamente una actualización por segundo.
 {% endhint %}
 
-Si un cliente deja de enviar mensajes [`Heartbeat`](#heartbeat), Archipelago (dependiendo de su política actual) puede cerrar la conexión.
+Si un cliente deja de enviar mensajes [`Heartbeat`](#heartbeat-message), Archipelago (dependiendo de su política actual) puede cerrar la conexión.
 
 ## Obteniendo Asignaciones de Isla {#assignment}
 
@@ -98,7 +98,7 @@ La primera clave en la [cadena de autenticación](../authentication/authchain.md
 
 ---
 
-### `Heartbeat` <small>[↗ fuente][Heartbeat]</small> {#heartbeat}
+### `Heartbeat` <small>[↗ fuente][Heartbeat]</small> {#heartbeat-message}
 
 Enviado por el cliente a intervalos regulares (típicamente una vez por segundo), para actualizar a Archipelago sobre su posición y/o solicitar una asignación de isla.
 

@@ -17,59 +17,61 @@ function slug(text) {
 export function extractAnchors(content) {
 	const { body } = splitFrontMatter(content)
 	const anchors = new Set()
-	const generated = new Set()
-	let titleSeen = false
-	function addGenerated(text) {
-		const base = slug(text)
+	const used = new Set()
+	let firstHeading = true
+	function addId(base) {
+		if (!base) return
 		let id = base
 		let suffix = 0
-		while (generated.has(id)) id = `${base}-${++suffix}`
-		generated.add(id)
+		while (used.has(id)) id = `${base}-${++suffix}`
+		used.add(id)
 		anchors.add(id)
 	}
-	function htmlAnchors(html, heading = false) {
-		function text(node) {
-			return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join('')
-		}
-		function visit(node) {
-			const attrs = node.attrs ?? []
-			for (const attr of attrs) {
-				if (heading && (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name'))) anchors.add(attr.value.toLowerCase())
-			}
-			// GitBook makes expandable FAQ summaries linkable too.
-			if (node.tagName === 'summary' && !attrs.some(attr => attr.name === 'id')) addGenerated(text(node))
-			for (const child of node.childNodes ?? []) visit(child)
-		}
-		visit(parseFragment(html))
+	function text(node) {
+		if (node.nodeName === '#text') return node.value
+		if (node.tagName === 'br') return '\n'
+		if (node.tagName === 'img') return node.attrs?.find(attr => attr.name === 'alt')?.value ?? ''
+		return (node.childNodes ?? []).map(text).join('')
 	}
-	function visit(tokens) {
-		for (let index = 0; index < tokens.length; index++) {
-			const token = tokens[index]
-			// Git Sync consumes the first H1 as the page title, rendered without an ID.
-			if (token.type === 'heading_open' && token.tag === 'h1' && !titleSeen) {
-				titleSeen = true
-				continue
-			}
-			if (token.type === 'heading_open' && Number(token.tag.slice(1)) <= 4) {
-				const inline = tokens[index + 1]
-				for (const child of inline.children ?? []) {
-					if (child.type === 'html_inline') htmlAnchors(child.content, true)
-				}
-				const explicit = inline.content.match(/\{#([^}]+)\}\s*$/)?.[1]
-				if (explicit) anchors.add(explicit.toLowerCase())
-				else {
-					const text = (inline.children ?? [])
-						.filter(child => ['text', 'code_inline', 'image'].includes(child.type))
-						.map(child => child.content).join('')
-					addGenerated(text)
-				}
-			}
-			if (token.type === 'html_inline' || token.type === 'html_block') htmlAnchors(token.content)
-			if (token.children) visit(token.children)
+	function inlineIds(node, ids) {
+		for (const attr of node.attrs ?? []) {
+			if (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name')) ids.add(attr.value.toLowerCase())
 		}
+		for (const child of node.childNodes ?? []) inlineIds(child, ids)
 	}
-	visit(markdown.parse(body, {}))
+	// Render once so a <summary> split across HTML and Markdown blocks remains
+	// one element. Mark Markdown headings to avoid crediting arbitrary raw HTML.
+	const tokens = markdown.parse(body, {})
+	for (const token of tokens) {
+		if (token.type === 'heading_open') token.attrSet('data-markdown-heading', 'true')
+	}
+	function visit(node) {
+		if (['pre', 'code', 'script', 'style'].includes(node.tagName)) return
+		const attrs = node.attrs ?? []
+		if (attrs.some(attr => attr.name === 'data-markdown-heading')) {
+			// Only a first, top-level H1 is consumed as the unanchored page title.
+			const title = firstHeading && node.tagName === 'h1' && node.parentNode?.nodeName === '#document-fragment'
+			firstHeading = false
+			if (!title && Number(node.tagName.slice(1)) <= 4) {
+				const ids = new Set()
+				inlineIds(node, ids)
+				const headingText = text(node)
+				const explicit = headingText.match(/\{#([^}]+)\}\s*$/)?.[1]
+				if (explicit) ids.add(explicit.toLowerCase())
+				for (const id of ids) addId(id)
+				if (!explicit) addId(slug(headingText))
+			}
+		} else if (node.tagName === 'summary' && !attrs.some(attr => attr.name === 'id')) {
+			addId(slug(text(node)))
+		}
+		for (const child of node.childNodes ?? []) visit(child)
+	}
+	visit(parseFragment(markdown.renderer.render(tokens, markdown.options, {})))
 	return anchors
+}
+
+function decodePath(path) {
+	try { return decodeURIComponent(path) } catch { return path }
 }
 
 export function findBrokenAnchors(pages) {
@@ -85,7 +87,8 @@ export function findBrokenAnchors(pages) {
 			let target = resolved?.target
 			if (target && !anchors.has(target) && anchors.has(posix.join(target, 'README.md'))) target = posix.join(target, 'README.md')
 			// Asset fragments (SVG IDs, PDF page numbers, etc.) are not Markdown anchors.
-			if (target && posix.extname(target) && !/\.md$/i.test(target)) continue
+			const directoryLink = pathname && /\/$/.test(decodePath(pathname.split('?')[0]))
+			if (target && !directoryLink && posix.extname(target) && !/\.md$/i.test(target)) continue
 			let fragment
 			try {
 				fragment = decodeURIComponent(link.slice(hash + 1))

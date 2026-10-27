@@ -13,7 +13,7 @@ This module contains the following methods:
 * [`function crdtSendToRenderer`](engine-api.md#crdtsendtorenderer)
 * [`function crdtGetState`](engine-api.md#crdtgetstate)
 
-### Introduction
+## Introduction
 
 The `EngineApi` module is designed to synchronize the state of the world between the Explorer and the scene by exchanging updates, events and commands. It implements an extensible message protocol that allows scenes to, among other things:
 
@@ -44,7 +44,7 @@ The `EngineApi` module is designed to synchronize the state of the world between
 The `EngineApi` module is undergoing renovations. If you go to the source definitions, you will find legacy methods that are no longer used or can be implemented as no-ops in the latest version (more on this below).
 {% endhint %}
 
-### ECS Framework
+## ECS Framework
 
 With the `EngineApi` module comes a generic and extensible implementation of a shared ECS framework, which allows both scenes and the game engine itself to create entities, attach components and update their states.
 
@@ -56,7 +56,7 @@ The World Explorer implements a well-known set of basic components (positions, s
 Most scenes use the Decentraland SDK, which encapsulates the `EngineApi` module and offers a much nicer, higher-level interface for content developers. Scenes that directly access the messaging protocol in this module are extremely rare.
 {% endhint %}
 
-#### Identifying Entities <a href="#identifying" id="identifying"></a>
+### Identifying Entities <a href="#identifying" id="identifying"></a>
 
 Entity IDs are plain integers starting with `0`.
 
@@ -66,7 +66,7 @@ Each scene has its own private range of IDs, which the Explorer can transparentl
 
 Over time, as entities are created and deleted, it's perfectly valid to reuse IDs that were previously freed -- indeed, this may be required for perfomance reasons ([see below](#crdtstatedeleteentities)).
 
-#### Synchronization <a href="#synchronization" id="synchronization"></a>
+## Synchronization <a href="#synchronization" id="synchronization"></a>
 
 Both the World Explorer and the scene must manage a set of shared entities and components, where updates come from both sides in an asynchronous fashion. Without additional measures, their versions of the state of the world can (and will) end up being different.
 
@@ -108,7 +108,7 @@ The implementation of the CRDT synchronization mechanism consists of three parts
 2. A conflict resolution strategy to choose between competing states.
 3. A messaging protocol to communicate and process updates to the state.
 
-**CRDT State**
+### CRDT State {#crdtstate}
 
 The CRDT holds the state of all components for all their attached entities, and can be stored in a mapping of components to timestamped states for each entity. In pseudocode:
 
@@ -125,7 +125,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Timestamps aren't actually Unix-style timestamps. They are a type of incremental counter to sequence updates, with no relation to clock time. More on this [below](engine-api.md#timestamps).
 
-### Creating state entries {#crdtstateautocreate}
+#### Creating state entries {#crdtstateautocreate}
 
 Since the CRDT layer doesn't know (or need to know) all available components, the initial state is an empty map. Entries are created on-the-fly when operations involve a `ComponentId` or `EntityId` that was not already mapped. When an entity is removed, the associated state is deleted from all components.
 
@@ -164,7 +164,7 @@ The pseudocode above (if translated to actual code) is obviously incomplete and 
 * `shouldCreate` must add new entities, but refuse to re-create deleted entities.
 * `shouldReplace` must prefer to keep states that have greater timestamps (with some edge cases).
 
-### Tracking deleted entities {#crdtstatedeleteentities}
+#### Tracking deleted entities {#crdtstatedeleteentities}
 
 To support the `shouldCreate` requirement, you'll want to keep track of deleted entity IDs, in order to ignore any future state updates for those. Let's see this in more pseudocode:
 
@@ -231,13 +231,13 @@ When the CRDT encounters two competing states, it needs a shared resolution stra
 
 Most cases will be resolved by rules `1`, `2` and `3`.
 
-**Initial Synchronization**
+### Initial Synchronization
 
 Before a scene starts running its own code, the runtime populates the CRDT with the state of all [basic entities](../basic-entities.md) and their components.
 
 During this initial synchronization, only the runtime can set the shared state. The scene is not allowed to make modifications until the process is complete.
 
-**Messaging Protocol**
+### Messaging Protocol {#messages}
 
 Messages between the World Explorer and the scene runtime are structures in a serialized binary representation. Every message carries a header indicating the type and length, followed by a particular payload for each type of message.
 
@@ -257,7 +257,7 @@ There are three message types in the CRDT protocol:
 
 Note that there are no `CreateComponent` or `CreateEntity` messages. The CRDT rules auto-create entities and components that weren't previously known, as [explained above](engine-api.md#crdtstateautocreate).
 
-### `PutComponentMessage` {#putcomponent}
+#### `PutComponentMessage` {#putcomponent}
 
 Update the `state` of a `component` for a particular `entity`, creating unknown components and entities in the CRDT if necessary. [Resolve conflicts](engine-api.md#crdtconflicts) according to `timestamp`.
 
@@ -275,7 +275,7 @@ This additional layer of serialization has an important advantage: the CRDT prot
 
 If the update contained in this message is applied to the CRDT, the `state` field is copied as-is into the structure.
 
-### `DeleteComponentMessage` {#deletecomponent}
+#### `DeleteComponentMessage` {#deletecomponent}
 
 Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.md#crdtconflicts) according to `timestamp`.
 
@@ -286,7 +286,7 @@ Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.
 
 ```
 
-### `DeleteEntityMessage` {#deleteentity}
+#### `DeleteEntityMessage` {#deleteentity}
 
 Delete `entity` (i.e. all associated component state), expecting the identifier to never be reused for a different entity.
 
@@ -299,7 +299,7 @@ Delete `entity` (i.e. all associated component state), expecting the identifier 
 
 Note that there is no `timestamp` field. Since the lifespan of `entity` is over, the conflict resolution strategy for any out-of-order updates is to simply ignore them.
 
-### Methods
+## Methods
 
 The set of methods in `EngineApi` provide the interface to exchange messages and reconstruct the state of the world from scratch.
 
@@ -337,7 +337,7 @@ interface Response {
 function crdtGetState(Request): Promise<Response>;
 ```
 
-### Legacy Scenes
+## Legacy Scenes
 
 Old-style scenes (i.e. those built using the SDK version 6 or older) don't use the modern CRDT mechanism, instead calling methods in `EngineApi` that are now deprecated.
 

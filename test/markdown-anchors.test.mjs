@@ -86,3 +86,35 @@ test('matches implicit IDs observed in GitBook English and Spanish previews', ()
 	const content = '## FK - Forward Kinematics\n## Layers & Pins\n## Publicación de scenes\n## Adding Wearables to the Linked Wearables Collection - In Bulk\n## What’s FK and IK in a rig?\n'
 	assert.deepEqual([...extractAnchors(content)], ['fk-forward-kinematics', 'layers-and-pins', 'publicacion-de-scenes', 'adding-wearables-to-the-linked-wearables-collection-in-bulk', 'whats-fk-and-ik-in-a-rig'])
 })
+
+test('only a first top-level H1 is an unanchored title', () => {
+	assert.deepEqual([...extractAnchors('## Resources\n# Before Starting\n')], ['resources', 'before-starting'])
+	assert.deepEqual([...extractAnchors('> # Quoted\n\n## Section\n')], ['quoted', 'section'])
+	assert.deepEqual([...extractAnchors('- # Listed\n\n## Section\n')], ['listed', 'section'])
+})
+
+test('extracts complete summary text across HTML and Markdown blocks without empty IDs', () => {
+	const anchors = extractAnchors('<details>\n<summary>\n\n**Question**\n\n</summary>\n\nAnswer\n</details>\n\n## <a id="a"></a>\n## !!!\n## Question\n')
+	assert.deepEqual([...anchors], ['question', 'a', 'question-1'])
+})
+
+test('explicit and generated IDs share the duplicate namespace observed in GitBook', () => {
+	assert.deepEqual([...extractAnchors('## Foo {#foo-1}\n## Foo\n## Foo\n')], ['foo-1', 'foo', 'foo-2'])
+	assert.deepEqual([...extractAnchors('## Sending Heartbeat {#heartbeat}\n### Heartbeat {#heartbeat}\n')], ['heartbeat', 'heartbeat-1'])
+})
+
+test('preserves word boundaries in multiline setext headings', () => {
+	assert.deepEqual([...extractAnchors('Foo\nBar\n---\n')], ['foo-bar'])
+})
+
+test('missing dotted directories are not skipped as asset fragments', () => {
+	const result = findBrokenAnchors(new Map([['page.md', '[missing](missing.v2/#x) [encoded](missing.v3%2F#x) [present](present.v2/#x)'], ['present.v2/README.md', '## X']]))
+	assert.equal(result.checked, 3)
+	assert.equal(result.errors.length, 2)
+	assert.ok(result.errors.every(error => error.reason === 'Markdown target does not exist'))
+})
+
+
+test('preserves image alt text and inline code while ignoring raw HTML headings', () => {
+	assert.deepEqual([...extractAnchors('## ![Logo](logo.svg) `API`\n\n<h2 id="raw">Raw HTML</h2>\n')], ['logo-api'])
+})

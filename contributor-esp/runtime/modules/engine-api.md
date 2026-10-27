@@ -64,7 +64,7 @@ Cada escena tiene su propio rango privado de IDs, que el Explorer puede mapear t
 
 Con el tiempo, a medida que las entidades son creadas y eliminadas, es perfectamente válido reusar IDs que fueron liberados previamente -- de hecho, esto puede requerirse por razones de rendimiento ([ver abajo](#crdtstatedeleteentities)).
 
-### Synchronization {#synchronization}
+## Synchronization {#synchronization}
 
 Tanto el World Explorer como la escena deben gestionar un conjunto de entidades y componentes compartidos, donde las actualizaciones vienen desde ambos lados de manera asíncrona. Sin medidas adicionales, sus versiones del estado del mundo pueden (y lo harán) terminar siendo diferentes.
 
@@ -106,7 +106,7 @@ La implementación del mecanismo de sincronización CRDT consiste en tres partes
 2. Una estrategia de resolución de conflictos para elegir entre estados competidores.
 3. Un protocolo de mensajería para comunicar y procesar actualizaciones al estado.
 
-#### CRDT State {#crdtstate}
+### CRDT State {#crdtstate}
 
 El CRDT contiene el estado de todos los componentes para todas sus entidades adjuntas, y puede almacenarse en un mapeo de componentes a estados con marca de tiempo para cada entidad. En pseudocódigo:
 
@@ -123,7 +123,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Los timestamps no son en realidad timestamps estilo Unix. Son un tipo de contador incremental para secuenciar actualizaciones, sin relación con el tiempo del reloj. Más sobre esto [abajo](#timestamps).
 
-### Crear entradas de estado {#crdtstateautocreate}
+#### Crear entradas de estado {#crdtstateautocreate}
 
 Como la capa CRDT no conoce (o necesita conocer) todos los componentes disponibles, el estado inicial es un mapa vacío. Las entradas se crean al vuelo cuando las operaciones involucran un `ComponentId` o `EntityId` que no estaba ya mapeado. Cuando una entidad es removida, el estado asociado se elimina de todos los componentes.
 
@@ -162,7 +162,7 @@ El pseudocódigo arriba (si se traduce a código real) obviamente está incomple
 - `shouldCreate` debe agregar nuevas entidades, pero rechazar recrear entidades eliminadas.
 - `shouldReplace` debe preferir mantener estados que tengan timestamps mayores (con algunos casos extremos).
 
-### Registrar entidades eliminadas {#crdtstatedeleteentities}
+#### Registrar entidades eliminadas {#crdtstatedeleteentities}
 
 Para soportar el requisito `shouldCreate`, querrás hacer seguimiento de IDs de entidad eliminados, para ignorar cualquier actualización de estado futura para esos. Veamos esto en más pseudocódigo:
 
@@ -192,7 +192,7 @@ Para evitar esto, el explorer de la Foundation emplea un índice generacional pa
 
 En cuanto al requisito `shouldReplace`, ver [resolución de conflictos](#crdtconflicts) abajo.
 
-#### Timestamps {#timestamps}
+### Timestamps {#timestamps}
 
 Como se mencionó arriba, cuando hablamos de timestamps CRDT no nos referimos a timestamps Unix reales para un punto en el tiempo. En su lugar, se usa un [Lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp) (un tipo especial de contador incremental compartido) para hacer seguimiento de la secuencia de eventos por ambas partes.
 
@@ -217,7 +217,7 @@ function receiveState() {
 }
 ```
 
-#### Conflict Resolution {#crdtconflicts}
+### Conflict Resolution {#crdtconflicts}
 
 Cuando el CRDT encuentra dos estados competidores, necesita una estrategia de resolución compartida que todas las partes apliquen idénticamente, asegurando que todos alcancen la misma decisión. El protocolo de Decentraland usa reglas muy simples:
 
@@ -229,13 +229,13 @@ Cuando el CRDT encuentra dos estados competidores, necesita una estrategia de re
 
 La mayoría de casos serán resueltos por las reglas `1`, `2` y `3`.
 
-#### Initial Synchronization
+### Initial Synchronization
 
 Antes de que una escena comience a ejecutar su propio código, el runtime puebla el CRDT con el estado de todas las [entidades básicas](../basic-entities.md) y sus componentes.
 
 Durante esta sincronización inicial, solo el runtime puede establecer el estado compartido. La escena no tiene permitido hacer modificaciones hasta que el proceso esté completo.
 
-#### Messaging Protocol {#messages}
+### Messaging Protocol {#messages}
 
 Los mensajes entre el World Explorer y el runtime de escena son estructuras en una representación binaria serializada. Cada mensaje lleva un encabezado indicando el tipo y longitud, seguido de un payload particular para cada tipo de mensaje.
 
@@ -249,13 +249,13 @@ Los mensajes entre el World Explorer y el runtime de escena son estructuras en u
 
 Hay tres tipos de mensaje en el protocolo CRDT:
 
-- [`PutComponent`](#putcomponentmessage)
-- [`DeleteComponent`](#deletecomponentmessage)
-- [`DeleteEntity`](#deleteentitymessage)
+- [`PutComponent`](#putcomponent)
+- [`DeleteComponent`](#deletecomponent)
+- [`DeleteEntity`](#deleteentity)
 
 Ten en cuenta que no hay mensajes `CreateComponent` o `CreateEntity`. Las reglas CRDT auto-crean entidades y componentes que no se conocían previamente, como [se explicó arriba](#crdtstateautocreate).
 
-### `PutComponentMessage` {#putcomponentmessage}
+#### `PutComponentMessage` {#putcomponent}
 
 Actualizar el `state` de un `component` para una `entity` particular, creando componentes y entidades desconocidos en el CRDT si es necesario. [Resolver conflictos](#crdtconflicts) según `timestamp`.
 
@@ -273,7 +273,7 @@ Esta capa adicional de serialización tiene una ventaja importante: el protocolo
 
 Si la actualización contenida en este mensaje se aplica al CRDT, el campo `state` se copia tal cual en la estructura.
 
-### `DeleteComponentMessage` {#deletecomponentmessage}
+#### `DeleteComponentMessage` {#deletecomponent}
 
 Remover el estado de `component` para una `entity`. [Resolver conflictos](#crdtconflicts) según `timestamp`.
 
@@ -284,7 +284,7 @@ Remover el estado de `component` para una `entity`. [Resolver conflictos](#crdtc
 
 ```
 
-### `DeleteEntityMessage` {#deleteentitymessage}
+#### `DeleteEntityMessage` {#deleteentity}
 
 Eliminar `entity` (es decir, todo el estado de componente asociado), esperando que el identificador nunca sea reutilizado para una entidad diferente.
 

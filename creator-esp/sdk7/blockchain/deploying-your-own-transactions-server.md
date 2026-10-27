@@ -20,7 +20,7 @@ Todas las restricciones son por transacción que el usuario intenta enviar. Lo q
 
 Las restricciones configurables que tiene el servidor son:
 
-* Verifica una cuota de transacciones máximas por día. Consulta [la sección de colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones) para más información.
+* Verifica una cuota de transacciones máximas por día. Consulta [la sección de transacciones](deploying-your-own-transactions-server.md#transacciones) para más información.
 * Verifica contratos en whitelist, por lo que si una transacción está intentando interactuar con un contrato que no está reconocido fallará. Para hacer esto usa
   * Los contratos y colecciones desplegadas. Consulta [la sección de contratos y colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones) para más información
 * El precio de las ventas, restringiéndolo si está por debajo de un umbral. Consulta [la sección de valor mínimo de venta](deploying-your-own-transactions-server.md#valor-minimo-de-venta) para más información

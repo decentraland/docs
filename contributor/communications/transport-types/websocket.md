@@ -61,7 +61,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-**`WsIdentification`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64)
+### `WsIdentification` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64) {#wsidentification}
 
 | Field     | Type     | Value                                     |
 | --------- | -------- | ----------------------------------------- |

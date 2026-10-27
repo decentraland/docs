@@ -6,9 +6,12 @@ import { extractLinks, resolveLocalLink, splitFrontMatter } from './markdown-lin
 const markdown = new MarkdownIt({ html: true })
 
 // GitBook lowercases explicit IDs; implicit headings use lowercase text with
-// punctuation removed and spaces replaced by hyphens. Keep Unicode letters.
+// diacritics removed, ampersands expanded, and separators collapsed. These
+// rules are covered by fixtures checked against rendered GitBook previews.
 function slug(text) {
-	return text.toLowerCase().replace(/[^\p{L}\p{N}\p{M}_\s-]/gu, '').replace(/\s/g, '-')
+	return text.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase()
+		.replace(/&/g, 'and').replace(/[^\p{L}\p{N}_\s-]/gu, '')
+		.replace(/[\s-]+/g, '-').replace(/^-|-$/g, '')
 }
 
 export function extractAnchors(content) {

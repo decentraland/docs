@@ -48,7 +48,7 @@ engine.addSystem(getPlayerPosition)
   * En tercera persona: Puede variar dependiendo de los movimientos de la cámara.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.PlayerEntity` o `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-función-executetask).
+**📔 Nota**: Evita referirte a `engine.PlayerEntity` o `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a estas entidades dentro de un sistema. Allí siempre estarán disponibles, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
@@ -371,13 +371,13 @@ El modo de cámara usa un valor del enum `CameraType`. Los siguientes valores so
 El componente `CameraMode` del `engine.CameraEntity` es de solo lectura, no puedes forzar al jugador a cambiar el modo de cámara a través de esto.
 
 {% hint style="info" %}
-**💡 Consejo**: Para cambiar el modo de cámara del jugador, usa un [área modificadora de cámara](avatar-modifiers.md#modificadores-de-cámara).
+**💡 Consejo**: Para cambiar el modo de cámara del jugador, usa un [área modificadora de cámara](avatar-modifiers.md#modificadores-de-camara).
 {% endhint %}
 
 Conocer el modo de cámara puede ser muy útil para ajustar las mecánicas de tu escena para ajustarse mejor a lo que es más cómodo usando este modo. Por ejemplo, objetivos pequeños son más difíciles de hacer clic cuando se está en tercera persona.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-función-executetask).
+**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a esta entidad dentro de un sistema. Siempre estará disponible, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
@@ -402,7 +402,7 @@ Consulta [Event listeners](event-listeners.md#el-jugador-bloquea-o-desbloquea-el
 También puedes forzar el estado del cursor del jugador escribiendo en el campo `isPointerLocked` del componente `PointerLock` en `engine.CameraEntity`. Consulta [Bloquear o desbloquear el cursor](event-listeners.md#el-jugador-bloquea-o-desbloquea-el-cursor) para ver ejemplos.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-función-executetask).
+**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a la entidad dentro de un sistema. Siempre estará disponible, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
@@ -434,7 +434,7 @@ El componente `primaryPointerInfo` devuelve un objeto con las siguientes propied
 * `pointerType`: 0 para `none`, 1 para `mouse`
 
 {% hint style="info" %}
-**💡 Consejo**: Para reaccionar a eventos simples de hover en elementos de UI, puede resultarte más fácil usar los eventos `onMouseEnter` y `onMouseLeave`, consulta [Eventos de botones de UI](../2d-ui/ui_button_events.md#retroalimentación-de-hover).
+**💡 Consejo**: Para reaccionar a eventos simples de hover en elementos de UI, puede resultarte más fácil usar los eventos `onMouseEnter` y `onMouseLeave`, consulta [Eventos de botones de UI](../2d-ui/ui_button_events.md#retroalimentacion-de-hover).
 {% endhint %}
 
 El componente `primaryPointerInfo` es de solo lectura, no puedes forzar al jugador a cambiar la posición del cursor.

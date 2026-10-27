@@ -36,7 +36,7 @@ _Los ejes son las direcciones en las que el hueso rotará._
 
 Los huesos que deforman son los que deformarán la malla, son responsables de la forma en que el modelo se mueve. Ese es el esqueleto base y **no debe ser editado en absoluto**. Cambiarlo de cualquier manera puede romper el rig y la animación no funcionará cuando se exporte. Por esta razón, este rig base se movió a su propia capa (la última en la parte inferior). Estos huesos son la armature que se exporta con la malla.
 
-Los huesos que no deforman son los que no deformarán la malla, pero aún son necesarios en un rig robusto y se usan para la configuración de [IKs, FKs](avatar-rig.md#qué-son-fk-e-ik-en-un-rig) y otras propiedades personalizadas. Ejemplos de huesos que no deforman son controles, huesos IK y FK, huesos de configuración de pies. Estos no deberían exportarse, solo se usan para propósitos de animación.
+Los huesos que no deforman son los que no deformarán la malla, pero aún son necesarios en un rig robusto y se usan para la configuración de [IKs, FKs](avatar-rig.md#que-son-fk-e-ik-en-un-rig) y otras propiedades personalizadas. Ejemplos de huesos que no deforman son controles, huesos IK y FK, huesos de configuración de pies. Estos no deberían exportarse, solo se usan para propósitos de animación.
 
 ![](../../.gitbook/assets/DeformationBones.webp)
 

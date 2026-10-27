@@ -27,6 +27,6 @@ Nuestro enfoque de pruebas enfatiza:
 ## Enlaces Rápidos
 
 * [Cómo describir contextos con `describe`](writing-tests.md#describir-y-construir-contexto)
-* [Cómo escribir expectativas con `it`](writing-tests.md#describir-expectativas-y-ejecutar-código)
-* [Qué probar y cuándo](writing-tests.md#qué-probar)
-* [Cuándo y cómo hacer mock](writing-tests.md#cuándo-mockear)
+* [Cómo escribir expectativas con `it`](writing-tests.md#describir-expectativas-y-ejecutar-codigo)
+* [Qué probar y cuándo](writing-tests.md#que-probar)
+* [Cuándo y cómo hacer mock](writing-tests.md#cuando-mockear)

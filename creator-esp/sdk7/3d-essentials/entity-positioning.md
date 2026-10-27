@@ -490,7 +490,7 @@ Transform.create(childEntity, {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Si la entidad adjunta tiene colisionadores, estos colisionadores podrían bloquear el movimiento del jugador. Considera deshabilitar la capa de física de los colisionadores de la entidad. Consulta [Capas de colisión](colliders.md#capas-de-colisión)
+**📔 Nota**: Si la entidad adjunta tiene colisionadores, estos colisionadores podrían bloquear el movimiento del jugador. Considera deshabilitar la capa de física de los colisionadores de la entidad. Consulta [Capas de colisión](colliders.md#capas-de-colision)
 {% endhint %}
 
 ### Adjuntar a otros jugadores

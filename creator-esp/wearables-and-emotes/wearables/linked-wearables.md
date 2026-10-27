@@ -71,7 +71,7 @@ Para hacer eso, sigue estos pasos:
 
 1. Haz clic en el botón **New items**.
 2. Selecciona la opción **Singe items**.
-3. Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#cómo-representan-los-linked-wearables-a-los-nfts)" para más información sobre cómo configurarlo.
+3. Sigue los pasos para subir y configurar tu wearable como se describe en las [directrices para crear wearables](creating-wearables.md) y configura cómo se vinculará a tus NFTs. Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#como-representan-los-linked-wearables-a-los-nfts)" para más información sobre cómo configurarlo.
 
 ### Agregando Wearables a la Linked Wearables Collection - En Lote
 
@@ -226,7 +226,7 @@ Algunas cosas a considerar sobre el archivo `wearable.json`:
 
 * Toda la información sobre las categorías de wearables y cuál elegir se puede encontrar en las [directrices para crear wearables](creating-wearables.md).
 * El array de representations contendrá la información sobre cómo se verá cada forma de cuerpo. Cada wearable DEBE contener al menos una representation (puede tener una o las dos), es decir, tomando en consideración las formas de cuerpo que actualmente tenemos, ya sea `urn:decentraland:off-chain:base-avatars:BaseMale` o `urn:decentraland:off-chain:base-avatars:BaseFemale`. Cada representation describirá qué modelos se usarán para cada forma de cuerpo.
-* El objeto mapping debe configurarse como uno de los mecanismos disponibles para vincular tu NFT a tu wearable, siguiendo la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#cómo-representan-los-linked-wearables-a-los-nfts)".
+* El objeto mapping debe configurarse como uno de los mecanismos disponibles para vincular tu NFT a tu wearable, siguiendo la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#como-representan-los-linked-wearables-a-los-nfts)".
 
 **Estableciendo un ID o URN personalizado para los ítems**
 
@@ -317,17 +317,17 @@ Para editar un solo wearable, sigue estos pasos:
 
 El enlace de los wearables con la colección NFT es una de las propiedades más importantes de un Linked Wearable. Para editar cómo están vinculados a los NFTs, puedes cambiar rápidamente el valor del enlace desde la vista de la colección, sin necesidad de navegar a otra página.
 
-Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#cómo-representan-los-linked-wearables-a-los-nfts)" para más información sobre cómo vincular tus wearables.
+Consulta la sección "[How do Linked Wearables represent NFTs?](linked-wearables.md#como-representan-los-linked-wearables-a-los-nfts)" para más información sobre cómo vincular tus wearables.
 
 ### Editando wearables en lote
 
-Siguiendo la misma idea vista previamente en la sección [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection---en-lote), los third party managers pueden hacer cambios a los wearables en lote.
+Siguiendo la misma idea vista previamente en la sección [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection-en-lote), los third party managers pueden hacer cambios a los wearables en lote.
 
 Para hacer cambios en lote a wearables, es necesario crear un archivo ZIP para cada uno de los wearables que serán cambiados.
 
-Estos archivos ZIP deben crearse siguiendo el formato descrito en [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection---en-lote) con una excepción, en el archivo `wearable.json`, la propiedad `id` **DEBE** establecerse al `id` o URN del wearable que será cambiado. Esto es obligatorio ya que es la única forma de identificar el wearable a cambiar. Si creaste tus wearables en lote proporcionando un id en el archivo `wearable.json`, puedes reutilizar sus archivos `wearable.json` para actualizarlos.
+Estos archivos ZIP deben crearse siguiendo el formato descrito en [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection-en-lote) con una excepción, en el archivo `wearable.json`, la propiedad `id` **DEBE** establecerse al `id` o URN del wearable que será cambiado. Esto es obligatorio ya que es la única forma de identificar el wearable a cambiar. Si creaste tus wearables en lote proporcionando un id en el archivo `wearable.json`, puedes reutilizar sus archivos `wearable.json` para actualizarlos.
 
-Tomando en consideración el ejemplo en la sección [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection---en-lote), si quisiéramos cambiar algunas de las propiedades de un wearable, por ejemplo, el nombre donde olvidamos agregar un número, deberíamos incluir un archivo `wearable.json` en el zip como el siguiente ejemplo:
+Tomando en consideración el ejemplo en la sección [Creating wearables in bulk](linked-wearables.md#agregando-wearables-a-la-linked-wearables-collection-en-lote), si quisiéramos cambiar algunas de las propiedades de un wearable, por ejemplo, el nombre donde olvidamos agregar un número, deberíamos incluir un archivo `wearable.json` en el zip como el siguiente ejemplo:
 
 ```json
 {

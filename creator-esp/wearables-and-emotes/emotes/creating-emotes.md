@@ -24,7 +24,7 @@ Esta documentación cubrirá las especificaciones del archivo, los conceptos bá
 | Max Animation Height   | 1 metro                          |
 | Max Texture Size       | 1024 pixels                      |
 
-Puedes encontrar una explicación más detallada de las especificaciones de animación [**abajo**](creating-emotes.md#las-especificaciones-de-animación).
+Puedes encontrar una explicación más detallada de las especificaciones de animación [**abajo**](creating-emotes.md#las-especificaciones-de-animacion).
 
 ### **Recursos**
 

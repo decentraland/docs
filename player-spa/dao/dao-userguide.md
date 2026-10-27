@@ -9,16 +9,16 @@ metaLinks:
 
 ## Tabla de Contenidos
 
-* [Iniciar sesión](dao-userguide.md#iniciar-sesión)
+* [Iniciar sesión](dao-userguide.md#iniciar-sesion)
 * [Poder de voto](dao-userguide.md#poder-de-voto)
-* [Condiciones de Aprobación/Rechazo](dao-userguide.md#condiciones-de-aprobaciónrechazo)
+* [Condiciones de Aprobación/Rechazo](dao-userguide.md#condiciones-de-aprobacionrechazo)
 * [Explorar propuestas](dao-userguide.md#explorar-todas-las-propuestas)
 * [Ver una propuesta](dao-userguide.md#ver-una-propuesta)
 * [Agregar propuestas a tu lista de seguimiento](dao-userguide.md#agregar-propuestas-a-tu-lista-de-seguimiento)
 * [Votar](dao-userguide.md#votar)
 * [Participar en el Foro](dao-userguide.md#participar-en-las-discusiones-del-foro)
 * [Crear una propuesta](dao-userguide.md#crear-una-propuesta)
-* [Categorías de propuestas](dao-userguide.md#categorías-de-propuestas)
+* [Categorías de propuestas](dao-userguide.md#categorias-de-propuestas)
 * [Eliminar una propuesta](dao-userguide.md#eliminar-una-propuesta)
 
 ## Iniciar sesión

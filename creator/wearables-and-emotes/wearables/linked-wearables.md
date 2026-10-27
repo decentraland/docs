@@ -385,13 +385,13 @@ Check the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-
 
 ## Editing wearables in bulk
 
-Following the same idea previously seen in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection---in-bulk) section, third party managers can make changes to the wearables in bulk.
+Following the same idea previously seen in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) section, third party managers can make changes to the wearables in bulk.
 
 To make changes in bulk to wearables, it is necessary to create a ZIP file for each of the wearables that will be changed.
 
-These ZIP files must be created following the format described in [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection---in-bulk) with one exception, in the `wearable.json` file, the `id` property **MUST** be set to the `id` or URN of the wearable that will be changed. This is mandatory as it's the only way to identify the wearable to be changed. If you created your wearables in bulk by providing an id in the `wearable.json` file, you can re-use their `wearable.json` files to update them.
+These ZIP files must be created following the format described in [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) with one exception, in the `wearable.json` file, the `id` property **MUST** be set to the `id` or URN of the wearable that will be changed. This is mandatory as it's the only way to identify the wearable to be changed. If you created your wearables in bulk by providing an id in the `wearable.json` file, you can re-use their `wearable.json` files to update them.
 
-Taking into consideration the example in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection---in-bulk) section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should include a `wearable.json` file in the zip as the next example:
+Taking into consideration the example in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should include a `wearable.json` file in the zip as the next example:
 
 ```json
 {

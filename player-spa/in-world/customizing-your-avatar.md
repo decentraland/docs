@@ -25,7 +25,7 @@ Además de los artículos iniciales gratuitos que siempre están disponibles en 
 En Decentraland puedes tener dos tipos de nombres de usuario:
 
 * Uno general, no único que siempre tendrá una cadena aleatoria de números después (por ejemplo, #1234)
-* Un nombre de usuario NAME, uno que es único para ti, viene con un montón de ventajas adicionales y tiene un ícono de marca de verificación después en lugar de una cadena de números. Aprende más sobre NAMEs [**aquí**](../faqs/decentraland-101.md#qué-es-un-name).
+* Un nombre de usuario NAME, uno que es único para ti, viene con un montón de ventajas adicionales y tiene un ícono de marca de verificación después en lugar de una cadena de números. Aprende más sobre NAMEs [**aquí**](../faqs/decentraland-101.md#que-es-un-name).
 
 Siempre puedes editar tu nombre de usuario desde tu Perfil, ya sea editando un nombre de usuario general o aplicando un NAME que posees. [**Reclama tu NAME único**](https://decentraland.org/marketplace/names/claim) ahora o consulta primero un [**tutorial útil**](https://www.youtube.com/watch?v=OKqXmO5fD0s\&ab_channel=Decentraland).
 

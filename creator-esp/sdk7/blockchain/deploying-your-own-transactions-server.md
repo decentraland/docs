@@ -23,7 +23,7 @@ Las restricciones configurables que tiene el servidor son:
 * Verifica una cuota de transacciones máximas por día. Consulta [la sección de colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones) para más información.
 * Verifica contratos en whitelist, por lo que si una transacción está intentando interactuar con un contrato que no está reconocido fallará. Para hacer esto usa
   * Los contratos y colecciones desplegadas. Consulta [la sección de contratos y colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones) para más información
-* El precio de las ventas, restringiéndolo si está por debajo de un umbral. Consulta [la sección de valor mínimo de venta](deploying-your-own-transactions-server.md#valor-mínimo-de-venta) para más información
+* El precio de las ventas, restringiéndolo si está por debajo de un umbral. Consulta [la sección de valor mínimo de venta](deploying-your-own-transactions-server.md#valor-minimo-de-venta) para más información
 
 ### Configurando Gelato
 
@@ -74,7 +74,7 @@ Para hacer esto:
   * [Gelato](deploying-your-own-transactions-server.md#gelato)
   * [Transacciones](deploying-your-own-transactions-server.md#transacciones)
   * [Contratos y colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones)
-  * [Valor mínimo de venta](deploying-your-own-transactions-server.md#valor-mínimo-de-venta)
+  * [Valor mínimo de venta](deploying-your-own-transactions-server.md#valor-minimo-de-venta)
 
 #### Gelato
 

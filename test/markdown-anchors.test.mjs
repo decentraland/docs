@@ -4,7 +4,7 @@ import { extractAnchors, findBrokenAnchors } from '../scripts/markdown-anchors.m
 
 test('extracts formatted and setext headings, preserving Unicode and punctuation rules', () => {
 	const anchors = extractAnchors('## Hello **World**\n## `getPlayer()`\n## ¿Qué es un NAME?\nA & B\n-----\n')
-	for (const id of ['hello-world', 'getplayer', 'qué-es-un-name', 'a--b']) assert.ok(anchors.has(id), id)
+	for (const id of ['hello-world', 'getplayer', 'que-es-un-name', 'a-and-b']) assert.ok(anchors.has(id), id)
 })
 
 test('lowercases explicit GitBook IDs instead of generating a second implicit ID', () => {
@@ -28,7 +28,7 @@ test('ignores front matter, code examples, and commented-out headings and anchor
 
 test('resolves same-page, relative, root, directory, query, and percent-encoded references', () => {
 	const pages = new Map([
-		['docs/a.md', '## Local\n[one](#local) [two](b.md#qu%C3%A9) [three](/docs/b.md#qué) [four](section/#section) [five](?view=wide#local) [six](b.md?view=wide#qué)'],
+		['docs/a.md', '## Local\n[one](#local) [two](b.md#%71ue) [three](/docs/b.md#que) [four](section/#section) [five](?view=wide#local) [six](b.md?view=wide#que)'],
 		['docs/b.md', '## Qué'], ['docs/section/README.md', '## Section'],
 	])
 	assert.deepEqual(findBrokenAnchors(pages), { checked: 6, errors: [] })
@@ -79,4 +79,10 @@ test('does not credit level-five and level-six headings that GitBook imports as 
 test('does not credit the page title H1 that GitBook renders without an ID', () => {
 	assert.deepEqual([...extractAnchors('# Page title {#custom-title}\n## Section\n')], ['section'])
 	assert.equal(findBrokenAnchors(new Map([['page.md', '# Page title\n[bad](#page-title)']])).errors.length, 1)
+})
+
+
+test('matches implicit IDs observed in GitBook English and Spanish previews', () => {
+	const content = '## FK - Forward Kinematics\n## Layers & Pins\n## Publicación de scenes\n## Adding Wearables to the Linked Wearables Collection - In Bulk\n## What’s FK and IK in a rig?\n'
+	assert.deepEqual([...extractAnchors(content)], ['fk-forward-kinematics', 'layers-and-pins', 'publicacion-de-scenes', 'adding-wearables-to-the-linked-wearables-collection-in-bulk', 'whats-fk-and-ik-in-a-rig'])
 })

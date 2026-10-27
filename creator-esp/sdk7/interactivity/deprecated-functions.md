@@ -127,7 +127,7 @@ executeTask(async () => {
 ## El jugador reproduce una animación
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onPlayerExpressionObservable` está obsoleto en SDK 7.x. Usa el componente `AvatarEmoteCommand` en su lugar, consulta [El jugador reproduce una animación](event-listeners.md#el-jugador-reproduce-una-animación).
+**📔 Nota**: El evento `onPlayerExpressionObservable` está obsoleto en SDK 7.x. Usa el componente `AvatarEmoteCommand` en su lugar, consulta [El jugador reproduce una animación](event-listeners.md#el-jugador-reproduce-una-animacion).
 {% endhint %}
 
 Cada vez que el jugador reproduce un emote (baile, aplaudir, saludar, etc.), puedes detectar este evento.

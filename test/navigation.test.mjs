@@ -23,7 +23,7 @@ test('navigation rejects missing, wrongly cased, non-Markdown, and summary targe
 		['guide.md', 'Markdown page does not exist (case-sensitive): docs/guide.md'],
 		['photo.webp', 'Navigation must target a Markdown page, not an asset or other file.'],
 		['SUMMARY.md', 'Navigation cannot target a SUMMARY.md manifest.'],
-		['#menu', 'Navigation must target a page, not the summary itself.'],
+		['#menu', 'Navigation entry must target a page path.'],
 	])
 })
 
@@ -90,7 +90,7 @@ test('external-only menus fail but external links are allowed alongside a valid 
 test('query-only navigation entries are rejected with or without valid neighboring links', () => {
 	for (const suffix of ['', '\n* [Home](README.md)']) {
 		const result = audit({ 'docs/SUMMARY.md': '* [Query](?a)' + suffix, 'docs/README.md': '' })
-		assert.deepEqual(result.errors, [{ source: 'docs/SUMMARY.md', line: 1, link: '?a', reason: 'Navigation must target a page, not the summary itself.' }])
+		assert.deepEqual(result.errors, [{ source: 'docs/SUMMARY.md', line: 1, link: '?a', reason: 'Navigation entry must target a page path.' }])
 	}
 })
 

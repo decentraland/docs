@@ -53,7 +53,7 @@ export function auditNavigation(pages, directories, exceptions = {}) {
 			const issue = reason => errors.push({ source, line, link, reason })
 			const resolved = resolveLocalLink(source, link)
 			if (!resolved) {
-				if (!/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) issue('Navigation must target a page, not the summary itself.')
+				if (!/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) issue('Navigation entry must target a page path.')
 				continue // External links are permitted, but not fetched by this check.
 			}
 			if (resolved.error) { issue(resolved.error); continue }

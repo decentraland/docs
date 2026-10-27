@@ -220,7 +220,7 @@ test('navigation CLI reports file and line and rejects a missing root argument',
 	await write('docs/SUMMARY.md', '# Menu\n\n* [Bad](?query)')
 	const output = run('check-navigation.mjs')
 	assert.equal(output.status, 1)
-	assert.match(output.stderr, /error: docs\/SUMMARY\.md:3: Navigation must target a page, not the summary itself\. \(\?query\)/)
+	assert.match(output.stderr, /error: docs\/SUMMARY\.md:3: Navigation entry must target a page path\. \(\?query\)/)
 	const missingRoot = spawnSync(process.execPath, [join(scripts, 'check-navigation.mjs'), '--root'], { cwd: root, encoding: 'utf8' })
 	assert.equal(missingRoot.status, 1)
 	assert.match(missingRoot.stderr, /--root requires a repository directory/)

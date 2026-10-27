@@ -257,3 +257,26 @@ This preview feature ensures that documentation changes can be thoroughly review
 ## 📜 License
 
 This documentation is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+### Navigation integrity
+
+Run `npm run check:navigation` to validate each space's `SUMMARY.md` using the
+space directories in `gitbook-docs.yaml`. CI rejects missing or empty manifests,
+broken or incorrectly cased Markdown destinations, root-relative or cross-space
+entries, and links to a navigation manifest itself. Directory links must resolve
+to `README.md`. Nested spaces own their pages independently; GitBook-managed
+translation declarations are recognized without requiring generated pages locally.
+
+Duplicate entries and unlisted pages are **warnings initially**, so existing
+editorial decisions do not block unrelated PRs. Only mapped spaces are audited;
+`SUMMARY.md`, `AGENTS.md`, and `CLAUDE.md` are not considered unlisted content pages.
+External URLs are permitted but not fetched. Heading fragments belong to the
+separate anchor validator; a passing navigation check does not guarantee that a
+GitBook preview URL will render successfully.
+
+Use `npm run check:navigation -- --json` for a machine-readable report, or
+`npm run check:navigation -- --strict` to make warnings fail locally. For an
+intentionally unlisted page, add its exact repository path and a nonempty `reason`
+to `scripts/navigation-exceptions.json`. Exceptions only suppress unlisted-page
+warnings; deleted, out-of-scope, or subsequently listed pages make them stale and
+fail CI. Do not baseline the current warning backlog without editorial review.

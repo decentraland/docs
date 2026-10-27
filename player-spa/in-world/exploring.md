@@ -9,7 +9,7 @@ metaLinks:
 
 Decentraland está completamente compuesto por contenido generado por la comunidad. Cuando estás explorando, nunca sabes lo que podrías descubrir—¡ya sea en el mapa de Genesis City o en el World de alguien! Las opciones pueden sentirse abrumadoras, así que aquí hay algunos consejos para aprovechar al máximo tu aventura.
 
-Aprende más sobre la diferencia entre Genesis City y Worlds [**aquí**](overview.md#genesis-city-vs-worlds-decentralands-landscape-explained).
+Aprende más sobre la diferencia entre Genesis City y Worlds [**aquí**](overview.md#genesis-city-vs-worlds-el-paisaje-de-decentraland-explicado).
 
 ## Explorar Genesis City
 
@@ -44,7 +44,7 @@ En el mundo, puedes saltar directamente a una parcela específica usando el **Ma
 * **Teletransportación vía Mapa:** Hacer clic en cualquier ubicación en el Mapa mostrará una tarjeta de información sobre la ubicación, incluso si es una parcela vacía. Esta tarjeta también tendrá un botón 'Entrar' que te teletransportará al lugar.
 * **Teletransportación vía Comando de Chat:** Si conoces las coordenadas de la parcela a la que quieres saltar, pon el siguiente comando en el cuadro de chat Cercano (en la parte inferior izquierda de tu pantalla) y presiona \[**Enter**].
   * `/goto x,y` (por ejemplo, `/goto 0,0` para Genesis Plaza)
-    * Aprende más sobre Comandos de Chat [**aquí**](shortcuts-and-chat-commands.md#chat-commands).
+    * Aprende más sobre Comandos de Chat [**aquí**](shortcuts-and-chat-commands.md#comandos-de-chat).
 
 ## Explorar Worlds
 
@@ -67,4 +67,4 @@ Los eventos también se pueden organizar en Worlds—¡asistiéndolos puedes hac
 Si conoces el nombre de un World, puedes teletransportarte a él usando un **Comando de Chat**. Simplemente pon el siguiente comando en el cuadro de chat Cercano (en la parte inferior izquierda de tu pantalla) y presiona \[**Enter**].
 
 * `/goto NombreDelWorld` (por ejemplo, `/goto officehours`)
-  * Aprende más sobre Comandos de Chat [**aquí**](shortcuts-and-chat-commands.md#chat-commands).
+  * Aprende más sobre Comandos de Chat [**aquí**](shortcuts-and-chat-commands.md#comandos-de-chat).

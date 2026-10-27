@@ -6,6 +6,7 @@
     "test": "node --test test/*.test.mjs",
     "check:examples": "npm run generate:examples && git diff --exit-code -- creator/tutorials/examples.md creator/tutorials/examples creator/SUMMARY.md",
     "check:links": "node scripts/check-local-links.mjs",
+    "check:anchors": "node scripts/check-heading-anchors.mjs",
     "check:media": "node scripts/check-media-formats.mjs",
     "check:assets": "node scripts/check-asset-references.mjs"
   },

@@ -87,7 +87,7 @@ La función `getRealm()` devuelve la siguiente información:
 
 A medida que los jugadores se mueven por el mapa, pueden cambiar de rooms para agruparse con aquellos jugadores que ahora están más cerca de ellos. Las rooms también cambian sus fronteras dinámicamente para ajustarse a un grupo manejable de personas, por lo que incluso si un jugador se queda quieto, a medida que los jugadores entran y salen del mundo, el jugador podría encontrarse en otra room. Los jugadores en una misma `room` están comunicados, y compartirán mensajes a través del MessageBus incluso si están demasiado lejos para verse. Los jugadores en un mismo servidor pero en diferentes rooms no están actualmente comunicándose, pero podrían comunicarse a medida que se mueven por el mapa y cambian de rooms.
 
-Consulta [onRealmChangedObservable](event-listeners.md#player-changes-realm-or-island) para saber cómo detectar cambios relacionados con el realm o isla del jugador.
+Para el evento obsoleto `onRealmChangedObservable`, consulta [El jugador cambia de realm o isla](deprecated-functions.md#el-jugador-cambia-de-realm-o-isla).
 
 {% hint style="warning" %}
 **📔 Nota**: Cuando la escena se carga por primera vez, puede que aún no haya una room asignada para el jugador. El explorador eventualmente asignará una room al jugador, pero esto a veces puede ocurrir un par de segundos después de que la escena se cargue.

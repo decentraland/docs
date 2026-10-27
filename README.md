@@ -188,6 +188,14 @@ Keep referenced assets inside the documentation space that uses them, preferably
 
 Convert assets with an appropriate encoder rather than changing their extension, preserve useful detail and animation behavior, and update all references. Run `npm run check:links` after replacing files.
 
+### Validating heading anchors
+
+Run `npm run check:anchors` to validate local Markdown fragments such as `page.md#section` and `#section`. CI runs this separately from the local-path check and fails on every unresolved anchor; there is no exception baseline. Use `npm run check:anchors -- --json` for a machine-readable report.
+
+The check recognizes generated heading IDs (including accent removal, `&` → `and`, and collapsed separators), explicit GitBook `{#id}` IDs, heading-inline HTML `id`/named anchors, and expandable FAQ summaries. GitBook lowercases explicit IDs; incoming fragments must match that lowercase spelling. Percent-encoded fragments are decoded. An H1 becomes the unanchored page title only when it is the first heading and is at the top level. Later H1s and H1s inside lists or blockquotes are checked as headings. Explicit and generated IDs share a duplicate-suffix namespace; empty generated slugs are ignored. Level-five and level-six headings are imported as text by GitBook and do not create linkable IDs; use a supported heading level for referenced sections. Front matter, comments, and code samples are ignored. External URLs and non-Markdown asset fragments (such as SVG IDs or PDF page numbers) are outside its scope.
+
+When renaming or translating a heading, update its incoming links or preserve its existing ID. A bold label does not create an anchor. Use a real heading with an explicit `{#id}` when it must remain linkable; GitBook drops standalone HTML anchors during import. The check runs against repository content; review GitBook previews when changing rendered structure.
+
 ### Checking for unused assets
 
 Run `npm run check:assets` to check whether repository assets are referenced by at least one Markdown file. CI runs this on every pull request and push to `main`, so removing a page's last asset reference is checked even when the asset itself has not changed.

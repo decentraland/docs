@@ -61,6 +61,6 @@ Aquí puedes modificar la sensibilidad de tu mouse en el mundo.
 
 ## Configuración de Chat
 
-Desde la configuración principal, puedes modificar las preferencias de notificaciones y burbujas de chat para todos tus chats simultáneamente, así como tus permisos de mensajes directos. Consulta la sección [**Chat**](friends-and-chatting.md#chat-settings) para un desglose completo.
+Desde la configuración principal, puedes modificar las preferencias de notificaciones y burbujas de chat para todos tus chats simultáneamente, así como tus permisos de mensajes directos. Consulta la sección [**Chat**](friends-and-chatting.md#configuracion-de-chat) para un desglose completo.
 
 ![](../.gitbook/assets/chat15.webp)

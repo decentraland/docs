@@ -19,8 +19,7 @@ The series are divided into 6 different Parts. This page will continue to be upd
 * [Part 1: Making your first Hat](#part-1)
 * [Part 2: Creating a Hat from Scratch](#part-2)
 
-<a id="part-1"></a>
-## Part 1: Making your first Hat
+## Part 1: Making your first Hat {#part-1}
 
 {% embed url="https://www.youtube.com/watch?v=6Q8FNyjFTxc" %}
 
@@ -41,8 +40,7 @@ Key concepts featured in this video:
 <img src="../.gitbook/assets/wereable-tutorial-01-blend.webp" width="240" />
 <img src="../.gitbook/assets/wereable-tutorial-01-glb.webp" width="240" />
 
-<a id="part-2"></a>
-## Part 2: Creating a Hat from Scratch
+## Part 2: Creating a Hat from Scratch {#part-2}
 
 {% embed url="https://www.youtube.com/watch?v=qG0mtikJodg" %}
 

@@ -5,10 +5,10 @@ Hay cinco tipos de componentes:
 1. [Componentes de objeto](#object) agregan propiedades visuales y físicas a Entidades.
 2. [Componentes de juego](#game) pueden solicitar acciones y recibir información del motor del juego.
 3. [Componentes de medios](#media) pueden mostrar imágenes y reproducir sonidos.
-4. [Componentes de área](#area) alteran el comportamiento de Entidades en zonas específicas.
+4. [Componentes de área](#area-components) alteran el comportamiento de Entidades en zonas específicas.
 5. [Componentes de UI](#ui) permiten a las escenas renderizar interfaces flotantes.
 
-Excepto por [`Transform`](#Transform), que se especifica en detalle abajo, el estado de todos los componentes se serializa usando protocol buffers. Puedes seguir el enlace en cada título para ver la definición completa.
+Excepto por [`Transform`](#transform), que se especifica en detalle abajo, el estado de todos los componentes se serializa usando protocol buffers. Puedes seguir el enlace en cada título para ver la definición completa.
 
 ## Object Components {#object}
 
@@ -16,7 +16,7 @@ Los componentes más comunes son aquellos que adjuntan propiedades visuales y f�
 
 ---
 
-##### `Transform` <small>[↗ spec](https://adr.decentraland.org/adr/ADR-153)</small> {#Transform}
+### `Transform` <small>[↗ spec](https://adr.decentraland.org/adr/ADR-153)</small> {#transform}
 
 Agrega posición, rotación y escala a una entidad.
 
@@ -38,55 +38,55 @@ Las coordenadas pueden ser fraccionarias, y así usan un número de punto flotan
 
 El campo `parent` indica que esta Entidad debe posicionarse relativa a otra, identificada por su ID.
 
-Como el valor nulo para `parent` es también el ID de [`RootEntity`](basic-entities.md#RootEntity) (`0`), cualquier `Transform` es relativo a él por defecto.
+Como el valor nulo para `parent` es también el ID de [`RootEntity`](basic-entities.md#rootentity) (`0`), cualquier `Transform` es relativo a él por defecto.
 
 Por protocolo, `Transform` debe serializarse en orden de bytes big-endian.
 
 ---
 
-##### `MeshRenderer` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/mesh_renderer.proto#L7)</small> {#MeshRenderer}
+### `MeshRenderer` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/mesh_renderer.proto#L7)</small> {#meshrenderer}
 
 Proporciona comportamiento de renderizado básico para una Entidad.
 
-Puede configurarse para renderizar un plano, una esfera, un cubo o cilindro. Para renderizar formas 3D arbitrarias, usa [`GltfContainer`](#GltfContainer).
+Puede configurarse para renderizar un plano, una esfera, un cubo o cilindro. Para renderizar formas 3D arbitrarias, usa [`GltfContainer`](#gltfcontainer).
 
 ---
 
-##### `MeshCollider` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/mesh_collider.proto#L15)</small> {#MeshCollider}
+### `MeshCollider` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/mesh_collider.proto#L15)</small> {#meshcollider}
 
 Proporciona comportamiento de colisión básico y detección de puntero del mouse para una Entidad.
 
-Puede configurarse para comportarse como un plano, una esfera, un cubo o cilindro. Para tener una malla de colisión personalizada, usa [`GltfContainer`](#GltfContainer).
+Puede configurarse para comportarse como un plano, una esfera, un cubo o cilindro. Para tener una malla de colisión personalizada, usa [`GltfContainer`](#gltfcontainer).
 
 ---
 
-##### `Material` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/material.proto#L19)</small> {#Material}
+### `Material` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/material.proto#L19)</small> {#material}
 
-Establece las propiedades de textura, iluminación, color y transparencia de una Entidad que también tiene el componente [`MeshRenderer`](#MeshRenderer).
+Establece las propiedades de textura, iluminación, color y transparencia de una Entidad que también tiene el componente [`MeshRenderer`](#meshrenderer).
 
 Es una estructura compleja diseñada para cubrir todos los casos comunes, pero cada campo tiene un valor predeterminado razonable y puede dejarse sin especificar.
 
-Para personalizar completamente las propiedades visuales de una Entidad, usa [`GltfContainer`](#GltfContainer).
+Para personalizar completamente las propiedades visuales de una Entidad, usa [`GltfContainer`](#gltfcontainer).
 
 ---
 
-##### `GltfContainer` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/gltf_container.proto#L7)</small> {#GltfContainer}
+### `GltfContainer` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/gltf_container.proto#L7)</small> {#gltfcontainer}
 
 Adjunta un modelo 3D a esta Entidad, dada la [ruta de archivo](../content/entities.md#files) de un activo `.gltf` en el manifest de la escena.
 
-Como el modelo tiene sus propias mallas y materiales, este componente anula cualquier comportamiento de [`MeshRenderer`](#MeshRenderer), [`MeshCollider`](#MeshCollider) y [`Material`](#Material).
+Como el modelo tiene sus propias mallas y materiales, este componente anula cualquier comportamiento de [`MeshRenderer`](#meshrenderer), [`MeshCollider`](#meshcollider) y [`Material`](#material).
 
 ---
 
-##### `Billboard` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/billboard.proto#L17)</small> {#Billboard}
+### `Billboard` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/billboard.proto#L17)</small> {#billboard}
 
-Hace que una Entidad reoriente automáticamente su `Transform` para enfrentar la cámara, u opcionalmente otra Entidad referenciada mediante `target_entity`. Como el nombre indica, se usa para mostrar billboards en el juego y frecuentemente se combina con [`TextShape`](#TextShape).
+Hace que una Entidad reoriente automáticamente su `Transform` para enfrentar la cámara, u opcionalmente otra Entidad referenciada mediante `target_entity`. Como el nombre indica, se usa para mostrar billboards en el juego y frecuentemente se combina con [`TextShape`](#textshape).
 
 Afecta todas las direcciones por defecto, pero puede configurarse para rotar solo en un eje. Si la Entidad objetivo referenciada no existe, la reorientación se suspende hasta que exista.
 
 ---
 
-##### `Animator` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/animator.proto#L7)</small> {#Animator}
+### `Animator` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/animator.proto#L7)</small> {#animator}
 
 Define una o más animaciones que pueden aplicarse simultáneamente a una entidad.
 
@@ -94,7 +94,7 @@ Las escenas pueden establecer el estado del componente para personalizar, reprod
 
 ---
 
-##### `AvatarAttach` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_attach.proto#L16)</small> {#AvatarAttach}
+### `AvatarAttach` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_attach.proto#L16)</small> {#avatarattach}
 
 Indica que la posición de una Entidad debe seguir un punto de anclaje particular en el cuerpo de un avatar.
 
@@ -102,7 +102,7 @@ Puede afectar cualquier avatar, no solo el del jugador, estableciendo un ID de u
 
 ---
 
-##### `TextShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/text_shape.proto#L11)</small> {#TextShape}
+### `TextShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/text_shape.proto#L11)</small> {#textshape}
 
 Renderiza texto en la posición de una Entidad, dada por su `Transform`.
 
@@ -110,7 +110,7 @@ Es altamente configurable, soportando parámetros como tamaño, margen, padding,
 
 ---
 
-##### `Visibility` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/visibility_component.proto#L7)</small> {#Visibility}
+### `Visibility` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/visibility_component.proto#L7)</small> {#visibility}
 
 Establece si una Entidad es visible (el valor predeterminado) o invisible.
 
@@ -118,11 +118,11 @@ Los objetos invisibles aún existen, y exhibirán comportamiento de cualquier ot
 
 ---
 
-##### `AvatarShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_shape.proto#L8)</small> {#AvatarShape}
+### `AvatarShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_shape.proto#L8)</small> {#avatarshape}
 
 Contiene información sobre el avatar del jugador, incluyendo su forma de cuerpo, colores, wearables y estado transitorio.
 
-Este componente está adjunto a entidades en la [escena de avatar](execution.md#avatarScene).
+Este componente está adjunto a entidades en la [escena de avatar](execution.md#avatarscene).
 
 ## Game Components {#game}
 
@@ -130,27 +130,27 @@ Algunos componentes básicos pueden usarse por la escena y el runtime para inter
 
 ---
 
-##### `CameraMode` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/camera_mode.proto#L8)</small> {#CameraMode}
+### `CameraMode` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/camera_mode.proto#L8)</small> {#cameramode}
 
 Puede usarse para determinar si el jugador tiene una vista en primera persona o tercera persona.
 
 ---
 
-##### `PointerLock` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_lock.proto#L7)</small> {#PointerLock}
+### `PointerLock` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_lock.proto#L7)</small> {#pointerlock}
 
 Puede usarse para determinar si el puntero del mouse está siguiendo automáticamente el punto de enfoque de la cámara (bloqueado), o puede moverse libremente en la pantalla (desbloqueado).
 
-Está adjunto a la [`CameraEntity`](basic-entities.md#CameraEntity), y su estado puede leerse (pero no escribirse) desde la escena.
+Está adjunto a la [`CameraEntity`](basic-entities.md#cameraentity), y su estado puede leerse (pero no escribirse) desde la escena.
 
 ---
 
-##### `PointerEvents` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_events.proto#L17)</small> {#PointerEvents}
+### `PointerEvents` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_events.proto#L17)</small> {#pointerevents}
 
 Muestra retroalimentación visual cuando el puntero hace clic o pasa sobre una Entidad.
 
 ---
 
-##### `PointerEventsResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_events_result.proto#L13)</small> {#PointerEventsResult}
+### `PointerEventsResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/pointer_events_result.proto#L13)</small> {#pointereventsresult}
 
 Contiene información sobre entrada reciente del jugador, incluyendo teclas y acciones del puntero.
 
@@ -158,7 +158,7 @@ Está adjunto a la `RootEntity`, y actualizado por el runtime con cualquier nuev
 
 ---
 
-##### `Raycast` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/raycast.proto#L15)</small> {#Raycast}
+### `Raycast` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/raycast.proto#L15)</small> {#raycast}
 
 Puede adjuntarse a una Entidad para solicitar un raycast del motor del juego. El componente `RaycastResult` será adjuntado más tarde a la misma entidad.
 
@@ -166,9 +166,9 @@ El origen, dirección y longitud máxima del rayo pueden configurarse.
 
 ---
 
-##### `RaycastResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/raycast_result.proto#L9)</small> {#RaycastResult}
+### `RaycastResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/raycast_result.proto#L9)</small> {#raycastresult}
 
-Adjuntado por el runtime a Entidades que tienen un componente [`Raycast`](#Raycast) pendiente de resultados.
+Adjuntado por el runtime a Entidades que tienen un componente [`Raycast`](#raycast) pendiente de resultados.
 
 Contiene información sobre el rayo original e identifica cualquier Entidad que fue golpeada.
 
@@ -178,7 +178,7 @@ Las escenas pueden adjuntar componentes especiales para mostrar imágenes, mostr
 
 ---
 
-##### `AudioSource` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/audio_source.proto#L7)</small> {#AudioSource}
+### `AudioSource` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/audio_source.proto#L7)</small> {#audiosource}
 
 Reproduce un clip de audio empaquetado con la escena, dada la [ruta del archivo en su manifest](../content/entities.md#files).
 
@@ -190,15 +190,15 @@ En preparación para futuras actualizaciones, el campo en `AudioSource` se llama
 
 ---
 
-##### `AudioStream` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/audio_stream.proto#L7)</small> {#AudioStream}
+### `AudioStream` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/audio_stream.proto#L7)</small> {#audiostream}
 
-Similar a [AudioSource](#AudioSource), pero el audio se transmite en tiempo real desde una URL externa.
+Similar a [AudioSource](#audiosource), pero el audio se transmite en tiempo real desde una URL externa.
 
 A pesar de estar adjunto a una entidad particular, el sonido no es afectado por su posición. Su volumen puede establecerse, y el estado del reproductor de audio puede leerse.
 
 ---
 
-##### `NftShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/nft_shape.proto#L36)</small> {#NftShape}
+### `NftShape` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/nft_shape.proto#L36)</small> {#nftshape}
 
 Muestra un NFT asociado a un activo de imagen o video.
 
@@ -210,7 +210,7 @@ Estos componentes permiten a las escenas modificar el comportamiento predetermin
 
 ---
 
-##### `AvatarModifierArea` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_modifier_area.proto#L15)</small> {#AvatarModifierArea}
+### `AvatarModifierArea` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/avatar_modifier_area.proto#L15)</small> {#avatarmodifierarea}
 
 Cambia el comportamiento de avatares dentro de un espacio centrado alrededor de una Entidad.
 
@@ -218,7 +218,7 @@ Se define con un vector de tamaño 3D, y puede afectar si los avatares son visib
 
 ---
 
-##### `CameraModeArea` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/camera_mode_area.proto#L11)</small> {#CameraModeArea}
+### `CameraModeArea` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/camera_mode_area.proto#L11)</small> {#cameramodearea}
 
 Cambia el modo de cámara (1ra persona o 3ra persona) dentro de un espacio centrado alrededor de una Entidad.
 
@@ -228,13 +228,13 @@ Se define con un vector de tamaño 3D y un modo de cámara deseado.
 
 Los siguientes componentes se usan para crear interfaces gráficas que flotan encima del mundo del juego.
 
-Usualmente están adjuntos a conjuntos de Entidades que tienen componentes [`UiTransform`](#UiTransform) jerárquicos, relacionados entre sí a través del atributo `parent`.
+Usualmente están adjuntos a conjuntos de Entidades que tienen componentes [`UiTransform`](#uitransform) jerárquicos, relacionados entre sí a través del atributo `parent`.
 
-Por ejemplo, una ventana de opciones flotante podría ser una Entidad con un componente [`UiTransform`](#UiTransform) y un [`UiBackground`](#UiBackground), más una Entidad con un [`UiTransform`](#UiTransform) hijo y un [`UiDropdown`](#UiDropdown).
+Por ejemplo, una ventana de opciones flotante podría ser una Entidad con un componente [`UiTransform`](#uitransform) y un [`UiBackground`](#uibackground), más una Entidad con un [`UiTransform`](#uitransform) hijo y un [`UiDropdown`](#uidropdown).
 
 ---
 
-##### `UiTransform` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_transform.proto#L77)</small> {#UiTransform}
+### `UiTransform` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_transform.proto#L77)</small> {#uitransform}
 
 Describe el tamaño, posicionamiento, margen y padding de un componente UI.
 
@@ -242,37 +242,37 @@ Está basado en el modelo flexbox y es altamente personalizable.
 
 ---
 
-##### `UiBackground` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_background.proto#L11)</small> {#UiBackground}
+### `UiBackground` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_background.proto#L11)</small> {#uibackground}
 
 Describe un color o textura para usar como fondo en una Entidad UI.
 
 ---
 
-##### `UiDropdown` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_dropdown.proto#L11)</small> {#UiDropdown}
+### `UiDropdown` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_dropdown.proto#L11)</small> {#uidropdown}
 
 Define una lista de opciones mutuamente exclusivas para mostrarse en un widget dropdown.
 
 ---
 
-##### `UiDropdownResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_dropdown_result.proto#L9)</small> {#UiDropdownResult}
+### `UiDropdownResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_dropdown_result.proto#L9)</small> {#uidropdownresult}
 
-Contiene el valor seleccionado de un [`UiDropdown`](#UiDropdown), establecido por el runtime y leído por la escena.
+Contiene el valor seleccionado de un [`UiDropdown`](#uidropdown), establecido por el runtime y leído por la escena.
 
 ---
 
-##### `UiInput` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_input.proto#L11)</small> {#UiInput}
+### `UiInput` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_input.proto#L11)</small> {#uiinput}
 
 Define un widget de entrada de texto, con algún margen para personalización.
 
 ---
 
-##### `UiInputResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_input_result.proto#L9)</small> {#UiInputResult}
+### `UiInputResult` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_input_result.proto#L9)</small> {#uiinputresult}
 
-Contiene el valor de texto de un [`UiInput`](#UiInput), establecido por el runtime y leído por la escena.
+Contiene el valor de texto de un [`UiInput`](#uiinput), establecido por el runtime y leído por la escena.
 
 ---
 
-##### `UiText` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_text.proto#L11)</small> {#UiText}
+### `UiText` <small>[↗ source](https://github.com/decentraland/protocol/blob/ccb88d679f20c0e22840c324879d7b2535f6c9a6/proto/decentraland/sdk/components/ui_text.proto#L11)</small> {#uitext}
 
 Define una vista de texto simple, con algún margen para personalización.
 

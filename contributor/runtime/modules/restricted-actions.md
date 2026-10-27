@@ -14,22 +14,21 @@ Most of the restricted functionality is provided by this module, but there's als
 
 The module contains the following methods and types:
 
-* [`function movePlayerTo`](restricted-actions.md#movePlayerTo)
-* [`function teleportTo`](restricted-actions.md#teleportTo)
-* [`function triggerEmote`](restricted-actions.md#triggerEmote)
-* [`function changeRealm`](restricted-actions.md#changeRealm)
-* [`function openExternalUrl`](restricted-actions.md#openExternalUrl)
-* [`function openNftDialog`](restricted-actions.md#openNftDialog)
-* [`function setCommunicationsAdapter`](restricted-actions.md#setCommunicationsAdapter)
-* [`interface Vector3`](restricted-actions.md#Vector3)
+* [`function movePlayerTo`](restricted-actions.md#moveplayerto)
+* [`function teleportTo`](restricted-actions.md#teleportto)
+* [`function triggerEmote`](restricted-actions.md#triggeremote)
+* [`function changeRealm`](restricted-actions.md#changerealm)
+* [`function openExternalUrl`](restricted-actions.md#openexternalurl)
+* [`function openNftDialog`](restricted-actions.md#opennftdialog)
+* [`interface Vector3`](restricted-actions.md#vector3)
 
 ### Methods
 
 Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes.md#permissions) that can be requested in the scene manifest.
 
-**`movePlayerTo`**
+### `movePlayerTo` {#moveplayerto}
 
-Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#Vector3).
+Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#vector3).
 
 Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes.md#permissions) permission.
 
@@ -47,7 +46,7 @@ interface Response {
 function movePlayerTo(Request): Promise<Response>;
 ```
 
-**`teleportTo`**
+### `teleportTo` {#teleportto}
 
 Reposition the player to a parcel, optionally in another realm.
 
@@ -71,7 +70,7 @@ interface Response {}
 function teleportTo(Request): Promise<Response>;
 ```
 
-**`triggerEmote`**
+### `triggerEmote` {#triggeremote}
 
 Make the player's avatar display an emote animation, using one of the predefined names.
 
@@ -87,7 +86,7 @@ interface Response {}
 function triggerEmote(Request): Promise<Response>;
 ```
 
-**`openExternalUrl`**
+### `openExternalUrl` {#openexternalurl}
 
 Offer to show a website to the player, using an appropriate UI (which may be another application).
 
@@ -106,7 +105,7 @@ interface Response {
 function openExternalUrl(Request): Promise<Response>;
 ```
 
-**`openNftDialog`**
+### `openNftDialog` {#opennftdialog}
 
 Show information about an NFT to the player, using an appropriate UI.
 
@@ -124,11 +123,11 @@ interface Response {
 function openNftDialog(Request): Promise<Response>;
 ```
 
-**`changeRealm`** (deprecated)
+### `changeRealm` (deprecated) {#changerealm}
 
 Switch the World Explorer to another content server, using its base URL.
 
-Deprecated in favour of [`teleportTo`](restricted-actions.md#teleportTo) with a `realm` (and no `worldCoordinates` for the realm's default spawn). `changeRealm` resolves once the change is accepted rather than once the new realm is live, so a `teleportTo` issued straight after it runs against the previous realm.
+Deprecated in favour of [`teleportTo`](restricted-actions.md#teleportto) with a `realm` (and no `worldCoordinates` for the realm's default spawn). `changeRealm` resolves once the change is accepted rather than once the new realm is live, so a `teleportTo` issued straight after it runs against the previous realm.
 
 ```ts
 interface Request {
@@ -151,7 +150,7 @@ function changeRealm(Request): Promise<Response>;
 
 The only additional type used by methods in this module is the `Vector3`.
 
-**`Vector3`**
+### `Vector3` {#vector3}
 
 Holds a relative or absolute 3d position.
 

@@ -77,7 +77,7 @@ También puedes usar herramientas de IA Generativa para generar tus propios mode
 Para ejecutar un preview de tu scene, abre una ventana de Visual Studio Code en la carpeta raíz de tu proyecto y haz clic en el botón **Preview** en la pestaña de Decentraland.
 
 * [Preview your scene](preview-scene.md) para más detalles.
-* Consulta [Debug a scene](preview-scene.md#debug-a-scene) para consejos sobre cómo depurar cualquier problema.
+* Consulta [Debug a scene](../debugging/debug-in-preview.md) para consejos sobre cómo depurar cualquier problema.
 
 {% hint style="info" %}
 **💡 Tip**: Cuando usas el Creator Hub, cada vez que haces un cambio en tu scene, el preview se actualiza automáticamente. Incluso mientras se está ejecutando.

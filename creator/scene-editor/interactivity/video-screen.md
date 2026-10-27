@@ -26,7 +26,7 @@ The **Default Media Sources** dropdown lets you pick between two different kinds
 You can Play pre-recorded videos from either:
 
 - **Local files**: Upload a video file as part of the scene, then point the _URL_ field to the path to that file.
-- **Stream from a URL**: Point to a live or pre-recorded stream on the web, for example from a provider like Bunny. See [streaming videos](video-screen.md#streaming-videos)
+- **Stream from a URL**: Point to a live or pre-recorded stream on the web, for example from a provider like Bunny. See [streaming videos](video-screen.md#streaming-from-other-sources)
 
 The timing of when the Video Player smart item plays a video can depend on different things:
 

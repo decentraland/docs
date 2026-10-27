@@ -20,7 +20,7 @@ Ten en cuenta que los raycasts solo impactan objetos con colisionadores. Entonce
 * El `GLTFContainer` debe estar configurado para usar la [geometría visible con máscaras de colisión](../3d-essentials/colliders.md#colliders-on-3d-models).
 * Agregar un [componente MeshCollider](../3d-essentials/colliders.md).
 
-También es una buena práctica asignar [capas de colisión](../3d-essentials/colliders.md#collision-layers) personalizadas a los modelos 3D, para que los rayos solo necesiten calcular colisiones contra las entidades relevantes, en lugar de contra todo lo que tiene un colisionador.
+También es una buena práctica asignar [capas de colisión](../3d-essentials/colliders.md#capas-de-colision) personalizadas a los modelos 3D, para que los rayos solo necesiten calcular colisiones contra las entidades relevantes, en lugar de contra todo lo que tiene un colisionador.
 
 ## Crear un rayo
 
@@ -64,14 +64,14 @@ Los siguientes campos opcionales están disponibles al crear un rayo con cualqui
   * `RaycastQueryType.RQT_HIT_FIRST`: _(predeterminado)_ solo devuelve la primera entidad impactada, comenzando desde el punto de origen.
   * `RaycastQueryType.RQT_QUERY_ALL`: devuelve todas las entidades impactadas, desde el origen hasta la distancia máxima del rayo.
 * `originOffset`: En lugar de comenzar el raycast desde la posición de origen de la entidad, agrega un desplazamiento para comenzar la consulta desde una posición relativa. Puedes, por ejemplo, usar un pequeño desplazamiento para evitar que el rayo colisione contra el colisionador propio de la entidad. Si no se establece, el predeterminado es `Vector3.Zero()`.
-* `collisionMask`: Solo detectar colisiones con ciertas capas de colisión. Usa esto junto con una capa de colisión personalizada, o para detectar solo la capa de physics o eventos de puntero. Consulta [capas de colisión](../3d-essentials/colliders.md#collision-layers). Si no se establece, la capa predeterminada usada es `ColliderLayer.CL_PHYSICS`.
+* `collisionMask`: Solo detectar colisiones con ciertas capas de colisión. Usa esto junto con una capa de colisión personalizada, o para detectar solo la capa de physics o eventos de puntero. Consulta [capas de colisión](../3d-essentials/colliders.md#capas-de-colision). Si no se establece, la capa predeterminada usada es `ColliderLayer.CL_PHYSICS`.
 * `continuous`: Si es true, seguirá ejecutando una consulta de raycast en cada frame. Si es false, el rayo solo se usará en el frame actual. Si no se establece, el predeterminado es false.
 * Al establecer la dirección con una dirección local o global, el campo `direction` por defecto es `Vector3.Forward()`.
 * Al establecer la dirección con un objetivo global, el campo `globalTarget` por defecto es `Vector3.Zero()`.
 * Al establecer la dirección con un objetivo de entidad, el campo `targetEntity` por defecto es la entidad raíz de la escena, ubicada en `Vector3.Zero()`.
 
 {% hint style="warning" %}
-**📔 Nota**: La propiedad `continuous` debe usarse con precaución, ya que ejecutar una consulta de raycast en cada frame puede ser muy costoso para el rendimiento. Cuando sea posible, usa un sistema (o la función `interval` en la biblioteca Utils) para ejecutar consultas de raycast a un intervalo regular más espaciado, consulta [raycasting recurrente](raycasting.md#recurrent-raycasting).
+**📔 Nota**: La propiedad `continuous` debe usarse con precaución, ya que ejecutar una consulta de raycast en cada frame puede ser muy costoso para el rendimiento. Cuando sea posible, usa un sistema (o la función `interval` en la biblioteca Utils) para ejecutar consultas de raycast a un intervalo regular más espaciado, consulta [raycasting recurrente](raycasting.md#raycasting-recurrente).
 {% endhint %}
 
 A continuación hay ejemplos usando cada uno de los cuatro métodos para determinar la dirección del rayo:
@@ -199,7 +199,7 @@ raycastSystem.registerLocalDirectionRaycast(
 
 ## Manejar entidades impactadas
 
-Cuando obtienes un resultado de raycast que impactó una entidad, puedes usar el `entityId` para interactuar con la entidad y sus componentes. Una entidad es [nada más que un número](../architecture/entities-components.md#overview), por lo que el valor `entityId` mismo puede interpretarse como un tipo `Entity`.
+Cuando obtienes un resultado de raycast que impactó una entidad, puedes usar el `entityId` para interactuar con la entidad y sus componentes. Una entidad es [nada más que un número](../architecture/entities-components.md#descripcion-general), por lo que el valor `entityId` mismo puede interpretarse como un tipo `Entity`.
 
 ```ts
 const hitEntity = result.entityId as Entity
@@ -209,7 +209,7 @@ console.log(transform.position)
 
 ## Capas de colisión
 
-Es una buena práctica solo verificar colisiones contra entidades que sean relevantes, para hacer la escena más eficiente. El campo `collisionMask` permite listar solo capas de colisión específicas — la capa de physics (paredes y suelos), la capa de puntero (eventos de puntero), las capas de jugador (avatares), o 8 capas personalizadas que puedes asignar libremente. Consulta [capas de colisión](../3d-essentials/colliders.md#collision-layers).
+Es una buena práctica solo verificar colisiones contra entidades que sean relevantes, para hacer la escena más eficiente. El campo `collisionMask` permite listar solo capas de colisión específicas — la capa de physics (paredes y suelos), la capa de puntero (eventos de puntero), las capas de jugador (avatares), o 8 capas personalizadas que puedes asignar libremente. Consulta [capas de colisión](../3d-essentials/colliders.md#capas-de-colision).
 
 Por defecto, el campo `collisionMask` está configurado en `ColliderLayer.CL_PHYSICS`. Puedes cambiar este valor para listar otras capas, o combinar varias con el separador `|`.
 
@@ -405,7 +405,7 @@ Cuando un raycast impacta al jugador local, `hit.entityId` es `engine.PlayerEnti
 
 ## Raycasts desde el jugador
 
-Para trazar un rayo desde la posición del jugador en la dirección enfrentada por la cámara, puedes trazar un rayo usando la cámara o el avatar [Entidades Reservadas](../architecture/entities-components.md#reserved-entities).
+Para trazar un rayo desde la posición del jugador en la dirección enfrentada por la cámara, puedes trazar un rayo usando la cámara o el avatar [Entidades Reservadas](../architecture/entities-components.md#entidades-reservadas).
 
 {% hint style="info" %}
 **💡 Consejo**: Para la mayoría de los casos, podrías estar mejor usando [Eventos de puntero](button-events/click-events.md) en lugar de raycasts.
@@ -525,12 +525,12 @@ Los rayos se definen usando los siguientes datos:
 * `queryType`: valor enum _RaycastQueryType_, para definir si el rayo devolverá todas las entidades impactadas o solo la primera. Las siguientes opciones están disponibles:
   * `RaycastQueryType.RQT_QUERY_ALL`: solo devuelve la primera entidad impactada, comenzando desde el punto de origen.
   * `RaycastQueryType.RQT_HIT_FIRST`: devuelve todas las entidades impactadas, desde el origen hasta la distancia máxima del rayo.
-* `collisionMask`: Solo detectar colisiones con ciertas capas de colisión. Usa esto junto con una capa de colisión personalizada, o para detectar solo la capa de physics o eventos de puntero. Consulta [capas de colisión](../3d-essentials/colliders.md#collision-layers). Por defecto, todas las capas se detectan.
+* `collisionMask`: Solo detectar colisiones con ciertas capas de colisión. Usa esto junto con una capa de colisión personalizada, o para detectar solo la capa de physics o eventos de puntero. Consulta [capas de colisión](../3d-essentials/colliders.md#capas-de-colision). Por defecto, todas las capas se detectan.
 * `originOffset`: En lugar de comenzar el raycast desde la posición de origen de la entidad, agrega un desplazamiento para comenzar la consulta desde una posición relativa. Puedes, por ejemplo, usar un pequeño desplazamiento para evitar que el rayo colisione contra el modelo 3D propio de la entidad.
 * `continuous`: Si es true, seguirá ejecutando una consulta de raycast en cada frame. Si es false, el rayo solo se usará en el frame actual. Por defecto este valor es false.
 
 {% hint style="warning" %}
-**📔 Nota**: La propiedad `continuous` debe usarse con precaución, ya que ejecutar una consulta de raycast en cada frame puede ser muy costoso para el rendimiento. Cuando sea posible, usa un sistema (o la función `interval` en la biblioteca Utils) para ejecutar consultas de raycast a un intervalo regular más espaciado, consulta [raycasting recurrente](raycasting.md#recurrent-raycasting).
+**📔 Nota**: La propiedad `continuous` debe usarse con precaución, ya que ejecutar una consulta de raycast en cada frame puede ser muy costoso para el rendimiento. Cuando sea posible, usa un sistema (o la función `interval` en la biblioteca Utils) para ejecutar consultas de raycast a un intervalo regular más espaciado, consulta [raycasting recurrente](raycasting.md#raycasting-recurrente).
 {% endhint %}
 
 El siguiente ejemplo usa una rotación global para determinar la dirección, y solo devuelve la primera entidad que es impactada en el frame que se envía el rayo.
@@ -662,4 +662,4 @@ engine.addSystem(() => {
 **📔 Nota**: Los resultados de un raycast no llegan en el mismo tick del bucle del juego en que creaste el raycast. Los resultados pueden tardar uno o múltiples ticks en llegar.
 {% endhint %}
 
-En una escena donde uses múltiples tipos de rayos para diferentes propósitos (como para pathfinding, verificación de línea de visión, rastreo de proyectiles, etc), es posible que desees usar diferentes [capas de colisión](../3d-essentials/colliders.md#collision-layers), para evitar calcular colisiones irrelevantes.
+En una escena donde uses múltiples tipos de rayos para diferentes propósitos (como para pathfinding, verificación de línea de visión, rastreo de proyectiles, etc), es posible que desees usar diferentes [capas de colisión](../3d-essentials/colliders.md#capas-de-colision), para evitar calcular colisiones irrelevantes.

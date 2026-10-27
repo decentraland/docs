@@ -155,7 +155,7 @@ Para asegurarte de que los modelos 3D en tu escena se carguen más rápido y ocu
 
 * Guarda tus modelos en formato _.glb_, que es una versión más ligera de _.gltf_.
 * Si tienes múltiples modelos que comparten las mismas texturas, exporta tus modelos con texturas en un archivo separado. De esa manera, múltiples modelos pueden referirse a un único archivo de textura que solo necesita cargarse una vez.
-* Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso. Consulta [entidades y componentes](../architecture/entities-components.md#pooling-entities-and-components)
+* Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso.
 
 ## Estirar una forma
 

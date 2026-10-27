@@ -115,7 +115,7 @@ Consulta [Validar autenticidad de jugador](https://github.com/decentraland/sdk7-
 
 Tu escena puede conectarse a un servidor externo usando WebSockets. Esto es útil para mantener una conexión constante con tu servidor y sincronizar cambios con tu escena.
 
-Un socket web permite un canal de comunicación bidireccional entre el jugador y el servidor, y puede usarse para enviar actualizaciones en cualquier dirección. Alternativamente, puedes usar [conexiones REST](network-connections.md#call-a-rest-api), pero esto solo permite enviar solicitudes desde el jugador al servidor. Las conexiones WebSocket también resultan en significativamente menos overhead para escenas con tráfico de red frecuente.
+Un socket web permite un canal de comunicación bidireccional entre el jugador y el servidor, y puede usarse para enviar actualizaciones en cualquier dirección. Alternativamente, puedes usar [conexiones REST](network-connections.md#llamar-a-una-api-rest), pero esto solo permite enviar solicitudes desde el jugador al servidor. Las conexiones WebSocket también resultan en significativamente menos overhead para escenas con tráfico de red frecuente.
 
 Intenta configurar un servidor WebSocket usando el framework de tu elección, [socket.io](https://socket.io/) es una opción muy popular que a menudo se usa con Node.js. Consulta [esta escena de ejemplo](https://github.com/decentraland-scenes/ws-example) que incluye el código del servidor.
 
@@ -177,7 +177,7 @@ Tu escena puede llamar a servicios API disponibles públicamente, obteniendo dat
 * Información de blockchain
 * Generación de números aleatorios a partir de un servicio externo.
 
-Para llevar a cabo estas solicitudes, consulta [Call a REST API](network-connections.md#call-a-rest-api).
+Para llevar a cabo estas solicitudes, consulta [Call a REST API](network-connections.md#llamar-a-una-api-rest).
 
 {% hint style="warning" %}
 **📔 Nota**: Ten en cuenta que los datos que usas para tu escena debes asegurarte de que provengan de una API que esté pública y abierta. Tu escena se ejecuta en el navegador del jugador, sin intermediarios, por lo que solo tiene acceso a APIs donde todas las transacciones sean públicas.

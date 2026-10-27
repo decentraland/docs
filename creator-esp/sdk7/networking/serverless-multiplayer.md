@@ -38,7 +38,7 @@ La función `syncEntity` toma las siguientes entradas:
 
 * **entityId**: Una referencia a la entidad a sincronizar
 * **componentIds**: Una lista de los componentes que necesitan sincronizarse de esa entidad. Este es un arreglo que puede contener tantas entidades como sea necesario. Todos los valores deben ser propiedades `componentId`.
-* **entityEnumId**: (opcional) Un id único que se usa consistentemente por todos los jugadores, consulta [Acerca del enum id](serverless-multiplayer.md#about-the-enum-id).
+* **entityEnumId**: (opcional) Un id único que se usa consistentemente por todos los jugadores, consulta [Acerca del enum id](serverless-multiplayer.md#acerca-del-enum-id).
 
 No todas las entidades o componentes necesitan sincronizarse. Elementos estáticos como un árbol que permanece en el mismo lugar no requieren sincronización. En las entidades que sí sincronices, solo los componentes que cambian con el tiempo deben sincronizarse. Por ejemplo, si un cubo cambia de color cuando se hace clic, solo debes sincronizar el componente Material, no el MeshRenderer o el Transform, ya que esos nunca cambiarán.
 

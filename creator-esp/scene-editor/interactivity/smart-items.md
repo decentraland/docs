@@ -29,10 +29,10 @@ Aquí hay algunos ítems comunes y sus comportamientos predeterminados:
 * **Levers**: Cuando se hace clic, cambian entre dos estados. Haz que cada posición de la palanca realice diferentes acciones en otros smart items.
 * **Chests**: Se comportan como puertas, por defecto se abren o cierran al hacer clic. Puedes colocar ítems más pequeños dentro de ellos.
 * **Platforms**: Se mueven entre dos posiciones. Usa sus acciones de tween para controlar hacia dónde se mueven, su velocidad, etc.
-* **Trigger area**: Un ítem invisible que puede activar otros smart items cuando el jugador camina hacia su área. Consulta [About trigger areas](smart-items.md#about-trigger-areas).
-* **Video Player**: Una pantalla para mostrar videos o streams en vivo. Consulta [Playing Videos](smart-items.md#playing-videos).
-* **Audio Stream**: Reproduce audio desde un stream en vivo. Consulta [Playing Audio Streams](smart-items.md#playing-audio-streams)
-* **NFT**: Muestra una imagen NFT como un retrato. Consulta [Displaying NFTs](smart-items.md#displaying-nfts)
+* **Trigger area**: Un ítem invisible que puede activar otros smart items cuando el jugador camina hacia su área. Consulta [About trigger areas](smart-items.md#trigger-areas).
+* **Video Player**: Una pantalla para mostrar videos o streams en vivo. Consulta [Playing Videos](smart-items.md#reproducir-videos).
+* **Audio Stream**: Reproduce audio desde un stream en vivo. Consulta [Playing Audio Streams](smart-items.md#reproducir-audio-streams)
+* **NFT**: Muestra una imagen NFT como un retrato. Consulta [Displaying NFTs](smart-items.md#mostrar-nfts)
 
 Todos los smart items se pueden configurar para comportarse de formas personalizadas. Por ejemplo, qué tan lejos se mueve una plataforma, o qué activa un botón.
 

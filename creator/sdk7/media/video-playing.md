@@ -78,7 +78,7 @@ VideoPlayer.create(screen, {
 })
 ```
 
-See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentraland-cast) for details on how to use this third alternative method.
+See [Live streaming](video-playing.md#live-streaming) for details on how to use this third alternative method.
 
 ## About External Streaming
 

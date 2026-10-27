@@ -57,7 +57,7 @@ The following Components can be added to any Entity via the Scene Editor UI:
 - **Multiplayer**: Shares any changes that happen to the Entity so that all players in the scene see it too. It can be configured to only share changes on certain components. See [Serverless Multiplayer](../../sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced) for more details.
 - **Animator**: Controls the playback of animations on an Entity with a **GLTF** 3D model. See [3D model animations](../../sdk7/3d-essentials/3d-model-animations.md).
 - **Tween**: Makes the Entity gradually move, rotate, or scale over a period of time. See [Move entities](../../sdk7/3d-essentials/move-entities.md).
-- **Billboard**: Makes the Entity always rotate to face the player. See [Face the user](../../sdk7/3d-essentials/entity-positioning.md#face-the-user).
+- **Billboard**: Makes the Entity always rotate to face the player. See [Face the user](../../sdk7/3d-essentials/entity-positioning.md#face-the-player).
 - **Avatar Attach**: Attaches the Entity to the player's avatar, so it follows them around. See [Attach an entity to an avatar](../../sdk7/3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
 - **Video Player**: Plays a video inside the scene, that can be displayed on the Entity via its **Material**. See [Video playing](../../sdk7/media/video-playing.md).
 - **NFT Shape**: Displays the image of an NFT inside a frame. See [Display an NFT](nfts.md).

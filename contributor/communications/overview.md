@@ -112,7 +112,7 @@ The flow for getting assigned to an island and joining it is detailed in the [Ar
 
 ## Messages
 
-Messages in the comms protocol are binary blobs serialized using [protocol buffers](https://github.com/protocolbuffers/protobuf), wrapped in a [Packet](messages.md#Packet) structure.
+Messages in the comms protocol are binary blobs serialized using [protocol buffers](https://github.com/protocolbuffers/protobuf), wrapped in a [Packet](messages.md#packet) structure.
 
 {% hint style="info" %}
 When using the word _message_ in the context of comms, we'll always be referring to the binary message protocol, not to chat messages exchanged between players.

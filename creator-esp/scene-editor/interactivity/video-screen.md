@@ -30,7 +30,7 @@ El desplegable **Default Media Source** te permite elegir entre dos tipos difere
 Puedes reproducir videos pre-grabados desde:
 
 - **Archivos locales**: Sube un archivo de video como parte de la escena, luego apunta el campo _URL_ a la ruta a ese archivo.
-- **Stream desde una URL**: Apunta a un stream en vivo o pre-grabado en la web, por ejemplo desde Vimeo. Consulta [streaming videos](video-screen.md#streaming-videos)
+- **Stream desde una URL**: Apunta a un stream en vivo o pre-grabado en la web, por ejemplo desde Vimeo. Consulta [streaming videos](video-screen.md#streaming-from-other-sources)
 
 El momento en que el smart item Video Player reproduce un video puede depender de diferentes cosas:
 

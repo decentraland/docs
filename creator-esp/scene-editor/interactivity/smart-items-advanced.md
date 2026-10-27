@@ -125,8 +125,8 @@ Para agregar una nueva acción a un ítem, haz clic en el botón **Add New Actio
 El componente **Triggers** define eventos de trigger, estos activan acciones cuando ocurre un cierto evento. Los siguientes tipos de eventos de trigger existen:
 
 * **On Click**: Cuando el jugador hace clic en el ítem. Consulta [About click triggers](smart-items-advanced.md#about-click-triggers)
-* **Player Enters Area**: Cuando el jugador entra en un área. Consulta [About trigger areas](smart-items-advanced.md#about-trigger-areas)
-* **Player Leaves Area**: Cuando el jugador sale de un área. Consulta [About trigger areas](smart-items-advanced.md#about-trigger-areas)
+* **Player Enters Area**: Cuando el jugador entra en un área. Consulta [About trigger areas](smart-items.md#trigger-areas)
+* **Player Leaves Area**: Cuando el jugador sale de un área. Consulta [About trigger areas](smart-items.md#trigger-areas)
 * **On Spawn**: Cuando la escena comienza, o el ítem se genera en la escena. Consulta [Trigger on spawn](smart-items-advanced.md#trigger-on-spawn)
 
 Consulta [states and conditional logic](states-and-conditions.md) para aprender sobre otros triggers relacionados con condiciones de lógica.

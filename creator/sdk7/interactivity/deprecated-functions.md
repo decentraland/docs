@@ -191,7 +191,7 @@ onSceneReadyObservable.add(() => {
 ## Deprecated player data methods
 
 {% hint style="warning" %}
-**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
+**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-player-data).
 {% endhint %}
 
 To obtain information from the current player that's running the scene, use `getUserData()`.
@@ -226,7 +226,7 @@ Both `getUserData()` and `getPlayerData()` return the same data structure availa
 **📔 Note**: User IDs must always be lowercase. If copying a wallet address, make sure all the characters are set to lowercase.
 {% endhint %}
 
-The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
+The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-player-data).
 
 ## Get skybox time
 

@@ -95,7 +95,7 @@ If you want to do a loop animation, you don’t have to start the animation from
 
 For a loop to run smoothly, the first and last keyframes must be identical. For example, a 4 second loop at 30 fps needs the same pose on frame 1 and on frame 121. If they differ at all, players see a visible pop every time the clip repeats.
 
-**Animation Area** 
+### Animation Area  {#ground-reference-and-animation-area}
 
 In the provided avatar file, you will find a collection called ***Animation_Area_Reference***. It consists of three objects that will visually help setting the animation limits: ***Animation_Area_Reference***, ***Ground_Reference*** and ***Root_Animation_Area***.
 

@@ -301,7 +301,7 @@ Once all the files are ready, to upload the wearables in bulk, follow these step
 
     ![](../../images/media/linked-wearables/multiple-files-upload-success.webp)
 
-9.  Select if your collection is a programmatic or a standard one. Check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) section to correctly set which collection type you're building items for.
+9.  Select if your collection is a programmatic or a standard one. Check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#types-of-linked-wearables-collections) section to correctly set which collection type you're building items for.
 
     ![](../../images/media/linked-wearables/collection-type-selector.webp)
 
@@ -385,13 +385,13 @@ Check the "[How do Linked Wearables represent NFTs?](linked-wearables.md#how-do-
 
 ## Editing wearables in bulk
 
-Following the same idea previously seen in the [Creating wearables in bulk](linked-wearables.md#creating-linked-wearables-in-bulk) section, third party managers can make changes to the wearables in bulk.
+Following the same idea previously seen in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) section, third party managers can make changes to the wearables in bulk.
 
 To make changes in bulk to wearables, it is necessary to create a ZIP file for each of the wearables that will be changed.
 
-These ZIP files must be created following the format described in [Creating wearables in bulk](linked-wearables.md#creating-linked-wearables-in-bulk) with one exception, in the `wearable.json` file, the `id` property **MUST** be set to the `id` or URN of the wearable that will be changed. This is mandatory as it's the only way to identify the wearable to be changed. If you created your wearables in bulk by providing an id in the `wearable.json` file, you can re-use their `wearable.json` files to update them.
+These ZIP files must be created following the format described in [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) with one exception, in the `wearable.json` file, the `id` property **MUST** be set to the `id` or URN of the wearable that will be changed. This is mandatory as it's the only way to identify the wearable to be changed. If you created your wearables in bulk by providing an id in the `wearable.json` file, you can re-use their `wearable.json` files to update them.
 
-Taking into consideration the example in the [Creating wearables in bulk](linked-wearables.md#creating-linked-wearables-in-bulk) section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should include a `wearable.json` file in the zip as the next example:
+Taking into consideration the example in the [Creating wearables in bulk](linked-wearables.md#adding-wearables-to-the-linked-wearables-collection-in-bulk) section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should include a `wearable.json` file in the zip as the next example:
 
 ```json
 {
@@ -476,7 +476,7 @@ Creating Linked Wearables has a cost depending on the type of Linked Wearable Co
 1. **Standard**: each published wearable costs the same as a regular wearable: USD 100 payable in MANA.
 2. **Programmatic**: a fixed fee, payed once for all the wearables you'll be publishing. This fee equals publishing 20 regular wearables: 2000 USD payable in MANA.
 
-For more information about the type of collection you're creating, check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#nft-collections--linked-wearables-collections) section.
+For more information about the type of collection you're creating, check the [NFT Collections & Linked Wearables Collections](linked-wearables.md#types-of-linked-wearables-collections) section.
 
 ## Publishing wearables for review
 

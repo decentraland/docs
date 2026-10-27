@@ -31,7 +31,7 @@ La transmisión a través de Decentraland Cast es una característica exclusiva 
 
 ### Mostrar la transmisión en un world
 
-1. Primero debes desplegar una escena en el world con la capacidad de manejar transmisiones de video. Para profundizar en los detalles de esta integración, consulta la documentación del SDK de [Reproducir Videos](../../creator/sdk7/media/video-playing.md#streaming-using-decentraland-cast).
+1. Primero debes desplegar una escena en el world con la capacidad de manejar transmisiones de video. Para profundizar en los detalles de esta integración, consulta la documentación del SDK de [Reproducir Videos](../sdk7/media/video-playing.md#transmision-en-vivo).
 
 {% hint style="warning" %}
 **💡 Nota**: Para comenzar rápidamente, descarga la escena de ejemplo de Decentraland Cast y modifica la URL del world en el archivo scene.json para que coincida con tu world específico.

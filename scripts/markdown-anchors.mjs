@@ -59,7 +59,9 @@ export function extractAnchors(content) {
 				const explicit = headingText.match(/\{#([^}]+)\}\s*$/)?.[1]
 				if (explicit) ids.add(explicit.toLowerCase())
 				for (const id of ids) addId(id)
-				if (!explicit) addId(slug(headingText))
+				// GitBook uses an inline HTML ID as the heading ID, just like {#id}.
+				// Do not consume a second suffix for that same heading.
+				if (!ids.size) addId(slug(headingText))
 			}
 		} else if (node.tagName === 'summary' && !attrs.some(attr => attr.name === 'id')) {
 			addId(slug(text(node)))

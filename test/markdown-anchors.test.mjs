@@ -118,3 +118,20 @@ test('missing dotted directories are not skipped as asset fragments', () => {
 test('preserves image alt text and inline code while ignoring raw HTML headings', () => {
 	assert.deepEqual([...extractAnchors('## ![Logo](logo.svg) `API`\n\n<h2 id="raw">Raw HTML</h2>\n')], ['logo-api'])
 })
+
+test('uses an inline HTML ID once, without consuming a phantom duplicate suffix', () => {
+	assert.deepEqual([...extractAnchors('## Foo <a href="#foo" id="foo"></a>\n')], ['foo'])
+	assert.deepEqual([...extractAnchors('## Foo <a href="#foo" id="foo"></a>\n## Foo\n')], ['foo', 'foo-1'])
+	assert.deepEqual([...extractAnchors('## Heading <a id="custom"></a>\n## Heading\n')], ['custom', 'heading'])
+	const result = findBrokenAnchors(new Map([['page.md', '## Pointers <a href="#pointers" id="pointers"></a>\n[phantom](#pointers-1)']]))
+	assert.equal(result.errors.length, 1)
+	assert.equal(result.errors[0].fragment, 'pointers-1')
+})
+
+test('unclosed raw pre/code content does not invent headings and closing tags restore extraction', () => {
+	assert.deepEqual([...extractAnchors('## A\n<pre>\n\n## Hidden')], ['a'])
+	assert.deepEqual([...extractAnchors('## A\n<code>\n\n## Hidden')], ['a'])
+	assert.deepEqual([...extractAnchors('## A\n<pre>\n## Example\n</pre>\n\n## Visible')], ['a', 'visible'])
+	assert.deepEqual([...extractAnchors('## A\n<code>\n\n## Example\n\n</code>\n\n## Visible')], ['a', 'visible'])
+	assert.deepEqual([...extractAnchors('## A\n\n```html\n<pre>\n```\n\n## Visible')], ['a', 'visible'])
+})

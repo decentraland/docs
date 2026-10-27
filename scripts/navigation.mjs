@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { posix } from 'node:path'
 import { parse } from 'yaml'
+import { sortGitbookSpaces } from './asset-references.mjs'
 import { resolveLocalLink, splitFrontMatter } from './markdown-links.mjs'
 
 const markdown = new MarkdownIt()
@@ -32,7 +33,7 @@ export function navigationEntries(content) {
 }
 
 export function auditNavigation(pages, directories, exceptions = {}) {
-	const spaces = [...directories].sort((a, b) => b.length - a.length)
+	const spaces = sortGitbookSpaces(directories)
 	const spaceFor = path => spaces.find(space => space === '.' || path === space || path.startsWith(`${space}/`))
 	const errors = [], warnings = [], translations = [], listed = new Set(), candidates = new Set()
 	let entryCount = 0
@@ -45,20 +46,26 @@ export function auditNavigation(pages, directories, exceptions = {}) {
 		if (!pages.has(source)) { errors.push({ source, reason: 'Missing navigation manifest.' }); continue }
 		const { entries, translation } = navigationEntries(pages.get(source))
 		if (translation) translations.push(space)
-		if (!entries.length && !translation) errors.push({ source, reason: 'Navigation has no page entries or supported translation declaration.' })
+		const initialErrors = errors.length
 		const seen = new Set()
 		for (const { link, line } of entries) {
 			entryCount++
 			const issue = reason => errors.push({ source, line, link, reason })
 			const resolved = resolveLocalLink(source, link)
 			if (!resolved) {
-				if (link.startsWith('#') || !link) issue('Navigation must target a page, not the summary itself.')
+				if (!/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) issue('Navigation must target a page, not the summary itself.')
 				continue // External links are permitted, but not fetched by this check.
 			}
 			if (resolved.error) { issue(resolved.error); continue }
-			if (decodeURIComponent(link.split(/[?#]/, 1)[0]).startsWith('/')) { issue('Use a relative navigation path inside this GitBook space.'); continue }
+			const pathname = decodeURIComponent(link.split(/[?#]/, 1)[0])
+			if (pathname.startsWith('/')) { issue('Use a relative navigation path inside this GitBook space.'); continue }
 			let target = resolved.target
-			if (!/\.md$/i.test(target)) target = posix.join(target, 'README.md')
+			if (!/\.md$/i.test(target)) {
+				const index = posix.join(target, 'README.md')
+				const directory = pathname.endsWith('/') || [...pages.keys()].some(path => path.startsWith(`${target}/`))
+				if (!directory && posix.extname(target)) { issue('Navigation must target a Markdown page, not an asset or other file.'); continue }
+				target = index
+			}
 			if (spaceFor(target) !== space) { issue('Navigation target is outside this GitBook space.'); continue }
 			if (!pages.has(target)) { issue(`Markdown page does not exist (case-sensitive): ${target}`); continue }
 			if (posix.basename(target) === 'SUMMARY.md') { issue('Navigation cannot target a SUMMARY.md manifest.'); continue }
@@ -66,6 +73,7 @@ export function auditNavigation(pages, directories, exceptions = {}) {
 			if (seen.has(target)) warnings.push({ source, line, link, reason: `Duplicate navigation entry: ${target}` })
 			seen.add(target)
 		}
+		if (!seen.size && !translation && errors.length === initialErrors) errors.push({ source, reason: 'Navigation has no local Markdown page entries or supported translation declaration.' })
 	}
 	const excluded = new Set()
 	if (!exceptions || typeof exceptions !== 'object' || Array.isArray(exceptions)) {

@@ -48,14 +48,20 @@ export function gitbookSpaceDirectories(config) {
 	}
 	visit(config?.site?.structure)
 	// Nested spaces take precedence over their parent directory.
-	return [...directories].sort((a, b) => b.length - a.length)
+	return sortGitbookSpaces(directories)
+}
+
+export function sortGitbookSpaces(directories) {
+	// A repository-root space is always the fallback, even for one-letter spaces.
+	return [...directories].sort((a, b) => Number(a === '.') - Number(b === '.') || b.length - a.length || a.localeCompare(b))
 }
 
 export function assetSpaceIssue(source, link, target, spaces) {
 	if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(link)) return null
 	const pathname = decodeURIComponent(link.split(/[?#]/, 1)[0])
 	if (pathname.startsWith('/')) return 'Use a relative path to an asset inside the consuming GitBook space; leading-slash asset paths do not resolve in GitBook.'
-	const spaceFor = path => spaces.find(space => space === '.' || path === space || path.startsWith(`${space}/`))
+	const orderedSpaces = sortGitbookSpaces(spaces)
+	const spaceFor = path => orderedSpaces.find(space => space === '.' || path === space || path.startsWith(`${space}/`))
 	const sourceSpace = spaceFor(source)
 	if (sourceSpace && sourceSpace !== spaceFor(target)) {
 		return `Asset is outside the consuming GitBook space (${sourceSpace}); copy it into that space and use a relative path.`

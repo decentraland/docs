@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { isAsset, findUnreferencedAssets, compareAssetBaseline, referencedAsset, assetLinks, auditAssetReferences, gitbookSpaceDirectories } from '../scripts/asset-references.mjs'
+import { isAsset, findUnreferencedAssets, compareAssetBaseline, referencedAsset, assetLinks, auditAssetReferences, gitbookSpaceDirectories, assetSpaceIssue } from '../scripts/asset-references.mjs'
 
 test('includes media, downloads, models, content JSON and files in asset folders', () => {
 	for (const path of ['image.webp', 'video.webm', 'model.glb', 'resources/example.zip', 'font.woff2', 'creator/tutorials/examples/catalog.json', '.gitbook/assets/sample.custom', 'creator/images/source.blend']) assert.equal(isAsset(path), true, path)
@@ -84,4 +84,15 @@ test('uses the most specific configured space, including nested language spaces'
 test('keeps public repository URLs usable without applying local space-boundary rules', () => {
 	const result = auditAssetReferences(['player/images/a.webp'], [{ path: 'creator/guide.md', content: '![remote](https://raw.githubusercontent.com/decentraland/docs/main/player/images/a.webp)' }], ['creator', 'player'])
 	assert.deepEqual(result, { unused: [], errors: [] })
+})
+
+
+test('root GitBook spaces never take ownership from one-letter nested spaces', () => {
+	for (const spaces of [['.', 'a'], ['a', '.']]) {
+		const config = { site: { structure: spaces.map(directory => ({ content: { directory } })) } }
+		assert.deepEqual(gitbookSpaceDirectories(config), ['a', '.'])
+		assert.equal(assetSpaceIssue('a/page.md', 'image.webp', 'a/image.webp', spaces), null)
+		assert.match(assetSpaceIssue('a/page.md', '../image.webp', 'image.webp', spaces), /outside/)
+		assert.match(assetSpaceIssue('page.md', 'a/image.webp', 'a/image.webp', spaces), /outside/)
+	}
 })

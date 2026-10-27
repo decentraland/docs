@@ -181,7 +181,10 @@ test('navigation CLI warns by default, fails in strict mode, and includes untrac
 	await write('docs/ignored.md', '# Ignored')
 	const normal = run('check-navigation.mjs', '--json')
 	assert.equal(normal.status, 0, normal.stderr)
-	assert.equal(JSON.parse(normal.stdout).warnings.length, 2)
+	const warnings = JSON.parse(normal.stdout).warnings
+	assert.equal(warnings.length, 2)
+	assert.ok(warnings.some(issue => issue.source === 'docs/new.md'))
+	assert.ok(warnings.every(issue => issue.source !== 'docs/ignored.md'))
 	assert.equal(run('check-navigation.mjs', '--strict').status, 1)
 })
 
@@ -207,4 +210,28 @@ test('navigation CLI fails for stale exceptions and malformed configuration', as
 	assert.equal(run('check-navigation.mjs').status, 1)
 	await write('gitbook-docs.yaml', 'site: [')
 	assert.equal(run('check-navigation.mjs').status, 1)
+})
+
+
+test('navigation CLI reports file and line and rejects a missing root argument', async t => {
+	const { root, write, run } = await fixture(t)
+	await write('gitbook-docs.yaml', 'site:\n  structure:\n    - content:\n        directory: docs\n')
+	await write('scripts/navigation-exceptions.json', '{}')
+	await write('docs/SUMMARY.md', '# Menu\n\n* [Bad](?query)')
+	const output = run('check-navigation.mjs')
+	assert.equal(output.status, 1)
+	assert.match(output.stderr, /error: docs\/SUMMARY\.md:3: Navigation must target a page, not the summary itself\. \(\?query\)/)
+	const missingRoot = spawnSync(process.execPath, [join(scripts, 'check-navigation.mjs'), '--root'], { cwd: root, encoding: 'utf8' })
+	assert.equal(missingRoot.status, 1)
+	assert.match(missingRoot.stderr, /--root requires a repository directory/)
+})
+
+test('navigation CLI rejects an external-only manifest even without strict mode', async t => {
+	const { write, run } = await fixture(t)
+	await write('gitbook-docs.yaml', 'site:\n  structure:\n    - content:\n        directory: docs\n')
+	await write('scripts/navigation-exceptions.json', '{}')
+	await write('docs/SUMMARY.md', '* [External](https://example.org)')
+	const result = run('check-navigation.mjs', '--json')
+	assert.equal(result.status, 1)
+	assert.equal(JSON.parse(result.stdout).errors[0].reason, 'Navigation has no local Markdown page entries or supported translation declaration.')
 })

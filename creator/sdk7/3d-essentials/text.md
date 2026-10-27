@@ -70,7 +70,7 @@ The `TextShape` component has several properties that can be set to style the te
 
 * `font`: Value from the enum `Font`.
 * `fontSrc`: _string_. Path to a `.ttf` font file in your scene, to render the text with a custom font. See [Custom fonts](#custom-fonts).
-* `fontSize`: _number_. An entiy with font 10 is 1 meter tall.
+* `fontSize`: _number_. An entity with font 10 is 1 meter tall.
 * `textColor`: _Color4_ object. _Color4_ objects store an _RBG_ color as three numbers from 0 to 1, plus _alpha_ for transparency. See [color types](../3d-essentials/color-types.md) for more details.
 
 ```ts
@@ -84,26 +84,22 @@ TextShape.create(sign, {
 
 ## Fonts
 
-Text shapes can use fonts from the enum `Font`. This enum currently includes the following fonts:
+Text shapes can use one of the three built-in fonts, or any TrueType font file that you add to your scene. See [Custom fonts](#custom-fonts) for using your own font.
 
-* `Font.F_SANS_SERIF`
+The built-in fonts are the values of the `Font` enum:
+
+* `Font.F_SANS_SERIF` (the default)
 * `Font.F_SERIF`
 * `Font.F_MONOSPACE`
-
-By default uses it uses `Font.F_SANS_SERIF`.
 
 ```ts
 TextShape.create(sign, {
 	text: 'Hello World',
 	textColor: { r: 1, g: 0, b: 0, a: 1 },
 	fontSize: 5,
-	font: Font.F_SANS_SERIF,
+	font: Font.F_SERIF,
 })
 ```
-
-{% hint style="warning" %}
-**📔 Note**: Currently, all fonts are rendered as Sans Serif. This is a known issue to fix in the future.
-{% endhint %}
 
 {% hint style="info" %}
 **💡 Tip**: If using VS studio or some other IDE, type `Font.` and you should see a list of suggestions with all of the available fonts.

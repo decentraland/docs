@@ -8,7 +8,8 @@
     "check:links": "node scripts/check-local-links.mjs",
     "check:anchors": "node scripts/check-heading-anchors.mjs",
     "check:media": "node scripts/check-media-formats.mjs",
-    "check:assets": "node scripts/check-asset-references.mjs"
+    "check:assets": "node scripts/check-asset-references.mjs",
+    "check:navigation": "node scripts/check-navigation.mjs"
   },
   "engines": {
     "node": ">=22"

@@ -26,6 +26,7 @@ jobs:
       - run: npm run check:anchors
       - run: npm run check:media
       - run: npm run check:assets
+      - run: npm run check:navigation
 
   test-windows:
     runs-on: windows-latest

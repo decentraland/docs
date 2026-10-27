@@ -210,6 +210,34 @@ The validation CLIs accept `--root <repository>` for isolated checks; integratio
 
 Run `npm run check:assets -- --strict` to fail on every unreferenced asset, or `npm run check:assets -- --json` to produce a complete machine-readable inventory, including the backlog.
 
+### Navigation integrity
+
+Run `npm run check:navigation` to validate each space's `SUMMARY.md` using the
+space directories in `gitbook-docs.yaml`. CI rejects missing or empty manifests,
+broken or incorrectly cased Markdown destinations, root-relative or cross-space
+entries, and links to a navigation manifest itself. Directory links must resolve
+to `README.md`. Nested spaces own their pages independently; GitBook-managed
+translation declarations are recognized without requiring generated pages locally.
+
+Duplicate entries and unlisted pages are **warnings initially**, so existing
+editorial decisions do not block unrelated PRs. Only mapped spaces are audited;
+`SUMMARY.md`, `AGENTS.md`, and `CLAUDE.md` are not considered unlisted content pages.
+External URLs are permitted but not fetched; a menu must also contain at least one valid local page or a supported translation declaration. Query-only and fragment-only entries are rejected. Heading fragments belong to the
+separate anchor validator; a passing navigation check does not guarantee that a
+GitBook preview URL will render successfully.
+
+Use `npm run check:navigation -- --json` for a machine-readable report, or
+`npm run check:navigation -- --strict` to make warnings fail locally. For an
+intentionally unlisted page, add its exact repository path and a nonempty `reason`
+to `scripts/navigation-exceptions.json`. Exceptions only suppress unlisted-page
+warnings; deleted, out-of-scope, or subsequently listed pages make them stale and
+fail CI. Do not baseline the current warning backlog without editorial review.
+
+The current audit reports 43 unlisted pages, mostly stub group indexes. Before
+enabling strict mode in CI, review whether these pages should be linked, removed,
+or explicitly documented as intentionally unlisted. A matching group heading
+alone does not count as a link to its README page.
+
 ### Quick Start
 
 1. **Clone the repository**

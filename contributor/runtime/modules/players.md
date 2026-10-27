@@ -6,19 +6,19 @@ const Players = require("~system/Players");
 
 It contains the following methods and types:
 
-- [`function getPlayersInScene`](#getPlayersInScene)
-- [`function getConnectedPlayers`](#getPlayersInScene)
-- [`function getPlayerData`](#getPlayerData)
-- [`interface Player`](#Player)
-- [`interface UserData`](#UserData)
+- [`function getPlayersInScene`](#getplayersinscene)
+- [`function getConnectedPlayers`](#getplayersinscene)
+- [`function getPlayerData`](#getplayerdata)
+- [`interface Player`](#player)
+- [`interface UserData`](#userdata)
 
 ## Methods
 
 There's two methods in this module to discover players in the scene, and one to obtain their profiles.
 
-##### `getPlayersInScene` {#getPlayersInScene}
+### `getPlayersInScene` {#getplayersinscene}
 
-Returns a [`Player`](#Player) array, each with a `userId` that can be used in [getPlayerData](#getPlayerData).
+Returns a [`Player`](#player) array, each with a `userId` that can be used in [getPlayerData](#getplayerdata).
 
 ```ts
 interface Request {}
@@ -30,7 +30,7 @@ interface Response {
 function getPlayersInScene(Request): Promise<Response>;
 ```
 
-##### `getConnectedPlayers` {#getConnectedPlayers}
+### `getConnectedPlayers` {#getconnectedplayers}
 
 ```ts
 interface Request {}
@@ -42,9 +42,9 @@ interface Response {
 function getConnectedPlayers(Request): Promise<Response>;
 ```
 
-##### `getPlayerData` {#getPlayerData}
+### `getPlayerData` {#getplayerdata}
 
-Returns the [`UserData`](#UserData) for a user, if known for the given `userId`.
+Returns the [`UserData`](#userdata) for a user, if known for the given `userId`.
 
 ```ts
 interface Request {
@@ -62,9 +62,9 @@ function getPlayerData(Request): Promise<Response>;
 
 ## Types
 
-There's only two types in this module: [`Player`](#Player) and [`UserData`](#UserData).
+There's only two types in this module: [`Player`](#player) and [`UserData`](#userdata).
 
-##### `Player` {#Player}
+### `Player` {#player}
 
 Holds a reference to a `userId`.
 
@@ -75,7 +75,7 @@ interface Player {
 }
 ```
 
-##### `UserData` {#UserData}
+### `UserData` {#userdata}
 
 Holds (possibly partial) information about a user, their identity and avatar.
 

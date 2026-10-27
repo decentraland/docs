@@ -192,7 +192,7 @@ Convert assets with an appropriate encoder rather than changing their extension,
 
 Run `npm run check:anchors` to validate local Markdown fragments such as `page.md#section` and `#section`. CI runs this separately from the local-path check and fails on every unresolved anchor; there is no exception baseline. Use `npm run check:anchors -- --json` for a machine-readable report.
 
-The check recognizes generated heading IDs, explicit GitBook `{#id}` IDs, heading-inline HTML `id`/named anchors, and expandable FAQ summaries. IDs are case-sensitive; percent-encoded fragments are decoded. Front matter, comments, and code samples are ignored. External URLs and non-Markdown asset fragments (such as SVG IDs or PDF page numbers) are outside its scope.
+The check recognizes generated heading IDs, explicit GitBook `{#id}` IDs, heading-inline HTML `id`/named anchors, and expandable FAQ summaries. GitBook lowercases explicit IDs; incoming fragments must match that lowercase spelling. Percent-encoded fragments are decoded. Level-five and level-six headings are imported as text by GitBook and do not create linkable IDs; use a supported heading level for referenced sections. Front matter, comments, and code samples are ignored. External URLs and non-Markdown asset fragments (such as SVG IDs or PDF page numbers) are outside its scope.
 
 When renaming or translating a heading, update its incoming links or preserve its existing ID. A bold label does not create an anchor. Use a real heading with an explicit `{#id}` when it must remain linkable; GitBook drops standalone HTML anchors during import. The check runs against repository content; review GitBook previews when changing rendered structure.
 

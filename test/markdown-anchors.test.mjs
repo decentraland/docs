@@ -7,9 +7,9 @@ test('extracts formatted and setext headings, preserving Unicode and punctuation
 	for (const id of ['hello-world', 'getplayer', 'qué-es-un-name', 'a--b']) assert.ok(anchors.has(id), id)
 })
 
-test('preserves explicit GitBook IDs instead of generating a second implicit ID', () => {
+test('lowercases explicit GitBook IDs instead of generating a second implicit ID', () => {
 	const anchors = extractAnchors('## Transform {#Transform}\n')
-	assert.deepEqual([...anchors], ['Transform'])
+	assert.deepEqual([...anchors], ['transform'])
 })
 
 test('increments duplicate headings without colliding with previously generated suffixes', () => {
@@ -18,7 +18,7 @@ test('increments duplicate headings without colliding with previously generated 
 
 test('recognizes heading-inline HTML IDs and expandable GitBook summaries', () => {
 	const anchors = extractAnchors('## Heading <a id="CaseSensitive"></a> {#heading}\n## Legacy <a name="legacy"></a> {#legacy-heading}\n\n<details>\n<summary>What is a <strong>NAME</strong>?</summary>\n</details>\n')
-	assert.deepEqual([...anchors], ['CaseSensitive', 'heading', 'legacy', 'legacy-heading', 'what-is-a-name'])
+	assert.deepEqual([...anchors], ['casesensitive', 'heading', 'legacy', 'legacy-heading', 'what-is-a-name'])
 })
 
 test('ignores front matter, code examples, and commented-out headings and anchors', () => {
@@ -35,10 +35,10 @@ test('resolves same-page, relative, root, directory, query, and percent-encoded 
 })
 
 test('reports missing and case-mismatched anchors and removed destination pages', () => {
-	const pages = new Map([['a.md', '## Transform {#Transform}\n[wrong](#transform) [missing](b.md#gone) [removed](deleted.md#section)'], ['b.md', '# Present']])
+	const pages = new Map([['a.md', '## Transform {#Transform}\n[wrong](#Transform) [missing](b.md#gone) [removed](deleted.md#section)'], ['b.md', '# Present']])
 	const result = findBrokenAnchors(pages)
 	assert.equal(result.errors.length, 3)
-	assert.equal(result.errors[0].fragment, 'transform')
+	assert.equal(result.errors[0].fragment, 'Transform')
 	assert.equal(result.errors[2].reason, 'Markdown target does not exist')
 })
 
@@ -67,4 +67,10 @@ test('does not credit standalone HTML anchors that GitBook drops during import',
 
 test('does not turn BOM-prefixed front matter into a heading', () => {
 	assert.deepEqual([...extractAnchors('\uFEFF---\ntitle: "# Not a heading"\n---\n# Actual heading\n')], ['actual-heading'])
+})
+
+
+test('does not credit level-five and level-six headings that GitBook imports as text', () => {
+	const result = findBrokenAnchors(new Map([['page.md', '##### Transform {#transform}\n###### Details {#details}\n[one](#transform) [two](#details)']]))
+	assert.equal(result.errors.length, 2)
 })

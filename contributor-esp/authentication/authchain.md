@@ -56,7 +56,7 @@ Como la serialización más común de una cadena de autenticación es un array J
 
 El primer paso, que identifica la autoridad original (es decir, el usuario), debe cumplir estas condiciones:
 
-1. El `type` es [`SIGNER`](authchain.md#SIGNER)
+1. El `type` es [`SIGNER`](authchain.md#signer)
 2. El `payload` es la cuenta de Ethereum codificada.
 3. La `signature` está vacía.
 
@@ -77,7 +77,7 @@ El segundo paso debe llevar una `signature` de esta cuenta para su `payload`.
 
 Cuando los delegados actúan en nombre del usuario, se agrega un elemento en el medio de la cadena para cada uno de ellos. Las condiciones para estos pasos son:
 
-1. El type es [`ECDSA_EPHEMERAL`](authchain.md#ECDSA_EPHEMERAL)
+1. El type es [`ECDSA_EPHEMERAL`](authchain.md#ecdsa_ephemeral)
 2. El `payload` es un texto especialmente elaborado (ver abajo).
 
 El `payload` está diseñado para ser fácil de leer y fácil de analizar, ya que tanto humanos (cuando usan su IU de wallet) como programas (cuando elaboran y validan) deben trabajar con él. Contiene exactamente 3 líneas de texto plano sensible a mayúsculas:
@@ -223,11 +223,11 @@ Los valores `type` y `payload` para identificación y delegación son estándar 
 
 El protocolo define tres tipos estándar y un propósito estándar:
 
-### Type `SIGNER` {#SIGNER}
+### Type `SIGNER` {#signer}
 
 **Debe** ser el `type` inicial en la cadena, donde `payload` es la dirección de Ethereum del usuario y `signature` es una cadena vacía.
 
-### Type `ECDSA_EPHEMERAL` {#ECDSA_EPHEMERAL}
+### Type `ECDSA_EPHEMERAL` {#ecdsa_ephemeral}
 
 **Debe** ser el `type` para pasos intermedios en la cadena, donde `payload` está en la forma descrita anteriormente.
 

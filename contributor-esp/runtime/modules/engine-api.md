@@ -8,8 +8,8 @@ Este módulo es el más complejo y rico en funcionalidad, y el más probable de 
 
 Este módulo contiene los siguientes métodos:
 
-- [`function crdtSendToRenderer`](#crdtSendToRenderer)
-- [`function crdtGetState`](#crdtGetState)
+- [`function crdtSendToRenderer`](#crdtsendtorenderer)
+- [`function crdtGetState`](#crdtgetstate)
 
 ## Introduction
 
@@ -62,7 +62,7 @@ Por protocolo, los IDs por debajo de `512` están reservados para el World Explo
 
 Cada escena tiene su propio rango privado de IDs, que el Explorer puede mapear transparentemente a un identificador global entre todas las entidades en el motor del juego.
 
-Con el tiempo, a medida que las entidades son creadas y eliminadas, es perfectamente válido reusar IDs que fueron liberados previamente -- de hecho, esto puede requerirse por razones de rendimiento ([ver abajo](#crdtStateDeleteEntities)).
+Con el tiempo, a medida que las entidades son creadas y eliminadas, es perfectamente válido reusar IDs que fueron liberados previamente -- de hecho, esto puede requerirse por razones de rendimiento ([ver abajo](#crdtstatedeleteentities)).
 
 ### Synchronization {#synchronization}
 
@@ -106,7 +106,7 @@ La implementación del mecanismo de sincronización CRDT consiste en tres partes
 2. Una estrategia de resolución de conflictos para elegir entre estados competidores.
 3. Un protocolo de mensajería para comunicar y procesar actualizaciones al estado.
 
-#### CRDT State {#crdtState}
+#### CRDT State {#crdtstate}
 
 El CRDT contiene el estado de todos los componentes para todas sus entidades adjuntas, y puede almacenarse en un mapeo de componentes a estados con marca de tiempo para cada entidad. En pseudocódigo:
 
@@ -123,7 +123,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Los timestamps no son en realidad timestamps estilo Unix. Son un tipo de contador incremental para secuenciar actualizaciones, sin relación con el tiempo del reloj. Más sobre esto [abajo](#timestamps).
 
-### Crear entradas de estado {#crdtStateAutoCreate}
+### Crear entradas de estado {#crdtstateautocreate}
 
 Como la capa CRDT no conoce (o necesita conocer) todos los componentes disponibles, el estado inicial es un mapa vacío. Las entradas se crean al vuelo cuando las operaciones involucran un `ComponentId` o `EntityId` que no estaba ya mapeado. Cuando una entidad es removida, el estado asociado se elimina de todos los componentes.
 
@@ -162,7 +162,7 @@ El pseudocódigo arriba (si se traduce a código real) obviamente está incomple
 - `shouldCreate` debe agregar nuevas entidades, pero rechazar recrear entidades eliminadas.
 - `shouldReplace` debe preferir mantener estados que tengan timestamps mayores (con algunos casos extremos).
 
-### Registrar entidades eliminadas {#crdtStateDeleteEntities}
+### Registrar entidades eliminadas {#crdtstatedeleteentities}
 
 Para soportar el requisito `shouldCreate`, querrás hacer seguimiento de IDs de entidad eliminados, para ignorar cualquier actualización de estado futura para esos. Veamos esto en más pseudocódigo:
 
@@ -190,7 +190,7 @@ Ten en cuenta que, en la implementación ingenua arriba, el conjunto de entidade
 Para evitar esto, el explorer de la Foundation emplea un índice generacional para reusar IDs en un espacio numérico finito, limitando la cantidad de memoria requerida para hacer seguimiento tanto de entidades activas como eliminadas.
 {% endhint %}
 
-En cuanto al requisito `shouldReplace`, ver [resolución de conflictos](#crdtConflicts) abajo.
+En cuanto al requisito `shouldReplace`, ver [resolución de conflictos](#crdtconflicts) abajo.
 
 #### Timestamps {#timestamps}
 
@@ -217,7 +217,7 @@ function receiveState() {
 }
 ```
 
-#### Conflict Resolution {#crdtConflicts}
+#### Conflict Resolution {#crdtconflicts}
 
 Cuando el CRDT encuentra dos estados competidores, necesita una estrategia de resolución compartida que todas las partes apliquen idénticamente, asegurando que todos alcancen la misma decisión. El protocolo de Decentraland usa reglas muy simples:
 
@@ -249,15 +249,15 @@ Los mensajes entre el World Explorer y el runtime de escena son estructuras en u
 
 Hay tres tipos de mensaje en el protocolo CRDT:
 
-- [`PutComponent`](#PutComponentMessage)
-- [`DeleteComponent`](#DeleteComponentMessage)
-- [`DeleteEntity`](#DeleteEntityMessage)
+- [`PutComponent`](#putcomponentmessage)
+- [`DeleteComponent`](#deletecomponentmessage)
+- [`DeleteEntity`](#deleteentitymessage)
 
-Ten en cuenta que no hay mensajes `CreateComponent` o `CreateEntity`. Las reglas CRDT auto-crean entidades y componentes que no se conocían previamente, como [se explicó arriba](#crdtStateAutoCreate).
+Ten en cuenta que no hay mensajes `CreateComponent` o `CreateEntity`. Las reglas CRDT auto-crean entidades y componentes que no se conocían previamente, como [se explicó arriba](#crdtstateautocreate).
 
-##### `PutComponentMessage` {#PutComponentMessage}
+### `PutComponentMessage` {#putcomponentmessage}
 
-Actualizar el `state` de un `component` para una `entity` particular, creando componentes y entidades desconocidos en el CRDT si es necesario. [Resolver conflictos](#crdtConflicts) según `timestamp`.
+Actualizar el `state` de un `component` para una `entity` particular, creando componentes y entidades desconocidos en el CRDT si es necesario. [Resolver conflictos](#crdtconflicts) según `timestamp`.
 
 ```
 .----------------.-------------------.-------------------------------------------.
@@ -273,9 +273,9 @@ Esta capa adicional de serialización tiene una ventaja importante: el protocolo
 
 Si la actualización contenida en este mensaje se aplica al CRDT, el campo `state` se copia tal cual en la estructura.
 
-##### `DeleteComponentMessage` {#DeleteComponentMessage}
+### `DeleteComponentMessage` {#deletecomponentmessage}
 
-Remover el estado de `component` para una `entity`. [Resolver conflictos](#crdtConflicts) según `timestamp`.
+Remover el estado de `component` para una `entity`. [Resolver conflictos](#crdtconflicts) según `timestamp`.
 
 ```
 .----------------.-------------------.-------------------.
@@ -284,7 +284,7 @@ Remover el estado de `component` para una `entity`. [Resolver conflictos](#crdtC
 
 ```
 
-##### `DeleteEntityMessage` {#DeleteEntityMessage}
+### `DeleteEntityMessage` {#deleteentitymessage}
 
 Eliminar `entity` (es decir, todo el estado de componente asociado), esperando que el identificador nunca sea reutilizado para una entidad diferente.
 
@@ -301,7 +301,7 @@ Ten en cuenta que no hay campo `timestamp`. Como el tiempo de vida de `entity` t
 
 El conjunto de métodos en `EngineApi` proporciona la interfaz para intercambiar mensajes y reconstruir el estado del mundo desde cero.
 
-##### `crdtSendToRenderer` {#crdtSendToRenderer}
+### `crdtSendToRenderer` {#crdtsendtorenderer}
 
 Enviar un mensaje serializado desde la escena al renderizador, devolver un array de mensajes serializados que el renderizador tiene para la escena.
 
@@ -319,7 +319,7 @@ interface Response {
 function crdtSendToRenderer(Request): Promise<Response>;
 ```
 
-##### `crdtGetState` {#crdtGetState}
+### `crdtGetState` {#crdtgetstate}
 
 ```ts
 interface Request {}

@@ -6,7 +6,7 @@ Puedes ver el protocolo comms en acción y experimentar con él usando la [Comms
 
 Todas las definiciones de mensajes están disponibles en el [repositorio de protocolo](https://github.com/decentraland/protocol), y cada tipo de mensaje a continuación tiene un enlace a su declaración.
 
-##### `Packet` <small>[↗ fuente][Packet]</small> {#Packet}
+### `Packet` <small>[↗ fuente][Packet]</small> {#packet}
 
 La estructura `Packet` es el contenedor para todos los mensajes.
 
@@ -22,7 +22,7 @@ Solo dos tipos de `Packet` están involucrados, uno para cada caso de uso. En ci
 
 ---
 
-##### `Chat` <small>[↗ fuente][Chat]</small> {#Chat}
+### `Chat` <small>[↗ fuente][Chat]</small> {#chat}
 
 Envía un mensaje de chat de texto a otros clientes.
 
@@ -33,7 +33,7 @@ Envía un mensaje de chat de texto a otros clientes.
 
 ---
 
-##### `Voice` <small>[↗ fuente][Voice]</small> {#Voice}
+### `Voice` <small>[↗ fuente][Voice]</small> {#voice}
 
 Envía una muestra de voz codificada a otros clientes.
 
@@ -51,7 +51,7 @@ Los clientes que controlan avatares envían y reciben actualizaciones posicional
 
 ---
 
-##### `Position` <small>[↗ fuente][Position]</small> {#Position}
+### `Position` <small>[↗ fuente][Position]</small> {#position}
 
 Actualiza a otros clientes sobre la posición y orientación de un avatar.
 
@@ -77,7 +77,7 @@ Los clientes dentro de una isla pueden solicitar la información de avatar de ot
 
 Como los cambios de perfil son raros (comparado con actualizaciones posicionales, por ejemplo), el sistema está diseñado para simplificar la tarea de mantener un caché de perfil local, y solo obtener perfiles cuando sea necesario.
 
-Hay 3 tipos de [`Packet`](#Packet) involucrados: un par [`ProfileRequest`](#ProfileRequest)/[`ProfileResponse`](#ProfileResponse) usado por clientes para compartir perfiles bajo demanda, y el mensaje [`AnnounceProfileVersion`](#AnnounceProfileVersion) para decirle a los peers cuál es la última versión, para que puedan decidir si solicitarlo.
+Hay 3 tipos de [`Packet`](#packet) involucrados: un par [`ProfileRequest`](#profilerequest)/[`ProfileResponse`](#profileresponse) usado por clientes para compartir perfiles bajo demanda, y el mensaje [`AnnounceProfileVersion`](#announceprofileversion) para decirle a los peers cuál es la última versión, para que puedan decidir si solicitarlo.
 
 Los clientes típicamente transmiten mensajes `AnnounceProfileVersion` periódicamente, además de inmediatamente cuando su perfil cambia.
 
@@ -109,7 +109,7 @@ sequenceDiagram
 
 ---
 
-##### `AnnounceProfileVersion` <small>[↗ fuente][AnnounceProfileVersion]</small> {#AnnounceProfileVersion}
+### `AnnounceProfileVersion` <small>[↗ fuente][AnnounceProfileVersion]</small> {#announceprofileversion}
 
 Señala a otros clientes que hay una [entidad de perfil](../content/entity-types/profiles.md) que pueden solicitar.
 
@@ -117,11 +117,11 @@ Señala a otros clientes que hay una [entidad de perfil](../content/entity-types
 | ----------------- | -------- | -------------------------------------------------------- |
 | `profile_version` | `uint32` | Un número de versión incrementado con cada modificación. |
 
-Los receptores que almacenan perfiles en caché pueden usar el número `profile_version` para decidir si su copia local está actualizada, o si necesitan enviar un [`ProfileRequest`](#ProfileRequest).
+Los receptores que almacenan perfiles en caché pueden usar el número `profile_version` para decidir si su copia local está actualizada, o si necesitan enviar un [`ProfileRequest`](#profilerequest).
 
 ---
 
-##### `ProfileRequest` <small>[↗ fuente][ProfileRequest]</small> {#ProfileRequest}
+### `ProfileRequest` <small>[↗ fuente][ProfileRequest]</small> {#profilerequest}
 
 Solicita un perfil de una versión especificada de un peer particular.
 
@@ -130,13 +130,13 @@ Solicita un perfil de una versión especificada de un peer particular.
 | `address`         | string   | La dirección identificadora del perfil. |
 | `profile_version` | `uint32` | La versión de perfil deseada.           |
 
-Los receptores pueden responder con mensajes [`ProfileResponse`](#ProfileResponse) para proporcionar el perfil solicitado.
+Los receptores pueden responder con mensajes [`ProfileResponse`](#profileresponse) para proporcionar el perfil solicitado.
 
 ---
 
-##### `ProfileResponse` <small>[↗ fuente][ProfileResponse]</small> {#ProfileResponse}
+### `ProfileResponse` <small>[↗ fuente][ProfileResponse]</small> {#profileresponse}
 
-Envía un perfil en respuesta a un [`ProfileRequest`](#ProfileRequest).
+Envía un perfil en respuesta a un [`ProfileRequest`](#profilerequest).
 
 | Campo                | Tipo     | Valor                                                                 |
 | -------------------- | -------- | --------------------------------------------------------------------- |
@@ -150,7 +150,7 @@ Si el remitente quiere recomendar un servidor de contenido para descargar entida
 <!--
 ## Mensajes de Escena
 
-##### `Scene` <small>[↗ fuente][Scene]</small> {#Scene}
+### `Scene` <small>[↗ fuente][Scene]</small> {#scene}
 
 TODO: Documentar tipo de mensaje Scene
 -->

@@ -10,8 +10,8 @@ This module is the most complex and rich in functionality, and the likeliest to 
 
 This module contains the following methods:
 
-* [`function crdtSendToRenderer`](engine-api.md#crdtSendToRenderer)
-* [`function crdtGetState`](engine-api.md#crdtGetState)
+* [`function crdtSendToRenderer`](engine-api.md#crdtsendtorenderer)
+* [`function crdtGetState`](engine-api.md#crdtgetstate)
 
 ### Introduction
 
@@ -64,7 +64,7 @@ By protocol, IDs below `512` are reserved for the World Explorer, and thus inval
 
 Each scene has its own private range of IDs, which the Explorer can transparently map to a global identifier among all entities in the game engine.
 
-Over time, as entities are created and deleted, it's perfectly valid to reuse IDs that were previously freed -- indeed, this may be required for perfomance reasons ([see below](#crdtStateDeleteEntities)).
+Over time, as entities are created and deleted, it's perfectly valid to reuse IDs that were previously freed -- indeed, this may be required for perfomance reasons ([see below](#crdtstatedeleteentities)).
 
 #### Synchronization <a href="#synchronization" id="synchronization"></a>
 
@@ -125,7 +125,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Timestamps aren't actually Unix-style timestamps. They are a type of incremental counter to sequence updates, with no relation to clock time. More on this [below](engine-api.md#timestamps).
 
-### Creating state entries {#crdtStateAutoCreate}
+### Creating state entries {#crdtstateautocreate}
 
 Since the CRDT layer doesn't know (or need to know) all available components, the initial state is an empty map. Entries are created on-the-fly when operations involve a `ComponentId` or `EntityId` that was not already mapped. When an entity is removed, the associated state is deleted from all components.
 
@@ -164,7 +164,7 @@ The pseudocode above (if translated to actual code) is obviously incomplete and 
 * `shouldCreate` must add new entities, but refuse to re-create deleted entities.
 * `shouldReplace` must prefer to keep states that have greater timestamps (with some edge cases).
 
-### Tracking deleted entities {#crdtStateDeleteEntities}
+### Tracking deleted entities {#crdtstatedeleteentities}
 
 To support the `shouldCreate` requirement, you'll want to keep track of deleted entity IDs, in order to ignore any future state updates for those. Let's see this in more pseudocode:
 
@@ -192,7 +192,7 @@ Note that, in the naive implementation above, the set of deleted entities will o
 To avoid this, the Foundation's explorer employs a generational index to reuse IDs in a finite numerical space, limiting the amount of memory required to keep track of both active and deleted entities.
 {% endhint %}
 
-As for the `shouldReplace` requirement, see [conflict resolution](engine-api.md#crdtConflicts) below.
+As for the `shouldReplace` requirement, see [conflict resolution](engine-api.md#crdtconflicts) below.
 
 ### Timestamps {#timestamps}
 
@@ -219,7 +219,7 @@ function receiveState() {
 }
 ```
 
-### Conflict Resolution {#crdtConflicts}
+### Conflict Resolution {#crdtconflicts}
 
 When the CRDT encounters two competing states, it needs a shared resolution strategy that all parties apply identically, ensuring the same decision is reached by everyone. The Decentraland protocol uses very simple rules:
 
@@ -251,15 +251,15 @@ Messages between the World Explorer and the scene runtime are structures in a se
 
 There are three message types in the CRDT protocol:
 
-* [`PutComponent`](engine-api.md#PutComponent)
-* [`DeleteComponent`](engine-api.md#DeleteComponent)
-* [`DeleteEntity`](engine-api.md#DeleteEntity)
+* [`PutComponent`](engine-api.md#putcomponent)
+* [`DeleteComponent`](engine-api.md#deletecomponent)
+* [`DeleteEntity`](engine-api.md#deleteentity)
 
-Note that there are no `CreateComponent` or `CreateEntity` messages. The CRDT rules auto-create entities and components that weren't previously known, as [explained above](engine-api.md#crdtStateAutoCreate).
+Note that there are no `CreateComponent` or `CreateEntity` messages. The CRDT rules auto-create entities and components that weren't previously known, as [explained above](engine-api.md#crdtstateautocreate).
 
-### `PutComponentMessage` {#PutComponent}
+### `PutComponentMessage` {#putcomponent}
 
-Update the `state` of a `component` for a particular `entity`, creating unknown components and entities in the CRDT if necessary. [Resolve conflicts](engine-api.md#crdtConflicts) according to `timestamp`.
+Update the `state` of a `component` for a particular `entity`, creating unknown components and entities in the CRDT if necessary. [Resolve conflicts](engine-api.md#crdtconflicts) according to `timestamp`.
 
 ```
 .----------------.-------------------.-------------------------------------------.
@@ -275,9 +275,9 @@ This additional layer of serialization has an important advantage: the CRDT prot
 
 If the update contained in this message is applied to the CRDT, the `state` field is copied as-is into the structure.
 
-### `DeleteComponentMessage` {#DeleteComponent}
+### `DeleteComponentMessage` {#deletecomponent}
 
-Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.md#crdtConflicts) according to `timestamp`.
+Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.md#crdtconflicts) according to `timestamp`.
 
 ```
 .----------------.-------------------.-------------------.
@@ -286,7 +286,7 @@ Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.
 
 ```
 
-### `DeleteEntityMessage` {#DeleteEntity}
+### `DeleteEntityMessage` {#deleteentity}
 
 Delete `entity` (i.e. all associated component state), expecting the identifier to never be reused for a different entity.
 
@@ -303,7 +303,7 @@ Note that there is no `timestamp` field. Since the lifespan of `entity` is over,
 
 The set of methods in `EngineApi` provide the interface to exchange messages and reconstruct the state of the world from scratch.
 
-### `crdtSendToRenderer` {#crdtSendToRenderer}
+### `crdtSendToRenderer` {#crdtsendtorenderer}
 
 Send a serialized message from the scene to the renderer, return an array of serialized messages that the renderer has for the scene.
 
@@ -321,7 +321,7 @@ interface Response {
 function crdtSendToRenderer(Request): Promise<Response>;
 ```
 
-### `crdtGetState` {#crdtGetState}
+### `crdtGetState` {#crdtgetstate}
 
 ```ts
 interface Request {}

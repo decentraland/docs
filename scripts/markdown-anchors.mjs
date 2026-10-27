@@ -5,7 +5,7 @@ import { extractLinks, resolveLocalLink, splitFrontMatter } from './markdown-lin
 
 const markdown = new MarkdownIt({ html: true })
 
-// GitBook preserves explicit IDs; implicit headings use lowercase text with
+// GitBook lowercases explicit IDs; implicit headings use lowercase text with
 // punctuation removed and spaces replaced by hyphens. Keep Unicode letters.
 function slug(text) {
 	return text.toLowerCase().replace(/[^\p{L}\p{N}\p{M}_\s-]/gu, '').replace(/\s/g, '-')
@@ -30,7 +30,7 @@ export function extractAnchors(content) {
 		function visit(node) {
 			const attrs = node.attrs ?? []
 			for (const attr of attrs) {
-				if (heading && (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name'))) anchors.add(attr.value)
+				if (heading && (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name'))) anchors.add(attr.value.toLowerCase())
 			}
 			// GitBook makes expandable FAQ summaries linkable too.
 			if (node.tagName === 'summary' && !attrs.some(attr => attr.name === 'id')) addGenerated(text(node))
@@ -41,13 +41,13 @@ export function extractAnchors(content) {
 	function visit(tokens) {
 		for (let index = 0; index < tokens.length; index++) {
 			const token = tokens[index]
-			if (token.type === 'heading_open') {
+			if (token.type === 'heading_open' && Number(token.tag.slice(1)) <= 4) {
 				const inline = tokens[index + 1]
 				for (const child of inline.children ?? []) {
 					if (child.type === 'html_inline') htmlAnchors(child.content, true)
 				}
 				const explicit = inline.content.match(/\{#([^}]+)\}\s*$/)?.[1]
-				if (explicit) anchors.add(explicit)
+				if (explicit) anchors.add(explicit.toLowerCase())
 				else {
 					const text = (inline.children ?? [])
 						.filter(child => ['text', 'code_inline', 'image'].includes(child.type))

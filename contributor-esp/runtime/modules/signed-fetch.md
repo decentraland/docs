@@ -6,7 +6,7 @@ Usar `SignedFetch` desde una escena requiere el permiso [`USE_FETCH`](../../cont
 
 ## Methods
 
-##### `signedFetch` {#signedFetch}
+### `signedFetch` {#signedfetch}
 
 Hacer una solicitud HTTP como lo harías con ([`fetch`](../globals.md#http)), agregando automáticamente los encabezados de verificación.
 

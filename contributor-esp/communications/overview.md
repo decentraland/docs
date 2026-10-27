@@ -112,7 +112,7 @@ El flujo para ser asignado a una isla y unirse a ella está detallado en la secc
 
 ## Mensajes
 
-Los mensajes en el protocolo comms son blobs binarios serializados usando [protocol buffers](https://github.com/protocolbuffers/protobuf), envueltos en una estructura [Packet](messages.md#Packet).
+Los mensajes en el protocolo comms son blobs binarios serializados usando [protocol buffers](https://github.com/protocolbuffers/protobuf), envueltos en una estructura [Packet](messages.md#packet).
 
 {% hint style="info" %}
 Al usar la palabra _mensaje_ en el contexto de comms, siempre nos estaremos refiriendo al protocolo de mensajes binarios, no a mensajes de chat intercambiados entre jugadores.

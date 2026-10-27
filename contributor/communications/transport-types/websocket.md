@@ -21,7 +21,7 @@ The transport uses the regular websocket protocol over HTTPS. Clients can open a
 All messages from the websocket transport are serialized using the [`WsPacket`](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L78) structure. They implement a set of protocol-level connectivity and authentication messages, plus a container type for client messages.
 
 {% hint style="info" %}
-The [`WsPacket`](websocket.md#WsPacket) structure should not be confused with the message \[`Packet`]\[Packet]. It's an additional wrapping layer specific to the websocket transport. Actual comms messages are contained in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) type.
+The [`WsPacket`](websocket.md#websocket-packets) structure should not be confused with the message \[`Packet`]\[Packet]. It's an additional wrapping layer specific to the websocket transport. Actual comms messages are contained in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) type.
 {% endhint %}
 
 | Field     | Type   | Value                                                                                                                                                                                                                                            |
@@ -69,6 +69,8 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
+<a id="WsChallengeRequired"></a>
+
 **`WsChallengeRequired`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L48)
 
 | Field               | Type     | Value                                                                      |
@@ -78,6 +80,8 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
+<a id="WsSignedChallenge"></a>
+
 **`WsSignedChallenge`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L56)
 
 | Field             | Type     | Value                                                                                              |
@@ -85,6 +89,8 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 | `auth_chain_json` | `string` | A serialized [authentication chain](../../authentication/authchain.md) ending with the challenge signature. |
 
 ***
+
+<a id="WsWelcome"></a>
 
 **`WsWelcome`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L11)
 
@@ -103,6 +109,8 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
+<a id="WsPeerJoin"></a>
+
 **`WsPeerJoin`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L19)
 
 | Field     | Type     | Value                                                                 |
@@ -112,6 +120,8 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
+<a id="WsPeerLeave"></a>
+
 **`WsPeerLeave`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L27)
 
 | Field   | Type     | Value                                            |
@@ -119,6 +129,8 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 | `alias` | `uint32` | The server-generated ID of the disconnected peer |
 
 ***
+
+<a id="WsKicked"></a>
 
 **`WsKicked`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74)
 
@@ -144,6 +156,8 @@ To send comms [messages](../messages.md), clients wrap them in the [`WsPeerUpdat
 ```
 
 ***
+
+<a id="WsPeerUpdate"></a>
 
 **`WsPeerUpdate`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L34)
 

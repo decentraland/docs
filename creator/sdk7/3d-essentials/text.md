@@ -149,7 +149,7 @@ The `TextShape` component creates a text box that has a size, padding, etc.
 * `paddingLeft`: _number_. Space between the text and the outline of the text box.
 
 {% hint style="info" %}
-**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
+**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-player) so that the text rotates to always face the player and be legible.
 {% endhint %}
 
 ## Text shadow and outline properties

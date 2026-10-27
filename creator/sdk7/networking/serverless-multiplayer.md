@@ -107,6 +107,8 @@ function onThrow() {
 }
 ```
 
+<a id="parented-entities"></a>
+
 **Parented entities**
 
 The parent of an entity is normally defined via `parent` property in the `Transform` component. This property however points to the local entity id of the parent, which could vary, see [About enum id](serverless-multiplayer.md#about-the-enum-id). To parent entities that need to be synced, or that have children that need to be synced, use the `parentEntity()` function instead of the `Transform`.

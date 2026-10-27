@@ -202,7 +202,7 @@ Transform.create(movingEntity, {
 MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 ```
 
-Los valores permitidos son los mismos que los del componente `MeshCollider`. Consulta [Capas de colisión](colliders.md#Collision-layers) para más detalles.
+Los valores permitidos son los mismos que los del componente `MeshCollider`. Consulta [Capas de colisión](colliders.md#capas-de-colisión) para más detalles.
 
 * `ColliderLayer.CL_PLAYER`: cualquier avatar (local + remoto)
 * `ColliderLayer.CL_MAIN_PLAYER`: solo el jugador local

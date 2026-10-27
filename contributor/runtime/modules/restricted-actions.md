@@ -20,12 +20,13 @@ The module contains the following methods and types:
 * [`function changeRealm`](restricted-actions.md#changeRealm)
 * [`function openExternalUrl`](restricted-actions.md#openExternalUrl)
 * [`function openNftDialog`](restricted-actions.md#openNftDialog)
-* [`function setCommunicationsAdapter`](restricted-actions.md#setCommunicationsAdapter)
 * [`interface Vector3`](restricted-actions.md#Vector3)
 
 ### Methods
 
 Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes.md#permissions) that can be requested in the scene manifest.
+
+<a id="movePlayerTo"></a>
 
 **`movePlayerTo`**
 
@@ -46,6 +47,8 @@ interface Response {
 
 function movePlayerTo(Request): Promise<Response>;
 ```
+
+<a id="teleportTo"></a>
 
 **`teleportTo`**
 
@@ -71,6 +74,8 @@ interface Response {}
 function teleportTo(Request): Promise<Response>;
 ```
 
+<a id="triggerEmote"></a>
+
 **`triggerEmote`**
 
 Make the player's avatar display an emote animation, using one of the predefined names.
@@ -86,6 +91,8 @@ interface Response {}
 
 function triggerEmote(Request): Promise<Response>;
 ```
+
+<a id="openExternalUrl"></a>
 
 **`openExternalUrl`**
 
@@ -106,6 +113,8 @@ interface Response {
 function openExternalUrl(Request): Promise<Response>;
 ```
 
+<a id="openNftDialog"></a>
+
 **`openNftDialog`**
 
 Show information about an NFT to the player, using an appropriate UI.
@@ -123,6 +132,8 @@ interface Response {
 
 function openNftDialog(Request): Promise<Response>;
 ```
+
+<a id="changeRealm"></a>
 
 **`changeRealm`** (deprecated)
 
@@ -150,6 +161,8 @@ function changeRealm(Request): Promise<Response>;
 ### Types
 
 The only additional type used by methods in this module is the `Vector3`.
+
+<a id="Vector3"></a>
 
 **`Vector3`**
 

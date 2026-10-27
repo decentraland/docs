@@ -16,7 +16,7 @@ Encuentra la documentación completa para SDK7 bajo la sección **SDK7** de la d
 
 Para probar fácilmente SDK7, visita [el playground](https://playground.decentraland.org/). Escribe código SDK7 a la izquierda de la pantalla, y ve la escena resultante a la derecha. A medida que cambias el código, la escena se actualiza automáticamente.
 
-Si encuentras algún problema, por favor copia una URL a la configuración actual de tu escena con el botón **Share**, y [reporta un problema](alpha-testing-guidelines.md#reporting-issues) incluyendo ese enlace a tu código.
+Si encuentras algún problema, por favor copia una URL a la configuración actual de tu escena con el botón **Share**, y [reporta un problema](alpha-testing-guidelines.md#reportando-problemas) incluyendo ese enlace a tu código.
 
 ### Usando SDK 7
 

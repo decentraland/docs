@@ -18,7 +18,6 @@ El módulo contiene los siguientes métodos y tipos:
 - [`function changeRealm`](#changeRealm)
 - [`function openExternalUrl`](#openExternalUrl)
 - [`function openNftDialog`](#openNftDialog)
-- [`function setCommunicationsAdapter`](#setCommunicationsAdapter)
 - [`interface Vector3`](#Vector3)
 
 ## Methods

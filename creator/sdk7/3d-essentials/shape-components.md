@@ -169,7 +169,7 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 * Save your models in _.glb_ format, which is a lighter version of _.gltf_.
 * If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
-* If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them underground, or at a scale of 0. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See [entities and components](../architecture/entities-components.md#pooling-entities-and-components)
+* If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them underground, or at a scale of 0. This will help them appear faster, the trade-off is that they will occupy memory when not in use.
 
 ## Stretching a shape
 

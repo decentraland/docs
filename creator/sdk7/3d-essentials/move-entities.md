@@ -592,7 +592,7 @@ Note that in order to combine the current rotation with each increment, we're us
 In this example, we're rotating the entity by 1 degree in an upwards direction in each tick of the game loop.
 
 {% hint style="info" %}
-**💡 Tip**: To make an entity always rotate to face the player, you can add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user).
+**💡 Tip**: To make an entity always rotate to face the player, you can add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-player).
 {% endhint %}
 
 ![](../../images/media/gifs/rotate.webp)

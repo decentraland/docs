@@ -54,7 +54,7 @@ Asegúrate de haber [instalado el Creator Hub](../../scene-editor/get-started/ed
 3. Un mensaje te preguntará si quieres publicar en un **WORLD** o en **LAND**.
    * Selecciona **PUBLISH TO WORLD** para hacer que tu escena esté disponible en uno de tus [WORLDs](../../worlds/about.md). Luego selecciona cuál de tus NAMEs o Dominios ENS publicar.
    * Selecciona **PUBLISH TO LAND** si posees land, o te han dado permisos de despliegue por un propietario. Luego selecciona las parcelas donde quieres que se despliegue en el mapa. Las parcelas donde se te permite desplegar se muestran en rosa.
-   * Selecciona **Alternative servers** para publicar en el [servidor de prueba](publishing.md#the-test-server) o un [servidor personalizado](publishing.md#custom-servers).
+   * Selecciona **Alternative servers** para publicar en el [servidor de prueba](publishing.md#the-test-server) o un [servidor personalizado](publishing.md#servidores-personalizados).
 4. Esto abre una nueva pestaña en tu navegador, mostrando detalles sobre la carga. Aprueba la transacción.
    * Para LAND en una cuenta de navegador Metamask, confirma el despliegue. Luego aprueba la transacción en la extensión del navegador Metamask.
    * Para LAND vinculado a un wallet que puedes usar vía Wallet Connect, haz clic en **Connect wallet**, luego escanea el código QR con tu dispositivo móvil y sigue los pasos en Wallet Connect.

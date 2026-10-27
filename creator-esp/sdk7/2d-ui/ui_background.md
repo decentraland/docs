@@ -32,9 +32,9 @@ Los siguientes campos pueden configurarse, todos son opcionales:
 * `textureMode`: Selecciona cómo quieres que la textura se adapte al tamaño de la entidad a la que se aplica. (TextureMode = 'nine-slices' | 'center' | 'stretch') enum, que soporta los siguientes valores:
   * `center`: La textura no se estira, se posiciona centrada en la entidad y partes de ella pueden recortarse dependiendo del tamaño de la entidad.
   * `stretch`: La textura se estira para coincidir con toda la superficie de la entidad.
-  * `nine-slices`: Partes de la textura se estiran para coincidir con toda la superficie de la entidad, dejando márgenes sin estirar. Consulta [texturas nine-slice](ui_background.md#nine-slice-textures).
+  * `nine-slices`: Partes de la textura se estiran para coincidir con toda la superficie de la entidad, dejando márgenes sin estirar. Consulta [texturas nine-slice](ui_background.md#texturas-nine-slice).
 * `avatarTexture`: Muestra una miniatura de perfil de avatar, basada en un ID de avatar. Consulta [Retratos de Avatar](ui_background.md).
-* `textureSlices`: Determina los márgenes a usar al usar el modo de textura nine-slice, consulta [texturas nine-slice](ui_background.md#nine-slice-textures). Establece un número menor que 1, como una fracción del ancho o alto total de la imagen.
+* `textureSlices`: Determina los márgenes a usar al usar el modo de textura nine-slice, consulta [texturas nine-slice](ui_background.md#texturas-nine-slice). Establece un número menor que 1, como una fracción del ancho o alto total de la imagen.
 
 Color simple:
 

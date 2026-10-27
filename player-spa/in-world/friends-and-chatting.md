@@ -52,7 +52,7 @@ En Decentraland, la principal línea de comunicación es el chat basado en texto
 
 ### Chat Cercano
 
-Identificable por el ícono de Decentraland, el Chat Cercano es donde puedes chatear con las personas a tu alrededor en el mundo, incluso si no son amigos. Siempre estará listado en la parte superior de tu lista de chats. El Chat Cercano también se puede usar para ingresar comandos de Chat que solo tú verás—aprende más [**aquí**](shortcuts-and-chat-commands.md#chat-commands).
+Identificable por el ícono de Decentraland, el Chat Cercano es donde puedes chatear con las personas a tu alrededor en el mundo, incluso si no son amigos. Siempre estará listado en la parte superior de tu lista de chats. El Chat Cercano también se puede usar para ingresar comandos de Chat que solo tú verás—aprende más [**aquí**](shortcuts-and-chat-commands.md#comandos-de-chat).
 
 ![](../.gitbook/assets/Chat10.webp)
 

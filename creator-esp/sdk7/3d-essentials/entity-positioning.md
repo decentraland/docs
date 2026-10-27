@@ -333,7 +333,7 @@ Hay tres métodos para adjuntar una entidad al jugador:
 * Hacerla hija de la **Camera Entity**
 * Usar el **componente AvatarAttach**
 
-La forma más simple de adjuntar una entidad al avatar es establecer el padre como la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.PlayerEntity`. La entidad se moverá junto con la posición del jugador.
+La forma más simple de adjuntar una entidad al avatar es establecer el padre como la [entidad reservada](../architecture/entities-components.md#entidades-reservadas) `engine.PlayerEntity`. La entidad se moverá junto con la posición del jugador.
 
 ```ts
 let childEntity = engine.addEntity()
@@ -347,7 +347,7 @@ Transform.create(childEntity, {
 })
 ```
 
-También puedes establecer una entidad a la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`. Al usar la entidad de cámara en primera persona, la entidad adjunta seguirá los movimientos de la cámara. Esto es ideal para mantener algo siempre a la vista, por ejemplo para mantener el modelo 3D del arma siempre a la vista, incluso cuando la cámara apunta hacia arriba.
+También puedes establecer una entidad a la [entidad reservada](../architecture/entities-components.md#entidades-reservadas) `engine.CameraEntity`. Al usar la entidad de cámara en primera persona, la entidad adjunta seguirá los movimientos de la cámara. Esto es ideal para mantener algo siempre a la vista, por ejemplo para mantener el modelo 3D del arma siempre a la vista, incluso cuando la cámara apunta hacia arriba.
 
 ```ts
 let childEntity = engine.addEntity()
@@ -490,7 +490,7 @@ Transform.create(childEntity, {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Si la entidad adjunta tiene colisionadores, estos colisionadores podrían bloquear el movimiento del jugador. Considera deshabilitar la capa de física de los colisionadores de la entidad. Consulta [Capas de colisión](colliders.md#collision-layers)
+**📔 Nota**: Si la entidad adjunta tiene colisionadores, estos colisionadores podrían bloquear el movimiento del jugador. Considera deshabilitar la capa de física de los colisionadores de la entidad. Consulta [Capas de colisión](colliders.md#capas-de-colisión)
 {% endhint %}
 
 ### Adjuntar a otros jugadores

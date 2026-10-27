@@ -54,7 +54,7 @@ El tween de movimiento toma la siguiente información:
 Estos otros parámetros opcionales también están disponibles:
 
 * `faceDirection`: Si es true, la entidad se rota para mirar en la dirección del movimiento.
-* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#tweens-no-lineales)
 
 ## Rotar entre dos direcciones
 
@@ -82,7 +82,7 @@ El tween de rotación toma la siguiente información:
 
 Este otro parámetro opcional también está disponible:
 
-* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#tweens-no-lineales)
 
 ### Rotar con un punto de pivote
 
@@ -139,7 +139,7 @@ El tween de escala toma la siguiente información:
 
 Este otro parámetro opcional también está disponible:
 
-* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens)
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#tweens-no-lineales)
 
 ## Tweens no lineales
 
@@ -321,7 +321,7 @@ TweenSequence.create(myEntity, {
 Ten en cuenta que al definir un tween dentro de un TweenSequence, necesitas usar el formato más verboso de `Tween.Mode.Move`, o `Tween.Mode.Rotate`, o `Tween.Mode.Scale` para definir el tween. En este formato más verboso, necesitas especificar:
 
 * `duration`: Cuántos milisegundos toma moverse entre las dos posiciones
-* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens). En este formato el valor es obligatorio.
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#tweens-no-lineales). En este formato el valor es obligatorio.
 * `mode`: El modo del tween, que puede ser `Tween.Mode.Move`, `Tween.Mode.Rotate`, o `Tween.Mode.Scale`.
 
 Y dentro del campo `mode`, necesitas especificar:
@@ -470,7 +470,7 @@ Ten en cuenta que para combinar la rotación actual con cada incremento, estamos
 En este ejemplo, estamos rotando la entidad 1 grado en dirección hacia arriba en cada tick del bucle del juego.
 
 {% hint style="info" %}
-**💡 Consejo**: Para hacer que una entidad siempre rote para mirar al jugador, puedes agregar un [componente `Billboard`](entity-positioning.md#face-the-user).
+**💡 Consejo**: Para hacer que una entidad siempre rote para mirar al jugador, puedes agregar un [componente `Billboard`](entity-positioning.md#mirar-al-jugador).
 {% endhint %}
 
 
@@ -939,7 +939,7 @@ El tween de textura toma la siguiente información:
 Este otro parámetro opcional también está disponible:
 
 * `movementType`: (opcional), define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
-* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#non-linear-tweens). Nota: Este parámetro solo se usa si se proporciona una duración.
+* `easingFunction`: Qué función de easing usar. Consulta [Tweens no lineales](move-entities.md#tweens-no-lineales). Nota: Este parámetro solo se usa si se proporciona una duración.
 
 ## Movimiento constante de textura
 
@@ -963,4 +963,4 @@ Este otro parámetro opcional también está disponible:
 * `movementType`: define si el movimiento será en el campo offset o tiling. Por defecto usa offset.
 * `duration`: Cuántos milisegundos sostener el movimiento. Después de este tiempo, el movimiento se detendrá.
 
-Lee más sobre tweens de textura en la sección [Tweens de textura](materials.md#texture-tweens).
+Lee más sobre tweens de textura en la sección [Tweens de textura](materials.md#tweens-de-textura).

@@ -24,9 +24,9 @@ Hay capas de colisión separadas para interactuar con la física del jugador o c
 
 La forma más fácil de administrar los colisionadores de una entidad es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md).
 
-Puedes agregar un componente **Mesh Collider** a tu entidad para asignar una forma primitiva (cubo, plano, esfera, cilindro o cono) a tu entidad. Luego puedes elegir [Capas de colisión](colliders.md#collision-layers) de un menú desplegable.
+Puedes agregar un componente **Mesh Collider** a tu entidad para asignar una forma primitiva (cubo, plano, esfera, cilindro o cono) a tu entidad. Luego puedes elegir [Capas de colisión](colliders.md#capas-de-colisión) de un menú desplegable.
 
-También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](colliders.md#collision-layers) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
+También puedes configurar las capas de colisión en un componente **GLTF** para cambiar las [Capas de colisión](colliders.md#capas-de-colisión) predeterminadas utilizadas en la geometría del colisionador o la geometría visible del modelo. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
 
 
 

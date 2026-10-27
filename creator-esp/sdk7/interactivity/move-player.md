@@ -52,7 +52,7 @@ pointerEventsSystem.onPointerDown(
 El movimiento del jugador ocurre instantáneamente, sin pantallas de confirmación ni transiciones de cámara.
 
 {% hint style="warning" %}
-**📔 Nota**: Los jugadores solo pueden ser movidos si ya están parados dentro de los límites de la escena, y solo pueden ser movidos a ubicaciones que estén dentro de los límites de la escena. No puedes usar `movePlayerTo()` para transportar a un jugador a otra escena. Para mover a un jugador a otra escena, consulta [Teletransportes](external-links.md#teleports).
+**📔 Nota**: Los jugadores solo pueden ser movidos si ya están parados dentro de los límites de la escena, y solo pueden ser movidos a ubicaciones que estén dentro de los límites de la escena. No puedes usar `movePlayerTo()` para transportar a un jugador a otra escena. Para mover a un jugador a otra escena, consulta [Teletransportes](external-links.md#teletransportes).
 {% endhint %}
 
 ## Permisos requeridos en wearables inteligentes y experiencias portátiles

@@ -249,9 +249,9 @@ Los mensajes entre el World Explorer y el runtime de escena son estructuras en u
 
 Hay tres tipos de mensaje en el protocolo CRDT:
 
-- [`PutComponent`](#PutComponent)
-- [`DeleteComponent`](#DeleteComponent)
-- [`DeleteEntity`](#DeleteEntity)
+- [`PutComponent`](#PutComponentMessage)
+- [`DeleteComponent`](#DeleteComponentMessage)
+- [`DeleteEntity`](#DeleteEntityMessage)
 
 Ten en cuenta que no hay mensajes `CreateComponent` o `CreateEntity`. Las reglas CRDT auto-crean entidades y componentes que no se conocían previamente, como [se explicó arriba](#crdtStateAutoCreate).
 

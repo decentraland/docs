@@ -40,7 +40,7 @@ También puedes agregar una sola copia del ítem manteniendo presionado **Shift*
 
 ![](../../.gitbook/assets/ground-entities.webp)
 
-La colección de ítems de ground aparece en el [entity tree](scene-editor-essentials.md#the-entity-tree) dentro de una carpeta. Cada uno de ellos está bloqueado, para evitar seleccionarlos accidentalmente. [Desactiva](scene-editor-essentials.md#lock-or-hide-items) los ítems para moverlos o editarlos.
+La colección de ítems de ground aparece en el [entity tree](scene-editor-essentials.md#the-entity-tree) dentro de una carpeta. Cada uno de ellos está bloqueado, para evitar seleccionarlos accidentalmente. [Desactiva](scene-editor-essentials.md#bloquear-u-ocultar-ítems) los ítems para moverlos o editarlos.
 
 ### Agregar ítems
 

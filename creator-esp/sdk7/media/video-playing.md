@@ -82,7 +82,7 @@ VideoPlayer.create(screen, {
 })
 ```
 
-Consulta [Transmisión usando Decentraland cast](video-playing.md#streaming-using-decentraland-cast) para detalles sobre cómo usar este tercer método alternativo.
+Consulta [Transmisión en vivo](video-playing.md#transmisión-en-vivo) para detalles sobre cómo usar este tercer método alternativo.
 
 ### Acerca de la Transmisión Externa {#about-external-streaming}
 

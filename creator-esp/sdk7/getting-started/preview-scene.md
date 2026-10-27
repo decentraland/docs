@@ -8,7 +8,7 @@ metaLinks:
 
 # Preview Your Scene
 
-Una vez que hayas [construido una nueva scene](preview-scene.md#create-your-first-scene) o descargado un [example de scene](https://studios.decentraland.org/resources?sdk_version=SDK7) puedes previsualizarla localmente.
+Una vez que hayas [construido una nueva scene](sdk-101.md#crea-tu-primera-scene) o descargado un [example de scene](https://studios.decentraland.org/resources?sdk_version=SDK7) puedes previsualizarla localmente.
 
 ## Usando el Scene Editor
 
@@ -74,10 +74,10 @@ Usa los desplegables y haz clic en **Apply Layout** para cambiar las dimensiones
 
 ![](../../.gitbook/assets/scene-parcels-toggled.webp)
 
-También puedes editar el archivo _scene.json_ para listar múltiples parcelas en el campo "parcels". Consulta [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) para más detalles.
+También puedes editar el archivo _scene.json_ para listar múltiples parcelas en el campo "parcels". Consulta [set parcels via the command line](../projects/scene-metadata.md#parcelas-de-la-escena) para más detalles.
 
 {% hint style="info" %}
-**💡 Tip**: Mientras ejecutas el preview, las coordenadas de parcela no necesitan coincidir con las que tu scene realmente usará, siempre que sean adyacentes y estén organizadas en la misma forma. Tendrás que reemplazarlas con las coordenadas reales más tarde cuando [despliegues la scene](preview-scene.md#upload-a-scene-to-decentraland).
+**💡 Tip**: Mientras ejecutas el preview, las coordenadas de parcela no necesitan coincidir con las que tu scene realmente usará, siempre que sean adyacentes y estén organizadas en la misma forma. Tendrás que reemplazarlas con las coordenadas reales más tarde cuando [despliegues la scene](preview-scene.md#subir-una-scene-a-decentraland).
 {% endhint %}
 
 ## Ver la consola de la scene

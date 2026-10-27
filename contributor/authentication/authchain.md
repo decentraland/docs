@@ -223,9 +223,13 @@ The `type` and `payload` values for identification and delegation are standard a
 
 The protocol defines three standard types, and one standard purpose:
 
+<a id="SIGNER"></a>
+
 **Type `SIGNER`**
 
 **Must** be the initial `type` in the chain, where `payload` is the user's Ethereum address and `signature` is an empty string.
+
+<a id="ECDSA_EPHEMERAL"></a>
 
 **Type `ECDSA_EPHEMERAL`**
 

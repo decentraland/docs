@@ -311,7 +311,7 @@ Transform.deleteFrom(myEntity)
 Si intentas eliminar un componente que no existe en la entidad, esta acción no generará errores.
 
 {% hint style="warning" %}
-**📔 Nota**: Para eliminar todos los componentes de una entidad a la vez, consulta [esta sección](entities-components.md#remove-entities)
+**📔 Nota**: Para eliminar todos los componentes de una entidad a la vez, consulta [esta sección](entities-components.md#eliminar-entidades)
 {% endhint %}
 
 ### Verificar un componente

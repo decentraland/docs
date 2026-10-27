@@ -18,7 +18,7 @@ For example, scenes will be able to detect the state of the Explorer's window in
 
 Holds general information about the scene's context.
 
-- [`Transform`](components#Transform): positional information of the scene's origin point, to which all other transforms without an explicit parent are relative.
+- [`Transform`](basic-components.md#Transform): positional information of the scene's origin point, to which all other transforms without an explicit parent are relative.
 
 The `Transform` component of the `RootEntity` is initialized with the following values:
 
@@ -32,11 +32,11 @@ rotation: [0, 0, 0, 1] # XYZW
 
 Holds data about the player, their identity, their avatar and location.
 
-- [`Transform`](components#Transform): the positional information for the player's avatar.
+- [`Transform`](basic-components.md#Transform): the positional information for the player's avatar.
 
 ##### `CameraEntity` (`2`) {#CameraEntity}
 
 Holds information about the game camera. All components are managed by the renderer.
 
-- [`Transform`](components#Transform): the positional information of the camera itself.
-- [`PointerLocked`](components#PointerLocked): whether the pointer follows the camera direction or moves independently.
+- [`Transform`](basic-components.md#Transform): the positional information of the camera itself.
+- [`PointerLocked`](basic-components.md#PointerLock): whether the pointer follows the camera direction or moves independently.

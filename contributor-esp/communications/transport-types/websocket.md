@@ -19,7 +19,7 @@ El transporte usa el protocolo websocket regular sobre HTTPS. Los clientes puede
 Todos los mensajes del transporte websocket están serializados usando la estructura [`WsPacket`][WsPacket]. Implementan un conjunto de mensajes de conectividad y autenticación a nivel de protocolo, además de un tipo contenedor para mensajes de cliente.
 
 {% hint style="info" %}
-La estructura [`WsPacket`](#WsPacket) no debe confundirse con el mensaje [`Packet`][Packet]. Es una capa de envoltorio adicional específica del transporte websocket. Los mensajes comms reales están contenidos en el tipo [`WsPeerUpdate`](#WsPeerUpdate).
+La estructura [`WsPacket`](#paquetes-websocket) no debe confundirse con el mensaje [`Packet`][Packet]. Es una capa de envoltorio adicional específica del transporte websocket. Los mensajes comms reales están contenidos en el tipo [`WsPeerUpdate`](#WsPeerUpdate).
 {% endhint %}
 
 | Campo     | Tipo   | Valor                                                                                                                                                  |

@@ -264,7 +264,7 @@ PointerEvents.create(myEntity, {
 Whenever the player's cursor points at the colliders in this entity, the UI will display a hover hint to indicate that the entity can be interacted with. See the sections below for details on what you can configure.
 
 {% hint style="warning" %}
-**📔 Note**: The `PointerEvents` component just handles the displaying of hover feedback. To handle the button events themselves with custom logic, see [Using-a-system](system-based-events.md#check-for-events).
+**📔 Note**: The `PointerEvents` component just handles the displaying of hover feedback. To handle the button events themselves with custom logic, see [Using-a-system](system-based-events.md#using-a-system).
 {% endhint %}
 
 The `PointerEvents` component requires at least one pointer event definition. Each pointer event definition can be configured with the following:

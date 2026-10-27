@@ -128,7 +128,7 @@ En el ejemplo anterior, la imagen para el material se encuentra en una carpeta `
 Al crear una textura, también puedes pasar parámetros adicionales:
 
 * `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
-* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#envoltura-de-textura).
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -512,7 +512,7 @@ Las siguientes propiedades son compatibles dentro del objeto que pasas como argu
 
 * `userId`: ID del usuario cuyo perfil deseas mostrar
 * `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
-* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#envoltura-de-textura).
 
 ## Materiales transparentes
 
@@ -687,7 +687,7 @@ La propiedad `path` es una cadena que representa la ruta al nodo en el modelo _g
 En algunos modelos, sin embargo, el sandbox de Babylon puede listar rutas que pertenecen a vértices en lugar de meshes, lo cual no funcionará. Si intentas usar una ruta que no es válida, la consola de la escena mostrará un mensaje de error que incluye la lista completa de rutas válidas en ese modelo.
 {% endhint %}
 
-La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](materials.md#advanced-syntax) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
+La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](materials.md#sintaxis-avanzada) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
 
 ### Modificar el material de un nodo específico en el modelo
 

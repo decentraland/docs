@@ -5,7 +5,7 @@ Hay cinco tipos de componentes:
 1. [Componentes de objeto](#object) agregan propiedades visuales y físicas a Entidades.
 2. [Componentes de juego](#game) pueden solicitar acciones y recibir información del motor del juego.
 3. [Componentes de medios](#media) pueden mostrar imágenes y reproducir sonidos.
-4. [Componentes de área](#area) alteran el comportamiento de Entidades en zonas específicas.
+4. [Componentes de área](#area-components) alteran el comportamiento de Entidades en zonas específicas.
 5. [Componentes de UI](#ui) permiten a las escenas renderizar interfaces flotantes.
 
 Excepto por [`Transform`](#Transform), que se especifica en detalle abajo, el estado de todos los componentes se serializa usando protocol buffers. Puedes seguir el enlace en cada título para ver la definición completa.

@@ -141,6 +141,20 @@ pointerEventsSystem.onPointerDown(
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](locomotion.md#freeze-the-player) for the duration of the avatar animation.
 {% endhint %}
 
+#### Props, particles and sound
+
+An emote file played with `triggerSceneEmote()` can include props, like a tennis racket or a jet of flames, animated together with the avatar. Build it the same way as an Emotes 2.0 emote, following the naming rules in [Props and Sounds](../../../wearables-and-emotes/emotes/props-and-sounds.md):
+
+* The file contains two animation clips: one whose name includes `_Avatar` for the avatar, and one whose name includes `_Prop` for the prop armature.
+* Both clips have the same length.
+* Particle effects work if you convert them to animated bones, see [Particles in Emotes](../../../wearables-and-emotes/emotes/particles-in-emotes.md).
+
+Other players around see the props, just like they see the avatar animation.
+
+{% hint style="warning" %}
+**📔 Note**: `triggerSceneEmote()` doesn't play sound. Audio only plays for emotes uploaded through the Builder. To pair a sound with a scene emote, play it with an [AudioSource](../../3d-essentials/sounds.md) at the same time.
+{% endhint %}
+
 ### Animate only the upper body
 
 Both `triggerEmote()` and `triggerSceneEmote()` accept an optional `mask` property, that limits the animation to only part of the avatar's body.

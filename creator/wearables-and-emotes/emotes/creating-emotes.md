@@ -108,7 +108,7 @@ In the provided avatar file, you will find a collection called ***Animation_Area
 
 To summarize, avatar can move right, left, front amd back and long as the root stays within the cylinder, which means 1 meter in any of the four directions.
 
-![Avatar movement.](../../images/emotes/avatar_movement.gif)
+![Avatar movement.](../../images/emotes/avatar_movement.webp)
 
 As for the height, it can go all the way up (max 4 meters) as long as the avatar stays within the bounding box.  Below are some cases on avatar height done right (whole body within bounding box) and some  done wrong (mesh outside of bounding box).
 
@@ -123,7 +123,7 @@ As for the height, it can go all the way up (max 4 meters) as long as the avatar
 
 Here are some examples of emotes that are within the animation area boundaries.
 
-| ![](../../images/emotes/whack-a-frog.gif) | ![](../../images/emotes/love-grenade.gif) |
+| ![](../../images/emotes/whack-a-frog.webp) | ![](../../images/emotes/love-grenade.webp) |
 |-----------------------------------------|---------------------------------------------|
 
 {% hint style="info" %}
@@ -148,13 +148,13 @@ Create a new animation by duplicating the existing one or by clicking on _**Unli
 
 In Blender, you can have multiple animation tracks in the same file. It is possible to browse them by clicking on the Browse Action dropdown menu. All animation with and F (Fake User) will be saved. To delete an animation, press Shift on the keyboard and click on the X. After doing that, the animation will show a 0 next to it, which means that it will be deleted the next time you close Blender or re-open the file.
 
-![](../../images/emotes/deleting_animation.gif)
+![](../../images/emotes/deleting_animation.webp)
 
 Browsing animations: The ones with an F will be saved, and the ones with 0 will be deleted.
 
 Another way of deleting animations without having to reload Blender is by changing the Display Mode  from View Layer to Blender File. Expand Actions and delete any unwanted animation by right clicking on them and selecting Delete.
 
-![](../../images/emotes/deleting_animation2.gif)
+![](../../images/emotes/deleting_animation2.webp)
 
 You can delete animations directly from Blender File under Display Mode in the outliner.
 
@@ -181,13 +181,13 @@ Duplicating animation clips.
 
 Emote overrides happen when deform bones don’t have a keyframe set in one of the parameters. Without a keyframe, that bone won’t have the information of where it should be, how much it has been rotated and scaled, leaving that channel open. The consequence is that if you play an emote in world and then trigger yours while the previous one was still playing, the information of location, rotation and scale will be overridden by the previous emote, which will cause a combination of them both. Unless this is done in purpose, it will affect your animation, sometimes with a fun result, but others with completely messed up the emote. Below is an example of an emote override.
 
-![](../../images//wearables-and-emotes/creating-emotes/01_emote_override.gif)
+![](../../images//wearables-and-emotes/creating-emotes/01_emote_override.webp)
 
 To avoid that, select all layers with bones in them (which can be found in **_Object Data Properties_** > **_Skeleton_** > **_Layers_**). Then, in **_Pose Mode_**, leave the timeline cursor in the first frame of your animation and, with your mouse in **_Viewport Display_**, press **_A_** to select everything. In the **_Graph Editor_**, click twice on the **_Eye_** icon next to the armature channel to make all channels visible. With all bones selected, press **_I_** to set a keyframe. Do the same for the last frame.
 
 **Make sure to select the deform bones, this is especially important!** The deform bones can be found in the last bottom layer and are shown as green bones in the **_Viewport_**.
 
-![](../../images/emotes/keyframe_bones.gif)
+![](../../images/emotes/keyframe_bones.webp)
 Setting keyframes on all bones in the first and last frames prevents emote overrides.
 
 # **The Animation Specifications**
@@ -200,7 +200,7 @@ The max length of an animation is **10 seconds** or **300 frames**. Remember to 
 ⚠️ Channels with visibility turned off in the Graph Editor won’t be keyframed, deleted, or even shown in the Action Editor. Unless it was intentionally done that way, pay extra attention to the visibility.
 {% endhint %}
 
-![](../../images/emotes/channel_visibility.gif)
+![](../../images/emotes/channel_visibility.webp)
 
 Make channels visible before keyframing!
 
@@ -238,7 +238,7 @@ If the emote contains any additional 3D models, the textures in these models can
 
 Since we only want the armature and the animation to be exported, turn off the mesh visibility and any object other than the armature before exporting, as shown below:
 
-![](../../images/emotes/mesh_visibility.gif)
+![](../../images/emotes/mesh_visibility.webp)
 
 Turn off the mesh visibility before exporting!
 
@@ -246,7 +246,7 @@ Your file must also contain only the one action you are exporting. The rig ships
 
 To export, go to _File_ > _Export_ > _glTF2.0 (.glb, .gltf)_
 
-![](../../images/emotes/export_gltf.gif)
+![](../../images/emotes/export_gltf.webp)
 
 For the export settings, expand Include and in Limit to toggle Visible Objects. Then, expand the Data tab, expand Armature and enable Export Deformation Bones Only.
 

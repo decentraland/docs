@@ -82,6 +82,29 @@ You need to keep in mind that there may be several players walking around your s
 
 As the owner of a scene, you can’t forcefully push or teleport an offending player out of your scene. However, you will be able to blacklist players in the signaling server. You can also implement a blacklist in your scene’s code and deny certain services to blacklisted players.
 
+## Build interiors larger than real life
+
+Most players explore Decentraland in the default third-person camera, which sits behind and above the avatar. That camera needs room. An interior built at real-world dimensions reads as a cramped corridor on screen: the camera presses against the ceiling, the avatar fills the frame, and the player can't see where they're going.
+
+Build the shell of a room at roughly **1.5 to 2 times** real headroom:
+
+| Element | Real-world | Build it at |
+| --- | --- | --- |
+| Ceiling height | 2.5 to 3 m | **5 to 6 m** |
+| Doorway or opening on a main route | about 2.1 m x 0.9 m | **about 4 m tall, 3 m or wider** |
+| Corridor width | 1.2 to 1.8 m | **4 m or wider** |
+| Any gap the avatar has to walk through | | **1.2 m of clear space or more** |
+
+A few things to keep in mind:
+
+* **Grow the room, not its contents.** Chairs, desks, counters, railings and signage stay close to life-size. If you scale the furniture up along with the walls, you rebuild the same cramped feeling one size larger, and the avatar stops reading as a person in the room.
+* **Apply this when you plan your floor area**, not after you've placed everything. Bigger rooms need more parcels, so these numbers change your [parcel budget](../projects/scene-metadata.md).
+* **Judge the result from the normal third-person camera.** A free camera or the Creator Hub viewport flatters interiors, because they can sit outside the geometry and look in. Walk the route as a player would. If the camera clips the ceiling, or the avatar's head crowds the top of the frame, the room is too short.
+
+{% hint style="info" %}
+**💡 Tip**: This is design guidance drawn from practice, not an engine limit. Treat the numbers as a starting point and adjust by eye.
+{% endhint %}
+
 ## Scene content limitations
 
 **Please build your scene being extra careful with the efficiency of your code.** Decentraland needs to run on web browsers and mobile devices, and players will be rendering multiple scenes at the same time as they walk through the metaverse.

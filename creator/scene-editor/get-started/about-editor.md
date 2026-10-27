@@ -63,7 +63,7 @@ Click and drag a selected item to move it freely around the scene at ground leve
 **💡 Tip**: Some items are **Smart items**, these come with built-in interactive behaviors. See [Smart items](../interactivity/smart-items.md) for more details.
 {% endhint %}
 
-![](../../images/editor/smart-items.jpg)
+![](../../images/editor/smart-items.webp)
 
 To give the 3D view the full height of the window, collapse the asset panel with the chevron button at the right end of its tab bar. The panel shrinks to just its tabs, and the same button brings it back at the height you had. Clicking any tab while it's collapsed also reopens it.
 

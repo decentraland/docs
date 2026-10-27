@@ -199,3 +199,5 @@ Make sure players can tell which objects are interactive and which aren't. When 
 ### 3rd person camera
 
 Players can switch between 1st and 3rd person camera at any time by hitting the ‘V’ key. Design your scene so interactions work comfortably in both modes: for example, small click targets are harder to hit in 3rd person. Your scene can read the player's current camera mode, or force a specific one in an area, see [Camera](../3d-essentials/camera.md).
+
+The 3rd person camera also changes how big a room needs to be. Interiors built at real-world dimensions feel cramped on screen, see [Build interiors larger than real life](design-games.md#build-interiors-larger-than-real-life).

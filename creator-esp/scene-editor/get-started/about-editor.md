@@ -57,7 +57,7 @@ Haz clic y arrastra un ítem seleccionado para moverlo libremente alrededor de l
 **💡 Tip**: Algunos ítems son **Smart items**, estos vienen con comportamientos interactivos incorporados. Consulta [Smart items](../interactivity/smart-items.md) para más detalles.
 {% endhint %}
 
-![](../../.gitbook/assets/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.webp)
 
 ### Preview
 

@@ -102,7 +102,7 @@ Para seleccionar múltiples ítems al mismo tiempo, presiona y mantén presionad
 
 Los smart items son ítems especiales que vienen con comportamientos interactivos incorporados. Consulta [Smart items](../interactivity/smart-items.md) para más detalles.
 
-![](../../.gitbook/assets/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.webp)
 
 ### The entity tree
 

@@ -58,7 +58,7 @@ For more information check all the scene limitations [here.](https://docs.decent
 {% hint style="warning" %}
 **🔥Optimization Tip🔥: Add Polygon Count** A valuable tip is to always keep on track of the polycount of your models. To do that in blender you need to turn on statistics on the viewport overlays panel.
 
-<img src="../images/3d-models-and-animations/3d-essentials/41-stats.gif" alt="" data-size="original">
+<img src="../images/3d-models-and-animations/3d-essentials/41-stats.webp" alt="" data-size="original">
 {% endhint %}
 
 ## Meshes On Large Scenes

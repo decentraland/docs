@@ -132,7 +132,7 @@ To preview your Smart Wearable, hover your mouse over the wearable element on th
 
 By clicking on the icon at the lower left, you can edit the avatar. This is useful if you have a male and female version of your Wearable, so check how both versions look in the editor, testing different emotes to identify skinning issues and mixing other Wearables to see how it matches with other clothes. When you’re done editing your wearable, click on _**Save**_.
 
-![](../../images/wearables-and-emotes/uploading-smart-wearables/19_edit_avatar_wearable_03.gif)
+![](../../images/wearables-and-emotes/uploading-smart-wearables/19_edit_avatar_wearable_03.webp)
 
 ## Testing in Decentraland
 
@@ -154,7 +154,7 @@ Click on _**Switch to Sepolia**_, and a pop-up from your wallet asking you to sw
 If you haven't enabled the Ethereum testnet networks, you can follow this [Metamask Article](https://support.metamask.io/hc/en-us/articles/13946422437147-How-to-view-testnets-in-MetaMask).
 {% endhint %}
 
-![](../../images/wearables-and-emotes/uploading-smart-wearables/22_smart_wearable_world.gif)
+![](../../images/wearables-and-emotes/uploading-smart-wearables/22_smart_wearable_world.webp)
 
 ## Before Publishing
 

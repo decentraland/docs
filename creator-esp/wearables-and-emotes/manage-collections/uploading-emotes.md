@@ -90,11 +90,11 @@ Una vez que establezcas la miniatura, tendrás el editor abierto. Aquí es donde
 
 Haciendo clic en el ícono en la parte inferior izquierda podrás editar el avatar. Haz clic en el ícono de cilindro en la parte inferior derecha para verificar si tu animación se mantiene dentro de los límites de altura y espacio.
 
-![](../../.gitbook/assets/edit_avatar.gif)
+![](../../.gitbook/assets/edit_avatar.webp)
 
 El ícono en la parte inferior izquierda te permite editar el avatar.
 
-![](../../.gitbook/assets/boundaries.gif)
+![](../../.gitbook/assets/boundaries.webp)
 
 El ícono de cilindro muestra los límites para la animación.
 
@@ -134,7 +134,7 @@ Después de eso, obtendrás un pop-up preguntando para abrir el Decentraland Exp
 Una vez en el mundo, presiona I para abrir el backpack y, en la pestaña de emotes, selecciona el emote para probar.
 {% endhint %}
 
-![](../../.gitbook/assets/testing.gif)
+![](../../.gitbook/assets/testing.webp)
 
 ### **Antes de Publicar**
 

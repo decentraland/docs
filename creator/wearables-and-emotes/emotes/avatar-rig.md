@@ -24,11 +24,11 @@ Even though a rig is not an exact replica of the human skeleton, it is good prac
 
 The orientation of bones will define in which direction they’ll rotate, like positive X, negative Z, etc. They can be set up in many different ways as long as it’s consistent through the whole rig. For example, if the X axis is chosen for the bending forward motion of the spine, it makes sense that the same set up is used for the legs. The orientation is also important because it’ll affect mirroring behavior. That means that, usually, the right side orientation is the mirrored version of the left side’s and vice versa.
 
-![](../../images/emotes/boneAxis.gif)
+![](../../images/emotes/boneAxis.webp)
 
 _Turn on the axes to show bone orientation._
 
-![](../../images/emotes/boneorientation.gif)
+![](../../images/emotes/boneorientation.webp)
 
 _The axes are the directions in which the bone will rotate._
 
@@ -78,7 +78,7 @@ In the forward kinematics, or FK, the parent in the hierarchy moves all the chil
 
 _Direction of movement in the hierarchy._
 
-![](../../images/emotes/FK_GIF.gif)
+![](../../images/emotes/FK_GIF.webp)
 
 _In FK, each bone has to be rotated individually._
 
@@ -90,6 +90,6 @@ In inverse kinematics, or IK, the child in the hierarchy can influence the movem
 
 _Direction of movement in hierarchy._ 
 
-![](../../images/emotes/IK_last.gif)
+![](../../images/emotes/IK_last.webp)
 
 _In IK, the hand will move all the arm and also maintain it’s position. The pole target drives the direction in which the elbow bends._

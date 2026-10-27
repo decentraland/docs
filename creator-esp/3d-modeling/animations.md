@@ -33,7 +33,7 @@ Así es como creas animaciones usando Blender.
 * Establece un keyframe en el primer frame seleccionando el objeto y presionando _**I**_. Luego mueve el objeto, rótalo o escálalo y, en otro frame en el timeline, presiona _**I**_ nuevamente para establecer otro keyframe con los transforms actuales.
 * El frame final de la animación debe ser igual al primero, así que simplemente copia el primer frame y pégalo en el último.
 
-![](../.gitbook/assets/01_object_animation_02.gif)
+![](../.gitbook/assets/01_object_animation_02.webp)
 
 _Creando un animation clip y agregando keyframes._
 
@@ -49,7 +49,7 @@ Cuando el rigging esté listo y el skinning tenga buenas deformaciones, ¡estás
 * Muévete a un frame diferente en el timeline y manipula el bone como quieras para obtener la pose que deseas. Puedes cambiar la location, rotation y scale de un bone dependiendo de cómo configuraste tu rig.
 * Cuando tengas un buen resultado, establece otro keyframe para todo el armature. Sigue haciendo eso hasta que termines tu animación. Recuerda tener el primer y último frames iguales si la animación va a hacer loop.
 
-![](../.gitbook/assets/02_rig_animation_02.gif)
+![](../.gitbook/assets/02_rig_animation_02.webp)
 
 Si eres nuevo en el proceso de animación, mira este tutorial con algunos buenos consejos para principiantes:
 
@@ -81,7 +81,7 @@ A diferencia de una skeletal animation, donde puedes hacer rig de múltiples obj
 
 Para hacer eso, empuja hacia abajo al _**Nonlinear Animation Track**_ la animación de cada objeto, como se muestra a continuación.
 
-![](../.gitbook/assets/03_object_animation_push_down_02.gif)
+![](../.gitbook/assets/03_object_animation_push_down_02.webp)
 
 _Empuja hacia abajo la animación de cada objeto al NLA Track._
 

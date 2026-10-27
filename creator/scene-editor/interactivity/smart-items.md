@@ -10,7 +10,7 @@ Some of the items in the catalog of the Scene Editor are **Smart Items**. Player
 
 You can recognize these items in the asset pack explorer because they have a lightning icon and a different colored background.
 
-![ ](../../images/editor/smart-items.jpg)
+![ ](../../images/editor/smart-items.webp)
 
 You can recognize which items in your scene are smart because they have the lightning icon next to them in the entity tree.
 

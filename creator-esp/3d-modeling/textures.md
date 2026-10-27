@@ -98,7 +98,7 @@ Alpha Clip en Blender, cuando se usa con una textura, implica usar el canal alph
 
 En el siguiente ejemplo usamos un material con alpha clip, usando 2 texturas, el diffuse color y la alpha texture en blanco y negro conectando el color al canal alpha.
 
-![](../.gitbook/assets/33-alpha-clip-leave.jpeg) ![](../.gitbook/assets/33-alpha-clip-mask.webp)
+![](../.gitbook/assets/33-alpha-clip-leave.webp) ![](../.gitbook/assets/33-alpha-clip-mask.webp)
 
 ![](../.gitbook/assets/33-alpha-blender.webp)
 

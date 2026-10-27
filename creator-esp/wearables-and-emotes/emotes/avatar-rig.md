@@ -24,11 +24,11 @@ Aunque un rig no es una réplica exacta del esqueleto humano, es una buena prác
 
 La orientación de los huesos definirá en qué dirección rotarán, como X positivo, Z negativo, etc. Pueden configurarse de muchas maneras diferentes siempre que sea consistente a través de todo el rig. Por ejemplo, si el eje X se elige para el movimiento de inclinación hacia adelante de la columna, tiene sentido que la misma configuración se use para las piernas. La orientación también es importante porque afectará el comportamiento de espejo. Eso significa que, usualmente, la orientación del lado derecho es la versión espejada del lado izquierdo y viceversa.
 
-![](../../.gitbook/assets/boneAxis.gif)
+![](../../.gitbook/assets/boneAxis.webp)
 
 _Activa los ejes para mostrar la orientación de los huesos._
 
-![](../../.gitbook/assets/boneorientation.gif)
+![](../../.gitbook/assets/boneorientation.webp)
 
 _Los ejes son las direcciones en las que el hueso rotará._
 
@@ -76,7 +76,7 @@ En la cinemática directa, o FK, el padre en la jerarquía mueve todos los hueso
 
 _Dirección del movimiento en la jerarquía._
 
-![](../../.gitbook/assets/FK_GIF.gif)
+![](../../.gitbook/assets/FK_GIF.webp)
 
 _En FK, cada hueso tiene que ser rotado individualmente._
 
@@ -88,6 +88,6 @@ En cinemática inversa, o IK, el hijo en la jerarquía puede influenciar el movi
 
 _Dirección del movimiento en jerarquía._
 
-![](../../.gitbook/assets/IK_last.gif)
+![](../../.gitbook/assets/IK_last.webp)
 
 _En IK, la mano moverá todo el brazo y también mantendrá su posición. El pole target dirige la dirección en la que el codo se dobla._

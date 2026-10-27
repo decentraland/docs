@@ -38,7 +38,7 @@ Como se mencionó anteriormente, los Emotes 2.0 no soportan animación de objeto
 
 Para comenzar, necesitarás un sistema de partículas funcionando y el add-on. El sistema de partículas mostrado a continuación es uno muy simple, es solo un ejemplo para mostrar cómo funciona el add-on. Asegúrate de que tu sistema de partículas coincida con las animaciones de tu emote para un mejor resultado.
 
-![](../../.gitbook/assets/03_particles.gif)
+![](../../.gitbook/assets/03_particles.webp)
 
 _Sistema de partículas simple._
 
@@ -64,7 +64,7 @@ _Encontrarás la pestaña Converter a la derecha del Viewport._
 
 A continuación, selecciona el objeto, ve a la pestaña Converter, renombra el Output Collection como mejor te parezca, define Start y End Frames y haz clic en Particle System to Armature Converter, como se muestra a continuación.
 
-![](../../.gitbook/assets/08_particles_converter.gif)
+![](../../.gitbook/assets/08_particles_converter.webp)
 
 Notarás que se creó una colección en el Outliner, con la armature de partículas. También se creó un clip de animación, horneando todo el movimiento de cada objeto.
 
@@ -108,7 +108,7 @@ _Elige la colección generada por el add-on (que tuviste la oportunidad de renom
 
 A continuación, vamos a fusionar las armatures. En Object Mode, selecciona primero la armature de partículas, luego mantén presionado Shift para seleccionar la armature de prop y presiona Ctrl+J para unir/fusionarlas, como se muestra a continuación.
 
-![](../../.gitbook/assets/14_merge_armature.gif)
+![](../../.gitbook/assets/14_merge_armature.webp)
 
 Una vez que hagas eso, las partículas pueden verse desordenadas, pero no te preocupes, esto es parte del proceso. Para arreglar eso, selecciona cada objeto de partícula en el Outliner uno a la vez, ve a Object Properties (ícono de cuadrado naranja) y bajo Relations, verifica si el padre es Armature_Prop. Haz esto para todos los objetos de partícula. Esto significa que todos los objetos son hijos de Armature_Prop.
 
@@ -126,13 +126,13 @@ Ahora que la armature está correctamente fusionada y configurada, hay un últim
 
 Para hacerlo, ve a _**Pose Mode**_ y en el Outliner, expande _**Armature_Prop**_ y luego _**Pose**_. Selecciona todos los huesos que pertenecen a partículas.
 
-![](../../.gitbook/assets/17_merge_armature_02.gif)
+![](../../.gitbook/assets/17_merge_armature_02.webp)
 
 _Seleccionando todos los huesos de partículas._
 
 Con los huesos seleccionados, en el Action Editor, selecciona el clip de animación original para partículas que tiene todos los keyframes. Selecciona todos los keyframes presionando A, haz clic derecho y copia los keyframes. Luego, selecciona la animación de prop, establece un keyframe en el primer frame y pega los keyframes del clip de animación de partículas.
 
-![](../../.gitbook/assets/18_merge_armature_04.gif)
+![](../../.gitbook/assets/18_merge_armature_04.webp)
 
 _Copiando frames de animación de partículas a animación de prop._
 

@@ -46,7 +46,7 @@ Currently, there are two body shapes: A or B.
 
 ### **Head**
 
-![](../../images/head.jpeg)
+![](../../images/head.webp)
 
 _The base head includes different meshes attached that can be customizables as wearables: Eyebrows, Eyes and Mouth work as transparency masks rendered in front of the face._
 
@@ -164,11 +164,11 @@ These meshes work with a transparent shader so you don’t have to do anything a
 
 Here are some example png textures:
 
-![](../../images/wearables-and-emotes/creating-wearables/21_eyes.webp) ![](../../images/wearables-and-emotes/creating-wearables/22_eyebrows.webp) ![](../../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.jpeg)
+![](../../images/wearables-and-emotes/creating-wearables/21_eyes.webp) ![](../../images/wearables-and-emotes/creating-wearables/22_eyebrows.webp) ![](../../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.webp)
 
 _Eyes and Eyewbrows use the same mesh and UV map._
 
-![](../../images/wearables-and-emotes/creating-wearables/24_mouth.webp) ![](../../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.jpeg)
+![](../../images/wearables-and-emotes/creating-wearables/24_mouth.webp) ![](../../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.webp)
 
 _Mouth mesh and UV map._
 
@@ -220,7 +220,7 @@ First, try to follow the shape of the head. You can always refer to the head mes
 
 Second, if you want users to be able to change the color of the hair or facial hair using the avatar editor, then you need to paint the hair in grayscale and use "Hair" in the naming of the material (example "M\_Hair\_Short"). If you want to include other object which doesn't is influenced by tint just don't add that naming convention.
 
-![](../../images/wearables-and-emotes/creating-wearables/32_hair_mat.webp) ![](../../images/wearables-and-emotes/creating-wearables/33_hair_tx.webp) ![](../../images/wearables-and-emotes/creating-wearables/49_tint_hair.gif)
+![](../../images/wearables-and-emotes/creating-wearables/32_hair_mat.webp) ![](../../images/wearables-and-emotes/creating-wearables/33_hair_tx.webp) ![](../../images/wearables-and-emotes/creating-wearables/49_tint_hair.webp)
 
 _Lower tones of gray will appear darker and higher tones of gray will appear brighter, multiplied by the color selected from the user in the avatar editor._
 
@@ -276,7 +276,7 @@ When skin weighting our new wearables, there are several considerations we need 
 
 Each asset must be weighted to the full skeleton. For example, an upper body asset will look like this when applying skin weights:
 
-![](../../images/wearables-and-emotes/creating-wearables/34_rig.gif)
+![](../../images/wearables-and-emotes/creating-wearables/34_rig.webp)
 
 Wearables that meet at intersections between body parts must be fully weighted to the same bone. For example, in these two green zones, the vertices in the neck need to be fully weighted to the "Neck" bone only.
 
@@ -325,25 +325,25 @@ When you’re making wearables, the best way to visualize the final result, and 
 
 1. First select the upper body, then you have to toggle "**Edit mode**" and "**On cage**" in the armature modifier.
 
-![](../../images/wearables-and-emotes/creating-wearables/36_60_1.gif)
+![](../../images/wearables-and-emotes/creating-wearables/36_60_1.webp)
 
 2. Now, in pose mode you can rotate the arms 60°.
 
-![](../../images/wearables-and-emotes/creating-wearables/37_60_2.gif)
+![](../../images/wearables-and-emotes/creating-wearables/37_60_2.webp)
 
 3. You can edit your mesh in A-Pose instead of T-pose.
 
-![](../../images/wearables-and-emotes/creating-wearables/38_60_3.gif)
+![](../../images/wearables-and-emotes/creating-wearables/38_60_3.webp)
 
 4. But it is also good to keep in mind that you can easily alternate from A-Pose to T-Pose just toggling back the "Edit mode" and "On cage" in the armature modifier.
 
-![](../../images/wearables-and-emotes/creating-wearables/39_60_4.gif)
+![](../../images/wearables-and-emotes/creating-wearables/39_60_4.webp)
 
 ### **Joint deformation:**
 
 In order to get the best results on the wearable topology when it comes to joints (arms or legs, for example) it's important to have good practices when creating loops. Here we can see the difference on the deformation of the mesh for different loop cuts:
 
-![](../../images/wearables-and-emotes/creating-wearables/40_joints.gif)
+![](../../images/wearables-and-emotes/creating-wearables/40_joints.webp)
 
 A good way to ensure that everything is deforming correctly is to do a weight paint like the following example:
 

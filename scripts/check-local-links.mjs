@@ -1,10 +1,12 @@
 import { execFileSync } from 'node:child_process'
 import { readFile, stat } from 'node:fs/promises'
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { findBrokenLinks } from './markdown-links.mjs'
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const rootIndex = process.argv.indexOf('--root')
+if (rootIndex !== -1 && !process.argv[rootIndex + 1]) throw new Error('--root requires a repository directory.')
+const root = rootIndex === -1 ? join(dirname(fileURLToPath(import.meta.url)), '..') : resolve(process.argv[rootIndex + 1])
 const listed = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean)
 const files = []
 for (const path of new Set(listed)) {

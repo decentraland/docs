@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { extractLinks, resolveLocalLink, findBrokenLinks } from '../scripts/markdown-links.mjs'
+import { extractLinks, resolveLocalLink, findBrokenLinks, srcsetLinks, splitFrontMatter } from '../scripts/markdown-links.mjs'
 
 test('extracts inline, reference, image, HTML and GitBook links', () => {
 	const content = '[page](page.md) ![image](image.webp) [ref][r]\n\n[r]: other.md\n\n<a href="html.md">HTML</a><img src="photo.webp"><video poster="cover.webp"></video>\n\n{% file src="file.zip" %}'
@@ -29,4 +29,32 @@ test('reports legacy broken-reference placeholders as failures', () => {
 	const errors = findBrokenLinks('docs/page.md', '![Screenshot](broken-reference)', new Set(['docs/page.md']))
 	assert.equal(errors.length, 1)
 	assert.equal(errors[0].target, 'docs/broken-reference')
+})
+
+
+test('extracts srcset candidates without splitting data URLs on their internal comma', () => {
+	assert.deepEqual(srcsetLinks('data:image/svg+xml,%3Csvg%3E,%3C/svg%3E 1x, images/large.webp 2x, images/wide.webp 1200w'), ['data:image/svg+xml,%3Csvg%3E,%3C/svg%3E', 'images/large.webp', 'images/wide.webp'])
+	assert.deepEqual(extractLinks('<picture><source srcset="small.webp 1x, large.webp 2x"><img src="fallback.webp"></picture>'), ['small.webp', 'large.webp', 'fallback.webp'])
+	assert.deepEqual(srcsetLinks('first.webp, second.webp 2x'), ['first.webp', 'second.webp'])
+})
+
+test('extracts GitBook tags in HTML blocks but ignores comments and code', () => {
+	const content = `<div>
+{% file src="download.zip" %}
+<!-- {% file src="comment.zip" %} -->
+<pre><code>{% file src="example.zip" %}</code></pre>
+{% image src="image.webp" %}
+</div>
+
+An inline <code>{% file src="inline-example.zip" %}</code> example.
+
+\`{% file src="markdown-example.zip" %}\`
+`
+	assert.deepEqual(extractLinks(content), ['download.zip', 'image.webp'])
+})
+
+test('recognizes front matter after a byte-order mark and at end of file', () => {
+	assert.deepEqual(splitFrontMatter('\uFEFF---\ncover: image.webp\n---\n[page](page.md)'), { frontMatter: 'cover: image.webp', body: '[page](page.md)' })
+	assert.deepEqual(extractLinks('\uFEFF---\ntext: "[metadata](ignored.md)"\n---\n[page](page.md)'), ['page.md'])
+	assert.deepEqual(extractLinks('---\ntext: "[metadata](ignored.md)"\n---'), [])
 })

@@ -1,6 +1,6 @@
 import { posix } from 'node:path'
 import { parse } from 'yaml'
-import { extractLinks, resolveLocalLink } from './markdown-links.mjs'
+import { extractLinks, resolveLocalLink, splitFrontMatter } from './markdown-links.mjs'
 
 const assetExtensions = new Set([
 	'.svg', '.svgz', '.webp', '.webm', '.png', '.apng', '.jpg', '.jpeg', '.gif', '.ico', '.icns',
@@ -22,19 +22,45 @@ export function isAsset(path) {
 
 export function assetLinks(content) {
 	const links = extractLinks(content)
-	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
-	if (match) {
-		const seen = new Set()
-		function visit(value) {
-			if (typeof value === 'string') links.push(value)
-			else if (value && typeof value === 'object' && !seen.has(value)) {
-				seen.add(value)
-				for (const child of Object.values(value)) visit(child)
-			}
-		}
-		visit(parse(match[1], { maxAliasCount: 100 }))
+	const { frontMatter } = splitFrontMatter(content)
+	if (frontMatter !== undefined) {
+		const data = parse(frontMatter, { maxAliasCount: 100 })
+		// GitBook's cover field references an image. Descriptions, examples,
+		// aliases, and arbitrary metadata are not evidence that an asset is used.
+		if (typeof data?.cover === 'string') links.push(data.cover)
 	}
-	return links
+	return [...new Set(links)]
+}
+
+export function gitbookSpaceDirectories(config) {
+	const directories = new Set()
+	function visit(items) {
+		for (const item of items ?? []) {
+			if (typeof item.content?.directory === 'string') {
+				const directory = posix.normalize(item.content.directory).replace(/\/$/, '') || '.'
+				if (posix.isAbsolute(directory) || directory === '..' || directory.startsWith('../')) {
+					throw new Error(`GitBook space directory must stay inside the repository: ${item.content.directory}`)
+				}
+				directories.add(directory)
+			}
+			visit(item.children)
+		}
+	}
+	visit(config?.site?.structure)
+	// Nested spaces take precedence over their parent directory.
+	return [...directories].sort((a, b) => b.length - a.length)
+}
+
+export function assetSpaceIssue(source, link, target, spaces) {
+	if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(link)) return null
+	const pathname = decodeURIComponent(link.split(/[?#]/, 1)[0])
+	if (pathname.startsWith('/')) return 'Use a relative path to an asset inside the consuming GitBook space; leading-slash asset paths do not resolve in GitBook.'
+	const spaceFor = path => spaces.find(space => space === '.' || path === space || path.startsWith(`${space}/`))
+	const sourceSpace = spaceFor(source)
+	if (sourceSpace && sourceSpace !== spaceFor(target)) {
+		return `Asset is outside the consuming GitBook space (${sourceSpace}); copy it into that space and use a relative path.`
+	}
+	return null
 }
 
 export function referencedAsset(source, link) {
@@ -51,16 +77,36 @@ export function referencedAsset(source, link) {
 	return resolveLocalLink(source, prefix ? `/${link.slice(prefix.length)}` : link)?.target ?? null
 }
 
-export function findUnreferencedAssets(paths, pages) {
+export function auditAssetReferences(paths, pages, spaces = []) {
+	const allPaths = new Set(paths)
 	const assets = new Set(paths.filter(isAsset))
+	const errors = []
 	for (const page of pages) {
 		let links
 		try { links = assetLinks(page.content) } catch (error) {
-			throw new Error(`${page.path}: unable to read asset references from front matter.`, { cause: error })
+			errors.push({ source: page.path, reason: `Invalid YAML front matter: ${error.message}` })
+			// A metadata error must not hide the page's body references or stop
+			// diagnostics from other pages.
+			links = extractLinks(page.content)
 		}
-		for (const link of links) assets.delete(referencedAsset(page.path, link))
+		for (const link of links) {
+			const target = referencedAsset(page.path, link)
+			if (!target || !isAsset(target)) continue
+			const reason = assetSpaceIssue(page.path, link, target, spaces)
+				?? (!allPaths.has(target) ? 'Referenced asset does not exist (paths are case-sensitive).' : null)
+			if (reason) errors.push({ source: page.path, link, target, reason })
+			else assets.delete(target)
+		}
 	}
-	return [...assets].sort()
+	return { unused: [...assets].sort(), errors }
+}
+
+export function findUnreferencedAssets(paths, pages) {
+	const { unused, errors } = auditAssetReferences(paths, pages)
+	if (errors.some(error => error.reason.startsWith('Invalid YAML'))) {
+		throw new AggregateError(errors.map(error => new Error(`${error.source}: ${error.reason}`)), 'Unable to read all asset references.')
+	}
+	return unused
 }
 
 export function compareAssetBaseline(unused, baseline) {

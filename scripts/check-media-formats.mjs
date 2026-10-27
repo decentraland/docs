@@ -1,11 +1,13 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { readFile, lstat } from 'node:fs/promises'
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { evaluateMedia, mediaFormatIssue } from './media-formats.mjs'
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const rootIndex = process.argv.indexOf('--root')
+if (rootIndex !== -1 && !process.argv[rootIndex + 1]) throw new Error('--root requires a repository directory.')
+const root = rootIndex === -1 ? join(dirname(fileURLToPath(import.meta.url)), '..') : resolve(process.argv[rootIndex + 1])
 const listed = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean)
 const paths = []
 for (const path of new Set(listed)) {
@@ -34,10 +36,10 @@ for (let offset = 0; offset < paths.length; offset += 100) {
 	for (const [index, path] of batch.entries()) {
 		const mime = types[index]
 		if (mime === 'inode/symlink') throw new Error(`${path}: symlinks are not supported by media validation.`)
-		const sha256 = mediaFormatIssue(path, mime)
-			? createHash('sha256').update(await readFile(join(root, path))).digest('hex')
-			: undefined
-		files.push({ path, mime, sha256 })
+		const content = /\.svg$/i.test(path) || mediaFormatIssue(path, mime) ? await readFile(join(root, path)) : undefined
+		const sha256 = mediaFormatIssue(path, mime, content)
+			? createHash('sha256').update(content).digest('hex') : undefined
+		files.push({ path, mime, sha256, content })
 	}
 }
 const exceptions = JSON.parse(await readFile(join(root, 'scripts/media-format-exceptions.json'), 'utf8'))

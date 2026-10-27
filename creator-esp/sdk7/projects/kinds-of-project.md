@@ -10,7 +10,7 @@ metaLinks:
 
 Hay diferentes tipos de contenido que puedes hacer para Decentraland.
 
-![](../images/content-types.png)
+![](../../.gitbook/assets/content-types.webp)
 
 ### Escenas
 
@@ -26,7 +26,7 @@ Los tokens LAND pueden comprarse en el [Marketplace](https://decentraland.org/ma
 
 Las escenas publicadas en LAND son más fáciles de descubrir, ya que los jugadores pueden encontrárselas mientras visitan contenido cercano o exploran.
 
-Las escenas publicadas en LAND pueden usar hasta 15 MB de espacio por cada parcela en la escena. Mientras más parcelas, más espacio disponible. Esto es para prevenir sobrecargar el CPU del jugador, ya que los jugadores pueden estar experimentando muchas escenas cercanas al mismo tiempo. Consulta [limitaciones de tamaño](../sdk7/optimizing/scene-limitations.md).
+Las escenas publicadas en LAND pueden usar hasta 15 MB de espacio por cada parcela en la escena. Mientras más parcelas, más espacio disponible. Esto es para prevenir sobrecargar el CPU del jugador, ya que los jugadores pueden estar experimentando muchas escenas cercanas al mismo tiempo. Consulta [limitaciones de tamaño](../optimizing/scene-limitations.md).
 
 #### Publicar en WORLDs
 
@@ -34,11 +34,11 @@ Las escenas publicadas en un World deben accederse vía un enlace.
 
 Estas escenas están vinculadas a tokens NAME. Los tokens NAME pueden comprarse en el [Marketplace](https://decentraland.org/marketplace/names/claim). Puedes reclamar cualquier nombre que desees siempre que no esté reclamado todavía.
 
-Las escenas publicadas en un World pueden usar hasta 100 MB, y tener tantas parcelas de terreno como desees. Las mismas [limitaciones de tamaño](../sdk7/optimizing/scene-limitations.md) por parcela aplican como en las escenas publicadas en parcelas LAND, pero puedes agregar más parcelas a tu escena sin ningún costo.
+Las escenas publicadas en un World pueden usar hasta 100 MB, y tener tantas parcelas de terreno como desees. Las mismas [limitaciones de tamaño](../optimizing/scene-limitations.md) por parcela aplican como en las escenas publicadas en parcelas LAND, pero puedes agregar más parcelas a tu escena sin ningún costo.
 
-Consulta [Worlds](../worlds/about.md) para más información.
+Consulta [Worlds](../../worlds/about.md) para más información.
 
-Los Worlds ofrecen algunas opciones para personalizar el sky box de la escena, que no están disponibles en Genesis City (donde un mismo cielo es compartido por todas las escenas circundantes). Consulta [Valores predeterminados de World](../worlds/about.md#world-defaults)
+Los Worlds ofrecen algunas opciones para personalizar el sky box de la escena, que no están disponibles en Genesis City (donde un mismo cielo es compartido por todas las escenas circundantes). Consulta [Valores predeterminados de World](../../worlds/about.md#world-defaults)
 
 ### Escenas Globales
 
@@ -54,7 +54,7 @@ Una experiencia portable está vinculada a un token NAME. Los tokens NAME pueden
 
 Las experiencias portables pueden activarse como parte del código interactivo de una escena (ya sea en LAND o un World).
 
-Se solicita a los jugadores si quieren ejecutar esta experiencia portable, y si lo hacen la llevarán consigo a donde quiera que vayan durante el resto de su sesión. [Aprende más](../sdk7/projects/portable-experiences.md).
+Se solicita a los jugadores si quieren ejecutar esta experiencia portable, y si lo hacen la llevarán consigo a donde quiera que vayan durante el resto de su sesión. [Aprende más](portable-experiences.md).
 
 #### Smart Wearables
 
@@ -62,5 +62,5 @@ Los smart wearables están vinculados a tokens Wearable. Estos se venden como NF
 
 Los Smart Wearables se activan cada vez que el jugador se pone el artículo wearable asociado. Se apagan si el jugador se quita el artículo, o también pueden apagar la escena global manualmente a través de la UI.
 
-* Aprende todo sobre [Crear wearables](../wearables-and-emotes/wearables/creating-wearables.md).
-* Aprende sobre [smart wearables](../sdk7/projects/smart-wearables.md)
+* Aprende todo sobre [Crear wearables](../../wearables-and-emotes/wearables/creating-wearables.md).
+* Aprende sobre [smart wearables](smart-wearables.md)

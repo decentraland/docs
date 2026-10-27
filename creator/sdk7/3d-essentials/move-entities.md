@@ -563,7 +563,7 @@ In this example we're moving an entity by 0.05 meters per tick of the game loop.
 
 `Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/20 of its length with `Vector3.scale()`. If our scene has 30 frames per second, the entity is moving at 1.5 meters per second in speed.
 
-![](../../images/media/gifs/move.gif)
+![](../../images/media/gifs/move.webp)
 
 ### Rotate via system
 
@@ -595,7 +595,7 @@ In this example, we're rotating the entity by 1 degree in an upwards direction i
 **💡 Tip**: To make an entity always rotate to face the player, you can add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user).
 {% endhint %}
 
-![](../../images/media/gifs/rotate.gif)
+![](../../images/media/gifs/rotate.webp)
 
 ### Rotate via system over a pivot point
 
@@ -629,7 +629,7 @@ MeshRenderer.setBox(childEntity)
 
 Note that in this example, the system is rotating the `pivotEntity` entity, that's a parent of the `childEntity` entity.
 
-![](../../images/media/gifs/pivot-rotate.gif)
+![](../../images/media/gifs/pivot-rotate.webp)
 
 ### Adjust movement to delay time
 
@@ -729,7 +729,7 @@ LerpTransformComponent.create(myEntity, {
 })
 ```
 
-![](../../images/media/gifs/lerp-move.gif)
+![](../../images/media/gifs/lerp-move.webp)
 
 ### Rotate between two angles via system
 
@@ -802,7 +802,7 @@ SlerpData.create(myEntity, {
 **📔 Note**: You could instead represent the rotation with euler angles as `Vector3` values and use a `Lerp()` function, but that would imply a conversion from `Vector3` to `Quaternion` on each frame. Rotation values are internally stored as quaternions in the `Transform` component, so it's more efficient for the scene to work with quaternions.
 {% endhint %}
 
-![](../../images/media/gifs/lerp-rotate.gif)
+![](../../images/media/gifs/lerp-rotate.webp)
 
 A simpler but less efficient approach to this takes advantage of the `Quaternion.rotateTowards` function, and avoids using any custom components.
 
@@ -904,7 +904,7 @@ ScaleTransformComponent.create(myEntity, {
 Vector3.create(1, 1, 1)
 ```
 
-![](../../images/media/gifs/lerp-scale.gif)
+![](../../images/media/gifs/lerp-scale.webp)
 
 ### Move at irregular speeds between two points via system
 
@@ -967,7 +967,7 @@ The example above is just like the linear lerp example we've shown before, but t
 
 You can also map a transition in rotation or in scale in the same way as shown above, by mapping a linear transition to a curve.
 
-![](../../images/media/gifs/lerp-speed-up.gif)
+![](../../images/media/gifs/lerp-speed-up.webp)
 
 ### Follow a path via system
 
@@ -1039,7 +1039,7 @@ The example above defines a 3D path that's made up of four 3D vectors. The `Path
 
 The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `origin` fields to new values. If we reach the end of the path, we return to the first value in the path.
 
-![](../../images/media/gifs/lerp-path.gif)
+![](../../images/media/gifs/lerp-path.webp)
 
 ## Texture tweens
 

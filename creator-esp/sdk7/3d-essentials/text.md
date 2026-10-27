@@ -22,7 +22,7 @@ Para agregar texto como etiqueta en una entidad existente, creas una segunda ent
 
 ## Usar el Scene Editor
 
-La forma más fácil de colocar texto en el mundo es agregar un [Smart item](../../scene-editor/smart-items.md) **Text** visualmente en el [Scene Editor](../../scene-editor/about-editor.md). Luego puedes establecer todos los campos disponibles en la UI del Scene Editor.
+La forma más fácil de colocar texto en el mundo es agregar un [Smart item](../../scene-editor/interactivity/smart-items.md) **Text** visualmente en el [Scene Editor](../../scene-editor/get-started/about-editor.md). Luego puedes establecer todos los campos disponibles en la UI del Scene Editor.
 
 
 
@@ -55,7 +55,7 @@ TextShape.create(sign, {
 
 > `import { TextShape } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Cambiar el valor del texto

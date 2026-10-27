@@ -2,7 +2,7 @@
 
 The Simulator transport is a completely arbitrary implementation, with no specified behavior other than the transport interface.
 
-It can emit incoming messages and handle outgoing messages as desired, without semantic requirements. The implementation can choose to never emit messages and ignore all method calls, but the [Offline transport](../../transport-types/offline/) is better suited for that.
+It can emit incoming messages and handle outgoing messages as desired, without semantic requirements. The implementation can choose to never emit messages and ignore all method calls, but the [Offline transport](offline.md) is better suited for that.
 
 Simulator URIs look like this:
 

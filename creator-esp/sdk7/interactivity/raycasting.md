@@ -12,7 +12,7 @@ metaLinks:
 
 El raycasting es una herramienta fundamental en el desarrollo de juegos. Con raycasting, puedes trazar una línea imaginaria en el espacio y consultar si alguna entidad es intersectada por esa línea. Esto es útil para calcular líneas de visión, trayectorias de balas, algoritmos de pathfinding y muchas otras aplicaciones.
 
-Cuando un jugador presiona el botón del puntero, o el botón primario o secundario, se traza un rayo desde la posición del jugador en la dirección en la que están mirando, consulta [eventos de botones](click-events.md) para más detalles sobre esto. Este documento cubre cómo trazar un rayo invisible desde cualquier posición y dirección arbitraria, independiente de las acciones del jugador, que puedes usar en muchos otros escenarios.
+Cuando un jugador presiona el botón del puntero, o el botón primario o secundario, se traza un rayo desde la posición del jugador en la dirección en la que están mirando, consulta [eventos de botones](button-events/click-events.md) para más detalles sobre esto. Este documento cubre cómo trazar un rayo invisible desde cualquier posición y dirección arbitraria, independiente de las acciones del jugador, que puedes usar en muchos otros escenarios.
 
 Ten en cuenta que los raycasts solo impactan objetos con colisionadores. Entonces, si deseas detectar impactos de rayos contra un modelo 3D, ya sea:
 
@@ -141,7 +141,7 @@ raycastSystem.registerTargetEntityRaycast(
 
 > `import { raycastSystem, RaycastQueryType, ColliderLayer } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Resultado del raycast
@@ -408,7 +408,7 @@ Cuando un raycast impacta al jugador local, `hit.entityId` es `engine.PlayerEnti
 Para trazar un rayo desde la posición del jugador en la dirección enfrentada por la cámara, puedes trazar un rayo usando la cámara o el avatar [Entidades Reservadas](../architecture/entities-components.md#reserved-entities).
 
 {% hint style="info" %}
-**💡 Consejo**: Para la mayoría de los casos, podrías estar mejor usando [Eventos de puntero](click-events.md) en lugar de raycasts.
+**💡 Consejo**: Para la mayoría de los casos, podrías estar mejor usando [Eventos de puntero](button-events/click-events.md) en lugar de raycasts.
 {% endhint %}
 
 El siguiente ejemplo traza un rayo desde la posición de la cámara del jugador hacia adelante, usando la entidad `engine.CameraEntity`.

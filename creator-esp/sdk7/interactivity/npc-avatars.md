@@ -44,7 +44,7 @@ Los siguientes campos opcionales también están disponibles:
 
 > `import { AvatarShape } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 {% hint style="warning" %}

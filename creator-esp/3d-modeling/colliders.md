@@ -18,7 +18,7 @@ Para que un objeto sea reconocido por una escena de Decentraland como un collide
 
 Por ejemplo, para crear un collider para un poste de luz puedes crear un objeto box simple rodeando su tronco. Los jugadores en la escena no verán esta caja, pero bloqueará su camino.
 
-![](../images/3d-models-and-animations/3d-essentials/25-collider.png)
+![](../.gitbook/assets/25-collider.webp)
 
 En este caso, podemos nombrar la caja "LampPost\_collider" y exportar tanto el árbol como la caja como un solo modelo _gltf_. La etiqueta _\_collider\__ alerta al motor del mundo de Decentraland que el objeto box pertenece a la colección de colliders, haciendo el collider mesh invisible.
 
@@ -45,12 +45,12 @@ Usar un objeto ramp también evita crear geometría innecesaria, ahorrando espac
 
 1. Crea un nuevo objeto en forma de ramp que se asemeje al tamaño y proporciones de las escaleras originales.
 
-![](../images/3d-models-and-animations/3d-essentials/26-collider-2.png)
+![](../.gitbook/assets/26-collider-2.webp)
 
 2. Nombra el objeto ramp algo similar a &#x53;_&#x74;air\_collider_. Debe terminar en \__collider_.
 3. Superpón el objeto ramp a las escaleras para que ocupen el mismo espacio.
 
-![](../images/3d-models-and-animations/3d-essentials/27-collider.png)
+![](../.gitbook/assets/27-collider.webp)
 
 4. Exporta ambos objetos juntos como un solo modelo _glTF_.
 
@@ -61,7 +61,7 @@ Ahora, cuando los jugadores vean las escaleras en tu escena, verán el modelo m�
 * Prefiere usar collision meshes **Box**, **Sphere** y **Capsule**, porque será más performante en la carga y en runtime.
 * Considera aproximar collision mesh complejos con varios collision meshes Primitivos (**Box**/**Sphere**/**Capsule**)
 
-![](../images/3d-models-and-animations/3d-essentials/28-optimizing-colliders.png)
+![](../.gitbook/assets/28-optimizing-colliders.webp)
 
 _Ejemplo: El collider para Ring puede componerse de varios colliders Capsule o Box_
 
@@ -71,7 +71,7 @@ _Ejemplo: El collider para Ring puede componerse de varios colliders Capsule o B
 
 Si usar un collision mesh arbitrario es la única posibilidad, entonces haz que el collision mesh sea Convex (no Concave). Esto evitará situaciones físicas extrañas, como stuttering, quedarse atascado dentro del collider o clipping a través de él. Ten en cuenta que a menudo es posible imitar un mesh concave con varios meshes convex.
 
-![](../images/3d-models-and-animations/3d-essentials/29-convex-collider.png)
+![](../.gitbook/assets/29-convex-collider.webp)
 
 ### Nomenclatura de Colisiones
 

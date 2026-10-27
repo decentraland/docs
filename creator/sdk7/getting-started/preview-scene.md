@@ -8,12 +8,12 @@ Once you have [built a new scene](preview-scene.md#create-your-first-scene) or d
 
 ## Using the Scene Editor in Creator Hub
 
-Make sure you've [installed the Creator Hub](../get-started/editor-installation.md).
+Make sure you've [installed the Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Open your scene project.
 2. Click the **Play** button on the top-right corner. This will open a new window with the Decentraland Desktop Explorer, running just your scene. There you can move around the scene and interact with interactive items.
 
-![](../../images/editor/preview-button.png)
+![](../../images/editor/preview-button.webp)
 
 ### Choose where to preview
 
@@ -93,7 +93,7 @@ To enable it:
 - **In the Creator Hub**: open **Play Options** next to the **Play** button, hover over **Desktop Client**, and check **Compress Assets**.
 - **From the CLI**: run `npm run start -- --asset-bundles`.
 
-![](../../images/editor/optimize-assets-checkbox.png)
+![](../../images/editor/optimize-assets-checkbox.webp)
 
 With this option enabled, the Decentraland explorer converts the scene's 3D models to asset bundles on your machine before loading them. The conversion is near instant for most scenes, but the first preview can take longer if the scene has very heavy assets. Converted models are cached, so on later previews only new or modified assets need to be converted.
 
@@ -111,11 +111,11 @@ The scene size shown in the preview is based on the scene's configuration.
 
 Edit this on the second tab of the scene menu in the Scene Editor.
 
-![](../../images/editor/scene-parcels-3x3.png)
+![](../../images/editor/scene-parcels-3x3.webp)
 
 Use the dropdowns and click **Apply Layout** to change the dimensions of your scene. You can also click each individual parcel to toggle it off from your layout.
 
-![](../../images/editor/scene-parcels-toggled.png)
+![](../../images/editor/scene-parcels-toggled.webp)
 
 You can also edit the _scene.json_ file to list multiple parcels in the "parcels" field. See [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) for more details.
 
@@ -151,7 +151,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, turn on **Multi-Instance Preview** in the **Desktop Client** submenu of **Play Options**, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../images/editor/preview-button.png)
+![](../../images/editor/preview-button.webp)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

@@ -11,7 +11,7 @@ En el mundo, tu perfil ayuda a otros a conocer quién eres. Cuando pasas el curs
 
 Verás un ícono de lápiz junto a los componentes del Perfil que puedes editar, como tu nombre de usuario y la sección 'Sobre Mí'. Escribir un poco sobre ti y tus intereses puede facilitar hacer amigos, pero ten cuidado de no compartir información personal sensible.
 
-![](broken-reference)
+![](../.gitbook/assets/enji.webp)
 
 ## Badges
 
@@ -19,7 +19,7 @@ Los Badges son una forma divertida de celebrar tus logros y actividades en Decen
 
 Consulta la pestaña de Badges de tu perfil para ver tu progreso de Badges y lo que necesitas hacer para desbloquear un nuevo Badge o el siguiente nivel de un Badge que ya has ganado.
 
-![](broken-reference) ![](broken-reference)
+![](../.gitbook/assets/badge.webp) ![](../.gitbook/assets/badge2.webp)
 
 ## Fotos
 
@@ -33,4 +33,4 @@ Ayuda a otros a conocerte compartiendo tus fotos favoritas de tu tiempo en Decen
 
 ¡Listo! Cualquier foto marcada como Pública aparecerá en tu Perfil. Para eliminar una foto, simplemente desactiva la configuración Pública.
 
-![](broken-reference)
+![](../.gitbook/assets/Pictures.webp)

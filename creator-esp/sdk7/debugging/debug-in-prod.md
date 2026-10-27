@@ -14,13 +14,13 @@ Cuando ejecutas una scene que ya está desplegada en tierra en Decentraland, hay
 
 #### Preview
 
-Antes de desplegar tu scene en Decentraland, asegúrate de que la scene se ejecute bien en preview usando la última versión del SDK de Decentraland. Consulta [debug in preview](../sdk7/debugging/debug-in-preview.md).
+Antes de desplegar tu scene en Decentraland, asegúrate de que la scene se ejecute bien en preview usando la última versión del SDK de Decentraland. Consulta [debug in preview](debug-in-preview.md).
 
 #### El servidor de prueba
 
 Puedes desplegar scenes en un servidor de prueba como entorno de staging, antes de publicarlas en los servidores de contenido en vivo. Este servidor no es frecuentado por ningún jugador que visite Decentraland normalmente. Para ingresar a este servidor debes escribir manualmente su URL, pero ten en cuenta que no es un entorno privado.
 
-Consulta [The test server](../sdk7/publishing/publishing.md#the-test-server) para detalles.
+Consulta [The test server](../publishing/publishing.md#the-test-server) para detalles.
 
 ### Quick reload
 
@@ -49,7 +49,7 @@ Para abrir Decentraland con el parámetro `scene-console`, ya sea:
 
 Cuando ejecutes Decentraland con el `scene-console`, puedes abrir la consola de tres maneras:
 
-* Haz clic en el ícono ![](../images/console-icon.png) en la esquina superior derecha
+* Haz clic en el ícono ![](../../.gitbook/assets/console-icon.png) en la esquina superior derecha
 * Presiona la tecla **\`** para una consola corta
 * Presiona Shift + **\`** para abrir una vista más grande de la consola
 
@@ -57,4 +57,4 @@ Ten en cuenta que los mensajes de cada scene activa se registrarán en la consol
 
 ### Reportar un bug
 
-Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](../sdk7/debugging/report-bug.md).
+Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](report-bug.md).

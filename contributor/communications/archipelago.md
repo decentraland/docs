@@ -4,7 +4,7 @@ Archipelago is the realm service that groups nearby players into islands, reassi
 You can see the Archipelago protocol in action and experiment with it using the open-source [Comms Station](https://decentraland.github.io/comms-station/).
 {% endhint %}
 
-To use the service, clients must connect to their realm's Archipelago websocket endpoint and authenticate to begin their session. They can then start sending positional updates and receiving island assignments (see the [client life-cycle](overview#lifecycle)).
+To use the service, clients must connect to their realm's Archipelago websocket endpoint and authenticate to begin their session. They can then start sending positional updates and receiving island assignments (see the [client life-cycle](overview.md#lifecycle)).
 
 All messages exchanged with the Archipelago service are encoded using protocol buffers, as defined in the Decentraland [protocol repository](https://github.com/decentraland/protocol).
 
@@ -24,9 +24,9 @@ In these cases, dynamic island assignment won't be available, and the realm's RP
 
 After opening a connection to Archipelago, clients must begin by requesting and signing a challenge from the service to verify their identity.
 
-The first message a client sends is a [`ChallengeRequestMessage`](ChallengeRequestMessage) with their Ethereum address (i.e. their public key). They will receive a [`ChallengeResponseMessage`](ChallengeResponseMessage) with a randomly generated string to sign, and must respond with a [`SignedChallengeMessage`](#SignedChallengeMessage).
+The first message a client sends is a [`ChallengeRequestMessage`](#ChallengeRequestMessage) with their Ethereum address (i.e. their public key). They will receive a [`ChallengeResponseMessage`](#ChallengeResponseMessage) with a randomly generated string to sign, and must respond with a [`SignedChallengeMessage`](#SignedChallengeMessage).
 
-The [`SignedChallengeMessage`](#SignedChallengeMessage) carries a JSON-serialized [authentication chain](../auth/authchain) that begins with the provided address, and ends with the challenge signature.
+The [`SignedChallengeMessage`](#SignedChallengeMessage) carries a JSON-serialized [authentication chain](../authentication/authchain.md) that begins with the provided address, and ends with the challenge signature.
 
 If the signature is successfully verified by the service, the client is authenticated and will receive a [`WelcomeMessage`](#WelcomeMessage).
 
@@ -82,7 +82,7 @@ Sent by the client as the first message of a session, to start the authenticatio
 | --------- | -------- | ------------------- |
 | `address` | `string` | The user's address. |
 
-The `address` field must be derived from the first private key of the [authentication chain](../auth/authchain) that will be presented.
+The `address` field must be derived from the first private key of the [authentication chain](../authentication/authchain.md) that will be presented.
 
 ---
 
@@ -92,9 +92,9 @@ Sent by the client after receiving a [`ChallengeResponseMessage`](#ChallengeResp
 
 | Field             | Type     | Value                                                                                                             |
 | ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| `auth_chain_json` | `string` | A JSON-serialized [authentication chain](../auth/authchain) ending with the challenge signature. |
+| `auth_chain_json` | `string` | A JSON-serialized [authentication chain](../authentication/authchain.md) ending with the challenge signature. |
 
-The first key in the [authentication chain](../auth/authchain) must correspond to the address sent in the original [`ChallengeRequestMessage`](#ChallengeRequestMessage).
+The first key in the [authentication chain](../authentication/authchain.md) must correspond to the address sent in the original [`ChallengeRequestMessage`](#ChallengeRequestMessage).
 
 ---
 
@@ -119,7 +119,7 @@ Sent by Archipelago in response to a [`ChallengeRequestMessage`](#ChallengeReque
 
 | Field               | Type     | Value                                                                                               |
 | ------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| `challenge_to_sign` | `string` | A generated string to sign and create an [authentication chain](../auth/authchain) |
+| `challenge_to_sign` | `string` | A generated string to sign and create an [authentication chain](../authentication/authchain.md) |
 | `already_connected` | `bool`   | Whether an existing connection for this user's key                                                  |
 
 ---
@@ -144,12 +144,12 @@ Description.
 | ---------------- | ----------------------- | ------------------------------------------------------------------------------ |
 | `island_id`      | `string`                | The ID of the new island                                                       |
 | `from_island_id` | `string?`               | The ID of the old island, if this is a reassignment                            |
-| `conn_str`       | `string`                | The connection string for the island [transport](transports). |
+| `conn_str`       | `string`                | The connection string for the island [transport](transports.md). |
 | `peers`          | `map<string, Position>` | Description.                                                                   |
 
 Clients that receive an `IslandChangedMessage` should end their connection to the island backend, and connect to the one given in `conn_str`.
 
-The `peers` field contains the current identities and positions of all peers in the island, so that clients can populate their initial set. After this point, they should rely on messages received via the island [transport](transports) to get positional updates.
+The `peers` field contains the current identities and positions of all peers in the island, so that clients can populate their initial set. After this point, they should rely on messages received via the island [transport](transports.md) to get positional updates.
 
 ---
 

@@ -13,16 +13,16 @@ Ejecutar un preview proporciona información de depuración útil y herramientas
 Si la scene no puede compilarse, solo verás el suelo vacío, sin nada renderizado en él. Si esto ocurre, hay varios lugares donde puedes buscar mensajes de error para ayudarte a entender qué salió mal:
 
 1. Verifica tu editor de código para asegurarte de que no haya marcado ningún error de sintaxis o lógica.
-2. Verifica la consola en la ventana de preview para cualquier mensaje de error. Abre la consola haciendo clic en el ícono ![](../images/console-icon.png) en la esquina superior derecha.
+2. Verifica la consola en la ventana de preview para cualquier mensaje de error. Abre la consola haciendo clic en el ícono ![](../../.gitbook/assets/console-icon.png) en la esquina superior derecha.
 3. Si ejecutaste la scene usando el Creator Hub, verifica la ventana con la salida de consola de la scene. Si ejecutaste la scene usando el CLI, verifica la salida de la línea de comandos donde ejecutaste `npm run start`
 
 {% hint style="info" %}
-**💡 Tip**: Antes de publicar tu scene en el entorno de producción, publícala en el entorno de prueba para probarla en un contexto que está mucho más cerca de producción. Consulta [Development Workflow](../sdk7/getting-started/dev-workflow.md#deploy-to-the-test-environment)
+**💡 Tip**: Antes de publicar tu scene en el entorno de producción, publícala en el entorno de prueba para probarla en un contexto que está mucho más cerca de producción. Consulta [Development Workflow](../getting-started/dev-workflow.md#deploy-to-the-test-environment)
 {% endhint %}
 
 ### Usar la consola
 
-Abre la consola haciendo clic en el ícono ![](../images/console-icon.png) en la esquina superior derecha.
+Abre la consola haciendo clic en el ícono ![](../../.gitbook/assets/console-icon.png) en la esquina superior derecha.
 
 También puedes alternarla presionando la tecla de tilde invertida en tu teclado: **`**. Esta tecla está a la izquierda de la tecla 1 en la mayoría de los teclados de idioma inglés. O sino presiona Shift + **\`** para abrir una vista más ancha de la consola, en caso de que necesites ver más texto.
 
@@ -32,11 +32,11 @@ La consola también muestra mensajes de error, estos están marcados en rojo.
 
 ### El panel de debug
 
-Abre la consola de debug haciendo clic en el ícono ![](../images/debug-icon.png) en la esquina superior derecha.
+Abre la consola de debug haciendo clic en el ícono ![](../../.gitbook/assets/debug-icon.webp) en la esquina superior derecha.
 
 Esto abre un panel en la esquina inferior derecha con información sobre el motor de renderizado, y se actualiza en tiempo real a medida que las cosas cambian.
 
-![](../images/debug-panel.png)
+![](../../.gitbook/assets/debug-panel.webp)
 
 #### Current scene
 
@@ -57,7 +57,7 @@ La pestaña **PERFORMANCE** incluye varios campos relacionados con _FPS_ (Frames
 
 El valor más importante aquí es el **Average FPS**, que redondea los FPS de los últimos 1000 frames.
 
-![](../images/fps-debug-panel.png)
+![](../../.gitbook/assets/fps-debug-panel.webp)
 
 {% hint style="warning" %}
 **📔 Nota**: Los FPS del renderer no son los mismos que las actualizaciones del game loop de la scene por segundo. La lógica de la scene está limitada a 30 FPS, los FPS del renderer pueden llegar a 60 o más.
@@ -72,7 +72,7 @@ La sección **WEB REQUESTS** te permite abrir la pestaña Network de Chrome Devt
 Si tu scene interactúa con un servidor de terceros, a menudo es útil ver qué datos entran y salen. Haz clic en **Open Chrome Devtools** para abrir una nueva ventana de Chrome con la pestaña Network abierta.
 
 {% hint style="warning" %}
-**📔 Nota**: Para usar esta característica, primero debes instalar el [Creator Hub](../scene-editor/get-started/editor-installation.md), ya que las dependencias necesarias vienen empaquetadas con esa instalación.
+**📔 Nota**: Para usar esta característica, primero debes instalar el [Creator Hub](../../scene-editor/get-started/editor-installation.md), ya que las dependencias necesarias vienen empaquetadas con esa instalación.
 
 No necesitas tener el Creator Hub abierto o ejecutar tu preview de scene via el Creator Hub para usar esta característica, también se puede usar si estás usando el CLI para ejecutar tu preview de scene.
 {% endhint %}
@@ -85,7 +85,7 @@ Cada vez que hagas cambios en la scene, el preview se recarga y actualiza autom�
 
 Si necesitas recargar la scene en la que estás parado, haz clic en el botón **Reload Scene** en la esquina superior izquierda de la ventana de preview.
 
-![](../images/reload-button.png)
+![](../../.gitbook/assets/reload-button.webp)
 
 También puedes recargar la scene escribiendo lo siguiente en el chat y presionando enter:
 
@@ -93,13 +93,13 @@ También puedes recargar la scene escribiendo lo siguiente en el chat y presiona
 
 ### Reportar un bug
 
-Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](../sdk7/debugging/report-bug.md).
+Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](report-bug.md).
 
 ### Versiones de dependencias
 
 Asegúrate de usar siempre las últimas versiones de todas las dependencias en tu scene, ya que cualquier problema que estés experimentando podría estar ya corregido en versiones más nuevas. El Creator Hub te notificará cuando haya actualizaciones para instalar en tu scene de Decentraland.
 
-![](../images/new-dependencies.png)
+![](../../.gitbook/assets/new-dependencies.webp)
 
 También puedes actualizar manualmente las dependencias via la línea de comandos. Ejecutar una scene de Decentraland localmente depende de dos bibliotecas principales: `@dcl/sdk` y `@dcl/js-runtime`, que se instala en cada carpeta de proyecto. Asegúrate de que ambas estén actualizadas. Puedes ejecutar los siguientes comandos para actualizar manualmente ambas bibliotecas a la última versión estable:
 
@@ -122,11 +122,11 @@ La hora del día en el mundo tiene un gran impacto en cómo se ven los modelos 3
 
 Verifica que tu scene se vea bien en todos los momentos del día cambiando el reloj del juego a diferentes valores. Haz clic en el ícono **skybox time** en el panel izquierdo de la pantalla para establecer cualquier hora que prefieras. Si este deslizador está en gris, asegúrate de que la opción **Auto** esté deshabilitada.
 
-<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
+<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.webp" alt="Dynamic skybox" width="300"><figcaption><p>Instrucciones en el mundo</p></figcaption></figure>
 
 Los materiales de tu modelo 3d pueden no verse igual a como se veían en la herramienta de modelado con la que lo creaste. Esto es de esperarse, ya que todos los motores de renderizado 3d tienen diferencias sutiles en cómo manejan la luz y los materiales.
 
-También puedes configurar tu scene para que la hora del día esté fija y la iluminación no cambie. Consulta [Skybox control](../sdk7/interactivity/skybox-control.md) para más detalles.
+También puedes configurar tu scene para que la hora del día esté fija y la iluminación no cambie. Consulta [Skybox control](../interactivity/skybox-control.md) para más detalles.
 
 ### Pruebas multijugador
 
@@ -136,7 +136,7 @@ Interactúa con la scene en una ventana, luego cambia a la otra para ver que los
 
 Usando el Creator Hub, haz clic en el botón Preview una segunda vez, y eso abre una segunda ventana del Decentraland explorer. Debes conectarte en ambas ventanas con diferentes direcciones. Las mismas sesiones permanecerán abiertas mientras la scene se recargue. Puede que necesites cerrar sesión y volver a iniciar sesión en la segunda ventana para seleccionar una cuenta diferente.
 
-![](../images/editor/preview-button.png)
+![](../../.gitbook/assets/preview-button.webp)
 
 Ambos jugadores se verán entre sí, y pueden interactuar entre sí. Si la scene tiene cualquier lógica multijugador, funcionará como se espera y se sincronizará entre los dos jugadores.
 

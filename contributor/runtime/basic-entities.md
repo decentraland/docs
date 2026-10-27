@@ -1,4 +1,4 @@
-The World Explorer [reserves a range](modules/engine_api#identifying) of entity IDs for its own use. Of this range, the identifiers `0`, `1` and `2` are pre-assigned to a set of basic entities guaranteed to exist.
+The World Explorer [reserves a range](modules/engine-api.md#identifying) of entity IDs for its own use. Of this range, the identifiers `0`, `1` and `2` are pre-assigned to a set of basic entities guaranteed to exist.
 
 These are:
 
@@ -6,10 +6,10 @@ These are:
 - `1`: `PlayerEntity`
 - `2`: `CameraEntity`
 
-These entities have a known set of attached components that are managed by the runtime, i.e. their state is read-only for the scene. Obtaining the initial state of these components is part of the [scene initialization](execution#onStart).
+These entities have a known set of attached components that are managed by the runtime, i.e. their state is read-only for the scene. Obtaining the initial state of these components is part of the [scene initialization](execution.md#onStart).
 
 {% hint style="info" %}
-Additional components for these entities are in development. The [CRDT synchronization mechanism](modules/engine_api#synchronization) is expanding to provide some of the funcionality offered by different modules.
+Additional components for these entities are in development. The [CRDT synchronization mechanism](modules/engine-api.md#synchronization) is expanding to provide some of the funcionality offered by different modules.
 
 For example, scenes will be able to detect the state of the Explorer's window in order to optimize their network and CPU usage, or access richer information about the player, the comms system and the game camera.
 {% endhint %}

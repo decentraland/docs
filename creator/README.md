@@ -33,7 +33,7 @@ Decentraland is available on desktop (Windows and macOS) and on mobile devices (
 
 The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create [Scenes](./#scenes).
 
-![](../.gitbook/assets/scene-editor.png)
+![](images/editor/scene-editor.webp)
 
 Download the Creator Hub [here](https://decentraland.org/download/creator-hub).
 
@@ -71,11 +71,11 @@ Decentraland scenes are made up of 3D models.
 
 - Chose from the wide catalog of default assets in the Scene Editor. These are ready to go and optimized for using in Decentraland
 
-  ![](../.gitbook/assets/items.png)
+  ![](images/intro/items.webp)
 
 - Craft your own 3D models using Blender or your preferred 3D tools. Then import them into the Scene Editor.
 
-  ![](../.gitbook/assets/blender.png)
+  ![](images/intro/blender.webp)
 
 {% hint style="warning" %}
 **📔 Note**: Content in Decentraland should stay within certain [size limitations](sdk7/optimizing/scene-limitations.md) to ensure your scene runs smoothly.
@@ -89,7 +89,7 @@ To make your scene interactive:
 
 - **No Code**: Use the UI of the Scene Editor to drop [Smart Items](scene-editor/interactivity/smart-items.md) into your scene. These are models that come pre-built with their own behavior, and are highly customizable. You can also assign the same behaviors to your own custom models (no code required).
 
-  ![](../.gitbook/assets/smart-items.png)
+  ![](images/intro/smart-items.webp)
 
 - **Code**: For developers that want to incorporate custom logic, use the SDK to write code and do anything you can imagine. Learn to use the SDK:
 
@@ -98,7 +98,7 @@ To make your scene interactive:
   - [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md): build scenes by describing what you want in plain language, and let an AI coding assistant write the code for you.
   - [Examples](tutorials/examples.md): dive right into working example scenes.
 
-    ![](../.gitbook/assets/sdk-code.png)
+    ![](images/intro/sdk-code.webp)
 
 {% hint style="warning" %}
 **📔 Note**: You will also need to have [Visual Studio Code](https://code.visualstudio.com/) installed.

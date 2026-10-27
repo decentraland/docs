@@ -6,17 +6,17 @@ description: Managing your scene projects
 
 The **Scenes** tab lists each of your available scenes as a card. Open the card to edit that scene, from there you can preview it or publish it too.
 
-![The Scenes tab of the Creator Hub, showing a grid of scene cards with a New Scene card first, the Import Scene and Templates buttons above the grid, and a Tutorials column on the right.](../../images/editor/scenes-tab.png)
+![The Scenes tab of the Creator Hub, showing a grid of scene cards with a New Scene card first, the Import Scene and Templates buttons above the grid, and a Tutorials column on the right.](../../images/editor/scenes-tab.webp)
 
 ## Create a scene
 
 Click the arrow next to the **Create** button and select **New Scene** to create a new scene. You can also click the **New Scene** card at the start of the scene list.
 
-![The Create button dropdown, open, with the options New Scene and Import Scene.](../../images/editor/create-dropdown.png)
+![The Create button dropdown, open, with the options New Scene and Import Scene.](../../images/editor/create-dropdown.webp)
 
 You'll be asked to name your scene, and to choose a location to save it. The default location is the Scenes folder set in the app preferences, see [Change the scenes folder](#change-the-scenes-folder).
 
-![The Create Project dialog, with a Project Name field, a Project Path field with a folder picker, and Cancel and Create buttons.](../../images/editor/new-scene-dialog.png)
+![The Create Project dialog, with a Project Name field, a Project Path field with a folder picker, and Cancel and Create buttons.](../../images/editor/new-scene-dialog.webp)
 
 Once you confirm these steps, the scene project will be created. This may take a minute or two, as it downloads dependencies and sets up a folder on your local machine with everything it needs. When done, your scene will be opened in the [Scene Editor](scene-editor-essentials.md).
 
@@ -24,13 +24,13 @@ Once you confirm these steps, the scene project will be created. This may take a
 
 To start from a ready-made scene instead of an empty one, click **Templates** on the **Scenes** tab, or scroll to the **Templates** row on the **Home** tab. Templates range from an **Empty Scene** to full scenes like an art gallery or a nightclub. You can filter them by difficulty. Click a template card to create a new scene based on it, then name it and choose a location as you would for an empty scene.
 
-![The Choose a Template screen, with Easy, Medium and Hard difficulty filters and a grid of template cards, including Empty Scene, Art Gallery Template and Cozy House Template.](../../images/editor/templates-page.png)
+![The Choose a Template screen, with Easy, Medium and Hard difficulty filters and a grid of template cards, including Empty Scene, Art Gallery Template and Cozy House Template.](../../images/editor/templates-page.webp)
 
 ### Scene card options
 
 Click the three dots on a scene's card to see more options.
 
-![A scene card with its three-dot menu open, listing Duplicate, Open Folder Location, Rename Folder, View Deployments and Delete from My Scenes.](../../images/editor/scene-card-menu.png)
+![A scene card with its three-dot menu open, listing Duplicate, Open Folder Location, Rename Folder, View Deployments and Delete from My Scenes.](../../images/editor/scene-card-menu.webp)
 
 Click **Duplicate** to make a copy of an existing scene.
 
@@ -58,7 +58,7 @@ In the scene selector screen, press the _three dots_ icon and select _Delete fro
 
 This removes the scene from your Scene Editor home screen. By default it doesn't delete the files from your machine, but the confirmation dialog includes a checkbox to **also delete the scene's files from your computer**.
 
-![The delete confirmation dialog, asking if you are sure you want to delete the scene from My Scenes, with an unchecked option to also delete the scene's files from your computer.](../../images/editor/delete-scene-dialog.png)
+![The delete confirmation dialog, asking if you are sure you want to delete the scene from My Scenes, with an unchecked option to also delete the scene's files from your computer.](../../images/editor/delete-scene-dialog.webp)
 
 ## Change the scenes folder
 
@@ -67,7 +67,7 @@ By default, projects created via the Scene Editor are kept inside a `Scenes` fol
 1. Click the Creator Hub logo in the top-left corner to open the main menu, then click **Settings**.
 2. In the **SCENES** tab, click the folder icon next to **Scenes Folder** and pick a new folder.
 
-![The App Preferences dialog on the SCENES tab, showing the Scenes Folder path with a folder picker, and the Scene Dependencies options: Auto-update all my scenes, Notify me of new version updates, and Do nothing.](../../images/editor/settings-scenes.png)
+![The App Preferences dialog on the SCENES tab, showing the Scenes Folder path with a folder picker, and the Scene Dependencies options: Auto-update all my scenes, Notify me of new version updates, and Do nothing.](../../images/editor/settings-scenes.webp)
 
 The same tab also controls what happens when a new version of the scene dependencies is available: update all your scenes automatically, get notified, or do nothing.
 
@@ -87,7 +87,7 @@ You can check your used and remaining storage budget in two places:
 
 - The **Manage** section of the Creator Hub shows how much of your total budget is used and your total storage capacity. Click **View Details** for a breakdown of how your MANA, LAND, and NAME holdings add up.
 
-<img src="../../../.gitbook/assets/world-storage-budget.png" width="300" />
+<img src="../../.gitbook/assets/world-storage-budget.webp" width="300" />
 
 - The **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 

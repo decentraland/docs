@@ -1,6 +1,6 @@
 # websocket
 
-The websocket transport is one of the island messaging transports supported by the Decentraland comms protocol. Clients should use it when they receive an appropriate connection string from their realm's [Archipelago](../../archipelago/) service, or if it's indiciated as a fixed transport.
+The websocket transport is one of the island messaging transports supported by the Decentraland comms protocol. Clients should use it when they receive an appropriate connection string from their realm's [Archipelago](../archipelago.md) service, or if it's indiciated as a fixed transport.
 
 In the context of the websocket transport, an island is referred to as a _room_. Either name indicates the same thing: a group of nearby players that exchange updates and chat.
 
@@ -30,7 +30,7 @@ The [`WsPacket`](websocket.md#WsPacket) structure should not be confused with th
 
 ### Authentication
 
-Before they can start relaying messages to others, clients must authenticate by signing a challenge string. This is required even when the transport URI was obtained from [Archipelago](../../archipelago/) after a previous round of authentication.
+Before they can start relaying messages to others, clients must authenticate by signing a challenge string. This is required even when the transport URI was obtained from [Archipelago](../archipelago.md) after a previous round of authentication.
 
 The first message a client sends when joining an island is [`WsIdentification`](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64), which contains a public address. It will be responded with [`WsChallengeRequired`](websocket.md#WsChallengeRequired), and clients send a [`WsSignedChallenge`](websocket.md#WsSignedChallenge) in reply.
 
@@ -82,7 +82,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 | Field             | Type     | Value                                                                                              |
 | ----------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `auth_chain_json` | `string` | A serialized [authentication chain](../../../auth/authchain/) ending with the challenge signature. |
+| `auth_chain_json` | `string` | A serialized [authentication chain](../../authentication/authchain.md) ending with the challenge signature. |
 
 ***
 
@@ -128,7 +128,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ### Client Messages
 
-To send comms [messages](../../messages/), clients wrap them in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) structure. This differentiates the transport control message types from the actual messages sent between peers.
+To send comms [messages](../messages.md), clients wrap them in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) structure. This differentiates the transport control message types from the actual messages sent between peers.
 
 ```
 .-------------------.
@@ -150,7 +150,7 @@ To send comms [messages](../../messages/), clients wrap them in the [`WsPeerUpda
 | Field        | Type     | Value                                                                            |
 | ------------ | -------- | -------------------------------------------------------------------------------- |
 | `from_alias` | `uint32` | The sender's server-generated ID                                                 |
-| `body`       | `bytes`  | The serialized [message](../../messages/) being wrapped                          |
+| `body`       | `bytes`  | The serialized [message](../messages.md) being wrapped                          |
 | `unreliable` | `bool`   | Whether the sender prioritized speed or reliability for deliverying this message |
 
 Clients must set the `from_alias` field to `0` when sending, and the server will fill it with the correct identifier before delivering it to peers.

@@ -6,7 +6,7 @@ description: Learn how systems are used to update the scene state
 
 Decentraland scenes rely on _systems_ to update any data over time, including information stored in each entity's [components](../architecture/entities-components.md).
 
-![](../../images/media/ecs-big-picture.png)
+![](../../images/media/ecs-big-picture.webp)
 
 _systems_ are what make scenes dynamic, they're functions that are executed periodically on every tick of the scene's game loop, changing what will be rendered.
 
@@ -41,7 +41,7 @@ engine.addSystem(moveSystem)
 
 In the example above, the system `MoveSystem` is a function that runs on each tick of the game loop, changing position of every entity in the scene that has a Transform.
 
-![](../../images/media/ecs-system-new.png)
+![](../../images/media/ecs-system-new.webp)
 
 You can have multiple systems in your scene to decouple different behaviors, making your code cleaner and easier to scale and reuse. For example, one system might handle physics, another might make an obstacle entity move back and forth continuously, another could handle the AI of characters.
 
@@ -134,11 +134,11 @@ The smoother a scene runs, the more frequently ticks occur and the smaller each 
 
 This scene-side frame rate is caped at 30 ticks per second, in which case the value of `dt` is _1/30_ (0.0333...).
 
-![](../../images/media/ecs-framerate.png)
+![](../../images/media/ecs-framerate.webp)
 
 When the processing of a frame takes longer, the drawing of that frame is delayed, and the `dt` passed on the next tick reflects that longer interval. The engine doesn't compensate for the delay retroactively; `dt` always reports the actual elapsed time so your systems can adjust to it.
 
-![](../../images/media/ecs-framerate-heavy.png)
+![](../../images/media/ecs-framerate-heavy.webp)
 
 Ideally, you should avoid your scene dropping frames, as it impacts the quality of the player's experience. Since this is dependant on the processing power of the player's machine, it's always a possibility that your scene should be ready to handle gracefully.
 

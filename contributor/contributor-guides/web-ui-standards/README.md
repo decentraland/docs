@@ -20,14 +20,14 @@ Our web UI architecture is built on three core pillars:
 
 ### UI1: Legacy Library
 
-**UI1** (`decentraland-ui`) is our previous component library, still maintained but being gradually migrated to UI2. See the [Migration Guide](broken-reference) for details on transitioning components.
+**UI1** (`decentraland-ui`) is our previous component library, still maintained but being gradually migrated to UI2. See the [Migration Guide](migration.md) for details on transitioning components.
 
 ## Documentation Sections
 
 * [**Process Overview**](process-overview.md) - UX discovery, Figma design, and implementation workflow
 * [**Custom Components**](custom-components.md) - Guidelines for project-specific and reusable components
 * [**Styling & Theming**](styling-and-theming.md) - Comprehensive styling standards using styled-components
-* [**Migration Guide**](broken-reference) - Migrating components from UI1 to UI2
+* [**Migration Guide**](migration.md) - Migrating components from UI1 to UI2
 
 ## Key Principles
 
@@ -171,7 +171,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 1. Review the [Process Overview](process-overview.md) to understand the workflow
 2. Learn about [Custom Components](custom-components.md) for when to create new components
 3. Study [Styling & Theming](styling-and-theming.md) for implementation details
-4. If migrating from UI1, see the [Migration Guide](broken-reference)
+4. If migrating from UI1, see the [Migration Guide](migration.md)
 
 ## Resources
 

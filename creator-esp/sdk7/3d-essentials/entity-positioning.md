@@ -12,7 +12,7 @@ Puedes establecer la _posición_, _rotación_ y _escala_ de cualquier entidad us
 
 ## Usar el Scene Editor
 
-Al agregar un elemento a tu escena a través del [Scene Editor](../../scene-editor/about-editor.md), incluye implícitamente un componente **Transform**. Luego cambias los valores en el componente Transform de la entidad implícitamente al cambiar la posición, rotación o escala de una entidad. También puedes usar la UI del Scene Editor para proporcionar valores numéricamente para mayor precisión.
+Al agregar un elemento a tu escena a través del [Scene Editor](../../scene-editor/get-started/about-editor.md), incluye implícitamente un componente **Transform**. Luego cambias los valores en el componente Transform de la entidad implícitamente al cambiar la posición, rotación o escala de una entidad. También puedes usar la UI del Scene Editor para proporcionar valores numéricamente para mayor precisión.
 
 ## Fundamentos de código
 
@@ -40,7 +40,7 @@ Para mover, rotar o cambiar el tamaño de una entidad en tu escena durante un pe
 
 > `import { Vector3, Quaternion } from "@dcl/sdk/math"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Posición

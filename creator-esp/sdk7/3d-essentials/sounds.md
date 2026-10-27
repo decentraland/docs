@@ -20,11 +20,11 @@ Los archivos _.wav_ también son compatibles pero generalmente no se recomiendan
 
 ## Reproducir sonidos
 
-La forma más fácil de reproducir un sonido es agregar un componente **Audio Source** visualmente en el [Scene Editor](../../scene-editor/about-editor.md) y configurarlo para **Start Playing** y **Loop**. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
+La forma más fácil de reproducir un sonido es agregar un componente **Audio Source** visualmente en el [Scene Editor](../../scene-editor/get-started/about-editor.md) y configurarlo para **Start Playing** y **Loop**. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
 
 
 
-También puedes activar la reproducción de un sonido de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
+También puedes activar la reproducción de un sonido de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/interactivity/smart-items.md).
 
 Para reproducir un sonido mediante código, usa la función `AudioSource.playSound`.
 
@@ -43,7 +43,7 @@ El archivo de sonido debe estar dentro de la carpeta del proyecto. En el ejemplo
 
 > `import { AudioSource } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 La función `AudioSource.playSound()` toma los siguientes argumentos:

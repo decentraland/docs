@@ -14,7 +14,7 @@ Este documento describe los pasos recomendados para desarrollar una scene para D
 
 Asegúrate de tener instalado el Decentraland Creator Hub.
 
-* [Guía de Instalación](../get-started/editor-installation.md)
+* [Guía de Instalación](../../scene-editor/get-started/editor-installation.md)
 
 Si tienes la intención de trabajar con código, también asegúrate de instalar [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -32,14 +32,14 @@ En Decentraland, el contenido se publica en parcelas de tierra adyacentes en una
 
 El permiso para publicar en cada una de estas está controlado via tokens. No necesitas tierra para desarrollar una scene, pero necesitarás acceso a tierra una vez que estés listo para publicar.
 
-Alternativamente, tienes la opción de publicar en Decentraland [Worlds](../worlds/about.md), que son scenes aisladas y autocontenidas.
+Alternativamente, tienes la opción de publicar en Decentraland [Worlds](../../worlds/about.md), que son scenes aisladas y autocontenidas.
 
 Las siguientes opciones están disponibles:
 
 * Rentar LAND
 * Comprar LAND
 * Obtener permisos de un propietario de tierra
-* Publicar en un Decentraland World, consulta [worlds](../worlds/about.md) para aprender más.
+* Publicar en un Decentraland World, consulta [worlds](../../worlds/about.md) para aprender más.
 
 Consulta [Publishing options](../publishing/publishing-options.md) para más detalles.
 
@@ -52,7 +52,7 @@ Al crear una nueva scene, elige entre varias scenes de plantilla base que incluy
 
 ## Assets de arte
 
-Si eres un artista experimentado o tienes acceso a alguien que lo es, puedes crear modelos `.gltf` o `.glb` personalizados para tu scene. Consulta [3D model essentials](../3d-modeling/3d-models.md) para consejos sobre cómo crear modelos 3D para Decentraland.
+Si eres un artista experimentado o tienes acceso a alguien que lo es, puedes crear modelos `.gltf` o `.glb` personalizados para tu scene. Consulta [3D model essentials](../../3d-modeling/3d-models.md) para consejos sobre cómo crear modelos 3D para Decentraland.
 
 Hay muchas fuentes para obtener assets de arte gratuitos o pagos. Por ejemplo:
 
@@ -83,7 +83,7 @@ Para ejecutar un preview de tu scene, abre una ventana de Visual Studio Code en 
 **💡 Tip**: Cuando usas el Creator Hub, cada vez que haces un cambio en tu scene, el preview se actualiza automáticamente. Incluso mientras se está ejecutando.
 {% endhint %}
 
-## Publicar en el servidor de prueba
+## Publicar en el servidor de prueba {#deploy-to-the-test-environment}
 
 Prueba tu scene en el servidor de prueba (testnet de Sepolia) antes de ir a mainnet. No necesitas poseer ningún LAND o nombres para publicar en el servidor de prueba.
 
@@ -95,7 +95,7 @@ Una vez que estés satisfecho con tu scene y la hayas probado en el servidor de 
 
 Consulta [publishing](../publishing/publishing.md) para instrucciones sobre cómo hacerlo.
 
-Alternativamente, puedes publicar en [Worlds](../worlds/about.md), un espacio 3D personal que no requiere LAND.
+Alternativamente, puedes publicar en [Worlds](../../worlds/about.md), un espacio 3D personal que no requiere LAND.
 
 ## Promocionar
 

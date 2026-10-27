@@ -14,8 +14,8 @@ See [Reference items in code](reference-items.md) for how to fetch items by name
 
 You must install a code editor on your machine to edit the code of your scene. The recommended options are:
 
-* ![](../../images/editor/vscode.png) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* ![](../../images/editor/cursor-icon.png) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+* ![](../../images/editor/vscode.webp) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
+* ![](../../images/editor/cursor-icon.webp) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 {% hint style="warning" %}
 **📔 Note**: If you are on macOS, make sure the code editor app is in the Applications directory.
@@ -27,17 +27,17 @@ Once installed, you may need to select your Code Editor in the settings of the C
 2. Open the **EDITOR** tab.
 3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
-![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code.](../../images/editor/settings-editor.png)
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code.](../../images/editor/settings-editor.webp)
 
 ## Open a scene's code
 
 Once you installed a code editor on your machine, and selected it in the settings of the Creator Hub, you can click the **< > CODE** button to open it on your scene project.
 
-![](../../images/editor/code-button.png)
+![](../../images/editor/code-button.webp)
 
 This opens a separate window with the code editor. On the left margin you can navigate the files and folder structure of your project.
 
-![](../../images/editor/files-on-vs-studio.png)
+![](../../images/editor/files-on-vs-studio.webp)
 
 Add your custom code in the `index.ts` file under `/src`, inside the `main()` function. You can otherwise add custom code outside that function or create new `.ts` files inside the `/src` folder, but these must be somehow referenced inside the `main()` function of `index.ts`.
 
@@ -57,7 +57,7 @@ If you are using Cursor, you can use the AI assistant to help you write code. To
 
 1.  Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
 
-    ![](../../images/editor/cursor-icon.png)
+    ![](../../images/editor/cursor-icon.webp)
 2. There you can prompt the AI assistant to help you write code. You can also select a model to use from the dropdown.
 
 To give your AI assistant Decentraland context, install the official Decentraland SDK Skills. These are ready-made instruction sets, maintained by the Decentraland Foundation, that teach your AI agent verified SDK7 patterns for every topic: scaffolding entire scenes, adding 3D models, multiplayer, deployment, and more.

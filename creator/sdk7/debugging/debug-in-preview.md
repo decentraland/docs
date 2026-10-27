@@ -28,11 +28,11 @@ The console also shows error messages, these are marked in red.
 
 ## The debug panel
 
-Open the debug console by clicking the ![](../../images/debug-icon.png) icon on the top-right corner.
+Open the debug console by clicking the ![](../../images/debug-icon.webp) icon on the top-right corner.
 
 This opens a panel on the lower-right corner with information about the renderer engine, and is updated in real time as things change.
 
-![](../../images/debug-panel.png)
+![](../../images/debug-panel.webp)
 
 ### Current scene
 
@@ -53,7 +53,7 @@ The **PERFORMANCE** tab includes several fields related to _FPS_ (Frames Per Sec
 
 The most important value here is the **Average FPS**, which rounds up the FPS from the last 1000 frames.
 
-![](../../images/fps-debug-panel.png)
+![](../../images/fps-debug-panel.webp)
 
 {% hint style="warning" %}
 **📔 Note**: The renderer's FPS is not the same as the scene's updates of the game loop per second. The scene's logic is capped at 30 FPS, the renderer's FPS can go up to 60 or more.
@@ -81,7 +81,7 @@ Whenever you make changes to the scene, the preview reloads and updates automati
 
 If you need to reload the scene you're standing on, click the **Reload Scene** button on the top-left corner of the preview window.
 
-![](../../images/reload-button.png)
+![](../../images/reload-button.webp)
 
 You can also reload the scene by writing the following into the chat and pushing enter:
 
@@ -95,7 +95,7 @@ If you encounter a problem that is not with your scene, but instead with the Dec
 
 Make sure you always use the latest versions of all dependencies in your scene, as any issues you're experiencing might already be fixed in newer versions. The Creator Hub will notify you when there are updates to install on your Decentraland scene.
 
-![](../../images/new-dependencies.png)
+![](../../images/new-dependencies.webp)
 
 You can also manually update the dependenceis via the command line. Running a Decentraland scene locally depends on two main libraries: `@dcl/sdk` and `@dcl/js-runtime`, which is installed on each project folder. Make sure both of those are up to date. You can run the following commands to manually update both these libraries to the latest stable version:
 
@@ -118,7 +118,7 @@ The in-world time of day has a big impact on how 3d models look. The color of th
 
 Check that your scene looks good at all times of day by switching the game clock to different values. Click the **skybox time** icon on the left panel of the screen to set any time you prefer. If this slider is grayed out, make sure that the **Auto** option is disabled.
 
-<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.png" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
+<figure><img src="https://github.com/decentraland/docs/blob/main/creator/images/daylight-settings.webp" alt="Dynamic skybox" width="300"><figcaption><p>In-world instructions</p></figcaption></figure>
 
 Your 3d model's materials might not look the same as they did in the modeling tool you created it with. This is to be expected, as all 3d rendering engines have subtle differences in how they deal with light and materials.
 
@@ -132,7 +132,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 Using the Creator Hub, turn on **Multi-Instance Preview** in the **Desktop Client** submenu of **Play Options**, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads. You may need to log out and log in again to the second window to select a different account.
 
-![](../../images/editor/preview-button.png)
+![](../../images/editor/preview-button.webp)
 
 Both players will see each other, and can interact with each other. If the scene has any multiplayer logic, it will work as expected and get synced between the two players.
 

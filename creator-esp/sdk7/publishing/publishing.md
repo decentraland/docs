@@ -12,7 +12,7 @@ metaLinks:
 
 Asegúrate de lo siguiente:
 
-* Tu escena cumple con todas las [limitaciones de escena](../sdk7/optimizing/scene-limitations.md). La mayoría de estas se validan cada vez que ejecutas una vista previa de tu escena.
+* Tu escena cumple con todas las [limitaciones de escena](../optimizing/scene-limitations.md). La mayoría de estas se validan cada vez que ejecutas una vista previa de tu escena.
 * Tienes una cuenta de [Metamask](https://metamask.io/), con tus parcelas de LAND asignadas a ella.
 *   Posees la cantidad necesaria de parcelas de LAND adyacentes o un NAME de Decentraland. De lo contrario, puedes comprar LAND en el [Market](https://market.decentraland.org) o un NAME en el [Builder](https://decentraland.org/builder/names).
 
@@ -36,23 +36,23 @@ Abre el archivo _scene.json_ de tu escena y completa los siguientes datos:
 * **Parcels**: Las coordenadas de las parcelas que serán ocupadas por tu escena
 * **Base**: Las coordenadas de la parcela que se considerará la coordenada \[0,0] de la escena. Si tu escena tiene múltiples parcelas, debe ser la parcela inferior izquierda (Sur-Oeste).
 * **spawnPoints**: Un conjunto de coordenadas dentro de la escena (relativas a la parcela base de la escena) donde los jugadores aparecen. Por defecto, los jugadores aparecen en la ubicación _0,0,0_ de la escena (esquina inferior izquierda). Usa esto para comenzar en una ubicación específica, establece una región para evitar que los jugadores se superpongan cuando aparecen por primera vez.
-* **tags**: Un conjunto de etiquetas que describen tu escena. Estas se usan para ayudar a los jugadores y usuarios a explorar Decentraland de una mejor manera, ya que pueden encontrar el contenido que les interesa. [Consulta la lista de etiquetas disponibles](../sdk7/projects/scene-metadata.md#tags).
+* **tags**: Un conjunto de etiquetas que describen tu escena. Estas se usan para ayudar a los jugadores y usuarios a explorar Decentraland de una mejor manera, ya que pueden encontrar el contenido que les interesa. [Consulta la lista de etiquetas disponibles](../projects/scene-metadata.md#categories).
 * **rating**: Esto se usa para clasificar el contenido de tu escena según su idoneidad para diferentes grupos de edad (`T` para Teens o `A` para Adults). Ayuda a filtrar contenido para los jugadores.
 
 {% hint style="warning" %}
-**📔 Nota**: Consulta [metadatos de escena](../sdk7/projects/scene-metadata.md) para más detalles sobre cómo establecer estos parámetros.
+**📔 Nota**: Consulta [metadatos de escena](../projects/scene-metadata.md) para más detalles sobre cómo establecer estos parámetros.
 {% endhint %}
 
 ### Para publicar la escena
 
 #### Usando el Scene Editor
 
-Asegúrate de haber [instalado el Creator Hub](../scene-editor/get-started/editor-installation.md).
+Asegúrate de haber [instalado el Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Abre tu proyecto de escena.
 2. Haz clic en el botón **Publish** en la esquina superior derecha.
 3. Un mensaje te preguntará si quieres publicar en un **WORLD** o en **LAND**.
-   * Selecciona **PUBLISH TO WORLD** para hacer que tu escena esté disponible en uno de tus [WORLDs](../worlds/about.md). Luego selecciona cuál de tus NAMEs o Dominios ENS publicar.
+   * Selecciona **PUBLISH TO WORLD** para hacer que tu escena esté disponible en uno de tus [WORLDs](../../worlds/about.md). Luego selecciona cuál de tus NAMEs o Dominios ENS publicar.
    * Selecciona **PUBLISH TO LAND** si posees land, o te han dado permisos de despliegue por un propietario. Luego selecciona las parcelas donde quieres que se despliegue en el mapa. Las parcelas donde se te permite desplegar se muestran en rosa.
    * Selecciona **Alternative servers** para publicar en el [servidor de prueba](publishing.md#the-test-server) o un [servidor personalizado](publishing.md#custom-servers).
 4. Esto abre una nueva pestaña en tu navegador, mostrando detalles sobre la carga. Aprueba la transacción.
@@ -79,7 +79,7 @@ Asegúrate de haber [instalado el Creator Hub](../scene-editor/get-started/edito
 **💡 Tip**: `npm run deploy` ejecuta un `npm run build`, que verifica la escena en busca de errores de tipo más estrictamente que ejecutar `npm run start`. Si estos errores no pueden evitarse (ej: ocurren en una librería externa) y no impactan la escena, puedes usar `npm run deploy --skip-build` para omitir el paso `npm run build` y desplegar la escena tal como está.
 {% endhint %}
 
-Al publicar a un [World de Decentraland](../worlds/about.md), usa el siguiente comando en su lugar:
+Al publicar a un [World de Decentraland](../../worlds/about.md), usa el siguiente comando en su lugar:
 
 `npm run deploy -- --target-content https://worlds-content-server.decentraland.org`
 
@@ -112,7 +112,7 @@ Usamos los servidores de contenido para alojar y distribuir todo el contenido de
 
 La información en cada copia del servidor es verificable, ya que cada escena está firmada por el hash del propietario de LAND. Esto significa que alguien que aloje una copia del servidor no podrá alterar el contenido para mostrar algo ilegítimo. La comunidad también puede votar para aprobar o eliminar cualquiera de estos servidores usando el DAO.
 
-### El servidor de prueba
+### El servidor de prueba {#the-test-server}
 
 Puedes desplegar contenido al servidor catalyst de prueba para ejecutar pruebas completas con múltiples usuarios, las escenas circundantes y un entorno que es idéntico a producción. El servidor de prueba es idéntico a todos los demás servidores catalyst, la diferencia es que el contenido que se despliega a este servidor no se propaga a los demás. El contenido desplegado a otros servidores, por otro lado, sí se propaga a este servidor, por lo que las escenas circundantes deberían verse como se verán en producción.
 
@@ -138,10 +138,10 @@ _https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org_
 
 Puedes desplegar contenido a un servidor personalizado que no pertenece a la red oficial de servidores catalyst mantenida por el DAO. Para hacer esto, no necesitas poseer ningún token LAND o NAME, ya que puedes configurar el servidor para usar cualquier lógica de validación que prefieras para controlar quién puede desplegar dónde. Los servidores personalizados pueden elegir tener contenido de los servidores oficiales, que puedes sobrescribir, o comenzar desde cero y publicar contenido completamente nuevo.
 
-Consulta [Cómo ejecutar tu propio Nodo Catalyst](../tutorials/how-to-run-a-catalyst.md) para más información sobre qué puedes hacer con tu propio servidor y cómo configurarlo.
+Consulta [Cómo ejecutar tu propio Nodo Catalyst](../../../contributor-esp/tutorials/how-to-run-a-catalyst.md) para más información sobre qué puedes hacer con tu propio servidor y cómo configurarlo.
 
 {% hint style="warning" %}
-**📔 Nota**: Los jugadores necesitarán escribir manualmente una URL para acceder a tu servidor personalizado. Ciertas validaciones de servicios como el [servidor de recompensas](../rewards/gatting-started.md) o el [servidor de quests](../deprecated/quests/overview.md) podrían fallar en estos contextos, ya que a menudo estos servicios requieren que la solicitud provenga de un servidor oficial.
+**📔 Nota**: Los jugadores necesitarán escribir manualmente una URL para acceder a tu servidor personalizado. Ciertas validaciones de servicios como el [servidor de recompensas](../../rewards/gatting-started.md) o el [servidor de quests (documentación archivada)](https://github.com/decentraland/documentation/blob/5f8c7f73c67a9a36e85095cb02e72dc6355fa590/content/creator/deprecated/quests/overview.md) podrían fallar en estos contextos, ya que a menudo estos servicios requieren que la solicitud provenga de un servidor oficial.
 {% endhint %}
 
 Los jugadores nunca son dirigidos a este servidor, la única forma de acceder a él es escribir explícitamente la URL para conectarse a él.
@@ -154,7 +154,7 @@ Para desplegar a un servidor personalizado, ejecuta:
 
 La URL para entrar a tu escena desplegada en tu servidor personalizado dependerá del dominio donde esté alojado.
 
-### Verificar éxito del despliegue
+### Verificar éxito del despliegue {#verify-deployment-success}
 
 Una vez que hayas desplegado tu escena, estos cambios tomarán unos minutos en propagarse a través de los diversos servidores de contenido en la red. Si entras a Decentraland justo después de desplegar, podrías aún ver la versión anterior de tu contenido, dependiendo de a qué realm entres.
 

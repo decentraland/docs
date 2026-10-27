@@ -1,0 +1,17 @@
+{
+  "creator-esp/.gitbook/assets/console-icon.png": {
+    "sha256": "92e8eb247fcf289c2feff8f8f82d3c5b4117e882f3874d514ecf0ff73a15d096"
+  },
+  "creator/images/console-icon.png": {
+    "sha256": "92e8eb247fcf289c2feff8f8f82d3c5b4117e882f3874d514ecf0ff73a15d096"
+  },
+  "creator/images/editor/folder-icon.png": {
+    "sha256": "ad0c0dd6dced1bedf2b986b9e72a9451f0448680a91225054121504912655f71"
+  },
+  "creator/images/favicon.ico": {
+    "sha256": "f8716264579d7b259622f5fd9ccf06dbf2ce72c92e04f890a20b2fdee907dfd5"
+  },
+  "player/images/favicon.ico": {
+    "sha256": "f8716264579d7b259622f5fd9ccf06dbf2ce72c92e04f890a20b2fdee907dfd5"
+  }
+}

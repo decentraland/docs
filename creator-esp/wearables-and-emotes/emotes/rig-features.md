@@ -14,7 +14,7 @@ Esta documentación explica la configuración para Rig 1.0, sus controles y cara
 
 Estas son las transformaciones de la armature en Object Mode con la configuración de controles. **No edites esto de ninguna manera**. El rig solo debe manipularse en Pose Mode. Para evitar edición no deseada, las transformaciones han sido bloqueadas en Object Mode.
 
-![](../images/media/RigTransforms.png)
+![](../../.gitbook/assets/RigTransforms.webp)
 
 _Transformaciones de Rig 1.0._
 
@@ -24,11 +24,11 @@ _Transformaciones de Rig 1.0._
 
 Esta es la orientación de huesos para Rig 1.0. Como está ahora mismo, no es posible reflejar el comportamiento en los hombros, brazos, manos o dedos.
 
-![](../images/media/AxesBoneOrientation.png)
+![](../../.gitbook/assets/AxesBoneOrientation.webp)
 
 _Ejes para orientación de huesos._
 
-![](../images/media/MirrorPose.png)
+![](../../.gitbook/assets/MirrorPose.webp)
 
 _Comportamiento al reflejar poses._
 
@@ -36,7 +36,7 @@ _Comportamiento al reflejar poses._
 
 Para evitar cualquier accidente y para facilitar la identificación de los controles, este rig está organizado en bone collections que se pueden acceder en la pestaña _Data Properties_ en Blender. La visibilidad de estas colecciones se puede activar y desactivar haciendo clic en el _Ícono de Ojo._ Por defecto, todas están visibles, excepto las de DON'T TOUCH.
 
-![](../images/media/BoneCollections.png)
+![](../../.gitbook/assets/BoneCollections.webp)
 
 Pestaña de Armature Data Properties.
 
@@ -67,7 +67,7 @@ Los controles son huesos que no deforman que dirigen el esqueleto base. Tienen d
 * Rosa: controles del lado izquierdo
 * Naranja: controles del lado derecho
 
-![](../images/media/RigControls.png)
+![](../../.gitbook/assets/RigControls.webp)
 
 _Todos los controles y sus colores._
 
@@ -115,7 +115,7 @@ _Cómo funciona el atributo IsoRot para la cabeza._
 
 _¡En versiones anteriores de Blender, asegúrate de hacer keyframe de todos los controles y atributos personalizados!_
 
-![](../images/media/keyframes.gif)
+![](../../.gitbook/assets/keyframes.webp)
 
 _En Blender 4.4, presiona I para establecer automáticamente un keyframe en Location, Rotation, Scale & Custom Properties.._
 

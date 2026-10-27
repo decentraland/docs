@@ -4,30 +4,77 @@ import { posix } from 'node:path'
 
 const markdown = new MarkdownIt({ html: true })
 
+export function splitFrontMatter(content) {
+	const text = content.replace(/^\uFEFF/, '')
+	const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
+	return { body: match ? text.slice(match[0].length) : text, frontMatter: match?.[1] }
+}
+
+// Follow the srcset tokenization rules: commas inside a URL (notably a data
+// URL) belong to that URL; commas after a descriptor separate candidates.
+export function srcsetLinks(value) {
+	const links = []
+	let offset = 0
+	while (offset < value.length) {
+		while (/[\t\n\f\r ,]/.test(value[offset] ?? '') && offset < value.length) offset++
+		const start = offset
+		while (offset < value.length && !/[\t\n\f\r ]/.test(value[offset])) offset++
+		const url = value.slice(start, offset)
+		if (!url) break
+		links.push(url.replace(/,+$/, ''))
+		if (url.endsWith(',')) continue
+		let parentheses = 0
+		while (offset < value.length) {
+			const character = value[offset++]
+			if (character === '(') parentheses++
+			else if (character === ')' && parentheses) parentheses--
+			else if (character === ',' && !parentheses) break
+		}
+	}
+	return links.filter(Boolean)
+}
+
 export function extractLinks(content) {
 	// YAML may contain prose and example URLs, not rendered Markdown links.
-	const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+	const { body } = splitFrontMatter(content)
 	const links = []
+	function gitbookLinks(text) {
+		for (const tag of text.matchAll(/\{%\s*(?:file|embed|image)\b([\s\S]*?)%\}/g)) {
+			for (const attr of tag[1].matchAll(/\b(?:src|url)\s*=\s*(["'])(.*?)\1/g)) links.push(attr[2])
+		}
+	}
 	function htmlLinks(html) {
 		function visit(node) {
+			if (['code', 'pre', 'script', 'style'].includes(node.tagName)) return
 			for (const attr of node.attrs ?? []) {
 				if (['href', 'src', 'poster'].includes(attr.name)) links.push(attr.value)
+				if (attr.name === 'srcset') links.push(...srcsetLinks(attr.value))
 			}
+			if (node.nodeName === '#text') gitbookLinks(node.value)
 			for (const child of node.childNodes ?? []) visit(child)
 			if (node.content) visit(node.content)
 		}
 		visit(parseFragment(html))
 	}
 	function visit(tokens) {
+		let codeTag
 		for (const token of tokens) {
+			if (token.type === 'html_inline') {
+				if (codeTag) {
+					if (new RegExp(`</${codeTag}\\s*>`, 'i').test(token.content)) codeTag = undefined
+					continue
+				}
+				const opening = token.content.match(/^<(code|pre|script|style)(?:\s|>)/i)
+				if (opening) {
+					if (!new RegExp(`</${opening[1]}\\s*>`, 'i').test(token.content)) codeTag = opening[1]
+					continue
+				}
+			}
+			if (codeTag) continue
 			if (token.type === 'link_open') links.push(token.attrGet('href'))
 			if (token.type === 'image') links.push(token.attrGet('src'))
 			if (token.type === 'html_inline' || token.type === 'html_block') htmlLinks(token.content)
-			if (token.type === 'text') {
-				for (const tag of token.content.matchAll(/\{%\s*(?:file|embed|image)\b([\s\S]*?)%\}/g)) {
-					for (const attr of tag[1].matchAll(/\b(?:src|url)\s*=\s*(["'])(.*?)\1/g)) links.push(attr[2])
-				}
-			}
+			if (token.type === 'text') gitbookLinks(token.content)
 			if (token.children) visit(token.children)
 		}
 	}
@@ -60,15 +107,4 @@ export function findBrokenLinks(source, content, paths) {
 		}
 	}
 	return errors
-}
-
-export function compareBaseline(errors, baseline) {
-	const key = (source, link) => JSON.stringify([source, link])
-	const known = new Set(Object.entries(baseline).flatMap(([source, links]) => links.map(link => key(source, link))))
-	const actual = new Set(errors.map(error => key(error.source, error.link)))
-	return {
-		newErrors: errors.filter(error => !known.has(key(error.source, error.link))),
-		stale: [...known].filter(entry => !actual.has(entry)).map(entry => { const [source, link] = JSON.parse(entry); return { source, link } }),
-		existing: errors.filter(error => known.has(key(error.source, error.link))).length,
-	}
 }

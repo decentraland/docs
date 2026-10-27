@@ -9,7 +9,7 @@ metaLinks:
 
 **'En el Mundo'** se refiere a cualquier cosa que suceda dentro del mundo virtual de Decentraland—¡aquí es donde ocurre la magia!
 
-![](broken-reference)
+![](../.gitbook/assets/minimapGP.webp)
 
 La masa terrestre principal de Decentraland, Genesis City.
 

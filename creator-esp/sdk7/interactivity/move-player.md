@@ -10,7 +10,7 @@ metaLinks:
 
 ## Usar el Scene Editor
 
-La forma más fácil de mover al jugador es usar el [Scene Editor](../../scene-editor/about-editor.md). Usa las acciones sin código **Move player** o **Move player here**, consulta [Hacer cualquier item inteligente](../../scene-editor/make-any-item-smart.md).
+La forma más fácil de mover al jugador es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md). Usa las acciones sin código **Move player** o **Move player here**, consulta [Hacer cualquier item inteligente](../../scene-editor/interactivity/make-any-item-smart.md).
 
 ## Mover jugador
 

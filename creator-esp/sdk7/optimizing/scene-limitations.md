@@ -10,7 +10,7 @@ metaLinks:
 
 Para mejorar el rendimiento en el metaverso, hemos establecido un conjunto de límites que cada escena debe seguir. Estos límites son por parcela. Entonces, cuanto más grande es la escena, más altos se establecen estos límites.
 
-Al trabajar con el [Creator Hub](../scene-editor/get-started/editor-installation.md), puedes ver estadísticas sobre los recursos usados por modelos 3D en tu escena, junto con los límites para tu escena.
+Al trabajar con el [Creator Hub](../../scene-editor/get-started/editor-installation.md), puedes ver estadísticas sobre los recursos usados por modelos 3D en tu escena, junto con los límites para tu escena.
 
 Puedes expandir este menú para ver detalles.
 
@@ -46,7 +46,7 @@ Puedes listar cualquier otro archivo o carpeta que quieras excluir de ser subido
 
 ### Optimización
 
-Consulta [Optimización de Rendimiento](../sdk7/optimizing/performance-optimization.md) para consejos sobre cómo puedes mantener tu escena por debajo de estos límites y hacer que funcione más suavemente para los jugadores.
+Consulta [Optimización de Rendimiento](performance-optimization.md) para consejos sobre cómo puedes mantener tu escena por debajo de estos límites y hacer que funcione más suavemente para los jugadores.
 
 ### Límites de escena
 
@@ -60,7 +60,7 @@ Es posible posicionar entidades bajo tierra, para ocultarlas o para tener solo u
 
 ### Limitaciones de shader
 
-Los modelos 3D usados en decentraland deben usar shaders y materiales soportados. Consulta [materiales de modelos 3D](../3d-modeling/materials.md) para una lista de shaders soportados.
+Los modelos 3D usados en decentraland deben usar shaders y materiales soportados. Consulta [materiales de modelos 3D](../../3d-modeling/materials.md) para una lista de shaders soportados.
 
 ### Iluminación
 
@@ -96,12 +96,12 @@ Ejemplos de otros tamaños válidos:
 
 ### Tamaño de World
 
-Los [Worlds](../worlds/about.md) de Decentraland tienen limitaciones diferentes, ya que se cargan como escenas individuales.
+Los [Worlds](../../worlds/about.md) de Decentraland tienen limitaciones diferentes, ya que se cargan como escenas individuales.
 
 * Los Worlds publicados a Decentraland NAMEs tienen al menos `100 MB`. Ese número puede aumentarse poseyendo NAMEs adicionales, LAND, y MANA en esa misma cuenta.
 * Los Worlds publicados a dominios ENS tienen un límite de `25MB` que no puede expandirse.
 
-Consulta [Límite de Tamaño de Worlds](../worlds/about.md#worlds-size-limit) para más detalles.
+Consulta [Límite de Tamaño de Worlds](../../worlds/about.md#worlds-size-limit) para más detalles.
 
 Tamaño total de los archivos subidos al servidor de contenido. Incluye modelos 3D y audio. No incluye archivos que no se suben, como paquetes de node.js. Puedes ver la lista completa de archivos siendo publicados y sus tamaños antes de confirmar un despliegue.
 

@@ -174,7 +174,33 @@ Run `npm run check:links` to validate local links in every tracked or unignored 
 
 The check covers Markdown links and images (including reference links), HTML `href`, `src`, and `poster` attributes, and GitBook file/embed/image URLs. Paths are case-sensitive; relative paths resolve from the Markdown file and leading `/` paths resolve from the repository root. It checks file/directory existence, not heading fragments or external URLs, and ignores front matter and code samples.
 
-The initial scan found 1,134 existing broken links. These are explicitly recorded in [`scripts/local-links-baseline.json`](scripts/local-links-baseline.json); no Markdown directories are excluded. CI fails for new broken links and stale baseline entries. When repairing a known link, remove its exact entry from that file. Do not add entries to accommodate new failures. Run `npm run check:links -- --strict` to fail on the entire backlog, or append `--json` for a machine-readable report. The ordinary check reports how many known failures remain; passing it does not mean all historical links have been repaired.
+Every broken local path fails CI; there is no historical exemption list. Use explicit repository file paths (including `.md` for Markdown pages), and update links when moving or deleting content. Run `npm run check:links -- --json` for a machine-readable report.
+
+### Validating media formats
+
+Use **SVG** for vector images, **WebP** for still or animated raster images, and **WebM** for video. Run `npm run check:media` before committing assets. CI runs the same check on every pull request and push to `main`.
+
+The script scans all tracked and unignored files using the `file` utility (preinstalled on macOS and the Ubuntu CI runner). It checks both the extension and detected content: renaming a PNG to `.webp` or hiding it under another extension fails. Non-media documents, audio files, models, and archives are outside this image/video policy. It does not inspect remote media or files inside archives. SVG/WebP/WebM extensions must match their content; codec compatibility is not checked. SVGs are parsed as XML, accepting comments, XML declarations, and doctypes without fetching external entities. Compressed `.svgz` files are not allowed. Inline SVG in Markdown/HTML pages or JavaScript/TypeScript examples is not treated as a separate image asset. Symlinks are unsupported. `npm test` runs without `file` (native media integration tests are explicitly skipped when it is unavailable); Linux CI requires `file` and runs the full suite. Windows CI also runs the tests.
+
+The remaining legacy-format assets are recorded by exact path and SHA-256 in [`scripts/media-format-exceptions.json`](scripts/media-format-exceptions.json). Only their unchanged contents are accepted. New files, copies at another path, and modifications must use an allowed format. When deleting or converting a legacy asset, remove its exception; stale entries fail CI. Do not add exceptions for new assets.
+
+Keep referenced assets inside the documentation space that uses them, preferably under its existing topic-based `images/` directory or GitBook-managed `.gitbook/assets/`. Reuse one canonical file per consuming space for byte-identical content. GitBook does not automatically share assets across mapped space directories, so repository-root or sibling-space relative links are not a substitute for an in-space copy. Update references before removing a duplicate; different UI versions with the same filename are not interchangeable.
+
+Convert assets with an appropriate encoder rather than changing their extension, preserve useful detail and animation behavior, and update all references. Run `npm run check:links` after replacing files.
+
+### Checking for unused assets
+
+Run `npm run check:assets` to check whether repository assets are referenced by at least one Markdown file. CI runs this on every pull request and push to `main`, so removing a page's last asset reference is checked even when the asset itself has not changed.
+
+The inventory includes image, video, audio, font, model, archive and document asset extensions, all non-Markdown files under `images/` or `assets/`, and JSON downloads in documentation spaces. It excludes tooling/configuration files and does not inspect files inside archives. The check resolves Markdown links/images, reference-style links, HTML `src`/`href`/`poster`/`srcset`, GitBook file/embed/image URLs (including tags inside HTML blocks), and the GitBook `cover` field in YAML front matter. Byte-order marks before front matter are supported; arbitrary metadata strings do not count as asset usage. Current `main` GitHub/raw URLs pointing into this repository also count. Paths must match exactly; mentioning a filename in prose or a code sample, or linking to its directory, does not count as using the asset.
+
+After the reviewed cleanup, **66 unreferenced assets remain** for editorial or external-usage review. They are recorded in [`scripts/unreferenced-assets-baseline.json`](scripts/unreferenced-assets-baseline.json). CI fails on new unreferenced assets and stale baseline entries. Add a useful reference or remove the unused asset; when fixing an existing entry, remove it from the baseline. Do not add entries for new unused assets. This check does not delete files automatically, and passing it does not mean the historical backlog has been cleaned up.
+
+Malformed front matter is reported for every affected page while the asset check continues scanning other pages and body references. CI also rejects missing asset targets, leading-slash local asset paths, and references outside the consuming space defined in `gitbook-docs.yaml`, even if those files exist elsewhere in the repository. Nested space mappings take precedence over parent spaces.
+
+The validation CLIs accept `--root <repository>` for isolated checks; integration tests run them against disposable Git repositories to verify their exit status and diagnostics.
+
+Run `npm run check:assets -- --strict` to fail on every unreferenced asset, or `npm run check:assets -- --json` to produce a complete machine-readable inventory, including the backlog.
 
 ### Quick Start
 
@@ -186,7 +212,7 @@ The initial scan found 1,134 existing broken links. These are explicitly recorde
 
 2. **Create a branch**
    ```bash
-   git checkout -b feature/your-improvement
+   git checkout -b docs/your-improvement
    ```
 
 3. **Make changes**
@@ -230,4 +256,4 @@ This preview feature ensures that documentation changes can be thoroughly review
 
 ## 📜 License
 
-This documentation is licensed under the [Apache License 2.0](LICENSE).
+This documentation is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

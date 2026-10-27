@@ -64,7 +64,7 @@ Actualiza a otros clientes sobre la posición y orientación de un avatar.
 Los clientes típicamente envían actualizaciones `Position` con baja frecuencia (como una vez cada 1 o 2 segundos), y cambian a alta frecuencia (varias veces por segundo) cuando se mueven o interactúan.
 
 {% hint style="info" %}
-Al enviar actualizaciones posicionales, la velocidad generalmente es mejor que la fiabilidad. El rendimiento percibido es mejor cuando la entrega es más rápida, incluso si un mensaje `Position` se pierde o reordena ocasionalmente. Algunos transportes (ej. [LiveKit](transport-types/livekit)) pueden cambiar entre modos rápido y confiable por mensaje.
+Al enviar actualizaciones posicionales, la velocidad generalmente es mejor que la fiabilidad. El rendimiento percibido es mejor cuando la entrega es más rápida, incluso si un mensaje `Position` se pierde o reordena ocasionalmente. Algunos transportes (ej. [LiveKit](transport-types/livekit.md)) pueden cambiar entre modos rápido y confiable por mensaje.
 {% endhint %}
 
 Las transmisiones de baja frecuencia se recomiendan como una solución simple para entregar actualizaciones a clientes que momentáneamente perdieron conectividad o no lograron capturar un mensaje mientras se unían a la isla.
@@ -111,7 +111,7 @@ sequenceDiagram
 
 ##### `AnnounceProfileVersion` <small>[↗ fuente][AnnounceProfileVersion]</small> {#AnnounceProfileVersion}
 
-Señala a otros clientes que hay una [entidad de perfil](/contributor/content/entity-types/profiles) que pueden solicitar.
+Señala a otros clientes que hay una [entidad de perfil](../content/entity-types/profiles.md) que pueden solicitar.
 
 | Campo             | Tipo     | Valor                                                    |
 | ----------------- | -------- | -------------------------------------------------------- |
@@ -143,7 +143,7 @@ Envía un perfil en respuesta a un [`ProfileRequest`](#ProfileRequest).
 | `serialized_profile` | string   | Entidad de perfil serializada en JSON.                                |
 | `base_url`           | `uint32` | URL base para un endpoint de filesystem, recomendado por el remitente. |
 
-El campo `serialized_profile` contiene la serialización JSON de una [entidad de perfil](/contributor/content/entity-types/profiles).
+El campo `serialized_profile` contiene la serialización JSON de una [entidad de perfil](../content/entity-types/profiles.md).
 
 Si el remitente quiere recomendar un servidor de contenido para descargar entidades referenciadas en su perfil (como wearables), puede establecer el campo `base_url` como pista. Los clientes son libres de usar o ignorar esta URL.
 

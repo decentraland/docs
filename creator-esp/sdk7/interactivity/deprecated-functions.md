@@ -179,7 +179,7 @@ Cuando se activa este evento, puedes usar la función [getUserData()](user-data.
 ## La escena terminó de cargar
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onSceneReadyObservable` está obsoleto desde SDK v7.x. Esta función ya no es relevante. Puedes asegurarte de que algo se ejecute después de que la escena termine de cargar ejecutándolo dentro de la función `Main()`. Consulta [Ciclo de vida de la escena](../getting-started/coding-scenes.md#scene-lifecycle)
+**📔 Nota**: El evento `onSceneReadyObservable` está obsoleto desde SDK v7.x. Esta función ya no es relevante. Puedes asegurarte de que algo se ejecute después de que la escena termine de cargar ejecutándolo dentro de la función `Main()`. Consulta [Ciclo de vida de la escena](../../../creator/sdk7/getting-started/coding-scenes.md#scene-lifecycle)
 {% endhint %}
 
 Cuando la escena termina de cargar, se llama el `onSceneReadyObservable`. Esto funciona tanto si el jugador carga directamente en la escena, o si el jugador camina hasta la escena desde otro lugar. Cuando todo el contenido en la escena ha terminado su carga inicial, incluidos modelos pesados, etc., se llama este evento.

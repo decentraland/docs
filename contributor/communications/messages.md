@@ -64,7 +64,7 @@ Updates other clients on the position and orientation of an avatar.
 Clients typically send `Position` updates with a low frequency (such as once every 1 or 2 seconds), and switch to a high frequency (several times per second) when moving or interacting.
 
 {% hint style="info" %}
-When sending positional updates, speed is usually better than reliability. The perceived performance is better when delivery is faster, even if a `Position` message is ocasionally dropped or reordered. Some transports (e.g. [LiveKit](transport-types/livekit)) can change between fast and reliable modes on a per-message basis.
+When sending positional updates, speed is usually better than reliability. The perceived performance is better when delivery is faster, even if a `Position` message is ocasionally dropped or reordered. Some transports (e.g. [LiveKit](transport-types/livekit.md)) can change between fast and reliable modes on a per-message basis.
 {% endhint %}
 
 The low-frequency broadcasts are recommended as a simple solution for deliverying updates to clients that momentarily lost connectivity or failed to catch a message while they joined the island.
@@ -111,7 +111,7 @@ sequenceDiagram
 
 ##### `AnnounceProfileVersion` <small>[↗ source][AnnounceProfileVersion]</small> {#AnnounceProfileVersion}
 
-Signals other clients that there's a [profile entity](/contributor/content/entity-types/profiles) they can request.
+Signals other clients that there's a [profile entity](../content/entity-types/profiles.md) they can request.
 
 | Field             | Type     | Value                                                 |
 | ----------------- | -------- | ----------------------------------------------------- |
@@ -143,7 +143,7 @@ Sends a profile in response to a [`ProfileRequest`](#ProfileRequest).
 | `serialized_profile` | string   | JSON-serialized profile entity.                                |
 | `base_url`           | `uint32` | base URL for a filesystem endpoint, recommended by the sender. |
 
-The `serialized_profile` field contains the JSON serialization of a [profile entity](/contributor/content/entity-types/profiles).
+The `serialized_profile` field contains the JSON serialization of a [profile entity](../content/entity-types/profiles.md).
 
 If the sender wants to recommend a content server to download entities referenced in their profile (such as wearables), it can set the `base_url` field as a hint. Clients are free to use or ignore this URL.
 

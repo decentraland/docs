@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { parseFragment } from 'parse5'
 import { posix } from 'node:path'
-import { extractLinks, resolveLocalLink } from './markdown-links.mjs'
+import { extractLinks, resolveLocalLink, splitFrontMatter } from './markdown-links.mjs'
 
 const markdown = new MarkdownIt({ html: true })
 
@@ -12,7 +12,7 @@ function slug(text) {
 }
 
 export function extractAnchors(content) {
-	const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+	const { body } = splitFrontMatter(content)
 	const anchors = new Set()
 	const generated = new Set()
 	function addGenerated(text) {

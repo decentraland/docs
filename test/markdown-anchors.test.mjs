@@ -63,3 +63,8 @@ test('does not credit standalone HTML anchors that GitBook drops during import',
 	assert.equal(result.errors.length, 1)
 	assert.equal(result.errors[0].fragment, 'missing')
 })
+
+
+test('does not turn BOM-prefixed front matter into a heading', () => {
+	assert.deepEqual([...extractAnchors('\uFEFF---\ntitle: "# Not a heading"\n---\n# Actual heading\n')], ['actual-heading'])
+})

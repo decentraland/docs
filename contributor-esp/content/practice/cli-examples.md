@@ -7,7 +7,7 @@ Puedes usar [`httpie`](https://github.com/httpie/httpie) o formatear respuestas 
 Esto es lo que haremos:
 
 1. Consultar el estado del servidor de contenido.
-2. Localizar y descargar una [instantánea](snapshots) diaria con una lista de entidades.
+2. Localizar y descargar una [instantánea](../snapshots.md) diaria con una lista de entidades.
 3. Obtener el manifest para una entidad.
 4. Descargar uno de los archivos de la entidad.
 
@@ -30,7 +30,7 @@ curl "https://peer.decentraland.org/about"
 
 Parece que el servidor está funcionando normalmente (`"healthy": true`), y nos está dando información sobre la versión que implementa para cada conjunto de características, además de algunas opciones de configuración de la instancia.
 
-Estamos interesados en descargar algún contenido, así que exploremos las [instantáneas](snapshots) disponibles para obtener algunos identificadores a través de `/content/snapshots`.
+Estamos interesados en descargar algún contenido, así que exploremos las [instantáneas](../snapshots.md) disponibles para obtener algunos identificadores a través de `/content/snapshots`.
 
 ```bash
 curl "https://peer.decentraland.org/content/snapshots"
@@ -51,7 +51,7 @@ curl "https://peer.decentraland.org/content/snapshots"
 ]
 ```
 
-Cada elemento en el array describe una [instantánea](snapshots). Tomemos un `hash` y descarguemos el archivo del endpoint `/content/contents`.
+Cada elemento en el array describe una [instantánea](../snapshots.md). Tomemos un `hash` y descarguemos el archivo del endpoint `/content/contents`.
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafybeia6qoum64psaooiqo3f45i6hykfwx723uc236waub3gng2naof224" > snapshot
@@ -93,11 +93,11 @@ tail -n+2 snapshot | head -n1
 Como las instantáneas expiran y las entidades son reemplazadas, los identificadores en este artículo no funcionarán. Sigue en tu línea de comandos para obtener IDs de archivo reales y activos.
 {% endhint %}
 
-Esta es información que podríamos guardar. Usaremos el `entityId` para descargar el manifest JSON de la entidad, pero persistir el [puntero](pointers) listado es una buena idea si queremos localizar esta entidad y cualquier versión actualizada en el futuro.
+Esta es información que podríamos guardar. Usaremos el `entityId` para descargar el manifest JSON de la entidad, pero persistir el [puntero](../pointers.md) listado es una buena idea si queremos localizar esta entidad y cualquier versión actualizada en el futuro.
 
-También tenemos la [cadena de autenticación](../entities#ownership) usada para firmar esta entidad, y podríamos validar las firmas listadas para verificar la autenticidad de cualquier archivo relacionado que descarguemos.
+También tenemos la [cadena de autenticación](../entities.md#ownership) usada para firmar esta entidad, y podríamos validar las firmas listadas para verificar la autenticidad de cualquier archivo relacionado que descarguemos.
 
-Pongamos nuestras manos en el manifest de entidad. Recuerda, el `entityId` es el [identificador de archivo]((filesystem#identifiers)) que necesitamos, y podemos usar el endpoint `/content/contents` nuevamente:
+Pongamos nuestras manos en el manifest de entidad. Recuerda, el `entityId` es el [identificador de archivo](../file-system.md#identifiers) que necesitamos, y podemos usar el endpoint `/content/contents` nuevamente:
 
 ```bash
 curl "https://peer.decentraland.org/content/contents/bafkreigcreq7rv6b2wf4zc4fsnif43ziwb4q46v4qhsewpf7gbsyxew3om"

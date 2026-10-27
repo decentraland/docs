@@ -1,4 +1,4 @@
-Las tiendas (stores) son [entidades](../entities) off-chain que representan sitios de marketplace gestionados por usuarios. Contienen una descripción y una imagen para mostrar a compradores, además de información sobre el propietario de la tienda.
+Las tiendas (stores) son [entidades](../entities.md) off-chain que representan sitios de marketplace gestionados por usuarios. Contienen una descripción y una imagen para mostrar a compradores, además de información sobre el propietario de la tienda.
 
 ## Punteros {#pointers}
 
@@ -18,7 +18,7 @@ urn:decentraland:off-chain:marketplace-stores:0xa2a1dc503be6fdb7878f58f053ded405
 
 | Campo | Valor |
 | ----- | --- |
-| `id` | El [puntero](../pointers) que resuelve (o solía resolver) a esta tienda.
+| `id` | El [puntero](../pointers.md) que resuelve (o solía resolver) a esta tienda.
 | `description` | El título de visualización para esta tienda.
 | `owner` | La dirección de Ethereum del propietario.
 | `images` | Un array de objetos `{ file, name }` referenciando imágenes (ver abajo).

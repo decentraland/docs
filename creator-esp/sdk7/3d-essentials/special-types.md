@@ -49,7 +49,7 @@ Para crear un [componente personalizado](../architecture/custom-components.md) c
 
 > `import { Vector3 } from "@dcl/sdk/math"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ### Atajos para escribir vectores de dirección
@@ -118,7 +118,7 @@ Para crear un [componente personalizado](../architecture/custom-components.md) c
 
 > `import { Quaternion } from "@dcl/sdk/math"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Scalars
@@ -139,5 +139,5 @@ let clampedValue = Scalar.clamp(myInput, 0, 100)
 
 > `import { Scalar } from "@dcl/sdk/math"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}

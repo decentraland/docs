@@ -10,7 +10,7 @@ metaLinks:
 
 ## Usar el Scene Editor
 
-La forma más fácil de mover al jugador es usar el [Scene Editor](../../scene-editor/about-editor.md). Usa las acciones sin código **Move player** o **Move player here**, consulta [Hacer cualquier item inteligente](../../scene-editor/make-any-item-smart.md).
+La forma más fácil de mover al jugador es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md). Usa las acciones sin código **Move player** o **Move player here**, consulta [Hacer cualquier item inteligente](../../scene-editor/interactivity/make-any-item-smart.md).
 
 ## Mover jugador
 
@@ -52,7 +52,7 @@ pointerEventsSystem.onPointerDown(
 El movimiento del jugador ocurre instantáneamente, sin pantallas de confirmación ni transiciones de cámara.
 
 {% hint style="warning" %}
-**📔 Nota**: Los jugadores solo pueden ser movidos si ya están parados dentro de los límites de la escena, y solo pueden ser movidos a ubicaciones que estén dentro de los límites de la escena. No puedes usar `movePlayerTo()` para transportar a un jugador a otra escena. Para mover a un jugador a otra escena, consulta [Teletransportes](external-links.md#teleports).
+**📔 Nota**: Los jugadores solo pueden ser movidos si ya están parados dentro de los límites de la escena, y solo pueden ser movidos a ubicaciones que estén dentro de los límites de la escena. No puedes usar `movePlayerTo()` para transportar a un jugador a otra escena. Para mover a un jugador a otra escena, consulta [Teletransportes](external-links.md#teletransportes).
 {% endhint %}
 
 ## Permisos requeridos en wearables inteligentes y experiencias portátiles

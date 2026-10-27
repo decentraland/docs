@@ -127,6 +127,6 @@ Dive deeper into specific architectural areas:
 
 ## Additional Resources
 
-* [API Reference](../../apis/) - Complete API documentation
+* [API Reference](../../apis/README.md) - Complete API documentation
 * [Contributor Guides](../contributor-guides/contributor-guides.md) - Development standards
 * [GitHub Organization](https://github.com/decentraland) - Source code repositories

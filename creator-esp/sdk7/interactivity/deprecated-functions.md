@@ -127,7 +127,7 @@ executeTask(async () => {
 ## El jugador reproduce una animación
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onPlayerExpressionObservable` está obsoleto en SDK 7.x. Usa el componente `AvatarEmoteCommand` en su lugar, consulta [El jugador reproduce una animación](event-listeners.md#player-plays-animation).
+**📔 Nota**: El evento `onPlayerExpressionObservable` está obsoleto en SDK 7.x. Usa el componente `AvatarEmoteCommand` en su lugar, consulta [El jugador reproduce una animación](event-listeners.md#el-jugador-reproduce-una-animacion).
 {% endhint %}
 
 Cada vez que el jugador reproduce un emote (baile, aplaudir, saludar, etc.), puedes detectar este evento.
@@ -151,7 +151,7 @@ El evento incluye la siguiente información:
 ## El jugador cambia de perfil
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onProfileChanged` está obsoleto en SDK 7.x. Usa el componente `AvatarEquippedData` en su lugar, consulta [El jugador cambia de perfil](event-listeners.md#player-changes-profile).
+**📔 Nota**: El evento `onProfileChanged` está obsoleto en SDK 7.x. Usa el componente `AvatarEquippedData` en su lugar, consulta [El jugador cambia de perfil](event-listeners.md#el-jugador-cambia-de-perfil).
 {% endhint %}
 
 Cada vez que el jugador realiza un cambio en su perfil, se llama al evento `onProfileChanged`. Estos cambios pueden incluir ponerse diferentes wearables, cambiar nombre, descripción, activar experiencias portátiles, etc.
@@ -179,7 +179,7 @@ Cuando se activa este evento, puedes usar la función [getUserData()](user-data.
 ## La escena terminó de cargar
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onSceneReadyObservable` está obsoleto desde SDK v7.x. Esta función ya no es relevante. Puedes asegurarte de que algo se ejecute después de que la escena termine de cargar ejecutándolo dentro de la función `Main()`. Consulta [Ciclo de vida de la escena](../getting-started/coding-scenes.md#scene-lifecycle)
+**📔 Nota**: El evento `onSceneReadyObservable` está obsoleto desde SDK v7.x. Esta función ya no es relevante. Puedes asegurarte de que algo se ejecute después de que la escena termine de cargar ejecutándolo dentro de la función `Main()`. Consulta [Ciclo de vida de la escena](../../../creator/sdk7/getting-started/coding-scenes.md#scene-lifecycle)
 {% endhint %}
 
 Cuando la escena termina de cargar, se llama el `onSceneReadyObservable`. Esto funciona tanto si el jugador carga directamente en la escena, o si el jugador camina hasta la escena desde otro lugar. Cuando todo el contenido en la escena ha terminado su carga inicial, incluidos modelos pesados, etc., se llama este evento.
@@ -195,7 +195,7 @@ onSceneReadyObservable.add(() => {
 ## Métodos obsoletos de datos del jugador
 
 {% hint style="warning" %}
-**📔 Nota**: Las funciones `getUserData()` y `getPlayerData()` están obsoletas desde SDK v7.4.x. Usa `getPlayer()` en su lugar. Consulta [Datos de usuario](user-data.md#get-user-data).
+**📔 Nota**: Las funciones `getUserData()` y `getPlayerData()` están obsoletas desde SDK v7.4.x. Usa `getPlayer()` en su lugar. Consulta [Datos de usuario](user-data.md#get-player-data).
 {% endhint %}
 
 Para obtener información del jugador actual que está ejecutando la escena, usa `getUserData()`.
@@ -222,7 +222,7 @@ executeTask(async () => {
 })
 ```
 
-Tanto `getUserData()` como `getPlayerData()` devuelven la misma estructura de datos disponible a través de la API de contenido. Consulta [Datos de cualquier jugador](user-data.md#data-from-any-player)
+Tanto `getUserData()` como `getPlayerData()` devuelven la misma estructura de datos disponible a través de la API de contenido. Consulta [Datos de cualquier jugador](user-data.md#datos-de-cualquier-jugador)
 
 `getPlayerData()` solo puede obtener datos de jugadores que actualmente están cerca. No tienen que estar necesariamente parados en la misma escena, pero en rango visual, eso es porque esta información se obtiene del motor local que está renderizando estos avatares. Para probar esto en vista previa, abre una segunda pestaña e inicia sesión con una cuenta diferente.
 
@@ -230,12 +230,12 @@ Tanto `getUserData()` como `getPlayerData()` devuelven la misma estructura de da
 **📔 Nota**: Los IDs de usuario siempre deben estar en minúsculas. Si copias una dirección de billetera, asegúrate de que todos los caracteres estén en minúsculas.
 {% endhint %}
 
-Las funciones `getUserPublicKey()` y `getUserAccount()` también están obsoletas. Por favor usa `getPlayer()` en su lugar. Consulta [Datos de usuario](user-data.md#get-user-data).
+Las funciones `getUserPublicKey()` y `getUserAccount()` también están obsoletas. Por favor usa `getPlayer()` en su lugar. Consulta [Datos de usuario](user-data.md#get-player-data).
 
 ## Obtener la hora del skybox
 
 {% hint style="warning" %}
-**📔 Nota**: La función `getDecentralandTime()` está obsoleta desde SDK v7.x.x. Usa `getWorldTime()` en su lugar. Consulta [Obtener la hora de Decentraland](runtime-data.md#get-decentraland-time).
+**📔 Nota**: La función `getDecentralandTime()` está obsoleta desde SDK v7.x.x. Usa `getWorldTime()` en su lugar. Consulta [Obtener la hora de Decentraland](runtime-data.md#obtener-la-hora-de-decentraland).
 {% endhint %}
 
 ```ts
@@ -250,7 +250,7 @@ executeTask(async () => {
 ## Obtener realm
 
 {% hint style="warning" %}
-**📔 Nota**: La función `getCurrentRealm()` está obsoleta desde SDK v7.x.x. Usa `getRealm()` en su lugar. Consulta [Obtener datos del Realm](runtime-data.md#get-realm-data).
+**📔 Nota**: La función `getCurrentRealm()` está obsoleta desde SDK v7.x.x. Usa `getRealm()` en su lugar. Consulta [Obtener datos del Realm](runtime-data.md#obtener-datos-del-realm).
 {% endhint %}
 
 ```ts
@@ -268,7 +268,7 @@ fetchPlayerData()
 ## Es modo de vista previa
 
 {% hint style="warning" %}
-**📔 Nota**: La función `isPreviewMode()` está obsoleta desde SDK v7.x.x. Usa `getRealm()` en su lugar, que contiene una propiedad `preview`. Consulta [Obtener datos del Realm](runtime-data.md#get-realm-data).
+**📔 Nota**: La función `isPreviewMode()` está obsoleta desde SDK v7.x.x. Usa `getRealm()` en su lugar, que contiene una propiedad `preview`. Consulta [Obtener datos del Realm](runtime-data.md#obtener-datos-del-realm).
 {% endhint %}
 
 ```ts
@@ -320,7 +320,7 @@ El evento incluye los siguientes datos:
 ## El jugador bloquea/desbloquea el cursor
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onPointerLockedStateChange` está obsoleto desde SDK v7.x. Consulta [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) para una alternativa no obsoleta.
+**📔 Nota**: El evento `onPointerLockedStateChange` está obsoleto desde SDK v7.x. Consulta [Event listeners](event-listeners.md#el-jugador-bloquea-o-desbloquea-el-cursor) para una alternativa no obsoleta.
 {% endhint %}
 
 Los jugadores pueden cambiar entre dos modos de cursor: modo de _cursor bloqueado_ para controlar la cámara o modo de _cursor desbloqueado_ para mover el cursor libremente sobre la UI.
@@ -383,7 +383,7 @@ Si tu escena depende de un [servidor de terceros](../networking/authoritative-se
 ## Eventos de video
 
 {% hint style="warning" %}
-**📔 Nota**: El evento `onVideoEvent` está obsoleto desde SDK v7.x. Consulta [Event listeners](../media/video-playing.md#video-events) para una alternativa no obsoleta.
+**📔 Nota**: El evento `onVideoEvent` está obsoleto desde SDK v7.x. Consulta [Event listeners](../media/video-playing.md#eventos-de-video) para una alternativa no obsoleta.
 {% endhint %}
 
 Cuando un video cambia su estado de reproducción, el observable `onVideoEvent` recibe un evento.

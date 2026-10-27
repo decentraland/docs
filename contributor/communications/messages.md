@@ -6,7 +6,7 @@ You can see the comms protocol in action and experiment with it using the open-s
 
 All message definitions are available in the [protocol repository](https://github.com/decentraland/protocol), and each message type below has a link to its declaration.
 
-##### `Packet` <small>[↗ source][Packet]</small> {#Packet}
+### `Packet` <small>[↗ source][Packet]</small> {#packet}
 
 The `Packet` structure is the container for all messages.
 
@@ -22,7 +22,7 @@ Only two `Packet` types are involved, one for each use-case. Under typical circu
 
 ---
 
-##### `Chat` <small>[↗ source][Chat]</small> {#Chat}
+### `Chat` <small>[↗ source][Chat]</small> {#chat}
 
 Sends a text chat message to other clients.
 
@@ -33,7 +33,7 @@ Sends a text chat message to other clients.
 
 ---
 
-##### `Voice` <small>[↗ source][Voice]</small> {#Voice}
+### `Voice` <small>[↗ source][Voice]</small> {#voice}
 
 Sends an encoded voice sample to other clients.
 
@@ -51,7 +51,7 @@ Clients that control avatars send and receive positional updates within their is
 
 ---
 
-##### `Position` <small>[↗ source][Position]</small> {#Position}
+### `Position` <small>[↗ source][Position]</small> {#position}
 
 Updates other clients on the position and orientation of an avatar.
 
@@ -64,7 +64,7 @@ Updates other clients on the position and orientation of an avatar.
 Clients typically send `Position` updates with a low frequency (such as once every 1 or 2 seconds), and switch to a high frequency (several times per second) when moving or interacting.
 
 {% hint style="info" %}
-When sending positional updates, speed is usually better than reliability. The perceived performance is better when delivery is faster, even if a `Position` message is ocasionally dropped or reordered. Some transports (e.g. [LiveKit](transport-types/livekit)) can change between fast and reliable modes on a per-message basis.
+When sending positional updates, speed is usually better than reliability. The perceived performance is better when delivery is faster, even if a `Position` message is ocasionally dropped or reordered. Some transports (e.g. [LiveKit](transport-types/livekit.md)) can change between fast and reliable modes on a per-message basis.
 {% endhint %}
 
 The low-frequency broadcasts are recommended as a simple solution for deliverying updates to clients that momentarily lost connectivity or failed to catch a message while they joined the island.
@@ -77,7 +77,7 @@ Clients within an island can request the avatar information of other players, in
 
 Since profiles changes are rare (compared with positional updates, for example), the system is designed to simplify the task of maintaining a local profile cache, and only fetch profiles when needed.
 
-There's 3 [`Packet`](#Packet) types involved: a [`ProfileRequest`](#ProfileRequest)/[`ProfileResponse`](#ProfileResponse) pair used by clients to share profiles on demand, and the [`AnnounceProfileVersion`](#AnnounceProfileVersion) message to tell peers what the latest version is, so they can decide whether to request it.
+There's 3 [`Packet`](#packet) types involved: a [`ProfileRequest`](#profilerequest)/[`ProfileResponse`](#profileresponse) pair used by clients to share profiles on demand, and the [`AnnounceProfileVersion`](#announceprofileversion) message to tell peers what the latest version is, so they can decide whether to request it.
 
 Clients typically broadcast `AnnounceProfileVersion` messages periodically, plus immediately when their profile changes.
 
@@ -109,19 +109,19 @@ sequenceDiagram
 
 ---
 
-##### `AnnounceProfileVersion` <small>[↗ source][AnnounceProfileVersion]</small> {#AnnounceProfileVersion}
+### `AnnounceProfileVersion` <small>[↗ source][AnnounceProfileVersion]</small> {#announceprofileversion}
 
-Signals other clients that there's a [profile entity](/contributor/content/entity-types/profiles) they can request.
+Signals other clients that there's a [profile entity](../content/entity-types/profiles.md) they can request.
 
 | Field             | Type     | Value                                                 |
 | ----------------- | -------- | ----------------------------------------------------- |
 | `profile_version` | `uint32` | A version number incremented with every modification. |
 
-Receivers that cache profiles can use the `profile_version` number to decide whether their local copy is up-to-date, or if they need to send a [`ProfileRequest`](#ProfileRequest).
+Receivers that cache profiles can use the `profile_version` number to decide whether their local copy is up-to-date, or if they need to send a [`ProfileRequest`](#profilerequest).
 
 ---
 
-##### `ProfileRequest` <small>[↗ source][ProfileRequest]</small> {#ProfileRequest}
+### `ProfileRequest` <small>[↗ source][ProfileRequest]</small> {#profilerequest}
 
 Requests a profile of a specified version from a particular peer.
 
@@ -130,27 +130,27 @@ Requests a profile of a specified version from a particular peer.
 | `address`         | string   | The identifying address for the profile. |
 | `profile_version` | `uint32` | The wanted profile version.              |
 
-Receivers can reply with [`ProfileResponse`](#ProfileResponse) messages to provide the requested profile.
+Receivers can reply with [`ProfileResponse`](#profileresponse) messages to provide the requested profile.
 
 ---
 
-##### `ProfileResponse` <small>[↗ source][ProfileResponse]</small> {#ProfileResponse}
+### `ProfileResponse` <small>[↗ source][ProfileResponse]</small> {#profileresponse}
 
-Sends a profile in response to a [`ProfileRequest`](#ProfileRequest).
+Sends a profile in response to a [`ProfileRequest`](#profilerequest).
 
 | Field                | Type     | Value                                                          |
 | -------------------- | -------- | -------------------------------------------------------------- |
 | `serialized_profile` | string   | JSON-serialized profile entity.                                |
 | `base_url`           | `uint32` | base URL for a filesystem endpoint, recommended by the sender. |
 
-The `serialized_profile` field contains the JSON serialization of a [profile entity](/contributor/content/entity-types/profiles).
+The `serialized_profile` field contains the JSON serialization of a [profile entity](../content/entity-types/profiles.md).
 
 If the sender wants to recommend a content server to download entities referenced in their profile (such as wearables), it can set the `base_url` field as a hint. Clients are free to use or ignore this URL.
 
 <!--
 ## Scene Messages
 
-##### `Scene` <small>[↗ source][Scene]</small> {#Scene}
+### `Scene` <small>[↗ source][Scene]</small> {#scene}
 
 TODO: Document Scene message type
 -->

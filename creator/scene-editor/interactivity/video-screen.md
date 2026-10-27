@@ -6,13 +6,13 @@ description: Play Videos in your scene
 
 To play pre-recorded or streamed videos on a screen on your scene, use the Video Player [Smart Item](smart-items.md).
 
-![](../../images/editor/admin/video-player-item.png)
+![](../../images/editor/admin/video-player-item.webp)
 
 ## General settings
 
 These settings are relevant for all scenarios, either if you're playing videos or streaming.
 
-![](../../images/editor/admin/video-automatic.png)
+![](../../images/editor/admin/video-automatic.webp)
 
 You can configure the volume of the video's audio. Note that the audio from the stream is not positional, it is heard at an even volume through all your scene.
 
@@ -26,18 +26,18 @@ The **Default Media Sources** dropdown lets you pick between two different kinds
 You can Play pre-recorded videos from either:
 
 - **Local files**: Upload a video file as part of the scene, then point the _URL_ field to the path to that file.
-- **Stream from a URL**: Point to a live or pre-recorded stream on the web, for example from a provider like Bunny. See [streaming videos](video-screen.md#streaming-videos)
+- **Stream from a URL**: Point to a live or pre-recorded stream on the web, for example from a provider like Bunny. See [streaming videos](video-screen.md#streaming-from-other-sources)
 
 The timing of when the Video Player smart item plays a video can depend on different things:
 
 - **Automatic**: The video starts playing as soon as the scene loads. For this, set the default media source dropdown to **Video URL** and paste a URL directly into the **Video Path or .m3u8 URL** field.
 
-  ![](../../images/editor/admin/video-automatic.png)
+  ![](../../images/editor/admin/video-automatic.webp)
 
 - **Triggered by an admin**: A [Scene admin](../live-ops/scene-admin.md) who's currently in the scene can use the Admin UI to paste a video URL and play it for all players who are currently in the scene.
 - **Based on player actions**: Define an Action of type **Play Video**. This lets you trigger the playing of the video as the result of interacting with some other smart item, like walking into a room, or pushing a button. See [Smart Items - Advanced](smart-items-advanced.md).
 
-  ![](../../images/editor/video-from-action.png)
+  ![](../../images/editor/video-from-action.webp)
 
 In all cases you configure the video to either loop or play once.
 
@@ -65,7 +65,7 @@ If you simply paste the same URL on two video players, the engine won't know the
 2. Configure the first one normally, as described in the [Play Videos](video-screen.md#play-videos) section.
 3. On the second video player, remove the **Video Player** component.
 
-![](../../images/editor/delete-video-player.png)
+![](../../images/editor/delete-video-player.webp)
 
 {% hint style="warning" %}
 **📔 Note**: This step is important, otherwise the second video player will be processed by the engine, even if not visible.
@@ -73,7 +73,7 @@ If you simply paste the same URL on two video players, the engine won't know the
 
 4. Still on the second video player, open the **Material** component, expand the **Texture** section, and select the **Video Source Entity** dropdown to point to the first video player.
 
-![](../../images/editor/point-to-video.png)
+![](../../images/editor/point-to-video.webp)
 
 You can do the same for any number of video players, as long as you configure each one to point to the same video player.
 

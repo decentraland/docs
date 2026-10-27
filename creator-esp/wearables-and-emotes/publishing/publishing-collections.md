@@ -10,7 +10,7 @@ metaLinks:
 
 # Publishing Collections
 
-Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobación antes de la publicación, consulta [how to create a collection](../wearables-and-emotes/manage-collections/creating-a-collection.md). Este documento explica cómo funciona el proceso de aprobación al publicar wearables y emotes, y qué criterios usa el Curation Committee al revisar wearables. Para información detallada sobre el Curation Committee, [comienza aquí](../wearables-and-emotes/publishing/curation-committee.md).
+Para instrucciones detalladas sobre cómo enviar tus colecciones para aprobación antes de la publicación, consulta [how to create a collection](../manage-collections/creating-a-collection.md). Este documento explica cómo funciona el proceso de aprobación al publicar wearables y emotes, y qué criterios usa el Curation Committee al revisar wearables. Para información detallada sobre el Curation Committee, [comienza aquí](curation-committee.md).
 
 ### **El Proceso de Publicación**
 
@@ -63,14 +63,14 @@ Por favor consulta la Content Policy completa [aquí](https://decentraland.org/c
 > * Los wearables deben preservar el mapeo UV del avatar para asegurar que los tonos de piel seleccionados por el usuario puedan renderizarse como se espera.
 > * Las dimensiones de las texturas de eyebrow, eye y mouth no deben exceder 256 por 256px, y la imagen debe tener fondo transparente.
 > * En el caso de la categoría hands, el wearable no puede ser un ítem adjunto a la mano (una espada, escudo, etc). La categoría está destinada a accesorios de mano como pulseras, relojes, anillos, etc. y en el caso de reemplazar la mano completamente debe seguir un skinning de armature apropiado para los huesos de la mano.
-> * Los wearables con un número desproporcionado de triángulos, texturas y materiales pueden ser rechazados porque pueden causar mal rendimiento y una mala experiencia para los jugadores. Los creadores no deben exceder las [directrices](../wearables-and-emotes/wearables/creating-wearables.md) de limitación al crear wearables.
+> * Los wearables con un número desproporcionado de triángulos, texturas y materiales pueden ser rechazados porque pueden causar mal rendimiento y una mala experiencia para los jugadores. Los creadores no deben exceder las [directrices](../wearables/creating-wearables.md) de limitación al crear wearables.
 > * Los wearables no pueden contener ítems duplicados dentro de una colección. (Cada ítem dentro de una colección debe ser único.)
 > * Los wearables no pueden imitar o copiar otros wearables que ya han sido publicados.
 > * Por razones de seguridad, cualquier wearable que contenga cualquier tipo de Código QR puede ser rechazado.
 > * Wearables que excedan las restricciones de espacio.
 > * Los wearables con categorías engañosas pueden ser rechazados; por ejemplo, un sombrero que está categorizado como un ítem de lower body.
 > * Los wearables deben seguir la estructura humanoide de armature para asegurar un gameplay de buena calidad. En este sentido, actualmente vehículos o mascotas no están permitidos porque estos no son wearables por definición.
-> * Emotes que excedan las restricciones de tiempo y espacio. Para más información consulta las [directrices de emote](../wearables-and-emotes/emotes/creating-emotes.md)
+> * Emotes que excedan las restricciones de tiempo y espacio. Para más información consulta las [directrices de emote](../emotes/creating-emotes.md)
 > * Los curadores del comité de curadores pueden enviar colecciones pero no aprobar las propias. En este caso, otro curador del comité necesitaría revisar para aprobar o rechazar.
 
 ### **Atribuyendo Colaboradores** [**#**](https://docs.decentraland.org/creator/wearables/wearables-editor-user-guide/#attributing-collaborators)
@@ -81,7 +81,7 @@ Primero, navega a [**Decentraland Create**](https://decentraland.org/create) y s
 
 Para agregar colaboradores, simplemente ingresa su dirección de Ethereum, y haz clic en **Add**. Puedes agregar tantos colaboradores como quieras. Para eliminar un colaborador, simplemente haz clic en **Remove** junto a la dirección del colaborador.
 
-![](../images/wearables-and-emotes/publishing-collections/add-collaborators.png)
+![](../../.gitbook/assets/add-collaborators.webp)
 
 ### **Vendiendo Ítems**
 
@@ -106,11 +106,11 @@ Para vender tus ítems a través de ventas primarias, comienza navegando a [**De
 
 Para habilitar Primary Sales, ve a la pestaña **Collections**, selecciona la que quieres habilitar y haz clic en el botón _**Put on sale**_ de cualquiera de los ítems de la colección. Si es la primera vez que pones a la venta un ítem de esta colección, se te pedirá que hagas clic en _**Enable sales**_. Después de confirmar, puedes continuar al siguiente paso para establecer el precio de tu ítem.
 
-![](../images/wearables-and-emotes/uploading-wearables/25_enable_sales.png)
+![](../../.gitbook/assets/25_enable_sales.webp)
 
 Ahora necesitas establecer el precio y poner cada uno de tus ítems a la venta haciendo clic en su botón **Put up for sale** y establecer el precio que quieres que tenga. **Cuando esto esté hecho, tu ítem estará disponible para comprar dentro del** [**Marketplace**](https://market.decentraland.org/) **de Decentraland.**
 
-![](../images/wearables-and-emotes/publishing-collections/put_item_for_sale.png)
+![](../../.gitbook/assets/put_item_for_sale.webp)
 
 Si las ventas de la colección están habilitadas y el precio de los ítems establecido, el [Marketplace](https://market.decentraland.org/) de Decentraland acuñará automáticamente uno de tus ítems cada vez que un usuario haga una compra primaria. Esto te permite acuñar y vender todos tus ítems disponibles hasta que se alcance el suministro máximo. Si quieres guardar uno o más de tus ítems antes de listarlos para venta, necesitas acuñar manualmente un ítem a una de tus propias direcciones de wallet.
 
@@ -145,11 +145,11 @@ Al igual que vender ítems en ventas primarias, no podrás acuñar ningún ítem
 
 Para acuñar ítems publicados, abre la colección que contiene los ítems que te gustaría acuñar, y haz clic en **Mint Items**.
 
-![](../images/wearables-and-emotes/publishing-collections/minting-items-1.png)
+![](../../.gitbook/assets/minting-items-1.webp)
 
 Se te mostrará una ventana modal que contiene una lista de los ítems disponibles junto con el suministro disponible para cada uno. Recuerda, el suministro es el número total de ítems que puedes acuñar. Por ejemplo, si tu suministro dice 0/10, entonces has usado 0 de tu suministro total de 10.
 
-![](../images/wearables-and-emotes/publishing-collections/minting-items-2.png)
+![](../../.gitbook/assets/minting-items-2.webp)
 
 Al acuñar, debes establecer la dirección que recibirá los ítems acuñados y debes establecer el número de ítems que quieres acuñar a esa dirección. No puedes acuñar más ítems de los que están disponibles en el suministro disponible.
 
@@ -169,7 +169,7 @@ Recuerda, estos ítems se acuñan y transfieren a la dirección ingresada gratis
 
 Para agregar minters, simplemente ingresa su dirección de Ethereum, y haz clic en **Add**. Puedes agregar tantos minters como quieras. Para eliminar un minter, simplemente haz clic en **Remove** junto a la dirección del minter.
 
-![](../images/wearables-and-emotes/publishing-collections/add-minters.png)
+![](../../.gitbook/assets/add-minters.webp)
 
 #### **Transferencia de Propiedad de Colección**
 
@@ -185,4 +185,4 @@ Para transferir la propiedad de una Colección, necesitarás:
 
 Usa esta URL - `https://polygonscan.com/address/collection_address#writeContract` y reemplaza `collection_address` con el contrato de tu colección.
 
-![](../images/wearables-and-emotes/publishing-collections/ownership_transfer.png)
+![](../../.gitbook/assets/ownership_transfer.webp)

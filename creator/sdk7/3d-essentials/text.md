@@ -18,7 +18,7 @@ To add text as a label on an existing entity, a good practice is to create a sec
 
 The easiest way to place text in-world is add a **Text** [Smart item](../../scene-editor/interactivity/smart-items.md) visually on the Scene Editor. You can then set all the available fields on the Scene Editor's UI.
 
-![](../../images/editor/text-smart-item.png)
+![](../../images/editor/text-smart-item.webp)
 
 ## Create a text component
 
@@ -145,7 +145,7 @@ The `TextShape` component creates a text box that has a size, padding, etc.
 * `paddingLeft`: _number_. Space between the text and the outline of the text box.
 
 {% hint style="info" %}
-**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-user) so that the text rotates to always face the player and be legible.
+**💡 Tip**: If a text is meant to float in space, it's a good idea to add a [`Billboard` component](../3d-essentials/entity-positioning.md#face-the-player) so that the text rotates to always face the player and be legible.
 {% endhint %}
 
 ## Text shadow and outline properties
@@ -186,9 +186,36 @@ You can also set up the following properties related to texts with multiple line
 * `lineCount`: _number_. How many lines of text to fit into the textbox as a maximum. If not set, there is no limit to the number of lines. The `textWrapping` property must be _true_ to use more than one line.
 * `lineSpacing`: _number_. How much space between each line.
 
+## Which way the text faces
+
+A `TextShape` reads correctly from its local **-Z** side. If you create one and don't rotate it, players standing on the entity's -Z side can read it.
+
+So to label the **+Z** face of a model, parent the text to the model, offset it slightly on **+Z** so it doesn't sink into the mesh, and rotate it 180 degrees around Y:
+
+```ts
+// A label stuck to the +Z face of a model
+import { engine, TextShape, Transform } from '@dcl/sdk/ecs'
+import { Quaternion, Vector3 } from '@dcl/sdk/math'
+
+const label = engine.addEntity()
+
+Transform.create(label, {
+	parent: myModel,
+	// A small offset on +Z keeps the text clear of the model's surface
+	position: Vector3.create(0, 1, 0.01),
+	rotation: Quaternion.fromEulerDegrees(0, 180, 0),
+})
+
+TextShape.create(label, { text: 'Front' })
+```
+
+{% hint style="info" %}
+**💡 Tip**: If the text should stay readable from wherever the player stands, add a [Billboard](entity-positioning.md#face-the-player) instead of rotating it by hand.
+{% endhint %}
+
 ## Lay out text in columns
 
-Spaces and tabs do not line up columns in a `TextShape`, not even with `Font.F_MONOSPACE`. Padding a scoreboard with spaces gives you ragged columns that shift as soon as a name or a number changes length.
+Spaces and tabs don't line up columns in the default fonts, because their characters have different widths. Padding a scoreboard with spaces gives you ragged columns that shift as soon as a name or a number changes length.
 
 To build a table, use one `TextShape` per column. Give each column its own entity, position it, and put the rows in its `text` field separated by `\n`. Every row then sits at the same height across all columns.
 

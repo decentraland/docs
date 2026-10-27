@@ -30,10 +30,35 @@ _Behavior when mirroring poses._
 
 ### Mirroring a pose
 
-The rig's left and right bones are not laid out the same way, so a single mirroring trick does not work for the whole body.
+The rig's left and right bones are not laid out the same way, so a single mirroring trick does not work for the whole body. Start with **Pose > Copy Pose**, then **Paste X-Flipped**, and finish the upper body by hand.
 
-* **Legs and feet** mirror the usual way. Blender's **Paste X-Flipped** gives the right result on `CTRL_FK_Avatar_UpLeg`, `CTRL_FK_Avatar_Leg`, `CTRL_FK_Avatar_Foot`, `CTRL_FK_Avatar_ToeBase`, `CTRL_IK_Foot`, `CTRL_IK_Avatar_ToeBase` and `CTRL_Avatar_Knee`. In numbers: flip the sign of rotation Y and Z, and of location X.
-* **Shoulders, arms, hands and fingers** do not. Their right-side bones are mirrored on a different axis, so **Paste X-Flipped** puts the hand up to 90 cm away from where you want it. Mirror these by hand instead: flip the sign of rotation X and Y, and of location Z. This applies to `CTRL_Avatar_Shoulder`, `CTRL_FK_Avatar_Arm`, `CTRL_FK_Avatar_ForeArm`, `CTRL_FK_Avatar_Hand`, `CTRL_IK_Avatar_Hand`, `CTRL_IK_Avatar_Elbow` and the `CTRL_Avatar_Hand*` finger controls.
+**Legs and feet are done after the paste.** **Paste X-Flipped** gives the right result on `CTRL_FK_Avatar_UpLeg`, `CTRL_FK_Avatar_Leg`, `CTRL_FK_Avatar_Foot`, `CTRL_FK_Avatar_ToeBase`, `CTRL_IK_Foot`, `CTRL_IK_Avatar_ToeBase` and `CTRL_Avatar_Knee`. It is exact for IK legs, and lands within about 3 cm at the foot for FK legs, because the left and right rest bones have slightly different rolls. Nudge the FK foot by eye if you need it exact.
+
+**Shoulders, arms, hands and fingers need one more step.** **Paste X-Flipped** alone puts the other hand 40 to 70 cm away from where you want it. After pasting, go through each of these controls and **negate the X and Z values, keeping Y**:
+
+* `CTRL_Avatar_Shoulder`
+* `CTRL_FK_Avatar_Arm`, `CTRL_FK_Avatar_ForeArm`, `CTRL_FK_Avatar_Hand`
+* `CTRL_IK_Avatar_Hand`, `CTRL_IK_Avatar_Elbow`
+* All 30 `CTRL_Avatar_Hand*` finger controls
+
+Apply it to the rotation, whether you work in quaternions or Euler angles. The signs are the same either way. On the IK hand and elbow controls, apply it to the location too.
+
+For example, a pasted arm reading X -0.5, Z 0.1 becomes X 0.5, Z -0.1.
+
+This gets the whole arm chain exactly right.
+
+**Why the upper body is different:** the right leg's bone frames are a plain mirror of the left ones, which is what **Paste X-Flipped** assumes. The right arm's frames mirror the left with the local **Z** axis flipped instead of X, so the flipped paste comes out rotated the wrong way. Negating X and Z corrects exactly that.
+
+#### Setting the values directly instead
+
+If you set the right-side values from the raw left-side values rather than pasting, use these sign flips:
+
+| Controls | Rotation `(w, x, y, z)` | Location |
+| --- | --- | --- |
+| Upper body | `(w, -x, -y, z)` | `(x, y, -z)` |
+| Legs | `(w, x, -y, -z)` | `(-x, y, z)` |
+
+This is the approximate route: within about 1 mm for the arms, but 5 to 10 cm off for FK legs. **Paste X-Flipped** also corrects the small roll differences between the left and right rest bones, and a raw sign flip doesn't. Prefer the paste-then-fix method above.
 
 {% hint style="warning" %}
 **📔 Note**: The starting pose is not perfectly symmetric to begin with, so mirroring a pose from one side to the other overwrites that small asymmetry. Check the result by eye before keyframing it.

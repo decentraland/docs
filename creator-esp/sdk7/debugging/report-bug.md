@@ -16,7 +16,7 @@ Antes de enviar un reporte de bug, por favor asegúrate de lo siguiente:
 
 * Asegúrate de estar usando la última versión del SDK, en caso de que el problema ya haya sido corregido en versiones más nuevas.
 * Verifica la documentación para la característica que estás intentando usar, para confirmar que se supone que se comporte como esperas, y que esto no es solo un malentendido.
-* Descarta que el problema podría ser causado por cómo está construida tu scene. Consulta [Debug in Preview](../sdk7/debugging/debug-in-preview.md) y [Debug in Prod](../sdk7/debugging/debug-in-prod.md) para consejos.
+* Descarta que el problema podría ser causado por cómo está construida tu scene. Consulta [Debug in Preview](debug-in-preview.md) y [Debug in Prod](debug-in-prod.md) para consejos.
 * Evita duplicados. Verifica la [lista de bugs conocidos](https://github.com/orgs/decentraland/projects/20/views/13) para evitar hacer un duplicado. Si tienes más información para agregar a un problema existente, por favor agrega un comentario al problema en lugar de crear un nuevo problema.
 
 ### Reportando un bug
@@ -24,11 +24,11 @@ Antes de enviar un reporte de bug, por favor asegúrate de lo siguiente:
 Para reportar un bug con el SDK, necesitarás una cuenta de GitHub. Sigue estos pasos:
 
 1. Visita el siguiente enlace: [New Issue Page](https://github.com/decentraland/sdk/issues/new/choose)
-2. Haz clic en **Get Started** junto a **Bug Report**. ![](../images/report-bug.png)
+2. Haz clic en **Get Started** junto a **Bug Report**. ![](../../.gitbook/assets/report-bug.webp)
 3. Completa todos los campos en la plantilla. La plantilla proporciona instrucciones para cada sección. Cuantos más detalles puedas proporcionar, más rápido nuestros desarrolladores pueden identificar y resolver el problema.
 4. Haz clic en **Submit new issue**.
 
-![](../images/submit-issue.png)
+![](../../.gitbook/assets/submit-issue.webp)
 
 Los desarrolladores pueden hacer preguntas de seguimiento en tu ticket si necesitan aclaraciones o información adicional. Recibirás notificaciones por correo electrónico de actualizaciones a tu reporte de bug.
 
@@ -53,7 +53,7 @@ Puedes pegar fragmentos de código dentro del texto de tu problema, pero la mejo
 1. Escribe tu fragmento de código a la izquierda, y ve tu scene en el panel derecho.
 2. Haz clic en el botón **Share** y pega el enlace en tu reporte de problema.
 
-![](../images/playground/playground.png)
+![](../../.gitbook/assets/playground.webp)
 
 Usar el playground simplifica la reproducción de problemas y asegura que cualquiera que abra el enlace pueda ver la misma salida, independientemente de su sistema operativo, versión de SDK, versión de Node, etc. También facilita la iteración rápida para identificar condiciones afectadas y señalar la causa del problema.
 

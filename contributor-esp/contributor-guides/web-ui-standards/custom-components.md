@@ -579,5 +579,5 @@ Antes de escribir código:
 ## Próximos Pasos
 
 * Revisa [Styling & Theming](styling-and-theming.md) para detalles de implementación
-* Ve [Migration Guide](broken-reference) para migraciones UI1 a UI2
+* Ve [Migration Guide](migration.md) para migraciones UI1 a UI2
 * Verifica [Process Overview](process-overview.md) para el flujo de trabajo completo

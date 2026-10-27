@@ -8,7 +8,7 @@ metaLinks:
 
 # Workspaces
 
-Ejecuta múltiples proyectos de Decentraland en vista previa agrupándolos en un workspace. Ejecuta múltiples escenas adyacentes para ver cómo encajan, o también ejecuta múltiples [smart wearables](../sdk7/projects/smart-wearables.md) juntos para ver cómo interactúan entre sí y con diferentes escenas.
+Ejecuta múltiples proyectos de Decentraland en vista previa agrupándolos en un workspace. Ejecuta múltiples escenas adyacentes para ver cómo encajan, o también ejecuta múltiples [smart wearables](smart-wearables.md) juntos para ver cómo interactúan entre sí y con diferentes escenas.
 
 Ejecutar múltiples proyectos en un workspace proporciona una alternativa de prueba mucho más completa, para asegurar que diferentes contenidos funcionen bien juntos. Un workspace es una funcionalidad de depuración, no afecta la experiencia en la escena publicada.
 

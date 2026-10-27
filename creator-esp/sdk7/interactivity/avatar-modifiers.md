@@ -63,7 +63,7 @@ Los efectos de un `AvatarModifierArea` se calculan localmente para cada jugador.
 
 > `import { AvatarModifierArea } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ### Ocultar avatares

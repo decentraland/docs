@@ -4,6 +4,7 @@ description: How to set the position, rotation and scale of an entity in a scene
 
 # Entity Positioning
 
+
 You can set the _position_, _rotation_ and _scale_ of any entity by using the `Transform` component. This can be used on any entity in the 3D space, affecting where the entitiy is rendered. This includes primitive shapes (cube, sphere, plane, etc), 3D text shapes, NFT shapes, and 3D models (`GltfContainer`).
 
 ## Use the Scene Editor in Creator Hub
@@ -12,7 +13,7 @@ When adding an item to your scene via the Scene Editor, it implicitly includes a
 
 ## Code essentials
 
-![](../../images/media/ecs-simple-components-new.png)
+![](../../images/media/ecs-simple-components-new.webp)
 
 ```ts
 // Create a new entity
@@ -166,9 +167,13 @@ console.log(`World rotation: ${worldRot.x}, ${worldRot.y}, ${worldRot.z}, ${worl
 
 ## Face the player
 
-Add a _Billboard_ component to an entity so that it always rotates to face the player.
+Add a _Billboard_ component to an entity so that it always rotates to face the player's camera.
 
 Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player. The same idea can also be used to rotate a 3D model.
+
+{% hint style="warning" %}
+**📔 Note**: A billboard faces the **camera**, not the avatar. In 3rd person the camera sits behind and above the avatar, so the two are in different places, and a billboard aimed at the camera is noticeably turned away from the avatar. To face the avatar instead, set `targetEntity` to `engine.PlayerEntity`.
+{% endhint %}
 
 ```ts
 // Create a new entity
@@ -251,6 +256,27 @@ Billboard.create(sign, {
 {% hint style="info" %}
 **💡 Tip**: Billboards are very handy to add to _text_ entities, since it makes them always legible.
 {% endhint %}
+
+Set `targetEntity` to `engine.PlayerEntity` to follow the avatar rather than the camera. This is what you want for a nametag, a speech bubble, or anything else that belongs to the avatar rather than to the player's view:
+
+```ts
+// A label that turns to face the avatar, not the camera
+Billboard.create(label, {
+	targetEntity: engine.PlayerEntity,
+	billboardMode: BillboardMode.BM_Y,
+})
+```
+
+The avatar's position is at its feet, so a label above its head would tilt down toward them. `BM_Y` keeps the label upright and only turns it left and right.
+
+### Which way a billboard faces
+
+A billboard points its local **-Z** axis at whatever it is facing. That matters when you parent other entities to a billboard:
+
+* A child at a local **+Z** offset sits **behind** the billboard, hidden by it.
+* A child at a local **-Z** offset sits **in front**, closer to the viewer.
+
+So to put a frame or a backdrop behind a billboarded label, offset it on **+Z**. To put a highlight in front of it, offset it on **-Z**.
 
 The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows players around.
 
@@ -478,7 +504,7 @@ The following anchor points are available on the `AvatarAnchorPointType` enum:
 **💡 Tip**: To use these values, write `AvatarAnchorPointType.` and VS Code will display the full list of options on a dropdown.
 {% endhint %}
 
-![](../../images/avatar-attach-points.png)
+![](../../images/avatar-attach-points.webp)
 
 Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to other players who are seeing that player. If an entity is attached to the default local player, each player will experience the entity as attached to their own avatar.
 

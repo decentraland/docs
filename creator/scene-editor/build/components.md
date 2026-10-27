@@ -6,7 +6,7 @@ description: Understand how an item's components work
 
 Select an item by clicking on it on the canvas or on the entity tree. You'll then see its components displayed on the properties panel, on the right of the screen. Different items have different components that each display specific settings.
 
-![](../../images/editor/components-in-editor.png)
+![](../../images/editor/components-in-editor.webp)
 
 Most non-interactive items have the following components:
 
@@ -19,7 +19,7 @@ The items in your scene are all **Entities**. Everything in a scene is an Entity
 
 To add Components to any Entity, click the **+** sign at the top of the properties tab and select the Component from the list. See [Make any item smart](../interactivity/make-any-item-smart.md)
 
-![The add component menu open on an entity, listing components grouped under 3D Content and Interaction.](../../images/editor/add-component.png)
+![The add component menu open on an entity, listing components grouped under 3D Content and Interaction.](../../images/editor/add-component.webp)
 
 You can delete any Component from an Entity by clicking the three dots icon on its right, and selecting **Delete Component**.
 
@@ -27,7 +27,7 @@ You can delete any Component from an Entity by clicking the three dots icon on i
 
 To create a fresh new Entity, right click on the root **Scene** Entity in the Entity tree, or on any other Entity, and select **Add Child**
 
-![](../../images/editor/new-entity.png)
+![](../../images/editor/new-entity.webp)
 
 This creates an empty Entity with just a **Transform** Component. The new entity is a child of the parent entity you clicked on. You can then add any other Components you want to it to shape it into anything you desire.
 
@@ -57,7 +57,7 @@ The following Components can be added to any Entity via the Scene Editor UI:
 - **Multiplayer**: Shares any changes that happen to the Entity so that all players in the scene see it too. It can be configured to only share changes on certain components. See [Serverless Multiplayer](../../sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced) for more details.
 - **Animator**: Controls the playback of animations on an Entity with a **GLTF** 3D model. See [3D model animations](../../sdk7/3d-essentials/3d-model-animations.md).
 - **Tween**: Makes the Entity gradually move, rotate, or scale over a period of time. See [Move entities](../../sdk7/3d-essentials/move-entities.md).
-- **Billboard**: Makes the Entity always rotate to face the player. See [Face the user](../../sdk7/3d-essentials/entity-positioning.md#face-the-user).
+- **Billboard**: Makes the Entity always rotate to face the player. See [Face the user](../../sdk7/3d-essentials/entity-positioning.md#face-the-player).
 - **Avatar Attach**: Attaches the Entity to the player's avatar, so it follows them around. See [Attach an entity to an avatar](../../sdk7/3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
 - **Video Player**: Plays a video inside the scene, that can be displayed on the Entity via its **Material**. See [Video playing](../../sdk7/media/video-playing.md).
 - **NFT Shape**: Displays the image of an NFT inside a frame. See [Display an NFT](nfts.md).

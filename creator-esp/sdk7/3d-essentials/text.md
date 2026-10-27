@@ -22,7 +22,7 @@ Para agregar texto como etiqueta en una entidad existente, creas una segunda ent
 
 ## Usar el Scene Editor
 
-La forma más fácil de colocar texto en el mundo es agregar un [Smart item](../../scene-editor/smart-items.md) **Text** visualmente en el [Scene Editor](../../scene-editor/about-editor.md). Luego puedes establecer todos los campos disponibles en la UI del Scene Editor.
+La forma más fácil de colocar texto en el mundo es agregar un [Smart item](../../scene-editor/interactivity/smart-items.md) **Text** visualmente en el [Scene Editor](../../scene-editor/get-started/about-editor.md). Luego puedes establecer todos los campos disponibles en la UI del Scene Editor.
 
 
 
@@ -55,7 +55,7 @@ TextShape.create(sign, {
 
 > `import { TextShape } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Cambiar el valor del texto
@@ -128,7 +128,7 @@ El componente `TextShape` crea una caja de texto que tiene un tamaño, padding, 
 * `zIndex`: _number_. Útil para cuando múltiples entidades planas ocupan el mismo espacio, determina cuál mostrar al frente.
 
 {% hint style="info" %}
-**💡 Consejo**: Si un texto está destinado a flotar en el espacio, es una buena idea agregar un [componente `Billboard`](entity-positioning.md#face-the-user) para que el texto rote para mirar siempre al jugador y sea legible.
+**💡 Consejo**: Si un texto está destinado a flotar en el espacio, es una buena idea agregar un [componente `Billboard`](entity-positioning.md#mirar-al-jugador) para que el texto rote para mirar siempre al jugador y sea legible.
 {% endhint %}
 
 ## Propiedades de sombra y contorno del texto

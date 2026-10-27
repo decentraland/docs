@@ -18,7 +18,7 @@ Las animaciones realizadas por el jugador son anuladas por las animaciones de lo
 
 ## Usar el Scene Editor
 
-La forma más fácil de hacer que un jugador realice una animación es usar el [Scene Editor](../../scene-editor/about-editor.md). Usa la acción sin código **Play Emote** para reproducir una animación predeterminada, o la acción **Play Custom Emote** para reproducir una animación desde un archivo. Consulta [Hacer cualquier item inteligente](../../scene-editor/make-any-item-smart.md).
+La forma más fácil de hacer que un jugador realice una animación es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md). Usa la acción sin código **Play Emote** para reproducir una animación predeterminada, o la acción **Play Custom Emote** para reproducir una animación desde un archivo. Consulta [Hacer cualquier item inteligente](../../scene-editor/interactivity/make-any-item-smart.md).
 
 ## Animaciones predeterminadas
 
@@ -87,7 +87,7 @@ Estos emotes están disponibles para todos los jugadores en su rueda de emotes p
 **💡 Consejo**: Si un jugador camina o salta mientras reproduce la animación, la interrumpirán. Si no quieres que eso sea posible, puedes congelar el avatar con [Modificadores de entrada](input-modifiers.md) durante la duración de la animación del avatar.
 {% endhint %}
 
-## Animaciones personalizadas
+## Animaciones personalizadas {#custom-animations}
 
 Usa `triggerSceneEmote()` para hacer que el jugador realice una animación personalizada, almacenada como un archivo .glb como parte del asset de la escena.
 

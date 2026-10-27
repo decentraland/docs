@@ -13,7 +13,7 @@ Puedes mostrar un NFT 2D (Non-Fungible Token) que posees en tus escenas de Decen
 La imagen del NFT y otros datos se toman de una API, basándose en el contrato y el id del token. Cualquier NFT que sea soportado en [OpenSea](https://opensea.io/) también puede mostrarse en un marco de imagen de NFT en Decentraland.
 
 {% hint style="info" %}
-**💡 Tip**: En el [Scene Editor](../scene-editor/get-started/about-editor.md), puedes usar un **NFT** [Smart Item](../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
+**💡 Tip**: En el [Scene Editor](../../scene-editor/get-started/about-editor.md), puedes usar un **NFT** [Smart Item](../../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
 {% endhint %}
 
 El marco de imagen se muestra ajustándose a las dimensiones de la imagen del NFT. Si las dimensiones de la imagen son 512 X 512 píxeles, el marco mantiene su tamaño original. Si la imagen tiene dimensiones diferentes, el marco se redimensionará y estirará para coincidir con estas dimensiones.
@@ -119,7 +119,7 @@ Aquí está la lista completa de estilos de marco soportados:
 * `NFT_CANVAS`
 * `NFT_NONE`
 
-Algunos marcos usan más materiales que otros. Por ejemplo, el marco predeterminado agrega 1 material para el NFT en sí, 1 material para un plano de fondo coloreado, y 2 materiales para el marco (compartidos con otros marcos de imagen del mismo estilo). Si necesitas reducir materiales para [mantenerte dentro de las limitaciones de escena](../sdk7/optimizing/scene-limitations.md), elige un estilo que sea más simple. Por ejemplo "none" usa solo 1 material para el NFT en sí.
+Algunos marcos usan más materiales que otros. Por ejemplo, el marco predeterminado agrega 1 material para el NFT en sí, 1 material para un plano de fondo coloreado, y 2 materiales para el marco (compartidos con otros marcos de imagen del mismo estilo). Si necesitas reducir materiales para [mantenerte dentro de las limitaciones de escena](../optimizing/scene-limitations.md), elige un estilo que sea más simple. Por ejemplo "none" usa solo 1 material para el NFT en sí.
 
 {% hint style="info" %}
 **💡 Tip**: Usando Visual Studio Code (u otro IDE), ve la lista completa escribiendo `NftFrameType.` y esperando a que las sugerencias inteligentes muestren la lista de opciones. Usa `NftFrameType.NFT_NONE` para mostrar el NFT simple tal como está, sin marco ni color de fondo.

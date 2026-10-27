@@ -154,6 +154,90 @@ Reference images using relative paths:
 
 ## 🤝 Contributing
 
+### Maintaining the example catalog
+
+Edit example pages and category metadata in [`creator/tutorials/examples/`](creator/tutorials/examples/). See the [catalog editing instructions](creator/tutorials/examples/AGENTS.md) for required fields, ownership labels, and code highlights. The generator and YAML parser live in [`scripts/example-catalog/`](scripts/example-catalog/); tests live in [`test/example-catalog.test.mjs`](test/example-catalog.test.mjs).
+
+With Node.js 22 or newer, run these commands from the repository root:
+
+```bash
+npm ci --ignore-scripts
+npm run generate:examples
+npm test
+```
+
+Commit the generated overview, `catalog.json`, category landing pages, detail-page context and highlight blocks, and `creator/SUMMARY.md` alongside your entry changes. Keep the public JSON and images with the content. After committing, run `npm run check:examples` to verify generation leaves those files unchanged; CI runs the same check. Do not manually edit generated sections.
+
+### Validating local links
+
+Run `npm run check:links` to validate local links in every tracked or unignored Markdown file, including translations and contributor instructions. CI runs this on every pull request and push to `main`, including asset-only changes that could break links from unchanged pages.
+
+The check covers Markdown links and images (including reference links), HTML `href`, `src`, and `poster` attributes, and GitBook file/embed/image URLs. Paths are case-sensitive; relative paths resolve from the Markdown file and leading `/` paths resolve from the repository root. It checks file/directory existence, not heading fragments or external URLs, and ignores front matter and code samples.
+
+Every broken local path fails CI; there is no historical exemption list. Use explicit repository file paths (including `.md` for Markdown pages), and update links when moving or deleting content. Run `npm run check:links -- --json` for a machine-readable report.
+
+### Validating media formats
+
+Use **SVG** for vector images, **WebP** for still or animated raster images, and **WebM** for video. Run `npm run check:media` before committing assets. CI runs the same check on every pull request and push to `main`.
+
+The script scans all tracked and unignored files using the `file` utility (preinstalled on macOS and the Ubuntu CI runner). It checks both the extension and detected content: renaming a PNG to `.webp` or hiding it under another extension fails. Non-media documents, audio files, models, and archives are outside this image/video policy. It does not inspect remote media or files inside archives. SVG/WebP/WebM extensions must match their content; codec compatibility is not checked. SVGs are parsed as XML, accepting comments, XML declarations, and doctypes without fetching external entities. Compressed `.svgz` files are not allowed. Inline SVG in Markdown/HTML pages or JavaScript/TypeScript examples is not treated as a separate image asset. Symlinks are unsupported. `npm test` runs without `file` (native media integration tests are explicitly skipped when it is unavailable); Linux CI requires `file` and runs the full suite. Windows CI also runs the tests.
+
+The remaining legacy-format assets are recorded by exact path and SHA-256 in [`scripts/media-format-exceptions.json`](scripts/media-format-exceptions.json). Only their unchanged contents are accepted. New files, copies at another path, and modifications must use an allowed format. When deleting or converting a legacy asset, remove its exception; stale entries fail CI. Do not add exceptions for new assets.
+
+Keep referenced assets inside the documentation space that uses them, preferably under its existing topic-based `images/` directory or GitBook-managed `.gitbook/assets/`. Reuse one canonical file per consuming space for byte-identical content. GitBook does not automatically share assets across mapped space directories, so repository-root or sibling-space relative links are not a substitute for an in-space copy. Update references before removing a duplicate; different UI versions with the same filename are not interchangeable.
+
+Convert assets with an appropriate encoder rather than changing their extension, preserve useful detail and animation behavior, and update all references. Run `npm run check:links` after replacing files.
+
+### Validating heading anchors
+
+Run `npm run check:anchors` to validate local Markdown fragments such as `page.md#section` and `#section`. CI runs this separately from the local-path check and fails on every unresolved anchor; there is no exception baseline. Use `npm run check:anchors -- --json` for a machine-readable report.
+
+The check recognizes generated heading IDs (including accent removal, `&` → `and`, and collapsed separators), explicit GitBook `{#id}` IDs, heading-inline HTML `id`/named anchors, and expandable FAQ summaries. GitBook lowercases explicit IDs; incoming fragments must match that lowercase spelling. Percent-encoded fragments are decoded. An H1 becomes the unanchored page title only when it is the first heading and is at the top level. Later H1s and H1s inside lists or blockquotes are checked as headings. Explicit and generated IDs share a duplicate-suffix namespace; empty generated slugs are ignored. Level-five and level-six headings are imported as text by GitBook and do not create linkable IDs; use a supported heading level for referenced sections. Front matter, comments, and code samples are ignored. External URLs and non-Markdown asset fragments (such as SVG IDs or PDF page numbers) are outside its scope.
+
+When renaming or translating a heading, update its incoming links or preserve its existing ID. A bold label does not create an anchor. Use a real heading with an explicit `{#id}` when it must remain linkable; GitBook drops standalone HTML anchors during import. The check runs against repository content; review GitBook previews when changing rendered structure.
+
+### Checking for unused assets
+
+Run `npm run check:assets` to check whether repository assets are referenced by at least one Markdown file. CI runs this on every pull request and push to `main`, so removing a page's last asset reference is checked even when the asset itself has not changed.
+
+The inventory includes image, video, audio, font, model, archive and document asset extensions, all non-Markdown files under `images/` or `assets/`, and JSON downloads in documentation spaces. It excludes tooling/configuration files and does not inspect files inside archives. The check resolves Markdown links/images, reference-style links, HTML `src`/`href`/`poster`/`srcset`, GitBook file/embed/image URLs (including tags inside HTML blocks), and the GitBook `cover` field in YAML front matter. Byte-order marks before front matter are supported; arbitrary metadata strings do not count as asset usage. Current `main` GitHub/raw URLs pointing into this repository also count. Paths must match exactly; mentioning a filename in prose or a code sample, or linking to its directory, does not count as using the asset.
+
+After the reviewed cleanup, **66 unreferenced assets remain** for editorial or external-usage review. They are recorded in [`scripts/unreferenced-assets-baseline.json`](scripts/unreferenced-assets-baseline.json). CI fails on new unreferenced assets and stale baseline entries. Add a useful reference or remove the unused asset; when fixing an existing entry, remove it from the baseline. Do not add entries for new unused assets. This check does not delete files automatically, and passing it does not mean the historical backlog has been cleaned up.
+
+Malformed front matter is reported for every affected page while the asset check continues scanning other pages and body references. CI also rejects missing asset targets, leading-slash local asset paths, and references outside the consuming space defined in `gitbook-docs.yaml`, even if those files exist elsewhere in the repository. Nested space mappings take precedence over parent spaces.
+
+The validation CLIs accept `--root <repository>` for isolated checks; integration tests run them against disposable Git repositories to verify their exit status and diagnostics.
+
+Run `npm run check:assets -- --strict` to fail on every unreferenced asset, or `npm run check:assets -- --json` to produce a complete machine-readable inventory, including the backlog.
+
+### Navigation integrity
+
+Run `npm run check:navigation` to validate each space's `SUMMARY.md` using the
+space directories in `gitbook-docs.yaml`. CI rejects missing or empty manifests,
+broken or incorrectly cased Markdown destinations, root-relative or cross-space
+entries, and links to a navigation manifest itself. Directory links must resolve
+to `README.md`. Nested spaces own their pages independently; GitBook-managed
+translation declarations are recognized without requiring generated pages locally.
+
+Duplicate entries and unlisted pages are **warnings initially**, so existing
+editorial decisions do not block unrelated PRs. Only mapped spaces are audited;
+`SUMMARY.md`, `AGENTS.md`, and `CLAUDE.md` are not considered unlisted content pages.
+External URLs are permitted but not fetched; a menu must also contain at least one valid local page or a supported translation declaration. Query-only and fragment-only entries are rejected. Heading fragments belong to the
+separate anchor validator; a passing navigation check does not guarantee that a
+GitBook preview URL will render successfully.
+
+Use `npm run check:navigation -- --json` for a machine-readable report, or
+`npm run check:navigation -- --strict` to make warnings fail locally. For an
+intentionally unlisted page, add its exact repository path and a nonempty `reason`
+to `scripts/navigation-exceptions.json`. Exceptions only suppress unlisted-page
+warnings; deleted, out-of-scope, or subsequently listed pages make them stale and
+fail CI. Do not baseline the current warning backlog without editorial review.
+
+The current audit reports 43 unlisted pages, mostly stub group indexes. Before
+enabling strict mode in CI, review whether these pages should be linked, removed,
+or explicitly documented as intentionally unlisted. A matching group heading
+alone does not count as a link to its README page.
+
 ### Quick Start
 
 1. **Clone the repository**
@@ -164,7 +248,7 @@ Reference images using relative paths:
 
 2. **Create a branch**
    ```bash
-   git checkout -b feature/your-improvement
+   git checkout -b docs/your-improvement
    ```
 
 3. **Make changes**
@@ -208,4 +292,4 @@ This preview feature ensures that documentation changes can be thoroughly review
 
 ## 📜 License
 
-This documentation is licensed under the [Apache License 2.0](LICENSE).
+This documentation is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

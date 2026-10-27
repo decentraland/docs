@@ -2,7 +2,7 @@ Los outfits son los atuendos guardados de un jugador. Un outfit está compuesto 
 
 ## Punteros {#pointers}
 
-Los [punteros](../pointers) de outfits son la dirección de Ethereum del propietario con un sufijo "`:outfits`". Por ejemplo:
+Los [punteros](../pointers.md) de outfits son la dirección de Ethereum del propietario con un sufijo "`:outfits`". Por ejemplo:
 
 ```
 0x210c4415d6a71195af76beef9b85dd0eb43f35df:outfits
@@ -41,11 +41,11 @@ El campo `metadata.outfits[].outfit` tiene toda la información para guardar el 
 
 | Campo | Valor |
 | ----- | --- |
-| `bodyShape` | El [puntero](../pointers) a la entidad de forma de cuerpo del avatar.
+| `bodyShape` | El [puntero](../pointers.md) a la entidad de forma de cuerpo del avatar.
 | `eyes` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para los ojos del avatar.
 | `hair` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para el cabello del avatar.
 | `skin` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para la piel del avatar.
-| `wearables` | Un array de [punteros de wearable](wearables#pointers) en uso por el avatar.
+| `wearables` | Un array de [punteros de wearable](wearables.md#pointers) en uso por el avatar.
 
 Para ilustrar:
 

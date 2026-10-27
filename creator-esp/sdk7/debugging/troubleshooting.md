@@ -112,7 +112,7 @@ Como alternativa, puedes ejecutar `npm run deploy --skip-build` para saltar la e
 #### Problema: Desplegué mi scene pero no veo los cambios cuando entro a Decentraland
 
 * Ten en cuenta que puede tomar algunos minutos para que el nuevo contenido se propague a través de todos los servidores en la red catalyst, dale un poco de tiempo.
-* Consulta [Verify Deployment Success](../sdk7/getting-started/preview-scene.md#verify-deployment-success) para instrucciones sobre cómo puedes asegurar que el contenido se propagó correctamente a todos los servidores.
+* Consulta [Verify Deployment Success](../publishing/publishing.md#verify-deployment-success) para instrucciones sobre cómo puedes asegurar que el contenido se propagó correctamente a todos los servidores.
 
 #### Problema: Una vez desplegado, algunos modelos 3D faltan
 
@@ -121,7 +121,7 @@ Como alternativa, puedes ejecutar `npm run deploy --skip-build` para saltar la e
 #### Problema: Una vez desplegado, mis modelos 3D se ven diferentes
 
 * Si las texturas se ven diferentes, ten en cuenta que las texturas en modelos 3D están limitadas a un tamaño máximo de 512x512 píxeles. Esta conversión se lleva a cabo para asegurar que Decentraland se ejecute sin problemas para todos.
-*   Si los modelos se ven diferentes, podría haber un problema con la conversión de los modelos a asset bundles. Lee más sobre compresión de asset bundle [aquí](../sdk7/optimizing/performance-optimization.md#asset-bundle-conversion).
+*   Si los modelos se ven diferentes, podría haber un problema con la conversión de los modelos a asset bundles. Lee más sobre compresión de asset bundle [aquí](../../../creator/sdk7/optimizing/performance-optimization.md#asset-bundle-conversion).
 
     Para validar esto, intenta ejecutar la scene con el parámetro URL `&DISABLE_ASSET_BUNDLES`. Si los modelos se ven bien con esta bandera, el problema debe estar relacionado con un bug en la conversión del modelo.
 
@@ -137,4 +137,4 @@ Si acabas de desplegar tu scene, la carga al cargar la scene también podría re
 
 ### Reportar un bug
 
-Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](../sdk7/debugging/report-bug.md).
+Si encuentras un problema que no es con tu scene, sino con el SDK de Decentraland en general, por favor consulta [Report a bug](report-bug.md).

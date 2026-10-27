@@ -77,7 +77,7 @@ First, navigate to [**Decentraland Create**](https://decentraland.org/create) an
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
-![](../../../.gitbook/assets/add-collaborators.png)
+![](../../images/wearables-and-emotes/publishing-collections/add-collaborators.webp)
 
 ## **Selling Items**
 
@@ -102,11 +102,11 @@ To sell your items via primary sales, begin by navigating to [**Decentraland Cre
 
 To enable Primary Sales, go to the **Collections** tab, select the one you want to enable and click the _**Put on sale**_ button on any of the items from the collection. If it's the first time you put an item from this collection on sale, you will be prompted to _**Enable sales**_. After confirmation, you can continue to the next step to set a price for your item.
 
-![](../../../.gitbook/assets/25_enable_sales.png)
+![](../../images/wearables-and-emotes/uploading-wearables/25_enable_sales.webp)
 
 Now you need to set the price and put each of your items for sale by clicking their **Put up for sale** button and set the price you want it to have. **When this is done, your item will be available to purchase within the Decentraland** [**Marketplace**](https://market.decentraland.org/)**.**
 
-![](../../../.gitbook/assets/put_item_for_sale.png)
+![](../../images/wearables-and-emotes/publishing-collections/put_item_for_sale.webp)
 
 If the collection sales are enabled and the items price set, the Decentraland [Marketplace](https://market.decentraland.org/) will automatically mint one of your items whenever a user makes a primary purchase. This allows you to mint and sell all of your available items until the maximum supply is reached. If you want to save one or more of your items before listing them for sale, you need to manually mint an item to one of your own wallet addresses.
 
@@ -141,11 +141,11 @@ As with selling items in primary sales, you will not be able to mint any items w
 
 To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
-![](../../../.gitbook/assets/minting-items-1.png)
+![](../../images/media/wearable-user-guide-images/minting-items-1.webp)
 
 You will be shown a modal window containing a list of the items available along with the supply available for each. Remember, the supply is the total number of items you can mint. For example, if your supply reads 0/10, then you have used 0 out of your total supply of 10.
 
-![](../../../.gitbook/assets/minting-items-2.png)
+![](../../images/media/wearable-user-guide-images/minting-items-2.webp)
 
 When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint to that address. You cannot mint more items than are available in the supply available.
 
@@ -165,7 +165,7 @@ Are there any fees associated with minting items? No, items are minted on the Ma
 
 To add minters, simply enter their Ethereum address, and click **Add**. You can add as many minters as you want. To remove a minter, simply click **Remove** next to the minter’s address.
 
-![](../../../.gitbook/assets/add-minters.png)
+![](../../images/wearables-and-emotes/publishing-collections/add-minters.webp)
 
 ### **Collection Ownership Transfer**
 
@@ -181,14 +181,14 @@ In order to transfer the ownership of a Collection, you will need:
 
 Copy your collection address in [**Decentraland Create**](https://decentraland.org/create).
 
-![](../../../.gitbook/assets/copy-collection-address.png)
+![](../../images/wearables-and-emotes/publishing-collections/copy-collection-address.webp)
 
 Use this URL - `https://polygonscan.com/address/collection_address#writeContract` and replace `collection_address` with the collection contract.
 
 1. Connect you wallet with the `connect to web3` button
 
-![](../../../.gitbook/assets/connect_wallet.png)
+![](../../images/wearables-and-emotes/publishing-collections/connect_wallet.webp)
 
 2. Look for the contract method 23. `transferCreatorship`. Add in the input `_newCreator` the wallet for the new creator and click on `write` to send the transaction.
 
-![](../../../.gitbook/assets/ownership_transfer.png)
+![](../../images/wearables-and-emotes/publishing-collections/ownership_transfer.webp)

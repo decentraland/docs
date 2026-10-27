@@ -44,7 +44,7 @@ Los siguientes campos opcionales también están disponibles:
 
 > `import { AvatarShape } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -71,7 +71,7 @@ Transform.create(myAvatar, {
 })
 ```
 
-El campo `expressionTriggerId` admite todas las [animaciones predeterminadas](trigger-emotes.md#default-animations), así como animaciones personalizadas [desde un archivo de escena](trigger-emotes.md#custom-animations), e incluso URNs de emotes que están publicados en el marketplace.
+El campo `expressionTriggerId` admite todas las [animaciones predeterminadas](trigger-emotes.md#animaciones-predeterminadas), así como animaciones personalizadas [desde un archivo de escena](trigger-emotes.md#custom-animations), e incluso URNs de emotes que están publicados en el marketplace.
 
 ### Repetir animaciones
 
@@ -201,4 +201,4 @@ AvatarAttach.create(attachedEntity, {
 })
 ```
 
-Aprende más sobre el componente `AvatarAttach` [aquí](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
+Aprende más sobre el componente `AvatarAttach` [aquí](../3d-essentials/entity-positioning.md#adjuntar-una-entidad-a-un-avatar).

@@ -196,7 +196,7 @@ export const uiMenu = () => (
 La UI predeterminada de Decentraland, incluyendo el mapa, chat, etc, siempre se renderiza encima de todos los demás elementos UI.
 {% endhint %}
 
-### Tamaño UI responsivo
+### Tamaño UI responsivo {#responsive-ui-size}
 
 Los jugadores con diferentes tamaños de pantalla pueden ver tu diseño UI de manera diferente. Los valores en píxeles se escalan contra la pantalla virtual, así que tu UI mantiene sus proporciones en cualquier resolución: **no necesitas calcular un factor de escala por tu cuenta**, y hacerlo aplicaría el escalado dos veces.
 
@@ -234,4 +234,4 @@ export function Main(){
 Algunas otras mejores prácticas respecto a tamaños UI:
 
 * Si el ancho o alto de cualquier elemento UI es dinámico, es bueno también usar los parámetros `maxWidth`, `minWidth`, `maxHeight`, y `minHeight` para asegurarse de que permanezcan dentro de valores razonables.
-* Un tamaño de fuente numérico es un valor en píxeles virtuales, y se escala como cualquier otro. Si querés un tamaño medido contra el canvas, que no dependa de la pantalla virtual, pasá un string en `vw`/`vh`. Consulta [Tamaño de texto responsivo](../sdk7/2d-ui/ui_text.md#responsive-text-size)
+* Un tamaño de fuente numérico es un valor en píxeles virtuales, y se escala como cualquier otro. Si querés un tamaño medido contra el canvas, que no dependa de la pantalla virtual, pasá un string en `vw`/`vh`. Consulta [Tamaño de texto responsivo](ui_text.md#responsive-text-size)

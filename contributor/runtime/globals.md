@@ -11,13 +11,13 @@ The globals described below are typical JavaScript concepts, but they are tailor
 The runtime injects 6 definitions in the scene's global scope:
 
 1. [`console`](#console): a simplified version of the typical `console` object.
-2. [`exports`](#module): an object where the scene can add its [public interface](../execution.md).
+2. [`exports`](#module): an object where the scene can add its [public interface](execution.md).
 3. [`module`](#module): a container for the `exports` object.
 4. [`require`](#module): a function to load runtime-provided modules by name.
 5. [`fetch`](#http): a restricted implementation of the browser `fetch` function.
 6. [`WebSocket`](#http): a restricted implementation of the browser `WebSocket` class.
 
-All of these are defined as read-only properties, so they cannot be reassigned. Some will throw exceptions when used unless certain [permissions](..//contributor/content/entity-types/scenes.md#permissions) are granted to the scene.
+All of these are defined as read-only properties, so they cannot be reassigned. Some will throw exceptions when used unless certain [permissions](../content/entity-types/scenes.md#permissions) are granted to the scene.
 
 
 ## Console {#console}
@@ -56,9 +56,9 @@ exports: Object
 require(moduleName: string): Object
 ```
 
-The `require` function allows scenes to access runtime-provided modules (such as [EngineApi](../modules/engine_api.md) or [RestrictedActions](../modules/restricted_actions.md)), and nothing else (it **does not** access NPM packages or modules by path).
+The `require` function allows scenes to access runtime-provided modules (such as [EngineApi](modules/engine-api.md) or [RestrictedActions](modules/restricted-actions.md)), and nothing else (it **does not** access NPM packages or modules by path).
 
-Properties added to the `exports` object are the scene's public interface and will be exposed to the runtime. In fact, scenes _must_ expose at least one method to run properly (see [execution](../execution.md)).
+Properties added to the `exports` object are the scene's public interface and will be exposed to the runtime. In fact, scenes _must_ expose at least one method to run properly (see [execution](execution.md)).
 
 {% hint style="info" %}
 Scenes written in languages such as TypeScript use the more modern `import` and `export` statements, which can be transpiled into CommonJS-compatible uses of `require` and `exports`.
@@ -72,13 +72,13 @@ The `fetch` and `WebSocket` globals work exactly like their well-known counterpa
 When calling the `fetch` function:
 
 - An error is thrown if the URL doesn't begin with `https://`.
-- An error is thrown if the scene doesn't have the [`USE_FETCH` permission](..//contributor/content/entity-types/scenes.md#permissions).
+- An error is thrown if the scene doesn't have the [`USE_FETCH` permission](../content/entity-types/scenes.md#permissions).
 - An implementation-defined timeout can abort the request.
 
 When using the `WebSocket` class:
 
 - An error is thrown if the URL doesn't begin with `wss:`
-- An error is thrown if the scene doesn't have the [`USE_WEBSOCKET` permission](..//contributor/content/entity-types/scenes.md#permissions).
+- An error is thrown if the scene doesn't have the [`USE_WEBSOCKET` permission](../content/entity-types/scenes.md#permissions).
 
 Apart from these differences, both cases follow standard behavior.
 

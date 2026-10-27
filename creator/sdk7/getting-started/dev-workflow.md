@@ -57,7 +57,7 @@ See [Publishing options](../publishing/publishing-options.md) for more details.
 
 When creating a new scene, choose amongst several base template scenes that include some basic code and 3d models. Use these to get started faster.
 
-* [Example scenes](https://studios.decentraland.org/resources?sdk_version=SDK7): here you can find a large collection of example scenes, each showcasing different mechanics that you can borrow. You can also clone any of these scenes and use it as a starting point.
+* [Example scenes](../../tutorials/examples.md): here you can find a curated collection of working scenes and repositories, each showcasing mechanics that you can reuse or reference.
 * [Helper libraries](https://studios.decentraland.org/resources?sdk_version=SDK7\&resource_type=Library): these can simplify many common tasks.
 
 ## Art assets
@@ -71,7 +71,7 @@ You don't need to create your own assets, though. See [Useful Resources](useful-
 To run a preview of your scene, open it in the Creator Hub and click the **Play** button. Alternatively, if you're working from the command line, run `npm run start` on your project's root folder.
 
 * [Preview your scene](preview-scene.md) for more details.
-* Check the [Debug a scene](preview-scene.md#debug-a-scene) for tips on how to debug any issues.
+* Check the [Debug a scene](../debugging/debug-in-preview.md) for tips on how to debug any issues.
 * Enable **Compress Assets** in the **Desktop Client** submenu of **Play Options** (or run `npm run start -- --local-ab` from the CLI) to load your 3D models as optimized asset bundles. The preview runs smoother and shows the models just as they'll look once published. See [Preview with optimized assets](preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}

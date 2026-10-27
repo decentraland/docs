@@ -53,7 +53,7 @@ The Scene Editor in Creator Hub provides an easy way to publish your scenes. Mak
    - Select **PUBLISH TO LAND** if you own land, or have been given deploy permissions by an owner. Then select the parcels where you want it deployed on the map. Parcels where you are allowed to deploy are shown in pink.
    - Select **Alternative servers** to publish to a [custom server](publishing.md#custom-servers).
 
-![](../../images/editor/publish-options.png)
+![](../../images/editor/publish-options.webp)
 
 4. This opens a new tab on your browser, showing details about the upload. Sign the deployment with your wallet. This is only a signature to prove ownership, it's free and doesn't involve any blockchain transaction.
    - For LAND on a Metamask browser account, confirm the deployment. Then sign the message on the Metamask browser extension.

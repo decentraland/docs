@@ -18,9 +18,9 @@ La forma renderizada de una entidad está determinada por el componente que usa.
 
 ## Usar el Scene Editor
 
-La forma más fácil de darle una forma a una entidad es usar el [Scene Editor](../../scene-editor/about-editor.md). Puedes agregar un componente **Mesh Renderer** para proporcionar una forma primitiva, o un componente **GLTF** para hacer referencia a un modelo 3D desde un archivo. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
+La forma más fácil de darle una forma a una entidad es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md). Puedes agregar un componente **Mesh Renderer** para proporcionar una forma primitiva, o un componente **GLTF** para hacer referencia a un modelo 3D desde un archivo. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
 
-## Formas primitivas
+## Formas primitivas {#primitive-shapes}
 
 Varias formas básicas, a menudo llamadas _primitivas_, pueden agregarse a una entidad dándole a la entidad un componente `MeshRenderer`.
 
@@ -89,7 +89,7 @@ MeshRenderer.setSphere(myCube)
 
 > `import { MeshRenderer } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Modelos 3D
@@ -112,7 +112,7 @@ El campo `src` es obligatorio, debes darle un valor al construir el componente. 
 **💡 Consejo**: Recomendamos mantener tus modelos separados en la carpeta `assets/scene/models` dentro de tu escena.
 {% endhint %}
 
-Los modelos glTF pueden incluir sus propias texturas, materiales, colisionadores y animaciones incrustadas. Consulta [modelos 3D](../../../creator/3d-modeling/3d-models/) para más información al respecto. Para anular los materiales de un modelo, usa el componente [GltfNodeModifiers](materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
+Los modelos glTF pueden incluir sus propias texturas, materiales, colisionadores y animaciones incrustadas. Consulta [modelos 3D](../../3d-modeling/3d-models.md) para más información al respecto. Para anular los materiales de un modelo, usa el componente [GltfNodeModifiers](materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
 
 Para evitar que los jugadores caminen a través de un modelo 3D, o para hacer un modelo clickeable, debes tener un [collider](colliders.md), que puede estar incrustado en el modelo o proporcionado a través de un componente `MeshCollider`.
 
@@ -123,7 +123,7 @@ Ten en cuenta que todos los modelos, sus shaders y sus texturas deben estar dent
 
 `import { GltfContainer } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ### Bibliotecas gratuitas para modelos 3D
@@ -155,7 +155,7 @@ Para asegurarte de que los modelos 3D en tu escena se carguen más rápido y ocu
 
 * Guarda tus modelos en formato _.glb_, que es una versión más ligera de _.gltf_.
 * Si tienes múltiples modelos que comparten las mismas texturas, exporta tus modelos con texturas en un archivo separado. De esa manera, múltiples modelos pueden referirse a un único archivo de textura que solo necesita cargarse una vez.
-* Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso. Consulta [entidades y componentes](../architecture/entities-components.md#pooling-entities-and-components)
+* Si tu escena tiene entidades que aparecen y desaparecen, puede ser una buena idea agrupar estas entidades y mantenerlas bajo tierra, o a una escala de 0. Esto ayudará a que aparezcan más rápido, el trade-off es que ocuparán memoria cuando no estén en uso.
 
 ## Estirar una forma
 
@@ -172,7 +172,7 @@ Transform.create(primitiveEntity, {
 })
 ```
 
-## Hacer invisible
+## Hacer invisible {#make-invisible}
 
 Puedes hacer una entidad invisible dándole un `VisibilityComponent`, con su propiedad `visible` establecida en _false_.
 

@@ -11,13 +11,13 @@ Los globales descritos abajo son conceptos típicos de JavaScript, pero están a
 El runtime inyecta 6 definiciones en el ámbito global de la escena:
 
 1. [`console`](#console): una versión simplificada del objeto `console` típico.
-2. [`exports`](#module): un objeto donde la escena puede agregar su [interfaz pública](../execution.md).
+2. [`exports`](#module): un objeto donde la escena puede agregar su [interfaz pública](execution.md).
 3. [`module`](#module): un contenedor para el objeto `exports`.
 4. [`require`](#module): una función para cargar módulos proporcionados por el runtime por nombre.
 5. [`fetch`](#http): una implementación restringida de la función `fetch` del navegador.
 6. [`WebSocket`](#http): una implementación restringida de la clase `WebSocket` del navegador.
 
-Todas estas se definen como propiedades de solo lectura, por lo que no pueden ser reasignadas. Algunas lanzarán excepciones cuando se usen a menos que se otorguen ciertos [permisos](..//contributor/content/entity-types/scenes.md#permissions) a la escena.
+Todas estas se definen como propiedades de solo lectura, por lo que no pueden ser reasignadas. Algunas lanzarán excepciones cuando se usen a menos que se otorguen ciertos [permisos](../content/entity-types/scenes.md#permissions) a la escena.
 
 
 ## Console {#console}
@@ -56,9 +56,9 @@ exports: Object
 require(moduleName: string): Object
 ```
 
-La función `require` permite a las escenas acceder a módulos proporcionados por el runtime (como [EngineApi](../modules/engine_api.md) o [RestrictedActions](../modules/restricted_actions.md)), y nada más (**no** accede a paquetes NPM o módulos por ruta).
+La función `require` permite a las escenas acceder a módulos proporcionados por el runtime (como [EngineApi](modules/engine-api.md) o [RestrictedActions](modules/restricted-actions.md)), y nada más (**no** accede a paquetes NPM o módulos por ruta).
 
-Las propiedades agregadas al objeto `exports` son la interfaz pública de la escena y serán expuestas al runtime. De hecho, las escenas _deben_ exponer al menos un método para ejecutarse apropiadamente (ver [execution](../execution.md)).
+Las propiedades agregadas al objeto `exports` son la interfaz pública de la escena y serán expuestas al runtime. De hecho, las escenas _deben_ exponer al menos un método para ejecutarse apropiadamente (ver [execution](execution.md)).
 
 {% hint style="info" %}
 Las escenas escritas en lenguajes como TypeScript usan las declaraciones más modernas `import` y `export`, que pueden ser transpiladas a usos compatibles con CommonJS de `require` y `exports`.
@@ -72,12 +72,12 @@ Los globales `fetch` y `WebSocket` funcionan exactamente como sus contrapartes b
 Al llamar la función `fetch`:
 
 - Se lanza un error si la URL no comienza con `https://`.
-- Se lanza un error si la escena no tiene el [permiso `USE_FETCH`](..//contributor/content/entity-types/scenes.md#permissions).
+- Se lanza un error si la escena no tiene el [permiso `USE_FETCH`](../content/entity-types/scenes.md#permissions).
 - Un timeout definido por la implementación puede abortar la solicitud.
 
 Al usar la clase `WebSocket`:
 
 - Se lanza un error si la URL no comienza con `wss:`
-- Se lanza un error si la escena no tiene el [permiso `USE_WEBSOCKET`](..//contributor/content/entity-types/scenes.md#permissions).
+- Se lanza un error si la escena no tiene el [permiso `USE_WEBSOCKET`](../content/entity-types/scenes.md#permissions).
 
 Aparte de estas diferencias, ambos casos siguen el comportamiento estándar.

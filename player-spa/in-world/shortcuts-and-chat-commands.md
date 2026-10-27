@@ -8,7 +8,7 @@ metaLinks:
 
 # Atajos y Comandos de Chat
 
-![](broken-reference)
+![](../.gitbook/assets/Shortcuts.webp)
 
 ## Atajos de Teclado
 
@@ -35,4 +35,4 @@ Los comandos de chat son cadenas específicas de texto utilizadas para activar a
 * **Abrir Modo Debug (muestra FPS y otras métricas)** `/debug`
 * **Descubrir Más Comandos de Chat** `/help`
 
-![](broken-reference)
+![](../.gitbook/assets/Chat10.webp)

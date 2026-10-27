@@ -78,7 +78,7 @@ VideoPlayer.create(screen, {
 })
 ```
 
-See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentraland-cast) for details on how to use this third alternative method.
+See [Live streaming](video-playing.md#live-streaming) for details on how to use this third alternative method.
 
 ## About External Streaming
 
@@ -392,7 +392,7 @@ A neat trick to have non-rectangular video screens is to apply an alpha texture 
 
 Use the following image to cut your video into a circular shape, with transparent corners.
 
-![](../../images/circle_mask.png)
+![](../../images/circle_mask.webp)
 
 ```ts
 const videoTexture = Material.Texture.Video({
@@ -409,7 +409,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-![](../../images/circular-video-screen.png)
+![](../../images/circular-video-screen.webp)
 
 {% hint style="warning" %}
 **📔 Note**: In previous versions, the `alphaTexture` property was only present in PBR materials. Currently, it only works in basic materials.

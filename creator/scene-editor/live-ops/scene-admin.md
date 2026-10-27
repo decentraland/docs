@@ -14,18 +14,18 @@ During a live event, an admin can spontaneously control what happens in the scen
 
 When a scene admin visits your scene, they see a special admin panel on the top-right corner that only they are able to see. The panel uses icon tabs along the top to switch between sections (Video, Announcements, Smart Items, Permissions). Through this UI they can play videos or live streams, send announcements, ban players, or activate any smart item that is configured to be activated like this. These actions are seen by all other players in the scene that are connected to the same comms island as the admin.
 
-![ ](../../images/editor/admin/admin-console.png)
+![ ](../../images/editor/admin/admin-console.webp)
 
 ## Setting up admins
 
 To assign admins, you need to add the **Admin Tools** smart item to your scene.
 
-![ ](../../images/editor/admin/admin-smart-item.png)
+![ ](../../images/editor/admin/admin-smart-item.webp)
 
 {% hint style="warning" %}
 **📔 Note**: Update your scene to use the latest dependencies.
 
-<img src="../../images/editor/admin/update-dependencies.png" alt=" " data-size="original">
+<img src="../../images/editor/admin/update-dependencies.webp" alt=" " data-size="original">
 {% endhint %}
 
 While you're developing the scene and trying it locally, you are always an admin. Once the scene is published, anyone with publish permissions to the scene is also automatically an admin. This includes:
@@ -39,13 +39,13 @@ To assign additional admins that don't have publish permission but can do live-o
 1. Publish the scene and visit the live version as an admin
 2. Open the **Permissions** tab (via the icon tabs at the top of the admin panel).
 
-   ![ ](../../images/editor/admin/moderation-tools.png)
+   ![ ](../../images/editor/admin/moderation-tools.webp)
 
 3. Write the wallet address of the person you want to add next to **Add an Admin** and click **Add**.
 
 You can see who is an admin in the scene by clicking the **View Admin List** button. From this screen you can also **Remove** people from the admin list.
 
-![ ](../../images/editor/admin/admin-list.png)
+![ ](../../images/editor/admin/admin-list.webp)
 
 {% hint style="warning" %}
 **📔 Note**: It's only possible to remove the admin role from players that were added manually to the list via the **Permissions & Moderation** tab. Players who are owners, operators, or renters of the scene are displayed on this list but can't be removed from their admin roles from this UI. To remove an admin role from an operator, you must first remove their operator role.
@@ -53,7 +53,7 @@ You can see who is an admin in the scene by clicking the **View Admin List** but
 
 Whenever an admin player is in the scene, they will see a special UI on the top-right corner. Non-admin players don't see this UI.
 
-![ ](../../images/editor/admin/admin-console.png)
+![ ](../../images/editor/admin/admin-console.webp)
 
 ### Check admin status via code
 
@@ -82,7 +82,7 @@ To enable this, you need to add a **Video Player** smart item to your scene and 
 
 1.  Add a **Video Player** smart item to your scene
 
-    ![ ](../../images/editor/admin/video-player-item.png)
+    ![ ](../../images/editor/admin/video-player-item.webp)
 
     See [Video Screen](../interactivity/video-screen.md) for more details on how you can configure the default media source and other settings of the Video Player smart item. Most of these configurations can be overriden by the admin once the scene is running.
 
@@ -94,11 +94,11 @@ To enable this, you need to add a **Video Player** smart item to your scene and 
 
 2.  Open the Admin Tools Smart Item, make sure the **Video Screens** checkbox is enabled for this section to show. Then select the screen from a dropdown list and give it a friendly name to display on the Admin UI. You can add as many Video Screens as you want, each screen is controlled independently.
 
-    <img src="../../images/editor/admin/multi-video-setup.png" alt="Scene name" width="300"/>
+    <img src="../../images/editor/admin/multi-video-setup.webp" alt="Scene name" width="300"/>
 
 Once the above is configured, admin users in your scene can open the admin panel and select the video tab (via the icon tabs at the top) to control these video screens.
 
-<img src="../../../.gitbook/assets/video-sources.png" alt="Scene name" width="300"/>
+<img src="../../.gitbook/assets/video-sources.webp" alt="Scene name" width="300"/>
 
 If your scene has multiple independent video screens, the **Screen** dropdown lets you pick which video screen to control. The list displays the names you gave to each video screen on the Admin Tools smart item configuration.
 
@@ -112,7 +112,7 @@ A segmented control at the top of the video section lets you switch between thre
 
 - **Video URL**: Play a video from a URL. Paste a video URL into the field and click **Activate**. The video will start playing on the selected screen for all players. You can also stop, pause, restart, and adjust the volume.
 
-  <img src="../../images/editor/admin/video-from-url.png" alt="Scene name" width="300"/>
+  <img src="../../images/editor/admin/video-from-url.webp" alt="Scene name" width="300"/>
 
   {% hint style="warning" %}
   **📔 Note**: Not any video URL will work. Videos from some sites have strict policies about their content and will block access to them from Decentraland. See [Streaming from other sources](../interactivity/video-screen.md#streaming-from-other-sources) for more information on what you can and can't play in Decentraland.
@@ -120,17 +120,17 @@ A segmented control at the top of the video section lets you switch between thre
 
 - **DCL Cast**: Use Decentraland's free streaming web app to easily share your camera or screen with other players in the scene, no need to set up streaming software. Presentation controls (Previous, Next, Play video, Stop) are shown inline when a presentation is active.
 
-  <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="300"/>
+  <img src="../../.gitbook/assets/dcl-cast.webp" alt="DCL Cast" width="300"/>
 
 - **Stream**: Play a live stream using Decentraland's free streaming infrastructure and a streaming software like OBS or StreamYard.
 
-  <img src="../../images/editor/admin/live-stream.png" alt="Scene name" width="300"/>
+  <img src="../../images/editor/admin/live-stream.webp" alt="Scene name" width="300"/>
 
   See [Live Streaming](../live-ops/live-streaming.md) for more information on how to set up a live stream.
 
 Each media source section includes a **volume slider** that lets you set the volume from 0% (muted) to 100%.
 
-![ ](../../images/editor/admin/activate.png)
+![ ](../../images/editor/admin/activate.webp)
 
 ## Announcements
 
@@ -138,13 +138,13 @@ In the **Announcements** tab of the admin panel, admins can write messages that 
 
 Select the Announcements tab of the admin panel. Write a message and click **Share**. The message can be up to 90 characters long. The input field clears automatically after sending, so you can type a new message right away.
 
-![ ](../../images/editor/admin/announcement.png)
+![ ](../../images/editor/admin/announcement.webp)
 
 ## Ban players
 
 You can ban players from your scene by selecting the **Permissions** tab of the admin panel, writing the name or wallet address of the player you want to ban and clicking the **Ban** button.
 
-![ ](../../images/editor/admin/moderation-tools.png)
+![ ](../../images/editor/admin/moderation-tools.webp)
 
 {% hint style="info" %}
 **💡 Tip**: To obtain a player's wallet address, click on their avatar to open up their profile, then click on the **Copy to clipboard** button next to the wallet address.
@@ -170,6 +170,6 @@ To Trigger an action from any smart item in the scene:
 
 Once the above is configured, admins can trigger the action by opening the **Smart Items** tab of the admin panel and selecting an item from the dropdown list. They can then pick one of the item's actions from the **Actions** dropdown and click **Play Action** to trigger it. There's also a button to **Hide/Show** the selected item.
 
-<img src="../../images/editor/admin/smart-item-actions.png" alt="Scene name" width="300"/>
+<img src="../../images/editor/admin/smart-item-actions.webp" alt="Scene name" width="300"/>
 
 You can also show or hide any smart item in this list, even if it doesn't include an action to do that.

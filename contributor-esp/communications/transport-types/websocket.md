@@ -1,4 +1,4 @@
-El transporte websocket es uno de los transportes de mensajería de isla soportados por el protocolo comms de Decentraland. Los clientes deben usarlo cuando reciben una cadena de conexión apropiada del servicio [Archipelago](../archipelago) de su realm, o si está indicado como un transporte fijo.
+El transporte websocket es uno de los transportes de mensajería de isla soportados por el protocolo comms de Decentraland. Los clientes deben usarlo cuando reciben una cadena de conexión apropiada del servicio [Archipelago](../archipelago.md) de su realm, o si está indicado como un transporte fijo.
 
 En el contexto del transporte websocket, una isla se refiere como una _room_ (sala). Cualquier nombre indica lo mismo: un grupo de jugadores cercanos que intercambian actualizaciones y chat.
 
@@ -19,7 +19,7 @@ El transporte usa el protocolo websocket regular sobre HTTPS. Los clientes puede
 Todos los mensajes del transporte websocket están serializados usando la estructura [`WsPacket`][WsPacket]. Implementan un conjunto de mensajes de conectividad y autenticación a nivel de protocolo, además de un tipo contenedor para mensajes de cliente.
 
 {% hint style="info" %}
-La estructura [`WsPacket`](#WsPacket) no debe confundirse con el mensaje [`Packet`][Packet]. Es una capa de envoltorio adicional específica del transporte websocket. Los mensajes comms reales están contenidos en el tipo [`WsPeerUpdate`](#WsPeerUpdate).
+La estructura [`WsPacket`](#paquetes-websocket) no debe confundirse con el mensaje [`Packet`][Packet]. Es una capa de envoltorio adicional específica del transporte websocket. Los mensajes comms reales están contenidos en el tipo [`WsPeerUpdate`](#wspeerupdate).
 {% endhint %}
 
 | Campo     | Tipo   | Valor                                                                                                                                                  |
@@ -28,9 +28,9 @@ La estructura [`WsPacket`](#WsPacket) no debe confundirse con el mensaje [`Packe
 
 ## Autenticación
 
-Antes de poder comenzar a retransmitir mensajes a otros, los clientes deben autenticarse firmando una cadena de desafío. Esto es requerido incluso cuando el URI de transporte se obtuvo de [Archipelago](../archipelago) después de una ronda previa de autenticación.
+Antes de poder comenzar a retransmitir mensajes a otros, los clientes deben autenticarse firmando una cadena de desafío. Esto es requerido incluso cuando el URI de transporte se obtuvo de [Archipelago](../archipelago.md) después de una ronda previa de autenticación.
 
-El primer mensaje que un cliente envía al unirse a una isla es [`WsIdentification`][WsIdentification], que contiene una dirección pública. Será respondido con [`WsChallengeRequired`](#WsChallengeRequired), y los clientes envían un [`WsSignedChallenge`](#WsSignedChallenge) en respuesta.
+El primer mensaje que un cliente envía al unirse a una isla es [`WsIdentification`][WsIdentification], que contiene una dirección pública. Será respondido con [`WsChallengeRequired`](#wschallengerequired), y los clientes envían un [`WsSignedChallenge`](#wssignedchallenge) en respuesta.
 
 ```
   .----------.                .--------.
@@ -55,11 +55,11 @@ El primer mensaje que un cliente envía al unirse a una isla es [`WsIdentificati
 
 ```
 
-Si el flujo se completa exitosamente, el cliente recibirá un [`WsWelcome`](#WsWelcome) y puede comenzar a enviar mensajes a peers.
+Si el flujo se completa exitosamente, el cliente recibirá un [`WsWelcome`](#wswelcome) y puede comenzar a enviar mensajes a peers.
 
 ---
 
-##### `WsIdentification` <small>[↗ fuente][WsIdentification]</small> {#WsIdentification}
+### `WsIdentification` <small>[↗ fuente][WsIdentification]</small> {#wsidentification}
 
 | Campo     | Tipo     | Valor                                        |
 | --------- | -------- | -------------------------------------------- |
@@ -67,7 +67,7 @@ Si el flujo se completa exitosamente, el cliente recibirá un [`WsWelcome`](#WsW
 
 ---
 
-##### `WsChallengeRequired` <small>[↗ fuente][WsChallengeRequired]</small> {#WsChallengeRequired}
+### `WsChallengeRequired` <small>[↗ fuente][WsChallengeRequired]</small> {#wschallengerequired}
 
 | Campo               | Tipo     | Valor                                                                           |
 | ------------------- | -------- | ------------------------------------------------------------------------------- |
@@ -76,15 +76,15 @@ Si el flujo se completa exitosamente, el cliente recibirá un [`WsWelcome`](#WsW
 
 ---
 
-##### `WsSignedChallenge` <small>[↗ fuente][WsSignedChallenge]</small> {#WsSignedChallenge}
+### `WsSignedChallenge` <small>[↗ fuente][WsSignedChallenge]</small> {#wssignedchallenge}
 
 | Campo             | Tipo     | Valor                                                                                                                    |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `auth_chain_json` | `string` | Una [cadena de autenticación](../../auth/authchain) serializada terminando con la firma del desafío. |
+| `auth_chain_json` | `string` | Una [cadena de autenticación](../../authentication/authchain.md) serializada terminando con la firma del desafío. |
 
 ---
 
-##### `WsWelcome` <small>[↗ fuente][WsWelcome]</small> {#WsWelcome}
+### `WsWelcome` <small>[↗ fuente][WsWelcome]</small> {#wswelcome}
 
 | Campo             | Tipo                  | Valor                                                     |
 | ----------------- | --------------------- | --------------------------------------------------------- |
@@ -95,22 +95,22 @@ Si el flujo se completa exitosamente, el cliente recibirá un [`WsWelcome`](#WsW
 
 Se definen tres mensajes para ayudar a los clientes a rastrear sus peers y su propio estado.
 
-[`WsPeerJoin`](#WsPeerJoin) se recibe cuando un cliente compañero se conecta a la sala y se autentica exitosamente, mientras que [`WsPeerLeave`](#WsPeerLeave) se recibe cuando peers se desconectan.
+[`WsPeerJoin`](#wspeerjoin) se recibe cuando un cliente compañero se conecta a la sala y se autentica exitosamente, mientras que [`WsPeerLeave`](#wspeerleave) se recibe cuando peers se desconectan.
 
-También está el mensaje [`WsKicked`](#WsKicked), que informa a clientes que su conexión está a punto de cerrarse y la razón para ello. En la práctica actual, la razón principal por la que un servidor puede expulsar a un cliente de una sala es porque se conectaron simultáneamente a otra sala, cuando eso está prohibido por política del servidor.
+También está el mensaje [`WsKicked`](#wskicked), que informa a clientes que su conexión está a punto de cerrarse y la razón para ello. En la práctica actual, la razón principal por la que un servidor puede expulsar a un cliente de una sala es porque se conectaron simultáneamente a otra sala, cuando eso está prohibido por política del servidor.
 
 ---
 
-##### `WsPeerJoin` <small>[↗ fuente][WsPeerJoin]</small> {#WsPeerJoin}
+### `WsPeerJoin` <small>[↗ fuente][WsPeerJoin]</small> {#wspeerjoin}
 
 | Campo     | Tipo     | Valor                                                        |
 | --------- | -------- | ------------------------------------------------------------ |
-| `alias`   | `uint32` | El ID generado por el servidor enviado en [`WsWelcome`](#WsWelcome) |
+| `alias`   | `uint32` | El ID generado por el servidor enviado en [`WsWelcome`](#wswelcome) |
 | `address` | `string` | La dirección de Ethereum del nuevo peer                      |
 
 ---
 
-##### `WsPeerLeave` <small>[↗ fuente][WsPeerLeave]</small> {#WsPeerLeave}
+### `WsPeerLeave` <small>[↗ fuente][WsPeerLeave]</small> {#wspeerleave}
 
 | Campo   | Tipo     | Valor                                             |
 | ------- | -------- | ------------------------------------------------- |
@@ -118,7 +118,7 @@ También está el mensaje [`WsKicked`](#WsKicked), que informa a clientes que su
 
 ---
 
-##### `WsKicked` <small>[↗ fuente][WsKicked]</small> {#WsKicked}
+### `WsKicked` <small>[↗ fuente][WsKicked]</small> {#wskicked}
 
 | Campo    | Tipo     | Valor                                                            |
 | -------- | -------- | ---------------------------------------------------------------- |
@@ -126,7 +126,7 @@ También está el mensaje [`WsKicked`](#WsKicked), que informa a clientes que su
 
 ## Mensajes de Cliente
 
-Para enviar [mensajes](../messages) comms, los clientes los envuelven en la estructura [`WsPeerUpdate`](#WsPeerUpdate). Esto diferencia los tipos de mensaje de control de transporte de los mensajes reales enviados entre peers.
+Para enviar [mensajes](../messages.md) comms, los clientes los envuelven en la estructura [`WsPeerUpdate`](#wspeerupdate). Esto diferencia los tipos de mensaje de control de transporte de los mensajes reales enviados entre peers.
 
 ```
 .-------------------.
@@ -143,12 +143,12 @@ Para enviar [mensajes](../messages) comms, los clientes los envuelven en la estr
 
 ---
 
-##### `WsPeerUpdate` <small>[↗ fuente][WsPeerUpdate]</small> {#WsPeerUpdate}
+### `WsPeerUpdate` <small>[↗ fuente][WsPeerUpdate]</small> {#wspeerupdate}
 
 | Campo        | Tipo     | Valor                                                                                        |
 | ------------ | -------- | -------------------------------------------------------------------------------------------- |
 | `from_alias` | `uint32` | El ID generado por el servidor del remitente                                                 |
-| `body`       | `bytes`  | El [mensaje](../messages) serializado que está siendo envuelto                  |
+| `body`       | `bytes`  | El [mensaje](../messages.md) serializado que está siendo envuelto                  |
 | `unreliable` | `bool`   | Si el remitente priorizó velocidad o fiabilidad para entregar este mensaje                  |
 
 Los clientes deben establecer el campo `from_alias` a `0` al enviar, y el servidor lo llenará con el identificador correcto antes de entregarlo a los peers.
@@ -162,4 +162,4 @@ Los clientes deben establecer el campo `from_alias` a `0` al enviar, y el servid
 [WsIdentification]: https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64
 [WsKicked]: https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74
 [WsPacket]: https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L78
-[Packet]: ../messages#Packet
+[Packet]: ../messages.md#packet

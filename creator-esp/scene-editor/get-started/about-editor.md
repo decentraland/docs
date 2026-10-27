@@ -12,21 +12,21 @@ metaLinks:
 
 El Creator Hub incluye un poderoso Scene Editor que combina una interfaz simple sin código con la capacidad de escribir código para personalizar aún más tus escenas.
 
-![](../images/editor/icon-creator-hub.png)
+![](../../.gitbook/assets/icon-creator-hub.webp)
 
-Consulta [Instalación del Creator Hub](../scene-editor/get-started/editor-installation.md) para comenzar.
+Consulta [Instalación del Creator Hub](editor-installation.md) para comenzar.
 
 ### Crear una escena
 
 Para crear una nueva escena, abre el Creator Hub y presiona el botón _Create scene_.
 
-![](../images/editor/create-scene.png)
+![](../../.gitbook/assets/create-scene.webp)
 
 Luego puedes seleccionar qué template usar como punto de partida. Puedes elegir una escena en blanco o un proyecto con algo de contenido inicial.
 
 Luego se te pedirá que nombres tu escena y elijas una ubicación para guardarla.
 
-Consulta [Gestionar escenas](../scene-editor/get-started/manage-scenes.md) para más detalles.
+Consulta [Gestionar escenas](manage-scenes.md) para más detalles.
 
 ### Moverse
 
@@ -45,19 +45,19 @@ Para encontrar tu camino alrededor del Scene Editor:
 
 Navega por las categorías de asset packs temáticos en el menú de la parte inferior para encontrar diferentes ítems que puedes colocar en tu escena.
 
-![](../images/editor/asset-packs.png)
+![](../../.gitbook/assets/asset-packs.webp)
 
 Para colocar un ítem, haz clic y arrástralo desde el menú de asset pack hacia una ubicación en tu escena en el canvas.
 
-![](../images/editor/drop-item.gif)
+![](../../.gitbook/assets/drop-item.webp)
 
-Haz clic y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo. Consulta [Scene editor essentials](../scene-editor/get-started/scene-editor-essentials.md#position-items) para más detalles.
+Haz clic y arrastra un ítem seleccionado para moverlo libremente alrededor de la escena al nivel del suelo. Consulta [Scene editor essentials](scene-editor-essentials.md#position-items) para más detalles.
 
 {% hint style="info" %}
-**💡 Tip**: Algunos ítems son **Smart items**, estos vienen con comportamientos interactivos incorporados. Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para más detalles.
+**💡 Tip**: Algunos ítems son **Smart items**, estos vienen con comportamientos interactivos incorporados. Consulta [Smart items](../interactivity/smart-items.md) para más detalles.
 {% endhint %}
 
-![](../images/editor/smart-items.jpg)
+![](../../.gitbook/assets/smart-items.webp)
 
 ### Preview
 
@@ -67,7 +67,7 @@ Para probar tu escena y experimentarla como un jugador, haz clic en el botón _P
 **📔 Nota**: Si no lo tienes instalado en tu máquina, descarga el **Decentraland Launcher** desde [Decentraland.org](https://decentraland.org).
 {% endhint %}
 
-![](../images/editor/preview-button.png)
+![](../../.gitbook/assets/preview-button.webp)
 
 Configura diferentes opciones de preview desde el menú desplegable junto al botón **Preview**:
 
@@ -79,21 +79,21 @@ Configura diferentes opciones de preview desde el menú desplegable junto al bot
 
 Haz clic en el **ícono de Lápiz** en la parte superior derecha de la pantalla. Esto abre una serie de propiedades a nivel de escena para editar, incluyendo nombre, miniatura, tamaño de escena y más.
 
-![](../images/editor/pencil-icon.png)
+![](../../.gitbook/assets/pencil-icon.webp)
 
-Consulta [Scene Settings](../scene-editor/configure/scene-settings.md) para más detalles.
+Consulta [Scene Settings](../configure/scene-settings.md) para más detalles.
 
 ### Publicar tu escena
 
 Una vez que estés satisfecho con tu escena, presiona _Publish scene_.
 
-![](../images/editor/publish-options.png)
+![](../../.gitbook/assets/publish-options.webp)
 
-Consulta [Publish scene](../scene-editor/publish/publish-scene.md) para más detalles.
+Consulta [Publish scene](../publish/publish-scene.md) para más detalles.
 
 ### Ver también
 
-* Consulta [Scene Editor Essentials](../scene-editor/get-started/scene-editor-essentials.md) para más detalles sobre la interfaz del Scene Editor.
-* Consulta [Smart items](../scene-editor/interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
-* Consulta [Combine with code](../scene-editor/code/overview.md) para saber cómo editar el código de tu escena.
-* Consulta [Publish scene](../scene-editor/publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.
+* Consulta [Scene Editor Essentials](scene-editor-essentials.md) para más detalles sobre la interfaz del Scene Editor.
+* Consulta [Smart items](../interactivity/smart-items.md) para saber cómo agregar interactividad simple a tu escena.
+* Consulta [Combine with code](../code/README.md) para saber cómo editar el código de tu escena.
+* Consulta [Publish scene](../publish/publish-scene.md) para saber cómo publicar tu escena en Decentraland.

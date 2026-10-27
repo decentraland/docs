@@ -6,7 +6,7 @@ description: Show a custom label above an avatar's nametag, to display a rank, a
 
 The `AvatarNametag` component adds a small plate above an avatar's regular nametag, showing text that your scene chooses. Use it to show a rank, a role, a team, or anything else your scene tracks about a player, like "VIP", "Team Red", or "Club Owner".
 
-<figure><img src="../../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
+<figure><img src="../../../images/avatar-nametag.webp" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
 
 This page covers how to add a plate, style it, and keep it in step as players come and go.
 

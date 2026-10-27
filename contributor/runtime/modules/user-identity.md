@@ -1,4 +1,4 @@
-The `UserIdentity` module allows [scenes](/contributor/content/entity-types/scenes) to access the [profile](/contributor/content/entity-types/profiles) for the player's user.
+The `UserIdentity` module allows [scenes](../../content/entity-types/scenes.md) to access the [profile](../../content/entity-types/profiles.md) for the player's user.
 
 ```ts
 const UserIdentity = require("~system/UserIdentity");
@@ -6,16 +6,16 @@ const UserIdentity = require("~system/UserIdentity");
 
 It contains the following methods and types:
 
-- [`function getUserData`](#getUserData)
-- [`interface UserData`](#UserData)
+- [`function getUserData`](#getuserdata)
+- [`interface UserData`](#userdata)
 
 ## Methods
 
 The two methods in this module fetch bits of information from the player's user.
 
-##### `getUserData` {#getUserData}
+### `getUserData` {#getuserdata}
 
-Returns the [`UserData`](#UserData) for the player's user.
+Returns the [`UserData`](#userdata) for the player's user.
 
 ```ts
 interface Request {}
@@ -32,13 +32,13 @@ function getUserData(Request): Promise<Response>;
 
 There's just one type in this module: `UserData`.
 
-##### `UserData` {#UserData}
+### `UserData` {#userdata}
 
 Holds (possibly partial) information about a user, their identity and avatar.
 
-World Explorers can obtain this through the [content system](/contributor/content/overview).
+World Explorers can obtain this through the [content system](../../content/overview.md).
 
-The [profile entity definition](/contributor/content/entity-types/profiles) details all of these fields and more. While the structure and keys of `UserData` are slightly different, the meaning of each field is the same.
+The [profile entity definition](../../content/entity-types/profiles.md) details all of these fields and more. While the structure and keys of `UserData` are slightly different, the meaning of each field is the same.
 
 ```ts
 export interface UserData {

@@ -14,7 +14,7 @@ Los materiales pueden aplicarse a entidades que usan formas primitivas (cubo, es
 
 Los modelos _glTF_ incluyen sus propios materiales que se importan implícitamente a una escena junto con el modelo. Para modificar o anular estos materiales, usa el componente `GltfNodeModifiers`. Consulta [Modificar materiales glTF](materials.md#modify-gltf-materials) para más detalles.
 
-Al importar un modelo 3D con sus propios materiales, ten en cuenta que no todos los shaders son compatibles con el motor de Decentraland. Solo se admiten materiales estándar y materiales PBR (physically based rendering). Consulta [consideraciones de modelos 3D externos](../../../creator/3d-modeling/materials/) para más detalles.
+Al importar un modelo 3D con sus propios materiales, ten en cuenta que no todos los shaders son compatibles con el motor de Decentraland. Solo se admiten materiales estándar y materiales PBR (physically based rendering). Consulta [consideraciones de modelos 3D externos](../../3d-modeling/materials.md) para más detalles.
 
 Hay diferentes tipos de materiales compatibles:
 
@@ -23,7 +23,7 @@ Hay diferentes tipos de materiales compatibles:
 
 ## Usar el Scene Editor
 
-La forma más fácil de darle un Material a una entidad es usar el [Scene Editor](../../scene-editor/about-editor.md). Puedes agregar un componente **Material** a tu entidad y luego configurar todos los campos disponibles en la UI del Scene Editor. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components).
+La forma más fácil de darle un Material a una entidad es usar el [Scene Editor](../../scene-editor/get-started/about-editor.md). Puedes agregar un componente **Material** a tu entidad y luego configurar todos los campos disponibles en la UI del Scene Editor. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components).
 
 ## Agregar un material
 
@@ -71,7 +71,7 @@ Material.setPbrMaterial(meshEntity, {
 
 > `import { Material } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Colores de material
@@ -99,7 +99,7 @@ Material.setBasicMaterial(myEntity, {
 })
 ```
 
-## Usar texturas
+## Usar texturas {#using-textures}
 
 Establece un archivo de imagen como textura en un material estableciendo el parámetro `texture`.
 
@@ -128,7 +128,7 @@ En el ejemplo anterior, la imagen para el material se encuentra en una carpeta `
 Al crear una textura, también puedes pasar parámetros adicionales:
 
 * `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
-* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#envoltura-de-textura).
 
 ```ts
 Material.setPbrMaterial(myEntity, {
@@ -457,7 +457,7 @@ Para establecer los UVs para una forma de mesh `box`, se aplica la misma estruct
 **📔 Nota**: Las propiedades uv actualmente solo están disponibles en formas `plane` y `box`. Además, los valores _uv_ afectan todas las capas de textura por igual, ya que se establecen en la _forma_.
 {% endhint %}
 
-### Escalado de textura
+### Escalado de textura {#texture-scaling}
 
 Cuando las texturas se estiran o encogen a un tamaño diferente de la imagen de textura original, esto a veces puede crear artefactos. En un entorno 3D, los efectos de la perspectiva causan esto naturalmente. Existen varios algoritmos de [filtrado de textura](https://en.wikipedia.org/wiki/Texture_filtering) que existen para compensar esto de diferentes maneras.
 
@@ -476,7 +476,7 @@ Material.setPbrMaterial(myEntity, {
 })
 ```
 
-## Materiales sin iluminación
+## Materiales sin iluminación {#unlit-materials}
 
 La mayoría de las veces querrás que los materiales en tu escena sean afectados por las condiciones de iluminación, incluyendo sombras y siendo teñidos por los cambios de tonalidad de diferentes momentos del día. Pero en otros casos es posible que desees mostrar los colores en su estado puro. Esto es útil al reproducir videos, o también para marcadores abstractos que necesitan destacarse, que están destinados a señalar pistas al jugador.
 
@@ -512,7 +512,7 @@ Las siguientes propiedades son compatibles dentro del objeto que pasas como argu
 
 * `userId`: ID del usuario cuyo perfil deseas mostrar
 * `filterMode`: Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Esto toma un valor del enum `TextureFilterMode`. Consulta [Escalado de textura](materials.md#texture-scaling).
-* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#texture-wrapping).
+* `wrapMode`: Determina cómo se coloca una textura en mosaico en un objeto. Esto toma un valor del enum `TextureWrapMode`. Consulta [Envoltura de textura](materials.md#envoltura-de-textura).
 
 ## Materiales transparentes
 
@@ -630,7 +630,7 @@ Dependiendo del valor de `$case`, es válido definir el objeto para la forma cor
 
 Para agregar un componente `Material` a una entidad que potencialmente ya tiene una instancia de este componente, usa `Material.createOrReplace()`. Las funciones auxiliares como `MeshRenderer.setPbrMaterial()` manejan la sobrescritura de instancias existentes del componente, pero ejecutar `Material.create()` en una entidad que ya tiene este componente devuelve un error.
 
-## Modificar materiales glTF
+## Modificar materiales glTF {#modify-gltf-materials}
 
 Usa el componente `GltfNodeModifiers` para modificar los materiales de un modelo _glTF_. Este componente te permite anular los materiales de un modelo _glTF_ con tus propios materiales. Puedes usar cualquiera de las propiedades del componente `Material`, incluyendo textura, textura de video, materiales sin iluminación, etc.
 
@@ -687,7 +687,7 @@ La propiedad `path` es una cadena que representa la ruta al nodo en el modelo _g
 En algunos modelos, sin embargo, el sandbox de Babylon puede listar rutas que pertenecen a vértices en lugar de meshes, lo cual no funcionará. Si intentas usar una ruta que no es válida, la consola de la escena mostrará un mensaje de error que incluye la lista completa de rutas válidas en ese modelo.
 {% endhint %}
 
-La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](materials.md#advanced-syntax) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
+La propiedad `material` es un objeto que representa el material a usar. Debe escribirse usando la [sintaxis avanzada](materials.md#sintaxis-avanzada) para materiales, como se muestra en el ejemplo anterior. Las funciones auxiliares como `Material.setPbrMaterial()` no se pueden usar aquí.
 
 ### Modificar el material de un nodo específico en el modelo
 

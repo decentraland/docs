@@ -15,6 +15,7 @@ export function extractAnchors(content) {
 	const { body } = splitFrontMatter(content)
 	const anchors = new Set()
 	const generated = new Set()
+	let titleSeen = false
 	function addGenerated(text) {
 		const base = slug(text)
 		let id = base
@@ -41,6 +42,11 @@ export function extractAnchors(content) {
 	function visit(tokens) {
 		for (let index = 0; index < tokens.length; index++) {
 			const token = tokens[index]
+			// Git Sync consumes the first H1 as the page title, rendered without an ID.
+			if (token.type === 'heading_open' && token.tag === 'h1' && !titleSeen) {
+				titleSeen = true
+				continue
+			}
 			if (token.type === 'heading_open' && Number(token.tag.slice(1)) <= 4) {
 				const inline = tokens[index + 1]
 				for (const child of inline.children ?? []) {

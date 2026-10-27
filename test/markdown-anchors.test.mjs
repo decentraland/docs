@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import { extractAnchors, findBrokenAnchors } from '../scripts/markdown-anchors.mjs'
 
 test('extracts formatted and setext headings, preserving Unicode and punctuation rules', () => {
-	const anchors = extractAnchors('# Hello **World**\n## `getPlayer()`\n## ¿Qué es un NAME?\nA & B\n-----\n')
+	const anchors = extractAnchors('## Hello **World**\n## `getPlayer()`\n## ¿Qué es un NAME?\nA & B\n-----\n')
 	for (const id of ['hello-world', 'getplayer', 'qué-es-un-name', 'a--b']) assert.ok(anchors.has(id), id)
 })
 
@@ -13,7 +13,7 @@ test('lowercases explicit GitBook IDs instead of generating a second implicit ID
 })
 
 test('increments duplicate headings without colliding with previously generated suffixes', () => {
-	assert.deepEqual([...extractAnchors('# Test\n# Test\n# Test-1\n# Test\n')], ['test', 'test-1', 'test-1-1', 'test-2'])
+	assert.deepEqual([...extractAnchors('## Test\n## Test\n## Test-1\n## Test\n')], ['test', 'test-1', 'test-1-1', 'test-2'])
 })
 
 test('recognizes heading-inline HTML IDs and expandable GitBook summaries', () => {
@@ -28,8 +28,8 @@ test('ignores front matter, code examples, and commented-out headings and anchor
 
 test('resolves same-page, relative, root, directory, query, and percent-encoded references', () => {
 	const pages = new Map([
-		['docs/a.md', '# Local\n[one](#local) [two](b.md#qu%C3%A9) [three](/docs/b.md#qué) [four](section/#section) [five](?view=wide#local) [six](b.md?view=wide#qué)'],
-		['docs/b.md', '# Qué'], ['docs/section/README.md', '# Section'],
+		['docs/a.md', '## Local\n[one](#local) [two](b.md#qu%C3%A9) [three](/docs/b.md#qué) [four](section/#section) [five](?view=wide#local) [six](b.md?view=wide#qué)'],
+		['docs/b.md', '## Qué'], ['docs/section/README.md', '## Section'],
 	])
 	assert.deepEqual(findBrokenAnchors(pages), { checked: 6, errors: [] })
 })
@@ -66,11 +66,17 @@ test('does not credit standalone HTML anchors that GitBook drops during import',
 
 
 test('does not turn BOM-prefixed front matter into a heading', () => {
-	assert.deepEqual([...extractAnchors('\uFEFF---\ntitle: "# Not a heading"\n---\n# Actual heading\n')], ['actual-heading'])
+	assert.deepEqual([...extractAnchors('\uFEFF---\ntitle: "# Not a heading"\n---\n## Actual heading\n')], ['actual-heading'])
 })
 
 
 test('does not credit level-five and level-six headings that GitBook imports as text', () => {
 	const result = findBrokenAnchors(new Map([['page.md', '##### Transform {#transform}\n###### Details {#details}\n[one](#transform) [two](#details)']]))
 	assert.equal(result.errors.length, 2)
+})
+
+
+test('does not credit the page title H1 that GitBook renders without an ID', () => {
+	assert.deepEqual([...extractAnchors('# Page title {#custom-title}\n## Section\n')], ['section'])
+	assert.equal(findBrokenAnchors(new Map([['page.md', '# Page title\n[bad](#page-title)']])).errors.length, 1)
 })

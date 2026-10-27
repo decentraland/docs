@@ -26,9 +26,7 @@ The module contains the following methods and types:
 
 Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes.md#permissions) that can be requested in the scene manifest.
 
-<a id="movePlayerTo"></a>
-
-**`movePlayerTo`**
+### `movePlayerTo` {#movePlayerTo}
 
 Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#Vector3).
 
@@ -48,9 +46,7 @@ interface Response {
 function movePlayerTo(Request): Promise<Response>;
 ```
 
-<a id="teleportTo"></a>
-
-**`teleportTo`**
+### `teleportTo` {#teleportTo}
 
 Reposition the player to a parcel, optionally in another realm.
 
@@ -74,9 +70,7 @@ interface Response {}
 function teleportTo(Request): Promise<Response>;
 ```
 
-<a id="triggerEmote"></a>
-
-**`triggerEmote`**
+### `triggerEmote` {#triggerEmote}
 
 Make the player's avatar display an emote animation, using one of the predefined names.
 
@@ -92,9 +86,7 @@ interface Response {}
 function triggerEmote(Request): Promise<Response>;
 ```
 
-<a id="openExternalUrl"></a>
-
-**`openExternalUrl`**
+### `openExternalUrl` {#openExternalUrl}
 
 Offer to show a website to the player, using an appropriate UI (which may be another application).
 
@@ -113,9 +105,7 @@ interface Response {
 function openExternalUrl(Request): Promise<Response>;
 ```
 
-<a id="openNftDialog"></a>
-
-**`openNftDialog`**
+### `openNftDialog` {#openNftDialog}
 
 Show information about an NFT to the player, using an appropriate UI.
 
@@ -133,9 +123,7 @@ interface Response {
 function openNftDialog(Request): Promise<Response>;
 ```
 
-<a id="changeRealm"></a>
-
-**`changeRealm`** (deprecated)
+### `changeRealm` (deprecated) {#changeRealm}
 
 Switch the World Explorer to another content server, using its base URL.
 
@@ -162,9 +150,7 @@ function changeRealm(Request): Promise<Response>;
 
 The only additional type used by methods in this module is the `Vector3`.
 
-<a id="Vector3"></a>
-
-**`Vector3`**
+### `Vector3` {#Vector3}
 
 Holds a relative or absolute 3d position.
 

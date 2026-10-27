@@ -16,9 +16,9 @@ test('increments duplicate headings without colliding with previously generated 
 	assert.deepEqual([...extractAnchors('# Test\n# Test\n# Test-1\n# Test\n')], ['test', 'test-1', 'test-1-1', 'test-2'])
 })
 
-test('recognizes HTML IDs, named anchors, and expandable GitBook summaries', () => {
-	const anchors = extractAnchors('<a id="CaseSensitive"></a>\n<a name="legacy"></a>\n\n<details>\n<summary>What is a <strong>NAME</strong>?</summary>\n</details>\n')
-	assert.deepEqual([...anchors], ['CaseSensitive', 'legacy', 'what-is-a-name'])
+test('recognizes heading-inline HTML IDs and expandable GitBook summaries', () => {
+	const anchors = extractAnchors('## Heading <a id="CaseSensitive"></a> {#heading}\n## Legacy <a name="legacy"></a> {#legacy-heading}\n\n<details>\n<summary>What is a <strong>NAME</strong>?</summary>\n</details>\n')
+	assert.deepEqual([...anchors], ['CaseSensitive', 'heading', 'legacy', 'legacy-heading', 'what-is-a-name'])
 })
 
 test('ignores front matter, code examples, and commented-out headings and anchors', () => {
@@ -55,4 +55,11 @@ test('skips remote URLs, asset fragments, and empty fragments', () => {
 test('rejects malformed fragment encoding', () => {
 	const result = findBrokenAnchors(new Map([['a.md', '<a href="#%ZZ">bad</a>']]))
 	assert.equal(result.errors[0].reason, 'Invalid fragment encoding')
+})
+
+
+test('does not credit standalone HTML anchors that GitBook drops during import', () => {
+	const result = findBrokenAnchors(new Map([['page.md', '<a id="missing"></a>\n\n**Label**\n\n[link](#missing)']]))
+	assert.equal(result.errors.length, 1)
+	assert.equal(result.errors[0].fragment, 'missing')
 })

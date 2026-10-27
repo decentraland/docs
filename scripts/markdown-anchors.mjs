@@ -23,14 +23,14 @@ export function extractAnchors(content) {
 		generated.add(id)
 		anchors.add(id)
 	}
-	function htmlAnchors(html) {
+	function htmlAnchors(html, heading = false) {
 		function text(node) {
 			return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join('')
 		}
 		function visit(node) {
 			const attrs = node.attrs ?? []
 			for (const attr of attrs) {
-				if (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name')) anchors.add(attr.value)
+				if (heading && (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name'))) anchors.add(attr.value)
 			}
 			// GitBook makes expandable FAQ summaries linkable too.
 			if (node.tagName === 'summary' && !attrs.some(attr => attr.name === 'id')) addGenerated(text(node))
@@ -43,6 +43,9 @@ export function extractAnchors(content) {
 			const token = tokens[index]
 			if (token.type === 'heading_open') {
 				const inline = tokens[index + 1]
+				for (const child of inline.children ?? []) {
+					if (child.type === 'html_inline') htmlAnchors(child.content, true)
+				}
 				const explicit = inline.content.match(/\{#([^}]+)\}\s*$/)?.[1]
 				if (explicit) anchors.add(explicit)
 				else {

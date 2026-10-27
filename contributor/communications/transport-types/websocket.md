@@ -69,9 +69,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-<a id="WsChallengeRequired"></a>
-
-**`WsChallengeRequired`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L48)
+### `WsChallengeRequired` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L48) {#WsChallengeRequired}
 
 | Field               | Type     | Value                                                                      |
 | ------------------- | -------- | -------------------------------------------------------------------------- |
@@ -80,9 +78,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-<a id="WsSignedChallenge"></a>
-
-**`WsSignedChallenge`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L56)
+### `WsSignedChallenge` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L56) {#WsSignedChallenge}
 
 | Field             | Type     | Value                                                                                              |
 | ----------------- | -------- | -------------------------------------------------------------------------------------------------- |
@@ -90,9 +86,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-<a id="WsWelcome"></a>
-
-**`WsWelcome`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L11)
+### `WsWelcome` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L11) {#WsWelcome}
 
 | Field             | Type                  | Value                                                |
 | ----------------- | --------------------- | ---------------------------------------------------- |
@@ -109,9 +103,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
-<a id="WsPeerJoin"></a>
-
-**`WsPeerJoin`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L19)
+### `WsPeerJoin` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L19) {#WsPeerJoin}
 
 | Field     | Type     | Value                                                                 |
 | --------- | -------- | --------------------------------------------------------------------- |
@@ -120,9 +112,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
-<a id="WsPeerLeave"></a>
-
-**`WsPeerLeave`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L27)
+### `WsPeerLeave` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L27) {#WsPeerLeave}
 
 | Field   | Type     | Value                                            |
 | ------- | -------- | ------------------------------------------------ |
@@ -130,9 +120,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
-<a id="WsKicked"></a>
-
-**`WsKicked`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74)
+### `WsKicked` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74) {#WsKicked}
 
 | Field    | Type     | Value                                                         |
 | -------- | -------- | ------------------------------------------------------------- |
@@ -157,9 +145,7 @@ To send comms [messages](../messages.md), clients wrap them in the [`WsPeerUpdat
 
 ***
 
-<a id="WsPeerUpdate"></a>
-
-**`WsPeerUpdate`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L34)
+### `WsPeerUpdate` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L34) {#WsPeerUpdate}
 
 | Field        | Type     | Value                                                                            |
 | ------------ | -------- | -------------------------------------------------------------------------------- |

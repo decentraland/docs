@@ -123,7 +123,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Los timestamps no son en realidad timestamps estilo Unix. Son un tipo de contador incremental para secuenciar actualizaciones, sin relación con el tiempo del reloj. Más sobre esto [abajo](#timestamps).
 
-<div id="crdtStateAutoCreate"><!-- just an invisible anchor to link --></div>
+### Crear entradas de estado {#crdtStateAutoCreate}
 
 Como la capa CRDT no conoce (o necesita conocer) todos los componentes disponibles, el estado inicial es un mapa vacío. Las entradas se crean al vuelo cuando las operaciones involucran un `ComponentId` o `EntityId` que no estaba ya mapeado. Cuando una entidad es removida, el estado asociado se elimina de todos los componentes.
 
@@ -162,7 +162,7 @@ El pseudocódigo arriba (si se traduce a código real) obviamente está incomple
 - `shouldCreate` debe agregar nuevas entidades, pero rechazar recrear entidades eliminadas.
 - `shouldReplace` debe preferir mantener estados que tengan timestamps mayores (con algunos casos extremos).
 
-<div id="crdtStateDeleteEntities"><!-- just an invisible anchor to link --></div>
+### Registrar entidades eliminadas {#crdtStateDeleteEntities}
 
 Para soportar el requisito `shouldCreate`, querrás hacer seguimiento de IDs de entidad eliminados, para ignorar cualquier actualización de estado futura para esos. Veamos esto en más pseudocódigo:
 

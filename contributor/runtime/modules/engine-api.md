@@ -125,7 +125,7 @@ type CRDTState = Map<ComponentId, ComponentState>;
 
 Timestamps aren't actually Unix-style timestamps. They are a type of incremental counter to sequence updates, with no relation to clock time. More on this [below](engine-api.md#timestamps).
 
-<a id="crdtStateAutoCreate"></a>
+### Creating state entries {#crdtStateAutoCreate}
 
 Since the CRDT layer doesn't know (or need to know) all available components, the initial state is an empty map. Entries are created on-the-fly when operations involve a `ComponentId` or `EntityId` that was not already mapped. When an entity is removed, the associated state is deleted from all components.
 
@@ -164,7 +164,7 @@ The pseudocode above (if translated to actual code) is obviously incomplete and 
 * `shouldCreate` must add new entities, but refuse to re-create deleted entities.
 * `shouldReplace` must prefer to keep states that have greater timestamps (with some edge cases).
 
-<a id="crdtStateDeleteEntities"></a>
+### Tracking deleted entities {#crdtStateDeleteEntities}
 
 To support the `shouldCreate` requirement, you'll want to keep track of deleted entity IDs, in order to ignore any future state updates for those. Let's see this in more pseudocode:
 
@@ -194,9 +194,7 @@ To avoid this, the Foundation's explorer employs a generational index to reuse I
 
 As for the `shouldReplace` requirement, see [conflict resolution](engine-api.md#crdtConflicts) below.
 
-<a id="timestamps"></a>
-
-**Timestamps**
+### Timestamps {#timestamps}
 
 As mentioned above, when talking about CRDT timestamps we're not referring to actual Unix timestamps for a point in time. Instead, a [Lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp) (a special type of shared incremental counter) is used to keep track of the sequence of events by both parties.
 
@@ -221,9 +219,7 @@ function receiveState() {
 }
 ```
 
-<a id="crdtConflicts"></a>
-
-**Conflict Resolution**
+### Conflict Resolution {#crdtConflicts}
 
 When the CRDT encounters two competing states, it needs a shared resolution strategy that all parties apply identically, ensuring the same decision is reached by everyone. The Decentraland protocol uses very simple rules:
 
@@ -261,9 +257,7 @@ There are three message types in the CRDT protocol:
 
 Note that there are no `CreateComponent` or `CreateEntity` messages. The CRDT rules auto-create entities and components that weren't previously known, as [explained above](engine-api.md#crdtStateAutoCreate).
 
-<a id="PutComponent"></a>
-
-**`PutComponentMessage`**
+### `PutComponentMessage` {#PutComponent}
 
 Update the `state` of a `component` for a particular `entity`, creating unknown components and entities in the CRDT if necessary. [Resolve conflicts](engine-api.md#crdtConflicts) according to `timestamp`.
 
@@ -281,9 +275,7 @@ This additional layer of serialization has an important advantage: the CRDT prot
 
 If the update contained in this message is applied to the CRDT, the `state` field is copied as-is into the structure.
 
-<a id="DeleteComponent"></a>
-
-**`DeleteComponentMessage`**
+### `DeleteComponentMessage` {#DeleteComponent}
 
 Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.md#crdtConflicts) according to `timestamp`.
 
@@ -294,9 +286,7 @@ Remove the state of `component` for an `entity`. [Resolve conflicts](engine-api.
 
 ```
 
-<a id="DeleteEntity"></a>
-
-**`DeleteEntityMessage`**
+### `DeleteEntityMessage` {#DeleteEntity}
 
 Delete `entity` (i.e. all associated component state), expecting the identifier to never be reused for a different entity.
 
@@ -313,9 +303,7 @@ Note that there is no `timestamp` field. Since the lifespan of `entity` is over,
 
 The set of methods in `EngineApi` provide the interface to exchange messages and reconstruct the state of the world from scratch.
 
-<a id="crdtSendToRenderer"></a>
-
-**`crdtSendToRenderer`**
+### `crdtSendToRenderer` {#crdtSendToRenderer}
 
 Send a serialized message from the scene to the renderer, return an array of serialized messages that the renderer has for the scene.
 
@@ -333,9 +321,7 @@ interface Response {
 function crdtSendToRenderer(Request): Promise<Response>;
 ```
 
-<a id="crdtGetState"></a>
-
-**`crdtGetState`**
+### `crdtGetState` {#crdtGetState}
 
 ```ts
 interface Request {}

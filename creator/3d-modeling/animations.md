@@ -33,7 +33,7 @@ This is how you create animations using Blender.
 * Set a keyframe in the first frame by selecting the object and pressing _**I**_. Then move the object around, rotate or scale it and, in another frame in the timeline, press _**I**_ again to set another keyframe with the current transforms.
 * The final frame of the animation should be the same as the first one, so just copy the first frame and paste it on the last.
 
-![](../images/3d-models-and-animations/animations/01_object_animation_02.gif)
+![](../images/3d-models-and-animations/animations/01_object_animation_02.webp)
 
 _Creating an animation clip and adding keyframes._
 
@@ -81,7 +81,7 @@ Unlike in a skeletal animation, where you can rig multiple objects and combine t
 
 To do that, push down to the _**Nonlinear Animation Track**_ the animation of every object, as shown below.
 
-![](../images/3d-models-and-animations/animations/03_object_animation_push_down_02.gif)
+![](../images/3d-models-and-animations/animations/03_object_animation_push_down_02.webp)
 
 _Push down every object's animation to the NLA Track._
 

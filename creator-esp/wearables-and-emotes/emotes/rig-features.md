@@ -115,7 +115,7 @@ _Cómo funciona el atributo IsoRot para la cabeza._
 
 _¡En versiones anteriores de Blender, asegúrate de hacer keyframe de todos los controles y atributos personalizados!_
 
-![](../../.gitbook/assets/keyframes.gif)
+![](../../.gitbook/assets/keyframes.webp)
 
 _En Blender 4.4, presiona I para establecer automáticamente un keyframe en Location, Rotation, Scale & Custom Properties.._
 

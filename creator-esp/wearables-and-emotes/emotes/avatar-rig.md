@@ -24,7 +24,7 @@ Aunque un rig no es una réplica exacta del esqueleto humano, es una buena prác
 
 La orientación de los huesos definirá en qué dirección rotarán, como X positivo, Z negativo, etc. Pueden configurarse de muchas maneras diferentes siempre que sea consistente a través de todo el rig. Por ejemplo, si el eje X se elige para el movimiento de inclinación hacia adelante de la columna, tiene sentido que la misma configuración se use para las piernas. La orientación también es importante porque afectará el comportamiento de espejo. Eso significa que, usualmente, la orientación del lado derecho es la versión espejada del lado izquierdo y viceversa.
 
-![](../../.gitbook/assets/boneAxis.gif)
+![](../../.gitbook/assets/boneAxis.webp)
 
 _Activa los ejes para mostrar la orientación de los huesos._
 

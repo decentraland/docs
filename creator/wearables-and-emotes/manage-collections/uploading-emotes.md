@@ -88,7 +88,7 @@ Once you set the thumbnail, you will have the editor open. This is where you can
 
 By clicking on the icon at the lower left you will be able to edit the avatar. Click on the cilinder icon on the lower right to check if you animation is staying within the boundaries of height and space.
 
-![](../../images/wearables-and-emotes/uploading-emotes/edit_avatar.gif)
+![](../../images/wearables-and-emotes/uploading-emotes/edit_avatar.webp)
 
 The icon at the botton left allows you to edit the avatar.
 

@@ -36,7 +36,7 @@ The on-screen positions are fixed too. The **visible** buttons fill those positi
 | **Leave 5 or fewer buttons visible** | All of them show directly (the central button plus up to four around it); there is no "+" menu. |
 | **Leave more than 5 buttons visible** | The "+" takes the last slot, so four show directly (the central button plus three) and the rest sit behind the "+" overflow toggle. |
 
-<figure><img src="../../images/touch-controls/control-ordering.jpg" alt="Three HUDs showing the gamepad reflowing as the number of visible buttons changes"><figcaption><p>How the buttons reflow with the visible count. <strong>Left (7 buttons):</strong> the main button, an arc of 1–3, and the "+" holding the overflow (4–7) in a column that climbs upward. <strong>Center (5 buttons):</strong> the same arc, with a shorter overflow column (4–5) behind the "+". <strong>Right (4 buttons):</strong> all four show directly and the "+" disappears.</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/control-ordering.webp" alt="Three HUDs showing the gamepad reflowing as the number of visible buttons changes"><figcaption><p>How the buttons reflow with the visible count. <strong>Left (7 buttons):</strong> the main button, an arc of 1–3, and the "+" holding the overflow (4–7) in a column that climbs upward. <strong>Center (5 buttons):</strong> the same arc, with a shorter overflow column (4–5) behind the "+". <strong>Right (4 buttons):</strong> all four show directly and the "+" disappears.</p></figcaption></figure>
 
 {% hint style="info" %}
 This is also how you surface the `1`/`2`/`3`/`4` buttons, which are otherwise tucked behind the "+": hide enough higher-priority buttons to bring the visible count to five or fewer, and they show directly.

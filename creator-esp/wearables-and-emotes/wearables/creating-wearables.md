@@ -212,7 +212,7 @@ Primero, intenta seguir la forma de la cabeza. Siempre puedes referirte a la mal
 
 Segundo, si quieres que los usuarios puedan cambiar el color del cabello o vello facial usando el editor de avatar, entonces necesitas pintar el cabello en escala de grises y usar "Hair" en el nombre del material (ejemplo "M\_Hair\_Short"). Si quieres incluir otro objeto que no esté influenciado por el tinte, simplemente no agregues esa convención de nomenclatura.
 
-![](../../.gitbook/assets/32_hair_mat.webp) ![](../../.gitbook/assets/33_hair_tx.webp) ![](../../.gitbook/assets/49_tint_hair.gif)
+![](../../.gitbook/assets/32_hair_mat.webp) ![](../../.gitbook/assets/33_hair_tx.webp) ![](../../.gitbook/assets/49_tint_hair.webp)
 
 _Los tonos más bajos de gris aparecerán más oscuros y los tonos más altos de gris aparecerán más brillantes, multiplicados por el color seleccionado por el usuario en el editor de avatar._
 
@@ -268,7 +268,7 @@ Al hacer skin weighting de nuestros nuevos wearables, hay varias consideraciones
 
 Cada asset debe estar weighted al esqueleto completo. Por ejemplo, un asset de upper body se verá así al aplicar skin weights:
 
-![](../../.gitbook/assets/34_rig.gif)
+![](../../.gitbook/assets/34_rig.webp)
 
 Los wearables que se encuentran en intersecciones entre partes del cuerpo deben estar completamente weighted al mismo hueso. Por ejemplo, en estas dos zonas verdes, los vértices en el cuello necesitan estar completamente weighted solo al hueso "Neck".
 
@@ -317,19 +317,19 @@ Cuando estás haciendo wearables, la mejor manera de visualizar el resultado fin
 
 1. Primero selecciona la parte superior del cuerpo, luego tienes que activar "**Edit mode**" y "**On cage**" en el modificador de armature.
 
-![](../../.gitbook/assets/36_60_1.gif)
+![](../../.gitbook/assets/36_60_1.webp)
 
 2. Ahora, en pose mode puedes rotar los brazos 60°.
 
-![](../../.gitbook/assets/37_60_2.gif)
+![](../../.gitbook/assets/37_60_2.webp)
 
 3. Puedes editar tu malla en A-Pose en lugar de T-pose.
 
-![](../../.gitbook/assets/38_60_3.gif)
+![](../../.gitbook/assets/38_60_3.webp)
 
 4. Pero también es bueno tener en cuenta que puedes alternar fácilmente de A-Pose a T-Pose simplemente activando de nuevo "Edit mode" y "On cage" en el modificador de armature.
 
-![](../../.gitbook/assets/39_60_4.gif)
+![](../../.gitbook/assets/39_60_4.webp)
 
 ### **Joint deformation:**
 

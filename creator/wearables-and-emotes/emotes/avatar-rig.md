@@ -24,7 +24,7 @@ Even though a rig is not an exact replica of the human skeleton, it is good prac
 
 The orientation of bones will define in which direction they’ll rotate, like positive X, negative Z, etc. They can be set up in many different ways as long as it’s consistent through the whole rig. For example, if the X axis is chosen for the bending forward motion of the spine, it makes sense that the same set up is used for the legs. The orientation is also important because it’ll affect mirroring behavior. That means that, usually, the right side orientation is the mirrored version of the left side’s and vice versa.
 
-![](../../images/emotes/boneAxis.gif)
+![](../../images/emotes/boneAxis.webp)
 
 _Turn on the axes to show bone orientation._
 

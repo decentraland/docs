@@ -60,7 +60,7 @@ Para más información verifica todas las limitaciones de escena [aquí.](https:
 {% hint style="warning" %}
 **🔥Tip de Optimización🔥: Agregar Polygon Count** Un tip valioso es siempre mantener un seguimiento del polycount de tus modelos. Para hacer eso en blender necesitas activar statistics en el panel viewport overlays.
 
-<img src="../.gitbook/assets/41-stats.gif" alt="" data-size="original">
+<img src="../.gitbook/assets/41-stats.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Meshes en Escenas Grandes

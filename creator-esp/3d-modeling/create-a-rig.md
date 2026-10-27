@@ -14,7 +14,7 @@ Este documento muestra cómo configurar un rig básico en Blender. Si quieres fa
 
 Primero que nada, necesitarás importar tu modelo 3D a Blender o, si ya lo hiciste en Blender, simplemente abre tu archivo blend. En object mode, presiona `Shift+A` y selecciona _**Armature**_ en el menú, como se muestra a continuación. Luego, en _**Object Data Properties**_, bajo _**Viewport Display**_, activa _**In Front**_, para que puedas ver el bone a través del mesh. Mesh y armature deben estar alineados, así que asegúrate de que el modelo esté bien posicionado en el centro del mundo antes de agregar los bones. El origin del armature debe estar en 0,0,0 (X,Y,Z).
 
-![](../.gitbook/assets/01_add_armature.gif)
+![](../.gitbook/assets/01_add_armature.webp)
 
 _Agregando un armature y mostrándolo a través del mesh._
 
@@ -26,7 +26,7 @@ Después de agregar el objeto Armature, selecciónalo y ve a _**Edit Mode**_. Aq
 
 _Estructura del bone._
 
-![](../.gitbook/assets/03_bone_pivot_rotation.gif)
+![](../.gitbook/assets/03_bone_pivot_rotation.webp)
 
 _Bone rotando desde su pivot point._
 
@@ -42,7 +42,7 @@ Antes de continuar, debes verificar la orientación de tus bones. Puedes hacerlo
 
 Los ejes deben estar alineados con la dirección en la que quieres que los bones roten. Si se siente un poco mal, selecciona el bone y, en el menú _**Item Transform**_ a la derecha del viewport, ajusta el _**Roll**_ hasta que la orientación se sienta correcta.
 
-![](../.gitbook/assets/04_bone_roll.gif)
+![](../.gitbook/assets/04_bone_roll.webp)
 
 _Arreglando el bone roll._
 
@@ -52,7 +52,7 @@ _Activa Axes para que puedas ver la dirección en la que el bone rotará._
 
 Arreglar el bone roll es especialmente importante para los dedos, para que todas las articulaciones se doblen en la misma dirección correcta. No tienes que hacerlo para todos los bones en un dedo, solo consigue que uno esté correcto. Luego, selecciona los que quieres arreglar primero y el que tiene el roll correcto al último, ve a _**Armature > Bone Roll > Recalculate Roll > Active Bone**_ y todos tendrán el mismo roll. O puedes simplemente presionar `Shift+N` > _**Active Bone**_. Esto se puede usar en muchas situaciones donde tienes una cadena larga de bones, como un tentáculo, una cola, una cola de caballo larga o un brazo mecánico.
 
-![](../.gitbook/assets/06_bone_roll_fingers.gif)
+![](../.gitbook/assets/06_bone_roll_fingers.webp)
 
 _Presiona `Shift+N` para recalcular el bone roll._
 
@@ -68,7 +68,7 @@ Algunos ejemplos de convención de nombres correcta:
 
 **Todos los ejemplos anteriores son válidos, pero elige solo uno y mantenlo consistente a través del rig.**
 
-![](../.gitbook/assets/07_symmetrize.gif)
+![](../.gitbook/assets/07_symmetrize.webp)
 
 _Usa la opción Symmetrize para hacer mirror de tus bones._
 
@@ -88,7 +88,7 @@ Si sientes que un bone ha sido mal colocado o que el pivot point no es preciso, 
 
 Para arreglar deformaciones extrañas, ve a _**Object Mode**_, selecciona el mesh y ve a _**Weight Paint**_. En _**Object Data Properties**_ encontrarás los _**Vertex Groups**_.
 
-![](../.gitbook/assets/09_weight_paint.gif)
+![](../.gitbook/assets/09_weight_paint.webp)
 
 _Edita la influencia de un bone en Weight Paint._
 
@@ -102,7 +102,7 @@ _Cambia el Blend para agregar o quitar influencia. Asegúrate de que Symmetry es
 
 Usa la herramienta _**Blur**_ en el lado izquierdo de la pantalla para suavizar el weight paint y hacerlo más uniforme.
 
-![](../.gitbook/assets/12_blur_tool.gif)
+![](../.gitbook/assets/12_blur_tool.webp)
 
 _Blur Tool._
 
@@ -132,7 +132,7 @@ _Selecciona todos los bones IK y, mientras mantienes presionado `Alt`, desmarca 
 
 A continuación, necesitarás crear un bone que conducirá la cadena IK. Selecciona la head del foot bone y extrúyela en Y. Luego, presiona `Alt+P` para desemparentarlo porque el bone IK no puede ser parte de la cadena y no puede estar conectado a otros bones. Necesitarás hacer que el foot sea child del IK, así que selecciona primero el foot bone y el IK bone al último y presiona `CTRL+P` > _**Keep Offset**_.
 
-![](../.gitbook/assets/17_IK_bone.gif)
+![](../.gitbook/assets/17_IK_bone.webp)
 
 _Creando un bone IK._
 
@@ -154,7 +154,7 @@ El Pole Target te permite controlar la dirección en la que los bones se doblar�
 * En _**Transform Orientation**_, cámbialo a _**Normal**_ y en _**Tansform Pivot Point**_ cámbialo a _**Active Element**_.
 * Rota el bone en X -90 (o 90, dependiendo de la orientación que estableciste) para que apunte hacia adelante y agárralo en Y hasta que tenga una buena posición frente a la pierna. También puedes escalarlo un poco.
 
-![](../.gitbook/assets/19_creating_pole_target.gif)
+![](../.gitbook/assets/19_creating_pole_target.webp)
 
 _Creando un Pole Target._
 
@@ -178,7 +178,7 @@ Mueve el thigh y el shin a otra capa ya que no los necesitarás para la animaci�
 
 La cadena IK está toda configurada, pero debería conducir los deform bones y ahora mismo eso no está sucediendo, pero puedes usar constraints para arreglar eso. En _**Pose Mode**_, selecciona primero un bone de la cadena IK y el respectivo deforming bone al último, presiona `CTRL+Shift+C` y selecciona _**Copy Transforms**_. Haz eso para todos los bones, que en el ejemplo son thigh, shin, foot y toes. Los deform bones tendrán un color verde, lo que significa que tienen un constraint. Si haces clic en _**Bone Constraint Properties**_, puedes ver qué constraint se está usando y qué bone lo está conduciendo.
 
-![](../.gitbook/assets/22_constraints.gif)
+![](../.gitbook/assets/22_constraints.webp)
 
 _Los bones verdes tienen constraints. Puedes verificarlos en Bone Constraints Properties._
 
@@ -186,7 +186,7 @@ _Los bones verdes tienen constraints. Puedes verificarlos en Bone Constraints Pr
 **💡 Tip**: No tienes que configurar el IK de nuevo para el otro lado. En _Edit Mode_, simplemente elimina todos los bones del lado que no tiene el IK, luego selecciona todos los deforming bones y la cadena IK que quieras hacer mirror, haz clic derecho con el mouse y selecciona _Symmetrize_. ¡No solo hará mirror de los bones, sino también de todos los constraints!
 {% endhint %}
 
-![](../.gitbook/assets/23_symmetrize_constraints.gif)
+![](../.gitbook/assets/23_symmetrize_constraints.webp)
 
 _¡Usa la opción Symmetrize para hacer mirror de los constraints también!_
 
@@ -200,7 +200,7 @@ El proceso para esto es prácticamente el mismo hecho para la configuración IK.
 
 Ahora tendrás que agregar constraints para vincular los dos skeletons juntos. Para hacer este proceso más fácil, puedes cambiar la forma del bone haciendo clic en _**Object Data Properties**_ y, bajo _**Viewport Display**_, cambia _**Display As**_ de _**Octahedral**_ a _**B-Bone**_. Luego, presiona `CTRL+Alt+S` para escalar los bones un poco para que sean más grandes que los originales.
 
-![](../.gitbook/assets/24_b-bone_scale.gif)
+![](../.gitbook/assets/24_b-bone_scale.webp)
 
 _Cambia la forma del bone y escálalos para que sea más fácil diferenciar entre los dos skeletons._
 
@@ -214,13 +214,13 @@ _Los bone groups te ayudarán a mantener tu rig organizado y más intuitivo._
 
 Una forma extra de mejorar tu rig es personalizar la forma de los bones. Para hacer eso, ve a _**Object Mode**_, presiona `Shift+A` para agregar un mesh, como un círculo, por ejemplo. Para mantener todo organizado, crea una collection para tus formas y mueve allí el círculo que acabas de crear. Vuelve a Pose Mode y, en _**Object Data Properties**_ > _**Viewport Display**_ marca _**Shapes**_. Selecciona el bone que quieras y luego, en _**Bone Properties**_, haz clic en _**Viewport Display**_ > _**Custom Shape**_. En _**Custom object**_, selecciona el círculo en el outliner.
 
-![](../.gitbook/assets/26_bone_shape.gif)
+![](../.gitbook/assets/26_bone_shape.webp)
 
 _Personalizando la forma del bone._
 
 Si la forma se siente mal, siempre puedes editarla en _**Edit Mode**_, como se muestra a continuación. Asegúrate de que la forma tenga la misma orientación que el bone.
 
-![](../.gitbook/assets/27_bone_shape_edit.gif)
+![](../.gitbook/assets/27_bone_shape_edit.webp)
 
 _Edita la forma en Edit Mode._
 

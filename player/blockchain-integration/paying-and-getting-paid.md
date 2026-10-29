@@ -14,7 +14,7 @@ You don't need crypto to buy things in Decentraland. Most people never touch it.
 * **Card or bank transfer**: click **Buy with Card** on an item's page in the [Marketplace](https://decentraland.org/marketplace). Availability depends on your location.
 * **MANA**: Decentraland's own cryptocurrency. Click **Buy with Crypto** on an item's page. You only need MANA for things Credits can't buy, like LAND, or if you'd rather hold crypto. The rest of this page is about MANA.
 
-Guest accounts can buy and sell with MANA, but can't use Credits or claim a NAME. See [Playing as a guest](get-a-wallet.md#playing-as-a-guest).
+Guest accounts can't sign in to the Marketplace, use Credits or claim a NAME. Add an email address to your account first. See [Playing as a guest](get-a-wallet.md#playing-as-a-guest).
 
 ## Marketplace Credits
 

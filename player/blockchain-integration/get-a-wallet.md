@@ -40,7 +40,7 @@ On desktop and on the mobile app, choose **Play as guest** to jump in without an
 
 A guest account has a wallet like any other account, but it's tied to the device you created it on. You come back as the same guest each time you open the app, but you can't sign in to it from another device until you add an email address.
 
-Guests can explore, customize their avatar, chat with people nearby, and buy, sell, gift and tip with MANA. Some features need a full account, and trying to use them will offer you an upgrade:
+Guests can explore, customize their avatar and chat with people nearby. A guest wallet can't sign in to the Marketplace or the Account page, so add an email address to use the Marketplace or to get MANA. Some features need a full account, and trying to use them will offer you an upgrade:
 
 * Earning, buying and spending Marketplace Credits
 * Claiming a NAME

@@ -36,7 +36,7 @@ To protect the gas-free service from abuse, Marketplace items under 1 MANA aren'
 
 ## What can I do when gas-free transactions aren't available?
 
-Whether you've used up your gas-free transactions for the day or the service is paused, you can either:
+Whether you've used up your gas-free transactions for the last 24 hours or the service is paused, you can either:
 
 * Wait and try again later. Your gas-free transactions come back as the ones you used fall out of the 24-hour window. Network fees change constantly too, and you can follow them in real time on the [Polygon gas tracker](https://polygonscan.com/gastracker).
 * Pay the fee yourself with POL. The fee is taken from your wallet automatically as part of the transaction.

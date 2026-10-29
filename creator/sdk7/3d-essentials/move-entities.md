@@ -731,6 +731,30 @@ LerpTransformComponent.create(myEntity, {
 
 ![](../../images/media/gifs/lerp-move.webp)
 
+### Smoothly follow a moving target via system
+
+To ease an entity toward a target that keeps moving, like a pet that follows the player, move it a part of the remaining distance on every frame. Don't use a fixed part per frame, like `Vector3.lerp(current, target, 0.1)`: the result then depends on the frame rate, so the entity catches up faster on a fast computer than on a slow one. Work out the part from `dt` instead:
+
+```ts
+const follower = engine.addEntity()
+Transform.create(follower, { position: Vector3.create(8, 1, 8) })
+MeshRenderer.setBox(follower)
+
+const RATE = 5 // Higher values catch up faster
+
+function FollowSystem(dt: number) {
+	const transform = Transform.getMutable(follower)
+	const target = Transform.get(engine.PlayerEntity).position
+	// The same smoothing at any frame rate
+	const t = 1 - Math.exp(-RATE * dt)
+	transform.position = Vector3.lerp(transform.position, target, t)
+}
+
+engine.addSystem(FollowSystem)
+```
+
+The same formula works for rotations with `Quaternion.slerp()`.
+
 ### Rotate between two angles via system
 
 To rotate smoothly between two angles, use the _slerp_ (_spherical_ linear interpolation) algorithm. This algorithm is very similar to a _lerp_, but it handles quaternion rotations.

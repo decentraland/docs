@@ -94,6 +94,10 @@ Build the shell of a room at roughly **1.5 to 2 times** real headroom:
 | Doorway or opening on a main route | about 2.1 m x 0.9 m | **about 4 m tall, 3 m or wider** |
 | Corridor width | 1.2 to 1.8 m | **4 m or wider** |
 | Any gap the avatar has to walk through | | **1.2 m of clear space or more** |
+| Stairs | about 0.18 m rise, 0.28 m tread | **0.25 m rise or less, 0.3 m tread or more** |
+| Ramps | | **30 degrees or less** |
+
+The third-person camera orbits about 4.5 m away from the avatar, with a 60 degree field of view. When a wall or ceiling gets between the camera and the avatar, the camera moves forward to keep the avatar in view, and that sudden jump is what makes a room feel cramped. So rooms where players turn around read best at about **9 m across or more**, twice the camera's distance. For the engine limits on steps, slopes and head clearance, see [Player spatial constraints](../../3d-modeling/colliders.md#player-spatial-constraints).
 
 A few things to keep in mind:
 

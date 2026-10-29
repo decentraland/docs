@@ -139,7 +139,7 @@ To test how the smart wearable behaves in the context of a scene, you can also r
 - To react to nearby players:
   - See [Fetch all players](../interactivity/user-data.md#fetch-all-players) to know how to obtain data from other players in the surroundings.
   - Be mindful that the loading of the smart wearable, surrounding scenes and other players may occur in different orders depending on the situation. If the player enters Decentraland with the smart wearable already on, it’s likely that your wearable's global scene will load before other players do. On the other hand, if the player first loads into a scene and then puts on the wearable, it’s likely that other players will already be loaded by the time the wearable's scene starts running.
-  - For multiplayer experiences, wait till the player is connected to an island inside their realm. Fetch the realm data and check for the ‘room’ field. If the ‘room’ field is null, the player is not yet connected to an island and other players won’t be loaded yet. You can periodically check this every 1 second till the ‘room’ field is present, and only initialize your logic then.
+  - Other players only load once the player is connected to an island inside their realm. Fetch the realm data and check for the ‘room’ field. If the ‘room’ field is null, the player is not yet connected to an island and other players won’t be loaded yet. You can periodically check this every 1 second till the ‘room’ field is present, and only initialize your logic then. This only lets you see other players: to share data between wearers, see [Limitations](#limitations).
 - To interact with surrounding scenes:
   - You can’t directly send any instructions to nearby scenes or other portable experiences, the `messageBus` is currently sandboxed for each portable experience/scene.
   - You can use an intermediate server to send information between the portable experience and a scene.
@@ -219,6 +219,8 @@ To keep files out of the zip, list them in the project's `.dclignore` file, the 
 {% endhint %}
 
 Smart wearables only run the portable experience for the player wearing the wearable. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the wearable's scene, even [custom avatar animations](../interactivity/avatars/avatar-animations.md#custom-animations) uploaded as part of the smart wearable's files.
+
+Smart wearables have no built-in multiplayer. Each player wearing the wearable runs their own separate copy of its code, even when two wearers stand side by side. The `MessageBus`, syncing entities with `syncEntity()` and the [Multiplayer Server](../networking/authoritative-servers.md) don't work in a smart wearable. The only way to share data between wearers, like a shared score, is a server of your own that the wearable talks to with `fetch` or a WebSocket, see [Network connections](../networking/network-connections.md).
 
 A custom animation can include props, and props can include particle effects made from animated bones (see [Props and Sounds](../../wearables-and-emotes/emotes/props-and-sounds.md) and [Particles in Emotes](../../wearables-and-emotes/emotes/particles-in-emotes.md)). Other players see these too. Sound is different: custom animations played with `triggerSceneEmote()` don't play audio, even if the emote file came with one. To play a sound, use an `AudioSource`, which only the wearer hears.
 

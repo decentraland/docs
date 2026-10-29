@@ -40,7 +40,7 @@ After downloading the base avatar example file, load the model into your 3D edit
 
 You’ll notice that each model contains 8 different meshes related to an armature. These meshes represent the head, eyebrows, eyes, mouth, upper body, lower body, hands and feet. You can use these example models as a reference and starting point for your own custom wearable.
 
-Currently, there are two body shapes: A or B.
+Currently, there are two body shapes: A or B. Shape A (`AvatarShape_A.blend`) is the **female** body, used for the `BaseFemale` representation. Shape B (`AvatarShape_B.blend`) is the **male** body, used for `BaseMale`. The file names don't make this obvious, so double-check before you build: a body-hugging wearable built on the wrong file ends up with its two representations swapped.
 
 ![](../../images/wearables-and-emotes/creating-wearables/1_creating_wearables.webp)
 
@@ -305,6 +305,14 @@ The "key" bones to use when skin weighting are:
 * Keep in mind to export the armature exactly as the one provided in the documentation. If it has any other bones like _"\_end\_bones"_ or similar is not going to work on the client.
 {% endhint %}
 
+#### **Rigid Parts**
+
+For parts that shouldn't bend, like a backpack, a jetpack or armor plates, weight every vertex of the part 100% to a single bone. For example, use `Avatar_Spine2` for anything on the back. Then join the part into the wearable's mesh, so the wearable stays a single skinned mesh.
+
+`Avatar_Spine2` sits at the same place on both body shapes, so a part weighted to it can use the same position on both.
+
+A rigid part on the back can look like it floats, because the back curves away from a flat part. Measure the gap under the part's whole footprint and place its front face about 4 mm from the furthest point of the back. Alternatively, add a small mount block between the part and the back, and weight the mount's front vertices like the body vertices they touch, so the mount bends with the spine.
+
 #### **Exporting Wearables**
 
 When exporting wearables, make sure there are no other bones outside of the given Armature, **except for spring bones** (bones with `springbone` in their name, used for dynamic physics). A common problem when importing armatures between different software is the appearance of _"\_end"_ or _"\_neutral"_ bones. Be sure to remove those before exporting. Otherwise, it is very likely that the wearables will not work on the client afterwards.
@@ -312,6 +320,8 @@ When exporting wearables, make sure there are no other bones outside of the give
 ![](../../images/wearables-and-emotes/creating-wearables/51_export_wearables.webp)
 
 To export the wearable, select the object and then the armature. Be sure to not export anything else, such as cameras, lights, or empty objects.
+
+A valid wearable made of a single mesh has 64 nodes in its exported file: the `Armature`, its 62 bones and the skinned mesh. Spring bones add one node each.
 
 Next, export the wearable in _glTF2.0_ format. Make sure you only export the wearable with its skinning properties, and without any other unnecessary features like animation or shape keys.
 

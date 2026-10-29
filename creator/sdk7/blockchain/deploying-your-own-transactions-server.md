@@ -37,7 +37,7 @@ It needs a contract to forward the transactions, but luckily we can reuse the on
   * Enable the `Any Contract` toggle option
 * Copy the API KEY from the `API Key` section
 
-Lastly, you'll need to fund your newly created dapp. You can do this by connecting your wallet in the [1Balance](https://app.gelato.network/1balance) section at the left sidebar. Once connected, it'll enable you to deposit your [USDC](https://polygonscan.com/token/0x3c499c542cef5e3811e1192ce70d8cc03d5c3359) to fund the transactions your users will send. If you need to get MATIC, check this [post](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/#where-can-i-get-matic-to-pay-for-transaction-fees).
+Lastly, you'll need to fund your newly created dapp. You can do this by connecting your wallet in the [1Balance](https://app.gelato.network/1balance) section at the left sidebar. Once connected, it'll enable you to deposit your [USDC](https://polygonscan.com/token/0x3c499c542cef5e3811e1192ce70d8cc03d5c3359) to fund the transactions your users will send. If you need to get POL (formerly MATIC), check this [post](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/#where-can-i-get-pol-to-pay-for-transaction-fees).
 
 ### Testnet
 

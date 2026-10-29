@@ -1,101 +1,114 @@
 ---
 description: >-
-  Decentraland uses the Ethereum blockchain to record the ownership of all
-  digital assets and tradable items.
+  How sign-in works in Decentraland, the wallet behind every account, playing as
+  a guest, and how to use your wallet outside Decentraland.
 ---
 
-# Get a Wallet
+# Your Account and Wallet
 
 ## What is a wallet?
 
-Decentraland uses the Ethereum blockchain to record the ownership of all digital assets and tradable items.
+A digital wallet is what holds your things in Decentraland: your Wearables, Emotes, NAMEs, LAND and MANA. Ownership of these items is recorded on a public blockchain, and the wallet is what proves they belong to you.
 
-![](../images/media/get-a-wallet-account.webp)
+Every Decentraland account has a wallet behind it, but **you don't need to own crypto or set up a wallet yourself**. If you sign in with a social account or an email address, a wallet is created for you automatically. And you can buy Wearables and Emotes with [Marketplace Credits](paying-and-getting-paid.md#marketplace-credits) or a card without ever thinking about it.
 
-Digital wallets are tools that work as a bridge between the blockchain and the dApp (decentralized applications). This means that with a wallet you will be able to monitor your available funds, transaction history and security options.
+Each wallet has two parts:
 
-## Do I need a wallet to play in Decentraland?
+* **A wallet address**: a public identifier made of `0x` followed by 40 letters and numbers. It's your ID in Decentraland, and you can share it freely so that others can send you things.
+* **A private key**: the secret that controls the wallet. Whoever has it can move everything the wallet holds, so it must never be shared.
 
-No, you do not need to own crypto or already have a digital wallet to use Decentraland. Decentraland is free to use, and if you'd like to purchase something from the [**Marketplace**](https://market.decentraland.org/), you can use a credit/debit card in addition to cryptocurrency.
+## Ways to sign in
 
-See a tutorial for [**making an account with a social profile**](https://www.youtube.com/watch?v=ylZrPisyPl4) or [**with an external wallet like MetaMask**](https://www.youtube.com/watch?v=w3CCVrVe1M4).
+When you open Decentraland, you can sign in in any of these ways:
 
-## How do I get a digital wallet?
+| Sign-in method | What happens behind the scenes |
+| --- | --- |
+| **Google, Discord, Apple or X** | A wallet is created for you by [Magic](https://magic.link/), a wallet service that Decentraland works with. You sign in with your social account and never have to see the wallet. |
+| **Email** | You enter your email address and type in the code you receive. A wallet is created for you by [thirdweb](https://thirdweb.com/), another wallet service. |
+| **A crypto wallet** (MetaMask, Coinbase Wallet, WalletConnect and others) | You use a wallet you already have. You hold the private key yourself. |
+| **Play as guest** | A temporary account is created on your computer. See [Playing as a guest](#playing-as-a-guest). |
 
-To enter Decentraland, you must use a wallet that is integrated to your web browser, so we recommend you [MetaMask](https://metamask.io/)
+Hardware wallets like Ledger and Trezor also work: [connect them to MetaMask](https://support.metamask.io/more-web3/wallets/how-to-connect-a-trezor-or-ledger-hardware-wallet/) and sign in with MetaMask.
 
-![](../images/media/get-a-wallet-metamask-logo.webp)
+{% hint style="warning" %}
+**📔 Note**: Each sign-in method has its own wallet. Signing in with Google and signing in with the same email address using an email code gives you **two different accounts**, each with its own avatar and items. Always sign in the same way you did the first time.
+{% endhint %}
 
-Once you install it, you will see an icon like this:
+## Playing as a guest
 
-![](../images/media/get-a-wallet-metamask-extension.webp)
+In the Decentraland desktop app, choose **Play as guest** to jump in without an email or a wallet. You pick a ready-made avatar and you're in.
 
-## Wallet address
+A guest account is tied to this installation of Decentraland on this computer. You come back as the same guest each time you open the app, but you can't sign in to it from another device.
 
-All wallets have a public and private key. A public key Is a unique identifier for your wallet and it looks like this: **0xcba113f589805095a892ecefdb4eb83eff45d98**. It is basically a name that you can share freely with others and it's used to direct assets to your wallet.
+Guests can explore, customize their avatar and chat with people nearby. Some features need a full account, and trying to use them will offer you an upgrade:
 
-You can localize your wallet address clicking on the extension icon in your browser, and then clicking on your wallet name with the public key to copy it to clipboard:
+* Buying or selling items (guests can browse the Marketplace only)
+* Earning and spending Marketplace Credits
+* Voice chat and calls
+* Creating or joining communities
+* Starting a new private conversation (you can still reply to one someone else starts)
 
-![](../images/media/get-a-wallet-public-key-1.webp)
+### Upgrade a guest account
 
-Or by clicking on your account details:
+To keep your guest account and unlock everything, upgrade it with an email address:
 
-![](../images/media/get-a-wallet-public-key-2.webp)
+1. Try to use any feature that needs a full account. A popup offers you to upgrade.
+2. Enter your email address.
+3. Type in the code you receive by email.
 
-The private key is used by your wallet to sign each transaction and certify that it was truly sent by you. It is also used to restore your wallet in case you forget your password.
+Your avatar, name and friends stay the same. From then on, sign in with that email address and a code instead of choosing **Play as guest**.
 
-Keep in mind that a digital wallet is like a bank account, so make sure you **don't forget your password, or backup phrase. Keep them in a safe place and don't share them with anyone.**
+## Find your wallet address
 
-## What is Ether (ETH), and how do I send it to my wallet?
+* **In Decentraland**: open your profile. Your wallet address appears under your name.
+* **Online**: go to the [Account page](https://decentraland.org/account/), open **Wallets**, and choose **Receive** from the **More actions** menu of either MANA card to copy your address.
+* **In a crypto wallet**: if you sign in with MetaMask or similar, your address is shown in that wallet's app or extension.
 
-![](../images/media/get-a-wallet-ether.webp)
+## Use your wallet outside Decentraland
 
-For executing transactions, you'll need to put money in your wallet. dApps based on Ethereum, like Decentraland, use Ether: a digital currency that powers the Ethereum network. It acts like any other currency, in that its value fluctuates with the market.
+If you signed in with a crypto wallet, it's already yours and works in any app that supports it.
 
-* You need to convert your currency (e.g. USD, CAD, GBP) into Ether to pay for things such as a collectibles.
+If Decentraland created the wallet for you, you can still take full control of it. Export its private key and import it into another wallet app, such as MetaMask. You'll then see the same address and the same items there, and can use them in any app or exchange.
 
-## How do I get Ether?
+{% hint style="danger" %}
+**Anyone with your private key has full, irreversible control of everything in your wallet.** Decentraland staff will never ask for it. Store it offline, somewhere only you can reach, and never paste it into a website or chat.
+{% endhint %}
 
-_For US citizens only:_
+### If you signed in with Google, Discord, Apple or X
 
-You can purchase ETH for the MetaMask Browser Extension with the Coinbase service.
+1. Go to the [Account page](https://decentraland.org/account/) and sign in the same way you sign in to Decentraland.
+2. Open the **Security** tab.
+3. Click **Reveal private key**. Magic's secure reveal page opens in a new tab.
+4. Sign in on Magic's page using the same method you use for Decentraland, and copy your private key.
 
-* Click the `Buy` button.
-* Select the `Coinbase` option.
-* Click the `Continue to Coinbase` button to purchase Ethereum.
+### If you signed in with an email code
 
-_For the rest of the World:_
+1. Go to the [Account page](https://decentraland.org/account/) and sign in with your email address.
+2. Open the **Wallets** tab.
+3. Use the wallet manager below your address to export your private key.
 
-You need to buy ETH from Coinbase or another exchange using normal fiat currency.
+### If you're playing as a guest
 
-* Copy your MetaMask address by clicking on your name account and address.
-* Select `Copy Address to clipboard`.
-* Go to Coinbase or another exchange.
-* Click `Accounts` in your top navigation.
-* Select your ETH wallet and click `buy`.
-* Follow the steps to `Add payment method` and paste your MetaMask address with the amount you'd like to transfer.
+A guest account can't be exported. [Upgrade it with an email address](#upgrade-a-guest-account) first, then follow the email steps above.
 
-## What is MANA and how do I get it?
+### Import the key into another wallet
 
-![](../images/media/get-a-wallet-mana.webp)
+Most wallet apps let you add an account from a private key. In MetaMask, see [Import an account](https://support.metamask.io/start/use-an-existing-wallet/). Your Decentraland login keeps working as before; the other app simply gives you a second way into the same wallet.
 
-[MANA](https://etherscan.io/token/decentraland) is Decentraland's fungible (reproducible or interchangeable) cryptocurrency token. It is burned, or spent in exchange for LAND parcels, wearables and names.
+## Delete your account
 
-Steps to buy MANA:
+If you signed in with a social account or an email code, you can delete your Decentraland account from the **Delete account** tab of the [Account page](https://decentraland.org/account/). This removes your profile, friends, Marketplace activity, unspent Marketplace Credits and settings, and it can't be undone.
 
-* First, you need to register with an exchange that lists MANA (such as [Coinbase](https://www.coinbase.com/), [Huobi](https://www.huobi.io/), [Binance](https://www.binance.com/)).
-* Secondly, you will need to deposit funds into your account. While things change rapidly in the crypto world, it's not likely that there's an exchange available to convert your USD directly for MANA. If that's the case, you'll first need to obtain a cryptocurrency listed in a currency pair with MANA, such as Ether (ETH), and then exchange it for Decentraland's native token.
-* Third, once logged into your exchange account, click on the "Markets" or "Exchange" link and search for your desired currency pairing. For example, MANA/ETH. In the "Buy" field, you can then specify the amount of MANA you want to buy or the amount of ETH you want to spend. Make sure you take a moment to review the full details of the transaction including any fees that apply and the total cost of completing your purchase.
+{% hint style="warning" %}
+**📔 Note**: Deleting your account can make you lose access to the items in your wallet (Wearables, Emotes, NAMEs, LAND and MANA) forever. [Export your private key](#use-your-wallet-outside-decentraland) before you delete your account.
+{% endhint %}
 
-## What is 'gas'?
+Accounts that use your own crypto wallet, like MetaMask, can't be deleted this way, because you hold the keys yourself. To stop using one, simply disconnect it.
 
-'Gas' is a shorthand term used to describe the cost of powering a transaction or contract in Ethereum. Because blockchain is decentralized, every transaction is distributed through multiple computers, not a central server. This ensures each token – in this case, each collectible – is secure and one-of-a-kind. It also takes a lot of computational power, which is covered by the cost of gas.
+## Keep your account safe
 
-* _'Gas' is composed of two parts: Gas Price and Gas Limit. Gas Price is what you offer to pay the miners (in a tiny measurement of ether called 'gwei') for each operation to execute the smart contract. Gas Limit is how many operations you let them do before they run out of gas and drop the transaction._
-* _1 gwei = 1/1,000,000,000th of an Ether._
+* Never share your private key or your wallet's recovery phrase (also called a seed phrase) with anyone.
+* Decentraland will never offer you free MANA or ask you to "verify" your wallet. Messages that do are scams.
+* Read every confirmation before you approve it. Decentraland always asks you to confirm before anything leaves your wallet.
 
-![](../images/media/get-a-wallet-gas.webp)
-
-To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.
-
-**For extra technical information, visit** [**About the blockchain**](ethereum-essentials.md)
+See [Security](../faqs/security.md) for more tips on spotting scams.

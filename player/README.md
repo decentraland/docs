@@ -47,9 +47,10 @@ icon: hand-wave
 
 ### 🔗 Blockchain & Wallets
 
-* [Setting up your wallet](blockchain-integration/get-a-wallet.md)
-* [Understanding Ethereum and smart contracts](blockchain-integration/ethereum-essentials.md)
-* [Managing transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
+* [Your account and wallet](blockchain-integration/get-a-wallet.md)
+* [Paying and getting paid](blockchain-integration/paying-and-getting-paid.md)
+* [Gas-free transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
+* [About the blockchain](blockchain-integration/ethereum-essentials.md)
 
 
 ### Quick Links

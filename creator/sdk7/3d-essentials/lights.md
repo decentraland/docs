@@ -188,6 +188,7 @@ The number allowed active lights in a scene is capped at one per parcel, and bey
 - Low quality: no scene lights at all
 - Medium quality: Maximum 6 lights (in a scene with enough parcels)
 - High quality: Maximum 10 lights (in a scene with enough parcels)
+- Mobile: the app has its own presets, from no scene lights on Very Low up to 8 lights on High. See [Lights and particles on mobile](../../build-for-mobile/develop/optimize-performance.md#lights-and-particles).
 
 The quality settings slider can lower a preset's cap further.
 

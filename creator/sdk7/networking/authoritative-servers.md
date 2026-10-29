@@ -328,6 +328,7 @@ export const Messages = {
   // Client → Server
   playerReady: Schemas.Map({ displayName: Schemas.String }),
   playerAction: Schemas.Map({ action: Schemas.String, targetId: Schemas.Int }),
+  giveCoins: Schemas.Map({ to: Schemas.String, amount: Schemas.Int }),
 
   // Server → Client
   gameStarted: Schemas.Map({ roundNumber: Schemas.Int }),
@@ -479,7 +480,7 @@ Data can be stored at two levels:
 - **Player**: Use this for player-specific data, like saving progress or preferences for that player.
 
 {% hint style="info" %}
-**💡 Tip**: Storage values are JSON. You can store a number, a string, an array or a plain object as it is, and read it back as the same value. You don't need `JSON.stringify()` or `JSON.parse()`. A value you saved earlier with `JSON.stringify()` is a string, so it reads back as that string.
+**💡 Tip**: Storage values are JSON. You can store a number, a string, an array or a plain object as it is, and read it back as the same value. You don't need `JSON.stringify()` or `JSON.parse()`. Two exceptions: a `Date` is stored as its ISO text (`"2026-10-27T13:05:12.000Z"`), and object properties set to `undefined` are dropped. A value you saved earlier with `JSON.stringify()` is a string, so it reads back as that string.
 
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
@@ -685,7 +686,7 @@ Storage has no way to update a key only if nobody changed it since you read it (
 
 - Two server instances can write at the same time. This happens while an old and a new version of your scene overlap during a redeploy.
 - A read can return an older value than the last one written. Storage has served an old value of a key for an hour or more, even with `Storage.get(key, { fresh: true })`, and across server restarts. The `fresh` option only skips the SDK's own cache.
-- A read can miss a key that exists.
+- A listing with `Storage.getValues()` can be stale too: it can leave out a key written recently, or still show one you deleted.
 
 For data that only grows, like a log of results or player feedback, use this pattern instead of rewriting one key:
 
@@ -721,7 +722,8 @@ async function appendRows(newRows: Row[]): Promise<boolean> {
   const merged = [...rows.values()]
 
   // A new key every time: UTC time plus random characters
-  const stamp = new Date().toISOString().replace(/[-:.]/g, "")
+  // "2026-10-27T13:05:12.123Z" becomes "20261027-130512"
+  const stamp = new Date().toISOString().slice(0, 19).replace(/[-:]/g, "").replace("T", "-")
   const key = `${PREFIX}${stamp}-${Math.random().toString(36).slice(2, 6)}`
   if (!(await Storage.set(key, merged))) return false // Not saved, retry later
 
@@ -1051,7 +1053,7 @@ room.onMessage("takeDamage", (data) => {
 
 A message from a client is a request, not a fact. Check every field before you use it:
 
-- **Amounts**: `Schemas.Int` only makes sure the value is a whole number, not that it's positive. Reject amounts of zero or less, or a player could "send" `-500` coins and receive them instead. Also check that the sender has enough.
+- **Amounts**: `Schemas.Int` decodes the value as a 32-bit integer, but it can still be zero or negative. Reject amounts of zero or less, or a player could "send" `-500` coins and receive them instead. Also check that the sender has enough.
 - **Addresses**: a wallet address the client sends must be `0x` followed by 40 hexadecimal characters. Reject anything else before it reaches your maps or Storage.
 
 ```typescript
@@ -1135,10 +1137,16 @@ export async function main() {
     )
 
     // Restore the counter from storage in case the server restarted
-    const savedCount = await Storage.get<number>("counter")
-    const savedPlayer = await Storage.get<string>("lastPlayer")
-    const initialCount = savedCount ?? 0
-    const initialPlayer = savedPlayer ?? "none"
+    let initialCount = 0
+    let initialPlayer = "none"
+    let loaded = false
+    try {
+      initialCount = (await Storage.get<number>("counter")) ?? 0
+      initialPlayer = (await Storage.get<string>("lastPlayer")) ?? "none"
+      loaded = true
+    } catch (error) {
+      console.log("[Server] Could not load the counter:", error)
+    }
 
     const counterEntity = engine.addEntity()
     syncEntity(counterEntity, [Counter.componentId], 1)
@@ -1149,17 +1157,21 @@ export async function main() {
 
     room.onMessage("increment", async (_data, context) => {
       if (!context) return
+      if (!loaded) return // Never save over a counter that didn't load
+      const from = context.from.toLowerCase()
       const counter = Counter.getMutable(counterEntity)
       counter.value += 1
-      counter.lastPlayer = context.from
+      counter.lastPlayer = from
 
       // Persist to storage so the value survives server restarts
-      await Storage.set("counter", counter.value)
-      await Storage.set("lastPlayer", counter.lastPlayer)
+      const saved =
+        (await Storage.set("counter", counter.value)) &&
+        (await Storage.set("lastPlayer", from))
+      if (!saved) console.log("[Server] Counter not saved, the next click saves it again")
 
       room.send("stateUpdate", {
         count: counter.value,
-        lastPlayer: context.from,
+        lastPlayer: from,
       })
     })
   } else {

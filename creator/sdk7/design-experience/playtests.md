@@ -75,7 +75,7 @@ Scene Feedback stores answers on a server, so your scene needs a [Multiplayer Se
 2. Follow the README to install the module in your scene. You can also give the installation prompt to your AI coding agent.
 3. Choose a small set of questions that match your playtest goals.
 4. Decide when each question should appear.
-5. Download player responses as a CSV file. In Creator Hub, open **Manage**, then your World's **⋮** menu, then **View Storage**. A part of the responses can be split across several files for a while, plus an older single file from previous versions of the module: download every file of the part and drop rows with duplicate `id`s.
+5. Download player responses as a CSV file. In Creator Hub, open **Manage**, then your World's **⋮** menu, then **View Storage**. Responses may be spread across several files for a while (newer saves that aren't merged yet, plus an older single file from earlier versions of the module). Download every file whose name starts with the same `scene-feedback-<number>`, and drop rows with duplicate `id`s.
 
 The repository includes ready-to-use questions, examples, and guidance for choosing questions.
 

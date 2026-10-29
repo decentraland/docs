@@ -170,7 +170,7 @@ npm run deploy -- --target-content https://worlds-content-server.decentraland.or
 Once you run the command, you will be prompted to sign the deployment with your wallet and a set of validations will be executed to allow or reject the scene.
 
 {% hint style="warning" %}
-**📔 Note**: When your `scene.json` has a `worldConfiguration` section, `npm run deploy` needs the `--target-content` flag. Without it, the command stops with the error `DEPLOY_MISSING_TARGET_CONTENT`.
+**📔 Note**: When your `scene.json` has a `worldConfiguration` section, `npm run deploy` needs the `--target-content` flag (or `--target`). Without either, the command stops with the error `DEPLOY_MISSING_TARGET_CONTENT`.
 {% endhint %}
 
 ### Accessing a World
@@ -229,10 +229,11 @@ With `--programmatic`, the result of the command includes this token as `deployT
 | Error code | What it means |
 | --- | --- |
 | `DEPLOY_PARTIAL_NOT_SUPPORTED` | The server doesn't support batched uploads, and the files it's missing are over 200 MB. |
-| `DEPLOY_CONTENT_CHECK_FAILED` | The CLI couldn't check which files the server already has. |
+| `DEPLOY_CONTENT_CHECK_FAILED` | The CLI couldn't check which files the server already has. It only runs this check when the server doesn't support batched uploads and the scene is over 200 MB. |
+| `DEPLOY_CANCELLED` | The deployment was cancelled, and the scene wasn't published. |
 | `DEPLOY_CANCELLED_AFTER_UNDEPLOY` | The deployment was cancelled after the World's previous scenes were removed. |
 | `DEPLOY_CANCEL_OUTCOME_UNCERTAIN` | The deployment was cancelled, but the CLI couldn't confirm whether the server published it. |
-| `DEPLOY_MISSING_TARGET_CONTENT` | The scene has a `worldConfiguration` but the command has no `--target-content`. |
+| `DEPLOY_MISSING_TARGET_CONTENT` | The scene has a `worldConfiguration` but the command has no `--target-content` or `--target`. |
 
 ## Publish from a hardware wallet
 

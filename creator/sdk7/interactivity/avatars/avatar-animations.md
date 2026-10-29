@@ -152,7 +152,7 @@ An emote file played with `triggerSceneEmote()` can include props, like a tennis
 Other players around see the props, just like they see the avatar animation.
 
 {% hint style="warning" %}
-**📔 Note**: `triggerSceneEmote()` doesn't play sound. Audio only plays for emotes uploaded through the Builder. To pair a sound with a scene emote, play it with an [AudioSource](../../3d-essentials/sounds.md) at the same time.
+**📔 Note**: `triggerSceneEmote()` doesn't play sound. Audio only plays for emotes uploaded as standalone emotes in the Builder. To pair a sound with a scene emote, play it with an [AudioSource](../../3d-essentials/sounds.md) at the same time.
 {% endhint %}
 
 ### Animate only the upper body

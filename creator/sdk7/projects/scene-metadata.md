@@ -341,6 +341,36 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
 
 This example spawns a player at _5, 1, 4_ facing East toward _10, 1, 4_. If the spawn position is a range, the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
+## Required Permissions
+
+The `requiredPermissions` property lists which restricted features a [smart wearable](../projects/smart-wearables.md) uses. It only applies to smart wearables.
+
+{% hint style="warning" %}
+**📔 Note**: Regular scenes (in parcels or in Worlds) and [portable experiences](../projects/portable-experiences.md) run with every permission granted. They don't need this property, and adding it has no effect on them.
+{% endhint %}
+
+A smart wearable can only use these features if it declares them in its `scene.json`. If the permission isn't declared, the call fails and the Explorer logs a _permission denied_ error:
+
+- `USE_FETCH`: Send HTTP requests to third party servers with `fetch` or `signedFetch`
+- `USE_WEBSOCKET`: Open websocket connections to third party servers
+- `USE_WEB3_API`: Interact with the player's wallet, to make transactions or sign messages
+- `OPEN_EXTERNAL_LINK`: Prompt the player to open a link to an external site
+
+```json
+"requiredPermissions": [
+    "USE_FETCH",
+    "OPEN_EXTERNAL_LINK"
+  ],
+```
+
+If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
+
+When a smart wearable declares any of these permissions, the Explorer asks the player to authorize the wearable when they equip it. If the player declines, the wearable's code doesn't run. Only declare the permissions you actually use, so players aren't asked for more than they need to grant.
+
+{% hint style="warning" %}
+**📔 Note**: Older versions of this page also listed `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`, `ALLOW_TO_TRIGGER_AVATAR_EMOTE` and `ALLOW_MEDIA_HOSTNAMES`. The current Explorer ignores these, so you can remove them. Moving the player, playing emotes, applying physics forces and streaming media don't need a permission.
+{% endhint %}
+
 ## Scene parcels
 
 When [deploying](../publishing/publishing.md) a scene, the content is uploaded to the coordinates assigned in the scene configuration. A scene can include a single parcel, or a list of up to dozens of them.

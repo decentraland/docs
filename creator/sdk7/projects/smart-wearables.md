@@ -191,6 +191,23 @@ To publish your smart wearable:
 7. On the collection, click **See in Decentraland**. This opens Decentraland on the Sepolia test network, where you can equip the wearables of your collection from the backpack and see how they behave in a more real scenario, for example running around Genesis Plaza. See [Testing in Decentraland](../../wearables-and-emotes/manage-collections/uploading-smart-wearables.md#testing-in-decentraland).
 8. At this point, your wearable is ready to be published.
 
+## Permissions
+
+Smart wearables run with restricted permissions. To use any of the following features, declare the matching permission in the `requiredPermissions` list of your `scene.json`, or the call fails at runtime:
+
+- `USE_FETCH`: HTTP requests with `fetch` or `signedFetch`
+- `USE_WEBSOCKET`: Websocket connections
+- `USE_WEB3_API`: Wallet transactions or signing messages
+- `OPEN_EXTERNAL_LINK`: Prompting the player to open an external link
+
+```json
+"requiredPermissions": [
+    "USE_FETCH"
+  ],
+```
+
+When a smart wearable declares any of these, players see an authorization prompt when they equip it, and the wearable doesn't run if they decline. Only declare what you use. See [Required Permissions](scene-metadata.md#required-permissions) for details.
+
 ## Limitations
 
 > IMPORTANT: The entire smart wearable needs to fit within 3MB. This includes the 3D model, thumbnail, code, libraries, sound files, additional 3D models, UI images, etc. This limit is for the uncompressed folder. The builder will not let you upload larger wearables than this. To check the size, unzip the generated `smart-wearable.zip` file and check the size of the folder, or run `unzip -l smart-wearable.zip` and read the total.

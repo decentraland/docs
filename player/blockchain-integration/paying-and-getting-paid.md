@@ -10,28 +10,31 @@ description: >-
 
 You don't need crypto to buy things in Decentraland. Most people never touch it. From easiest to most involved, you can pay with:
 
-* **Marketplace Credits**: the simplest way to get Wearables and Emotes. Earn them for free by playing, or top them up with a card. See [Marketplace Credits](#marketplace-credits) below.
+* **Marketplace Credits**: the simplest way to get Wearables, Emotes and NAMEs. Buy a pack with a card, or earn them by playing when a Credits season is running. See [Marketplace Credits](#marketplace-credits) below.
 * **Card or bank transfer**: click **Buy with Card** on an item's page in the [Marketplace](https://decentraland.org/marketplace). Availability depends on your location.
 * **MANA**: Decentraland's own cryptocurrency. Click **Buy with Crypto** on an item's page. You only need MANA for things Credits can't buy, like LAND, or if you'd rather hold crypto. The rest of this page is about MANA.
 
-Guest accounts can browse the Marketplace but can't buy or sell. See [Playing as a guest](get-a-wallet.md#playing-as-a-guest).
+Guest accounts can buy and sell with MANA, but can't use Credits or claim a NAME. See [Playing as a guest](get-a-wallet.md#playing-as-a-guest).
 
 ## Marketplace Credits
 
-Marketplace Credits are the everyday currency for Wearables, Emotes and NAMEs. They work like a prepaid balance on your Decentraland account: no wallet, no network fees, no crypto.
+Marketplace Credits are the everyday currency for Wearables, Emotes and NAMEs. They work like a prepaid balance on your Decentraland account: no wallet, no network fees, no crypto. Creators can also use them to pay the fee for publishing a collection in the Builder.
 
-There are two ways to get Credits:
+There are two kinds of Credits:
 
-* **Earn them**: while a Credits season is active, complete weekly goals in-world, like showing up regularly and attending events. Open the Credits panel from the sidebar to see your goals and your balance. See [Earning Rewards](../decentraland-in-world/earning-rewards.md).
-* **Buy them**: click the **+** next to your Credits balance to buy a Credit pack with a debit or credit card. If you try to buy an item and don't have enough Credits, you're offered a top-up right there.
+* **Purchased Credits** are worth $0.10 each and never expire. Buy a pack with a debit or credit card:
+  * **In the Decentraland app** on desktop: click the **+** next to your Credits balance. If you try to buy an item and don't have enough Credits, you're offered a top-up right there.
+  * **On the web**: at the [Shop](https://decentraland.org/shop).
+  * **On iPhone**: as an in-app purchase. Android doesn't offer Credit packs yet.
+* **Earned Credits** are worth 1 MANA each and expire when the season ends. While a Credits season is running, you earn them by completing weekly goals in-world, like showing up regularly and attending events. Seasons aren't always running; when one is, the Credits panel in the sidebar shows your goals. See [Earning Rewards](../decentraland-in-world/earning-rewards.md).
 
-To spend them, pick an item in-world or in the [Marketplace](https://decentraland.org/marketplace) and choose to pay with Credits.
+To spend Credits, pick an item in-world or in the [Shop](https://decentraland.org/shop) and choose to pay with Credits. The web [Marketplace](https://decentraland.org/marketplace) only accepts earned Credits, and only for new items, not resales.
 
 A few things to know:
 
 * Credits belong to your Decentraland account, not to your wallet. You can't send them to anyone or turn them back into money.
 * Items you buy with Credits are still real items in your wallet, exactly like ones bought with MANA. Creators get paid the same way.
-* Guest accounts can't earn or spend Credits. [Upgrade your account](get-a-wallet.md#upgrade-a-guest-account) first.
+* Guest accounts can't earn, buy or spend Credits. [Upgrade your account](get-a-wallet.md#upgrade-a-guest-account) first.
 
 ## What is MANA?
 
@@ -53,9 +56,9 @@ Go to the [Account page](https://decentraland.org/account/) and open **Wallets**
 
 ## Buy MANA
 
-1. On the [Account page](https://decentraland.org/account/), open **Wallets** and click **Buy** on either MANA card.
-2. Choose **Ethereum MANA** or **Polygon MANA**, depending on what you want to buy (see the table above).
-3. Choose a provider (MoonPay or Transak) and follow its steps. You can pay with a debit or credit card, Apple Pay, Google Pay or bank transfer.
+1. On the [Account page](https://decentraland.org/account/), open **Wallets**.
+2. Click **Buy** on the **Ethereum MANA** or the **Polygon MANA** card, depending on what you want to buy (see the table above). The card you click decides which kind you get.
+3. Continue with Transak and follow its steps. You can pay with a debit or credit card, Apple Pay, Google Pay or bank transfer.
 
 You can also buy MANA on a cryptocurrency exchange and send it to your wallet address. When you withdraw it from the exchange, make sure you choose the network that matches the MANA you want: **Ethereum** or **Polygon**.
 
@@ -70,9 +73,9 @@ On the **Wallets** tab of the [Account page](https://decentraland.org/account/),
 
 You can receive MANA and items in several ways:
 
-* **Selling in the Marketplace**: when someone buys an item you've listed or created, the MANA goes to the wallet you used to list it. Wearables and Emotes pay out in Polygon MANA; LAND and NAMEs pay out in Ethereum MANA. Creators keep 97.5% of each sale.
-* **Tips**: players can tip a scene's creator with Polygon MANA from inside Decentraland.
-* **Gifts**: other players can gift you Wearables and Emotes from their Backpack. Gifts arrive in your Backpack.
+* **Selling in the Marketplace**: when someone buys an item you've listed or created, the MANA goes to the wallet you used to list it. Wearables and Emotes pay out in Polygon MANA; LAND and NAMEs pay out in Ethereum MANA. Creators keep 97.5% of each first sale of an item they made, and receive a 2.5% royalty every time it's resold.
+* **Tips**: players can tip the creator of the place they're visiting with Polygon MANA from inside Decentraland. Tips go to the creator listed for that place.
+* **Gifts**: other players can gift you Wearables and Emotes by opening your profile in-world and choosing **Gift**. Gifts arrive in your Backpack.
 * **Transfers**: anyone can send MANA or items to your [wallet address](get-a-wallet.md#find-your-wallet-address).
 
 This works the same whether you signed in with a crypto wallet, a social account or an email code. In every case the MANA lands in your wallet and is yours.
@@ -104,4 +107,4 @@ If Decentraland created your wallet when you signed in with a social account or 
 
 Anything that moves MANA or items out of your wallet needs your confirmation. This includes buying, selling, tipping, gifting and transactions that a scene asks you to make. Depending on how you signed in, a window or browser tab opens for you to review and approve it.
 
-Blockchain transactions can't be undone once they're confirmed, so check the amount and the recipient before you approve.
+Nobody can reverse a blockchain transaction for you once it has gone through, so check the amount and the recipient before you approve.

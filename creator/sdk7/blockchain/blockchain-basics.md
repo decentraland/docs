@@ -18,7 +18,7 @@ The blockchain isn't used for anything that changes in real time as players inte
 
 Every signed-in player has a wallet address, which you can use to identify them persistently across sessions. Get it with `getPlayer()`, as shown in [Scene Blockchain Operations](scene-blockchain-operations.md#get-a-players-ethereum-account).
 
-Players can sign in with their own crypto wallet (like MetaMask), or with a social account or an email address, in which case a wallet is created for them. Your scene doesn't need to treat them differently: they all have an address, hold tokens and can sign transactions. Players who play as guests have limited access to blockchain features, so check the `isGuest` field before asking them to transact.
+Players can sign in with their own crypto wallet (like MetaMask), with a social account or an email address (in which case a wallet is created for them), or as a guest (a wallet tied to their device). Your scene doesn't need to treat them differently: every player, including guests, has a wallet address, holds tokens and can sign transactions. Guests can't use Marketplace Credits or claim a NAME, so check the `isGuest` field if that matters to your scene.
 
 ## Transactions
 

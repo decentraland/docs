@@ -1,5 +1,7 @@
 ---
-description: Frequently Asked Questions about Polygon transactions
+description: >-
+  Gas-free transactions in the Marketplace and Builder, and how to pay Polygon
+  network fees with POL when you need to.
 ---
 
 # Transactions in Polygon
@@ -22,28 +24,24 @@ POL used to be called **MATIC**. Polygon replaced MATIC with POL in September 20
 
 Your transaction is gas-free when all of these are true:
 
-* The item costs **1 MANA or more**.
-* You haven't reached your **daily limit** of gas-free transactions.
+* You haven't used up your gas-free transactions for the last 24 hours. Each account gets a limited number in any 24-hour period.
+* In the Marketplace, the item you're buying or selling costs **1 MANA or more**.
 * If you use a crypto wallet like MetaMask, it's set to the **Ethereum** network. The Marketplace handles the Polygon side for you. If you signed in with a social account or an email code, you don't need to do anything.
 
-The DAO may pause gas-free transactions when Polygon network fees are very high, so the funds that pay for them last longer and reach more people.
+The DAO may pause gas-free transactions temporarily when Polygon network fees are very high, so the funds that pay for them last longer and reach more people.
 
 ## Why do I have to pay the fee for items that cost less than 1 MANA?
 
-To protect the gas-free service from abuse, items under 1 MANA aren't included. To buy one, you pay the network fee yourself with POL on Polygon.
+To protect the gas-free service from abuse, Marketplace items under 1 MANA aren't included. To buy one, you pay the network fee yourself with POL on Polygon.
 
-## What can I do when Polygon network fees are very high?
+## What can I do when gas-free transactions aren't available?
 
-When Polygon network fees go above 300 gwei, gas-free transactions may be paused. You can either:
+Whether you've used up your gas-free transactions for the day or the service is paused, you can either:
 
-* Wait and try again later. Fees change constantly, and you can follow them in real time on the [Polygon gas tracker](https://polygonscan.com/gastracker).
+* Wait and try again later. Your gas-free transactions come back as the ones you used fall out of the 24-hour window. Network fees change constantly too, and you can follow them in real time on the [Polygon gas tracker](https://polygonscan.com/gastracker).
 * Pay the fee yourself with POL. The fee is taken from your wallet automatically as part of the transaction.
 
 Gwei is the unit used for network fees. One gwei is one billionth of a POL (1 POL = 1,000,000,000 gwei).
-
-## What happens if I reach the daily limit of gas-free transactions?
-
-The limit resets every day, so you can try again tomorrow. Or you can pay the fee yourself with POL.
 
 ## Where can I get POL to pay for transaction fees?
 

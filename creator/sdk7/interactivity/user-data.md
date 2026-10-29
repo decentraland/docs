@@ -90,8 +90,8 @@ export function main() {
 `getPlayer()` returns the following:
 
 * `name`: _(string)_ The player's user name, as others see in-world
-* `userId`: _(string)_ A string that identifies the player. For players connected with a wallet, this is the wallet's address, written in lowercase. For guest accounts, it's a locally-generated identifier.
-* `isGuest`: _(boolean)_ Indicates if the player has a public key. _True_ if the player is a guest account without a public key.
+* `userId`: _(string)_ The address of the player's wallet, written in lowercase. Every player has one, including guests, whose wallet is tied to their device.
+* `isGuest`: _(boolean)_ _True_ if the player is playing as a guest and hasn't upgraded their account with an email address. Guests have a wallet address, but can't use Marketplace Credits or claim a NAME.
 * `position`: _(Vector3)_ The position of the avatar in the scene.
 * `avatar`: A nested object with data about the player's base avatar and appearance.
 * `wearables`: An array of identifiers for each of the wearables that the player is currently wearing. For example `urn:decentraland:off-chain:base-avatars:green_hoodie`. All wearables have a similar identifier, even if they're NFTs.
@@ -169,14 +169,14 @@ This information is exposed in the following URL, appending the player's user id
 The following information is available from this API:
 
 * `displayName`: _(string)_ The player's user name, as others see in-world
-* `userId`: _(string)_ A UUID string that identifies the player. If the player has a public key, this field will have the same value as the public key.
-* `hasConnectedWeb3`: _(boolean)_ Indicates if the player has a public key. _True_ if the player has one.
-* `publicKey`: _(string)_ The public key of the player's Ethereum wallet. If the player logs in as a guest, with no linked wallet, this field will be `null`.
+* `userId`: _(string)_ The address of the player's wallet. Every player has one, including guests.
+* `hasConnectedWeb3`: _(boolean)_ _False_ if the player is playing as a guest and hasn't upgraded their account, _true_ otherwise.
+* `publicKey`: _(string)_ The address of the player's wallet, the same value as `userId`.
 * `avatar`: A nested object with data about the player's appearance.
 * `version`: _(number)_ A version number that increases by one every time the player changes any of their settings. Use this if you encounter conflicting data, to know what version is more recent.
 
 {% hint style="warning" %}
-**📔 Note**: For any Ethereum transactions with the player, always use the `publicKey` field, instead of the `userId`, to avoid dealing with non-existing wallets.
+**📔 Note**: Both `userId` and `publicKey` hold the player's wallet address. Use `publicKey` for Ethereum transactions, as that's what it's meant for.
 {% endhint %}
 
 The `avatar` object has the following nested information:

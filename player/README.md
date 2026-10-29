@@ -49,7 +49,7 @@ icon: hand-wave
 
 * [Your account and wallet](blockchain-integration/get-a-wallet.md)
 * [Paying and getting paid](blockchain-integration/paying-and-getting-paid.md)
-* [Gas-free transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
+* [Transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
 * [About the blockchain](blockchain-integration/ethereum-essentials.md)
 
 

@@ -18,7 +18,7 @@ Decentraland uses the blockchain only to record ownership. Everything that chang
 
 Decentraland uses two blockchain networks:
 
-* **Ethereum**: one of the most widely used blockchains. LAND, Estates and NAMEs live here.
+* **Ethereum**: one of the most widely used blockchains. LAND, Estates, NAMEs and some older Wearables live here.
 * **Polygon**: a network that runs alongside Ethereum and is faster and cheaper to use. Most Wearables and Emotes live here.
 
 See [Transactions in Polygon](transactions-in-polygon.md) and [Paying and Getting Paid](paying-and-getting-paid.md#what-is-mana) for what this means in practice.
@@ -48,7 +48,7 @@ Each transaction has a small cost called a _network fee_ or _gas fee_. It pays t
 
 On Polygon, the Decentraland DAO pays the fee for many Marketplace transactions. See [Gas-free transactions](transactions-in-polygon.md#gas-free-transactions-in-the-marketplace-and-builder).
 
-Transactions aren't instant. They usually take seconds on Polygon and up to a minute or so on Ethereum, and once confirmed they **can't be undone**.
+Transactions aren't instant. They usually take seconds on Polygon and up to a minute or so on Ethereum. Once a transaction has gone through, **nobody can reverse it for you**: there's no refund button.
 
 ## Smart contracts
 

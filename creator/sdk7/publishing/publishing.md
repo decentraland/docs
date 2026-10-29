@@ -169,6 +169,10 @@ npm run deploy -- --target-content https://worlds-content-server.decentraland.or
 
 Once you run the command, you will be prompted to sign the deployment with your wallet and a set of validations will be executed to allow or reject the scene.
 
+{% hint style="warning" %}
+**📔 Note**: When your `scene.json` has a `worldConfiguration` section, `npm run deploy` needs the `--target-content` flag. Without it, the command stops with the error `DEPLOY_MISSING_TARGET_CONTENT`.
+{% endhint %}
+
 ### Accessing a World
 
 Once a scene is uploaded to the Worlds server, you can access it using the Decentraland Explorer with the following URL: `decentraland://?realm=NAME.dcl.eth`, where `NAME` should be replaced with the Decentraland NAME or ENS Domain you deployed to.
@@ -185,6 +189,50 @@ Things to remember:
 
 - Remove the `worldConfiguration` section from `scene.json`
 - The size limitation for Worlds (dynamic based on holdings) is different from that for LAND parcels (15MB per parcel), so make sure your scene is sized correctly for deployments to Genesis City!
+
+## Publish large scenes
+
+Large scenes upload in batches, so you can publish scenes bigger than about 200 MB, to Genesis City or to a World. This needs `@dcl/sdk` 7.31.0 or later in your project. The Creator Hub publishes with the SDK installed in your project, so the same applies when you publish from the Creator Hub.
+
+How the upload works:
+
+- **Under 50 MiB** (about 52 MB) of files in total: the scene uploads in a single request, as before.
+- **50 MiB or more**: the files upload in batches of 32 MiB, three batches at a time. A file is never split between batches. If one file is larger than 32 MiB, the batches grow to fit it.
+- After each batch, the CLI prints a progress line like `Uploaded 96.0 MB of 268.8 MB (batch 3/9)`.
+
+Batching doesn't change the size limits. Each file must still be under 50 MB, and the whole scene must fit the [total file size limit](../optimizing/scene-limitations.md) of its parcels or your [Worlds storage budget](#worlds-storage-budget).
+
+{% hint style="warning" %}
+**📔 Note**: If the server you deploy to doesn't support batched uploads, as can happen with a [custom server](#custom-servers), the CLI checks which files the server is missing. If those add up to 200 MB or less, it shows the warning `The target server does not support batched uploads, uploading in a single request.` and uploads them in one request. If they add up to more, the deployment fails with the error `DEPLOY_PARTIAL_NOT_SUPPORTED`. A single request can't be larger than 200 MB because the infrastructure in front of the content servers times it out.
+{% endhint %}
+
+### Cancel a deployment
+
+The browser tab that opens when you run `npm run deploy` shows the upload progress, with a **Cancel** button. Cancelling stops the upload. If the server already published the scene by the time the cancel arrives, the deployment ends as published.
+
+{% hint style="danger" %}
+**❗Warning**: When you publish to a World without `--multi-scene`, and the World has scenes on other parcels, the CLI removes those scenes before it uploads yours (see [Multi-scene worlds](#multi-scene-worlds)). If you cancel after they were removed, the World can be left empty, and the CLI ends with the error `DEPLOY_CANCELLED_AFTER_UNDEPLOY`. Deploy again to publish the scene.
+{% endhint %}
+
+If the CLI can't confirm whether the server published the scene, it ends with the error `DEPLOY_CANCEL_OUTCOME_UNCERTAIN`. Check the scene before you deploy again.
+
+Tools that run the deploy without the browser tab can cancel it through the deploy API, with a token. The CLI creates a random token on each run. To set your own, pass `--deploy-token` with a value of at least 16 characters:
+
+```bash
+npm run deploy -- --deploy-token my-own-deploy-token-0001
+```
+
+With `--programmatic`, the result of the command includes this token as `deployToken`. Run `npx sdk-commands deploy --help` to see the deploy API routes.
+
+### Deploy error codes
+
+| Error code | What it means |
+| --- | --- |
+| `DEPLOY_PARTIAL_NOT_SUPPORTED` | The server doesn't support batched uploads, and the files it's missing are over 200 MB. |
+| `DEPLOY_CONTENT_CHECK_FAILED` | The CLI couldn't check which files the server already has. |
+| `DEPLOY_CANCELLED_AFTER_UNDEPLOY` | The deployment was cancelled after the World's previous scenes were removed. |
+| `DEPLOY_CANCEL_OUTCOME_UNCERTAIN` | The deployment was cancelled, but the CLI couldn't confirm whether the server published it. |
+| `DEPLOY_MISSING_TARGET_CONTENT` | The scene has a `worldConfiguration` but the command has no `--target-content`. |
 
 ## Publish from a hardware wallet
 

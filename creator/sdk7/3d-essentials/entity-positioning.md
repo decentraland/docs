@@ -32,6 +32,16 @@ Transform.create(ball, {
 
 To move, rotate or resize an entity in your scene over a period of time, change the values on this component incrementally, frame by frame. See [Move entities](../3d-essentials/move-entities.md) for more details and best practices.
 
+Any field you leave out gets its default: position `0, 0, 0`, no rotation, and a scale of `1, 1, 1`. Leave a field out rather than setting it to `undefined`. A field that is explicitly `undefined`, for example from a variable that wasn't set, replaces the default, and the scene then throws an error during the next engine update, not on the line that called `Transform.create()`.
+
+```ts
+// ❌ If savedRotation is undefined, the scene throws an error later
+Transform.create(ball, { position: Vector3.create(5, 1, 5), rotation: savedRotation })
+
+// ✅ Fall back to a real value
+Transform.create(ball, { position: Vector3.create(5, 1, 5), rotation: savedRotation ?? Quaternion.Identity() })
+```
+
 {% hint style="warning" %}
 **📔 Note**: `Vector3` and `Quaternion` must be imported via
 

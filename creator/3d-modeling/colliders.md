@@ -28,10 +28,11 @@ Whenever a player views the lamp post model in your scene, they will see the com
 
 When you design models that are meant for players to walk around in, you need to keep in mind the following reference measurements:
 
-* Players can walk up a step of up to 30 centimeters in height without jumping
-* Players can walk up slopes of an angle of up to 45 degrees without jumping
+* Players can walk up a step of up to about 40 centimeters without jumping. A step of 45 centimeters or more needs a jump. For stairs that feel comfortable, keep each step at 25 centimeters high or less, and at least 30 centimeters deep.
+* Players can walk up slopes of up to 46 degrees without jumping. On steeper surfaces the avatar slides off. For easy walking, keep ramps at 30 degrees or less.
 * Players can jump up to 1,8 meters in height
 * Avatars measure around 1.9 meters in height, but consider that they might have hats or other wearables on their head.
+* The avatar's collider is a capsule 0.6 meters wide (a radius of 0.3 meters). A beam or ceiling lower than about 1.85 meters stops the avatar. Leave at least 2 meters of clear height anywhere players walk under. Indoors, leave much more room for the camera, see [Build interiors larger than real life](../sdk7/design-experience/design-games.md#build-interiors-larger-than-real-life).
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 

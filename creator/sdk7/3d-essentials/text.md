@@ -101,10 +101,6 @@ TextShape.create(sign, {
 })
 ```
 
-{% hint style="warning" %}
-**📔 Note**: Currently, all fonts are rendered as Sans Serif. This is a known issue to fix in the future.
-{% endhint %}
-
 {% hint style="info" %}
 **💡 Tip**: If using VS studio or some other IDE, type `Font.` and you should see a list of suggestions with all of the available fonts.
 {% endhint %}
@@ -112,6 +108,10 @@ TextShape.create(sign, {
 ### Custom fonts
 
 To render text with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder (just like the `src` of a `GltfContainer`). Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
+
+{% hint style="warning" %}
+**📔 Note**: `fontSrc` needs `@dcl/sdk` 7.31.0 or later. On earlier versions the property doesn't exist.
+{% endhint %}
 
 ```ts
 TextShape.create(sign, {
@@ -132,9 +132,10 @@ Keep the following in mind when using custom fonts:
 * **Not supported on mobile**. The Decentraland mobile app ignores `fontSrc` and renders the fallback `font`. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space. See [Missing Features on mobile](../../build-for-mobile/mobile-client/missing-features.md).
 * **The font file can be at most 16 MB**. Larger files are rejected and the fallback `font` is used. Fonts with extremely complex glyph outlines may also be rejected.
 * **Characters**: Latin characters (ASCII and Latin-1) are prerendered. Any other characters that the font includes, like Cyrillic or Chinese, are rendered the first time they appear in the scene, which can cause a brief hitch. Characters that the font doesn't include are drawn with the built-in sans-serif font.
+* **One file is one face**. A `.ttf` file holds a single weight and style. For a bold title and regular body text, add both files and point each text at its own file. Use static font files: if a font family only ships as a variable font, use its static instances.
 * **Fonts are shared**: all text entities that use the same `fontSrc` share a single copy of the font, so reusing a font across the scene costs no more than using it once. Prefer a handful of fonts over many different ones, since each font has its own texture. Each font file adds an optimized download of about 700 KB.
 
-When the desktop client can't use a custom font, it logs a message to the console saying the fallback font is being used, without a reason. If you see it, check that the file is a TrueType `.ttf` under 16 MB, then publish again.
+When the desktop client can't use a custom font, it logs a message in the `SDK_FONTS` category of the console that names the file and says why. For example, `font_src "https://example.com/font.ttf" cannot be an external URL`, or that the file isn't part of the scene's content, or that the scene has no converted font for it yet. Check the console first when a custom font doesn't show. If the font wasn't converted, check that the file is a TrueType `.ttf` under 16 MB, then publish again.
 
 ## Text alignment and padding properties
 

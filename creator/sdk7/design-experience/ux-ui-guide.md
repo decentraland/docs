@@ -167,6 +167,14 @@ Use motion to provide feedback and lead the way when needed. Motion helps player
 
 <figure><img src="../../images/media/ux-glow.webp" alt="Adding glow" width="300"><figcaption><p>Use particles, scale, or fading margins to make things stand out</p></figcaption></figure>
 
+#### Avoid flashing effects
+
+Flashing lights, strobes and fast brightness or color changes can trigger seizures in people with photosensitive epilepsy. This includes pulsing emissive materials, flickering lights, full-screen UI flashes and videos.
+
+* Keep any flashing to **3 flashes per second or fewer**, following the [WCAG "Three Flashes or Below Threshold"](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html) guideline.
+* Keep flashing areas small, and avoid saturated red and large, high-contrast flashes that fill the screen.
+* If your scene relies on intense effects, like club strobes, lightning or damage flashes, add an option in the scene to turn them off or tone them down.
+
 ### Writing and content structure
 
 UI text can make interfaces more usable and gives players more confidence in their actions. Always make UI text as concise as possible. Players are there to play, not to read. Any text that seems too long won’t be read by most players.

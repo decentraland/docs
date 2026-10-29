@@ -214,6 +214,8 @@ Whenever the scene switches between virtual cameras, or between the default came
 
 The transition settings on a virtual camera determine how you transition _into_ that camera, from any other camera in the scene, including the default. They don't affect how you transition _out_ of that camera.
 
+Going back to the player's own camera, when you clear the `virtualCameraEntity` of the `MainCamera`, always takes a fixed transition of 0.5 seconds that eases in and out. The `defaultTransition` of the virtual camera you leave doesn't change it.
+
 ```ts
 VirtualCamera.create(myCustomCamera1, {
 	defaultTransition: { transitionMode: VirtualCamera.Transition.Time(6) },

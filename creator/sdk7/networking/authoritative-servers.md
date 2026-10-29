@@ -382,6 +382,8 @@ room.onMessage("playerReady", (data, context) => {
 
 On the server, every received message includes a `context` object with the sender's verified wallet address. Use this to know which player sent the message (never rely on self-reported identity in the payload).
 
+`context.from` arrives exactly as the network reports it, with no change to upper or lower case. Lower-case it once (`context.from.toLowerCase()`) and use that value for every map, set and Storage call, so one player's data doesn't end up split across two keys.
+
 ### Wait for State Sync Before Sending
 
 Clients should wait until the scene state is synced before sending their first message, to avoid race conditions on join:
@@ -477,13 +479,18 @@ Data can be stored at two levels:
 - **Player**: Use this for player-specific data, like saving progress or preferences for that player.
 
 {% hint style="info" %}
-**💡 Tip**: Storage only accepts strings. Use `JSON.stringify()` / `JSON.parse()` for objects and `String()` / `parseInt()` for numbers.
+**💡 Tip**: Storage values are JSON. You can store a number, a string, an array or a plain object as it is, and read it back as the same value. You don't need `JSON.stringify()` or `JSON.parse()`. A value you saved earlier with `JSON.stringify()` is a string, so it reads back as that string.
 
 During local development, storage is written to `node_modules/@dcl/sdk-commands/.runtime-data/server-storage.json`.
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: `Storage.set()`, `Storage.player.set()`, and the `delete` variants resolve to a **boolean**. They never throw — on failure (a network error, or too many concurrent requests, see below) they log the error and resolve to `false`, meaning the value was **not** persisted. Always check the result: a discarded `false` is a silently lost save.
+**📔 Note**: How Storage calls report problems:
+
+- `Storage.set()` and `Storage.player.set()` resolve to a **boolean**. `false` means the value was **not** persisted, for example after a network error or when too many requests run at once (see below). Always check the result: a discarded `false` is a silently lost save.
+- `set()` throws a `TypeError` when the value can't be stored as JSON unchanged: `undefined`, `NaN` or `Infinity`, a function, a `Map` or a `Set`, among others. To remove a key, use `delete()`.
+- `get()` resolves to the stored value, or to `null` only when the key doesn't exist. When the read fails, it throws, so a failure is never mistaken for a missing key.
+- The `delete()` variants throw when the request fails. They resolve to `false` only when the key didn't exist.
 {% endhint %}
 
 ### Save at checkpoints, not on every change
@@ -517,7 +524,7 @@ function onPointScored(address: string) {
 
 // Persist only at a checkpoint, such as when a player leaves
 async function onPlayerLeave(address: string) {
-  const saved = await Storage.player.set(address, "score", String(scores[address] ?? 0))
+  const saved = await Storage.player.set(address, "score", scores[address] ?? 0)
   if (!saved) {
     // The write did not persist — keep the value in memory and retry later
     console.error(`Failed to save score for ${address}`)
@@ -543,7 +550,7 @@ function onPointScored(address: string) {
 // Flush dirty keys periodically (e.g. every ~30s) and at checkpoints
 async function flush() {
   for (const address of dirty) {
-    const ok = await Storage.player.set(address, "score", String(scores[address]))
+    const ok = await Storage.player.set(address, "score", scores[address])
     if (ok) {
       dirty.delete(address) // Saved successfully
     }
@@ -567,21 +574,19 @@ engine.addSystem((dt) => {
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
+type Entry = { name: string; score: number }
+
 // Write — set() resolves to false if the value was NOT persisted
-const ok = await Storage.set(
-  "leaderboard",
-  JSON.stringify([
-    { name: "Alice", score: 100 },
-    { name: "Bob", score: 85 },
-  ])
-)
+const ok = await Storage.set("leaderboard", [
+  { name: "Alice", score: 100 },
+  { name: "Bob", score: 85 },
+])
 if (!ok) {
   console.error("Failed to save leaderboard — retry later")
 }
 
-// Read
-const raw = await Storage.get<string>("leaderboard")
-const leaderboard = raw ? JSON.parse(raw) : []
+// Read: null when the key doesn't exist
+const leaderboard = (await Storage.get<Entry[]>("leaderboard")) ?? []
 
 // Delete
 await Storage.delete("leaderboard")
@@ -608,22 +613,19 @@ npx sdk-commands storage scene clear --confirm
 ```typescript
 import { Storage } from "@dcl/sdk/server"
 
+type Progress = { level: number; coins: number }
+
 // Write — set() resolves to false if the value was NOT persisted
-const ok = await Storage.player.set(
-  playerAddress,
-  "progress",
-  JSON.stringify({
-    level: 5,
-    coins: 250,
-  })
-)
+const ok = await Storage.player.set(playerAddress, "progress", {
+  level: 5,
+  coins: 250,
+})
 if (!ok) {
   console.error(`Failed to save progress for ${playerAddress} — retry later`)
 }
 
-// Read
-const saved = await Storage.player.get<string>(playerAddress, "progress")
-const progress = saved ? JSON.parse(saved) : { level: 1, coins: 0 }
+// Read: null when this player has no saved progress
+const progress = (await Storage.player.get<Progress>(playerAddress, "progress")) ?? { level: 1, coins: 0 }
 
 // Delete
 await Storage.player.delete(playerAddress, "progress")
@@ -647,6 +649,97 @@ npx sdk-commands storage player clear --address 0x1234... --confirm
 # Delete all player data (all players)
 npx sdk-commands storage player clear --confirm
 ```
+
+Each scene value can be up to 512 KB, and all the scene values of a World share 10 MB. Each player value can be up to 100 KB, with 1 MB per player.
+
+### Load a save without overwriting it
+
+Never assign default data when a player joins and then save it: if their saved data exists but wasn't loaded yet, the defaults replace it. Read first, and create defaults only when `get()` resolves to `null`. If the read throws, leave the player unloaded and try again later.
+
+```typescript
+import { Storage } from "@dcl/sdk/server"
+
+type Save = { coins: number }
+const saves: Record<string, Save> = {}
+
+async function loadOrCreate(address: string): Promise<Save> {
+  if (saves[address]) return saves[address] // Already loaded
+  // Throws if the read fails, so a failure never turns into a fresh save
+  const stored = await Storage.player.get<Save>(address, "save")
+  saves[address] = stored ?? { coins: 0 } // Defaults only when no save exists
+  return saves[address]
+}
+```
+
+Call it inside a `try/catch` in your join handler. If it throws, tell the client so it can retry, and ignore that player's actions until their save loads.
+
+### Progress while nobody is in the scene
+
+Don't keep a timer running for things that grow over time, like crops, energy or a shop restock. The Multiplayer Server stops a couple of minutes after the last player leaves (see [Wait for the server to start up](#wait-for-the-server-to-start-up)), so the timer stops too. Instead, store the time the progress was last updated. When a player returns, compute the progress from the time that passed, and move the stored time forward.
+
+Use the server's `Date.now()` for this, never a time sent by a client: a player can set their clock forward to skip the wait.
+
+### Avoid losing data under concurrent writes
+
+Storage has no way to update a key only if nobody changed it since you read it (no "compare-and-set"). So if you read a key, change the value and write it back, you can lose data:
+
+- Two server instances can write at the same time. This happens while an old and a new version of your scene overlap during a redeploy.
+- A read can return an older value than the last one written. Storage has served an old value of a key for an hour or more, even with `Storage.get(key, { fresh: true })`, and across server restarts. The `fresh` option only skips the SDK's own cache.
+- A read can miss a key that exists.
+
+For data that only grows, like a log of results or player feedback, use this pattern instead of rewriting one key:
+
+1. Write each snapshot to a **new key** that sorts by time and can't collide, for example `results-1-20261027-130512-k3fz`: a prefix, a part number, the UTC time and a few random characters.
+2. To read, list every key of the part with `Storage.getValues({ prefix, offset })`, page by page until you have `pagination.total` entries, and merge them by row id.
+3. Write the merged rows as a new key. Read that key back, and only if it matches, delete the keys you merged. Never delete a key that another writer can still change based on your own reads.
+
+A race then leaves an extra key, which the next write merges, instead of a lost row. Anyone who reads the data, including you when you download it from the [storage UI](#access-stored-data), must read every key of the part and drop duplicate ids.
+
+```typescript
+import { Storage } from "@dcl/sdk/server"
+
+type Row = { id: string; text: string }
+const PREFIX = "results-1-"
+
+// Every key that starts with the prefix, oldest first
+async function listAll(prefix: string) {
+  const entries: { key: string; value: unknown }[] = []
+  for (;;) {
+    const page = await Storage.getValues({ prefix, offset: entries.length })
+    entries.push(...page.data)
+    if (page.data.length === 0 || entries.length >= page.pagination.total) break
+  }
+  return entries.sort((a, b) => (a.key < b.key ? -1 : 1))
+}
+
+async function appendRows(newRows: Row[]): Promise<boolean> {
+  const versions = await listAll(PREFIX)
+  // Merge by row id, first seen wins
+  const rows = new Map<string, Row>()
+  for (const { value } of versions) for (const row of value as Row[]) if (!rows.has(row.id)) rows.set(row.id, row)
+  for (const row of newRows) if (!rows.has(row.id)) rows.set(row.id, row)
+  const merged = [...rows.values()]
+
+  // A new key every time: UTC time plus random characters
+  const stamp = new Date().toISOString().replace(/[-:.]/g, "")
+  const key = `${PREFIX}${stamp}-${Math.random().toString(36).slice(2, 6)}`
+  if (!(await Storage.set(key, merged))) return false // Not saved, retry later
+
+  // Delete the merged keys only once the new one reads back
+  const check = await Storage.get<Row[]>(key, { fresh: true })
+  if (JSON.stringify(check) !== JSON.stringify(merged)) return true
+  for (const version of versions) {
+    try {
+      await Storage.delete(version.key)
+    } catch {
+      // Left in place: the next write merges it again
+    }
+  }
+  return true
+}
+```
+
+One value can hold at most 512 KB, so start a new part (`results-2-`) before a part gets close to that. The [Scene Feedback example](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0%2C-1-scene-feedback) uses this pattern for its CSV files, and rolls over to a new part at 400 KB.
 
 ### Access stored data
 
@@ -678,23 +771,15 @@ The flip side is that the data sitting in storage was written by an older versio
 
 #### Best practices
 
-- _Always parse defensively_. Treat anything coming out of storage as untrusted input, even though you wrote it. Wrap `JSON.parse()` in a `try/catch`, check that fields exist before reading them, and have a sensible default ready when they don't:
+- _Always read defensively_. Treat anything coming out of storage as untrusted input, even though you wrote it. The type you pass to `get<T>()` isn't checked, so check that fields exist and have the right type before reading them, and have a sensible default ready when they don't:
 
   ```typescript
   import { Storage } from "@dcl/sdk/server"
 
-  const raw = await Storage.player.get<string>(playerAddress, "progress")
-  let progress = { level: 1, coins: 0 }
-  if (raw) {
-    try {
-      const parsed = JSON.parse(raw)
-      progress = {
-        level: typeof parsed.level === "number" ? parsed.level : 1,
-        coins: typeof parsed.coins === "number" ? parsed.coins : 0,
-      }
-    } catch {
-      // Old or corrupt data — fall back to defaults
-    }
+  const saved = await Storage.player.get<any>(playerAddress, "progress")
+  const progress = {
+    level: typeof saved?.level === "number" ? saved.level : 1,
+    coins: typeof saved?.coins === "number" ? saved.coins : 0,
   }
   ```
 
@@ -962,6 +1047,31 @@ room.onMessage("takeDamage", (data) => {
 })
 ```
 
+### Trusting amounts and addresses in messages
+
+A message from a client is a request, not a fact. Check every field before you use it:
+
+- **Amounts**: `Schemas.Int` only makes sure the value is a whole number, not that it's positive. Reject amounts of zero or less, or a player could "send" `-500` coins and receive them instead. Also check that the sender has enough.
+- **Addresses**: a wallet address the client sends must be `0x` followed by 40 hexadecimal characters. Reject anything else before it reaches your maps or Storage.
+
+```typescript
+import { room } from "./shared/messages"
+
+const ADDRESS = /^0x[0-9a-f]{40}$/
+const balances: Record<string, number> = {}
+
+room.onMessage("giveCoins", (data, context) => {
+  if (!context) return
+  const from = context.from.toLowerCase()
+  const to = String(data.to).toLowerCase()
+  if (!ADDRESS.test(to) || to === from) return
+  if (!Number.isInteger(data.amount) || data.amount <= 0) return // Rejects negatives and zero
+  if ((balances[from] ?? 0) < data.amount) return // Not enough coins
+  balances[from] -= data.amount
+  balances[to] = (balances[to] ?? 0) + data.amount
+})
+```
+
 ### Sending messages before state sync
 
 Clients must wait until state is synchronized before interacting:
@@ -1025,9 +1135,9 @@ export async function main() {
     )
 
     // Restore the counter from storage in case the server restarted
-    const savedCount = await Storage.get<string>("counter")
+    const savedCount = await Storage.get<number>("counter")
     const savedPlayer = await Storage.get<string>("lastPlayer")
-    const initialCount = savedCount ? parseInt(savedCount) : 0
+    const initialCount = savedCount ?? 0
     const initialPlayer = savedPlayer ?? "none"
 
     const counterEntity = engine.addEntity()
@@ -1044,7 +1154,7 @@ export async function main() {
       counter.lastPlayer = context.from
 
       // Persist to storage so the value survives server restarts
-      await Storage.set("counter", String(counter.value))
+      await Storage.set("counter", counter.value)
       await Storage.set("lastPlayer", counter.lastPlayer)
 
       room.send("stateUpdate", {

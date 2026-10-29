@@ -1,67 +1,53 @@
 ---
-description: Frequently Asked Questions about Polygon transactions
+description: >-
+  Gas-free transactions in the Marketplace and Builder, and how to pay Polygon
+  network fees with POL when you need to.
 ---
 
 # Transactions in Polygon
 
 ## What is Polygon?
 
-As stated in the the official Polygon website, [Polygon](https://polygon.technology/) is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem."
+[Polygon](https://polygon.technology/) is a blockchain network that runs alongside Ethereum. Transactions on Polygon are much faster and cheaper than on Ethereum, which is why most Wearables and Emotes in Decentraland live there.
 
-## What is Matic?
+MANA exists on both networks. See [Paying and Getting Paid](paying-and-getting-paid.md#what-is-mana) for the difference between Ethereum MANA and Polygon MANA.
 
-MATIC is Polygon's native token. It is a cryptocurrency used to cover gas fees in the Polygon network, among other use cases. MATIC is to Polygon as ETH is to Ethereum.
+## What is POL?
 
-You can buy MATIC in most cryptocurrency exchanges.
+POL is Polygon's own currency, used to pay network fees (also called gas) on Polygon. POL is to Polygon what ETH is to Ethereum.
 
-## Polygon in Decentraland's Marketplace and Builder
+POL used to be called **MATIC**. Polygon replaced MATIC with POL in September 2024, and some older guides, wallets and exchanges may still use the old name.
 
-By using the Polygon network, and thanks to Decentraland's DAO, users can list, sell and buy wearables in the Marketplace or publish their collections in the Builder without paying for the transaction gas using the meta-transactions services.
+## Gas-free transactions in the Marketplace and Builder
 
-**Transactions in Polygon are not free**. The Decentraland DAO covers the cost of the transactions in Polygon so that users can enjoy many costless transactions in the Marketplace.
+**Transactions on Polygon are not free**, but the Decentraland DAO pays the network fees for many of them. Thanks to this, you can buy, sell and list Wearables and Emotes in the Marketplace, and publish collections in the Builder, without paying any network fee yourself.
 
-In order to enjoy costless transactions there are three conditions that need to be met:
+Your transaction is gas-free when all of these are true:
 
-* You need to be connected to Ethereum Mainnet.
-* The item you are intending to buy needs to have a price of 1 MANA or higher.
-* You didn't reach your free transaction limit.
+* You haven't used up your gas-free transactions for the last 24 hours. Each account gets a limited number in any 24-hour period.
+* In the Marketplace, the item you're buying or selling costs **1 MANA or more**.
+* If you use a crypto wallet like MetaMask, it's set to the **Ethereum** network. The Marketplace handles the Polygon side for you. If you signed in with a social account or an email code, you don't need to do anything.
 
-The Decentraland DAO reserves itself the rights to consume or pause the meta-transactions services when the network's gas fees are high to prevent the consumption of the gas tanks so they can last longer and be used by as many people as possible.
+The DAO may pause gas-free transactions temporarily when Polygon network fees are very high, so the funds that pay for them last longer and reach more people.
 
-## Why do I have to cover the transaction fees for items that cost less than 1 MANA?
+## Why do I have to pay the fee for items that cost less than 1 MANA?
 
-In order to avoid exploitation and protect the free gas service, items that cost less than 1 MANA are not included in the costless transactions. You can buy these items by connecting to the Polygon network with MATIC in your wallet.
+To protect the gas-free service from abuse, Marketplace items under 1 MANA aren't included. To buy one, you pay the network fee yourself with POL on Polygon.
 
-Gas fees are variable.
+## What can I do when gas-free transactions aren't available?
 
-## What can I do if network fees are higher than 300 gwei?
+Whether you've used up your gas-free transactions for the last 24 hours or the service is paused, you can either:
 
-Gwei is a unit of measurement used in the Ethereum blockchain. It is short for "Giga-wei," where "giga" denotes one billion. In Polygon, gwei is the smallest denomination of MATIC that is equivalent to 1/1,000,000,000 of 1 MATIC (1 MATIC = 1,000,000,000 gwei). All transaction fees on the Polygon network are denominated in gwei.
+* Wait and try again later. Your gas-free transactions come back as the ones you used fall out of the 24-hour window. Network fees change constantly too, and you can follow them in real time on the [Polygon gas tracker](https://polygonscan.com/gastracker).
+* Pay the fee yourself with POL. The fee is taken from your wallet automatically as part of the transaction.
 
-Network fees (exoressed ub gwei) are variable, so the best you can do is wait and try again at another moment. [Here](https://polygonscan.com/gastracker) you can check the Polygon Gas Fee in real time.
+Gwei is the unit used for network fees. One gwei is one billionth of a POL (1 POL = 1,000,000,000 gwei).
 
-Alternatively, you can buy these items by connecting to the Polygon network to use the MATIC in your wallet to pay for the fees. The MATIC fee will be deducted automatically as part of the transaction fee of the Polygon network. You only need to be connected to the Polygon network and have MATIC in your wallet.
+## Where can I get POL to pay for transaction fees?
 
-Gas fees are variable.
-
-## What happens if the free transaction limit is reached?
-
-The free transaction limit renews every day, so you can try the day after. Alternatively, you can cover the cost of your transaction with MATIC while being connected to the Polygon network.
-
-The MATIC fee will be deducted automatically as part of the transaction fee of the Polygon network. You only need to be connected to the Polygon network and have MATIC in your wallet.
-
-Gas fees are variable.
-
-## Where can I get MATIC to pay for transaction fees?
-
-One way to obtain MATIC is buying it through [the Account dapp](https://account.decentraland.org/).
-
-Simply click on the BUY button in the Polygon MANA section, and exchange the crypto you want to purchase from MANA to MATIC.
-
-Another way is through Decentralized or Centralized exchanges. You can check [https://polygon.technology/matic-token/](https://polygon.technology/matic-token/) to see which exchanges operate with MATIC. If you want to use a Centralized exchange, make sure that it allows withdrawals through the Polygon network.
-
-If you have MATIC in the Ethereum network, you can always use the [Polygon Bridge](https://wallet.polygon.technology/bridge/) to deposit that MATIC to the Polygon network.
+* **On an exchange**: most cryptocurrency exchanges list POL. When you withdraw it to your wallet, make sure you choose the **Polygon** network.
+* **From Ethereum**: if you have POL on the Ethereum network, use the [Polygon Portal](https://portal.polygon.technology/bridge) to move it to Polygon.
 
 {% hint style="warning" %}
-**Warning:** After completing a transaction in Polygon, remember to switch back to Ethereum Mainnet to enjoy all the features in the Marketplace and the Builder that are not supported in the Polygon network.
+**📔 Note**: If you switched MetaMask (or another crypto wallet) to the Polygon network to pay a fee yourself, switch it back to Ethereum afterwards. Some features of the Marketplace and the Builder only work while you're on Ethereum.
 {% endhint %}

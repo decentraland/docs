@@ -227,6 +227,7 @@
   * [Serverless Multiplayer](sdk7/networking/serverless-multiplayer.md)
   * [Third Party Servers](sdk7/networking/third-party-servers.md)
 * [Blockchain](sdk7/blockchain/)
+  * [Blockchain Basics](sdk7/blockchain/blockchain-basics.md)
   * [Create a dApp](sdk7/blockchain/create-a-dapp.md)
   * [Deploying Your Transactions Server](sdk7/blockchain/deploying-your-own-transactions-server.md)
   * [Scene Blockchain Operations](sdk7/blockchain/scene-blockchain-operations.md)

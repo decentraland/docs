@@ -6,7 +6,7 @@ description: Provide users with costless transactions
 
 The [transactions-server](https://github.com/decentraland/transactions-server/tree/1.8.0) is a proxy server that relays transactions to [Gelato](https://www.gelato.network/relay). It receives a signed transaction from the client that it's in turn sent to the appropiate network behind the scenes. This allows the server's owner to facilitate it's users with costless transactions
 
-The transaction server is used to help with the UX of using multiple networks and to prevent them from switching network providers on the fly. The users can stay connected to [Ethereum](https://ethereum.org/en/) and interact with [Polygon](https://polygon.technology/) [by only signing transactions](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/)
+The transaction server is used to help with the UX of using multiple networks and to prevent them from switching network providers on the fly. The users can stay connected to [Ethereum](https://ethereum.org/en/) and interact with [Polygon](https://polygon.technology/) [by only signing transactions](../../../player/blockchain-integration/transactions-in-polygon.md)
 
 The Decentraland DAO has set up a server used by our dapps, covering the cost up to a certain limit with a few [restrictions](deploying-your-own-transactions-server.md#restrictions). This document explains how you can [deploy this server](deploying-your-own-transactions-server.md#running-the-server) to enable your users to relay transactions with the restrictions you need, if any.
 
@@ -37,7 +37,7 @@ It needs a contract to forward the transactions, but luckily we can reuse the on
   * Enable the `Any Contract` toggle option
 * Copy the API KEY from the `API Key` section
 
-Lastly, you'll need to fund your newly created dapp. You can do this by connecting your wallet in the [1Balance](https://app.gelato.network/1balance) section at the left sidebar. Once connected, it'll enable you to deposit your [USDC](https://polygonscan.com/token/0x3c499c542cef5e3811e1192ce70d8cc03d5c3359) to fund the transactions your users will send. If you need to get MATIC, check this [post](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/#where-can-i-get-matic-to-pay-for-transaction-fees).
+Lastly, you'll need to fund your newly created dapp. You can do this by connecting your wallet in the [1Balance](https://app.gelato.network/1balance) section at the left sidebar. Once connected, it'll enable you to deposit your [USDC](https://polygonscan.com/token/0x3c499c542cef5e3811e1192ce70d8cc03d5c3359) to fund the transactions your users will send. If you need to get POL (formerly MATIC), check this [guide](../../../player/blockchain-integration/transactions-in-polygon.md#where-can-i-get-pol-to-pay-for-transaction-fees).
 
 ### Testnet
 

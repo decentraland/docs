@@ -66,7 +66,7 @@ for (const [entity, data, transform] of engine.getEntitiesWith(
 
 The code above iterates over all entities with a `Transform` and a `PlayerIdentityData` component, and logs their data. You can use this same method to get any of the available data of all players.
 
-See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to learn how to detect and react when new players join into the scene.
+See [Event listeners](event-listeners.md#player-enters-or-leaves-scene) to learn how to detect and react when new players join into the scene.
 
 ## Get player data
 
@@ -131,10 +131,6 @@ export function main() {
 	}
 }
 ```
-
-{% hint style="info" %}
-**💡 Tip**: When testing in preview with the legacy web editor, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
-{% endhint %}
 
 To get the data for a specific player in the scene, different from the current player, run `getPlayer()` with an object with a `userId` property.
 
@@ -423,7 +419,7 @@ engine.addSystem(CursorSystem)
 
 The `PrimaryPointerInfo` component returns an object with the following properties:
 
-* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the bottom left corner of the screen. When the cursor is locked, this reports the center of the screen.
+* `screenCoordinates`: _(Vector2)_ The position of the cursor in the scene, expressed in pixels. The origin is the top left corner of the screen, with `y` growing downwards — the same coordinate space as `UiTransform` and `UiCanvasInformation`. When the cursor is locked, this reports the center of the screen.
 * `screenDelta`: _(Vector2)_ The change in the position of the cursor since the last frame, expressed in pixels. See [Mouse Movement](mouse-movement.md) for details and examples.
 * `worldRayDirection`: _(Vector3)_ A vector that represents the direction of the ray from the camera to the cursor. The origin is the camera position. Use this to calculate the position of the cursor in the world.
 * `pointerType`: 0 for `none`, 1 for `mouse`

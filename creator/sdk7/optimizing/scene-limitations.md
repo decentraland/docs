@@ -8,11 +8,11 @@ In order to improve performance in the metaverse, we have established a set of l
 
 When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, together with the limits for your scene.
 
-![](../../images/editor/triangle-limit1.png)
+![](../../images/editor/triangle-limit1.webp)
 
 You can expand this menu to view details.
 
-![](../../images/editor/triangle-limit2.png)
+![](../../images/editor/triangle-limit2.webp)
 
 {% hint style="info" %}
 **💡 Tip**: For a reference table of all specific numbers per parcel count, see:
@@ -31,7 +31,9 @@ Below are the maximum number of elements that a scene is allowed to render at th
 * **Bodies:** `n x 300` Amount of meshes in the scene.
 * **Materials:** `log2(n+1) x 20` Amount of materials in the scene. It includes materials imported as part of models.
 * **Textures:** `log2(n+1) x 10` Amount of textures in the scene. It includes textures imported as part of models.
-*   **Height:** `log2(n+1) x 20` Height in meters.
+*   **Height:** `330 meters` Maximum height of the scene, regardless of how many parcels it occupies.
+
+    > Warning: Entities placed higher than 200 meters may suffer multiplayer sync issues. Keep any content that players interact with or that is synced between players below that height.
 
     > Important: Only entities that are currently being rendered in the scene are counted for these limits. If your scene switches between 3D models, what matters is the rendered models at any point in time, not the total sum. Player avatars and any items brought by a player from outside the scene don't count for calculating these limits either.
 * **Total file size:** In Genesis City -`15 MB per parcel - 300 MB max`. For Worlds, see [World size](scene-limitations.md#world-size). Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages. You can see the full list of files being published and their sizes before you confirm a deployment.
@@ -53,7 +55,7 @@ You can list any other files or folders you want to exclude from being uploaded 
 See [Performance Optimization](../optimizing/performance-optimization.md) for tips about how you can keep your scene below these limits and make it run smoother for players.
 
 {% hint style="info" %}
-**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../building-for-mobile/), and prefer fewer triangles, fewer materials, and smaller textures.
+**📱 Mobile**: The hard limits on this page apply to all clients, but mobile devices have less headroom than desktop. Aim to stay comfortably below these limits when targeting the [mobile app](../../build-for-mobile/mobile-client/overview.md), and prefer fewer triangles, fewer materials, and smaller textures.
 {% endhint %}
 
 ## Scene boundaries
@@ -73,7 +75,7 @@ It's possible to position entities underground, to either hide them or to have o
 ## Mesh compression
 
 {% hint style="warning" %}
-**📱 Draco-compressed meshes on the [mobile client](../building-for-mobile/) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
+**📱 Draco-compressed meshes on the [mobile client](../../build-for-mobile/mobile-client/overview.md) require asset optimization.** glTF/GLB models that use [Draco](https://google.github.io/draco/) mesh compression load on the Decentraland mobile app only after they've been processed through the asset optimization pipeline. If your Draco-compressed models fail to load on mobile, verify they've been optimized — or export your models **without** Draco compression to avoid the step entirely. Other forms of glTF optimization (quantization, texture compression, mesh decimation) are unaffected.
 {% endhint %}
 
 ## Lighting

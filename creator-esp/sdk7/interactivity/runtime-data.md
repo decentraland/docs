@@ -87,7 +87,7 @@ La función `getRealm()` devuelve la siguiente información:
 
 A medida que los jugadores se mueven por el mapa, pueden cambiar de rooms para agruparse con aquellos jugadores que ahora están más cerca de ellos. Las rooms también cambian sus fronteras dinámicamente para ajustarse a un grupo manejable de personas, por lo que incluso si un jugador se queda quieto, a medida que los jugadores entran y salen del mundo, el jugador podría encontrarse en otra room. Los jugadores en una misma `room` están comunicados, y compartirán mensajes a través del MessageBus incluso si están demasiado lejos para verse. Los jugadores en un mismo servidor pero en diferentes rooms no están actualmente comunicándose, pero podrían comunicarse a medida que se mueven por el mapa y cambian de rooms.
 
-Consulta [onRealmChangedObservable](event-listeners.md#player-changes-realm-or-island) para saber cómo detectar cambios relacionados con el realm o isla del jugador.
+Para el evento obsoleto `onRealmChangedObservable`, consulta [El jugador cambia de realm o isla](deprecated-functions.md#el-jugador-cambia-de-realm-o-isla).
 
 {% hint style="warning" %}
 **📔 Nota**: Cuando la escena se carga por primera vez, puede que aún no haya una room asignada para el jugador. El explorador eventualmente asignará una room al jugador, pero esto a veces puede ocurrir un par de segundos después de que la escena se cargue.
@@ -138,6 +138,8 @@ engine.addSystem((deltaTime) => {
       engineInfo.tickNumber +
       '\ntotalRuntime: ' +
       engineInfo.totalRuntime +
+      '\nsceneHidden: ' +
+      engineInfo.sceneHidden +
       '\n--------------'
   )
 })
@@ -148,11 +150,43 @@ El componente `EngineInfo` contiene los siguientes datos:
 * `frame_number`: Contador de frames del motor
 * `total_runtime`: Runtime total de esta escena en segundos
 * `tick_number`: Contador de ticks de la escena según [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+* `scene_hidden`: Si la escena está actualmente oculta detrás de la UI de pantalla completa del Explorer
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `EngineInfo` debe importarse mediante
 
-> `import { Vector3, Quaternion } from "@dcl/sdk/ecs"`
+> `import { EngineInfo } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
+
+### Reaccionar a la desaparición de la pantalla de carga
+
+El campo `scene_hidden` indica si el jugador realmente puede ver tu escena, o si está cubierta por la UI de pantalla completa del Explorer. Mientras la pantalla de carga está visible, `sceneHidden` vale `true`. En el momento en que la pantalla de carga se desvanece y el jugador ve el mundo por primera vez, pasa a `false`.
+
+Esta es la única forma que tiene una escena de saber cuándo ocurre esa primera revelación. Úsala para retener todo aquello que, de otro modo, sucedería detrás de la pantalla de carga y el jugador se perdería: cinemáticas de introducción, sonidos de bienvenida, un tween que solo se entiende si se mira, una UI de apertura, o un evento de analítica que solo debería contar cuando el jugador realmente está ahí.
+
+```ts
+import { engine, EngineInfo } from '@dcl/sdk/ecs'
+
+function onSceneRevealed() {
+  // El jugador ya está viendo la escena, arranca la introducción acá
+  console.log('La pantalla de carga acaba de desaparecer')
+}
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Ejecutar una sola vez
+  engine.removeSystem(waitForSceneRevealed)
+  onSceneRevealed()
+})
+```
+
+{% hint style="warning" %}
+**📔 Nota**: Tu escena sigue ejecutándose normalmente mientras `sceneHidden` vale `true`, simplemente no se está mostrando. No uses este campo para pausar la lógica de tu escena, úsalo para temporizar aquello que el jugador debe presenciar.
+
+`scene_hidden` requiere un `@dcl/sdk` actualizado y una versión reciente del Decentraland Explorer. En clientes más antiguos el campo mantiene su valor por defecto `false`, así que una escena que lo espera igual se ejecuta — simplemente no queda sincronizada con la desaparición de la pantalla de carga.
+{% endhint %}
+

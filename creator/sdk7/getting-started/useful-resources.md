@@ -25,7 +25,7 @@ Use the Decentraland SDK7 Test Scenes to see working examples of specific SDK fe
 
 See how Decentraland's Multiplayer server can be used to build a resilient leaderboard. The server owns the game state, validates each score, persists per-player totals, and broadcasts a ranked leaderboard that every Decentraland client can render.
 
-🔗 [Multiplayer server leaderboard test scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90%2C-9-authoritative-server-leaderboard)
+🔗 [Multiplayer server leaderboard test scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard)
 
 See [Authoritative Servers](../networking/authoritative-servers.md) to learn how to build on the authoritative server.
 

@@ -8,7 +8,7 @@ metaLinks:
 
 # Datos Mutables
 
-Al referenciar datos de un [componente](../sdk7/architecture/entities-components.md), puedes obtener la versión mutable o de solo lectura (inmutable).
+Al referenciar datos de un [componente](../architecture/entities-components.md), puedes obtener la versión mutable o de solo lectura (inmutable).
 
 Siempre debes trabajar con las versiones de solo lectura de los datos cuando sea posible. Esta práctica puede traer una mejora muy significativa en el rendimiento de tu escena, cuando se compara con trabajar siempre con versiones mutables de esos mismos datos.
 
@@ -59,7 +59,7 @@ engine.addSystem(HeightLimitSystem)
 
 En el ejemplo anterior, un sistema verifica los valores de solo lectura del componente `Transform` de una entidad. En cada tick verifica si la posición _y_ es mayor que una altura máxima codificada. Si la altura en el transform resulta estar por encima de este límite, entonces y solo entonces obtenemos la versión mutable del Transform. Esto puede parecer trabajo extra para la escena, pero en una escena donde verificamos valores en cada tick del bucle del juego, y solo hacemos cambios ocasionalmente, resulta en enormes ganancias de rendimiento.
 
-Esta práctica sigue los principios de la [programación orientada a datos](../sdk7/architecture/data-oriented-programming.md). También está siendo adoptada gradualmente como una práctica estándar de la industria en los juegos, debido a cuánta mejora aporta.
+Esta práctica sigue los principios de la [programación orientada a datos](../architecture/data-oriented-programming.md). También está siendo adoptada gradualmente como una práctica estándar de la industria en los juegos, debido a cuánta mejora aporta.
 
 {% hint style="warning" %}
 **📔 Nota**: En versiones anteriores del SDK (6.x o anteriores), los componentes siempre se trataban como mutables. Ese patrón puede ser un poco más directo de aprender, pero era mucho menos eficiente de ejecutar.

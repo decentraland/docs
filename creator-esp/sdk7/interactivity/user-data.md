@@ -48,12 +48,12 @@ engine.addSystem(getPlayerPosition)
   * En tercera persona: Puede variar dependiendo de los movimientos de la cámara.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.PlayerEntity` o `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#the-executetask-function).
+**📔 Nota**: Evita referirte a `engine.PlayerEntity` o `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a estas entidades dentro de un sistema. Allí siempre estarán disponibles, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
 
-## Obtener todos los jugadores
+## Obtener todos los jugadores {#fetch-all-players}
 
 Todos los jugadores en la escena tienen un componente `Transform`. Este componente es de solo lectura en avatares. Para obtener las posiciones de todos los jugadores, [itera sobre todas las entidades con](../architecture/querying-components.md) un componente `PlayerIdentityData`.
 
@@ -70,9 +70,9 @@ for (const [entity, data, transform] of engine.getEntitiesWith(
 
 El código anterior itera sobre todas las entidades con un componente `Transform` y `PlayerIdentityData`, y registra sus datos. Puedes usar este mismo método para obtener cualquiera de los datos disponibles de todos los jugadores.
 
-Consulta [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) para aprender cómo detectar y reaccionar cuando nuevos jugadores se unen a la escena.
+Consulta [Event listeners](event-listeners.md#player-enters-or-leaves-scene) para aprender cómo detectar y reaccionar cuando nuevos jugadores se unen a la escena.
 
-## Obtener datos del jugador
+## Obtener datos del jugador {#get-player-data}
 
 Usa `getPlayer()` para obtener datos sobre el jugador actual, o cualquier otro jugador en la escena.
 
@@ -164,7 +164,7 @@ El fragmento anterior itera sobre todas las entidades con un componente `PlayerI
 
 ## Datos de cualquier jugador
 
-Para obtener información de cualquier jugador, haz una [llamada REST API](../networking/network-connections.md#call-a-rest-api) a los servidores de contenido.
+Para obtener información de cualquier jugador, haz una [llamada REST API](../networking/network-connections.md#llamar-a-una-api-rest) a los servidores de contenido.
 
 Esta información está expuesta en la siguiente URL, agregando el ID de usuario del jugador al parámetro de la URL.
 
@@ -199,7 +199,7 @@ El objeto `avatar` tiene la siguiente información anidada:
   * `body`: _string_ La imagen de resolución completa del jugador parado derecho, con 512x1024 píxeles.
 
 {% hint style="danger" %}
-**❗Advertencia** Las capturas del avatar quedarán obsoletas en el futuro y ya no se devolverán como parte de los datos de un avatar. El enfoque recomendado es usar `AvatarTexture` en su lugar, consulta [Retratos de Avatar](../3d-essentials/materials.md#avatar-portraits).
+**❗Advertencia** Las capturas del avatar quedarán obsoletas en el futuro y ya no se devolverán como parte de los datos de un avatar. El enfoque recomendado es usar `AvatarTexture` en su lugar, consulta [Retratos de Avatar](../3d-essentials/materials.md#retratos-de-avatar).
 {% endhint %}
 
 A diferencia de `getPlayer()`, esta opción no está limitada solo a los jugadores que actualmente están en la misma escena, o incluso en el mismo servidor. Con este enfoque puedes obtener datos de cualquier jugador que haya iniciado sesión en los servidores en el pasado.
@@ -275,7 +275,7 @@ for (const [entity, data, base, attach, transform] of engine.getEntitiesWith(
 **📔 Nota**: Todos estos componentes son de solo lectura. No puedes cambiar sus valores desde la escena.
 {% endhint %}
 
-## Obtener Experiencias Portátiles
+## Obtener Experiencias Portátiles {#get-portable-experiences}
 
 Las experiencias portátiles son esencialmente escenas que no están limitadas a parcelas de tierra. Los jugadores pueden llevarlas consigo a cualquier lugar en Decentraland, agregando una nueva capa de contenido sobre el mundo. Los Smart Wearables son ejemplos de experiencias portátiles. Es posible que desees saber si un jugador está usando uno de estos, ya que un wearable inteligente puede permitir que los jugadores tengan habilidades que podrían considerarse trampa en un juego competitivo. Por ejemplo, en un juego de plataformas, un jugador que usa un jetpack tiene una ventaja muy injusta sobre otros.
 
@@ -296,7 +296,7 @@ executeTask(async () => {
 
 La función `getPlayer()` devuelve solo una lista de IDs de wearables, sin información sobre cada wearable. Tal vez desees verificar cualquier wearable de una categoría específica (ej: sombreros), o cualquier wearable de una rareza específica (ej: Mítico), para eso necesitarás obtener información más detallada sobre los wearables del jugador.
 
-Haz una [llamada REST API](../networking/network-connections.md#call-a-rest-api) a la siguiente URL, para obtener una lista completa actualizada de todos los wearables que están actualmente utilizables, con detalles sobre cada uno.
+Haz una [llamada REST API](../networking/network-connections.md#llamar-a-una-api-rest) a la siguiente URL, para obtener una lista completa actualizada de todos los wearables que están actualmente utilizables, con detalles sobre cada uno.
 
 `${playerRealm.realmInfo.baseUrl}/lambdas/collections/wearables-by-owner/${userData.userId}?includeDefinitions`
 
@@ -339,7 +339,7 @@ executeTask(fetchWearablesData)
 **💡 Consejo**: Puedes obtener aún más información sobre wearables específicos desde la [siguiente API](https://decentraland.github.io/catalyst-api-specs/#tag/Lambdas/operation/searchWearables).
 {% endhint %}
 
-## Verificar el modo de cámara del jugador
+## Verificar el modo de cámara del jugador {#check-the-players-camera-mode}
 
 Los jugadores pueden estar usando una cámara en primera o tercera persona cuando exploran Decentraland. Verifica cuál de estas está usando el jugador verificando el valor del componente `CameraMode` de la entidad `engine.CameraEntity`.
 
@@ -371,13 +371,13 @@ El modo de cámara usa un valor del enum `CameraType`. Los siguientes valores so
 El componente `CameraMode` del `engine.CameraEntity` es de solo lectura, no puedes forzar al jugador a cambiar el modo de cámara a través de esto.
 
 {% hint style="info" %}
-**💡 Consejo**: Para cambiar el modo de cámara del jugador, usa un [área modificadora de cámara](avatar-modifiers.md#camera-modifiers).
+**💡 Consejo**: Para cambiar el modo de cámara del jugador, usa un [área modificadora de cámara](avatar-modifiers.md#modificadores-de-camara).
 {% endhint %}
 
 Conocer el modo de cámara puede ser muy útil para ajustar las mecánicas de tu escena para ajustarse mejor a lo que es más cómodo usando este modo. Por ejemplo, objetivos pequeños son más difíciles de hacer clic cuando se está en tercera persona.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#the-executetask-function).
+**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a esta entidad dentro de un sistema. Siempre estará disponible, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
@@ -388,7 +388,7 @@ Los jugadores pueden cambiar entre dos modos de cursor: modo de _cursor bloquead
 
 Los jugadores desbloquean el cursor haciendo clic en el _botón derecho del mouse_ o presionando la tecla _Esc_, y bloquean el cursor nuevamente haciendo clic en cualquier lugar de la pantalla.
 
-Verifica el componente `PointerLock` de la [entidad de cámara](../architecture/entities-components.md#reserved-entities) de la escena para saber cuál es el modo de cursor actual.
+Verifica el componente `PointerLock` de la [entidad de cámara](../architecture/entities-components.md#entidades-reservadas) de la escena para saber cuál es el modo de cursor actual.
 
 ```ts
 export function main() {
@@ -397,12 +397,12 @@ export function main() {
 }
 ```
 
-Consulta [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) para ver cómo reaccionar fácilmente a cambios en el estado del cursor.
+Consulta [Event listeners](event-listeners.md#el-jugador-bloquea-o-desbloquea-el-cursor) para ver cómo reaccionar fácilmente a cambios en el estado del cursor.
 
-También puedes forzar el estado del cursor del jugador escribiendo en el campo `isPointerLocked` del componente `PointerLock` en `engine.CameraEntity`. Consulta [Bloquear o desbloquear el cursor](button-events/click-events.md#lock-or-unlock-the-cursor) para ver ejemplos.
+También puedes forzar el estado del cursor del jugador escribiendo en el campo `isPointerLocked` del componente `PointerLock` en `engine.CameraEntity`. Consulta [Bloquear o desbloquear el cursor](event-listeners.md#el-jugador-bloquea-o-desbloquea-el-cursor) para ver ejemplos.
 
 {% hint style="warning" %}
-**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#the-executetask-function).
+**📔 Nota**: Evita referirte a `engine.CameraEntity` en la carga inicial de la escena, porque eso puede resultar en errores si las entidades aún no están inicializadas. Para evitar este problema, úsalas dentro de la función `main()`, o en una función llamada indirectamente por `main()`. También puedes encapsular el comportamiento en un bloque async [`executeTask`](../programming-patterns/async-functions.md#la-funcion-executetask).
 
 Otra opción es referirte a la entidad dentro de un sistema. Siempre estará disponible, porque la primera ejecución del sistema se llama una vez que la escena ya está correctamente inicializada.
 {% endhint %}
@@ -434,7 +434,7 @@ El componente `primaryPointerInfo` devuelve un objeto con las siguientes propied
 * `pointerType`: 0 para `none`, 1 para `mouse`
 
 {% hint style="info" %}
-**💡 Consejo**: Para reaccionar a eventos simples de hover en elementos de UI, puede resultarte más fácil usar los eventos `onMouseEnter` y `onMouseLeave`, consulta [Eventos de botones de UI](../2d-ui/ui_button_events.md#hover-feedback).
+**💡 Consejo**: Para reaccionar a eventos simples de hover en elementos de UI, puede resultarte más fácil usar los eventos `onMouseEnter` y `onMouseLeave`, consulta [Eventos de botones de UI](../2d-ui/ui_button_events.md#retroalimentacion-de-hover).
 {% endhint %}
 
 El componente `primaryPointerInfo` es de solo lectura, no puedes forzar al jugador a cambiar la posición del cursor.

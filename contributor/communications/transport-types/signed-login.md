@@ -1,6 +1,6 @@
 The Signed Login transport can be used by servers that want to customize the way they assign clients to islands, replacing or wrapping Archipelago in their architecture.
 
-Instead of connecting directly to a real-time backend, Signed Login makes a [signed fetch](/contributor/auth/signed_fetch) to obtain the connection string. This intermediate step allows servers to employ whatever assignment strategy they want.
+Instead of connecting directly to a real-time backend, Signed Login makes a [signed fetch](../../authentication/signed-fetch.md) to obtain the connection string. This intermediate step allows servers to employ whatever assignment strategy they want.
 
 Signed Login URIs have this shape:
 
@@ -13,7 +13,7 @@ The portion after the `signed-login:` prefix can be any valid URL.
 
 ## Usage
 
-A Signed Login request is constructed using the [signed fetch](/contributor/auth/signed_fetch) mechanism.
+A Signed Login request is constructed using the [signed fetch](../../authentication/signed-fetch.md) mechanism.
 
 The response, if successful, will have status `200` and a JSON body with _at least_ the following fields:
 

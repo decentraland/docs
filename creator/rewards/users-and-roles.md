@@ -1,3 +1,9 @@
+---
+description: >-
+  Manage who can operate a Decentraland Rewards campaign by assigning roles
+  and permissions to wallet addresses.
+---
+
 # Users and Roles
 
 To perform any actions on a campaign within the Rewards service, you must be logged in with a wallet that has the necessary permissions.
@@ -11,7 +17,7 @@ To add a user to the campaign.
 3. Complete the form by entering the user's wallet address (or ENS name) and selecting their role.
 4. Click the **Add User** button to finalize the addition.
 
-![](../images/rewards/users.png)
+![](../images/rewards/users.webp)
 
 ## Permissions for roles
 

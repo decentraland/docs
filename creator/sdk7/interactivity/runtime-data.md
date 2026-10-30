@@ -125,6 +125,27 @@ When using the official Decentraland desktop app, this function should return th
 
 Players using the official Decentraland desktop app are likely to have a much smoother experience than those on the browser, since the browser imposes performance limitations on how much of the machine's processing power the browser tab can use. They will also be missing many features like camera control, dynamic lights, freezing player movement, UI enhancements, etc.
 
+## Get player language
+
+Use `getPlayerLanguage()` to know which language the player's client is set to. It returns a [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) tag, like `'en'`, `'es'` or `'pt-BR'`. Use it to pick which translation of your scene's texts to show.
+
+```ts
+import { getPlayerLanguage, onPlayerLanguageChanged } from '@dcl/sdk/platform'
+
+console.log('LANGUAGE: ', getPlayerLanguage())
+
+// React to the player switching language mid-session
+onPlayerLanguageChanged.add(({ language }) => {
+  console.log('LANGUAGE CHANGED TO: ', language)
+})
+```
+
+`onPlayerLanguageChanged` fires whenever the player changes the client language while in your scene. Older clients never emit it.
+
+{% hint style="warning" %}
+**📔 Note**: `getPlayerLanguage()` returns `'en'` until the explorer has reported its language back to the scene, which happens shortly after the scene starts. It also returns `'en'` on clients that don't report a language. Both functions require `@dcl/sdk` version 7.30.0 or newer.
+{% endhint %}
+
 ## The EngineInfo Component
 
 The `EngineInfo`component keeps track of data about the scene's lifecycle, which can sometimes be useful to tell when an event is occurring, relative to the scene's initialization.
@@ -144,16 +165,30 @@ engine.addSystem((deltaTime) => {
       engineInfo.tickNumber +
       '\ntotalRuntime: ' +
       engineInfo.totalRuntime +
+      '\nsceneHidden: ' +
+      engineInfo.sceneHidden +
       '\n--------------'
   )
 })
 ```
 
-The `EngineInfo`component holds the following data:
+You can use `sceneHidden` to pause resource-intensive work while the scene is not visible:
 
-* `frame_number`: Frame counter of the engine
-* `total_runtime`: Total runtime of this scene in seconds
-* `tick_number`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148)
+```ts
+engine.addSystem((deltaTime) => {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (engineInfo?.sceneHidden) return
+
+  // Normal gameplay logic runs only when the scene is visible
+})
+```
+
+The `EngineInfo` component holds the following data:
+
+* `frameNumber`: Frame counter of the engine.
+* `totalRuntime`: Total runtime of this scene, in seconds.
+* `tickNumber`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148).
+* `sceneHidden`: `true` when the scene is hidden behind the Explorer's fullscreen UI. That covers the loading screen, and also the map, the backpack, and the settings menu. Use this to mute audio and pause heavy work while the player can't see the scene.
 
 {% hint style="warning" %}
 **📔 Note**: The `EngineInfo` component must be imported via
@@ -162,3 +197,36 @@ The `EngineInfo`component holds the following data:
 
 See [Imports](../getting-started/coding-scenes.md#imports) for how to handle these easily.
 {% endhint %}
+
+### React to the loading screen fading out
+
+The `scene_hidden` field tells you if the player can actually see your scene, or if it's covered by the Explorer's fullscreen UI. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
+
+It turns `true` again later whenever a fullscreen Explorer UI covers the scene, such as the map, the backpack, or the settings menu. That makes it a good cue to mute [audio](../3d-essentials/sounds.md) and pause expensive systems, then resume when it returns to `false`.
+
+This is the only way for a scene to know when that first reveal happens. Use it to hold back anything that would otherwise play out behind the loading screen, and be missed by the player: intro cinematics, welcome sounds, a tween that only reads well if it's watched, an opening UI, or an analytics event that should only count once the player is really there.
+
+```ts
+import { engine, EngineInfo } from '@dcl/sdk/ecs'
+
+function onSceneRevealed() {
+  // The player is now looking at the scene, start the intro here
+  console.log('The loading screen just faded out')
+}
+
+engine.addSystem(function waitForSceneRevealed() {
+  const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
+  if (!engineInfo || engineInfo.sceneHidden) return
+
+  // Only run once
+  engine.removeSystem(waitForSceneRevealed)
+  onSceneRevealed()
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: Your scene keeps running normally while `sceneHidden` is `true`, it's only not being displayed. Don't use this field to pause your scene's logic, use it to time what the player is meant to witness.
+
+`scene_hidden` requires an up-to-date `@dcl/sdk` and a recent version of the Decentraland Explorer. On older clients the field stays at its default value of `false`, so a scene that waits on it still runs — it just won't be in sync with the loading screen fade-out.
+{% endhint %}
+

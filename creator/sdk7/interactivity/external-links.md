@@ -10,7 +10,7 @@ You can add links from your scene out to other content, either to other scenes o
 
 The easiest way to add an external link or a teleport is to use the Scene Editor. Use the **Teleport** [Smart Item](../../scene-editor/interactivity/smart-items.md) to add teleport to another scene in Genesis City, or use any of the **Social Links** smart items to add links to external sites.
 
-![](../../images/editor/social-links.png)
+![](../../images/editor/social-links.webp)
 
 ## Teleports
 
@@ -28,25 +28,45 @@ Players are presented a confirmation screen before they are teleported, this scr
 
 Bear in mind that teleports take you to a scene at the indicated coordinates, but not necessarily to those same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
 
-To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player](player-avatar.md#move-player).
+To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player](avatars/move-player.md).
 
 ## Teleport to a WORLD
 
-To send a player to a scene that is not published in the open world Genesis City map, but instead to an isolated [Decentraland WORLD](../publishing/publishing-options.md#decentraland-worlds), use the function `changeRealm()`.
+To send a player to a scene that is not published on the open Genesis City map, but instead to an isolated [Decentraland WORLD](../publishing/publishing-options.md#decentraland-worlds), pass a `realm` to `teleportTo()`.
 
 ```ts
-import { changeRealm } from "~system/RestrictedActions"
+import { teleportTo } from "~system/RestrictedActions"
 
 (...)
 
-changeRealm({realm: 'mannakia.dcl.eth'})
+teleportTo({ realm: 'mannakia.dcl.eth' })
 ```
 
-Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata](../projects/scene-metadata.md) for details on how to set this data.
+`realm` accepts either a world name such as `mannakia.dcl.eth`, or a realm URL.
 
-The player will spawn in one of the spawn points of the scene in that world, regardless of their current coordinates on the map.
+With no `worldCoordinates`, the player lands on one of the destination's spawn points. Add coordinates to pick a specific parcel inside that world:
 
-To send a player back to Genesis City from a world, use `changeRealm` setting the `realm` field to _'https://realm-provider-ea.decentraland.org/main'_.
+```ts
+// Land on parcel 12,34 of a specific world
+teleportTo({
+	realm: 'mannakia.dcl.eth',
+	worldCoordinates: { x: 12, y: 34 },
+})
+```
+
+Players are presented a confirmation screen before they change realm. It asks _"Are you sure you want to enter this World?"_ and shows the destination (the world name, or the host of the realm URL). The player is only moved if they accept.
+
+To send a player back to Genesis City from a world, don't include the `realm` field, which defaults to Genesis City.
+
+{% hint style="warning" %}
+**📔 Note**: The `realm` field requires `@dcl/sdk` version 7.28.0 or newer.
+{% endhint %}
+
+### changeRealm is deprecated
+
+Older scenes used `changeRealm()` to reach a world. It still works, but use `teleportTo({ realm })` instead. `changeRealm()` also shows a confirmation screen; its optional `message` field only replaces the default prompt text.
+
+`changeRealm()` resolves as soon as the player accepts the prompt, not when the new realm is actually live. A `teleportTo()` call right after it would run against the **old** realm and land the player in the wrong place. `teleportTo({ realm })` does both steps in one call, so that gap doesn't exist.
 
 ## External links
 
@@ -68,137 +88,7 @@ If players tick the _trust this domain_ checkbox, they won't be prompted again d
 
 ## Open Explorer UI panels
 
-Use `openExplorerUi()` to open one of the Explorer's built-in fullscreen panels (the map, settings, backpack, and others) from your scene. The player must trigger the action with an explicit click or button event, the same as `openExternalUrl`.
-
-```ts
-import { openExplorerUi } from '~system/RestrictedActions'
-
-// Open the map panel
-const result = await openExplorerUi({ ui: 1 })
-```
-
-The `ui` field selects which panel to open. Use the `ExplorerUi` values from `~system/RestrictedActions`:
-
-| Value | Name             | Panel       |
-| ----- | ---------------- | ----------- |
-| 0     | `EU_SETTINGS`    | Settings    |
-| 1     | `EU_MAP`         | Map         |
-| 2     | `EU_BACKPACK`    | Backpack    |
-| 3     | `EU_CAMERA_REEL` | Camera Reel |
-| 4     | `EU_COMMUNITIES` | Communities |
-| 5     | `EU_PLACES`      | Places      |
-| 6     | `EU_EVENTS`      | Events      |
-
-The function returns a promise with an `openResult` field that tells you what happened:
-
-| Result                       | Meaning                                                            |
-| ---------------------------- | ------------------------------------------------------------------ |
-| `OPENED`                     | The panel was opened successfully.                                 |
-| `WAS_ALREADY_OPEN`           | A fullscreen panel was already open.                               |
-| `REJECTED_NOT_CURRENT_SCENE` | The player is no longer in the scene that made the request.        |
-| `REJECTED_FEATURE_DISABLED`  | The requested panel is disabled or unavailable in this client.     |
-| `REJECTED_NO_USER_GESTURE`   | The call did not come from a user gesture (click or button event). |
-
-Here is a full example that opens the map when a player clicks a cube:
-
-```ts
-import { openExplorerUi } from '~system/RestrictedActions'
-
-// Create a clickable cube that opens the map
-const mapButton = engine.addEntity()
-Transform.create(mapButton, { position: Vector3.create(8, 1, 8) })
-MeshRenderer.setBox(mapButton)
-MeshCollider.setBox(mapButton)
-
-pointerEventsSystem.onPointerDown(
-  {
-    entity: mapButton,
-    opts: { button: InputAction.IA_POINTER, hoverText: 'Open Map' },
-  },
-  async () => {
-    const result = await openExplorerUi({ ui: 1 })
-    if (result.openResult === 1) {
-      console.log('Map opened')
-    }
-  }
-)
-```
-
-{% hint style="warning" %}
-**Note:** Like other restricted actions, `openExplorerUi` can only be called from an explicit user gesture (a click or button event). Calling it from a timer, collision area, or any other trigger will be rejected.
-{% endhint %}
-
-### Which actions count as a user gesture
-
-The Explorer only accepts `openExplorerUi` within the same tick as a user gesture. Otherwise the call returns `REJECTED_NO_USER_GESTURE` and no panel opens.
-
-- Call `openExplorerUi` directly inside the click handler. If you `await` something else first (a fetch, a timer, another restricted action), the call can land after the gesture's tick and be rejected.
-- Opening a panel on scene load, on a timer, when the player walks into a trigger area, or on hover is never accepted. Design the panel as the result of something the player presses, and label it so they know what the press does.
-- Clicks on 3D entities (`pointerEventsSystem` events) count as gestures in all Explorer versions. Clicks on scene UI (`onMouseDown` on a `Button` or `UiEntity`) and key presses read through `inputSystem` count only in Explorer releases **after v0.187.0**. On older versions they return `REJECTED_NO_USER_GESTURE`.
-
-Always check `openResult`, and give players another way to reach what the panel offers if the call is rejected.
-
-### Wait for the player to close the panel
-
-To continue a flow once the player is done with a panel, use `openExplorerUiAndWait()` from `@dcl/sdk/explorer-ui` (SDK 7.30.0 or later). It opens the panel and returns a promise that resolves when the player closes it. The same gesture rules apply, so call it directly from the click handler.
-
-```ts
-import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
-
-pointerEventsSystem.onPointerDown(
-  {
-    entity: wardrobe,
-    opts: { button: InputAction.IA_POINTER, hoverText: 'Change outfit' },
-  },
-  async () => {
-    const outcome = await openExplorerUiAndWait(ExplorerUi.EU_BACKPACK)
-    if (outcome.$case === 'closed') {
-      // The player closed the backpack, continue your flow here
-    } else if (outcome.$case === 'notOpened') {
-      console.log('Backpack not opened, result:', outcome.openResult)
-    }
-  }
-)
-```
-
-The resolved value has a `$case` field:
-
-| `$case`     | Meaning                                                                                           |
-| ----------- | ------------------------------------------------------------------------------------------------- |
-| `closed`    | The panel this call opened was closed.                                                            |
-| `notOpened` | The panel didn't open. `openResult` holds the reason, with the values listed above.              |
-| `timedOut`  | The `timeoutMs` option was set and that time passed before the panel closed.                      |
-| `matched`   | A stop condition passed in the `until` option fired before the panel closed.                      |
-
-A panel can stay open for a long time. To stop waiting after a set time, pass a timeout in milliseconds:
-
-```ts
-const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_MAP }, { timeoutMs: 60000 })
-```
-
-### React when panels open or close
-
-To react whenever an Explorer panel opens or closes, including panels the player opened on their own, read the `ExplorerUiEventsResult` component on `engine.RootEntity`. Each new entry reports the panel (`ui`) and whether it was `opened` or `closed`.
-
-```ts
-import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
-
-ExplorerUiEventsResult.onChange(engine.RootEntity, (entry) => {
-  if (!entry) return
-  if (entry.ui === ExplorerUi.EU_MAP && entry.event?.$case === 'opened') {
-    console.log('Map was opened')
-  }
-})
-```
-
-### Practical uses
-
-Opening Explorer panels directly from your scene's content removes friction for players who might not know where to find these menus. Some ideas:
-
-- **Tipping**: If your scene has [tipping enabled](../projects/scene-metadata.md#tipping), place a tip jar or donation sign as clickable 3D content that UI.
-- **Performance settings**: If your scene detects that the player is running at a low frame rate, show a UI prompt suggesting they lower their graphics settings, with a button that opens the settings panel. See [performance optimization](../optimizing/performance-optimization.md#help-players-adjust-their-settings).
-- **Onboarding**: If your experience relies on wearables or emotes, add a mirror or wardrobe that opens the backpack panel so players can equip them without leaving the flow of your scene.
-- **Photo opportunities**: Next to a scenic photo spot, add a sign that opens the camera reel panel so players can review the pictures they've taken.
+Besides external sites, your scene can open the Explorer's own fullscreen panels, like the map, the settings, or the backpack, with the `openExplorerUi()` restricted action. As with `openExternalUrl()`, the call must be a direct response to something the player clicked or pressed. See [Open explorer panels](event-listeners.md#open-explorer-panels) for the full reference, including how to wait until the player closes the panel.
 
 ## Copy to clipboard
 

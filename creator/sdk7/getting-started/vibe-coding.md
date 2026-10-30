@@ -1,6 +1,8 @@
 ---
 title: Vibe Coding with AI
-description: Use AI assistants to build Decentraland scenes by describing what you want in plain language.
+description: >-
+  Build Decentraland scenes with AI assistants using the Creator Hub and the
+  official Decentraland SDK Skills (npx skills add decentraland/sdk-skills).
 ---
 
 # Vibe Coding with AI
@@ -22,6 +24,12 @@ This approach works at any skill level:
 - **Beginners & non-developers** — Go from zero to a working scene without writing code manually.
 - **Experienced developers** — Skip the boilerplate. Let the AI handle multiplayer sync, UI scaffolding, and deployment config while you focus on creative decisions.
 - **Teams & studios** — Prototype scene concepts quickly before committing full development resources.
+
+## Use the AI Assistant in the Creator Hub
+
+The quickest way to start is the Creator Hub's built-in [AI Assistant](../../scene-editor/code/ai-assistant.md). It sees your open scene, edits entities, components, smart items and code for you, and can run the preview to check its own work. It installs the skills below into your project automatically, so there is nothing to set up beyond signing into a coding CLI.
+
+It is an experimental feature, turned off by default.
 
 ## Combine a code editor with AI
 
@@ -50,6 +58,21 @@ npx skills add decentraland/sdk-skills -g
 ```
 
 This copies skill files into your agent's configuration so it knows Decentraland patterns and constraints.
+
+## Updating Skills
+
+New skills are added over time, and existing ones are improved. To get the latest versions, re-run the install command with `--all`:
+
+```bash
+# Update every installed skill and download any new ones
+npx skills add decentraland/sdk-skills --all
+```
+
+Running `add` again re-fetches the repository, so it refreshes the skills you already have and installs any that were added since your first install. If you installed skills globally, add `-g` to this command too.
+
+{% hint style="warning" %}
+**📔 Note**: Don't use `npx skills update` for this. It only refreshes the skills already on your machine, so any skills added to the repository after your last install are silently skipped. Always use `npx skills add decentraland/sdk-skills --all` instead.
+{% endhint %}
 
 ## Available AI Skills
 
@@ -171,6 +194,19 @@ Behind the scenes the agent can:
 
 - **See** — take screenshots, read the scene's `console.log` output and errors, check whether the scene loaded or crashed, list the scene's entities and inspect their components, and read the player and camera position.
 - **Control** — move and teleport the player, walk in a direction through real collisions, aim the camera, place a free camera for a specific shot, switch camera modes, click on scene objects, send chat messages and `/commands`, trigger emotes, and reload the scene.
+- **Measure** — read live counts of the scene's content (triangles, entities, textures, materials, and more) against Decentraland's limits, rank which 3D models contribute the most to that load from any viewpoint, and sample the real frame rate the player experiences at any spot.
+
+### Use it to optimize your scene
+
+Because the agent can measure as well as see, you can hand it performance work directly. It can check your scene against the [scene limitations](../optimizing/scene-limitations.md), identify which 3D models are the heaviest, measure the frame rate at specific spots, and, most importantly, re-measure after making changes to prove that they helped:
+
+> "Check if my scene is within Decentraland's content limits, and tell me which budget is closest to the cap."
+
+> "The scene feels choppy near the fountain. Stand there, measure the frame rate, and tell me which models cost the most from that spot."
+
+> "Optimize the scene: find what's dragging the frame rate down, fix it, and show me before and after measurements."
+
+For best results, install the `optimize-scene` skill together with `unity-explorer-mcp`, so the agent also knows Decentraland's optimization best practices. See [Performance Optimization](../optimizing/performance-optimization.md#optimize-with-ai) for more on this workflow, including how to pair it with the Blender MCP server to automate fixes to the 3D models themselves.
 
 ### Tips
 
@@ -206,15 +242,11 @@ Break complex requests into steps:
 2. "Add a counter that increases when the player clicks the target"
 3. "Display the counter value on the scoreboard"
 
-### Ask for one thing at a time
-
-> "Add background music that loops, but keep the file size under 1 MB"
-
 ### Iterate and refine
 
 After each change:
 
-1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
+1. Preview the scene (click **Play** in Creator Hub, or `npm run start` in the command line)
 2. Check what works and what doesn't
 3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
 
@@ -271,5 +303,5 @@ While AI tools are powerful, keep these in mind:
 - [SDK Quick Start](sdk-101.md) — Learn SDK7 fundamentals
 - [Combine with Code](../../scene-editor/code/overview.md) — Mix visual editing with code
 - [Multiplayer Server](../networking/authoritative-servers.md) — Server-authoritative multiplayer
-- [Scene Examples](https://studios.decentraland.org/resources?sdk_version=SDK7) — Browse example scenes for inspiration
+- [Scene Examples](../../tutorials/examples.md) — Browse reusable scene mechanics and repositories
 - [Useful Resources](useful-resources.md) — More AI tools, asset libraries, and add-ons to speed up your workflow

@@ -10,13 +10,13 @@ Los clientes son libres de implementar transportes como deseen (siempre que siga
 
 Hay 5 tipos de transporte definidos por el protocolo:
 
-* [Websocket](transport-types/websocket) (`ws-room`) usa un stream websocket estándar.
-* [LiveKit](transport-types/livekit) (`livekit`) usa el framework de código abierto LiveKit, basado en WebRTC.
-* [SignedLogin](transport-types/signed_login) (`signed-login`) hace una solicitud HTTPS firmada para obtener un transporte asignado dinámicamente de un servidor.
-* [Offline](transport-types/offline) (`offline`) es un transporte ficticio que indica que no hay comms en el entorno actual.
-* [Simulator](transport-types/simulator) (`simulator`) es un transporte ficticio con comportamiento completamente personalizado, principalmente para que desarrolladores depuren sus implementaciones.
+* [Websocket](transport-types/websocket.md) (`ws-room`) usa un stream websocket estándar.
+* [LiveKit](transport-types/livekit.md) (`livekit`) usa el framework de código abierto LiveKit, basado en WebRTC.
+* [SignedLogin](transport-types/signed-login.md) (`signed-login`) hace una solicitud HTTPS firmada para obtener un transporte asignado dinámicamente de un servidor.
+* [Offline](transport-types/offline.md) (`offline`) es un transporte ficticio que indica que no hay comms en el entorno actual.
+* [Simulator](transport-types/simulator.md) (`simulator`) es un transporte ficticio con comportamiento completamente personalizado, principalmente para que desarrolladores depuren sus implementaciones.
 
-Los mensajes enviados y recibidos a través de una interfaz de transporte son siempre los mismos (ver [mensajes](messages)). Algunos transportes pueden envolverlos en estructuras de control para transmisión, pero estos deben desempaquetarse antes de cruzar la interfaz `Transport`.
+Los mensajes enviados y recibidos a través de una interfaz de transporte son siempre los mismos (ver [mensajes](messages.md)). Algunos transportes pueden envolverlos en estructuras de control para transmisión, pero estos deben desempaquetarse antes de cruzar la interfaz `Transport`.
 
 
 ## Diseño Recomendado {#recommended}
@@ -54,13 +54,13 @@ Los valores de `uriWithConnectionParams` son siempre de la forma:
 
 El `<type>` corresponde a uno listado arriba, y el formato para `<parámetros de conexión del tipo>` depende del transporte específico. Puede ser una URL, un token opaco, o cualquier dato arbitrario.
 
-El transporte [LiveKit](transport-types/livekit), por ejemplo, usa una URL `wss` con un parámetro `access_token` para establecer una conexión autenticada:
+El transporte [LiveKit](transport-types/livekit.md), por ejemplo, usa una URL `wss` con un parámetro `access_token` para establecer una conexión autenticada:
 
 ```
 livekit:wss://comms.example.com?access_token=eyJhbGciOiJI...
 ```
 
-Para comparación, el transporte [Websocket](transport-types/websocket) también usa una URL `wss`, pero sin un token pre-generado. Requiere un flujo de autenticación una vez conectado.
+Para comparación, el transporte [Websocket](transport-types/websocket.md) también usa una URL `wss`, pero sin un token pre-generado. Requiere un flujo de autenticación una vez conectado.
 
 
 ### Creando Transportes
@@ -83,9 +83,9 @@ function createTransport(uriWithConnectionParams: string) {
 
 Los clientes no están obligados a implementar todos los transportes estándar. Si intentan usar solo un subconjunto de los tipos definidos sin apuntar a manejar todos los URIs, son libres de rechazar tipos que no soporten.
 
-Los clientes más completos, como un World Explorer, son aconsejados a implementar al menos los transportes [websocket](transport-types/websocket) y [LiveKit](transport-types/livekit), que actualmente están en uso por todos los realms principales.
+Los clientes más completos, como un World Explorer, son aconsejados a implementar al menos los transportes [websocket](transport-types/websocket.md) y [LiveKit](transport-types/livekit.md), que actualmente están en uso por todos los realms principales.
 
 
 ## Aprende más
 
-Dirígete a una sección de [tipo de transporte específico](#types), lee sobre los diferentes [tipos de mensaje](messages) o revisa la [[Comms Demo Station]].
+Dirígete a una sección de [tipo de transporte específico](#types), lee sobre los diferentes [tipos de mensaje](messages.md) o revisa la [[Comms Demo Station]].

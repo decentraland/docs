@@ -12,15 +12,15 @@ Define a Custom Item to reuse it easily on any of your scenes, or share it with 
 
 Right-click on an entity on the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree), or select several entities and then right-click on them. Select **Create Custom Item**.
 
-![](../../images/editor/create-custom-item.png)
+![](../../images/editor/create-custom-item.webp)
 
 On the lower section of the screen you are then asked to give your new Custom Item a name.
 
-![](../../images/editor/name-custom-item.png)
+![](../../images/editor/name-custom-item.webp)
 
 The item is now listed on the **Custom Items** tab, at the bottom of your screen. This tab is only displayed if at least one Custom Item exists in your workspace.
 
-![](../../images/editor/custom-items.png)
+![](../../images/editor/custom-items.webp)
 
 When defining a custom item, you can select several entities at a same hierarchical level, but not entities from separate parents if they don't share a common ancestor. Any nested entities are automatically included as part of the custom item, they don't need to be selected.
 
@@ -73,6 +73,6 @@ You can also manually find this folder on your machine:
 
 To share with someone else, simply open the Custom Items folder and copy the full folder for the item. You may want to zip the folder to make it easier to transfer. This folder contains everything needed to use your Custom Item.
 
-The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../images/editor/refresh-icon.png" alt="Refresh" data-size="line"> for the item to appear in their **Custom Items** tab.
+The person using your Custom Item must then unzip the item folder in their own Custom Items folder on their machine. They may need to click the Refresh button <img src="../../images/editor/refresh-icon.webp" alt="Refresh" data-size="line"> for the item to appear in their **Custom Items** tab.
 
 Any **Assets** used by your Custom Item are also stored in the Custom Item's folder. This includes any 3D models, images, scripts, sounds, and videos referenced by the item.

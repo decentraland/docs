@@ -184,6 +184,21 @@ const MySchema = {
 }
 ```
 
+When you read an array field back with `MyComponent.get()`, the array is read-only. Methods that change it in place, like `.push()`, are not available. Use `MyComponent.getMutable()` when you need to change the contents.
+
+### Optional fields
+
+Use `Schemas.Optional()` to allow a field to hold either a value or `undefined`.
+
+```ts
+const MySchema = {
+	playerId: Schemas.Optional(Schemas.String),
+	score: Schemas.Optional(Schemas.Int),
+}
+```
+
+Only `undefined` counts as "not set". Falsy values like `false`, `0`, and `''` are stored and read back exactly as written.
+
 ### Nested schema types
 
 To set the type of a field to be an object, use `Schemas.Map()`. Pass the contents of this object as a property. This nested object is essentially a schema itself, nested within the parent schema.
@@ -276,6 +291,25 @@ MyComponent.create(myEntity, {
 	},
 })
 ```
+
+Leaving the field unset is also valid. An unset `OneOf` field has no `$case` and reads back as an empty object, `{}`.
+
+### Components from a single type
+
+A component doesn't have to hold an object of several fields. To define one that holds a single value, use `engine.defineComponentFromSchema()` and pass the type directly:
+
+```ts
+// A component that holds one number per entity
+export const Score = engine.defineComponentFromSchema('my-scene::Score', Schemas.Int)
+
+// A component that holds a list of numbers per entity
+export const History = engine.defineComponentFromSchema(
+	'my-scene::History',
+	Schemas.Array(Schemas.Int)
+)
+```
+
+These behave like any other component, including when the stored value is falsy. A `Score` of `0` is a component that exists and holds `0`, not a missing component.
 
 ## Default values
 

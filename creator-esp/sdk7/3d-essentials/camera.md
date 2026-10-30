@@ -15,7 +15,7 @@ Las cámaras virtuales pueden ser estáticas, pueden rotar para mirar siempre al
 {% hint style="warning" %}
 **📔 Nota**: Las cámaras virtuales son una característica que solo es compatible con el cliente de escritorio DCL 2.0.
 
-Para cambiar entre las cámaras predeterminadas de primera y tercera persona, consulta [Áreas modificadoras de cámara](../interactivity/avatar-modifiers.md#camera-modifiers).
+Para cambiar entre las cámaras predeterminadas de primera y tercera persona, consulta [Áreas modificadoras de cámara](../interactivity/avatar-modifiers.md#modificadores-de-camara).
 {% endhint %}
 
 ## Usar cámaras virtuales
@@ -23,7 +23,7 @@ Para cambiar entre las cámaras predeterminadas de primera y tercera persona, co
 Para usar un comportamiento de cámara personalizado en tu escena, necesitas dos cosas:
 
 * Crear una Cámara Virtual: Crea una entidad en tu escena y dale un `VirtualCamera`.
-* Asignar esa cámara virtual: Agrega un componente `MainCamera` a la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.CameraEntity`, con una referencia a la entidad con el componente `VirtualCamera`.
+* Asignar esa cámara virtual: Agrega un componente `MainCamera` a la [entidad reservada](../architecture/entities-components.md#entidades-reservadas) `engine.CameraEntity`, con una referencia a la entidad con el componente `VirtualCamera`.
 
 La cámara entonces estará adjunta a la entidad con el componente `VirtualCamera`. Si la entidad se mueve o rota, la cámara se mueve con ella.
 
@@ -45,7 +45,7 @@ En este ejemplo, la cámara siempre estará en una posición fija en la escena, 
 
 Tu escena puede incluir tantas entidades con un componente `VirtualCamera` como desees, y cambiar dinámicamente entre múltiples cámaras virtuales a medida que el jugador se mueve, o cuando realizan ciertas acciones. Solo una cámara virtual está activa en un momento dado, esta se asigna mediante el componente `MainCamera` en `engine.CameraEntity`.
 
-Para volver al comportamiento predeterminado de la cámara, establece el valor en `undefined` en `MainCamera.virtualCameraEntity`. El jugador entonces es libre de cambiar entre cámaras de primera y tercera persona. Si quieres que el jugador solo use uno de estos dos modos, puedes usar [Áreas modificadoras de cámara](../interactivity/avatar-modifiers.md#camera-modifiers) para forzar uno de los dos.
+Para volver al comportamiento predeterminado de la cámara, establece el valor en `undefined` en `MainCamera.virtualCameraEntity`. El jugador entonces es libre de cambiar entre cámaras de primera y tercera persona. Si quieres que el jugador solo use uno de estos dos modos, puedes usar [Áreas modificadoras de cámara](../interactivity/avatar-modifiers.md#modificadores-de-camara) para forzar uno de los dos.
 
 {% hint style="warning" %}
 **📔 Nota**: Las áreas modificadoras de cámara solo tienen efecto en el jugador si no hay cámaras virtuales activas. Si la escena está usando actualmente una cámara virtual y el jugador entra en un área modificadora de cámara, no pasa nada.
@@ -201,7 +201,7 @@ Las transiciones siempre se mueven en línea recta, sin considerar ningún obst�
 
 Puedes configurar una cámara virtual para que siempre mire en la dirección del jugador, o alguna entidad específica en la escena. La posición de la cámara permanecerá estática, pero su rotación cambiará para mantener siempre esta entidad centrada.
 
-Esto se puede lograr con la propiedad `lookAtEntity` en el componente `VirtualCamera`. Para seguir al jugador, usa la [entidad reservada](../architecture/entities-components.md#reserved-entities) `engine.PlayerEntity`.
+Esto se puede lograr con la propiedad `lookAtEntity` en el componente `VirtualCamera`. Para seguir al jugador, usa la [entidad reservada](../architecture/entities-components.md#entidades-reservadas) `engine.PlayerEntity`.
 
 ```ts
 const myCustomCamera1 = engine.addEntity()
@@ -246,4 +246,4 @@ function main() {
 
 Cuando la cámara de un jugador se mueve en modo de tercera persona, la cámara puede ser bloqueada por colisionadores o no, dependiendo de las capas de colisión asignadas a las entidades. Ten esto en cuenta al diseñar tu escena, es posible que desees evitar que la cámara atraviese paredes u otras entidades.
 
-Consulta [Colisionadores](colliders.md#cameras-and-colliders) para más detalles sobre cómo configurar colisionadores para tu escena.
+Consulta [Colisionadores](colliders.md#camaras-y-colisionadores) para más detalles sobre cómo configurar colisionadores para tu escena.

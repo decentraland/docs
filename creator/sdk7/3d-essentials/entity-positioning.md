@@ -4,6 +4,7 @@ description: How to set the position, rotation and scale of an entity in a scene
 
 # Entity Positioning
 
+
 You can set the _position_, _rotation_ and _scale_ of any entity by using the `Transform` component. This can be used on any entity in the 3D space, affecting where the entitiy is rendered. This includes primitive shapes (cube, sphere, plane, etc), 3D text shapes, NFT shapes, and 3D models (`GltfContainer`).
 
 ## Use the Scene Editor in Creator Hub
@@ -12,7 +13,7 @@ When adding an item to your scene via the Scene Editor, it implicitly includes a
 
 ## Code essentials
 
-![](../../images/media/ecs-simple-components-new.png)
+![](../../images/media/ecs-simple-components-new.webp)
 
 ```ts
 // Create a new entity
@@ -30,6 +31,16 @@ Transform.create(ball, {
 ```
 
 To move, rotate or resize an entity in your scene over a period of time, change the values on this component incrementally, frame by frame. See [Move entities](../3d-essentials/move-entities.md) for more details and best practices.
+
+Any field you leave out gets its default: position `0, 0, 0`, no rotation, and a scale of `1, 1, 1`. Leave a field out rather than setting it to `undefined`. A field that is explicitly `undefined`, for example from a variable that wasn't set, replaces the default, and the scene then throws an error during the next engine update, not on the line that called `Transform.create()`.
+
+```ts
+// ❌ If savedRotation is undefined, the scene throws an error later
+Transform.create(ball, { position: Vector3.create(5, 1, 5), rotation: savedRotation })
+
+// ✅ Fall back to a real value
+Transform.create(ball, { position: Vector3.create(5, 1, 5), rotation: savedRotation ?? Quaternion.Identity() })
+```
 
 {% hint style="warning" %}
 **📔 Note**: `Vector3` and `Quaternion` must be imported via
@@ -84,7 +95,7 @@ When setting a position, keep the following considerations in mind:
 *   Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
 
     > Tip: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
-* Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations](../optimizing/scene-limitations.md) for more details.
+* Your scene is also limited in height. The maximum height is 330 meters for every scene, regardless of how many parcels it occupies. Entities placed above 200 meters may suffer multiplayer sync issues. See [scene limitations](../optimizing/scene-limitations.md) for more details.
 
 ## Rotation
 
@@ -166,9 +177,13 @@ console.log(`World rotation: ${worldRot.x}, ${worldRot.y}, ${worldRot.z}, ${worl
 
 ## Face the player
 
-Add a _Billboard_ component to an entity so that it always rotates to face the player.
+Add a _Billboard_ component to an entity so that it always rotates to face the player's camera.
 
 Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player. The same idea can also be used to rotate a 3D model.
+
+{% hint style="warning" %}
+**📔 Note**: A billboard faces the **camera**, not the avatar. In 3rd person the camera sits behind and above the avatar, so the two are in different places, and a billboard aimed at the camera is noticeably turned away from the avatar. To face the avatar instead, set `targetEntity` to `engine.PlayerEntity`.
+{% endhint %}
 
 ```ts
 // Create a new entity
@@ -251,6 +266,27 @@ Billboard.create(sign, {
 {% hint style="info" %}
 **💡 Tip**: Billboards are very handy to add to _text_ entities, since it makes them always legible.
 {% endhint %}
+
+Set `targetEntity` to `engine.PlayerEntity` to follow the avatar rather than the camera. This is what you want for a nametag, a speech bubble, or anything else that belongs to the avatar rather than to the player's view:
+
+```ts
+// A label that turns to face the avatar, not the camera
+Billboard.create(label, {
+	targetEntity: engine.PlayerEntity,
+	billboardMode: BillboardMode.BM_Y,
+})
+```
+
+The avatar's position is at its feet, so a label above its head would tilt down toward them. `BM_Y` keeps the label upright and only turns it left and right.
+
+### Which way a billboard faces
+
+A billboard points its local **-Z** axis at whatever it is facing. That matters when you parent other entities to a billboard:
+
+* A child at a local **+Z** offset sits **behind** the billboard, hidden by it.
+* A child at a local **-Z** offset sits **in front**, closer to the viewer.
+
+So to put a frame or a backdrop behind a billboarded label, offset it on **+Z**. To put a highlight in front of it, offset it on **-Z**.
 
 The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows players around.
 
@@ -342,6 +378,10 @@ In this example, the child entity will be scaled down to 0.5, since its parent h
 If a child entity has no `position` on its Transform, the default is `0,0,0`, which will leave it positioned at the same position as its parent.
 
 You can use an invisible entity with no shape component as a parent, to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
+
+{% hint style="warning" %}
+**📔 Note**: Avoid creating a loop in the hierarchy, where an entity ends up being its own ancestor. The SDK detects these loops and logs a warning naming the entities involved. The affected entities are not positioned correctly until you fix the parenting.
+{% endhint %}
 
 ## Attach an entity to an avatar
 
@@ -474,7 +514,7 @@ The following anchor points are available on the `AvatarAnchorPointType` enum:
 **💡 Tip**: To use these values, write `AvatarAnchorPointType.` and VS Code will display the full list of options on a dropdown.
 {% endhint %}
 
-![](../../images/avatar-attach-points.png)
+![](../../images/avatar-attach-points.webp)
 
 Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to other players who are seeing that player. If an entity is attached to the default local player, each player will experience the entity as attached to their own avatar.
 

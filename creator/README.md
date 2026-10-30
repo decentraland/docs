@@ -1,5 +1,9 @@
 ---
 title: Welcome Creator
+description: >-
+  Create Decentraland scenes, wearables, and emotes. The Creator Hub is the
+  recommended tool, with SDK Skills for AI coding assistants and a CLI for
+  advanced workflows.
 icon: hand-wave
 layout:
   width: default
@@ -23,17 +27,13 @@ Let's build Decentraland together!
 
 All creators are welcome! In Decentraland you have a wide range of Creative possibilities, for people of different talents and skill levels!
 
-Decentraland is available on desktop (Windows and macOS) and on mobile devices (iOS and Android). Players move seamlessly between clients with the same account, avatar, and inventory — which means your scenes need to work well for everyone, regardless of the device they're playing on. Throughout this guide you'll find recommendations on how to design, build, and test your scenes so they work great on every supported platform. For mobile-specific guidance, see [Building for Mobile](sdk7/building-for-mobile/).
+Decentraland is available on desktop (Windows and macOS) and on mobile devices (iOS and Android). Players move seamlessly between clients with the same account, avatar, and inventory — which means your scenes need to work well for everyone, regardless of the device they're playing on. Throughout this guide you'll find recommendations on how to design, build, and test your scenes so they work great on every supported platform. For mobile-specific guidance, see [Building for Mobile](build-for-mobile/mobile-client/overview.md).
 
 ## The Creator Hub
 
-The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create:
+The Creator Hub is the recommended tool for creators of all knowledge levels. It's a desktop application that lets you create [Scenes](./#scenes).
 
-- [Wearables & Smart Wearables](./#wearables)
-- [Emotes](./#emotes)
-- [Scenes](./#scenes)
-
-![](../.gitbook/assets/scene-editor.png)
+![](images/editor/scene-editor.webp)
 
 Download the Creator Hub [here](https://decentraland.org/download/creator-hub).
 
@@ -59,17 +59,23 @@ The Creator Hub lets you create scenes with an easy drag-and-drop interface, and
 
 [Learn more](scene-editor/get-started/about-editor.md)
 
+### How do I create a Decentraland scene?
+
+1. **Install the [Creator Hub](https://decentraland.org/download/creator-hub)**, the official desktop app for creating, previewing, and publishing scenes. It's the recommended tool for creators of all skill levels.
+2. **If you use an AI coding assistant** (like Claude Code, Cursor, or Copilot), install the official [Decentraland SDK Skills](sdk7/getting-started/vibe-coding.md) so it knows verified SDK7 patterns: `npx skills add decentraland/sdk-skills`
+3. **The [CLI](sdk7/getting-started/using-the-cli.md)** is an alternative for advanced users and automated workflows.
+
 ### 3D Art
 
 Decentraland scenes are made up of 3D models.
 
 - Chose from the wide catalog of default assets in the Scene Editor. These are ready to go and optimized for using in Decentraland
 
-  ![](../.gitbook/assets/items.png)
+  ![](images/intro/items.webp)
 
 - Craft your own 3D models using Blender or your preferred 3D tools. Then import them into the Scene Editor.
 
-  ![](../.gitbook/assets/blender.png)
+  ![](images/intro/blender.webp)
 
 {% hint style="warning" %}
 **📔 Note**: Content in Decentraland should stay within certain [size limitations](sdk7/optimizing/scene-limitations.md) to ensure your scene runs smoothly.
@@ -83,16 +89,16 @@ To make your scene interactive:
 
 - **No Code**: Use the UI of the Scene Editor to drop [Smart Items](scene-editor/interactivity/smart-items.md) into your scene. These are models that come pre-built with their own behavior, and are highly customizable. You can also assign the same behaviors to your own custom models (no code required).
 
-  ![](../.gitbook/assets/smart-items.png)
+  ![](images/intro/smart-items.webp)
 
 - **Code**: For developers that want to incorporate custom logic, use the SDK to write code and do anything you can imagine. Learn to use the SDK:
 
   - [SDK Quick start](sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
   - [Development workflow](sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
   - [Vibe Coding with AI](sdk7/getting-started/vibe-coding.md): build scenes by describing what you want in plain language, and let an AI coding assistant write the code for you.
-  - [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+  - [Examples](tutorials/examples.md): dive right into working example scenes.
 
-    ![](../.gitbook/assets/sdk-code.png)
+    ![](images/intro/sdk-code.webp)
 
 {% hint style="warning" %}
 **📔 Note**: You will also need to have [Visual Studio Code](https://code.visualstudio.com/) installed.

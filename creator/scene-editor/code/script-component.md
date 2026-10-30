@@ -13,7 +13,7 @@ Script Components allow the execution of an Entity's custom behaviour without th
 
 1. Add the Script Component to an Entity by clicking on the `+` button and select it. Create a new Script by clicking on **+ Add New Script Module** and choose a name, or using the File Path (browse or drag and drop an existing file).
 
-![](../../../.gitbook/assets/new-script-component.png)
+![](../../.gitbook/assets/new-script-component.webp)
 
 2. Click on the CODE button in the component to open the default code editor. Let's check its structure. For more details on how to select and manage your default editor, please go to [Combine with code](overview.md).
 
@@ -37,7 +37,8 @@ export class BuildingScript {
   /**
    * Constructor / Inputs
    * Parameters declared here appear in the Script component UI in Creator Hub.
-   * Supported types: Entity, String, Number, Boolean, ActionCallback.
+   * Supported types: Entity, String, Number, Boolean, ActionCallback, and Slider
+   * for a number edited with a slider, e.g. public speed: Slider<0, 10, 0.5> = 1
    *
    * Note: After editing this file, click the refresh icon in the Script component UI
    * to see updated inputs.
@@ -92,11 +93,11 @@ export class BuildingScript {
 
 Once the file is saved, the **Refresh** button in the Script Component updates all changes done.
 
-<img src="../../../.gitbook/assets/script-refresh-button.png" alt="Refresh button" data-size="line" width="360">
+<img src="../../.gitbook/assets/script-refresh-button.webp" alt="Refresh button" data-size="line" width="360">
 
 Once refreshed, the Script Component now shows the `numericVariable` added in the code.
 
-![](../../../.gitbook/assets/parameter-script-component.png)
+![](../../.gitbook/assets/parameter-script-component.webp)
 
 ## Parameters
 
@@ -112,6 +113,24 @@ The allowed types for the constructor parameters are:
 * `number`
 * `boolean`
 * `ActionCallback`
+* `Slider<Min, Max, Step>`
+
+### Number parameters with a slider
+
+Type a number parameter as `Slider<Min, Max, Step>` to edit it with a slider instead of a plain number box. The Creator Hub shows both a slider and a number box.
+
+```ts
+constructor(
+  public src: string,
+  public entity: Entity,
+  // A slider from 0 to 10, moving in steps of 0.5
+  public speed: Slider<0, 10, 0.5> = 1,
+) {}
+```
+
+* `Step` is optional and defaults to `1`.
+* Negative bounds are allowed, for example `Slider<-90, 90>`.
+* At runtime the value is a plain `number`, so `this.speed` behaves like any other number parameter.
 
 {% hint style="info" %}
 **📔 Note**: Both `public` and `private` constructor parameters are exposed to Creator Hub. The `private` keyword only restricts access within the `BuildingScript` class. For more details, see the official TypeScript documentation on  
@@ -179,7 +198,7 @@ To add tooltips to your constructor, add a commented out block right before the 
 
 You may need to click the refresh icon on the Script component UI to see changes in your tooltips.
 
-<img src="../../../.gitbook/assets/script-refresh-button.png" alt="Refresh button" data-size="line" width="360">
+<img src="../../.gitbook/assets/script-refresh-button.webp" alt="Refresh button" data-size="line" width="360">
 
 
 ## start() & update() Method
@@ -188,7 +207,7 @@ The **start()** method contains code that is executed only once, when the Entity
 
 Preview the scene and check the logs (**Tip**: you can use the `` ` `` shortcut): It displays the new message including the `numericVariable` parameter.
 
-![](../../../.gitbook/assets/script-log-message.png)
+![](../../.gitbook/assets/script-log-message.webp)
 
 The **update()** method, on the other hand, executes its code every frame of the game (as Systems do). For example, checking values of the `PlayerEntity` to trigger behaviours in the script. 
 
@@ -201,7 +220,7 @@ update(dt: number) {
     }}
 ```
 
-<img src="../../../.gitbook/assets/update-script-logs.png" alt="Update Method" data-size="line"> 
+<img src="../../.gitbook/assets/update-script-logs.webp" alt="Update Method" data-size="line">
 
 The first log belongs to the start() method, indicating that we set numericVariable. The second one belongs to the update() method, when the player is higher than that value.
 
@@ -221,11 +240,11 @@ It is possible to define an `Action` inside a Script Component script and have i
 
 `creatorHubParameter` will be exposed as an `Action` parameter to give it a custom value. After refreshing the Script Component, the new action will be available as an option for the Actions dropdown.
 
-![](../../../.gitbook/assets/script-component-action.png)
+![](../../.gitbook/assets/script-component-action.webp)
 
 After adding the Action, any Entity in the Creator Hub can trigger it using `Triggers`
 
-![](../../../.gitbook/assets/script-component-action-trigger.png)
+![](../../.gitbook/assets/script-component-action-trigger.webp)
 
 {% hint style="info" %}
 **📔 Note**: You can add as many Actions as needed inside the Script. All of them will be accessible independently from the `Action` dropdown.
@@ -294,7 +313,7 @@ Third, we call the defined `callScriptMethod`, in this case, `scriptMethod`.
 
 With the parameters' values given, the output is:
 
-![](../../../.gitbook/assets/script-component-public-method.png)
+![](../../.gitbook/assets/script-component-public-method.webp)
 
 {% hint style="info" %}
 **📔 Note**: You can follow the same logic to call a `public` Script method from another script or file. You can use it to fetch or change values from `public` variables in the Script class.
@@ -320,7 +339,7 @@ export class BuildingScript {
 
 A selectable `Entity` and `Action` are now available when the Script Component is refreshed in the Creator Hub UI. `Sphere` is an already existing Entity in the scene that has an action called `Scale`.
 
-![](../../../.gitbook/assets/script-component-action-callback.png)
+![](../../.gitbook/assets/script-component-action-callback.webp)
 
 The action from the other Entity is now accessible on the Script class. It could be used in many different ways. In the following example, pressing E will trigger `this.anotherEntityAction` by defining a `pointerEventsSystem` in the `start` method.
 
@@ -340,6 +359,17 @@ The action from the other Entity is now accessible on the Script class. It could
     );
   }
 ```
+
+### Optional action callbacks
+
+An `ActionCallback` parameter that the creator leaves unwired is `undefined`, and its type is `ActionCallback | undefined`. Check before calling it, so a script works whether or not the action is connected:
+
+```ts
+if (this.anotherEntityAction) {
+  this.anotherEntityAction();
+}
+```
+
 {% hint style="info" %}
 **📔 Note**: Combining exposing and triggering `Actions` is a very powerful tool. You can define a Script Component on one Entity, expose an action using a `public` method, and then triggering it from another Entity's Script Component using an `ActionCallback` parameter.
 {% endhint %}
@@ -352,4 +382,4 @@ The action from the other Entity is now accessible on the Script class. It could
 * [Making any item smart](../interactivity/make-any-item-smart.md)
 * [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
 * [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
-* [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+* [Examples](../../tutorials/examples.md): dive right into working example scenes.

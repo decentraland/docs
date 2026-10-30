@@ -1,12 +1,12 @@
 Los perfiles son la descripción básica de un jugador, con información como su nombre en el mundo y avatar.
 
-Están disponibles en servidores de contenido como [entidades](../entities) regulares, aunque los World Explorers usualmente aprovechan el sistema de comms para obtener versiones actualizadas al instante.
+Están disponibles en servidores de contenido como [entidades](../entities.md) regulares, aunque los World Explorers usualmente aprovechan el sistema de comms para obtener versiones actualizadas al instante.
 
 El sistema está preparado para permitir múltiples identidades con el mismo propietario, todas incluidas como avatares en el manifest de entidad. Sin embargo, en la práctica, la gran mayoría de jugadores tienen solo uno.
 
 ## Punteros {#pointers}
 
-Los [punteros](../pointers) de perfil son la dirección de Ethereum del propietario, sin ningún prefijo o sufijo. Por ejemplo:
+Los [punteros](../pointers.md) de perfil son la dirección de Ethereum del propietario, sin ningún prefijo o sufijo. Por ejemplo:
 
 ```
 0x210c4415d6a71195af76beef9b85dd0eb43f35df
@@ -24,7 +24,7 @@ Cada avatar en `metadata.avatars[]` representa una identidad con el mismo propie
 
 | Campo | Valor |
 | ----- | --- |
-| `userId` | El [puntero](../pointers) que resuelve (o solía resolver) a este perfil.
+| `userId` | El [puntero](../pointers.md) que resuelve (o solía resolver) a este perfil.
 | `name` | El nombre de visualización de este jugador.
 | `email` | (Opcional) Una dirección de correo electrónico para este jugador.
 | `description` | (Opcional) Texto elegido por el jugador para describirse.
@@ -56,12 +56,12 @@ El campo `metadata.avatars[].avatar` tiene toda la información que un World Exp
 
 | Campo | Valor |
 | ----- | --- |
-| `bodyShape` | El [puntero](../pointers) a la entidad de forma de cuerpo del avatar.
+| `bodyShape` | El [puntero](../pointers.md) a la entidad de forma de cuerpo del avatar.
 | `snapshots` | Un objeto con imágenes para este avatar (ver abajo).
 | `eyes` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para los ojos del avatar.
 | `hair` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para el cabello del avatar.
 | `skin` | Un objeto con un `color` en forma de objeto `{ r, g, b }` para la piel del avatar.
-| `wearables` | Un array de [punteros de wearable](wearables#pointers) en uso por el avatar.
+| `wearables` | Un array de [punteros de wearable](wearables.md#pointers) en uso por el avatar.
 
 Para ilustrar:
 
@@ -96,7 +96,7 @@ Para ilustrar:
 
 ### Snapshots
 
-El campo `metadata.avatars[].avatar.snapshots` contiene [identificadores de archivo](../filesystem#identifiers) para imágenes (incluidos en el [campo `content` de nivel superior](../entities#properties)). Cada propiedad es un tipo de imagen, y actualmente hay dos: `face256` (una miniatura) y `body` (una versión de tamaño completo).
+El campo `metadata.avatars[].avatar.snapshots` contiene [identificadores de archivo](../file-system.md#identifiers) para imágenes (incluidos en el [campo `content` de nivel superior](../entities.md#properties)). Cada propiedad es un tipo de imagen, y actualmente hay dos: `face256` (una miniatura) y `body` (una versión de tamaño completo).
 
 Por ejemplo:
 

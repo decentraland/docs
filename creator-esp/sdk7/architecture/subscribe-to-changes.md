@@ -10,7 +10,7 @@ metaLinks:
 
 Una forma ordenada de escribir tu código es suscribirse a eventos, y ejecutar una función cada vez que ese evento ocurre.
 
-Varios [Event listeners](../sdk7/interactivity/event-listeners.md) vienen predefinidos como parte del SDK, pero también puedes usar el método `onChange()` en cualquier componente para lograr lo mismo. Esto también funciona con cualquier [Componente Personalizado](../sdk7/architecture/custom-components.md) que hayas definido, sin necesidad de trabajo extra.
+Varios [Event listeners](../interactivity/event-listeners.md) vienen predefinidos como parte del SDK, pero también puedes usar el método `onChange()` en cualquier componente para lograr lo mismo. Esto también funciona con cualquier [Componente Personalizado](custom-components.md) que hayas definido, sin necesidad de trabajo extra.
 
 Por ejemplo, la siguiente función verifica el componente `AvatarEquippedData` en la entidad del jugador, y ejecuta una función si el jugador cambia cualquiera de sus wearables o emotes equipados. Los nuevos valores del componente se pasan en los argumentos de la función.
 
@@ -32,7 +32,7 @@ Gracias al método `onChange()`, no es necesario crear un sistema y verificar it
 **📔 Nota**: No uses `onChange()` dentro de un Sistema, ya que eso suscribiría una nueva copia de la función en cada fotograma del bucle del juego, y podría potencialmente llevar a crashes.
 {% endhint %}
 
-El mismo método funciona de manera inmediata con [Componente Personalizado](../sdk7/architecture/custom-components.md). Por ejemplo:
+El mismo método funciona de manera inmediata con [Componente Personalizado](custom-components.md). Por ejemplo:
 
 ```ts
 // definir componente
@@ -61,7 +61,7 @@ export function main() {
 }
 ```
 
-También puedes combinar este enfoque con [Consultar componentes](../sdk7/architecture/querying-components.md), para suscribir masivamente cada entidad en la escena que tiene un cierto componente a su propia función.
+También puedes combinar este enfoque con [Consultar componentes](querying-components.md), para suscribir masivamente cada entidad en la escena que tiene un cierto componente a su propia función.
 
 ```ts
 export function main() {
@@ -75,7 +75,7 @@ export function main() {
 }
 ```
 
-Ten en cuenta que este enfoque solo suscribirá a `onChange()` para entidades que existen al inicio de la escena, por ejemplo entidades creadas a través de la UI del [Creator Hub](../scene-editor/get-started/about-editor.md).
+Ten en cuenta que este enfoque solo suscribirá a `onChange()` para entidades que existen al inicio de la escena, por ejemplo entidades creadas a través de la UI del [Creator Hub](../../scene-editor/get-started/about-editor.md).
 
 {% hint style="info" %}
 **💡 Tip**: Si prefieres en cambio manejar eventos que no están necesariamente relacionados con un componente cambiando, recomendamos importar la librería TypeScript [Mitt](https://www.npmjs.com/package/mitt) a tu escena. Esta librería ofrece funciones simples para emitir y escuchar eventos.

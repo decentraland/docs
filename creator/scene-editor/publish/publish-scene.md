@@ -10,7 +10,7 @@ Make sure of the following:
 
 - Your scene complies with all of the [scene limitations](../../sdk7/optimizing/scene-limitations.md). Most of these are validated each time you run a preview of your scene.
 - You have a [Metamask](https://metamask.io/) account, with your LAND parcels or NAME assigned to it.
-- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Builder](https://decentraland.org/builder/names).
+- You own the necessary amount of adjacent LAND parcels or a Decentraland NAME. Otherwise you can purchase LAND in the [Marketplace](https://decentraland.org/marketplace/) or a NAME in the [Marketplace](https://decentraland.org/shop/items?category=names).
 
 {% hint style="warning" %}
 **📔 Note**: Multi-parcel scenes can only be deployed to adjacent parcels.
@@ -19,9 +19,9 @@ Make sure of the following:
 Check your [scene's details](../configure/scene-settings.md#scene-details), make sure you provide an appealing name, description, thumbnail, categories, etc.
 
 {% hint style="danger" %}
-**❗Warning**: When planning live events, make sure you don't make last minute changes to the scene right before the event.
+**❗Warning**: When planning live events, don't make last minute changes to the scene right before the event. Publish your final version at least an hour before the event starts.
 
-After each publish, an internal process optimizes all 3D models before they can be rendered. This takes around 15 minutes. If you visit the scene before this is done, the scene may appear broken. This process runs even if the 3D models were all previously published.
+Players who already had loaded the scene in the current session before your updates will continue to see a cached version of the scene. To see the renewed version they must close and re-enter Decentraland.
 {% endhint %}
 
 ## Publish your scene
@@ -31,7 +31,7 @@ To publish your scene:
 1. Open your scene in the Scene Editor and click **Publish**. This opens a window showing details about the publication.
 2. Select if you want to publish to LAND or to a WORLD. See [Kinds of projects](../../sdk7/projects/kinds-of-project.md) to better understand the different options.
 
-![](../../images/editor/publish-options.png)
+![](../../images/editor/publish-options.webp)
 
 3. If publishing to LAND, select the location on the map. You'll see your eligible parcels marked in red. If publishing to a WORLD, you'll see your eligible NAMEs in a dropdown.
 
@@ -40,15 +40,35 @@ To publish your scene:
 {% endhint %}
 
 4. The next screen shows all of the files you're currently uploading and their sizes, confirm the operation.
-5. The publication process will then start. Stages **1** and **2** are necessary for your scene to be playable, once done a **Jump In** button appears. You don't need to wait for **Stage 3** to try out your scene. ![](../../images/editor/deploy-steps.png)
+5. The publication process will then start. It has two stages, and once both are done a **Jump In** button appears.
 
 {% hint style="info" %}
-**📔 Note**: The three stages of the deployment involve:
+**💡 Tip**: The success screen also shows a web link to your scene, with a button to copy it. Anyone can open that link in a browser, whether or not they have the desktop client installed, so it's the one to paste into a Discord message or an event page. It looks like `https://decentraland.org/jump?realm=<your-world-name>` for a World, or `https://decentraland.org/jump?position=<x>,<y>` for a scene in Genesis City.
 
-- **1. Uploading**: Uploading the files to the servers.
-- **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This may take 15 minutes or less. It may delay more for very large scenes, or if the servers are currently busy converting other scenes.
-- **3. Optimizing**: Low Level of Detail (LOD) versions of your assets are generated. These are only used to render your scene from far away, meaning you don't need to wait for this to finish to jump in and test your scene.
-  {% endhint %}
+The **Jump In** button is for you rather than your audience: it opens the scene in your own desktop client so you can check your work.
+{% endhint %}
+
+![](../../images/editor/deploy-steps.webp)
+
+{% hint style="info" %}
+**📔 Note**: The two stages of the deployment involve:
+
+- **1. Uploading**: Uploading the files to the servers. Scenes of 50 MiB or more upload in batches, see [Publish large scenes](../../sdk7/publishing/publishing.md#publish-large-scenes).
+- **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This usually takes seconds. It may take longer for very large scenes.
+
+Decentraland's servers also generate Low Level of Detail (LOD) versions of your models, used to draw your scene from far away. That runs in the background once your scene is already live, so publishing never waits for it.
+{% endhint %}
+
+## How long does publishing take?
+
+- **Until you can test it**: seconds to a couple of minutes. It scales with the total size of your scene and your upload bandwidth. The **Jump In** button appears as soon as the scene is playable, once both stages are done.
+- **Before a live event**: publish your final version at least an hour before the event starts, to leave room for anything unexpected.
+
+The following factors can make a publication slower:
+
+- **Total scene size**: affects both the upload and the conversion.
+- **The number and complexity of distinct 3D models**: models are converted one by one.
+- **How busy the conversion servers are**: your scene may be queued behind other scenes published at around the same time.
 
 ## Managing Worlds
 
@@ -60,7 +80,7 @@ Scenes published to Worlds count against a storage budget that is shared across 
 
 The **Manage** tab shows how much of your storage budget you're using. Click **View Details** to see how your MANA, LAND, and NAME holdings add up.
 
-<img src="../../../.gitbook/assets/world-storage-budget.png" width="300" />
+<img src="../../.gitbook/assets/world-storage-budget.webp" width="300" />
 
 You can also check your remaining budget in the **Worlds** tab of the [Builder](https://decentraland.org/builder/worlds).
 
@@ -70,7 +90,7 @@ See [Worlds size limits](../../sdk7/projects/kinds-of-project.md#size-limits) fo
 
 A World Owner can edit its settings by going into the desired World **Settings** under the **Manage** panel, or by accessing it during the publishing process by clicking on **Settings** if **Multi-Scene World (Advanced)** is enabled.
 
-<img src="../../../.gitbook/assets/world-manage-settings.png" width="600" />
+<img src="../../.gitbook/assets/world-manage-settings.webp" width="600" />
 
 - **Details**: World's general information:
   - World Title
@@ -78,13 +98,13 @@ A World Owner can edit its settings by going into the desired World **Settings**
   - Content Rating
   - Categories
 
-The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published.
+The information added in **Details** will be shown in Decentraland Places and in the in-world World information once it is published. Keep in mind that if the World contains a single scene, these details are overwritten by the scene's metadata on every publish. See [World metadata vs scene metadata](#world-metadata-vs-scene-metadata) below.
 
 - **Layout**: Only accessible in Multi-Scene Worlds. Contains information about all the World's published scenes.
   - Remove individual scenes by clicking the three dots and selecting **Remove from World**.
   - **World Map** shows the World layout and identifies parcels with content and the remaining free parcels.
 
-<img src="../../../.gitbook/assets/world-layout.png" width="600" />
+<img src="../../.gitbook/assets/world-layout.webp" width="600" />
 
 - **Misc**: Other useful World configurations:
   - World Spawn Coordinate: This sets up the Parcel (X,Y) in which the user will spawn inside the World. The scene located in that Parcel determines the exact position the user will spawn (for example, Parcel 1,1 is the World Spawn, and the scene in 1,1 has a Spawn point of 1,0,1 **inside that scene**).
@@ -94,6 +114,27 @@ The information added in **Details** will be shown in Decentraland Places and in
 **📔 Note**: World Settings are only accessible to the World Owner (the address that minted the NAME). For more details about how to obtain a NAME, check the [Marketplace NAMEs section](https://decentraland.org/marketplace/names/claim).
 {% endhint %}
 
+### World metadata vs scene metadata
+
+A World and each scene published to it have two separate sets of metadata. Both include a name, a description, and a thumbnail:
+
+- **Scene metadata**: Belongs to the scene project, stored in its `scene.json` file. You edit it via the [scene settings](../configure/scene-settings.md) in the Scene Editor, and it's uploaded together with the scene every time you publish.
+- **World metadata**: Belongs to the World itself. You edit it in the World's **Settings**, in the **Manage** tab of the Creator Hub. This is the information shown in Decentraland Places and in the in-world World information.
+
+How these two relate depends on how many scenes the World contains:
+
+- **Empty World**: When you publish a scene to an empty World, the World's metadata is filled in from the scene's metadata.
+- **Single-scene World**: Every time you publish the scene, the World's metadata is updated to match the scene's metadata.
+- **Multi-scene World**: The World's metadata is fully independent from the metadata of each of its scenes. Publishing a scene never changes the World's metadata. The only way to change it is through the World's **Settings** in the **Manage** tab.
+
+In practice, if your World contains a single scene, you don't need to think of the World's metadata as a separate thing: just edit your scene's settings and publish, and the World will always reflect them.
+
+{% hint style="warning" %}
+**📔 Note**: In a single-scene World, any changes you make to the World's **Settings** in the **Manage** tab will be overwritten by the scene's metadata the next time you publish the scene. To make those changes stick, edit the scene's settings instead.
+{% endhint %}
+
+In a Multi-Scene World, the World's **Settings** in the **Manage** tab is the only place to edit the World's metadata.
+
 ### Multi-Scene Worlds
 
 A World can have multiple scenes, published by the World Owner or by other creators. This enables a collaborative environment where each parcel can be managed by different Collaborators.
@@ -102,7 +143,7 @@ A World can have multiple scenes, published by the World Owner or by other creat
 
 A World Owner can choose to make the World Multi-Scene by toggling **Multi-Scene World (Advanced)** when publishing to a single-scene World.
 
-<img src="../../../.gitbook/assets/multi-scene-owner-first-deploy.png" width="600" />
+<img src="../../.gitbook/assets/multi-scene-owner-first-deploy.webp" width="600" />
 
 Once the Multi-Scene World is published, the World Owner can publish additional scenes or add Collaborators to publish within the World.
 
@@ -114,17 +155,17 @@ Once the Multi-Scene World is published, the World Owner can publish additional 
 
 In the **Manage** panel, a World Owner can access the World's **Permissions** by clicking on the three dots. The World Owner can manage collaborators under the **Collaborators** tab.
 
-<img src="../../../.gitbook/assets/world-settings-collaborators.png" width="600" />
+<img src="../../.gitbook/assets/world-settings-collaborators.webp" width="600" />
 
 A Collaborator can have deploy rights to All Parcels or to specific Custom Coordinates. Custom Coordinates can be selected and confirmed through an interactive World map, similar to the one in the World Settings.
 
-<img src="../../../.gitbook/assets/multi-scene-custom-coordinates.png" width="600" />
+<img src="../../.gitbook/assets/multi-scene-custom-coordinates.webp" width="600" />
 
 #### Deploying to a Multi-Scene World as a Collaborator
 
 World Collaborators cannot edit its Settings or Permissions. In the **Manage** tab, a creator can see the World they are a Collaborator in but cannot access **Settings** or **Permissions**.
 
-<img src="../../../.gitbook/assets/world-manage-collaborator.png" width="600" />
+<img src="../../.gitbook/assets/world-manage-collaborator.webp" width="600" />
 
 When going through the publishing process, the creator can select to publish only to the parcels they are a Collaborator in (as set by the World Owner).
 
@@ -134,7 +175,7 @@ In the **Collaborators** section, if the World Owner set **Custom Coordinates** 
 **📔 Note**: Collaborators with **All Parcels** publishing access can overwrite any scene from the world, even if it was published by the owner or other collaborators.
 {% endhint %}
 
-<img src="../../../.gitbook/assets/multi-scene-publish-collaborator.png" width="600" />
+<img src="../../.gitbook/assets/multi-scene-publish-collaborator.webp" width="600" />
 
 ### Private Worlds
 
@@ -172,7 +213,7 @@ To add new addresses or communities to the **Approved Addresses**, follow these 
 
 - **Community**: Search and add any Public Community. This adds **all Community addresses** to the **Addresses Approved**.
 
-  <img src="../../../.gitbook/assets/world-access-community.png" width="600" />
+  <img src="../../.gitbook/assets/world-access-community.webp" width="600" />
 
 - **Import CSV**: Use an existing CSV with a list of addresses or community IDs to add to **Approved Addresses**. The structure is one wallet per line, for example:
 
@@ -183,13 +224,13 @@ To add new addresses or communities to the **Approved Addresses**, follow these 
 
 Once imported, it tracks each Address individually, as shown in the image.
 
-  <img src="../../../.gitbook/assets/world-access-csv.png" width="600" />
+  <img src="../../.gitbook/assets/world-access-csv.webp" width="600" />
 
 3. After confirming, the address/es are in the **Approved Addresses**.
 
 4. With a new **+ New Invite**, addresses are added to the existing list, helping the World Owner manage and extend the list if needed.
 
-<img src="../../../.gitbook/assets/world-access-all.png" width="600" />
+<img src="../../.gitbook/assets/world-access-all.webp" width="600" />
 
 5. Individual Addresses or set of Addresses (in case of a Community) can be removed by selecting **Delete** on the three dots in the **Approved Addresses** section.
 
@@ -203,11 +244,11 @@ There are different scenarios if a user jumps into a World that doesn't have **P
 
 - Their address in the **Approved Addresses**: Will be able to join normally. If not, they will get information that the World is **Invitation Only**.
 
-<img src="../../../.gitbook/assets/world-invitation-only-modal.png" width="300" />
+<img src="../../.gitbook/assets/world-invitation-only-modal.webp" width="300" />
 
 - The World is **Password Protected**: Users will be able to write the password. The maximum limit is ten (10) attempts.
 
-<img src="../../../.gitbook/assets/world-password-modal.png" width="300" />
+<img src="../../.gitbook/assets/world-password-modal.webp" width="300" />
 
 ## Publish from a hardware wallet
 
@@ -220,6 +261,8 @@ Once your hardware wallet can be used via Metamask, you can deploy following the
 ## Scene overwriting
 
 When a new scene is deployed, it overwrites older content that existed on the parcels it occupies.
+
+Publishing normally starts right away. If you're about to replace content that already exists in a World, the Creator Hub asks you to confirm first, and offers a **Don't show again** option.
 
 If a scene that takes up multiple parcels is only partially overwritten by another, all of its parcels are either overwritten or erased.
 
@@ -251,8 +294,19 @@ Players are never directed to this server, the only way to access it is to expli
 
 ## Verify deployment success
 
-Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, or that 3D models are missing entirely.
+Once you deployed your scene, these changes can take a few minutes to be uploaded and processed. If you enter Decentraland right after deploying, you might briefly still see the previous version of your content.
 
-The Creator Hub displays the progress of the publication as it moves through the **Uploading**, **Converting** and **Optimizing** stages, and shows a **Jump In** button as soon as the scene is playable.
+The Creator Hub displays the progress of the publication as it moves through the **Uploading** and **Converting** stages, and shows a **Jump In** button as soon as the scene is playable.
 
-To check how the new version of your content propagates through the servers that make up Decentraland's content network, you can use the [catalyst monitor screen](https://decentraland.github.io/catalyst-monitor/). Each one of these servers refers to a different realm.
+### Check the conversion status
+
+While the 3D models of a new version are being converted, players are deliberately served the last fully-working version of your scene. Conversions should take a couple of minutes tops, if they take longer it could be a sign something failed.
+
+You can query the conversion status directly in a browser:
+
+- `https://asset-bundle-registry.decentraland.org/entities/status/<pointer>`: replace `<pointer>` with one of your scene's coordinates (for example `20,-34`) or with the entity ID of the deployment. The response shows the conversion status for each platform under `assetBundles`, and the status of the LODs under `lods`. When `complete` is `true`, the scene is fully converted for all platforms. For a scene in a World, add the World's name as a query parameter, for example `.../entities/status/0,0?world_name=myname.dcl.eth`.
+- `https://asset-bundle-registry.decentraland.org/queues/status`: lists the IDs of all the scenes currently waiting to be converted, per platform. If your entity ID appears here, your scene is queued behind other conversions and you just need to wait a little longer.
+
+{% hint style="warning" %}
+**📔 Note**: If you have an open session of the Decentraland explorer where you already loaded your scene, you'll need to close and re-open the app. Otherwise you'll keep seeing the cached version.
+{% endhint %}

@@ -12,8 +12,16 @@ You can add up to 1 light per parcel in your scene.
 
 There are two supported types of lights:
 
-* Point light: A light that shines in all directions from a specific point.
-* Spot light: A light that shines in a specific direction, and covers only a cone-shaped area.
+- Point light: A light that shines in all directions from a specific point.
+- Spot light: A light that shines in a specific direction, and covers only a cone-shaped area.
+
+{% hint style="warning" %}
+**📔 Note**: Lights that are embedded inside a `.glb` or `.gltf` file are ignored by Decentraland. If your 3D model was exported with lights in it, they won't illuminate anything in the scene. The only valid sources of light are entities that have the `LightSource` component. If you want a lamp model to shine, add a `LightSource` to the same entity, or to a child entity positioned where the bulb is.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: The Creator Hub asset catalog has ready-made **Spotlight** and **Point Light** smart items, in the **lights** category. Each bundles a model, a configured `LightSource`, and Turn On, Turn Off, and Toggle actions, so you don't need to write any code. There is also a decorative **Spotlight** under **decorations**, which is a model only and casts no light. Pick from the **lights** category when you want real illumination.
+{% endhint %}
 
 ## Adding a light
 
@@ -39,7 +47,9 @@ LightSource.create(light, {
 
 ## Spot lights
 
-Spot lights are lights that shine in a specific direction, and cover a specific cone-shaped area. The direction of the light is defined by the entity's Transform component. The aperture of the cone is defined by the `innerAngle` and `outerAngle` properties of the `LightSource` component.
+Spot lights are lights that shine in a specific direction, and cover a specific cone-shaped area. The direction of the light is defined by the entity's Transform component: the light shines along the entity's forward direction (its local +Z axis). The aperture of the cone is defined by the `innerAngle` and `outerAngle` properties of the `LightSource` component.
+
+The example below rotates the entity 90 degrees around its X axis, so the light points straight down. A rotation of -90 degrees points it at the sky.
 
 ```ts
 import { engine, LightSource } from '@dcl/sdk/ecs'
@@ -48,7 +58,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -90,9 +100,9 @@ The defualt intensity is 16000, this is the brightness of an average lightbulb i
 
 The distance at which the light is visible is the fourth root of the intensity value (`intensity^0.25`).
 
-* At an intensity of 625, the light is visible up to around 5 meters away.
-* At an intensity of 10000, the light is visible up to around 10 meters away.
-* At an intensity of 160000, the light is visible up to around 20 meters away.
+- At an intensity of 625, the light is visible up to around 5 meters away.
+- At an intensity of 10000, the light is visible up to around 10 meters away.
+- At an intensity of 160000, the light is visible up to around 20 meters away.
 
 ## Shadows
 
@@ -105,7 +115,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -132,7 +142,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -175,19 +185,30 @@ Light sources can have a pretty big impact on the performance of your scene. For
 
 The number allowed active lights in a scene is capped at one per parcel, and beyond that it depends on the user´s selected quality settings.
 
-* Low quality: Maximum 4 lights (in a scene with enough parcels)
-* Medium quality: Maximum 6 lights (in a scene with enough parcels)
-* High quality: Maximum 10 lights (in a scene with enough parcels)
+- Low quality: no scene lights at all
+- Medium quality: Maximum 6 lights (in a scene with enough parcels)
+- High quality: Maximum 10 lights (in a scene with enough parcels)
+- Mobile: the app has its own presets, from no scene lights on Very Low up to 8 lights on High. See [Lights and particles on mobile](../../build-for-mobile/develop/optimize-performance.md#lights-and-particles).
+
+The quality settings slider can lower a preset's cap further.
 
 If there are more lights than allowed, the engine will automatically disable lights based on proximity of the light source to the player. As the player moves, the engine will re-enable lights that are close enough to the player.
+
+{% hint style="warning" %}
+**📔 Note**: On the Low quality preset, scene lights are switched off completely. A correctly built `LightSource` then shows nothing, and no amount of intensity, range or material tuning changes that. If a light "doesn't work", check the quality setting before anything else. Treat Medium as the lowest setting your scene supports, rather than requiring High.
+
+An emissive material that glows is not proof that a light is working. A glowing lamp mesh and the light it casts on nearby surfaces are two separate things to check.
+{% endhint %}
+
+Because some players see no scene lights at all (Low quality on desktop, Very Low on mobile), make sure your scene still works without them. Anything players need to see, like the path forward or an object they can interact with, should stand out through emissive materials, textures or the skybox. Use `LightSource` as an extra, not as the only cue. The same goes for shadows: don't make a shadow the only way to tell where an object is.
 
 In all cases, the engine will only render shadows for up to 3 light sources. If there are more lights with shadows than 3, the engine will automatically disable shadows for the remaining lights that are further away.
 
 Besides the maximum number of allowed lights, shadows also depend on distance from the player. The exact distances vary with the light type and the player's quality settings, but as a general rule:
 
-* Less than 10 meters away: Shadows are rendered as soft shadows (high quality)
-* Between 10 and 20 meters away: Shadows are rendered as hard shadows (low quality)
-* More than 20 meters away: Shadows aren't rendered
+- Less than 10 meters away: Shadows are rendered as soft shadows (high quality)
+- Between 10 and 20 meters away: Shadows are rendered as hard shadows (low quality)
+- More than 20 meters away: Shadows aren't rendered
 
 The light sources themselves keep illuminating the scene at much larger distances: they are only disabled when the player is more than 160 meters away (10 parcels). This makes lights suitable for large-scale setups like stage lighting at live events, where most of the audience is far from the light sources.
 
@@ -199,9 +220,9 @@ The lightSource component has a `range` property that can be used to set the max
 
 The range is calculated as the fourth root of the intensity value (`intensity^0.25`).
 
-* At an intensity of 16000, the range is around 11 meters.
-* At an intensity of 160000, the range is around 20 meters.
-* At an intensity of 1600000, the range is around 36 meters.
+- At an intensity of 16000, the range is around 11 meters.
+- At an intensity of 160000, the range is around 20 meters.
+- At an intensity of 1600000, the range is around 36 meters.
 
 The default setting ensures that the dropoff curve is smooth and looks natural. But in case you want to limit the range of the light, you can set the `range` property to a positive number.
 
@@ -246,13 +267,13 @@ LightSource.create(light, {
       outerAngle: 60
     }),
 	shadow: true,
-	shadowMaskTexture: Material.Texture.Common({src: "assets/scene/images/lightmask1.png"})         
+	shadowMaskTexture: Material.Texture.Common({src: "assets/scene/images/lightmask1.png"})
 })
 ```
 
 For example, you can apply the image below to produce a fun effect where the light is only visible in the areas where the texture is white. You can can use this with lights of any color and intensity.
 
-![](../../images/lightmask1.png)
+![](../../images/lightmask1.webp)
 
 With a black and white image, the light is either hitting an area or not. It's also possible to pass an image with colors, and these colors will tint your light on each area, this can be used to project a colored logo or image onto a surface.
 
@@ -273,14 +294,18 @@ Transform.create(light, {
 
 LightSource.create(light, {
 	type: LightSource.Type.Point({}),
-	shadowMaskTexture: Material.Texture.Common({src: "assets/scene/images/point-light-mask1.png"})         
+	shadowMaskTexture: Material.Texture.Common({src: "assets/scene/images/point-light-mask1.png"})
 })
 ```
 
 For example, the image below displays each of the letters on different sides of the cube (Y on top, -Y on the bottom, X on the right, -X on the left, Z on the front, -Z on the back).
 
-![](../../images/point-light-mask1.png)
+![](../../images/point-light-mask1.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Combine lights with a [Particle System](particle-system.md) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.
+{% endhint %}
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of this component, see the [`0,4-dynamic-lights`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,4-dynamic-lights) test scene, which covers both `LightSource.Type.Point` and `LightSource.Type.Spot`, runtime changes via `LightSource.getMutable()`, shadows, and `shadowMaskTexture`.
 {% endhint %}

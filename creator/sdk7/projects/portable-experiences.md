@@ -28,7 +28,7 @@ Smart Wearables are a kind of portable experience that is associated to a wearab
 
 Running a preview of a portable experience is just like running that of a scene, simply click the **Run Scene** button on the Decentraland tab, or run `npm run start` in the command line.
 
-You’ll notice that rather than seeing an empty grid, you are surrounded by the default empty parcels content. In a portable experience, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world. Since the portable experience is meant to be experienced anywhere in Decentraland, you're most likely going to focus on entities attached to the player or UI, but you can also place entities freely in the world.
+You’ll notice that rather than seeing an empty grid, you are surrounded by the default empty parcels content. The preview runs your code as a regular scene on the parcels listed in `scene.json` (the template uses a single parcel at `0,0`), so features that only work in the scene the player is standing in stop when you walk off them. Once published, a portable experience isn't restricted to any set of parcels: you can add 3D models or sounds anywhere in the world. Since the portable experience is meant to be experienced anywhere in Decentraland, you're most likely going to focus on entities attached to the player or UI, but you can also place entities freely in the world.
 
 ## Publish
 
@@ -111,19 +111,9 @@ In the example above, the scene is using `kill()` to terminate portable experien
 
 An alternative to terminating portable experiences is to change the behavior of your scene when they are present. For example, the player might be able to keep their portable experience, but not be allowed to start a match, or to claim any rewards as long as they have any enabled.
 
-## Restricted actions in portable experiences
-
-To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
-
-See [Required permissions](scene-metadata.md#required-permissions) for more details.
-
-{% hint style="warning" %}
-**📔 Note**: Players are notified about the required flags by the portable experience. Avoid adding permissions you don't need, since it can make players distrust your portable experience and reject it.
-{% endhint %}
-
 ## Limitations
 
-Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/player-avatar.md#custom-animations) uploaded as part of the portable experience's files.
+Portable experiences only run for the player that activates it. Other players don't see the effects. For example, if the portable experience renders a pet that follows the player, other players around won't see this pet. However, other players will see avatars perform animations that run as part of the portable experience, even [custom avatar animations](../interactivity/avatars/avatar-animations.md#custom-animations) uploaded as part of the portable experience's files.
 
 ## Tips
 

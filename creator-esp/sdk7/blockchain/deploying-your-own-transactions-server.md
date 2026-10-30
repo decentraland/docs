@@ -12,7 +12,7 @@ El [transactions-server](https://github.com/decentraland/transactions-server/tre
 
 El servidor de transacciones se usa para ayudar con la UX de usar múltiples redes y para evitar que cambien de proveedores de red sobre la marcha. Los usuarios pueden permanecer conectados a [Ethereum](https://ethereum.org/en/) e interactuar con [Polygon](https://polygon.technology/) [solo firmando transacciones](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/)
 
-El DAO de Decentraland ha configurado un servidor usado por nuestras dapps, cubriendo el costo hasta un cierto límite con algunas [restricciones](deploying-your-own-transactions-server.md#restrictions). Este documento explica cómo puedes [desplegar este servidor](deploying-your-own-transactions-server.md#running-the-server) para permitir que tus usuarios retransmitan transacciones con las restricciones que necesites, si las hay.
+El DAO de Decentraland ha configurado un servidor usado por nuestras dapps, cubriendo el costo hasta un cierto límite con algunas [restricciones](deploying-your-own-transactions-server.md#restricciones). Este documento explica cómo puedes [desplegar este servidor](deploying-your-own-transactions-server.md#ejecutando-el-servidor) para permitir que tus usuarios retransmitan transacciones con las restricciones que necesites, si las hay.
 
 ### Restricciones
 
@@ -20,10 +20,10 @@ Todas las restricciones son por transacción que el usuario intenta enviar. Lo q
 
 Las restricciones configurables que tiene el servidor son:
 
-* Verifica una cuota de transacciones máximas por día. Consulta [la sección de colecciones](deploying-your-own-transactions-server.md#collections) para más información.
+* Verifica una cuota de transacciones máximas por día. Consulta [la sección de transacciones](deploying-your-own-transactions-server.md#transacciones) para más información.
 * Verifica contratos en whitelist, por lo que si una transacción está intentando interactuar con un contrato que no está reconocido fallará. Para hacer esto usa
-  * Los contratos y colecciones desplegadas. Consulta [la sección de contratos y colecciones](deploying-your-own-transactions-server.md#contracts-and-collections) para más información
-* El precio de las ventas, restringiéndolo si está por debajo de un umbral. Consulta [la sección de valor mínimo de venta](deploying-your-own-transactions-server.md#min-sale-value) para más información
+  * Los contratos y colecciones desplegadas. Consulta [la sección de contratos y colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones) para más información
+* El precio de las ventas, restringiéndolo si está por debajo de un umbral. Consulta [la sección de valor mínimo de venta](deploying-your-own-transactions-server.md#valor-minimo-de-venta) para más información
 
 ### Configurando Gelato
 
@@ -31,7 +31,7 @@ Las restricciones configurables que tiene el servidor son:
 
 Necesita un contrato para reenviar las transacciones, pero afortunadamente podemos reutilizar el que está siendo usado por Decentraland (ver abajo)
 
-[Gelato](https://www.gelato.network/relay) funciona como una API al servidor. [Para configurar](deploying-your-own-transactions-server.md#configuring-the-server) necesitarás primero una API KEY que [usaremos más tarde](deploying-your-own-transactions-server.md#gelato). Para obtenerlas:
+[Gelato](https://www.gelato.network/relay) funciona como una API al servidor. [Para configurar](deploying-your-own-transactions-server.md#configurando-el-servidor) necesitarás primero una API KEY que [usaremos más tarde](deploying-your-own-transactions-server.md#gelato). Para obtenerlas:
 
 * [Regístrate](https://app.gelato.network/relay) en el servicio
 * Crea una nueva dapp para la red que pretendes apuntar. Para imitar lo que Decentraland configuró:
@@ -47,7 +47,7 @@ Por último, necesitarás fondear tu dapp recién creada. Puedes hacer esto cone
 
 Si quieres probar tu app antes de ir en vivo y estás usando Polygon puedes hacerlo en `Polygon Amoy`, el testnet de Polygon.
 
-Para hacer esto simplemente repite [el proceso](deploying-your-own-transactions-server.md#configuring-gelato) pero seleccionando `Matic Testnet (Amoy)` en el campo de red.
+Para hacer esto simplemente repite [el proceso](deploying-your-own-transactions-server.md#configurando-gelato) pero seleccionando `Matic Testnet (Amoy)` en el campo de red.
 
 Necesitarás fondear tu dapp, pero puedes hacerlo fácilmente obteniendo tokens Sepolia ETH del [faucet](https://sepoliafaucet.com/).
 
@@ -72,13 +72,13 @@ Para hacer esto:
 * Abre el archivo `.env`. Verás que algunas variables tienen un valor predeterminado, como `HTTP_SERVER_PORT=5000` (en qué puerto ejecutar el servidor)
 * Puedes dejar la mayoría de los valores como están, pero hay algunos valores importantes a considerar:
   * [Gelato](deploying-your-own-transactions-server.md#gelato)
-  * [Transacciones](deploying-your-own-transactions-server.md#transactions)
-  * [Contratos y colecciones](deploying-your-own-transactions-server.md#contracts-and-collections)
-  * [Valor mínimo de venta](deploying-your-own-transactions-server.md#min-sale-value)
+  * [Transacciones](deploying-your-own-transactions-server.md#transacciones)
+  * [Contratos y colecciones](deploying-your-own-transactions-server.md#contratos-y-colecciones)
+  * [Valor mínimo de venta](deploying-your-own-transactions-server.md#valor-minimo-de-venta)
 
 #### Gelato
 
-Usa la API KEY que obtuvimos al [configurar gelato](deploying-your-own-transactions-server.md#configuring-gelato).
+Usa la API KEY que obtuvimos al [configurar gelato](deploying-your-own-transactions-server.md#configurando-gelato).
 
 ```
 GELATO_API_KEY=p_qXAlcVwWyU__Fjbn_qwr0rTy14asDf_Z2XCVBnmZX_

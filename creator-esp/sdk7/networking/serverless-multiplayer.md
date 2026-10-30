@@ -16,13 +16,13 @@ Hay tres formas de sincronizar el estado de la escena, para que todos los jugado
 
 * **Marcar una entidad como sincronizada**: La opción más fácil. Consulta [Marcar una entidad como sincronizada](serverless-multiplayer.md#mark-an-entity-as-synced)
 * **Enviar Mensajes MessageBus Explícitos**: Enviar y escuchar manualmente mensajes específicos. Consulta [Enviar mensajes MessageBus explícitos](serverless-multiplayer.md#send-explicit-messagebus-messages)
-* **Usar un Servidor**: Consulta [servidores de terceros](../sdk7/networking/authoritative-servers.md). Esta opción es más complicada de configurar, pero es recomendable si los jugadores tienen incentivos para explotar tu escena.
+* **Usar un Servidor**: Consulta [servidores de terceros](authoritative-servers.md). Esta opción es más complicada de configurar, pero es recomendable si los jugadores tienen incentivos para explotar tu escena.
 
 Las primeras dos opciones están cubiertas en este documento. Son más simples, ya que no requieren servidor. La desventaja es que dependes más de las velocidades de conexión de los jugadores, y el estado de la escena no se persiste cuando todos los jugadores salen de la escena.
 
-### Marcar una Entidad como Sincronizada
+### Marcar una Entidad como Sincronizada {#mark-an-entity-as-synced}
 
-En el [Creator Hub](../scene-editor/get-started/about-editor.md), marca una entidad como sincronizada agregando un componente **Multiplayer** a ella. Incluye una casilla de verificación para cada uno de los otros componentes en la entidad, permitiéndote seleccionar cuáles actualizar.
+En el [Creator Hub](../../scene-editor/get-started/about-editor.md), marca una entidad como sincronizada agregando un componente **Multiplayer** a ella. Incluye una casilla de verificación para cada uno de los otros componentes en la entidad, permitiéndote seleccionar cuáles actualizar.
 
 Para marcar una entidad como sincronizada a través de código, usa la función `syncEntity`:
 
@@ -38,12 +38,12 @@ La función `syncEntity` toma las siguientes entradas:
 
 * **entityId**: Una referencia a la entidad a sincronizar
 * **componentIds**: Una lista de los componentes que necesitan sincronizarse de esa entidad. Este es un arreglo que puede contener tantas entidades como sea necesario. Todos los valores deben ser propiedades `componentId`.
-* **entityEnumId**: (opcional) Un id único que se usa consistentemente por todos los jugadores, consulta [Acerca del enum id](serverless-multiplayer.md#about-the-enum-id).
+* **entityEnumId**: (opcional) Un id único que se usa consistentemente por todos los jugadores, consulta [Acerca del enum id](serverless-multiplayer.md#acerca-del-enum-id).
 
 No todas las entidades o componentes necesitan sincronizarse. Elementos estáticos como un árbol que permanece en el mismo lugar no requieren sincronización. En las entidades que sí sincronices, solo los componentes que cambian con el tiempo deben sincronizarse. Por ejemplo, si un cubo cambia de color cuando se hace clic, solo debes sincronizar el componente Material, no el MeshRenderer o el Transform, ya que esos nunca cambiarán.
 
 {% hint style="info" %}
-**💡 Tip**: Si los datos que quieres compartir no existen como un componente, define un [componente personalizado](../sdk7/architecture/custom-components.md) que contenga esos datos.
+**💡 Tip**: Si los datos que quieres compartir no existen como un componente, define un [componente personalizado](../architecture/custom-components.md) que contenga esos datos.
 {% endhint %}
 
 #### Acerca del enum id
@@ -75,7 +75,7 @@ Aquí el enum EntityEnumId se usa para etiquetar entidades con un identificador 
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Nota**: Evita usar números mayores a **8001** si tu escena también incluye Smart Items. Los ítems que se crean por el [Creator Hub](../scene-editor/get-started/about-editor.md) con un componente Multiplayer usarán IDs asignados automáticamente desde 8001 en adelante. Cualquier ID menor a 8001 es seguro para asignar a tus entidades sincronizadas.
+**📔 Nota**: Evita usar números mayores a **8001** si tu escena también incluye Smart Items. Los ítems que se crean por el [Creator Hub](../../scene-editor/get-started/about-editor.md) con un componente Multiplayer usarán IDs asignados automáticamente desde 8001 en adelante. Cualquier ID menor a 8001 es seguro para asignar a tus entidades sincronizadas.
 {% endhint %}
 
 **Entidades creadas por un jugador**
@@ -89,11 +89,17 @@ syncEntity(projectile, [Transform.componentId])
 
 En este caso, el `entityEnumId` es opcional, ya que el SDK asignará automáticamente un ID único de tiempo de ejecución que compartirá entre jugadores.
 
-### Enviar mensajes MessageBus explícitos
+### Entidades parentadas {#parented-entities}
+
+Para vincular una entidad sincronizada a una entidad padre, usa `parentEntity(child, parent)` en lugar de la propiedad `parent` de `Transform`. Los IDs locales pueden variar entre jugadores; sincroniza tanto el padre como el hijo con `syncEntity` para que ambos tengan un identificador compartido. El padre puede usar una lista vacía de componentes si no necesitas sincronizar sus propiedades.
+
+Consulta el [ejemplo completo de entidades sincronizadas](../../../creator/sdk7/networking/serverless-multiplayer.md#mark-an-entity-as-synced) para ver la configuración y las funciones auxiliares disponibles.
+
+### Enviar mensajes MessageBus explícitos {#send-explicit-messagebus-messages}
 
 Otra opción es enviar y escuchar mensajes explícitos a través del MessageBus.
 
-Consulta [Message Bus](../sdk7/interactivity/event-listeners.md#message-bus) para obtener detalles completos sobre cómo enviar y escuchar mensajes entre jugadores.
+Consulta [Message Bus](../../../creator/sdk7/networking/serverless-multiplayer.md#send-explicit-messagebus-messages) para obtener detalles completos sobre cómo enviar y escuchar mensajes entre jugadores.
 
 El enfoque con MessageBus te da más control sobre qué información se sincroniza y cuándo. Es más trabajo extra, pero puede ser más eficiente con el ancho de banda, ya que puedes decidir exactamente qué valores transmitir, en lugar de todo el componente.
 

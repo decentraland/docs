@@ -16,7 +16,7 @@ You can set a fixed time of day for your scene. All players will see the scene w
 
 In the Creator Hub, open the scene settings and click on the **Settings** tab to find the **Skybox** section. Uncheck the **Auto** option and set the time of day you want.
 
-![](../../images/fixed-time-of-day.png)
+![](../../images/fixed-time-of-day.webp)
 
 You can also set the skybox time of day in your scene code. To do this, add the following section to your `scene.json` at root level:
 
@@ -76,3 +76,7 @@ function main() {
   SkyboxTime.create(engine.RootEntity, { fixedTime: 36000, transitionMode: TransitionMode.TM_BACKWARD })
 }
 ```
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of skybox control, see the [`2,1-skybox-sdk-scene-a`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,1-skybox-sdk-scene-a) and [`3,1-skybox-sdk-scene-b`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/3,1-skybox-sdk-scene-b) test scenes, which drive `SkyboxTime` and `TransitionMode` live from a UI panel, and [`2,0-skybox-scene-json`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,0-skybox-scene-json), which reads the `fixedTime` set in `scene.json` back at runtime via `getSceneInformation()`.
+{% endhint %}

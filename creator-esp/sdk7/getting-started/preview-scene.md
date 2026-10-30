@@ -8,16 +8,16 @@ metaLinks:
 
 # Preview Your Scene
 
-Una vez que hayas [construido una nueva scene](preview-scene.md#create-your-first-scene) o descargado un [example de scene](https://studios.decentraland.org/resources?sdk_version=SDK7) puedes previsualizarla localmente.
+Una vez que hayas [construido una nueva scene](sdk-101.md#crea-tu-primera-scene) o descargado un [example de scene](https://studios.decentraland.org/resources?sdk_version=SDK7) puedes previsualizarla localmente.
 
 ## Usando el Scene Editor
 
-Asegúrate de haber [instalado el Creator Hub](../get-started/editor-installation.md).
+Asegúrate de haber [instalado el Creator Hub](../../scene-editor/get-started/editor-installation.md).
 
 1. Abre tu proyecto de scene.
 2. Haz clic en el botón **Preview** en la esquina superior derecha. Esto abrirá una nueva ventana con el Decentraland Desktop Explorer, ejecutando solo tu scene. Allí puedes moverte por la scene e interactuar con ítems interactivos.
 
-![](../images/editor/preview-button.png)
+![](../../.gitbook/assets/preview-button.webp)
 
 Configura diferentes opciones de preview desde el menú desplegable junto al botón **Preview**:
 
@@ -68,16 +68,16 @@ El tamaño de scene mostrado en el preview se basa en la configuración de la sc
 
 Edita esto en la segunda pestaña del menú de scene en el Scene Editor.
 
-![](../images/editor/scene-parcels-3x3.png)
+![](../../.gitbook/assets/scene-parcels-3x3.webp)
 
 Usa los desplegables y haz clic en **Apply Layout** para cambiar las dimensiones de tu scene. También puedes hacer clic en cada parcela individual para desactivarla de tu diseño.
 
-![](../images/editor/scene-parcels-toggled.png)
+![](../../.gitbook/assets/scene-parcels-toggled.webp)
 
-También puedes editar el archivo _scene.json_ para listar múltiples parcelas en el campo "parcels". Consulta [set parcels via the command line](../projects/scene-metadata.md#scene-parcels) para más detalles.
+También puedes editar el archivo _scene.json_ para listar múltiples parcelas en el campo "parcels". Consulta [set parcels via the command line](../projects/scene-metadata.md#parcelas-de-la-escena) para más detalles.
 
 {% hint style="info" %}
-**💡 Tip**: Mientras ejecutas el preview, las coordenadas de parcela no necesitan coincidir con las que tu scene realmente usará, siempre que sean adyacentes y estén organizadas en la misma forma. Tendrás que reemplazarlas con las coordenadas reales más tarde cuando [despliegues la scene](preview-scene.md#upload-a-scene-to-decentraland).
+**💡 Tip**: Mientras ejecutas el preview, las coordenadas de parcela no necesitan coincidir con las que tu scene realmente usará, siempre que sean adyacentes y estén organizadas en la misma forma. Tendrás que reemplazarlas con las coordenadas reales más tarde cuando [despliegues la scene](preview-scene.md#subir-una-scene-a-decentraland).
 {% endhint %}
 
 ## Ver la consola de la scene
@@ -94,7 +94,7 @@ Interactúa con la scene en una ventana, luego cambia a la otra para ver que los
 
 Usando el Creator Hub, haz clic en el botón Preview una segunda vez, y eso abre una segunda ventana del Decentraland explorer. Debes conectarte en ambas ventanas con diferentes direcciones. Las mismas sesiones permanecerán abiertas mientras la scene se recargue.
 
-![](../images/editor/preview-button.png)
+![](../../.gitbook/assets/preview-button.webp)
 
 Como alternativa, puedes abrir una segunda ventana del Decentraland explorer escribiendo lo siguiente en una URL del navegador:
 

@@ -279,7 +279,7 @@ PointerEvents.create(myEntity, {
 Whenever the player's cursor points at the colliders in this entity, the UI will display a hover hint to indicate that the entity can be interacted with. See the sections below for details on what you can configure.
 
 {% hint style="warning" %}
-**📔 Note**: The `PointerEvents` component just handles the displaying of hover feedback. To handle the button events themselves with custom logic, see [Using-a-system](system-based-events.md#check-for-events).
+**📔 Note**: The `PointerEvents` component just handles the displaying of hover feedback. To handle the button events themselves with custom logic, see [Using-a-system](system-based-events.md#using-a-system).
 {% endhint %}
 
 The `PointerEvents` component requires at least one pointer event definition. Each pointer event definition can be configured with the following:
@@ -290,7 +290,9 @@ The `PointerEvents` component requires at least one pointer event definition. Ea
   * `hoverText` _(optional)_: What string to display in the hover feedback hint. "Interact" by default.
   * `showFeedback` _(optional)_: If false, it hides both the hover hint and the edge highlight for this entity. _true_ by default.
   * `showHighlight` _(optional)_: If true, players will see the edge highlight when hovering the cursor on the entity. _true_ by default. This value is only considered if `showFeedback` is _true_.
-  * `maxDistance` _(optional)_: Only show feedback when the player is closer than a certain distance from the entity. Default is _10 meters_.
+  * `maxDistance` _(optional)_: How far the player's **avatar** can be from the entity and still interact with it, in meters. Default is _10 meters_. See [Max distance](#max-distance).
+  * `maxCameraDistance` _(optional)_: How far the **active camera** can be from the entity and still interact with it, in meters. Not set by default. See [Max distance](#max-distance).
+  * `priority` _(optional)_: Which entity wins when several overlap. Higher values take precedence. _0_ by default.
 
 A single `PointerEvents` component can hold multiple pointer events definitions, that can detect different events for different buttons. Each entity can only have _one_ `PointerEvents` component, but this component can include multiple objects in its `pointerEvents` array, one for each event to respond to.
 
@@ -497,7 +499,7 @@ PointerEvents.create(chest, {
 
 Some entities can be intentionally only interactive at a close range. If a player is too far away from an entity, the hover hint won't be displayed next to the cursor.
 
-By default, entities are only clickable when the player is within a close range of the entity, at a maximum distance of _10 meters_. You can change the maximum distance by setting the `maxDistance` property of a pointer event.
+By default, entities are only clickable when the player's **avatar** is within _10 meters_ of the entity. You can change that range by setting the `maxDistance` property of a pointer event.
 
 ```ts
 // create entity
@@ -534,8 +536,12 @@ engine.addSystem(() => {
 
 The example above sets the maximum distance for hover hints to _6 meters_. Make sure that the logic for handling the input actions also follows the same rules. See [Data from input action](system-based-events.md#data-from-input-action) for how to obtain the distance of an input action.
 
+`maxDistance` is measured from the player's **avatar**, so it behaves the same in first and third person.
+
+To limit interaction by how far the **active camera** is instead, use `maxCameraDistance`. Setting both means either check passing is enough. See [Distance limits](register-callback.md#distance-limits) for the full set of rules.
+
 {% hint style="warning" %}
-**📔 Note**: The `maxDistance` is measured in meters from meters from the player's camera. Keep in mind that in 3rd person the camera is a bit further away, so make sure the distance you set works well in both modes.
+**📔 Note**: `maxPlayerDistance` is a deprecated alias of `maxDistance`. Both measure distance from the avatar, so use `maxDistance` in new scenes.
 {% endhint %}
 
 ## Advanced custom hints
@@ -591,7 +597,7 @@ PointerEvents.create(myEntity, {
 			eventInfo: {
 				button: InputAction.IA_PRIMARY,
 				hoverText: 'Press E',
-				maxPlayerDistance: 5
+				maxDistance: 5
 			},
 			interactionType: InteractionType.PROXIMITY,
 		},
@@ -605,7 +611,7 @@ engine.addSystem(() => {
 })
 ```
 
-Using helpers like `pointerEventsSystem.onProximityDown`, each entity is limited to have a single type of event. You can't register two different button events, or even a combination of proximity and pointer events using the same button. You don't have that limitation when using sytem based events. For example here's an entity that can be interacted with both by pointing a cursor and pressing E, or by walking near it and pressing E without pointing at it with the cursor.
+With helpers like `pointerEventsSystem.onProximityDown`, an entity can hold one cursor handler and one proximity handler at the same time, and both callbacks run. What it can't do is register two different buttons for the same handler. System-based events have neither limitation: you define one entry per behavior. For example here's an entity that can be interacted with both by pointing a cursor and pressing E, or by walking near it and pressing E without pointing at it with the cursor.
 
 ```ts
 	PointerEvents.create(myEntity, {
@@ -615,7 +621,7 @@ Using helpers like `pointerEventsSystem.onProximityDown`, each entity is limited
                 eventInfo: {
                     button: InputAction.IA_POINTER,
                     hoverText: 'Click',
-                    maxPlayerDistance: 15,
+                    maxDistance: 15,
                 },
                 interactionType: InteractionType.CURSOR,
             },
@@ -624,7 +630,7 @@ Using helpers like `pointerEventsSystem.onProximityDown`, each entity is limited
                 eventInfo: {
                     button: InputAction.IA_PRIMARY,
                     hoverText: 'Press E',
-                    maxPlayerDistance: 15,
+                    maxDistance: 15,
                 },
                 interactionType: InteractionType.PROXIMITY,
             },
@@ -653,14 +659,14 @@ PointerEvents.create(myEntity, {
 			eventType: PointerEventType.PET_PROXIMITY_ENTER,
 			eventInfo: {
 				button: InputAction.IA_POINTER,
-				maxPlayerDistance: 5,
+				maxDistance: 5,
 			},
 		},
 		{
 			eventType: PointerEventType.PET_PROXIMITY_LEAVE,
 			eventInfo: {
 				button: InputAction.IA_POINTER,
-				maxPlayerDistance: 5,
+				maxDistance: 5,
 				showFeedback: false,
 			},
 		},
@@ -730,7 +736,7 @@ Often, _.glTF_ 3D models are made up of multiple meshes, that each have an indiv
 
 To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
 
-![](<../../../../.gitbook/assets/mesh-names (1).png>)
+![](<../../../images/media/mesh-names.webp>)
 
 {% hint style="info" %}
 **💡 Tip**: You can also learn the name of the clicked mesh by logging it and reading it off console.

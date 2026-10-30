@@ -15,13 +15,13 @@ Una entidad `Label` tiene los siguientes campos que pueden configurarse:
 *   `fontSize`: El tamaño del texto, como un número.
 
     > NOTA: El `fontSize` no se ve afectado por el tamaño de su entidad o entidades padre.
-* `color`: El color del texto, como un [Color4](../sdk7/3d-essentials/color-types.md).
+* `color`: El color del texto, como un [Color4](../3d-essentials/color-types.md).
 * `font`: La fuente a usar, tomando un valor del enum `Font`. Los valores soportados son:
   * `serif`
   * `sans-serif` _(predeterminado)_
   * `monospace`
 * `textAlign`: Cómo se alineará el texto con su padre. Toma un valor del tipo `TextAlingType`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-* `textWrap`: Si el texto usa saltos de línea para asegurar que todo se ajuste en el ancho máximo permitido. Puede tomar las cadenas `'wrap'` (predeterminado) o `'nowrap'`.
+* `textWrap`: Si el texto usa saltos de línea para asegurar que todo se ajuste en el ancho máximo permitido. Está activado por defecto (`'wrap'`), para desactivarlo usa el valor `'nowrap'`.
 
 {% hint style="warning" %}
 **📔 Nota**: El `fontSize` no se ve afectado por el tamaño de su entidad o entidades padre.
@@ -107,7 +107,7 @@ export const uiMenu = () => (
 )
 ```
 
-### Tamaño de texto responsivo
+### Tamaño de texto responsivo {#responsive-text-size}
 
 Usa la función `scaleFontSize()` para proporcionar valores de fuente que se ajusten al tamaño de pantalla del jugador. Al establecer la propiedad `fontSize` de una entidad UI de texto, pasa esta función en lugar de un solo número.
 
@@ -178,4 +178,4 @@ export const uiMenu = () => (
 **💡 Tip**: Si no tienes diferentes tamaños de pantalla para probar, puedes intentar usar el Web Explorer y redimensionar la ventana donde ejecutas la vista previa. El texto se ajustará instantáneamente cada vez que cambies la ventana.
 {% endhint %}
 
-Como alternativa a usar la función `scaleFontSize()`, también puedes ajustar el tamaño de fuente al tamaño de pantalla usando los métodos descritos en [Tamaño UI Responsivo](../sdk7/2d-ui/ui-positioning.md#responsive-ui-size).
+Como alternativa a `scaleFontSize()`, pasá un string en `vw`/`vh` directamente como `fontSize` — por ejemplo `fontSize: '1.8vh'` — que mide el texto contra el canvas e ignora por completo el factor de escala de la UI. **No** multipliques los tamaños de fuente por un factor que calcules vos a partir de `UiCanvasInformation`: el SDK ya aplica uno, ver [Tamaño UI responsivo](ui-positioning.md#responsive-ui-size).

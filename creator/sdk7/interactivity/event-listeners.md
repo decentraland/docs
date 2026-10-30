@@ -123,8 +123,9 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
 
-You can also detect emotes form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
+You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
 ## Player changes profile
 
@@ -163,11 +164,7 @@ The event on `AvatarBase` includes the following information:
 * `eyesColor`: Player eye color as a `Color3`
 * `hairColor`: Player hair color as a `Color3`
 
-You can also detect changes in wearables or avatars form other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
-
-{% hint style="info" %}
-**💡 Tip**: When testing in preview with the legacy web editor, to avoid using a random avatar, run the scene in the browser connected with your Metamask wallet.
-{% endhint %}
+You can also detect changes in wearables or avatars from other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
 You can also detect changes on the profiles of other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 
@@ -207,3 +204,172 @@ export function main() {
 	})
 }
 ```
+
+## Open explorer panels
+
+Your scene can open the Explorer's built-in fullscreen panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. This is useful for directing players to specific Explorer features from your scene's UI.
+
+The player has to ask for it. Call `openExplorerUi` from inside a click handler, not on its own:
+
+```ts
+// Open the map when the player clicks a cube
+import { openExplorerUi } from '~system/RestrictedActions'
+import { engine, ExplorerUi, InputAction, MeshCollider, MeshRenderer, pointerEventsSystem, Transform } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+const mapButton = engine.addEntity()
+Transform.create(mapButton, { position: Vector3.create(8, 1, 8) })
+MeshRenderer.setBox(mapButton)
+MeshCollider.setBox(mapButton)
+
+pointerEventsSystem.onPointerDown(
+	{ entity: mapButton, opts: { button: InputAction.IA_POINTER, hoverText: 'Open map' } },
+	() => {
+		void openExplorerUi({ ui: ExplorerUi.EU_MAP })
+	}
+)
+```
+
+The `ExplorerUi` enum has the following values:
+
+* `EU_SETTINGS` (0)
+* `EU_MAP` (1)
+* `EU_BACKPACK` (2)
+* `EU_CAMERA_REEL` (3)
+* `EU_COMMUNITIES` (4)
+* `EU_PLACES` (5)
+* `EU_EVENTS` (6)
+
+{% hint style="warning" %}
+**Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
+{% endhint %}
+
+### Only a player action can open a panel
+
+A panel opens only when the call is a direct response to something the player just did. A call that isn't, is refused.
+
+**Works:**
+
+* Clicking a 3D entity, with `pointerEventsSystem.onPointerDown` or `pointerEventsSystem.onPointerUp`.
+* Clicking an element of your scene's UI, with `onMouseDown`.
+* Pressing or releasing one of the activation buttons, `E`, `F` or `1` to `4`, detected with `inputSystem.isTriggered` and `PointerEventType.PET_DOWN` or `PointerEventType.PET_UP` (`IA_PRIMARY`, `IA_SECONDARY`, `IA_ACTION_3` to `IA_ACTION_6`).
+
+**Does not work:**
+
+* Calling from `main()`, so a panel can't greet the player on load.
+* Calling from a timer, or after the player's action has passed.
+* Calling after an `await` on something that takes time, such as a `fetch` or another restricted action. The player action only counts for about one frame. Do the work first, then open the panel.
+* Hovering. `PET_HOVER_ENTER` and `PET_HOVER_LEAVE` are not player actions.
+* Movement keys. Walking, running and jumping don't count, only the activation buttons listed above.
+
+`openExplorerUi` resolves with an `openResult` that tells you what happened:
+
+| Value                            | Meaning                                        |
+| -------------------------------- | ---------------------------------------------- |
+| `UNSPECIFIED` (0)                | No result was reported.                        |
+| `OPENED` (1)                     | The panel opened.                              |
+| `WAS_ALREADY_OPEN` (2)           | That panel, or another panel that uses the same screen slot, was already open. Panels that share a slot can't be open at the same time. |
+| `REJECTED_NOT_CURRENT_SCENE` (3) | The player isn't standing in your scene.       |
+| `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off.        |
+| `REJECTED_NO_USER_GESTURE` (5)   | The call wasn't a response to a player action. |
+
+{% hint style="warning" %}
+**Note:** If nothing opens and you see no error, check `openResult`. `REJECTED_NO_USER_GESTURE` (5) means your call ran outside a player action, usually because it sits in `main()`, in a timer, or after an `await`.
+{% endhint %}
+
+### Wait until the player closes a panel
+
+`openExplorerUiAndWait()` opens a panel and hands you a promise that resolves once the player closes it. Use it when your scene should carry on only after the player is done, for example after sending them to the backpack to put on a wearable.
+
+```ts
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+// Open the backpack, then continue once the player closes it
+async function openBackpack() {
+	const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_BACKPACK })
+
+	if (outcome.$case === 'closed') {
+		console.log('The player closed the backpack')
+	}
+}
+```
+
+Call `openBackpack()` from a click handler, the same as `openExplorerUi`. The `await` happens inside the function, after the panel is requested, so the player action still counts.
+
+The object you get back has a `$case` field that tells you how the wait ended:
+
+* `closed`: the player closed the panel your scene opened. This is the normal outcome.
+* `notOpened`: nothing opened. The `openResult` field says why, using the values in the table above.
+* `timedOut`: the time limit you set ran out while the panel was still open.
+* `matched`: an `until` condition ended the wait early, so the panel may still be on screen.
+
+When the panel can't open, the promise resolves immediately with `notOpened`. Your scene never sits waiting for a panel that isn't there.
+
+{% hint style="warning" %}
+**📔 Note**: `openExplorerUiAndWait()` requires `@dcl/sdk` version 7.30.0 or newer. It comes from the `@dcl/sdk/explorer-ui` module, which also re-exports `ExplorerUi`.
+{% endhint %}
+
+#### Set a time limit
+
+There is no time limit by default. A player can leave a panel open for several minutes, and the promise stays pending all that time. Pass `timeoutMs` when your scene needs to move on regardless.
+
+```ts
+import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
+
+// Stop waiting after 30 seconds, whether or not the map is still open
+async function openMap() {
+	const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_MAP }, { timeoutMs: 30000 })
+
+	if (outcome.$case === 'timedOut') {
+		console.log('The player is still looking at the map')
+	}
+}
+```
+
+#### Stop on an event instead
+
+The `until` option ends the wait as soon as an event arrives on a channel, resolving with `matched` rather than `closed`. Channels are exported from the same module: `ExplorerUiEvents` for panel open and close events, and `ItemPurchase` for the result of a purchase flow. Add the same channel to the `collect` option if you also want the events themselves, which arrive in the outcome's `events` array.
+
+### Observe when panels open or close
+
+Use the `ExplorerUiEventsResult` component to detect when explorer panels are opened or closed. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. It streams events each time a panel opens or closes.
+
+```ts
+import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
+
+engine.addSystem(() => {
+	// Iterate over new events since the last frame
+	for (const event of ExplorerUiEventsResult.get(engine.RootEntity)) {
+		if (event.event?.$case === 'opened') {
+			console.log('Panel opened:', event.ui)
+		}
+		if (event.event?.$case === 'closed') {
+			console.log('Panel closed:', event.ui)
+		}
+
+		// Check which specific panel
+		if (event.ui === ExplorerUi.EU_MAP && event.event?.$case === 'closed') {
+			console.log('Player closed the map')
+		}
+	}
+})
+```
+
+Each event contains:
+
+* `ui`: Which panel the event is about (an `ExplorerUi` value).
+* `timestamp`: A monotonic counter for when the event occurred.
+* `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
+
+### Practical uses
+
+Opening Explorer panels directly from your scene's content removes friction for players who might not know where to find these menus. Some ideas:
+
+* **Performance settings**: If your scene detects that the player is running at a low frame rate, show a UI prompt suggesting they lower their graphics settings, with a button that opens the settings panel. See [Help players adjust their settings](../optimizing/performance-optimization.md#help-players-adjust-their-settings) for a full example.
+* **Onboarding**: If your experience relies on wearables or emotes, add a mirror or wardrobe that opens the backpack panel so players can equip them without leaving the flow of your scene. Use `openExplorerUiAndWait()` to carry on once they close it.
+* **Photo opportunities**: Next to a scenic photo spot, add a sign that opens the camera reel panel so players can review the pictures they've taken.
+* **Events and places**: In a lobby or hub scene, add a billboard that opens the events or places panel so players can find what to do next.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
+{% endhint %}

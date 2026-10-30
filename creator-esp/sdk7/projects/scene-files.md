@@ -8,7 +8,7 @@ metaLinks:
 
 # Archivos de Escena
 
-Después de [crear una nueva escena](../sdk7/getting-started/sdk-101.md), la carpeta de la escena tendrá una serie de archivos con contenido predeterminado.
+Después de [crear una nueva escena](../getting-started/sdk-101.md), la carpeta de la escena tendrá una serie de archivos con contenido predeterminado.
 
 ### Archivos predeterminados en una escena
 
@@ -25,9 +25,9 @@ Las escenas incluyen los siguientes archivos:
 
 Este es el punto de entrada al código personalizado de tu escena. Podrías ajustar toda la lógica de tu escena en este archivo, aunque para mayor claridad en la mayoría de los casos recomendamos distribuir tu código en varios otros archivos _.ts_.
 
-Si confías solo en el Scene Editor y [Smart Items](../scene-editor/interactivity/smart-items.md), no necesitarás modificar este archivo.
+Si confías solo en el Scene Editor y [Smart Items](../../scene-editor/interactivity/smart-items.md), no necesitarás modificar este archivo.
 
-Si pretendes escribir código personalizado, lo más probable es que solo necesites editar este y otros archivos .ts para crear tu escena. Contiene el código que genera las [entidades, componentes](../sdk7/architecture/entities-components.md) y [sistemas](../sdk7/architecture/systems.md) de tu escena.
+Si pretendes escribir código personalizado, lo más probable es que solo necesites editar este y otros archivos .ts para crear tu escena. Contiene el código que genera las [entidades, componentes](../architecture/entities-components.md) y [sistemas](../architecture/systems.md) de tu escena.
 
 Al ejecutar la escena, el contenido de tus archivos `.ts` se compila en un solo archivo `.js` minificado, `bin/scene.js`.
 
@@ -39,9 +39,9 @@ Al ejecutar la escena, el contenido de tus archivos `.ts` se compila en un solo 
 
 El archivo _scene.json_ es un manifiesto formateado en JSON para una escena en el mundo. Una escena puede abarcar una sola o múltiples parcelas de LAND. El manifiesto _scene.json_ describe qué objetos existen en la escena, una lista de cualquier asset necesario para renderizarla, información de contacto para el propietario de la parcela y configuraciones de seguridad.
 
-La mayoría de los campos del archivo _scene.json_ pueden editarse directamente en la UI del Scene Editor. Consulta [Configuración de Escena](../scene-editor/get-started/scene-editor-essentials.md#scene-settings).
+La mayoría de los campos del archivo _scene.json_ pueden editarse directamente en la UI del Scene Editor. Consulta [Configuración de Escena](../../scene-editor/get-started/scene-editor-essentials.md#scene-settings).
 
-Para más información consulta [metadatos de escena](../sdk7/projects/scene-metadata.md#metadata).
+Para más información consulta [metadatos de escena](scene-metadata.md#metadata).
 
 Todos estos metadatos son opcionales para previsualizar la escena localmente, pero parte de ellos son necesarios para desplegar. Puedes cambiar esta información manualmente en cualquier momento.
 

@@ -191,7 +191,7 @@ onSceneReadyObservable.add(() => {
 ## Deprecated player data methods
 
 {% hint style="warning" %}
-**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
+**📔 Note**: The `getUserData()` and `getPlayerData()` functions are deprecated from SDK v7.4.x. Use `getPlayer()` instead. See [User data](user-data.md#get-player-data).
 {% endhint %}
 
 To obtain information from the current player that's running the scene, use `getUserData()`.
@@ -226,7 +226,7 @@ Both `getUserData()` and `getPlayerData()` return the same data structure availa
 **📔 Note**: User IDs must always be lowercase. If copying a wallet address, make sure all the characters are set to lowercase.
 {% endhint %}
 
-The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-user-data).
+The `getUserPublicKey()` and `getUserAccount()` functions are also deprecated. Please use `getPlayer()` instead. See [User data](user-data.md#get-player-data).
 
 ## Get skybox time
 
@@ -310,7 +310,7 @@ The event includes the following data:
   * `origin`: _Vector3_ The point of origin of the click, the position of the player who did the click, relative to the scene.
 
 {% hint style="info" %}
-**💡 Tip**: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area](player-avatar.md#avatar-modifier-areas).
+**💡 Tip**: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area](avatars/modifier-areas.md).
 {% endhint %}
 
 ## Player locks/unlocks cursor

@@ -3,7 +3,7 @@
 
 Muchas acciones en el protocolo de Decentraland requieren o se benefician de la autorización con una firma de la cuenta de Ethereum del usuario. Por ejemplo:
 
-1. Subir una nueva versión de cualquier [Entidad](../../content/entities.md) que posean (como su perfil).
+1. Subir una nueva versión de cualquier [Entidad](../content/entities.md) que posean (como su perfil).
 2. Autenticarse ante servicios de terceros.
 3. Autorizar delegados para actuar en su nombre.
 
@@ -56,7 +56,7 @@ Como la serialización más común de una cadena de autenticación es un array J
 
 El primer paso, que identifica la autoridad original (es decir, el usuario), debe cumplir estas condiciones:
 
-1. El `type` es [`SIGNER`](authchain.md#SIGNER)
+1. El `type` es [`SIGNER`](authchain.md#signer)
 2. El `payload` es la cuenta de Ethereum codificada.
 3. La `signature` está vacía.
 
@@ -77,7 +77,7 @@ El segundo paso debe llevar una `signature` de esta cuenta para su `payload`.
 
 Cuando los delegados actúan en nombre del usuario, se agrega un elemento en el medio de la cadena para cada uno de ellos. Las condiciones para estos pasos son:
 
-1. El type es [`ECDSA_EPHEMERAL`](authchain.md#ECDSA_EPHEMERAL)
+1. El type es [`ECDSA_EPHEMERAL`](authchain.md#ecdsa_ephemeral)
 2. El `payload` es un texto especialmente elaborado (ver abajo).
 
 El `payload` está diseñado para ser fácil de leer y fácil de analizar, ya que tanto humanos (cuando usan su IU de wallet) como programas (cuando elaboran y validan) deben trabajar con él. Contiene exactamente 3 líneas de texto plano sensible a mayúsculas:
@@ -145,7 +145,7 @@ Como se mencionó anteriormente, la serialización más común de una cadena de 
 
 Sin embargo, el protocolo no impone esto. Los desarrolladores pueden usar una estrategia de serialización alternativa si es más conveniente para un caso de uso particular, como YAML, archivos CSV, formatos binarios optimizados o cadenas simples con campos delimitados.
 
-Un ejemplo de serialización alternativa del propio protocolo se puede encontrar en el módulo [`SignedFetch`](../../runtime/modules/signed_fetch.md), que usa una secuencia de headers HTTP en lugar de un array JSON.
+Un ejemplo de serialización alternativa del propio protocolo se puede encontrar en el módulo [`SignedFetch`](../runtime/modules/signed-fetch.md), que usa una secuencia de headers HTTP en lugar de un array JSON.
 
 ### Elegir una Fecha de Expiración
 
@@ -223,18 +223,18 @@ Los valores `type` y `payload` para identificación y delegación son estándar 
 
 El protocolo define tres tipos estándar y un propósito estándar:
 
-**Type `SIGNER`**
+#### Type `SIGNER` {#signer}
 
 **Debe** ser el `type` inicial en la cadena, donde `payload` es la dirección de Ethereum del usuario y `signature` es una cadena vacía.
 
-**Type `ECDSA_EPHEMERAL`**
+#### Type `ECDSA_EPHEMERAL` {#ecdsa_ephemeral}
 
 **Debe** ser el `type` para pasos intermedios en la cadena, donde `payload` está en la forma descrita anteriormente.
 
-**Type `ECDSA_SIGNED_ENTITY`**
+#### Type `ECDSA_SIGNED_ENTITY` {#ecdsa_signed_entity}
 
 El `type` final en la cadena para autorizar despliegues de entidades, donde `payload` es el ID de una entidad propiedad del usuario.
 
-**Purpose `Decentraland Login`**
+#### Purpose `Decentraland Login` {#decentraland-login}
 
 El `purpose` usual para World Explorers, firmado tanto al iniciar sesión en el mundo como al renovar su clave delegada.

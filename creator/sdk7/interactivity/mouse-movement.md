@@ -6,7 +6,7 @@ description: React to the player's mouse movement in real time, to drive drag ge
 
 Your scene can read the player's raw mouse movement on every frame, and use it to drive real-time interactions: drag and swipe gestures, spinning or sliding objects as the player drags them, or steering a custom camera like in a first-person shooter.
 
-To do this, read the `screenDelta` property of the `PrimaryPointerInfo` component on `engine.RootEntity`. This property is a `Vector2` that reports how many pixels the mouse moved since the last frame. Positive `x` values mean the mouse moved right, positive `y` values mean it moved up, matching the screen's origin at the bottom-left corner. On frames where the mouse doesn't move, both values are 0.
+To do this, read the `screenDelta` property of the `PrimaryPointerInfo` component on `engine.RootEntity`. This property is a `Vector2` that reports how many pixels the mouse moved since the last frame. Positive `x` values mean the mouse moved right, positive `y` values mean it moved down, matching the screen's origin at the top-left corner — the same coordinate space as `UiTransform` and `UiCanvasInformation`. On frames where the mouse doesn't move, both values are 0.
 
 ```ts
 import { engine, PrimaryPointerInfo } from '@dcl/sdk/ecs'
@@ -25,7 +25,7 @@ Since `screenDelta` only holds the movement of a single frame, always read it in
 {% endhint %}
 
 {% hint style="warning" %}
-**📔 Note**: What's described in this document is only relevant to players on desktop. On the [mobile app](../building-for-mobile/), input is touch-based and there is no free-moving cursor, so `screenDelta` always reports 0. See [Input on mobile](../building-for-mobile/input-on-mobile.md) for how input works on touch devices, and [Detect platform](../building-for-mobile/detect-platform.md) to offer alternative controls to mobile players.
+**📔 Note**: What's described in this document is only relevant to players on desktop. On the [mobile app](../../build-for-mobile/mobile-client/overview.md), input is touch-based and there is no free-moving cursor, so `screenDelta` always reports 0. See [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md) for how input works on touch devices, and [Detect platform](../../build-for-mobile/develop/detect-platform.md) to offer alternative controls to mobile players.
 {% endhint %}
 
 ## Mouse movement while the cursor is locked
@@ -78,7 +78,7 @@ The same pattern works for any drag interaction: slide an entity along a rail us
 
 Because `screenDelta` keeps working while the cursor is locked, you can use it to build mouselook controls for a [virtual camera](../3d-essentials/camera.md#using-virtual-cameras). To do this, accumulate the mouse movement into yaw and pitch angles, then apply them to the camera's rotation on every frame.
 
-In the following example, the player clicks a box to switch to a virtual camera that they can steer with the mouse, and presses the secondary button (_F_ or right-click) to return to the default camera. While the virtual camera is active, the scene also locks the cursor and freezes the avatar with an [input modifier](player-avatar.md#freeze-the-player), so the player doesn't walk around blindly while steering the camera.
+In the following example, the player clicks a box to switch to a virtual camera that they can steer with the mouse, and presses the secondary button (_F_ or right-click) to return to the default camera. While the virtual camera is active, the scene also locks the cursor and freezes the avatar with an [input modifier](avatars/locomotion.md#freeze-the-player), so the player doesn't walk around blindly while steering the camera.
 
 ```ts
 import {
@@ -138,7 +138,7 @@ export function main() {
 
 		yaw += delta.x * SENSITIVITY
 		// clamp pitch so the camera can't flip over
-		pitch = Math.max(-85, Math.min(85, pitch - delta.y * SENSITIVITY))
+		pitch = Math.max(-85, Math.min(85, pitch + delta.y * SENSITIVITY))
 
 		Transform.getMutable(cameraEntity).rotation = Quaternion.fromEulerDegrees(pitch, yaw, 0)
 	})
@@ -172,7 +172,7 @@ function activateCamera(active: boolean) {
 
 A few things to note about this example:
 
-- The system subtracts `delta.y` from the pitch, so that moving the mouse up tilts the camera up. Flip that sign if you prefer inverted vertical controls.
+- The system adds `delta.y` to the pitch. Moving the mouse up reports a negative `delta.y`, which lowers the pitch and tilts the camera up. Flip that sign if you prefer inverted vertical controls.
 - The pitch is clamped to a range of -85 to 85 degrees, so the camera can never flip over backwards.
 - The `SENSITIVITY` constant expresses degrees of rotation per pixel of mouse movement, tweak it to taste.
 
@@ -185,3 +185,7 @@ A few things to note about this example:
 To read the cursor's absolute position on the screen instead of its movement, use the `screenCoordinates` property of the same component. See [Check the player's cursor position](user-data.md#check-the-players-cursor-position).
 
 To find out which entity is under the cursor, combine the `worldRayDirection` property with a raycast. See [Raycasting](raycasting.md).
+
+{% hint style="info" %}
+**💡 Tip**: For working examples of pointer state, see the [`0,5-primary-cursor-info`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,5-primary-cursor-info) test scene, which reads `PrimaryPointerInfo` each frame and feeds `worldRayDirection` into a raycast; [`31,20-pointer-lock-control`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/31,20-pointer-lock-control), which requests and releases cursor capture by writing `PointerLock.isPointerLocked`; and [`32,20-virtual-camera-mouse-look`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/32,20-virtual-camera-mouse-look), which shows `screenDelta` still reporting movement while `screenCoordinates` is frozen at the screen center during lock.
+{% endhint %}

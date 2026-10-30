@@ -14,8 +14,8 @@ See [Reference items in code](reference-items.md) for how to fetch items by name
 
 You must install a code editor on your machine to edit the code of your scene. The recommended options are:
 
-* ![](../../images/editor/vscode.png) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
-* ![](../../images/editor/cursor-icon.png) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
+* ![](../../images/editor/vscode.webp) [Visual Studio Code](https://code.visualstudio.com/): This is the recommended option for experienced developers.
+* ![](../../images/editor/cursor-icon.webp) [Cursor AI](https://www.cursor.com/): This is a powerful code editor that is integrated with AI. It lets you pick different AI models to help you write code; a free tier is available, and more advanced models require a paid plan. This is a good option for developers who are new to Decentraland or TypeScript, or if you want to save time writing code.
 
 {% hint style="warning" %}
 **📔 Note**: If you are on macOS, make sure the code editor app is in the Applications directory.
@@ -23,20 +23,21 @@ You must install a code editor on your machine to edit the code of your scene. T
 
 Once installed, you may need to select your Code Editor in the settings of the Creator Hub. To do this,
 
-1.  Open the wheel icon in the top-right of the screen
+1. Click the Creator Hub logo in the top-left corner of the screen and select **Settings**.
+2. Open the **EDITOR** tab.
+3. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
 
-    ![](../../images/editor/settings-icon.png)
-2. Under **Code editor of choice**, select your Code Editor. You may find your editor listed in the dropdown, or you may need to select **Choose from your device...** to find it.
+![The App Preferences dialog on the EDITOR tab, showing the Code editor of choice dropdown set to Visual Studio Code.](../../images/editor/settings-editor.webp)
 
 ## Open a scene's code
 
 Once you installed a code editor on your machine, and selected it in the settings of the Creator Hub, you can click the **< > CODE** button to open it on your scene project.
 
-![](../../images/editor/code-button.png)
+![](../../images/editor/code-button.webp)
 
 This opens a separate window with the code editor. On the left margin you can navigate the files and folder structure of your project.
 
-![](../../images/editor/files-on-vs-studio.png)
+![](../../images/editor/files-on-vs-studio.webp)
 
 Add your custom code in the `index.ts` file under `/src`, inside the `main()` function. You can otherwise add custom code outside that function or create new `.ts` files inside the `/src` folder, but these must be somehow referenced inside the `main()` function of `index.ts`.
 
@@ -46,25 +47,29 @@ Add your custom code in the `index.ts` file under `/src`, inside the `main()` fu
 
 If you have a preview window open running your scene, whenever you change the code in your files and save, the scene reloads automatically with your changes.
 
+## Using the built-in AI Assistant
+
+The Creator Hub can run an AI assistant that sees your open scene and edits it for you, without leaving the app. It is an experimental feature, turned off by default. See [AI Assistant](ai-assistant.md) to set it up.
+
 ## Using AI with Cursor
 
 If you are using Cursor, you can use the AI assistant to help you write code. To do this,
 
 1.  Open the Cursor AI assistant by clicking the **AI** button in the top-right of the screen
 
-    ![](../../images/editor/cursor-icon.png)
+    ![](../../images/editor/cursor-icon.webp)
 2. There you can prompt the AI assistant to help you write code. You can also select a model to use from the dropdown.
 
-Decentraland provides a context folder for the AI assistant to help you write code, this context folder is located at `/dclcontext` in your scene project. The AI assistant will know to search this context whenever generating code, to get familiar with the Decentraland SDK.
+To give your AI assistant Decentraland context, install the official Decentraland SDK Skills. These are ready-made instruction sets, maintained by the Decentraland Foundation, that teach your AI agent verified SDK7 patterns for every topic: scaffolding entire scenes, adding 3D models, multiplayer, deployment, and more.
 
-This folder is updated with the latest context files every time your scene's dependencies are updated. You can also force update this folder by running the following:
-
-```
-npx sdk-commands get-context-files
+```bash
+npx skills add decentraland/sdk-skills
 ```
 
-{% hint style="info" %}
-**💡 Tip**: You can also add your own context files to this folder to help the AI assistant understand your scene and project. If you do, make sure to add them to a new file in that folder, as the default files are overwritten when SDK updates happen.
+See [Vibe Coding with AI](../../sdk7/getting-started/vibe-coding.md) for the full guide, including the complete list of available skills.
+
+{% hint style="warning" %}
+**📔 Note**: Older scene projects may contain a `/dclcontext` folder, downloaded by the deprecated `npx sdk-commands get-context-files` command. That context is no longer maintained and is superseded by the SDK Skills. You can safely delete the folder.
 {% endhint %}
 
 ## Version control
@@ -85,4 +90,4 @@ If you're not familiar with how to do this, see [Quickstart for repositories](ht
 * [Making any item smart](../interactivity/make-any-item-smart.md)
 * [SDK Quick start](../../sdk7/getting-started/sdk-101.md): follow this mini tutorial for a quick crash course.
 * [Development workflow](../../sdk7/getting-started/dev-workflow.md): read this to understand scene creation from end to end.
-* [Examples](https://studios.decentraland.org/resources?sdk_version=SDK7): dive right into working example scenes.
+* [Examples](../../tutorials/examples.md): dive right into working example scenes.

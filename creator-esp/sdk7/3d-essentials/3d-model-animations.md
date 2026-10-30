@@ -14,7 +14,7 @@ La mayoría de las animaciones de modelos 3D son [_animaciones esqueléticas_](h
 
 Como alternativa, las _animaciones de vértices_ animan un modelo sin la necesidad de un esqueleto. Estas animaciones especifican la posición de cada vértice en el modelo directamente. Decentraland también admite estas animaciones.
 
-Consulta [Animaciones](../../../creator/3d-modeling/animations/) para detalles sobre cómo crear animaciones para un modelo 3D. Lee [Componentes de forma](shape-components.md) para instrucciones sobre cómo importar un modelo 3D a una escena.
+Consulta [Animaciones](../../3d-modeling/animations.md) para detalles sobre cómo crear animaciones para un modelo 3D. Lee [Componentes de forma](shape-components.md) para instrucciones sobre cómo importar un modelo 3D a una escena.
 
 {% hint style="info" %}
 **💡 Consejo**: Las animaciones usualmente son mejores para mover algo en su lugar, no para cambiar la posición de una entidad. Por ejemplo, puedes establecer una animación para mover los pies de un personaje en su lugar, pero para cambiar la ubicación de la entidad es mejor usar el componente Transform. Consulta [Posicionar entidades](move-entities.md) para más detalles.
@@ -39,7 +39,7 @@ Si un modelo 3D incluye cualquier animación, el comportamiento predeterminado e
 Para evitar este comportamiento, agrega un componente `Animator` a la entidad que tiene el modelo, y luego maneja la reproducción de animaciones explícitamente. Si un componente `Animator` está presente en la entidad, todas las animaciones por defecto tienen un estado `playing: false`, y necesitan ser reproducidas manualmente.
 
 {% hint style="info" %}
-**💡 Consejo**: En el [Scene Editor](../../scene-editor/about-editor.md), puedes agregar un componente **Animator** visualmente. Consulta [Agregar Componentes](../../scene-editor/components.md#add-components). También puedes controlar animaciones de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/smart-items.md).
+**💡 Consejo**: En el [Scene Editor](../../scene-editor/get-started/about-editor.md), puedes agregar un componente **Animator** visualmente. Consulta [Agregar Componentes](../../scene-editor/build/components.md#add-components). También puedes controlar animaciones de forma sin código a través de **Actions**, consulta [Hacer cualquier elemento inteligente](../../scene-editor/interactivity/smart-items.md).
 {% endhint %}
 
 ## Manejar animaciones explícitamente
@@ -73,7 +73,7 @@ Cada objeto `state` hace un seguimiento de si una animación se está reproducie
 
 > `import { Animator } from "@dcl/sdk/ecs"`
 
-Consulta [Importaciones](../getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
+Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#imports) para saber cómo manejarlas fácilmente.
 {% endhint %}
 
 ## Obtener una animación

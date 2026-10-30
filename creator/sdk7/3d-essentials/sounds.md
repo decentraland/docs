@@ -18,7 +18,7 @@ _.wav_ files are also supported but not generally recommended as they are signif
 
 The easiest way to play a sound is to add an **Audio Source** component visually on the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md) and set it to **Start Playing** and **Loop**. See [Add Components](../../scene-editor/build/components.md#add-components).
 
-![](../../images/editor/AudioSource-component.png)
+![](../../images/editor/AudioSource-component.webp)
 
 You can also trigger the playing of a sound in a no-code way via **Actions**, see [Make any item smart](../../scene-editor/interactivity/make-any-item-smart.md).
 
@@ -27,10 +27,15 @@ To play a sound via code, use the `AudioSource.playSound` function.
 ```ts
 // Create entity
 const sourceEntity = engine.addEntity()
+Transform.create(sourceEntity, { position: Vector3.create(8, 1, 8) })
 
 // Play sound
 AudioSource.playSound(sourceEntity, 'assets/sounds/sound-effect.mp3')
 ```
+
+{% hint style="warning" %}
+**📔 Note**: Every entity with an `AudioSource` also needs a `Transform`, including global sounds. Without one, nothing plays and no error is logged, which makes this a hard problem to spot. Items placed in the Scene Editor always have a `Transform`, so this only affects entities you create in code.
+{% endhint %}
 
 The sound file must be inside the project folder. In the example above, the audio file is located in an `assets/sounds` folder, which is located at root level of the scene project folder.
 
@@ -53,11 +58,14 @@ The `AudioSource.playSound()` function takes the following arguments:
 
 * `resetCursor`: _(optional)_ If true, the sound always starts from the beginning. Otherwise it continues from the current cursor position. Useful for pausing and resuming.
 
+`playSound()` creates the `AudioSource` component if the entity doesn't have one yet. If it already has one, `playSound()` keeps its other values, like `volume`, `pitch`, `loop` and `global`, so you can set those once and then call `playSound()` every time you want to play the sound. Calling it again with the same file plays the sound again. It always returns `true`.
+
 Another way to play sounds is to manually create an `AudioSource` component on an entity. Use this approach to have more control over the sound, for example to make it loop or set the volume.
 
 ```ts
 // Create entity
 const sourceEntity = engine.addEntity()
+Transform.create(sourceEntity, { position: Vector3.create(8, 1, 8) })
 
 // Create AudioSource component
 AudioSource.create(sourceEntity, {
@@ -109,6 +117,8 @@ To stop an entity from playing its sound, use the `AudioSource.stopSound()` func
 AudioSource.stopSound(sourceEntity)
 ```
 
+`stopSound()` returns `false` if the entity has no `AudioSource` component.
+
 Another way to stop a sound is to set the `playing` property to false.
 
 ```ts
@@ -133,6 +143,63 @@ function stopSound(entity: Entity) {
 // call function
 stopSound(sourceEntity)
 ```
+
+## Detect when a sound finishes
+
+When a non-looping sound finishes playing on its own, the engine sets the `playing` property of the `AudioSource` component back to _false_. Your scene's code can read this value to know when the sound ended, for example to chain another sound or action right after it.
+
+```ts
+let wasPlaying = false
+
+engine.addSystem(() => {
+	const audio = AudioSource.get(sourceEntity)
+	const isPlaying = audio.playing ?? false
+
+	if (wasPlaying && !isPlaying) {
+		console.log('sound finished playing')
+		// react here: play another sound, advance a sequence, etc.
+	}
+
+	wasPlaying = isPlaying
+})
+```
+
+{% hint style="warning" %}
+**📔 Note**: When polling the component every frame, always read it with `AudioSource.get()` (read-only). Using `AudioSource.getMutable()` would mark the component as changed on every frame, causing unnecessary synchronization work.
+
+The `playing` property is only flipped by the engine when the sound ends by itself. If the scene stops the sound explicitly (via `AudioSource.stopSound()` or by setting `playing` to _false_), that change comes from your own code, and looping sounds play until stopped, so they never flip the property on their own.
+{% endhint %}
+
+Alternatively, use `audioEventsSystem.registerAudioEventsEntity` to define a function that runs every time the playback state of the entity's audio changes, just like [video events](../media/video-playing.md#video-events) for videos. The function receives an event with a `state` field, using the `MediaState` enum.
+
+```ts
+import { engine, AudioSource, audioEventsSystem, MediaState } from '@dcl/sdk/ecs'
+
+// ... Create sourceEntity with an AudioSource component ...
+
+audioEventsSystem.registerAudioEventsEntity(sourceEntity, (audioEvent) => {
+	switch (audioEvent.state) {
+		case MediaState.MS_LOADING:
+			console.log('audio event - sound is LOADING')
+			break
+		case MediaState.MS_READY:
+			console.log('audio event - sound is READY (loaded, or finished playing)')
+			break
+		case MediaState.MS_PLAYING:
+			console.log('audio event - sound started PLAYING')
+			break
+		case MediaState.MS_ERROR:
+			console.log('audio event - sound ERROR (e.g. the file failed to load)')
+			break
+	}
+})
+```
+
+A transition from `MS_PLAYING` to `MS_READY` means the sound stopped playing. The full `MediaState` enum also includes `MS_NONE`, `MS_LOADING`, `MS_PAUSED`, `MS_BUFFERING`, `MS_SEEKING` and `MS_ERROR`, and each event carries a `timestamp` of when the state change occurred. You can also query the latest reported state at any time with `audioEventsSystem.getAudioState(entity)`, unregister the callback with `audioEventsSystem.removeAudioEventsEntity(entity)`, or check whether an entity is registered with `audioEventsSystem.hasAudioEventsEntity(entity)`. The same system also works for entities with an [`AudioStream`](../media/audio-streaming.md) component.
+
+{% hint style="warning" %}
+**📔 Note**: These features are only supported in the Desktop client.
+{% endhint %}
 
 ## Looping
 
@@ -191,6 +258,8 @@ AudioSource.create(sourceEntity, {
 	global: true,
 })
 ```
+
+A global sound still needs a `Transform` on its entity, even though its position no longer affects what the player hears. Any position will do.
 
 ## Play a segment of a sound
 

@@ -365,4 +365,6 @@ Also keep in mind that particles can only be seen by a player while they're stan
 
 Enter the world [ParticleLab.dcl.eth](decentraland://?realm=particlelab.dcl.eth&dclenv=org) to experiment with different particle systems. When you approach a particle system, the UI will display all the available fields, you can tweak them live without needing to reload the scene. When you're happy, click the **Copy** button to copy the code for that particle system to your clipboard.
 
-
+{% hint style="info" %}
+**💡 Tip**: For a working example that exercises every `ParticleSystem` field, see the [`0,7-particle-system`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,7-particle-system) test scene. It covers all four emitter shapes, the `PSB_ADD`/`PSB_ALPHA`/`PSB_MULTIPLY` blend modes, the `PS_PLAYING`/`PS_PAUSED`/`PS_STOPPED` playback states, sprite sheets, continuous `rate` against one-shot and looping `bursts`, and `PSS_LOCAL` against `PSS_WORLD` on a moving emitter.
+{% endhint %}

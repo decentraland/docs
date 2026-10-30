@@ -6,7 +6,7 @@ description: Learn the essentials about entities and components in a Decentralan
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used in the architecture of several game engines, that allows for easy composability and scalability.
 
-![](../../images/media/ecs-big-picture.png)
+![](../../images/media/ecs-big-picture.webp)
 
 ## Overview
 
@@ -18,13 +18,13 @@ If you're familiar with web development, think of entities as the equivalent of 
 
 In the [Scene Editor in Creator Hub](../../scene-editor/get-started/about-editor.md), you can view the components that belong to an entity by selecting it.
 
-![](../../images/editor/components-example.png)
+![](../../images/editor/components-example.webp)
 
 {% hint style="warning" %}
 **📔 Note**: In previous versions of the SDK, Entities were _objects_ that were instanced, and could be extended to add functions. As of version 7.0 of the SDK, entities are only an ID. This structure better fits the principles of [data oriented programming](../architecture/data-oriented-programming.md) and can help in the scene's performance.
 {% endhint %}
 
-![](../../images/media/ecs-components-new.png)
+![](../../images/media/ecs-components-new.webp)
 
 Components like `Transform`, `Material` or any of the _shape_ components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough for the engine to change how the scene is rendered in the next frame.
 
@@ -65,7 +65,7 @@ When a component is created, it's always assigned to a parent entity. The compon
 
 ## Remove entities
 
-To remove an entity from the engine, use `engine.removeEntity()`
+To remove an entity from the engine, use `engine.removeEntity()`. This function returns a `boolean`: `true` if the entity was removed, `false` if the removal was refused.
 
 ```ts
 export function main() {
@@ -78,13 +78,37 @@ export function main() {
 	})
 
 	// Remove entity
-	engine.removeEntity(door)
+	const removed = engine.removeEntity(door)
+	console.log('Entity removed:', removed) // true
 }
 ```
 
 If a removed entity has any child entities, these change their parent back to the default `engine.RootEntity` entity, which is positioned at the scene base position, with a scale of _1_.
 
-To remove an entity and also all of its children (and any children of its children, recurrently), use the `removeEntityWithChildren()` helper.
+### Renderer-reserved entities
+
+Some entity ids are reserved by the renderer for remote player avatars. You cannot remove these entities. If you call `engine.removeEntity()` on a renderer-reserved entity, it returns `false` and leaves all components untouched.
+
+The [named reserved entities](#reserved-entities) (`engine.RootEntity`, `engine.PlayerEntity`, `engine.CameraEntity`) are a special case: `engine.removeEntity()` still returns `false` for these (their ids are never released), but their components **are** purged. This means you can clear your own components from them (for example, removing an `InputModifier` from `engine.PlayerEntity`), even though the entity id itself is never freed.
+
+```ts
+// Attempting to remove a reserved entity
+const result = engine.removeEntity(engine.PlayerEntity)
+console.log(result) // false — the entity id is not released
+// But the scene's own components on PlayerEntity are purged
+```
+
+You can check the return value when removing entities to handle edge cases:
+
+```ts
+if (!engine.removeEntity(someEntity)) {
+	console.log('Entity could not be removed (reserved)')
+}
+```
+
+### Remove an entity with its children
+
+To remove an entity and also all of its children (and any children of its children, recursively), use the `removeEntityWithChildren()` helper.
 
 ```ts
 export function main() {
@@ -112,6 +136,10 @@ export function main() {
 }
 ```
 
+{% hint style="warning" %}
+**Note:** If a renderer-reserved entity sits anywhere in the tree, `removeEntityWithChildren` removes all the other descendants but leaves the reserved entity in place. The reserved entity's `Transform.parent` will point at a removed entity. This only happens if your scene parents a reserved entity under a scene entity, which is uncommon.
+{% endhint %}
+
 {% hint style="info" %}
 **💡 Tip**: Instead of removing an entity from the engine, in some cases it might be better to make it invisible, in case you want to be able to load it again without any delay. See [Make invisible](../3d-essentials/shape-components.md#make-invisible)
 {% endhint %}
@@ -124,7 +152,7 @@ An entity is just an id that is referenced by its components. So when removing a
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-![](../../images/media/ecs-nested-entities-new.png)
+![](../../images/media/ecs-nested-entities-new.webp)
 
 To set an entity as the parent of another, the child entity must have a `Transform` component. You can then set the `parent` field with a reference to the parent entity.
 
@@ -172,7 +200,7 @@ mutableChildTransform.parent = engine.RootEntity
 
 In the Scene Editor, you can see the entire hierarchy of nested entities in your scene on the left-side panel.
 
-![](../../images/editor/entity-tree-example.png)
+![](../../images/editor/entity-tree-example.webp)
 
 ## Get an entity by ID
 
@@ -452,7 +480,7 @@ This entity lacks a Transform component, but it's used to handle several compone
 
 The `engine.PlayerEntity` entity represents the player's avatar.
 
-Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../interactivity/user-data.md). The player's Transform is read-only, to modify it use the `movePlayerTo()` function, [learn more](../interactivity/player-avatar.md#move-player).
+Fetch the player's `Transform` component to get the player's current position and rotation, see [user data](../interactivity/user-data.md). The player's Transform is read-only, to modify it use the `movePlayerTo()` function, [learn more](../interactivity/avatars/move-player.md).
 
 You can also attach objects to the player by setting them as children of this entity, although the [Attach to Player](../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar) is often the better option for htat.
 

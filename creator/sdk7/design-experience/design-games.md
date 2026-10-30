@@ -20,7 +20,7 @@ Players that step outside your scene keep rendering it as long as it’s at a vi
 
 You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay. A game like that would be made up of multiple separate _scenes_, that could share data with each other via a server.
 
-If your game is published to a [Decentraland World](../../worlds/about.md), you have more control over what players see beyond your scene's boundaries. Worlds are normally surrounded by an auto-generated landscape of grassland, trees, and sea, but you can [disable this landscape](../projects/scene-metadata.md#landscape-terrain) if it clashes with your game's setting, for example a game that takes place in open water or in space.
+If your game is published to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds), you have more control over what players see beyond your scene's boundaries. Worlds are normally surrounded by an auto-generated landscape of grassland, trees, and sea, but you can [disable this landscape](../projects/scene-metadata.md#landscape-terrain) if it clashes with your game's setting, for example a game that takes place in open water or in space.
 
 ### User inventory
 
@@ -82,6 +82,33 @@ You need to keep in mind that there may be several players walking around your s
 
 As the owner of a scene, you can’t forcefully push or teleport an offending player out of your scene. However, you will be able to blacklist players in the signaling server. You can also implement a blacklist in your scene’s code and deny certain services to blacklisted players.
 
+## Build interiors larger than real life
+
+Most players explore Decentraland in the default third-person camera, which sits behind and above the avatar. That camera needs room. An interior built at real-world dimensions reads as a cramped corridor on screen: the camera presses against the ceiling, the avatar fills the frame, and the player can't see where they're going.
+
+Build the shell of a room at roughly **1.5 to 2 times** real headroom:
+
+| Element | Real-world | Build it at |
+| --- | --- | --- |
+| Ceiling height | 2.5 to 3 m | **5 to 6 m** |
+| Doorway or opening on a main route | about 2.1 m x 0.9 m | **about 4 m tall, 3 m or wider** |
+| Corridor width | 1.2 to 1.8 m | **4 m or wider** |
+| Any gap the avatar has to walk through | | **1.2 m of clear space or more** |
+| Stairs | about 0.18 m rise, 0.28 m tread | **0.25 m rise or less, 0.3 m tread or more** |
+| Ramps | | **30 degrees or less** |
+
+The third-person camera orbits about 4.5 m away from the avatar, with a 60 degree field of view. When a wall or ceiling gets between the camera and the avatar, the camera moves forward to keep the avatar in view, and that sudden jump is what makes a room feel cramped. So rooms where players turn around read best at about **9 m across or more**, twice the camera's distance. For the engine limits on steps, slopes and head clearance, see [Player spatial constraints](../../3d-modeling/colliders.md#player-spatial-constraints).
+
+A few things to keep in mind:
+
+* **Grow the room, not its contents.** Chairs, desks, counters, railings and signage stay close to life-size. If you scale the furniture up along with the walls, you rebuild the same cramped feeling one size larger, and the avatar stops reading as a person in the room.
+* **Apply this when you plan your floor area**, not after you've placed everything. Bigger rooms need more parcels, so these numbers change your [parcel budget](../projects/scene-metadata.md).
+* **Judge the result from the normal third-person camera.** A free camera or the Creator Hub viewport flatters interiors, because they can sit outside the geometry and look in. Walk the route as a player would. If the camera clips the ceiling, or the avatar's head crowds the top of the frame, the room is too short.
+
+{% hint style="info" %}
+**💡 Tip**: This is design guidance drawn from practice, not an engine limit. Treat the numbers as a starting point and adjust by eye.
+{% endhint %}
+
 ## Scene content limitations
 
 **Please build your scene being extra careful with the efficiency of your code.** Decentraland needs to run on web browsers and mobile devices, and players will be rendering multiple scenes at the same time as they walk through the metaverse.
@@ -114,7 +141,7 @@ Keep in mind that the SDK doesn't provide a full physics engine for entities. Yo
 
 ## Controller Inputs
 
-**Your game controls should be limited to the set of input actions supported by the SDK**: the movement keys, jumping, point and click, the primary (E) and secondary (F) buttons, and the numbered action buttons (1 to 4). These inputs are abstracted away from the physical keys, so that they can also map to the on-screen controls of the mobile app or to other devices, don't assume that everyone has a keyboard. See [Pointer buttons](../interactivity/button-events/click-events.md#pointer-buttons) for the full list, and [Input on mobile](../building-for-mobile/input-on-mobile.md) for what to prefer when targeting mobile players.
+**Your game controls should be limited to the set of input actions supported by the SDK**: the movement keys, jumping, point and click, the primary (E) and secondary (F) buttons, and the numbered action buttons (1 to 4). These inputs are abstracted away from the physical keys, so that they can also map to the on-screen controls of the mobile app or to other devices, don't assume that everyone has a keyboard. See [Pointer buttons](../interactivity/button-events/click-events.md#pointer-buttons) for the full list, and [Input on mobile](../../build-for-mobile/develop/input-on-mobile.md) for what to prefer when targeting mobile players.
 
 All of these inputs support both global _button up_ and _button down_ events, and hit events that let you identify if an entity was in the player's aim.
 
@@ -126,7 +153,7 @@ All of these inputs support both global _button up_ and _button down_ events, an
 
 **Players are able to chat with each other, talk over voice chat, and convey body language by playing emotes** like dancing, clapping or waving, including emotes sold by community creators.
 
-Your scene can detect when a player plays an emote, and can also make a player's avatar play an animation. See [Player plays animation](../interactivity/event-listeners.md#player-plays-animation) and [Trigger emotes](../interactivity/player-avatar.md).
+Your scene can detect when a player plays an emote, and can also make a player's avatar play an animation. See [Player plays animation](../interactivity/event-listeners.md#player-plays-animation) and [Avatar Animations](../interactivity/avatars/avatar-animations.md).
 
 ## Game notifications
 

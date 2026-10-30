@@ -132,6 +132,15 @@ The following properties are available in the `result` parameter:
   - `rotation`: The rotation of the entity that triggered the trigger
   - `scale`: The scale of the entity that triggered the trigger
 
+{% hint style="warning" %}
+**Common confusion**: despite its name, `result.triggeredEntity` does **not** refer to the entity that triggered the event. These two fields are easily mixed up:
+
+- `result.trigger?.entity`: the entity that walked into the trigger area. This is usually what you want to check, for example to identify which player or object entered.
+- `result.triggeredEntity`: the entity that owns the `TriggerArea` component (the trigger zone itself, not the entity that entered it).
+
+Use `result.trigger?.entity` when you need to identify the entering entity.
+{% endhint %}
+
 ```ts
 import { engine, Transform, TriggerArea, triggerAreaEventsSystem } from '@dcl/sdk/ecs'
 
@@ -248,7 +257,7 @@ Transform.create(movingEntity, {
 MeshCollider.setBox(movingEntity, ColliderLayer.CL_CUSTOM1)
 ```
 
-Allowed values are the same as the ones for the `MeshCollider` component. See [Collision layers](colliders.md#Collision-layers) for more details.
+Allowed values are the same as the ones for the `MeshCollider` component. See [Collision layers](colliders.md#collision-layers) for more details.
 
 - `ColliderLayer.CL_PLAYER`: any avatar (local + remote)
 - `ColliderLayer.CL_MAIN_PLAYER`: only the local player
@@ -276,3 +285,7 @@ Transform.create(triggerEntity, {
 ```
 
 This will activate the trigger area when any entity with the layers `CL_CUSTOM1` or `CL_CUSTOM2` enters the trigger area.
+
+{% hint style="info" %}
+**💡 Tip**: For a working example that exercises `TriggerArea` end-to-end, see the [`75,-9-trigger-areas`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/75,-9-trigger-areas) test scene, which covers the ENTER/EXIT wire contract and the SDK's per-tick `onTriggerStay` synthesis, rotated areas, moving triggerers on custom collider layers, and areas attached to falling entities. To see how the collider layers themselves behave, see [`5,5-collider-layers`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/5,5-collider-layers).
+{% endhint %}

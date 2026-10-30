@@ -14,7 +14,7 @@ En Decentraland—con Wearables y Emotes hechos por la comunidad—puedes dar fo
 
 Edita la apariencia de tu avatar en la Mochila. Busca un ícono de mochila en el menú de la barra lateral. Aquí puedes cambiar las características corporales y el atuendo de tu avatar.
 
-![](broken-reference)
+![](../.gitbook/assets/backpack1.webp)
 
 ### Obtener Más Wearables
 
@@ -25,23 +25,23 @@ Además de los artículos iniciales gratuitos que siempre están disponibles en 
 En Decentraland puedes tener dos tipos de nombres de usuario:
 
 * Uno general, no único que siempre tendrá una cadena aleatoria de números después (por ejemplo, #1234)
-* Un nombre de usuario NAME, uno que es único para ti, viene con un montón de ventajas adicionales y tiene un ícono de marca de verificación después en lugar de una cadena de números. Aprende más sobre NAMEs [**aquí**](../faqs/decentraland-101.md#what-is-a-name).
+* Un nombre de usuario NAME, uno que es único para ti, viene con un montón de ventajas adicionales y tiene un ícono de marca de verificación después en lugar de una cadena de números. Aprende más sobre NAMEs [**aquí**](../faqs/decentraland-101.md#que-es-un-name).
 
 Siempre puedes editar tu nombre de usuario desde tu Perfil, ya sea editando un nombre de usuario general o aplicando un NAME que posees. [**Reclama tu NAME único**](https://decentraland.org/marketplace/names/claim) ahora o consulta primero un [**tutorial útil**](https://www.youtube.com/watch?v=OKqXmO5fD0s\&ab_channel=Decentraland).
 
-![](broken-reference)
+![](../.gitbook/assets/Names.webp)
 
 ## Emoting con tu Avatar
 
 Los Emotes son animaciones que permiten a tu avatar expresar reacciones, realizar movimientos de baile o participar en actividades como yoga o pintura. Puedes activarlos desde la Rueda de Emotes cuando presionas '**B**' o haces clic en el ícono de figura bailando en el menú de la barra lateral.
 
-![](broken-reference)
+![](../.gitbook/assets/emote1.webp)
 
 ## Personalizar tu Rueda de Emotes
 
 La Rueda de Emotes tiene 10 ranuras para diferentes Emotes. Puedes personalizar qué Emotes aparecen allí desde tu Mochila.
 
-![](broken-reference)
+![](../.gitbook/assets/backpack2.webp)
 
 ### Obtener Más Emotes
 

@@ -1,7 +1,7 @@
 
-Las colecciones son grupos de [wearables](../entity-types/wearables.md) y [emotes](../entity-types/emotes.md) definidos en el mismo namespace off-chain o contrato on-chain.
+Las colecciones son grupos de [wearables](entity-types/wearables.md) y [emotes](entity-types/emotes.md) definidos en el mismo namespace off-chain o contrato on-chain.
 
-No son [entidades](../entities.md) en sí mismas, pero sus artículos individuales pueden obtenerse de servidores de contenido normalmente usando [punteros](../pointers.md).
+No son [entidades](entities.md) en sí mismas, pero sus artículos individuales pueden obtenerse de servidores de contenido normalmente usando [punteros](pointers.md).
 
 ## URNs y Punteros {#pointers}
 
@@ -34,11 +34,11 @@ urn:decentraland:mainnet:collections-v1:DCL Test Masks
 urn:decentraland:matic:collections-v2:0x25a1d66891d44cdf7b8c45802489c1dea7aadf8b
 ```
 
-Si el segmento `:<id>` se agrega al final, el URN se convierte en un [puntero](../pointers.md) a un artículo dentro de la colección. Ver [punteros de wearable](../entity-types/wearables.md#pointers) y [punteros de emote](../entity-types/emotes.md#pointers) para información sobre estos.
+Si el segmento `:<id>` se agrega al final, el URN se convierte en un [puntero](pointers.md) a un artículo dentro de la colección. Ver [punteros de wearable](entity-types/wearables.md#pointers) y [punteros de emote](entity-types/emotes.md#pointers) para información sobre estos.
 
 ### Colecciones de Terceros
 
-Las colecciones de terceros, también conocidas como [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md), son diferentes de los wearables regulares en que están vinculados a NFTs existentes fuera de Decentraland. Permiten a jugadores mostrar NFTs de su conjunto personal en sus avatares en el mundo.
+Las colecciones de terceros, también conocidas como [linked wearables](../../creator-esp/wearables-and-emotes/wearables/linked-wearables.md), son diferentes de los wearables regulares en que están vinculados a NFTs existentes fuera de Decentraland. Permiten a jugadores mostrar NFTs de su conjunto personal en sus avatares en el mundo.
 
 Sus URNs se ven así:
 
@@ -46,7 +46,7 @@ Sus URNs se ven así:
 urn:decentraland:<blockchain>:collections-thirdparty:<third-party-id>:<collection-id>
 ```
 
-Puedes encontrar amplia información sobre estos en la documentación de [linked wearables](../wearables-and-emotes/wearables/linked-wearables.md) para creadores.
+Puedes encontrar amplia información sobre estos en la documentación de [linked wearables](../../creator-esp/wearables-and-emotes/wearables/linked-wearables.md) para creadores.
 
 ## Descubriendo Colecciones
 

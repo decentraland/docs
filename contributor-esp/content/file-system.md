@@ -29,13 +29,13 @@ Nota que los identificadores CIDv1 modernos son compatibles con IPFS, produciend
 
 ## Propiedad y Persistencia
 
-Excepto por [instantáneas](snapshots), los archivos almacenados en la red están asociados a una [entidad](entities) propiedad de una cuenta de Ethereum. El propietario es el único autorizado para actualizar la entidad y archivos relacionados.
+Excepto por [instantáneas](snapshots.md), los archivos almacenados en la red están asociados a una [entidad](entities.md) propiedad de una cuenta de Ethereum. El propietario es el único autorizado para actualizar la entidad y archivos relacionados.
 
 Los servidores de contenido están obligados por protocolo a siempre almacenar la última versión de una entidad y sus archivos, pero pueden elegir si retener versiones antiguas según su configuración individual.
 
 ## Descargando Archivos {#downloading}
 
-El endpoint [`/contents/<fileId>`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getContentFile) del servidor de contenido puede usarse para descargar cualquier archivo. Sus identificadores se encuentran en el manifest de la [entidad](entities) padre.
+El endpoint [`/contents/<fileId>`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getContentFile) del servidor de contenido puede usarse para descargar cualquier archivo. Sus identificadores se encuentran en el manifest de la [entidad](entities.md) padre.
 
 ## Subiendo Archivos
 

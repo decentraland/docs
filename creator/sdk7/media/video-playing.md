@@ -78,7 +78,7 @@ VideoPlayer.create(screen, {
 })
 ```
 
-See [Streaming using Decentraland cast](video-playing.md#streaming-using-decentraland-cast) for details on how to use this third alternative method.
+See [Live streaming](video-playing.md#live-streaming) for details on how to use this third alternative method.
 
 ## About External Streaming
 
@@ -359,9 +359,21 @@ The videoEvent object passed as an input for the function contains the following
 - `timestamp` ( _number_): A _lamport_ timestamp that is incremented every time that the video changes state.
 - `tickNumber` (_number_): The time at which the event occurred, expressed as counting ticks since the scene started running.
 
+If you re-register a callback on an entity that already has one (for example, to change what happens on state change), the new callback replaces the old one, and the last-reported state is preserved. This means the new callback is not called again for a state that was already reported to the previous callback.
+
+### Check if an entity is registered
+
+Use `videoEventsSystem.hasVideoEventsEntity()` to check whether an entity already has a registered video events callback.
+
+```ts
+if (videoEventsSystem.hasVideoEventsEntity(videoPlayerEntity)) {
+	console.log('This entity already has a video event listener')
+}
+```
+
 ### Latest video event
 
-Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This function always returns the latest `VideoEvent` value for the video.
+Query a video for its last state change by using `videoEventsSystem.getVideoState()`. This returns the latest `VideoEvent` value for the entity, or `undefined` if no event has been reported yet. You can call this from a system to poll the video state each frame without registering a callback.
 
 ```ts
 function mySystem() {
@@ -380,7 +392,7 @@ A neat trick to have non-rectangular video screens is to apply an alpha texture 
 
 Use the following image to cut your video into a circular shape, with transparent corners.
 
-![](../../images/circle_mask.png)
+![](../../images/circle_mask.webp)
 
 ```ts
 const videoTexture = Material.Texture.Video({
@@ -397,7 +409,7 @@ Material.setBasicMaterial(screen, {
 })
 ```
 
-![](../../images/circular-video-screen.png)
+![](../../images/circular-video-screen.webp)
 
 {% hint style="warning" %}
 **📔 Note**: In previous versions, the `alphaTexture` property was only present in PBR materials. Currently, it only works in basic materials.
@@ -498,3 +510,7 @@ Material.setBasicMaterial(videoPlayerEntity, {
 ## Audio analysis
 
 You can read real-time amplitude and frequency data from the audio track of a `VideoPlayer` entity to drive reactive visuals that sync with the video's soundtrack. See [Audio analysis](audio-analysis.md).
+
+{% hint style="info" %}
+**💡 Tip**: To see video played on a GLTF model rather than a primitive, see the [`74,-8-gltfnodemodifier`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/74,-8-gltfnodemodifier) test scene, which drives an HLS stream onto specific GLTF nodes using `GltfNodeModifiers` video textures.
+{% endhint %}

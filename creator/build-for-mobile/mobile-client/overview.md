@@ -1,8 +1,16 @@
+---
+description: >-
+  Overview of the Decentraland mobile app for iOS and Android, with download
+  links and a checklist for making scenes mobile-ready.
+---
+
 # Overview
 
 Decentraland is now available on mobile. Players can explore your scenes from iOS and Android devices, in addition to the desktop client and the web. As a creator, you can adapt your scenes so they look great and play well on touch-based devices.
 
-![Decentraland mobile app — Genesis City](../../../mobile-app-screenshot.png)
+![Decentraland mobile app — Genesis City](../../.gitbook/assets/mobile-app-screenshot.webp)
+
+{% embed url="https://www.youtube.com/watch?v=FBr2gye3qh8" %}
 
 ## Get the mobile app
 
@@ -21,7 +29,7 @@ Decentraland is now available on mobile. Players can explore your scenes from iO
 
 * [Detect the platform from code](../develop/detect-platform.md) — use `isMobile()` to branch your scene's logic and UI per platform.
 * [Preview your scene on mobile](../develop/preview-on-mobile.md) — preview directly on a phone via the Creator Hub or the CLI.
-* [Mobile safe area](../develop/safe-area.md) — the screen regions reserved for system controls and the device's hardware margins (notch, home indicator); keep scene UI clear of them, with the `ScreenInsetArea` component or by hand.
+* [Mobile safe area](../develop/safe-area.md) — the device's hardware margins (notch, home indicator) and the regions the client's own controls occupy; pick the area your UI is placed in with `screenInset`.
 * [UI best practices for mobile](../develop/ui-best-practices.md) — DOs and DON'Ts, sizing recommendations, and current limitations.
 * [Input on mobile](../develop/input-on-mobile.md) — touch-friendly input mappings and which `InputAction`s to avoid.
 * [Optimize Performance](../develop/optimize-performance.md) — mobile scene limits, how to preview them in Creator Hub, and performance targets.

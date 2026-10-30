@@ -66,7 +66,7 @@ export function main() {
 
 ### Otorgar recompensas desde Decentraland Quests
 
-Puedes integrar fácilmente Rewards con las [Decentraland Quests](../../creator/deprecated/quests/overview.md), esto es ideal si deseas recompensar a los usuarios por completar un quest.
+Puedes integrar fácilmente Rewards con las [Decentraland Quests (documentación archivada)](https://github.com/decentraland/documentation/blob/5f8c7f73c67a9a36e85095cb02e72dc6355fa590/content/creator/deprecated/quests/overview.md), esto es ideal si deseas recompensar a los usuarios por completar un quest.
 
 #### Flags de dispensador recomendados
 
@@ -82,7 +82,7 @@ Cualquier otro de los otros flags hará que tu integración falle, evita usarlos
 
 #### Ejemplo
 
-Para integrar tu Quest con el servicio de Rewards, solo necesitas una clave de dispensador y [configurar un webhook](../../creator/deprecated/quests/rewards.md) para otorgar recompensas.
+Para integrar tu Quest con el servicio de Rewards, solo necesitas una clave de dispensador y [configurar un webhook (documentación archivada)](https://github.com/decentraland/documentation/blob/5f8c7f73c67a9a36e85095cb02e72dc6355fa590/content/creator/deprecated/quests/rewards.md) para otorgar recompensas.
 
 ```js
 {

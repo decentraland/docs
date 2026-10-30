@@ -16,25 +16,25 @@ Un componente `uiBackground` da color o una textura al área de una entidad. Usa
 
 Los siguientes campos pueden configurarse, todos son opcionales:
 
-* `color`: El color a usar en la entidad, como un valor [Color4](../sdk7/3d-essentials/color-types.md).
+* `color`: El color a usar en la entidad, como un valor [Color4](../3d-essentials/color-types.md).
 
 {% hint style="info" %}
 **💡 Tip**: Haz una entidad semi-transparente estableciendo el 4to valor del `Color4` a menos de 1.
 {% endhint %}
 
-*   `texture`: La textura a mostrar en la entidad, esto toma un objeto con varios parámetros sobre la textura. Las mismas propiedades están disponibles que en texturas en [materiales en entidades 3D](../sdk7/3d-essentials/materials.md#using-textures).
+*   `texture`: La textura a mostrar en la entidad, esto toma un objeto con varios parámetros sobre la textura. Las mismas propiedades están disponibles que en texturas en [materiales en entidades 3D](../3d-essentials/materials.md#using-textures).
 
     * `src`: La ruta al archivo de imagen a usar como textura. (string)
-    * `filterMode`: _(opcional)_ Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Consulta [Escalado de Textura](../sdk7/3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
+    * `filterMode`: _(opcional)_ Determina cómo se estiran o comprimen los píxeles en la textura cuando se renderizan. Consulta [Escalado de Textura](../3d-essentials/materials.md#texture-scaling). (FilterMode = 'point' | 'bi-linear' | 'tri-linear')
     * `wrapMode`: _(opcional)_ Determina cómo se coloca una textura en mosaico sobre una entidad. Esto toma un valor del enum `TextureWrapMode`. (WrapMode = 'repeat' | 'clamp' | 'mirror' | 'mirror-once')
 
     > Tip: Puedes combinar ambas propiedades `texture` y `color` en un solo componente `uiBackground` para producir una textura teñida.
 * `textureMode`: Selecciona cómo quieres que la textura se adapte al tamaño de la entidad a la que se aplica. (TextureMode = 'nine-slices' | 'center' | 'stretch') enum, que soporta los siguientes valores:
   * `center`: La textura no se estira, se posiciona centrada en la entidad y partes de ella pueden recortarse dependiendo del tamaño de la entidad.
   * `stretch`: La textura se estira para coincidir con toda la superficie de la entidad.
-  * `nine-slices`: Partes de la textura se estiran para coincidir con toda la superficie de la entidad, dejando márgenes sin estirar. Consulta [texturas nine-slice](ui_background.md#nine-slice-textures).
+  * `nine-slices`: Partes de la textura se estiran para coincidir con toda la superficie de la entidad, dejando márgenes sin estirar. Consulta [texturas nine-slice](ui_background.md#texturas-nine-slice).
 * `avatarTexture`: Muestra una miniatura de perfil de avatar, basada en un ID de avatar. Consulta [Retratos de Avatar](ui_background.md).
-* `textureSlices`: Determina los márgenes a usar al usar el modo de textura nine-slice, consulta [texturas nine-slice](ui_background.md#nine-slice-textures). Establece un número menor que 1, como una fracción del ancho o alto total de la imagen.
+* `textureSlices`: Determina los márgenes a usar al usar el modo de textura nine-slice, consulta [texturas nine-slice](ui_background.md#texturas-nine-slice). Establece un número menor que 1, como una fracción del ancho o alto total de la imagen.
 
 Color simple:
 
@@ -98,7 +98,7 @@ export const uiMenu = () => (
 
 Algunas propiedades se usan para establecer un borde alrededor de una entidad UI. Estas propiedades existen en el componente `uiTransform`. Cada una te permite establecer ya sea un solo valor para todos los lados del borde, o diferentes valores para cada lado.
 
-* `borderColor`: El color a usar en la entidad, como un valor [Color4](../sdk7/3d-essentials/color-types.md).
+* `borderColor`: El color a usar en la entidad, como un valor [Color4](../3d-essentials/color-types.md).
 * `borderWidth`: El ancho del borde, como un número en píxeles. También soporta valores en porcentajes, por ejemplo `borderWidth: '2%'` establecerá el ancho del borde al 2% del ancho de la entidad.
 * `borderRadius`: Usa esta propiedad para darle a las esquinas de la entidad un borde redondeado. Establece el radio de las esquinas en píxeles.
 

@@ -20,7 +20,7 @@ The first two options are covered in this document. They are simpler, as they re
 
 In the [Creator Hub](../../scene-editor/get-started/about-editor.md), mark an entity as synced by adding a **Multiplayer component** to it. It includes a checkbox for each of the other components on the entity, allowing you to select which ones to update.
 
-![](../../images/editor/multiplayer-component.png)
+![](../../images/editor/multiplayer-component.webp)
 
 To mark an entity as synced via code, use the `syncEntity` function:
 
@@ -107,7 +107,7 @@ function onThrow() {
 }
 ```
 
-**Parented entities**
+### Parented entities {#parented-entities}
 
 The parent of an entity is normally defined via `parent` property in the `Transform` component. This property however points to the local entity id of the parent, which could vary, see [About enum id](serverless-multiplayer.md#about-the-enum-id). To parent entities that need to be synced, or that have children that need to be synced, use the `parentEntity()` function instead of the `Transform`.
 
@@ -347,9 +347,9 @@ If you launch a scene preview and open it in two (or more) different explorer wi
 
 Interact with the scene on one window, then switch to the other to see that the effects of that interaction are also visible there.
 
-Using the Creator Hub, click the Preview button a second time, and that opens a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
+Using the Creator Hub, turn on **Multi-Instance Preview** in the **Desktop Client** submenu of **Play Options**, then click the **Play** button a second time to open a second Decentraland explorer window. You must connect on both windows with different addresses. The same sessions will remain open as the scene reloads.
 
-![](../../images/editor/preview-button.png)
+![](../../images/editor/preview-button.webp)
 
 As an alternative, you can open a second Decentraland explorer window by writing the following into a browser URL:
 

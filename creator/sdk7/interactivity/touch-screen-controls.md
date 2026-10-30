@@ -22,10 +22,7 @@ Every scene starts with only three buttons visible. The others stay hidden until
 | `IA_POINTER` | Interaction | Shown |
 | `IA_PRIMARY` | E | Shown |
 | `IA_SECONDARY` | F | Hidden |
-| `IA_ACTION_3` | 1 | Hidden |
-| `IA_ACTION_4` | 2 | Hidden |
-| `IA_ACTION_5` | 3 | Hidden |
-| `IA_ACTION_6` | 4 | Hidden |
+| `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` | 1 / 2 / 3 / 4 | Hidden |
 
 The SDK writes this default set into `TouchScreenControls` when your scene starts, before `main()` runs. To use F or the numbered buttons, turn them on with `TouchScreenControls`:
 

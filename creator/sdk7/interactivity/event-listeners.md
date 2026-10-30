@@ -361,6 +361,15 @@ Each event contains:
 * `timestamp`: A monotonic counter for when the event occurred.
 * `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
 
+### Practical uses
+
+Opening Explorer panels directly from your scene's content removes friction for players who might not know where to find these menus. Some ideas:
+
+* **Performance settings**: If your scene detects that the player is running at a low frame rate, show a UI prompt suggesting they lower their graphics settings, with a button that opens the settings panel. See [Help players adjust their settings](../optimizing/performance-optimization.md#help-players-adjust-their-settings) for a full example.
+* **Onboarding**: If your experience relies on wearables or emotes, add a mirror or wardrobe that opens the backpack panel so players can equip them without leaving the flow of your scene. Use `openExplorerUiAndWait()` to carry on once they close it.
+* **Photo opportunities**: Next to a scenic photo spot, add a sign that opens the camera reel panel so players can review the pictures they've taken.
+* **Events and places**: In a lobby or hub scene, add a billboard that opens the events or places panel so players can find what to do next.
+
 {% hint style="info" %}
 **💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
 {% endhint %}

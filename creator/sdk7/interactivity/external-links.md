@@ -86,6 +86,10 @@ The link is opened in a new tab, keeping the original tab in Decentraland.
 
 If players tick the _trust this domain_ checkbox, they won't be prompted again during their session, as long as the link comes from the same scene and is to the same domain.
 
+## Open Explorer UI panels
+
+Besides external sites, your scene can open the Explorer's own fullscreen panels, like the map, the settings, or the backpack, with the `openExplorerUi()` restricted action. As with `openExternalUrl()`, the call must be a direct response to something the player clicked or pressed. See [Open explorer panels](event-listeners.md#open-explorer-panels) for the full reference, including how to wait until the player closes the panel.
+
 ## Copy to clipboard
 
 To copy a string to the player's clipboard, use `copyToClipboard()`. After this, when the player does _paste_ in the Decentraland chat or in any other application on their machine, they will be pasting your string.

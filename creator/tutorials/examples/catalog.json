@@ -1117,65 +1117,6 @@
 			"fileName": "gameplay-interaction/raycasting-and-collider-layers.md"
 		},
 		{
-			"id": "recurring-giveaway",
-			"name": "Recurring giveaway",
-			"description": "A daily wearable giveaway that tracks visits and claims on a companion server.",
-			"category": "multiplayer-data-services",
-			"tags": [
-				"rewards",
-				"wearables",
-				"captcha",
-				"server",
-				"storage"
-			],
-			"maintainer": "decentraland",
-			"maintenance": "decentraland",
-			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/simple-giveaway-scene",
-			"license": {
-				"status": "identified",
-				"name": "Apache-2.0",
-				"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/main/simple-giveaway-scene/README.md"
-			},
-			"highlights": [
-				{
-					"title": "Claim with an optional captcha step",
-					"description": "`claimToken` either requests the reward directly or, when `USE_CAPTCHA` is on, fetches a captcha first. `validateCaptcha` sends the answer with the claim, then records the claim on the companion server and refreshes the player's progress.",
-					"context": "The campaign and dispenser keys are set in `src/config/claim.config.ts`, which points at the Rewards test server by default.",
-					"tags": [
-						"captcha",
-						"rewards"
-					],
-					"references": [
-						{
-							"label": "`claimToken` and `requestToken`",
-							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/src/classes/claim.class.ts#L29-L91"
-						},
-						{
-							"label": "`validateCaptcha`",
-							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/src/classes/claim.class.ts#L110-L161"
-						}
-					]
-				},
-				{
-					"title": "Track daily progress on a companion server",
-					"description": "The Express and SQLite server in `server/` counts visits and advances each player to the next of three wearables, at most once every 24 hours.",
-					"context": "The server trusts the player ID sent in the request body, and the scene records the claim only after the Rewards request succeeds. Treat the 24-hour limit as a demo; a production giveaway needs to verify the player with signed requests and enforce limits in the campaign.",
-					"tags": [
-						"server",
-						"storage"
-					],
-					"references": [
-						{
-							"label": "`/update-wearable`",
-							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/server/src/index.ts#L59-L99"
-						}
-					]
-				}
-			],
-			"page": "./multiplayer-data-services/recurring-giveaway.md",
-			"fileName": "multiplayer-data-services/recurring-giveaway.md"
-		},
-		{
 			"id": "reward-claim-dispenser",
 			"name": "Reward claim dispenser",
 			"description": "Wearable dispensers and airdrop crates that claim rewards from a Rewards campaign.",

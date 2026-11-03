@@ -49,7 +49,6 @@
 	* [Data from a spreadsheet](tutorials/examples/multiplayer-data-services/spreadsheet-data.md)
 	* [Mini Games library](tutorials/examples/multiplayer-data-services/mini-games-library.md)
 	* [Multiplayer Server leaderboard](tutorials/examples/multiplayer-data-services/authoritative-server-leaderboard.md)
-	* [Recurring giveaway](tutorials/examples/multiplayer-data-services/recurring-giveaway.md)
 	* [Reward claim dispenser](tutorials/examples/multiplayer-data-services/reward-claim-dispenser.md)
 	* [Third-party guest book](tutorials/examples/multiplayer-data-services/third-party-guest-book.md)
 	* [Third-party leaderboard](tutorials/examples/multiplayer-data-services/third-party-leaderboard.md)

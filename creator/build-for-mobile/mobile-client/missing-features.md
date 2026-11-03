@@ -62,6 +62,7 @@ These are no longer gaps as of mobile app **v1.15.0**, which is rolling out to t
 
 ## Input/Platform Constraints
 
+- **Only one scene loads at a time**: the mobile app loads the scene the player is standing on and no neighboring scenes, the same as the desktop client's performance mode. An experience split across several scenes needs portals or teleports between them. See [Experiences split across several scenes](../../sdk7/design-experience/design-games.md#experiences-split-across-several-scenes).
 - **Touch-only input** — no mouse hover states, keyboard shortcuts, or right-click.
 - **Limited gesture support** — pinch-to-zoom (switching between first- and third-person camera) was added in v1.14.0; no other gestures are currently planned.
 

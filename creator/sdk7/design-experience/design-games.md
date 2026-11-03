@@ -127,6 +127,23 @@ Players can also manually type a URL for a specific coordinate in the Decentrala
 
 Keep in mind that if a player starts at a location that is walled out or below the level of the terrain, it won’t be a pleasant experience. To avoid this, there’s a way you can define a set of specific locations in your scene that is safe to spawn into. See [scene metadata](../projects/scene-metadata.md) for details.
 
+### Experiences split across several scenes
+
+{% hint style="warning" %}
+**📔 Only one scene loads on mobile and in performance mode**
+
+The [mobile client](../../build-for-mobile/mobile-client/overview.md) and the desktop client's performance mode only load the scene the player is standing on. Neighboring scenes are not loaded at all, even if they are adjacent and belong to the same experience. A scene can still span as many parcels as you need, but only that one scene definition is loaded.
+
+If your experience is split across several separately deployed scenes (for example, a main hub scene plus separate scenes for each activity or game), players in these modes have no direct way to reach the other scenes: nothing from those scenes is visible from the one they are standing on, so there is nothing to walk towards.
+
+To keep every part of the experience reachable:
+
+- Add direct access from the main scene to each of the other scenes: a portal, a door, a button or a menu entry that calls `teleportTo()` with the destination coordinates. See [Teleports](../interactivity/external-links.md#teleports).
+- Add the same kind of access back to the main scene from each secondary scene, so players don't get stranded.
+- Give each destination scene a clear `name`, `description` and thumbnail in its [scene metadata](../projects/scene-metadata.md#scene-title-description-and-image), since players see these on the confirmation screen before teleporting.
+- If the whole experience fits within the [scene limitations](../optimizing/scene-limitations.md) of a single deployment, consider merging it into one multi-parcel scene instead. See [Scene parcels](../projects/scene-metadata.md#scene-parcels).
+{% endhint %}
+
 Players can also navigate the world rapidly using the map and the lists of popular locations and events. Your scene can include teleports that transport players to other parts of the world, see [Teleports](../interactivity/external-links.md#teleports).
 
 ## User UI

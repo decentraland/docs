@@ -48,3 +48,4 @@ Before publishing a scene that should work well on mobile, make sure that:
 * [ ] Your UI is sized large enough for touch — follow the [UI best practices](../develop/ui-best-practices.md).
 * [ ] Key actions are not bound to `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` keys), which are not easily reachable on mobile — see [Input on mobile](../develop/input-on-mobile.md).
 * [ ] Your scene's [Performance](../develop/optimize-performance.md) is above 90% on the High Graphics Profile on a mid-range phone — see [Hardware Requirements](hardware-requirements.md) for reference devices.
+* [ ] If your experience is split across several scenes in Genesis City, the main scene gives players a direct way to reach the others (a portal or teleport), since the mobile app only loads one scene at a time. See [Experiences split across several scenes](../../sdk7/design-experience/design-games.md#experiences-split-across-several-scenes).

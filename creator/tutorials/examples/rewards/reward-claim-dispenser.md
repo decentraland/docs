@@ -10,8 +10,8 @@ license:
   url: https://github.com/decentraland/sdk7-goerli-plaza/blob/main/reward-claim/LICENSE
 highlights:
   - title: Request a reward with a signed fetch
-    description: "`claimToken` throttles repeated clicks, skips campaigns already claimed in the
-      session, and checks that the player has a wallet. `requestToken` then posts the dispenser key,
+    description: "`claimToken` throttles repeated clicks, skips dispensers already claimed
+      successfully in this session, and checks that the player has a wallet. `requestToken` then posts the dispenser key,
       the current catalyst, and the player's address to the Rewards server using `signedFetch`."
     tags:
       - rewards
@@ -21,12 +21,15 @@ highlights:
         url: https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claim.ts#L26-L99
       - label: "`ClaimConfig`"
         url: https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claimConfig.ts#L21-L34
-    context: Replace the test campaign ID and dispenser key in `ClaimConfig` with your own campaign's
-      values. See the Rewards getting-started guide for creating a campaign and dispenser.
+    context: Testing is on by default (`CONFIG_CLAIM_TESTING_ENABLED` in `src/config.ts`), which uses
+      a bundled test campaign. To use your own, replace the placeholder campaign ID and dispenser key
+      in `ClaimConfig` and turn testing off. See the Rewards getting-started guide for creating a
+      campaign and dispenser.
   - title: Map Rewards responses to player feedback
-    description: "`processResponse` distinguishes campaigns that have not started, have ended, or are
-      disabled, out-of-stock dispensers, rewards already assigned, and successful claims, and shows a
-      different dispenser UI for each."
+    description: "`processResponse` shows a different dispenser UI for unavailable campaigns,
+      out-of-stock dispensers, rewards already assigned, and successful claims. Uninitiated, disabled,
+      and finished campaigns share one branch, which shows a not-started or ended screen only when the
+      campaign config sets `startDate` or `endDate`, and a generic finished screen otherwise."
     tags:
       - rewards
       - ui
@@ -59,6 +62,8 @@ highlights:
     references:
       - label: "`randomCrateSpawn` and `SpawnCrate`"
         url: https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/crate.ts#L40-L119
+      - label: "`DropCrate`"
+        url: https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/crate.ts#L142-L189
     context: The crate drop is triggered by the `Activate` action of a Creator Hub lever in `main`.
 ---
 
@@ -83,9 +88,9 @@ These links point to a specific source snapshot so the explanations remain usefu
 
 ### Request a reward with a signed fetch
 
-`claimToken` throttles repeated clicks, skips campaigns already claimed in the session, and checks that the player has a wallet. `requestToken` then posts the dispenser key, the current catalyst, and the player's address to the Rewards server using `signedFetch`.
+`claimToken` throttles repeated clicks, skips dispensers already claimed successfully in this session, and checks that the player has a wallet. `requestToken` then posts the dispenser key, the current catalyst, and the player's address to the Rewards server using `signedFetch`.
 
-**Project context:** Replace the test campaign ID and dispenser key in `ClaimConfig` with your own campaign's values. See the Rewards getting-started guide for creating a campaign and dispenser.
+**Project context:** Testing is on by default (`CONFIG_CLAIM_TESTING_ENABLED` in `src/config.ts`), which uses a bundled test campaign. To use your own, replace the placeholder campaign ID and dispenser key in `ClaimConfig` and turn testing off. See the Rewards getting-started guide for creating a campaign and dispenser.
 
 **Source references:**
 
@@ -94,7 +99,7 @@ These links point to a specific source snapshot so the explanations remain usefu
 
 ### Map Rewards responses to player feedback
 
-`processResponse` distinguishes campaigns that have not started, have ended, or are disabled, out-of-stock dispensers, rewards already assigned, and successful claims, and shows a different dispenser UI for each.
+`processResponse` shows a different dispenser UI for unavailable campaigns, out-of-stock dispensers, rewards already assigned, and successful claims. Uninitiated, disabled, and finished campaigns share one branch, which shows a not-started or ended screen only when the campaign config sets `startDate` or `endDate`, and a generic finished screen otherwise.
 
 **Project context:** The UI states are defined in `dispenserUi.tsx`. Campaign start and end dates are optional fields on the campaign config.
 
@@ -122,5 +127,6 @@ When the Rewards server asks for a captcha, `getCaptcha` fetches a captcha image
 **Source references:**
 
 - [`randomCrateSpawn` and `SpawnCrate`](https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/crate.ts#L40-L119)
+- [`DropCrate`](https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/crate.ts#L142-L189)
 
 <!-- example-highlights:end -->

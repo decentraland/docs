@@ -1,13 +1,13 @@
 ---
 title: Rewards
-description: Scenes that give players wearables and emotes through Decentraland Rewards campaigns.
+description: Scenes that give players wearables through Decentraland Rewards campaigns.
 order: 10
 ---
 
 <!-- example-category:start -->
 # Rewards
 
-Scenes that give players wearables and emotes through Decentraland Rewards campaigns.
+Scenes that give players wearables through Decentraland Rewards campaigns.
 
 | Example | What it demonstrates | Maintained by | Tags | Source |
 | --- | --- | --- | --- | --- |

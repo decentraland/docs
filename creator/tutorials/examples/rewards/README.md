@@ -1,7 +1,7 @@
 ---
 title: Rewards
 description: Scenes that give players wearables and emotes through Decentraland Rewards campaigns.
-order: 9
+order: 10
 ---
 
 <!-- example-category:start -->

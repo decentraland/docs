@@ -89,18 +89,25 @@ Interface, camera, and player-facing systems.
 | [UI safe areas](./examples/ui-camera-player/ui-safe-areas.md) | Positioning interface elements around screen insets and safe areas. | Decentraland | `ui`, `hud` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/81,-2-ui-screen-inset-area) |
 | [Virtual cameras](./examples/ui-camera-player/virtual-cameras.md) | Creating and switching to scene-defined cameras. | Decentraland | `camera`, `cinematic`, `controls` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/2,22-virtual-cameras) |
 
-## Multiplayer, data, and services
+## Multiplayer
 
-Multiplayer patterns, persistent data, and external services.
+Multiplayer patterns and server-owned shared state.
 
 | Example | What it demonstrates | Maintained by | Tags | Source |
 | --- | --- | --- | --- | --- |
-| [Data from a spreadsheet](./examples/multiplayer-data-services/spreadsheet-data.md) | Scene content driven by a Google Sheet, updated without redeploying. | Decentraland | `api`, `spreadsheet`, `video`, `wearables` | [Open repository](https://github.com/decentraland/Read_Spreadsheet_Scene) |
 | [Mini Games library](./examples/multiplayer-data-services/mini-games-library.md) | Player queues, scoreboards, and supporting logic for multiplayer mini games. | Decentraland | `multiplayer`, `scoreboard`, `game` | [Open repository](https://github.com/decentraland/sdk-mini-games) |
 | [Multiplayer Server leaderboard](./examples/multiplayer-data-services/authoritative-server-leaderboard.md) | A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings. | Decentraland | `multiplayer`, `leaderboard`, `server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard) |
-| [Third-party guest book](./examples/multiplayer-data-services/third-party-guest-book.md) | A guest book backed by an external HTTP service. | Decentraland | `api`, `storage` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api) |
-| [Third-party leaderboard](./examples/multiplayer-data-services/third-party-leaderboard.md) | A persistent leaderboard backed by an external HTTP service. | Decentraland | `api`, `storage`, `leaderboard` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board) |
-| [Third-party player authentication](./examples/multiplayer-data-services/third-party-player-authentication.md) | Verifying player identity for requests sent to an external service. | Decentraland | `api`, `authentication`, `player` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity) |
+
+## External services
+
+Connecting scenes to external APIs, data sources, and third-party servers.
+
+| Example | What it demonstrates | Maintained by | Tags | Source |
+| --- | --- | --- | --- | --- |
+| [Data from a spreadsheet](./examples/external-services/spreadsheet-data.md) | Scene content driven by a Google Sheet, updated without redeploying. | Decentraland | `api`, `spreadsheet`, `video`, `wearables` | [Open repository](https://github.com/decentraland/Read_Spreadsheet_Scene) |
+| [Third-party guest book](./examples/external-services/third-party-guest-book.md) | A guest book backed by an external HTTP service. | Decentraland | `api`, `storage` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api) |
+| [Third-party leaderboard](./examples/external-services/third-party-leaderboard.md) | A persistent leaderboard backed by an external HTTP service. | Decentraland | `api`, `storage`, `leaderboard` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board) |
+| [Third-party player authentication](./examples/external-services/third-party-player-authentication.md) | Verifying player identity for requests sent to an external service. | Decentraland | `api`, `authentication`, `player` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity) |
 
 ## Audio, video, and environment
 

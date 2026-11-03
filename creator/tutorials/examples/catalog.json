@@ -492,7 +492,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"maintainer": "dcl-regenesislabs",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/dcl-regenesislabs/cozy-farm",
 			"realm": "cozyfarm.dcl.eth",
 			"license": {
@@ -548,7 +548,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"maintainer": "dcl-regenesislabs",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/dcl-regenesislabs/dead-surge",
 			"realm": "deadsurge.dcl.eth",
 			"license": {
@@ -611,7 +611,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"maintainer": "dcl-regenesislabs",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/dcl-regenesislabs/kickoff-2026",
 			"realm": "kickoff.dcl.eth",
 			"license": {
@@ -669,7 +669,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"maintainer": "dcl-regenesislabs",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/dcl-regenesislabs/marsh-colony",
 			"realm": "marshcolony.dcl.eth",
 			"license": {
@@ -726,7 +726,7 @@
 			],
 			"developer": "dcl-regenesislabs",
 			"maintainer": "dcl-regenesislabs",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/dcl-regenesislabs/towerofmadness",
 			"realm": "towerofmadness.dcl.eth",
 			"license": {
@@ -1260,7 +1260,7 @@
 				"ui"
 			],
 			"maintainer": "decentraland-scenes",
-			"maintenance": "community",
+			"maintenance": "decentraland",
 			"source": "https://github.com/decentraland-scenes/dcl-npc-toolkit",
 			"license": {
 				"status": "identified",

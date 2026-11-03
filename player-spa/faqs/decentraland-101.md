@@ -81,7 +81,7 @@ Para teletransportarte a un **World** específico, también usarás un comando d
 
 • `/goto NombreDelWorld`
 
-![](broken-reference)
+![](../.gitbook/assets/keyboard.webp)
 
 </details>
 
@@ -121,7 +121,7 @@ La [Página de Eventos](https://decentraland.org/events?utm_org=dcl\&utm_source=
 
 Si deseas obtener instantáneas de tus momentos favoritos en Decentraland, solo presiona C en tu teclado para abrir la Cámara. Una guía útil con controles de cámara se puede encontrar en la parte inferior derecha de tu pantalla.
 
-![](broken-reference)
+![](../.gitbook/assets/CameraHotKeys.webp)
 
 Tu Galería tiene espacio para hasta 500 fotos, desde allí puedes compartir fácilmente tus imágenes con un enlace o descargarlas en tu computadora.
 
@@ -147,7 +147,7 @@ El DAO de Decentraland es el corazón de la gobernanza del mundo impulsado por l
 
 Los Wearables son los activos digitales que puedes mezclar y combinar para personalizar la apariencia de tu avatar. Van desde artículos de ropa, accesorios, partes del cuerpo y pieles completas.
 
-![](broken-reference)
+![](../.gitbook/assets/wearables_banner.webp)
 
 Una variedad de Wearables base gratuitos siempre están disponibles en tu Mochila (¡haz clic en el ícono de la mochila a la izquierda cuando estés en el mundo para probarlos!), y puedes navegar a través de miles de artículos hechos por la comunidad en el [Marketplace](https://decentraland.org/marketplace/browse?section=wearables\&vendor=decentraland\&page=1\&sortBy=newest\&status=on_sale) para crear tu look único. ¿No encuentras lo que buscas? Considera hacer el tuyo propio.
 
@@ -159,7 +159,7 @@ Una variedad de Wearables base gratuitos siempre están disponibles en tu Mochil
 
 Los Emotes son animaciones que permiten a tu avatar expresar reacciones, realizar movimientos de baile o participar en actividades como yoga o pintura. Al igual que los Wearables, hay un conjunto de Emotes base gratuitos disponibles para todos, pero también puedes navegar por el [Marketplace](https://decentraland.org/marketplace/browse?assetType=item\&section=emotes\&vendor=decentraland\&page=1\&sortBy=recently_listed\&status=on_sale) para encontrar una variedad aún mayor. ¡O hacer los tuyos propios!
 
-![](broken-reference)
+![](../.gitbook/assets/emote_banner.webp)
 
 Para usar Emotes en Decentraland, querrás familiarizarte con la Rueda de Emotes que se muestra a continuación. Esta muestra un conjunto de los 10 Emotes que es más probable que uses (puedes personalizar estas ranuras de Emotes desde tu Mochila).
 
@@ -169,7 +169,7 @@ Para activar un Emote, tienes 3 opciones:
 * **Intermedio:** Presiona **B** en tu teclado para abrir la Rueda de Emotes y haz clic en el Emote que deseas usar
 * **Profesional:** Usa el atajo **B** + el número del Emote que deseas usar (por ejemplo, **B1**) en tu teclado para activar un Emote sin abrir la Rueda de Emotes
 
-![](broken-reference)
+![](../.gitbook/assets/emote-wheel.webp)
 
 </details>
 

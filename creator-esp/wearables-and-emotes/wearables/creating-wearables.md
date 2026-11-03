@@ -8,7 +8,7 @@ metaLinks:
 
 # Creating Wearables
 
-![](../images/wearables-and-emotes/creating-wearables/00_creating_wearables_banner.png)
+![](../../.gitbook/assets/00_creating_wearables_banner.webp)
 
 ## Intro
 
@@ -42,35 +42,35 @@ Notarás que cada modelo contiene 8 mallas diferentes relacionadas con una armat
 
 Actualmente, hay dos formas de cuerpo: A o B.
 
-![](../images/wearables-and-emotes/creating-wearables/1_creating_wearables.png)
+![](../../.gitbook/assets/1_creating_wearables.webp)
 
 ### **Head**
 
-![](../images/wearables-and-emotes/creating-wearables/2_avatar_head.jpeg)
+![](../../.gitbook/assets/2_avatar_head.webp)
 
 _La cabeza base incluye diferentes mallas adjuntas que pueden ser personalizables como wearables: Eyebrows, Eyes y Mouth funcionan como máscaras de transparencia renderizadas frente a la cara._
 
 ### **Upper Body**
 
-![](../images/wearables-and-emotes/creating-wearables/3_upper_body.png)
+![](../../.gitbook/assets/3_upper_body.webp)
 
 _La parte superior del cuerpo, o torso, de un avatar. No incluye las manos._
 
 ### **Lower Body**
 
-![](../images/wearables-and-emotes/creating-wearables/4_lower_body.png)
+![](../../.gitbook/assets/4_lower_body.webp)
 
 _La parte inferior del cuerpo incluye la pelvis y las piernas de un avatar._
 
 ### **Hands**
 
-![](../images/wearables-and-emotes/creating-wearables/54_hands.png)
+![](../../.gitbook/assets/54_hands.webp)
 
 _Las manos son las mismas para Shape A y B, y comienzan en las muñecas de un avatar._
 
 ### **Feet**
 
-![](../images/wearables-and-emotes/creating-wearables/5_feet.png)
+![](../../.gitbook/assets/5_feet.webp)
 
 _Los pies incluyen tobillos y pie._
 
@@ -80,7 +80,7 @@ _Los pies incluyen tobillos y pie._
 
 Cada parte del cuerpo tiene tapas, haciéndolas "herméticas". Estas tapas existen para prevenir glitches desagradables si hay algún problema de clipping de animación debido a un mal skinning. Es mejor no eliminar estas tapas al editar la malla.
 
-![](../images/wearables-and-emotes/creating-wearables/14_body_parts.png)
+![](../../.gitbook/assets/14_body_parts.webp)
 
 ## Construyendo Modelos 3D para Wearables
 
@@ -93,7 +93,7 @@ Hay límites para el número de triángulos y texturas que se pueden usar para c
 * No más de 1.5K triángulos por slot de wearable: hat, helmet, upper body, lower body, feet y hair.
 * No más de 500 triángulos por categorías: mask, eyewear, earring, tiara, top\_head y facial hair.
 * Para accesorios de mano, el presupuesto es 1k tris. Si el hand wear oculta la mano base del avatar, el presupuesto es 1.5k tris.
-* No más de 2 texturas (a una resolución de 512x512px o menor) por wearable. Todas las texturas deben ser cuadradas a una resolución de 72 pixel/inch.
+* No más de 2 texturas (a una resolución de 1024x1024px o menor) por wearable. Todas las texturas deben ser cuadradas a una resolución de 72 pixel/inch.
 * No más de 2 materiales (sin contar el AvatarSkin\_MAT)
 * En el caso de skin wearable, la cantidad de tris permitidos son 5k y 5 texturas.
 
@@ -113,7 +113,7 @@ La dimensión para los wearables no puede exceder:
 
 > `Height: 2.42 m`, `Width: 2,42 m`, `Depth: 1,4 m`
 
-![](../images/wearables-and-emotes/creating-wearables/12_max_width_height.png) ![](../images/wearables-and-emotes/creating-wearables/13_max_depth.png)
+![](../../.gitbook/assets/12_max_width_height.webp) ![](../../.gitbook/assets/13_max_depth.webp)
 
 #### **Maps**
 
@@ -123,7 +123,7 @@ Los wearables de Decentraland actualmente soportan 3 tipos de maps, que son:
 2. **Emission**: Este map es para las partes que brillan en tu modelo. El emission map va en un material separado específicamente para emisión.
 3. **Alpha**: Este map es para manejar la transparencia. Usa el canal de opacidad de la textura. (_Siempre es preferible usar Alpha Clip en lugar de Alpha Blend, usando una textura en blanco y negro para el recorte_)
 
-![](../images/wearables-and-emotes/creating-wearables/6_maps.png)
+![](../../.gitbook/assets/6_maps.webp)
 
 Debido a que el cliente de referencia de Decentraland usa un Toon Shader para los materiales de avatar, algunos maps **no son necesarios** como:
 
@@ -138,21 +138,21 @@ Para usar estos maps en Decentraland la solución alternativa es hornearlos en u
 
 La primera es activar el "Backface culling" en la configuración de propiedades de Material, esta es una buena práctica para detectar normales invertidas, como en esta imagen:
 
-![](../images/wearables-and-emotes/creating-wearables/8_normals.gif) ![](../images/wearables-and-emotes/creating-wearables/9_backface_culling.png)
+![](../../.gitbook/assets/8_normals.webp) ![](../../.gitbook/assets/9_backface_culling.webp)
 
 La segunda forma de verificar si las normales están bien es activando "Face orientation" en las opciones de superposición del viewport. Volverá tu modelo azul, pero no te preocupes. Las caras azules son las correctas y las rojas son las que necesitan ser corregidas, puedes encontrar esta opción aquí:
 
-![](../images/wearables-and-emotes/creating-wearables/10_normals_face.png)
+![](../../.gitbook/assets/10_normals_face.webp)
 
 #### **Armature**
 
 Recuerda no cambiar ninguna de las especificaciones, convenciones de nomenclatura, jerarquía o transformaciones de la armature dada. Cambiar cualquiera de estas hará que el wearable deje de funcionar en el cliente después de exportar.
 
-![](../images/wearables-and-emotes/creating-wearables/50_armature.png)
+![](../../.gitbook/assets/50_armature.webp)
 
 Asegúrate de que la armature importada no tenga ningún hueso _end_ o _neutral_, de lo contrario el wearable no va a funcionar después de exportar al builder. Si estás importando un .fbx que tiene este problema puedes activar _**Ignore Leaf Bones**_ al importar la armature.
 
-![](../images/wearables-and-emotes/creating-wearables/53_ignore_leaf_bones.png)
+![](../../.gitbook/assets/53_ignore_leaf_bones.webp)
 
 #### **Eyebrows, Eyes and Mouth**
 
@@ -160,25 +160,25 @@ Estas mallas funcionan con un shader transparente, por lo que no tienes que hace
 
 Aquí hay algunos ejemplos de texturas png:
 
-![](../images/wearables-and-emotes/creating-wearables/21_eyes.png) ![](../images/wearables-and-emotes/creating-wearables/22_eyebrows.png) ![](../images/wearables-and-emotes/creating-wearables/23_eyes_mask_uv.jpeg)
+![](../../.gitbook/assets/21_eyes.webp) ![](../../.gitbook/assets/22_eyebrows.webp) ![](../../.gitbook/assets/23_eyes_mask_uv.webp)
 
 _Eyes y Eyebrows usan la misma malla y mapa UV._
 
-![](../images/wearables-and-emotes/creating-wearables/24_mouth.png) ![](../images/wearables-and-emotes/creating-wearables/25_mouth_mask_uv.jpeg)
+![](../../.gitbook/assets/24_mouth.webp) ![](../../.gitbook/assets/25_mouth_mask_uv.webp)
 
 _Malla y mapa UV de Mouth._
 
 Para visualizar el resultado final necesitarás usar estos nodos (en Blender):
 
-![](../images/wearables-and-emotes/creating-wearables/26_eyes_nodes.png) ![](../images/wearables-and-emotes/creating-wearables/27_eyes_alpha.png)
+![](../../.gitbook/assets/26_eyes_nodes.webp) ![](../../.gitbook/assets/27_eyes_alpha.webp)
 
 **Masks:** El Avatar Editor tiene diferentes opciones de color que los jugadores pueden elegir para personalizar sus avatares.
 
-![](../images/wearables-and-emotes/creating-wearables/28_eyes_tone.png)
+![](../../.gitbook/assets/28_eyes_tone.webp)
 
 Estas elecciones de color se aplican a una máscara específica en el wearable.
 
-![](../images/wearables-and-emotes/creating-wearables/29_eyes_mask.png) ![](../images/wearables-and-emotes/creating-wearables/30_eyes_base.png)
+![](../../.gitbook/assets/29_eyes_mask.webp) ![](../../.gitbook/assets/30_eyes_base.webp)
 
 El área negra en la imagen de la izquierda (Eyes Mask) indica el área de la textura de la derecha (Eyes Base) que será coloreada. Es importante recordar que los iris siempre necesitan tener una escala de grises (si el iris es negro puro, el tinte no va a funcionar. Por el contrario, si el iris es blanco puro estaría completamente teñido por el color seleccionado usando el editor).
 
@@ -188,13 +188,13 @@ Hay dos tipos de **Handwear** que puedes hacer bajo la misma categoría.
 
 1. **Replacing Hands:**
 
-![](../images/wearables-and-emotes/creating-wearables/55_gloves.png)
+![](../../.gitbook/assets/55_gloves.webp)
 
 Si quieres crear handwear que reemplace ambas manos probablemente necesitarás sobrescribir la malla base _**hand**_. Haciendo eso, el límite para el wearable handwear sería 1500 tris.
 
 2. **Hand Accessories:**
 
-![](../images/wearables-and-emotes/creating-wearables/56_dclwatch.png)
+![](../../.gitbook/assets/56_dclwatch.webp)
 
 También puedes crear accesorios de mano como relojes, pulseras, anillos, etc. En ese sentido, la mano no necesita ser sobrescrita y el límite es 1000 tris por ítem.
 
@@ -208,11 +208,11 @@ Hay dos cosas importantes para recordar al crear wearables de cabello personaliz
 
 Primero, intenta seguir la forma de la cabeza. Siempre puedes referirte a la malla de cabeza proporcionada en los archivos de ejemplo si necesitas un lugar para comenzar.
 
-![](../images/wearables-and-emotes/creating-wearables/31_hair_base.png)
+![](../../.gitbook/assets/31_hair_base.webp)
 
 Segundo, si quieres que los usuarios puedan cambiar el color del cabello o vello facial usando el editor de avatar, entonces necesitas pintar el cabello en escala de grises y usar "Hair" en el nombre del material (ejemplo "M\_Hair\_Short"). Si quieres incluir otro objeto que no esté influenciado por el tinte, simplemente no agregues esa convención de nomenclatura.
 
-![](../images/wearables-and-emotes/creating-wearables/32_hair_mat.png) ![](../images/wearables-and-emotes/creating-wearables/33_hair_tx.png) ![](../images/wearables-and-emotes/creating-wearables/49_tint_hair.gif)
+![](../../.gitbook/assets/32_hair_mat.webp) ![](../../.gitbook/assets/33_hair_tx.webp) ![](../../.gitbook/assets/49_tint_hair.webp)
 
 _Los tonos más bajos de gris aparecerán más oscuros y los tonos más altos de gris aparecerán más brillantes, multiplicados por el color seleccionado por el usuario en el editor de avatar._
 
@@ -220,15 +220,15 @@ _Los tonos más bajos de gris aparecerán más oscuros y los tonos más altos de
 
 Hay tres materiales básicos para modelos de avatar. Uno es el material usado para el wearable en sí, otro se usa para la piel y otro para las cejas, ojos y boca.
 
-![](../images/wearables-and-emotes/creating-wearables/15_avatar_skin_mat.png)
+![](../../.gitbook/assets/15_avatar_skin_mat.webp)
 
 Cada malla base viene con su propia textura de piel.
 
-![](../images/wearables-and-emotes/creating-wearables/16_Avatar_MaleSkinBase.png) ![](../images/wearables-and-emotes/creating-wearables/17_Avatar_FemaleSkinBase.png)
+![](../../.gitbook/assets/16_Avatar_MaleSkinBase.webp) ![](../../.gitbook/assets/17_Avatar_FemaleSkinBase.webp)
 
 La textura de piel está hecha en escala de grises para que permita al motor de renderizado teñir la piel del avatar usando el editor según la preferencia del usuario. Para poder teñir el color de piel usando el editor, el nombre del material debe ser _AvatarSkin\_MAT_.
 
-![](../images/wearables-and-emotes/creating-wearables/18_skin_tone.png)
+![](../../.gitbook/assets/18_skin_tone.webp)
 
 {% hint style="warning" %}
 Importante: siempre preserva el mapeo UV para cualquier parte del cuerpo que esté expuesta por un wearable, como las piernas expuestas por shorts o faldas.
@@ -238,7 +238,7 @@ Importante: siempre preserva el mapeo UV para cualquier parte del cuerpo que est
 
 ¡Puedes crear texturas personalizadas para tus wearables! Sin embargo, siempre es mejor usar un solo archivo de textura muy pequeño para cada wearable. ¡Usar la textura predeterminada AvatarWearable\_MAT proporcionada en los archivos de ejemplo garantizará que tus wearables sean eficientes!
 
-![](../images/wearables-and-emotes/creating-wearables/20_wearables_uv.png)
+![](../../.gitbook/assets/20_wearables_uv.webp)
 
 {% hint style="warning" %}
 Para prevenir activar shaders específicos de características faciales, no incluyas '\_mouth', '\_eyebrows' o '\_eyes' en el nombre de ninguna malla. Estos términos están reservados para características faciales, y usarlos inapropiadamente aplicará el shader equivocado a la malla.
@@ -248,7 +248,7 @@ Para prevenir activar shaders específicos de características faciales, no incl
 
 **UVPacker**
 
-UvPacker es un addon gratuito que te ayuda a empaquetar y organizar tus uvs con solo unos clics. Como Decentraland trabaja con 512x para los wearables, esta herramienta es una gran ayuda para crear mejores y más organizadas texturas.
+UvPacker es un addon gratuito que te ayuda a empaquetar y organizar tus uvs con solo unos clics. Como Decentraland trabaja con texturas de hasta 1024x para los wearables, esta herramienta es una gran ayuda para crear mejores y más organizadas texturas.
 
 Puedes descargar directamente desde el sitio web aquí:
 
@@ -268,11 +268,11 @@ Al hacer skin weighting de nuestros nuevos wearables, hay varias consideraciones
 
 Cada asset debe estar weighted al esqueleto completo. Por ejemplo, un asset de upper body se verá así al aplicar skin weights:
 
-![](../images/wearables-and-emotes/creating-wearables/34_rig.gif)
+![](../../.gitbook/assets/34_rig.webp)
 
 Los wearables que se encuentran en intersecciones entre partes del cuerpo deben estar completamente weighted al mismo hueso. Por ejemplo, en estas dos zonas verdes, los vértices en el cuello necesitan estar completamente weighted solo al hueso "Neck".
 
-![](../images/wearables-and-emotes/creating-wearables/35_head_cuts.png)
+![](../../.gitbook/assets/35_head_cuts.webp)
 
 #### **Key Bones**
 
@@ -301,13 +301,13 @@ Los huesos "clave" para usar al hacer skin weighting son:
 
 Al exportar wearables, asegúrate de que no haya otros huesos fuera de la Armature dada. Un problema común al importar armatures entre diferentes software es la aparición de huesos _"\_end"_ o _"\_neutral"_. Asegúrate de eliminar esos antes de exportar. De lo contrario, es muy probable que los wearables no funcionen en el cliente después.
 
-![](../images/wearables-and-emotes/creating-wearables/51_export_wearables.png)
+![](../../.gitbook/assets/51_export_wearables.webp)
 
 Para exportar el wearable, selecciona el objeto y luego la armature. Asegúrate de no exportar nada más, como cámaras, luces u objetos vacíos.
 
 A continuación, exporta el wearable en formato _glTF2.0_. Asegúrate de exportar solo el wearable con sus propiedades de skinning, y sin ninguna otra característica innecesaria como animación o shape keys.
 
-![](../images/wearables-and-emotes/creating-wearables/52_export_wearables.png)
+![](../../.gitbook/assets/52_export_wearables.webp)
 
 ## Buenas Prácticas Para Modelado
 
@@ -317,53 +317,53 @@ Cuando estás haciendo wearables, la mejor manera de visualizar el resultado fin
 
 1. Primero selecciona la parte superior del cuerpo, luego tienes que activar "**Edit mode**" y "**On cage**" en el modificador de armature.
 
-![](../images/wearables-and-emotes/creating-wearables/36_60_1.gif)
+![](../../.gitbook/assets/36_60_1.webp)
 
 2. Ahora, en pose mode puedes rotar los brazos 60°.
 
-![](../images/wearables-and-emotes/creating-wearables/37_60_2.gif)
+![](../../.gitbook/assets/37_60_2.webp)
 
 3. Puedes editar tu malla en A-Pose en lugar de T-pose.
 
-![](../images/wearables-and-emotes/creating-wearables/38_60_3.gif)
+![](../../.gitbook/assets/38_60_3.webp)
 
 4. Pero también es bueno tener en cuenta que puedes alternar fácilmente de A-Pose a T-Pose simplemente activando de nuevo "Edit mode" y "On cage" en el modificador de armature.
 
-![](../images/wearables-and-emotes/creating-wearables/39_60_4.gif)
+![](../../.gitbook/assets/39_60_4.webp)
 
 ### **Joint deformation:**
 
 Para obtener los mejores resultados en la topología del wearable cuando se trata de joints (brazos o piernas, por ejemplo) es importante tener buenas prácticas al crear loops. Aquí podemos ver la diferencia en la deformación de la malla para diferentes loop cuts:
 
-![](../images/wearables-and-emotes/creating-wearables/40_joints.gif)
+![](../../.gitbook/assets/40_joints.webp)
 
 Una buena manera de asegurar que todo se esté deformando correctamente es hacer un weight paint como el siguiente ejemplo:
 
-![](../images/wearables-and-emotes/creating-wearables/41_joint_weight.png) ![](../images/wearables-and-emotes/creating-wearables/42_joint_weight_02.png)
+![](../../.gitbook/assets/41_joint_weight.webp) ![](../../.gitbook/assets/42_joint_weight_02.webp)
 
 ### **Skirts**
 
 Un consejo útil y buena práctica al modelar faldas/vestidos es agregar loopcuts adicionales en las intersecciones de los pliegues. Esto será muy útil cuando tengas que pintar los weights del rig.
 
-![](../images/wearables-and-emotes/creating-wearables/43_skirt.png)
+![](../../.gitbook/assets/43_skirt.webp)
 
 Con estos loopcuts la influencia del vértice se ve mucho más suave y te da mejores resultados cuando estás animando una falda/vestido.
 
 Aquí hay un ejemplo de cómo debería ser la influencia del hueso:
 
-![](../images/wearables-and-emotes/creating-wearables/44_skirt.gif)
+![](../../.gitbook/assets/44_skirt.webp)
 
 ### **Hats**
 
 Una buena práctica al crear sombreros es agregar cabello a la malla base del sombrero y luego ocultar la categoría _hair_ usando el editor. Hacer esto va a prevenir que el sombrero haga clip con otros cabellos y reducir resultados inesperados.
 
-![](../images/wearables-and-emotes/creating-wearables/45_hat.png)
+![](../../.gitbook/assets/45_hat.webp)
 
 ### **Add Polygon Count**
 
 Un consejo valioso es siempre hacer seguimiento del polycount de tus modelos. Para hacer eso en blender necesitas activar estadísticas en el panel de superposiciones del viewport.
 
-![](../images/wearables-and-emotes/creating-wearables/46_poly_count.png)
+![](../../.gitbook/assets/46_poly_count.webp)
 
 ### Recursos
 

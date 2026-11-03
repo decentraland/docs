@@ -1,14 +1,14 @@
-El módulo `SignedFetch` proporciona una implementación de la interfaz `fetch` que es transparentemente compatible con el protocolo [signed fetch](../../auth/signed_fetch), que define cómo adjuntar [cadenas de autenticación](../../auth/authchain) firmadas a solicitudes salientes.
+El módulo `SignedFetch` proporciona una implementación de la interfaz `fetch` que es transparentemente compatible con el protocolo [signed fetch](../../authentication/signed-fetch.md), que define cómo adjuntar [cadenas de autenticación](../../authentication/authchain.md) firmadas a solicitudes salientes.
 
-Los procedimientos para firmar y verificar esta solicitud se detallan en la página [authentication chain](/contributor/auth/authchain).
+Los procedimientos para firmar y verificar esta solicitud se detallan en la página [authentication chain](../../authentication/authchain.md).
 
-Usar `SignedFetch` desde una escena requiere el permiso [`USE_FETCH`](/contributor/content/entity-types/scenes#permissions).
+Usar `SignedFetch` desde una escena requiere el permiso [`USE_FETCH`](../../content/entity-types/scenes.md#permissions).
 
 ## Methods
 
-##### `signedFetch` {#signedFetch}
+### `signedFetch` {#signedfetch}
 
-Hacer una solicitud HTTP como lo harías con ([`fetch`](../globals#http)), agregando automáticamente los encabezados de verificación.
+Hacer una solicitud HTTP como lo harías con ([`fetch`](../globals.md#http)), agregando automáticamente los encabezados de verificación.
 
 ```ts
 interface Request {

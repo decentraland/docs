@@ -6,7 +6,7 @@ description: React to the player's position
 
 To make something happen when the player walks into or out of an area, use a Trigger Area [smart item](smart-items.md).
 
-![](../../images/editor/trigger.png)
+![](../../images/editor/trigger.webp)
 
 The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
@@ -17,7 +17,7 @@ If any part of the player's avatar overlaps with this orange cube, the assigned 
 {% hint style="info" %}
 **💡 Tip**: If the trigger areas in your scene start getting in the way of editing other content, remember you can always lock and/or hide them from the [Entity Tree](../get-started/scene-editor-essentials.md#the-entity-tree).
 
-<img src="../../images/editor/hide-trigger.png" alt="" data-size="original">
+<img src="../../images/editor/hide-trigger.webp" alt="" data-size="original">
 {% endhint %}
 
 Multiple trigger areas can overlap, and don't affect each other.

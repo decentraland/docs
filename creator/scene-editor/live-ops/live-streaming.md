@@ -12,7 +12,7 @@ Decentraland offers different ways to stream live video into your scene:
 - **Stream** _(Advanced Mode)_: Use a streaming software like [OBS](https://obsproject.com/) to stream through Decentraland's streaming infrastructure. This mode allows you to have more control over the stream, like screen layout and audio sources.
 - **Video URL** _(Advanced Mode)_: Point to your own streaming infrastructure, by pasting the URL into the **Video URL** field.
 
-<img src="../../../.gitbook/assets/streaming-modes.png" alt="Stream methods" width="400"/>
+<img src="../../.gitbook/assets/streaming-modes.webp" alt="Stream methods" width="400"/>
 
 Streaming works in Worlds and Genesis City, with no audience limits on the scene side.
 
@@ -22,15 +22,15 @@ The following steps are common to both DCL Cast and Stream methods:
 
 1.  Add a **Video Screen** smart item to your scene.
 
-    ![ ](../../images/editor/admin/video-player-item.png)
+    ![ ](../../images/editor/admin/video-player-item.webp)
 
 2.  Add an **Admin Tools** smart item and enable the **Video Screens** section. Select each screen from the dropdown and give it a friendly name for the admin UI.
 
-    ![ ](../../images/editor/admin/multi-video-setup.png)
+    ![ ](../../images/editor/admin/multi-video-setup.webp)
 
 3.  Publish your scene (World or Genesis City) and enter as a user with admin permissions.
 
-    ![ ](../../images/editor/publish-button.png)
+    ![ ](../../images/editor/publish-button.webp)
 
 Once your scene is published, you can enter as a user with admin permissions and configure the streaming settings.
 
@@ -44,7 +44,7 @@ Once your scene is published, you can enter as a user with admin permissions and
 
 Enter your published scene as an admin user, and open the admin panel. Select the **Video** tab, then select the **DCL Cast** functionality.
 
-   <img src="../../../.gitbook/assets/dcl-cast.png" alt="DCL Cast" width="400"/>
+   <img src="../../.gitbook/assets/dcl-cast.webp" alt="DCL Cast" width="400"/>
 
 You'll see two links that you can copy and share with others.
 
@@ -62,17 +62,17 @@ Click the **Copy link** button to copy the links to the clipboard.
 
 When ready to stream, click the **Activate** button to make the stream visible to the audience in the scene.
 
-   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="150"/>
+   <img src="../../images/editor/admin/activate.webp" alt="Activate stream" width="150"/>
 
 If for any reason you need to reset the room, click the **Reset Room** button to generate a new one. Anyone who's currently streaming will be disconnected.
 
- <img src="../../../.gitbook/assets/reset-room.png" alt="Reset room" width="150"/>
+ <img src="../../.gitbook/assets/reset-room.webp" alt="Reset room" width="150"/>
 
 ### Using the DCL Cast app
 
 When someone pastes the speaker link into a browser, they'll see a screen like this:
 
- <img src="../../../.gitbook/assets/dcl-cast-landing.png" alt="DCL Cast app" width="400"/>
+ <img src="../../.gitbook/assets/dcl-cast-landing.webp" alt="DCL Cast app" width="400"/>
 
 The browser will ask for permission to share your camera and microphone. You can also configure the different input devices to use for the stream.
 
@@ -86,7 +86,7 @@ Once streaming, the app is similar to various familiar video conferencing apps, 
 
 The chat is read-only, and listens to all messages sent by players inside the scene in Decentraland. This is great to keep in touch with the audience, even if you're streaming from a different device.
 
- <img src="../../../.gitbook/assets/dcl-cast-app.png" alt="DCL Cast app" width="700"/>
+ <img src="../../.gitbook/assets/dcl-cast-app.webp" alt="DCL Cast app" width="700"/>
 
 On the **Participants** tab you can see three lists:
 
@@ -94,7 +94,7 @@ On the **Participants** tab you can see three lists:
 - **Viewers**: The people who are currently watching the stream from a browser.
 - **In-world participants**: The players who are currently inside the scene, watching the stream in-world.
 
- <img src="../../../.gitbook/assets/participants.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/participants.webp" alt="Participants tab" width="200"/>
 
 If multiple speakers are present in a DCL Cast session, players in-world will hear the voices of all speakers, and the see the video will automatically switch to show whoever is currently emitting sound, to always show who's speaking.
 
@@ -102,11 +102,11 @@ To override this default behavior:
 
 - Click the **Speakers** button on the scene admin panel
 
- <img src="../../.gitbook/assets/speakers-button.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/speakers-button.webp" alt="Participants tab" width="200"/>
 
 - Pick one of the speakers and select a source to showcase (either that speaker's camera or screen)
 
- <img src="../../.gitbook/assets/select-speaker-source.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/select-speaker-source.webp" alt="Participants tab" width="200"/>
 
 This will force this source to be always shown on screen, regardless of if other speakers are talking.
 
@@ -114,7 +114,7 @@ This will force this source to be always shown on screen, regardless of if other
 **📔 Tip**: If you're also in-world watching the stream, you may find it jarring to hear echo from audio repeated both in the DCL Cast app and in the Decentraland scene.
 You can easily mute all audio from the DCL Cast app by toggling the speaker icon on the bottom-left of the screen
 
- <img src="../../.gitbook/assets/mute-dcl-cast.png" alt="Participants tab" width="50"/>
+ <img src="../../.gitbook/assets/mute-dcl-cast.webp" alt="Participants tab" width="50"/>
 
 Otherwise you can mute audio in the Decentraland settings.
 {% endhint %}
@@ -125,7 +125,7 @@ You can also share the contents of a slide presentation as an alternative source
 
 - From in-world, click the **Share presentation** button in-world in the DCL Cast tab. From the DCL Cast app, click the dropdown next to the **Share Screen** button and select **Share presentation**.
 
- <img src="../../.gitbook/assets/share-presentation-dcl-cast.png" alt="Participants tab" width="200"/>
+ <img src="../../.gitbook/assets/share-presentation-dcl-cast.webp" alt="Participants tab" width="200"/>
 
 - Paste a Google slides link, a link to a .pdf hosted in Drive or a similar source, or upload a .pdf file.
 
@@ -151,15 +151,15 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 
 1.  Open the Admin UI in the scene (top‑right icon).
 
-    ![ ](../../images/editor/admin/admin-icon.png)
+    ![ ](../../images/editor/admin/admin-icon.webp)
 
 2.  In the **Video** tab, switch to **Stream** and click **Get Stream Key**.
 
-    ![ ](../../images/editor/admin/get-key.png)
+    ![ ](../../images/editor/admin/get-key.webp)
 
 3.  Copy the **RTMP Server** and **Stream Key** into your streaming software.
 
-    <img src="../../images/editor/admin/OBS-configuration.png" alt="OBS configuration"/>
+    <img src="../../images/editor/admin/OBS-configuration.webp" alt="OBS configuration"/>
 
 {% hint style="danger" %}
 **❗Warning**: Only one person can stream to a scene at a time. When finished streaming, click **Stop Streaming** in your software to free the channel.
@@ -170,13 +170,13 @@ To use the Live Streaming feature on your scene you'll need to install a streami
 1. Start streaming from your software.
 2. In the Admin UI, click **Activate** to show the stream in the scene.
 
-   <img src="../../images/editor/admin/activate.png" alt="Activate stream" width="100"/>
+   <img src="../../images/editor/admin/activate.webp" alt="Activate stream" width="100"/>
 
 ### Stream keys
 
 Stream keys are generated per scene and are valid for 4 days (96 hours). A single live session can run up to 4 hours continuously.
 
-![ ](../../images/editor/admin/live-stream-settings.png)
+![ ](../../images/editor/admin/live-stream-settings.webp)
 
 - Click **Reset Stream Key** to revoke the current key and issue a new one. Ongoing streams will stop.
 - Each scene has its own streaming address and key. Admins can share the key with external streamers.

@@ -25,7 +25,7 @@ Para ver tus tokens LAND, haz clic en **Gestionar tu LAND**. Aquí encontrarás 
 
 Al hacer clic en una de las parcelas o Estates listados bajo **Land**, puedes editar su nombre, descripción, establecer un operador o transferirla directamente a otra dirección de billetera.
 
-![](broken-reference)
+![](../.gitbook/assets/marketplace_myland.webp)
 
 ## Crear un Estate
 
@@ -37,11 +37,11 @@ Para crear tu primer Estate, necesitas poseer dos o más parcelas LAND adyacente
 
 1. Abre **Mi LAND** y selecciona una de las parcelas que deseas agregar al Estate.
 2. En la página de detalles de la parcela, haz clic en **Crear Estate**.
-3. Se te mostrará una vista del Atlas centrada en la parcela que seleccionaste, con las parcelas adyacentes restantes que posees resaltadas. Selecciona las diferentes parcelas que deseas incluir en tu Estate. ![](broken-reference) ![](broken-reference)
+3. Se te mostrará una vista del Atlas centrada en la parcela que seleccionaste, con las parcelas adyacentes restantes que posees resaltadas. Selecciona las diferentes parcelas que deseas incluir en tu Estate. ![](../.gitbook/assets/market_estates1.webp) ![](../.gitbook/assets/market_estates3.webp)
 4. Haz clic en **Continuar**.
 5.  Ingresa un nombre y descripción para tu Estate. Estos detalles se mostrarán públicamente en el Atlas, al igual que el nombre y la descripción de cualquier parcela individual.
 
-    ![](broken-reference)
+    ![](../.gitbook/assets/market_estates2.webp)
 6. Confirma esta transacción en tu cliente de Ethereum y espera a que la red la verifique.
 
 Una vez que hayas creado tu primer Estate, verás una nueva pestaña titulada Estates. Desde esta página puedes ver y gestionar todos tus Estates.
@@ -56,7 +56,7 @@ Para editar una parcela o Estate:
 
 1.  Navega a la página de detalles de la parcela o el Estate que deseas editar y haz clic en **Editar**.
 
-    ![](broken-reference)
+    ![](../.gitbook/assets/marketplace_edit_parcel.webp)
 2. Haz clic en **Enviar**.
 3. Confirma esta transacción en tu cliente de Ethereum y espera a que la red la verifique.
 
@@ -68,10 +68,10 @@ El usuario con permisos también puede cambiar el nombre o descripción en el Ma
 
 Para otorgar permisos sobre tu LAND:
 
-1. Navega a la página de detalles de la parcela o Estate y haz clic en los tres puntos y luego en **Establecer Operador**. ![](broken-reference)
+1. Navega a la página de detalles de la parcela o Estate y haz clic en los tres puntos y luego en **Establecer Operador**. ![](../.gitbook/assets/marketplace_give_permissions_set_operator.webp)
 2.  Completa el formulario con la información deseada.
 
-    ![](broken-reference)
+    ![](../.gitbook/assets/marketplace_give_permissions.webp)
 3. Haz clic en **Enviar**.
 4. Confirma esta transacción en tu cliente de Ethereum y espera a que la red la verifique.
 
@@ -79,7 +79,7 @@ Para otorgar permisos sobre tu LAND:
 
 Abre la página de notificaciones haciendo clic en el ícono de campana en la parte superior de la pantalla.
 
-![](broken-reference)
+![](../.gitbook/assets/marketplace_notifications.webp)
 
 La página de notificaciones muestra una lista de todas las transacciones recientes que has realizado, junto con su estado.
 
@@ -91,14 +91,14 @@ Para transferir una parcela LAND o Estate a otro usuario:
 
 1.  Navega a la página de detalles de la parcela o el Estate que deseas transferir y haz clic en **Transferir**.
 
-    ![](broken-reference)
+    ![](../.gitbook/assets/marketplace_transfer_land.webp)
 2. Ingresa la dirección pública de la billetera Ethereum del destinatario.
 
 {% hint style="warning" %}
 **📔 Nota**: Por favor verifica dos veces esta dirección, ya que no puedes cancelar la operación. Aunque el destinatario siempre podría transferir el LAND de vuelta a ti, el propietario original no puede revertir la acción.
 {% endhint %}
 
-![](broken-reference)
+![](../.gitbook/assets/marketplace_transfer_land_form.webp)
 
 3. Haz clic en **Enviar**.
 4. Confirma esta transacción en tu cliente de Ethereum y espera a que la red la verifique.

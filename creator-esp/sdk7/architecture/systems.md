@@ -8,7 +8,7 @@ metaLinks:
 
 # Sistemas
 
-Las escenas de Decentraland dependen de _sistemas_ para actualizar cualquier dato a lo largo del tiempo, incluyendo información almacenada en los [componentes](../sdk7/architecture/entities-components.md) de cada entidad.
+Las escenas de Decentraland dependen de _sistemas_ para actualizar cualquier dato a lo largo del tiempo, incluyendo información almacenada en los [componentes](entities-components.md) de cada entidad.
 
 Los _sistemas_ son lo que hace que las escenas sean dinámicas, son funciones que se ejecutan periódicamente en cada tick del bucle del juego de la escena, cambiando lo que se renderizará.
 
@@ -23,7 +23,7 @@ function mySystem() {
 engine.addSystem(mySystem)
 ```
 
-La función en un sistema puede realizar cualquier cosa que desees. Típicamente, actuará sobre todas las entidades que cumplan cierta [consulta](../sdk7/architecture/querying-components.md), siguiendo cierta lógica para cambiar los valores almacenados en los componentes de la entidad.
+La función en un sistema puede realizar cualquier cosa que desees. Típicamente, actuará sobre todas las entidades que cumplan cierta [consulta](querying-components.md), siguiendo cierta lógica para cambiar los valores almacenados en los componentes de la entidad.
 
 ```ts
 function moveSystem(dt: number) {
@@ -88,7 +88,7 @@ Para proyectos más grandes, recomendamos que mantengas las definiciones de sist
 
 Muchas veces, tu escena tendrá múltiples entidades del mismo tipo que tendrán comportamientos similares. Por ejemplo, muchas puertas que pueden abrirse, o muchos enemigos que pueden atacar al jugador. Tiene sentido manejar todas estas entidades similares en un solo sistema, iterando sobre la lista y realizando las mismas verificaciones en cada una.
 
-No quieres que la función de un sistema itere sobre _todo_ el conjunto de entidades en la escena, ya que esto podría ser muy costoso en términos de poder de procesamiento. Para evitar esto, puedes [consultar componentes](../sdk7/architecture/querying-components.md), para iterar solo sobre las entidades relevantes.
+No quieres que la función de un sistema itere sobre _todo_ el conjunto de entidades en la escena, ya que esto podría ser muy costoso en términos de poder de procesamiento. Para evitar esto, puedes [consultar componentes](querying-components.md), para iterar solo sobre las entidades relevantes.
 
 Por ejemplo, tu escena puede tener un `PhysicsSystem` que calcula el efecto de la gravedad sobre las entidades de tu escena. Algunas entidades en tu escena, como árboles, no están destinadas a moverse nunca; por lo que sería inteligente evitar calcular los efectos de la gravedad sobre estas. Puedes definir un componente `HasPhysics` para marcar entidades que podrían ser afectadas por la gravedad, y luego hacer que `PhysicsSystem` solo trate con las entidades devueltas por esta consulta.
 
@@ -135,7 +135,7 @@ Idealmente, debes evitar que tu escena pierda fotogramas, ya que impacta la cali
 
 La variable `dt` es útil cuando el procesamiento de fotogramas excede el tiempo predeterminado. Asumiendo que el fotograma actual tomará tanto tiempo como el anterior, esta información puede usarse para calcular cuánto ajustar un cambio gradual, para que la tasa de cambio parezca constante y en proporción al lag entre fotogramas.
 
-Consulta [posicionamiento de entidades](../sdk7/3d-essentials/entity-positioning.md) para ejemplos de cómo usar `dt` para hacer el movimiento más suave.
+Consulta [posicionamiento de entidades](../3d-essentials/entity-positioning.md) para ejemplos de cómo usar `dt` para hacer el movimiento más suave.
 
 ### Iterar en un intervalo temporizado
 
@@ -155,9 +155,9 @@ function LoopSystem(dt: number) {
 engine.addSystem(LoopSystem)
 ```
 
-Para casos de uso más complejos, donde pueden haber múltiples retrasos y loops siendo creados dinámicamente, puede valer la pena definir un componente personalizado para almacenar un valor de temporizador individual para cada entidad. Consulta [Componentes personalizados](../sdk7/architecture/custom-components.md).
+Para casos de uso más complejos, donde pueden haber múltiples retrasos y loops siendo creados dinámicamente, puede valer la pena definir un componente personalizado para almacenar un valor de temporizador individual para cada entidad. Consulta [Componentes personalizados](custom-components.md).
 
-### Orden de ejecución del sistema
+### Orden de ejecución del sistema {#system-execution-order}
 
 En algunos casos, cuando tienes múltiples sistemas ejecutándose, podrías preocuparte por qué sistema es ejecutado primero por tu escena.
 

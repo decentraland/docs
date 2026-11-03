@@ -11,13 +11,13 @@ metaLinks:
 Puedes transmitir audio desde una URL. Esto es útil para reproducir música directamente desde una radio por internet, o transmitir una conferencia a tu escena.
 
 {% hint style="info" %}
-**💡 Tip**: En el [Scene Editor](../scene-editor/get-started/about-editor.md), puedes usar un **Audio Stream** [Smart Item](../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
+**💡 Tip**: En el [Scene Editor](../../scene-editor/get-started/about-editor.md), puedes usar un **Audio Stream** [Smart Item](../../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
 {% endhint %}
 
 El audio en la fuente debe estar en uno de los siguientes formatos: `.mp3`, `ogg`, o `aac`. La fuente también debe ser una URL _https_ (las URLs _http_ no son soportadas), y la fuente debe tener [políticas CORS (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) que permitan acceder a ella externamente. Si este no es el caso, puede que necesites configurar un servidor para actuar como proxy y exponer la transmisión de una manera válida.
 
 {% hint style="warning" %}
-**📔 Nota**: Para reproducir un sonido pregrabado en tu escena, consulta [Sonidos](../sdk7/3d-essentials/sounds.md).
+**📔 Nota**: Para reproducir un sonido pregrabado en tu escena, consulta [Sonidos](../3d-essentials/sounds.md).
 {% endhint %}
 
 Para agregar una transmisión de audio a tu escena, simplemente agrega un componente `AudioStream` a una entidad:

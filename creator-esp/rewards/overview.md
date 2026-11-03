@@ -6,7 +6,7 @@ metaLinks:
 
 # Resumen
 
-La [dApp de Rewards](https://decentraland.org/rewards/) es una herramienta poderosa que permite a los creadores recompensar a los usuarios con Wearables o Emotes de Decentraland a través de solicitudes HTTP. Puede usarse para motivar usuarios, promover escenas o aumentar la retención. Las recompensas pueden otorgarse directamente desde una escena, un servidor, o en [quests](../../creator/deprecated/quests/overview.md).
+La [dApp de Rewards](https://decentraland.org/rewards/) es una herramienta poderosa que permite a los creadores recompensar a los usuarios con Wearables o Emotes de Decentraland a través de solicitudes HTTP. Puede usarse para motivar usuarios, promover escenas o aumentar la retención. Las recompensas pueden otorgarse directamente desde una escena, un servidor, o en [quests (documentación archivada)](https://github.com/decentraland/documentation/blob/5f8c7f73c67a9a36e85095cb02e72dc6355fa590/content/creator/deprecated/quests/overview.md).
 
 El sistema de Rewards gestiona la mayoría de las complejidades involucradas en acuñar artículos en la blockchain, incluyendo:
 
@@ -19,7 +19,7 @@ El sistema de Rewards gestiona la mayoría de las complejidades involucradas en 
 * Monitorear el estado de las transacciones
 * Informar a los usuarios sobre el artículo que recibirán antes de que se confirme la transacción
 * Emite Notificaciones cuando las recompensas son otorgadas y recibidas
-* ![](../../.gitbook/assets/overview.png)
+* ![](../.gitbook/assets/overview.webp)
 
 ### Limitaciones
 

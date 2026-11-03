@@ -117,7 +117,7 @@ Una vez que los casos de uso básicos estén cubiertos, puedes comenzar a ser m�
 
 **El audio** es otro aspecto crítico de la atmósfera de una escena. Sonidos de fondo como viento, grillos, conversaciones distantes, tal vez incluso música pueden ser una forma muy poderosa de aumentar la inmersión y dar contexto. También puedes cambiar cómo los niveles de volumen se relacionan con la distancia de la fuente de sonido para poner más o menos énfasis en la ubicación de un sonido.
 
-Lee [restricciones de diseño para juegos](../sdk7/design-experience/design-games.md) para ver en detalle una serie de otras consideraciones.
+Lee [restricciones de diseño para juegos](design-games.md) para ver en detalle una serie de otras consideraciones.
 
 Considera el MVP como uno de muchos prototipos que puedes usar para establecer tu cadencia de lanzamientos una vez que hayas establecido tu pipeline. El enfoque de cada lanzamiento puede variar, o puede ser un híbrido de cada aspecto de la experiencia. Sin embargo, debes apuntar a entregar experiencias sucesivamente más complicadas, cada iteración construyendo sobre la anterior.
 

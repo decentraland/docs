@@ -66,7 +66,7 @@ for (const [entity, data, transform] of engine.getEntitiesWith(
 
 The code above iterates over all entities with a `Transform` and a `PlayerIdentityData` component, and logs their data. You can use this same method to get any of the available data of all players.
 
-See [Event listeners](event-listeners.md#player-locks-or-unlocks-cursor) to learn how to detect and react when new players join into the scene.
+See [Event listeners](event-listeners.md#player-enters-or-leaves-scene) to learn how to detect and react when new players join into the scene.
 
 ## Get player data
 

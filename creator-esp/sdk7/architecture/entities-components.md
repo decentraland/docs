@@ -20,17 +20,17 @@ Los _Componentes_ definen las características de una entidad. Por ejemplo, un c
 
 Si estás familiarizado con el desarrollo web, piensa en las entidades como el equivalente de _Elementos_ en un árbol _DOM_, y en los componentes como _atributos_ de esos elementos.
 
-En el [Editor de Escenas](../scene-editor/get-started/about-editor.md), puedes ver los componentes que pertenecen a una entidad seleccionándola.
+En el [Editor de Escenas](../../scene-editor/get-started/about-editor.md), puedes ver los componentes que pertenecen a una entidad seleccionándola.
 
 {% hint style="warning" %}
-**📔 Nota**: En versiones anteriores del SDK, las Entidades eran _objetos_ que se instanciaban, y podían extenderse para agregar funciones. A partir de la versión 7.0 del SDK, las entidades son solo un ID. Esta estructura se ajusta mejor a los principios de la [programación orientada a datos](../sdk7/architecture/data-oriented-programming.md) y puede ayudar en el rendimiento de la escena.
+**📔 Nota**: En versiones anteriores del SDK, las Entidades eran _objetos_ que se instanciaban, y podían extenderse para agregar funciones. A partir de la versión 7.0 del SDK, las entidades son solo un ID. Esta estructura se ajusta mejor a los principios de la [programación orientada a datos](data-oriented-programming.md) y puede ayudar en el rendimiento de la escena.
 {% endhint %}
 
 Los componentes como `Transform`, `Material` o cualquiera de los componentes de _forma_ están estrechamente vinculados con el renderizado de la escena. Si los valores en estos componentes cambian, eso solo es suficiente para que el motor cambie cómo se renderiza la escena en el siguiente fotograma.
 
-El motor es la parte de la escena que se sitúa en el medio y gestiona todas las demás partes. Determina qué entidades se renderizan y cómo los jugadores interactúan con ellas. También coordina qué funciones de [sistemas](../sdk7/architecture/systems.md) se ejecutan y cuándo.
+El motor es la parte de la escena que se sitúa en el medio y gestiona todas las demás partes. Determina qué entidades se renderizan y cómo los jugadores interactúan con ellas. También coordina qué funciones de [sistemas](systems.md) se ejecutan y cuándo.
 
-Los componentes están destinados a almacenar datos sobre su entidad referenciada. Solo pueden almacenar estos datos, no pueden modificar estos datos por sí mismos. Todos los cambios a los valores en los componentes son llevados a cabo por [Sistemas](../sdk7/architecture/systems.md). Los sistemas están completamente desacoplados de los componentes y entidades en sí. Las entidades y componentes son agnósticos a qué _sistemas_ están actuando sobre ellos.
+Los componentes están destinados a almacenar datos sobre su entidad referenciada. Solo pueden almacenar estos datos, no pueden modificar estos datos por sí mismos. Todos los cambios a los valores en los componentes son llevados a cabo por [Sistemas](systems.md). Los sistemas están completamente desacoplados de los componentes y entidades en sí. Las entidades y componentes son agnósticos a qué _sistemas_ están actuando sobre ellos.
 
 ### Sintaxis para entidades y componentes
 
@@ -105,7 +105,7 @@ export function main() {
 ```
 
 {% hint style="info" %}
-**💡 Tip**: En lugar de eliminar una entidad del motor, en algunos casos podría ser mejor hacerla invisible, en caso de que quieras poder cargarla nuevamente sin demora. Consulta [Hacer invisible](../sdk7/3d-essentials/shape-components.md#make-invisible)
+**💡 Tip**: En lugar de eliminar una entidad del motor, en algunos casos podría ser mejor hacerla invisible, en caso de que quieras poder cargarla nuevamente sin demora. Consulta [Hacer invisible](../3d-essentials/shape-components.md#make-invisible)
 {% endhint %}
 
 #### Eliminar entidades detrás de escena
@@ -159,10 +159,10 @@ mutableChildTransform.parent = engine.RootEntity
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Al trabajar con entidades anidadas que están sincronizadas con otros jugadores, usa la función `parentEntity()` en lugar de la entidad `parent` en el Transform. Consulta [Entidades parentadas](../sdk7/networking/serverless-multiplayer.md#parented-entities)
+**📔 Nota**: Al trabajar con entidades anidadas que están sincronizadas con otros jugadores, usa la función `parentEntity()` en lugar de la entidad `parent` en el Transform. Consulta [Entidades parentadas](../networking/serverless-multiplayer.md#parented-entities)
 {% endhint %}
 
-En el [Editor de escenas](../scene-editor/get-started/about-editor.md), puedes ver toda la jerarquía de entidades anidadas en tu escena en el panel del lado izquierdo.
+En el [Editor de escenas](../../scene-editor/get-started/about-editor.md), puedes ver toda la jerarquía de entidades anidadas en tu escena en el panel del lado izquierdo.
 
 ### Obtener una entidad por ID
 
@@ -177,11 +177,11 @@ Transform.get(1000 as Entity)
 **📔 Nota**: Los ids de entidad entre _0_ y _511_ están reservados por el motor para entidades fijas, como el avatar del jugador, la escena base, etc.
 {% endhint %}
 
-Por ejemplo, si el clic de un jugador o un [raycast](../sdk7/interactivity/raycasting.md) golpea una entidad, esto devolverá el id de la entidad golpeada, y puedes usar el comando anterior para obtener el componente Transform de la entidad que coincide con ese id. También puedes obtener cualquier otro componente de esa entidad de la misma manera.
+Por ejemplo, si el clic de un jugador o un [raycast](../interactivity/raycasting.md) golpea una entidad, esto devolverá el id de la entidad golpeada, y puedes usar el comando anterior para obtener el componente Transform de la entidad que coincide con ese id. También puedes obtener cualquier otro componente de esa entidad de la misma manera.
 
 ### Obtener una entidad por nombre
 
-Al agregar entidades a través de arrastrar y soltar en el [Editor de Escenas](../scene-editor/get-started/about-editor.md), cada entidad tiene un nombre único. Usa la función `engine.getEntityOrNullByName()` para referenciar una de estas entidades desde tu código. Pasa el nombre de la entidad como una cadena, como está escrito en la UI del Editor de Escenas, en la vista de árbol a la izquierda.
+Al agregar entidades a través de arrastrar y soltar en el [Editor de Escenas](../../scene-editor/get-started/about-editor.md), cada entidad tiene un nombre único. Usa la función `engine.getEntityOrNullByName()` para referenciar una de estas entidades desde tu código. Pasa el nombre de la entidad como una cadena, como está escrito en la UI del Editor de Escenas, en la vista de árbol a la izquierda.
 
 ```ts
 function main() {
@@ -190,7 +190,7 @@ function main() {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Asegúrate de usar `engine.getEntityOrNullByName()` solo dentro de la función `main()`, en funciones que se ejecutan después de `main()`, o en un sistema. Si se usa fuera de uno de esos contextos, las entidades creadas en la UI del [Editor de Escenas](../scene-editor/get-started/about-editor.md) pueden no estar instanciadas todavía.
+**📔 Nota**: Asegúrate de usar `engine.getEntityOrNullByName()` solo dentro de la función `main()`, en funciones que se ejecutan después de `main()`, o en un sistema. Si se usa fuera de uno de esos contextos, las entidades creadas en la UI del [Editor de Escenas](../../scene-editor/get-started/about-editor.md) pueden no estar instanciadas todavía.
 {% endhint %}
 
 Eres libre de realizar cualquier acción en una entidad obtenida a través de este método, como agregar o eliminar componentes, modificar valores de componentes existentes, o eliminar la entidad del motor.
@@ -265,10 +265,10 @@ La función `get()` obtiene una referencia de solo lectura al componente. No pue
 
 Si deseas cambiar los valores del componente, usa la función `getMutable()` en su lugar. Si cambias los valores en la versión mutable del componente, estás afectando directamente a la entidad a la que pertenece ese componente.
 
-Consulta [datos mutables](../sdk7/programming-patterns/mutable-data.md) para más detalles.
+Consulta [datos mutables](../programming-patterns/mutable-data.md) para más detalles.
 
 {% hint style="warning" %}
-**📔 Nota**: Solo usa `getMutable()` si realmente vas a hacer cambios a los valores del componente. De lo contrario, siempre usa `get()`. Esta práctica sigue los principios de la [programación orientada a datos](../sdk7/architecture/data-oriented-programming.md), y puede ayudar significativamente en el rendimiento de la escena.
+**📔 Nota**: Solo usa `getMutable()` si realmente vas a hacer cambios a los valores del componente. De lo contrario, siempre usa `get()`. Esta práctica sigue los principios de la [programación orientada a datos](data-oriented-programming.md), y puede ayudar significativamente en el rendimiento de la escena.
 {% endhint %}
 
 ```ts
@@ -311,7 +311,7 @@ Transform.deleteFrom(myEntity)
 Si intentas eliminar un componente que no existe en la entidad, esta acción no generará errores.
 
 {% hint style="warning" %}
-**📔 Nota**: Para eliminar todos los componentes de una entidad a la vez, consulta [esta sección](entities-components.md#remove-entities)
+**📔 Nota**: Para eliminar todos los componentes de una entidad a la vez, consulta [esta sección](entities-components.md#eliminar-entidades)
 {% endhint %}
 
 ### Verificar un componente
@@ -323,7 +323,7 @@ const hasTransform = Transform.has(myEntity)
 ```
 
 {% hint style="info" %}
-**💡 Tip**: También puedes [consultar componentes](../sdk7/architecture/querying-components.md) para obtener una lista completa de componentes que tienen un componente específico, o un conjunto específico de componentes. No iteres sobre todas las entidades en la escena manualmente para verificar cada una con un `has()`, ese enfoque es mucho menos eficiente.
+**💡 Tip**: También puedes [consultar componentes](querying-components.md) para obtener una lista completa de componentes que tienen un componente específico, o un conjunto específico de componentes. No iteres sobre todas las entidades en la escena manualmente para verificar cada una con un `has()`, ese enfoque es mucho menos eficiente.
 {% endhint %}
 
 ### Verificar cambios en un componente
@@ -351,7 +351,7 @@ VisibilityComponent.onChange(cubeEntity, (newVisibilityComponent) => {
 Si el componente es eliminado de la entidad, entonces la función es llamada con una entrada de `undefined`.
 
 {% hint style="warning" %}
-**📔 Nota**: La función `.onChange()` actualmente solo funciona con componentes nativos del SDK, no funciona con [componentes personalizados](../sdk7/architecture/custom-components.md) definidos por el creador.
+**📔 Nota**: La función `.onChange()` actualmente solo funciona con componentes nativos del SDK, no funciona con [componentes personalizados](custom-components.md) definidos por el creador.
 {% endhint %}
 
 ### Entidades reservadas
@@ -372,8 +372,8 @@ Todas las entidades en la escena son hijas de `engine.RootEntity`, directa o ind
 
 ### La entidad jugador
 
-La entidad `engine.PlayerEntity` representa el avatar del jugador. Obtén el componente `Transform` del jugador para obtener la posición y rotación actual del jugador, consulta [datos del usuario](../sdk7/interactivity/user-data.md). También puedes modificar este Transform para mover al jugador, consulta [mover jugador](../sdk7/interactivity/move-player.md).
+La entidad `engine.PlayerEntity` representa el avatar del jugador. Obtén el componente `Transform` del jugador para obtener la posición y rotación actual del jugador, consulta [datos del usuario](../interactivity/user-data.md). También puedes modificar este Transform para mover al jugador, consulta [mover jugador](../interactivity/move-player.md).
 
 ### La entidad cámara
 
-La entidad `engine.CameraEntity` representa la cámara del jugador. Obtén el componente `Transform` de la cámara para obtener la posición y rotación de la cámara. También puedes obtener el componente `CameraMode` de la cámara para saber si el jugador está usando el modo de cámara en primera o tercera persona, consulta [modo de cámara](../sdk7/interactivity/user-data.md#check-the-players-camera-mode).
+La entidad `engine.CameraEntity` representa la cámara del jugador. Obtén el componente `Transform` de la cámara para obtener la posición y rotación de la cámara. También puedes obtener el componente `CameraMode` de la cámara para saber si el jugador está usando el modo de cámara en primera o tercera persona, consulta [modo de cámara](../interactivity/user-data.md#check-the-players-camera-mode).

@@ -17,7 +17,7 @@ Como creador, es muy valioso rastrear las visitas de los jugadores y la forma en
 
     A través de un fragmento de código de una línea (el 'Builder Tag'), puedes exponer/acceder (vía API o dashboard) una miríada de datos de escena interesantes incluyendo visitantes únicos, mapas de calor del tráfico peatonal de visitantes, actividad de visitantes, el rango de tu escena y más.
 
-    Para ayuda adicional o sugerencias puedes contactar al equipo de WeMeta [aquí](https://github.com/decentraland/docs-creator/blob/main/sdk7/other/\[https:/docs.wemeta.world]\(https:/www.wemetalabs.com/\)/README.md) o [por mail](mailto:contact@wemeta.world)
+    Para ayuda adicional o sugerencias puedes contactar al equipo de WeMeta [aquí](https://docs.wemeta.world) o [por mail](mailto:contact@wemeta.world)
 *   El [Decentraland Builder](https://builder.decentraland.org) expone datos básicos sobre visitas semanales de usuarios a tus escenas. Estos datos solo están disponibles para usuarios con derechos de propiedad u operador en estas parcelas, y no hay un registro histórico para verificar períodos pasados. Como creador de escenas no necesitas hacer ninguna acción previa, estos datos están disponibles para todas las escenas publicadas.
 
     Para acceder a estos datos, visita el [Decentraland Builder](https://builder.decentraland.org), selecciona la pestaña **Land**, luego selecciona una parcela o estate que poseas o sobre la que tengas derechos. Allí encontrarás datos para cualquier escena en esa ubicación. Los datos incluyen visitas totales de usuarios, tiempo de sesión mediano y usuarios concurrentes pico durante los últimos 7 días.

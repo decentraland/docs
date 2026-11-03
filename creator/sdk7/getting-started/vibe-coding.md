@@ -246,7 +246,7 @@ Break complex requests into steps:
 
 After each change:
 
-1. Preview the scene (click **Preview** in Creator Hub, or `npm run start` in the command line)
+1. Preview the scene (click **Play** in Creator Hub, or `npm run start` in the command line)
 2. Check what works and what doesn't
 3. Tell the AI what to adjust: "Move the NPC 2 meters to the left and make it face the player"
 
@@ -303,5 +303,5 @@ While AI tools are powerful, keep these in mind:
 - [SDK Quick Start](sdk-101.md) — Learn SDK7 fundamentals
 - [Combine with Code](../../scene-editor/code/overview.md) — Mix visual editing with code
 - [Multiplayer Server](../networking/authoritative-servers.md) — Server-authoritative multiplayer
-- [Scene Examples](https://studios.decentraland.org/resources?sdk_version=SDK7) — Browse example scenes for inspiration
+- [Scene Examples](../../tutorials/examples.md) — Browse reusable scene mechanics and repositories
 - [Useful Resources](useful-resources.md) — More AI tools, asset libraries, and add-ons to speed up your workflow

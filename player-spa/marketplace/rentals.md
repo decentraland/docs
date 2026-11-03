@@ -33,19 +33,19 @@ Como Propietario de LAND, puedes listar tu LAND (Parcelas o Estates) para Alquil
 
 Para hacer esto en la cadena, el Propietario de LAND tiene que aprobar el Contrato Inteligente de Alquiler para usar el LAND en su nombre. Luego, cada listado necesitaría una firma del Propietario también.
 
-![](broken-reference)
+![](../.gitbook/assets/Image1.webp)
 
 Puedes establecer un precio de alquiler por día en MANA y la cantidad de días que deseas permitir que las personas lo alquilen. El precio por día multiplicado por el número de días en el período es lo que el inquilino pagará **por adelantado y en total** por ese alquiler.
 
-![](broken-reference)
+![](../.gitbook/assets/Image2.webp)
 
 Después de definir el Precio por Día, necesitas seleccionar el número de días que los Usuarios pueden alquilar tu LAND. Por ejemplo, si seleccionas 7 y 30 días solamente, el Inquilino solo puede elegir entre esas 2 opciones. En caso de que se seleccione la opción de 30 días por el Inquilino, esa sería la duración del alquiler desde el día en que se confirme.
 
-![](broken-reference)
+![](../.gitbook/assets/Image3.webp)
 
 También puedes establecer una fecha de vencimiento para el listado. Esto significa que, si el LAND no fue alquilado hasta la fecha seleccionada, el listado será eliminado del Marketplace. Además, el contrato inteligente rechazará la firma vencida para que nadie pueda alquilarlo por el precio y duración de listado previamente seleccionados. Esta es una medida de seguridad para evitar que se alquile por un precio o duración no deseados.
 
-![](broken-reference)
+![](../.gitbook/assets/Image4.webp)
 
 Después de establecer el precio, período de alquiler y fecha de vencimiento del listado, tu LAND aparecerá como disponible para alquiler en el Marketplace.
 
@@ -61,7 +61,7 @@ Después de establecer el precio, período de alquiler y fecha de vencimiento de
 
 Después de que el LAND es Listado para Alquiler en el Marketplace, y antes de que alguien lo alquile, puedes editar las condiciones del Listado haciendo clic en el ícono de lápiz en el detalle del LAND. También puedes eliminar el Listado del Marketplace y de la blockchain.
 
-![](broken-reference)
+![](../.gitbook/assets/Image5.webp)
 
 {% hint style="info" %}
 💡 Editar y cancelar requieren una transacción, que cuesta gas. Consulta la sección de Transacciones a continuación para más detalles.
@@ -73,17 +73,17 @@ Después de que el Alquiler ha terminado, puedes **Reclamar tu LAND de Vuelta o 
 
 **Los Permisos de Operador no se transfieren automáticamente de vuelta al Propietario de LAND**. Para recuperarlos, el Propietario de LAND tiene que Reclamar el LAND de vuelta enviando esa transacción y pagando la tarifa de gas. Confirmar la transacción quitará los Permisos de Operador del Inquilino y los devolverá al Propietario de LAND.
 
-![](broken-reference)
+![](../.gitbook/assets/Image6.webp)
 
 La otra posibilidad es Listar el LAND para Alquiler Nuevamente, en lugar de reclamarlo de vuelta. Esto no requerirá pagar por otra transacción, pero **los Permisos de Operador serán mantenidos por el Inquilino anterior hasta que un nuevo Inquilino confirme un nuevo Alquiler.**
 
 El Propietario de LAND puede editar el precio, período de alquiler y fecha de vencimiento del listado para el nuevo listado.
 
-![](broken-reference)
+![](../.gitbook/assets/Image7.webp)
 
 Ambas acciones se pueden hacer desde la página de detalles del LAND en el Marketplace.
 
-![](broken-reference)
+![](../.gitbook/assets/Image8.webp)
 
 ### Estado de Alquiler
 
@@ -93,7 +93,7 @@ Puedes verificar el Estado de cualquier LAND alquilado en Mis Activos > Tienda >
 * Período de Alquiler Terminado - En esta etapa, el LAND está disponible para Reclamar de Vuelta o Listar Nuevamente para Alquiler por el Propietario de LAND
 * Alquilado hasta _"fecha"_ - El LAND ya está alquilado y el Inquilino tiene Permisos de Operador hasta que sea reclamado de vuelta o alquilado por otro usuario
 
-![](broken-reference)
+![](../.gitbook/assets/Image9.webp)
 
 ## Para Inquilinos
 
@@ -101,31 +101,31 @@ Puedes verificar el Estado de cualquier LAND alquilado en Mis Activos > Tienda >
 
 Todos los usuarios pueden encontrar LAND listado para alquiler en el Marketplace bajo la sección LAND.
 
-![](broken-reference)
+![](../.gitbook/assets/Image10.webp)
 
 Hay LANDs que están disponibles para Venta o Alquiler. En caso de que ambas opciones estén disponibles, puedes ver las condiciones disponibles para cada una haciendo clic en el interruptor Venta/Alquiler.
 
-![](broken-reference)
+![](../.gitbook/assets/Image11.webp)
 
 Una vez que encuentres el LAND que quieres alquilar, necesitas seleccionar el Período de Alquiler, estos son los días que tendrás el LAND. Después de seleccionar el Período de Alquiler, verás el precio total a pagar por el Alquiler.
 
-![](broken-reference)
+![](../.gitbook/assets/Image11.webp)
 
 Necesitarás aprobar el Contrato Inteligente de Alquiler para tomar el MANA de tu cuenta antes de proceder.
 
 Antes de confirmar el Alquiler, puedes decidir quién gestionará el LAND (Permiso de Operador). Puede ser tú mismo o cualquier otra dirección que elijas.
 
-![](broken-reference)
+![](../.gitbook/assets/Image13.webp)
 
 El Permiso de Operador puede ser cambiado más tarde por el Inquilino (la dirección que alquiló el LAND en primer lugar) desde el [Builder](https://builder.decentraland.org/).
 
-![](broken-reference)
+![](../.gitbook/assets/Image14.webp)
 
 Después de seleccionar todos los detalles y aprobar el Contrato Inteligente de Alquiler para manejar tu MANA, puedes confirmar el Alquiler enviando una transacción.
 
 ¡Y ya está todo listo! puedes comenzar a trabajar en tu LAND y desplegar una escena usando el Builder o el SDK.
 
-![](broken-reference)
+![](../.gitbook/assets/Image15.webp)
 
 Nota: después de que el Alquiler termine, el Inquilino aún tendrá Permisos de Operador hasta que el Propietario de LAND lo Reclame de vuelta, o alguien más lo alquile. **Asegúrate de guardar tu contenido antes del final del alquiler, de lo contrario podría perderse.**
 
@@ -147,13 +147,13 @@ Las transacciones en la blockchain son mínimas para proporcionar un **sistema r
 
 Antes de Listar la primera Parcela o Estate para alquiler, los Propietarios de LAND necesitan permitir que el Contrato Inteligente de Alquileres opere LAND en su nombre. Esto tiene que hacerse solo una vez para Parcelas y solo una vez para Estates.
 
-![](broken-reference)
+![](../.gitbook/assets/Image16.webp)
 
 #### Reclamar LAND de Vuelta o Listar para Alquiler Nuevamente
 
 Después de que el período de alquiler termina, **los Permisos de Operador no se transfieren automáticamente de vuelta al Propietario de LAND**. Para recuperarlos, el Propietario de LAND tiene que Reclamar el LAND de vuelta enviando esa transacción y pagando la tarifa de gas.
 
-![](broken-reference)
+![](../.gitbook/assets/Image17.webp)
 
 Otra posibilidad es Listar el LAND para Alquiler Nuevamente, en lugar de reclamarlo de vuelta. Esto no requerirá pagar por otra transacción, pero los Permisos de Operador serán mantenidos por el Inquilino anterior hasta que un nuevo Inquilino confirme un nuevo Alquiler.
 
@@ -161,7 +161,7 @@ Otra posibilidad es Listar el LAND para Alquiler Nuevamente, en lugar de reclama
 
 Si se cambia el Precio, Período de Alquiler o Fecha de Vencimiento, el Propietario de LAND debe enviar una transacción para protegerse de que alguien use la firma del listado anterior en el Contrato Inteligente directamente (no desde la interfaz del Marketplace) y obtenerlo por un precio más bajo del deseado o por una duración no deseada.
 
-![](broken-reference)
+![](../.gitbook/assets/Image18.webp)
 
 ### Para Inquilinos
 
@@ -175,13 +175,13 @@ Después de aprobar el Contrato Inteligente de Alquiler para operar tu MANA, est
 
 Si quieres alquilar otra Parcela o Estate, solo necesitas enviar una transacción para confirmarlo, no hay necesidad de aprobar el Contrato Inteligente para operar tu MANA nuevamente.
 
-![](broken-reference)
+![](../.gitbook/assets/Image19.webp)
 
 #### Cambiar Operador
 
 En el momento de alquilar el LAND, el usuario puede elegir qué dirección tendrá Permisos de Operador para ese LAND. Si esa dirección quiere ser cambiada, se debe enviar una transacción.
 
-![](broken-reference)
+![](../.gitbook/assets/Image20.webp)
 
 ## Billeteras de Contratos Inteligentes
 

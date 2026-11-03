@@ -204,7 +204,7 @@ function handleSubmitText(value: string) {
 Las siguientes propiedades también están disponibles para personalizar el aspecto del campo de texto, la mayoría de ellas similares a las presentes en entidades `Label`:
 
 * `placeHolder`: Cadena a mostrar antes de que el jugador comience a ingresar algo. Es útil hacer este texto una pista sobre qué deben escribir.
-* `placeHolderColor`: El color a usar para el texto de placeholder, como un [Color4](../sdk7/3d-essentials/color-types.md).
+* `placeHolderColor`: El color a usar para el texto de placeholder, como un [Color4](../3d-essentials/color-types.md).
 
 {% hint style="info" %}
 **💡 Tip**: Usa un tono más pálido del color del texto que el jugador escribe.
@@ -213,7 +213,7 @@ Las siguientes propiedades también están disponibles para personalizar el aspe
 *   `fontSize`: El tamaño del texto, como un número.
 
     > NOTA: El `fontSize` no se ve afectado por el tamaño de su entidad o entidades padre.
-* `color`: El color del texto que el jugador escribe, como un [Color4](../sdk7/3d-essentials/color-types.md).
+* `color`: El color del texto que el jugador escribe, como un [Color4](../3d-essentials/color-types.md).
 
 {% hint style="warning" %}
 **📔 Nota**: Asegúrate de usar un color diferente del `placeHolderColor`.

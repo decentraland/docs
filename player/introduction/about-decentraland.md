@@ -49,6 +49,14 @@ The economy is designed to support creators first. 2.5% of all Marketplace sales
 
 <details>
 
+<summary>Who runs Decentraland?</summary>
+
+Nobody runs it alone. The **community** governs through the Decentraland DAO, whose mission is to ensure the sustainability of the ecosystem through representative governance, efficient management of collective resources, and technical innovation. The DAO elects a **DAO Council**, which oversees **DCL Regenesis Labs**, the DAO's Executive Arm. The **Decentraland Foundation**, an independent non-profit, protects Decentraland's IP, maintains the desktop client and the project's critical infrastructure services, and builds tools for creators. See [Mission, Vision and Roles](../dao/mission-vision-and-roles.md).
+
+</details>
+
+<details>
+
 <summary>How was Decentraland started?</summary>
 
 The idea for Decentraland started in 2015 with a simple question: what if you could actually own your digital space? In 2020, it officially launched as the world's first fully decentralized virtual world. Since then, it's become a place where you show up, hang out with people, and come back because something's always happening. Today, thousands of creators and community members shape what Decentraland becomes.

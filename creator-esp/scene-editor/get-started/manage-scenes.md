@@ -16,7 +16,7 @@ Haz clic en **Create scene** para crear una nueva escena. Luego se te pedirá qu
 
 Luego se te pedirá que nombres tu escena y elijas una ubicación para guardarla.
 
-Una vez que confirmes estos pasos, el proyecto de escena se creará. Esto puede tomar un minuto o dos, ya que descarga dependencias y configura una carpeta en tu máquina local con todo lo que necesita. Cuando termine, tu escena se abrirá en el [Scene Editor](../scene-editor/get-started/scene-editor-essentials.md).
+Una vez que confirmes estos pasos, el proyecto de escena se creará. Esto puede tomar un minuto o dos, ya que descarga dependencias y configura una carpeta en tu máquina local con todo lo que necesita. Cuando termine, tu escena se abrirá en el [Scene Editor](scene-editor-essentials.md).
 
 Haz clic en los tres puntos en la tarjeta de una escena ya creada y haz clic en **Duplicate** para hacer una copia de una escena existente.
 
@@ -34,7 +34,7 @@ La escena importada no se mueve en tu disco local.
 **📔 Nota**: No renombres ni muevas manualmente la carpeta de una escena importada directamente desde tu administrador de archivos. El Scene Editor ya no podrá encontrar la escena importada en su nueva ruta.
 {% endhint %}
 
-Las escenas que creaste en el antiguo editor web se almacenan en la nube. Para trabajar en estas escenas desde el Scene Editor de escritorio, debes exportar la escena desde el Web Editor, descomprimirla en una carpeta y luego importarla en el Scene Editor de escritorio. Consulta [Migrate from Web Editor](../scene-editor/get-started/migrate-from-web.md) para más detalles.
+Las escenas que creaste en el antiguo editor web se almacenan en la nube. Para trabajar en estas escenas desde el Scene Editor de escritorio, debes exportar la escena desde el Web Editor, descomprimirla en una carpeta y luego importarla en el Scene Editor de escritorio. Consulta [Migrate from Web Editor](migrate-from-web.md) para más detalles.
 
 ### Eliminar una escena
 

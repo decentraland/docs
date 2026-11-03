@@ -12,7 +12,7 @@ metaLinks:
 
 La mayor parte del código en tu escena se ejecuta sincrónicamente usando un solo hilo. Eso significa que los comandos se ejecutan secuencialmente línea por línea. Cada comando primero debe esperar a que el comando anterior termine de ejecutarse antes de que pueda comenzar.
 
-Incluso las funciones en los sistemas de tu escena se ejecutan una por una, siguiendo un [orden de prioridad](../sdk7/architecture/systems.md#system-execution-order).
+Incluso las funciones en los sistemas de tu escena se ejecutan una por una, siguiendo un [orden de prioridad](../architecture/systems.md#system-execution-order).
 
 Ejecutar código sincrónicamente asegura consistencia, ya que siempre puedes estar seguro de conocer el orden en que se ejecutan los comandos en tu código.
 
@@ -81,10 +81,10 @@ Cuando tu escena usa un componente `PointerEvent` o `RayCast`, los cálculos de 
 Luego necesitas crear un sistema para procesar estos resultados en el fotograma cuando lleguen.
 
 {% hint style="warning" %}
-**📔 Nota**: Si manejas clics a través del enfoque [**Register a callback**](../sdk7/interactivity/button-events/register-callback.md), no necesitas crear explícitamente un sistema para manejar esto, pero lo mismo ocurre en segundo plano.
+**📔 Nota**: Si manejas clics a través del enfoque [**Register a callback**](../interactivity/button-events/register-callback.md), no necesitas crear explícitamente un sistema para manejar esto, pero lo mismo ocurre en segundo plano.
 {% endhint %}
 
-Consulta [eventos de clic](../sdk7/interactivity/button-events/click-events.md) y [raycasting](../sdk7/interactivity/raycasting.md).
+Consulta [eventos de clic](../interactivity/button-events/click-events.md) y [raycasting](../interactivity/raycasting.md).
 
 {% hint style="info" %}
 **💡 Tip**: Si el procesamiento de los resultados de un raycast requiere muchos cálculos (como ejecutar un algoritmo de path-finding) puede que quieras ejecutar ese cómputo en una función asíncrona.

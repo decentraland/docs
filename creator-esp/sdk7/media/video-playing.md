@@ -15,13 +15,13 @@ Hay tres formas diferentes en las que puedes mostrar un video en una escena:
 - Transmitir en vivo vía Decentraland cast
 
 {% hint style="info" %}
-**💡 Tip**: En el [Scene Editor](../scene-editor/get-started/about-editor.md), puedes usar un **Video Player** [Smart Item](../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
+**💡 Tip**: En el [Scene Editor](../../scene-editor/get-started/about-editor.md), puedes usar un **Video Player** [Smart Item](../../scene-editor/interactivity/smart-items.md) para lograr esto sin código.
 {% endhint %}
 
 En todos los casos, necesitarás:
 
-- Una entidad con una [forma primitiva](../sdk7/3d-essentials/shape-components.md) como un plano, cubo, o incluso un cono.
-- Un [material](../sdk7/3d-essentials/materials.md) con una `VideoTexture` asignada a su textura
+- Una entidad con una [forma primitiva](../3d-essentials/shape-components.md) como un plano, cubo, o incluso un cono.
+- Un [material](../3d-essentials/materials.md) con una `VideoTexture` asignada a su textura
 - Un componente `VideoPlayer` para controlar el estado del video.
 
 ### Consideraciones de rendimiento
@@ -82,9 +82,9 @@ VideoPlayer.create(screen, {
 })
 ```
 
-Consulta [Transmisión usando Decentraland cast](video-playing.md#streaming-using-decentraland-cast) para detalles sobre cómo usar este tercer método alternativo.
+Consulta [Transmisión en vivo](video-playing.md#transmision-en-vivo) para detalles sobre cómo usar este tercer método alternativo.
 
-### Acerca de la Transmisión Externa
+### Acerca de la Transmisión Externa {#about-external-streaming}
 
 La fuente de la transmisión debe ser una URL _https_ (las URLs _http_ no son soportadas).
 
@@ -94,7 +94,7 @@ La otra alternativa recomendada es configurar tu propio servidor, usando softwar
 
 Todas estas opciones tienen pros y contras para diferentes escenarios. Debes evaluar qué es mejor para ti teniendo en cuenta tus necesidades, habilidades técnicas y presupuesto.
 
-### Configurar OBS para streaming exitoso
+### Configurar OBS para streaming exitoso {#setting-up-obs-for-successful-streaming}
 
 [OBS](https://obsproject.com/) es una herramienta popular y gratuita para gestionar tus transmisiones.
 
@@ -119,11 +119,11 @@ Se recomienda la siguiente configuración simple:
 
 ### Transmisión en vivo
 
-Puedes transmitir en vivo desde tu cámara o compartir tu pantalla usando la funcionalidad de [Live streaming](../scene-editor/live-ops/live-streaming.md) del smart item [Admin tools](../scene-editor/live-ops/scene-admin.md).
+Puedes transmitir en vivo desde tu cámara o compartir tu pantalla usando la funcionalidad de [Live streaming](../../scene-editor/live-ops/live-streaming.md) del smart item [Admin tools](../../scene-editor/live-ops/scene-admin.md).
 
 Este método de streaming usa la misma arquitectura de comunicaciones usada para comunicaciones en vivo entre jugadores, y es fácil de configurar y tiene mucho menos retraso que la transmisión desde fuentes externas.
 
-1. Agrega un smart item [Admin tools](../scene-editor/live-ops/scene-admin.md) a tu escena, así como un smart item [Video player](../scene-editor/interactivity/video-screen.md).
+1. Agrega un smart item [Admin tools](../../scene-editor/live-ops/scene-admin.md) a tu escena, así como un smart item [Video player](../../scene-editor/interactivity/video-screen.md).
 2. Publica tu escena, ya sea en un World o en Genesis City.
 3. Entra a la escena como un jugador con permiso para usar las Admin tools.
 4. Abre la consola Admin, selecciona la pestaña **Video**, luego selecciona la funcionalidad **Live** y haz clic en el botón **Get Stream Key**.
@@ -155,7 +155,7 @@ Material.setBasicMaterial(screen, {
 
 ### Materiales de Video
 
-La mayoría de las veces, querrás reproducir videos en un [material Basic](../sdk7/3d-essentials/materials.md#unlit-materials) sin iluminación, en lugar de un material PBR. Esto resulta en una imagen mucho más brillante y nítida, y es mejor para el rendimiento.
+La mayoría de las veces, querrás reproducir videos en un [material Basic](../3d-essentials/materials.md#unlit-materials) sin iluminación, en lugar de un material PBR. Esto resulta en una imagen mucho más brillante y nítida, y es mejor para el rendimiento.
 
 ```ts
 Material.setBasicMaterial(screen, {
@@ -180,7 +180,7 @@ Material.setPbrMaterial(screen, {
 {% hint style="info" %}
 **💡 Tip**: Como el video es una textura que se agrega a un material, también puedes experimentar con otras propiedades de materiales, como teñirlo con un color, o agregar otras capas de textura. Por ejemplo para producir un efecto de pantalla sucia.
 
-Consulta [materiales](../sdk7/3d-essentials/materials.md) para más detalles.
+Consulta [materiales](../3d-essentials/materials.md) para más detalles.
 {% endhint %}
 
 ### Acerca de los Archivos de Video
@@ -191,7 +191,7 @@ Los siguientes formatos de archivo son soportados:
 - _.ogg_
 - _.webm_
 
-Ten en cuenta que un archivo de video se suma al tamaño total de la escena, lo que hace que la escena tarde más en descargarse para los jugadores que caminan hacia tu escena. El tamaño del video también podría hacer que excedas las [limitaciones de escena](../sdk7/optimizing/scene-limitations.md), ya que tienes un máximo de 15 MB por parcela para usar. Recomendamos comprimir el video tanto como sea posible, para que sea menos problemático.
+Ten en cuenta que un archivo de video se suma al tamaño total de la escena, lo que hace que la escena tarde más en descargarse para los jugadores que caminan hacia tu escena. El tamaño del video también podría hacer que excedas las [limitaciones de escena](../optimizing/scene-limitations.md), ya que tienes un máximo de 15 MB por parcela para usar. Recomendamos comprimir el video tanto como sea posible, para que sea menos problemático.
 
 También recomendamos comenzar a reproducir el video cuando el jugador esté cerca o realice una acción para hacerlo. Comenzar a reproducir un video cuando tu escena se carga lejos en el horizonte afectará innecesariamente el rendimiento mientras los jugadores visitan escenas vecinas.
 
@@ -398,7 +398,7 @@ Material.setBasicMaterial(screen, {
 
 ### Reproducir un video en un modelo glTF
 
-Puedes reproducir un video en un modelo _glTF_ usando el componente [GltfNodeModifiers](../sdk7/3d-essentials/materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](../sdk7/3d-essentials/materials.md#modify-gltf-materials) para más detalles.
+Puedes reproducir un video en un modelo _glTF_ usando el componente [GltfNodeModifiers](../3d-essentials/materials.md#modify-gltf-materials). Consulta [Modificar materiales glTF](../3d-essentials/materials.md#modify-gltf-materials) para más detalles.
 
 Esto te permite reproducir tus videos en cualquier forma, no solo planos. Por ejemplo, puedes reproducir videos en una pantalla curva, o incluso el cuerpo entero de un NPC.
 
@@ -439,4 +439,4 @@ GltfNodeModifiers.create(myEntity, {
 
 El mapeo del video seguirá el mapeo UV original que usa el modelo. Esto significa que si el modelo tiene una textura que está mapeada a una parte específica del modelo, el video se mapeará a esa misma parte.
 
-También puedes usar el componente `GltfNodeModifiers` para reproducir un video solo en un mesh específico dentro del modelo. Por ejemplo, puedes reproducirlo en una pared específica de un edificio, aunque el modelo abarque todo el edificio. Consulta [Modificar materiales glTF](../sdk7/3d-essentials/materials.md#modify-gltf-materials) para más detalles.
+También puedes usar el componente `GltfNodeModifiers` para reproducir un video solo en un mesh específico dentro del modelo. Por ejemplo, puedes reproducirlo en una pared específica de un edificio, aunque el modelo abarque todo el edificio. Consulta [Modificar materiales glTF](../3d-essentials/materials.md#modify-gltf-materials) para más detalles.

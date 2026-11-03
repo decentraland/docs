@@ -52,6 +52,7 @@
 
 * [DAO User Guide](dao/dao-userguide.md)
 * [Overview](dao/README.md)
+  * [Mission, Vision and Roles](dao/mission-vision-and-roles.md)
   * [What is the DAO](dao/what-is-the-dao.md)
   * [How does the DAO work](dao/how-does-the-dao-work.md)
   * [What can you do with the DAO](dao/what-can-you-do-with-the-dao.md)

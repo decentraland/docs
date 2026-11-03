@@ -1,15 +1,15 @@
 
-Los servidores de contenido compilarán periódicamente resúmenes de las entidades activas que están alojando, llamados _instantáneas_ (snapshots). Son [archivos](../filesystem.md) regulares y pueden descargarse usando su identificador.
+Los servidores de contenido compilarán periódicamente resúmenes de las entidades activas que están alojando, llamados _instantáneas_ (snapshots). Son [archivos](file-system.md) regulares y pueden descargarse usando su identificador.
 
 Las instantáneas se crean diariamente, semanalmente, mensualmente y anualmente. Cada una contiene el conjunto de entidades activas que cambiaron desde la instantánea anterior para ese rango.
 
-Las instantáneas contendrán versiones conflictivas de las mismas entidades (es decir, diferentes [archivos manifest](../entities.md#properties) asociados al mismo puntero) a medida que se actualizan. Al escanearlas, los clientes deben mantener la versión en la instantánea más reciente. Como los servidores de contenido pueden eliminar archivos inactivos, las versiones de entidad obsoletas no están garantizadas para estar disponibles para descarga.
+Las instantáneas contendrán versiones conflictivas de las mismas entidades (es decir, diferentes [archivos manifest](entities.md#properties) asociados al mismo puntero) a medida que se actualizan. Al escanearlas, los clientes deben mantener la versión en la instantánea más reciente. Como los servidores de contenido pueden eliminar archivos inactivos, las versiones de entidad obsoletas no están garantizadas para estar disponibles para descarga.
 
 Cuando una nueva instantánea _reemplaza_ a las más antiguas (ej. una instantánea semanal que combina una serie de diarias), sus metadatos indican qué archivos previos son reemplazados para que los clientes no necesiten descargarlos.
 
-El conjunto completo de entidades activas puede descubrirse combinando todas las instantáneas disponibles (más sobre esto abajo), manteniendo la entidad más reciente referenciada por cada [puntero](../pointers.md) descubierto en el camino.
+El conjunto completo de entidades activas puede descubrirse combinando todas las instantáneas disponibles (más sobre esto abajo), manteniendo la entidad más reciente referenciada por cada [puntero](pointers.md) descubierto en el camino.
 
-Puedes experimentar con instantáneas usando código funcional en la sección [práctica](../practice.md).
+Puedes experimentar con instantáneas usando código funcional en la sección [práctica](practice/README.md).
 
 
 ## Descubriendo Instantáneas {#discover}
@@ -19,7 +19,7 @@ Para localizar el conjunto actual de instantáneas, usa el [endpoint `snapshots`
 | Campo | Valor |
 | ----- | --- |
 | `generationTimestamp` | La marca de tiempo Unix UTC cuando esta instantánea fue creada.
-| `hash` | El [archivo](../filesystem.md) de la instantánea.
+| `hash` | El [archivo](file-system.md) de la instantánea.
 | `numberOfEntities` | El número de entradas en el archivo de instantánea.
 | `replacedSnapshotHashes` | Un array con el `hash` de cualquier instantánea reemplazada por esta.
 | `timeRange.initTimestamp` | La marca de tiempo Unix UTC (en milisegundos) para el inicio del rango de la instantánea.
@@ -50,15 +50,15 @@ Los archivos de instantánea comienzan con esta línea exacta:
 ### Decentraland json snapshot
 ```
 
-Después de eso, cada línea es un documento JSON describiendo una [entidad](../entities.md) con los siguientes campos:
+Después de eso, cada línea es un documento JSON describiendo una [entidad](entities.md) con los siguientes campos:
 
 | Campo | Valor |
 | ----- | --- |
-| `entityId` | El identificador inmutable para esta [entidad](../entities.md).
+| `entityId` | El identificador inmutable para esta [entidad](entities.md).
 | `entityType` | Uno de `scene`, `profile`, `wearable`, `emote`, `store` o `outfits`.
-| `pointers` | Un array de [punteros](../pointers.md) que resuelven (o solían resolver) a esta entidad.
+| `pointers` | Un array de [punteros](pointers.md) que resuelven (o solían resolver) a esta entidad.
 | `entityTimestamp` | La marca de tiempo Unix UTC (en milisegundos) cuando esta entidad fue subida.
-| `authChain` | La [cadena de autenticación](../entities.md#ownership) para esta entidad.
+| `authChain` | La [cadena de autenticación](entities.md#ownership) para esta entidad.
 
 Una entrada típica se ve así:
 
@@ -81,7 +81,7 @@ Si intentas analizar una instantánea línea por línea, recuerda saltar (o mejo
 
 ### Iniciando un Índice de Entidades {#index-start}
 
-Los clientes que quieren indexar el conjunto completo de entidades activas deben procesar todas las instantáneas actualmente disponibles, y mantener la [entidad](../entities.md) más reciente para cada [puntero](../pointers.md).
+Los clientes que quieren indexar el conjunto completo de entidades activas deben procesar todas las instantáneas actualmente disponibles, y mantener la [entidad](entities.md) más reciente para cada [puntero](pointers.md).
 
 La estrategia más simple es procesar instantáneas en orden cronológico inverso (es decir, más reciente primero), ignorando punteros que ya han sido descubiertos, para mantener la referencia a la última entidad.
 
@@ -106,7 +106,7 @@ for snapshot in snapshots:
             seen_pointers.update(item.pointers)
 ```
 
-Como las entidades individuales pueden ser referenciadas por múltiples punteros (como es comúnmente el caso con [escenas](../entity-types/scenes.md)), todos deben verificarse antes de elegir mantener o descartar el elemento.
+Como las entidades individuales pueden ser referenciadas por múltiples punteros (como es comúnmente el caso con [escenas](entity-types/scenes.md)), todos deben verificarse antes de elegir mantener o descartar el elemento.
 
 {% hint style="info" %}
 Los archivos de instantánea para rangos de tiempo más largos pueden ser muy grandes. Para propósitos de desarrollo y experimentación que no requieren indexar el conjunto completo de entidades, se recomienda usar las instantáneas más pequeñas. El conjunto resultante de entidades será incompleto pero válido.
@@ -126,4 +126,4 @@ Si deben procesarse nuevas instantáneas, la misma estrategia que arriba puede u
 
 ## Ejemplos
 
-En la sección [práctica](../practice.md), encontrarás ejemplos de código que trabajan con el sistema de instantáneas.
+En la sección [práctica](practice/README.md), encontrarás ejemplos de código que trabajan con el sistema de instantáneas.

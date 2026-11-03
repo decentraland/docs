@@ -4,7 +4,7 @@ Archipelago es el servicio de realm que agrupa jugadores cercanos en islas, reas
 Puedes ver el protocolo Archipelago en acción y experimentar con él usando la [Comms Station](https://decentraland.github.io/comms-station/) de código abierto.
 {% endhint %}
 
-Para usar el servicio, los clientes deben conectarse al endpoint websocket Archipelago de su realm y autenticarse para comenzar su sesión. Luego pueden empezar a enviar actualizaciones posicionales y recibir asignaciones de isla (ver el [ciclo de vida del cliente](overview#lifecycle)).
+Para usar el servicio, los clientes deben conectarse al endpoint websocket Archipelago de su realm y autenticarse para comenzar su sesión. Luego pueden empezar a enviar actualizaciones posicionales y recibir asignaciones de isla (ver el [ciclo de vida del cliente](overview.md#lifecycle)).
 
 Todos los mensajes intercambiados con el servicio Archipelago están codificados usando protocol buffers, como se define en el [repositorio de protocolo](https://github.com/decentraland/protocol) de Decentraland.
 
@@ -24,11 +24,11 @@ En estos casos, la asignación dinámica de isla no estará disponible, y la int
 
 Después de abrir una conexión a Archipelago, los clientes deben comenzar solicitando y firmando un desafío del servicio para verificar su identidad.
 
-El primer mensaje que un cliente envía es un [`ChallengeRequestMessage`](ChallengeRequestMessage) con su dirección de Ethereum (es decir, su clave pública). Recibirán un [`ChallengeResponseMessage`](ChallengeResponseMessage) con una cadena generada aleatoriamente para firmar, y deben responder con un [`SignedChallengeMessage`](#SignedChallengeMessage).
+El primer mensaje que un cliente envía es un [`ChallengeRequestMessage`](#challengerequestmessage) con su dirección de Ethereum (es decir, su clave pública). Recibirán un [`ChallengeResponseMessage`](#challengeresponsemessage) con una cadena generada aleatoriamente para firmar, y deben responder con un [`SignedChallengeMessage`](#signedchallengemessage).
 
-El [`SignedChallengeMessage`](#SignedChallengeMessage) lleva una [cadena de autenticación](../auth/authchain) serializada en JSON que comienza con la dirección proporcionada, y termina con la firma del desafío.
+El [`SignedChallengeMessage`](#signedchallengemessage) lleva una [cadena de autenticación](../authentication/authchain.md) serializada en JSON que comienza con la dirección proporcionada, y termina con la firma del desafío.
 
-Si la firma es verificada exitosamente por el servicio, el cliente está autenticado y recibirá un [`WelcomeMessage`](#WelcomeMessage).
+Si la firma es verificada exitosamente por el servicio, el cliente está autenticado y recibirá un [`WelcomeMessage`](#welcomemessage).
 
 ```mermaid
 sequenceDiagram
@@ -44,13 +44,13 @@ sequenceDiagram
 
 ## Enviando Heartbeat {#heartbeat}
 
-Durante su sesión, los clientes deben enviar periódicamente un mensaje [`Heartbeat`](#Heartbeat) para mantener a Archipelago actualizado con la información necesaria para emitir asignaciones de isla.
+Durante su sesión, los clientes deben enviar periódicamente un mensaje [`Heartbeat`](#heartbeat-message) para mantener a Archipelago actualizado con la información necesaria para emitir asignaciones de isla.
 
 {% hint style="info" %}
 La frecuencia de heartbeat recomendada para clientes comms es aproximadamente una actualización por segundo.
 {% endhint %}
 
-Si un cliente deja de enviar mensajes [`Heartbeat`](#Heartbeat), Archipelago (dependiendo de su política actual) puede cerrar la conexión.
+Si un cliente deja de enviar mensajes [`Heartbeat`](#heartbeat-message), Archipelago (dependiendo de su política actual) puede cerrar la conexión.
 
 ## Obteniendo Asignaciones de Isla {#assignment}
 
@@ -74,7 +74,7 @@ Los clientes deben escuchar estas asignaciones, cerrando y abriendo conexiones d
 
 ## Mensajes de Cliente
 
-##### `ChallengeRequestMessage` <small>[↗ fuente][ChallengeRequestMessage]</small> {#ChallengeRequestMessage}
+### `ChallengeRequestMessage` <small>[↗ fuente][ChallengeRequestMessage]</small> {#challengerequestmessage}
 
 Enviado por el cliente como el primer mensaje de una sesión, para iniciar el flujo de autenticación.
 
@@ -82,23 +82,23 @@ Enviado por el cliente como el primer mensaje de una sesión, para iniciar el fl
 | --------- | -------- | ------------------------ |
 | `address` | `string` | La dirección del usuario. |
 
-El campo `address` debe derivarse de la primera clave privada de la [cadena de autenticación](../auth/authchain) que se presentará.
+El campo `address` debe derivarse de la primera clave privada de la [cadena de autenticación](../authentication/authchain.md) que se presentará.
 
 ---
 
-##### `SignedChallengeMessage` <small>[↗ fuente][SignedChallengeMessage]</small> {#SignedChallengeMessage}
+### `SignedChallengeMessage` <small>[↗ fuente][SignedChallengeMessage]</small> {#signedchallengemessage}
 
-Enviado por el cliente después de recibir un [`ChallengeResponseMessage`](#ChallengeResponseMessage), para completar el flujo de autenticación.
+Enviado por el cliente después de recibir un [`ChallengeResponseMessage`](#challengeresponsemessage), para completar el flujo de autenticación.
 
 | Campo             | Tipo     | Valor                                                                                                                    |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `auth_chain_json` | `string` | Una [cadena de autenticación](../auth/authchain) serializada en JSON terminando con la firma del desafío. |
+| `auth_chain_json` | `string` | Una [cadena de autenticación](../authentication/authchain.md) serializada en JSON terminando con la firma del desafío. |
 
-La primera clave en la [cadena de autenticación](../auth/authchain) debe corresponder a la dirección enviada en el [`ChallengeRequestMessage`](#ChallengeRequestMessage) original.
+La primera clave en la [cadena de autenticación](../authentication/authchain.md) debe corresponder a la dirección enviada en el [`ChallengeRequestMessage`](#challengerequestmessage) original.
 
 ---
 
-##### `Heartbeat` <small>[↗ fuente][Heartbeat]</small> {#Heartbeat}
+### `Heartbeat` <small>[↗ fuente][Heartbeat]</small> {#heartbeat-message}
 
 Enviado por el cliente a intervalos regulares (típicamente una vez por segundo), para actualizar a Archipelago sobre su posición y/o solicitar una asignación de isla.
 
@@ -107,24 +107,24 @@ Enviado por el cliente a intervalos regulares (típicamente una vez por segundo)
 | `position`     | `Position` | La posición 3D del cliente en el mapa del mundo                    |
 | `desired_room` | `string?`  | El ID de una isla a la que el cliente le gustaría ser asignado    |
 
-El primer mensaje `Heartbeat` que un cliente envía es seguido rápidamente por un [`IslandChangedMessage`](#IslandChangedMessage) de Archipelago. Las actualizaciones subsiguientes, sin embargo, son independientes de asignaciones de isla. Los clientes no deben esperar que un `Heartbeat` sea respondido.
+El primer mensaje `Heartbeat` que un cliente envía es seguido rápidamente por un [`IslandChangedMessage`](#islandchangedmessage) de Archipelago. Las actualizaciones subsiguientes, sin embargo, son independientes de asignaciones de isla. Los clientes no deben esperar que un `Heartbeat` sea respondido.
 
 Cuando el parámetro `desired_room` está incluido, el servicio intentará honrar la solicitud, pero una reasignación a esa isla no está garantizada. Depende de la política de Archipelago (ej. límites en población de isla).
 
 ## Mensajes de Servidor
 
-##### `ChallengeResponseMessage` <small>[↗ fuente][ChallengeResponseMessage]</small> {#ChallengeResponseMessage}
+### `ChallengeResponseMessage` <small>[↗ fuente][ChallengeResponseMessage]</small> {#challengeresponsemessage}
 
-Enviado por Archipelago en respuesta a un [`ChallengeRequestMessage`](#ChallengeRequestMessage)
+Enviado por Archipelago en respuesta a un [`ChallengeRequestMessage`](#challengerequestmessage)
 
 | Campo               | Tipo     | Valor                                                                                                      |
 | ------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| `challenge_to_sign` | `string` | Una cadena generada para firmar y crear una [cadena de autenticación](../auth/authchain) |
+| `challenge_to_sign` | `string` | Una cadena generada para firmar y crear una [cadena de autenticación](../authentication/authchain.md) |
 | `already_connected` | `bool`   | Si existe una conexión existente para la clave de este usuario                                             |
 
 ---
 
-##### `WelcomeMessage` <small>[↗ fuente][WelcomeMessage]</small> {#WelcomeMessage}
+### `WelcomeMessage` <small>[↗ fuente][WelcomeMessage]</small> {#welcomemessage}
 
 Enviado por Archipelago después de autenticación exitosa.
 
@@ -134,7 +134,7 @@ Enviado por Archipelago después de autenticación exitosa.
 
 ---
 
-##### `IslandChangedMessage` <small>[↗ fuente][IslandChangedMessage]</small> {#IslandChangedMessage}
+### `IslandChangedMessage` <small>[↗ fuente][IslandChangedMessage]</small> {#islandchangedmessage}
 
 Enviado por Archipelago cuando el cliente es (re)asignado a una isla.
 
@@ -144,16 +144,16 @@ Descripción.
 | ---------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | `island_id`      | `string`                | El ID de la nueva isla                                                            |
 | `from_island_id` | `string?`               | El ID de la isla antigua, si esto es una reasignación                            |
-| `conn_str`       | `string`                | La cadena de conexión para el [transporte](transports) de isla.     |
+| `conn_str`       | `string`                | La cadena de conexión para el [transporte](transports.md) de isla.     |
 | `peers`          | `map<string, Position>` | Descripción.                                                                      |
 
 Los clientes que reciben un `IslandChangedMessage` deben terminar su conexión al backend de isla, y conectarse al dado en `conn_str`.
 
-El campo `peers` contiene las identidades y posiciones actuales de todos los peers en la isla, para que los clientes puedan poblar su conjunto inicial. Después de este punto, deben confiar en mensajes recibidos a través del [transporte](transports) de isla para obtener actualizaciones posicionales.
+El campo `peers` contiene las identidades y posiciones actuales de todos los peers en la isla, para que los clientes puedan poblar su conjunto inicial. Después de este punto, deben confiar en mensajes recibidos a través del [transporte](transports.md) de isla para obtener actualizaciones posicionales.
 
 ---
 
-##### `KickedMessage` <small>[↗ fuente][KickedMessage]</small> {#KickedMessage}
+### `KickedMessage` <small>[↗ fuente][KickedMessage]</small> {#kickedmessage}
 
 Enviado por Archipelago antes de cerrar una conexión.
 
@@ -167,7 +167,7 @@ Los valores estándar para el campo `reason` son:
 
 ---
 
-##### `JoinIslandMessage` <small>[↗ fuente][JoinIslandMessage]</small> {#JoinIslandMessage}
+### `JoinIslandMessage` <small>[↗ fuente][JoinIslandMessage]</small> {#joinislandmessage}
 
 Enviado por Archipelago cuando un peer es asignado a la isla del cliente.
 
@@ -180,7 +180,7 @@ El campo `island_id` coincidirá con la asignación actual del cliente.
 
 ---
 
-##### `LeftIslandMessage` <small>[↗ fuente][LeftIslandMessage]</small> {#LeftIslandMessage}
+### `LeftIslandMessage` <small>[↗ fuente][LeftIslandMessage]</small> {#leftislandmessage}
 
 Enviado por Archipelago cuando un peer es removido de la isla del cliente.
 

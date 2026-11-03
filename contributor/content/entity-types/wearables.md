@@ -1,8 +1,8 @@
 # wearables
 
-Wearables are the [entities](../../entities/) that contain items for players to wear and customize their avatars.
+Wearables are the [entities](../entities.md) that contain items for players to wear and customize their avatars.
 
-The `wearables` field in a player's [profile](../../entity-types/profiles/) contains a list of pointers to the items they are currently wearing.
+The `wearables` field in a player's [profile](profiles.md) contains a list of pointers to the items they are currently wearing.
 
 Every wearable belongs to a _category_, indicating the spot it takes on the avatar's body, and can hide or replace other categories (for example, a long dress may be worn as top clothing but entirely cover the legs).
 
@@ -12,7 +12,7 @@ Wearable entities include files in GLB format for different body shapes.
 
 ### Pointers <a href="#pointers" id="pointers"></a>
 
-Wearables have exactly one associated [pointer](../../pointers/), which indicates the [collection](../../entity-types/collections/) they belong to and their identifier inside of it.
+Wearables have exactly one associated [pointer](../pointers.md), which indicates the [collection](../collections.md) they belong to and their identifier inside of it.
 
 When the wearable is an on-chain asset, the pointer is a URN of this form:
 
@@ -52,15 +52,15 @@ The `pointers` array for an off-chain wearable has this look:
 
 ### Metadata Fields
 
-Wearables share most of their basic fields with [emotes](../../entity-types/emotes/). The `data` property is where the wearable-specific information is located.
+Wearables share most of their basic fields with [emotes](emotes.md). The `data` property is where the wearable-specific information is located.
 
 | Field               | Value                                                                                     |
 | ------------------- | ----------------------------------------------------------------------------------------- |
-| `id`                | The [pointer](../../pointers/) that resolves (or used to resolve) to this wearable.       |
-| `name`              | The display title for this wearable in a [collection](../../collections/).                |
+| `id`                | The [pointer](../pointers.md) that resolves (or used to resolve) to this wearable.       |
+| `name`              | The display title for this wearable in a [collection](../collections.md).                |
 | `description`       | An extended description for this wearable.                                                |
-| `image`             | The [internal filename](../../entities/#files) of a picture for this wearable.            |
-| `thumbnail`         | The [internal filename](../../entities/#files) of a 256x256 version of the `image`.       |
+| `image`             | The [internal filename](../entities.md#files) of a picture for this wearable.            |
+| `thumbnail`         | The [internal filename](../entities.md#files) of a 256x256 version of the `image`.       |
 | `rarity`            | One of `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` or `unique`. |
 | `i18n`              | An array of translations for the `name` field.                                            |
 | `collectionAddress` | The Ethereum address for the collection that contains this wearable.                      |
@@ -123,9 +123,9 @@ Each item in the representations array associates a body shape with a collection
 
 | Field              | Value                                                                                                                  |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `bodyShapes`       | An array of [pointers](../../pointers/) to body shape entities.                                                        |
+| `bodyShapes`       | An array of [pointers](../pointers.md) to body shape entities.                                                        |
 | `mainFile`         | The 3D model file to start the rendering.                                                                              |
-| `contents`         | An array of filenames (present in the top-level [`content` field](../../entities/#properties)) used by the `mainFile`. |
+| `contents`         | An array of filenames (present in the top-level [`content` field](../entities.md#properties)) used by the `mainFile`. |
 | `overrideHides`    | Supersedes the `hides` list above for this representation.                                                             |
 | `overrideReplaces` | Supersedes the `replaces` list above for this representation.                                                          |
 

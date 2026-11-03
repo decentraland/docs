@@ -24,7 +24,7 @@ You can add a **Mesh Collider** component to your entity to assign a primitive s
 
 You can also configure the collision layers on a **GLTF** component to change the default [Collision layers](colliders.md#collision-layers) used on either the collider geometry or the visible geometry of the model. See [Add Components](../../scene-editor/build/components.md#add-components).
 
-![](../../images/editor/gltf-component.png)
+![](../../images/editor/gltf-component.webp)
 
 ## Colliders on primitive shapes
 
@@ -118,7 +118,7 @@ GltfContainer.create(myEntity, {
 })
 ```
 
-See [3D models](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/3d-models/README.md) for more details on how to add collider invisible geometry to a 3D model.
+See [3D models](https://github.com/decentraland/docs/blob/main/creator/3d-modeling/3d-models.md) for more details on how to add collider invisible geometry to a 3D model.
 
 {% hint style="warning" %}
 **📔 Note**: The `GltfContainer` component and `ColliderLayer` must be imported via
@@ -189,11 +189,11 @@ To avoid the camera from going through walls, you must assign both the `Collider
 
 For example, on the Creator Hub, the following combination of settings will prevent the camera from going through walls:
 
-![](../../images/colliders-camera.png)
+![](../../images/colliders-camera.webp)
 
 Both the `ColliderLayer.CL_PHYSICS` and the `ColliderLayer.CL_POINTER` layers are assigned to the same invisible layer of the geometry of the entity. If they were both assigned to the visible layer, the result would be the same. This is the default behavior, both when adding an entity via the Creator Hub or via code.
 
-![](../../images/colliders-no-camera.png)
+![](../../images/colliders-no-camera.webp)
 
 In this second example, the camera can go through the wall, because the `ColliderLayer.CL_PHYSICS` layer is assigned to the invisible layer of the entity, and the `ColliderLayer.CL_POINTER` layer is assigned to the visible layer of the entity, even if both geometries have the same overall shape.
 

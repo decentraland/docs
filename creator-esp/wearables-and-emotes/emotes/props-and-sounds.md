@@ -25,7 +25,7 @@ El emote con sus props debe exportarse todo junto en un solo archivo _.glb_ (Ava
 * El emote debe tener una animación para el avatar y una animación para el prop. _Actualmente múltiples animaciones no están permitidas._
 * Ambas animaciones (Avatar y Prop) deben tener la misma longitud de keyframe.
 * Las animaciones no pueden exceder 300 frames o 10 segundos.
-* Los límites de espacio son 4 metros cuadrados. Los props y partículas deben permanecer dentro del cubo de referencia proporcionado en el Avatar File. Para el movimiento del avatar, consulta la sección [Ground Reference and Animation Area](https://github.com/decentraland/docs-creator/blob/main/creator/wearables-and-emotes/emotes/creating-emotes.md#ground-reference-and-animation-area).
+* Los límites de espacio son 4 metros cuadrados. Los props y partículas deben permanecer dentro del cubo de referencia proporcionado en el Avatar File. Para el movimiento del avatar, consulta la sección [Ground Reference and Animation Area](https://github.com/decentraland/docs/blob/main/creator-esp/wearables-and-emotes/emotes/creating-emotes.md#ground-reference-and-animation-area).
 
 ## **Convenciones de Nomenclatura:**
 
@@ -57,7 +57,7 @@ El emote con sus props debe exportarse todo junto en un solo archivo _.glb_ (Ava
 
 ## **Comenzando**
 
-Antes de comenzar tu animación, tendrás que crear un rig para el prop. Si no estás familiarizado con el proceso, consulta [Create a Rig](https://github.com/decentraland/docs-creator/blob/main/creator/3d-modeling/create-a-rig/README.md) para más información sobre cómo hacerlo.
+Antes de comenzar tu animación, tendrás que crear un rig para el prop. Si no estás familiarizado con el proceso, consulta [Create a Rig](https://github.com/decentraland/docs/blob/main/creator-esp/3d-modeling/create-a-rig.md) para más información sobre cómo hacerlo.
 
 Asegúrate de que el objeto prop y la armature tengan sus orígenes ubicados en la posición 0,0 dentro de Blender. Además, aplica transformaciones al objeto prop y armature, asegurándote de que estén congelados en una escala de 1,1,1. Esto es crucial para prevenir cualquier problema potencial con el comportamiento del prop cuando se utilice dentro del mundo o durante las animaciones.
 

@@ -1,6 +1,6 @@
 # stores
 
-Stores are off-chain [entities](../../entities/) that represent user-managed marketplace sites. They contain a description and a picture to show buyers, plus information about the store owner.
+Stores are off-chain [entities](../entities.md) that represent user-managed marketplace sites. They contain a description and a picture to show buyers, plus information about the store owner.
 
 ### Pointers <a href="#pointers" id="pointers"></a>
 
@@ -20,7 +20,7 @@ urn:decentraland:off-chain:marketplace-stores:0xa2a1dc503be6fdb7878f58f053ded405
 
 | Field         | Value                                                                               |
 | ------------- | ----------------------------------------------------------------------------------- |
-| `id`          | The [pointer](../../pointers/) that resolves (or used to resolve) to this store.    |
+| `id`          | The [pointer](../pointers.md) that resolves (or used to resolve) to this store.    |
 | `description` | The display title for this store.                                                   |
 | `owner`       | The Ethereum address of the owner.                                                  |
 | `images`      | An array of `{ file, name }` objects referencing images (see below).                |

@@ -1,12 +1,12 @@
 # scenes
 
-Scenes are the [entities](../../entities/) that produce behavior in different parts of Decentraland. They can span multiple land parcels, and players walking through them in a World Explorer will execute special code provided by the scene.
+Scenes are the [entities](../entities.md) that produce behavior in different parts of Decentraland. They can span multiple land parcels, and players walking through them in a World Explorer will execute special code provided by the scene.
 
 You can find a complete real-life example in [this scene's manifest](https://peer.decentraland.org/content/contents/bafkreidihplrc5cxarjkji2enmzhicpjoa2vrlqyyffnholmxb3o2xft3u) on the Foundation's content server.
 
 ### Pointers <a href="#pointers" id="pointers"></a>
 
-Scenes have one or more associated [pointers](../../pointers/) in the form of parcel coordinate strings, such as `"0,0"`. Every parcel running the scene will be listed in the [`pointers` array](../../entities/#properties) of the entity manifest, and all those pointers will be resolved by the content server to that scene.
+Scenes have one or more associated [pointers](../pointers.md) in the form of parcel coordinate strings, such as `"0,0"`. Every parcel running the scene will be listed in the [`pointers` array](../entities.md#properties) of the entity manifest, and all those pointers will be resolved by the content server to that scene.
 
 In other words, you can choose the x/y coordinates of a parcel and locate the scene it's running by querying the content server for the `"<x>,<y>"` pointer. This is the way World Explorers decide whether to enable a scene's behavior as the player navigates the world.
 
@@ -27,12 +27,12 @@ This data is also available in the `metadata.scene.parcels` field detailed below
 
 ### Metadata Fields
 
-There are several special properties for [entities](../../entities/) of type `scene` located in the `metadata` top-level field.
+There are several special properties for [entities](../entities.md) of type `scene` located in the `metadata` top-level field.
 
 | Field                 | Value                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------ |
 | `owner`               | Information about the scene's maintainer.                                            |
-| `main`                | The [internal filename](../../entities/#files) to this scene's main JavaScript file. |
+| `main`                | The [internal filename](../entities.md#files) to this scene's main JavaScript file. |
 | `tags`                | An array of string labels descriptive of this scene.                                 |
 | `display`             | Information about the scene for Explorers to show players (see below).               |
 | `scene`               | The parcels this scene is active on, and its central location (see below).           |
@@ -53,8 +53,8 @@ In `metadata.display`, you'll find properties that are useful to inform players 
 | ----------------- | ------------------------------------------------------------------------------------------------------------ |
 | `title`           | The display name of this scene.                                                                              |
 | `description`     | An extended description of this scene.                                                                       |
-| `favicon`         | _Deprecated_ The [internal filename](../../entities/#files) to an icon, displayed when this scene is active. |
-| `navmapThumbnail` | The [internal filename](../../entities/#files) to this scene's thumbnail for the world map.                  |
+| `favicon`         | _Deprecated_ The [internal filename](../entities.md#files) to an icon, displayed when this scene is active. |
+| `navmapThumbnail` | The [internal filename](../entities.md#files) to this scene's thumbnail for the world map.                  |
 
 An example:
 

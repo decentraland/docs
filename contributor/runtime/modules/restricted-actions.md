@@ -1,6 +1,6 @@
 # restricted-actions
 
-The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](../../content/entity-types/scenes/#permissions) system, which scenes use to request the use of individual methods.
+The `RestrictedActions` module allows scenes to access sensitive (and thus restricted) functionality. It's linked to the [`permission`](../../content/entity-types/scenes.md#permissions) system, which scenes use to request the use of individual methods.
 
 ```ts
 const RestrictedActions = require("~system/RestrictedActions");
@@ -10,28 +10,27 @@ const RestrictedActions = require("~system/RestrictedActions");
 As a World Explorer implementer, your runtime could have no enforcement of permissions. We **strongly** advise against this, since it puts players in danger.
 {% endhint %}
 
-Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../../globals/).
+Most of the restricted functionality is provided by this module, but there's also restricted [global functions](../globals.md).
 
 The module contains the following methods and types:
 
-* [`function movePlayerTo`](restricted-actions.md#movePlayerTo)
-* [`function teleportTo`](restricted-actions.md#teleportTo)
-* [`function triggerEmote`](restricted-actions.md#triggerEmote)
-* [`function changeRealm`](restricted-actions.md#changeRealm)
-* [`function openExternalUrl`](restricted-actions.md#openExternalUrl)
-* [`function openNftDialog`](restricted-actions.md#openNftDialog)
-* [`function setCommunicationsAdapter`](restricted-actions.md#setCommunicationsAdapter)
-* [`interface Vector3`](restricted-actions.md#Vector3)
+* [`function movePlayerTo`](restricted-actions.md#moveplayerto)
+* [`function teleportTo`](restricted-actions.md#teleportto)
+* [`function triggerEmote`](restricted-actions.md#triggeremote)
+* [`function changeRealm`](restricted-actions.md#changerealm)
+* [`function openExternalUrl`](restricted-actions.md#openexternalurl)
+* [`function openNftDialog`](restricted-actions.md#opennftdialog)
+* [`interface Vector3`](restricted-actions.md#vector3)
 
 ### Methods
 
-Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes/#permissions) that can be requested in the scene manifest.
+Each of the methods below is associated with a specific [permission](../../content/entity-types/scenes.md#permissions) that can be requested in the scene manifest.
 
-**`movePlayerTo`**
+### `movePlayerTo` {#moveplayerto}
 
-Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#Vector3).
+Displace the player to a new position relative to the current one, and optionally set the camera target with [vectors](restricted-actions.md#vector3).
 
-Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {
@@ -47,15 +46,23 @@ interface Response {
 function movePlayerTo(Request): Promise<Response>;
 ```
 
-**`teleportTo`**
+### `teleportTo` {#teleportto}
 
-Reposition the player to an absolute world location given a by [vectors](restricted-actions.md#Vector3).
+Reposition the player to a parcel, optionally in another realm.
 
 Instead of requiring a pre-approved permission, each call to `teleportTo` must be approved by the player.
 
 ```ts
 interface Request {
-  worldPosition: Vector3;
+  // The parcel to land on. Omitted: the realm's default spawn
+  // (only meaningful together with `realm`).
+  worldCoordinates?: Vector2;
+
+  // The realm the parcel belongs to: a world name (`foo.dcl.eth`) or a realm URL.
+  // When set, the client changes realm (a full reconnect, even to the realm the
+  // player is already in) and then lands on the parcel there.
+  // Omitted: the parcel is in the player's current realm.
+  realm?: string;
 }
 
 interface Response {}
@@ -63,11 +70,11 @@ interface Response {}
 function teleportTo(Request): Promise<Response>;
 ```
 
-**`triggerEmote`**
+### `triggerEmote` {#triggeremote}
 
 Make the player's avatar display an emote animation, using one of the predefined names.
 
-Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`ALLOW_TO_TRIGGER_AVATAR_EMOTE`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {
@@ -79,11 +86,11 @@ interface Response {}
 function triggerEmote(Request): Promise<Response>;
 ```
 
-**`openExternalUrl`**
+### `openExternalUrl` {#openexternalurl}
 
 Offer to show a website to the player, using an appropriate UI (which may be another application).
 
-Requires the [`OPEN_EXTERNAL_LINK`](../../content/entity-types/scenes/#permissions) permission.
+Requires the [`OPEN_EXTERNAL_LINK`](../../content/entity-types/scenes.md#permissions) permission.
 
 ```ts
 interface Request {
@@ -98,7 +105,7 @@ interface Response {
 function openExternalUrl(Request): Promise<Response>;
 ```
 
-**`openNftDialog`**
+### `openNftDialog` {#opennftdialog}
 
 Show information about an NFT to the player, using an appropriate UI.
 
@@ -116,9 +123,11 @@ interface Response {
 function openNftDialog(Request): Promise<Response>;
 ```
 
-**`changeRealm`**
+### `changeRealm` (deprecated) {#changerealm}
 
 Switch the World Explorer to another content server, using its base URL.
+
+Deprecated in favour of [`teleportTo`](restricted-actions.md#teleportto) with a `realm` (and no `worldCoordinates` for the realm's default spawn). `changeRealm` resolves once the change is accepted rather than once the new realm is live, so a `teleportTo` issued straight after it runs against the previous realm.
 
 ```ts
 interface Request {
@@ -141,7 +150,7 @@ function changeRealm(Request): Promise<Response>;
 
 The only additional type used by methods in this module is the `Vector3`.
 
-**`Vector3`**
+### `Vector3` {#vector3}
 
 Holds a relative or absolute 3d position.
 

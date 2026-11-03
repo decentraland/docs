@@ -6,7 +6,7 @@ description: Configure the native on-screen touch controls for your scene.
 
 On the mobile client, players interact with your scene through a set of native on-screen controls — a virtual joystick, a crosshair, and a gamepad of buttons. The `TouchScreenControls` component lets your scene reshape that HUD: declutter it, hide the joystick or crosshair, change what the large central button does, swap a button's glyph for your own icon, or hide buttons entirely and replace them with your own UI.
 
-<figure><img src="../../images/touch-controls/touch-controls-default.jpg" alt="The default mobile HUD: virtual joystick on the left, gamepad buttons on the right"><figcaption><p>The default on-screen controls, before any customization</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/touch-controls-default.webp" alt="The default mobile HUD: virtual joystick on the left, gamepad buttons on the right"><figcaption><p>The default on-screen controls, before any customization</p></figcaption></figure>
 
 {% hint style="info" %}
 The component is applied automatically while the player is inside your scene and reverts to the defaults (nothing hidden, jump as the central button) the moment they leave — so scenes that don't use it are unaffected. It only affects platforms with native on-screen controls: it's a no-op on desktop and has no effect in VR.
@@ -36,7 +36,7 @@ The on-screen positions are fixed too. The **visible** buttons fill those positi
 | **Leave 5 or fewer buttons visible** | All of them show directly (the central button plus up to four around it); there is no "+" menu. |
 | **Leave more than 5 buttons visible** | The "+" takes the last slot, so four show directly (the central button plus three) and the rest sit behind the "+" overflow toggle. |
 
-<figure><img src="../../images/touch-controls/control-ordering.jpg" alt="Three HUDs showing the gamepad reflowing as the number of visible buttons changes"><figcaption><p>How the buttons reflow with the visible count. <strong>Left (7 buttons):</strong> the main button, an arc of 1–3, and the "+" holding the overflow (4–7) in a column that climbs upward. <strong>Center (5 buttons):</strong> the same arc, with a shorter overflow column (4–5) behind the "+". <strong>Right (4 buttons):</strong> all four show directly and the "+" disappears.</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/control-ordering.webp" alt="Three HUDs showing the gamepad reflowing as the number of visible buttons changes"><figcaption><p>How the buttons reflow with the visible count. <strong>Left (7 buttons):</strong> the main button, an arc of 1–3, and the "+" holding the overflow (4–7) in a column that climbs upward. <strong>Center (5 buttons):</strong> the same arc, with a shorter overflow column (4–5) behind the "+". <strong>Right (4 buttons):</strong> all four show directly and the "+" disappears.</p></figcaption></figure>
 
 {% hint style="info" %}
 This is also how you surface the `1`/`2`/`3`/`4` buttons, which are otherwise tucked behind the "+": hide enough higher-priority buttons to bring the visible count to five or fewer, and they show directly.
@@ -173,7 +173,7 @@ export function main() {
 }
 ```
 
-<figure><img src="../../images/touch-controls/custom-main-action.jpg" alt="A mobile HUD with the joystick hidden and the central jump button showing a custom banana icon"><figcaption><p>The result: joystick gone, numbered buttons hidden (so the "+" disappears), and the jump button re-iconed</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/custom-main-action.webp" alt="A mobile HUD with the joystick hidden and the central jump button showing a custom banana icon"><figcaption><p>The result: joystick gone, numbered buttons hidden (so the "+" disappears), and the jump button re-iconed</p></figcaption></figure>
 
 To replace the native controls entirely, hide them here and build your own touch buttons with [UI Input Binding](../2d-ui/ui_input_binding.md).
 

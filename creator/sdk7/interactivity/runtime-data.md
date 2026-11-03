@@ -125,6 +125,27 @@ When using the official Decentraland desktop app, this function should return th
 
 Players using the official Decentraland desktop app are likely to have a much smoother experience than those on the browser, since the browser imposes performance limitations on how much of the machine's processing power the browser tab can use. They will also be missing many features like camera control, dynamic lights, freezing player movement, UI enhancements, etc.
 
+## Get player language
+
+Use `getPlayerLanguage()` to know which language the player's client is set to. It returns a [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) tag, like `'en'`, `'es'` or `'pt-BR'`. Use it to pick which translation of your scene's texts to show.
+
+```ts
+import { getPlayerLanguage, onPlayerLanguageChanged } from '@dcl/sdk/platform'
+
+console.log('LANGUAGE: ', getPlayerLanguage())
+
+// React to the player switching language mid-session
+onPlayerLanguageChanged.add(({ language }) => {
+  console.log('LANGUAGE CHANGED TO: ', language)
+})
+```
+
+`onPlayerLanguageChanged` fires whenever the player changes the client language while in your scene. Older clients never emit it.
+
+{% hint style="warning" %}
+**📔 Note**: `getPlayerLanguage()` returns `'en'` until the explorer has reported its language back to the scene, which happens shortly after the scene starts. It also returns `'en'` on clients that don't report a language. Both functions require `@dcl/sdk` version 7.30.0 or newer.
+{% endhint %}
+
 ## The EngineInfo Component
 
 The `EngineInfo`component keeps track of data about the scene's lifecycle, which can sometimes be useful to tell when an event is occurring, relative to the scene's initialization.

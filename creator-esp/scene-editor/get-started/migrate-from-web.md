@@ -19,22 +19,22 @@ Para editar el código en una escena creada con el Web Editor, debes exportar la
 {% hint style="warning" %}
 **📔 Nota**: Si no tienes el Creator Hub instalado, sigue los pasos en la siguiente página antes de comenzar.
 
-[Instalar Creator Hub](../scene-editor/get-started/editor-installation.md)
+[Instalar Creator Hub](editor-installation.md)
 {% endhint %}
 
 1. Haz clic en el **ícono de Descarga** en el menú superior del Web Editor mientras editas la escena.
 
-![](../images/editor/export.png)
+![](../../.gitbook/assets/export.webp)
 
 2. Esto descargará un archivo _.zip_, extráelo.
 3. Abre el **Creator Hub**, ve a la sección **Scene Editor**.
 4. Haz clic en el botón **Import** y selecciona la ruta a tu carpeta de proyecto exportada.
 
-![](../images/editor/import-scene.png)
+![](../../.gitbook/assets/import-scene.webp)
 
 Una vez que hayas terminado, puedes seguir trabajando en tu proyecto dentro del Creator Hub, con una interfaz visual que se parece mucho al Web Editor, pero mucho más pulida.
 
-También puedes editar los archivos bajo la carpeta `/src` para agregar comportamiento con código a tu escena. Consulta [Combine with code](../scene-editor/code/overview.md) para saber cómo editar el código de tu escena.
+También puedes editar los archivos bajo la carpeta `/src` para agregar comportamiento con código a tu escena. Consulta [Combine with code](../code/README.md) para saber cómo editar el código de tu escena.
 
 ### Migrar un proyecto solo de código
 
@@ -43,13 +43,13 @@ Puedes importar cualquier proyecto solo de código al Creator Hub. Para hacer es
 1. Abre el Creator Hub, ve a la sección **Scene Editor**.
 2. Haz clic en el botón **Import** y selecciona la ruta a tu carpeta de proyecto exportada.
 
-![](../images/editor/import-scene.png)
+![](../../.gitbook/assets/import-scene.webp)
 
 Una vez hecho, puedes comenzar a trabajar en tu proyecto dentro del Creator Hub, esto no te impide seguir usando tu editor de código favorito para editar el código de tu escena, o usar la línea de comandos para ejecutar o desplegar tu escena.
 
 Después de importar tu proyecto, cualquier contenido que se cree a través de código no será visible ni editable en el canvas del Creator Hub, lo que puede dificultar la colocación y alineación de nuevos ítems. Inicialmente verás tu escena como una cuadrícula vacía.
 
-![](../images/editor/empty-project.png)
+![](../../.gitbook/assets/empty-project.webp)
 
 En lugar de agregar manualmente tu contenido al canvas desde cero, puedes ejecutar un comando para agregarlo automáticamente por ti. Para hacer esto, asegúrate de tener la última versión del SDK instalada y ejecuta el siguiente comando en tu terminal:
 
@@ -67,4 +67,4 @@ Este comando ejecuta tu escena y toma una instantánea del contenido que se crea
 
 Ten en cuenta que este comando solo captura entidades y los componentes que se pueden representar en la UI del Creator Hub. No replica componentes personalizados, ni reproduce código que lleva a cabo lógica, ni elementos UI que se crean a través de código. Para agregar de nuevo cualquier comportamiento que se comentó, necesitarás editar el código en los archivos `.ts` en la carpeta `src` y descomentar las líneas que necesites.
 
-También puedes querer reescribir parte del código para que en lugar de crear nuevas entidades, haga referencia a entidades existentes por nombre o por tags para darles comportamiento. Consulta [Combine with code](../scene-editor/code/overview.md) para saber cómo obtener estas entidades desde tu código.
+También puedes querer reescribir parte del código para que en lugar de crear nuevas entidades, haga referencia a entidades existentes por nombre o por tags para darles comportamiento. Consulta [Combine with code](../code/README.md) para saber cómo obtener estas entidades desde tu código.

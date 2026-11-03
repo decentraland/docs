@@ -10,13 +10,13 @@ Clients are free to implement transports as they see fit (as long as they follow
 
 There are 5 transport types defined by the protocol:
 
-* [Websocket](transport-types/websocket) (`ws-room`) uses a standard websocket stream.
-* [LiveKit](transport-types/livekit) (`livekit`) uses the open-source LiveKit framework, based on WebRTC.
-* [SignedLogin](transport-types/signed_login) (`signed-login`) makes a signed HTTPs request to obtain a dynamically assigned transport from a server.
-* [Offline](transport-types/offline) (`offline`) is a dummy transport indicates there are no comms in the current environment.
-* [Simulator](transport-types/simulator) (`simulator`) is a dummy transport with completely custom behavior, mainly for developers to debug their implementations.
+* [Websocket](transport-types/websocket.md) (`ws-room`) uses a standard websocket stream.
+* [LiveKit](transport-types/livekit.md) (`livekit`) uses the open-source LiveKit framework, based on WebRTC.
+* [SignedLogin](transport-types/signed-login.md) (`signed-login`) makes a signed HTTPs request to obtain a dynamically assigned transport from a server.
+* [Offline](transport-types/offline.md) (`offline`) is a dummy transport indicates there are no comms in the current environment.
+* [Simulator](transport-types/simulator.md) (`simulator`) is a dummy transport with completely custom behavior, mainly for developers to debug their implementations.
 
-Messages sent and received through a transport interface are always the same (see [messages](messages)). Some transports may wrap them in control structures for transmission, but these should be unpacked before crossing the `Transport` interface.
+Messages sent and received through a transport interface are always the same (see [messages](messages.md)). Some transports may wrap them in control structures for transmission, but these should be unpacked before crossing the `Transport` interface.
 
 
 ## Recommended Design {#recommended}
@@ -54,13 +54,13 @@ The values of `uriWithConnectionParams` are always of the form:
 
 The `<type>` corresponds to one listed above, and the format for `<type connection parameters>` is dependent on the specific transport. It can be a URL, an opaque token, or any arbitrary data.
 
-The [LiveKit](transport-types/livekit) transport, for example, uses a `wss` URL with an `access_token` parameter to establish an authenticated connection:
+The [LiveKit](transport-types/livekit.md) transport, for example, uses a `wss` URL with an `access_token` parameter to establish an authenticated connection:
 
 ```
 livekit:wss://comms.example.com?access_token=eyJhbGciOiJI...
 ```
 
-For comparison, the [Websocket](transport-types/websocket) transport also uses a `wss` URL, but without a pre-generated token. It requires an authentication flow once connected.
+For comparison, the [Websocket](transport-types/websocket.md) transport also uses a `wss` URL, but without a pre-generated token. It requires an authentication flow once connected.
 
 
 ### Creating Transports
@@ -83,9 +83,9 @@ function createTransport(uriWithConnectionParams: string) {
 
 Clients are not required to implement all standard transports. If they intend to only use a subset of the defined types without aiming to handle all URIs, they are free to reject types they don't support.
 
-More featured clients, such as a World Explorer, are advised to implement at least the [websocket](transport-types/websocket) and [LiveKit](transport-types/livekit) transports, which are currently in use by all major realms.
+More featured clients, such as a World Explorer, are advised to implement at least the [websocket](transport-types/websocket.md) and [LiveKit](transport-types/livekit.md) transports, which are currently in use by all major realms.
 
 
 ## Learn more
 
-Head over to a [specific transport type](#types) section, read about the different [message types](messages) or check out the [[Comms Demo Station]].
+Head over to a [specific transport type](#types) section, read about the different [message types](messages.md) or check out the [[Comms Demo Station]].

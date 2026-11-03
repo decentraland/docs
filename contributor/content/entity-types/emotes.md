@@ -1,12 +1,12 @@
 # emotes
 
-Emotes are the [entities](../../entities/) that hold animations for player's avatars.
+Emotes are the [entities](../entities.md) that hold animations for player's avatars.
 
 They include files in GLB format for different body shapes.
 
 ### Pointers <a href="#pointers" id="pointers"></a>
 
-Emotes have exactly one associated [pointer](../../pointers/), which indicates the collection they belong to and their index inside of it. They are URNs of this form:
+Emotes have exactly one associated [pointer](../pointers.md), which indicates the collection they belong to and their index inside of it. They are URNs of this form:
 
 ```
 urn:decentraland:matic:collections-v2:<collection address>:<item index>
@@ -25,15 +25,15 @@ To illustrate, the `pointers` array for an emote looks like this:
 
 ### Metadata Fields
 
-Emotes share most of their basic fields with [wearables](../../entity-types/wearables/). The `emoteDataADR74` property is where the emote-specific information is located.
+Emotes share most of their basic fields with [wearables](wearables.md). The `emoteDataADR74` property is where the emote-specific information is located.
 
 | Field               | Value                                                                                                              |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `id`                | The [pointer](../../pointers/) that resolves (or used to resolve) to this emote.                                   |
-| `name`              | The display title for this emote in a [collection](../../collections/).                                            |
+| `id`                | The [pointer](../pointers.md) that resolves (or used to resolve) to this emote.                                   |
+| `name`              | The display title for this emote in a [collection](../collections.md).                                            |
 | `description`       | An extended description for this emote.                                                                            |
-| `image`             | The [internal filename](../../entities/#files) with a picture for this emote.                                      |
-| `thumbnail`         | The [internal filename](../../entities/#files) for a 256x256 version of the `image`.                               |
+| `image`             | The [internal filename](../entities.md#files) with a picture for this emote.                                      |
+| `thumbnail`         | The [internal filename](../entities.md#files) for a 256x256 version of the `image`.                               |
 | `rarity`            | One of `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` or `unique`.                          |
 | `i18n`              | An array of translations for the `name` field.                                                                     |
 | `collectionAddress` | The Ethereum address for the collection that contains this emote.                                                  |
@@ -108,8 +108,8 @@ Each item in the `metadata.emoteDataADR74.representations` field defines the ani
 
 | Field        | Value                                                                          |
 | ------------ | ------------------------------------------------------------------------------ |
-| `bodyShapes` | An array of applicable body shape [pointers](../../pointers/).                 |
-| `mainFile`   | The [internal filename](../../entities/#files) for the main GLB file.          |
+| `bodyShapes` | An array of applicable body shape [pointers](../pointers.md).                 |
+| `mainFile`   | The [internal filename](../entities.md#files) for the main GLB file.          |
 | `contents`   | All files, including `mainFile` and any additional ones that it can reference. |
 
 For example, a `representation` item:

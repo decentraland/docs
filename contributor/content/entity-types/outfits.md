@@ -4,7 +4,7 @@ Outfits are the saved outfits of a player. An outfit is composed of body shape, 
 
 ### Pointers <a href="#pointers" id="pointers"></a>
 
-Outfits [pointers](../../pointers/) are the Ethereum address of the owner with a "`:outfits`" suffix. For example:
+Outfits [pointers](../pointers.md) are the Ethereum address of the owner with a "`:outfits`" suffix. For example:
 
 ```
 0x210c4415d6a71195af76beef9b85dd0eb43f35df:outfits
@@ -43,11 +43,11 @@ The `metadata.outfits[].outfit` field has all the information to save a player's
 
 | Field       | Value                                                                                         |
 | ----------- | --------------------------------------------------------------------------------------------- |
-| `bodyShape` | The [pointer](../../pointers/) to the avatar's body shape entity.                             |
+| `bodyShape` | The [pointer](../pointers.md) to the avatar's body shape entity.                             |
 | `eyes`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's eyes.        |
 | `hair`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's hair.        |
 | `skin`      | An object with a `color` in the form of an `{ r, g, b }` object for the avatar's skin.        |
-| `wearables` | An array of [wearable pointers](../../entity-types/wearables/#pointers) in use by the avatar. |
+| `wearables` | An array of [wearable pointers](wearables.md#pointers) in use by the avatar. |
 
 To illustrate:
 

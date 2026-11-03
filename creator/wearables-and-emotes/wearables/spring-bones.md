@@ -12,7 +12,7 @@ Spring bones are **not** part of the base avatar armature. They are additional b
 
 This implementation follows the [VRM Spring Bone standard](https://vrm.dev/en/vrm1/springbone/), a widely adopted convention for avatar physics in formats like VRM and MMD.
 
-![](../../images/spring-bones/01_spring_bones_workflow.png)
+![](../../images/spring-bones/01_spring_bones_workflow.webp)
 
 ### How Spring Bones Work
 
@@ -26,9 +26,9 @@ A **spring chain** is a sequence of bones that simulates physics together and it
 
 The chain, or hierarchy, for spring bones should be **linear**, which means that each bone can only have one child. Bones with two or more children may have an unexpected behaviour.
 
-![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.png)
+![A nice and linear spring chain.](../../images/spring-bones/Spring_Chain.webp)
 
-![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.png)
+![Bones with 2 or more children will have unexpected behaviour.](../../images/spring-bones/Forked_Chain.webp)
 
 ### The Hierarchy
 
@@ -70,17 +70,17 @@ Spring bones are additional bones that you create in Blender for the base avatar
 
 To create a new bone, select the avatar Armature and, in **Edit Mode**, make sure you have the cursor where you want the bone to be created and press **Shift+A**. Another way to do it would be by duplicating an existing bone by pressing **Shift+D**. Once you have the first bone of the chain, press **E** to extrude it and create the rest of the chain.
 
-![Press Shift+A to create a bone where the cursor is.](../../images/spring-bones/Create_Bones.gif)
+![Press Shift+A to create a bone where the cursor is.](../../images/spring-bones/Create_Bones.webp)
 
 It's important to notice that a spring chain doesn't have to be connected to the skeleton parent, so you can just place it anywhere on the mesh. However, the spring chain **has** to be connected, you can't offset any of the spring bones.
 
 Once you create the bones, rename them following the naming convention mentioned above and make sure to parent the chain to the proper bone. Dotted lines will show the parent of the chain. If there's none, it means that the chain has no parent. In **Edit Mode**, select the child first, then select the parent and press **Ctrl+P** > **Keep Offset**.
 
-![Parent bones by selecting the child first, then the parent and press Ctrl+P.](../../images/spring-bones/Parenting_Bones.gif)
+![Parent bones by selecting the child first, then the parent and press Ctrl+P.](../../images/spring-bones/Parenting_Bones.webp)
 
 To rename a bone, select it in Edit Mode or Pose Mode, got to the Bone Properties tab and rename it according to the naming convention. Do this for all the bones in the chain.
 
-![](../../images/spring-bones/Rename_Bones.png)
+![](../../images/spring-bones/Rename_Bones.webp)
 
 {% hint style="info" %} Tip!
 
@@ -88,13 +88,13 @@ To make sure the bone is properly placed, select the mesh in **Object Mode** and
 
 Go back to **Object Mode**, select the armature > go to **Edit Mode** > select the desired bone > **Shift+S** > **Selection to cursor**. {% endhint %}
 
-![Use Shift+S to position the bone in the right place in the mesh.](../../images/spring-bones/Create_Bones2.gif)
+![Use Shift+S to position the bone in the right place in the mesh.](../../images/spring-bones/Create_Bones2.webp)
 
 ### Skinning the Mesh
 
 Skinning is the process of binding the mesh to the armature, so that they move together. For this, we define how much influence (weight) each bone will have on the vertices. The more weight, the more the bone will deform the mesh. To do that, go to **Object Mode**, select the mesh first, press **Shift** and select the armature, press **Ctrl+P**. There are two ways of doing this, either select **With Empty Groups** or **With Automatic Weights**.
 
-![](../../images/spring-bones/Parenting_Mesh.gif)
+![](../../images/spring-bones/Parenting_Mesh.webp)
 
 #### With Automatic Weights
 
@@ -102,23 +102,23 @@ As the name says, with this method, Blender will try to set the skin weights aut
 
 If you know for sure that you won't need certain bones to affect the mesh, you can just click on the **lock icon** to lock the groups you want, click on the dropdown menu and **Delete All Unlocked Groups** to remove them from the object. For example, if you're working on a hair, having groups for feet and hands makes no sense. In that case, delete everything that's not the head or the spring bones, like in the example below. Also make sure to delete the group for the end bone of the spring chain.
 
-![Deleting vertex groups.](../../images/spring-bones/Deleting_Groups.gif)
+![Deleting vertex groups.](../../images/spring-bones/Deleting_Groups.webp)
 
 #### With Empty Groups
 
 In this method, Blender will create all vertex groups for each bone in the armature, but they will have a weight of zero by default. You will have to manually assign the weights in Edit Mode or paint them in Weight Paint mode. This gives you more control over what's being affected by each group and can be extra helpful for hard surfaces or object that need to be completely assigned to a certain group. In any case, once you've assigned the weights, they will need to be tested in Pose Mode and then tweaked in Weight Paint.
 
-![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.gif)
+![Parenting with empty groups.](../../images/spring-bones/Empty_Groups_Compressed.webp)
 
 #### Painting Weights
 
 To test the skinned mesh, select the armature and go to **Pose Mode**, set a key frame, then rotate the bones to create another pose and set another keyframe. That way you can check how the mesh is deforming with movement. Once you have the poses set, go back to **Object Mode**, select the mesh and go to **Weight Paint**.
 
-![](../../images/spring-bones/Setting_Poses_Compressed.gif)
+![](../../images/spring-bones/Setting_Poses_Compressed.webp)
 
 In **Weight Paint**, in the Tools tab you will find different brushes to tweak the skin weights. Select the Vertex Group you want to edit (if they are locked, just unlock them so you can edit edit the influence) and use the brush to add or remove influence. Black means zero influence, while red means that that group completely influences the mesh. Enabling the wireframe on **Overlays** will make it easier to see what you are painting.
 
-![](../../images/spring-bones/Weight_Paint_Compressed.gif)
+![](../../images/spring-bones/Weight_Paint_Compressed.webp)
 
 Use the add, subtract or smooth brushes to get the desired result. Test different extreme poses too to see how the mesh is deforming and if there are no vertex left without weights. If you're happy with the result, it's time to export it!
 
@@ -126,17 +126,17 @@ Use the add, subtract or smooth brushes to get the desired result. Test differen
 
 Before exporting, make sure to delete any animation clip created when testing the poses. Go to Pose Mode, select all the bones by pressing **A** and press **Ctrl+R**, then **Ctrl+S** and finally **Ctrl+G** to delete any transforms on your armature. Then go back to object mode, change the Display Mode from View Layer to Blender File, expand Actions and right click and delete the animation file.
 
-![](../../images/spring-bones/Delete_Action.gif)
+![](../../images/spring-bones/Delete_Action.webp)
 
 If you have any other objects in your scene, like avatar mesh, turn the visibility off by clicking on the eye icon in the Outliner. Then, go to **File** > **Export** > **gltf 2.0 (.glb, .gltf)**. For the export settings, expand Include and in **Limit to** toggle **Visible Objects**. Click on Export and you're ready to upload your file to the Builder!
 
-![](../../images/spring-bones/Export_Settings.png)
+![](../../images/spring-bones/Export_Settings.webp)
 
 ## Configuring Spring Bones in the Builder
 
 After uploading a wearable that contains `springbone`-named bones, the Builder automatically detects them and shows the **Spring Bones** configuration panel.
 
-![](../../images/spring-bones/03_spring_bones_panel.png)
+![](../../images/spring-bones/03_spring_bones_panel.webp)
 
 From this panel you can configure the physics parameters for each spring root bone. The avatar preview in the Builder will immediately reflect your changes, so you can fine-tune the behavior in real time.
 

@@ -18,11 +18,11 @@ Para importar un modelo 3D, una imagen, un archivo de sonido o un video a tu esc
 
 1. Arrastra archivos directamente al panel inferior. También puedes hacer clic en el botón **+ Import Assets** en la parte superior izquierda del panel inferior y seleccionar desde tu unidad local.
 
-![](../images/editor/import-assets.png)
+![](../../.gitbook/assets/import-assets.webp)
 
 2. Verifica la miniatura del modelo y haz clic en **Import**. Al importar múltiples assets, usa los botones de flecha para recorrer cada asset.
 
-![](../images/editor/import-confirmation.png)
+![](../../.gitbook/assets/import-confirmation.webp)
 
 Ahora puedes encontrar tu asset en la pestaña **Local Assets**, bajo la carpeta **scene**. Los modelos 3D aparecen bajo la carpeta _scene/3D Model_, las imágenes bajo _scene/Image_
 
@@ -32,7 +32,7 @@ Ahora puedes encontrar tu asset en la pestaña **Local Assets**, bajo la carpeta
 {% hint style="info" %}
 **💡 Tip**: También puedes pegar archivos directamente en la carpeta del proyecto. Después de hacer esto, presiona el botón **Refresh** junto al botón **Import Assets** para ver los nuevos archivos.
 
-<img src="../images/editor/refresh-assets.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/refresh-assets.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Formatos soportados
@@ -68,9 +68,9 @@ Los siguientes formatos de modelo 3D son soportados:
 
 Ambos pueden incluir archivos de imagen de textura externos, o archivos binarios externos (_.bin_).
 
-Puedes convertir otros formatos a estos formatos con varios editores y herramientas diferentes. Consulta [3D modeling](../3d-modeling/3d-models.md) para recomendaciones y tips.
+Puedes convertir otros formatos a estos formatos con varios editores y herramientas diferentes. Consulta [3D modeling](../../3d-modeling/3d-models.md) para recomendaciones y tips.
 
-Todos los materiales en los modelos deben ser _basic material_ o _PBR_, y todas las texturas deben tener tamaños que sean potencias de dos (ej: 256, 512). Consulta [Scene limitations](../sdk7/optimizing/scene-limitations.md) para detalles.
+Todos los materiales en los modelos deben ser _basic material_ o _PBR_, y todas las texturas deben tener tamaños que sean potencias de dos (ej: 256, 512). Consulta [Scene limitations](../../sdk7/optimizing/scene-limitations.md) para detalles.
 
 Todos los archivos de modelo 3D deben ocupar menos de 50 MB cada uno para ser utilizables en una escena. Los archivos más grandes no son soportados.
 
@@ -103,7 +103,7 @@ Ten en cuenta que en varios de estos sitios, puedes elegir en qué formato desca
 
 ### Colliders
 
-Puede que encuentres que al ejecutar un preview el jugador puede caminar a través de tus modelos 3D importados. Esto es probable porque los modelos están faltando un _collider mesh_ para definir una geometría de colisión. Consulta [colliders](../3d-modeling/colliders.md) para más detalles e instrucciones.
+Puede que encuentres que al ejecutar un preview el jugador puede caminar a través de tus modelos 3D importados. Esto es probable porque los modelos están faltando un _collider mesh_ para definir una geometría de colisión. Consulta [colliders](../../3d-modeling/colliders.md) para más detalles e instrucciones.
 
 {% hint style="info" %}
 **💡 Tip**: En lugar de editar el modelo para agregar un _collider mesh_, una alternativa más simple es agregar un smart item _Invisible wall_ con aproximadamente la misma forma para estar en su lugar.
@@ -117,4 +117,4 @@ Ten en cuenta que no tienes ningún control sobre cuándo comienza o se detiene 
 
 Si hay múltiples jugadores en la escena, pueden estar viendo la animación fuera de sincronización entre sí.
 
-Para cambiar este comportamiento, puedes incluir un componente **Animator**. Consulta [Make any item smart](../scene-editor/interactivity/make-any-item-smart.md) para herramientas sin código para hacer tu ítem interactivo.
+Para cambiar este comportamiento, puedes incluir un componente **Animator**. Consulta [Make any item smart](../interactivity/make-any-item-smart.md) para herramientas sin código para hacer tu ítem interactivo.

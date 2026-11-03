@@ -28,7 +28,7 @@ El mockeo de recursos externos al módulo que está siendo probado DEBERÍA hace
 El texto en el describe e its DEBE seguir estas guías:
 
 * El describe principal de una saga o handler principal DEBE empezar con *when handling*, indicando que lo que se va a probar es un handler. Siguiendo la frase *when handling*, una descripción de la acción (o la intención que la acción) a ser manejada DEBE escribirse. Ej. *when handling the action that signals a successful fetch.*
-* Los describes internos diferenciarán contextos de ejecución, siguen las mismas reglas descritas en la sección [Describir y construir contexto](writing-tests.md#describing-and-building-context).
+* Los describes internos diferenciarán contextos de ejecución, siguen las mismas reglas descritas en la sección [Describir y construir contexto](writing-tests.md#describir-y-construir-contexto).
 * Los **it**s DEBERÍAN describir lo que se espera de la prueba, comenzando con un *should put* y la descripción de las acciones que deberían ponerse al ejecutar el handler.
 
 ### Ejemplo de saga
@@ -236,7 +236,7 @@ Los selectores son métodos que toman un estado y retornan una sección de ese e
 
 Hay dos tipos de selectores, selectores memoizados y selectores normales o comunes. Los selectores normales o comunes DEBEN probarse como cualquier otra función probada unitariamente y los selectores memoizados DEBERÍAN probarse usando el `resultFunc` o la función que recibe las partes memoizadas del estado y retorna el valor deseado.
 
-Los **Describe**s e **it**s DEBEN escribirse como se describe en la sección [Describir y construir contexto](writing-tests.md#describing-and-building-context).
+Los **Describe**s e **it**s DEBEN escribirse como se describe en la sección [Describir y construir contexto](writing-tests.md#describir-y-construir-contexto).
 
 ### Ejemplo de selectores
 
@@ -326,7 +326,7 @@ describe('when getting the enhanced collections', () => {
 
 Los creadores de acciones están a cargo de crear las acciones que más tarde serán procesadas en los reducers. Aunque los creadores de acciones suelen ser simples, DEBEN probarse para asegurar que hacen lo que esperamos.
 
-Los **Describe**s e **it**s DEBEN escribirse como se describe en la sección [Describir y construir contexto](writing-tests.md#describing-and-building-context).
+Los **Describe**s e **it**s DEBEN escribirse como se describe en la sección [Describir y construir contexto](writing-tests.md#describir-y-construir-contexto).
 
 ### Ejemplo de creadores de acciones
 

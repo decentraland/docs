@@ -47,7 +47,9 @@ LightSource.create(light, {
 
 ## Spot lights
 
-Spot lights are lights that shine in a specific direction, and cover a specific cone-shaped area. The direction of the light is defined by the entity's Transform component. The aperture of the cone is defined by the `innerAngle` and `outerAngle` properties of the `LightSource` component.
+Spot lights are lights that shine in a specific direction, and cover a specific cone-shaped area. The direction of the light is defined by the entity's Transform component: the light shines along the entity's forward direction (its local +Z axis). The aperture of the cone is defined by the `innerAngle` and `outerAngle` properties of the `LightSource` component.
+
+The example below rotates the entity 90 degrees around its X axis, so the light points straight down. A rotation of -90 degrees points it at the sky.
 
 ```ts
 import { engine, LightSource } from '@dcl/sdk/ecs'
@@ -56,7 +58,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -113,7 +115,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -140,7 +142,7 @@ const light = engine.addEntity()
 
 Transform.create(light, {
   position: Vector3.create(10, 3, 10),
-  rotation: Quaternion.fromEulerDegrees(-90, 0, 0),
+  rotation: Quaternion.fromEulerDegrees(90, 0, 0),
 })
 
 LightSource.create(light, {
@@ -183,11 +185,22 @@ Light sources can have a pretty big impact on the performance of your scene. For
 
 The number allowed active lights in a scene is capped at one per parcel, and beyond that it depends on the user´s selected quality settings.
 
-- Low quality: Maximum 4 lights (in a scene with enough parcels)
+- Low quality: no scene lights at all
 - Medium quality: Maximum 6 lights (in a scene with enough parcels)
 - High quality: Maximum 10 lights (in a scene with enough parcels)
+- Mobile: the app has its own presets, from no scene lights on Very Low up to 8 lights on High. See [Lights and particles on mobile](../../build-for-mobile/develop/optimize-performance.md#lights-and-particles).
+
+The quality settings slider can lower a preset's cap further.
 
 If there are more lights than allowed, the engine will automatically disable lights based on proximity of the light source to the player. As the player moves, the engine will re-enable lights that are close enough to the player.
+
+{% hint style="warning" %}
+**📔 Note**: On the Low quality preset, scene lights are switched off completely. A correctly built `LightSource` then shows nothing, and no amount of intensity, range or material tuning changes that. If a light "doesn't work", check the quality setting before anything else. Treat Medium as the lowest setting your scene supports, rather than requiring High.
+
+An emissive material that glows is not proof that a light is working. A glowing lamp mesh and the light it casts on nearby surfaces are two separate things to check.
+{% endhint %}
+
+Because some players see no scene lights at all (Low quality on desktop, Very Low on mobile), make sure your scene still works without them. Anything players need to see, like the path forward or an object they can interact with, should stand out through emissive materials, textures or the skybox. Use `LightSource` as an extra, not as the only cue. The same goes for shadows: don't make a shadow the only way to tell where an object is.
 
 In all cases, the engine will only render shadows for up to 3 light sources. If there are more lights with shadows than 3, the engine will automatically disable shadows for the remaining lights that are further away.
 
@@ -260,7 +273,7 @@ LightSource.create(light, {
 
 For example, you can apply the image below to produce a fun effect where the light is only visible in the areas where the texture is white. You can can use this with lights of any color and intensity.
 
-![](../../images/lightmask1.png)
+![](../../images/lightmask1.webp)
 
 With a black and white image, the light is either hitting an area or not. It's also possible to pass an image with colors, and these colors will tint your light on each area, this can be used to project a colored logo or image onto a surface.
 
@@ -287,7 +300,7 @@ LightSource.create(light, {
 
 For example, the image below displays each of the letters on different sides of the cube (Y on top, -Y on the bottom, X on the right, -X on the left, Z on the front, -Z on the back).
 
-![](../../images/point-light-mask1.png)
+![](../../images/point-light-mask1.webp)
 
 {% hint style="info" %}
 **💡 Tip**: Combine lights with a [Particle System](particle-system.md) for richer visual effects. For example, pair an additive-blend fire particle system with a warm point light to create a convincing campfire.

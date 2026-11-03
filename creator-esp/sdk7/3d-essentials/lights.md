@@ -122,7 +122,7 @@ LightSource.create(light, {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: Las sombras solo son compatibles con luces de foco. Las luces puntuales no admiten sombras. Si hay múltiples luces en la escena, algunas de ellas pueden no estar proyectando sombras, consulta [Optimización de luz](lights.md#light-optimization) para más información.
+**📔 Nota**: Las sombras solo son compatibles con luces de foco. Las luces puntuales no admiten sombras. Si hay múltiples luces en la escena, algunas de ellas pueden no estar proyectando sombras, consulta [Optimización de luz](lights.md#optimizacion-de-luz) para más información.
 {% endhint %}
 
 ## Encender y apagar una luz

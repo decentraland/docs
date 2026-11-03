@@ -53,11 +53,15 @@ When using the [**System-based**](system-based-events.md) method, you can achiev
 
 Both the entity highlight and the hover hint can be disabled via properties in these methods and components.
 
+The edge highlight outlines the entity whose collider the cursor is on, plus all of that entity's children. It never outlines the entity's parent or its siblings. Only shapes from a `MeshRenderer` and models from a `GltfContainer` get an outline, `TextShape` text doesn't. If you use an invisible box as a bigger clickable area, make the visible parts children of that box entity, otherwise nothing is outlined.
+
 You could also implement [advanced custom hints](system-based-events.md#advanced-custom-hints), for example you could play a sound, making the entity change color, spin or enlarge while being pointed at, etc. Whatever you do, make sure that it's a clear signifier.
 
 ## Obstacles
 
 Button events cast rays that only interact with the first entity on their path that is subscribed to the pointer events collision layer. This is true as long as the entity is within its distance limits. If the entity defines distance limits for both the camera and the avatar, it's enough for either one of the two to be close enough.
+
+Register the pointer event on the same entity that has the collider. A pointer event registered on a parent entity, or on a child entity that has no collider of its own, never fires.
 
 For an entity to be intercepted by the ray of a pointer event, either:
 

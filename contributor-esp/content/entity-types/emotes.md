@@ -1,10 +1,10 @@
-Los emotes son las [entidades](../entities) que contienen animaciones para los avatares de los jugadores.
+Los emotes son las [entidades](../entities.md) que contienen animaciones para los avatares de los jugadores.
 
 Incluyen archivos en formato GLB para diferentes formas de cuerpo.
 
 ## Punteros {#pointers}
 
-Los emotes tienen exactamente un [puntero](../pointers) asociado, que indica la colección a la que pertenecen y su índice dentro de ella. Son URNs de esta forma:
+Los emotes tienen exactamente un [puntero](../pointers.md) asociado, que indica la colección a la que pertenecen y su índice dentro de ella. Son URNs de esta forma:
 
 ```
 urn:decentraland:matic:collections-v2:<collection address>:<item index>
@@ -23,15 +23,15 @@ Para ilustrar, el array `pointers` para un emote se ve así:
 
 ## Campos de Metadata
 
-Los emotes comparten la mayoría de sus campos básicos con [wearables](wearables). La propiedad `emoteDataADR74` es donde se encuentra la información específica del emote.
+Los emotes comparten la mayoría de sus campos básicos con [wearables](wearables.md). La propiedad `emoteDataADR74` es donde se encuentra la información específica del emote.
 
 | Campo | Valor |
 | ----- | --- |
-| `id` | El [puntero](../pointers) que resuelve (o solía resolver) a este emote.
-| `name` | El título de visualización para este emote en una [colección](../collections).
+| `id` | El [puntero](../pointers.md) que resuelve (o solía resolver) a este emote.
+| `name` | El título de visualización para este emote en una [colección](../collections.md).
 | `description` | Una descripción extendida para este emote.
-| `image` | El [nombre de archivo interno](../entities#files) con una imagen para este emote.
-| `thumbnail` | El [nombre de archivo interno](../entities#files) para una versión 256x256 de la `image`.
+| `image` | El [nombre de archivo interno](../entities.md#files) con una imagen para este emote.
+| `thumbnail` | El [nombre de archivo interno](../entities.md#files) para una versión 256x256 de la `image`.
 | `rarity` | Uno de `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` o `unique`.
 | `i18n` | Un array de traducciones para el campo `name`.
 | `collectionAddress` | La dirección de Ethereum para la colección que contiene este emote.
@@ -107,8 +107,8 @@ Cada elemento en el campo `metadata.emoteDataADR74.representations` define los a
 
 | Campo | Valor |
 | ----- | --- |
-| `bodyShapes` | Un array de [punteros](../pointers) de forma de cuerpo aplicables.
-| `mainFile` | El [nombre de archivo interno](../entities#files) para el archivo GLB principal.
+| `bodyShapes` | Un array de [punteros](../pointers.md) de forma de cuerpo aplicables.
+| `mainFile` | El [nombre de archivo interno](../entities.md#files) para el archivo GLB principal.
 | `contents` | Todos los archivos, incluyendo `mainFile` y cualquiera adicional que pueda referenciar.
 
 Por ejemplo, un elemento `representation`:

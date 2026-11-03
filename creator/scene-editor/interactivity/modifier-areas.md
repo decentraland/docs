@@ -19,7 +19,7 @@ You can add a modifier area in two ways:
 
 **From the components menu:** Select any existing entity, click the **+** button at the top of the properties panel, and choose **Avatar Modifier Area** or **Camera Modifier Area** from the list. See [Add components](../build/components.md#add-components) for more details.
 
-![The add component menu open on an entity named Stage area, listing components under the 3D Content and Interaction groups, including Avatar Modifier Area and Camera Modifier Area.](../../images/editor/add-component.png)
+![The add component menu open on an entity named Stage area, listing components under the 3D Content and Interaction groups, including Avatar Modifier Area and Camera Modifier Area.](../../images/editor/add-component.webp)
 
 ## Sizing the area
 
@@ -33,7 +33,7 @@ The size of a modifier area is controlled by the entity's **Transform scale**. I
 
 The Avatar Modifier Area panel has two settings:
 
-![The Avatar Modifier Area component panel, with a Modifiers dropdown showing Hide Avatars selected, an Exclude Player IDs section, and an Add Player ID button.](../../images/editor/avatar-modifier-area-component.png)
+![The Avatar Modifier Area component panel, with a Modifiers dropdown showing Hide Avatars selected, an Exclude Player IDs section, and an Add Player ID button.](../../images/editor/avatar-modifier-area-component.webp)
 
 ### Modifiers
 
@@ -66,7 +66,7 @@ This is useful for events where you want to hide audience avatars on a stage but
 
 The Camera Modifier Area panel has one setting:
 
-![The Camera Modifier Area component panel, with a Camera Mode dropdown set to First Person.](../../images/editor/camera-modifier-area-component.png)
+![The Camera Modifier Area component panel, with a Camera Mode dropdown set to First Person.](../../images/editor/camera-modifier-area-component.webp)
 
 ### Camera Mode
 

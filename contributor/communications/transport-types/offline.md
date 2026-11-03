@@ -2,7 +2,7 @@
 
 The Offline transport is a dummy implementation to signal that there is no comms server available in a realm. It's commonly used in testing and development environments.
 
-The transport never emits incoming messages, and ignores all outgoing messages. If you want an offline variant with simulated behavior, see [Simulator](../../transport-types/simulator/) instead.
+The transport never emits incoming messages, and ignores all outgoing messages. If you want an offline variant with simulated behavior, see [Simulator](simulator.md) instead.
 
 URIs have this look:
 

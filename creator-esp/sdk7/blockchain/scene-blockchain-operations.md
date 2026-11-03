@@ -14,7 +14,7 @@ Una escena de Decentraland puede interactuar con el blockchain de Ethereum. Esto
 
 Ten en cuenta que todas las transacciones en la mainnet de Ethereum que son activadas por una escena requerirán que un jugador apruebe y pague una tarifa de gas.
 
-Todas las operaciones blockchain también deben llevarse a cabo como [funciones asíncronas](../sdk7/programming-patterns/async-functions.md), ya que el timing depende de eventos externos.
+Todas las operaciones blockchain también deben llevarse a cabo como [funciones asíncronas](../programming-patterns/async-functions.md), ya que el timing depende de eventos externos.
 
 ### Obtener la cuenta ethereum de un jugador
 
@@ -33,9 +33,9 @@ export function main() {
 }
 ```
 
-Ten en cuenta que si un jugador ha ingresado a Decentraland como invitado, no tendrá un wallet de ethereum conectado. Si están conectados como invitados, el campo `isGuest` en la respuesta de `getPlayer()` será true. Si `hasConnectedWeb3` es true, entonces puedes obtener la dirección del jugador del campo `publicKey`. Aprende más sobre los datos que puedes obtener de un jugador en [obtener datos del jugador](../sdk7/interactivity/user-data.md#get-player-data)
+Ten en cuenta que si un jugador ha ingresado a Decentraland como invitado, no tendrá un wallet de ethereum conectado. Si están conectados como invitados, el campo `isGuest` en la respuesta de `getPlayer()` será true. Si `hasConnectedWeb3` es true, entonces puedes obtener la dirección del jugador del campo `publicKey`. Aprende más sobre los datos que puedes obtener de un jugador en [obtener datos del jugador](../interactivity/user-data.md#get-player-data)
 
-Debes envolver la función en una función `async()`, aprende más sobre esto en [funciones async](../sdk7/programming-patterns/async-functions.md)
+Debes envolver la función en una función `async()`, aprende más sobre esto en [funciones async](../programming-patterns/async-functions.md)
 
 {% hint style="warning" %}
 **📔 Nota**: Aunque la dirección eth puede contener caracteres en mayúscula, algunos navegadores convierten la cadena devuelta a minúsculas automáticamente. Si deseas comparar valores de dirección y que funcione en todos los navegadores, usa el método `.toLowerCase()` para convertir el valor a minúsculas.

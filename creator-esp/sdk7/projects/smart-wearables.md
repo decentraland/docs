@@ -8,7 +8,7 @@ metaLinks:
 
 # Smart Wearables
 
-Los smart wearables son un tipo de escena global. Como las [experiencias portables](../sdk7/projects/portable-experiences.md), son gameplay que los jugadores llevan consigo mientras se mueven por el metaverso. Por ejemplo, mientras ejecuta una escena global, un jugador podría tomar una bola de nieve del suelo en Genesis Plaza, alejarse a otra escena y lanzar la bola de nieve a otro jugador que también está jugando el mismo juego.
+Los smart wearables son un tipo de escena global. Como las [experiencias portables](portable-experiences.md), son gameplay que los jugadores llevan consigo mientras se mueven por el metaverso. Por ejemplo, mientras ejecuta una escena global, un jugador podría tomar una bola de nieve del suelo en Genesis Plaza, alejarse a otra escena y lanzar la bola de nieve a otro jugador que también está jugando el mismo juego.
 
 Los smart wearables son experiencias portables que se activan cuando el jugador se pone un cierto artículo de ropa. Los smart wearables pueden otorgar a los jugadores nuevas habilidades, como un jetpack que les permite volar, o agregar una nueva capa de contenido sobre el resto del mundo, como colocar aleatoriamente monedas para recolectar en toda genesis city.
 
@@ -30,7 +30,7 @@ Este comando crea los archivos y estructura básicos para un nuevo smart wearabl
 
 ### Los archivos en la plantilla
 
-La carpeta de un proyecto de Smart Wearable completamente nuevo es muy similar a la de una [escena de Decentraland](../sdk7/projects/scene-files.md), pero notarás las siguientes diferencias:
+La carpeta de un proyecto de Smart Wearable completamente nuevo es muy similar a la de una [escena de Decentraland](scene-files.md), pero notarás las siguientes diferencias:
 
 * `wearable.json` incluye todos los metadatos para la experiencia portable
 * Hay un modelo 3D de marcador de posición (glasses.glb) y miniatura (glasses.png) para un par de gafas oscuras. Debes reemplazarlos con el wearable real que estás creando
@@ -132,13 +132,13 @@ Elige una imagen que establezca las expectativas del jugador y represente adecua
 
 Ejecutar una vista previa de una experiencia portable es igual que ejecutar la de una escena, simplemente haz clic en **Run Scene** en la pestaña de Decentraland, o ejecuta `npm run start` en la línea de comandos. Si el archivo `wearable.json` está correctamente configurado y el proyecto se reconoce como un smart wearable, notarás que todo lo visible a tu alrededor son las parcelas vacías predeterminadas. En este modo de vista previa, no estás restringido a ningún conjunto de parcelas, puedes agregar modelos 3D o sonidos en cualquier lugar del mundo.
 
-Para probar cómo se comporta el smart wearable en el contexto de una escena, también puedes ejecutar una vista previa de tu wearable al mismo tiempo que ejecutas una vista previa de una o varias escenas usando un [Workspace](../sdk7/projects/workspaces.md). Por ejemplo, puedes ejecutar tu smart wearable junto con la escena [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) para probar cómo se comporta en una escena concurrida, mientras está en un ascensor, etc.
+Para probar cómo se comporta el smart wearable en el contexto de una escena, también puedes ejecutar una vista previa de tu wearable al mismo tiempo que ejecutas una vista previa de una o varias escenas usando un [Workspace](workspaces.md). Por ejemplo, puedes ejecutar tu smart wearable junto con la escena [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) para probar cómo se comporta en una escena concurrida, mientras está en un ascensor, etc.
 
 ### Consejos
 
 * Al posicionar una entidad, ten en cuenta que las posiciones son globales, relativas a las coordenadas 0,0 de Genesis Plaza.
 * Para reaccionar a jugadores cercanos:
-  * Consulta [Obtener todos los jugadores](../sdk7/interactivity/user-data.md#fetch-all-players) para saber cómo obtener datos de otros jugadores en los alrededores.
+  * Consulta [Obtener todos los jugadores](../interactivity/user-data.md#fetch-all-players) para saber cómo obtener datos de otros jugadores en los alrededores.
   * Ten en cuenta que la carga del smart wearable, escenas circundantes y otros jugadores puede ocurrir en diferentes órdenes dependiendo de la situación. Si el jugador ingresa a Decentraland con el smart wearable ya puesto, es probable que la escena global de tu wearable se cargue antes que otros jugadores. Por otro lado, si el jugador primero carga en una escena y luego se pone el wearable, es probable que otros jugadores ya estén cargados para cuando la escena del wearable comience a ejecutarse.
   * Para experiencias multijugador, espera hasta que el jugador esté conectado a una isla dentro de su realm. Obtén los datos del realm y verifica el campo 'room'. Si el campo 'room' es null, el jugador aún no está conectado a una isla y otros jugadores no estarán cargados todavía. Puedes verificar esto periódicamente cada 1 segundo hasta que el campo 'room' esté presente, y solo entonces inicializar tu lógica.
 * Para interactuar con escenas circundantes:
@@ -193,13 +193,13 @@ Para publicar tu smart wearable:
 
 Para prevenir abusos, ciertas funcionalidades no están permitidas en experiencias portables por defecto, y requieren agregar una bandera de permiso.
 
-Consulta [Permisos requeridos](../sdk7/projects/scene-metadata.md#required-permissions) para más detalles.
+Consulta [Permisos requeridos](scene-metadata.md#required-permissions) para más detalles.
 
 ### Limitaciones
 
 > IMPORTANTE: El smart wearable completo necesita caber dentro de 3MB. Esto incluye el modelo 3D, miniatura, código, librerías, archivos de sonido, modelos 3D adicionales, imágenes de UI, etc. Este límite es para la carpeta sin comprimir. El builder no te permitirá subir wearables más grandes que esto. Para verificar el tamaño de tu experiencia portable, ejecuta `npm run pack`, el tamaño del proyecto se especifica en el texto de salida del comando. También puedes verificar esto descomprimiendo el archivo `smart-wearable.zip` generado y verificando el tamaño de la carpeta.
 
-Los smart wearables solo ejecutan la experiencia portable para el jugador que usa el wearable. Otros jugadores no ven los efectos. Por ejemplo, si la experiencia portable renderiza una mascota que sigue al jugador, otros jugadores alrededor no verán esta mascota. Sin embargo, otros jugadores verán a los avatares realizar animaciones que se ejecutan como parte de la escena del wearable, incluso [animaciones de avatar personalizadas](../sdk7/interactivity/trigger-emotes.md#custom-animations) subidas como parte de los archivos del smart wearable.
+Los smart wearables solo ejecutan la experiencia portable para el jugador que usa el wearable. Otros jugadores no ven los efectos. Por ejemplo, si la experiencia portable renderiza una mascota que sigue al jugador, otros jugadores alrededor no verán esta mascota. Sin embargo, otros jugadores verán a los avatares realizar animaciones que se ejecutan como parte de la escena del wearable, incluso [animaciones de avatar personalizadas](../interactivity/trigger-emotes.md#custom-animations) subidas como parte de los archivos del smart wearable.
 
 Los smart wearables solo funcionan cuando los jugadores los tienen puestos. Por esta razón, los jugadores solo pueden tener un número limitado de smart wearables activados, y dependiendo de qué parte del cuerpo ocupen, algunos serán incompatibles con otros. Por ejemplo, no puedes tener dos sombreros al mismo tiempo, o un casco y cabello al mismo tiempo.
 

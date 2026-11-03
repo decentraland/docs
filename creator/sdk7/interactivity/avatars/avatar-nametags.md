@@ -6,7 +6,7 @@ description: Show a custom label above an avatar's nametag, to display a rank, a
 
 The `AvatarNametag` component adds a small plate above an avatar's regular nametag, showing text that your scene chooses. Use it to show a rank, a role, a team, or anything else your scene tracks about a player, like "VIP", "Team Red", or "Club Owner".
 
-<figure><img src="../../../images/avatar-nametag.png" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
+<figure><img src="../../../images/avatar-nametag.webp" alt="An avatar with a Club Owner plate floating above its regular nametag"><figcaption><p>A scene-provided plate above the player's regular nametag</p></figcaption></figure>
 
 This page covers how to add a plate, style it, and keep it in step as players come and go.
 
@@ -55,6 +55,8 @@ Three optional fields take a [Color3](../../3d-essentials/color-types.md):
 * `backgroundColor`: the plate's fill. Defaults to the client's native nametag background color.
 * `borderColor`: the plate's outline. Defaults to `backgroundColor`, so there is no visible border unless you set it.
 
+`Color3` has no alpha channel, and the component has no opacity field, so the plate is always fully opaque.
+
 ```ts
 import { AvatarNametag, engine } from '@dcl/sdk/ecs'
 import { Color3 } from '@dcl/sdk/math'
@@ -87,6 +89,7 @@ AvatarNametag.deleteFrom(engine.PlayerEntity)
 
 A few details are worth knowing before you pick your label text:
 
+* **Labels are a single line.** They never wrap.
 * **Long labels are truncated** with an ellipsis. Keep labels to a word or two.
 * **An empty label** (`''`) draws the plate with no text in it.
 * **Spaces are kept**, so a label made only of spaces widens a text-less plate. This is a way to size a plain colored plate.

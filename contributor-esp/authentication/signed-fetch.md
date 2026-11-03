@@ -3,7 +3,7 @@
 
 Cuando los clientes del protocolo desean hacer solicitudes HTTPS autenticadas, pueden aprovechar el mecanismo estándar de _signed fetch_.
 
-Un signed fetch es una solicitud que incluye una [cadena de autenticación](authchain.md), representada a través de headers. Los servidores con APIs compatibles con Decentraland pueden validar identidades antes de, por ejemplo, [permitir solicitudes desde escenas](../../runtime/modules/signed_fetch.md) o crear [adaptadores](../../comms/overview.md).
+Un signed fetch es una solicitud que incluye una [cadena de autenticación](authchain.md), representada a través de headers. Los servidores con APIs compatibles con Decentraland pueden validar identidades antes de, por ejemplo, [permitir solicitudes desde escenas](../runtime/modules/signed-fetch.md) o crear [adaptadores](../communications/overview.md).
 
 ## Headers
 

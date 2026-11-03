@@ -47,7 +47,7 @@ Para contribuidores, comienza explorando la sección de [Guías del Contribuidor
 
 ### Enlaces Rápidos
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Arquitectura</strong></td><td>Descripción general de la arquitectura del sistema</td><td></td><td><a href="architecture/architecture.md">architecture.md</a></td></tr><tr><td><strong>Guías del Contribuidor</strong></td><td>Directrices y mejores prácticas</td><td></td><td><a href="contributor-guides/contributor-guides.md">contributor-guides.md</a></td></tr><tr><td><strong>Referencia de API</strong></td><td>Documentación de API para servicios</td><td></td><td><a href="apis/">apis</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Arquitectura</strong></td><td>Descripción general de la arquitectura del sistema</td><td></td><td><a href="architecture/architecture.md">architecture.md</a></td></tr><tr><td><strong>Guías del Contribuidor</strong></td><td>Directrices y mejores prácticas</td><td></td><td><a href="contributor-guides/contributor-guides.md">contributor-guides.md</a></td></tr><tr><td><strong>Referencia de API</strong></td><td>Documentación de API para servicios</td><td></td><td><a href="../apis/README.md">apis</a></td></tr></tbody></table>
 
 ## Recursos Adicionales
 

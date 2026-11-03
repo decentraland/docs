@@ -8,19 +8,19 @@ metaLinks:
 
 # Metadatos de Escena
 
-Una escena es un proyecto de Decentraland que está delimitado espacialmente, y está mapeado a una o varias parcelas. Si una escena se despliega al mapa de Genesis City de Decentraland, los jugadores pueden experimentarla visitando las coordenadas de la escena. Si una escena se despliega a un [World](../worlds/about.md), los jugadores pueden visitarla vía URL.
+Una escena es un proyecto de Decentraland que está delimitado espacialmente, y está mapeado a una o varias parcelas. Si una escena se despliega al mapa de Genesis City de Decentraland, los jugadores pueden experimentarla visitando las coordenadas de la escena. Si una escena se despliega a un [World](../../worlds/about.md), los jugadores pueden visitarla vía URL.
 
-Consulta [Archivos en una escena](../sdk7/projects/scene-files.md) para obtener una lista de qué archivos se usan en un proyecto de escena.
+Consulta [Archivos en una escena](scene-files.md) para obtener una lista de qué archivos se usan en un proyecto de escena.
 
-### Metadatos
+### Metadatos {#metadata}
 
-Para editar los metadatos de una escena en el [Scene Editor](../scene-editor/get-started/about-editor.md), abre una escena y haz clic en el **ícono de lápiz**.
+Para editar los metadatos de una escena en el [Scene Editor](../../scene-editor/get-started/about-editor.md), abre una escena y haz clic en el **ícono de lápiz**.
 
-![](../images/editor/pencil-icon.png)
+![](../../.gitbook/assets/pencil-icon.webp)
 
 Esto abre el menú de la escena, donde puedes configurar múltiples propiedades.
 
-![](../images/editor/metadata-ui.png)
+![](../../.gitbook/assets/metadata-ui.webp)
 
 Alternativamente, puedes editar directamente el archivo `scene.json`, donde se almacenan todos estos valores.
 
@@ -32,13 +32,13 @@ Alternativamente, puedes editar directamente el archivo `scene.json`, donde se a
 
 Es muy importante darle a tu escena un título, una descripción y una imagen miniatura para atraer jugadores a tu escena y que sepan qué esperar.
 
-Los jugadores verán estos datos mostrados en un modal cuando seleccionen las parcelas de tu escena en el mapa. También los verán en una pantalla de confirmación cuando sean [teletransportados](../sdk7/interactivity/external-links.md) allí por otra escena. Configurar datos convincentes aquí puede ayudar significativamente a conducir tráfico a tu escena.
+Los jugadores verán estos datos mostrados en un modal cuando seleccionen las parcelas de tu escena en el mapa. También los verán en una pantalla de confirmación cuando sean [teletransportados](../interactivity/external-links.md) allí por otra escena. Configurar datos convincentes aquí puede ayudar significativamente a conducir tráfico a tu escena.
 
 Cuando los jugadores navegan por el mundo y entran a tu escena, pueden leer el título de la escena desde debajo del minimapa.
 
-![](../images/media/scene-name.png)
+![](../../.gitbook/assets/scene-name.webp)
 
-Agrega estos datos a través del menú de escena en el [Scene Editor](../scene-editor/get-started/about-editor.md).
+Agrega estos datos a través del menú de escena en el [Scene Editor](../../scene-editor/get-started/about-editor.md).
 
 La miniatura debe ser una imagen _.png_ de un tamaño recomendado de _228x160_ píxeles. El tamaño mínimo soportado es _196x143_ píxeles. La imagen puede estirarse si las proporciones ancho-alto no coinciden con _228x160_.
 
@@ -50,7 +50,7 @@ La imagen en `navmapThumbnail` debe ser una ruta a un archivo de imagen en la ca
 
 En caso de que quieras que otros desarrolladores puedan contactarte, también puedes agregar información de contacto a tu escena.
 
-### Categorías
+### Categorías {#categories}
 
 Puedes agregar categorías a tu escena para ayudar a los jugadores y usuarios a explorar Decentraland mejor. Estas se usan en la [dApp Places de Decentraland](https://places.decentraland.org) para categorizar cada lugar y facilitar que los usuarios encuentren lo que les interesa.
 
@@ -107,7 +107,7 @@ El campo **Age Rating** se usa para clasificar el contenido de tu escena. Decent
 
 Al editar el Age Rating a través del `scene.json`, rating es un **código de una sola letra**, escribe **A** para adults.
 
-![](../images/media/content-moderation-flag-icon.png)
+![](../../.gitbook/assets/content-moderation-flag-icon.webp)
 
 ```json
  "scene": {
@@ -133,12 +133,12 @@ Las escenas con esta clasificación no se cargarán y nadie podrá interactuar c
 
 Hay ciertas funcionalidades que pueden deshabilitarse en escenas específicas para que los jugadores no puedan usarlas de forma abusiva. Configura estas en la pestaña **Settings** de la configuración de escena.
 
-![](../images/editor/scene-restrictions.png)
+![](../../.gitbook/assets/scene-restrictions.webp)
 
 Actualmente, solo se maneja de esta manera la siguiente funcionalidad:
 
 * **Voice Chat**: Se refiere a que los jugadores usen sus micrófonos para tener conversaciones por chat de voz con otros jugadores cercanos.
-* **Disable Portable Experiences**: Esta configuración establecerá el comportamiento para cualquier experiencia portable de un jugador mientras esté dentro de tu escena. Esto incluye no solo [experiencias portables](../sdk7/projects/portable-experiences.md) sino también [smart wearables](../sdk7/projects/smart-wearables.md). Con esta configuración, puedes elegir mantenerlos todos habilitados (predeterminado), deshabilitarlos u ocultar su UI. Esto es útil para escenas donde las experiencias portables podrían dar una ventaja injusta a algunos jugadores, por ejemplo usar un jetpack en un desafío de parkour. También se recomienda prevenirlos en escenas donde ocurren transacciones blockchain, y donde una experiencia portable maliciosa podría potencialmente suplantar la UI de la escena.
+* **Disable Portable Experiences**: Esta configuración establecerá el comportamiento para cualquier experiencia portable de un jugador mientras esté dentro de tu escena. Esto incluye no solo [experiencias portables](portable-experiences.md) sino también [smart wearables](smart-wearables.md). Con esta configuración, puedes elegir mantenerlos todos habilitados (predeterminado), deshabilitarlos u ocultar su UI. Esto es útil para escenas donde las experiencias portables podrían dar una ventaja injusta a algunos jugadores, por ejemplo usar un jetpack en un desafío de parkour. También se recomienda prevenirlos en escenas donde ocurren transacciones blockchain, y donde una experiencia portable maliciosa podría potencialmente suplantar la UI de la escena.
 
 En el archivo `scene.json`, estos toggles se gestionan bajo `featureToggles`. Las funcionalidades correspondientes están habilitadas por defecto, a menos que se especifiquen como _disabled_ en el archivo `scene.json`.
 
@@ -155,11 +155,11 @@ Si una propiedad `featureToggles` no existe en tu archivo `scene.json`, créala 
 
 Los **Spawn Settings** en la pestaña **Settings** definen dónde aparecen los jugadores cuando acceden a tu escena directamente, ya sea escribiendo directamente las coordenadas en el navegador o teletransportándose.
 
-![](../images/editor/spawn-point-ui.png)
+![](../../.gitbook/assets/spawn-point-ui.webp)
 
 Tu escena podría tener objetos que pueden bloquear a los jugadores de moverse si resulta que aparecen justo sobre ellos, como árboles o escaleras, o tu escena podría tener un terreno elevado. Sería una mala experiencia para los jugadores si aparecieran sobre algo que no les permite moverse. Por eso tienes la opción de establecer múltiples posiciones de aparición en ubicaciones ad-hoc.
 
-La posición está compuesta por coordenadas dentro de la escena. Estos números se refieren a una posición dentro de la parcela, similar a lo que usarías en el código de la escena en un componente Transform para [posicionar una entidad](../sdk7/3d-essentials/entity-positioning.md).
+La posición está compuesta por coordenadas dentro de la escena. Estos números se refieren a una posición dentro de la parcela, similar a lo que usarías en el código de la escena en un componente Transform para [posicionar una entidad](../3d-essentials/entity-positioning.md).
 
 {% hint style="warning" %}
 **📔 Nota**: Todos los puntos de aparición deben estar dentro de las parcelas que componen la escena. No puedes hacer aparecer a un jugador fuera del espacio de estas parcelas.
@@ -305,12 +305,12 @@ Simplemente agrega un campo `cameraTarget` a los datos del punto de aparición. 
 
 Este ejemplo hace aparecer a un jugador en _5, 1, 4_ mirando al Este hacia _10, 1, 4_. Si la posición de aparición es un rango, entonces la rotación del jugador siempre coincidirá con el objetivo indicado. Si hay múltiples puntos de aparición, cada uno puede tener su propio objetivo separado.
 
-### Permisos Requeridos
+### Permisos Requeridos {#required-permissions}
 
 La propiedad `requiredPermissions` gestiona varias funcionalidades controladas que podrían usarse de manera abusiva y dañar la experiencia de un jugador.
 
 {% hint style="warning" %}
-**📔 Nota**: Los permisos solo son relevantes en [experiencias portables](../sdk7/projects/portable-experiences.md) y [smart wearables](../sdk7/projects/smart-wearables.md). Las escenas normales (tanto en parcelas como en Worlds) no se ven afectadas por estos permisos, y son libres de usar la funcionalidad correspondiente.
+**📔 Nota**: Los permisos solo son relevantes en [experiencias portables](portable-experiences.md) y [smart wearables](smart-wearables.md). Las escenas normales (tanto en parcelas como en Worlds) no se ven afectadas por estos permisos, y son libres de usar la funcionalidad correspondiente.
 {% endhint %}
 
 Las funcionalidades correspondientes están bloqueadas de ser usadas por la escena, a menos que el permiso sea solicitado en el archivo `scene.json`.
@@ -324,8 +324,8 @@ Las funcionalidades correspondientes están bloqueadas de ser usadas por la esce
 
 Actualmente, los siguientes permisos se gestionan en smart wearables y experiencias portables:
 
-* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Se refiere a [mover un Jugador](../sdk7/interactivity/move-player.md)
-* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Se refiere a [Reproducir emotes en el avatar del jugador](../sdk7/interactivity/trigger-emotes.md)
+* `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Se refiere a [mover un Jugador](../interactivity/move-player.md)
+* `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Se refiere a [Reproducir emotes en el avatar del jugador](../interactivity/trigger-emotes.md)
 * `USE_WEB3_API`: Se refiere a interactuar con los wallets del navegador del jugador, para hacer transacciones o firmar mensajes.
 * `USE_FETCH`: Se refiere a enviar solicitudes http a servidores de terceros, usando `fetch` o `signedFetch`
 * `USE_WEBSOCKET`: Se refiere a abrir conexiones websocket con servidores de terceros
@@ -335,15 +335,15 @@ Si una propiedad `requiredPermissions` no existe en tu archivo `scene.json`, cr�
 
 ### Parcelas de la escena
 
-Al [desplegar](../sdk7/publishing/publishing.md) una escena, el contenido se sube a las coordenadas asignadas en la configuración de la escena. Una escena puede incluir una sola parcela, o una lista de hasta docenas de ellas.
+Al [desplegar](../publishing/publishing.md) una escena, el contenido se sube a las coordenadas asignadas en la configuración de la escena. Una escena puede incluir una sola parcela, o una lista de hasta docenas de ellas.
 
 Edita esto en la segunda pestaña del menú de escena en el Scene Editor.
 
-![](../images/editor/scene-parcels-3x3.png)
+![](../../.gitbook/assets/scene-parcels-3x3.webp)
 
 Usa los dropdowns y haz clic en **Apply Layout** para cambiar las dimensiones de tu escena. También puedes hacer clic en cada parcela individual para desactivarla de tu diseño.
 
-![](../images/editor/scene-parcels-toggled.png)
+![](../../.gitbook/assets/scene-parcels-toggled.webp)
 
 La escena predeterminada tiene sus coordenadas establecidas en _0,0_, esta información no es necesario cambiarla mientras desarrollas una escena offline, a menos que necesites ocupar múltiples parcelas. Necesitarás cambiar esto antes de desplegar, a coordenadas donde tengas permisos de despliegue.
 
@@ -429,7 +429,7 @@ Puedes establecer una hora del día fija para tu escena. Todos los jugadores ver
 
 Abre la configuración de la escena y haz clic en la pestaña **Settings** para encontrar la sección **Skybox**. Desmarca la opción **Auto** y establece la hora del día que desees.
 
-![](../images/editor/fixed-time-of-day.png)
+![](../../.gitbook/assets/fixed-time-of-day.webp)
 
 También puedes establecer la hora del día del skybox en el código de tu escena. Para hacer esto, agrega la siguiente sección a tu `scene.json` al nivel raíz:
 
@@ -475,7 +475,7 @@ executeTask(async () => {
 ```
 
 {% hint style="warning" %}
-**📔 Nota**: `getSceneInformation()` necesita ejecutarse como una [función async](../sdk7/programming-patterns/async-functions.md), ya que la respuesta puede demorar una fracción de segundo o más en devolver datos. No uses la función deprecada `getSceneInfo()`.
+**📔 Nota**: `getSceneInformation()` necesita ejecutarse como una [función async](../programming-patterns/async-functions.md), ya que la respuesta puede demorar una fracción de segundo o más en devolver datos. No uses la función deprecada `getSceneInfo()`.
 {% endhint %}
 
 El objeto devuelto por `getSceneInformation()` incluye lo siguiente:

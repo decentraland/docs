@@ -29,13 +29,13 @@ Note that modern CIDv1 identifiers are compatible with IPFS, yielding the same C
 
 ## Ownership and Persistence
 
-Except for [snapshots](snapshots), files stored in the network are associated to an [entity](entities) owned by an Ethereum account. The owner is the only one allowed to update the entity and related files.
+Except for [snapshots](snapshots.md), files stored in the network are associated to an [entity](entities.md) owned by an Ethereum account. The owner is the only one allowed to update the entity and related files.
 
 Content servers are required by protocol to always store the latest version of an entity and its files, but may choose whether to retain old versions according to their individual configuration.
 
 ## Downloading Files {#downloading}
 
-The [`/contents/<fileId>`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getContentFile) endpoint of the content server can be used to download any file. Their identifiers are found in the parent [entity's](entities)'s manifest.
+The [`/contents/<fileId>`](https://decentraland.github.io/catalyst-api-specs/#tag/Content-Server/operation/getContentFile) endpoint of the content server can be used to download any file. Their identifiers are found in the parent [entity's](entities.md)'s manifest.
 
 ## Uploading Files
 

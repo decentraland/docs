@@ -24,7 +24,7 @@ Una UI simple con elementos estáticos puede verse muy parecida a HTML, pero cua
 
 La UI predeterminada del explorador de Decentraland incluye un widget de chat, un mapa y otros elementos. Estos elementos UI siempre se muestran en la capa superior, encima de cualquier UI específica de escena. Entonces, si tu escena tiene elementos UI que ocupan el mismo espacio de pantalla que estos, serán ocluidos.
 
-Consulta [lineamientos UX](../sdk7/design-experience/ux-ui-guide.md) para consejos sobre cómo diseñar el aspecto de tu UI.
+Consulta [lineamientos UX](../design-experience/ux-ui-guide.md) para consejos sobre cómo diseñar el aspecto de tu UI.
 
 Cuando el jugador hace clic en el botón _cerrar UI_, en la esquina inferior derecha de la pantalla, todos los elementos UI se ocultan.
 

@@ -583,5 +583,5 @@ Component.stories.tsx # Storybook
 ## Próximos Pasos
 
 * Revisa [Custom Components](custom-components.md) para guías de creación de componentes
-* Ve [Migration Guide](broken-reference) para migraciones UI1 a UI2
+* Ve [Migration Guide](migration.md) para migraciones UI1 a UI2
 * Verifica [Process Overview](process-overview.md) para el flujo de trabajo completo

@@ -29,7 +29,7 @@ Puedes navegar libremente por el Marketplace sin necesidad de iniciar sesión, p
 
 La vista de Atlas te da una perspectiva aérea de cada parcela, Estate, carretera, distrito y plaza codificados por colores en Decentraland.
 
-![](broken-reference)
+![](../.gitbook/assets/market-atlas.webp)
 
 Puedes hacer clic y arrastrar el mapa para moverte, acercar y alejar, o pasar el cursor sobre una parcela para ver su ubicación x,y y propietario.
 

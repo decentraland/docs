@@ -16,7 +16,7 @@ Esta página cubre la infraestructura de soporte y servicios externos que impuls
 * Compartir pantalla
 * Audio espacial (en desarrollo)
 
-**Control de Acceso**: [Comms Gatekeeper](../apis/comms-gatekeeper/) genera tokens de tiempo limitado
+**Control de Acceso**: [Comms Gatekeeper](../../apis/apis/comms-gatekeeper/README.md) genera tokens de tiempo limitado
 
 **Usado Por**:
 
@@ -34,7 +34,7 @@ Envía correos de notificación:
 * Recordatorios de eventos
 * Notificaciones del sistema
 
-**Activado Por**: [Sistema de notificaciones](../apis/notifications-workers/)
+**Activado Por**: [Sistema de notificaciones](../../apis/apis/notifications-workers/README.md)
 
 ***
 
@@ -143,7 +143,7 @@ Genera imágenes de vista previa de avatar:
 
 Convierte activos desplegados a bundles optimizados para todas las plataformas.
 
-**Registra bundles en**: [Asset Bundle Registry](../apis/asset-bundle-registry/)
+**Registra bundles en**: [Asset Bundle Registry](../../apis/apis/asset-bundle-registry/README.md)
 
 ### Generador de LODs
 

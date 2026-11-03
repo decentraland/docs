@@ -16,7 +16,7 @@ Las experiencias portables son esencialmente escenas que no están restringidas 
 El **Creator Hub** actualmente no soporta la creación de proyectos de Experiencia Portable.
 {% endhint %}
 
-Los Smart Wearables son un tipo de experiencia portable que está asociada a un wearable, y se activa según si el jugador está usando ese wearable. Este documento no cubre esos, consulta [smart wearables](../sdk7/projects/smart-wearables.md) para más detalles.
+Los Smart Wearables son un tipo de experiencia portable que está asociada a un wearable, y se activa según si el jugador está usando ese wearable. Este documento no cubre esos, consulta [smart wearables](smart-wearables.md) para más detalles.
 
 ### Comenzando
 
@@ -88,7 +88,7 @@ executeTask(async () => {
 
 Podrías estar preocupado por prevenir el uso de experiencias portables en tu escena, ya que estas podrían dar a los jugadores habilidades que podrían considerarse trampa en un juego competitivo. Por ejemplo, en un juego de plataformas, un jugador que usa un jetpack tiene una ventaja muy injusta sobre otros.
 
-El enfoque más simple es agregar una bandera para bloquear todas las experiencias portables completamente en tu escena en cualquier momento, o prevenir que sus UIs se muestren. Consulta [feature toggles](../sdk7/projects/scene-metadata.md#feature-toggles). Esto también aplica a experiencias portables vinculadas a smart wearables.
+El enfoque más simple es agregar una bandera para bloquear todas las experiencias portables completamente en tu escena en cualquier momento, o prevenir que sus UIs se muestren. Consulta [feature toggles](scene-metadata.md#feature-toggles). Esto también aplica a experiencias portables vinculadas a smart wearables.
 
 Otro enfoque es consultar para ver las experiencias portables de un jugador, y tomar acción en consecuencia.
 
@@ -119,7 +119,7 @@ Una alternativa a terminar experiencias portables es cambiar el comportamiento d
 
 Para prevenir abusos, ciertas funcionalidades no están permitidas en experiencias portables por defecto, y requieren agregar una bandera de permiso.
 
-Consulta [Permisos requeridos](../sdk7/projects/scene-metadata.md#required-permissions) para más detalles.
+Consulta [Permisos requeridos](scene-metadata.md#required-permissions) para más detalles.
 
 {% hint style="warning" %}
 **📔 Nota**: Los jugadores son notificados sobre las banderas requeridas por la experiencia portable. Evita agregar permisos que no necesites, ya que puede hacer que los jugadores desconfíen de tu experiencia portable y la rechacen.
@@ -127,13 +127,13 @@ Consulta [Permisos requeridos](../sdk7/projects/scene-metadata.md#required-permi
 
 ### Limitaciones
 
-Las experiencias portables solo se ejecutan para el jugador que la activa. Otros jugadores no ven los efectos. Por ejemplo, si la experiencia portable renderiza una mascota que sigue al jugador, otros jugadores alrededor no verán esta mascota. Sin embargo, otros jugadores verán a los avatares realizar animaciones que se ejecutan como parte de la experiencia portable, incluso [animaciones de avatar personalizadas](../sdk7/interactivity/trigger-emotes.md#custom-animations) subidas como parte de los archivos de la experiencia portable.
+Las experiencias portables solo se ejecutan para el jugador que la activa. Otros jugadores no ven los efectos. Por ejemplo, si la experiencia portable renderiza una mascota que sigue al jugador, otros jugadores alrededor no verán esta mascota. Sin embargo, otros jugadores verán a los avatares realizar animaciones que se ejecutan como parte de la experiencia portable, incluso [animaciones de avatar personalizadas](../interactivity/trigger-emotes.md#custom-animations) subidas como parte de los archivos de la experiencia portable.
 
 ### Consejos
 
 * Al posicionar una entidad, ten en cuenta que las posiciones son globales, relativas a las coordenadas 0,0 de Genesis Plaza.
 * Para reaccionar a jugadores cercanos:
-  * Consulta [Obtener todos los jugadores](../sdk7/interactivity/user-data.md#fetch-all-players) para saber cómo obtener datos de otros jugadores en los alrededores.
+  * Consulta [Obtener todos los jugadores](../interactivity/user-data.md#fetch-all-players) para saber cómo obtener datos de otros jugadores en los alrededores.
   * Ten en cuenta que la carga de la experiencia portable, escenas circundantes y otros jugadores puede ocurrir en diferentes órdenes dependiendo de la situación. Si el jugador ingresa a Decentraland con la experiencia portable ya activada, es probable que tu experiencia portable se cargue antes que otros jugadores. Por otro lado, si el jugador primero carga en una escena y luego activa la experiencia portable, es probable que otros jugadores ya estén cargados para cuando la experiencia portable comience a ejecutarse.
   * Para experiencias multijugador, espera hasta que el jugador esté conectado a una isla dentro de su realm. Ejecuta `getRealm()` y verifica el campo 'room'. Si el campo 'room' es null, el jugador aún no está conectado a una isla y otros jugadores no estarán cargados todavía. Puedes verificar esto periódicamente cada 1 segundo hasta que el campo 'room' esté presente, y solo entonces inicializar tu lógica.
 * Para interactuar con escenas circundantes:

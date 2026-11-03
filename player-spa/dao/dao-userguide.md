@@ -9,17 +9,17 @@ metaLinks:
 
 ## Tabla de Contenidos
 
-* [Iniciar sesión](dao-userguide.md#logging-in)
-* [Poder de voto](dao-userguide.md#voting-power)
-* [Condiciones de Aprobación/Rechazo](dao-userguide.md#approvereject-conditions)
-* [Explorar propuestas](dao-userguide.md#browsing-all-proposals)
-* [Ver una propuesta](dao-userguide.md#viewing-a-proposal)
-* [Agregar propuestas a tu lista de seguimiento](dao-userguide.md#adding-proposals-to-your-watch-list)
-* [Votar](dao-userguide.md#voting)
-* [Participar en el Foro](dao-userguide.md#participating-in-the-forum-discussions)
-* [Crear una propuesta](dao-userguide.md#creating-a-proposal)
-* [Categorías de propuestas](dao-userguide.md#proposal-categories)
-* [Eliminar una propuesta](dao-userguide.md#deleting-a-proposal)
+* [Iniciar sesión](dao-userguide.md#iniciar-sesion)
+* [Poder de voto](dao-userguide.md#poder-de-voto)
+* [Condiciones de Aprobación/Rechazo](dao-userguide.md#condiciones-de-aprobacionrechazo)
+* [Explorar propuestas](dao-userguide.md#explorar-todas-las-propuestas)
+* [Ver una propuesta](dao-userguide.md#ver-una-propuesta)
+* [Agregar propuestas a tu lista de seguimiento](dao-userguide.md#agregar-propuestas-a-tu-lista-de-seguimiento)
+* [Votar](dao-userguide.md#votar)
+* [Participar en el Foro](dao-userguide.md#participar-en-las-discusiones-del-foro)
+* [Crear una propuesta](dao-userguide.md#crear-una-propuesta)
+* [Categorías de propuestas](dao-userguide.md#categorias-de-propuestas)
+* [Eliminar una propuesta](dao-userguide.md#eliminar-una-propuesta)
 
 ## Iniciar sesión
 
@@ -144,7 +144,7 @@ Después de enviar tu voto, puedes cambiarlo en cualquier momento antes del fina
 
 El DAO calcula tu poder de voto para cada propuesta individual en el momento en que se crea cada propuesta. Si tu VP cambia después de este momento, no afectará tu voto en esa propuesta.
 
-Para una discusión completa del poder de voto, y cómo y cuándo se calcula, por favor consulta la sección de [Poder de Voto](dao-userguide.md#voting-power) de la Guía de Usuario.
+Para una discusión completa del poder de voto, y cómo y cuándo se calcula, por favor consulta la sección de [Poder de Voto](dao-userguide.md#poder-de-voto) de la Guía de Usuario.
 
 ## Crear una propuesta
 

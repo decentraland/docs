@@ -1,6 +1,6 @@
 # websocket
 
-The websocket transport is one of the island messaging transports supported by the Decentraland comms protocol. Clients should use it when they receive an appropriate connection string from their realm's [Archipelago](../../archipelago/) service, or if it's indiciated as a fixed transport.
+The websocket transport is one of the island messaging transports supported by the Decentraland comms protocol. Clients should use it when they receive an appropriate connection string from their realm's [Archipelago](../archipelago.md) service, or if it's indiciated as a fixed transport.
 
 In the context of the websocket transport, an island is referred to as a _room_. Either name indicates the same thing: a group of nearby players that exchange updates and chat.
 
@@ -21,7 +21,7 @@ The transport uses the regular websocket protocol over HTTPS. Clients can open a
 All messages from the websocket transport are serialized using the [`WsPacket`](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L78) structure. They implement a set of protocol-level connectivity and authentication messages, plus a container type for client messages.
 
 {% hint style="info" %}
-The [`WsPacket`](websocket.md#WsPacket) structure should not be confused with the message \[`Packet`]\[Packet]. It's an additional wrapping layer specific to the websocket transport. Actual comms messages are contained in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) type.
+The [`WsPacket`](websocket.md#websocket-packets) structure should not be confused with the message \[`Packet`]\[Packet]. It's an additional wrapping layer specific to the websocket transport. Actual comms messages are contained in the [`WsPeerUpdate`](websocket.md#wspeerupdate) type.
 {% endhint %}
 
 | Field     | Type   | Value                                                                                                                                                                                                                                            |
@@ -30,9 +30,9 @@ The [`WsPacket`](websocket.md#WsPacket) structure should not be confused with th
 
 ### Authentication
 
-Before they can start relaying messages to others, clients must authenticate by signing a challenge string. This is required even when the transport URI was obtained from [Archipelago](../../archipelago/) after a previous round of authentication.
+Before they can start relaying messages to others, clients must authenticate by signing a challenge string. This is required even when the transport URI was obtained from [Archipelago](../archipelago.md) after a previous round of authentication.
 
-The first message a client sends when joining an island is [`WsIdentification`](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64), which contains a public address. It will be responded with [`WsChallengeRequired`](websocket.md#WsChallengeRequired), and clients send a [`WsSignedChallenge`](websocket.md#WsSignedChallenge) in reply.
+The first message a client sends when joining an island is [`WsIdentification`](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64), which contains a public address. It will be responded with [`WsChallengeRequired`](websocket.md#wschallengerequired), and clients send a [`WsSignedChallenge`](websocket.md#wssignedchallenge) in reply.
 
 ```
   .----------.                .--------.
@@ -57,11 +57,11 @@ The first message a client sends when joining an island is [`WsIdentification`](
 
 ```
 
-If the flow is completed successfully, the client will receive a [`WsWelcome`](websocket.md#WsWelcome) and can start sending messages to peers.
+If the flow is completed successfully, the client will receive a [`WsWelcome`](websocket.md#wswelcome) and can start sending messages to peers.
 
 ***
 
-**`WsIdentification`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64)
+### `WsIdentification` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L64) {#wsidentification}
 
 | Field     | Type     | Value                                     |
 | --------- | -------- | ----------------------------------------- |
@@ -69,7 +69,7 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-**`WsChallengeRequired`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L48)
+### `WsChallengeRequired` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L48) {#wschallengerequired}
 
 | Field               | Type     | Value                                                                      |
 | ------------------- | -------- | -------------------------------------------------------------------------- |
@@ -78,15 +78,15 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 ***
 
-**`WsSignedChallenge`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L56)
+### `WsSignedChallenge` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L56) {#wssignedchallenge}
 
 | Field             | Type     | Value                                                                                              |
 | ----------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `auth_chain_json` | `string` | A serialized [authentication chain](../../../auth/authchain/) ending with the challenge signature. |
+| `auth_chain_json` | `string` | A serialized [authentication chain](../../authentication/authchain.md) ending with the challenge signature. |
 
 ***
 
-**`WsWelcome`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L11)
+### `WsWelcome` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L11) {#wswelcome}
 
 | Field             | Type                  | Value                                                |
 | ----------------- | --------------------- | ---------------------------------------------------- |
@@ -97,22 +97,22 @@ If the flow is completed successfully, the client will receive a [`WsWelcome`](w
 
 Three messages are defined to help clients keep track of their peers and their own status.
 
-[`WsPeerJoin`](websocket.md#WsPeerJoin) is received when a fellow client connects to the room and successfully authenticates, while [`WsPeerLeave`](websocket.md#WsPeerLeave) is received when peers disconnect.
+[`WsPeerJoin`](websocket.md#wspeerjoin) is received when a fellow client connects to the room and successfully authenticates, while [`WsPeerLeave`](websocket.md#wspeerleave) is received when peers disconnect.
 
-There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clients that their connection is about to be closed and the reason for it. In current practice, the main reason a server can kick a client from a room is because they've simultaneously connected to another room, when that is forbidden by server policy.
+There's also the [`WsKicked`](websocket.md#wskicked) message, which informs clients that their connection is about to be closed and the reason for it. In current practice, the main reason a server can kick a client from a room is because they've simultaneously connected to another room, when that is forbidden by server policy.
 
 ***
 
-**`WsPeerJoin`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L19)
+### `WsPeerJoin` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L19) {#wspeerjoin}
 
 | Field     | Type     | Value                                                                 |
 | --------- | -------- | --------------------------------------------------------------------- |
-| `alias`   | `uint32` | The server-generated ID sent in [`WsWelcome`](websocket.md#WsWelcome) |
+| `alias`   | `uint32` | The server-generated ID sent in [`WsWelcome`](websocket.md#wswelcome) |
 | `address` | `string` | The new peer's Ethereum address                                       |
 
 ***
 
-**`WsPeerLeave`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L27)
+### `WsPeerLeave` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L27) {#wspeerleave}
 
 | Field   | Type     | Value                                            |
 | ------- | -------- | ------------------------------------------------ |
@@ -120,7 +120,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ***
 
-**`WsKicked`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74)
+### `WsKicked` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L74) {#wskicked}
 
 | Field    | Type     | Value                                                         |
 | -------- | -------- | ------------------------------------------------------------- |
@@ -128,7 +128,7 @@ There's also the [`WsKicked`](websocket.md#WsKicked) message, which informs clie
 
 ### Client Messages
 
-To send comms [messages](../../messages/), clients wrap them in the [`WsPeerUpdate`](websocket.md#WsPeerUpdate) structure. This differentiates the transport control message types from the actual messages sent between peers.
+To send comms [messages](../messages.md), clients wrap them in the [`WsPeerUpdate`](websocket.md#wspeerupdate) structure. This differentiates the transport control message types from the actual messages sent between peers.
 
 ```
 .-------------------.
@@ -145,12 +145,12 @@ To send comms [messages](../../messages/), clients wrap them in the [`WsPeerUpda
 
 ***
 
-**`WsPeerUpdate`** [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L34)
+### `WsPeerUpdate` [**↗ source**](https://github.com/decentraland/protocol/blob/c48ea0aa00d8173084571552463a6a05a7f49636/proto/decentraland/kernel/comms/rfc5/ws_comms.proto#L34) {#wspeerupdate}
 
 | Field        | Type     | Value                                                                            |
 | ------------ | -------- | -------------------------------------------------------------------------------- |
 | `from_alias` | `uint32` | The sender's server-generated ID                                                 |
-| `body`       | `bytes`  | The serialized [message](../../messages/) being wrapped                          |
+| `body`       | `bytes`  | The serialized [message](../messages.md) being wrapped                          |
 | `unreliable` | `bool`   | Whether the sender prioritized speed or reliability for deliverying this message |
 
 Clients must set the `from_alias` field to `0` when sending, and the server will fill it with the correct identifier before delivering it to peers.

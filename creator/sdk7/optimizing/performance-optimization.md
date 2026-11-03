@@ -80,11 +80,11 @@ There are several ways in which your 3D models can be optimized to be lighter.
 
 When working with the [Creator Hub](../../scene-editor/get-started/editor-installation.md), you can see stats about the resources used by 3D models in your scene, and if they pass any of the [scene limitations](../optimizing/scene-limitations.md).
 
-![](../../images/editor/triangle-limit1.png)
+![](../../images/editor/triangle-limit1.webp)
 
 You can expand this menu to view details.
 
-![](../../images/editor/triangle-limit2.png)
+![](../../images/editor/triangle-limit2.webp)
 
 Here are some tips for improving on these metrics:
 
@@ -149,13 +149,13 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 1. Open up the `debug` panel in the scene.
 
 - If the scene is published, type `/debug` command in the chat.
-- If you are on Preview mode in the scene., click the Bug icon (<img src="../../images/debug-icon.png" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
+- If you are on Preview mode in the scene., click the Bug icon (<img src="../../images/debug-icon.webp" alt="debug icon" width="32" style="vertical-align: middle;" />) located in the top-right corner of the screen.
 
 2. The debug panel will appear in the bottom-right corner of the screen.
 
 3. Under **Current Scene**, click the **Backface debugger** button.
 
-![](../../../.gitbook/assets/debug-panel-backface-debugging.png)
+![](../../.gitbook/assets/debug-panel-backface-debugging.webp)
 
 4. Toggle **Force Backface Culling**: It shows the materials rendered with Backface Culling On. This is the actual rendering once the Optimization is in production. Toggle On & Off to spot materials that need fixing.
 
@@ -165,9 +165,9 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 - **Green**: Materials with Backface Culling **On**.
 
 <p align="center">
-  <img src="../../../.gitbook/assets/backface-culling-off.png" 
+  <img src="../../.gitbook/assets/backface-culling-off.webp"
        style="width:120px; height:120px; object-fit:contain;" />
-  <img src="../../../.gitbook/assets/backface-culling-on.png" 
+  <img src="../../.gitbook/assets/backface-culling-on.webp"
        style="width:120px; height:120px; object-fit:contain;" />
   <br/>
   <em>Material with Backface Culling Off (left) vs. Backface Culling On (right)</em>
@@ -209,7 +209,7 @@ Avoid having many hidden UI elements, these also have an effect on performance e
 
 ## Landscape terrain in Worlds
 
-Scenes published to a [Decentraland World](../../worlds/about.md) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
+Scenes published to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) are surrounded by an auto-generated landscape of grassland, trees, and sea. Rendering this landscape consumes part of the player's rendering budget. If your scene doesn't need it, you can [disable the landscape terrain](../projects/scene-metadata.md#landscape-terrain) in your `scene.json` to free up those resources for your scene's own content.
 
 ## Monitor Performance
 
@@ -221,7 +221,7 @@ In the deployed scene, you can toggle the panel that shows these metrics by writ
 
 When running a scene in preview on the desktop client, you can open a panel that shows live stats about the content in your scene. Click the stats icon in the top-right corner of the screen, next to the console and debug icons.
 
-<img src="../../images/scene-stats-panel.png" alt="Scene Stats panel" width="400" />
+<img src="../../images/scene-stats-panel.webp" alt="Scene Stats panel" width="400" />
 
 The panel counts the scene's triangles, entities, bodies, and textures against their limits, showing what percentage of each budget is in use. A value turns orange once it reaches 80% of its limit. It also shows plain counts of materials, geometries, colliders, and external videos or audios. Hover over the info icon next to each metric for an explanation of what it counts and why it matters.
 

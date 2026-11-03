@@ -1,7 +1,7 @@
 
-The runtime treats [scenes](..//contributor/content/entity-types/scenes.md) like typical Node modules. Once the sandbox is set up (i.e. all [globals](../globals.md) are injected and [modules](../modules.md) are ready to be loaded), the code of the scene will be evaluated so it can populate the [exports](../globals.md#module) object.
+The runtime treats [scenes](../content/entity-types/scenes.md) like typical Node modules. Once the sandbox is set up (i.e. all [globals](globals.md) are injected and [modules](modules/README.md) are ready to be loaded), the code of the scene will be evaluated so it can populate the [exports](globals.md#module) object.
 
-Two methods will be picked up by the host from `exports`: [`onStart`](#onStart) (optional) and [`onUpdate`](#onUpdate) (mandatory).
+Two methods will be picked up by the host from `exports`: [`onStart`](#onstart) (optional) and [`onUpdate`](#onupdate) (mandatory).
 
 ```ts
 type Exports = {
@@ -22,19 +22,19 @@ flowchart LR
 Effective and performant synchronization between individual scenes and the game rendering engine is a complicated matter. You can find lessons from the Foundation's implementation in [ADR-148](https://adr.decentraland.org/adr/ADR-148).
 {% endhint %}
 
-##### `onStart` {#onStart}
+### `onStart` {#onstart}
 
-The life-cycle of a scene begins with the asynchronous `onStart` method. It's the place to make one-time initializations that must complete before the first call to [`onUpdate`](#onUpdate) is made.
+The life-cycle of a scene begins with the asynchronous `onStart` method. It's the place to make one-time initializations that must complete before the first call to [`onUpdate`](#onupdate) is made.
 
 ```ts
 onStart(): Promise<void>
 ```
 
-Scenes should use this call to request any pre-existing state from the runtime (such as the [basic entities](../entities.md)) and perform their own initial setup.
+Scenes should use this call to request any pre-existing state from the runtime (such as the [basic entities](basic-entities.md)) and perform their own initial setup.
 
 Exporting `onStart` is recommended for all scenes (and done automatically when using the SDK), but it's not required by protocol. The method may be missing, or return an immediately resolved `Promise`.
 
-##### `onUpdate` {#onUpdate}
+### `onUpdate` {#onupdate}
 
 While a scene is actively running, the asynchronous `onUpdate` method will be periodically invoked by the runtime to report the passage of time. This is the heart of the scene: in each successive call, entities can be updated, input processed, animations played, messages sent, UI displayed, etc.
 
@@ -60,7 +60,7 @@ Second, scenes don't just run inside their own, non-overlapping boundaries. They
 
 This is the case for two kinds of scenes in particular: the avatar scene, and portable experiences.
 
-### The Avatar Scene {#avatarScene}
+### The Avatar Scene {#avatarscene}
 
 From the moment the player enters the world, a global scene tasked with rendering the avatars of other players starts running.
 

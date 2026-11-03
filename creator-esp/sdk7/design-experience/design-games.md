@@ -50,7 +50,7 @@ Las experiencias portables son partes del gameplay que los jugadores llevan cons
 
 Los smart wearables son un tipo de experiencia portable que está vinculada a un token wearable y se activa cuando el jugador se pone el artículo de ropa. Los smart wearables pueden otorgar a los jugadores nuevas habilidades, como un jetpack que les permite volar, o agregar una nueva capa de contenido sobre el resto del mundo, como colocar aleatoriamente monedas para recolectar en toda genesis city.
 
-Ten en cuenta que los jugadores podrían estar usando la experiencia portable de otra persona mientras están en tu escena. Consulta [Datos del usuario](../sdk7/interactivity/user-data.md#get-portable-experiences) para aprender cómo verificar qué experiencias portables tiene activadas actualmente un jugador.
+Ten en cuenta que los jugadores podrían estar usando la experiencia portable de otra persona mientras están en tu escena. Consulta [Datos del usuario](../interactivity/user-data.md#get-portable-experiences) para aprender cómo verificar qué experiencias portables tiene activadas actualmente un jugador.
 
 ### Persistencia del Juego
 
@@ -96,7 +96,7 @@ Como propietario de una escena, no puedes empujar o teletransportar forzosamente
 
 **También debes intentar mantener la escena ligera.** A diferencia de otros juegos en línea donde las mismas texturas y assets se repiten convenientemente a lo largo de un gran mundo abierto, en Decentraland cada escena podría tener su propio conjunto de assets completamente diferente. A medida que los jugadores caminan por múltiples escenas, deben poder descargar la totalidad del contenido de la escena, incluyendo texturas, archivos de sonido, etc., a una velocidad razonable.
 
-Debido a esto, hemos impuesto algunos límites para prevenir el uso excesivo de recursos computacionales. Consulta [limitaciones de escena](../sdk7/optimizing/scene-limitations.md) para obtener detalles sobre cuáles son estos límites.
+Debido a esto, hemos impuesto algunos límites para prevenir el uso excesivo de recursos computacionales. Consulta [limitaciones de escena](../optimizing/scene-limitations.md) para obtener detalles sobre cuáles son estos límites.
 
 ### Acceso a las escenas
 
@@ -106,7 +106,7 @@ Los nuevos jugadores comenzarán su experiencia en Genesis Plaza, en el centro d
 
 Los jugadores también pueden escribir manualmente una URL para una coordenada específica en el mapa de Decentraland para aparecer en esa ubicación. También puedes compartir enlaces a URLs que tienen coordenadas iniciales codificadas.
 
-Ten en cuenta que si un jugador comienza en una ubicación que está bloqueada o debajo del nivel del terreno, no será una experiencia agradable. Para evitar esto, hay una forma en que puedes definir un conjunto de ubicaciones específicas en tu escena que sea seguro para aparecer. Consulta [metadatos de escena](../sdk7/projects/scene-metadata.md) para obtener detalles.
+Ten en cuenta que si un jugador comienza en una ubicación que está bloqueada o debajo del nivel del terreno, no será una experiencia agradable. Para evitar esto, hay una forma en que puedes definir un conjunto de ubicaciones específicas en tu escena que sea seguro para aparecer. Consulta [metadatos de escena](../projects/scene-metadata.md) para obtener detalles.
 
 En futuras versiones, los jugadores también podrán navegar por el mundo rápidamente usando mapas con puntos de aparición, listas de ubicaciones populares y ubicaciones de amigos. El SDK también hará posible agregar teletransportes en tu escena que puedan transportar a otras partes del mundo.
 

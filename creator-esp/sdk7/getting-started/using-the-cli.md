@@ -10,7 +10,7 @@ metaLinks:
 
 Para construir scenes para Decentraland puedes usar:
 
-* El [Creator Hub](../get-started/editor-installation.md)
+* El [Creator Hub](../../scene-editor/get-started/editor-installation.md)
 * La Command Line Interface (CLI)
 
 Ambas herramientas te permiten compilar y previsualizar tu scene en un entorno de desarrollo "off-chain". Después de probar tu scene localmente, puedes subir tu contenido al servidor de contenido, vinculándolo con tu LAND o WORLD.
@@ -22,7 +22,7 @@ Aunque el Scene Editor en el Creator Hub es más fácil de usar, el CLI te permi
 {% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: Consulta la [Guía de instalación](../get-started/editor-installation.md) para instrucciones sobre cómo instalar el Scene Editor.
+**💡 Tip**: Consulta la [Guía de instalación](../../scene-editor/get-started/editor-installation.md) para instrucciones sobre cómo instalar el Scene Editor.
 {% endhint %}
 
 ## Antes de Comenzar
@@ -55,7 +55,7 @@ Consulta [preview scenes](preview-scene.md) para detalles y opciones especiales 
 
 ## Build
 
-Ejecuta `npm run build` para construir tu proyecto. Las scenes de Decentraland están escritas en TypeScript, pero se construyen a JavaScript minificado cuando se publican. Consulta [coding scenes](https://github.com/decentraland/docs-creator/blob/main/sdk7/getting-started/coding-scenes.md) para más detalles.
+Ejecuta `npm run build` para construir tu proyecto. Las scenes de Decentraland están escritas en TypeScript, pero se construyen a JavaScript minificado cuando se publican. Consulta [coding scenes](https://github.com/decentraland/docs/blob/main/creator/sdk7/getting-started/coding-scenes.md) para más detalles.
 
 El comando build es opcional, ya que también se ejecuta en segundo plano antes de desplegar (aunque puedes agregar una bandera para saltarlo).
 

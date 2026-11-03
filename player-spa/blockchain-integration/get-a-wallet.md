@@ -14,7 +14,7 @@ metaLinks:
 
 Decentraland usa la blockchain de Ethereum para registrar la propiedad de todos los activos digitales y artículos comerciables.
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-account.webp)
 
 Las billeteras digitales son herramientas que funcionan como un puente entre la blockchain y la dApp (aplicaciones descentralizadas). Esto significa que con una billetera podrás monitorear tus fondos disponibles, historial de transacciones y opciones de seguridad.
 
@@ -28,11 +28,11 @@ Consulta un tutorial para [**crear una cuenta con un perfil social**](https://ww
 
 Para entrar a Decentraland, debes usar una billetera que esté integrada a tu navegador web, por lo que recomendamos [MetaMask](https://metamask.io/)
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-metamask-logo.webp)
 
 Una vez que lo instales, verás un ícono como este:
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-metamask-extension.webp)
 
 ## Dirección de billetera
 
@@ -40,11 +40,11 @@ Todas las billeteras tienen una clave pública y privada. Una clave pública es 
 
 Puedes localizar tu dirección de billetera haciendo clic en el ícono de extensión en tu navegador, y luego haciendo clic en el nombre de tu billetera con la clave pública para copiarlo al portapapeles:
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-public-key-1.webp)
 
 O haciendo clic en los detalles de tu cuenta:
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-public-key-2.webp)
 
 La clave privada es utilizada por tu billetera para firmar cada transacción y certificar que realmente fue enviada por ti. También se usa para restaurar tu billetera en caso de que olvides tu contraseña.
 
@@ -52,7 +52,7 @@ Ten en cuenta que una billetera digital es como una cuenta bancaria, así que as
 
 ## ¿Qué es Ether (ETH) y cómo lo envío a mi billetera?
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-ether.webp)
 
 Para ejecutar transacciones, necesitarás poner dinero en tu billetera. Las dApps basadas en Ethereum, como Decentraland, usan Ether: una moneda digital que alimenta la red de Ethereum. Actúa como cualquier otra moneda, en que su valor fluctúa con el mercado.
 
@@ -81,7 +81,7 @@ Necesitas comprar ETH de Coinbase u otro exchange usando moneda fiat normal.
 
 ## ¿Qué es MANA y cómo lo obtengo?
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-mana.webp)
 
 [MANA](https://etherscan.io/token/decentraland) es el token de criptomoneda fungible (reproducible o intercambiable) de Decentraland. Se quema, o gasta a cambio de parcelas LAND, wearables y nombres.
 
@@ -98,7 +98,7 @@ Pasos para comprar MANA:
 * _'Gas' se compone de dos partes: Precio de Gas y Límite de Gas. El Precio de Gas es lo que ofreces pagar a los mineros (en una pequeña medida de ether llamada 'gwei') por cada operación para ejecutar el contrato inteligente. El Límite de Gas es cuántas operaciones les permites hacer antes de que se queden sin gas y abandonen la transacción._
 * _1 gwei = 1/1,000,000,000 de un Ether._
 
-![](broken-reference)
+![](../.gitbook/assets/get-a-wallet-gas.webp)
 
 Para resumir, el Precio de Gas (gwei) es la cantidad de Ether ofrecida por unidad de gas para pagar a los mineros para procesar tu transacción. Cuanto más alto sea el precio de gas que establezcas, más rápido se procesará tu transacción. Entonces, para transacciones más importantes – como un coleccionable que realmente te gusta ;D – piensa en aumentar el precio de gas sugerido.
 

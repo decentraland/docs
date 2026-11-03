@@ -1,6 +1,6 @@
-Los wearables son las [entidades](../entities) que contienen artículos para que los jugadores los usen y personalicen sus avatares.
+Los wearables son las [entidades](../entities.md) que contienen artículos para que los jugadores los usen y personalicen sus avatares.
 
-El campo `wearables` en el [perfil](profiles) de un jugador contiene una lista de punteros a los artículos que están usando actualmente.
+El campo `wearables` en el [perfil](profiles.md) de un jugador contiene una lista de punteros a los artículos que están usando actualmente.
 
 Cada wearable pertenece a una _categoría_, indicando el lugar que ocupa en el cuerpo del avatar, y puede ocultar o reemplazar otras categorías (por ejemplo, un vestido largo puede usarse como ropa superior pero cubrir completamente las piernas).
 
@@ -10,7 +10,7 @@ Las entidades wearable incluyen archivos en formato GLB para diferentes formas d
 
 ## Punteros {#pointers}
 
-Los wearables tienen exactamente un [puntero](../pointers) asociado, que indica la [colección](collections) a la que pertenecen y su identificador dentro de ella.
+Los wearables tienen exactamente un [puntero](../pointers.md) asociado, que indica la [colección](../collections.md) a la que pertenecen y su identificador dentro de ella.
 
 Cuando el wearable es un activo on-chain, el puntero es un URN de esta forma:
 
@@ -50,15 +50,15 @@ El array `pointers` para un wearable off-chain tiene este aspecto:
 
 ## Campos de Metadata
 
-Los wearables comparten la mayoría de sus campos básicos con [emotes](emotes). La propiedad `data` es donde se encuentra la información específica del wearable.
+Los wearables comparten la mayoría de sus campos básicos con [emotes](emotes.md). La propiedad `data` es donde se encuentra la información específica del wearable.
 
 | Campo | Valor |
 | ----- | --- |
-| `id` | El [puntero](../pointers) que resuelve (o solía resolver) a este wearable.
-| `name` | El título de visualización para este wearable en una [colección](../collections).
+| `id` | El [puntero](../pointers.md) que resuelve (o solía resolver) a este wearable.
+| `name` | El título de visualización para este wearable en una [colección](../collections.md).
 | `description` | Una descripción extendida para este wearable.
-| `image` | El [nombre de archivo interno](../entities#files) de una imagen para este wearable.
-| `thumbnail` | El [nombre de archivo interno](../entities#files) de una versión 256x256 de la `image`.
+| `image` | El [nombre de archivo interno](../entities.md#files) de una imagen para este wearable.
+| `thumbnail` | El [nombre de archivo interno](../entities.md#files) de una versión 256x256 de la `image`.
 | `rarity` | Uno de `common`, `uncommon`, `rare`, `epic`, `legendary`, `exotic`, `mythic` o `unique`.
 | `i18n` | Un array de traducciones para el campo `name`.
 | `collectionAddress` | La dirección de Ethereum para la colección que contiene este wearable.
@@ -121,9 +121,9 @@ Cada elemento en el array representations asocia una forma de cuerpo con una col
 
 | Campo | Valor |
 | ----- | --- |
-| `bodyShapes` | Un array de [punteros](../pointers) a entidades de forma de cuerpo.
+| `bodyShapes` | Un array de [punteros](../pointers.md) a entidades de forma de cuerpo.
 | `mainFile` | El archivo de modelo 3D para iniciar el renderizado.
-| `contents` | Un array de nombres de archivo (presentes en el [campo `content` de nivel superior](../entities#properties)) usados por el `mainFile`.
+| `contents` | Un array de nombres de archivo (presentes en el [campo `content` de nivel superior](../entities.md#properties)) usados por el `mainFile`.
 | `overrideHides` | Sustituye la lista `hides` arriba para esta representación.
 | `overrideReplaces` | Sustituye la lista `replaces` arriba para esta representación.
 

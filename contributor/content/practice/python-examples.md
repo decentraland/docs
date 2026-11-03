@@ -1,6 +1,6 @@
 # python-examples
 
-This practice shows how to write a simple program that downloads and analyzes some content using the [snapshots](../../practice/snapshots/) provided by content servers.
+This practice shows how to write a simple program that downloads and analyzes some content using the [snapshots](../snapshots.md) provided by content servers.
 
 {% hint style="info" %}
 You can find the [full script](https://github.com/decentraland/documentation/blob/main/content/contributor/content/practice/snapshots_mini.py) in GitHub, along with a [more advanced example](https://github.com/decentraland/documentation/blob/main/content/contributor/content/practice/snapshots.py).
@@ -11,7 +11,7 @@ We'll be using the Decentraland Foundation's server at `peer.decentraland.org`, 
 This is what we'll do:
 
 1. Query the status of the content server.
-2. Select and download a [snapshot](../../practice/snapshots/) with a list of entities.
+2. Select and download a [snapshot](../snapshots.md) with a list of entities.
 3. Print the type and ID of all referenced entities.
 
 Let's begin our script with some preparations. We'll use standard library modules only, but in real code you'll probably want a more comfortable HTTP client (like the [requests](https://github.com/psf/requests) library).

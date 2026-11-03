@@ -22,7 +22,7 @@ You can also reach it from the Creator Hub:
 2. Click the **three dots** next to a place where you have published content.
 3. Select **View Storage**.
 
-<img src="../../images/editor/view-storage.png" alt="View Storage option in the Creator Hub" width="400"/>
+<img src="../../images/editor/view-storage.webp" alt="View Storage option in the Creator Hub" width="400"/>
 
 The storage UI shows a list of all the Worlds and LAND locations where you have published scenes, or have operator permissions. Open a scene to see its data, organized into three tabs: **Scene**, **Player**, and **Environment**.
 
@@ -34,7 +34,7 @@ The storage UI shows a list of all the Worlds and LAND locations where you have 
 
 The **Scene** tab lists all the stored variables that are shared across all players, for example a leaderboard or the current state of the environment.
 
-<img src="../../images/scene-data.png" alt="Scene data tab"/>
+<img src="../../images/scene-data.webp" alt="Scene data tab"/>
 
 Values on this list update live as players interact with your scene. You can also edit or remove any of these variables by clicking the pencil or trash icon. Changes are picked up by the running scene, so this is a handy way to tweak live values, like resetting a leaderboard, without republishing.
 
@@ -50,7 +50,7 @@ This is especially useful for support: if a particular player reports an issue i
 
 The **Environment** tab lists all the environment variables defined for your scene. These are configuration values that only the server can read, which makes them the right place for **secrets** like private keys or reward claim codes: the values never travel through a player's machine or appear in your scene's published code.
 
-<img src="../../images/environment-variables.png" alt="Environment variables tab"/>
+<img src="../../images/environment-variables.webp" alt="Environment variables tab"/>
 
 From this tab you can add new variables, or overwrite and delete existing ones using the pencil or trash icon. Note that you can't _read_ the current value of a variable, this is intentional, to protect sensitive data. You can only replace or delete it.
 

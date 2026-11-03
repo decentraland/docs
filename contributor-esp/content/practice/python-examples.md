@@ -1,4 +1,4 @@
-Esta práctica muestra cómo escribir un programa simple que descarga y analiza algún contenido usando las [instantáneas](snapshots) proporcionadas por servidores de contenido.
+Esta práctica muestra cómo escribir un programa simple que descarga y analiza algún contenido usando las [instantáneas](../snapshots.md) proporcionadas por servidores de contenido.
 
 {% hint style="info" %}
 Puedes encontrar el [script completo](https://github.com/decentraland/documentation/blob/main/content/contributor/content/practice/snapshots_mini.py) en GitHub, junto con un [ejemplo más avanzado](https://github.com/decentraland/documentation/blob/main/content/contributor/content/practice/snapshots.py).
@@ -9,7 +9,7 @@ Usaremos el servidor de la Foundation de Decentraland en `peer.decentraland.org`
 Esto es lo que haremos:
 
 1. Consultar el estado del servidor de contenido.
-2. Seleccionar y descargar una [instantánea](snapshots) con una lista de entidades.
+2. Seleccionar y descargar una [instantánea](../snapshots.md) con una lista de entidades.
 3. Imprimir el tipo e ID de todas las entidades referenciadas.
 
 Comencemos nuestro script con algunas preparaciones. Usaremos solo módulos de la biblioteca estándar, pero en código real probablemente querrás un cliente HTTP más cómodo (como la biblioteca [requests](https://github.com/psf/requests)).

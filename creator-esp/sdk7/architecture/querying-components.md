@@ -10,9 +10,9 @@ metaLinks:
 
 # Consultar Componentes
 
-Puedes [consultar componentes](../sdk7/architecture/querying-components.md) con el método `engine.getEntitiesWith(...components)` para rastrear todas las entidades en la escena que tienen ciertos componentes.
+Puedes [consultar componentes](querying-components.md) con el método `engine.getEntitiesWith(...components)` para rastrear todas las entidades en la escena que tienen ciertos componentes.
 
-Los [Sistemas](../sdk7/architecture/systems.md) típicamente iteran sobre las entidades en estas consultas, realizando las mismas operaciones en cada una. Tener un grupo predefinido de entidades válidas es una excelente manera de ahorrar recursos, especialmente para funciones que se ejecutan en cada tick del bucle del juego. Si en cada tick tu sistema tuviera que iterar sobre cada entidad individual en la escena buscando las que necesita, eso sería muy ineficiente.
+Los [Sistemas](systems.md) típicamente iteran sobre las entidades en estas consultas, realizando las mismas operaciones en cada una. Tener un grupo predefinido de entidades válidas es una excelente manera de ahorrar recursos, especialmente para funciones que se ejecutan en cada tick del bucle del juego. Si en cada tick tu sistema tuviera que iterar sobre cada entidad individual en la escena buscando las que necesita, eso sería muy ineficiente.
 
 Puedes acceder a las entidades en una consulta de la siguiente manera.
 
@@ -37,7 +37,7 @@ for (const [entity] of engine.getEntitiesWith(
 ```
 
 {% hint style="info" %}
-**💡 Tip**: Si tu consulta devuelve entidades con las que no necesitas trabajar, considera crear un componente personalizado para actuar como una [bandera](../sdk7/architecture/entities-components.md#components-as-flags). Este componente no necesita tener ninguna propiedad, pero puede usarse para marcar un subgrupo específico de entidades que tal vez quieras tratar de manera diferente.
+**💡 Tip**: Si tu consulta devuelve entidades con las que no necesitas trabajar, considera crear un componente personalizado para actuar como una [bandera](custom-components.md#components-as-flags). Este componente no necesita tener ninguna propiedad, pero puede usarse para marcar un subgrupo específico de entidades que tal vez quieras tratar de manera diferente.
 {% endhint %}
 
 ### Usar consultas en un sistema
@@ -124,4 +124,4 @@ for (const [entity, transformReadOnly] of engine.getEntitiesWith(Transform)) {
 
 ### Suscribirse a cambios
 
-Un caso de uso común es solo ejecutar una función en caso de que los datos en un cierto componente cambien. Usa la función [OnChange](../sdk7/architecture/subscribe-to-changes.md) para evitar tener que definir un sistema y tener que comparar explícitamente valores antiguos con valores nuevos.
+Un caso de uso común es solo ejecutar una función en caso de que los datos en un cierto componente cambien. Usa la función [OnChange](subscribe-to-changes.md) para evitar tener que definir un sistema y tener que comparar explícitamente valores antiguos con valores nuevos.

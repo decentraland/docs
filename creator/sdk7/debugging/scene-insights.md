@@ -53,9 +53,9 @@ Owners and eligible managers do not need a `logsPermissions` entry or a scene re
 
 For Genesis City, permission is checked against the deployed scene's base parcel, even if you query another parcel within the scene. Ownership or management rights on a different parcel alone do not grant access to the scene.
 
-The same permissions cover historical logs, live logs, metrics, and execution history. Access follows **current permissions**: the base-parcel owner can read telemetry from scenes deployed by an operator or tenant, including retained history under the same scene key for up to 7 days.
+The same permissions cover historical logs, live logs, metrics, and execution history. Access follows **current permissions**: anyone currently authorized can read all retained history under the same scene key for up to 7 days, including logs written while someone else deployed the scene. This includes new owners, operators, eligible tenants, and wallets newly added to `logsPermissions`. Consider that history before granting access.
 
-Permission changes can take up to 60 seconds to affect new requests with the default cache settings. Open live streams recheck access periodically (every 5 minutes by default). Logging in does not grant permission to read other scenes.
+Permission changes are not immediate. By default, permission caches last 60 seconds and open live streams recheck access every 5 minutes. Allow roughly 6 minutes for an open stream to observe revocation. These are default timings, not a strict deadline: configuration and bounded grace periods during temporary capacity failures can extend the delay. Logging in does not grant permission to read other scenes.
 
 ## Sign In
 
@@ -128,11 +128,11 @@ npx sdk-commands scene-insights executions --from 1d
 npx sdk-commands scene-insights logs --execution EXECUTION_ID --from 1d
 ```
 
-`logs` defaults to the last hour and the newest 100 matching lines, displayed chronologically. Set `--limit` between 1 and 10,000. `--level` is a minimum severity (`warn` includes errors); `--query` searches literal text without case sensitivity. Use `--source scene,engine` to filter origins.
+`logs` defaults to the last hour and the newest 100 matching lines, displayed chronologically. The CLI accepts `--limit` between 1 and 10,000 and fetches multiple API pages as needed. `--level` is a minimum severity (`warn` includes errors); `--query` searches literal text with ASCII case-insensitive matching. Use `--source scene,engine,stderr` to select log origins, or pass a subset of these sources.
 
 `executionId` identifies a server run; `entityId` identifies the deployed scene version. A new execution can mean an idle stop/start, a rollout, or a crash. Check surrounding logs before concluding that it crashed.
 
-Add `--json` for machine-readable output. Historical logs return one JSON document; `more: true` means additional matches exist beyond the returned limit. Narrow the window or increase the limit.
+Add `--json` for machine-readable output. The CLI returns historical logs as one JSON document; its `more: true` field means additional matches exist beyond the returned limit. Narrow the window or increase the limit. Direct API clients receive up to 1,000 rows per page and use a cursor for pagination.
 
 ## Follow Live Logs
 
@@ -180,7 +180,9 @@ npx sdk-commands scene-insights metrics mem.heap_used --from 2h --step 60 --json
 | `cpu.run_ms` | CPU time spent in `onStart`/`onUpdate`, not wall-clock latency |
 | `mem.heap_used`, `mem.heap_limit`, `mem.external_bytes` | JavaScript heap use, heap ceiling, and V8 external memory |
 | `logs.lines`, `logs.bytes` | Console output before rate limits; useful for spotting excessive logging |
-| `fetch.failed`, `storage.failed` | Failed outbound HTTP or storage calls to correlate with error logs |
+| `fetch.failed`, `storage.failed` | Request-send errors for outbound HTTP or storage calls; correlate with error logs |
+| `fetch.status_4xx`, `fetch.status_5xx` | HTTP error responses; these are not counted as `fetch.failed` |
+| `logs.dropped` | Lines discarded by the engine's per-tick log budget |
 | `comms.msgs_out`, `comms.bytes_out` | Messages and bytes sent to players |
 
 CPU metrics do not measure the entire server, and memory metrics are not the process's total memory or container limit. Compare the same execution, time window, and workload before diagnosing a leak or performance problem.
@@ -193,12 +195,16 @@ Gauges return `avg` and `max` per bucket. Sums return `sum` and a per-second `ra
 | --- | --- |
 | Log and metric retention | 7 days |
 | Maximum query time range | 7 days |
-| Log results per query | 100 by default; up to 10,000 |
+| Log results per CLI query | 100 by default; up to 10,000 via pagination |
 | Metric series | Up to 1,500 buckets; increase `--step` for longer windows |
 | Sustained scene logging | 50 lines/second and 64 KiB/second |
 | Logging burst allowance | 500 lines and 512 KiB |
-| Daily scene log quota | 500,000 lines or 128 MiB; resets at 00:00 UTC |
+| Daily scene log quota | Soft cap of 500,000 lines or 128 MiB per server process; resets at 00:00 UTC |
+
+Daily quota counters are kept in memory. A server-process restart or a scene moving to another replica also resets its counters, so the daily quota is an approximate cap across such changes.
 
 Rate limits and daily quotas drop excess logs; dropped lines cannot be retrieved later. Engine warning messages report drops and quota resets. Reaching the daily quota stops additional log persistence until the reset; the scene keeps running. Reduce repeated per-frame logging so useful messages fit within the budget.
+
+The engine also has a separate per-tick log budget (1,000 lines by default); excess lines are discarded before export and counted in `logs.dropped`.
 
 Large messages can be truncated (the API defaults to 8,192 characters per message). Collection is best effort: outages, export failures, and rate limits can leave gaps. Only collected telemetry is available; installing the new CLI cannot recover older or dropped data. Empty results alone do not prove that a scene is healthy.

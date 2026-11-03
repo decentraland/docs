@@ -73,6 +73,28 @@ npx sdk-commands scene-insights session --json
 
 When the session expires, run `login` again. If an AI assistant is investigating for you, approve the wallet login yourself. Do not share private keys or the cached session file with it.
 
+### Keep the Session File Private
+
+{% hint style="warning" %}
+**Never commit, deploy, or share your login session file.** By default, it is saved at `~/.dcl/scene-insights-session.json`. It contains a temporary private signing key and your wallet's read-only delegation. Anyone with a copy can use those credentials to read logs, metrics, and execution history for scenes your wallet can access until the session expires. Do not send it to teammates, AI assistants, support chats, or public issue reports, or include it in project archives.
+{% endhint %}
+
+The SDK protects it automatically:
+
+- It saves the file under your home directory by default, outside the scene project. If you set `DCL_SCENE_INSIGHTS_SESSION_DIR`, it uses that directory's `.dcl` folder instead.
+- It adds `*` to the session folder's `.gitignore` and refuses to save or use a session file that Git already tracks.
+- It writes the session file with owner-only permissions (`0600`) and creates its folder with `0700` permissions on systems that support them.
+- The standard SDK deployment file collector excludes dot-prefixed files and directories, including `.dcl`, independently of `.dclignore`.
+
+Keep these checks in mind:
+
+- Review staged files before committing. Do not force-add the session file; `.gitignore` does not protect files already tracked by Git.
+- If you customize the session location, keep it outside your scene project where possible. Never copy or rename the session into scene assets or another deployable folder.
+- If you use custom deployment, backup, or ZIP scripts, explicitly exclude the session file and `.dcl` credentials; those tools may not apply the SDK's exclusions.
+- Share only the safe status output from `npx sdk-commands scene-insights session --json` when needed, never the session file itself. Teammates should sign in with their own authorized wallets.
+
+`npx sdk-commands scene-insights logout` deletes the local saved session. It does **not** revoke copies already shared: those credentials can remain usable until expiry. If the file was exposed, remove it from shared artifacts and Git history as applicable; deleting the local file or signing in again does not invalidate the exposed copy.
+
 ## Choose a Scene
 
 From the scene project, commands infer the World from `scene.json`'s `worldConfiguration.name`, or use `scene.base` for Genesis City. You can also choose explicitly:

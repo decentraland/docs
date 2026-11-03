@@ -95,11 +95,9 @@ Multiplayer patterns, persistent data, and external services.
 
 | Example | What it demonstrates | Maintained by | Tags | Source |
 | --- | --- | --- | --- | --- |
-| [Clap-to-claim dispenser](./examples/multiplayer-data-services/clap-to-claim-dispenser.md) | A wearable dispenser that players claim by doing the clap emote in a trigger area. | Decentraland | `rewards`, `wearables`, `triggers`, `emotes` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/clap-claim-dispenser) |
 | [Data from a spreadsheet](./examples/multiplayer-data-services/spreadsheet-data.md) | Scene content driven by a Google Sheet, updated without redeploying. | Decentraland | `api`, `spreadsheet`, `video`, `wearables` | [Open repository](https://github.com/decentraland/Read_Spreadsheet_Scene) |
 | [Mini Games library](./examples/multiplayer-data-services/mini-games-library.md) | Player queues, scoreboards, and supporting logic for multiplayer mini games. | Decentraland | `multiplayer`, `scoreboard`, `game` | [Open repository](https://github.com/decentraland/sdk-mini-games) |
 | [Multiplayer Server leaderboard](./examples/multiplayer-data-services/authoritative-server-leaderboard.md) | A server-owned leaderboard that validates scores, stores totals, and broadcasts rankings. | Decentraland | `multiplayer`, `leaderboard`, `server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/90,-9-authoritative-server-leaderboard) |
-| [Reward claim dispenser](./examples/multiplayer-data-services/reward-claim-dispenser.md) | Wearable dispensers and airdrop crates that claim rewards from a Rewards campaign. | Decentraland | `rewards`, `wearables`, `captcha`, `ui` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/reward-claim) |
 | [Third-party guest book](./examples/multiplayer-data-services/third-party-guest-book.md) | A guest book backed by an external HTTP service. | Decentraland | `api`, `storage` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/guest-book-api) |
 | [Third-party leaderboard](./examples/multiplayer-data-services/third-party-leaderboard.md) | A persistent leaderboard backed by an external HTTP service. | Decentraland | `api`, `storage`, `leaderboard` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/leader-board) |
 | [Third-party player authentication](./examples/multiplayer-data-services/third-party-player-authentication.md) | Verifying player identity for requests sent to an external service. | Decentraland | `api`, `authentication`, `player` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/validate-player-authenticity) |
@@ -132,6 +130,15 @@ Tools for managing scenes and collecting player feedback.
 | Example | What it demonstrates | Maintained by | Tags | Source |
 | --- | --- | --- | --- | --- |
 | [Scene Feedback](./examples/scene-management-feedback/playtest-feedback.md) | Collect player ratings and comments during play or through a feedback button, kiosk, or area, with CSV results in scene Storage. | Decentraland | `ui`, `multiplayer-server`, `storage` | [Open scene](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/0,-1-scene-feedback) |
+
+## Rewards
+
+Scenes that give players wearables and emotes through Decentraland Rewards campaigns.
+
+| Example | What it demonstrates | Maintained by | Tags | Source |
+| --- | --- | --- | --- | --- |
+| [Clap-to-claim dispenser](./examples/rewards/clap-to-claim-dispenser.md) | A wearable dispenser that players claim by doing the clap emote in a trigger area. | Decentraland | `rewards`, `wearables`, `triggers`, `emotes` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/clap-claim-dispenser) |
+| [Reward claim dispenser](./examples/rewards/reward-claim-dispenser.md) | Wearable dispensers and airdrop crates that claim rewards from a Rewards campaign. | Decentraland | `rewards`, `wearables`, `captcha`, `ui` | [Open scene](https://github.com/decentraland/sdk7-goerli-plaza/tree/main/reward-claim) |
 <!-- example-scenes-catalog:end -->
 
 ## For AI-assisted creation

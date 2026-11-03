@@ -48,6 +48,12 @@
 			"name": "Scene management and feedback",
 			"description": "Tools for managing scenes and collecting player feedback.",
 			"order": 8
+		},
+		{
+			"id": "rewards",
+			"name": "Rewards",
+			"description": "Scenes that give players wearables and emotes through Decentraland Rewards campaigns.",
+			"order": 9
 		}
 	],
 	"examples": [
@@ -815,7 +821,7 @@
 			"id": "clap-to-claim-dispenser",
 			"name": "Clap-to-claim dispenser",
 			"description": "A wearable dispenser that players claim by doing the clap emote in a trigger area.",
-			"category": "multiplayer-data-services",
+			"category": "rewards",
 			"tags": [
 				"rewards",
 				"wearables",
@@ -860,8 +866,8 @@
 					]
 				}
 			],
-			"page": "./multiplayer-data-services/clap-to-claim-dispenser.md",
-			"fileName": "multiplayer-data-services/clap-to-claim-dispenser.md"
+			"page": "./rewards/clap-to-claim-dispenser.md",
+			"fileName": "rewards/clap-to-claim-dispenser.md"
 		},
 		{
 			"id": "spreadsheet-data",
@@ -1120,7 +1126,7 @@
 			"id": "reward-claim-dispenser",
 			"name": "Reward claim dispenser",
 			"description": "Wearable dispensers and airdrop crates that claim rewards from a Rewards campaign.",
-			"category": "multiplayer-data-services",
+			"category": "rewards",
 			"tags": [
 				"rewards",
 				"wearables",
@@ -1206,8 +1212,8 @@
 					]
 				}
 			],
-			"page": "./multiplayer-data-services/reward-claim-dispenser.md",
-			"fileName": "multiplayer-data-services/reward-claim-dispenser.md"
+			"page": "./rewards/reward-claim-dispenser.md",
+			"fileName": "rewards/reward-claim-dispenser.md"
 		},
 		{
 			"id": "playtest-feedback",

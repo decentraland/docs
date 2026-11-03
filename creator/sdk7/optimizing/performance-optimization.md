@@ -255,23 +255,32 @@ Even a well optimized scene can run poorly on low-end hardware, or when the play
 
 Your scene can estimate the frame rate by counting how many times a system runs over a period of time. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel. That click is the [player action](../interactivity/event-listeners.md#only-a-player-action-can-open-a-panel) that `openExplorerUi()` requires, so the call must happen directly inside the button's handler.
 
+What you're counting is your scene's update ticks, not the frames the Explorer renders. The Explorer throttles the update rate of scenes the player isn't standing in, so the two numbers only follow each other closely for the scene around the player. Treat the result as a rough signal that something is wrong, never as a measurement.
+
+The example also skips its first 5 second window, which covers the scene's own loading and is slow even on a fast machine, and shows the prompt only once per session.
+
 ```tsx
 import { engine, ExplorerUi } from '@dcl/sdk/ecs'
 import { openExplorerUi } from '~system/RestrictedActions'
 import ReactEcs, { Button, Label, ReactEcsRenderer, UiEntity } from '@dcl/sdk/react-ecs'
 
 let showSettingsTip = false
+let tipAlreadyShown = false
 
 // Estimate the average FPS over 5 second intervals
 let elapsed = 0
 let frames = 0
+let firstWindow = true
 engine.addSystem((dt: number) => {
   elapsed += dt
   frames += 1
   if (elapsed >= 5) {
-    if (frames / elapsed < 20) {
+    // Skip the first window: it includes the scene's loading, slow on any machine
+    if (!firstWindow && !tipAlreadyShown && frames / elapsed < 20) {
       showSettingsTip = true
+      tipAlreadyShown = true
     }
+    firstWindow = false
     elapsed = 0
     frames = 0
   }
@@ -289,15 +298,26 @@ ReactEcsRenderer.setUiRenderer(() => (
     uiBackground={{ color: { r: 0, g: 0, b: 0, a: 0.8 } }}
   >
     <Label value="Running slow? Try lowering your graphics settings." fontSize={16} />
-    <Button
-      value="Open Settings"
-      fontSize={16}
-      uiTransform={{ height: 36, margin: { top: 8 } }}
-      onMouseDown={() => {
-        showSettingsTip = false
-        void openExplorerUi({ ui: ExplorerUi.EU_SETTINGS })
-      }}
-    />
+    <UiEntity uiTransform={{ flexDirection: 'row', margin: { top: 8 } }}>
+      <Button
+        value="Open Settings"
+        fontSize={16}
+        uiTransform={{ height: 36 }}
+        onMouseDown={() => {
+          // Call it first, before anything else in the handler
+          void openExplorerUi({ ui: ExplorerUi.EU_SETTINGS })
+          showSettingsTip = false
+        }}
+      />
+      <Button
+        value="Dismiss"
+        fontSize={16}
+        uiTransform={{ height: 36, margin: { left: 8 } }}
+        onMouseDown={() => {
+          showSettingsTip = false
+        }}
+      />
+    </UiEntity>
   </UiEntity>
 ))
 ```

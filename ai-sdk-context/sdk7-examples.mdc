@@ -1154,15 +1154,16 @@ LightSource.create(entity, {
 })
 ```
 
-### Skybox
+### Skybox, Sun and EnvironmentFog
 ```typescript
 import { engine, Skybox, Sun, EnvironmentFog, ColorGradient } from '@dcl/sdk/ecs'
 import { Color4, Vector3 } from '@dcl/sdk/math'
 
 // Skybox, Sun and EnvironmentFog: root entity only; active while the player is inside the scene
-// (global overrides while active), revert on leave/removal. Every field optional; unset = time-of-day default.
+// (global overrides while active), revert on leave/removal. Changes apply instantly, no transition (unlike SkyboxTime).
+// Every field optional; unset = time-of-day default. The options below are alternatives, not one sequence.
 
-// Equirectangular (2:1 lat-long) sky image, centre faces +Z (north), top row = zenith.
+// Option: custom sky image. Equirectangular (2:1 lat-long), centre faces +Z (north), top row = zenith.
 // skyboxTexture is a plain image path (like Texture `src`); wraps horizontally, bilinear filtering.
 // Cube cross / 3x2 / six-face layouts are not supported.
 // Sun and fog are unchanged; the ambient light still follows skyColors (match it to the image).
@@ -1172,22 +1173,22 @@ Skybox.create(engine.RootEntity, {
 })
 
 // Every color is a ColorGradient over the normalized time of day
-// (0 = 00:00, 0.5 = noon, 1 = 24:00, no midnight wrap); one key = constant color; values > 1 are HDR; alpha ignored.
+// (0 = 00:00, 0.5 = noon, 1 = 24:00; time = SkyboxTime fixedTime / 86400; no midnight wrap); one key = constant color; values > 1 are HDR; alpha ignored.
 const constant = (color: Color4): ColorGradient => ({ keys: [{ time: 0, color }] })
 
-// Recolor the procedural sky
+// Option: recolor the procedural sky
 Skybox.createOrReplace(engine.RootEntity, {
   skyColors: {                       // also drive the ambient light (zenith/horizon/nadir)
     zenith: constant(Color4.create(0.55, 0.25, 0.12, 1)),
     horizon: constant(Color4.create(0.95, 0.55, 0.3, 1)),
     nadir: constant(Color4.create(0.35, 0.15, 0.08, 1)),  // sky below the horizon (where no terrain covers it)
-    rim: undefined                   // horizon-line glow; unset follows `horizon`
+    rim: constant(Color4.create(1.5, 0.6, 0.2, 1))  // horizon-line glow; unset follows `horizon` if set
   },
   clouds: { opacity: 0.3, speed: 0.01, color: constant(Color4.create(0.9, 0.6, 0.4, 1)) },  // defaults 1 / 0.01 rad/s / time-of-day tint
   stars: { brightness: 4.62 }        // default 4.62, night only
 })
 
-// Sun (directional light of sun and moon)
+// Option: Sun (directional light of sun and moon)
 Sun.create(engine.RootEntity, {
   color: constant(Color4.create(1, 0.65, 0.4, 1)),  // light + sun disc
   visible: true,                    // false hides sun, moon and lens flare; the light still shines
@@ -1195,10 +1196,11 @@ Sun.create(engine.RootEntity, {
   direction: Vector3.create(-1, -1, 0)  // direction the light travels; (0,-1,0) = overhead. Set = fixed sun all day; unset = normal path
 })
 
-// Fog. Exponential: fog = 1 - e^(-density * distance); default 0.0005 (≈ 2 km). Fog on/off is a player quality setting
+// Option: fog. Exponential: fog = 1 - e^(-density * distance); default 0.0005 (≈ 2 km). Fog on/off is a player quality setting
 EnvironmentFog.create(engine.RootEntity, { color: constant(Color4.create(0.85, 0.5, 0.3, 1)), density: 0.01 })
 
-// Complete darkness: only the scene's LightSources illuminate
+// Option: complete darkness: only the scene's LightSources illuminate.
+// Scene lights are off on the Low preset (Very Low on mobile): keep essentials visible with emissive materials.
 const black = constant(Color4.Black())
 Skybox.createOrReplace(engine.RootEntity, {
   skyColors: { zenith: black, horizon: black, nadir: black },

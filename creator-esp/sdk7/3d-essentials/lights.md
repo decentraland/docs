@@ -281,3 +281,5 @@ Por ejemplo, la imagen a continuación muestra cada una de las letras en diferen
 ## Luces en la oscuridad
 
 Las luces se aprecian mejor cuando el cielo no compite con ellas. Los componentes `Skybox`, `Sun` y `EnvironmentFog` pueden dejar en negro la luz del sol, los colores del cielo (y con ellos la luz ambiental), la niebla, las nubes y las estrellas, de modo que tus luces sean la única fuente de iluminación. Consulta [Oscuridad total](../interactivity/skybox-control.md#oscuridad-total).
+
+En el preset de calidad Bajo (Muy bajo en móvil), las luces de la escena no se renderizan, así que una escena totalmente oscura se ve completamente negra para esos jugadores. Usa materiales emisivos para que lo esencial siga visible.

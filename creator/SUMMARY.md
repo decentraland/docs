@@ -183,6 +183,7 @@
 * [Debugging](sdk7/debugging/)
   * [Debug in Preview](sdk7/debugging/debug-in-preview.md)
   * [Debug in Production](sdk7/debugging/debug-in-prod.md)
+  * [Scene Insights](sdk7/debugging/scene-insights.md)
   * [Report a Bug](sdk7/debugging/report-bug.md)
   * [Troubleshooting](sdk7/debugging/troubleshooting.md)
 * [Optimizing](sdk7/optimizing/)

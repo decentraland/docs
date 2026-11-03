@@ -127,6 +127,10 @@ The event includes the following information:
 
 You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
+{% hint style="info" %}
+**💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
+{% endhint %}
+
 ## Player changes profile
 
 Use the `onChange` function on the `AvatarEquippedData` component to fire an event each time the player changes one of their wearables, or their listed emotes on the quick access wheel. Similarly, use the `onChange` function on the `AvatarBase` to fire an event each time the player changes their base avatar properties, like hair color, skin color, avatar shape, or name.
@@ -207,7 +211,7 @@ export function main() {
 
 ## Open explorer panels
 
-Your scene can open the Explorer's built-in fullscreen panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. This is useful for directing players to specific Explorer features from your scene's UI.
+Your scene can open the Explorer's built-in panels (map, settings, backpack, etc.) using the `openExplorerUi` restricted action. Most of them take over the screen, but not all of them do. This is useful for directing players to specific Explorer features from your scene's UI.
 
 The player has to ask for it. Call `openExplorerUi` from inside a click handler, not on its own:
 
@@ -239,6 +243,7 @@ The `ExplorerUi` enum has the following values:
 * `EU_COMMUNITIES` (4)
 * `EU_PLACES` (5)
 * `EU_EVENTS` (6)
+* `EU_ITEM_PURCHASE` (7): the item-purchase confirmation modal. The Explorer currently answers `REJECTED_FEATURE_DISABLED` for it.
 
 {% hint style="warning" %}
 **Note:** Like other restricted actions (`movePlayerTo`, `triggerEmote`), `openExplorerUi` only works while the player is standing inside the scene's parcels.
@@ -268,14 +273,16 @@ A panel opens only when the call is a direct response to something the player ju
 | -------------------------------- | ---------------------------------------------- |
 | `UNSPECIFIED` (0)                | No result was reported.                        |
 | `OPENED` (1)                     | The panel opened.                              |
-| `WAS_ALREADY_OPEN` (2)           | That panel, or another panel that uses the same screen slot, was already open. Panels that share a slot can't be open at the same time. |
+| `WAS_ALREADY_OPEN` (2)           | Another panel was already on screen. The panels share a single slot, so only one of them can be open at a time. |
 | `REJECTED_NOT_CURRENT_SCENE` (3) | The player isn't standing in your scene.       |
-| `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off.        |
+| `REJECTED_FEATURE_DISABLED` (4)  | The Explorer has that panel turned off, or the `ui` value isn't a panel it knows. |
 | `REJECTED_NO_USER_GESTURE` (5)   | The call wasn't a response to a player action. |
 
 {% hint style="warning" %}
 **Note:** If nothing opens and you see no error, check `openResult`. `REJECTED_NO_USER_GESTURE` (5) means your call ran outside a player action, usually because it sits in `main()`, in a timer, or after an `await`.
 {% endhint %}
+
+`WAS_ALREADY_OPEN` isn't only about your scene calling twice. The panels all occupy the same slot, so any one of them being on screen refuses any other, and the player may have opened that one by hand a moment earlier, with no involvement from your scene. Treat it as a normal outcome, not as a bug in your code. With `openExplorerUiAndWait()`, described below, the same situation arrives as a `notOpened` outcome.
 
 ### Wait until the player closes a panel
 
@@ -286,10 +293,14 @@ import { openExplorerUiAndWait, ExplorerUi } from '@dcl/sdk/explorer-ui'
 
 // Open the backpack, then continue once the player closes it
 async function openBackpack() {
-	const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_BACKPACK })
+	try {
+		const outcome = await openExplorerUiAndWait({ ui: ExplorerUi.EU_BACKPACK })
 
-	if (outcome.$case === 'closed') {
-		console.log('The player closed the backpack')
+		if (outcome.$case === 'closed') {
+			console.log('The player closed the backpack')
+		}
+	} catch (error) {
+		console.log('The wait failed:', error)
 	}
 }
 ```
@@ -304,6 +315,8 @@ The object you get back has a `$case` field that tells you how the wait ended:
 * `matched`: an `until` condition ended the wait early, so the panel may still be on screen.
 
 When the panel can't open, the promise resolves immediately with `notOpened`. Your scene never sits waiting for a panel that isn't there.
+
+Those four outcomes cover every ordinary ending, but the promise can still reject: the request to the Explorer can fail outright, two channels can be registered under the same name, or an event can arrive that the helper can't attribute to any of the calls in flight. That's why the example above is wrapped in a `try`/`catch`. A rejection inside an `async` function called from a pointer handler is reported nowhere at all, so without the `catch` the wait simply never comes back and nothing tells you why.
 
 {% hint style="warning" %}
 **📔 Note**: `openExplorerUiAndWait()` requires `@dcl/sdk` version 7.30.0 or newer. It comes from the `@dcl/sdk/explorer-ui` module, which also re-exports `ExplorerUi`.
@@ -330,16 +343,49 @@ async function openMap() {
 
 The `until` option ends the wait as soon as an event arrives on a channel, resolving with `matched` rather than `closed`. Channels are exported from the same module: `ExplorerUiEvents` for panel open and close events, and `ItemPurchase` for the result of a purchase flow. Add the same channel to the `collect` option if you also want the events themselves, which arrive in the outcome's `events` array.
 
+Pass the channel on its own to stop on any of its events, or wrap it in `variant()` to stop on one kind of event only:
+
+```ts
+import { ExplorerUi, ExplorerUiEvents, openExplorerUiAndWait, variant } from '@dcl/sdk/explorer-ui'
+
+// Carry on as soon as the backpack is on screen, without waiting for the player to close it
+async function openBackpack() {
+	const outcome = await openExplorerUiAndWait(
+		{ ui: ExplorerUi.EU_BACKPACK },
+		{ until: variant(ExplorerUiEvents, 'opened'), collect: [ExplorerUiEvents] }
+	)
+
+	if (outcome.$case === 'matched') {
+		console.log('The backpack is open, collected', outcome.events.length, 'events')
+	}
+}
+```
+
+The `$case` values `variant()` accepts are the ones the channel's events carry: `opened` and `closed` on `ExplorerUiEvents`.
+
 ### Observe when panels open or close
 
-Use the `ExplorerUiEventsResult` component to detect when explorer panels are opened or closed. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. It streams events each time a panel opens or closes.
+Use the `ExplorerUiEventsResult` component to follow the panels your own scene opened. This is a grow-only component on `engine.RootEntity`, similar to `PointerEventsResult`. Each panel your scene opens with `openExplorerUi` adds one event when it appears, and another when it goes away, including when the player dismisses it with _Esc_.
+
+{% hint style="warning" %}
+**Note:** This isn't a scene-wide view of the Explorer's UI. A panel the player opens by hand, from the Explorer's own menus, produces no events here. A scene that never calls `openExplorerUi` never sees a single one.
+{% endhint %}
+
+`get()` hands you the whole set of events accumulated so far, up to the 100 most recent, not the ones that arrived since the last frame. A system that iterates it blindly reacts to every past event on every tick. Compare each event's `timestamp` against the last tick you handled:
 
 ```ts
 import { engine, ExplorerUiEventsResult, ExplorerUi } from '@dcl/sdk/ecs'
 
+let lastHandledTick = -1
+
 engine.addSystem(() => {
-	// Iterate over new events since the last frame
+	let newestTick = lastHandledTick
+
 	for (const event of ExplorerUiEventsResult.get(engine.RootEntity)) {
+		// The set keeps every event, so skip the ticks already handled
+		if (event.timestamp <= lastHandledTick) continue
+		if (event.timestamp > newestTick) newestTick = event.timestamp
+
 		if (event.event?.$case === 'opened') {
 			console.log('Panel opened:', event.ui)
 		}
@@ -352,15 +398,21 @@ engine.addSystem(() => {
 			console.log('Player closed the map')
 		}
 	}
+
+	// Only after the loop, so several events on the same tick are all handled
+	lastHandledTick = newestTick
 })
 ```
+
+`ExplorerUiEventsResult.onChange()` on `engine.RootEntity` is the other way to read the stream: the callback runs once per new event, so there's no bookkeeping to keep right.
 
 Each event contains:
 
 * `ui`: Which panel the event is about (an `ExplorerUi` value).
-* `timestamp`: A monotonic counter for when the event occurred.
+* `timestamp`: The scene tick the event happened on.
+* `requestId`: The id your scene passed on the `openExplorerUi` call that opened this panel, or `0` if the call passed none. Use it to tell apart several calls in flight.
 * `event`: Either `{ $case: 'opened' }` or `{ $case: 'closed' }`.
 
 {% hint style="info" %}
-**💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.
+**💡 Tip**: For a working example of all of the above, see the [`80,-6-explorer-ui-events`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/80,-6-explorer-ui-events) test scene. It prints every verdict and every event to its own HUD, and covers the gesture gate, a panel already open, `requestId` correlation and each outcome of `openExplorerUiAndWait()`.
 {% endhint %}

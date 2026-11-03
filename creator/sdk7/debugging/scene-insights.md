@@ -41,8 +41,9 @@ Sign in with a wallet that meets one of these conditions:
 - It appears in the deployed scene's root-level `logsPermissions` array.
 - It owns the World.
 - It is a World deployment collaborator whose grant covers the whole World or every deployed parcel of the scene.
+- For Genesis City, it owns the scene's **base parcel**, or has delegated LAND management permission on that parcel: `operator`, `updateOperator`, `updateManager`, or `approvedForAll`.
 
-To explicitly grant access, add the wallet to `scene.json` and redeploy:
+Owners and eligible managers do not need a `logsPermissions` entry or a scene redeploy. To explicitly grant access to another wallet, add it to `scene.json` and redeploy:
 
 ```json
 {
@@ -50,7 +51,11 @@ To explicitly grant access, add the wallet to `scene.json` and redeploy:
 }
 ```
 
-Genesis City LAND ownership alone does not grant access; use `logsPermissions`. Logging in does not grant permission to read other scenes.
+For Genesis City, permission is checked against the deployed scene's base parcel, even if you query another parcel within the scene. Ownership or management rights on a different parcel alone do not grant access to the scene.
+
+The same permissions cover historical logs, live logs, metrics, and execution history. Access follows **current permissions**: the base-parcel owner can read telemetry from scenes deployed by an operator or tenant, including retained history under the same scene key for up to 7 days.
+
+Permission changes can take up to 60 seconds to affect new requests with the default cache settings. Open live streams recheck access periodically (every 5 minutes by default). Logging in does not grant permission to read other scenes.
 
 ## Sign In
 

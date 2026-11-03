@@ -45,7 +45,7 @@ Optionally, you can also add the following to your `scene.json` at root level:
 }
 ```
 
-Add `logsPermissions` to give these wallets access to server logs and metrics after deployment. World owners and eligible deployment collaborators also have access. See [Scene Insights](../debugging/scene-insights.md) for permissions, sign-in, and commands.
+Add `logsPermissions` to give these wallets access to server logs and metrics after deployment. World owners and eligible deployment collaborators also have access, as do Genesis City owners and delegated LAND managers of the scene's base parcel. See [Scene Insights](../debugging/scene-insights.md) for permissions, sign-in, and commands.
 
 ### 3. Run the preview
 

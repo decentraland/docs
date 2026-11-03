@@ -812,6 +812,130 @@
 			"fileName": "audio-video-environment/audio-visualization.md"
 		},
 		{
+			"id": "clap-to-claim-dispenser",
+			"name": "Clap-to-claim dispenser",
+			"description": "A wearable dispenser that players claim by doing the clap emote in a trigger area.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"rewards",
+				"wearables",
+				"triggers",
+				"emotes"
+			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/clap-claim-dispenser",
+			"license": {
+				"status": "unknown"
+			},
+			"highlights": [
+				{
+					"title": "Arm a dispenser while the player stands in front of it",
+					"description": "Each dispenser stores its campaign in a `DispenserComponent`. A sphere `TriggerArea` in front of it sets `isActive` and shows a \"clap to claim\" toast on enter, and clears both on exit.",
+					"context": "The campaign ID and dispenser key come from `ClaimConfig` in `src/modules/claiming/claimConfig.ts`.",
+					"tags": [
+						"triggers",
+						"ui"
+					],
+					"references": [
+						{
+							"label": "`createDispenserWithWearable`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/clap-claim-dispenser/src/modules/dispensers.ts#L28-L89"
+						}
+					]
+				},
+				{
+					"title": "Claim when the player plays the clap emote",
+					"description": "`initClapToClaim` watches `AvatarEmoteCommand` on the player entity. When the emote is `clap`, it waits for the animation and claims from every dispenser that is currently active.",
+					"context": "The claim request and response handling follow the same Rewards flow as the reward claim dispenser example.",
+					"tags": [
+						"emotes",
+						"rewards"
+					],
+					"references": [
+						{
+							"label": "`initClapToClaim`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/clap-claim-dispenser/src/modules/clapToClaim.ts#L6-L33"
+						}
+					]
+				}
+			],
+			"page": "./multiplayer-data-services/clap-to-claim-dispenser.md",
+			"fileName": "multiplayer-data-services/clap-to-claim-dispenser.md"
+		},
+		{
+			"id": "spreadsheet-data",
+			"name": "Data from a spreadsheet",
+			"description": "Scene content driven by a Google Sheet, updated without redeploying.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"api",
+				"spreadsheet",
+				"video",
+				"wearables"
+			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
+			"source": "https://github.com/decentraland/Read_Spreadsheet_Scene",
+			"license": {
+				"status": "identified",
+				"name": "Apache-2.0",
+				"url": "https://github.com/decentraland/Read_Spreadsheet_Scene/blob/main/LICENSE"
+			},
+			"highlights": [
+				{
+					"title": "Read a published Google Sheet as JSON",
+					"description": "`getSpreadsheetData` requests the sheet through the Google Visualization endpoint (`gviz/tq?tqx=out:json`), strips the `setResponse(...)` wrapper, and turns each row into an object keyed by the column headers.",
+					"context": "The sheet must be shared so anyone with the link can view it. `gid` selects the tab and `headers=1` treats the first row as column names.",
+					"tags": [
+						"api",
+						"spreadsheet"
+					],
+					"references": [
+						{
+							"label": "`getSpreadsheetData`",
+							"url": "https://github.com/decentraland/Read_Spreadsheet_Scene/blob/57bb4086aed3054d69a74f33f20f2d86c4eb9bb6/src/scheduler.ts#L1-L47"
+						}
+					]
+				},
+				{
+					"title": "Apply a row to the scene",
+					"description": "`updateFromSpreadsheet` reads one row and updates a banner `TextShape`, replaces the screen's `VideoPlayer` source, swaps the wearable shown on the dispenser, and points the dispenser's click action at the row's purchase link.",
+					"context": "Column names such as `NowPlaying`, `VideoURL`, `WearableURN`, and `BuyURL` must match the sheet headers. Entities are looked up by the names given in the Creator Hub scene.",
+					"tags": [
+						"video",
+						"wearables"
+					],
+					"references": [
+						{
+							"label": "`updateFromSpreadsheet`",
+							"url": "https://github.com/decentraland/Read_Spreadsheet_Scene/blob/57bb4086aed3054d69a74f33f20f2d86c4eb9bb6/src/index.ts#L10-L64"
+						},
+						{
+							"label": "`createWearable`",
+							"url": "https://github.com/decentraland/Read_Spreadsheet_Scene/blob/57bb4086aed3054d69a74f33f20f2d86c4eb9bb6/src/index.ts#L100-L130"
+						}
+					]
+				},
+				{
+					"title": "Cycle through rows from a Creator Hub button",
+					"description": "`main` listens for the `Next` and `Previous` actions on the `Switch Artist` entity and wraps the row index around the downloaded data.",
+					"context": "Uses `getActionEvents` from `@dcl/asset-packs`, so the actions are configured on the entity in the Creator Hub.",
+					"tags": [
+						"interaction"
+					],
+					"references": [
+						{
+							"label": "`main`",
+							"url": "https://github.com/decentraland/Read_Spreadsheet_Scene/blob/57bb4086aed3054d69a74f33f20f2d86c4eb9bb6/src/index.ts#L69-L97"
+						}
+					]
+				}
+			],
+			"page": "./multiplayer-data-services/spreadsheet-data.md",
+			"fileName": "multiplayer-data-services/spreadsheet-data.md"
+		},
+		{
 			"id": "dynamic-lights",
 			"name": "Dynamic lights",
 			"description": "Changing lights at runtime.",
@@ -991,6 +1115,158 @@
 			"highlights": [],
 			"page": "./gameplay-interaction/raycasting-and-collider-layers.md",
 			"fileName": "gameplay-interaction/raycasting-and-collider-layers.md"
+		},
+		{
+			"id": "recurring-giveaway",
+			"name": "Recurring giveaway",
+			"description": "A daily wearable giveaway that tracks visits and claims on a companion server.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"rewards",
+				"wearables",
+				"captcha",
+				"server",
+				"storage"
+			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/simple-giveaway-scene",
+			"license": {
+				"status": "identified",
+				"name": "Apache-2.0",
+				"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/main/simple-giveaway-scene/README.md"
+			},
+			"highlights": [
+				{
+					"title": "Claim with an optional captcha step",
+					"description": "`claimToken` either requests the reward directly or, when `USE_CAPTCHA` is on, fetches a captcha first. `validateCaptcha` sends the answer with the claim, then records the claim on the companion server and refreshes the player's progress.",
+					"context": "The campaign and dispenser keys are set in `src/config/claim.config.ts`, which points at the Rewards test server by default.",
+					"tags": [
+						"captcha",
+						"rewards"
+					],
+					"references": [
+						{
+							"label": "`claimToken` and `requestToken`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/src/classes/claim.class.ts#L29-L91"
+						},
+						{
+							"label": "`validateCaptcha`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/src/classes/claim.class.ts#L110-L161"
+						}
+					]
+				},
+				{
+					"title": "Track daily progress on a companion server",
+					"description": "The Express and SQLite server in `server/` counts visits and advances each player to the next of three wearables, at most once every 24 hours.",
+					"context": "The server trusts the player ID sent in the request body, and the scene records the claim only after the Rewards request succeeds. Treat the 24-hour limit as a demo; a production giveaway needs to verify the player with signed requests and enforce limits in the campaign.",
+					"tags": [
+						"server",
+						"storage"
+					],
+					"references": [
+						{
+							"label": "`/update-wearable`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/simple-giveaway-scene/server/src/index.ts#L59-L99"
+						}
+					]
+				}
+			],
+			"page": "./multiplayer-data-services/recurring-giveaway.md",
+			"fileName": "multiplayer-data-services/recurring-giveaway.md"
+		},
+		{
+			"id": "reward-claim-dispenser",
+			"name": "Reward claim dispenser",
+			"description": "Wearable dispensers and airdrop crates that claim rewards from a Rewards campaign.",
+			"category": "multiplayer-data-services",
+			"tags": [
+				"rewards",
+				"wearables",
+				"captcha",
+				"ui"
+			],
+			"maintainer": "decentraland",
+			"maintenance": "decentraland",
+			"source": "https://github.com/decentraland/sdk7-goerli-plaza/tree/main/reward-claim",
+			"license": {
+				"status": "identified",
+				"name": "Apache-2.0",
+				"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/main/reward-claim/LICENSE"
+			},
+			"highlights": [
+				{
+					"title": "Request a reward with a signed fetch",
+					"description": "`claimToken` throttles repeated clicks, skips campaigns already claimed in the session, and checks that the player has a wallet. `requestToken` then posts the dispenser key, the current catalyst, and the player's address to the Rewards server using `signedFetch`.",
+					"context": "Replace the test campaign ID and dispenser key in `ClaimConfig` with your own campaign's values. See the Rewards getting-started guide for creating a campaign and dispenser.",
+					"tags": [
+						"rewards",
+						"api"
+					],
+					"references": [
+						{
+							"label": "`claimToken` and `requestToken`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claim.ts#L26-L99"
+						},
+						{
+							"label": "`ClaimConfig`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claimConfig.ts#L21-L34"
+						}
+					]
+				},
+				{
+					"title": "Map Rewards responses to player feedback",
+					"description": "`processResponse` distinguishes campaigns that have not started, have ended, or are disabled, out-of-stock dispensers, rewards already assigned, and successful claims, and shows a different dispenser UI for each.",
+					"context": "The UI states are defined in `dispenserUi.tsx`. Campaign start and end dates are optional fields on the campaign config.",
+					"tags": [
+						"rewards",
+						"ui"
+					],
+					"references": [
+						{
+							"label": "`processResponse`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claim.ts#L101-L197"
+						}
+					]
+				},
+				{
+					"title": "Retry a claim with a captcha",
+					"description": "When the Rewards server asks for a captcha, `getCaptcha` fetches a captcha image and shows it in the dispenser UI. Submitting the answer calls `claimToken` again with the captcha ID and value.",
+					"context": "Whether a captcha is required is a setting of the dispenser in the Rewards dashboard.",
+					"tags": [
+						"captcha",
+						"rewards"
+					],
+					"references": [
+						{
+							"label": "`getCaptcha`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/claim.ts#L209-L216"
+						},
+						{
+							"label": "Captcha submit button",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/dispenser/claiming/ui/dispenserUi.tsx#L640-L643"
+						}
+					]
+				},
+				{
+					"title": "Claim from an airdropped crate",
+					"description": "`randomCrateSpawn` drops a crate with a parachute at a random point in the stage area. `DropCrate` raycasts down to find the ground and tweens the crate onto it, and clicking the crate claims the reward and makes it vanish.",
+					"context": "The crate drop is triggered by the `Activate` action of a Creator Hub lever in `main`.",
+					"tags": [
+						"rewards",
+						"raycast",
+						"animation"
+					],
+					"references": [
+						{
+							"label": "`randomCrateSpawn` and `SpawnCrate`",
+							"url": "https://github.com/decentraland/sdk7-goerli-plaza/blob/54a07775ee340f0ce22eb23280ef0e9c35f5e386/reward-claim/src/crate.ts#L40-L119"
+						}
+					]
+				}
+			],
+			"page": "./multiplayer-data-services/reward-claim-dispenser.md",
+			"fileName": "multiplayer-data-services/reward-claim-dispenser.md"
 		},
 		{
 			"id": "playtest-feedback",

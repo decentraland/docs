@@ -87,6 +87,10 @@ Three components let your scene take over the environment while the player is st
 
 Like `SkyboxTime`, all three can only be added to the root entity of the scene, `engine.RootEntity`. On any other entity they have no effect. Every field is optional: anything you leave out keeps its default time-of-day behavior.
 
+{% hint style="warning" %}
+**📔 Note**: The `Skybox`, `Sun` and `EnvironmentFog` components are not supported yet on the mobile app or on the Bevy explorer. Players on those clients see the regular sky, sun and fog, so make sure your scene still works without these overrides.
+{% endhint %}
+
 ```ts
 import { engine, Skybox, Sun, EnvironmentFog } from '@dcl/sdk/ecs'
 import { Color4, Vector3 } from '@dcl/sdk/math'
@@ -127,7 +131,9 @@ function main() {
 
 The image wraps around horizontally and is filtered bilinearly. If the image fails to load, the default sky stays in place.
 
-The texture only changes what the sky looks like: the sunlight keeps following the time of day, the ambient light keeps following `skyColors` (so you can match it to your image), and the `Sun` and `EnvironmentFog` components still apply on top of it. In the desktop Explorer, the reflections on shiny materials follow your sky texture too.
+Keep the image size reasonable: the whole panorama is downloaded and kept in memory while your scene is loaded. 2048x1024 pixels is enough for most skies; don't go above 4096x2048. Use a compressed format such as `.jpg` for photographic skies.
+
+The texture only changes what the sky looks like: the sunlight keeps following the time of day, the ambient light keeps following `skyColors` (so you can match it to your image), and the `Sun` and `EnvironmentFog` components still apply on top of it. On the High quality preset, the reflections on shiny materials follow your sky texture too.
 
 ### Sky colors, clouds and stars
 
@@ -156,7 +162,7 @@ function main() {
 ```
 
 * `skyColors`: the color of the sky at its `zenith` (straight up), at the `horizon`, and at its `nadir` (the sky below the horizon, visible wherever no terrain covers it, for example at high altitude or in a World with the [landscape terrain](../projects/scene-metadata.md#landscape-terrain) turned off). These colors also drive the ambient light of the scene: the zenith color lights objects from above, the horizon color from the sides and the nadir color from below, so that objects and avatars match the sky around them. `skyColors.rim` is a narrow glow drawn right on the horizon line, like a sunset glow; when you leave it unset it follows your `horizon` color if you set one (otherwise it keeps its default), so you only need it for an accent (for example an orange sunrise rim on a dark sky).
-* `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer turns around the sky, in radians per second: 0.01 by default (one turn every ~10 minutes), 0 for static clouds, negative to reverse. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky.
+* `clouds.opacity`: from 0 (no clouds) to 1, the default. `clouds.speed`: how fast the cloud layer turns around the sky, in radians per second: 0.01 by default (one turn every ~10 minutes), 0 for static clouds; negative values count as 0. `clouds.color`: the tint of the cloud layer; without it clouds keep their default time-of-day colors even on a recolored sky.
 * `stars.brightness`: a multiplier on the star texture, 4.62 by default (values above 1 are HDR, 0 hides the stars, negative values count as 0). Stars are only visible during the night part of the day.
 
 While a `skyboxTexture` is set, the texture replaces the procedural sky: `clouds` and `stars` have no effect, and `skyColors` no longer color the sky but still drive the ambient light.
@@ -253,7 +259,7 @@ function main() {
 ```
 
 {% hint style="warning" %}
-**📔 Note**: On the Low quality preset (Very Low on mobile), scene lights are switched off, so a fully dark scene renders completely black for those players. Use emissive materials to keep anything essential visible.
+**📔 Note**: On the Low quality preset, scene lights are switched off, so a fully dark scene renders completely black for those players. Use emissive materials to keep anything essential visible.
 {% endhint %}
 
 See [Lights](../3d-essentials/lights.md) to add point and spot lights to your scene.

@@ -314,4 +314,4 @@ For example, the image below displays each of the letters on different sides of 
 
 Lights are easiest to appreciate when the sky doesn't compete with them. The `Skybox`, `Sun` and `EnvironmentFog` components can black out the sunlight, the sky colors (and with them the ambient light), the fog, the clouds and the stars, so that your lights become the only source of illumination. See [Complete darkness](../interactivity/skybox-control.md#complete-darkness).
 
-On the Low quality preset (Very Low on mobile), scene lights don't render at all, so a fully dark scene appears completely black for those players. Use emissive materials to keep anything essential visible.
+On the Low quality preset, scene lights don't render at all, so a fully dark scene appears completely black for those players. Use emissive materials to keep anything essential visible. The mobile app and the Bevy explorer don't support these components yet, so players on those clients keep seeing the regular sky.

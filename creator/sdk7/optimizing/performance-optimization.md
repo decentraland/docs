@@ -278,6 +278,8 @@ engine.addSystem(() => {
   // Start over while the scene is hidden, for example behind the loading screen
   if (info.sceneHidden) {
     windowStartFrame = -1
+    // Skip the first window after every loading screen, not only the first one
+    firstWindow = true
     return
   }
   if (windowStartFrame < 0) {

@@ -1,7 +1,7 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parseCategory, parseExample } from './frontmatter.mjs'
+import { OFFICIAL_MAINTAINERS, parseCategory, parseExample } from './frontmatter.mjs'
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url))
 const repositoryRoot = join(scriptDirectory, '..', '..')
@@ -39,7 +39,7 @@ function getCanonicalSource(source) {
 function renderMaintenance(example) {
 	return example.maintenance === 'community'
 		? `Community · ${example.maintainer}`
-		: 'Decentraland'
+		: OFFICIAL_MAINTAINERS[example.maintainer.toLowerCase()]
 }
 
 
@@ -49,8 +49,8 @@ function renderCommunityWarning(collection = false) {
 		'**Community-maintained code — review before use**',
 		'',
 		collection
-			? 'Community projects listed here are maintained outside the Decentraland GitHub organization. Their source code and live deployments may change independently.'
-			: 'This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently.',
+			? 'Community projects listed here are maintained outside the Decentraland Foundation and DAO GitHub organizations. Their source code and live deployments may change independently.'
+			: 'This community project is maintained outside the Decentraland Foundation and DAO GitHub organizations. Its source code and live deployment may change independently.',
 		'',
 		'Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.',
 		'',

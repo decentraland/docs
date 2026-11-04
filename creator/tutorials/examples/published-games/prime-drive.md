@@ -54,7 +54,7 @@ A three-lane bike racing game where players dodge obstacles, collect coins, and 
 {% hint style="warning" %}
 **Community-maintained code — review before use**
 
-This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently.
+This community project is maintained outside the Decentraland Foundation and DAO GitHub organizations. Its source code and live deployment may change independently.
 
 Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
 

@@ -1,5 +1,12 @@
 import { parseDocument } from 'yaml'
 
+// GitHub organizations run by the Decentraland Foundation or DAO, with their display labels.
+export const OFFICIAL_MAINTAINERS = {
+	'decentraland': 'Decentraland',
+	'decentraland-scenes': 'Decentraland',
+	'dcl-regenesislabs': 'Decentraland DAO',
+}
+
 function parseFrontMatter(fileName, content) {
 	const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
 	if (!match) {
@@ -99,7 +106,7 @@ export function parseExample(fileName, category, content) {
 		tags: fields.tags.map(tag => tag.trim()),
 		developer: fields.developer,
 		maintainer,
-		maintenance: maintainer.toLowerCase() === 'decentraland' ? 'decentraland' : 'community',
+		maintenance: Object.hasOwn(OFFICIAL_MAINTAINERS, maintainer.toLowerCase()) ? 'decentraland' : 'community',
 		source: fields.source,
 		realm: fields.realm,
 		position: fields.position,

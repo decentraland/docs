@@ -33,6 +33,13 @@ test('accepts block lists with comments and derives external ownership', () => {
 	assert.equal(parsed.maintenance, 'community')
 })
 
+for (const owner of ['decentraland-scenes', 'dcl-regenesislabs']) {
+	test(`treats the ${owner} organization as official`, () => {
+		const parsed = parseExample('sample.md', 'gameplay-interaction', example.replace('decentraland/example', `${owner}/example`))
+		assert.equal(parsed.maintenance, 'decentraland')
+	})
+}
+
 for (const field of ['id', 'name', 'description', 'source']) {
 	for (const value of ['', '[]', 'true', '42', '"  "']) {
 		test(`rejects ${field} with invalid value ${JSON.stringify(value)}`, () => {

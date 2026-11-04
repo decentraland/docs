@@ -262,6 +262,7 @@ The example also skips its first 5 second window, which covers the scene's own l
 ```tsx
 import { engine, ExplorerUi } from '@dcl/sdk/ecs'
 import { openExplorerUi } from '~system/RestrictedActions'
+import { getPlayer, onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
 import ReactEcs, { Button, Label, ReactEcsRenderer, UiEntity } from '@dcl/sdk/react-ecs'
 
 let showSettingsTip = false
@@ -271,7 +272,26 @@ let tipAlreadyShown = false
 let elapsed = 0
 let frames = 0
 let firstWindow = true
+
+// Only measure while the player stands in this scene. The Explorer slows down
+// the scenes around it, which would read as a low frame rate on any machine.
+let playerInScene = false
+
+onEnterScene((player) => {
+  if (!player || player.userId !== getPlayer()?.userId) return
+  playerInScene = true
+  // Start over, and skip the first window again: entering is a transition too
+  elapsed = 0
+  frames = 0
+  firstWindow = true
+})
+
+onLeaveScene((userId) => {
+  if (userId === getPlayer()?.userId) playerInScene = false
+})
+
 engine.addSystem((dt: number) => {
+  if (!playerInScene) return
   elapsed += dt
   frames += 1
   if (elapsed >= 5) {

@@ -253,57 +253,50 @@ Always ask players for feedback. Never take for granted that how you experience 
 
 Even a well optimized scene can run poorly on low-end hardware, or when the player has their graphics settings set too high for their machine. You can help these players by detecting a low frame rate from your scene's code and showing a UI tip that recommends lowering their graphics settings, with a button that opens the Explorer's settings panel directly via [`openExplorerUi()`](../interactivity/event-listeners.md#open-explorer-panels).
 
-Your scene can estimate the frame rate by counting how many times a system runs over a period of time. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel. That click is the [player action](../interactivity/event-listeners.md#only-a-player-action-can-open-a-panel) that `openExplorerUi()` requires, so the call must happen directly inside the button's handler.
+Your scene can measure the Explorer's frame rate with the [`EngineInfo`](../interactivity/runtime-data.md#the-engineinfo-component) component: `frameNumber` counts the frames the Explorer renders, and `totalRuntime` counts seconds. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel. That click is the [player action](../interactivity/event-listeners.md#only-a-player-action-can-open-a-panel) that `openExplorerUi()` requires, so the call must happen directly inside the button's handler.
 
-What you're counting is your scene's update ticks, not the frames the Explorer renders. The Explorer throttles the update rate of scenes the player isn't standing in, so the two numbers only follow each other closely for the scene around the player. Treat the result as a rough signal that something is wrong, never as a measurement.
+Don't count how many times your own system runs instead. The Explorer runs the scenes the player isn't standing in at a reduced rate, so a tick counter reads as a low frame rate on any machine. `frameNumber` isn't affected by that, because it counts the Explorer's frames, not your scene's ticks. Even so, treat the result as a rough signal that something is wrong, not a precise measurement.
 
-The example also skips its first 5 second window, which covers the scene's own loading and is slow even on a fast machine, and shows the prompt only once per session.
+The example also starts over while the scene is hidden, for example behind the loading screen. It skips its first 5 second window, which can still include the scene's own loading, and shows the prompt only once per session.
 
 ```tsx
-import { engine, ExplorerUi } from '@dcl/sdk/ecs'
+import { engine, EngineInfo, ExplorerUi } from '@dcl/sdk/ecs'
 import { openExplorerUi } from '~system/RestrictedActions'
-import { getPlayer, onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
 import ReactEcs, { Button, Label, ReactEcsRenderer, UiEntity } from '@dcl/sdk/react-ecs'
 
 let showSettingsTip = false
 let tipAlreadyShown = false
 
-// Estimate the average FPS over 5 second intervals
-let elapsed = 0
-let frames = 0
+// Measure the Explorer's average FPS over 5 second windows
+let windowStartFrame = -1
+let windowStartTime = 0
 let firstWindow = true
 
-// Only measure while the player stands in this scene. The Explorer slows down
-// the scenes around it, which would read as a low frame rate on any machine.
-let playerInScene = false
-
-onEnterScene((player) => {
-  if (!player || player.userId !== getPlayer()?.userId) return
-  playerInScene = true
-  // Start over, and skip the first window again: entering is a transition too
-  elapsed = 0
-  frames = 0
-  firstWindow = true
-})
-
-onLeaveScene((userId) => {
-  if (userId === getPlayer()?.userId) playerInScene = false
-})
-
-engine.addSystem((dt: number) => {
-  if (!playerInScene) return
-  elapsed += dt
-  frames += 1
-  if (elapsed >= 5) {
-    // Skip the first window: it includes the scene's loading, slow on any machine
-    if (!firstWindow && !tipAlreadyShown && frames / elapsed < 20) {
-      showSettingsTip = true
-      tipAlreadyShown = true
-    }
-    firstWindow = false
-    elapsed = 0
-    frames = 0
+engine.addSystem(() => {
+  const info = EngineInfo.getOrNull(engine.RootEntity)
+  if (!info || tipAlreadyShown) return
+  // Start over while the scene is hidden, for example behind the loading screen
+  if (info.sceneHidden) {
+    windowStartFrame = -1
+    return
   }
+  if (windowStartFrame < 0) {
+    windowStartFrame = info.frameNumber
+    windowStartTime = info.totalRuntime
+    return
+  }
+  const elapsed = info.totalRuntime - windowStartTime
+  if (elapsed > 0 && elapsed < 5) return
+  // A window far longer than 5 s (scene paused, clock changed) says nothing: drop it
+  const valid = elapsed >= 5 && elapsed < 10
+  // Skip the first window: it can include the scene's loading, slow on any machine
+  if (valid && !firstWindow && (info.frameNumber - windowStartFrame) / elapsed < 20) {
+    showSettingsTip = true
+    tipAlreadyShown = true
+  }
+  if (valid) firstWindow = false
+  windowStartFrame = info.frameNumber
+  windowStartTime = info.totalRuntime
 })
 
 ReactEcsRenderer.setUiRenderer(() => (

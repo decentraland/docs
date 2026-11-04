@@ -203,7 +203,7 @@ If you want to create handwear that replaces both hands you would probably need 
 Also you can create hand accessories like watches, bracelets, rings, etc. In that sense, the hand doesn't need to be overridden and the limit is 1000 tris per item.
 
 {% hint style="warning" %}
-Note: The **handwear** category is specifically for hand accessories or replacing hands that follow the avatar armature with proper skinning. It is not meant for items such as swords, shields, or any similar asset. Submitting an item that doesn't follow these specifications may result in rejection by the curators committee.
+Note: The **handwear** category is for hand accessories, items held in the hand (such as tools or props) and items that replace the hands. All of them must follow the avatar armature with proper skinning. Submitting an item that doesn't follow these specifications may result in rejection by the curators committee.
 {% endhint %}
 
 #### **Hair and Facial Hair**

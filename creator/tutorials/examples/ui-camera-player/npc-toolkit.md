@@ -44,21 +44,11 @@ Use reusable NPC behaviours and dialogue UI for SDK7 scenes.
 <!-- example-context:start -->
 ## Project information
 
-**Maintained by:** Community · decentraland-scenes
+**Maintained by:** Decentraland
 
-[View upstream source](https://github.com/decentraland-scenes/dcl-npc-toolkit)
+[View source](https://github.com/decentraland-scenes/dcl-npc-toolkit)
 
 **License:** [Apache-2.0](https://github.com/decentraland-scenes/dcl-npc-toolkit/blob/main/LICENSE). Check upstream terms before reuse; code and assets may have different terms.
-
-{% hint style="warning" %}
-**Community-maintained code — review before use**
-
-This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently.
-
-Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
-
-[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project's security policy. Do not include exploit details or credentials in public issues.
-{% endhint %}
 <!-- example-context:end -->
 
 <!-- example-highlights:start -->

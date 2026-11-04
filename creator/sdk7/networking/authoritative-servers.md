@@ -45,9 +45,7 @@ Optionally, you can also add the following to your `scene.json` at root level:
 }
 ```
 
-Add `logsPermissions` to list wallet addresses that can see `console.log()` from the server. The listed users can then view server logs in production by running the following command:
-
-`npx sdk-commands sdk-server-logs`
+Add `logsPermissions` to give these wallets access to server logs and metrics after deployment. World owners and eligible deployment collaborators also have access, as do Genesis City owners and delegated LAND managers of the scene's base parcel. See [Scene Insights](../debugging/scene-insights.md) for permissions, sign-in, and commands.
 
 ### 3. Run the preview
 
@@ -1229,35 +1227,18 @@ As an alternative, you can open a second Decentraland explorer window by writing
 
 ## Debug in Production
 
-To see `console.log()` output from your published server, your wallet address must be listed in the `logsPermissions` array in `scene.json`:
+Use [Scene Insights](../debugging/scene-insights.md) to search published server logs, follow them live, and retrieve CPU, memory, and other metrics. Logs and metrics are retained for **7 days**, across restarts and redeploys.
 
-```json
-{
-  "logsPermissions": ["0xYourWalletAddress"]
-}
-```
-
-Without this, server logs are hidden in production, even from the scene owner.
-
-Stream live server logs from the command line by running this in your project folder
+Update to the latest `auth-server` SDK, then run these commands from your scene project:
 
 ```bash
-npx sdk-commands sdk-server-logs
+npx sdk-commands scene-insights login
+npx sdk-commands scene-insights tail
 ```
 
-You can also manually specify the world name the logs with:
+Sign in with an authorized wallet in the browser. The read-only session is reused for subsequent commands for up to 12 hours. Press **Ctrl+C** to stop following logs.
 
-```bash
-npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth
-```
-
-When viewing logs from a scene in a multi-scene world or parcels in Genesis City, also pass a `position` for the coordinates:
-
-```bash
-npx sdk-commands sdk-server-logs --world WORLD_NAME.dcl.eth --position=x,y
-```
-
-You'll be prompted to sign a message with one of the wallets listed in `logsPermissions` to authenticate. Once connected, you'll see server-side `console.log()` output in real time, which is useful for diagnosing issues without needing to redeploy.
+The [Scene Insights guide](../debugging/scene-insights.md) covers historical searches, scene selection, access permissions, metrics, AI-assisted debugging, and collection limits.
 
 ### View storage data
 

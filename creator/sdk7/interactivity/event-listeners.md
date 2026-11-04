@@ -370,7 +370,7 @@ Opening Explorer panels directly from your scene's content removes friction for 
 * **Photo opportunities**: Next to a scenic photo spot, add a sign that opens the camera reel panel so players can review the pictures they've taken.
 * **Events and places**: In a lobby or hub scene, add a billboard that opens the events or places panel so players can find what to do next.
 
-Not every panel exists in every client. The camera reel, places, events and communities panels sit behind feature flags and can be switched off, in which case the call answers `REJECTED_FEATURE_DISABLED` and nothing opens. Check `openResult` and keep a fallback inside your scene for anything a player genuinely needs.
+Not every panel exists in every client. The camera reel, places and events panels sit behind feature flags and can be switched off, and the communities panel may be unavailable to some players. In those cases the call answers `REJECTED_FEATURE_DISABLED` and nothing opens. Check `openResult` and keep a fallback inside your scene for anything a player genuinely needs.
 
 {% hint style="info" %}
 **💡 Tip**: For a working example of emote playback events, see the [`4,23-emote-finish`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,23-emote-finish) test scene, which logs every `AvatarEmoteCommand` entry appended to the player entity as `STARTED`, `FINISHED` or `INTERRUPTED` — play an emote out fully to see `FINISHED`, or walk away mid-playback to see `INTERRUPTED`.

@@ -181,6 +181,17 @@ If you set a virtual width to 1920, and a virtual height to 1080, the UI will be
 
 The actual calculation for the Ui Scale Factor that gets multiplied on pixel values is [`Math.min(realWidth / virtualWidth, realHeight / virtualHeight)`](https://github.com/decentraland/js-sdk-toolchain/blob/main/packages/%40dcl/react-ecs/src/system.ts).
 
+#### Full-screen art is taller than your virtual size
+
+The scale factor keeps your reference resolution **inside** the screen, so on a screen that isn't the same shape as your virtual size, the extra space is still part of the UI. Percentages aren't scaled, so a root element at `width: '100%'`, `height: '100%'` covers the whole screen, which can be more than your virtual size in one direction.
+
+On a 16:10 screen with the default `1920x1080`, the scale factor comes from the width, and that full-screen root measures **1920x1200** in virtual pixels. On a wider screen it gets wider than 1920 instead.
+
+So for a background image that must fill the screen:
+
+* Export the art **larger than 1920x1080** and let it crop, the way a CSS `cover` fit works. Art sized exactly 1920x1080 leaves bars on a taller screen.
+* Keep anything that must stay visible (logos, titles, buttons) inside a centred 1920x1080 area, and treat everything outside it as safe to lose.
+
 ### Default virtual size
 
 The virtual size is optional, but its two dimensions go together: pass both, or neither. When you don't pass one, a platform default is applied:

@@ -123,7 +123,7 @@ The event includes the following information:
 * `emoteUrn`: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 * `loop`: If the emote is looping or playing once
 * `timestamp`: When the emote was triggered.
-* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started; also the value when the field is absent, on older clients), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
+* `state`: A value of the `EmoteState` enum describing the lifecycle event: `ES_STARTED` (the emote started, and also the value when the field is absent), `ES_FINISHED` (a non-looping emote played through to its end), or `ES_INTERRUPTED` (the emote was cut short by movement, teleport, another emote, an explicit stop, or leaving the scene). See [Detect when an emote finishes](avatars/avatar-animations.md#detect-when-an-emote-finishes).
 
 You can also detect emotes from other players in the scene by passing a reference to the other player instead of `engine.PlayerEntity`.
 
@@ -167,6 +167,9 @@ The event on `AvatarBase` includes the following information:
 * `skinColor`: Player skin color as a `Color3`
 * `eyesColor`: Player eye color as a `Color3`
 * `hairColor`: Player hair color as a `Color3`
+* `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent, `undefined` when the client isn't reporting voice activity.
+
+Because `talking` lives on `AvatarBase`, this callback also fires every time the player starts or stops speaking. If you only care about looks, compare the fields you need instead of reacting to every change. See [Detect when a player is speaking](user-data.md#detect-when-a-player-is-speaking).
 
 You can also detect changes in wearables or avatars from other players in the scene, simply pass a reference to the other player instead of `engine.PlayerEntity`.
 

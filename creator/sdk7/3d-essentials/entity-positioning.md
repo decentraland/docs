@@ -595,6 +595,40 @@ executeTask(async () => {
 
 See other ways to fetch other user's IDs in [Get Player Data](../interactivity/user-data.md#get-player-data).
 
+{% hint style="warning" %}
+**📔 Note**: Don't set another player's entity as the `parent` of your entity. The engine writes that entity's `Transform` for your scene to read, but it isn't a parent your entity can hang from, so the child falls back to the scene root and stays at the scene's origin. Use `AvatarAttach` with the player's address instead, as shown above.
+{% endhint %}
+
+Player entity ids get reused as people come and go, so the same entity can belong to a different person later. If you keep one marker per player, store the address you built it for and compare it every frame. When the address on an entity changes, delete the old marker and build a new one:
+
+```ts
+import { AvatarAttach, AvatarAnchorPointType, engine, Entity, PlayerIdentityData } from '@dcl/sdk/ecs'
+
+// address the marker was built for, so we can spot a reused entity id
+const markers = new Map<Entity, { address: string; marker: Entity }>()
+
+function markerSystem() {
+	// drop markers whose player left, or whose entity id now belongs to someone else
+	for (const [player, entry] of markers) {
+		if (PlayerIdentityData.getOrNull(player)?.address === entry.address) continue
+		engine.removeEntity(entry.marker)
+		markers.delete(player)
+	}
+
+	for (const [player, data] of engine.getEntitiesWith(PlayerIdentityData)) {
+		if (markers.has(player)) continue
+		const marker = engine.addEntity()
+		AvatarAttach.create(marker, {
+			avatarId: data.address,
+			anchorPointId: AvatarAnchorPointType.AAPT_NAME_TAG,
+		})
+		markers.set(player, { address: data.address, marker })
+	}
+}
+
+engine.addSystem(markerSystem)
+```
+
 ## Scene boundaries
 
 All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other players.

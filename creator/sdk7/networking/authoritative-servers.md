@@ -240,6 +240,14 @@ export async function main() {
 
 See [Scene Admin](../../scene-editor/live-ops/scene-admin.md) for more context about how players become admins on a scene.
 
+#### Send intent, never results
+
+Whenever scores, prizes or shared resources are at stake, design your client messages around what the player is **trying to do**, not around the outcome. A client sends `claimPoint` or `harvest`. It never sends "my score is now 40".
+
+The server then checks the message: who sent it, whether the game is in a phase that allows it, whether the player is close enough, and whether anything is left to claim. Only then does it work out the new value and write it. The server is the only writer of game state.
+
+A client that can name its own score can name any score.
+
 #### Only allow changes by the server
 
 The strictest case is to only accept writes that originate from the server itself, rejecting any change coming from a client. This is the go-to pattern for state that should be fully authoritative: scores, game phase, spawned entities, etc.

@@ -96,7 +96,7 @@ In this example, the camera will always be on a fixed position in the scene, as 
 
 ### Field of view
 
-You can override the Explorer's default field of view (FOV) for a virtual camera by setting the `fov` property, in degrees. The override applies only while this virtual camera is active. Omitting `fov` uses the Explorer's default (typically 60 degrees).
+Set the field of view (FOV) for a virtual camera with the `fov` property, in degrees. It applies only while this virtual camera is active.
 
 ```ts
 const cinematicCamera = engine.addEntity()
@@ -109,6 +109,10 @@ VirtualCamera.create(cinematicCamera, {
 ```
 
 A narrower FOV (lower value) zooms in, useful for cutscenes or aiming. A wider FOV (higher value) shows more of the scene, useful for panoramic views.
+
+{% hint style="warning" %}
+**📔 Note**: Set `fov` on every virtual camera you create. Leaving it out doesn't give you a neutral 60 degrees: the client reuses camera instances without resetting the lens, so a camera with no `fov` keeps whatever field of view the previous camera used. A camera meant to show a wide aerial view can open zoomed right in.
+{% endhint %}
 
 Your scene can include as many entities with a `VirtualCamera`component as you want, and dynamically switch between multiple virtual cameras as the player moves, or as they perform certain actions. Only one virtual camera is active at any given time, this is assigned by the `MainCamera` component on `engine.CameraEntity`.
 
@@ -198,7 +202,7 @@ function main() {
 
 ## Field of View
 
-You can set a custom field of view (FOV) on a virtual camera with the `fov` property. The value is in degrees. If omitted, it defaults to 60.
+You can set a custom field of view (FOV) on a virtual camera with the `fov` property. The value is in degrees. Always set it: there is no default to fall back on, and a camera without `fov` inherits the lens of whichever camera ran before it.
 
 ```ts
 VirtualCamera.create(myCustomCamera, {
@@ -207,6 +211,39 @@ VirtualCamera.create(myCustomCamera, {
 ```
 
 A wider FOV (higher value) shows more of the scene at once and creates a sense of speed, which can be useful for racing games. A narrower FOV (lower value) zooms in and is useful for aiming or cinematic shots.
+
+### Change the zoom level
+
+The client reads `fov` only at the moment a camera becomes active. Changing `fov` on the camera that is already active does nothing.
+
+To zoom, create one virtual camera per zoom level and switch `MainCamera.virtualCameraEntity` between them:
+
+```ts
+import { engine, MainCamera, Transform, VirtualCamera } from '@dcl/sdk/ecs'
+import { Vector3 } from '@dcl/sdk/math'
+
+// Two cameras in the same spot, one wide and one zoomed in
+const position = Vector3.create(8, 2, 8)
+
+const wideCamera = engine.addEntity()
+Transform.create(wideCamera, { position })
+VirtualCamera.create(wideCamera, { fov: 70 })
+
+const zoomedCamera = engine.addEntity()
+Transform.create(zoomedCamera, { position })
+VirtualCamera.create(zoomedCamera, { fov: 30 })
+
+// Switch between them to zoom
+function zoomIn() {
+	MainCamera.createOrReplace(engine.CameraEntity, { virtualCameraEntity: zoomedCamera })
+}
+
+function zoomOut() {
+	MainCamera.createOrReplace(engine.CameraEntity, { virtualCameraEntity: wideCamera })
+}
+```
+
+Re-assigning the camera that is already active is also a no-op, so switch to a different entity each time.
 
 ## Camera Transitions
 

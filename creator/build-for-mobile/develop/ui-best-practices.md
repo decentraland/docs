@@ -44,13 +44,13 @@ function openScoreboard() {
 }
 
 function closeScoreboard() {
-  TouchScreenControls.showAll()
+  TouchScreenControls.showDefault()
   TouchScreenControls.showJoystick()
   // ... hide your UI
 }
 ```
 
-`showAll()` only restores the gamepad buttons, so pair it with `showJoystick()`. Both helpers do nothing on desktop, so there's no need to branch on the platform. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) for the full component.
+Use `showDefault()` rather than `showAll()` to restore the buttons: scenes start with only jump, pointer and primary visible, so `showAll()` would bring back five buttons the player never had. `showDefault()` only restores the gamepad buttons, so pair it with `showJoystick()`. Both helpers do nothing on desktop, so there's no need to branch on the platform. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) for the full component.
 
 If the avatar should also stop moving while the panel is open, add an [input modifier](../../sdk7/interactivity/avatars/locomotion.md#freeze-the-player) on top.
 

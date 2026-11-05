@@ -77,6 +77,31 @@ function main() {
 }
 ```
 
+### Pick the shorter transition
+
+Nothing ever snaps: every change sweeps through all the times in between. `TM_FORWARD` always runs forward, wrapping past midnight, so going from 10:00 to 08:40 sweeps almost a whole day of sky instead of going back 80 minutes.
+
+Work out which way is shorter and pass the matching mode:
+
+```ts
+import { engine, SkyboxTime, TransitionMode } from '@dcl/sdk/ecs'
+
+const DAY = 86400
+
+// Move to a new time of day the short way round
+function setTimeOfDay(fixedTime: number) {
+  const current = SkyboxTime.getOrNull(engine.RootEntity)?.fixedTime ?? 0
+  const forward = (fixedTime - current + DAY) % DAY
+  SkyboxTime.createOrReplace(engine.RootEntity, {
+    fixedTime,
+    // more than half a day forward means backward is the shorter way
+    transitionMode: forward > DAY / 2 ? TransitionMode.TM_BACKWARD : TransitionMode.TM_FORWARD,
+  })
+}
+```
+
+For a large jump that you don't want the player to watch, hide it behind a full-screen UI: fade in, change the time, wait, then fade out.
+
 ## Custom sky, sun and fog
 
 Three components let your scene take over the environment while the player is standing inside it:

@@ -48,6 +48,10 @@ You can check your used and remaining storage budget in the **Manage** section o
 
 Genesis City is Decentraland’s shared space: the large public map made up of LAND parcels. Each LAND parcel is **16 metres × 16 metres**. A scene can be built across one or more parcels.
 
+{% hint style="warning" %}
+**📔 Note**: On mobile and in the desktop client's performance mode, only the scene the player is standing on is loaded, with no neighboring scenes. If your experience is split across several scenes, give players a direct way to reach each of them, such as a portal or teleport in the main scene. See [Experiences split across several scenes](../design-experience/design-games.md#experiences-split-across-several-scenes).
+{% endhint %}
+
 If you prefer to publish to LAND, there are three options:
 
 - **Rent LAND**: Purchase the right to deploy and keep your content on certain parcels for a fixed period of time. See [Rentals](https://docs.decentraland.org/player/marketplace/rentals/).

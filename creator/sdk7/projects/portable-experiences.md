@@ -28,7 +28,7 @@ Smart Wearables are a kind of portable experience that is associated to a wearab
 
 Running a preview of a portable experience is just like running that of a scene, simply click the **Run Scene** button on the Decentraland tab, or run `npm run start` in the command line.
 
-You’ll notice that rather than seeing an empty grid, you are surrounded by the default empty parcels content. In a portable experience, you are not restricted to any set of parcels, you can add 3D models or sounds anywhere in the world. Since the portable experience is meant to be experienced anywhere in Decentraland, you're most likely going to focus on entities attached to the player or UI, but you can also place entities freely in the world.
+You’ll notice that rather than seeing an empty grid, you are surrounded by the default empty parcels content. The preview runs your code as a regular scene on the parcels listed in `scene.json` (the template uses a single parcel at `0,0`), so features that only work in the scene the player is standing in stop when you walk off them. Once published, a portable experience isn't restricted to any set of parcels: you can add 3D models or sounds anywhere in the world. Since the portable experience is meant to be experienced anywhere in Decentraland, you're most likely going to focus on entities attached to the player or UI, but you can also place entities freely in the world.
 
 ## Publish
 
@@ -110,16 +110,6 @@ executeTask(async () => {
 In the example above, the scene is using `kill()` to terminate portable experiences if they match a certain name. You could keep track of a denylist of non-allowed portable experience names, and chose to only terminate those. You could also chose to terminate all of them.
 
 An alternative to terminating portable experiences is to change the behavior of your scene when they are present. For example, the player might be able to keep their portable experience, but not be allowed to start a match, or to claim any rewards as long as they have any enabled.
-
-## Restricted actions in portable experiences
-
-To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
-
-See [Required permissions](scene-metadata.md#required-permissions) for more details.
-
-{% hint style="warning" %}
-**📔 Note**: Players are notified about the required flags by the portable experience. Avoid adding permissions you don't need, since it can make players distrust your portable experience and reject it.
-{% endhint %}
 
 ## Limitations
 

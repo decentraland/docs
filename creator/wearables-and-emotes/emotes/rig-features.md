@@ -71,7 +71,19 @@ The upper arm control, `CTRL_FK_Avatar_Arm`, has a tilted local X axis. Rotating
 * To **aim** the arm, rotate around the world axes instead: world X raises it forward, world Z swings it in and out.
 * To **twist** the arm, so the palm turns up or down and the elbow points in or out, rotate around the bone's own local Y.
 
-Elbows, knees, wrists and fingers are hinges: they only rotate around their local X.
+### Which axis each joint bends on
+
+Elbows and knees bend on their local X. Wrists and fingers don't: they curl on their local Z. Rotating a finger around its local X swings it sideways, which is the most common reason fingers fold the wrong way in a finished emote.
+
+| Control | Bend it on | Other axes |
+| --- | --- | --- |
+| Elbow `CTRL_FK_Avatar_ForeArm`, knee `CTRL_FK_Avatar_Leg` | Local X | Y and Z are locked |
+| Wrist `CTRL_FK_Avatar_Hand` | Local Z flexes the hand toward the palm | Local X tilts it sideways |
+| Fingers `CTRL_Avatar_Hand{Index,Middle,Ring,Pinky}{1,2,3}` | Local Z curls the finger toward the palm | Local X swings it sideways in the plane of the palm. Y is locked |
+| Thumb base `CTRL_Avatar_HandThumb1` | Local X swings the thumb across the palm | Y is locked |
+| Thumb `CTRL_Avatar_HandThumb2`, `CTRL_Avatar_HandThumb3` | Local Z curls the thumb | Y is locked |
+
+Curls go the same way on both hands. The elbow bend, the wrist tilt and the thumb's swing across the palm go the opposite way on the left and right sides, so a value that works on one side needs its sign flipped on the other.
 
 ### Bone Collections
 
@@ -133,6 +145,23 @@ Use `CTRL_Avatar_UpperBody` to move the whole body up and down. It is the center
 {% hint style="warning" %}
 **📔 Note**: Avoid switching a limb between FK and IK in the middle of a clip. Unless the two chains line up exactly on that frame, the limb pops. If you do need to switch, keyframe the FK > IK property itself so the change happens where you want it.
 {% endhint %}
+
+#### Touch the face or a target with IK
+
+To make a hand touch something, like the face, a prop or the other hand, switch that arm to IK. Rotating FK joints can't land a fingertip on a target reliably. Keep in mind that the IK hand control sits at the wrist, so placing the control on the target puts the wrist there, not the fingertip. Move the control until the fingertip lands where you want.
+
+The FK > IK property blends gradually between its keyframes. On the keyframes where you switch it, pose the FK arm close to the IK pose. Otherwise an FK arm left hanging at the side swings through the chest while the blend runs.
+
+Use these measurements of the default avatar's head, taken with the avatar standing in its idle pose, to place a hand on the face:
+
+| Landmark | Height above the floor | Position relative to the `Avatar_Head` bone |
+| --- | --- | --- |
+| `Avatar_Head` bone | 1.72 m | This is the middle of the face, not the base of the skull |
+| Tip of the nose | 1.66 m (1.64 m on the male body) | 0.19 m forward and 0.06 m down (0.08 m on the male body) |
+| Chin | 1.60 m | 0.12 m down |
+| Top of the head | 1.90 m | 0.18 m up |
+
+The head is about 0.30 m wide. A hand aimed 0.12 m above the head bone lands on the forehead. If the head is rotated, apply these offsets in the head's rotated frame.
 
 ### Isolate Rotation FK Blend
 
@@ -207,5 +236,7 @@ _How the foot control works._
 Some controls may have a lock symbol next to the transforms parameters, which means that those values can’t be changed. This was done to controls that should only behave in a certain way and to avoid any unwanted transformation. For example, elbows and knees are meant to rotate on just one axis, which in this case is X, and so the other axes have been locked. Other examples of controls with locked attributes are IK elbows and knees, fingers, foot roll, and toe tip.
 
 It is advised to keep these locked, but in case you want more freedom of movement, just click on the lock icon to unlock it.
+
+Locks only apply to Blender's interactive tools. A Python script that writes a bone's rotation directly ignores them, so if you pose the rig with a script, keep each rotation on the joint's free axes yourself.
 
 ![Locked transforms in a control.](https://raw.githubusercontent.com/decentraland/documentation-creators/main/images/emotes/locked_transform.png)

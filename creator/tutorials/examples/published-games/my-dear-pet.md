@@ -45,21 +45,11 @@ A pet collecting game.
 <!-- example-context:start -->
 ## Project information
 
-**Maintained by:** Community · dcl-regenesislabs
+**Maintained by:** Decentraland DAO
 
-[View upstream source](https://github.com/dcl-regenesislabs/marsh-colony)
+[View source](https://github.com/dcl-regenesislabs/marsh-colony)
 
 **License:** Not identified in this catalog. Consult the upstream repository and maintainer for applicable terms before reuse.
-
-{% hint style="warning" %}
-**Community-maintained code — review before use**
-
-This community project is maintained outside the Decentraland GitHub organization. Its source code and live deployment may change independently.
-
-Inclusion in this catalog does not imply a security audit or guarantee of safety. Review code, dependencies, and installation scripts before running or reusing it.
-
-[Report a catalog concern](https://github.com/decentraland/docs/issues/new). For suspected vulnerabilities, follow the upstream project's security policy. Do not include exploit details or credentials in public issues.
-{% endhint %}
 <!-- example-context:end -->
 
 <!-- example-highlights:start -->

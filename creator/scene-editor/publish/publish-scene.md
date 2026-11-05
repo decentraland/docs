@@ -53,7 +53,7 @@ The **Jump In** button is for you rather than your audience: it opens the scene 
 {% hint style="info" %}
 **📔 Note**: The two stages of the deployment involve:
 
-- **1. Uploading**: Uploading the files to the servers.
+- **1. Uploading**: Uploading the files to the servers. Scenes of 50 MiB or more upload in batches, see [Publish large scenes](../../sdk7/publishing/publishing.md#publish-large-scenes).
 - **2. Converting**: The scene's 3D models are compressed into Asset Bundles for faster rendering. This usually takes seconds. It may take longer for very large scenes.
 
 Decentraland's servers also generate Low Level of Detail (LOD) versions of your models, used to draw your scene from far away. That runs in the background once your scene is already live, so publishing never waits for it.

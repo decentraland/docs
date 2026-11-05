@@ -74,6 +74,16 @@ Running `add` again re-fetches the repository, so it refreshes the skills you al
 **📔 Note**: Don't use `npx skills update` for this. It only refreshes the skills already on your machine, so any skills added to the repository after your last install are silently skipped. Always use `npx skills add decentraland/sdk-skills --all` instead.
 {% endhint %}
 
+## Debug a Deployed Multiplayer Scene
+
+The updated `authoritative-server` skill can search persistent server logs, follow logs for a bounded period, and retrieve CPU, memory, and other metrics when you ask it to investigate a deployed scene. Update your skills and the scene's `auth-server` SDK first; see [Scene Insights](../debugging/scene-insights.md) for setup, permissions, and limits.
+
+For example, ask:
+
+> Investigate errors and CPU or memory growth in my deployed multiplayer scene over the last two hours. Use Scene Insights and correlate the logs and metrics with the source code.
+
+You approve the wallet login yourself in the browser. The assistant can then reuse the read-only session; it does not need your private key or session file.
+
 ## Available AI Skills
 
 When you install skills into your agent, the following capabilities are available:

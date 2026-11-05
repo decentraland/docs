@@ -107,11 +107,11 @@ TouchScreenControls.hideAll()
 TouchScreenControls.hideJoystick()
 
 // restore them when the panel closes
-TouchScreenControls.showAll()
+TouchScreenControls.showDefault()
 TouchScreenControls.showJoystick()
 ```
 
-These helpers do nothing on desktop, so you can call them unconditionally. See [On-screen Controls](../interactivity/touch-screen-controls.md).
+`showDefault()` puts back the set a scene starts with: jump, pointer and primary. Use `showAll()` only if your scene really wants all eight buttons on screen. Both need SDK 7.32.0 or later; on older SDKs all eight buttons show by default and `showAll()` is the only restore. These helpers do nothing on desktop, so you can call them unconditionally. See [On-screen Controls](../interactivity/touch-screen-controls.md).
 
 Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 
@@ -166,6 +166,14 @@ Icons synthesise information, helping you identify actions through images. They 
 Use motion to provide feedback and lead the way when needed. Motion helps players focus their attention and helps maintain continuity as the UI changes.
 
 <figure><img src="../../images/media/ux-glow.webp" alt="Adding glow" width="300"><figcaption><p>Use particles, scale, or fading margins to make things stand out</p></figcaption></figure>
+
+#### Avoid flashing effects
+
+Flashing lights, strobes and fast brightness or color changes can trigger seizures in people with photosensitive epilepsy. This includes pulsing emissive materials, flickering lights, full-screen UI flashes and videos.
+
+* Keep any flashing to **3 flashes per second or fewer**, following the [WCAG "Three Flashes or Below Threshold"](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html) guideline.
+* Keep flashing areas small, and avoid saturated red and large, high-contrast flashes that fill the screen.
+* If your scene relies on intense effects, like club strobes, lightning or damage flashes, add an option in the scene to turn them off or tone them down.
 
 ### Writing and content structure
 

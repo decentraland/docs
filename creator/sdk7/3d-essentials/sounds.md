@@ -58,6 +58,8 @@ The `AudioSource.playSound()` function takes the following arguments:
 
 * `resetCursor`: _(optional)_ If true, the sound always starts from the beginning. Otherwise it continues from the current cursor position. Useful for pausing and resuming.
 
+`playSound()` creates the `AudioSource` component if the entity doesn't have one yet. If it already has one, `playSound()` keeps its other values, like `volume`, `pitch`, `loop` and `global`, so you can set those once and then call `playSound()` every time you want to play the sound. Calling it again with the same file plays the sound again. It always returns `true`.
+
 Another way to play sounds is to manually create an `AudioSource` component on an entity. Use this approach to have more control over the sound, for example to make it loop or set the volume.
 
 ```ts
@@ -114,6 +116,8 @@ To stop an entity from playing its sound, use the `AudioSource.stopSound()` func
 ```ts
 AudioSource.stopSound(sourceEntity)
 ```
+
+`stopSound()` returns `false` if the entity has no `AudioSource` component.
 
 Another way to stop a sound is to set the `playing` property to false.
 

@@ -24,6 +24,12 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## SDK
 
+### 7.31.0 (Oct 22, 2026)
+
+* **Custom fonts**: the new `fontSrc` property renders text with a `.ttf` font file from your scene, on `TextShape`, `UiText`, `UiInput` and `UiDropdown` and on the React ECS `Label`, `Button`, `Input` and `Dropdown`. See [Custom fonts](../3d-essentials/text.md#custom-fonts) and [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts). [#1656](https://github.com/decentraland/js-sdk-toolchain/pull/1656)
+* **Publish large scenes**: `npm run deploy` uploads scenes of 50 MiB or more in batches, so scenes over about 200 MB can be published, and the deploy page in the browser shows the upload progress and lets you cancel. See [Publish large scenes](../publishing/publishing.md#publish-large-scenes). [#1635](https://github.com/decentraland/js-sdk-toolchain/pull/1635)
+* **Fixes**: the local preview serves each scene entity once, so scenes that span many parcels load in preview [#1650](https://github.com/decentraland/js-sdk-toolchain/pull/1650).
+
 ### 7.30.0 and 7.30.1 (Oct 8, 2026)
 
 * **Player language**: `getPlayerLanguage()` returns the language the player's client is set to, as a BCP 47 tag, and `onPlayerLanguageChanged` reports changes made mid-session. See [Get player language](../interactivity/runtime-data.md#get-player-language). [#1622](https://github.com/decentraland/js-sdk-toolchain/pull/1622)

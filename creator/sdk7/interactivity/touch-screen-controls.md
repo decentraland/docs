@@ -14,7 +14,7 @@ The component is applied automatically while the player is inside your scene and
 
 ## What shows by default
 
-Every scene starts with three gamepad buttons visible:
+From SDK `7.32.0`, every scene starts with three gamepad buttons visible:
 
 * `IA_JUMP`, the large central button
 * `IA_POINTER`, the interaction button
@@ -22,10 +22,14 @@ Every scene starts with three gamepad buttons visible:
 
 `IA_SECONDARY` and `IA_ACTION_3` to `IA_ACTION_6` start hidden. You only need `TouchScreenControls` when you want something other than this.
 
+{% hint style="warning" %}
+**📔 Note**: The three-button default and the `showDefault()` helper need SDK `7.32.0` or later. On earlier versions all eight buttons show unless your scene hides some, and `showDefault()` doesn't exist, so `showAll()` is the only way to bring buttons back.
+{% endhint %}
+
 The SDK writes that default set once at scene start, just before the first frame, and skips it when your scene already chose its own buttons. Your scene counts as having chosen if either:
 
 * One of the button visibility helpers already ran: `hideAll()`, `showAll()`, `showDefault()` or `hide()`.
-* The component on the root entity already lists at least one button, for example because it was authored into your scene's composite by the Creator Hub.
+* The component on the root entity already lists at least one button, for example because your scene wrote it with `createOrReplace` at the top level of `index.ts`, outside `main()`.
 
 `hideJoystick()`, `showJoystick()`, `hideCrosshair()`, `showCrosshair()` and `setMainAction()` don't count: the default button set still applies alongside them.
 
@@ -181,7 +185,7 @@ The [`InputAction`](button-events/click-events.md#pointer-buttons) values here a
 
 ## Example
 
-To hide the joystick, keep the numbered buttons tucked away, and give the central jump button a custom icon shipped in your scene:
+To hide the joystick, keep the F and numbered buttons hidden, and give the central jump button a custom icon shipped in your scene:
 
 ```ts
 import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'

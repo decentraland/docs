@@ -151,7 +151,7 @@ Each row gives you three things:
 In this panel every button starts visible and `IA_JUMP` is the main button.
 
 {% hint style="warning" %}
-**📔 Note**: A scene that never touches the HUD shows only three buttons: jump, pointer and primary. The code this panel writes replaces that default set with whatever you configure here, so leaving all eight visible puts five extra buttons on the player's screen. Hide the ones your scene doesn't use. See [What shows by default](../../sdk7/interactivity/touch-screen-controls.md#what-shows-by-default).
+**📔 Note**: A scene that never touches the HUD shows only three buttons: jump, pointer and primary. The panel only writes `src/mobile-hud.ts` once you change something, so an untouched panel keeps that default. As soon as the file exists, its code replaces the default set with whatever you configure here, so hiding the joystick alone, for example, also puts the five extra buttons on the player's screen. Hide the ones your scene doesn't use. See [What shows by default](../../sdk7/interactivity/touch-screen-controls.md#what-shows-by-default).
 {% endhint %}
 
 {% hint style="info" %}

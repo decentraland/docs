@@ -242,7 +242,7 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
   * `skinColor`: Player skin color as a `Color3`
   * `eyesColor`: Player eye color as a `Color3`
   * `hairColor`: Player hair color as a `Color3`
-  * `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent. See [Detect when a player is speaking](#detect-when-a-player-is-speaking).
+  * `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent, _undefined_ when the client reports no voice activity for them. See [Detect when a player is speaking](#detect-when-a-player-is-speaking).
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.

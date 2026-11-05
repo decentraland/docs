@@ -111,7 +111,7 @@ TouchScreenControls.showDefault()
 TouchScreenControls.showJoystick()
 ```
 
-`showDefault()` puts back the set a scene starts with: jump, pointer and primary. Use `showAll()` only if your scene really wants all eight buttons on screen. These helpers do nothing on desktop, so you can call them unconditionally. See [On-screen Controls](../interactivity/touch-screen-controls.md).
+`showDefault()` puts back the set a scene starts with: jump, pointer and primary. Use `showAll()` only if your scene really wants all eight buttons on screen. Both need SDK 7.32.0 or later; on older SDKs all eight buttons show by default and `showAll()` is the only restore. These helpers do nothing on desktop, so you can call them unconditionally. See [On-screen Controls](../interactivity/touch-screen-controls.md).
 
 Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 

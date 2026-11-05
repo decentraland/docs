@@ -111,7 +111,7 @@ VirtualCamera.create(cinematicCamera, {
 A narrower FOV (lower value) zooms in, useful for cutscenes or aiming. A wider FOV (higher value) shows more of the scene, useful for panoramic views.
 
 {% hint style="warning" %}
-**📔 Note**: Set `fov` on every virtual camera you create. Leaving it out doesn't give you a neutral 60 degrees: the client reuses camera instances without resetting the lens, so a camera with no `fov` keeps whatever field of view the previous camera used. A camera meant to show a wide aerial view can open zoomed right in.
+**📔 Note**: Set `fov` on every virtual camera you create. Leaving it out doesn't give you a neutral 60 degrees: the client reuses pooled camera instances without resetting the lens, so a camera with no `fov` keeps whatever field of view an earlier camera left on that instance. A camera meant to show a wide aerial view can open zoomed right in.
 {% endhint %}
 
 Your scene can include as many entities with a `VirtualCamera`component as you want, and dynamically switch between multiple virtual cameras as the player moves, or as they perform certain actions. Only one virtual camera is active at any given time, this is assigned by the `MainCamera` component on `engine.CameraEntity`.
@@ -202,7 +202,7 @@ function main() {
 
 ## Field of View
 
-You can set a custom field of view (FOV) on a virtual camera with the `fov` property. The value is in degrees. Always set it: there is no default to fall back on, and a camera without `fov` inherits the lens of whichever camera ran before it.
+You can set a custom field of view (FOV) on a virtual camera with the `fov` property. The value is in degrees. Always set it: there is no default to fall back on, and a camera without `fov` inherits the lens left behind by an earlier camera that used the same pooled instance.
 
 ```ts
 VirtualCamera.create(myCustomCamera, {

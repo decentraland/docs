@@ -90,13 +90,15 @@ const DAY = 86400
 
 // Move to a new time of day the short way round
 function setTimeOfDay(fixedTime: number) {
-  const current = SkyboxTime.getOrNull(engine.RootEntity)?.fixedTime ?? 0
-  const forward = (fixedTime - current + DAY) % DAY
-  SkyboxTime.createOrReplace(engine.RootEntity, {
-    fixedTime,
+  const current = SkyboxTime.getOrNull(engine.RootEntity)?.fixedTime
+  // with no SkyboxTime set yet the scene doesn't know the current time, so just go forward
+  let transitionMode = TransitionMode.TM_FORWARD
+  if (current !== undefined) {
+    const forward = (fixedTime - current + DAY) % DAY
     // more than half a day forward means backward is the shorter way
-    transitionMode: forward > DAY / 2 ? TransitionMode.TM_BACKWARD : TransitionMode.TM_FORWARD,
-  })
+    if (forward > DAY / 2) transitionMode = TransitionMode.TM_BACKWARD
+  }
+  SkyboxTime.createOrReplace(engine.RootEntity, { fixedTime, transitionMode })
 }
 ```
 

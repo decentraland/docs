@@ -19,25 +19,24 @@ The on-screen controls map as follows:
 * **On-screen joystick** — drives `IA_FORWARD` / `IA_BACKWARD` / `IA_LEFT` / `IA_RIGHT` and avatar movement.
 * **Interaction button (bottom right)** — fires `IA_POINTER` (the left mouse button on desktop) against whatever the player is aiming at.
 * **E button** — fires `IA_PRIMARY` (the `E` key on desktop).
-* **F button** — fires `IA_SECONDARY` (the `F` key on desktop). Hidden unless your scene turns it on (see below).
+* **F button** — fires `IA_SECONDARY` (the `F` key on desktop). Hidden by default (see below).
 * **Jump button** — fires `IA_JUMP` (the `Space` key on desktop). This is the largest button on the HUD and is always easy to reach.
-* **1 / 2 / 3 / 4 buttons** — fire `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` respectively. Hidden unless your scene turns them on (see below).
+* **1 / 2 / 3 / 4 buttons** — fire `IA_ACTION_3` / `IA_ACTION_4` / `IA_ACTION_5` / `IA_ACTION_6` respectively. Hidden by default (see below).
 * **Camera drag** — rotates the camera; not exposed as an `InputAction`.
 
 ## Controls Customization
 
-Scenes start with only the jump, interaction and E buttons visible; F and 1–4 must be turned on with `TouchScreenControls` (see [Default buttons](../../sdk7/interactivity/touch-screen-controls.md#default-buttons)). Reacting to them through `PointerEvents` or `inputSystem` alone doesn't show them.
-
-Scenes can also reconfigure the on-screen controls — hide the joystick or crosshair, hide any button (including jump), change what the central button does, swap button icons, or replace the native controls entirely with custom UI. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) and [UI Input Binding](../../sdk7/2d-ui/ui_input_binding.md).
+Scenes can reconfigure the on-screen controls — hide the joystick or crosshair, hide any button (including jump), change what the central button does, swap button icons, or replace the native controls entirely with custom UI. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md) and [UI Input Binding](../../sdk7/2d-ui/ui_input_binding.md).
 
 <figure><img src="../../images/touch-controls/custom-main-action.webp" alt="Customized on-screen controls"><figcaption><p>A customized HUD: a re-iconed central button mapped to a different action</p></figcaption></figure>
 
 ## Inputs to avoid for key actions on mobile
 
-All `InputAction` values are reachable on mobile, but `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are hidden by default and, once turned on, may sit behind the "+" menu, so they are **not easily reachable during gameplay**. If your scene uses them as primary actions, mobile players will not be able to trigger them comfortably.
+Every `InputAction` can be routed to an on-screen button, but a scene built with SDK 7.32.0 or later starts with only three of them visible: the interaction button, the E button and the jump button. `IA_SECONDARY` (F) and `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are **hidden by default**, so a key action bound to one of them has no button on a phone unless your scene shows it. On older SDKs all eight buttons show, with the lowest-priority ones behind a "+" overflow that is not easily reachable during gameplay.
 
-Avoid binding key actions to:
+Unless your scene explicitly shows them with [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md), avoid binding key actions to:
 
+* `IA_SECONDARY` — the `F` key on desktop / `F` button on mobile
 * `IA_ACTION_3` — the `1` key on desktop / `1` button on mobile
 * `IA_ACTION_4` — the `2` key on desktop / `2` button on mobile
 * `IA_ACTION_5` — the `3` key on desktop / `3` button on mobile
@@ -47,7 +46,6 @@ Prefer instead:
 
 * `IA_POINTER` for the main tap / interaction button
 * `IA_PRIMARY` for the E button action
-* `IA_SECONDARY` for the F button action (turn the F button on first)
 * `IA_JUMP` when an action maps naturally to jumping (it's the largest and most reachable button on the mobile HUD)
 * Proximity-based triggers (see [Proximity Events](../../sdk7/interactivity/button-events/proximity-events.md)) when an action should fire automatically as the player approaches an entity
 

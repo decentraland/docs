@@ -1,7 +1,7 @@
 ---
 title: Performance and scene systems
 description: Asset loading and scene-level systems.
-order: 7
+order: 8
 ---
 
 <!-- example-category:start -->

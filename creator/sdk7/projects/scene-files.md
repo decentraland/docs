@@ -95,6 +95,10 @@ All scenes include a _.dclignore_ file, this file specifies what files in the sc
 
 For example, you might like to keep the Blender files for the 3D models in your scene inside the scene folder, but you want to prevent those files from being deployed to Decentraland. In that case, you could add `*.blend` to _.dclignore_ to ignore all files with that extension.
 
+{% hint style="warning" %}
+**📔 Note**: _.dclignore_ also applies to the local preview, not only to deployments. An ignored file isn't listed in the content the preview serves, so your scene can't load it there either. It isn't a 404 you can spot in the logs: the file is simply never requested. If an asset works in your editor but not in the preview, check _.dclignore_ first.
+{% endhint %}
+
 | What to ignore | Example     | Description                                                                             |
 | -------------- | ----------- | --------------------------------------------------------------------------------------- |
 | Specific files | `BACKUP.ts` | Ignores a specific file                                                                 |

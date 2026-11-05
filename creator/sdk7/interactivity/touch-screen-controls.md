@@ -6,7 +6,7 @@ description: Configure the native on-screen touch controls for your scene.
 
 On the mobile client, players interact with your scene through a set of native on-screen controls — a virtual joystick, a crosshair, and a gamepad of buttons. The `TouchScreenControls` component lets your scene reshape that HUD: declutter it, hide the joystick or crosshair, change what the large central button does, swap a button's glyph for your own icon, or hide buttons entirely and replace them with your own UI.
 
-<figure><img src="../../images/touch-controls/touch-controls-default.webp" alt="The default mobile HUD: virtual joystick on the left, gamepad buttons on the right"><figcaption><p>The default on-screen controls, before any customization</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/touch-controls-default.webp" alt="The default mobile HUD: virtual joystick on the left, and on the right the large jump button with the interaction and E buttons beside it"><figcaption><p>The default on-screen controls, before any customization: jump, interaction and E</p></figcaption></figure>
 
 {% hint style="info" %}
 The component is applied automatically while the player is inside your scene and reverts to the defaults the moment they leave, so scenes that don't use it are unaffected. It only affects platforms with native on-screen controls: it's a no-op on desktop and has no effect in VR.
@@ -44,6 +44,14 @@ import { TouchScreenControls } from '@dcl/sdk/ecs'
 TouchScreenControls.showAll()
 ```
 
+{% hint style="warning" %}
+Reacting to F or 1–4 through `PointerEvents` or `inputSystem` does **not** show the button. If your scene uses them, turn them on with `TouchScreenControls`, or mobile players can't reach them.
+{% endhint %}
+
+{% hint style="info" %}
+A scene that removes the component (`TouchScreenControls.deleteFrom(engine.RootEntity)`) shows all eight buttons.
+{% endhint %}
+
 ## How the button layout works
 
 The gamepad buttons form a single **priority stack**. The order is fixed:
@@ -64,7 +72,7 @@ The on-screen positions are fixed too. The **visible** buttons fill those positi
 | **Hide a button** (any button, including jump) | Every lower-priority button moves up to fill the gap. Hide jump and `IA_POINTER` takes the central spot. |
 | **Change nothing** | The default set applies: `IA_JUMP` is the large central button, with `IA_POINTER` and `IA_PRIMARY` in the slots around it. |
 | **Set a main button** with `mainAction` | That action jumps to the front and becomes the central button; every other button keeps its normal order. |
-| **Set a main button that is also hidden** | Hiding wins — the button stays hidden. |
+| **Set a main button that is also hidden** | Hiding wins — the button stays hidden. This includes F and 1–4, which start hidden: turn the button on as well (see [Change the main button](#common-tasks)). |
 | **Leave 5 or fewer buttons visible** | All of them show directly (the central button plus up to four around it); there is no "+" menu. |
 | **Leave more than 5 buttons visible** | The "+" takes the last slot, so four show directly (the central button plus three) and the rest sit behind the "+" overflow toggle. |
 
@@ -88,6 +96,19 @@ export function main() {
 }
 ```
 
+`setMainAction()` doesn't turn a button on. To lead with F or a numbered button, turn it on as well, or it stays hidden:
+
+```ts
+TouchScreenControls.showAll()
+TouchScreenControls.hide([
+	InputAction.IA_ACTION_3,
+	InputAction.IA_ACTION_4,
+	InputAction.IA_ACTION_5,
+	InputAction.IA_ACTION_6,
+])
+TouchScreenControls.setMainAction(InputAction.IA_SECONDARY)
+```
+
 **Hide the joystick or crosshair** — remove the movement stick and/or the aiming reticle, and bring them back with their `show` counterparts:
 
 ```ts
@@ -99,10 +120,18 @@ TouchScreenControls.showJoystick()
 TouchScreenControls.showCrosshair()
 ```
 
-**Hide specific buttons** — pass the actions you want gone (the rest cascade up):
+**Hide specific buttons** — pass the actions you want gone (the rest cascade up). The call adds to the buttons already hidden, so with the default set this leaves the interaction button as the central button and E beside it:
 
 ```ts
-TouchScreenControls.hide([InputAction.IA_SECONDARY, InputAction.IA_JUMP])
+TouchScreenControls.hide([InputAction.IA_JUMP])
+```
+
+**Use F or the numbered buttons** — they start hidden. Show every button, then hide the ones your scene doesn't use:
+
+```ts
+// Show F and 1, keep 2–4 hidden
+TouchScreenControls.showAll()
+TouchScreenControls.hide([InputAction.IA_ACTION_4, InputAction.IA_ACTION_5, InputAction.IA_ACTION_6])
 ```
 
 **Hide every button, show every button, or go back to the default set:**
@@ -115,22 +144,25 @@ TouchScreenControls.showDefault() // jump, pointer and primary only
 
 These three only affect the gamepad buttons. They don't restore a hidden joystick or crosshair, and they don't change your custom icons or your main action. Use `showJoystick()` / `showCrosshair()` for those.
 
-**Replace a button's icon** — for full control (custom icons, several changes at once), write the raw component on `engine.RootEntity`:
+**Replace a button's icon** — for full control (custom icons, several changes at once), write the raw component on `engine.RootEntity`. This replaces the default set, so every button you don't list is shown; call `showDefault()` afterwards to hide F and 1–4 again while keeping your icons:
 
 ```ts
 import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
 
 export function main() {
 	TouchScreenControls.createOrReplace(engine.RootEntity, {
+		hideJoystick: false,
 		hideCrosshair: true,
 		mainAction: InputAction.IA_PRIMARY,
 		touchInputs: [
 			{
 				inputAction: InputAction.IA_PRIMARY,
+				hide: false,
 				icon: { tex: { $case: 'texture', texture: { src: 'images/grab.png' } } },
 			},
 		],
 	})
+	TouchScreenControls.showDefault()
 }
 ```
 
@@ -150,13 +182,13 @@ The helpers at a glance:
 
 ## Properties
 
-Write these directly when you use `createOrReplace`:
+Write these directly when you use `createOrReplace`. `hideJoystick`, `hideCrosshair`, `touchInputs` and each entry's `hide` are required by the TypeScript type:
 
 | Property | Type | Description |
 | --- | --- | --- |
 | `hideJoystick` | _boolean_ | Hides the native virtual movement joystick. |
 | `hideCrosshair` | _boolean_ | Hides the on-screen crosshair / reticle. |
-| `mainAction` | [_InputAction_](button-events/click-events.md#pointer-buttons) | Moves this action to the front of the stack, making it the large central button; the other buttons keep their order. Only gamepad actions are valid (see below). When unset, the first visible button (`IA_JUMP` by default) leads. See [How the button layout works](#how-the-button-layout-works). |
+| `mainAction` | [_InputAction_](button-events/click-events.md#pointer-buttons) | Moves this action to the front of the stack, making it the large central button; the other buttons keep their order. Only gamepad actions are valid (see below). When unset, the first visible button (`IA_JUMP` by default) leads. It doesn't show a hidden button, F and 1–4 included. See [How the button layout works](#how-the-button-layout-works). |
 | `touchInputs` | _array_ | Per-button overrides. Writing this field replaces the whole list, so any button you leave out is shown with its default glyph, including the ones that start hidden. |
 
 Each `touchInputs` entry has:
@@ -193,6 +225,7 @@ import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
 export function main() {
 	TouchScreenControls.createOrReplace(engine.RootEntity, {
 		hideJoystick: true,
+		hideCrosshair: false,
 		touchInputs: [
 			// This list replaces the default one, so the buttons that normally start
 			// hidden have to be listed here too
@@ -203,6 +236,7 @@ export function main() {
 			{ inputAction: InputAction.IA_ACTION_6, hide: true },
 			{
 				inputAction: InputAction.IA_JUMP,
+				hide: false,
 				icon: { tex: { $case: 'texture', texture: { src: 'images/banana.png' } } },
 			},
 		],

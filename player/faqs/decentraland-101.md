@@ -34,7 +34,7 @@ No, you do not need to own crypto or already have a digital wallet to use Decent
 
 See a tutorial for [making an account with a social profile](https://www.youtube.com/watch?v=ylZrPisyPl4) or [with an external wallet like MetaMask](https://www.youtube.com/watch?v=w3CCVrVe1M4).
 
-In Decentraland users truly own their digital assets, such as Wearables or NAMEs, with ownership registered on the blockchain.To enable this, every Decentraland account is linked to a unique digital wallet. However, if you don't already have a digital wallet, you don't need to get one yourself. If you sign into Decentraland with a social account such as Google or Discord, a digital wallet will be made for your account behind the scenes, so you don't have to worry about anything.
+In Decentraland users truly own their digital assets, such as Wearables or NAMEs, with ownership registered on the blockchain. To enable this, every Decentraland account is linked to a unique digital wallet. However, if you don't already have a digital wallet, you don't need to get one yourself. If you sign into Decentraland with a social account such as Google or Discord, or with your email address, a digital wallet will be made for your account behind the scenes, so you don't have to worry about anything. See [Your Account and Wallet](../blockchain-integration/get-a-wallet.md) to learn more.
 
 </details>
 
@@ -251,6 +251,6 @@ Getting your own World is easy: when you [**claim a Decentraland NAME**](https:/
 
 In Decentraland users truly own their digital assets, such as Wearables or NAMEs, with ownership registered on the blockchain. To enable this, every Decentraland account is linked to a unique digital wallet. If you created your Decentraland account by signing into a social profile such as Google or Discord, a digital wallet was made for your account behind the scenes.
 
-A wallet address is a unique string of characters associated with a digital wallet, similar to a bank account number. With it, others can send you items, such as Wearables. You can find the wallet address associated with your account under your name when you view your profile online or in-world.
+A wallet address is a unique string of characters associated with a digital wallet, similar to a bank account number. With it, others can send you items, such as Wearables. You can find the wallet address associated with your account under your name when you view your profile online or in-world. See [Your Account and Wallet](../blockchain-integration/get-a-wallet.md) to learn how to use that wallet outside Decentraland.
 
 </details>

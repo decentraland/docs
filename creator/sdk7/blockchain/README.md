@@ -8,6 +8,7 @@ Add blockchain functionality to your scenes, including transactions, NFT verific
 
 ## What You'll Learn
 
+* [Blockchain basics](blockchain-basics.md): transactions, fees, confirmations and smart contracts
 * Creating dApps in Decentraland
 * Scene blockchain operations
 * Using Layer 2 solutions (Polygon)

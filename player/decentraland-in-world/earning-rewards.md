@@ -10,9 +10,11 @@ If you're on the hunt for _guaranteed goodies_, look no farther than Decentralan
 
 ## Weekly Marketplace Credits Rewards
 
-Marketplace Credits can be used in Decentraland's Marketplace to buy Wearables and Emotes for free! 1 Credit = 1 MANA in value. As long as a Credit season is currently active, anyone can earn Credits in exchange for completing weekly goals, such as jumping into Decentraland regularly and attending events.
+Marketplace Credits can be used to buy Wearables, Emotes and NAMEs without spending any MANA. While a Credits season is active, anyone can earn Credits in exchange for completing weekly goals, such as jumping into Decentraland regularly and attending events. Earned Credits are worth 1 MANA each and expire when the season ends. Seasons aren't always running.
 
-Click on the Marketplace Credit icon in the sidebar menu to open your Weekly Rewards interface. There you can track your progress towards your weekly goals and your Credit balance. Learn more about Marketplace Credits [here](https://decentraland.org/blog/announcements/marketplace-credits-earn-weekly-rewards-to-power-up-your-look).
+When a season is active, click on the Marketplace Credits icon in the sidebar menu to open your Weekly Rewards interface. There you can track your progress towards your weekly goals and your Credit balance. Learn more about Marketplace Credits [here](https://decentraland.org/blog/announcements/marketplace-credits-earn-weekly-rewards-to-power-up-your-look).
+
+You can also buy Credit packs with a card at any time. Purchased Credits are worth $0.10 each and never expire. See [Paying and Getting Paid](../blockchain-integration/paying-and-getting-paid.md#marketplace-credits).
 
 ![](../images/media/Credits.webp)
 

@@ -44,9 +44,11 @@
 
 ## Blockchain Integration
 
-* [Get a Wallet](blockchain-integration/get-a-wallet.md)
-* [About the Blockchain](blockchain-integration/ethereum-essentials.md)
-* [Transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
+* [Overview](blockchain-integration/README.md)
+  * [Your Account and Wallet](blockchain-integration/get-a-wallet.md)
+  * [Paying and Getting Paid](blockchain-integration/paying-and-getting-paid.md)
+  * [Transactions in Polygon](blockchain-integration/transactions-in-polygon.md)
+  * [About the Blockchain](blockchain-integration/ethereum-essentials.md)
 
 ## DAO
 

@@ -35,22 +35,22 @@ A campaign refers to an incentive initiative designed to boost user engagement t
 
 After creating your campaign, there are a few more steps to complete before you can start delivering rewards:
 
-* **Add a Supply of MATIC Tokens**: Ensure you have enough MATIC tokens in your account to cover transaction fees.
+* **Add a Supply of POL Tokens**: Ensure you have enough POL tokens (formerly MATIC) in your account to cover transaction fees.
 * **Add Items to the Campaign Stock**: Populate your campaign with the items you plan to offer as rewards.
 * **Create a Dispenser**: Set up a dispenser that will handle the distribution of rewards to users.
 * **Activate Your Campaign**: Finally, activate your campaign to make it live and start delivering rewards.
 
-### Add MATIC to pay for transaction fees
+### Add POL to pay for transaction fees
 
-To mint items, you'll need to cover the transaction fees by adding a supply of MATIC tokens to your campaign's address. You can find this address listed below the campaign name.
+To mint items, you'll need to cover the transaction fees by adding a supply of POL tokens (formerly MATIC) to your campaign's address. You can find this address listed below the campaign name.
 
-To transfer MATIC from your wallet, first, ensure you're connected to the same network as the campaign. Then, copy the campaign address and send the desired amount of MATIC to it. If you don't have any MATIC in your wallet, you can follow [this guide](../../player/blockchain-integration/transactions-in-polygon.md#where-can-i-get-matic-to-pay-for-transaction-fees) to acquire some.
+To transfer POL from your wallet, first, ensure you're connected to the same network as the campaign. Then, copy the campaign address and send the desired amount of POL to it. If you don't have any POL in your wallet, you can follow [this guide](../../player/blockchain-integration/transactions-in-polygon.md#where-can-i-get-pol-to-pay-for-transaction-fees) to acquire some.
 
 {% hint style="info" %}
-**💡 Tip**: For campaigns running on the test **AMOY** network, you can obtain some MATIC from [this faucet](https://faucet.polygon.technology/).
+**💡 Tip**: For campaigns running on the test **AMOY** network, you can obtain some test POL from [this faucet](https://faucet.polygon.technology/).
 {% endhint %}
 
-To send MATIC from an exchange you just need to withdraw MATIC token to the Polygon Network (usually Amoy Network is not available on exchanges).
+To send POL from an exchange you just need to withdraw POL tokens to the Polygon Network (usually Amoy Network is not available on exchanges).
 
 ### Add items to the campaign stock
 

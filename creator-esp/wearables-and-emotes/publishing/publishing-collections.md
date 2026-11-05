@@ -62,7 +62,7 @@ Por favor consulta la Content Policy completa [aquí](https://decentraland.org/c
 > * Es importante que los wearables estén correctamente "skin weighted" para que las animaciones del avatar puedan renderizarse como se espera. Los wearables sin skin weighting correcto serán rechazados.
 > * Los wearables deben preservar el mapeo UV del avatar para asegurar que los tonos de piel seleccionados por el usuario puedan renderizarse como se espera.
 > * Las dimensiones de las texturas de eyebrow, eye y mouth no deben exceder 256 por 256px, y la imagen debe tener fondo transparente.
-> * En el caso de la categoría hands, el wearable no puede ser un ítem adjunto a la mano (una espada, escudo, etc). La categoría está destinada a accesorios de mano como pulseras, relojes, anillos, etc. y en el caso de reemplazar la mano completamente debe seguir un skinning de armature apropiado para los huesos de la mano.
+> * En el caso de la categoría hands, el wearable puede ser un accesorio de mano (pulseras, relojes, anillos, etc.), un ítem sostenido en la mano (una herramienta, un prop, etc.) o un reemplazo completo de la mano. En todos los casos debe seguir la armature del avatar con skinning apropiado.
 > * Los wearables con un número desproporcionado de triángulos, texturas y materiales pueden ser rechazados porque pueden causar mal rendimiento y una mala experiencia para los jugadores. Los creadores no deben exceder las [directrices](../wearables/creating-wearables.md) de limitación al crear wearables.
 > * Los wearables no pueden contener ítems duplicados dentro de una colección. (Cada ítem dentro de una colección debe ser único.)
 > * Los wearables no pueden imitar o copiar otros wearables que ya han sido publicados.

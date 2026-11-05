@@ -20,6 +20,11 @@ The module contains the following methods and types:
 * [`function changeRealm`](restricted-actions.md#changerealm)
 * [`function openExternalUrl`](restricted-actions.md#openexternalurl)
 * [`function openNftDialog`](restricted-actions.md#opennftdialog)
+* [`function openExplorerUi`](restricted-actions.md#openexplorerui)
+* [`function stopEmote`](restricted-actions.md#stopemote)
+* [`function triggerSceneEmote`](restricted-actions.md#triggersceneemote)
+* [`function copyToClipboard`](restricted-actions.md#copytoclipboard)
+* [`function setCommunicationsAdapter`](restricted-actions.md#setcommunicationsadapter)
 * [`interface Vector3`](restricted-actions.md#vector3)
 
 ### Methods
@@ -121,6 +126,95 @@ interface Response {
 }
 
 function openNftDialog(Request): Promise<Response>;
+```
+
+### `openExplorerUi` {#openexplorerui}
+
+Open an explorer panel, fullscreen or modal, and return the open verdict.
+
+```ts
+interface Request {
+  ui: ExplorerUi;
+
+  // Echoed back in the events this request produces, so they can be matched to
+  // their call. Unset means no correlation, and 0 is reserved for the same
+  // meaning on the result, so ids start at 1.
+  requestId?: number;
+
+  // Only for `EU_ITEM_PURCHASE`.
+  itemPurchase?: { urn: string };
+}
+
+interface Response {
+  // Carries only the verdict of the open action.
+  openResult: OpenExplorerUiResult;
+}
+
+function openExplorerUi(Request): Promise<Response>;
+```
+
+### `stopEmote` {#stopemote}
+
+Stop the emote the player's avatar is currently playing.
+
+```ts
+interface Request {}
+
+interface Response {
+  success: boolean;
+}
+
+function stopEmote(Request): Promise<Response>;
+```
+
+### `triggerSceneEmote` {#triggersceneemote}
+
+Make the player's avatar display an emote animation from a file in the scene.
+
+```ts
+interface Request {
+  // The path to the emote file within the scene.
+  src: string;
+
+  loop?: boolean;
+  mask?: AvatarMask;
+}
+
+interface Response {
+  success: boolean;
+}
+
+function triggerSceneEmote(Request): Promise<Response>;
+```
+
+### `copyToClipboard` {#copytoclipboard}
+
+Copy the provided text into the player's clipboard.
+
+```ts
+interface Request {
+  text: string;
+}
+
+interface Response {}
+
+function copyToClipboard(Request): Promise<Response>;
+```
+
+### `setCommunicationsAdapter` {#setcommunicationsadapter}
+
+Ask the World Explorer to connect to another communications adapter, which scenes use to join private game servers.
+
+```ts
+interface Request {
+  connectionString: string;
+}
+
+interface Response {
+  success: boolean;
+}
+
+function setCommunicationsAdapter(Request): Promise<Response>;
 ```
 
 ### `changeRealm` (deprecated) {#changerealm}

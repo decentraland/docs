@@ -75,7 +75,7 @@ Scene Feedback stores answers on a server, so your scene needs a [Multiplayer Se
 2. Follow the README to install the module in your scene. You can also give the installation prompt to your AI coding agent.
 3. Choose a small set of questions that match your playtest goals.
 4. Decide when each question should appear.
-5. Download player responses as a CSV file. In Creator Hub, open **Manage**, then your World's **⋮** menu, then **View Storage**.
+5. Download player responses as a CSV file. In Creator Hub, open **Manage**, then your World's **⋮** menu, then **View Storage**. Responses may be spread across several files for a while (newer saves that aren't merged yet, plus an older single file from earlier versions of the module). Download every file whose name starts with the same `scene-feedback-<number>`, and drop rows with duplicate `id`s.
 
 The repository includes ready-to-use questions, examples, and guidance for choosing questions.
 
@@ -200,7 +200,7 @@ Consider offering a small reward to thank players for their time.
 For example:
 
 - Gift participants a special Wearable or Emote.
-- Offer an exclusive in-game reward.
+- Offer an exclusive in-game reward. The Scene Feedback example includes a recipe that shows a **Playtest Contributor** label over the player's avatar with [`AvatarNametag`](../interactivity/avatars/avatar-nametags.md) once they answer every question in a form. The label is only visible to that player and lasts for their visit. See [A scene-local reward for participation](https://github.com/decentraland/sdk7-test-scenes/blob/main/scenes/0%2C-1-scene-feedback/EXAMPLES.md#6-a-scene-local-reward-for-participation).
 - Give eligible players Marketplace Credits.
 
 **Gifting Wearables and Emotes.** You can give any Wearable or Emote you own to another player directly from the desktop client: right-click the player and choose **Gift**. The item is transferred to their account and appears in their Backpack. You can also transfer an item you own from the [Marketplace](https://decentraland.org/marketplace/) using the recipient's wallet address. If you created the Wearable or Emote collection, you can mint items straight to any wallet address from the Builder, even if you don't run into the player in-world. See [Minting Wearables](../../wearables-and-emotes/publishing/publishing-collections.md#minting-wearables).

@@ -26,9 +26,9 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ### 7.31.0 (Oct 22, 2026)
 
-* **Custom fonts**: the new `fontSrc` property on `TextShape`, and on the UI `Label`, `Button`, `Input` and `Dropdown` entities, renders text with a `.ttf` font file from your scene. See [Custom fonts](../3d-essentials/text.md#custom-fonts) and [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts). [#1656](https://github.com/decentraland/js-sdk-toolchain/pull/1656)
-* **Batched deployments**: when the content server supports it, scenes are deployed in batches, so publishing large scenes is more reliable. [#1635](https://github.com/decentraland/js-sdk-toolchain/pull/1635)
-* **Fixes**: the preview's pointer endpoints send each scene entity once [#1650](https://github.com/decentraland/js-sdk-toolchain/pull/1650).
+* **Custom fonts**: the new `fontSrc` property renders text with a `.ttf` font file from your scene, on `TextShape`, `UiText`, `UiInput` and `UiDropdown` and on the React ECS `Label`, `Button`, `Input` and `Dropdown`. See [Custom fonts](../3d-essentials/text.md#custom-fonts) and [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts). [#1656](https://github.com/decentraland/js-sdk-toolchain/pull/1656)
+* **Publish large scenes**: `npm run deploy` uploads scenes of 50 MiB or more in batches, so scenes over about 200 MB can be published, and the deploy page in the browser shows the upload progress and lets you cancel. See [Publish large scenes](../publishing/publishing.md#publish-large-scenes). [#1635](https://github.com/decentraland/js-sdk-toolchain/pull/1635)
+* **Fixes**: the local preview serves each scene entity once, so scenes that span many parcels load in preview [#1650](https://github.com/decentraland/js-sdk-toolchain/pull/1650).
 
 ### 7.30.0 and 7.30.1 (Oct 8, 2026)
 

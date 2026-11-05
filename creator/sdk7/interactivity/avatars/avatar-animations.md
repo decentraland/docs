@@ -62,7 +62,7 @@ The following emotes show feedback about player actions in your scene, all of th
 * `sittingGround1`
 * `sittingGround2`
 
-The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. All the others play through once and the avatar returns to idle.
+The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. `stopEmote` resolves with `{ success: boolean }`, which is `false` when the Explorer refused the call, for example because the player is no longer standing in your scene. All the others play through once and the avatar returns to idle.
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
@@ -141,6 +141,20 @@ pointerEventsSystem.onPointerDown(
 **💡 Tip**: If a player walks or jumps while playing the animation, they will interrupt it. If you don't want that to be possible, you can freeze the avatar with [Input Modifiers](locomotion.md#freeze-the-player) for the duration of the avatar animation.
 {% endhint %}
 
+#### Props, particles and sound
+
+An emote file played with `triggerSceneEmote()` can include props, like a tennis racket or a jet of flames, animated together with the avatar. Build it the same way as an Emotes 2.0 emote, following the naming rules in [Props and Sounds](../../../wearables-and-emotes/emotes/props-and-sounds.md):
+
+* The file contains two animation clips: one whose name includes `_Avatar` for the avatar, and one whose name includes `_Prop` for the prop armature.
+* Both clips have the same length.
+* Particle effects work if you convert them to animated bones, see [Particles in Emotes](../../../wearables-and-emotes/emotes/particles-in-emotes.md).
+
+Other players around see the props, just like they see the avatar animation.
+
+{% hint style="warning" %}
+**📔 Note**: `triggerSceneEmote()` doesn't play sound. Audio only plays for emotes uploaded as standalone emotes in the Builder. To pair a sound with a scene emote, play it with an [AudioSource](../../3d-essentials/sounds.md) at the same time.
+{% endhint %}
+
 ### Animate only the upper body
 
 Both `triggerEmote()` and `triggerSceneEmote()` accept an optional `mask` property, that limits the animation to only part of the avatar's body.
@@ -185,7 +199,7 @@ Some things to keep in mind:
 
 * `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
 * The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
-* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
+* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`. It resolves with `{ success: boolean }`.
 
 ### Detect when an emote finishes
 

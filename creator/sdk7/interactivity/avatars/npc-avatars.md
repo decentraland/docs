@@ -25,7 +25,7 @@ Transform.create(myAvatar, {
 
 When passing data to generate an `AvatarShape`, the following fields are required:
 
-* `id`: (required) Internal identifier for the Avatar
+* `id`: (required) Internal identifier for the Avatar. The last 4 characters of the `id` show after the NPC's name, in faded text, like a player's wallet suffix. An `id` shorter than 4 characters shows `0000`. Give each NPC an `id` whose ending reads well next to its name, for example `'guide-0001'`.
 
 The following optional fields are also available:
 
@@ -51,6 +51,17 @@ See [Imports](../../getting-started/coding-scenes.md#imports) for how to handle 
 **📔 Note**: The URN fields must follow the same format used for [NFTShapes](../../media/display-a-certified-nft.md): `urn:decentraland:<CHAIN>:<CONTRACT_STANDARD>:<CONTRACT_ADDRESS>:<TOKEN_ID>`
 {% endhint %}
 
+## Move an NPC
+
+To move an NPC, change the `position` of its `Transform`. The avatar doesn't jump to the new position: it walks there from where it is, at about 4 meters per second, and moves faster when the target is 1.5 meters away or more. While it moves, it turns to face the direction it's walking in. The `rotation` you set in the `Transform` is only applied once it arrives.
+
+```ts
+// The NPC walks from its current position to the new one
+Transform.getMutable(myAvatar).position = Vector3.create(10, 0.25, 5)
+```
+
+To control the movement yourself, use a [Tween](../../3d-essentials/move-entities.md). A Tween on the position replaces this automatic walk, and a Tween on the rotation stops the NPC from turning to face where it walks. An entity can only have one Tween at a time, so you can't tween both the position and the rotation of the same entity at once.
+
 ## Animations
 
 Avatars play default idle animations while still.
@@ -60,7 +71,7 @@ To play animations on the avatar, set the `expressionTriggerId` string to the na
 ```ts
 const myAvatar = engine.addEntity()
 AvatarShape.create(myAvatar, {
-	id: '',
+	id: 'dancer-0001',
 	emotes: [],
 	wearables: [],
 	expressionTriggerId: 'robot',
@@ -100,7 +111,7 @@ The following snippet creates a system that runs a same emote every 2 seconds:
 ```ts
 const myAvatar = engine.addEntity()
 AvatarShape.create(myAvatar, {
-	id: '',
+	id: 'fan-0001',
 	emotes: [],
 	wearables: [],
 	expressionTriggerId: 'clap',
@@ -187,7 +198,7 @@ Use the `showOnlyWearables` field to display only the listed wearables of an ava
 ```ts
 const myAvatar = engine.addEntity()
 AvatarShape.create(myAvatar, {
-	id: '',
+	id: 'mannequin-0001',
 	emotes: [],
 	wearables: [
     'urn:decentraland:matic:collections-v2:0x90e5cb2d673699be8f28d339c818a0b60144c494:0'

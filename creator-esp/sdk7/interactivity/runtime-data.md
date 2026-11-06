@@ -143,10 +143,6 @@ Devuelve `'en'` en los siguientes casos:
 
 `getPlayerLanguage()` nunca devuelve un string vacío, así que siempre puedes usar su valor para buscar una traducción. Incluye siempre el texto en inglés en tu escena, ya que es lo que reciben los jugadores en clientes que no informan un idioma.
 
-{% hint style="warning" %}
-**📔 Nota**: `getPlayerLanguage()` y `onPlayerLanguageChanged` requieren `@dcl/sdk` versión 7.30.0 o posterior.
-{% endhint %}
-
 ### Reaccionar a cambios de idioma
 
 Los jugadores pueden cambiar el idioma del cliente en medio de una sesión. Usa `onPlayerLanguageChanged` para actualizar el texto de tu escena cuando eso ocurre.

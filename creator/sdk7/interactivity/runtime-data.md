@@ -149,10 +149,6 @@ It returns `'en'` in the following cases:
 
 `getPlayerLanguage()` never returns an empty string, so you can always use its value to look up a translation. Always include English text in your scene, since that's what players on clients that don't report a language get.
 
-{% hint style="warning" %}
-**📔 Note**: `getPlayerLanguage()` and `onPlayerLanguageChanged` require `@dcl/sdk` version 7.30.0 or later.
-{% endhint %}
-
 ### React to language changes
 
 Players can switch the client language in the middle of a session. Use `onPlayerLanguageChanged` to update your scene's text when that happens.

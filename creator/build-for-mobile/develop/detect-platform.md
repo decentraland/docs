@@ -9,13 +9,14 @@ Use the `isMobile()` function to adapt your UI, controls, and gameplay specifica
 ## Available functions
 
 ```ts
-import { getPlatform, isMobile, isDesktop, isWeb } from '@dcl/sdk/platform'
+import { getPlatform, isMobile, isDesktop, isWeb, getPlayerLanguage } from '@dcl/sdk/platform'
 ```
 
 * **`getPlatform()`** — returns the current platform as `'mobile' | 'desktop' | 'web' | null`. Returns `null` until the explorer has reported its platform back to the scene (this happens shortly after the scene starts).
 * **`isMobile()`** — returns `true` if the player is on the mobile client.
 * **`isDesktop()`** — returns `true` if the player is on the desktop client.
 * **`isWeb()`** — returns `true` if the player is on the web client.
+* **`getPlayerLanguage()`** — returns the language the player's client is set to, as a tag like `'en'`, `'es'` or `'pt-BR'`. Returns `'en'` until the explorer has reported its language. See [Get player language](../../sdk7/interactivity/runtime-data.md#get-player-language).
 
 {% hint style="warning" %}
 **📔 Note**: These functions read a value that is populated asynchronously when the scene starts, and nothing guarantees it's already available by the time `main()` runs. If you call them too early, they may still return `null` / `false`. To be safe, defer any platform-dependent setup until `getPlatform()` returns something other than `null`, for example by checking inside a system:
@@ -82,10 +83,6 @@ switch (platform) {
     break
 }
 ```
-
-## Player language
-
-The same `@dcl/sdk/platform` module also has `getPlayerLanguage()`, which returns the language the player's client is set to, and `onPlayerLanguageChanged`, which fires when the player switches language. See [Get player language](../../sdk7/interactivity/runtime-data.md#get-player-language).
 
 ## Related
 

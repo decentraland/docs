@@ -17,7 +17,7 @@ A `Label` entity has the following fields that can be configured:
   * `'serif'`
   * `'sans-serif'` _(default)_
   * `'monospace'`
-* `fontSrc`: Path to a `.ttf` font file in your scene, to render the text with a custom font. `font` is used as the fallback. See [Custom fonts](#custom-fonts).
+* `fontSrc`: Path to a `.ttf` font file in your scene, or a Google Fonts family name, to render the text with a custom font. `font` is used as the fallback. See [Custom fonts](#custom-fonts).
 * `textAlign`: How the text will align with its parent. It takes a value from the `TextAlignType` type. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 * `textWrap`: Sets if the text uses line-breaks to prevent exceeding the maximum width. It's on by default (`'wrap'`), to deactivate it pass the value `'nowrap'`.
 
@@ -90,7 +90,7 @@ Because this differs per explorer, a preview that looks right in one client does
 
 ## Custom fonts
 
-To render a `Label` with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder. Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
+To render a `Label` with your own font, set the `fontSrc` property to the path of a TrueType (`.ttf`) font file in your scene folder, relative to the scene's root folder, or to a [Google Fonts](https://fonts.google.com/) family name, like `"Playfair Display"`. Keep `font` set too: it's the fallback used while the custom font loads, and whenever it can't be used.
 
 {% hint style="warning" %}
 **📔 Note**: `fontSrc` needs `@dcl/sdk` 7.31.0 or later. On earlier versions the property doesn't exist.
@@ -106,19 +106,32 @@ To render a `Label` with your own font, add a TrueType (`.ttf`) font file to you
 />
 ```
 
+With a Google Fonts family name, the client downloads the font, so you don't add any file to your scene:
+
+```tsx
+<Label
+	value="Welcome!"
+	fontSize={40}
+	uiTransform={{ width: 300, height: 60 }}
+	fontSrc="Playfair Display"
+	font="serif"
+/>
+```
+
 The `Button` entity, the `uiText` of a `UiEntity` and the [`Input` and `Dropdown`](ui_special_types.md) entities accept `fontSrc` too, and so does the [`TextShape`](../3d-essentials/text.md#custom-fonts) component for text in the 3D space.
 
 Keep the following in mind when using custom fonts:
 
 * **Only `.ttf` files are supported**. OpenType fonts with CFF outlines (usually `.otf`), font collections and web fonts are rejected, and the text renders with the fallback `font`.
-* **The font must be a file in your scene**. `fontSrc` can't point to an external URL, and font family names (for example from Google Fonts) are not supported either. Download the `.ttf` file and include it in your scene folder. Make sure its license allows redistributing it.
+* **No external URLs**. `fontSrc` can't point to a URL. Use a file in your scene or a Google Fonts family name. If you include a font file, make sure its license allows redistributing it.
+* **Google Fonts family names don't work on the Desktop Client**, which shows the fallback `font`. They work on the mobile app and the Bevy web client. Only Latin characters are downloaded: other characters are drawn with the built-in font set in `font`.
 * **On the Desktop Client, custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. The same applies to local previews: the custom font only shows when previewing with optimized assets (the **Compress Assets** option in the Creator Hub, or `npm run start -- --asset-bundles` from the CLI). See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets). The Bevy web client loads the `.ttf` file directly, so there the custom font shows right away, in local previews too.
-* **Not supported on mobile**. The Decentraland mobile app ignores `fontSrc` and renders the fallback `font`. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space. See [Missing Features on mobile](../../build-for-mobile/mobile-client/missing-features.md).
+* **On the mobile app, a scene can load up to 16 custom fonts**. A font used both in the UI and on a `TextShape` counts twice. Beyond that, text uses the fallback `font`. If the font has no bold or italic face, the mobile app simulates them in the UI.
 * **One file is one face**. For bold and regular text, add both `.ttf` files and point each text at its own file.
 * **The Creator Hub UI Designer doesn't show or edit `fontSrc`**. Add it to the element in your code by hand. The UI Designer only changes the properties you edit in it, so a `fontSrc` you wrote stays in place. Its canvas doesn't show the custom font.
 * **Characters that the font doesn't include** are drawn with the built-in sans-serif font. Non-Latin characters that the font does include are rendered the first time they appear, which can cause a brief hitch.
 
-For the full list of limits, like the maximum file size, see [Custom fonts](../3d-essentials/text.md#custom-fonts) in the Text page.
+For support by client and the full list of limits, like the maximum file size, see [Custom fonts](../3d-essentials/text.md#custom-fonts) in the Text page.
 
 ## Don't use emoji in UI text
 

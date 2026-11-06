@@ -220,7 +220,7 @@ The following properties are also available to customize the look of the text fi
 
 * `font`: The font to use. Supported values are: - `'sans-serif'` _(default)_ - `'serif'` - `'monospace'`
 
-* `fontSrc`: Path to a `.ttf` font file in your scene, to render the text with a custom font. `font` is used as the fallback. See [Custom fonts](ui_text.md#custom-fonts).
+* `fontSrc`: Path to a `.ttf` font file in your scene, or a Google Fonts family name, to render the text with a custom font. `font` is used as the fallback. See [Custom fonts](ui_text.md#custom-fonts).
 
 * `textAlign`: How the text will align with its parent. It takes a value from the \`TextAlignType\`. TextAlignType = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 

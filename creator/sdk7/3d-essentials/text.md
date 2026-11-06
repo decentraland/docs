@@ -69,7 +69,7 @@ mutableText.text = 'new string'
 The `TextShape` component has several properties that can be set to style the text. Below are some of the most common:
 
 * `font`: Value from the enum `Font`.
-* `fontSrc`: _string_. Path to a `.ttf` font file in your scene, to render the text with a custom font. See [Custom fonts](#custom-fonts).
+* `fontSrc`: _string_. Path to a `.ttf` font file in your scene, or a Google Fonts family name, to render the text with a custom font. See [Custom fonts](#custom-fonts).
 * `fontSize`: _number_. An entiy with font 10 is 1 meter tall.
 * `textColor`: _Color4_ object. _Color4_ objects store an _RBG_ color as three numbers from 0 to 1, plus _alpha_ for transparency. See [color types](../3d-essentials/color-types.md) for more details.
 
@@ -107,7 +107,12 @@ TextShape.create(sign, {
 
 ### Custom fonts
 
-To render text with your own font, add a TrueType (`.ttf`) font file to your scene folder and set the `fontSrc` property to its path, relative to the scene's root folder (just like the `src` of a `GltfContainer`). Keep `font` set too: it's the fallback used whenever the custom font can't be loaded.
+To render text with your own font, set the `fontSrc` property to one of the following:
+
+* **A TrueType (`.ttf`) font file in your scene**: its path, relative to the scene's root folder (just like the `src` of a `GltfContainer`).
+* **A [Google Fonts](https://fonts.google.com/) family name**, like `'Playfair Display'`. The client downloads the font, so you don't add any file to your scene. The Desktop Client doesn't support family names, see the table below.
+
+Keep `font` set too: it's the fallback used while the custom font loads, and whenever it can't be used. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space.
 
 {% hint style="warning" %}
 **📔 Note**: `fontSrc` needs `@dcl/sdk` 7.31.0 or later. On earlier versions the property doesn't exist.
@@ -122,17 +127,38 @@ TextShape.create(sign, {
 })
 ```
 
+To use a Google Fonts family instead, write its name:
+
+```ts
+TextShape.create(sign, {
+	text: 'Hello World',
+	fontSize: 5,
+	fontSrc: 'Playfair Display',
+	font: Font.F_SERIF,
+})
+```
+
 The same `fontSrc` property exists on the UI `Label`, `Button`, `Input` and `Dropdown` entities, and on the `uiText` of a `UiEntity`. See [Custom fonts in the UI](../2d-ui/ui_text.md#custom-fonts).
+
+Support for custom fonts differs between clients:
+
+| | Desktop Client | Mobile app | Bevy web client |
+| --- | --- | --- | --- |
+| `.ttf` file in the scene | Yes, once the scene's assets are optimized | Yes | Yes |
+| Google Fonts family name | No, it shows the fallback `font` | Yes | Yes |
+
+All three clients apply `fontSrc` to `TextShape` and to the UI `Label`, `Button`, `Input` and `Dropdown`.
 
 Keep the following in mind when using custom fonts:
 
-* **Only `.ttf` files are supported**. The file must be a TrueType font. OpenType fonts with CFF outlines (usually `.otf`), font collections (`.ttc`) and web fonts (`.woff`, `.woff2`) are rejected, and the text renders with the fallback `font`.
-* **The font must be a file in your scene**. `fontSrc` can't point to an external URL, and font family names (for example from Google Fonts) are not supported either. Download the `.ttf` file, include it in your scene folder and reference its path. Make sure the font's license allows redistributing it; most fonts on Google Fonts use the SIL Open Font License, which does.
+* **Only `.ttf` files are supported**. The file must be a TrueType font. OpenType fonts with CFF outlines (usually `.otf`), font collections (`.ttc`) and web fonts (`.woff`, `.woff2`) are rejected, and the text renders with the fallback `font`. The client checks the file's contents, not its extension, so renaming an `.otf` file to `.ttf` doesn't make it work.
+* **No external URLs**. `fontSrc` can't point to a URL. Use a file in your scene or a Google Fonts family name. If you include a font file, make sure its license allows redistributing it; most fonts on Google Fonts use the SIL Open Font License, which does.
+* **Google Fonts family names**: write the name as it appears on Google Fonts, like `'Open Sans'` or `'Playfair Display'`. Upper and lower case don't matter. The font is downloaded from [Fontsource](https://fontsource.org/), which hosts the Google Fonts catalog. Regular text uses the 400 weight, or the closest one the family has, and bold text uses 700, or the closest one. Only Latin characters are downloaded: other characters are drawn with the built-in font set in `font`. Desktop players see the fallback `font`, so if the font matters on desktop, add its `.ttf` file to your scene instead.
 * **On the Desktop Client, custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. Scenes published before custom fonts were supported only get their fonts converted when they're published again. The same applies to local previews: the custom font only shows when previewing with optimized assets (the **Compress Assets** option in the Creator Hub, or `npm run start -- --asset-bundles` from the CLI). See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets). The Bevy web client loads the `.ttf` file directly, so there the custom font shows right away, in local previews too.
-* **Not supported on mobile**. The Decentraland mobile app ignores `fontSrc` and renders the fallback `font`. Pick a fallback that still looks right, and don't rely on the custom font to make text fit in a fixed space. See [Missing Features on mobile](../../build-for-mobile/mobile-client/missing-features.md).
-* **The font file can be at most 16 MB**. Larger files are rejected and the fallback `font` is used. Fonts with extremely complex glyph outlines may also be rejected.
+* **On the mobile app, a scene can load up to 16 custom fonts**. A font used both in the UI and on a `TextShape` counts twice. Beyond that, text uses the fallback `font`. Bold text in a `TextShape` uses the font's bold face if there is one, and the regular face otherwise: the mobile app doesn't simulate bold on 3D text. Characters that appear for the first time in a `TextShape` are rendered in the background, so a new text can take a moment to show up.
+* **The font file can be at most 16 MB**, on both the Desktop Client and the mobile app. Larger files are rejected and the fallback `font` is used. Fonts with extremely complex glyph outlines may also be rejected.
 * **Characters**: Latin characters (ASCII and Latin-1) are prerendered. Any other characters that the font includes, like Cyrillic or Chinese, are rendered the first time they appear in the scene, which can cause a brief hitch. Characters that the font doesn't include are drawn with the built-in sans-serif font.
-* **One file is one face**. A `.ttf` file holds a single weight and style. For a bold title and regular body text, add both files and point each text at its own file. Use static font files: if a font family only ships as a variable font, use its static instances.
+* **One file is one face**. A `.ttf` file holds a single weight and style. For a bold title and regular body text, add both files and point each text at its own file. With a Google Fonts family name, the client downloads the bold face for you. Use static font files: if a font family only ships as a variable font, use its static instances.
 * **Fonts are shared**: all text entities that use the same `fontSrc` share a single copy of the font, so reusing a font across the scene costs no more than using it once. Prefer a handful of fonts over many different ones, since each font has its own texture. Each font file adds an optimized download of about 700 KB.
 
 When the desktop client can't use a custom font, it logs a message in the `SDK_FONTS` category of the console that names the file and says why. For example, `font_src "https://example.com/font.ttf" cannot be an external URL`, or that the file isn't part of the scene's content, or that the scene has no converted font for it yet. These messages are hidden by default. To show them, type `/log-matrix enable SDK_FONTS Warning` and `/log-matrix enable SDK_FONTS Log` in the chat, reload the scene with `/reload`, then open the log folder with `/logs`. If the font wasn't converted, check that the file is a TrueType `.ttf` under 16 MB, then publish again.

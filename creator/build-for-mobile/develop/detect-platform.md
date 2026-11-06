@@ -83,8 +83,13 @@ switch (platform) {
 }
 ```
 
+## Player language
+
+The same `@dcl/sdk/platform` module also has `getPlayerLanguage()`, which returns the language the player's client is set to, and `onPlayerLanguageChanged`, which fires when the player switches language. See [Get player language](../../sdk7/interactivity/runtime-data.md#get-player-language).
+
 ## Related
 
+* [Get player language](../../sdk7/interactivity/runtime-data.md#get-player-language)
 * [Mobile safe area](safe-area.md)
 * [UI best practices for mobile](ui-best-practices.md)
 * [On-screen UI](../../sdk7/2d-ui/onscreen-ui.md)

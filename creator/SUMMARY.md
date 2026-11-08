@@ -4,6 +4,10 @@
 * [Tools & Terminology](glossary.md)
 * [Get Paid to Make Games](studio-onboarding.md)
 
+## Creator Fund
+
+* [Creator Fund Program Rules](creator-fund/program-rules.md)
+
 ## Tutorials & Examples
 
 <!-- example-navigation:start -->

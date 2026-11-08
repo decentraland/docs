@@ -26,7 +26,7 @@ People who run the Program, such as DAO Council members and Foundation or Regene
 
 One opt-in covers every eligible NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the Creator Fund tab in Creator Hub.
 
-Rewards are paid to the Payout Wallet you set in Creator Hub. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
+Rewards are paid to the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
 
 ### Joining mid-Cycle
 
@@ -78,7 +78,7 @@ In the Beta Season, Rewards are paid as follows:
 
 * **When:** within 14 days after each Cycle ends.
 * **Currency:** USDC (ERC-20) on Ethereum mainnet.
-* **Paid to:** the Payout Wallet you set in Creator Hub.
+* **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
 * **Minimum Reward:** USD 5 per Cycle. Lower amounts are not paid and are not carried forward.
 * **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
 * **Sanctions check:** every Payout Wallet may be checked against public sanctions lists before payment.
@@ -87,7 +87,7 @@ Other payment options, such as MANA, may be offered in later Seasons.
 
 ### Set up your Payout Wallet
 
-You can set your Payout Wallet in Creator Hub before the first payment. You'll need to confirm your email and confirm that you have access to the wallet or exchange account you add. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
+You can set your Payout Wallet in Creator Hub before the first payment. You'll need to confirm your email and confirm that you have access to the wallet or exchange account you add. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
 
 ## Your dashboard and results
 

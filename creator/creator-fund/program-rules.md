@@ -78,7 +78,7 @@ In the Beta Season, Rewards are paid as follows:
 
 * **When:** within 14 days after each Cycle ends.
 * **Currency:** USDC (ERC-20) on Ethereum mainnet.
-* **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one when a payment is processed, we pay the wallet that owns your NAME or World.
+* **Paid to:** the Payout Wallet you set in Creator Hub.
 * **Minimum Reward:** USD 5 per Cycle. Lower amounts are not paid and are not carried forward.
 * **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
 * **Sanctions check:** every Payout Wallet may be checked against public sanctions lists before payment.

@@ -8,7 +8,7 @@ description: >-
 
 ## In short
 
-The Creator Fund pays you for the players your Decentraland scenes attract and keep. You publish a scene in Genesis City or a public World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed USD pool, paid in USDC, in proportion to the new players, playtime and returning players your scenes generate.
+The Creator Fund rewards creators based on how players engage with their Decentraland scenes. You publish a scene in Genesis City or a public World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed Season Pool, with payouts in USDC, in proportion to the new players, playtime and returning players your scenes generate.
 
 See the [Creator Fund](https://decentraland.org/creator-fund) landing page for the overview. Also check [How to make money in Decentraland](../earn/README.md) for info on other ways to make money on Decentraland.
 

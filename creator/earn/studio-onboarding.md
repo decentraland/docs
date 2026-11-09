@@ -15,7 +15,7 @@ You will build alongside other creators, test your work with real players, and g
 **The goal is not only to fund your game. It is to help you become better at making and shipping games professionally.**
 
 {% hint style="info" %}
-**Already have a published scene?** Creator Success funds games that are still being built. If your scene is already live and attracting players, the **Creator Fund** pays USDC rewards based on the players it brings in and keeps. See [Creator Fund: Program Rules](program-rules.md), or compare every option in [How to make money in Decentraland](README.md).
+**Already have a published scene?** Creator Success funds games that are still being built. If your scene is already live and attracting players, the **Creator Fund** offers USDC rewards based on how players engage with it. See [Creator Fund: Program Rules](program-rules.md), or compare every option in [How to make money in Decentraland](README.md).
 {% endhint %}
 
 ---

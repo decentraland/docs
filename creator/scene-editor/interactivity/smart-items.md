@@ -274,7 +274,7 @@ Other smart items change the player's health:
 
   ![ ](../../images/editor/restore-health.webp)
 
-To decide what happens when the health runs out, use the Health Bar's **Reactions** section. It has a button for each of its events: **When damaged…**, **When healed…** and **When death…**. For example, respawn the player at a **Respawn Pad**, reset a score counter, or show a message. Reactions work like those of the Trigger Area, see [Trigger Area](trigger-area.md). The Health Bar also has **Heal**, **Damage** and **Reset** actions that other items can call.
+To decide what happens when the health runs out, use the Health Bar's **Reactions** section. It has a button for each of its events: **When damaged…**, **When healed…** and **When death…**. For example, respawn the player at a **Respawn Pad**, reset a score counter, or show a message. Reactions work like those of the Trigger Area, see [Trigger Area](trigger-area.md). The Health Bar also has **Damage**, **Heal**, **Reset** and **Remove** actions that other items can call. **Remove** takes the Health Bar out of the scene.
 
 Some items have health of their own instead of a Health Bar: the **Exploding Barrel**, the **Wooden Fence** and the **Robot Enemy**. Set their **Health** in their properties. When it runs out, the barrel explodes, the fence falls, and the robot is destroyed.
 

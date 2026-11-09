@@ -131,7 +131,7 @@ You can also open it by pressing the **\`** key on your keyboard. You can also p
 
 ## The Creator Hub console
 
-The Creator Hub shows the same output without leaving the editor, and it does so by default. Run a preview and a **CONSOLE** tab appears next to **FILE SYSTEM** and **ASSET PACKS** in the panel at the bottom of the editor.
+The Creator Hub shows the same output without leaving the editor, and it does so by default. Run a preview and a **CONSOLE** tab appears next to **LOCAL ASSETS**, **CUSTOM ITEMS** and **ASSET PACKS** in the panel at the bottom of the editor.
 
 To stop the console from opening, uncheck **Open Debug Console** under **Play Options** on the **EDITOR** tab of the Creator Hub settings. The same section has **Enable Landscape Terrains** and [Load Raw GLTFs](#preview-the-raw-models-instead).
 

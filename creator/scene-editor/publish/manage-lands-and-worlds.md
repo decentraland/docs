@@ -12,8 +12,7 @@ The **Manage** page of the Creator Hub lists every LAND and World you can publis
 2. Click **Manage** in the top navigation bar.
 3. Pick the **Worlds** or the **LANDs** tab.
 
-[Screenshot: the Manage page on the LANDs tab, with the View filter, the Sort by dropdown, the search field and a grid of LAND cards with role tags.]
-
+![The Manage page on the LANDs tab, with the Worlds and LANDs switch, the View filter, the Sort by dropdown, the search field and a grid of parcel cards, some with a published scene and others showing No Scene Published](../../images/editor/manage-lands-tab.webp)
 Both tabs work the same way:
 
 - **View**: show **All**, **Published** or **Not Published** places.
@@ -48,15 +47,14 @@ The LAND detail page has up to four tabs: **Details**, **Scenes**, **Collaborato
 | Owner | Details, Scenes, Collaborators, Managers |
 | Manager | Details, Scenes, Collaborators |
 | Collaborator or tenant | Details, Scenes |
-| Owner of LAND that is rented out | Details, Scenes (read only) |
+| Owner of LAND that is rented out | Details and Scenes, both read only |
 
-[Screenshot: the LAND detail page on the Details tab, with the Land Name and Description fields, the Domain Name dropdown, and the Details, Scenes, Collaborators and Managers tabs.]
-
+![The LAND detail page on the Details tab, with the Land Name and Description fields, the Domain Name dropdown reading Choose a NAME, and the Details, Scenes, Collaborators and Managers tabs](../../images/editor/land-details-tab.webp)
 Changes on a LAND are blockchain transactions. When you save, the Creator Hub asks you to **Confirm this transaction in your browser**, then waits until the transaction is confirmed. Some changes take two transactions, shown as **Step 1 of 2** and **Step 2 of 2**. Each one has a **View on Etherscan** link.
 
 ### Name and description
 
-On the **Details** tab, edit the **Land Name** (up to 50 characters) and the **Description** (up to 140 characters), then click **Save**. Both are stored on the blockchain in a single transaction. Owners, managers and collaborators can edit them. A tenant sees them read-only.
+On the **Details** tab, edit the **Land Name** (up to 50 characters) and the **Description** (up to 140 characters), then click **Save**. Both are stored on the blockchain in a single transaction. Owners, managers and collaborators can edit them. Tenants, and owners of LAND that is rented out, see them read only.
 
 ### Link a NAME to your LAND
 
@@ -118,8 +116,7 @@ The World detail page has up to four tabs: **Details**, **Scenes**, **Settings**
 
 Collaborators who can only stream into a World see its card, but it doesn't open a detail page.
 
-[Screenshot: the World detail page on the Settings tab, with Spawn Coordinate, Night/Day Time (skybox), the General checkboxes and the Access options.]
-
+![The World detail page on the Settings tab, with the Spawn Coordinate X and Y fields, the Night/Day Time (skybox) slider set to Auto, the Single Player and Discoverable in Places checkboxes, and the Access dropdown set to Public](../../images/editor/world-settings-tab.webp)
 When you change a field, **CANCEL** and **SAVE** buttons appear. If you try to leave with unsaved changes, the Creator Hub asks whether to save them first.
 
 ### Details
@@ -139,10 +136,10 @@ A successful save shows **Changes saved**.
 
 ### Scenes and storage
 
-The **Scenes** tab lists the World's scenes, with the same columns, **Download** and **Unpublish** options as on a LAND.
+The **Scenes** tab lists the World's scenes, with the same columns and **Download** option as on a LAND. Only the owner can **Unpublish** them.
 
 - The owner also sees how much storage the World uses, with a **Manage Storage** link. See [World storage budget](#world-storage-budget).
-- A **Multi-Scene World** indicator shows whether the World can hold more than one scene. You turn this on while publishing, see [Multi-Scene Worlds](publish-scene.md#multi-scene-worlds).
+- The owner also sees a read-only **Multi-Scene World** switch. It's on when the World currently holds more than one scene. To add more scenes to a World, see [Multi-Scene Worlds](publish-scene.md#multi-scene-worlds).
 - The **World Map** toggle shows where each scene sits in the World.
 
 {% hint style="danger" %}
@@ -183,7 +180,7 @@ To remove an invite, use the trash button on its row, or tick several and remove
 **📔 Note**: If you switch the access type away from **Invitation Only**, your list of approved addresses is erased. Keep a copy if you may need it again.
 {% endhint %}
 
-To protect a World with a password, choose **Password Protected** and click **Create New Password**. A password needs at least 8 characters and at least 2 numbers. Once saved it can't be shown again, so write it down. Use **Change Password** to replace it.
+To protect a World with a password, choose **Password Protected**. The **Create New Password** window opens. A password needs at least 8 characters and at least 2 numbers. Once saved it can't be shown again, so write it down. Use **Change Password** to replace it.
 
 ### What players see in a private World
 
@@ -204,8 +201,7 @@ On the **Collaborators** tab, the owner can give up to 100 wallets permission to
 - **Deploy Permissions in**: **All Parcels**, a number of parcels you pick on a map, or **None** for a wallet that only streams.
 - **Stream**: whether they can stream into the World. When streaming is open to everyone in the World, this column is checked for everyone and can't be changed.
 
-[Screenshot: the World Collaborators tab, with a collaborator row showing the Deploy Permissions in dropdown and the Stream checkbox.]
-
+![The World Collaborators tab, with the wallet or NAME field and Add button, and two collaborator rows each showing a Deploy Permissions in dropdown and a Stream checkbox](../../images/editor/world-collaborators-tab.webp)
 {% hint style="warning" %}
 **📔 Note**: Collaborators who can publish on **All Parcels** can overwrite any scene in the World, including scenes published by the owner or by other collaborators.
 {% endhint %}

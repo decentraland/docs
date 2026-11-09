@@ -110,8 +110,7 @@ To change this behavior, you can include an **Animator** component. See [Make an
 
 The **Local Assets** tab of the bottom panel shows every file in your project's `assets` folder.
 
-[Screenshot: the Local Assets tab with the folder tree on the left, the toolbar with the search field and type filter pills, a grid of file cards, and the preview pane on the right showing a 3D model.]
-
+![The Local Assets tab, with the folder tree on the left, the toolbar with the search field and type filter pills, a breadcrumb reading Assets > Images, two image cards, and the preview pane on the right showing the selected image with its type, size and dimensions](../../images/editor/local-assets-preview-pane.webp)
 ### Find a file
 
 The toolbar above the files helps you find what you need:

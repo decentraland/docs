@@ -69,7 +69,7 @@ LAND you rented out to someone else doesn't appear, and neither does LAND where 
 
 ### Check the scene size
 
-The file list shows the scene's **Total Size** next to the size it may use, for example `Total Size 12.4 MB / 15 MB`:
+The file list shows the scene's **Total Size** next to the size it may use, for example `Total Size 12.40 MB / 15.00 MB`:
 
 - **Genesis City**: 15 MiB per parcel the scene covers.
 - **Worlds**: the limit the Worlds server gives for this World and this placement. See [World storage budget](manage-lands-and-worlds.md#world-storage-budget).
@@ -83,7 +83,7 @@ Each published scene has a listing in Decentraland Places, with its likes, favor
 Before publishing, the Creator Hub checks what's already deployed. If your publish would lose the listing, it shows **Your scene will lose its Places listing**, with what stays behind on the old listing. You can **Go back** and change the placement, or **Publish anyway**.
 
 - **In Genesis City**: the warning appears when the new version changes both the base parcel and the set of parcels of the scene it replaces. To keep the listing, publish to the same base parcel or to the same set of parcels as before.
-- **In a World**: the warning appears when the new scene overlaps two or more existing scenes, or when you publish a single-scene World over a World that holds several scenes. To keep the listing, place the scene so that it replaces exactly one existing scene.
+- **In a World**: the warning appears when the new scene overlaps two or more existing scenes, or when you publish as a single-scene World and the new scene doesn't cover every scene already in the World. This includes a World that holds only one scene. To keep the listing, place the scene so that it replaces exactly one existing scene.
 
 ### Follow and cancel the upload
 

@@ -147,13 +147,12 @@ In the Creator Hub, open the scene settings and click on the **Settings** tab to
 
 The **Advanced** section at the bottom of the **Settings** tab turns on a [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) for your scene. A Multiplayer Server runs your scene's code on a server as well as on each player's client, so the server can validate what players do and store data across sessions.
 
-[Screenshot: the Advanced section of the scene Settings tab, with Enable Multiplayer Server checked and the Log Access & Storage list showing one wallet with its avatar and name.]
-
+![The Advanced section of the scene Settings tab, with Enable Multiplayer Server checked and the Log Access & Storage list showing a wallet input and one added user](../../images/editor/scene-settings-advanced.webp)
 ### Turn the server on
 
 Check **Enable Multiplayer Server**. The Creator Hub then:
 
-1. Installs the version of the SDK that includes the server APIs (`@dcl/sdk@auth-server` and `@dcl/js-runtime@auth-server`). The panel reads **Installing the multiplayer-server SDK…** and is disabled until the install finishes.
+1. Installs the version of the SDK that includes the server APIs (`@dcl/sdk@auth-server` and `@dcl/js-runtime@auth-server`), unless your project already uses it. During the install, the section reads **Installing the multiplayer-server SDK…** and the checkbox is disabled until it finishes.
 2. Adds `"authoritativeMultiplayer": true` to your `scene.json`.
 
 When it's done, you see **Multiplayer Server SDK installed.** Your scene can now use the server APIs in code. See [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) to start writing server logic.

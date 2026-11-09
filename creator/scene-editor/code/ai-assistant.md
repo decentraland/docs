@@ -209,8 +209,7 @@ This is off by default. To turn it on:
 1. Open the main menu from the Creator Hub logo, select **Settings**, and go to the **AI** tab.
 2. Switch on **Allow other AI apps to edit your scenes**.
 
-[Screenshot: the AI tab of the settings with Allow other AI apps to edit your scenes switched on, showing the configuration box and the Copy configuration button.]
-
+![The AI tab of App Preferences with Allow other AI apps to edit your scenes switched on, showing the configuration box with the server URL and a hidden token, and the Copy configuration button](../../images/editor/ai-settings-external-access.webp)
 This switch is separate from **Enable AI Assistant**: the built-in assistant doesn't need it, and turning it off doesn't affect the assistant.
 
 ### Connect Claude Code
@@ -248,7 +247,7 @@ A connected tool works on the scene you have open in the editor. When no scene i
 If an outside tool changes the scene while the built-in assistant is answering, **Undo AI changes** on that answer refuses to run, because it would also remove the other tool's changes. Use **Undo** in the editor instead.
 
 {% hint style="warning" %}
-**📔 Note**: Only apps on your own computer can connect. The port and the token change every time the Creator Hub restarts, and when you turn the switch off. Turning it off disconnects every tool right away. If your tool suddenly gets a `401` error, copy the configuration again.
+**📔 Note**: Only apps on your own computer can connect. The port and the token change every time the Creator Hub restarts. Turning the switch off also replaces the token and disconnects every tool right away, but the port stays the same. If your tool suddenly gets a `401` error, copy the configuration again.
 {% endhint %}
 
 ## Related pages

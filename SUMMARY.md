@@ -468,6 +468,7 @@
       * [Server Data](creator/scene-editor/live-ops/server-data.md)
     * [Publishing Your Scene](creator/scene-editor/publish/README.md)
       * [Publish Scene](creator/scene-editor/publish/publish-scene.md)
+      * [Manage LANDs and Worlds](creator/scene-editor/publish/manage-lands-and-worlds.md)
   * [sdk7](creator/sdk7/README.md)
     * [2D UI](creator/sdk7/2d-ui/README.md)
       * [Dynamic UI](creator/sdk7/2d-ui/dynamic-ui.md)

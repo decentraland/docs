@@ -15,7 +15,7 @@ You will build alongside other creators, test your work with real players, and g
 **The goal is not only to fund your game. It is to help you become better at making and shipping games professionally.**
 
 {% hint style="info" %}
-**Already have a published scene?** Creator Success funds games that are still being built. If your scene is already live and attracting players, the **Creator Fund** pays USDC rewards based on the players it brings in and keeps. See [Creator Fund: Program Rules](creator-fund/program-rules.md), or compare every option in [How to make money in Decentraland](earn/README.md).
+**Already have a published scene?** Creator Success funds games that are still being built. If your scene is already live and attracting players, the **Creator Fund** pays USDC rewards based on the players it brings in and keeps. See [Creator Fund: Program Rules](program-rules.md), or compare every option in [How to make money in Decentraland](README.md).
 {% endhint %}
 
 ---
@@ -86,9 +86,9 @@ Before designing a game for Decentraland, experience it as a player.
 
 Once you are in Decentraland, open **Discover** → **Places** and play at least three of the **Featured games**.
 
-<!-- ![Places button in the Decentraland explorer](images/media/onboarding-places-button.png) -->
+<!-- ![Places button in the Decentraland explorer](../images/media/onboarding-places-button.png) -->
 
-<!-- ![Featured badge on a place card](images/media/onboarding-featured-badge.png) -->
+<!-- ![Featured badge on a place card](../images/media/onboarding-featured-badge.png) -->
 
 As you play, take short notes on:
 
@@ -111,7 +111,7 @@ Next, download **Creator Hub** and get hands-on with the tools you will use to b
 
 [**Download Creator Hub**](https://decentraland.org/download/creator-hub?utm_org=dcl&utm_source=docs&utm_medium=organic&utm_campaign=creatorsuccess&utm_term=onboardingflow)
 
-Once installed, follow the [**SDK Quick Start**](sdk7/getting-started/sdk-101.md) to use Creator Hub and code to build your first scene.
+Once installed, follow the [**SDK Quick Start**](../sdk7/getting-started/sdk-101.md) to use Creator Hub and code to build your first scene.
 
 Use this first scene to get comfortable with:
 
@@ -174,7 +174,7 @@ Your test scene should include at least **one game interaction**, preferably fro
 
 Keep the scope small. **We are not asking you to build the vertical slice before you are funded.**
 
-Publish the test scene to your own Decentraland World. See [Publishing Options](sdk7/publishing/publishing-options.md) for how to do this.
+Publish the test scene to your own Decentraland World. See [Publishing Options](../sdk7/publishing/publishing-options.md) for how to do this.
 
 Before you apply, make sure your repository contains:
 

@@ -8,15 +8,17 @@ description: >-
 
 ## In short
 
-The Creator Fund pays you for the players your Decentraland scenes attract and keep. You publish a scene in Genesis City or a public World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed USD pool, paid in USDC, in proportion to the new players, playtime and returning players your scenes generate. There is nothing to apply for and no pitch to write: the only thing that counts is real player activity.
+The Creator Fund pays you for the players your Decentraland scenes attract and keep. You publish a scene in Genesis City or a public World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed USD pool, paid in USDC, in proportion to the new players, playtime and returning players your scenes generate.
 
-The rest of this page is the full rulebook: who can take part, how the pool is split, what we measure, how payouts work and how we deal with fake activity. If you only want the high-level picture, see the [Creator Fund overview](https://decentraland.org/creator-fund) on the Decentraland website, or compare it with the other ways to earn in [How to make money in Decentraland](../earn/README.md).
+See the [Creator Fund](https://decentraland.org/creator-fund) landing page for the overview. Also check [How to make money in Decentraland](../earn/README.md) for info on other ways to make money on Decentraland.
+
+The rest of this page covers the full rulebook: who can take part, how the pool is split, what we measure, how payouts work and how we deal with fake activity.
 
 ## Overview
 
 The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among Qualifying Experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
 
-<!-- TODO: link "Creator Fund Program Terms" (and "Program Terms" below) to creator-fund/program-terms.md once that page exists. -->
+<!-- TODO: link "Creator Fund Program Terms" (and "Program Terms" below) to earn/program-terms.md once that page exists. -->
 
 This page is part of the **Creator Fund Program Terms**. If anything here conflicts with the Program Terms, the Program Terms prevail. Capitalized terms such as Cycle, Reward, Owner Wallet, Payout Wallet, Qualifying Experience and Qualifying Player have the meaning given in the Program Terms. We update this page as the Program evolves; every change is listed at the bottom.
 
@@ -26,9 +28,9 @@ These rules apply to the **Beta Season**. All dates and times on this page are i
 
 To enroll, you must meet all the eligibility requirements in Section 3 of the Program Terms. In short, you must:
 
-* be at least 18;
-* own the NAME or World where your experience is deployed; and
-* opt in through [Creator Hub](https://decentraland.org/download/creator-hub) by signing the Program Terms with that wallet.
+- be at least 18;
+- own the NAME or World where your experience is deployed; and
+- opt in through [Creator Hub](https://decentraland.org/download/creator-hub) by signing the Program Terms with that wallet.
 
 Opt-in opens in Creator Hub on November 11, 2026.
 
@@ -82,20 +84,20 @@ These metrics may change during the Program. If we add, remove or redefine a met
 
 **Qualifying Players.** Only real people playing on the official Decentraland desktop or mobile app, in line with the Terms of Use, count. These never count:
 
-* sessions by you, your collaborators or other Program participants;
-* sessions by people who run the Program;
-* visits rewarded by a Rewards Program season running at the same time.
+- sessions by you, your collaborators or other Program participants;
+- sessions by people who run the Program;
+- visits rewarded by a Rewards Program season running at the same time.
 
 ## Payout process
 
 In the Beta Season, Rewards are paid as follows:
 
-* **When:** within 14 days after each Cycle ends.
-* **Currency:** USDC (ERC-20) on Ethereum mainnet.
-* **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
-* **Minimum Reward:** USD 5 per Cycle. Lower amounts are not paid and are not carried forward.
-* **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
-* **Sanctions check:** every Payout Wallet may be checked against public sanctions lists before payment.
+- **When:** within 14 days after each Cycle ends.
+- **Currency:** USDC (ERC-20) on Ethereum mainnet.
+- **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
+- **Minimum Reward:** USD 5 per Cycle. Lower amounts are not paid and are not carried forward.
+- **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
+- **Sanctions check:** every Payout Wallet may be checked against public sanctions lists before payment.
 
 Other payment options, such as MANA, may be offered in later Seasons.
 
@@ -125,6 +127,6 @@ No changes since these rules were first published.
 
 ## Related
 
-* [Download Creator Hub](https://decentraland.org/download/creator-hub)
-* [Publish a Scene](../scene-editor/publish/publish-scene.md)
-* [Publishing Options](../sdk7/publishing/publishing-options.md)
+- [Download Creator Hub](https://decentraland.org/download/creator-hub)
+- [Publish a Scene](../scene-editor/publish/publish-scene.md)
+- [Publishing Options](../sdk7/publishing/publishing-options.md)

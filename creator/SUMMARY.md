@@ -6,8 +6,8 @@
 ## Earn in Decentraland
 
 * [How to make money in Decentraland](earn/README.md)
-* [Creator Fund: Program Rules](creator-fund/program-rules.md)
-* [Creator Success: Get Paid To Make Games](studio-onboarding.md)
+* [Creator Fund: Program Rules](earn/program-rules.md)
+* [Creator Success: Get Paid To Make Games](earn/studio-onboarding.md)
 
 ## Tutorials & Examples
 

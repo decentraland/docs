@@ -115,6 +115,12 @@ See [Kinds of project](sdk7/projects/kinds-of-project.md) to better understand t
 
 See [publishing](sdk7/publishing/publishing.md) for details and special options when publishing a scene, to either Genesis City or Worlds.
 
+## Earn in Decentraland
+
+Creators get paid in Decentraland in several ways. The **Creator Fund** rewards owners of published scenes with USDC based on the players they bring in and keep. **Creator Success** funds game developers in stages, from a first vertical slice to a live release. You can also sell wearables and emotes in the Marketplace.
+
+Start with [How to make money in Decentraland](earn/README.md).
+
 ## Useful Resources
 
 Check out [Useful Resources](sdk7/getting-started/useful-resources.md) for a curated list of tools, add-ons, asset libraries, and example projects that can speed up your creation workflow.

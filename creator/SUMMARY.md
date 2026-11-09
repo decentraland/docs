@@ -1,9 +1,13 @@
 # Table of contents
 
 * [Welcome Creator](README.md)
-  * [Creator Fund](creator-fund/program-rules.md)
 * [Tools & Terminology](glossary.md)
-* [Get Paid to Make Games](studio-onboarding.md)
+
+## Earn in Decentraland
+
+* [How to make money in Decentraland](earn/README.md)
+* [Creator Fund: Program Rules](creator-fund/program-rules.md)
+* [Creator Success: Get Paid To Make Games](studio-onboarding.md)
 
 ## Tutorials & Examples
 

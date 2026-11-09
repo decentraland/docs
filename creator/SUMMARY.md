@@ -1,12 +1,9 @@
 # Table of contents
 
 * [Welcome Creator](README.md)
+  * [Creator Fund](creator-fund/program-rules.md)
 * [Tools & Terminology](glossary.md)
 * [Get Paid to Make Games](studio-onboarding.md)
-
-## Creator Fund
-
-* [Creator Fund Program Rules](creator-fund/program-rules.md)
 
 ## Tutorials & Examples
 

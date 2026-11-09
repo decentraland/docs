@@ -4,7 +4,7 @@ description: >-
   part, the Season Pool, what we measure, and how Rewards are paid.
 ---
 
-# Creator Fund Program Rules
+# Creator Fund
 
 The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among Qualifying Experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
 

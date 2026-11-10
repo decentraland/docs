@@ -8,7 +8,7 @@ description: >-
 
 ## In short
 
-The Creator Fund rewards creators based on how players engage with their Decentraland scenes. You publish a scene in Genesis City or a World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed Season Pool, with payouts in USDC, in proportion to the new players, playtime and returning players your scenes generate.
+The Creator Fund rewards creators based on how players engage with their Decentraland scenes. You publish a scene in Genesis City or a World and join the program from the **Earn** tab in Creator Hub. Each Cycle, a fixed allocation from the Season Pool is shared among enrolled scenes in proportion to the new players, playtime and returning players they generate, and Rewards are paid out in USDC. Rewards aren't guaranteed: your share depends on how your scenes compare with the others, amounts under USD 5 per Cycle aren't paid out, and the rules below explain when a Cycle counts, for example if you join or transfer a scene mid-Cycle.
 
 See the [Creator Fund](https://decentraland.org/creator-fund?utm_org=dcl&utm_source=rulespage&utm_medium=organic&utm_campaign=creatorfund&utm_term=rulespage&utm_content=docs) landing page for the overview. Also check [How to make money in Decentraland](README.md) for info on other ways to make money on Decentraland.
 
@@ -30,7 +30,7 @@ To enroll, you must meet all the eligibility requirements in [Section 3 of the P
 
 People who run the Program, such as DAO Council members and Foundation or Regenesis Labs contractors, can't take part, with some exceptions set out in the Terms.
 
-One opt-in covers every eligible LAND, NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the Creator Fund tab in Creator Hub.
+One opt-in covers every eligible LAND, NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the **Earn** tab in Creator Hub.
 
 Rewards are paid to the Payout Wallet you set in Creator Hub. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
 

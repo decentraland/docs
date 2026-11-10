@@ -8,7 +8,7 @@ description: >-
 
 ## How the Creator Fund works
 
-The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among qualifying experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
+The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among qualifying experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends. The Creator Fund is created and funded by DCL Regenesis Labs Foundation and the Decentraland Foundation, and operated by the Decentraland Foundation.
 
 This page is part of the [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms). If anything here conflicts with the Program Terms, the Program Terms prevail. We update this page as the Program evolves; every change is listed at the bottom.
 
@@ -68,6 +68,8 @@ We check every Cycle for bots and artificial activity, and we have mechanisms in
 
 ## Who can take part: mid-Cycle joining
 
+If you join during a Cycle and have owned your LAND, NAME or World since it started, the whole Cycle counts. Otherwise, you count from the next one.
+
 An experience that is removed stops counting from that moment. If its LAND, NAME or World is transferred during a Cycle, its activity in that Cycle doesn't count for anyone. Rewards for Cycles that ended before the transfer are still paid to the Payout Wallet on record for each of those Cycles.
 
 ## Payout Process
@@ -96,11 +98,11 @@ After each Cycle we may publish rankings and leaderboards showing each experienc
 
 We run automated and manual checks to make sure Rewards reflect genuine player engagement. We do not publish how these checks work.
 
-If we find manipulation, we may disregard the affected activity, withhold Rewards, and exclude you from the Program for one or more Seasons, as set out in the Program Terms. Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
+If we find manipulation, we may disregard the affected activity, withhold Rewards, and permanently exclude you from the Program, as set out in the Program Terms. Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
 
 ## Changes to these Rules
 
-We may update this page between Cycles, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the Program Terms themselves follow the notice process in those Terms.
+We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the Program Terms themselves follow the notice process in those Terms.
 
 ## Related
 

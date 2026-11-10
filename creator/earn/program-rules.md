@@ -10,13 +10,11 @@ description: >-
 
 The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among qualifying experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
 
-<!-- TODO: link "Creator Fund Program Terms" (and "Program Terms" below) to earn/program-terms.md once that page exists. -->
-
-This page is part of the **Creator Fund Program Terms**. If anything here conflicts with the Program Terms, the Program Terms prevail. We update this page as the Program evolves; every change is listed at the bottom.
+This page is part of the [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms). If anything here conflicts with the Program Terms, the Program Terms prevail. We update this page as the Program evolves; every change is listed at the bottom.
 
 ## Who can take part
 
-To enroll, you must meet all the eligibility requirements in Section 3 of the Program Terms. In short, you must:
+To enroll, you must meet all the eligibility requirements in Section 3 of the [Program Terms](https://decentraland.org/creator-fund-terms). In short, you must:
 
 - be at least 18;
 - own the LAND, NAME or World where your experience is deployed; and
@@ -108,6 +106,7 @@ We may update this page between Cycles, for example to publish new Cycle Allocat
 ## Related
 
 - [Creator Fund](https://decentraland.org/creator-fund) landing page
+- [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms)
 - [How to make money in Decentraland](README.md)
 - [Download Creator Hub](https://decentraland.org/download/creator-hub)
 - [Publish a Scene](../scene-editor/publish/publish-scene.md)

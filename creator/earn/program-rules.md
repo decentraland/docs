@@ -6,15 +6,23 @@ description: >-
 
 # Creator Fund: Program Rules
 
+## In short
+
+The Creator Fund rewards creators based on how players engage with their Decentraland scenes. You publish a scene in Genesis City or a World, join the program from the **Earn** tab in Creator Hub, and from then on every Cycle you receive a share of a fixed Season Pool, with payouts in USDC, in proportion to the new players, playtime and returning players your scenes generate.
+
+See the [Creator Fund](https://decentraland.org/creator-fund?utm_org=dcl&utm_source=rulespage&utm_medium=organic&utm_campaign=creatorfund&utm_term=rulespage&utm_content=docs) landing page for the overview. Also check [How to make money in Decentraland](README.md) for info on other ways to make money on Decentraland.
+
+The rest of this page covers the full rulebook: who can take part, how the pool is split, what we measure, how payouts work and how we deal with fake activity.
+
 ## How the Creator Fund works
 
-The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among qualifying experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends. The Creator Fund is created and funded by DCL Regenesis Labs Foundation and the Decentraland Foundation, and operated by the Decentraland Foundation.
+The [Creator Fund](https://decentraland.org/creator-fund?utm_org=dcl&utm_source=rulespage&utm_medium=organic&utm_campaign=creatorfund&utm_term=rulespage&utm_content=docs) rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among qualifying experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends. The Creator Fund is created and funded by DCL Regenesis Labs Foundation and the Decentraland Foundation, and operated by the Decentraland Foundation.
 
 This page is part of the [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms). If anything here conflicts with the Program Terms, the Program Terms prevail. We update this page as the Program evolves; every change is listed at the bottom.
 
 ## Who can take part
 
-To enroll, you must meet all the eligibility requirements in Section 3 of the [Program Terms](https://decentraland.org/creator-fund-terms). In short, you must:
+To enroll, you must meet all the eligibility requirements in [Section 3 of the Program Terms](https://decentraland.org/creator-fund-terms#eligibility). In short, you must:
 
 - be at least 18;
 - own the LAND, NAME or World where your experience is deployed; and
@@ -30,7 +38,7 @@ Rewards are paid to the Payout Wallet you set in Creator Hub. If you haven't set
 
 Each Season has a fixed amount available for Rewards, split across its Cycles. The allocated funds for each Cycle are published here before each Cycle starts.
 
-**Beta Season:** November 15 to December 31, 2026 · Cycles of two weeks · Season Pool USD 30,000
+**Beta Season:** November 15 to December 31, 2026 · Cycles of two weeks · Season Pool USD 30,000 paid in USDC
 
 | Cycle   | Dates                | Cycle Allocation | Payment by        |
 | ------- | -------------------- | ---------------- | ----------------- |
@@ -78,7 +86,7 @@ In the Beta Season, Rewards are paid as follows:
 
 - **When:** within 14 days after each Cycle ends.
 - **Currency:** USDC (ERC-20) on Ethereum mainnet.
-- **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
+- **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
 - **Minimum Reward:** USD 5 per Cycle, across all your experiences. Lower amounts are not paid and are not carried forward.
 - **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
 
@@ -98,11 +106,11 @@ After each Cycle we may publish rankings and leaderboards showing each experienc
 
 We run automated and manual checks to make sure Rewards reflect genuine player engagement. We do not publish how these checks work.
 
-If we find manipulation, we may disregard the affected activity, withhold Rewards, and permanently exclude you from the Program, as set out in the Program Terms. Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
+If we find manipulation, we may disregard the affected activity, withhold Rewards, and permanently exclude you from the Program, as set out in the [Program Terms](https://decentraland.org/creator-fund-terms#fair-play-and-exclusion). Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
 
 ## Changes to these Rules
 
-We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the Program Terms themselves follow the notice process in those Terms.
+We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the [Program Terms](https://decentraland.org/creator-fund-terms#changes-suspension-and-termination) themselves follow the notice process in those Terms.
 
 ## Related
 

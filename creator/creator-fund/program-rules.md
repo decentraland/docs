@@ -6,17 +6,15 @@ description: >-
 
 # Creator Fund
 
-The Creator Fund rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among Qualifying Experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
+The [Creator Fund](https://decentraland.org/creator-fund) rewards creators whose Decentraland experiences attract and keep real players. Each Cycle, a fixed pool is shared among Qualifying Experiences based on the engagement they generate, and Rewards are paid in USDC within 14 days after the Cycle ends.
 
-<!-- TODO: link "Creator Fund Program Terms" (and "Program Terms" below) to creator-fund/program-terms.md once that page exists. -->
-
-This page is part of the **Creator Fund Program Terms**. If anything here conflicts with the Program Terms, the Program Terms prevail. Capitalized terms such as Cycle, Reward, Owner Wallet, Payout Wallet, Qualifying Experience and Qualifying Player have the meaning given in the Program Terms. We update this page as the Program evolves; every change is listed at the bottom.
+This page is part of the [**Creator Fund Program Terms**](https://decentraland.org/creator-fund-terms). If anything here conflicts with the Program Terms, the Program Terms prevail. Capitalized terms such as Cycle, Reward, Owner Wallet, Payout Wallet, Qualifying Experience and Qualifying Player have the meaning given in the Program Terms. We update this page as the Program evolves; every change is listed at the bottom.
 
 These rules apply to the **Beta Season**. All dates and times on this page are in UTC.
 
 ## Who can take part
 
-To enroll, you must meet all the eligibility requirements in Section 3 of the Program Terms. In short, you must:
+To enroll, you must meet all the eligibility requirements in [Section 3 of the Program Terms](https://decentraland.org/creator-fund-terms#eligibility). In short, you must:
 
 * be at least 18;
 * own the NAME or World where your experience is deployed; and
@@ -105,11 +103,11 @@ After each Cycle we publish a public leaderboard of the top Qualifying Experienc
 
 We check every Cycle for bots and artificial activity and filter it out. We run automated and manual checks to make sure Rewards reflect genuine player engagement. We don't publish how these checks work.
 
-If we find manipulation, we may disregard the affected activity, withhold Rewards and exclude you from the Program, as set out in the Program Terms. If you didn't cause the activity, we only disregard it; otherwise the exclusion is permanent. Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
+If we find manipulation, we may disregard the affected activity, withhold Rewards and exclude you from the Program, as set out in the [Program Terms](https://decentraland.org/creator-fund-terms#fair-play-and-exclusion). If you didn't cause the activity, we only disregard it; otherwise the exclusion is permanent. Every exclusion is reviewed by a person before it takes effect, and you can send us information before the decision is final.
 
 ## Changes to these rules
 
-We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the Program Terms themselves follow the notice process in those Terms.
+We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the [Program Terms](https://decentraland.org/creator-fund-terms#changes-suspension-and-termination) themselves follow the notice process in those Terms.
 
 ### Change log
 
@@ -117,6 +115,8 @@ No changes since these rules were first published.
 
 ## Related
 
+* [Creator Fund](https://decentraland.org/creator-fund)
+* [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms)
 * [Download Creator Hub](https://decentraland.org/download/creator-hub)
 * [Publish a Scene](../scene-editor/publish/publish-scene.md)
 * [Publishing Options](../sdk7/publishing/publishing-options.md)

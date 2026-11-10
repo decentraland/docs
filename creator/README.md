@@ -117,7 +117,7 @@ See [publishing](sdk7/publishing/publishing.md) for details and special options 
 
 ## Earn in Decentraland
 
-Creators earn in Decentraland in several ways. Sell **Wearables and Emotes** in the Marketplace. Enroll a published scene in the **Creator Fund**, a rewards program with USDC payouts based on how players engage with your experience. Or build a new game through **Creator Success**, which funds game developers in stages, from a first vertical slice to a live release.
+Creators earn in Decentraland in several ways. Sell **Wearables and Emotes** in the Shop. Enroll a published scene in the **Creator Fund**, a rewards program with USDC payouts based on how players engage with your experience. Or build a new game through **Creator Success**, which funds game developers in stages, from a first vertical slice to a live release.
 
 Start with [How to make money in Decentraland](earn/README.md).
 

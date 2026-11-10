@@ -20,7 +20,7 @@ To enroll, you must meet all the eligibility requirements in Section 3 of the [P
 - own the LAND, NAME or World where your experience is deployed; and
 - opt in through [Creator Hub](https://decentraland.org/download/creator-hub) by signing the Program Terms with the wallet that owns it.
 
-People who run the Program, such as DAO Council members and Foundation or Regenesis Labs contractors, can't take part, with some exceptions set out in the Terms.
+People who run the Program, such as DAO Council members and Foundation or DCL Regenesis Labs Foundation contractors, can't take part, with some exceptions set out in the Terms.
 
 One opt-in covers every eligible LAND, NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the Creator Fund tab in Creator Hub.
 
@@ -30,13 +30,13 @@ Rewards are paid to the Payout Wallet you set in Creator Hub. If you haven't set
 
 Each Season has a fixed amount available for Rewards, split across its Cycles. The allocated funds for each Cycle are published here before each Cycle starts.
 
-**Beta Season:** November 15 to December 31, 2026 · Cycles of two weeks · Season Pool USD 30,000
+**Beta Season:** November 15 to December 31, 2026 · Cycles of two weeks · Season Pool $30,000 USDC
 
 | Cycle   | Dates                | Cycle Allocation | Payment by        |
 | ------- | -------------------- | ---------------- | ----------------- |
-| Cycle 1 | November 15–30, 2026 | USD 10,000       | December 10, 2026 |
-| Cycle 2 | December 1–15, 2026  | USD 10,000       | December 23, 2026 |
-| Cycle 3 | December 16–31, 2026 | USD 10,000       | January 11, 2027  |
+| Cycle 1 | November 15–30, 2026 | $10,000 USDC     | December 10, 2026 |
+| Cycle 2 | December 1–15, 2026  | $10,000 USDC     | December 23, 2026 |
+| Cycle 3 | December 16–31, 2026 | $10,000 USDC     | January 11, 2027  |
 
 We may increase a Cycle Allocation at any time. We may reduce a given Cycle's allocation only if it has not yet started, with at least 7 days' notice.
 
@@ -54,7 +54,7 @@ Players who come back to your experience on subsequent days after playing it.
 
 ### New Decentraland Players
 
-Players who start in Decentraland by coming to your experience. _Players acquired via Foundation or Regenesis Labs advertising campaigns don't count._
+Players who start in Decentraland by coming to your experience. _Players acquired via Foundation or DCL Regenesis Labs Foundation advertising campaigns don't count._
 
 The metrics stated above may change during the program. If we add, remove or redefine a metric, we update this page before the Cycle in which the change applies.
 
@@ -77,9 +77,9 @@ In the Beta Season, Rewards are paid as follows:
 - **When:** within 14 days after each Cycle ends.
 - **Currency:** USDC (ERC-20) on Ethereum mainnet.
 - **Paid to:** the Payout Wallet you set in Creator Hub. If you haven't set one 7 days after a Cycle ends, the Reward payout is lost.
-- **Minimum Reward:** USD 5 per Cycle, across all your experiences. Lower amounts are not paid and are not carried forward.
-- **Network fee:** paid by the Decentraland Foundation and Regenesis Labs.
-- **Sanctions check:** every payout wallet may be checked against public sanctions lists before payment.
+- **Minimum Reward:** $5 USDC per Cycle, across all your experiences. Lower amounts are not paid and are not carried forward.
+- **Network fee:** paid by the Decentraland Foundation.
+- **Sanctions check:** your Owner Wallet and Payout Wallet may be checked against public sanctions lists before payment.
 
 Other payment options, such as MANA, may be offered in later Seasons.
 

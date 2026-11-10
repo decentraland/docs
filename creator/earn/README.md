@@ -32,8 +32,8 @@ If you also write code, a Wearable can carry gameplay with it: a [smart wearable
 
 The **Creator Fund** is a rewards program for creators whose published experiences attract and keep real players. Each Cycle, a fixed Season Pool is shared among the enrolled experiences based on how players engage with them. There is nothing to apply for and no pitch to write: you publish a scene, join the program, and the activity of real players determines your scene's share.
 
-- **The Season Pool:** the Beta Season runs from November 15 to December 31, 2026, with a Season Pool of USD 30,000 split over three Cycles. Each month has two reward Cycles.
-- **What counts:** scenes in Genesis City and public Worlds owned by your wallet. Rewards follow the new Decentraland players you bring in, active playtime, and players who come back in the days after their first visit.
+- **The Season Pool:** the Beta Season runs from November 15 to December 31, 2026, with a Season Pool of $30,000 USDC split over three Cycles. Each month has two reward Cycles.
+- **What counts:** scenes in Genesis City and Worlds owned by your wallet. Rewards follow the new Decentraland players you bring in, active playtime, and players who come back in the days after their first visit.
 - **How to join:** open the **Earn** tab in [Creator Hub](https://decentraland.org/download/creator-hub) and sign the Program Terms with the wallet that owns your LAND or NAME. Opt-in opens on November 11, 2026. Every eligible scene you own is enrolled automatically, and scenes you publish later join too.
 - **Payouts:** in USDC, within 14 days after each Cycle ends, to the Payout Wallet you set in Creator Hub. Payout Wallet setup opens in Creator Hub on November 25, 2026. Creator Hub also shows your scenes' metrics during the Cycle and a leaderboard of the top experiences.
 

@@ -129,6 +129,7 @@
   * [Scene Settings](scene-editor/configure/scene-settings.md)
 * [Publish](scene-editor/publish/)
   * [Publish a Scene](scene-editor/publish/publish-scene.md)
+  * [Manage LANDs and Worlds](scene-editor/publish/manage-lands-and-worlds.md)
 * [Operate live](scene-editor/live-ops/)
   * [Scene Admin](scene-editor/live-ops/scene-admin.md)
   * [Live Streaming](scene-editor/live-ops/live-streaming.md)

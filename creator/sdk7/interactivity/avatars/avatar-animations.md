@@ -88,6 +88,8 @@ These emotes are available to all players in their default emote wheel, and can 
 * `Waving`
 * `fistpump_short`
 
+`cry` and `dance` are also valid values for `predefinedEmote`, even though the Creator Hub's **Avatar Animations** pack doesn't list them.
+
 {% hint style="warning" %}
 **📔 Note**: Use these names exactly as listed. A wrong name fails silently in your scene: nothing plays and nothing appears in the scene console. Watch out for `handsintheair` with no separators, and `fistpump_short` with its suffix.
 {% endhint %}

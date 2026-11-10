@@ -104,7 +104,7 @@ We may update this page between Cycles, for example to publish new Cycle Allocat
 
 ## Related
 
-- [Creator Fund](https://decentraland.org/creator-fund) landing page
+- [Creator Fund](https://decentraland.org/creator-fund?utm_org=dcl&utm_source=rulespage&utm_medium=organic&utm_campaign=creatorfund&utm_term=rulespage&utm_content=docs) landing page
 - [Creator Fund Program Terms](https://decentraland.org/creator-fund-terms)
 - [How to make money in Decentraland](README.md)
 - [Download Creator Hub](https://decentraland.org/download/creator-hub)

@@ -28,7 +28,7 @@ There are two ways to get a Decentraland World:
   You can also get a World by buying an [ENS domain](https://ens.domains/), a decentralized name that can be used across both Web2 & 3. Worlds granted from ENS domains have a fixed maximum scene file size of 36 MB per World, regardless of your other Decentraland holdings.
 
 Once you have a NAME or ENS domain, you can publish scenes to that World using the standard [Publishing](publishing.md) flow.  
-You can also let others publish on to your Decentraland World. Check the [Managing Worlds documentation](../../scene-editor/publish/publish-scene.md#managing-worlds) to learn more about Multi Scene Worlds and other topics like Private Worlds.
+You can also let others publish on to your Decentraland World. See [Manage LANDs and Worlds](../../scene-editor/publish/manage-lands-and-worlds.md#manage-a-world) to add collaborators or make a World private, and [Multi-Scene Worlds](../../scene-editor/publish/publish-scene.md#multi-scene-worlds) to publish several scenes in one World.
 
 ## World Storage Capacity
 
@@ -41,7 +41,7 @@ You can check your used and remaining storage budget in the **Manage** section o
 - [Worlds as a project type](../projects/kinds-of-project.md#publish-to-worlds) - Learn about size limits and how Worlds differ from LAND scenes
 - [Publishing to Worlds](publishing.md#publishing-to-worlds) - Step-by-step publishing instructions
 - [World configuration](../projects/scene-metadata.md#world-configuration) - Configure skybox, communication settings, and more
-- [Managing Worlds](../../scene-editor/get-started/manage-scenes.md#managing-worlds) - Visualize storage space and manage deployments
+- [Manage LANDs and Worlds](../../scene-editor/publish/manage-lands-and-worlds.md) - Visualize storage space and manage deployments
 - [World FAQs](../../scene-editor/faq/README.md) - Common questions about Worlds
 
 ## Publishing to Decentraland LAND

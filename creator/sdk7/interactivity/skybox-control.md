@@ -213,7 +213,7 @@ function main() {
 
 * `color`: the color of the directional light. It also tints the sun disc.
 * `visible`: `true` by default. Set it to `false` to hide the sun and moon discs and the sun's lens flare, for example when they would show through a `skyboxTexture`. The light that the sun casts is not affected.
-* `intensity`: a multiplier on the time-of-day light intensity, 1 by default. 0 turns the sunlight off; negative values count as 0. `intensity` only changes the light, not what the player sees in the sky: the sun and moon discs and the lens flare are drawn at full strength even at `intensity: 0`. To remove them too, set `visible` to `false` as well.
+* `intensity`: a multiplier on the time-of-day light intensity, 1 by default. 0 turns the sunlight off; negative values count as 0.
 * `direction`: the direction in which the sunlight travels, in scene coordinates: `(0, -1, 0)` puts the sun straight overhead, and `(-1, -1, 0)` puts it in the positive X (east) side of the sky, 45 degrees above the horizon. While it's set, the sun stays fixed at every time of day, but its color and intensity still follow the time of day. Leave it unset, or set it to `(0, 0, 0)`, to keep the regular path of the sun across the sky.
 
 ### Fog

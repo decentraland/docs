@@ -38,7 +38,7 @@ The **Creator Fund** is a rewards program for creators whose published experienc
 - **Payouts:** in USDC, within 14 days after each Cycle ends, to the Payout Wallet you set in Creator Hub. Payout Wallet setup opens in Creator Hub on November 25, 2026. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle. Rewards under USD 5 per Cycle, across all your experiences, are not paid out.
 - **Your results:** Creator Hub shows your scenes' metrics during the Cycle. These figures are for information only: final Rewards are calculated after review and bot filtering. After each Cycle, we may publish leaderboards of the top experiences and their Rewards.
 
-Read the full eligibility rules, the Cycle dates and the payout process in [Creator Fund: Program Rules](program-rules.md). For the steps inside the app, from joining to setting your payout wallet, see [The Creator Fund in Creator Hub](creator-fund-in-creator-hub.md).
+Read the full eligibility rules, the Cycle dates and the payout process in [Creator Fund: Program Rules](program-rules.md).
 
 ## Creator Success: staged funding for game developers
 

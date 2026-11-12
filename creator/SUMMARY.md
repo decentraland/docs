@@ -2,7 +2,12 @@
 
 * [Welcome Creator](README.md)
 * [Tools & Terminology](glossary.md)
-* [Get Paid to Make Games](studio-onboarding.md)
+
+## Earn in Decentraland
+
+* [How to make money in Decentraland](earn/README.md)
+* [Creator Fund: Program Rules](earn/program-rules.md)
+* [Creator Success: Get Paid To Make Games](earn/studio-onboarding.md)
 
 ## Tutorials & Examples
 
@@ -124,6 +129,7 @@
   * [Scene Settings](scene-editor/configure/scene-settings.md)
 * [Publish](scene-editor/publish/)
   * [Publish a Scene](scene-editor/publish/publish-scene.md)
+  * [Manage LANDs and Worlds](scene-editor/publish/manage-lands-and-worlds.md)
 * [Operate live](scene-editor/live-ops/)
   * [Scene Admin](scene-editor/live-ops/scene-admin.md)
   * [Live Streaming](scene-editor/live-ops/live-streaming.md)

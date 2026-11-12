@@ -65,6 +65,8 @@ Click and drag a selected item to move it freely around the scene at ground leve
 
 ![](../../images/editor/smart-items.webp)
 
+Each tab of the asset panel has a search field. In **Asset Packs**, a breadcrumb and a back button show which pack you're in. Select an item to see it in the preview pane on the right, with its description and tags. See [Browse and organize your assets](../build/import-items.md#browse-and-organize-your-assets) for everything the panel can do.
+
 To give the 3D view the full height of the window, collapse the asset panel with the chevron button at the right end of its tab bar. The panel shrinks to just its tabs, and the same button brings it back at the height you had. Clicking any tab while it's collapsed also reopens it.
 
 ### Avatar animations
@@ -109,9 +111,17 @@ When using the Bevy renderer, the toolbar gains a camera mode dropdown, play and
 
 Use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
 
-Click the speaker button, labeled **Mute scene audio**, to silence the scene while you work. It silences every [Audio Source](../../sdk7/3d-essentials/sounds.md) and audio stream in the scene, both while you edit and while the scene runs in the canvas, and the scene stays muted if it reloads. Click it again, now labeled **Unmute scene audio**, to bring the sound back. The button only appears under the Bevy renderer, because the Babylon renderer does not play the scene's audio.
+Scenes open muted under the Bevy renderer, so the editor stays quiet while you work. The mute covers every [Audio Source](../../sdk7/3d-essentials/sounds.md), audio stream and video in the scene, and the avatar's footsteps, both while you edit and while the scene runs in the canvas. Click the speaker button, labeled **Unmute scene audio**, to hear the scene. Your choice holds while the scene is open, even if it reloads, and the scene is muted again the next time you open it. The button only appears under the Bevy renderer, because the Babylon renderer does not play the scene's audio.
 
 The Bevy editor also loads [custom items](../interactivity/custom-items.md), shows placeholder markers for broken or missing assets, and provides friendly error messages with fix actions when your scene's SDK dependencies are outdated. The camera toggle in the toolbar reads **Free** or **Player**, depending on the mode you're in.
+
+In the **Free** camera:
+
+- Fly with W, A, S and D, and move up and down with Space, E and Q. The avatar is hidden, so these keys never walk it around. It appears when you play the scene or switch to the **Player** camera.
+- Zoom with the mouse wheel or a trackpad. One notch of the wheel zooms as much as one click of the toolbar's zoom buttons.
+- The camera can't go below the ground.
+
+As with the default renderer, hold **Shift** while you drag a gizmo to turn snapping off, or on if **Snap** is off. See [Position items](scene-editor-essentials.md#position-items).
 
 {% hint style="warning" %}
 **📔 Note**: The scene metrics tab is not available under Bevy. Run a scene preview in the desktop or mobile client and view the stats from there.

@@ -75,6 +75,10 @@ The following fields can be added to a `Button` UI element:
 * `variant`: Use this property to set the style of the button as one of the defaults. `primary` and `secondary` are available.
 * `disabled`: Boolean to set a button disabled. When `disabled` is set to _true_, the `onMouseDown` and `onMouseUp` actions are no longer called, and the button stops advertising any pointer interaction. The button is also drawn "grayed-out": both the text and the background are rendered at half their `alpha` value. This is a display change only. The `Color4` values your scene passes in are never modified, so you can safely reuse a shared palette object across many elements.
 
+{% hint style="warning" %}
+**📔 Note**: Keep the work your scene does on each tick light, and re-render your UI only when what it shows actually changes. If a scene tick takes longer than a rendered frame, a press can reach the player's client without ever reaching your `onMouseDown`, while `onMouseUp` still runs. To the player the button looks like it did nothing. Heavy per-tick work plus a UI that rebuilds every tick is the combination that causes it.
+{% endhint %}
+
 ## Button styling
 
 Set the variant to `primary` or `secondary` to take advantage of the default styling options for buttons. `primary` makes your button red with white text, `secondary` makes your button white with red text.

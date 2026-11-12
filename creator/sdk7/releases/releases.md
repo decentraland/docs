@@ -231,6 +231,15 @@ Creator Hub releases bundle the changes from the `@dcl/inspector` (the scene edi
 
 ## Creator Hub
 
+### 0.53.1 (Nov 10, 2026)
+
+* **Join the Creator Fund from the Creator Hub**: a new **Earn** section where you read the Program Terms, give your contact details and join the Creator Fund, with a dot on the navbar item while you haven't. See [Join the program](../../earn/creator-fund-in-creator-hub.md#join-the-program). [#1752](https://github.com/decentraland/creator-hub/pull/1752), [#1753](https://github.com/decentraland/creator-hub/pull/1753), [#1754](https://github.com/decentraland/creator-hub/pull/1754)
+* **Home and Leaderboard**: before the first reward Cycle closes, the Earn section opens on **Home** with a **Get ready!** checklist. Once a Cycle closes, the tab becomes **Leaderboard**, listing the top places by payout with a cycle filter and a News panel. See [Leaderboard](../../earn/creator-fund-in-creator-hub.md#leaderboard-the-top-places-of-a-cycle). [#1755](https://github.com/decentraland/creator-hub/pull/1755), [#1756](https://github.com/decentraland/creator-hub/pull/1756)
+* **My Places**: each of your published places shows whether it is taking part, and while a Cycle runs, its New Players Attributable, D3 Retention and Total Playtime. See [My Places](../../earn/creator-fund-in-creator-hub.md#my-places-how-your-places-are-doing). [#1757](https://github.com/decentraland/creator-hub/pull/1757)
+* **Payouts and payout wallet**: set the wallet your USDC rewards are sent to, verify your email with a 6-digit code, and follow each Cycle's payout and its transaction. See [Payouts](../../earn/creator-fund-in-creator-hub.md#payouts-your-wallet-and-your-payment-history). [#1758](https://github.com/decentraland/creator-hub/pull/1758)
+* **Creator Fund banner and program links**: a dismissible banner on **Home** opens the Earn section, and the **⋮** menu there opens the Creator Fund site, the Program Rules, the Program Terms and support. See [The Creator Fund in Creator Hub](../../earn/creator-fund-in-creator-hub.md). [#1770](https://github.com/decentraland/creator-hub/pull/1770)
+* **Fixes**: the Earn section opens on **Home** with **Get ready!**, counting down to the first reward Cycle, instead of showing a Leaderboard for a Cycle from before the program started, and that Cycle is gone from the **My Places** cycle list too [#1772](https://github.com/decentraland/creator-hub/pull/1772).
+
 ### 0.53.0 (Nov 9, 2026)
 
 * **Manage your LANDs**: the **Manage** page has **Worlds** and **LANDs** tabs. Each LAND has its own page to edit its name and description, see, download and unpublish its scenes, add collaborators and managers, and transfer it. See [Manage a LAND](../../scene-editor/publish/manage-lands-and-worlds.md#manage-a-land). [#1730](https://github.com/decentraland/creator-hub/pull/1730)

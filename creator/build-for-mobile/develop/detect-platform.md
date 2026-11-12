@@ -19,7 +19,7 @@ import { getPlatform, isMobile, isDesktop, isWeb, getPlayerLanguage } from '@dcl
 * **`getPlayerLanguage()`** — returns the language the player's client is set to, as a tag like `'en'`, `'es'` or `'pt-BR'`. Returns `'en'` until the explorer has reported its language. See [Get player language](../../sdk7/interactivity/runtime-data.md#get-player-language).
 
 {% hint style="warning" %}
-**📔 Note**: These functions read a value that is populated asynchronously when the scene starts, and nothing guarantees it's already available by the time `main()` runs. If you call them too early, they may still return `null` / `false`. To be safe, defer any platform-dependent setup until `getPlatform()` returns something other than `null`, for example by checking inside a system:
+**📔 Note**: These functions read a value that is populated asynchronously when the scene starts, and nothing guarantees it's already available by the time `main()` runs. If you call them too early, they may still return `null` / `false`. `getPlayerLanguage()` is the exception: it returns `'en'` until the real value arrives, never `null`, so instead of waiting for it, use [`onPlayerLanguageChanged`](../../sdk7/interactivity/runtime-data.md#react-to-language-changes) to update your text. To be safe, defer any platform-dependent setup until `getPlatform()` returns something other than `null`, for example by checking inside a system:
 
 ```ts
 import { engine } from '@dcl/sdk/ecs'

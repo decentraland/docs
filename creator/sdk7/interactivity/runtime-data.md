@@ -147,6 +147,8 @@ It returns `'en'` in the following cases:
 * On clients that don't report a language.
 * If the value the client reports is empty or isn't a valid language tag.
 
+Today only the mobile client reports a language. On the desktop and web clients, `getPlayerLanguage()` always returns `'en'` and `onPlayerLanguageChanged` never fires, so test your translations on mobile.
+
 `getPlayerLanguage()` never returns an empty string, so you can always use its value to look up a translation. Always include English text in your scene, since that's what players on clients that don't report a language get.
 
 ### React to language changes
@@ -167,7 +169,7 @@ export function main() {
 
 ### Translate your scene's text
 
-A simple way to localize a scene is to keep all the text in a dictionary, with one entry per language, and look up each string with a helper function. The example below tries the full tag first (`pt-BR`), then the base language (`pt`), and falls back to English.
+A simple way to localize a scene is to keep all the text in a dictionary, with one entry per language, and look up each string with a helper function. The example below tries the full tag first (`pt-BR`), then the base language (`pt`), and falls back to English. If English is missing too, it returns the key itself, so a missing translation is easy to spot.
 
 _**translations.ts file:**_
 
@@ -183,7 +185,7 @@ const translations: Record<string, Record<string, string>> = {
 export function t(key: string): string {
   const language = getPlayerLanguage()
   const baseLanguage = language.split('-')[0].toLowerCase()
-  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key]
+  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key] ?? key
 }
 ```
 

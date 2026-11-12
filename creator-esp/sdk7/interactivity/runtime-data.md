@@ -141,6 +141,8 @@ Devuelve `'en'` en los siguientes casos:
 * En clientes que no informan un idioma.
 * Si el valor que informa el cliente está vacío o no es una etiqueta de idioma válida.
 
+Por ahora solo el cliente móvil informa un idioma. En los clientes de escritorio y web, `getPlayerLanguage()` siempre devuelve `'en'` y `onPlayerLanguageChanged` nunca se dispara, así que prueba tus traducciones en móvil.
+
 `getPlayerLanguage()` nunca devuelve un string vacío, así que siempre puedes usar su valor para buscar una traducción. Incluye siempre el texto en inglés en tu escena, ya que es lo que reciben los jugadores en clientes que no informan un idioma.
 
 ### Reaccionar a cambios de idioma
@@ -161,7 +163,7 @@ export function main() {
 
 ### Traducir el texto de tu escena
 
-Una forma simple de localizar una escena es guardar todo el texto en un diccionario, con una entrada por idioma, y buscar cada string con una función auxiliar. El ejemplo de abajo prueba primero la etiqueta completa (`pt-BR`), luego el idioma base (`pt`), y si no encuentra ninguno usa inglés.
+Una forma simple de localizar una escena es guardar todo el texto en un diccionario, con una entrada por idioma, y buscar cada string con una función auxiliar. El ejemplo de abajo prueba primero la etiqueta completa (`pt-BR`), luego el idioma base (`pt`), y si no encuentra ninguno usa inglés. Si tampoco está en inglés, devuelve la propia clave, así una traducción que falta es fácil de detectar.
 
 _**Archivo translations.ts:**_
 
@@ -177,7 +179,7 @@ const translations: Record<string, Record<string, string>> = {
 export function t(key: string): string {
   const language = getPlayerLanguage()
   const baseLanguage = language.split('-')[0].toLowerCase()
-  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key]
+  return translations[language]?.[key] ?? translations[baseLanguage]?.[key] ?? translations.en[key] ?? key
 }
 ```
 

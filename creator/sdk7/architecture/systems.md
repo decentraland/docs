@@ -132,7 +132,7 @@ The `dt` argument is the real time that elapsed since the last tick of the game 
 
 The smoother a scene runs, the more frequently ticks occur and the smaller each `dt` value is. When a tick takes longer to process, more time passes before the next one and `dt` grows accordingly.
 
-The scene's game loop runs at the same rate as the engine renders frames. For example, if the player's machine renders at 60 FPS, your systems run 60 times per second and `dt` is roughly _1/60_ (0.0166...).
+This scene-side frame rate is caped at 30 ticks per second, in which case the value of `dt` is _1/30_ (0.0333...).
 
 ![](../../images/media/ecs-framerate.webp)
 

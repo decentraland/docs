@@ -145,9 +145,12 @@ export function main() {
 **Hide every button, show every button, or go back to the default set:**
 
 ```ts
-TouchScreenControls.hideAll()     // no gamepad buttons at all
-TouchScreenControls.showAll()     // all eight buttons
-TouchScreenControls.showDefault() // jump, pointer and primary only
+export function main() {
+	// Pick one:
+	TouchScreenControls.hideAll()     // no gamepad buttons at all
+	TouchScreenControls.showAll()     // all eight buttons
+	TouchScreenControls.showDefault() // jump, pointer and primary only
+}
 ```
 
 These three only affect the gamepad buttons. They don't restore a hidden joystick or crosshair, and they don't change your main action; use `showJoystick()` / `showCrosshair()` for those. `hideAll()` and `showDefault()` keep your custom icons, but `showAll()` clears them.
@@ -225,7 +228,7 @@ The [`InputAction`](button-events/click-events.md#pointer-buttons) values here a
 
 ## Example
 
-To hide the joystick, keep the F and numbered buttons hidden, and give the central jump button a custom icon shipped in your scene:
+To hide the joystick, show the F button, keep the numbered buttons hidden, and give the central jump button a custom icon shipped in your scene:
 
 ```ts
 import { engine, TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
@@ -235,9 +238,9 @@ export function main() {
 		hideJoystick: true,
 		hideCrosshair: false,
 		touchInputs: [
-			// This list replaces the default one, so the buttons that normally start
-			// hidden have to be listed here too
-			{ inputAction: InputAction.IA_SECONDARY, hide: true },
+			// This list replaces the default one, so the numbered buttons have to be
+			// listed here to stay hidden
+			{ inputAction: InputAction.IA_SECONDARY, hide: false },
 			{ inputAction: InputAction.IA_ACTION_3, hide: true },
 			{ inputAction: InputAction.IA_ACTION_4, hide: true },
 			{ inputAction: InputAction.IA_ACTION_5, hide: true },
@@ -252,7 +255,7 @@ export function main() {
 }
 ```
 
-<figure><img src="../../images/touch-controls/custom-main-action.webp" alt="A mobile HUD with the joystick hidden and the central jump button showing a custom banana icon"><figcaption><p>The result: joystick gone, numbered buttons hidden (so the "+" disappears), and the jump button re-iconed</p></figcaption></figure>
+<figure><img src="../../images/touch-controls/custom-main-action.webp" alt="A mobile HUD with the joystick hidden, the E and F buttons beside the interaction button, and the central jump button showing a custom banana icon"><figcaption><p>The result: joystick gone, F shown, numbered buttons hidden (so the "+" disappears), and the jump button re-iconed</p></figcaption></figure>
 
 To replace the native controls entirely, hide them here and build your own touch buttons with [UI Input Binding](../2d-ui/ui_input_binding.md).
 

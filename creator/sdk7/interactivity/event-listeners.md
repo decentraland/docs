@@ -12,7 +12,7 @@ For button and click events performed by the player, see [Button events](button-
 
 Whenever an avatar steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to.
 
-This event is triggered by all avatars, including the player's.
+These events are triggered by other players' avatars. The player's own avatar works differently: the scene receives it once, when the scene starts, and keeps it from then on. So `onEnterScene` fires for the player when the scene starts, even if they are still a few parcels away, and `onLeaveScene` never fires for them. To know when the player walks in or out, see [Only current player](#only-current-player).
 
 ```ts
 import { onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
@@ -35,35 +35,32 @@ On the `onLeaveScene` event, the function only has access to the player's ID.
 
 ### Only current player
 
-You can filter out the triggered events to only react to the player's avatar, rather than other avatars that may be around.
+`onEnterScene` and `onLeaveScene` can't tell you when the player walks in or out, see above. Check the player's position instead. The player's `Transform` is relative to the scene's base parcel, so compare it against the size of the scene:
 
 ```ts
-import { getPlayer, onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
+import { engine, Transform } from '@dcl/sdk/ecs'
 
-export function main() {
-	let myPlayer = getPlayer()
+// The scene's size in parcels, as laid out in scene.json
+const PARCELS_X = 2
+const PARCELS_Z = 2
 
-	onEnterScene((player) => {
-		if (!player) return
-		console.log('ENTERED SCENE', player)
+let playerInside = false
 
-		if (myPlayer && player.userId == myPlayer.userId) {
-			console.log('I CAME IN')
-		}
-	})
+engine.addSystem(() => {
+	const position = Transform.getOrNull(engine.PlayerEntity)?.position
+	if (!position) return
 
-	onLeaveScene((userId) => {
-		if (!userId) return
-		console.log('LEFT SCENE', userId)
+	const inside =
+		position.x >= 0 && position.x < PARCELS_X * 16 &&
+		position.z >= 0 && position.z < PARCELS_Z * 16
+	if (inside === playerInside) return
 
-		if (myPlayer && userId == myPlayer.userId) {
-			console.log('I LEFT')
-		}
-	})
-}
+	playerInside = inside
+	console.log(inside ? 'I CAME IN' : 'I LEFT')
+})
 ```
 
-This example first obtains the player's id, then subscribes to the events and compares the `userId` returned by the event to that of the player.
+This example assumes a rectangular scene whose `base` parcel in `scene.json` is its south-west corner, the one with the lowest coordinates. For any other layout, check the player's parcel against the scene's `parcels` list instead.
 
 ### Query all players in scene
 

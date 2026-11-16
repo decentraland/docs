@@ -62,7 +62,7 @@ The following emotes show feedback about player actions in your scene, all of th
 * `sittingGround1`
 * `sittingGround2`
 
-The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. All the others play through once and the avatar returns to idle.
+The four `sitting` emotes loop: the avatar holds the pose until the player moves or your scene calls `stopEmote({})`. `stopEmote` resolves with `{ success: boolean }`, which is `false` when the Explorer refused the call, for example because the player is no longer standing in your scene. All the others play through once and the avatar returns to idle.
 
 These emotes are available to all players in their default emote wheel, and can also be used in any scene.
 
@@ -87,6 +87,8 @@ These emotes are available to all players in their default emote wheel, and can 
 * `Victory`
 * `Waving`
 * `fistpump_short`
+
+`cry` and `dance` are also valid values for `predefinedEmote`, even though the Creator Hub's **Avatar Animations** pack doesn't list them.
 
 {% hint style="warning" %}
 **📔 Note**: Use these names exactly as listed. A wrong name fails silently in your scene: nothing plays and nothing appears in the scene console. Watch out for `handsintheair` with no separators, and `fistpump_short` with its suffix.
@@ -199,7 +201,7 @@ Some things to keep in mind:
 
 * `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
 * The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
-* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`.
+* To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`. It resolves with `{ success: boolean }`.
 
 ### Detect when an emote finishes
 

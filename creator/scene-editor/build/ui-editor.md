@@ -148,10 +148,14 @@ Each row gives you three things:
 * An **eye icon** that shows or hides that button. When you hide one, the lower buttons move up to fill the gap.
 * **Custom Icon**: replaces the button's glyph with a `.png`, `.jpg` or `.jpeg` image from your scene.
 
-By default nothing is hidden and `IA_JUMP` is the main button, which is exactly what players get in a scene that doesn't touch the HUD.
+In this panel every button starts visible and `IA_JUMP` is the main button.
+
+{% hint style="warning" %}
+**📔 Note**: A scene that never touches the HUD shows only three buttons: jump, pointer and primary. The panel only writes `src/mobile-hud.ts` once you change something, so an untouched panel keeps that default. As soon as the file exists, its code replaces the default set with whatever you configure here, so hiding the joystick alone, for example, also puts the five extra buttons on the player's screen. Hide the ones your scene doesn't use. See [What shows by default](../../sdk7/interactivity/touch-screen-controls.md#what-shows-by-default).
+{% endhint %}
 
 {% hint style="info" %}
-**💡 Tip**: The numbered buttons normally sit behind a "+" overflow toggle. Hide enough of the higher buttons and they show directly. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md#how-the-button-layout-works) for how the slots fill.
+**💡 Tip**: With more than five buttons visible, the last ones sit behind a "+" overflow toggle. Hide enough of the higher buttons and the rest show directly. See [On-screen Controls](../../sdk7/interactivity/touch-screen-controls.md#how-the-button-layout-works) for how the slots fill.
 {% endhint %}
 
 ### The file it writes

@@ -68,7 +68,7 @@ Note that the scene will be considered fully loaded when everything that isn't a
 
 Try to make the scene's logic rely on listening to [events](../interactivity/event-listeners.md) as much as possible, instead of running checks every frame.
 
-The `update()` function in a [system](../architecture/systems.md) runs on every frame, 30 times per second (ideally). Avoid doing recurring checks if you can instead subscribe to an event.
+The `update()` function in a [system](../architecture/systems.md) runs on every frame, as many times per second as the engine renders frames (often 60 or more). Avoid doing recurring checks if you can instead subscribe to an event.
 
 For example, instead of constantly checking the player's wearables, you can subscribe to the `onProfileChanged` event, and check the player's wearables only when they've changed.
 
@@ -177,7 +177,7 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 Every time you publish a scene, the Decentraland content servers compress every _.gltf_ and _.glb_ model in it to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run. The conversion starts immediately after each deployment. It usually takes just a few seconds, though it can take longer for very large scenes or when the servers are busy, as the conversion runs separately for each platform and may be queued behind other scenes. You can [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene directly.
 
-You can also run this same conversion locally while developing your scene. This makes your preview smoother and lets you check for any issues with the compressed models before publishing. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
+The Desktop Explorer runs this same conversion locally when you preview your scene. This makes your preview smoother and lets you check for any issues with the compressed models before publishing. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}
 **💡 Tip**: When planning an event in Decentraland, publish your final version at least an hour in advance, so that the models are all converted to asset bundles by then and you have time to fix anything unexpected. If you don't want to spoil the surprise before the event, you can deploy a version of your scene that includes all the final 3D models in the project folder, but where these are not visible or where their size is set to 0.
@@ -203,7 +203,7 @@ Scene UIs can become costly to render when they are made up of many individual e
 **💡 Tip**: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image. That saves the engine from doing one additional drawcall per frame for each text element.
 {% endhint %}
 
-Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of at 30 FPS (on every frame). The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
+Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of on every frame. The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
 
 Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
 

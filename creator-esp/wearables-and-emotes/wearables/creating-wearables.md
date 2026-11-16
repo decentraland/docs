@@ -199,7 +199,7 @@ Si quieres crear handwear que reemplace ambas manos probablemente necesitarás s
 También puedes crear accesorios de mano como relojes, pulseras, anillos, etc. En ese sentido, la mano no necesita ser sobrescrita y el límite es 1000 tris por ítem.
 
 {% hint style="warning" %}
-Nota: La categoría **handwear** es específicamente para accesorios de mano o reemplazar manos que siguen la armature del avatar con skinning apropiado. No está destinada para ítems como espadas, escudos o cualquier asset similar. Enviar un ítem que no sigue estas especificaciones puede resultar en rechazo por el comité de curadores.
+Nota: La categoría **handwear** es para accesorios de mano, ítems sostenidos en la mano (como herramientas o props) y ítems que reemplazan las manos. Todos deben seguir la armature del avatar con skinning apropiado. Enviar un ítem que no sigue estas especificaciones puede resultar en rechazo por el comité de curadores.
 {% endhint %}
 
 #### **Hair and Facial Hair**

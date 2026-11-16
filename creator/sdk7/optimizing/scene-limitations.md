@@ -47,7 +47,7 @@ Below are the maximum number of elements that a scene is allowed to render at th
 {% hint style="info" %}
 **💡 Tip**: Not all files in your scene project folder count for the file size limit, only those that are uploaded to servers. All of the contents of the _node\_modules_ folder, which are very large, are dependencies that are not uploaded and therefore don't count. The same applies to any files in the `/src` folder, since the source code is not uploaded.
 
-You can list any other files or folders you want to exclude from being uploaded in the `.dclignore` file in your project.
+You can list any other files or folders you want to exclude from being uploaded in the `.dclignore` file in your project. Note that `.dclignore` also applies to the local preview, so don't list anything your scene actually loads. See [The dclignore file](../projects/scene-files.md#the-dclignore-file).
 {% endhint %}
 
 ## Optimizing

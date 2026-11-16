@@ -242,6 +242,7 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
   * `skinColor`: Player skin color as a `Color3`
   * `eyesColor`: Player eye color as a `Color3`
   * `hairColor`: Player hair color as a `Color3`
+  * `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent, _undefined_ when the client reports no voice activity for them. See [Detect when a player is speaking](#detect-when-a-player-is-speaking).
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
@@ -263,6 +264,48 @@ for (const [entity, data, base, attach, transform] of engine.getEntitiesWith(
 
 {% hint style="warning" %}
 **📔 Note**: All of these components are read-only. You cannot change their values from the scene.
+{% endhint %}
+
+## Detect when a player is speaking
+
+Read `talking` on the `AvatarBase` component to know whether someone is talking in voice chat right now. It works for the player running the scene and for every other player nearby.
+
+```ts
+import { AvatarBase, engine } from '@dcl/sdk/ecs'
+
+// log every time the local player starts or stops speaking
+AvatarBase.onChange(engine.PlayerEntity, (base) => {
+	console.log('talking: ', base?.talking)
+})
+```
+
+`talking` has three states, not two:
+
+| Value | Meaning |
+| --- | --- |
+| `true` | The player is speaking right now. |
+| `false` | The player is not speaking. |
+| `undefined` | The client isn't reporting voice activity for this player, for example because nearby voice chat is off. |
+
+That third state matters: `undefined` means "no data", not "silent". Check for it explicitly rather than treating any non-`true` value as quiet.
+
+```ts
+import { AvatarBase, engine, PlayerIdentityData } from '@dcl/sdk/ecs'
+
+function whoIsSpeaking() {
+	for (const [player, base] of engine.getEntitiesWith(AvatarBase)) {
+		if (base.talking === undefined) continue // no voice data for this player
+		if (base.talking) console.log(`${base.name} is speaking`)
+	}
+}
+
+engine.addSystem(whoIsSpeaking)
+```
+
+To put a marker over a speaking player's head, attach it with [`AvatarAttach`](../3d-essentials/entity-positioning.md#attach-to-other-players) using the address from `PlayerIdentityData`. Don't parent your entity to the player's entity: that doesn't work, and the marker ends up at the scene origin.
+
+{% hint style="warning" %}
+**📔 Note**: `AvatarBase.talking` reports real voice chat activity and you can't write to it. It is a different thing from `AvatarShape.talking`, which is a flag your scene sets to draw green voice bars next to an [NPC avatar](avatars/npc-avatars.md) you created.
 {% endhint %}
 
 ## Get Portable Experiences

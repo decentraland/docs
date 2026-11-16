@@ -545,6 +545,10 @@ The `transparencyMode` can have the following values:
 - `MaterialTransparencyMode.MTM_ALPHA_TEST_AND_ALPHA_BLEND`: Uses a combination of both methods.
 - `MaterialTransparencyMode.MTM_AUTO`: Determines the method based on the provided texture.
 
+{% hint style="warning" %}
+**📔 Note**: Always set `transparencyMode` yourself when you want a texture's own alpha channel to show through. On the desktop client, the default `MTM_AUTO` mode ignores the texture's alpha and only blends when the `albedoColor` alpha is below 1, so a transparent `.png` comes out fully opaque. With `MTM_ALPHA_BLEND` or `MTM_ALPHA_TEST`, transparency is the texture's alpha multiplied by the `albedoColor` alpha.
+{% endhint %}
+
 If you set the `transparencyMode` to `MaterialTransparencyMode.MTM_ALPHA_TEST`, you can fine tune the threshold used to determine if each pixel is transparent or not. Set the `alphaTest` property between _0_ and _1_. By default its value is _0.5_.
 
 ```ts
@@ -561,14 +565,14 @@ Material.setPbrMaterial(meshEntity1, {
 When using an [unlit material](materials.md#unlit-materials), you can add an `alphaTexture` to make only certain regions of the material transparent, based on a texture.
 
 {% hint style="warning" %}
-**📔 Note**: This must be a single-channel image. In this image use the color red or black to determine what parts of the real texture should be transparent.
+**📔 Note**: Paint the mask white where the material should show and black where it should disappear. The client reads the brightness of the mask's color channels, not its alpha channel, so any channel at full value counts as opaque: a pure red mask is opaque too. Don't reuse your color texture as its own mask, or every dark pixel in it turns transparent and eats your outlines and shading.
 {% endhint %}
 
 ![](../../images/circular-video-screen.webp)
 
 ```ts
-// Using alpha test
-Material.setPbrMaterial(meshEntity1, {
+// Cut a screen down to a circle with a mask image
+Material.setBasicMaterial(meshEntity1, {
 	texture: Material.Texture.Common({
 		src: 'images/myTexture.png',
 	}),
@@ -578,6 +582,11 @@ Material.setPbrMaterial(meshEntity1, {
 	}),
 })
 ```
+
+Two more things to know about `alphaTexture` on the desktop client:
+
+* **It works on unlit materials only.** `Material.setPbrMaterial` accepts an `alphaTexture` but never uses it. For a PBR material, put the transparency in the color texture's own alpha channel and set `transparencyMode` instead.
+* **An unlit material without an `alphaTexture` is fully opaque**, and `alphaTest` has no effect on it. A `texture` plus `alphaTest` alone draws the transparent pixels' color, which is usually black.
 
 This can be used in very interesting ways together with videos. See [video playing](../media/video-playing.md).
 

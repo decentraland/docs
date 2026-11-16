@@ -1393,6 +1393,25 @@ changeRealm({
 })
 ```
 
+### Explorer Panels
+```typescript
+import { openExplorerUi, OpenExplorerUiResult } from '~system/RestrictedActions'
+import { ExplorerUi, InputAction, pointerEventsSystem } from '@dcl/sdk/ecs'
+
+// Must run as a direct response to a player action: from a pointer handler, with no
+// prior `await`. Called from main(), from a timer or after an await, it's rejected.
+pointerEventsSystem.onPointerDown(
+  { entity, opts: { button: InputAction.IA_POINTER, hoverText: 'Open map' } },
+  async () => {
+    const { openResult } = await openExplorerUi({ ui: ExplorerUi.EU_MAP })
+
+    if (openResult !== OpenExplorerUiResult.OPENED) {
+      console.log('The map did not open:', openResult)
+    }
+  }
+)
+```
+
 ## Testing Framework
 
 ### Writing Tests

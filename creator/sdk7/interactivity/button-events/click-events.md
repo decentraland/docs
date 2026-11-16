@@ -117,10 +117,10 @@ The following inputs can be handled by any of the approaches to detect input eve
 * `InputAction.IA_POINTER`: **left-mouse button** on a computer, **interaction button** on mobile.
 * `InputAction.IA_PRIMARY`: **E** key on a computer, **E button** on mobile.
 * `InputAction.IA_SECONDARY`: **F** key on a computer, **F button** on mobile.
-* `InputAction.IA_ACTION_3`: **1** key on a computer, **1 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
-* `InputAction.IA_ACTION_4`: **2** key on a computer, **2 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
-* `InputAction.IA_ACTION_5`: **3** key on a computer, **3 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
-* `InputAction.IA_ACTION_6`: **4** key on a computer, **4 button** on mobile. _Not easily reachable on mobile — not recommended for mobile interaction._
+* `InputAction.IA_ACTION_3`: **1** key on a computer, **1 button** on mobile. _Hidden by default on mobile (SDK 7.32.0+) — only use it if your scene shows it with `TouchScreenControls`._
+* `InputAction.IA_ACTION_4`: **2** key on a computer, **2 button** on mobile. _Hidden by default on mobile (SDK 7.32.0+) — only use it if your scene shows it with `TouchScreenControls`._
+* `InputAction.IA_ACTION_5`: **3** key on a computer, **3 button** on mobile. _Hidden by default on mobile (SDK 7.32.0+) — only use it if your scene shows it with `TouchScreenControls`._
+* `InputAction.IA_ACTION_6`: **4** key on a computer, **4 button** on mobile. _Hidden by default on mobile (SDK 7.32.0+) — only use it if your scene shows it with `TouchScreenControls`._
 * `InputAction.IA_JUMP`: **Space** key on a computer, **jump button** on mobile.
 * `InputAction.IA_FORWARD`: **W** key on a computer.
 * `InputAction.IA_LEFT`: **A** key on a computer.
@@ -132,7 +132,7 @@ The following inputs can be handled by any of the approaches to detect input eve
 Each `InputAction` is abstracted away from the literal input in the keyboard so that it can be mapped to different inputs depending on the device. For this same reason, not all buttons on the keyboard can be tracked for button events, only the buttons that are used for movement and interaction. This intentional limitation ensures that content is compatible across desktop, the [mobile client](../../../build-for-mobile/mobile-client/overview.md), and future devices like VR controllers and other game controllers.
 
 {% hint style="warning" %}
-**📱 Mobile**: On the [mobile client](../../../build-for-mobile/mobile-client/overview.md), all input actions are available, but `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) are tucked away behind a secondary menu and are not easily reachable during gameplay. When designing for mobile, prefer `IA_POINTER` (interaction button), `IA_PRIMARY` (E button), and `IA_SECONDARY` (F button) for your key actions. See [Input on mobile](../../../build-for-mobile/develop/input-on-mobile.md).
+**📱 Mobile**: On the [mobile client](../../../build-for-mobile/mobile-client/overview.md), every input action can be routed to an on-screen button, but by default only three buttons are shown: `IA_POINTER` (interaction button), `IA_PRIMARY` (E button) and `IA_JUMP`. `IA_SECONDARY` (F) and `IA_ACTION_3`–`IA_ACTION_6` (the `1`/`2`/`3`/`4` buttons) start hidden (SDK 7.32.0 and later; older SDKs show all eight, with the lowest ones behind a "+" overflow). When designing for mobile, prefer `IA_POINTER`, `IA_PRIMARY` and `IA_JUMP` for your key actions. If you need F or a numbered button, show it with [On-screen Controls](../touch-screen-controls.md). See [Input on mobile](../../../build-for-mobile/develop/input-on-mobile.md).
 {% endhint %}
 
 ## Types of pointer events

@@ -257,7 +257,7 @@ Your scene can measure the Explorer's frame rate with the [`EngineInfo`](../inte
 
 Don't count how many times your own system runs instead. The Explorer runs the scenes the player isn't standing in at a reduced rate, so a tick counter reads as a low frame rate on any machine. `frameNumber` isn't affected by that, because it counts the Explorer's frames, not your scene's ticks. Even so, treat the result as a rough signal that something is wrong, not a precise measurement.
 
-The example also starts over while the scene is hidden, for example behind the loading screen. It skips its first 5 second window, which can still include the scene's own loading, and shows the prompt only once per session.
+The example also starts over while the scene is hidden, for example behind the loading screen. It skips the first 5 second window after each loading screen, which can still include assets loading in, and shows the prompt only once per session.
 
 ```tsx
 import { engine, EngineInfo, ExplorerUi } from '@dcl/sdk/ecs'

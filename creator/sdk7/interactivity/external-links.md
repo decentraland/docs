@@ -88,7 +88,7 @@ If players tick the _trust this domain_ checkbox, they won't be prompted again d
 
 ## Open Explorer UI panels
 
-Besides external sites, your scene can open the Explorer's own fullscreen panels, like the map, the settings, or the backpack, with the `openExplorerUi()` restricted action. As with `openExternalUrl()`, the call must be a direct response to something the player clicked or pressed. See [Open explorer panels](event-listeners.md#open-explorer-panels) for the full reference, including how to wait until the player closes the panel.
+Besides external sites, your scene can open the Explorer's own panels, like the map, the settings, or the backpack, with the `openExplorerUi()` restricted action. The call must be a direct response to something the player clicked or pressed, and its rules for what counts are not the same as the ones above. See [Open explorer panels](event-listeners.md#open-explorer-panels) for the full reference, including what counts as a player action and how to wait until the player closes the panel.
 
 ## Copy to clipboard
 

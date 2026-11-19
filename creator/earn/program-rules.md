@@ -28,7 +28,7 @@ To enroll, you must meet all the eligibility requirements in [Section 3 of the P
 - own the LAND, NAME or World where your experience is deployed; and
 - opt in through [Creator Hub](https://decentraland.org/download/creator-hub) by signing the Program Terms with the wallet that owns it.
 
-People who run the Program, such as DAO Council members and Foundation or Regenesis Labs contractors, can't take part, with some exceptions set out in the Terms.
+People who design, operate or make decisions on the Program, or can see its non-public data or detection methods, can't take part. Neither can consultants, contractors and advisors of the Decentraland Foundation or DCL Regenesis Labs Foundation, except Creator Success creators, who can take part with their own experiences.
 
 One opt-in covers every eligible LAND, NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the **Earn** tab in Creator Hub.
 
@@ -62,7 +62,7 @@ Players who come back to your experience on subsequent days after playing it.
 
 ### New Decentraland Players
 
-Players who start in Decentraland by coming to your experience. _Players acquired through Foundation or Regenesis Labs advertising campaigns don't count._
+Players who start in Decentraland by coming to your experience. _Players brought in through paid advertising campaigns run or funded by the Decentraland Foundation or DCL Regenesis Labs Foundation don't count toward this metric. They still count toward Active Playtime and Player Retention._
 
 The metrics stated above may change during the program. If we add, remove or redefine a metric, we update this page before the Cycle in which the change applies.
 
@@ -111,6 +111,10 @@ If we find manipulation, we may disregard the affected activity, withhold Reward
 ## Changes to these Rules
 
 We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the [Program Terms](https://decentraland.org/creator-fund-terms#changes-suspension-and-termination) themselves follow the notice process in those Terms.
+
+### Change log
+
+- **November 19, 2026:** updated to match the new version of the [Program Terms](https://decentraland.org/creator-fund-terms). The people who can't take part are now those who design, operate or make decisions on the Program or can see its non-public data, instead of DAO Council members. Players brought in through paid advertising campaigns run or funded by the Decentraland Foundation or DCL Regenesis Labs Foundation count toward Active Playtime and Player Retention, but not toward New Decentraland Players. Applies from Cycle 1.
 
 ## Related
 

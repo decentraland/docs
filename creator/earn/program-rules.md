@@ -28,7 +28,7 @@ To enroll, you must meet all the eligibility requirements in [Section 3 of the P
 - own the LAND, NAME or World where your experience is deployed; and
 - opt in through [Creator Hub](https://decentraland.org/download/creator-hub) by signing the Program Terms with the wallet that owns it.
 
-People who design, operate or make decisions on the Program, or can see its non-public data or detection methods, can't take part. Neither can consultants, contractors and advisors of the Decentraland Foundation or DCL Regenesis Labs Foundation, except Creator Success creators, who can take part with their own experiences.
+People who design, operate or make decisions on the Program, or have access to its non-public data or detection methods, can't take part. Neither can consultants, contractors and advisors of the Decentraland Foundation or DCL Regenesis Labs Foundation, except Creator Success creators, who can take part with their own experiences.
 
 One opt-in covers every eligible LAND, NAME and World owned by your Owner Wallet, so you don't need a separate opt-in for each. Scenes you publish later join when you next open the **Earn** tab in Creator Hub.
 

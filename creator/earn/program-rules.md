@@ -112,10 +112,6 @@ If we find manipulation, we may disregard the affected activity, withhold Reward
 
 We may update this page, for example to publish new Cycle Allocations or adjust the metrics. Changes apply from the Cycle stated and never affect Rewards already calculated. Changes to the [Program Terms](https://decentraland.org/creator-fund-terms#changes-suspension-and-termination) themselves follow the notice process in those Terms.
 
-### Change log
-
-- **November 19, 2026:** updated to match the new version of the [Program Terms](https://decentraland.org/creator-fund-terms). The people who can't take part are now those who design, operate or make decisions on the Program or can see its non-public data, instead of DAO Council members. Players brought in through paid advertising campaigns run or funded by the Decentraland Foundation or DCL Regenesis Labs Foundation count toward Active Playtime and Player Retention, but not toward New Decentraland Players. Applies from Cycle 1.
-
 ## Related
 
 - [Creator Fund](https://decentraland.org/creator-fund?utm_org=dcl&utm_source=rulespage&utm_medium=organic&utm_campaign=creatorfund&utm_term=rulespage&utm_content=docs) landing page

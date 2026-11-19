@@ -68,7 +68,7 @@ Note that the scene will be considered fully loaded when everything that isn't a
 
 Try to make the scene's logic rely on listening to [events](../interactivity/event-listeners.md) as much as possible, instead of running checks every frame.
 
-The `update()` function in a [system](../architecture/systems.md) runs on every frame, 30 times per second (ideally). Avoid doing recurring checks if you can instead subscribe to an event.
+The `update()` function in a [system](../architecture/systems.md) runs on every frame, as many times per second as the engine renders frames (often 60 or more). Avoid doing recurring checks if you can instead subscribe to an event.
 
 For example, instead of constantly checking the player's wearables, you can subscribe to the `onProfileChanged` event, and check the player's wearables only when they've changed.
 
@@ -177,7 +177,7 @@ To verify if a scene has material Backface Culling issues, follow these steps:
 
 Every time you publish a scene, the Decentraland content servers compress every _.gltf_ and _.glb_ model in it to asset bundle format. This format is _significantly_ lighter, making scenes a lot faster to load and smoother to run. The conversion starts immediately after each deployment. It usually takes just a few seconds, though it can take longer for very large scenes or when the servers are busy, as the conversion runs separately for each platform and may be queued behind other scenes. You can [check the conversion status](../../scene-editor/publish/publish-scene.md#check-the-conversion-status) of your scene directly.
 
-You can also run this same conversion locally while developing your scene. This makes your preview smoother and lets you check for any issues with the compressed models before publishing. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
+The Desktop Explorer runs this same conversion locally when you preview your scene. This makes your preview smoother and lets you check for any issues with the compressed models before publishing. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets).
 
 {% hint style="info" %}
 **💡 Tip**: When planning an event in Decentraland, publish your final version at least an hour in advance, so that the models are all converted to asset bundles by then and you have time to fix anything unexpected. If you don't want to spoil the surprise before the event, you can deploy a version of your scene that includes all the final 3D models in the project folder, but where these are not visible or where their size is set to 0.
@@ -203,7 +203,7 @@ Scene UIs can become costly to render when they are made up of many individual e
 **💡 Tip**: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image. That saves the engine from doing one additional drawcall per frame for each text element.
 {% endhint %}
 
-Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of at 30 FPS (on every frame). The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
+Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of on every frame. The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
 
 Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
 
@@ -248,6 +248,98 @@ Keep in mind that the performance you experience in preview may differ from that
 It's always a good practice to try deploying your scene first to a [Decentraland World](../publishing/publishing-options.md#decentraland-worlds) to do some more thorough testing.
 
 Always ask players for feedback. Never take for granted that how you experience the scene is the same for everyone else.
+
+## Help players adjust their settings
+
+Even a well optimized scene can run poorly on low-end hardware, or when the player has their graphics settings set too high for their machine. You can help these players by detecting a low frame rate from your scene's code and showing a UI tip that recommends lowering their graphics settings, with a button that opens the Explorer's settings panel directly via [`openExplorerUi()`](../interactivity/event-listeners.md#open-explorer-panels).
+
+Your scene can measure the Explorer's frame rate with the [`EngineInfo`](../interactivity/runtime-data.md#the-engineinfo-component) component: `frameNumber` counts the frames the Explorer renders, and `totalRuntime` counts seconds. In the example below, if the average is under 20 FPS for a 5 second period, the scene displays a UI prompt. Clicking the prompt's button opens the settings panel. That click is the [player action](../interactivity/event-listeners.md#only-a-player-action-can-open-a-panel) that `openExplorerUi()` requires, so the call must happen directly inside the button's handler.
+
+Don't count how many times your own system runs instead. The Explorer runs the scenes the player isn't standing in at a reduced rate, so a tick counter reads as a low frame rate on any machine. `frameNumber` isn't affected by that, because it counts the Explorer's frames, not your scene's ticks. Even so, treat the result as a rough signal that something is wrong, not a precise measurement.
+
+The example also starts over while the scene is hidden, for example behind the loading screen. It skips the first 5 second window after each loading screen, which can still include assets loading in, and shows the prompt only once per session.
+
+```tsx
+import { engine, EngineInfo, ExplorerUi } from '@dcl/sdk/ecs'
+import { openExplorerUi } from '~system/RestrictedActions'
+import ReactEcs, { Button, Label, ReactEcsRenderer, UiEntity } from '@dcl/sdk/react-ecs'
+
+let showSettingsTip = false
+let tipAlreadyShown = false
+
+// Measure the Explorer's average FPS over 5 second windows
+let windowStartFrame = -1
+let windowStartTime = 0
+let firstWindow = true
+
+engine.addSystem(() => {
+  const info = EngineInfo.getOrNull(engine.RootEntity)
+  if (!info || tipAlreadyShown) return
+  // Start over while the scene is hidden, for example behind the loading screen
+  if (info.sceneHidden) {
+    windowStartFrame = -1
+    // Skip the first window after every loading screen, not only the first one
+    firstWindow = true
+    return
+  }
+  if (windowStartFrame < 0) {
+    windowStartFrame = info.frameNumber
+    windowStartTime = info.totalRuntime
+    return
+  }
+  const elapsed = info.totalRuntime - windowStartTime
+  if (elapsed > 0 && elapsed < 5) return
+  // A window far longer than 5 s (scene paused, clock changed) says nothing: drop it
+  const valid = elapsed >= 5 && elapsed < 10
+  // Skip the first window: it can include the scene's loading, slow on any machine
+  if (valid && !firstWindow && (info.frameNumber - windowStartFrame) / elapsed < 20) {
+    showSettingsTip = true
+    tipAlreadyShown = true
+  }
+  if (valid) firstWindow = false
+  windowStartFrame = info.frameNumber
+  windowStartTime = info.totalRuntime
+})
+
+ReactEcsRenderer.setUiRenderer(() => (
+  <UiEntity
+    uiTransform={{
+      display: showSettingsTip ? 'flex' : 'none',
+      flexDirection: 'column',
+      positionType: 'absolute',
+      position: { top: 40, right: 40 },
+      padding: 10,
+    }}
+    uiBackground={{ color: { r: 0, g: 0, b: 0, a: 0.8 } }}
+  >
+    <Label value="Running slow? Try lowering your graphics settings." fontSize={16} />
+    <UiEntity uiTransform={{ flexDirection: 'row', margin: { top: 8 } }}>
+      <Button
+        value="Open Settings"
+        fontSize={16}
+        uiTransform={{ height: 36 }}
+        onMouseDown={() => {
+          // Call it first, before anything else in the handler
+          void openExplorerUi({ ui: ExplorerUi.EU_SETTINGS })
+          showSettingsTip = false
+        }}
+      />
+      <Button
+        value="Dismiss"
+        fontSize={16}
+        uiTransform={{ height: 36, margin: { left: 8 } }}
+        onMouseDown={() => {
+          showSettingsTip = false
+        }}
+      />
+    </UiEntity>
+  </UiEntity>
+))
+```
+
+{% hint style="info" %}
+**💡 Tip**: Only show this kind of prompt once, and let players dismiss it. A recurring popup on a machine that's already struggling only makes the experience worse.
+{% endhint %}
 
 ## Optimize with AI
 

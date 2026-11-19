@@ -8,9 +8,7 @@ Once your scene is complete, you're ready to publish it to Decentraland. This se
 
 ## What You'll Learn
 
-* Publishing scenes directly from the Scene Editor
-* Understanding deployment requirements
-* Managing scene updates
-* Troubleshooting publication issues
+* [Publish a Scene](publish-scene.md): publish to LAND or a World, check the scene size, and follow the upload
+* [Manage LANDs and Worlds](manage-lands-and-worlds.md): rename your LAND and Worlds, unpublish scenes, add collaborators, and control who can enter a World
 
 Publishing makes your scene live in Decentraland, allowing players from around the world to visit and interact with your creation.

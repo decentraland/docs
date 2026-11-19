@@ -9,7 +9,7 @@ On the mobile client, players interact with your scene through a set of native o
 <figure><img src="../../images/touch-controls/touch-controls-default.webp" alt="The default mobile HUD: virtual joystick on the left, and on the right the large jump button with the interaction and E buttons beside it"><figcaption><p>The default on-screen controls, before any customization: jump, interaction and E</p></figcaption></figure>
 
 {% hint style="info" %}
-The component is applied automatically while the player is inside your scene and reverts to the defaults the moment they leave, so scenes that don't use it are unaffected. It only affects platforms with native on-screen controls: it's a no-op on desktop and has no effect in VR.
+The component is applied automatically while the player is inside your scene, and the client restores its own controls the moment they leave. It only affects platforms with native on-screen controls: it's a no-op on desktop and has no effect in VR.
 {% endhint %}
 
 ## What shows by default
@@ -74,7 +74,7 @@ The on-screen positions are fixed too. The **visible** buttons fill those positi
 | **Hide a button** (any button, including jump) | Every lower-priority button moves up to fill the gap. Hide jump and `IA_POINTER` takes the central spot. |
 | **Change nothing** | The default set applies: `IA_JUMP` is the large central button, with `IA_POINTER` and `IA_PRIMARY` in the slots around it. |
 | **Set a main button** with `mainAction` | That action jumps to the front and becomes the central button; every other button keeps its normal order. |
-| **Set a main button that is also hidden** | Hiding wins — the button stays hidden. This includes F and 1–4, which start hidden: turn the button on as well (see [Change the main button](#common-tasks)). |
+| **Set a main button that is also hidden** | Hiding wins — the button stays hidden. This includes F and 1–4, which start hidden: turn the button on as well (see **Change the main button** under [Common tasks](#common-tasks)). |
 | **Leave 5 or fewer buttons visible** | All of them show directly (the central button plus up to four around it); there is no "+" menu. |
 | **Leave more than 5 buttons visible** | The "+" takes the last slot, so four show directly (the central button plus three) and the rest sit behind the "+" overflow toggle. |
 
@@ -101,6 +101,8 @@ export function main() {
 `setMainAction()` doesn't turn a button on. To lead with F or a numbered button, turn it on as well, or it stays hidden:
 
 ```ts
+import { TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
+
 export function main() {
 	TouchScreenControls.showAll()
 	TouchScreenControls.hide([
@@ -127,14 +129,18 @@ TouchScreenControls.showCrosshair()
 **Hide specific buttons** — pass the actions you want gone (the rest cascade up). The call adds to the buttons already hidden, so with the default set this leaves the interaction button as the central button and E beside it:
 
 ```ts
+import { TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
+
 export function main() {
 	TouchScreenControls.hide([InputAction.IA_JUMP])
 }
 ```
 
-**Use F or the numbered buttons** — they start hidden. Show every button, then hide the ones your scene doesn't use. `showAll()` also clears custom icons, so set your icons after calling it:
+**Use F or the numbered buttons** — they start hidden. Show every button, then hide the ones your scene doesn't use. `showAll()` also clears custom icons. If you set icons with `createOrReplace`, do it after `showAll()` and before `hide()`, because `createOrReplace` replaces the whole button list, hidden buttons included:
 
 ```ts
+import { TouchScreenControls, InputAction } from '@dcl/sdk/ecs'
+
 export function main() {
 	// Show F and 1, keep 2–4 hidden
 	TouchScreenControls.showAll()
@@ -145,6 +151,8 @@ export function main() {
 **Hide every button, show every button, or go back to the default set:**
 
 ```ts
+import { TouchScreenControls } from '@dcl/sdk/ecs'
+
 export function main() {
 	// Pick one:
 	TouchScreenControls.hideAll()     // no gamepad buttons at all

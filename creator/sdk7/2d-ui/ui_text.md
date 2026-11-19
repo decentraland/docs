@@ -124,12 +124,13 @@ Keep the following in mind when using custom fonts:
 
 * **Only `.ttf` files are supported**. OpenType fonts with CFF outlines (usually `.otf`), font collections and web fonts are rejected, and the text renders with the fallback `font`.
 * **No external URLs**. `fontSrc` can't point to a URL. Use a file in your scene or a Google Fonts family name. If you include a font file, make sure its license allows redistributing it.
-* **Google Fonts family names don't work on the Desktop Client**, which shows the fallback `font`. They work on the mobile app and the Bevy web client. Only Latin characters are downloaded: other characters are drawn with the built-in font set in `font`.
+* **Google Fonts family names don't work on the Desktop Client**, which shows the fallback `font`. They work on the mobile app and the Bevy web client. Only Latin characters are downloaded, for families that have them: other characters are drawn with the built-in font set in `font`.
 * **On the Desktop Client, custom fonts only show up once the scene's assets are optimized**. When you publish a scene, its fonts are converted into optimized asset bundles together with its 3D models, and the custom font appears once that conversion is done. Until then, text uses the fallback `font`. Local previews in the Desktop Explorer convert the font too, so it shows there, unless you turned on **Load Raw GLTFs**. See [Preview with optimized assets](../getting-started/preview-scene.md#preview-with-optimized-assets). The Bevy web client loads the `.ttf` file directly, so there the custom font shows right away, in local previews too.
-* **On the mobile app, a scene can load up to 16 custom fonts**. A font used both in the UI and on a `TextShape` counts twice. Beyond that, text uses the fallback `font`. If the font has no bold or italic face, the mobile app simulates them in the UI.
+* **On the mobile app, custom fonts need app version 1.16.2 or later**. Earlier versions ignore `fontSrc` and render the fallback `font`.
+* **On the mobile app, a scene can load up to 16 custom fonts**. A font used both in the UI and on a `TextShape` counts twice. Beyond that, text uses the fallback `font`. In the UI, the mobile app always simulates bold and italic for a font file in your scene. With a Google Fonts family name, it uses the family's real bold and italic faces when it has them.
 * **One file is one face**. For bold and regular text, add both `.ttf` files and point each text at its own file.
 * **The Creator Hub UI Designer doesn't show or edit `fontSrc`**. Add it to the element in your code by hand. The UI Designer only changes the properties you edit in it, so a `fontSrc` you wrote stays in place. Its canvas doesn't show the custom font.
-* **Characters that the font doesn't include** are drawn with the built-in sans-serif font. Non-Latin characters that the font does include are rendered the first time they appear, which can cause a brief hitch.
+* **Characters that the font doesn't include** are drawn with the built-in sans-serif font. On the Desktop Client, non-Latin characters that the font does include are rendered the first time they appear, which can cause a brief hitch.
 
 For support by client and the full list of limits, like the maximum file size, see [Custom fonts](../3d-essentials/text.md#custom-fonts) in the Text page.
 

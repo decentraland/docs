@@ -21,18 +21,20 @@ The request body is unspecified. Services have full flexibility to use any proto
 
 ## Payload
 
-The authentication chain [payload](authchain.md#constructing) for a signed fetch is a **lower-case, colon-separated** string that includes some of the request elements:
+The authentication chain [payload](authchain.md#constructing) for a signed fetch is a **colon-separated** string that includes some of the request elements:
 
 ```
 <method>:<path>:<timestamp>:<metadata>
 ```
 
-The `method` and `path` fields must match those of the request, and `timestamp` is the same as in the `X-Identity-Timestamp` header.
+The `method` and `path` fields must match those of the request and are lower-cased, and `timestamp` is the same as in the `X-Identity-Timestamp` header.
 
-The last field, `metadata`, can have arbitrary content.
+The last field, `metadata`, can have arbitrary content. It is included exactly as sent in the `X-Identity-Metadata` header, without changing its case.
 
 For example:
 
 ```
-get:/some/path:1682790056:{"some":"custom json"}
+get:/some/path:1682790056:{"Some":"Custom JSON"}
 ```
+
+Older clients lower-cased the whole payload, metadata included. Some services still accept that form for compatibility, but new clients should sign the payload described above.

@@ -12,6 +12,10 @@ Last reviewed: **October 2026** (mobile app v1.15.0).
 
 ## Recently Shipped
 
+Coming in mobile app **v1.16.2**, the next release. Earlier versions still have these gaps:
+
+- [Custom fonts (`fontSrc` on `TextShape`, `Label`, `Button`, `Input` and `Dropdown`)](../../sdk7/2d-ui/ui_text.md#custom-fonts), including Google Fonts family names. Earlier versions ignore `fontSrc` and render the fallback `font`.
+
 These are no longer gaps as of mobile app **v1.15.0**, which is rolling out to the app stores in October 2026:
 
 - [`stopEmote` restricted action](../../sdk7/interactivity/avatars/avatar-animations.md#animate-only-the-upper-body). Upper-body emotes started by a scene also pause when the player leaves the scene, resume on return, and stop when the scene unloads — v1.15.0
@@ -23,7 +27,6 @@ These are no longer gaps as of mobile app **v1.15.0**, which is rolling out to t
 
 ## SDK Features Missing on Mobile
 
-- [Custom fonts (`fontSrc` on `TextShape`, `Label`, `Button`, `Input` and `Dropdown`)](../../sdk7/2d-ui/ui_text.md#custom-fonts) — the mobile app ignores `fontSrc` and renders the fallback `font` — No ETA
 - [`AvatarNametag` (scene-authored label above a player's nametag)](https://github.com/decentraland/godot-explorer/issues/2811) — No ETA
 - [Tween sequences (`TweenSequence`)](../../sdk7/3d-essentials/move-entities.md#tween-sequences) — not implemented; sequenced tweens don't animate — No ETA
 - [SDK7 UiBackground nine-slice tiles instead of stretching](https://github.com/decentraland/godot-explorer/issues/2060) — No ETA

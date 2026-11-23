@@ -172,14 +172,14 @@ engine.addSystem((deltaTime) => {
 })
 ```
 
-You can use `sceneHidden` to pause resource-intensive work while the loading screen is up:
+You can use `sceneHidden` to hold back expensive visual work, like animations or particle effects, until the loading screen is down:
 
 ```ts
 engine.addSystem((deltaTime) => {
   const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
   if (engineInfo?.sceneHidden) return
 
-  // Normal gameplay logic runs only when the scene is visible
+  // Expensive visual work runs only once the loading screen is down
 })
 ```
 
@@ -200,7 +200,7 @@ See [Imports](../getting-started/coding-scenes.md#imports) for how to handle the
 
 ### React to the loading screen fading out
 
-The `scene_hidden` field tells you if the player can actually see your scene, or if it's still covered by the loading screen. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
+The `scene_hidden` field tells you whether the loading screen still covers your scene. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
 
 It turns `true` again whenever the loading screen comes back up. The map, the backpack and the settings menu don't affect it, so it can't tell you when the player has one of those open.
 

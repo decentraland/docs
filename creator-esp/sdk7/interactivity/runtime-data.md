@@ -150,7 +150,7 @@ El componente `EngineInfo` contiene los siguientes datos:
 * `frame_number`: Contador de frames del motor
 * `total_runtime`: Runtime total de esta escena en segundos
 * `tick_number`: Contador de ticks de la escena según [ADR-148](https://adr.decentraland.org/adr/ADR-148)
-* `scene_hidden`: Si la escena está actualmente oculta detrás de la UI de pantalla completa del Explorer
+* `scene_hidden`: `true` mientras la pantalla de carga del Explorer cubre la escena. Abrir el mapa, la mochila o el menú de ajustes no lo cambia.
 
 {% hint style="warning" %}
 **📔 Nota**: El componente `EngineInfo` debe importarse mediante
@@ -162,7 +162,7 @@ Consulta [Importaciones](../../../creator/sdk7/getting-started/coding-scenes.md#
 
 ### Reaccionar a la desaparición de la pantalla de carga
 
-El campo `scene_hidden` indica si el jugador realmente puede ver tu escena, o si está cubierta por la UI de pantalla completa del Explorer. Mientras la pantalla de carga está visible, `sceneHidden` vale `true`. En el momento en que la pantalla de carga se desvanece y el jugador ve el mundo por primera vez, pasa a `false`.
+El campo `scene_hidden` indica si la pantalla de carga todavía cubre tu escena. Mientras la pantalla de carga está visible, `sceneHidden` vale `true`. En el momento en que la pantalla de carga se desvanece y el jugador ve el mundo por primera vez, pasa a `false`.
 
 Esta es la única forma que tiene una escena de saber cuándo ocurre esa primera revelación. Úsala para retener todo aquello que, de otro modo, sucedería detrás de la pantalla de carga y el jugador se perdería: cinemáticas de introducción, sonidos de bienvenida, un tween que solo se entiende si se mira, una UI de apertura, o un evento de analítica que solo debería contar cuando el jugador realmente está ahí.
 

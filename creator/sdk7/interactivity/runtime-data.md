@@ -172,14 +172,14 @@ engine.addSystem((deltaTime) => {
 })
 ```
 
-You can use `sceneHidden` to pause resource-intensive work while the scene is not visible:
+You can use `sceneHidden` to hold back expensive visual work, like animations or particle effects, until the loading screen is down:
 
 ```ts
 engine.addSystem((deltaTime) => {
   const engineInfo = EngineInfo.getOrNull(engine.RootEntity)
   if (engineInfo?.sceneHidden) return
 
-  // Normal gameplay logic runs only when the scene is visible
+  // Expensive visual work runs only once the loading screen is down
 })
 ```
 
@@ -188,7 +188,7 @@ The `EngineInfo` component holds the following data:
 * `frameNumber`: Frame counter of the engine.
 * `totalRuntime`: Total runtime of this scene, in seconds.
 * `tickNumber`: Tick counter of the scene as per [ADR-148](https://adr.decentraland.org/adr/ADR-148).
-* `sceneHidden`: `true` when the scene is hidden behind the Explorer's fullscreen UI. That covers the loading screen, and also the map, the backpack, and the settings menu. Use this to mute audio and pause heavy work while the player can't see the scene.
+* `sceneHidden`: `true` while the Explorer's loading screen covers the scene. Opening the map, the backpack or the settings menu doesn't change it.
 
 {% hint style="warning" %}
 **📔 Note**: The `EngineInfo` component must be imported via
@@ -200,9 +200,9 @@ See [Imports](../getting-started/coding-scenes.md#imports) for how to handle the
 
 ### React to the loading screen fading out
 
-The `scene_hidden` field tells you if the player can actually see your scene, or if it's covered by the Explorer's fullscreen UI. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
+The `scene_hidden` field tells you whether the loading screen still covers your scene. While the loading screen is up, `sceneHidden` is `true`. The moment the loading screen fades out and the player gets their first look at the world, it turns `false`.
 
-It turns `true` again later whenever a fullscreen Explorer UI covers the scene, such as the map, the backpack, or the settings menu. That makes it a good cue to mute [audio](../3d-essentials/sounds.md) and pause expensive systems, then resume when it returns to `false`.
+It turns `true` again whenever the loading screen comes back up. The map, the backpack and the settings menu don't affect it, so it can't tell you when the player has one of those open.
 
 This is the only way for a scene to know when that first reveal happens. Use it to hold back anything that would otherwise play out behind the loading screen, and be missed by the player: intro cinematics, welcome sounds, a tween that only reads well if it's watched, an opening UI, or an analytics event that should only count once the player is really there.
 

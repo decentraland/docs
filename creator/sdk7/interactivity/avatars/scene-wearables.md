@@ -16,7 +16,7 @@ The wearables can be any catalog item, whether or not the player owns it, or `.g
 
 If you use an AI coding assistant, install or update the [Decentraland SDK Skills](../../getting-started/vibe-coding.md). The `player-avatar` skill covers dressing players, so you can describe the outfit and let the assistant write the code, for example:
 
-> Dress every player in my scene in the team jersey from `wearables/jersey/`, with short hair, brown pants and classic shoes from the base avatar catalog. Use the male or female model depending on each player's body shape.
+> Dress every player in my scene in the team jersey from `assets/wearables/jersey/`, with short hair, brown pants and classic shoes from the base avatar catalog. Use the male or female model depending on each player's body shape.
 
 ## Dress the player
 
@@ -35,7 +35,7 @@ export function main() {
 			BASE + 'short_hair',
 			BASE + 'brown_pants',
 			BASE + 'classic_shoes',
-			'wearables/jersey/jersey_upper_body.glb',
+			'assets/wearables/jersey/jersey_upper_body.glb',
 		],
 	})
 }
@@ -53,7 +53,7 @@ A `.glb` file in your scene's folder works as a wearable, with no upload or appr
 
 * **Name the file `<name>_<category>.glb`**, for example `jersey_upper_body.glb` or `crown_tiara.glb`. When several categories match the end of the name, the longest one wins, so `beard_facial_hair.glb` is `facial_hair`, not `hair`.
 * **Valid categories**: `upper_body`, `lower_body`, `feet`, `hands_wear`, `hat`, `helmet`, `top_head`, `mask`, `eyewear`, `earring`, `tiara`, `hair`, `facial_hair` and `skin`. Eyes, eyebrows and mouth are textures, not models, so they can't be scene wearables.
-* **Write the path from your project's root folder**, as in `wearables/jersey/jersey_upper_body.glb`, with forward slashes and no leading `./` or `/`. Letter case doesn't matter, `.GLB` included. Full URLs and paths with backslashes, a `?query` or a trailing space are skipped.
+* **Write the path from your project's root folder**, as in `assets/wearables/jersey/jersey_upper_body.glb`, with forward slashes and no leading `./` or `/`. Letter case doesn't matter, `.GLB` included. Full URLs and paths with backslashes, a `?query` or a trailing space are skipped.
 * **Keep each wearable in its own folder**, together with its textures. Only files in the same folder as the `.glb` are loaded with it, not files in subfolders. For color variants, export a separate `.glb` per variant.
 * **Model it like any other wearable**, rigged to the Decentraland avatar armature. See [Creating Wearables](../../../wearables-and-emotes/wearables/creating-wearables.md#building-3d-models-for-wearables). An `upper_body` item keeps the avatar's own hands visible, so don't model hands into it.
 * **Hair and skin colors** apply as on catalog items: any material whose name contains `hair` or `skin`, in any letter case, takes the player's hair or skin color, even one named `Chair` or `Skinny_Jeans`.
@@ -71,7 +71,7 @@ Read the list in a system, which also catches the outfit the player already wear
 ```ts
 import { AvatarEquippedData, AvatarShape, engine } from '@dcl/sdk/ecs'
 
-const CROWN = 'wearables/crown/crown_tiara.glb'
+const CROWN = 'assets/wearables/crown/crown_tiara.glb'
 let writtenKey = ''
 
 export function main() {
@@ -126,12 +126,12 @@ const BASE = 'urn:decentraland:off-chain:base-avatars:'
 const SHARED = [BASE + 'short_hair', BASE + 'brown_pants', BASE + 'classic_shoes']
 const JERSEYS = {
 	red: {
-		male: 'wearables/red_jersey/red_jersey_m_upper_body.glb',
-		female: 'wearables/red_jersey/red_jersey_f_upper_body.glb',
+		male: 'assets/wearables/red_jersey/red_jersey_m_upper_body.glb',
+		female: 'assets/wearables/red_jersey/red_jersey_f_upper_body.glb',
 	},
 	blue: {
-		male: 'wearables/blue_jersey/blue_jersey_m_upper_body.glb',
-		female: 'wearables/blue_jersey/blue_jersey_f_upper_body.glb',
+		male: 'assets/wearables/blue_jersey/blue_jersey_m_upper_body.glb',
+		female: 'assets/wearables/blue_jersey/blue_jersey_f_upper_body.glb',
 	},
 }
 

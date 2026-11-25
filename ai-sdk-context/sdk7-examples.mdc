@@ -1090,13 +1090,13 @@ AvatarShape.createOrReplace(engine.PlayerEntity, {
     'urn:decentraland:off-chain:base-avatars:short_hair',
     'urn:decentraland:off-chain:base-avatars:brown_pants',
     'urn:decentraland:off-chain:base-avatars:classic_shoes',
-    'wearables/jersey/jersey_upper_body.glb'  // scene file named <name>_<category>.glb, textures in the same folder
+    'assets/wearables/jersey/jersey_upper_body.glb'  // scene file named <name>_<category>.glb, textures in the same folder
   ]
 })
 
 // Add on top of the profile outfit instead: the scene item goes last, the later item of a category wins.
 // In a system, read AvatarEquippedData.getOrNull(engine.PlayerEntity) and write
-// [...equipped.wearableUrns, 'wearables/crown/crown_tiara.glb'] when wearableUrns changes
+// [...equipped.wearableUrns, 'assets/wearables/crown/crown_tiara.glb'] when wearableUrns changes
 // (an onChange registered in main() misses the outfit the player already wears at start).
 // Every change reloads the avatar: write only when the outfit changes, never every frame.
 // Back to the profile look: AvatarShape.deleteFrom(engine.PlayerEntity)

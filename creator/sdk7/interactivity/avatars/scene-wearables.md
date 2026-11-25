@@ -9,7 +9,7 @@ Your scene can decide what the player's avatar wears while they're inside it: a 
 The wearables can be catalog items, or `.glb` files that ship with your scene, with nothing to publish to the marketplace first. The player's profile never changes: once they leave your scene, they look like themselves again, and their backpack and passport always show their own outfit.
 
 {% hint style="warning" %}
-**📔 Note**: Scene wearables are supported in the Decentraland desktop explorer. Reading `AvatarEquippedData.wearables`, described in [Read what the player wears](#read-what-the-player-wears), requires an `@dcl/sdk` release newer than 7.33.0. Until that release is out, install `@dcl/sdk@next`. Everything else on this page works with the current release.
+**📔 Note**: Scene wearables are supported in the Decentraland desktop explorer.
 {% endhint %}
 
 ## Ask your AI assistant
@@ -41,7 +41,7 @@ export function main() {
 }
 ```
 
-That's all it takes. The outfit applies as soon as the avatar is ready, comes off when the player walks out of your scene, and comes back when they return, without writing the component again. Changing their outfit in the backpack while inside your scene doesn't undo it, since this list doesn't depend on their profile.
+That's all it takes. The outfit applies as soon as the avatar is ready, comes off when the player walks out of your scene, and comes back when they return, without writing the component again. If they change their outfit in the backpack while inside your scene, your outfit is put back over the new profile, so it keeps winning.
 
 {% hint style="info" %}
 **💡 Tip**: A list of wearables replaces the player's **whole** outfit. Every body slot you leave out stays empty: no hair, bare legs, bare feet. The face is kept. List each slot you want filled, or [add your items on top of the player's outfit](#add-items-on-top-of-the-players-outfit) instead.
@@ -53,9 +53,10 @@ A `.glb` file in your scene's folder works as a wearable, with no upload or appr
 
 * **Name the file `<name>_<category>.glb`**, for example `jersey_upper_body.glb` or `crown_tiara.glb`. When several categories match the end of the name, the longest one wins, so `beard_facial_hair.glb` is `facial_hair`, not `hair`.
 * **Valid categories**: `upper_body`, `lower_body`, `feet`, `hands_wear`, `hat`, `helmet`, `top_head`, `mask`, `eyewear`, `earring`, `tiara`, `hair`, `facial_hair` and `skin`. Eyes, eyebrows and mouth are textures, not models, so they can't be scene wearables.
-* **Write the path from your project's root folder**, as in `wearables/jersey/jersey_upper_body.glb`, with forward slashes and no leading `./` or `/`. Letter case doesn't matter.
+* **Write the path from your project's root folder**, as in `wearables/jersey/jersey_upper_body.glb`, with forward slashes and no leading `./` or `/`. Letter case doesn't matter, `.GLB` included. Full URLs and paths with backslashes, a `?query` or a trailing space are skipped.
 * **Keep each wearable in its own folder**, together with its textures. Only files in the same folder as the `.glb` are loaded with it, not files in subfolders. Copies of the same `.glb` in two folders, each with its own textures, are two separate items, which is an easy way to make color variants.
 * **Model it like any other wearable**, rigged to the Decentraland avatar armature. See [Creating Wearables](../../../wearables-and-emotes/wearables/creating-wearables.md#building-3d-models-for-wearables). An `upper_body` item keeps the avatar's own hands visible, so don't model hands into it.
+* **Hair and skin colors** apply as on catalog items: any material whose name contains `hair` or `skin`, in any letter case, takes the player's hair or skin color, even one named `Chair` or `Skinny_Jeans`.
 
 A scene wearable is always visible and never hides anything else. A catalog helmet that normally hides the hair doesn't hide your scene's hair, and catalog dungarees that cover the legs don't hide a scene kilt: both show. The one exception is `skin`, which hides the body parts it replaces, just like a catalog skin. Catalog URNs in the same list keep their usual hiding rules.
 
@@ -117,6 +118,8 @@ Delete the component to bring back the player's own look:
 AvatarShape.deleteFrom(engine.PlayerEntity)
 ```
 
+Writing an `AvatarShape` that sets nothing (an empty `wearables` list and no colors, body shape or `showOnlyWearables`) does the same. The current look stays until the profile's items have loaded, so the player never shows up bare in between.
+
 ## Dress other players
 
 You can write `AvatarShape` on any player's entity, not only `engine.PlayerEntity`. Find the other players through their [`PlayerIdentityData`](../user-data.md#player-data-components) component.
@@ -126,15 +129,13 @@ The outfit is **local to each client**. It's never sent to other players: each p
 * If the outfit follows from data that every client can read, like a body shape or a wallet address, every copy of the scene reaches the same result and everyone sees the same outfits. The example below works this way.
 * If players choose their own outfits, your scene must sync those choices and have every client dress every player from the synced state. See [Serverless multiplayer](../../networking/serverless-multiplayer.md), or [Authoritative servers](../../networking/authoritative-servers.md) to make one server the only writer of who wears what. The [example scene](#example-scene) does this with an authoritative server.
 
-An outfit shows only while the viewer stands in your scene, and only on players who are inside it too.
-
-Player entity ids are reused when players disconnect. Look the entities up again on every pass instead of keeping them, and forget the ones that are gone, as the next example does.
+An outfit shows only while the viewer stands in your scene, and only on players who are inside it too. A player who walks out keeps the `AvatarShape` on their entity and wears the outfit again when they come back, with no new write. A player who disconnects doesn't pass it on: a player who joins later gets a new entity, even if the id number is reused.
 
 ## Example: team jerseys for every player
 
 This system dresses every player in the scene in a red or a blue jersey, picked from their wallet address, so all clients agree without syncing anything. Each jersey has a male and a female model, chosen by the player's body shape, and the rest of the outfit is shared.
 
-It runs on every frame, but writes `AvatarShape` only when a player's outfit changes: every write reloads that avatar.
+It runs on every frame, but writes `AvatarShape` only when a player's outfit changes: every change reloads all of that avatar's wearables.
 
 ```ts
 import { AvatarBase, AvatarShape, engine, Entity, PlayerIdentityData } from '@dcl/sdk/ecs'
@@ -157,7 +158,7 @@ const written = new Map<Entity, string>()
 
 export function main() {
 	engine.addSystem(() => {
-		// Forget players that left, so a reused entity id gets dressed again
+		// Forget players that left, so the map doesn't grow
 		for (const player of written.keys()) {
 			if (!PlayerIdentityData.has(player)) written.delete(player)
 		}
@@ -205,14 +206,16 @@ export function main() {
 
 ## Details
 
-* **Two items of the same category**: the later one in the list is used, and the earlier one hides nothing. This applies to NPCs too.
-* **Items that are skipped**: an entry that is neither a URN nor a path ending in `.glb`, a file name without a valid `_<category>.glb` ending, or a file that isn't in your scene. The rest of the list still applies. If every entry is skipped, the list counts as empty and the player keeps their profile wearables.
-* **Items that fail to load**: a catalog URN that doesn't exist, or a scene file that fails to load, isn't shown, but it still counts as part of the list, so the slots you left out stay empty.
-* **Whole-avatar loading**: the new look appears once all of its items have loaded, so one slow item delays the whole outfit. Writing the same values again doesn't reload the avatar, but any change does. Don't animate colors frame by frame.
-* **Right after deploying**: scene wearables load from your scene's processed assets. Until processing finishes after a deploy, `.glb` items are skipped.
-* **Profile items the player forced to show**: when your list replaces the outfit, including when you add on top of `wearableUrns`, the player's choice to force-show an item that another one hides isn't kept.
-* **Portable experiences and smart wearables** can't dress players.
-* **NPCs** accept the same `.glb` paths in their `wearables`. See [NPC Avatars](npc-avatars.md).
+| Case | What happens |
+| ---- | ------------ |
+| Writing the component | Writing the same values again does nothing. Any real change, even one color, reloads all of the avatar's wearables, and the new look appears once every item has loaded. Write only when the outfit changes, and don't animate colors. |
+| Two items of the same category | The later one in the list is used, and the earlier one hides nothing. NPCs work the same way. |
+| Skipped entries | An entry that is neither a URN nor a path ending in `.glb`, a path in a form described [above](#wearables-from-your-scene-files) as skipped, a file name without a valid `_<category>.glb` ending, or a file that isn't in your scene. Each one logs a warning, and the rest of the list still applies. If every entry is skipped, the list counts as empty and the player keeps their profile wearables. |
+| Items that fail to load | A catalog URN that doesn't exist, or a scene file that fails to load, isn't shown, but it still counts as part of the list, so the slots you left out stay empty. |
+| Right after deploying | Scene wearables load from your scene's processed assets. Until processing finishes after a deploy, `.glb` items are skipped. |
+| Profile items the player forced to show | Not kept whenever your `wearables` list isn't empty, including when you add on top of `wearableUrns`. Kept when you only set colors or the body shape. |
+| Several scenes | Only the scene that the local player stands in applies its outfits. Portable experiences and smart wearables can't dress players. |
+| NPCs | They accept the same `.glb` paths in their `wearables`. See [NPC Avatars](npc-avatars.md). |
 
 ## Example scene
 

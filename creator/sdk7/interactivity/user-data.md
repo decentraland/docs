@@ -245,7 +245,7 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
   * `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent, _undefined_ when the client reports no voice activity for them. See [Detect when a player is speaking](#detect-when-a-player-is-speaking).
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
-  * `wearables`: One entry per item of `wearableUrns`, in the same order, with the item's `urn` and a `visible` flag that tells whether it actually shows or another item hides it. See [Read what the player wears](avatars/scene-wearables.md#read-what-the-player-wears). Requires an `@dcl/sdk` release newer than 7.33.0.
+  * `wearables`: One entry per item of `wearableUrns`, in the same order, with the item's `urn` and a `visible` flag that tells whether it actually shows or another item hides it. See [Read what the player wears](avatars/scene-wearables.md#read-what-the-player-wears).
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
 * `AvatarEmoteCommand`: Info about emotes that the player is currently playing. It includes:
   * `emoteUrn`: The URN for the last emote played by the player, since they entered the scene

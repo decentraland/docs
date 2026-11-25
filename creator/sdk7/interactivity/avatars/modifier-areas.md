@@ -78,7 +78,7 @@ Transform.create(entity, {
 })
 ```
 
-This allows you to replace the default Decentraland avatar with any custom avatar you might want to show in your scene, see [Replace the player's avatar](npc-avatars.md#replace-the-players-avatar). Note that if you want to see other players with custom avatars, you should handle the syncing of player positions yourself.
+This allows you to replace the default Decentraland avatar with any custom character you might want to show in your scene. Note that if you want to see other players with custom characters, you should handle the syncing of player positions yourself. To keep the player's own avatar and only change what it wears, see [Scene Wearables](scene-wearables.md) instead.
 
 ### Disable Passport Popup
 

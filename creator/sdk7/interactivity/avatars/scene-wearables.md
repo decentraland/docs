@@ -1,0 +1,229 @@
+---
+description: Dress the player's own avatar in a costume or uniform, using wearables from your scene's files or the catalog.
+---
+
+# Scene Wearables
+
+Your scene can decide what the player's avatar wears while they're inside it: a team jersey, a costume for a themed party, a uniform for each role in a murder mystery. Write an `AvatarShape` component on the player's entity, and their real avatar changes its look. It keeps walking, jumping, gliding and playing emotes as usual.
+
+The wearables can be catalog items, or `.glb` files that ship with your scene, with nothing to publish to the marketplace first. The player's profile never changes: once they leave your scene, they look like themselves again, and their backpack and passport always show their own outfit.
+
+{% hint style="warning" %}
+**📔 Note**: Scene wearables are supported in the Decentraland desktop explorer. Reading `AvatarEquippedData.wearables`, described in [Read what the player wears](#read-what-the-player-wears), requires an `@dcl/sdk` release newer than 7.33.0. Until that release is out, install `@dcl/sdk@next`. Everything else on this page works with the current release.
+{% endhint %}
+
+## Ask your AI assistant
+
+If you use an AI coding assistant, install or update the [Decentraland SDK Skills](../../getting-started/vibe-coding.md). The `player-avatar` skill covers dressing players, so you can describe the outfit and let the assistant write the code, for example:
+
+> Dress every player in my scene in the team jersey from `wearables/jersey/`, with short hair, brown pants and classic shoes from the base avatar catalog. Use the male or female model depending on each player's body shape.
+
+## Dress the player
+
+List everything the player should wear in `wearables`. Each item is either a wearable URN or the path to a `.glb` file in your scene:
+
+```ts
+import { AvatarShape, engine } from '@dcl/sdk/ecs'
+
+const BASE = 'urn:decentraland:off-chain:base-avatars:'
+
+export function main() {
+	AvatarShape.create(engine.PlayerEntity, {
+		id: '', // id and emotes are required by the type, but ignored on players
+		emotes: [],
+		wearables: [
+			BASE + 'short_hair',
+			BASE + 'brown_pants',
+			BASE + 'classic_shoes',
+			'wearables/jersey/jersey_upper_body.glb',
+		],
+	})
+}
+```
+
+That's all it takes. The outfit applies as soon as the avatar is ready, comes off when the player walks out of your scene, and comes back when they return, without writing the component again. Changing their outfit in the backpack while inside your scene doesn't undo it, since this list doesn't depend on their profile.
+
+{% hint style="info" %}
+**💡 Tip**: A list of wearables replaces the player's **whole** outfit. Every body slot you leave out stays empty: no hair, bare legs, bare feet. The face is kept. List each slot you want filled, or [add your items on top of the player's outfit](#add-items-on-top-of-the-players-outfit) instead.
+{% endhint %}
+
+## Wearables from your scene files
+
+A `.glb` file in your scene's folder works as a wearable, with no upload or approval:
+
+* **Name the file `<name>_<category>.glb`**, for example `jersey_upper_body.glb` or `crown_tiara.glb`. When several categories match the end of the name, the longest one wins, so `beard_facial_hair.glb` is `facial_hair`, not `hair`.
+* **Valid categories**: `upper_body`, `lower_body`, `feet`, `hands_wear`, `hat`, `helmet`, `top_head`, `mask`, `eyewear`, `earring`, `tiara`, `hair`, `facial_hair` and `skin`. Eyes, eyebrows and mouth are textures, not models, so they can't be scene wearables.
+* **Write the path from your project's root folder**, as in `wearables/jersey/jersey_upper_body.glb`, with forward slashes and no leading `./` or `/`. Letter case doesn't matter.
+* **Keep each wearable in its own folder**, together with its textures. Only files in the same folder as the `.glb` are loaded with it, not files in subfolders. Copies of the same `.glb` in two folders, each with its own textures, are two separate items, which is an easy way to make color variants.
+* **Model it like any other wearable**, rigged to the Decentraland avatar armature. See [Creating Wearables](../../../wearables-and-emotes/wearables/creating-wearables.md#building-3d-models-for-wearables). An `upper_body` item keeps the avatar's own hands visible, so don't model hands into it.
+
+A scene wearable is always visible and never hides anything else. A catalog helmet that normally hides the hair doesn't hide your scene's hair, and catalog dungarees that cover the legs don't hide a scene kilt: both show. The one exception is `skin`, which hides the body parts it replaces, just like a catalog skin. Catalog URNs in the same list keep their usual hiding rules.
+
+The same `.glb` is used on both body shapes. If you have a separate model for each, pick one by the player's body shape, as in the [example below](#example-team-jerseys-for-every-player).
+
+## How the fields apply on a player
+
+On a player's entity, `AvatarShape` changes only what you set. Any field you leave out keeps the value from the player's profile.
+
+* `wearables`: a non-empty list replaces the whole outfit, as above. An **empty** list keeps the profile wearables, so you can change the colors or body shape alone. Up to 32 items are used.
+* `bodyShape`: `urn:decentraland:off-chain:base-avatars:BaseMale` or `urn:decentraland:off-chain:base-avatars:BaseFemale`, written exactly like this. Any other value, including a different letter case, gives the male body.
+* `skinColor`, `hairColor`, `eyeColor`: each one applies on its own when set.
+* `showOnlyWearables`: `true` hides the skin, hair and face, leaving only the wearables.
+* `id`, `name`, `emotes`, `expressionTriggerId`, `expressionTriggerTimestamp` and `talking` are **ignored** on players. The nametag always shows the player's own name. To show a role or a team, add an [Avatar Nametag](avatar-nametags.md); to hide names, use an [Avatar Modifier Area](modifier-areas.md#hide-nametags). To play an emote on the player, use [`triggerEmote()`](avatar-animations.md#default-animations).
+
+To change the look without touching the outfit, pass an empty `wearables` list:
+
+```ts
+import { AvatarShape, engine } from '@dcl/sdk/ecs'
+import { Color3 } from '@dcl/sdk/math'
+
+AvatarShape.createOrReplace(engine.PlayerEntity, {
+	id: '',
+	emotes: [],
+	wearables: [], // keep the profile wearables
+	skinColor: Color3.create(0.3, 0.8, 0.3),
+	hairColor: Color3.Red(),
+	bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale',
+})
+```
+
+## Add items on top of the player's outfit
+
+To keep what the player wears and add a scene item, start from the profile's list in `AvatarEquippedData` and append your item. Put it **last**: of two items in the same category, the later one is used.
+
+```ts
+import { AvatarEquippedData, AvatarShape, engine } from '@dcl/sdk/ecs'
+
+export function main() {
+	// Runs again whenever the player changes their outfit
+	AvatarEquippedData.onChange(engine.PlayerEntity, (equipped) => {
+		if (!equipped) return
+		AvatarShape.createOrReplace(engine.PlayerEntity, {
+			id: '',
+			emotes: [],
+			wearables: [...equipped.wearableUrns, 'wearables/crown/crown_tiara.glb'],
+		})
+	})
+}
+```
+
+The crown replaces the player's own tiara, if they wear one. Profile items of other categories stay, and since a scene item hides nothing and nothing hides it, they can overlap: profile dungarees and a scene kilt both show. When the scene's look must win outright, list the whole outfit instead, as in [Dress the player](#dress-the-player).
+
+## Take the outfit off
+
+Delete the component to bring back the player's own look:
+
+```ts
+AvatarShape.deleteFrom(engine.PlayerEntity)
+```
+
+## Dress other players
+
+You can write `AvatarShape` on any player's entity, not only `engine.PlayerEntity`. Find the other players through their [`PlayerIdentityData`](../user-data.md#player-data-components) component.
+
+The outfit is **local to each client**. It's never sent to other players: each player sees the outfits that their own copy of your scene writes.
+
+* If the outfit follows from data that every client can read, like a body shape or a wallet address, every copy of the scene reaches the same result and everyone sees the same outfits. The example below works this way.
+* If players choose their own outfits, your scene must sync those choices and have every client dress every player from the synced state. See [Serverless multiplayer](../../networking/serverless-multiplayer.md), or [Authoritative servers](../../networking/authoritative-servers.md) to make one server the only writer of who wears what. The [example scene](#example-scene) does this with an authoritative server.
+
+An outfit shows only while the viewer stands in your scene, and only on players who are inside it too.
+
+Player entity ids are reused when players disconnect. Look the entities up again on every pass instead of keeping them, and forget the ones that are gone, as the next example does.
+
+## Example: team jerseys for every player
+
+This system dresses every player in the scene in a red or a blue jersey, picked from their wallet address, so all clients agree without syncing anything. Each jersey has a male and a female model, chosen by the player's body shape, and the rest of the outfit is shared.
+
+It runs on every frame, but writes `AvatarShape` only when a player's outfit changes: every write reloads that avatar.
+
+```ts
+import { AvatarBase, AvatarShape, engine, Entity, PlayerIdentityData } from '@dcl/sdk/ecs'
+
+const BASE = 'urn:decentraland:off-chain:base-avatars:'
+const SHARED = [BASE + 'short_hair', BASE + 'brown_pants', BASE + 'classic_shoes']
+const JERSEYS = {
+	red: {
+		male: 'wearables/red_jersey/red_jersey_m_upper_body.glb',
+		female: 'wearables/red_jersey/red_jersey_f_upper_body.glb',
+	},
+	blue: {
+		male: 'wearables/blue_jersey/blue_jersey_m_upper_body.glb',
+		female: 'wearables/blue_jersey/blue_jersey_f_upper_body.glb',
+	},
+}
+
+// What each player entity was last dressed in
+const written = new Map<Entity, string>()
+
+export function main() {
+	engine.addSystem(() => {
+		// Forget players that left, so a reused entity id gets dressed again
+		for (const player of written.keys()) {
+			if (!PlayerIdentityData.has(player)) written.delete(player)
+		}
+
+		for (const [player, identity] of engine.getEntitiesWith(PlayerIdentityData)) {
+			const avatar = AvatarBase.getOrNull(player)
+			if (!avatar) continue // profile not loaded yet
+
+			const jersey = parseInt(identity.address.slice(-1), 16) % 2 === 0 ? JERSEYS.red : JERSEYS.blue
+			const female = avatar.bodyShapeUrn.toLowerCase().endsWith(':basefemale')
+			const wearables = [...SHARED, female ? jersey.female : jersey.male]
+
+			const key = wearables.join()
+			if (written.get(player) === key) continue
+			written.set(player, key)
+			AvatarShape.createOrReplace(player, { id: '', emotes: [], wearables })
+		}
+	})
+}
+```
+
+`AvatarBase.bodyShapeUrn` is the body shape from the player's profile. If your scene also sets `bodyShape`, pick the models for the body you set instead.
+
+## Read what the player wears
+
+`AvatarEquippedData.wearables` tells you which items of the player's profile outfit are actually visible, after other items hide or replace them. It has one entry per item of `wearableUrns`, in the same order, each with the item's `urn` and a `visible` flag.
+
+```ts
+import { AvatarEquippedData, engine } from '@dcl/sdk/ecs'
+
+export function main() {
+	AvatarEquippedData.onChange(engine.PlayerEntity, (equipped) => {
+		if (!equipped) return
+		for (const { urn, visible } of equipped.wearables) {
+			console.log(urn, visible === undefined ? 'still loading' : visible ? 'visible' : 'hidden')
+		}
+	})
+}
+```
+
+* `visible` is `true` when the item shows, `false` when another item hides it, a later item of the same category replaces it, or it failed to load.
+* `visible` is unset on every entry until the whole outfit has loaded, then `onChange` fires again with the flags. If the outfit takes longer than a minute to load, the flags stay unset until the player changes their outfit.
+* The list describes the player's **profile** outfit. An `AvatarShape` written by your scene doesn't change it, and scene wearables never appear in it. The same goes for `AvatarBase`.
+* It's available for other players too, on their entities.
+
+## Details
+
+* **Two items of the same category**: the later one in the list is used, and the earlier one hides nothing. This applies to NPCs too.
+* **Items that are skipped**: an entry that is neither a URN nor a path ending in `.glb`, a file name without a valid `_<category>.glb` ending, or a file that isn't in your scene. The rest of the list still applies. If every entry is skipped, the list counts as empty and the player keeps their profile wearables.
+* **Items that fail to load**: a catalog URN that doesn't exist, or a scene file that fails to load, isn't shown, but it still counts as part of the list, so the slots you left out stay empty.
+* **Whole-avatar loading**: the new look appears once all of its items have loaded, so one slow item delays the whole outfit. Writing the same values again doesn't reload the avatar, but any change does. Don't animate colors frame by frame.
+* **Right after deploying**: scene wearables load from your scene's processed assets. Until processing finishes after a deploy, `.glb` items are skipped.
+* **Profile items the player forced to show**: when your list replaces the outfit, including when you add on top of `wearableUrns`, the player's choice to force-show an item that another one hides isn't kept.
+* **Portable experiences and smart wearables** can't dress players.
+* **NPCs** accept the same `.glb` paths in their `wearables`. See [NPC Avatars](npc-avatars.md).
+
+## Example scene
+
+{% hint style="info" %}
+**💡 Tip**: The [`4,25-scene-wearables`](https://github.com/decentraland/sdk7-test-scenes/tree/main/scenes/4,25-scene-wearables) test scene dresses the player and an NPC from a UI panel, either locally or synced to everyone through an authoritative server, and shows the edge cases above side by side.
+{% endhint %}
+
+## Related pages
+
+* [NPC Avatars](npc-avatars.md): show avatars that aren't players, with the same `AvatarShape` component.
+* [Avatar Nametags](avatar-nametags.md): show a role or team above a player's name.
+* [Avatar Modifier Areas](modifier-areas.md): hide avatars or nametags inside a region of the scene.
+* [Get player data](../user-data.md): read the player's profile, body shape and equipped wearables.
+* [Creating Wearables](../../../wearables-and-emotes/wearables/creating-wearables.md): model and rig a wearable.

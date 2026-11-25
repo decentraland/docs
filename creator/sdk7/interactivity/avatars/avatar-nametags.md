@@ -186,7 +186,7 @@ Plates are local to each player's client. The plate is never sent to other playe
 
 An [`AvatarModifierArea`](modifier-areas.md#hide-nametags) with the `AMT_HIDE_NAMETAGS` modifier hides these plates along with the regular nametags. The same applies to `AMT_HIDE_AVATARS`, which hides the whole avatar.
 
-If you want an avatar to show **only** your plate and no name underneath it, set the `AvatarShape` component's `name` to an empty string. See [NPC Avatars](npc-avatars.md#add-a-label-above-the-name).
+If you want an NPC to show **only** your plate and no name underneath it, set the `AvatarShape` component's `name` to an empty string. See [NPC Avatars](npc-avatars.md#add-a-label-above-the-name). This doesn't work on players: an `AvatarShape` on a player's entity ignores `name`, so the player's own name always shows under the plate.
 
 ## Related pages
 

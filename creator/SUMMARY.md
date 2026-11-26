@@ -207,6 +207,7 @@
     * [Locomotion Settings and Restrictions](sdk7/interactivity/avatars/locomotion.md)
     * [Avatar Modifier Areas](sdk7/interactivity/avatars/modifier-areas.md)
     * [Avatar Nametags](sdk7/interactivity/avatars/avatar-nametags.md)
+    * [Scene Wearables](sdk7/interactivity/avatars/scene-wearables.md)
     * [NPC Avatars](sdk7/interactivity/avatars/npc-avatars.md)
   * [Button Events](sdk7/interactivity/button-events/)
     * [Click Events](sdk7/interactivity/button-events/click-events.md)

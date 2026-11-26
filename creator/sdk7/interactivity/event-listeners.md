@@ -158,6 +158,7 @@ export function main() {
 The event on `AvatarEquippedData` includes the following information:
 
 * `wearableUrns`: The list of wearables that the player currently has equipped.
+* `wearables`: One entry per item of `wearableUrns`, with the item's `urn` and a `visible` flag. `visible` is unset until the metadata of every item has loaded, and the event fires again once it's set. A model that fails to load after its metadata loaded still reads `true`. See [Read what the player wears](avatars/scene-wearables.md#read-what-the-player-wears).
 * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
 
 The event on `AvatarBase` includes the following information:

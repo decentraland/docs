@@ -31,7 +31,7 @@ The following optional fields are also available:
 
 * `name`: Name to display over the Avatar's head. Default: "NPC". Set it to an empty string to show no name at all, which is useful when you only want an [Avatar Nametag](avatar-nametags.md) plate above the NPC.
 * `bodyShape`: String to define which body shape to use. Valid options are 'urn:decentraland:off-chain:base-avatars:BaseMale' and 'urn:decentraland:off-chain:base-avatars:BaseFemale'.
-* `wearables`: Array with list of URNs for wearables that the avatar currently has on. If wearables conflict (like two of them are hats), the last one in the list replaces the other.
+* `wearables`: Array with the wearables that the avatar currently has on. Each item is a wearable URN, or the path to a `.glb` file in your scene, see [Scene Wearables](scene-wearables.md#wearables-from-your-scene-files). If wearables conflict (like two of them are hats), the last one in the list replaces the other.
 * `emotes`: Array with list of URNs for NFT emotes that the avatar is capable of playing
 * `eyeColor`: _Color3_ for the eye color (any color is valid)
 * `skinColor`: _Color3_ for the skin color (any color is valid)
@@ -191,6 +191,8 @@ export function swapAvatar(avatar: Entity) {
 }
 ```
 
+This copies the player's profile outfit. If your scene [dresses the player](scene-wearables.md), the copy doesn't include the scene's outfit.
+
 ## Display only wearables
 
 Use the `showOnlyWearables` field to display only the listed wearables of an avatar. The rest of the avatar's body will be invisible.
@@ -251,14 +253,6 @@ AvatarAttach.create(attachedEntity, {
 
 Learn more about the `AvatarAttach` component [here](../../3d-essentials/entity-positioning.md#attach-an-entity-to-an-avatar).
 
-## Replace the player's avatar
+## Change the player's own avatar
 
-You can't change what wearables the player's avatar is wearing, but you can instead swap the player's avatar for an NPC avatar that you can fully customize.
-
-To do this, hide the player's own avatar with an [Avatar Modifier Area](modifier-areas.md#hide-avatars) that uses the `AMT_HIDE_AVATARS` modifier, and display an `AvatarShape` entity at the player's position instead.
-
-{% hint style="warning" %}
-**📔 Note**: To allow the player to have full control over that avatar, you should listen to button events to detect when they press a button, and then trigger the corresponding animation on the NPC avatar. See [Button Events](../button-events/system-based-events.md) for more details.
-
-The fluidity of control may not be perfect while doing this, you may want to use this only in very specific cases.
-{% endhint %}
+An `AvatarShape` written on a player's entity, like `engine.PlayerEntity`, doesn't create an NPC. It changes the look of that player's real avatar while they're in your scene, which keeps walking, jumping and playing emotes as usual. Use it to dress players in a costume or a uniform. See [Scene Wearables](scene-wearables.md).

@@ -532,6 +532,7 @@
         * [Locomotion Settings and Restrictions](creator/sdk7/interactivity/avatars/locomotion.md)
         * [Avatar Modifier Areas](creator/sdk7/interactivity/avatars/modifier-areas.md)
         * [Avatar Nametags](creator/sdk7/interactivity/avatars/avatar-nametags.md)
+        * [Scene Wearables](creator/sdk7/interactivity/avatars/scene-wearables.md)
         * [NPC Avatars](creator/sdk7/interactivity/avatars/npc-avatars.md)
       * [Deprecated Functions](creator/sdk7/interactivity/deprecated-functions.md)
       * [Event Listeners](creator/sdk7/interactivity/event-listeners.md)

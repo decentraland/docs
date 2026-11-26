@@ -94,7 +94,7 @@ export function main() {
 * `isGuest`: _(boolean)_ Indicates if the player has a public key. _True_ if the player is a guest account without a public key.
 * `position`: _(Vector3)_ The position of the avatar in the scene.
 * `avatar`: A nested object with data about the player's base avatar and appearance.
-* `wearables`: An array of identifiers for each of the wearables that the player is currently wearing. For example `urn:decentraland:off-chain:base-avatars:green_hoodie`. All wearables have a similar identifier, even if they're NFTs.
+* `wearables`: An array of identifiers for each of the wearables that the player is currently wearing. For example `urn:decentraland:off-chain:base-avatars:green_hoodie`. All wearables have a similar identifier, even if they're NFTs. This is the player's profile outfit: wearables that a scene puts on the player with [Scene Wearables](avatars/scene-wearables.md) aren't listed.
 * `emotes`: An array of identifiers for each of the emotes that the player currently has equipped in the quick access wheel.
 * `entity`: A reference to the player entity. This can be handy to pass to other functions, or to add custom components to it.
 
@@ -245,6 +245,7 @@ Instead of using `getPlayer()`, you can read data directly from a series of comp
   * `talking`: _true_ while the player is speaking in voice chat, _false_ when they're silent, _undefined_ when the client reports no voice activity for them. See [Detect when a player is speaking](#detect-when-a-player-is-speaking).
 * `AvatarEquippedData`: The list of equipped wearables and emotes.
   * `wearableUrns`: The list of wearables that the player currently has equipped.
+  * `wearables`: One entry per item of `wearableUrns`, in the same order, with the item's `urn` and a `visible` flag that tells whether it actually shows or another item hides it. See [Read what the player wears](avatars/scene-wearables.md#read-what-the-player-wears).
   * `emoteUrns`: The list of emotes that the player currently has equipped in the quick access wheel.
 * `AvatarEmoteCommand`: Info about emotes that the player is currently playing. It includes:
   * `emoteUrn`: The URN for the last emote played by the player, since they entered the scene
@@ -263,7 +264,7 @@ for (const [entity, data, base, attach, transform] of engine.getEntitiesWith(
 ```
 
 {% hint style="warning" %}
-**📔 Note**: All of these components are read-only. You cannot change their values from the scene.
+**📔 Note**: All of these components are read-only. You cannot change their values from the scene. To change how a player looks while they're in your scene, write an `AvatarShape` on their entity instead, see [Scene Wearables](avatars/scene-wearables.md). These components keep reporting the player's profile.
 {% endhint %}
 
 ## Detect when a player is speaking

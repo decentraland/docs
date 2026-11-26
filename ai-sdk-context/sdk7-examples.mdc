@@ -1073,6 +1073,35 @@ AvatarShape.create(entity, {
 })
 ```
 
+### Dress the Player (Scene Wearables)
+```typescript
+import { AvatarShape, engine } from '@dcl/sdk/ecs'
+
+// AvatarShape on a player entity changes that player's real avatar, on this client only,
+// while the player is in the scene. Unset fields keep the profile value.
+// A non-empty wearables list replaces the WHOLE outfit: unlisted categories stay empty (no hair, bare feet),
+// and the face shows default eyes, eyebrows and mouth unless the list has face items (e.g. base-avatars:eyes_00).
+// An empty list keeps the profile wearables.
+// id, name, emotes, expressionTriggerId, expressionTriggerTimestamp and talking are ignored on players.
+AvatarShape.createOrReplace(engine.PlayerEntity, {
+  id: '',
+  emotes: [],
+  wearables: [
+    'urn:decentraland:off-chain:base-avatars:short_hair',
+    'urn:decentraland:off-chain:base-avatars:brown_pants',
+    'urn:decentraland:off-chain:base-avatars:classic_shoes',
+    'assets/wearables/jersey/jersey_upper_body.glb'  // scene file named <name>_<category>.glb, textures in the same folder
+  ]
+})
+
+// Add on top of the profile outfit instead: the scene item goes last, the later item of a category wins.
+// In a system, read AvatarEquippedData.getOrNull(engine.PlayerEntity) and write
+// [...equipped.wearableUrns, 'assets/wearables/crown/crown_tiara.glb'] when wearableUrns changes
+// (an onChange registered in main() misses the outfit the player already wears at start).
+// Every change reloads the avatar: write only when the outfit changes, never every frame.
+// Back to the profile look: AvatarShape.deleteFrom(engine.PlayerEntity)
+```
+
 ### Camera Control
 ```typescript
 import { MainCamera, VirtualCamera, CameraModeArea, CameraType } from '@dcl/sdk/ecs'

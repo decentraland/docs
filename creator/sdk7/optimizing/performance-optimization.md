@@ -140,7 +140,7 @@ A few related tips:
 
 For performance optimization, Backface Culling will be set to **On** on **all** model's materials once rendered in the engine, independently of their settings.
 
-If you expect to see the backface or insides of your models, duplicate the faces and invert the normals. Turning backface culling off in your 3D tool, or setting the glTF `doubleSided` property, has no effect.
+If you expect to see the backface or insides of your models, duplicate the faces and invert the normals. In the Decentraland desktop explorer, turning backface culling off in your 3D tool, or setting the glTF `doubleSided` property, has no effect. The [Bevy renderer](../../scene-editor/get-started/about-editor.md#scene-renderer) in the Creator Hub does draw both sides of a `doubleSided` material, so the editor canvas can show faces that players won't see. Don't rely on `doubleSided`: duplicate the faces instead.
 
 #### Troubleshooting
 

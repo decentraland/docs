@@ -215,7 +215,7 @@ Add one of these tags in a `/** */` comment right before a parameter, or before 
 | `@actionsOf <field>` | A `string` | Shows a dropdown with the actions of the entity picked in the sibling `<field>`. |
 | `@format wallet` | A `string` | Edits the value as a wallet address. |
 | `@format image`, `@format audio`, `@format video` or `@format model` | A `string` | Edits the value with a file picker that lists the scene's files of that kind. See [File parameters](#file-parameters). |
-| `@enabledIf <param>` | Any parameter | Locks the field unless the sibling parameter `<param>` is set: a checkbox that is on, or a field that isn't empty. `@enabledIf !<param>` does the opposite, and locks the field while `<param>` is set. |
+| `@enabledIf <param>` | Any parameter | Locks the field unless the sibling parameter `<param>` is set. `<param>` counts as not set when it's a checkbox that is off, a number or slider at `0`, an empty text field, or an entity field with no entity picked. Any other value counts as set, including an empty list and any color. `@enabledIf !<param>` does the opposite, and locks the field while `<param>` is set. |
 
 ```ts
 constructor(

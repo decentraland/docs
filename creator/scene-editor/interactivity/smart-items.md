@@ -199,6 +199,8 @@ The **Skybox** item sets the sky, the clouds and stars, the sunlight and the fog
 
 Drag it anywhere into your scene. By default it applies its settings as soon as the scene starts, and its defaults match the regular sky at midday. The item itself is invisible to players and has no collider.
 
+**Custom Fog** and **Custom Sky Colors** are on by default, and the colors they set don't change with the time of day. So a Skybox left at its defaults keeps the midday sky, clouds, fog and ambient light all day, even at night. To keep the regular day and night cycle, turn off **Custom Sky Colors** and **Custom Fog**, and leave **Ambient Brightness** at 1. Below 1, the item darkens the midday colors, which also stay the same all day. If you keep the custom colors, you can also set a fixed time of day in the [scene settings](../configure/scene-settings.md#skybox-control), so the sun and the sky always match.
+
 Its fields include:
 
 - **Start Enabled**: apply the settings as soon as the scene loads. Turn it off to apply them later with the **Enable** action.

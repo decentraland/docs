@@ -127,6 +127,38 @@ You can find a simple example of a server performing this task in the following 
 
 [Validate player authenticity](https://github.com/decentraland-scenes/validate-player-authenticity)
 
+### What your backend should check besides the signature
+
+A valid signature proves which player signed the request. It doesn't prove which scene sent it. Any scene or smart wearable the player visits can call `getHeaders()` from `~system/SignedFetch` with your server's URL, with no prompt, and send those headers to your server. Check the signed metadata as well:
+
+* **Scene id**: accept only the scene id of your current deployment. The scene id changes every time you publish, so look it up from the content server, and accept the previous one for a short time so players who haven't reloaded still get in. On a World, also check the realm: `realm.serverName` is the World's name. Don't pin realms for a Genesis City scene, since players reach it through several realms.
+* **Signer**: the signer is always `decentraland-kernel-scene`, for every scene and smart wearable. Checking it only rules out requests that don't come from a scene.
+* **Body**: the signature covers the body only through `metadata.hashPayload`, the SHA-256 hex hash of the body. When `hashPayload` is present and not empty, compare it with the hash of the body you received and refuse a mismatch. The mobile client sends no `hashPayload`, so don't require it. For calls that change state, add a single-use value (a nonce) to the body, or make the call safe to repeat.
+* **Time**: refuse expired timestamps, and also timestamps more than a few seconds in the future. Remember the signatures you have already accepted, so the same request can't be sent twice.
+* **Guests**: the mobile client always sends `isGuest: false`, so don't rely on it to tell guests apart.
+
+When your scene builds the headers itself with `getHeaders()` for a POST request, pass the same `init` (method and body) that you send. Without it, the headers are signed for a GET request with no body.
+
+```ts
+import { getHeaders } from '~system/SignedFetch'
+
+executeTask(async () => {
+	const body = JSON.stringify({ action: 'claim' })
+	// Sign for the same method and body that you send
+	const { headers } = await getHeaders({
+		url: 'https://example.com/api/claim',
+		init: { method: 'POST', body, headers: {} },
+	})
+	await fetch('https://example.com/api/claim', {
+		method: 'POST',
+		headers: { ...headers, 'Content-Type': 'application/json' },
+		body,
+	})
+})
+```
+
+Before you enforce these checks, run them in log-only mode for at least one real publish, on desktop and mobile, and log what they would refuse. If a secret or setting your backend needs is missing, refuse every request instead of treating everyone as verified.
+
 ## Request timeout
 
 If an HTTP request takes too long to be responded, it fails so that other requests can be sent. For `fetch()`, the default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property. The value of `timeout` is expressed in milliseconds.

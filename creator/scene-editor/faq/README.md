@@ -199,6 +199,8 @@ If part of the Creator Hub runs into an error, it shows **Something went wrong**
 
 Under the Bevy renderer, the process that runs your scene in the editor can also stop. The Creator Hub restarts it for you and shows **The scene stopped unexpectedly and was reloaded. Changes from the last few seconds may not have been saved.** Check your last edits.
 
-If it keeps stopping, you see **The scene keeps stopping unexpectedly. Go back and reopen it, or check the logs.** Go back to your scenes and open the scene again. If the problem continues, [report a bug](/creator/sdk7/debugging/report-bug.md).
+If it keeps stopping, you see **The scene keeps stopping unexpectedly. Go back and reopen it, or check the logs.** Go back to your scenes and open the scene again. If the problem continues, use **Report an issue** in the Creator Hub's logo menu, or [report a bug](/creator/sdk7/debugging/report-bug.md).
+
+If your scene uses a [Multiplayer Server](/creator/sdk7/networking/authoritative-servers.md), with the `@dcl/sdk@auth-server` SDK, the Bevy editor also runs that server, and it can stop too, often because of an error in your server code. The Creator Hub restarts it and shows **The Multiplayer Server stopped unexpectedly. Restarting it, which reloads the editor.** If it keeps stopping, you see **The Multiplayer Server keeps stopping, so the scene runs without it.** Fix the error in your server code, then click **Retry** to start the server again. See [Letting an error escape a server system](/creator/sdk7/networking/authoritative-servers.md#letting-an-error-escape-a-server-system).
 
 </details>

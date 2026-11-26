@@ -162,6 +162,26 @@ With the assistant open, double-click any asset in the **Local Assets** tab. It 
 **💡 Tip**: Selecting the Scene root counts as selecting nothing, so it is never sent to the assistant. Select a real entity when you want the assistant to act on it.
 {% endhint %}
 
+### Record what you say and do
+
+Sometimes it's easiest to show the assistant what you mean while you talk: "delete this one", "make that twice as big". The **Record** button next to **Send** records your voice together with what you do in the editor, so the assistant can tell what "this" and "that" point at. It's in the docked panel and in the popped-out chat window, and only appears while the AI Assistant is on.
+
+1. Click **Record**. The first time, a dialog explains what is recorded and kept. Click **Got it** to continue. On macOS, the system also asks for access to your microphone.
+2. Talk while you work. The assistant gets a timeline of your clicks, selections, edits, menus and searches, what is under your pointer, and, with the [Bevy renderer](../get-started/about-editor.md#scene-renderer), what appears and disappears while the scene plays.
+3. Click **Stop** or **Send** when you're done. Your speech is transcribed and becomes the message, added after anything you already typed, and the action timeline goes with it.
+
+A recording stops by itself after 10 minutes. To throw one away instead of sending it, click **Discard recording**.
+
+Recording uses your system's default microphone. To use another one, change the input device in your system's sound settings.
+
+#### What stays on your computer
+
+* Nothing is recorded until you click **Record**. Closing the project or the Creator Hub stops a recording at once.
+* Speech is transcribed on your computer. Your first recording downloads the speech-to-text tools, about 270 MB.
+* The audio is deleted as soon as the recording ends.
+* Only the transcript and the action timeline are sent to your AI provider, and only when you send them. The audio never is.
+* The Creator Hub keeps each project's 20 most recent recording sessions, and deletes sessions untouched for 30 days.
+
 ## Decentraland skills are installed for you
 
 When the assistant runs, the Creator Hub downloads the official [Decentraland SDK Skills](../../sdk7/getting-started/vibe-coding.md) and links them into your project, so the assistant follows verified SDK7 patterns instead of guessing.

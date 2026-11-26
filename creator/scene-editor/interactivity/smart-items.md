@@ -35,8 +35,13 @@ Here are some common items and their default behaviors:
 - **NFT**: Display an NFT image as a portrait. See [Displaying NFTs](smart-items.md#displaying-nfts)
 - **Floor Pressure Button**: A round plate that sinks while a player stands on it and pops back up when they step off. Use its **On Press** and **On Release** hooks to run actions, for example to hold a door open while someone stands on it.
 - **Water Plane** and **Water Cylinder**: Water surfaces that splash when a player walks or jumps into them. See [Water](#water).
+- **Skybox**: Sets the sky, sunlight and fog of the whole scene. See [Skybox](#skybox).
 
 All smart items can be configured to behave in custom ways. For example how far a platform moves, or what a button activates.
+
+### Smart items that need a newer SDK
+
+Some smart items need a recent version of the SDK in your scene. If your scene's SDK is older, dropping one in shows a **Dependency Update Required** dialog that names the version the item needs. Click **Update SDK** to update it. Updating also brings the scene's other outdated dependencies to their latest versions. When the update is done, add the item to the scene again.
 
 ## Configure an item
 
@@ -107,9 +112,11 @@ See [Trigger area](trigger-area.md) for more info.
 
 ### Invisible walls
 
-A collection of invisible shapes that can block players from walking through or clicking through an area.
+A collection of invisible shapes that block players from walking through an area: **Invisible Wall**, **Invisible Sphere**, **Invisible Dome**, **Invisible Cylinder** and **Invisible Ramp**.
 
 These invisible walls can be useful when importing a 3D model that doesn't have a collider mesh, or when you want to create a wall that is not visible to the player.
+
+While you edit, each shape shows as a placeholder so you can see, select and place it. Players never see it. With the [Bevy renderer](../get-started/about-editor.md#scene-renderer), the placeholder shows while the scene is stopped. When you press play, and while the scene is paused, the shape is invisible but still blocks the player, as it does in your published scene. See [Stopped, playing and paused](../get-started/about-editor.md#stopped-playing-and-paused).
 
 See [Colliders](../../sdk7/3d-essentials/colliders.md) for more info.
 
@@ -185,6 +192,29 @@ The item also exposes two actions that other smart items can call:
 - `restoreDefaults`: clears your values, so the player goes back to Decentraland's defaults.
 
 See [Locomotion Settings and Restrictions](../../sdk7/interactivity/avatars/locomotion.md) for what each setting does in detail, and for how to change these values from code.
+
+### Skybox
+
+The **Skybox** item sets the sky, the clouds and stars, the sunlight and the fog of your whole scene, while the player is inside it. Use it for a sunset, a starry night, a foggy swamp or a pitch-black cave, without writing code.
+
+Drag it anywhere into your scene. By default it applies its settings as soon as the scene starts, and its defaults match the regular sky at midday. The item itself is invisible to players and has no collider.
+
+Its fields include:
+
+- **Start Enabled**: apply the settings as soon as the scene loads. Turn it off to apply them later with the **Enable** action.
+- **Skybox Texture**: an image that replaces the sky. Use a PNG or JPG panorama in equirectangular (latitude-longitude) format, twice as wide as it is tall, for example 4096 x 2048. Cube maps and six-image skyboxes are not supported. Choose **None** to keep the regular sky.
+- **Sun Intensity**, **Ambient Brightness** and **Star Brightness**: set all three to 0 for a pitch-black scene.
+- **Custom Fog**, **Fix Sun Position**, **Custom Sun Color** and **Custom Sky Colors**: checkboxes that unlock the fields below them, such as **Fog Density**, **Sun Height** or the sky colours.
+
+Other smart items can call these actions on it: **Enable**, **Disable**, **Toggle**, **Hide Clouds**, **Show Clouds**, **Clear Fog** and **Restore Fog**.
+
+You can place more than one Skybox item, for example one for day and one for night, and switch between them with actions. The one enabled last is the one in place. Disabling it brings back the previous enabled one.
+
+{% hint style="warning" %}
+**📔 Note**: The Skybox item needs version 7.32.0 or newer of the SDK. If your scene uses an older one, the Creator Hub offers to update it. See [Smart items that need a newer SDK](#smart-items-that-need-a-newer-sdk).
+{% endhint %}
+
+The sky, sun and fog changes show when you [preview your scene](../../sdk7/getting-started/preview-scene.md). With the [Bevy renderer](../get-started/about-editor.md#scene-renderer), the editor canvas also shows them when you press play and while the scene is paused. When you stop the scene, the canvas goes back to the default sky, sun and fog. See [Stopped, playing and paused](../get-started/about-editor.md#stopped-playing-and-paused). Players on the mobile app see the regular sky, sun and fog. To set the same things from code, see [Custom sky, sun and fog](../../sdk7/interactivity/skybox-control.md#custom-sky-sun-and-fog).
 
 ### Playing videos
 

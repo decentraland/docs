@@ -188,6 +188,7 @@ export function main() {
 * `visible` is unset on every entry until the metadata of every item has loaded, then the component changes again with the flags. If that takes longer than a minute, the flags stay unset until the player changes their outfit.
 * The list describes the player's **profile** outfit. An `AvatarShape` written by your scene doesn't change it, and scene wearables never appear in it. The same goes for `AvatarBase`.
 * It's available for other players too, on their entities.
+* `wearables` is a required field. Code that builds `AvatarEquippedData` itself, for example a mock in a test, must include `wearables: []`.
 
 ## How the fields apply on a player
 

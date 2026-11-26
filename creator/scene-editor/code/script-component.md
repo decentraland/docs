@@ -117,6 +117,7 @@ The allowed types for the constructor parameters are:
 * A choice of strings, like `'small' | 'large'`
 * An object, like `{ x: number; y: number }`
 * A list, like `string[]` or `Array<{ entity: Entity; label: string }>`
+* A colour, `Color3` or `Color4`
 
 The Creator Hub turns each parameter name into a readable label: `maxHealth` shows as **Max Health**.
 
@@ -185,6 +186,25 @@ constructor(
 
 `T[]` and `Array<T>` work the same way.
 
+### Colour parameters
+
+Type a parameter as `Color3` or `Color4` to edit it with a colour picker, which shows a swatch and the hex code. Your script receives a real colour object.
+
+```ts
+import { Color3 } from '@dcl/sdk/math'
+
+// ...
+
+constructor(
+  public src: string,
+  public entity: Entity,
+  // A colour picker, starting on orange
+  public glowColor: Color3 = Color3.fromHexString('#FF8800'),
+) {}
+```
+
+For the default value, use a `Color3` or `Color4` helper with plain values, like `Color3.create(1, 0.5, 0)`, `Color3.fromHexString('#FF8800')` or `Color3.Red()`. The picker only edits red, green and blue: a `Color4` keeps the alpha of its default value.
+
 ### Narrow pickers with tags
 
 Add one of these tags in a `/** */` comment right before a parameter, or before a field of an object parameter, to change how the Creator Hub edits it. On a list, the tag applies to each row.
@@ -194,6 +214,8 @@ Add one of these tags in a `/** */` comment right before a parameter, or before 
 | `@components <name> …` | An `Entity` | Only offers entities that have one of the listed components. |
 | `@actionsOf <field>` | A `string` | Shows a dropdown with the actions of the entity picked in the sibling `<field>`. |
 | `@format wallet` | A `string` | Edits the value as a wallet address. |
+| `@format image`, `@format audio`, `@format video` or `@format model` | A `string` | Edits the value with a file picker that lists the scene's files of that kind. See [File parameters](#file-parameters). |
+| `@enabledIf <param>` | Any parameter | Locks the field unless the sibling parameter `<param>` is set: a checkbox that is on, or a field that isn't empty. `@enabledIf !<param>` does the opposite, and locks the field while `<param>` is set. |
 
 ```ts
 constructor(
@@ -214,9 +236,36 @@ In this example, each row of **Buttons** only lets you pick items that have acti
 
 The tags only change the editor. At runtime your script receives plain values: an entity, a string with the action name, and a string with the address.
 
+Use `@enabledIf` to show which fields depend on a checkbox. A locked field is greyed out, and its value stays as it was:
+
+```ts
+constructor(
+  public src: string,
+  public entity: Entity,
+  public customFog: boolean = false,
+  /** @enabledIf customFog */
+  public fogDensity: Slider<0, 1, 0.0001> = 0.0005,
+) {}
+```
+
+Here **Fog Density** can only be edited while **Custom Fog** is checked. If `<param>` doesn't match any sibling parameter, the field stays editable.
+
 ### File parameters
 
-A string parameter can hold the name of a file that ships with your script, like a sound or a model. Your script reads it from its own folder, as `` `${this.src}/${this.sound}` ``. See [Default parameters](#default-parameters).
+To let the creator pick a file from the scene, tag a string parameter with `@format image`, `@format audio`, `@format video` or `@format model`. The field becomes a file picker, like the texture field of a material: a dropdown with the scene's files of that kind, a folder button to import a new one, and drag and drop from the **Local Assets** tab. Choosing **None** stores an empty string.
+
+```ts
+constructor(
+  public src: string,
+  public entity: Entity,
+  /** @format audio */
+  public sound: string = '',
+) {}
+```
+
+The value is the file's path in the scene, so you can pass it straight to a component, for example `AudioSource.create(this.entity, { audioClipUrl: this.sound })`. If the picked file is no longer in the scene, the field shows a warning. The **Clean unused assets** button in the assets panel counts the files picked in these fields as used, so it doesn't remove them.
+
+A string parameter can also hold the name of a file that ships with your script, like a sound or a model. Your script reads it from its own folder, as `` `${this.src}/${this.sound}` ``. See [Default parameters](#default-parameters).
 
 The Creator Hub checks these values. If a value names a file that should be in the script's folder but isn't, the field shows `"<file name>" is missing`. URLs and ordinary text are never flagged.
 

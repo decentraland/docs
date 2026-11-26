@@ -88,6 +88,12 @@ Here the EntityEnumId enum is used to tag entities with a unique identifier, ens
 **📔 Note**: Avoid using numbers that are higher than **8001** if your scene also includes Smart Items. Items that are created by the [Creator Hub](../../scene-editor/get-started/about-editor.md) with a Multiplayer component will use automatically assigned IDs from 8001 up. Any ID lower than 8001 is safe to assign to your synced entities.
 {% endhint %}
 
+**Create fixed-id entities once and reuse them**
+
+An entity synced with a fixed entityEnumId can't be removed and created again with the same id. `engine.removeEntity()` keeps the entity's network identity, so a new `syncEntity()` call with that id throws `syncEntity failed because the id provided is already in use`, however much later it runs. For something that comes and goes, like a round timer or a flag, create it once and reuse it: reset its components and hide it instead of removing it.
+
+Don't build per-player ids from a player's address, for example from a hash of it. Two addresses can land on the same id, and a player who reconnects hits the id of their removed entity. Both throw the same error. For entities that belong to one player, leave out the entityEnumId, and store the player's address in a component field to know whose entity it is.
+
 **Entities created by a player**
 
 If an entity is created as a result of a player interaction, and this entity should be synced with other players, the entity doesn't need an entityEnumId. You can use `syncEntity()` passing only the entity and the list of components. A unique value for entityEnumId is assigned automatically behind the curtains.
@@ -286,8 +292,24 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 });
 ```
 
+**Know who sent a message**
+
+Messages that a player sends are also picked up by that same player. The function you pass to `.on` receives the sender as its second argument: the wallet address of the player who sent it, or `'self'` for a message that the local player emitted.
+
+```ts
+import { MessageBus } from "@dcl/sdk/message-bus"
+
+const sceneMessageBus = new MessageBus()
+
+sceneMessageBus.on("chat", (msg: { text: string }, sender: string) => {
+  // Skip the copy of your own message
+  if (sender === "self") return
+  console.log(`${sender}: ${msg.text}`)
+})
+```
+
 {% hint style="warning" %}
-**📔 Note**: Messages that are sent by a player are also picked up by that same player. The `.on` method can't distinguish between a message that was emitted by that same player from a message emitted from other players.
+**📔 Note**: Every field of the payload is written by the client that sent it, and a modified client can write anything. Never trust a player address inside the payload, for example to claim a seat or to release someone else's. Use the `sender` argument instead, and move anything that matters, like seats, scores or ownership, to a [Multiplayer Server](authoritative-servers.md).
 {% endhint %}
 
 **Full MessageBus example**

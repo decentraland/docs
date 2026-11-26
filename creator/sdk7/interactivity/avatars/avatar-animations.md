@@ -202,6 +202,7 @@ Some things to keep in mind:
 * `AvatarMask.AM_UPPER_BODY` is currently the only value in the `AvatarMask` enum. To play an animation on the full body, simply don't set the `mask` property.
 * The `loop` property behaves the same as with full-body animations: with `loop: false` the masked animation plays once and the upper body then returns to normal locomotion, with `loop: true` it repeats until stopped.
 * To stop a looping masked animation from code, call `stopEmote({})`, also imported from `~system/RestrictedActions`. It resolves with `{ success: boolean }`.
+* To switch from one masked animation to another, for example to chain sword swings or to go from holding a crate to throwing it, call `triggerSceneEmote()` again with the new clip. It replaces the playing clip in place. Only call `stopEmote({})` when the mechanic ends: calling it before each new clip shows the idle pose for a moment between clips.
 
 ### Detect when an emote finishes
 

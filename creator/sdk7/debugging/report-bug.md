@@ -4,7 +4,19 @@ description: How you can report a bug so that it gets reviewed and fixed
 
 # Report a Bug
 
-If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor in Creator Hub, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose).
+If you encounter any bugs or issues with the Decentraland SDK and the Scene Editor in Creator Hub, please report them on our GitHub repository [here](https://github.com/decentraland/sdk/issues/new/choose). For problems with the Creator Hub app itself, you can also [report an issue from the Creator Hub](#report-an-issue-from-the-creator-hub).
+
+## Report an issue from the Creator Hub
+
+The Creator Hub has a built-in form to report a problem without leaving the app. You don't need a GitHub account.
+
+1. Click the Creator Hub logo in the top-left corner and select **Report an issue**. When a publish fails, the error dialog also offers **Report an issue**.
+2. Under **What went wrong?**, describe what you were doing and what went wrong, in up to 4096 characters.
+3. Optionally, under **How can we reach you?**, leave your Discord username or email if you'd like the team to follow up.
+4. Leave **Include app logs** ticked to attach the Creator Hub's recent log. The log includes your wallet address and scene names, so untick it if you'd rather not share them.
+5. Click **Send**.
+
+If you're offline, the Creator Hub saves your report and sends it as soon as you're back online.
 
 ## Before you report a bug
 

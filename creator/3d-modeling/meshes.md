@@ -208,4 +208,5 @@ Select the objects you want to change the name and just replace the default obje
 - Make sure there are no hidden faces that can’t be seen but that add to the triangle count.
 - For shapes that should have rounded sides, set them to be _smooth_ rather than adding additional faces.
 - Make sure the _normals_ of all faces are facing outwards instead of inwards. If there are faces in your model that seem not to be there when you render it, this is most likely the cause.
+- Keep stacked layers, like a poster on a wall, trim on a frame or a decal, at least 1 cm apart. Faces that sit in the same plane, or very close to it, flicker as they fight to be drawn in front (this is called z-fighting), and it gets worse with distance.
 - Bake the rotation and scale of your meshes, so that their bounding boxes don’t extend out unnecessarily.

@@ -143,28 +143,12 @@ In the Creator Hub, open the scene settings and click on the **Settings** tab to
 
 ![](../../images/fixed-time-of-day.webp)
 
+To change the colours of the sky, the clouds and stars, the sunlight or the fog, or to replace the sky with an image, use the [Skybox smart item](../interactivity/smart-items.md#skybox).
+
 ## Multiplayer Server
 
-The **Advanced** section at the bottom of the **Settings** tab turns on a [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) for your scene. A Multiplayer Server runs your scene's code on a server as well as on each player's client, so the server can validate what players do and store data across sessions.
+The scene settings don't have a switch for the [Multiplayer Server](../../sdk7/networking/authoritative-servers.md). A Multiplayer Server runs your scene's code on a server as well as on each player's client, so the server can validate what players do and store data across sessions.
 
-![The Advanced section of the scene Settings tab, with Enable Multiplayer Server checked and the Log Access & Storage list showing a wallet input and one added user](../../images/editor/scene-settings-advanced.webp)
-### Turn the server on
+To give your scene a Multiplayer Server, install the version of the SDK that includes the server APIs from a terminal in your scene's folder. See [Setup](../../sdk7/networking/authoritative-servers.md#setup) for the command and the `scene.json` fields it uses.
 
-Check **Enable Multiplayer Server**. The Creator Hub then:
-
-1. Installs the version of the SDK that includes the server APIs (`@dcl/sdk@auth-server` and `@dcl/js-runtime@auth-server`), unless your project already uses it. During the install, the section reads **Installing the multiplayer-server SDK…** and the checkbox is disabled until it finishes.
-2. Adds `"authoritativeMultiplayer": true` to your `scene.json`.
-
-When it's done, you see **Multiplayer Server SDK installed.** Your scene can now use the server APIs in code. See [Multiplayer Server](../../sdk7/networking/authoritative-servers.md) to start writing server logic.
-
-To turn the server off, uncheck the box. The Creator Hub installs the latest regular SDK release again and sets `"authoritativeMultiplayer": false`. The wallets on your **Log Access & Storage** list stay in `scene.json`, in case you turn the server back on.
-
-{% hint style="warning" %}
-**📔 Note**: If the install fails, the panel says so and nothing else changes. If turning the server off fails, the multiplayer-server SDK stays installed. Check your internet connection and try again.
-{% endhint %}
-
-### Give other wallets access to logs and storage
-
-While the server is on, the **Log Access & Storage** list sets which other wallets can read the server's logs and manage its stored data after you publish. Type a wallet address in the **User ID** field to add it. Each entry shows the player's avatar and name, and you can remove it with the button that appears when you hover over it.
-
-The Creator Hub saves this list as `logsPermissions` in `scene.json`. You don't need to add wallets that already have access: the World's owner and its collaborators who can publish anywhere in it, and in Genesis City the owner and the LAND managers of the scene's base parcel. See [Scene Insights](../../sdk7/debugging/scene-insights.md) and [Server Data](../live-ops/server-data.md).
+When the Creator Hub saves the scene, it leaves `authoritativeMultiplayer` and `logsPermissions` in `scene.json` as they are, and doesn't add `authoritativeMultiplayer` when it's missing. The server SDK adds `"authoritativeMultiplayer": true` the first time you build or preview the scene. With the server SDK installed, the preview starts a local Multiplayer Server, and so does the editor under the [Bevy renderer](../get-started/about-editor.md#when-the-multiplayer-server-stops). To change which wallets can read the server's logs and manage its stored data, edit `logsPermissions` in `scene.json`. See [Scene Insights](../../sdk7/debugging/scene-insights.md) and [Server Data](../live-ops/server-data.md).

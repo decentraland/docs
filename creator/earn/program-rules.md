@@ -94,7 +94,14 @@ Other payment options, such as MANA, may be offered in later Seasons.
 
 ### Set up your Payout Wallet
 
-You can set your Payout Wallet in Creator Hub before the first payment. You'll need to confirm your email and confirm that you have access to the wallet or exchange account you add. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
+Set your Payout Wallet on the **Payouts** tab of the **Earn** section in Creator Hub, before the first payment. You must have access to the wallet or exchange account you add. If you haven't set one within 7 days after a Cycle ends, you won't receive the Reward for that Cycle.
+
+Setup has two steps, in this order:
+
+1. **Verify your email.** Click **Verify email** on the **Contact Information** card. Confirm your email, or edit it, then click **Continue** and enter the 6-digit code we send to it. You can ask for a new code after 60 seconds, and for up to 10 codes a day.
+2. **Add your Payout Wallet.** Click **Add wallet** on the **Payout Wallet** card and enter the address. It must be able to receive USDC on Ethereum (ERC-20): funds sent to a wallet that can't receive it can't be recovered. We email every change of Payout Wallet to your verified email.
+
+Both steps need at least one of your experiences to be in the Program. Until setup is finished, a dot shows on **EARN** and on **Payouts**, and a **Set up your payout wallet** banner on the Earn pages takes you to the next step.
 
 ## Your dashboard and results
 

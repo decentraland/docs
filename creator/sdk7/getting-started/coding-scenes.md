@@ -129,7 +129,7 @@ Entities and components are places to store information about the objects in a s
 
 Systems are where we implement game logic, they carry out the actions that need to be updated or checked periodically on every tick of the game loop.
 
-A system is a pure and simple function that gets called once on every tick (once per frame rendered by the engine), following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
+A system is a pure and simple function that gets called once on every tick (once per rendered frame while the player stands in the scene), following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
 
 ```ts
 // Basic system
@@ -163,7 +163,7 @@ In most traditional software programs, all events are triggered directly by play
 
 But interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a player's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some player actions might also take multiple ticks to be completed, for example if the opening of a door needs to take a whole second, the door's rotation must be incrementally updated on every tick as it moves (60 times, if the player's machine renders at 60 FPS).
 
-We call each iteration over the loop a _tick_. Decentraland scenes run one tick per rendered frame, so the number of ticks per second matches the engine's frame rate. If the machine is struggling to render each frame, it results in less frequent updates.
+We call each iteration over the loop a _tick_. The scene the player is standing in runs one tick per rendered frame, so its number of ticks per second matches the engine's frame rate. Other nearby scenes, and [portable experiences](../projects/portable-experiences.md) such as smart wearables, tick at a slower rate. If the machine is struggling to render each frame, it results in less frequent updates.
 
 In each tick, the scene is updated; then the scene is re-rendered, based on the updated values.
 

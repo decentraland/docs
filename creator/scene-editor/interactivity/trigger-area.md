@@ -8,7 +8,7 @@ To make something happen when the player walks into or out of an area, use a Tri
 
 ![](../../images/editor/trigger.webp)
 
-The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. You can easily adjust and scale the orange cube to cover exactly the area you need.
+The orange cube you see while editing your scene is only visible in the Scene Editor, it becomes invisible when running a preview of the scene. With the [Bevy renderer](../get-started/about-editor.md#scene-renderer), it also hides when you press play in the editor, stays hidden while the scene is paused, and shows again when you stop it. You can easily adjust and scale the orange cube to cover exactly the area you need.
 
 Drag it into your scene and resize it with the scale gizmo. The box or sphere you see is only drawn in the editor, players never see it.
 

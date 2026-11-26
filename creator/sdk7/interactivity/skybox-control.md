@@ -114,8 +114,12 @@ Three components let your scene take over the environment while the player is st
 
 Like `SkyboxTime`, all three can only be added to the root entity of the scene, `engine.RootEntity`. On any other entity they have no effect. Every field is optional: anything you leave out keeps its default time-of-day behavior.
 
+{% hint style="info" %}
+**💡 Tip**: In the Creator Hub, the [Skybox smart item](../../scene-editor/interactivity/smart-items.md#skybox) sets these three components for you, with sliders, checkboxes and colour pickers, and adds actions to switch the sky from other smart items. With the [Bevy renderer](../../scene-editor/get-started/about-editor.md#stopped-playing-and-paused), the editor canvas shows them while the scene plays or is paused, and goes back to the default sky, sun and fog when you stop it.
+{% endhint %}
+
 {% hint style="warning" %}
-**📔 Note**: The `Skybox`, `Sun` and `EnvironmentFog` components are not supported yet on the mobile app or on the Bevy explorer. Players on those clients see the regular sky, sun and fog, so make sure your scene still works without these overrides.
+**📔 Note**: The `Skybox`, `Sun` and `EnvironmentFog` components are not supported yet on the mobile app. Players on mobile see the regular sky, sun and fog, so make sure your scene still works without these overrides.
 {% endhint %}
 
 ```ts

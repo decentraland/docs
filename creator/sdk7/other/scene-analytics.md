@@ -34,7 +34,7 @@ The list shows one row per scene, with the following fields:
 - **Revenue**: MANA earned in your scene.
 - **Median Playtime**: Median time each user spends in your scene per day: half of the daily visits are longer, half shorter.
 
-You can sort the list or search by name, and pin the scenes you care about most to the top.
+You can sort the list or search by name. Use **Pin to Watchlist** to keep the scenes you care about most at the top. Your pins are saved for the wallet you're signed in with, so they stay after you restart the Creator Hub.
 
 ## The detail page
 
@@ -53,6 +53,7 @@ The metrics are organized into four tabs.
 A snapshot of your scene's growth, engagement, and user retention.
 
 - **Total Visits**: Every visit to your scene, including repeat visits by the same user.
+- **Total Playtime**: All the time users spent in your scene over the date range, summed over every visit.
 - **Unique Visits**: Distinct users who visited your scene, counted once each.
 - **New Decentraland Players**: Wallets that are new to Decentraland and spent most of their first day in your scene. This shows how many players your scene brings to Decentraland.
 - **New Users**: Users who visited your scene for the first time.

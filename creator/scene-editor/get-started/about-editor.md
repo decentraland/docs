@@ -107,9 +107,23 @@ The Bevy renderer is an alternative engine for the editing canvas. It affects ho
 
 When using the Bevy renderer, the toolbar gains a camera mode dropdown, play and stop buttons to run the scene in the canvas, an **Interact** toggle (the gamepad icon), and a **Mute scene audio** toggle (the speaker icon).
 
-![The editor toolbar under the Bevy renderer: undo and redo, the gizmo tools, a camera dropdown reading Free, play and stop buttons, the Interact gamepad toggle, the Preferences gear and the Inspector button.](../../images/editor/editor-toolbar-bevy.webp)
+![The editor toolbar under the Bevy renderer: undo and redo, the gizmo tools, a camera dropdown reading Free, play and stop buttons, the Interact gamepad toggle and the Preferences gear.](../../images/editor/editor-toolbar-bevy.webp)
 
-Use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas.
+Use the **Interact** toggle to test a running scene directly in the editor canvas without opening a separate preview window. This lets you quickly check interactions without stopping the scene. While interacting, smart items show their hover hints, such as the key to press, right in the canvas. The gizmo and the spawn point's handle are hidden while **Interact** is on, so your clicks reach the scene, and they come back when you turn it off. The selected item keeps its outline.
+
+### Stopped, playing and paused
+
+The play button runs the scene in the canvas. While the scene runs, the same button pauses it, and the stop button brings it back to its starting state. What the canvas shows depends on the state:
+
+* **Stopped**, when you open the scene or after you press stop: the editor's view, made for placing items. The sky, sun and fog go back to their defaults, the scene is lit as at noon, whatever sky or lighting it sets, and its UI is hidden. With the **Free** camera, items attached to the camera or to the player, such as a flashlight, are hidden so they don't follow your editing camera. Editor placeholders, such as [trigger areas](../interactivity/trigger-area.md) and [invisible walls](../interactivity/smart-items.md#invisible-walls), show so you can find and select them.
+* **Playing**: the scene as players see it, with its own lighting and UI, and the sky, sun and fog it sets with the `Skybox`, `Sun` and `EnvironmentFog` components or the [Skybox smart item](../interactivity/smart-items.md#skybox). Placeholders are hidden.
+* **Paused**: everything stays as it looked while playing, including the scene's sky, sun and fog, and the sky's time of day is held where it was.
+
+These views only change what the editor shows. Nothing is written to your scene's files.
+
+### When the Multiplayer Server stops
+
+If your scene uses a [Multiplayer Server](../../sdk7/networking/authoritative-servers.md), that is, it's built with the `@dcl/sdk@auth-server` SDK, the editor runs the server while the scene is open. Scenes on the regular SDK have no server in the editor. If the server stops unexpectedly, the Creator Hub restarts it on its own, which reloads the editor, and tells you with a message. If it stops more than 3 times within a minute, the Creator Hub stops trying and the scene runs without it. Click **Retry** in the message to start it again, which also reloads the editor.
 
 Scenes open muted under the Bevy renderer, so the editor stays quiet while you work. The mute covers every [Audio Source](../../sdk7/3d-essentials/sounds.md), audio stream and video in the scene, and the avatar's footsteps, both while you edit and while the scene runs in the canvas. Click the speaker button, labeled **Unmute scene audio**, to hear the scene. Your choice holds while the scene is open, even if it reloads, and the scene is muted again the next time you open it. The button only appears under the Bevy renderer, because the Babylon renderer does not play the scene's audio.
 

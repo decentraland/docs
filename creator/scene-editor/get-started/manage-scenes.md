@@ -62,10 +62,16 @@ This removes the scene from your Scene Editor home screen. By default it doesn't
 
 ## Change the scenes folder
 
-By default, projects created via the Scene Editor are kept inside a `Scenes` folder in the Creator Hub's application data directory. To change this location:
+By default, projects created via the Scene Editor are kept in a `Decentraland/Scenes` folder in your home folder, where your computer's file manager shows them. To change this location:
 
 1. Click the Creator Hub logo in the top-left corner to open the main menu, then click **Settings**.
 2. In the **SCENES** tab, click the folder icon next to **Scenes Folder** and pick a new folder.
+
+To go back to the default folder, click **Reset** next to **Scenes Folder**.
+
+{% hint style="warning" %}
+**📔 Note**: If you used the Creator Hub before the default changed, your scenes may still be in the old `Scenes` folder inside the Creator Hub's application data folder. If that folder holds scenes, the Creator Hub keeps using it and moves nothing. Click **Reset** to save new scenes in `Decentraland/Scenes` instead. Your existing scenes stay where they are.
+{% endhint %}
 
 ![The App Preferences dialog on the SCENES tab, showing the Scenes Folder path with a folder picker, and the Scene Dependencies options: Auto-update all my scenes, Notify me of new version updates, and Do nothing.](../../images/editor/settings-scenes.webp)
 

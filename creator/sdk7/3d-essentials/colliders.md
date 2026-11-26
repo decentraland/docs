@@ -243,6 +243,8 @@ Only shapes that have colliders can be activated with [pointer events](../intera
 
 By default, a MeshCollider affects both the Physics and the Pointer layers, but you can change this value to only affect one, or neither, and to affect custom layers instead.
 
+The pointer only hits a face of a 3D model from its front side. A wall made of one-sided panels, or a window seen from behind, lets hovers and clicks go through to whatever is behind it. To block them, place an invisible box with a `CL_POINTER` collider behind the object, or model the panel with faces on both sides.
+
 {% hint style="warning" %}
 **📔 Note**: Besides colliders, an entity also needs to have a `PointerEvents` component to respond to pointer events. The `pointerEventsSystem` helpers also take care of this requirment.
 {% endhint %}

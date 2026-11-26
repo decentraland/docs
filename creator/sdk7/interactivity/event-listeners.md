@@ -12,7 +12,7 @@ For button and click events performed by the player, see [Button events](button-
 
 Whenever an avatar steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to.
 
-This event is triggered by all avatars, including the player's.
+This event is triggered by all avatars, including the player's. For the player's own avatar, the scene compares the player's position with its parcels: `onEnterScene` fires each time the player steps onto the scene, including when the scene loads while the player is already standing in it, and `onLeaveScene` fires each time they step off.
 
 ```ts
 import { onEnterScene, onLeaveScene } from '@dcl/sdk/src/players'
@@ -32,6 +32,10 @@ export function main() {
 
 On the `onEnterScene` event, the function can access all of the data returned by [get player data](user-data.md#get-player-data) via the `player` property.
 On the `onLeaveScene` event, the function only has access to the player's ID.
+
+{% hint style="warning" %}
+**📔 Note**: Tracking the player's own avatar this way needs version 7.34.0 or newer of `@dcl/sdk`. Older versions fire `onEnterScene` for the player only once, when the scene starts, and never fire `onLeaveScene` for them. If your scene uses the `@dcl/sdk@auth-server` build for a [Multiplayer Server](../networking/authoritative-servers.md), check the version it installed in `package.json`: that build follows its own release schedule, and a version below 7.34.0 has the old behavior.
+{% endhint %}
 
 ### Only current player
 

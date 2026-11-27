@@ -93,7 +93,7 @@ import { getPlayerLanguage, onPlayerLanguageChanged, getSystemLanguage } from '@
 
 * **`getPlayerLanguage()`** — returns the language of the player's client as a [BCP-47](https://www.rfc-editor.org/info/bcp47) tag, such as `'en'`, `'es'` or `'pt-BR'`. This is the language the client's own UI is shown in, which is not necessarily the language of the player's operating system.
 * **`onPlayerLanguageChanged`** — an observable that fires with `{ language }` whenever the value of `getPlayerLanguage()` changes, for example when the player switches the client's language in the settings mid-session.
-* **`getSystemLanguage()`** — returns the language of the player's device (its operating system) as a BCP-47 tag, such as `'es-AR'` or `'ja-JP'`. It can differ from `getPlayerLanguage()`, for example when the client doesn't offer the device's language and falls back to English. Prefer `getPlayerLanguage()` for your scene's texts, so they match the rest of the client; use `getSystemLanguage()` when you need the device's own setting, such as for regional content. It has no change event.
+* **`getSystemLanguage()`** — returns the language of the player's device (its operating system) as a BCP-47 tag, such as `'es-AR'` or `'ja-JP'`. It can differ from `getPlayerLanguage()`, for example when the client doesn't offer the device's language and falls back to English. Prefer `getPlayerLanguage()` if you want your scene's texts to match the client's language; use `getSystemLanguage()` if you plan to support languages beyond the ones the client supports. It has no change event.
 
 `getPlayerLanguage()` and `getSystemLanguage()` always return a valid tag, falling back to `'en'`:
 

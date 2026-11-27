@@ -28,9 +28,7 @@ Decentraland hosts and deploys the server for you. Publishing your scene via the
 
 The native Multiplayer Server APIs (`isServer`, `registerMessages`, `Storage`, `EnvVar`, etc.) are available on a separate SDK branch.
 
-**In the Creator Hub**, open the scene settings and check **Enable Multiplayer Server** in the **Advanced** section of the **Settings** tab. The Creator Hub installs the right SDK and sets up `scene.json` for you. See [Multiplayer Server in Scene Settings](../../scene-editor/configure/scene-settings.md#multiplayer-server).
-
-**From the command line**, run the following command to install it in your project instead of the standard SDK branch:
+Open a terminal in your scene's folder and run the following command to install it instead of the standard SDK branch. This also applies to scenes you build in the Creator Hub, which has no setting for it.
 
 ```bash
 npm install --save-exact @dcl/sdk@auth-server @dcl/js-runtime@auth-server
@@ -40,9 +38,17 @@ npm install --save-exact @dcl/sdk@auth-server @dcl/js-runtime@auth-server
 **📔 Note**: Keep `--save-exact`. Without it, npm saves a version range like `^7.x.y-...` in `package.json`, and the next regular SDK release also matches that range. A later `npm install` can then replace the auth-server build with a regular one, which has no server APIs, and your server code stops building.
 {% endhint %}
 
+If the scene is open in the Creator Hub, close it and open it again after the install.
+
+To go back to the standard SDK later, run `npm install @dcl/sdk@latest @dcl/js-runtime@latest` and set `"authoritativeMultiplayer"` to `false` in `scene.json`.
+
 ### 2. Configure scene.json
 
-The Multiplayer Server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. You don't need to add it manually: when using the auth-server branch of the SDK, it's added automatically the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
+The Multiplayer Server is enabled by the flag `"authoritativeMultiplayer": true` in `scene.json`, at root level. When the field is missing, the auth-server branch of the SDK adds it the first time you build or preview the scene. Just make sure you don't remove it, without this flag the server never runs and `isServer()` always returns _false_.
+
+{% hint style="warning" %}
+**📔 Note**: The SDK only adds the field when it's missing. If `scene.json` already has `"authoritativeMultiplayer": false`, for example from turning the server off earlier, set it to `true` yourself.
+{% endhint %}
 
 Optionally, you can also add the following to your `scene.json` at root level:
 
@@ -52,11 +58,15 @@ Optionally, you can also add the following to your `scene.json` at root level:
 }
 ```
 
-Add `logsPermissions` to give these wallets access to server logs and metrics after deployment. In the Creator Hub, the **Log Access & Storage** list in the scene settings edits this field for you. World owners and eligible deployment collaborators also have access, as do Genesis City owners and delegated LAND managers of the scene's base parcel. See [Scene Insights](../debugging/scene-insights.md) for permissions, sign-in, and commands.
+Add `logsPermissions` to give these wallets access to server logs and metrics after deployment. World owners and eligible deployment collaborators also have access, as do Genesis City owners and delegated LAND managers of the scene's base parcel. See [Scene Insights](../debugging/scene-insights.md) for permissions, sign-in, and commands.
 
 ### 3. Run the preview
 
 Use the standard preview command, no extra steps needed. When using the auth-server branch of the SDK, the preview automatically starts a local version of the Multiplayer Server in the background.
+
+The server's output, including what your server code writes with `console.log`, appears in the preview's output on lines that start with `[Server]`. In the Creator Hub, find them in the [CONSOLE tab](../getting-started/preview-scene.md#the-creator-hub-console). With the Bevy renderer on, the editor also runs a Multiplayer Server for the open scene, when the scene uses the `@dcl/sdk@auth-server` SDK. The preview then uses that same server, and its console shows that server's `[Server]` lines.
+
+If the server stops, for example because of an error in your server code, the output shows `Multiplayer Server exited with code ...` and the preview keeps running without a server. Fix the error and run the preview again. See [Letting an error escape a server system](#letting-an-error-escape-a-server-system).
 
 The local session of the server is not connected to the one in production, so you're free to test things without affecting players who are in your published scene.
 
@@ -414,6 +424,8 @@ engine.addSystem(() => {
   room.send("playerReady", { displayName: "Alice" })
 })
 ```
+
+While `isStateSyncronized()` returns _false_, show the player a waiting state, such as a **Connecting…** label, instead of an empty screen. That way players know the game is loading rather than broken.
 
 {% hint style="info" %}
 **💡 Tip**: `isStateSyncronized()` only tells you that the client's state is synced, it doesn't guarantee that the server has finished initializing. For a more robust readiness check, have the server broadcast a "ready" or heartbeat message, and have clients wait for it before sending gameplay messages.
@@ -838,7 +850,7 @@ Configure your scene without hardcoding values into the code. Environment variab
 
 Environment variables are **server-only**. Guard them with `isServer()`. The server can read environment variables, but not change their values.
 
-`EnvVar.get()` returns a `Promise<string>` and resolves to an empty string when the variable isn't set, so always provide a fallback for missing values:
+`EnvVar.get()` returns a `Promise<string>` and resolves to an empty string when the variable isn't set. For game settings like these, provide a fallback for missing values:
 
 ```typescript
 import { EnvVar } from "@dcl/sdk/server"
@@ -858,6 +870,23 @@ export async function main() {
 Environment variables are especially useful for storing private keys, reward claim codes, and other sensitive data that would be risky to expose in the public scene's compiled code.
 
 You can store private keys in the server's storage, and have only the server read these with `isServer()`. That way the sensitive data never travels through the player's machine.
+
+Never give a secret or a security switch a fallback value. A missing variable reads as an empty string, so a line like `(await EnvVar.get("API_KEY")) || "dev"` silently runs with the default after a rollback or in a new environment. Check for the empty string and refuse the protected action instead:
+
+```typescript
+import { EnvVar } from "@dcl/sdk/server"
+
+// Returns the key, or undefined when it isn't set
+async function getApiKey(): Promise<string | undefined> {
+  const apiKey = await EnvVar.get("API_KEY")
+  if (apiKey === "") {
+    // No default: refuse instead of running unprotected
+    console.error("[SERVER] API_KEY is not set, rewards are turned off")
+    return undefined
+  }
+  return apiKey
+}
+```
 
 ### Local Development
 
@@ -1104,6 +1133,38 @@ engine.addSystem(() => {
   // safe to send messages
 })
 ```
+
+### Letting an error escape a server system
+
+An error thrown inside a system stops the rest of that tick, and because the system stays registered, it throws again on the next tick. On the server, this makes the local Multiplayer Server exit almost at once, and players stop syncing. An error in a `room.onMessage` handler can do the same.
+
+Wrap each server system and each message handler in a `try/catch` that logs the error and skips that tick or message:
+
+```typescript
+import { engine } from "@dcl/sdk/ecs"
+import { room } from "./shared/messages"
+
+// A server system that logs errors instead of crashing the server
+engine.addSystem((dt) => {
+  try {
+    updateRound(dt) // Your game logic
+  } catch (error) {
+    console.error("[SERVER] Round update failed, skipping this tick:", error)
+  }
+})
+
+// A message handler with the same protection
+room.onMessage("playerReady", (data, context) => {
+  try {
+    if (!context) return
+    addPlayer(context.from.toLowerCase(), data.displayName) // Your game logic
+  } catch (error) {
+    console.error("[SERVER] playerReady failed:", error)
+  }
+})
+```
+
+Also decide what the game falls back to when something fails, for example sending everyone back to the lobby.
 
 ### Wait for the server to start up
 

@@ -88,6 +88,22 @@ Give every `Label` an explicit `width` **and** `height` in its `uiTransform`, an
 Because this differs per explorer, a preview that looks right in one client doesn't prove the layout is correct in another.
 {% endhint %}
 
+## Keep single-line text on one line
+
+Set `textWrap="nowrap"` on every text that must stay on one line, like button text, titles, labels on chips and numbers. When `textWrap` is unset, the text wraps, and on the Desktop Client a word that doesn't fit is broken in the middle when there's no space to break at, for example "LEADERBOA" on one line and "RD" on the next.
+
+```tsx
+<Button
+	value="Leaderboard"
+	textWrap="nowrap"
+	uiTransform={{ width: 220, height: 48 }}
+/>
+```
+
+Your scene can't measure how wide a text is once rendered, so size each box from an estimate and leave 15% to 20% of spare width. With `nowrap`, text that's wider than its box spills over whatever sits next to it, or is cut off where a container hides its overflow.
+
+If the text uses a [custom font](#custom-fonts), also check the layout with `fontSrc` removed. Players see the fallback `font` until the custom font loads, and it can be wider.
+
 ## Custom fonts
 
 To render a `Label` with your own font, set the `fontSrc` property to the path of a TrueType (`.ttf`) font file in your scene folder, relative to the scene's root folder, or to a [Google Fonts](https://fonts.google.com/) family name, like `"Playfair Display"`. Keep `font` set too: it's the fallback used while the custom font loads, and whenever it can't be used.

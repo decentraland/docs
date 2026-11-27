@@ -106,7 +106,7 @@ When the stats point at one specific model, it's usually quicker to fix the mode
 
 - **Cut the triangle count** with the Decimate modifier. This is a rescue tool for models you already have. New models are better modeled low-poly from the start.
 - **Resize textures** to a power of two, 1024x1024 or smaller, and repack them into the _.glb_.
-- **Delete faces the player never sees**, such as the undersides and backs of props. Turn on [back-face culling](#backface-culling) rather than doubling up geometry.
+- **Delete faces the player never sees**, such as the undersides and backs of props. Only duplicate faces for surfaces that players really see from both sides, since the engine always applies [back-face culling](#backface-culling).
 - **Merge materials** into one, using a single atlas texture instead of one texture per part.
 - **Strip out lights, cameras, and materials from `_collider` meshes.** The engine ignores them, so they are pure weight.
 
@@ -140,7 +140,7 @@ A few related tips:
 
 For performance optimization, Backface Culling will be set to **On** on **all** model's materials once rendered in the engine, independently of their settings.
 
-If you expect to see the backface or insides of your models, duplicate the faces and invert the normals.
+If you expect to see the backface or insides of your models, duplicate the faces and invert the normals. In the Decentraland desktop explorer, turning backface culling off in your 3D tool, or setting the glTF `doubleSided` property, has no effect. The [Bevy renderer](../../scene-editor/get-started/about-editor.md#scene-renderer) in the Creator Hub does draw both sides of a `doubleSided` material, so the editor canvas can show faces that players won't see. Don't rely on `doubleSided`: duplicate the faces instead.
 
 #### Troubleshooting
 
@@ -308,16 +308,26 @@ ReactEcsRenderer.setUiRenderer(() => (
       flexDirection: 'column',
       positionType: 'absolute',
       position: { top: 40, right: 40 },
+      // Fixed sizes: text doesn't size its container the same way on every explorer
+      width: 320,
+      height: 112,
       padding: 10,
     }}
     uiBackground={{ color: { r: 0, g: 0, b: 0, a: 0.8 } }}
   >
-    <Label value="Running slow? Try lowering your graphics settings." fontSize={16} />
-    <UiEntity uiTransform={{ flexDirection: 'row', margin: { top: 8 } }}>
+    {/* Two lines of text at fontSize 16 */}
+    <Label
+      value="Running slow? Try lowering your graphics settings."
+      fontSize={16}
+      uiTransform={{ width: 300, height: 48 }}
+    />
+    <UiEntity uiTransform={{ flexDirection: 'row', width: 300, height: 36, margin: { top: 8 } }}>
       <Button
         value="Open Settings"
         fontSize={16}
-        uiTransform={{ height: 36 }}
+        // Button text stays on one line, with spare width around it
+        textWrap="nowrap"
+        uiTransform={{ width: 150, height: 36 }}
         onMouseDown={() => {
           // Call it first, before anything else in the handler
           void openExplorerUi({ ui: ExplorerUi.EU_SETTINGS })
@@ -327,7 +337,8 @@ ReactEcsRenderer.setUiRenderer(() => (
       <Button
         value="Dismiss"
         fontSize={16}
-        uiTransform={{ height: 36, margin: { left: 8 } }}
+        textWrap="nowrap"
+        uiTransform={{ width: 100, height: 36, margin: { left: 8 } }}
         onMouseDown={() => {
           showSettingsTip = false
         }}

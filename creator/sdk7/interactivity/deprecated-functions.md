@@ -82,7 +82,7 @@ executeTask(async () => {
 })
 ```
 
-Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range (not necessarily in sight). The `onPlayerConnectedObservable` detects both when a player newly connects nearby or comes close enough to be in visual range, likewise the `onPlayerDisconnectedObservable` detects when a player ends their session or or walks far away.
+The `onPlayerConnectedObservable` and `onPlayerDisconnectedObservable` events fire together with `onEnterScene` and `onLeaveScene`: when a player enters or leaves your scene. This includes the player's own avatar, each time they walk in or out of the scene's parcels. For the player's own avatar, this needs version 7.34.0 or newer of `@dcl/sdk`, including the `@dcl/sdk@auth-server` build, see [Player enters or leaves scene](event-listeners.md#player-enters-or-leaves-scene).
 
 ```ts
 import {
@@ -99,7 +99,7 @@ onPlayerDisconnectedObservable.add((player) => {
 })
 ```
 
-Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all current players, you can query for existing players upon scene loading, and then listen to this event for updates.
+Add the listener when the scene starts. A listener added later doesn't report the players who were already in the scene. If you need to keep track of all current players, query for existing players when you add the listener, and then listen to this event for updates.
 
 ## Query all players in scene
 

@@ -9,6 +9,16 @@ description: How to install the scene editor.
 
 Download the Creator Hub [HERE](https://decentraland.org/download/creator-hub).
 
+## Supported systems
+
+The Creator Hub runs on:
+
+* **macOS 13 (Ventura) or newer**, on Apple silicon and Intel Macs.
+* **Windows**, 64-bit.
+* **Linux**, 64-bit (x64), as an AppImage or a `.deb` package. The AppImage runs on most distributions, and the `.deb` package installs on Debian and Ubuntu. Both need glibc 2.35 or newer, which Ubuntu 22.04 and later have.
+
+Each release's installers are also listed on the [Creator Hub releases](https://github.com/decentraland/creator-hub/releases) page on GitHub.
+
 ## Updating the Creator Hub
 
 The Creator Hub application checks for updates every time you open it, and self-updates if there's a new version available.
@@ -18,9 +28,9 @@ You can also check for updates manually. For this,
 1. Click the Creator Hub logo in the top-left corner of the screen to open the main menu.
 2. Click **Check for Updates**.
 
-![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report Bug, and Help & Support.](../../images/editor/main-menu.webp)
+![The Creator Hub main menu, opened from the logo in the top-left corner, with the options About Creator Hub, Check for Updates, Settings, Report an issue, and Help & Support.](../../images/editor/main-menu.webp)
 
-The main menu is also where you find the app **Settings**, and links to report a bug or get support.
+The main menu is also where you find the app **Settings**, **Report an issue** to tell the team about a problem without leaving the app (see [Report a Bug](../../sdk7/debugging/report-bug.md#report-an-issue-from-the-creator-hub)), and links to get support.
 
 ## Editing code
 

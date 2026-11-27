@@ -45,7 +45,7 @@ To publish your scene:
 {% hint style="info" %}
 **💡 Tip**: The success screen also shows a web link to your scene, with a button to copy it. Anyone can open that link in a browser, whether or not they have the desktop client installed, so it's the one to paste into a Discord message or an event page. It looks like `https://decentraland.org/jump?realm=<your-world-name>` for a World, or `https://decentraland.org/jump?position=<x>,<y>` for a scene in Genesis City.
 
-The **Jump In** button is for you rather than your audience: it opens the scene in your own desktop client so you can check your work.
+The **Jump In** button is for you rather than your audience: it opens the scene in your own desktop client so you can check your work. After a World publish, it takes you to your World. If the Decentraland desktop app isn't installed on your computer, **Jump In** opens the same web link in your browser instead.
 {% endhint %}
 
 ![](../../images/editor/deploy-steps.webp)
